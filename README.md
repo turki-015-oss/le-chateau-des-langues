@@ -1,35 +1,41 @@
-# Court Module — Le Tribunal Royal
+# Court + Extra Worlds Module
 
-هذه الحزمة تضيف عالم المحكمة بالتفصيل.
+هذه نسخة مطورة من آخر حزمة.
 
-## الملفات
+## المضاف
 
-- `app/court/page.tsx`
-- `data/court.ts`
-- `court.css`
+- المحكمة الملكية `/court`
+- المقهى `/cafe`
+- الشرطة `/police`
+- أمراء القلعة `/princes`
+- مكوّن بطاقات جاهز للواجهة الرئيسية:
+  - `components/ExtraWorlds.tsx`
+- تنسيقات:
+  - `court.css`
+  - `extra-worlds.css`
 
-## طريقة الإضافة
+## الربط بالصفحة الرئيسية
 
-1. انسخ مجلد `court` إلى داخل `app`.
-2. انسخ `court.ts` إلى داخل `data`.
-3. افتح `app/globals.css`.
-4. انسخ محتوى `court.css` كاملًا والصقه في نهاية `globals.css`.
-5. اربط بطاقة المحكمة بالمسار:
+داخل `app/page.tsx` أضف في الأعلى:
 
 ```tsx
-window.location.href = "/court"
+import ExtraWorlds from "@/components/ExtraWorlds";
 ```
 
-## المزايا
+ثم أضف قبل `footer`:
 
-- شخصية القاضي Jules.
-- شخصية كاتب المحكمة Omar.
-- صوت للسؤال.
-- صوت مستقل لكل إجابة.
-- أصوات نجاح وخطأ.
-- خمس قضايا تعليمية.
-- ترجمة عربية اختيارية.
-- XP وCoins.
-- حفظ التقدم في `localStorage`.
-- ميدالية العدالة.
-- فتح القصر بعد إكمال المحكمة.
+```tsx
+<ExtraWorlds />
+```
+
+## التنسيقات
+
+انسخ محتوى:
+- `court.css`
+- `extra-worlds.css`
+
+وألصقه في نهاية:
+
+```text
+app/globals.css
+```

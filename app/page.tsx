@@ -1,14 +1,104 @@
 "use client";
-import {useState} from "react";
-import {BookOpen,Bot,Castle,Flame,Gem,KeyRound,Menu,ScrollText,ShoppingBag,Sparkles,Trophy,Volume2} from "lucide-react";
-import Shield from "@/components/Shield";
-import WorldCard from "@/components/WorldCard";
-import {lesson,worlds} from "@/data/worlds";
-export default function Home(){const[open,setOpen]=useState(false);const[index,setIndex]=useState(0);const word=lesson[index];const speak=()=>{const u=new SpeechSynthesisUtterance(word.fr);u.lang="fr-FR";speechSynthesis.speak(u)};return <main>
-<header className="topbar"><div className="brand"><Shield small/><div><h1>Le Château des Langues</h1><span>القلعة اللغوية</span></div></div><nav><a className="active"><Castle size={18}/>الرئيسية</a><a><ScrollText size={18}/>المسار</a><a><BookOpen size={18}/>الدروس</a><a><Bot size={18}/>المعلم</a><a><ShoppingBag size={18}/>المتجر</a></nav><div className="wallet"><span>🪙 2,450</span><span><Gem size={16}/>120</span><button><Menu/></button></div></header>
-<section className="dashboard"><aside className="profile panel"><div className="avatar">ف</div><h2>فارس القلعة</h2><p>المستوى 23</p><div className="progress"><span style={{width:"78%"}}/></div><div className="metric"><Flame/><div><b>15 يومًا</b><span>الأيام المتتالية</span></div></div><div className="metric"><Sparkles/><div><b>12,580 XP</b><span>نقاط الخبرة</span></div></div><div className="metric"><KeyRound/><div><b>18 / 50</b><span>مفاتيح القلعة</span></div></div><div className="metric"><Trophy/><div><b>7 أوسمة</b><span>الإنجازات</span></div></div><div className="castle-card"><span>بطاقة القلعة</span><Shield/></div></aside>
-<section className="hero panel"><div className="hero-content"><Shield/><span>Bienvenue dans</span><h2>القلعة اللغوية</h2><p>Chaque mot ouvre une porte.</p><small>كل كلمة تفتح بابًا.</small><button onClick={()=>setOpen(true)}>ابدأ رحلتك</button></div></section>
-<aside className="daily panel"><h3>تقدمك اليوم</h3><div className="ring"><span>60%</span></div><h4>مهام اليوم</h4><ul><li>✅ إكمال 3 دروس</li><li>✅ تعلّم 12 كلمة</li><li>✅ محادثة قصيرة</li><li>◯ اختبار سريع</li></ul><button>عرض كل المهام</button></aside></section>
-<section className="worlds"><div className="section-title"><div><span>كل العوالم مفتوحة</span><h2>عوالم القلعة</h2></div><p>اختر أي عالم وابدأ مباشرة من A1 حتى C2.</p></div><div className="world-grid">{worlds.map(w=><WorldCard key={w.id} world={w}/>)}</div></section>
-<section className="lower"><article className="panel card"><div><span>الدرس الحالي</span><h2>بوابة التحيات</h2><p>تعلّم التحية والتعارف وابدأ أول محادثة فرنسية.</p><button onClick={()=>setOpen(true)}>ابدأ الدرس</button></div><div className="big">🗣️</div></article><article className="panel card"><div className="big">🧙‍♂️</div><div><span>Maître Louis</span><h2>Bonjour !</h2><p>مستعد لمواصلة رحلتك اللغوية اليوم؟</p><button>تحدث مع المعلم</button></div></article></section>
-{open&&<div className="modal" onClick={()=>setOpen(false)}><div className="lesson-modal" onClick={e=>e.stopPropagation()}><button className="close" onClick={()=>setOpen(false)}>×</button><span>بوابة التحيات · الدرس الأول</span><h2>{word.fr}</h2><button className="sound" onClick={speak}><Volume2/> استمع للنطق</button><h3>{word.ar}</h3><div className="example"><p>{word.example}</p><span>{word.translation}</span></div><div className="actions"><button onClick={()=>setIndex((index-1+lesson.length)%lesson.length)}>السابق</button><button onClick={()=>setIndex((index+1)%lesson.length)}>التالي</button></div></div></div>}<footer>Le Château des Langues — الإصدار 0.1</footer></main>}
+
+import { useEffect, useState } from "react";
+import { ChevronDown, Volume2, X } from "lucide-react";
+
+const worlds = [
+  {title:"حي العائلة", fr:"Le Quartier Familial", level:"A1", scene:"أطفال يركضون في حديقة عربية، وأب وأم قرب منزل حجري حول القلعة.", position:"family"},
+  {title:"السوق الشعبي", fr:"Le Marché", level:"A1", scene:"سوق خضار عربي شعبي مليء بالفواكه والتوابل والباعة والزوّار.", position:"market"},
+  {title:"المطعم", fr:"Le Restaurant", level:"A2", scene:"مطعم عربي واقعي بفوانيس وطاولات خارجية وإطلالة مباشرة على القلعة.", position:"restaurant"},
+  {title:"المستشفى", fr:"L’Hôpital", level:"B1", scene:"مستشفى حديث بطابع عربي مع أطباء وممرضين وسيارة إسعاف.", position:"hospital"},
+  {title:"المواصلات", fr:"Les Transports", level:"A2", scene:"حصان عربي يركض بمحاذاة قطار حديث، وخلفهما أبراج القلعة.", position:"transport"},
+  {title:"المطار", fr:"L’Aéroport", level:"A2", scene:"طائرة تقلع ومسافرون يحملون حقائبهم، والقلعة تظهر في الأفق.", position:"airport"},
+];
+
+export default function Home() {
+  const [entered, setEntered] = useState(false);
+  const [selected, setSelected] = useState<(typeof worlds)[number] | null>(null);
+  const [sound, setSound] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("chateau-entered");
+    if (saved === "yes") setEntered(true);
+  }, []);
+
+  const enter = () => {
+    setEntered(true);
+    localStorage.setItem("chateau-entered", "yes");
+  };
+
+  if (!entered) {
+    return (
+      <main className="intro">
+        <div className="introShade" />
+        <header className="introHeader">
+          <div className="brandMini">🏰 <span>Le Château des Langues</span></div>
+          <button className="soundToggle" onClick={() => setSound(!sound)}><Volume2 size={18}/> {sound ? "الصوت يعمل" : "تشغيل الصوت"}</button>
+        </header>
+        <section className="introContent">
+          <span className="introEyebrow">Bienvenue au</span>
+          <h1>Le Château<br/><em>des Langues</em></h1>
+          <p>Chaque mot ouvre une porte.</p>
+          <small>كل كلمة تفتح بابًا.</small>
+          <button className="enterButton" onClick={enter}>ادخل القلعة</button>
+          <a href="#kingdom" onClick={enter}>تخطي المقدمة <ChevronDown size={16}/></a>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main className="kingdomPage" id="kingdom">
+      <header className="mainHeader">
+        <div className="brandMini">🏰 <span>Le Château des Langues</span></div>
+        <nav><a href="#worlds">العوالم</a><a href="#lesson">الدرس الحالي</a><a href="#progress">تقدمي</a></nav>
+        <button className="profile">فارس القلعة · المستوى 23</button>
+      </header>
+
+      <section className="mapHero">
+        <img src="/kingdom-map.png" alt="خريطة المملكة والقلعة العربية الخضراء" />
+        <div className="mapOverlay">
+          <span>كل العوالم مفتوحة</span>
+          <h2>اختر مكانك داخل المملكة</h2>
+          <p>تعلّم الفرنسية من خلال مواقف حقيقية داخل عالم عربي متكامل.</p>
+        </div>
+      </section>
+
+      <section className="worldSection" id="worlds">
+        <div className="sectionHead"><div><span>مشاهد واقعية</span><h2>عوالم القلعة</h2></div><p>جميع المناطق متاحة من البداية.</p></div>
+        <div className="realWorldGrid">
+          {worlds.map((world, index) => (
+            <button key={world.fr} className={`realWorldCard card-${index+1}`} onClick={() => setSelected(world)}>
+              <div className="worldShade"/>
+              <div className="worldInfo">
+                <span>{world.level}</span>
+                <h3>{world.title}</h3>
+                <p>{world.fr}</p>
+                <small>{world.scene}</small>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="lessonPreview" id="lesson">
+        <div>
+          <span>الدرس الحالي</span>
+          <h2>La Porte des Salutations</h2>
+          <p>ابدأ بالتحيات والتعارف والنطق الصحيح من داخل بوابة القلعة.</p>
+          <button onClick={() => setSelected({title:"بوابة التحيات", fr:"La Porte des Salutations", level:"A1", scene:"حارس القلعة يرحب بك وتبدأ أول محادثة فرنسية.", position:"gate"})}>ابدأ الدرس</button>
+        </div>
+        <div className="lessonStat"><b>12</b><span>كلمة</span><b>8</b><span>جمل</span><b>5</b><span>تمارين</span></div>
+      </section>
+
+      {selected && <div className="modal" onClick={() => setSelected(null)}><div className="modalCard" onClick={e=>e.stopPropagation()}>
+        <button className="modalClose" onClick={() => setSelected(null)}><X/></button>
+        <span className="levelTag">{selected.level}</span>
+        <h2>{selected.title}</h2><h3>{selected.fr}</h3><p>{selected.scene}</p>
+        <button className="startWorld">دخول العالم</button>
+      </div></div>}
+
+      <footer>Le Château des Langues · v0.2</footer>
+    </main>
+  );
+}

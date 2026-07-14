@@ -18,7 +18,7 @@ export default function Home(){
  const showArabic=mode==="beginner";
  const speak=(t:string)=>{const u=new SpeechSynthesisUtterance(t);u.lang="fr-FR";u.rate=mode==="beginner"?.78:mode==="intermediate"?.92:1;speechSynthesis.speak(u)};
  return <main>
- {!entered&&<section className="intro"><div className="shade"/><div className="introbox"><div className="shield"/><span>Bienvenue dans</span><h1>Le Château des Langues</h1><p>Chaque mot ouvre une porte.</p><small>كل كلمة تفتح بابًا.</small><button onClick={()=>setEntered(true)}>Entrer dans le Royaume</button></div><button className="skip" onClick={()=>setEntered(true)}>تخطي المقدمة</button></section>}
+ {!entered&&<section className="intro"><div className="shade"/><div className="introbox"><div className="shield"/><span>Bienvenue dans</span><h1>Le Château des Langues</h1><p>Chaque mot ouvre une porte.</p><small>كل كلمة تفتح بابًا.</small><button onClick={()=>window.location.href="/gate"}>Entrer dans le Royaume</button></div><button className="skip" onClick={()=>setEntered(true)}>تخطي المقدمة</button></section>}
  <header><div className="brand"><div className="shield small"/><div><b>Le Château des Langues</b><span>القلعة اللغوية</span></div></div><nav><a href="#kingdom">المملكة</a><a href="#modes">وضع التعلم</a></nav><strong>A1 · Français</strong></header>
  <section className="hero"><div><span className="label">المملكة مكتملة وتنتظرك</span><h2>عِش الفرنسية<br/><em>داخل عالم عربي حي</em></h2><p>جميع الشخصيات تتحدث الفرنسية. تظهر الترجمة العربية فقط في وضع المبتدئ.</p><a href="#kingdom">اكتشف المملكة</a></div>
  <aside id="modes"><h3>وضع التعلم</h3>

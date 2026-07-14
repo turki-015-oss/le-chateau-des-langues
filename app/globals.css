@@ -42,3 +42,16 @@
 .vocabulary-panel>button svg{color:#f0d27a;flex:0 0 auto}
 @media(max-width:1050px){.family-header{grid-template-columns:1fr auto}.family-progress{grid-column:1/-1;grid-row:2}.family-layout{grid-template-columns:210px 1fr}.vocabulary-panel{grid-column:1/-1}.vocabulary-panel{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.vocabulary-panel h2{grid-column:1/-1}}
 @media(max-width:700px){.family-header{grid-template-columns:1fr auto;padding:11px 13px}.back-link{font-size:13px}.rewards span{padding:7px 8px;font-size:12px}.family-hero{min-height:360px;padding:35px 18px}.family-title h1{font-size:42px}.family-layout{grid-template-columns:1fr;padding:15px}.character-list{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.character-list h2{grid-column:1/-1}.character-list>button{margin:0}.conversation-panel{padding:20px 15px}.answer-grid{grid-template-columns:1fr}.vocabulary-panel{grid-template-columns:1fr 1fr}.conversation-panel h2{font-size:36px}}
+
+.gate-world{min-height:100vh;background:#020d09;color:#fff}
+.gate-header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 4%;background:#02140edc;border-bottom:1px solid #80672f;backdrop-filter:blur(15px)}
+.gate-header strong{font-family:Georgia;color:#efd17b}.gate-header button{border:1px solid #80672f;background:#0a3022;color:#fff;padding:9px 12px;border-radius:10px}
+.gate-scene{min-height:100vh;position:relative;display:grid;place-items:center;padding:90px 18px 30px;background:url('/images/castle-intro.png') center/cover}
+.gate-shade{position:absolute;inset:0;background:linear-gradient(#00120b35,#00120bdf)}
+.armand-card{position:relative;width:min(650px,95vw);text-align:center;background:#041d16df;border:1px solid #d6b65f;border-radius:26px;padding:34px;box-shadow:0 24px 70px #000c;backdrop-filter:blur(12px)}
+.armand-portrait{width:112px;height:112px;margin:auto;display:grid;place-items:center;border-radius:50%;font-size:60px;background:radial-gradient(circle,#1d7048,#07291d);border:4px solid #d6b65f}
+.armand-card>span{display:block;color:#94dd68;margin-top:14px}.armand-card h1{font:clamp(34px,6vw,58px) Georgia;color:#f7dda0;margin:14px 0}.armand-card p{font-size:20px;color:#d2c49d}
+.gate-actions{display:flex;gap:12px;justify-content:center;margin-top:25px}.gate-actions button{min-width:145px;padding:13px 18px;border-radius:13px;font-weight:bold}
+.gate-listen{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #d6b65f;background:#0a3f2a;color:#f5d77f}.gate-next{border:1px solid #f0cf73;background:linear-gradient(#168149,#09542f);color:#fff}
+.achievement-card{position:fixed;inset:0;z-index:50;display:grid;place-items:center;align-content:center;text-align:center;background:#00120bea;padding:24px}.achievement-card svg{color:#f3c84e}.achievement-card span{color:#9ee06f;margin-top:12px}.achievement-card h2{font:45px Georgia;color:#f8dfa0;margin:9px}.achievement-card p{color:#d5c8a2}.achievement-card a{margin-top:20px;text-decoration:none;border:1px solid #f0cf73;background:linear-gradient(#168149,#09542f);color:#fff;padding:14px 22px;border-radius:13px}
+@media(max-width:650px){.gate-header strong{font-size:13px}.armand-card{padding:26px 18px}.gate-actions{flex-direction:column}.gate-actions button{width:100%}}

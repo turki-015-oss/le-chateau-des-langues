@@ -1,3 +1,8 @@
-# Le Château des Langues — v0.5
+# Le Château des Langues — v0.6
 
-بوابة المملكة، Armand، أول إنجاز، وحفظ التقدم.
+- عالم Le Grand Marché.
+- شخصية Hassan.
+- شراء تفاعلي.
+- نطق فرنسي.
+- XP وCoins وحفظ التقدم.
+- فتح بوابة المقهى.

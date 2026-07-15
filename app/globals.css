@@ -3078,3 +3078,143 @@
 
 /* ===== v2.1-dev5 Royal upgrade shop ===== */
 .cafe-upgrade-shop{max-width:1450px;margin:22px auto 0;padding:22px 4%;border:1px solid #7b5b38;border-radius:20px;background:radial-gradient(circle at 100% 0,#54331c55,transparent 30%),linear-gradient(145deg,#17100b,#28180f);color:#fff;box-shadow:0 18px 45px #0007}.upgrade-shop-heading{display:flex;align-items:end;justify-content:space-between;gap:14px}.upgrade-shop-heading span{display:flex;align-items:center;gap:7px;color:#dcb05f;font-size:12px}.upgrade-shop-heading h2{margin:5px 0 0;color:#f4d99b;font:31px Georgia,serif}.upgrade-shop-heading>b{display:flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #9d7442;border-radius:11px;background:#3c2515;color:#f4cf7c}.upgrade-shop-intro{margin:12px 0 0;color:#b9a287;line-height:1.7}.purchasable-upgrades{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:16px}.purchasable-upgrades article{display:grid;grid-template-columns:52px 1fr auto;gap:11px;align-items:center;padding:14px;border:1px solid #5c422d;border-radius:15px;background:#140d09;transition:.2s ease}.purchasable-upgrades article.available:hover{transform:translateY(-3px);border-color:#b98645;box-shadow:0 12px 24px #0007}.purchasable-upgrades article.owned{border-color:#5e9167;background:#14231a}.purchasable-upgrades article.locked{opacity:.53}.upgrade-icon{width:48px;height:48px;display:grid;place-items:center;border:1px solid #795739;border-radius:13px;background:#29190f;font-size:27px}.upgrade-copy{display:grid;gap:3px}.upgrade-copy strong{color:#efd39b}.upgrade-copy small{color:#9f8c74;line-height:1.5}.upgrade-copy em{display:flex;align-items:center;gap:5px;margin-top:3px;color:#ddb86c;font-size:12px;font-style:normal}.purchasable-upgrades button{display:flex;align-items:center;gap:6px;padding:10px 12px;border:1px solid #d0a354;border-radius:10px;background:linear-gradient(#7c4825,#4d2b17);color:#fff;font-weight:800}.purchasable-upgrades button:disabled{opacity:.42;cursor:not-allowed}.upgrade-owned,.upgrade-locked{display:flex;align-items:center;gap:5px;padding:8px 10px;border-radius:9px;font-size:12px}.upgrade-owned{color:#aee2b7;background:#1d3b25}.upgrade-locked{color:#a99983;background:#21150e}.shop-success-banner{max-width:1450px;margin:12px auto 0;padding:12px 4%;border:1px solid #70a777;border-radius:12px;background:#16331f;color:#d7f2db;text-align:center;font-weight:800}@media(max-width:780px){.purchasable-upgrades{grid-template-columns:1fr}}@media(max-width:600px){.cafe-upgrade-shop{margin-left:14px;margin-right:14px;padding:17px}.upgrade-shop-heading h2{font-size:25px}.purchasable-upgrades article{grid-template-columns:46px 1fr}.purchasable-upgrades article>button,.upgrade-owned,.upgrade-locked{grid-column:1/-1;justify-content:center}.shop-success-banner{margin-left:14px;margin-right:14px}}
+
+/* ===== v2.1-dev6 Royal Contracts ===== */
+.loyalty-pill{
+  border-color:#9a6132!important;
+  color:#ffd37b!important;
+  background:linear-gradient(135deg,#4b2513,#25140d)!important;
+}
+
+.cafe-contract-board{
+  width:min(1480px,92%);
+  margin:24px auto;
+  padding:24px;
+  border:1px solid #8b653a;
+  border-radius:24px;
+  background:linear-gradient(145deg,#2d1a10,#120b07 72%);
+  box-shadow:0 22px 50px #0008;
+}
+
+.contract-board-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+
+.contract-board-heading span{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#e9b968;
+}
+
+.contract-board-heading h2{
+  margin:5px 0 0;
+  color:#f5d78e;
+  font:32px Georgia,serif;
+}
+
+.contract-board-heading>svg{color:#e9bc62}
+.contract-board-intro{color:#bfa98b;line-height:1.7}
+
+.contract-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+
+.contract-grid article{
+  padding:18px;
+  border:1px solid #65482d;
+  border-radius:17px;
+  background:#170f0a;
+  transition:.2s ease;
+}
+
+.contract-grid article.complete{
+  border-color:#d2a650;
+  box-shadow:0 0 24px #e2b85b1f;
+}
+
+.contract-grid article.claimed{
+  border-color:#567858;
+  background:#112016;
+}
+
+.contract-title-row,
+.contract-progress-copy,
+.contract-reward-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.contract-title-row strong{color:#efd08b;font-size:18px}
+.contract-title-row svg{color:#dfb45c}
+.contract-grid article p{min-height:48px;color:#b8a386;line-height:1.55}
+.contract-progress-copy{font-size:13px;color:#c7af8e}
+.contract-progress-copy b{color:#f0c979}
+
+.contract-progress-bar{
+  height:9px;
+  overflow:hidden;
+  margin:8px 0 15px;
+  border:1px solid #60452e;
+  border-radius:999px;
+  background:#0d0805;
+}
+
+.contract-progress-bar span{
+  display:block;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#9f5a2b,#f1ca70);
+}
+
+.contract-reward-row{flex-wrap:wrap}
+.contract-reward-row>span{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#ddc08a;
+  font-size:13px;
+}
+
+.contract-reward-row button{
+  flex-basis:100%;
+  padding:11px;
+  margin-top:5px;
+  border:1px solid #c99a4e;
+  border-radius:10px;
+  background:#633718;
+  color:#fff;
+  font-weight:800;
+}
+
+.contract-reward-row button:disabled{opacity:.45;cursor:not-allowed}
+
+.contract-success-banner{
+  width:min(1480px,92%);
+  margin:10px auto 24px;
+  padding:14px 18px;
+  border:1px solid #cc9f50;
+  border-radius:13px;
+  background:#3d2913;
+  color:#ffe0a0;
+  text-align:center;
+  box-shadow:0 0 26px #e0b55e25;
+}
+
+@media(max-width:950px){
+  .contract-grid{grid-template-columns:1fr}
+  .contract-grid article p{min-height:0}
+}
+
+@media(max-width:700px){
+  .cafe-contract-board{width:calc(100% - 30px);padding:17px}
+  .contract-board-heading h2{font-size:27px}
+}

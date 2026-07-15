@@ -35,6 +35,7 @@ import ServiceResults from "@/components/game/ServiceResults";
 import ConversationHistory, { type ConversationEntry } from "@/components/game/ConversationHistory";
 import CafeProgression, { type CafeAchievement } from "@/components/game/CafeProgression";
 import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgradeShop";
+import CafeContractBoard, { type CafeContract } from "@/components/game/CafeContractBoard";
 import {
   defaultInventory,
   loadInventory,
@@ -74,6 +75,9 @@ export default function CafePage() {
   const [dailyCompleted, setDailyCompleted] = useState(false);
   const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>([]);
   const [shopMessage, setShopMessage] = useState("");
+  const [claimedContracts, setClaimedContracts] = useState<string[]>([]);
+  const [loyaltyStreak, setLoyaltyStreak] = useState(1);
+  const [contractMessage, setContractMessage] = useState("");
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -91,6 +95,22 @@ export default function CafePage() {
       const savedUpgrades = JSON.parse(localStorage.getItem("chateau-cafe-owned-upgrades") || "[]");
       setOwnedUpgrades(Array.isArray(savedUpgrades) ? savedUpgrades : []);
     } catch {}
+    try {
+      const claimed = JSON.parse(localStorage.getItem("chateau-cafe-claimed-contracts") || "[]");
+      setClaimedContracts(Array.isArray(claimed) ? claimed : []);
+    } catch {}
+    const today = new Date().toISOString().slice(0, 10);
+    const previousVisit = localStorage.getItem("chateau-cafe-last-visit");
+    const savedStreak = Number(localStorage.getItem("chateau-cafe-loyalty-streak") || "0");
+    if (previousVisit !== today) {
+      const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+      const nextStreak = previousVisit === yesterday ? Math.max(1, savedStreak + 1) : 1;
+      setLoyaltyStreak(nextStreak);
+      localStorage.setItem("chateau-cafe-loyalty-streak", String(nextStreak));
+      localStorage.setItem("chateau-cafe-last-visit", today);
+    } else {
+      setLoyaltyStreak(Math.max(1, savedStreak));
+    }
     const saved = loadWorldProgress("cafe");
     if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
       setSceneIndex(saved.chapter);
@@ -171,6 +191,12 @@ export default function CafePage() {
     { id: "royal-machine", title: "آلة القهوة الملكية", description: "تسرّع التعلم وتزيد نقاط الخبرة.", icon: "☕", price: 85, requiredLevel: 3, effect: "+5 XP لكل طلب" },
     { id: "vip-service", title: "خدمة كبار الزوار", description: "مكافأة إضافية عند إنهاء الوردية كاملة.", icon: "👑", price: 130, requiredLevel: 4, effect: "+20 Coins عند نهاية الوردية" },
   ], []);
+
+  const contracts = useMemo<CafeContract[]>(() => [
+    { id: "serve-3", title: "خدمة الصباح", description: "اخدم 3 زبائن داخل المقهى.", progress: totalServed, target: 3, rewardCoins: 18, rewardXp: 25 },
+    { id: "perfect-5", title: "دقة الباريستا", description: "نفّذ 5 طلبات صحيحة دون تغيير الهدف.", progress: perfectOrders, target: 5, rewardCoins: 28, rewardXp: 40 },
+    { id: "royal-reputation", title: "سمعة المملكة", description: "ارفع سمعة المقهى إلى 80%.", progress: reputation, target: 80, rewardCoins: 40, rewardXp: 55 },
+  ], [totalServed, perfectOrders, reputation]);
 
   const serviceCoinBonus = ownedUpgrades.includes("tip-jar") ? 2 : 0;
   const serviceXpBonus = ownedUpgrades.includes("royal-machine") ? 5 : 0;
@@ -391,6 +417,22 @@ export default function CafePage() {
     window.setTimeout(() => setShopMessage(""), 2600);
   };
 
+  const claimContract = (contract: CafeContract) => {
+    if (claimedContracts.includes(contract.id) || contract.progress < contract.target) return;
+    const nextClaimed = [...claimedContracts, contract.id];
+    const nextCoins = coins + contract.rewardCoins;
+    const nextXp = xp + contract.rewardXp;
+    setClaimedContracts(nextClaimed);
+    setCoins(nextCoins);
+    setXp(nextXp);
+    setContractMessage(`اكتمل عقد ${contract.title} وحصلت على ${contract.rewardCoins} عملة و${contract.rewardXp} XP.`);
+    localStorage.setItem("chateau-cafe-claimed-contracts", JSON.stringify(nextClaimed));
+    localStorage.setItem("chateau-coins", String(nextCoins));
+    localStorage.setItem("chateau-cafe-xp", String(nextXp));
+    playTone(true);
+    window.setTimeout(() => setContractMessage(""), 3000);
+  };
+
   const restartShift = () => {
     setCustomerIndex(0);
     setServedIds([]);
@@ -448,6 +490,7 @@ export default function CafePage() {
           <span><Coins size={17} /> {coins}</span>
           <span className="streak-pill">🔥 {streak}</span>
           <span className="reputation-pill">👑 {reputation}%</span>
+          <span className="loyalty-pill">🔥 {loyaltyStreak} يوم</span>
           <button title="الصوت" onClick={() => setSoundOn((value) => !value)}>
             {soundOn ? <Volume2 size={19} /> : <VolumeX size={19} />}
           </button>
@@ -534,6 +577,12 @@ export default function CafePage() {
 
       {shopMessage && <div className="shop-success-banner">✨ {shopMessage}</div>}
 
+      <CafeContractBoard
+        contracts={contracts}
+        claimedIds={claimedContracts}
+        onClaim={claimContract}
+      />
+      {contractMessage && <div className="contract-success-banner">🏆 {contractMessage}</div>}
 
       <CustomerQueue
         customers={[...cafeCustomers]}

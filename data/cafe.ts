@@ -39,3 +39,10 @@ export const cafeScenes: CafeScene[] = [
 ];
 
 export const cafeReward = { xp: 70, coins: 18, medal: "Médaille du Café", medalAr: "ميدالية المقهى" };
+
+
+export const cafeCustomers = [
+  { name: "Élodie", avatar: "👩🏻", personality: "La voyageuse", requestFr: "Bonjour, je voudrais un thé et une tarte, s’il vous plaît.", requestAr: "مرحبًا، أريد شايًا وفطيرة من فضلك.", order: ["the", "tarte"], orderLabelAr: "شاي + فطيرة" },
+  { name: "Mathieu", avatar: "👨🏽", personality: "Le journaliste", requestFr: "Un café et un croissant, s’il vous plaît.", requestAr: "قهوة وكرواسون من فضلك.", order: ["cafe", "croissant"], orderLabelAr: "قهوة + كرواسون" },
+  { name: "Sophie", avatar: "👩🏾", personality: "L’étudiante", requestFr: "Je prends un jus d’orange et une bouteille d’eau.", requestAr: "سآخذ عصير برتقال وقارورة ماء.", order: ["jus", "eau"], orderLabelAr: "عصير برتقال + ماء" }
+] as const;

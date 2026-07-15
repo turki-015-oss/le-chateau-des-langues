@@ -18,9 +18,12 @@ import {
   Volume2,
   VolumeX,
   X,
-  XCircle
+  XCircle,
+  UserRound,
+  Crown,
+  Target
 } from "lucide-react";
-import { cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
+import { cafeCustomers, cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
 import { loadWorldProgress, saveWorldProgress } from "@/data/game-engine";
 import {
   defaultInventory,
@@ -49,8 +52,11 @@ export default function CafePage() {
   const [reputation, setReputation] = useState(0);
   const [entered, setEntered] = useState(false);
   const [ambientOn, setAmbientOn] = useState(false);
+  const [customerIndex, setCustomerIndex] = useState(0);
+  const [serviceMessage, setServiceMessage] = useState("");
 
   const scene = cafeScenes[sceneIndex];
+  const customer = cafeCustomers[customerIndex];
 
   useEffect(() => {
     setXp(Number(localStorage.getItem("chateau-cafe-xp") || "0"));
@@ -93,6 +99,12 @@ export default function CafePage() {
     () => orderItems.reduce((sum, item) => sum + item.price, 0),
     [orderItems]
   );
+
+  const orderIsCorrect = useMemo(() => {
+    const chosen = [...order].sort().join("|");
+    const expected = [...customer.order].sort().join("|");
+    return chosen === expected;
+  }, [order, customer.order]);
 
   const stars = useMemo(() => {
     const percentage = score / cafeScenes.length;
@@ -245,11 +257,24 @@ export default function CafePage() {
   };
 
   const toggleOrder = (id: string) => {
+    setServiceMessage("");
     setOrder((current) =>
       current.includes(id)
         ? current.filter((item) => item !== id)
         : [...current, id]
     );
+  };
+
+  const validateOrder = () => {
+    if (orderIsCorrect) {
+      setServiceMessage("Commande parfaite ! الطلب مطابق تمامًا.");
+      setReputation((value) => Math.min(100, value + 10));
+      playTone(true);
+    } else {
+      setServiceMessage(`Presque… ${customer.name} طلب: ${customer.orderLabelAr}`);
+      setReputation((value) => Math.max(0, value - 2));
+      playTone(false);
+    }
   };
 
   return (
@@ -260,7 +285,7 @@ export default function CafePage() {
           <div className="cafe-door-frame">
             <div className="cafe-door-sign">Chez Luc</div>
             <div className="cafe-door-window">☕</div>
-            <button onClick={() => { setEntered(true); setAmbientOn(true); }}>
+            <button onClick={() => { setEntered(true); setAmbientOn(true); setCustomerIndex(Math.floor(Math.random() * cafeCustomers.length)); }}>
               <span>ادخل المقهى</span>
               <small>Entrer dans le café</small>
             </button>
@@ -397,6 +422,22 @@ export default function CafePage() {
         <small>الإجابات الطبيعية ترفع ثقة Luc بك وتزيد المكافآت.</small>
       </section>
 
+      <section className="customer-mission-card">
+        <div className="customer-avatar" aria-hidden="true">{customer.avatar}</div>
+        <div className="customer-copy">
+          <span><UserRound size={16}/> زبون اليوم</span>
+          <h2>{customer.name} <small>{customer.personality}</small></h2>
+          <blockquote>“{customer.requestFr}”</blockquote>
+          {showArabic && <p>{customer.requestAr}</p>}
+        </div>
+        <div className="customer-objective">
+          <Target size={22}/>
+          <strong>جهّز الطلب الصحيح</strong>
+          <span>{customer.orderLabelAr}</span>
+          <button onClick={() => speak(customer.requestFr)}><Volume2 size={17}/> استمع للزبون</button>
+        </div>
+      </section>
+
       <section className="cafe-pro-game">
         <aside className="cafe-pro-menu">
           <div className="panel-heading">
@@ -431,6 +472,10 @@ export default function CafePage() {
                 ? orderItems.map((item) => item.fr).join(" · ")
                 : "لم تختر شيئًا بعد"}
             </p>
+            <button className="validate-order" onClick={validateOrder} disabled={!orderItems.length}>
+              <CheckCircle2 size={17}/> تحقق من الطلب
+            </button>
+            {serviceMessage && <div className={`service-message ${orderIsCorrect ? "success" : "retry"}`}>{serviceMessage}</div>}
           </div>
         </aside>
 
@@ -508,10 +553,10 @@ export default function CafePage() {
           <button
             className="cafe-pro-next"
             onClick={next}
-            disabled={selected === null || (sceneIndex === cafeScenes.length - 1 && orderItems.length === 0)}
+            disabled={selected === null || (sceneIndex === cafeScenes.length - 1 && !orderIsCorrect)}
           >
             {sceneIndex === cafeScenes.length - 1
-              ? (orderItems.length ? "ادفع الحساب وأنهِ العالم" : "اختر طلبًا أولًا")
+              ? (orderIsCorrect ? "ادفع الحساب وأنهِ العالم" : "نفّذ طلب الزبون الصحيح أولًا")
               : "تابع الحوار"}
           </button>
         </section>

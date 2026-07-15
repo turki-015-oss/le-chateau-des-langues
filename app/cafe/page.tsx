@@ -29,6 +29,9 @@ import { calculateCafeRewards, calculateStars } from "@/engine/rewardEngine";
 import MissionTracker from "@/components/game/MissionTracker";
 import ReputationBar from "@/components/game/ReputationBar";
 import CustomerMissionCard from "@/components/game/CustomerMissionCard";
+import CustomerQueue from "@/components/game/CustomerQueue";
+import OrderTicket from "@/components/game/OrderTicket";
+import ServiceResults from "@/components/game/ServiceResults";
 import {
   defaultInventory,
   loadInventory,
@@ -58,6 +61,9 @@ export default function CafePage() {
   const [ambientOn, setAmbientOn] = useState(false);
   const [customerIndex, setCustomerIndex] = useState(0);
   const [serviceMessage, setServiceMessage] = useState("");
+  const [servedIds, setServedIds] = useState<string[]>([]);
+  const [serviceScore, setServiceScore] = useState(0);
+  const [shiftComplete, setShiftComplete] = useState(false);
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -215,6 +221,9 @@ export default function CafePage() {
     setShowMissionMap(true);
     setReputation(0);
     setEntered(false);
+    setServedIds([]);
+    setServiceScore(0);
+    setShiftComplete(false);
     saveWorldProgress({
       worldId: "cafe",
       chapter: 0,
@@ -246,6 +255,38 @@ export default function CafePage() {
     }
   };
 
+  const serveCustomer = () => {
+    if (!orderIsCorrect) return;
+    const id = customer.id;
+    const nextServed = Array.from(new Set([...servedIds, id]));
+    setServedIds(nextServed);
+    setServiceScore((value) => value + 1);
+    setOrder([]);
+    setServiceMessage(`${customer.name}: Merci beaucoup !`);
+    setCoins((value) => value + 4);
+    setXp((value) => value + 10);
+    playTone(true);
+
+    if (nextServed.length >= cafeCustomers.length) {
+      setShiftComplete(true);
+      return;
+    }
+
+    window.setTimeout(() => {
+      setCustomerIndex((value) => Math.min(value + 1, cafeCustomers.length - 1));
+      setServiceMessage("");
+    }, 650);
+  };
+
+  const restartShift = () => {
+    setCustomerIndex(0);
+    setServedIds([]);
+    setServiceScore(0);
+    setShiftComplete(false);
+    setOrder([]);
+    setServiceMessage("");
+  };
+
   return (
     <main className="cafe-pro-world">
       {!entered && (
@@ -254,7 +295,7 @@ export default function CafePage() {
           <div className="cafe-door-frame">
             <div className="cafe-door-sign">Chez Luc</div>
             <div className="cafe-door-window">☕</div>
-            <button onClick={() => { setEntered(true); setAmbientOn(true); setCustomerIndex(Math.floor(Math.random() * cafeCustomers.length)); }}>
+            <button onClick={() => { setEntered(true); setAmbientOn(true); setCustomerIndex(0); }}>
               <span>ادخل المقهى</span>
               <small>Entrer dans le café</small>
             </button>
@@ -359,11 +400,26 @@ export default function CafePage() {
 
       <ReputationBar value={reputation} />
 
+      <CustomerQueue
+        customers={[...cafeCustomers]}
+        activeIndex={customerIndex}
+        servedIds={servedIds}
+      />
+
       <CustomerMissionCard
         customer={customer}
         showArabic={showArabic}
         onSpeak={speak}
       />
+
+      <section className="cafe-service-layout">
+        <OrderTicket
+          customer={customer}
+          selectedItems={order}
+          correct={orderIsCorrect}
+          onSpeak={speak}
+        />
+      </section>
 
       <section className="cafe-pro-game">
         <aside className="cafe-pro-menu">
@@ -401,6 +457,9 @@ export default function CafePage() {
             </p>
             <button className="validate-order" onClick={validateOrder} disabled={!orderItems.length}>
               <CheckCircle2 size={17}/> تحقق من الطلب
+            </button>
+            <button className="serve-order" onClick={serveCustomer} disabled={!orderIsCorrect}>
+              ☕ قدّم الطلب إلى {customer.name}
             </button>
             {serviceMessage && <div className={`service-message ${orderIsCorrect ? "success" : "retry"}`}>{serviceMessage}</div>}
           </div>
@@ -488,6 +547,18 @@ export default function CafePage() {
           </button>
         </section>
       </section>
+
+      {shiftComplete && (
+        <div className="service-results-overlay">
+          <ServiceResults
+            served={servedIds.length}
+            total={cafeCustomers.length}
+            score={serviceScore}
+            reputation={reputation}
+            onRestart={restartShift}
+          />
+        </div>
+      )}
 
       {showInventory && (
         <div className="inventory-overlay">

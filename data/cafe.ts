@@ -42,7 +42,10 @@ export const cafeReward = { xp: 70, coins: 18, medal: "Médaille du Café", meda
 
 
 export const cafeCustomers = [
-  { name: "Élodie", avatar: "👩🏻", personality: "La voyageuse", requestFr: "Bonjour, je voudrais un thé et une tarte, s’il vous plaît.", requestAr: "مرحبًا، أريد شايًا وفطيرة من فضلك.", order: ["the", "tarte"], orderLabelAr: "شاي + فطيرة" },
-  { name: "Mathieu", avatar: "👨🏽", personality: "Le journaliste", requestFr: "Un café et un croissant, s’il vous plaît.", requestAr: "قهوة وكرواسون من فضلك.", order: ["cafe", "croissant"], orderLabelAr: "قهوة + كرواسون" },
-  { name: "Sophie", avatar: "👩🏾", personality: "L’étudiante", requestFr: "Je prends un jus d’orange et une bouteille d’eau.", requestAr: "سآخذ عصير برتقال وقارورة ماء.", order: ["jus", "eau"], orderLabelAr: "عصير برتقال + ماء" }
+  { id: "elodie", name: "Élodie", avatar: "👩🏻", personality: "La voyageuse", level: "A1", patience: 90, requestFr: "Bonjour, je voudrais un thé et une tarte, s’il vous plaît.", requestAr: "مرحبًا، أريد شايًا وفطيرة من فضلك.", order: ["the", "tarte"], orderLabelAr: "شاي + فطيرة" },
+  { id: "mathieu", name: "Mathieu", avatar: "👨🏽", personality: "Le journaliste", level: "A2", patience: 82, requestFr: "Un café et un croissant, s’il vous plaît.", requestAr: "قهوة وكرواسون من فضلك.", order: ["cafe", "croissant"], orderLabelAr: "قهوة + كرواسون" },
+  { id: "sophie", name: "Sophie", avatar: "👩🏾", personality: "L’étudiante", level: "A1", patience: 95, requestFr: "Je prends un jus d’orange et une bouteille d’eau.", requestAr: "سآخذ عصير برتقال وقارورة ماء.", order: ["jus", "eau"], orderLabelAr: "عصير برتقال + ماء" },
+  { id: "antoine", name: "Antoine", avatar: "👨🏻‍💼", personality: "L’homme d’affaires", level: "B1", patience: 70, requestFr: "Pour moi, un café, une tarte et de l’eau, merci.", requestAr: "لي قهوة وفطيرة وماء، شكرًا.", order: ["cafe", "tarte", "eau"], orderLabelAr: "قهوة + فطيرة + ماء" },
+  { id: "claire", name: "Claire", avatar: "👵🏻", personality: "La retraitée", level: "A2", patience: 88, requestFr: "Je voudrais simplement un thé et un croissant.", requestAr: "أريد فقط شايًا وكرواسون.", order: ["the", "croissant"], orderLabelAr: "شاي + كرواسون" },
+  { id: "julien", name: "Julien", avatar: "👨🏻‍🎨", personality: "L’artiste", level: "B2", patience: 76, requestFr: "Servez-moi un jus d’orange, une tarte et un café, s’il vous plaît.", requestAr: "قدّم لي عصير برتقال وفطيرة وقهوة من فضلك.", order: ["jus", "tarte", "cafe"], orderLabelAr: "عصير + فطيرة + قهوة" }
 ] as const;

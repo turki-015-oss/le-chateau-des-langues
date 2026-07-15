@@ -2944,3 +2944,127 @@
 
 /* v2.0-dev3 — dynamic customer service mission */
 .customer-mission-card{max-width:1450px;margin:24px auto 0;padding:18px 4%;display:grid;grid-template-columns:96px 1fr 290px;gap:20px;align-items:center;border:1px solid #89643c;border-radius:22px;background:linear-gradient(120deg,#20130d,#382114 65%,#1a100b);box-shadow:0 20px 50px #0008;color:#fff}.customer-avatar{width:86px;height:86px;display:grid;place-items:center;border:3px solid #d6aa59;border-radius:50%;background:#140c08;font-size:46px;box-shadow:0 0 0 7px #d6aa5912}.customer-copy>span{display:inline-flex;align-items:center;gap:7px;color:#e0b965;font-size:13px}.customer-copy h2{margin:7px 0;color:#f5daa0;font:32px Georgia,serif}.customer-copy h2 small{margin-right:8px;color:#a99578;font:14px system-ui}.customer-copy blockquote{margin:8px 0 0;color:#fff;font:22px/1.5 Georgia,serif}.customer-copy p{margin:6px 0 0;color:#c8b398}.customer-objective{padding:15px;border:1px solid #785936;border-radius:16px;background:#130c08;display:grid;gap:6px}.customer-objective svg{color:#e2b75f}.customer-objective strong{color:#f2d593}.customer-objective span{color:#cab596}.customer-objective button,.validate-order{margin-top:7px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 12px;border:1px solid #d0a052;border-radius:10px;background:#5a3219;color:#fff}.validate-order{width:100%;margin-top:12px}.validate-order:disabled{opacity:.45}.service-message{margin-top:10px;padding:10px;border-radius:10px;font-size:13px;line-height:1.5}.service-message.success{border:1px solid #69a36d;background:#17331f;color:#dff3dc}.service-message.retry{border:1px solid #9d6258;background:#351a17;color:#f2d5d1}@media(max-width:760px){.customer-mission-card{margin:14px 14px 0;padding:16px;grid-template-columns:70px 1fr}.customer-avatar{width:64px;height:64px;font-size:34px}.customer-copy h2{font-size:25px}.customer-copy blockquote{font-size:18px}.customer-objective{grid-column:1/-1}.customer-objective button{width:100%}}
+
+/* ===== v2.1-dev2 Living Café ===== */
+.customer-queue,
+.cafe-service-layout{
+  max-width:1550px;
+  margin:22px auto 0;
+  padding:0 4%;
+}
+.customer-queue{
+  padding-top:18px;
+  padding-bottom:18px;
+  border-top:1px solid #6b4b30;
+  border-bottom:1px solid #6b4b30;
+  background:#120b07;
+}
+.queue-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:14px;
+}
+.queue-heading span{color:#d9ab65;font-size:13px}
+.queue-heading h2{margin:4px 0 0;color:#f3d695;font:28px Georgia,serif}
+.queue-heading>b{padding:8px 12px;border:1px solid #8d663c;border-radius:10px;background:#29180f;color:#f2cd7d}
+.queue-list{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(130px,1fr));
+  gap:10px;
+}
+.queue-list article{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:72px;
+  padding:10px;
+  border:1px solid #553c29;
+  border-radius:14px;
+  background:#1b110b;
+  transition:.2s ease;
+}
+.queue-list article>span{font-size:30px}
+.queue-list article div{display:flex;flex-direction:column;gap:3px}
+.queue-list strong{color:#f0d8aa}
+.queue-list small{color:#9f8b74}
+.queue-list article.active{transform:translateY(-4px);border-color:#edc36d;background:#4c2b18;box-shadow:0 10px 25px #0007,0 0 18px #e0b35b25}
+.queue-list article.active small{color:#ffd77e}
+.queue-list article.served{opacity:.62;border-color:#4f8057;background:#142419}
+.queue-list article.served small{color:#91d29c}
+.order-ticket{
+  position:relative;
+  margin:auto;
+  width:min(760px,100%);
+  padding:20px 22px;
+  border:1px dashed #b78a50;
+  border-radius:18px;
+  background:
+    linear-gradient(90deg,transparent 0 97%,#e7d1ad22 97%),
+    #efe1c6;
+  color:#2a190e;
+  box-shadow:0 18px 38px #0008;
+  transition:.25s ease;
+}
+.order-ticket.ready{border-color:#4e9a63;box-shadow:0 18px 38px #0008,0 0 24px #58b17038}
+.ticket-top{display:flex;align-items:center;gap:11px}
+.ticket-top span{display:block;color:#775a3b;font-size:12px}
+.ticket-top strong{display:block;margin-top:2px;font:22px Georgia,serif}
+.order-ticket blockquote{margin:16px 0 12px;padding:13px 15px;border-right:4px solid #9c7445;background:#e2cda9;font:20px/1.7 Georgia,serif}
+.order-ticket>button{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #86623d;border-radius:10px;background:#3f2716;color:#fff}
+.ticket-status{display:flex;justify-content:space-between;margin-top:15px;padding-top:12px;border-top:1px dashed #9f8465}
+.ticket-status b{color:#6f4b22}
+.order-ticket>p{margin:9px 0 0;color:#6f5538}
+.serve-order{
+  width:100%;
+  margin-top:9px;
+  padding:12px;
+  border:1px solid #6ea178;
+  border-radius:11px;
+  background:linear-gradient(#3d7449,#214c2d);
+  color:#fff;
+  font-weight:800;
+}
+.serve-order:disabled{opacity:.4;cursor:not-allowed}
+.service-results-overlay{
+  position:fixed;
+  inset:0;
+  z-index:170;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:#070402e8;
+  backdrop-filter:blur(12px);
+}
+.service-results{
+  width:min(560px,96vw);
+  padding:34px;
+  text-align:center;
+  border:1px solid #b6884d;
+  border-radius:26px;
+  background:radial-gradient(circle at 50% 0,#68431f,#21130c 44%,#0e0906);
+  box-shadow:0 34px 90px #000;
+  color:#fff;
+}
+.service-results>svg{color:#f0c768}
+.service-results>span{display:block;margin-top:12px;color:#d6a85c;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}
+.service-results h2{margin:8px 0;color:#f5dca0;font:42px Georgia,serif}
+.service-results p{color:#cbb699;line-height:1.8}
+.service-stars{display:flex;justify-content:center;gap:10px;margin:20px 0}
+.service-stars svg{width:42px;height:42px;color:#4d4133}
+.service-stars svg.earned{color:#ffd25e;fill:#ffd25e;filter:drop-shadow(0 0 9px #ffd25e88)}
+.service-reward-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.service-reward-row b{display:flex;align-items:center;gap:6px;padding:10px 13px;border:1px solid #8b663d;border-radius:11px;background:#1a100a;color:#f1cd7d}
+.service-results>button{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:13px 18px;border:1px solid #e0b75e;border-radius:12px;background:#70401f;color:#fff;font-weight:800}
+@media(max-width:1000px){
+  .queue-list{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+  .customer-queue,.cafe-service-layout{padding-left:14px;padding-right:14px}
+  .queue-list{display:flex;overflow-x:auto;padding-bottom:6px}
+  .queue-list article{min-width:150px}
+  .order-ticket{padding:16px}
+  .order-ticket blockquote{font-size:17px}
+  .service-results{padding:26px 18px}
+  .service-results h2{font-size:32px}
+}

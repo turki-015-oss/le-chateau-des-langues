@@ -20,6 +20,8 @@ export type NpcProfile = {
   requestAr: string;
   order: readonly string[];
   orderLabelAr: string;
+  level?: "A1" | "A2" | "B1" | "B2";
+  patience?: number;
 };
 
 export type DialogueChoice = {

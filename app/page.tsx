@@ -180,7 +180,7 @@ export default function Home() {
           <p>
             افتح البوابات، استكشف العوالم، وتعلم الفرنسية داخل مملكة واحدة مترابطة.
           </p>
-          <a href="#map"><Map size={19} /> افتح خريطة المملكة</a>
+          <a href="/kingdom"><Map size={19} /> افتح خريطة المملكة</a>
         </div>
 
         <div className="v08-palace-card">

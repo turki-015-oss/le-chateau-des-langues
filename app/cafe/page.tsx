@@ -19,6 +19,14 @@ import {
   VolumeX,
   X,
   XCircle,
+  LayoutGrid,
+  Store,
+  ScrollText,
+  Brain,
+  Timer,
+  Puzzle,
+  Headphones,
+  TrendingUp,
 } from "lucide-react";
 import { cafeCustomers, cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
 import { loadWorldProgress, saveWorldProgress } from "@/data/game-engine";
@@ -39,12 +47,15 @@ import CafeContractBoard, { type CafeContract } from "@/components/game/CafeCont
 import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
 import CafeRushChallenge, { type RushPrompt } from "@/components/game/CafeRushChallenge";
 import CafeSentenceBuilder, { type SentencePuzzle } from "@/components/game/CafeSentenceBuilder";
+import CafeListeningLab, { type ListeningPrompt } from "@/components/game/CafeListeningLab";
 import {
   defaultInventory,
   loadInventory,
   saveInventory,
   type InventoryState
 } from "@/data/inventory";
+
+type CafeActivity = "progress" | "shop" | "contracts" | "journal" | "rush" | "sentences" | "listening" | null;
 
 export default function CafePage() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -98,6 +109,13 @@ export default function CafePage() {
   const [sentenceResult, setSentenceResult] = useState<"idle" | "correct" | "wrong">("idle");
   const [sentenceSolved, setSentenceSolved] = useState(0);
   const [sentenceBest, setSentenceBest] = useState(0);
+  const [listeningIndex, setListeningIndex] = useState(0);
+  const [listeningAnswer, setListeningAnswer] = useState("");
+  const [listeningResult, setListeningResult] = useState<"idle" | "correct" | "wrong">("idle");
+  const [listeningSolved, setListeningSolved] = useState(0);
+  const [listeningBest, setListeningBest] = useState(0);
+  const [listeningHint, setListeningHint] = useState(false);
+  const [activeActivity, setActiveActivity] = useState<CafeActivity>(null);
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -113,6 +131,7 @@ export default function CafePage() {
     setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
     setRushBest(Number(localStorage.getItem("chateau-cafe-rush-best") || "0"));
     setSentenceBest(Number(localStorage.getItem("chateau-cafe-sentence-best") || "0"));
+    setListeningBest(Number(localStorage.getItem("chateau-cafe-listening-best") || "0"));
     try {
       const savedUpgrades = JSON.parse(localStorage.getItem("chateau-cafe-owned-upgrades") || "[]");
       setOwnedUpgrades(Array.isArray(savedUpgrades) ? savedUpgrades : []);
@@ -245,6 +264,16 @@ export default function CafePage() {
     { id: "delicious", promptAr: "شكرًا جزيلًا، كان لذيذًا.", answer: "Merci beaucoup, c'était délicieux.", words: ["délicieux.", "Merci", "c'était", "beaucoup,"] },
   ], []);
   const sentencePuzzle = sentencePuzzles[sentenceIndex % sentencePuzzles.length];
+  const listeningPrompts = useMemo<ListeningPrompt[]>(() => [
+    { id: "welcome", fr: "Bonjour, bienvenue chez Luc.", ar: "مرحبًا، أهلًا بك في مقهى لوك.", hint: "تبدأ بكلمة Bonjour" },
+    { id: "coffee", fr: "Je voudrais un café, s'il vous plaît.", ar: "أريد قهوة من فضلك.", hint: "استخدم Je voudrais" },
+    { id: "croissant", fr: "Un croissant et un jus d'orange.", ar: "كرواسون وعصير برتقال.", hint: "في العبارة عنصران" },
+    { id: "sugar", fr: "Sans sucre, s'il vous plaît.", ar: "من دون سكر، من فضلك.", hint: "تبدأ بكلمة Sans" },
+    { id: "table", fr: "Cette table est-elle libre ?", ar: "هل هذه الطاولة شاغرة؟", hint: "السؤال ينتهي بكلمة libre" },
+    { id: "bill", fr: "L'addition, s'il vous plaît.", ar: "الحساب من فضلك.", hint: "الكلمة الأولى L'addition" },
+  ], []);
+  const listeningPrompt = listeningPrompts[listeningIndex % listeningPrompts.length];
+
 
   const rushPrompts = useMemo<RushPrompt[]>(() => cafeMenu.map((item) => ({
     id: item.id,
@@ -634,6 +663,41 @@ export default function CafePage() {
     setSentenceResult("idle");
   };
 
+  const normalizeListening = (value: string) => value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’]/g, "'")
+    .replace(/[.,!?]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const checkListening = () => {
+    const correct = normalizeListening(listeningAnswer) === normalizeListening(listeningPrompt.fr);
+    setListeningResult(correct ? "correct" : "wrong");
+    playTone(correct);
+    if (!correct) return;
+    const nextSolved = listeningSolved + 1;
+    setListeningSolved(nextSolved);
+    setListeningBest((current) => {
+      const next = Math.max(current, nextSolved);
+      localStorage.setItem("chateau-cafe-listening-best", String(next));
+      return next;
+    });
+    setXp((value) => {
+      const next = value + 10;
+      localStorage.setItem("chateau-cafe-xp", String(next));
+      return next;
+    });
+  };
+
+  const nextListening = () => {
+    setListeningIndex((value) => (value + 1) % listeningPrompts.length);
+    setListeningAnswer("");
+    setListeningResult("idle");
+    setListeningHint(false);
+  };
+
   const restartShift = () => {
     setCustomerIndex(0);
     setServedIds([]);
@@ -759,75 +823,167 @@ export default function CafePage() {
 
       <ReputationBar value={reputation} />
 
-      <CafeProgression
-        level={cafeLevel}
-        served={servedIds.length}
-        totalServed={totalServed}
-        dailyTarget={cafeCustomers.length}
-        achievements={achievements}
-      />
+      <section className="cafe-activity-hub">
+        <div className="activity-hub-heading">
+          <div>
+            <span><LayoutGrid size={18} /> أنشطة المقهى</span>
+            <h2>اختر النشاط الذي تريد دخوله</h2>
+            <p>بدل عرض جميع الأنشطة في صفحة واحدة، افتح كل نشاط داخل خانته الخاصة.</p>
+          </div>
+          {activeActivity && (
+            <button className="activity-close" onClick={() => setActiveActivity(null)}>
+              <X size={18} /> إغلاق النشاط
+            </button>
+          )}
+        </div>
 
-      {dailyCompleted && <div className="daily-complete-banner">🎁 اكتمل التحدي اليومي — حصلت على مكافأة الولاء</div>}
-      <CafeUpgradeShop
-        level={cafeLevel}
-        coins={coins}
-        ownedIds={ownedUpgrades}
-        upgrades={cafeUpgrades}
-        onBuy={buyUpgrade}
-      />
+        {!activeActivity && (
+          <div className="activity-card-grid">
+            <button onClick={() => setActiveActivity("progress")}>
+              <TrendingUp />
+              <strong>تقدم المقهى</strong>
+              <span>المستوى والإنجازات والتحدي اليومي</span>
+            </button>
+            <button onClick={() => setActiveActivity("shop")}>
+              <Store />
+              <strong>متجر التطويرات</strong>
+              <span>اشترِ ترقيات دائمة للمقهى</span>
+            </button>
+            <button onClick={() => setActiveActivity("contracts")}>
+              <ScrollText />
+              <strong>العقود الملكية</strong>
+              <span>مهام ومكافآت إضافية</span>
+            </button>
+            <button onClick={() => setActiveActivity("journal")}>
+              <Brain />
+              <strong>دفتر التعلم</strong>
+              <span>راجع العبارات واختبر حفظك</span>
+            </button>
+            <button onClick={() => setActiveActivity("rush")}>
+              <Timer />
+              <strong>تحدي السرعة</strong>
+              <span>طلبات سريعة خلال 30 ثانية</span>
+            </button>
+            <button onClick={() => setActiveActivity("sentences")}>
+              <Puzzle />
+              <strong>ورشة تركيب الجمل</strong>
+              <span>رتّب الكلمات لتكوين جمل صحيحة</span>
+            </button>
+            <button onClick={() => setActiveActivity("listening")}>
+              <Headphones />
+              <strong>مختبر الاستماع</strong>
+              <span>استمع واكتب العبارة الفرنسية</span>
+            </button>
+          </div>
+        )}
 
-      {shopMessage && <div className="shop-success-banner">✨ {shopMessage}</div>}
+        {activeActivity && (
+          <div className="activity-panel">
+            {activeActivity === "progress" && (
+              <>
+                <CafeProgression
+                  level={cafeLevel}
+                  served={servedIds.length}
+                  totalServed={totalServed}
+                  dailyTarget={cafeCustomers.length}
+                  achievements={achievements}
+                />
+                {dailyCompleted && <div className="daily-complete-banner">🎁 اكتمل التحدي اليومي — حصلت على مكافأة الولاء</div>}
+              </>
+            )}
 
-      <CafeContractBoard
-        contracts={contracts}
-        claimedIds={claimedContracts}
-        onClaim={claimContract}
-      />
-      {contractMessage && <div className="contract-success-banner">🏆 {contractMessage}</div>}
+            {activeActivity === "shop" && (
+              <>
+                <CafeUpgradeShop
+                  level={cafeLevel}
+                  coins={coins}
+                  ownedIds={ownedUpgrades}
+                  upgrades={cafeUpgrades}
+                  onBuy={buyUpgrade}
+                />
+                {shopMessage && <div className="shop-success-banner">✨ {shopMessage}</div>}
+              </>
+            )}
 
-      <CafeLearningJournal
-        phrases={learningPhrases}
-        masteredIds={masteredPhrases}
-        difficultIds={difficultPhrases}
-        reviewIndex={reviewIndex}
-        reviewAnswer={reviewAnswer}
-        reviewResult={reviewResult}
-        onSpeak={speak}
-        onToggleMastery={togglePhraseMastery}
-        onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
-        onCheck={checkReviewAnswer}
-        onNext={nextReviewPhrase}
-      />
+            {activeActivity === "contracts" && (
+              <>
+                <CafeContractBoard
+                  contracts={contracts}
+                  claimedIds={claimedContracts}
+                  onClaim={claimContract}
+                />
+                {contractMessage && <div className="contract-success-banner">🏆 {contractMessage}</div>}
+              </>
+            )}
 
+            {activeActivity === "journal" && (
+              <CafeLearningJournal
+                phrases={learningPhrases}
+                masteredIds={masteredPhrases}
+                difficultIds={difficultPhrases}
+                reviewIndex={reviewIndex}
+                reviewAnswer={reviewAnswer}
+                reviewResult={reviewResult}
+                onSpeak={speak}
+                onToggleMastery={togglePhraseMastery}
+                onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
+                onCheck={checkReviewAnswer}
+                onNext={nextReviewPhrase}
+              />
+            )}
 
-      <CafeRushChallenge
-        active={rushActive}
-        timeLeft={rushTimeLeft}
-        score={rushScore}
-        combo={rushCombo}
-        bestScore={rushBest}
-        prompt={rushPrompt}
-        options={rushOptions}
-        feedback={rushFeedback}
-        onStart={startRush}
-        onPick={pickRushOption}
-        onSpeak={speak}
-      />
+            {activeActivity === "rush" && (
+              <CafeRushChallenge
+                active={rushActive}
+                timeLeft={rushTimeLeft}
+                score={rushScore}
+                combo={rushCombo}
+                bestScore={rushBest}
+                prompt={rushPrompt}
+                options={rushOptions}
+                feedback={rushFeedback}
+                onStart={startRush}
+                onPick={pickRushOption}
+                onSpeak={speak}
+              />
+            )}
 
-      <CafeSentenceBuilder
-        puzzle={sentencePuzzle}
-        selectedWords={sentenceWords}
-        result={sentenceResult}
-        solved={sentenceSolved}
-        total={sentencePuzzles.length}
-        best={sentenceBest}
-        onPick={(word) => pickSentenceWord(word)}
-        onRemove={removeSentenceWord}
-        onCheck={checkSentence}
-        onReset={resetSentence}
-        onNext={nextSentence}
-        onSpeak={speak}
-      />
+            {activeActivity === "sentences" && (
+              <CafeSentenceBuilder
+                puzzle={sentencePuzzle}
+                selectedWords={sentenceWords}
+                result={sentenceResult}
+                solved={sentenceSolved}
+                total={sentencePuzzles.length}
+                best={sentenceBest}
+                onPick={(word) => pickSentenceWord(word)}
+                onRemove={removeSentenceWord}
+                onCheck={checkSentence}
+                onReset={resetSentence}
+                onNext={nextSentence}
+                onSpeak={speak}
+              />
+            )}
+
+            {activeActivity === "listening" && (
+              <CafeListeningLab
+                prompt={listeningPrompt}
+                answer={listeningAnswer}
+                result={listeningResult}
+                solved={listeningSolved}
+                total={listeningPrompts.length}
+                best={listeningBest}
+                showHint={listeningHint}
+                onAnswerChange={(value) => { setListeningAnswer(value); setListeningResult("idle"); }}
+                onListen={() => speak(listeningPrompt.fr)}
+                onCheck={checkListening}
+                onNext={nextListening}
+                onToggleHint={() => setListeningHint((value) => !value)}
+              />
+            )}
+          </div>
+        )}
+      </section>
 
       <CustomerQueue
         customers={[...cafeCustomers]}

@@ -33,6 +33,7 @@ import CustomerQueue from "@/components/game/CustomerQueue";
 import OrderTicket from "@/components/game/OrderTicket";
 import ServiceResults from "@/components/game/ServiceResults";
 import ConversationHistory, { type ConversationEntry } from "@/components/game/ConversationHistory";
+import CafeProgression, { type CafeAchievement } from "@/components/game/CafeProgression";
 import {
   defaultInventory,
   loadInventory,
@@ -67,6 +68,9 @@ export default function CafePage() {
   const [shiftComplete, setShiftComplete] = useState(false);
   const [history, setHistory] = useState<ConversationEntry[]>([]);
   const [customerMood, setCustomerMood] = useState<"waiting" | "happy" | "thinking">("waiting");
+  const [totalServed, setTotalServed] = useState(0);
+  const [perfectOrders, setPerfectOrders] = useState(0);
+  const [dailyCompleted, setDailyCompleted] = useState(false);
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -76,6 +80,9 @@ export default function CafePage() {
     setCoins(Number(localStorage.getItem("chateau-coins") || "30"));
     setCompleted(localStorage.getItem("chateau-cafe-completed") === "true");
     setInventory(loadInventory());
+    setTotalServed(Number(localStorage.getItem("chateau-cafe-total-served") || "0"));
+    setPerfectOrders(Number(localStorage.getItem("chateau-cafe-perfect-orders") || "0"));
+    setDailyCompleted(localStorage.getItem("chateau-cafe-daily-completed") === new Date().toISOString().slice(0, 10));
     setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
     const saved = loadWorldProgress("cafe");
     if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
@@ -149,6 +156,14 @@ export default function CafePage() {
     () => calculateStars(score, cafeScenes.length),
     [score]
   );
+
+  const cafeLevel = useMemo(() => Math.min(4, Math.max(1, 1 + Math.floor(totalServed / 6))), [totalServed]);
+  const achievements = useMemo<CafeAchievement[]>(() => [
+    { id: "first", title: "أول طلب", description: "خدمة أول زبون بنجاح", unlocked: totalServed >= 1 },
+    { id: "perfect3", title: "خدمة مثالية", description: "تنفيذ 3 طلبات صحيحة", unlocked: perfectOrders >= 3 },
+    { id: "shift", title: "وردية مكتملة", description: "خدمة جميع زبائن المقهى", unlocked: totalServed >= cafeCustomers.length },
+    { id: "royal", title: "سمعة ملكية", description: "الوصول إلى سمعة 80%", unlocked: reputation >= 80 },
+  ], [totalServed, perfectOrders, reputation]);
 
   const speak = (text: string) => speakFrench(text, soundOn);
 
@@ -297,6 +312,16 @@ export default function CafePage() {
     const nextServed = Array.from(new Set([...servedIds, id]));
     setServedIds(nextServed);
     setServiceScore((value) => value + 1);
+    setPerfectOrders((value) => {
+      const next = value + 1;
+      localStorage.setItem("chateau-cafe-perfect-orders", String(next));
+      return next;
+    });
+    setTotalServed((value) => {
+      const next = value + 1;
+      localStorage.setItem("chateau-cafe-total-served", String(next));
+      return next;
+    });
     setOrder([]);
     setServiceMessage(`${customer.name}: Merci beaucoup !`);
     setHistory((current) => [...current, { speaker: "Vous", text: `Voici votre commande, ${customer.name}.`, ar: "تفضل طلبك.", correct: true }, { speaker: customer.name, text: "Merci beaucoup !", ar: "شكرًا جزيلًا!", correct: true }]);
@@ -305,6 +330,9 @@ export default function CafePage() {
     playTone(true);
 
     if (nextServed.length >= cafeCustomers.length) {
+      const today = new Date().toISOString().slice(0, 10);
+      localStorage.setItem("chateau-cafe-daily-completed", today);
+      setDailyCompleted(true);
       setShiftComplete(true);
       return;
     }
@@ -438,6 +466,16 @@ export default function CafePage() {
       />
 
       <ReputationBar value={reputation} />
+
+      <CafeProgression
+        level={cafeLevel}
+        served={servedIds.length}
+        totalServed={totalServed}
+        dailyTarget={cafeCustomers.length}
+        achievements={achievements}
+      />
+
+      {dailyCompleted && <div className="daily-complete-banner">🎁 اكتمل التحدي اليومي — حصلت على مكافأة الولاء</div>}
 
       <CustomerQueue
         customers={[...cafeCustomers]}

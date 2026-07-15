@@ -38,6 +38,7 @@ import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgrade
 import CafeContractBoard, { type CafeContract } from "@/components/game/CafeContractBoard";
 import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
 import CafeRushChallenge, { type RushPrompt } from "@/components/game/CafeRushChallenge";
+import CafeSentenceBuilder, { type SentencePuzzle } from "@/components/game/CafeSentenceBuilder";
 import {
   defaultInventory,
   loadInventory,
@@ -92,6 +93,11 @@ export default function CafePage() {
   const [rushBest, setRushBest] = useState(0);
   const [rushIndex, setRushIndex] = useState(0);
   const [rushFeedback, setRushFeedback] = useState<"idle" | "correct" | "wrong">("idle");
+  const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [sentenceWords, setSentenceWords] = useState<string[]>([]);
+  const [sentenceResult, setSentenceResult] = useState<"idle" | "correct" | "wrong">("idle");
+  const [sentenceSolved, setSentenceSolved] = useState(0);
+  const [sentenceBest, setSentenceBest] = useState(0);
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -106,6 +112,7 @@ export default function CafePage() {
     setDailyCompleted(localStorage.getItem("chateau-cafe-daily-completed") === new Date().toISOString().slice(0, 10));
     setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
     setRushBest(Number(localStorage.getItem("chateau-cafe-rush-best") || "0"));
+    setSentenceBest(Number(localStorage.getItem("chateau-cafe-sentence-best") || "0"));
     try {
       const savedUpgrades = JSON.parse(localStorage.getItem("chateau-cafe-owned-upgrades") || "[]");
       setOwnedUpgrades(Array.isArray(savedUpgrades) ? savedUpgrades : []);
@@ -228,6 +235,16 @@ export default function CafePage() {
     { id: "thanks", fr: "Merci beaucoup, c'était délicieux.", ar: "شكرًا جزيلًا، كان لذيذًا.", category: "المجاملة" },
   ], []);
 
+
+  const sentencePuzzles = useMemo<SentencePuzzle[]>(() => [
+    { id: "order-coffee", promptAr: "أريد قهوة من فضلك.", answer: "Je voudrais un café, s'il vous plaît.", words: ["un", "s'il", "voudrais", "café,", "Je", "vous", "plaît."] },
+    { id: "ask-price", promptAr: "كم سعر هذا؟", answer: "Combien ça coûte ?", words: ["coûte", "Combien", "?", "ça"] },
+    { id: "no-sugar", promptAr: "من دون سكر، من فضلك.", answer: "Sans sucre, s'il vous plaît.", words: ["vous", "Sans", "plaît.", "sucre,", "s'il"] },
+    { id: "free-table", promptAr: "هل هذه الطاولة شاغرة؟", answer: "Cette table est-elle libre ?", words: ["libre", "table", "?", "Cette", "est-elle"] },
+    { id: "bill", promptAr: "الحساب من فضلك.", answer: "L'addition, s'il vous plaît.", words: ["plaît.", "L'addition,", "vous", "s'il"] },
+    { id: "delicious", promptAr: "شكرًا جزيلًا، كان لذيذًا.", answer: "Merci beaucoup, c'était délicieux.", words: ["délicieux.", "Merci", "c'était", "beaucoup,"] },
+  ], []);
+  const sentencePuzzle = sentencePuzzles[sentenceIndex % sentencePuzzles.length];
 
   const rushPrompts = useMemo<RushPrompt[]>(() => cafeMenu.map((item) => ({
     id: item.id,
@@ -565,6 +582,58 @@ export default function CafePage() {
     setReviewResult("idle");
   };
 
+  const pickSentenceWord = (word: string) => {
+    if (sentenceResult === "correct") return;
+    setSentenceWords((current) => [...current, word]);
+    setSentenceResult("idle");
+  };
+
+  const removeSentenceWord = (index: number) => {
+    if (sentenceResult === "correct") return;
+    setSentenceWords((current) => current.filter((_, itemIndex) => itemIndex !== index));
+    setSentenceResult("idle");
+  };
+
+  const normalizeSentence = (value: string) => value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’]/g, "'")
+    .replace(/\s+([?!.,])/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const checkSentence = () => {
+    const candidate = sentenceWords.join(" ");
+    const correct = normalizeSentence(candidate) === normalizeSentence(sentencePuzzle.answer);
+    setSentenceResult(correct ? "correct" : "wrong");
+    playTone(correct);
+    if (!correct) return;
+    const nextSolved = sentenceSolved + 1;
+    setSentenceSolved(nextSolved);
+    setSentenceBest((current) => {
+      const next = Math.max(current, nextSolved);
+      localStorage.setItem("chateau-cafe-sentence-best", String(next));
+      return next;
+    });
+    setXp((value) => {
+      const next = value + 8;
+      localStorage.setItem("chateau-cafe-xp", String(next));
+      return next;
+    });
+  };
+
+  const resetSentence = () => {
+    setSentenceWords([]);
+    setSentenceResult("idle");
+  };
+
+  const nextSentence = () => {
+    setSentenceIndex((value) => (value + 1) % sentencePuzzles.length);
+    setSentenceWords([]);
+    setSentenceResult("idle");
+  };
+
   const restartShift = () => {
     setCustomerIndex(0);
     setServedIds([]);
@@ -742,6 +811,21 @@ export default function CafePage() {
         feedback={rushFeedback}
         onStart={startRush}
         onPick={pickRushOption}
+        onSpeak={speak}
+      />
+
+      <CafeSentenceBuilder
+        puzzle={sentencePuzzle}
+        selectedWords={sentenceWords}
+        result={sentenceResult}
+        solved={sentenceSolved}
+        total={sentencePuzzles.length}
+        best={sentenceBest}
+        onPick={(word) => pickSentenceWord(word)}
+        onRemove={removeSentenceWord}
+        onCheck={checkSentence}
+        onReset={resetSentence}
+        onNext={nextSentence}
         onSpeak={speak}
       />
 

@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import {Volume2} from "lucide-react";
+import ExtraWorlds from "@/components/ExtraWorlds";
 
 const worlds=[
 ["La Famille","العائلة","Bonjour ! Comment s'appelle ton frère ?","مرحبًا! ما اسم أخيك؟","18% 55%","A1"],
@@ -27,8 +28,9 @@ export default function Home(){
  <button className={mode==="immersion"?"active":""} onClick={()=>setMode("immersion")}>انغماس كامل<small>Français uniquement</small></button>
  </aside></section>
  <section id="kingdom" className="kingdom"><div className="title"><div><span>كل المناطق مفتوحة</span><h2>Choisissez votre monde</h2></div><p>اختر أي منطقة وتعلّم من المواقف الواقعية.</p></div>
- <div className="grid">{worlds.map((w,i)=><article key={w[0]} style={{backgroundPosition:w[4]}}><div className="top"><span>{w[5]}</span><button onClick={()=>speak(w[2])}><Volume2 size={18}/></button></div><div className="content"><h3>{w[0]}</h3><h4>{w[1]}</h4><div className="dialog"><b>{w[2]}</b>{showArabic&&<span>{w[3]}</span>}</div><button onClick={()=>w[0]==="La Famille" ? window.location.href="/family" : setSelected(i)}>Entrer dans ce monde</button></div></article>)}</div></section>
+ <div className="grid">{worlds.map((w,i)=><article key={w[0]} style={{backgroundPosition:w[4]}}><div className="top"><span>{w[5]}</span><button onClick={()=>speak(w[2])}><Volume2 size={18}/></button></div><div className="content"><h3>{w[0]}</h3><h4>{w[1]}</h4><div className="dialog"><b>{w[2]}</b>{showArabic&&<span>{w[3]}</span>}</div><button onClick={()=>w[0]==="La Famille" ? window.location.href="/family" : w[0]==="Le Marché" ? window.location.href="/market" : setSelected(i)}>Entrer dans ce monde</button></div></article>)}</div></section>
+ <ExtraWorlds />
  {selected!==null&&<div className="modal" onClick={()=>setSelected(null)}><div className="box" onClick={e=>e.stopPropagation()}><button className="x" onClick={()=>setSelected(null)}>×</button><span className="level">{worlds[selected][5]}</span><h2>{worlds[selected][0]}</h2><h3>{worlds[selected][1]}</h3><button className="listen" onClick={()=>speak(worlds[selected][2])}><Volume2/> استمع</button><p>{worlds[selected][2]}</p>{showArabic&&<small>{worlds[selected][3]}</small>}<button className="start">Commencer la mission</button></div></div>}
- <footer>Le Château des Langues — v0.3</footer>
+ <footer>Le Château des Langues — v0.7.2</footer>
  </main>
 }

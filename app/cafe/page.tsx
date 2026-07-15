@@ -46,6 +46,9 @@ export default function CafePage() {
   const [typedLength, setTypedLength] = useState(0);
   const [showMissionMap, setShowMissionMap] = useState(true);
   const [streak, setStreak] = useState(0);
+  const [reputation, setReputation] = useState(0);
+  const [entered, setEntered] = useState(false);
+  const [ambientOn, setAmbientOn] = useState(false);
 
   const scene = cafeScenes[sceneIndex];
 
@@ -54,6 +57,7 @@ export default function CafePage() {
     setCoins(Number(localStorage.getItem("chateau-coins") || "30"));
     setCompleted(localStorage.getItem("chateau-cafe-completed") === "true");
     setInventory(loadInventory());
+    setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
     const saved = loadWorldProgress("cafe");
     if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
       setSceneIndex(saved.chapter);
@@ -142,10 +146,12 @@ export default function CafePage() {
       setFeedback("correct");
       setScore((value) => value + 1);
       setStreak((value) => value + 1);
+      setReputation((value) => Math.min(100, value + 8));
       playTone(true);
     } else {
       setFeedback("wrong");
       setStreak(0);
+      setReputation((value) => Math.max(0, value - 3));
       playTone(false);
     }
   };
@@ -205,6 +211,7 @@ export default function CafePage() {
     localStorage.setItem("chateau-coins", String(nextCoins));
     localStorage.setItem("chateau-cafe-completed", "true");
     localStorage.setItem("chateau-court-unlocked", "true");
+    localStorage.setItem("chateau-cafe-reputation", String(Math.min(100, reputation + 15)));
     saveInventory(nextInventory);
     saveWorldProgress({
       worldId: "cafe",
@@ -225,6 +232,8 @@ export default function CafePage() {
     setShowReceipt(false);
     setStreak(0);
     setShowMissionMap(true);
+    setReputation(0);
+    setEntered(false);
     saveWorldProgress({
       worldId: "cafe",
       chapter: 0,
@@ -245,6 +254,29 @@ export default function CafePage() {
 
   return (
     <main className="cafe-pro-world">
+      {!entered && (
+        <section className="cafe-entry-screen">
+          <div className="cafe-entry-lights" />
+          <div className="cafe-door-frame">
+            <div className="cafe-door-sign">Chez Luc</div>
+            <div className="cafe-door-window">☕</div>
+            <button onClick={() => { setEntered(true); setAmbientOn(true); }}>
+              <span>ادخل المقهى</span>
+              <small>Entrer dans le café</small>
+            </button>
+          </div>
+          <div className="cafe-entry-copy">
+            <span>MISSION ROYALE · 01</span>
+            <h1>أول يوم لك في مقهى Luc</h1>
+            <p>ادخل، تحدث بالفرنسية، كوّن طلبك، وارفع سمعتك داخل المملكة.</p>
+            <div>
+              <b>5</b><small>مواقف</small>
+              <b>70</b><small>XP</small>
+              <b>1</b><small>ميدالية</small>
+            </div>
+          </div>
+        </section>
+      )}
       <header className="cafe-pro-header">
         <Link href="/" className="back-link">
           <ArrowRight size={20} />
@@ -265,10 +297,11 @@ export default function CafePage() {
           <span><Star size={17} /> {xp} XP</span>
           <span><Coins size={17} /> {coins}</span>
           <span className="streak-pill">🔥 {streak}</span>
-          <button onClick={() => setSoundOn((value) => !value)}>
+          <span className="reputation-pill">👑 {reputation}%</span>
+          <button title="الصوت" onClick={() => setSoundOn((value) => !value)}>
             {soundOn ? <Volume2 size={19} /> : <VolumeX size={19} />}
           </button>
-          <button onClick={() => setShowInventory(true)}>
+          <button title="الحقيبة" onClick={() => setShowInventory(true)}>
             <PackageOpen size={19} />
           </button>
         </div>
@@ -280,6 +313,9 @@ export default function CafePage() {
 
         <div className="cafe-pro-intro">
           <span><Sparkles size={17} /> A1 · Le Café</span>
+          <div className={`ambient-status ${ambientOn ? "on" : ""}`}>
+            <i /> {ambientOn ? "Ambiance active" : "Ambiance silencieuse"}
+          </div>
           <h1>Chez Luc</h1>
           <p>مقهى فرنسي صغير داخل المملكة، حيث تتعلم الطلب والمجاملة والدفع من خلال الحوار.</p>
           <div className="cafe-pro-actions">
@@ -353,6 +389,12 @@ export default function CafePage() {
             <p>استمع إلى الجملة، اختر الرد الطبيعي، وحافظ على سلسلة إجابات صحيحة لرفع تقييمك.</p>
           </div>
         )}
+      </section>
+
+      <section className="reputation-board">
+        <div><span>سمعة المقهى</span><b>{reputation}/100</b></div>
+        <div className="reputation-track"><span style={{width: `${reputation}%`}} /></div>
+        <small>الإجابات الطبيعية ترفع ثقة Luc بك وتزيد المكافآت.</small>
       </section>
 
       <section className="cafe-pro-game">
@@ -466,10 +508,10 @@ export default function CafePage() {
           <button
             className="cafe-pro-next"
             onClick={next}
-            disabled={selected === null}
+            disabled={selected === null || (sceneIndex === cafeScenes.length - 1 && orderItems.length === 0)}
           >
             {sceneIndex === cafeScenes.length - 1
-              ? "ادفع الحساب وأنهِ العالم"
+              ? (orderItems.length ? "ادفع الحساب وأنهِ العالم" : "اختر طلبًا أولًا")
               : "تابع الحوار"}
           </button>
         </section>

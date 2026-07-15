@@ -19,12 +19,16 @@ import {
   VolumeX,
   X,
   XCircle,
-  UserRound,
-  Crown,
-  Target
 } from "lucide-react";
 import { cafeCustomers, cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
 import { loadWorldProgress, saveWorldProgress } from "@/data/game-engine";
+import { speakFrench, playFeedbackTone } from "@/engine/audioEngine";
+import { isOrderMatch } from "@/engine/npcEngine";
+import { cafeMissionSteps } from "@/engine/missionEngine";
+import { calculateCafeRewards, calculateStars } from "@/engine/rewardEngine";
+import MissionTracker from "@/components/game/MissionTracker";
+import ReputationBar from "@/components/game/ReputationBar";
+import CustomerMissionCard from "@/components/game/CustomerMissionCard";
 import {
   defaultInventory,
   loadInventory,
@@ -100,55 +104,19 @@ export default function CafePage() {
     [orderItems]
   );
 
-  const orderIsCorrect = useMemo(() => {
-    const chosen = [...order].sort().join("|");
-    const expected = [...customer.order].sort().join("|");
-    return chosen === expected;
-  }, [order, customer.order]);
+  const orderIsCorrect = useMemo(
+    () => isOrderMatch(order, customer.order),
+    [order, customer.order]
+  );
 
-  const stars = useMemo(() => {
-    const percentage = score / cafeScenes.length;
-    if (percentage >= 0.9) return 3;
-    if (percentage >= 0.6) return 2;
-    return 1;
-  }, [score]);
+  const stars = useMemo(
+    () => calculateStars(score, cafeScenes.length),
+    [score]
+  );
 
-  const speak = (text: string) => {
-    if (!soundOn) return;
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.82;
-    speechSynthesis.speak(utterance);
-  };
+  const speak = (text: string) => speakFrench(text, soundOn);
 
-  const playTone = (success: boolean) => {
-    if (!soundOn) return;
-    const context = new AudioContext();
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    oscillator.connect(gain);
-    gain.connect(context.destination);
-
-    oscillator.type = success ? "sine" : "square";
-    oscillator.frequency.setValueAtTime(
-      success ? 620 : 210,
-      context.currentTime
-    );
-    oscillator.frequency.exponentialRampToValueAtTime(
-      success ? 930 : 145,
-      context.currentTime + 0.22
-    );
-
-    gain.gain.setValueAtTime(0.1, context.currentTime);
-    gain.gain.exponentialRampToValueAtTime(
-      0.001,
-      context.currentTime + 0.38
-    );
-
-    oscillator.start();
-    oscillator.stop(context.currentTime + 0.38);
-  };
+  const playTone = (success: boolean) => playFeedbackTone(success, soundOn);
 
   const choose = (index: number) => {
     if (selected !== null) return;
@@ -186,8 +154,9 @@ export default function CafePage() {
       return;
     }
 
-    const nextXp = xp + cafeReward.xp;
-    const nextCoins = coins + cafeReward.coins;
+    const earned = calculateCafeRewards(score, cafeScenes.length, reputation);
+    const nextXp = xp + earned.xp;
+    const nextCoins = coins + earned.coins;
     const vocabulary = Array.from(
       new Set([
         ...inventory.vocabulary,
@@ -223,7 +192,7 @@ export default function CafePage() {
     localStorage.setItem("chateau-coins", String(nextCoins));
     localStorage.setItem("chateau-cafe-completed", "true");
     localStorage.setItem("chateau-court-unlocked", "true");
-    localStorage.setItem("chateau-cafe-reputation", String(Math.min(100, reputation + 15)));
+    localStorage.setItem("chateau-cafe-reputation", String(Math.min(100, reputation + earned.reputation)));
     saveInventory(nextInventory);
     saveWorldProgress({
       worldId: "cafe",
@@ -375,68 +344,26 @@ export default function CafePage() {
         </div>
       </section>
 
-      <section className="royal-mission-strip" aria-label="خريطة مهام المقهى">
-        <div>
-          <span>Royal Game Engine · v2.0</span>
-          <h2>رحلة المقهى</h2>
-        </div>
-        <div className="mission-nodes">
-          {[
-            ["الدخول", "Saluer"],
-            ["الطلب", "Commander"],
-            ["الجلوس", "S'asseoir"],
-            ["الحديث", "Discuter"],
-            ["الدفع", "Payer"]
-          ].map(([ar, fr], index) => (
-            <button
-              key={fr}
-              className={index < sceneIndex ? "done" : index === sceneIndex ? "active" : ""}
-              onClick={() => {
-                if (index <= sceneIndex) {
-                  setSceneIndex(index);
-                  setSelected(null);
-                  setFeedback(null);
-                  setShowMissionMap(false);
-                }
-              }}
-            >
-              <b>{index < sceneIndex ? "✓" : index + 1}</b>
-              <span>{ar}<small>{fr}</small></span>
-            </button>
-          ))}
-        </div>
-        <button className="mission-toggle" onClick={() => setShowMissionMap((value) => !value)}>
-          {showMissionMap ? "إخفاء تفاصيل المهمة" : "عرض تفاصيل المهمة"}
-        </button>
-        {showMissionMap && (
-          <div className="mission-brief">
-            <strong>المهمة الحالية: {scene.speaker === "Luc" ? "التحدث مع Luc" : `التفاعل مع ${scene.speaker}`}</strong>
-            <p>استمع إلى الجملة، اختر الرد الطبيعي، وحافظ على سلسلة إجابات صحيحة لرفع تقييمك.</p>
-          </div>
-        )}
-      </section>
+      <MissionTracker
+        steps={cafeMissionSteps}
+        activeIndex={sceneIndex}
+        expanded={showMissionMap}
+        onToggle={() => setShowMissionMap((value) => !value)}
+        onSelect={(index) => {
+          setSceneIndex(index);
+          setSelected(null);
+          setFeedback(null);
+          setShowMissionMap(false);
+        }}
+      />
 
-      <section className="reputation-board">
-        <div><span>سمعة المقهى</span><b>{reputation}/100</b></div>
-        <div className="reputation-track"><span style={{width: `${reputation}%`}} /></div>
-        <small>الإجابات الطبيعية ترفع ثقة Luc بك وتزيد المكافآت.</small>
-      </section>
+      <ReputationBar value={reputation} />
 
-      <section className="customer-mission-card">
-        <div className="customer-avatar" aria-hidden="true">{customer.avatar}</div>
-        <div className="customer-copy">
-          <span><UserRound size={16}/> زبون اليوم</span>
-          <h2>{customer.name} <small>{customer.personality}</small></h2>
-          <blockquote>“{customer.requestFr}”</blockquote>
-          {showArabic && <p>{customer.requestAr}</p>}
-        </div>
-        <div className="customer-objective">
-          <Target size={22}/>
-          <strong>جهّز الطلب الصحيح</strong>
-          <span>{customer.orderLabelAr}</span>
-          <button onClick={() => speak(customer.requestFr)}><Volume2 size={17}/> استمع للزبون</button>
-        </div>
-      </section>
+      <CustomerMissionCard
+        customer={customer}
+        showArabic={showArabic}
+        onSpeak={speak}
+      />
 
       <section className="cafe-pro-game">
         <aside className="cafe-pro-menu">

@@ -37,6 +37,7 @@ import CafeProgression, { type CafeAchievement } from "@/components/game/CafePro
 import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgradeShop";
 import CafeContractBoard, { type CafeContract } from "@/components/game/CafeContractBoard";
 import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
+import CafeRushChallenge, { type RushPrompt } from "@/components/game/CafeRushChallenge";
 import {
   defaultInventory,
   loadInventory,
@@ -84,6 +85,13 @@ export default function CafePage() {
   const [reviewIndex, setReviewIndex] = useState(0);
   const [reviewAnswer, setReviewAnswer] = useState("");
   const [reviewResult, setReviewResult] = useState<"idle" | "correct" | "wrong">("idle");
+  const [rushActive, setRushActive] = useState(false);
+  const [rushTimeLeft, setRushTimeLeft] = useState(30);
+  const [rushScore, setRushScore] = useState(0);
+  const [rushCombo, setRushCombo] = useState(0);
+  const [rushBest, setRushBest] = useState(0);
+  const [rushIndex, setRushIndex] = useState(0);
+  const [rushFeedback, setRushFeedback] = useState<"idle" | "correct" | "wrong">("idle");
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -97,6 +105,7 @@ export default function CafePage() {
     setPerfectOrders(Number(localStorage.getItem("chateau-cafe-perfect-orders") || "0"));
     setDailyCompleted(localStorage.getItem("chateau-cafe-daily-completed") === new Date().toISOString().slice(0, 10));
     setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
+    setRushBest(Number(localStorage.getItem("chateau-cafe-rush-best") || "0"));
     try {
       const savedUpgrades = JSON.parse(localStorage.getItem("chateau-cafe-owned-upgrades") || "[]");
       setOwnedUpgrades(Array.isArray(savedUpgrades) ? savedUpgrades : []);
@@ -218,6 +227,72 @@ export default function CafePage() {
     { id: "table", fr: "Cette table est-elle libre ?", ar: "هل هذه الطاولة شاغرة؟", category: "الجلوس" },
     { id: "thanks", fr: "Merci beaucoup, c'était délicieux.", ar: "شكرًا جزيلًا، كان لذيذًا.", category: "المجاملة" },
   ], []);
+
+
+  const rushPrompts = useMemo<RushPrompt[]>(() => cafeMenu.map((item) => ({
+    id: item.id,
+    fr: `Je voudrais ${item.fr.toLowerCase()}, s\'il vous plaît.`,
+    ar: `أريد ${item.ar} من فضلك.`,
+    emoji: item.emoji,
+  })), []);
+
+  const rushPrompt = rushPrompts[rushIndex % rushPrompts.length];
+  const rushOptions = useMemo(() => {
+    const others = rushPrompts.filter((item) => item.id !== rushPrompt.id);
+    const rotated = [...others.slice(rushIndex % Math.max(1, others.length)), ...others.slice(0, rushIndex % Math.max(1, others.length))];
+    return [rushPrompt, ...rotated.slice(0, 3)].sort((a, b) => (a.id + rushIndex).localeCompare(b.id));
+  }, [rushIndex, rushPrompt, rushPrompts]);
+
+  useEffect(() => {
+    if (!rushActive) return;
+    if (rushTimeLeft <= 0) {
+      setRushActive(false);
+      setRushBest((current) => {
+        const next = Math.max(current, rushScore);
+        localStorage.setItem("chateau-cafe-rush-best", String(next));
+        return next;
+      });
+      setXp((value) => {
+        const next = value + Math.floor(rushScore / 2);
+        localStorage.setItem("chateau-cafe-xp", String(next));
+        return next;
+      });
+      return;
+    }
+    const timer = window.setTimeout(() => setRushTimeLeft((value) => value - 1), 1000);
+    return () => window.clearTimeout(timer);
+  }, [rushActive, rushTimeLeft, rushScore]);
+
+  const startRush = () => {
+    setRushActive(true);
+    setRushTimeLeft(30);
+    setRushScore(0);
+    setRushCombo(0);
+    setRushIndex((value) => (value + 1) % rushPrompts.length);
+    setRushFeedback("idle");
+  };
+
+  const pickRushOption = (id: string) => {
+    if (!rushActive) return;
+    const correct = id === rushPrompt.id;
+    if (correct) {
+      const nextCombo = rushCombo + 1;
+      setRushCombo(nextCombo);
+      setRushScore((value) => value + 10 + Math.min(15, nextCombo * 2));
+      setRushTimeLeft((value) => Math.min(35, value + 2));
+      setRushFeedback("correct");
+      playTone(true);
+    } else {
+      setRushCombo(0);
+      setRushTimeLeft((value) => Math.max(0, value - 3));
+      setRushFeedback("wrong");
+      playTone(false);
+    }
+    window.setTimeout(() => {
+      setRushIndex((value) => (value + 1) % rushPrompts.length);
+      setRushFeedback("idle");
+    }, 280);
+  };
 
   const serviceCoinBonus = ownedUpgrades.includes("tip-jar") ? 2 : 0;
   const serviceXpBonus = ownedUpgrades.includes("royal-machine") ? 5 : 0;
@@ -653,6 +728,21 @@ export default function CafePage() {
         onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
         onCheck={checkReviewAnswer}
         onNext={nextReviewPhrase}
+      />
+
+
+      <CafeRushChallenge
+        active={rushActive}
+        timeLeft={rushTimeLeft}
+        score={rushScore}
+        combo={rushCombo}
+        bestScore={rushBest}
+        prompt={rushPrompt}
+        options={rushOptions}
+        feedback={rushFeedback}
+        onStart={startRush}
+        onPick={pickRushOption}
+        onSpeak={speak}
       />
 
       <CustomerQueue

@@ -34,6 +34,7 @@ import OrderTicket from "@/components/game/OrderTicket";
 import ServiceResults from "@/components/game/ServiceResults";
 import ConversationHistory, { type ConversationEntry } from "@/components/game/ConversationHistory";
 import CafeProgression, { type CafeAchievement } from "@/components/game/CafeProgression";
+import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgradeShop";
 import {
   defaultInventory,
   loadInventory,
@@ -71,6 +72,8 @@ export default function CafePage() {
   const [totalServed, setTotalServed] = useState(0);
   const [perfectOrders, setPerfectOrders] = useState(0);
   const [dailyCompleted, setDailyCompleted] = useState(false);
+  const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>([]);
+  const [shopMessage, setShopMessage] = useState("");
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -84,6 +87,10 @@ export default function CafePage() {
     setPerfectOrders(Number(localStorage.getItem("chateau-cafe-perfect-orders") || "0"));
     setDailyCompleted(localStorage.getItem("chateau-cafe-daily-completed") === new Date().toISOString().slice(0, 10));
     setReputation(Number(localStorage.getItem("chateau-cafe-reputation") || "0"));
+    try {
+      const savedUpgrades = JSON.parse(localStorage.getItem("chateau-cafe-owned-upgrades") || "[]");
+      setOwnedUpgrades(Array.isArray(savedUpgrades) ? savedUpgrades : []);
+    } catch {}
     const saved = loadWorldProgress("cafe");
     if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
       setSceneIndex(saved.chapter);
@@ -158,6 +165,17 @@ export default function CafePage() {
   );
 
   const cafeLevel = useMemo(() => Math.min(4, Math.max(1, 1 + Math.floor(totalServed / 6))), [totalServed]);
+  const cafeUpgrades = useMemo<CafeUpgrade[]>(() => [
+    { id: "tip-jar", title: "صندوق الإكراميات", description: "يزيد العملات التي تحصل عليها من كل طلب.", icon: "🪙", price: 35, requiredLevel: 1, effect: "+2 Coins لكل زبون" },
+    { id: "grammar-board", title: "لوحة العبارات", description: "تساعدك على الحفاظ على السمعة عند الخطأ.", icon: "📝", price: 55, requiredLevel: 2, effect: "تقليل خسارة السمعة" },
+    { id: "royal-machine", title: "آلة القهوة الملكية", description: "تسرّع التعلم وتزيد نقاط الخبرة.", icon: "☕", price: 85, requiredLevel: 3, effect: "+5 XP لكل طلب" },
+    { id: "vip-service", title: "خدمة كبار الزوار", description: "مكافأة إضافية عند إنهاء الوردية كاملة.", icon: "👑", price: 130, requiredLevel: 4, effect: "+20 Coins عند نهاية الوردية" },
+  ], []);
+
+  const serviceCoinBonus = ownedUpgrades.includes("tip-jar") ? 2 : 0;
+  const serviceXpBonus = ownedUpgrades.includes("royal-machine") ? 5 : 0;
+  const mistakePenalty = ownedUpgrades.includes("grammar-board") ? 1 : 3;
+
   const achievements = useMemo<CafeAchievement[]>(() => [
     { id: "first", title: "أول طلب", description: "خدمة أول زبون بنجاح", unlocked: totalServed >= 1 },
     { id: "perfect3", title: "خدمة مثالية", description: "تنفيذ 3 طلبات صحيحة", unlocked: perfectOrders >= 3 },
@@ -184,7 +202,7 @@ export default function CafePage() {
     } else {
       setFeedback("wrong");
       setStreak(0);
-      setReputation((value) => Math.max(0, value - 3));
+      setReputation((value) => Math.max(0, value - mistakePenalty));
       setCustomerMood("thinking");
       setHistory((current) => [...current, { speaker: "Vous", text: scene.answers[index].text, ar: scene.answers[index].ar, correct: false }]);
       playTone(false);
@@ -325,14 +343,31 @@ export default function CafePage() {
     setOrder([]);
     setServiceMessage(`${customer.name}: Merci beaucoup !`);
     setHistory((current) => [...current, { speaker: "Vous", text: `Voici votre commande, ${customer.name}.`, ar: "تفضل طلبك.", correct: true }, { speaker: customer.name, text: "Merci beaucoup !", ar: "شكرًا جزيلًا!", correct: true }]);
-    setCoins((value) => value + 4);
-    setXp((value) => value + 10);
+    const earnedCoins = 4 + serviceCoinBonus;
+    const earnedXp = 10 + serviceXpBonus;
+    setCoins((value) => {
+      const next = value + earnedCoins;
+      localStorage.setItem("chateau-coins", String(next));
+      return next;
+    });
+    setXp((value) => {
+      const next = value + earnedXp;
+      localStorage.setItem("chateau-cafe-xp", String(next));
+      return next;
+    });
     playTone(true);
 
     if (nextServed.length >= cafeCustomers.length) {
       const today = new Date().toISOString().slice(0, 10);
       localStorage.setItem("chateau-cafe-daily-completed", today);
       setDailyCompleted(true);
+      if (ownedUpgrades.includes("vip-service")) {
+        setCoins((value) => {
+          const next = value + 20;
+          localStorage.setItem("chateau-coins", String(next));
+          return next;
+        });
+      }
       setShiftComplete(true);
       return;
     }
@@ -341,6 +376,19 @@ export default function CafePage() {
       setCustomerIndex((value) => Math.min(value + 1, cafeCustomers.length - 1));
       setServiceMessage("");
     }, 650);
+  };
+
+  const buyUpgrade = (upgrade: CafeUpgrade) => {
+    if (ownedUpgrades.includes(upgrade.id) || cafeLevel < upgrade.requiredLevel || coins < upgrade.price) return;
+    const nextCoins = coins - upgrade.price;
+    const nextOwned = [...ownedUpgrades, upgrade.id];
+    setCoins(nextCoins);
+    setOwnedUpgrades(nextOwned);
+    setShopMessage(`تم شراء ${upgrade.title} بنجاح.`);
+    localStorage.setItem("chateau-coins", String(nextCoins));
+    localStorage.setItem("chateau-cafe-owned-upgrades", JSON.stringify(nextOwned));
+    playTone(true);
+    window.setTimeout(() => setShopMessage(""), 2600);
   };
 
   const restartShift = () => {
@@ -476,6 +524,16 @@ export default function CafePage() {
       />
 
       {dailyCompleted && <div className="daily-complete-banner">🎁 اكتمل التحدي اليومي — حصلت على مكافأة الولاء</div>}
+      <CafeUpgradeShop
+        level={cafeLevel}
+        coins={coins}
+        ownedIds={ownedUpgrades}
+        upgrades={cafeUpgrades}
+        onBuy={buyUpgrade}
+      />
+
+      {shopMessage && <div className="shop-success-banner">✨ {shopMessage}</div>}
+
 
       <CustomerQueue
         customers={[...cafeCustomers]}

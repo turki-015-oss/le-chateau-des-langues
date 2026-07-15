@@ -3468,3 +3468,7 @@
   .activity-card-grid button strong{font-size:16px}
   .activity-card-grid button span{font-size:12px}
 }
+
+
+/* v2.1-dev12 curriculum path */
+.curriculum-stage-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 12px}.curriculum-stage-tabs button{display:flex;align-items:center;gap:9px;padding:12px;border:1px solid #725333;border-radius:13px;background:#1b110b;color:#d9c29d;text-align:right}.curriculum-stage-tabs button b{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:#362115;color:#f0ca74}.curriculum-stage-tabs button.active{border-color:#e0b85f;background:#5a321a;color:#fff;box-shadow:0 0 18px #d6a64d28}.curriculum-stage-tabs button.active b{background:#e0b85f;color:#3a210e}.curriculum-stage-note{padding:13px 15px;margin-bottom:16px;border-right:4px solid #d6a74d;border-radius:10px;background:#21140d;color:#d9c19b;line-height:1.7}.phrase-list{max-height:640px;overflow:auto;padding-left:4px}@media(max-width:850px){.curriculum-stage-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.curriculum-stage-tabs{grid-template-columns:1fr}.curriculum-stage-tabs button{min-height:54px}}

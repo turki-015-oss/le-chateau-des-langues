@@ -47,7 +47,8 @@ import CafeContractBoard, { type CafeContract } from "@/components/game/CafeCont
 import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
 import CafeRushChallenge, { type RushPrompt } from "@/components/game/CafeRushChallenge";
 import CafeSentenceBuilder, { type SentencePuzzle } from "@/components/game/CafeSentenceBuilder";
-import CafeListeningLab, { type ListeningPrompt } from "@/components/game/CafeListeningLab";
+import CafeListeningLab from "@/components/game/CafeListeningLab";
+import { cafeLearningPhrases, cafeSentencePuzzles, cafeListeningPrompts } from "@/data/cafeCurriculum";
 import {
   defaultInventory,
   loadInventory,
@@ -245,33 +246,10 @@ export default function CafePage() {
     { id: "royal-reputation", title: "سمعة المملكة", description: "ارفع سمعة المقهى إلى 80%.", progress: reputation, target: 80, rewardCoins: 40, rewardXp: 55 },
   ], [totalServed, perfectOrders, reputation]);
 
-  const learningPhrases = useMemo<LearningPhrase[]>(() => [
-    { id: "bonjour", fr: "Bonjour, je voudrais un café, s'il vous plaît.", ar: "مرحبًا، أريد قهوة من فضلك.", category: "الطلب" },
-    { id: "price", fr: "Combien ça coûte ?", ar: "كم سعر هذا؟", category: "السعر" },
-    { id: "addition", fr: "L'addition, s'il vous plaît.", ar: "الحساب من فضلك.", category: "الدفع" },
-    { id: "modify", fr: "Sans sucre, s'il vous plaît.", ar: "من دون سكر، من فضلك.", category: "تعديل الطلب" },
-    { id: "table", fr: "Cette table est-elle libre ?", ar: "هل هذه الطاولة شاغرة؟", category: "الجلوس" },
-    { id: "thanks", fr: "Merci beaucoup, c'était délicieux.", ar: "شكرًا جزيلًا، كان لذيذًا.", category: "المجاملة" },
-  ], []);
-
-
-  const sentencePuzzles = useMemo<SentencePuzzle[]>(() => [
-    { id: "order-coffee", promptAr: "أريد قهوة من فضلك.", answer: "Je voudrais un café, s'il vous plaît.", words: ["un", "s'il", "voudrais", "café,", "Je", "vous", "plaît."] },
-    { id: "ask-price", promptAr: "كم سعر هذا؟", answer: "Combien ça coûte ?", words: ["coûte", "Combien", "?", "ça"] },
-    { id: "no-sugar", promptAr: "من دون سكر، من فضلك.", answer: "Sans sucre, s'il vous plaît.", words: ["vous", "Sans", "plaît.", "sucre,", "s'il"] },
-    { id: "free-table", promptAr: "هل هذه الطاولة شاغرة؟", answer: "Cette table est-elle libre ?", words: ["libre", "table", "?", "Cette", "est-elle"] },
-    { id: "bill", promptAr: "الحساب من فضلك.", answer: "L'addition, s'il vous plaît.", words: ["plaît.", "L'addition,", "vous", "s'il"] },
-    { id: "delicious", promptAr: "شكرًا جزيلًا، كان لذيذًا.", answer: "Merci beaucoup, c'était délicieux.", words: ["délicieux.", "Merci", "c'était", "beaucoup,"] },
-  ], []);
+  const learningPhrases = cafeLearningPhrases;
+  const sentencePuzzles = cafeSentencePuzzles;
   const sentencePuzzle = sentencePuzzles[sentenceIndex % sentencePuzzles.length];
-  const listeningPrompts = useMemo<ListeningPrompt[]>(() => [
-    { id: "welcome", fr: "Bonjour, bienvenue chez Luc.", ar: "مرحبًا، أهلًا بك في مقهى لوك.", hint: "تبدأ بكلمة Bonjour" },
-    { id: "coffee", fr: "Je voudrais un café, s'il vous plaît.", ar: "أريد قهوة من فضلك.", hint: "استخدم Je voudrais" },
-    { id: "croissant", fr: "Un croissant et un jus d'orange.", ar: "كرواسون وعصير برتقال.", hint: "في العبارة عنصران" },
-    { id: "sugar", fr: "Sans sucre, s'il vous plaît.", ar: "من دون سكر، من فضلك.", hint: "تبدأ بكلمة Sans" },
-    { id: "table", fr: "Cette table est-elle libre ?", ar: "هل هذه الطاولة شاغرة؟", hint: "السؤال ينتهي بكلمة libre" },
-    { id: "bill", fr: "L'addition, s'il vous plaît.", ar: "الحساب من فضلك.", hint: "الكلمة الأولى L'addition" },
-  ], []);
+  const listeningPrompts = cafeListeningPrompts;
   const listeningPrompt = listeningPrompts[listeningIndex % listeningPrompts.length];
 
 
@@ -857,7 +835,7 @@ export default function CafePage() {
             <button onClick={() => setActiveActivity("journal")}>
               <Brain />
               <strong>دفتر التعلم</strong>
-              <span>راجع العبارات واختبر حفظك</span>
+              <span>120 عبارة مرتبة من التحية حتى الوداع</span>
             </button>
             <button onClick={() => setActiveActivity("rush")}>
               <Timer />
@@ -867,12 +845,12 @@ export default function CafePage() {
             <button onClick={() => setActiveActivity("sentences")}>
               <Puzzle />
               <strong>ورشة تركيب الجمل</strong>
-              <span>رتّب الكلمات لتكوين جمل صحيحة</span>
+              <span>64 جملة مرتبة حسب رحلة الزبون</span>
             </button>
             <button onClick={() => setActiveActivity("listening")}>
               <Headphones />
               <strong>مختبر الاستماع</strong>
-              <span>استمع واكتب العبارة الفرنسية</span>
+              <span>64 عبارة استماع وإملاء متدرجة</span>
             </button>
           </div>
         )}

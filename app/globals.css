@@ -2910,3 +2910,30 @@
     width:100%;
   }
 }
+
+/* ===== v2.0 Royal Engine checkpoint ===== */
+.royal-mission-strip{
+  max-width:1550px;
+  margin:28px auto 0;
+  padding:22px 4%;
+  border-top:1px solid #8d6538;
+  border-bottom:1px solid #8d6538;
+  background:linear-gradient(90deg,#140d08,#2b1a10,#140d08);
+}
+.royal-mission-strip>div:first-child span{color:#d9aa5c;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.royal-mission-strip h2{margin:4px 0 16px;color:#f2d795;font:32px Georgia,serif}
+.mission-nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
+.mission-nodes::before{content:"";position:absolute;left:8%;right:8%;top:23px;height:2px;background:#644522;z-index:0}
+.mission-nodes button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:10px;border:1px solid #62462d;border-radius:14px;background:#17100b;color:#b9a587}
+.mission-nodes button b{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:#2b1a10;border:2px solid #74512e;color:#ddb766}
+.mission-nodes button span{display:flex;flex-direction:column;text-align:right;font-weight:800}
+.mission-nodes button small{font-weight:400;color:#907e66}
+.mission-nodes button.active{border-color:#e2b65d;background:#4b2b16;box-shadow:0 0 24px #d79e3e26;color:#fff}
+.mission-nodes button.active b{background:#d5a84c;color:#39220f;border-color:#ffe49c;box-shadow:0 0 18px #efc96f66}
+.mission-nodes button.done{border-color:#5d8f64;background:#17301d;color:#d9f0dc}
+.mission-nodes button.done b{background:#4d8756;color:#fff;border-color:#8dc195}
+.mission-toggle{margin-top:14px;padding:9px 13px;border:1px solid #7d5b36;border-radius:10px;background:#28180f;color:#e8c77f}
+.mission-brief{margin-top:12px;padding:14px 16px;border-right:4px solid #d9a74d;border-radius:12px;background:#1a110b}
+.mission-brief strong{color:#f2d28a}.mission-brief p{margin:5px 0 0;color:#bba78a}
+.streak-pill{border-color:#a95b28!important;color:#ffbd74!important;background:#3b1c0d!important}
+@media(max-width:760px){.mission-nodes{grid-template-columns:1fr}.mission-nodes::before{display:none}.mission-nodes button{justify-content:flex-start}.royal-mission-strip{padding:18px 15px}}

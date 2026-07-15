@@ -21,6 +21,7 @@ import {
   XCircle
 } from "lucide-react";
 import { cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
+import { loadWorldProgress, saveWorldProgress } from "@/data/game-engine";
 import {
   defaultInventory,
   loadInventory,
@@ -43,6 +44,8 @@ export default function CafePage() {
   const [showReceipt, setShowReceipt] = useState(false);
   const [inventory, setInventory] = useState<InventoryState>(defaultInventory);
   const [typedLength, setTypedLength] = useState(0);
+  const [showMissionMap, setShowMissionMap] = useState(true);
+  const [streak, setStreak] = useState(0);
 
   const scene = cafeScenes[sceneIndex];
 
@@ -51,6 +54,10 @@ export default function CafePage() {
     setCoins(Number(localStorage.getItem("chateau-coins") || "30"));
     setCompleted(localStorage.getItem("chateau-cafe-completed") === "true");
     setInventory(loadInventory());
+    const saved = loadWorldProgress("cafe");
+    if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
+      setSceneIndex(saved.chapter);
+    }
   }, []);
 
   useEffect(() => {
@@ -134,9 +141,11 @@ export default function CafePage() {
     if (scene.answers[index].correct) {
       setFeedback("correct");
       setScore((value) => value + 1);
+      setStreak((value) => value + 1);
       playTone(true);
     } else {
       setFeedback("wrong");
+      setStreak(0);
       playTone(false);
     }
   };
@@ -148,6 +157,14 @@ export default function CafePage() {
       setSceneIndex((value) => value + 1);
       setSelected(null);
       setFeedback(null);
+      saveWorldProgress({
+        worldId: "cafe",
+        chapter: sceneIndex + 1,
+        score,
+        attempts: sceneIndex + 1,
+        completed: false,
+        lastPlayedAt: new Date().toISOString()
+      });
       return;
     }
 
@@ -189,6 +206,14 @@ export default function CafePage() {
     localStorage.setItem("chateau-cafe-completed", "true");
     localStorage.setItem("chateau-court-unlocked", "true");
     saveInventory(nextInventory);
+    saveWorldProgress({
+      worldId: "cafe",
+      chapter: cafeScenes.length - 1,
+      score,
+      attempts: cafeScenes.length,
+      completed: true,
+      lastPlayedAt: new Date().toISOString()
+    });
   };
 
   const restart = () => {
@@ -198,6 +223,16 @@ export default function CafePage() {
     setScore(0);
     setCompleted(false);
     setShowReceipt(false);
+    setStreak(0);
+    setShowMissionMap(true);
+    saveWorldProgress({
+      worldId: "cafe",
+      chapter: 0,
+      score: 0,
+      attempts: 0,
+      completed: false,
+      lastPlayedAt: new Date().toISOString()
+    });
   };
 
   const toggleOrder = (id: string) => {
@@ -229,6 +264,7 @@ export default function CafePage() {
         <div className="cafe-pro-hud">
           <span><Star size={17} /> {xp} XP</span>
           <span><Coins size={17} /> {coins}</span>
+          <span className="streak-pill">🔥 {streak}</span>
           <button onClick={() => setSoundOn((value) => !value)}>
             {soundOn ? <Volume2 size={19} /> : <VolumeX size={19} />}
           </button>
@@ -276,6 +312,47 @@ export default function CafePage() {
         <div className="cafe-counter">
           <span>☕</span><span>🥐</span><span>🫖</span><span>🍊</span>
         </div>
+      </section>
+
+      <section className="royal-mission-strip" aria-label="خريطة مهام المقهى">
+        <div>
+          <span>Royal Game Engine · v2.0</span>
+          <h2>رحلة المقهى</h2>
+        </div>
+        <div className="mission-nodes">
+          {[
+            ["الدخول", "Saluer"],
+            ["الطلب", "Commander"],
+            ["الجلوس", "S'asseoir"],
+            ["الحديث", "Discuter"],
+            ["الدفع", "Payer"]
+          ].map(([ar, fr], index) => (
+            <button
+              key={fr}
+              className={index < sceneIndex ? "done" : index === sceneIndex ? "active" : ""}
+              onClick={() => {
+                if (index <= sceneIndex) {
+                  setSceneIndex(index);
+                  setSelected(null);
+                  setFeedback(null);
+                  setShowMissionMap(false);
+                }
+              }}
+            >
+              <b>{index < sceneIndex ? "✓" : index + 1}</b>
+              <span>{ar}<small>{fr}</small></span>
+            </button>
+          ))}
+        </div>
+        <button className="mission-toggle" onClick={() => setShowMissionMap((value) => !value)}>
+          {showMissionMap ? "إخفاء تفاصيل المهمة" : "عرض تفاصيل المهمة"}
+        </button>
+        {showMissionMap && (
+          <div className="mission-brief">
+            <strong>المهمة الحالية: {scene.speaker === "Luc" ? "التحدث مع Luc" : `التفاعل مع ${scene.speaker}`}</strong>
+            <p>استمع إلى الجملة، اختر الرد الطبيعي، وحافظ على سلسلة إجابات صحيحة لرفع تقييمك.</p>
+          </div>
+        )}
       </section>
 
       <section className="cafe-pro-game">

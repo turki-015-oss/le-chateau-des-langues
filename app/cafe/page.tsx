@@ -32,6 +32,7 @@ import CustomerMissionCard from "@/components/game/CustomerMissionCard";
 import CustomerQueue from "@/components/game/CustomerQueue";
 import OrderTicket from "@/components/game/OrderTicket";
 import ServiceResults from "@/components/game/ServiceResults";
+import ConversationHistory, { type ConversationEntry } from "@/components/game/ConversationHistory";
 import {
   defaultInventory,
   loadInventory,
@@ -64,6 +65,8 @@ export default function CafePage() {
   const [servedIds, setServedIds] = useState<string[]>([]);
   const [serviceScore, setServiceScore] = useState(0);
   const [shiftComplete, setShiftComplete] = useState(false);
+  const [history, setHistory] = useState<ConversationEntry[]>([]);
+  const [customerMood, setCustomerMood] = useState<"waiting" | "happy" | "thinking">("waiting");
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -78,6 +81,15 @@ export default function CafePage() {
     if (saved.chapter > 0 && saved.chapter < cafeScenes.length && !saved.completed) {
       setSceneIndex(saved.chapter);
     }
+    try {
+      const shift = JSON.parse(localStorage.getItem("chateau-cafe-shift") || "null");
+      if (shift) {
+        setCustomerIndex(Math.min(shift.customerIndex || 0, cafeCustomers.length - 1));
+        setServedIds(Array.isArray(shift.servedIds) ? shift.servedIds : []);
+        setServiceScore(Number(shift.serviceScore || 0));
+        setHistory(Array.isArray(shift.history) ? shift.history : []);
+      }
+    } catch {}
   }, []);
 
   useEffect(() => {
@@ -94,6 +106,24 @@ export default function CafePage() {
 
     return () => window.clearInterval(timer);
   }, [sceneIndex, scene.line]);
+
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    localStorage.setItem("chateau-cafe-shift", JSON.stringify({
+      customerIndex, servedIds, serviceScore, history
+    }));
+  }, [customerIndex, servedIds, serviceScore, history]);
+
+  useEffect(() => {
+    if (!entered || !customer) return;
+    setCustomerMood("waiting");
+    setHistory((current) => {
+      const last = current[current.length - 1];
+      if (last?.speaker === customer.name && last.text === customer.requestFr) return current;
+      return [...current, { speaker: customer.name, text: customer.requestFr, ar: customer.requestAr }];
+    });
+  }, [entered, customer]);
 
   const progress = useMemo(
     () => Math.round(((sceneIndex + 1) / cafeScenes.length) * 100),
@@ -133,11 +163,15 @@ export default function CafePage() {
       setScore((value) => value + 1);
       setStreak((value) => value + 1);
       setReputation((value) => Math.min(100, value + 8));
+      setCustomerMood("happy");
+      setHistory((current) => [...current, { speaker: "Vous", text: scene.answers[index].text, ar: scene.answers[index].ar, correct: true }]);
       playTone(true);
     } else {
       setFeedback("wrong");
       setStreak(0);
       setReputation((value) => Math.max(0, value - 3));
+      setCustomerMood("thinking");
+      setHistory((current) => [...current, { speaker: "Vous", text: scene.answers[index].text, ar: scene.answers[index].ar, correct: false }]);
       playTone(false);
     }
   };
@@ -246,10 +280,12 @@ export default function CafePage() {
   const validateOrder = () => {
     if (orderIsCorrect) {
       setServiceMessage("Commande parfaite ! الطلب مطابق تمامًا.");
+      setCustomerMood("happy");
       setReputation((value) => Math.min(100, value + 10));
       playTone(true);
     } else {
-      setServiceMessage(`Presque… ${customer.name} طلب: ${customer.orderLabelAr}`);
+      setServiceMessage(`Presque… ${customer.name} طلب: ${customer.requestAr}`);
+      setCustomerMood("thinking");
       setReputation((value) => Math.max(0, value - 2));
       playTone(false);
     }
@@ -263,6 +299,7 @@ export default function CafePage() {
     setServiceScore((value) => value + 1);
     setOrder([]);
     setServiceMessage(`${customer.name}: Merci beaucoup !`);
+    setHistory((current) => [...current, { speaker: "Vous", text: `Voici votre commande, ${customer.name}.`, ar: "تفضل طلبك.", correct: true }, { speaker: customer.name, text: "Merci beaucoup !", ar: "شكرًا جزيلًا!", correct: true }]);
     setCoins((value) => value + 4);
     setXp((value) => value + 10);
     playTone(true);
@@ -285,6 +322,8 @@ export default function CafePage() {
     setShiftComplete(false);
     setOrder([]);
     setServiceMessage("");
+    setHistory([]);
+    localStorage.removeItem("chateau-cafe-shift");
   };
 
   return (
@@ -406,6 +445,10 @@ export default function CafePage() {
         servedIds={servedIds}
       />
 
+      <div className={`customer-mood mood-${customerMood}`}>
+        {customerMood === "happy" ? "😊 الزبون سعيد" : customerMood === "thinking" ? "🤔 الزبون ينتظر التصحيح" : "⏳ الزبون ينتظر الخدمة"}
+      </div>
+
       <CustomerMissionCard
         customer={customer}
         showArabic={showArabic}
@@ -420,6 +463,8 @@ export default function CafePage() {
           onSpeak={speak}
         />
       </section>
+
+      <ConversationHistory entries={history} onSpeak={speak} />
 
       <section className="cafe-pro-game">
         <aside className="cafe-pro-menu">

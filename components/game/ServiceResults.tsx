@@ -11,7 +11,8 @@ type Props = {
 };
 
 export default function ServiceResults({ served, total, score, reputation, onRestart }: Props) {
-  const stars = score >= total ? 3 : score >= Math.ceil(total / 2) ? 2 : 1;
+  const ratio = total ? score / total : 0;
+  const stars = ratio >= 1 ? 5 : ratio >= .8 ? 4 : ratio >= .6 ? 3 : ratio >= .4 ? 2 : 1;
   return (
     <section className="service-results">
       <Trophy size={58} />
@@ -19,7 +20,7 @@ export default function ServiceResults({ served, total, score, reputation, onRes
       <h2>اكتملت وردية المقهى</h2>
       <p>خدمت {served} من {total} زبائن، وسمعتك الحالية {reputation}%.</p>
       <div className="service-stars">
-        {[1, 2, 3].map((value) => <Star key={value} className={value <= stars ? "earned" : ""} />)}
+        {[1, 2, 3, 4, 5].map((value) => <Star key={value} className={value <= stars ? "earned" : ""} />)}
       </div>
       <div className="service-reward-row">
         <b><Coins size={18}/> +{10 + served * 4}</b>

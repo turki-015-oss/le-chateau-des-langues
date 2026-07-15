@@ -36,6 +36,7 @@ import ConversationHistory, { type ConversationEntry } from "@/components/game/C
 import CafeProgression, { type CafeAchievement } from "@/components/game/CafeProgression";
 import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgradeShop";
 import CafeContractBoard, { type CafeContract } from "@/components/game/CafeContractBoard";
+import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
 import {
   defaultInventory,
   loadInventory,
@@ -78,6 +79,11 @@ export default function CafePage() {
   const [claimedContracts, setClaimedContracts] = useState<string[]>([]);
   const [loyaltyStreak, setLoyaltyStreak] = useState(1);
   const [contractMessage, setContractMessage] = useState("");
+  const [masteredPhrases, setMasteredPhrases] = useState<string[]>([]);
+  const [difficultPhrases, setDifficultPhrases] = useState<string[]>([]);
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewAnswer, setReviewAnswer] = useState("");
+  const [reviewResult, setReviewResult] = useState<"idle" | "correct" | "wrong">("idle");
 
   const scene = cafeScenes[sceneIndex];
   const customer = cafeCustomers[customerIndex];
@@ -98,6 +104,12 @@ export default function CafePage() {
     try {
       const claimed = JSON.parse(localStorage.getItem("chateau-cafe-claimed-contracts") || "[]");
       setClaimedContracts(Array.isArray(claimed) ? claimed : []);
+    } catch {}
+    try {
+      const mastered = JSON.parse(localStorage.getItem("chateau-cafe-mastered-phrases") || "[]");
+      setMasteredPhrases(Array.isArray(mastered) ? mastered : []);
+      const difficult = JSON.parse(localStorage.getItem("chateau-cafe-difficult-phrases") || "[]");
+      setDifficultPhrases(Array.isArray(difficult) ? difficult : []);
     } catch {}
     const today = new Date().toISOString().slice(0, 10);
     const previousVisit = localStorage.getItem("chateau-cafe-last-visit");
@@ -197,6 +209,15 @@ export default function CafePage() {
     { id: "perfect-5", title: "دقة الباريستا", description: "نفّذ 5 طلبات صحيحة دون تغيير الهدف.", progress: perfectOrders, target: 5, rewardCoins: 28, rewardXp: 40 },
     { id: "royal-reputation", title: "سمعة المملكة", description: "ارفع سمعة المقهى إلى 80%.", progress: reputation, target: 80, rewardCoins: 40, rewardXp: 55 },
   ], [totalServed, perfectOrders, reputation]);
+
+  const learningPhrases = useMemo<LearningPhrase[]>(() => [
+    { id: "bonjour", fr: "Bonjour, je voudrais un café, s'il vous plaît.", ar: "مرحبًا، أريد قهوة من فضلك.", category: "الطلب" },
+    { id: "price", fr: "Combien ça coûte ?", ar: "كم سعر هذا؟", category: "السعر" },
+    { id: "addition", fr: "L'addition, s'il vous plaît.", ar: "الحساب من فضلك.", category: "الدفع" },
+    { id: "modify", fr: "Sans sucre, s'il vous plaît.", ar: "من دون سكر، من فضلك.", category: "تعديل الطلب" },
+    { id: "table", fr: "Cette table est-elle libre ?", ar: "هل هذه الطاولة شاغرة؟", category: "الجلوس" },
+    { id: "thanks", fr: "Merci beaucoup, c'était délicieux.", ar: "شكرًا جزيلًا، كان لذيذًا.", category: "المجاملة" },
+  ], []);
 
   const serviceCoinBonus = ownedUpgrades.includes("tip-jar") ? 2 : 0;
   const serviceXpBonus = ownedUpgrades.includes("royal-machine") ? 5 : 0;
@@ -433,6 +454,42 @@ export default function CafePage() {
     window.setTimeout(() => setContractMessage(""), 3000);
   };
 
+  const togglePhraseMastery = (id: string) => {
+    const next = masteredPhrases.includes(id)
+      ? masteredPhrases.filter((item) => item !== id)
+      : [...masteredPhrases, id];
+    setMasteredPhrases(next);
+    localStorage.setItem("chateau-cafe-mastered-phrases", JSON.stringify(next));
+  };
+
+  const checkReviewAnswer = () => {
+    const target = learningPhrases[reviewIndex % learningPhrases.length];
+    const normalize = (value: string) => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "'").replace(/[.,!?]/g, "").replace(/\s+/g, " ").trim();
+    const correct = normalize(reviewAnswer) === normalize(target.fr);
+    setReviewResult(correct ? "correct" : "wrong");
+    if (correct) {
+      const nextMastered = Array.from(new Set([...masteredPhrases, target.id]));
+      const nextDifficult = difficultPhrases.filter((item) => item !== target.id);
+      setMasteredPhrases(nextMastered);
+      setDifficultPhrases(nextDifficult);
+      localStorage.setItem("chateau-cafe-mastered-phrases", JSON.stringify(nextMastered));
+      localStorage.setItem("chateau-cafe-difficult-phrases", JSON.stringify(nextDifficult));
+      setXp((value) => { const next = value + 5; localStorage.setItem("chateau-cafe-xp", String(next)); return next; });
+      playTone(true);
+    } else {
+      const nextDifficult = Array.from(new Set([...difficultPhrases, target.id]));
+      setDifficultPhrases(nextDifficult);
+      localStorage.setItem("chateau-cafe-difficult-phrases", JSON.stringify(nextDifficult));
+      playTone(false);
+    }
+  };
+
+  const nextReviewPhrase = () => {
+    setReviewIndex((value) => (value + 1) % learningPhrases.length);
+    setReviewAnswer("");
+    setReviewResult("idle");
+  };
+
   const restartShift = () => {
     setCustomerIndex(0);
     setServedIds([]);
@@ -583,6 +640,20 @@ export default function CafePage() {
         onClaim={claimContract}
       />
       {contractMessage && <div className="contract-success-banner">🏆 {contractMessage}</div>}
+
+      <CafeLearningJournal
+        phrases={learningPhrases}
+        masteredIds={masteredPhrases}
+        difficultIds={difficultPhrases}
+        reviewIndex={reviewIndex}
+        reviewAnswer={reviewAnswer}
+        reviewResult={reviewResult}
+        onSpeak={speak}
+        onToggleMastery={togglePhraseMastery}
+        onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
+        onCheck={checkReviewAnswer}
+        onNext={nextReviewPhrase}
+      />
 
       <CustomerQueue
         customers={[...cafeCustomers]}

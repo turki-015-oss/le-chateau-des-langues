@@ -52,8 +52,7 @@ const worlds: World[] = [
     level: "A1",
     icon: "☕",
     description: "الطلبات، المشروبات، والمجاملات.",
-    position: "south-west",
-    unlockKey: "chateau-cafe-unlocked"
+    position: "south-west"
   },
   {
     title: "Le Restaurant",
@@ -89,8 +88,7 @@ const worlds: World[] = [
     level: "B2",
     icon: "⚖️",
     description: "الشهادة، الأدلة، واللغة الرسمية.",
-    position: "south",
-    unlockKey: "chateau-court-unlocked"
+    position: "south"
   },
   {
     title: "Les Princes du Château",
@@ -99,8 +97,7 @@ const worlds: World[] = [
     level: "C1",
     icon: "👑",
     description: "اللغة الراقية والمناسبات الرسمية.",
-    position: "palace",
-    unlockKey: "chateau-palace-unlocked"
+    position: "palace"
   }
 ];
 
@@ -262,7 +259,7 @@ export default function Home() {
         </article>
       </section>
 
-      <footer>Le Château des Langues — v0.8</footer>
+      <footer>Le Château des Langues — v0.9.2</footer>
     </main>
   );
 }

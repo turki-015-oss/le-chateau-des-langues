@@ -8,14 +8,16 @@ import {
   Coffee,
   Compass,
   GraduationCap,
-  HeartPulse,
+  Hotel,
   Landmark,
   MapPin,
   Minus,
+  Plane,
   Plus,
   RotateCcw,
   Scale,
   ShoppingBasket,
+  Train,
   Trees,
   Trophy,
   Utensils,
@@ -29,30 +31,40 @@ type Place = {
   description: string;
   x: number;
   y: number;
+  w: number;
+  h: number;
   path?: string;
   open: boolean;
   icon: React.ReactNode;
 };
 
 const places: Place[] = [
-  { id: "university", fr: "L'Université", ar: "الجامعة", description: "الدراسة والمحاضرات والحياة الجامعية", x: 730, y: 510, open: false, icon: <GraduationCap /> },
-  { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 1425, y: 470, path: "/market", open: true, icon: <ShoppingBasket /> },
-  { id: "stadium", fr: "Le Stade", ar: "ملعب كرة القدم", description: "المباريات والتدريب والإعلام", x: 2300, y: 500, open: false, icon: <Trophy /> },
-  { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب", x: 560, y: 1050, open: false, icon: <Utensils /> },
-  { id: "hospital", fr: "L'Hôpital", ar: "المستشفى", description: "الأعراض والمواعيد وطلب المساعدة", x: 1210, y: 1090, open: false, icon: <HeartPulse /> },
-  { id: "palace", fr: "Le Palais Royal", ar: "القصر الملكي", description: "قلب المملكة وقاعة الإنجازات", x: 1570, y: 820, open: false, icon: <Castle /> },
-  { id: "court", fr: "Le Tribunal Royal", ar: "المحكمة الملكية", description: "القضايا والشهادة واللغة الرسمية", x: 1955, y: 1090, path: "/court", open: true, icon: <Scale /> },
-  { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 1515, y: 1380, path: "/cafe", open: true, icon: <Coffee /> },
-  { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 2490, y: 1085, open: false, icon: <Trees /> },
-  { id: "museum", fr: "Le Musée", ar: "المتحف", description: "التاريخ والفنون والثقافة", x: 870, y: 1580, open: false, icon: <Landmark /> },
-  { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 2130, y: 1580, open: false, icon: <BookOpen /> },
-  { id: "district", fr: "Le Quartier Nouveau", ar: "الحي الجديد", description: "مساحة توسع مستقبلية للمملكة", x: 330, y: 1820, open: false, icon: <Building2 /> }
+  { id: "university", fr: "L'Université", ar: "الجامعة", description: "الدراسة والمحاضرات والحياة الجامعية", x: 162, y: 265, w: 250, h: 220, open: false, icon: <GraduationCap /> },
+  { id: "stadium", fr: "Le Stade", ar: "ملعب كرة القدم", description: "المباريات والتدريب والإعلام الرياضي", x: 715, y: 270, w: 250, h: 215, open: false, icon: <Trophy /> },
+  { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 135, y: 535, w: 235, h: 210, path: "/cafe", open: true, icon: <Coffee /> },
+  { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب والشكوى", x: 730, y: 515, w: 220, h: 205, open: false, icon: <Utensils /> },
+  { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 105, y: 760, w: 260, h: 220, path: "/market", open: true, icon: <ShoppingBasket /> },
+  { id: "court", fr: "Le Tribunal Royal", ar: "المحكمة الملكية", description: "القضايا والشهادة واللغة الرسمية", x: 470, y: 760, w: 235, h: 215, path: "/court", open: true, icon: <Scale /> },
+  { id: "hospital", fr: "L'Hôpital", ar: "المستشفى", description: "الأعراض والمواعيد وطلب المساعدة", x: 710, y: 710, w: 220, h: 205, open: false, icon: <Building2 /> },
+  { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 820, y: 835, w: 180, h: 235, open: false, icon: <Trees /> },
+  { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 80, y: 1005, w: 245, h: 205, open: false, icon: <BookOpen /> },
+  { id: "police", fr: "Le Commissariat", ar: "مركز الشرطة", description: "المواقف الأمنية وطلب المساعدة", x: 410, y: 1030, w: 250, h: 210, path: "/police", open: true, icon: <Landmark /> },
+  { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 675, y: 985, w: 250, h: 215, open: false, icon: <Hotel /> },
+  { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 70, y: 1190, w: 280, h: 155, open: false, icon: <Plane /> },
+  { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 685, y: 1175, w: 285, h: 170, open: false, icon: <Train /> },
+  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعة الإنجازات", x: 335, y: 160, w: 360, h: 470, open: false, icon: <Castle /> }
 ];
 
+const ART_W = 1024;
+const ART_H = 1346;
 const WORLD_W = 3200;
-const WORLD_H = 2200;
-const MIN_SCALE = 0.34;
-const MAX_SCALE = 1.65;
+const WORLD_H = 4200;
+const CITY_X = 1088;
+const CITY_Y = 1260;
+const CITY_W = 1024;
+const CITY_H = 1346;
+const MIN_SCALE = 0.2;
+const MAX_SCALE = 1.6;
 
 export default function KingdomMapPage() {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -61,8 +73,8 @@ export default function KingdomMapPage() {
   const pinchDistance = useRef<number | null>(null);
   const moved = useRef(false);
 
-  const [scale, setScale] = useState(0.58);
-  const [position, setPosition] = useState({ x: -760, y: -480 });
+  const [scale, setScale] = useState(0.62);
+  const [position, setPosition] = useState({ x: -620, y: -700 });
   const [selected, setSelected] = useState<Place | null>(null);
   const [dragging, setDragging] = useState(false);
 
@@ -71,16 +83,16 @@ export default function KingdomMapPage() {
   const centerMap = () => {
     const viewport = viewportRef.current;
     if (!viewport) return;
-    const nextScale = viewport.clientWidth < 720 ? 0.48 : 0.68;
+    const nextScale = viewport.clientWidth < 720 ? 0.58 : 0.72;
     setScale(nextScale);
     setPosition({
-      x: viewport.clientWidth / 2 - 1580 * nextScale,
-      y: viewport.clientHeight / 2 - 1050 * nextScale
+      x: viewport.clientWidth / 2 - (CITY_X + CITY_W / 2) * nextScale,
+      y: viewport.clientHeight / 2 - (CITY_Y + CITY_H / 2) * nextScale
     });
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem("chateau-world-camera-v3");
+    const saved = localStorage.getItem("chateau-world-camera-v4");
     if (saved) {
       try {
         const value = JSON.parse(saved) as { scale: number; x: number; y: number };
@@ -94,15 +106,12 @@ export default function KingdomMapPage() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      localStorage.setItem("chateau-world-camera-v3", JSON.stringify({ scale, x: position.x, y: position.y }));
-    }, 200);
+      localStorage.setItem("chateau-world-camera-v4", JSON.stringify({ scale, x: position.x, y: position.y }));
+    }, 180);
     return () => window.clearTimeout(timer);
   }, [scale, position]);
 
-  const transform = useMemo(
-    () => `translate3d(${position.x}px, ${position.y}px, 0) scale(${scale})`,
-    [position, scale]
-  );
+  const transform = useMemo(() => `translate3d(${position.x}px, ${position.y}px, 0) scale(${scale})`, [position, scale]);
 
   const zoomAround = (nextScale: number, cx: number, cy: number) => {
     const next = clampScale(nextScale);
@@ -141,9 +150,7 @@ export default function KingdomMapPage() {
       const distance = Math.hypot(active[0].x - active[1].x, active[0].y - active[1].y);
       if (pinchDistance.current) {
         const rect = event.currentTarget.getBoundingClientRect();
-        const cx = (active[0].x + active[1].x) / 2 - rect.left;
-        const cy = (active[0].y + active[1].y) / 2 - rect.top;
-        zoomAround(scale * (distance / pinchDistance.current), cx, cy);
+        zoomAround(scale * (distance / pinchDistance.current), (active[0].x + active[1].x) / 2 - rect.left, (active[0].y + active[1].y) / 2 - rect.top);
       }
       pinchDistance.current = distance;
       moved.current = true;
@@ -167,62 +174,52 @@ export default function KingdomMapPage() {
     if (!remaining.length) setDragging(false);
   };
 
-  const openPlace = (place: Place) => {
-    if (moved.current) return;
-    setSelected(place);
-  };
-
   return (
-    <main className="world-map-v3" dir="rtl">
-      <header className="world-map-topbar">
-        <div className="world-profile">
-          <div className="world-avatar"><Castle /></div>
-          <div><strong>Le Château des Langues</strong><small>مملكة تعلم الفرنسية</small></div>
-        </div>
-        <div className="world-progress"><span>تقدم المملكة</span><div><i style={{ width: "25%" }} /></div><b>25%</b></div>
-        <button className="world-menu" aria-label="القائمة">☰</button>
+    <main className="world-map-v4" dir="rtl">
+      <header className="world-map-topbar-v4">
+        <div className="world-brand-v4"><Castle /><div><strong>Le Château des Langues</strong><small>مملكة تعلم الفرنسية</small></div></div>
+        <div className="world-progress-v4"><span>تقدم المملكة</span><div><i style={{ width: "25%" }} /></div><b>25%</b></div>
+        <button className="world-menu-v4" aria-label="القائمة">☰</button>
       </header>
 
       <section
         ref={viewportRef}
-        className={`world-map-viewport-v3 ${dragging ? "dragging" : ""}`}
+        className={`world-map-viewport-v4 ${dragging ? "dragging" : ""}`}
         onWheel={onWheel}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}
         onPointerCancel={endPointer}
       >
-        <div className="world-map-canvas-v3" style={{ width: WORLD_W, height: WORLD_H, transform }}>
-          <div className="world-expansion expansion-north"><span>المرتفعات الملكية · منطقة توسع</span></div>
-          <div className="world-expansion expansion-west"><span>الساحل الغربي · منطقة توسع</span></div>
-          <div className="world-expansion expansion-east"><span>الغابة الشرقية · منطقة توسع</span></div>
-          <div className="world-expansion expansion-south"><span>المدينة الجديدة · منطقة توسع</span></div>
-          <div className="world-core-image" />
+        <div className="world-map-canvas-v4" style={{ width: WORLD_W, height: WORLD_H, transform }}>
+          <div className="world-terrain terrain-north"><span>المرتفعات الملكية · توسعة مستقبلية</span></div>
+          <div className="world-terrain terrain-west"><span>الساحل الغربي · توسعة مستقبلية</span></div>
+          <div className="world-terrain terrain-east"><span>الغابات الشرقية · توسعة مستقبلية</span></div>
+          <div className="world-terrain terrain-south"><span>المدينة الجديدة · توسعة مستقبلية</span></div>
 
-          {places.map((place) => (
-            <button
-              key={place.id}
-              className={`world-hotspot ${place.open ? "open" : "soon"}`}
-              style={{ left: place.x, top: place.y }}
-              onPointerDown={(event) => event.stopPropagation()}
-              onClick={() => openPlace(place)}
-              aria-label={`${place.ar} ${place.fr}`}
-            >
-              <span>{place.icon}</span>
-              <i />
-            </button>
-          ))}
+          <div className="approved-city-map" style={{ left: CITY_X, top: CITY_Y, width: CITY_W, height: CITY_H }}>
+            {places.map((place) => (
+              <button
+                key={place.id}
+                className={`building-hitbox ${place.open ? "open" : "soon"}`}
+                style={{ left: place.x, top: place.y, width: place.w, height: place.h }}
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={() => !moved.current && setSelected(place)}
+                aria-label={`${place.ar} ${place.fr}`}
+              >
+                <span className="building-focus-ring" />
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="world-map-hint">اسحب الخريطة بإصبعك · قرّب بإصبعين · اضغط على المبنى</div>
-
-        <div className="world-map-controls-v3">
+        <div className="world-map-hint-v4">اسحب لاستكشاف المملكة · قرّب بإصبعين · اضغط على المبنى</div>
+        <div className="world-map-controls-v4">
           <button onClick={() => zoomCenter(0.12)} aria-label="تكبير"><Plus /></button>
           <button onClick={() => zoomCenter(-0.12)} aria-label="تصغير"><Minus /></button>
           <button onClick={centerMap} aria-label="إعادة التوسيط"><RotateCcw /></button>
         </div>
-
-        <div className="world-compass-v3"><Compass /><span>الشمال</span></div>
+        <div className="world-compass-v4"><Compass /><span>الشمال</span></div>
       </section>
 
       {selected && (
@@ -233,14 +230,8 @@ export default function KingdomMapPage() {
             <span>{selected.fr}</span>
             <h2>{selected.ar}</h2>
             <p>{selected.description}</p>
-            <div className={`world-place-state ${selected.open ? "open" : "soon"}`}>
-              <MapPin /> {selected.open ? "العالم مفتوح الآن" : "سيُفتح في إصدار قادم"}
-            </div>
-            <button
-              className="world-enter-button"
-              disabled={!selected.open || !selected.path}
-              onClick={() => selected.path && (window.location.href = selected.path)}
-            >
+            <div className={`world-place-state ${selected.open ? "open" : "soon"}`}><MapPin /> {selected.open ? "العالم مفتوح الآن" : "سيُفتح قريبًا"}</div>
+            <button className="world-enter-button" disabled={!selected.open || !selected.path} onClick={() => selected.path && (window.location.href = selected.path)}>
               {selected.open ? "دخول العالم" : "قريبًا"}
             </button>
           </article>

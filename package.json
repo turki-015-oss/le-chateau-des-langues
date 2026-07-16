@@ -1,6 +1,6 @@
 {
   "name": "le-chateau-des-langues",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "private": true,
   "scripts": {
     "dev": "next dev",

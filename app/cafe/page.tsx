@@ -20,13 +20,10 @@ import {
   X,
   XCircle,
   LayoutGrid,
-  Store,
-  ScrollText,
   Brain,
   Timer,
   Puzzle,
   Headphones,
-  TrendingUp,
 } from "lucide-react";
 import { cafeCustomers, cafeMenu, cafeReward, cafeScenes } from "@/data/cafe";
 import { loadWorldProgress, saveWorldProgress } from "@/data/game-engine";
@@ -34,16 +31,14 @@ import { speakFrench, playFeedbackTone } from "@/engine/audioEngine";
 import { isOrderMatch } from "@/engine/npcEngine";
 import { cafeMissionSteps } from "@/engine/missionEngine";
 import { calculateCafeRewards, calculateStars } from "@/engine/rewardEngine";
-import MissionTracker from "@/components/game/MissionTracker";
 import ReputationBar from "@/components/game/ReputationBar";
 import CustomerMissionCard from "@/components/game/CustomerMissionCard";
 import CustomerQueue from "@/components/game/CustomerQueue";
 import OrderTicket from "@/components/game/OrderTicket";
 import ServiceResults from "@/components/game/ServiceResults";
-import ConversationHistory, { type ConversationEntry } from "@/components/game/ConversationHistory";
-import CafeProgression, { type CafeAchievement } from "@/components/game/CafeProgression";
-import CafeUpgradeShop, { type CafeUpgrade } from "@/components/game/CafeUpgradeShop";
-import CafeContractBoard, { type CafeContract } from "@/components/game/CafeContractBoard";
+import type { CafeAchievement } from "@/components/game/CafeProgression";
+import type { CafeUpgrade } from "@/components/game/CafeUpgradeShop";
+import type { CafeContract } from "@/components/game/CafeContractBoard";
 import CafeLearningJournal, { type LearningPhrase } from "@/components/game/CafeLearningJournal";
 import CafeRushChallenge, { type RushPrompt } from "@/components/game/CafeRushChallenge";
 import CafeSentenceBuilder, { type SentencePuzzle } from "@/components/game/CafeSentenceBuilder";
@@ -56,7 +51,9 @@ import {
   type InventoryState
 } from "@/data/inventory";
 
-type CafeActivity = "progress" | "shop" | "contracts" | "journal" | "rush" | "sentences" | "listening" | null;
+type ConversationEntry = { speaker: string; text: string; ar?: string };
+
+type CafeActivity = "journal" | "rush" | "sentences" | "listening" | null;
 
 export default function CafePage() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -786,181 +783,9 @@ export default function CafePage() {
         </div>
       </section>
 
-      <MissionTracker
-        steps={cafeMissionSteps}
-        activeIndex={sceneIndex}
-        expanded={showMissionMap}
-        onToggle={() => setShowMissionMap((value) => !value)}
-        onSelect={(index) => {
-          setSceneIndex(index);
-          setSelected(null);
-          setFeedback(null);
-          setShowMissionMap(false);
-        }}
-      />
-
-      <ReputationBar value={reputation} />
-
-      <section className="cafe-activity-hub">
-        <div className="activity-hub-heading">
-          <div>
-            <span><LayoutGrid size={18} /> أنشطة المقهى</span>
-            <h2>اختر النشاط الذي تريد دخوله</h2>
-            <p>بدل عرض جميع الأنشطة في صفحة واحدة، افتح كل نشاط داخل خانته الخاصة.</p>
-          </div>
-          {activeActivity && (
-            <button className="activity-close" onClick={() => setActiveActivity(null)}>
-              <X size={18} /> إغلاق النشاط
-            </button>
-          )}
-        </div>
-
-        {!activeActivity && (
-          <div className="activity-card-grid">
-            <button onClick={() => setActiveActivity("progress")}>
-              <TrendingUp />
-              <strong>تقدم المقهى</strong>
-              <span>المستوى والإنجازات والتحدي اليومي</span>
-            </button>
-            <button onClick={() => setActiveActivity("shop")}>
-              <Store />
-              <strong>متجر التطويرات</strong>
-              <span>اشترِ ترقيات دائمة للمقهى</span>
-            </button>
-            <button onClick={() => setActiveActivity("contracts")}>
-              <ScrollText />
-              <strong>العقود الملكية</strong>
-              <span>مهام ومكافآت إضافية</span>
-            </button>
-            <button onClick={() => setActiveActivity("journal")}>
-              <Brain />
-              <strong>دفتر التعلم</strong>
-              <span>120 عبارة مرتبة من التحية حتى الوداع</span>
-            </button>
-            <button onClick={() => setActiveActivity("rush")}>
-              <Timer />
-              <strong>تحدي السرعة</strong>
-              <span>طلبات سريعة خلال 30 ثانية</span>
-            </button>
-            <button onClick={() => setActiveActivity("sentences")}>
-              <Puzzle />
-              <strong>ورشة تركيب الجمل</strong>
-              <span>64 جملة مرتبة حسب رحلة الزبون</span>
-            </button>
-            <button onClick={() => setActiveActivity("listening")}>
-              <Headphones />
-              <strong>مختبر الاستماع</strong>
-              <span>64 عبارة استماع وإملاء متدرجة</span>
-            </button>
-          </div>
-        )}
-
-        {activeActivity && (
-          <div className="activity-panel">
-            {activeActivity === "progress" && (
-              <>
-                <CafeProgression
-                  level={cafeLevel}
-                  served={servedIds.length}
-                  totalServed={totalServed}
-                  dailyTarget={cafeCustomers.length}
-                  achievements={achievements}
-                />
-                {dailyCompleted && <div className="daily-complete-banner">🎁 اكتمل التحدي اليومي — حصلت على مكافأة الولاء</div>}
-              </>
-            )}
-
-            {activeActivity === "shop" && (
-              <>
-                <CafeUpgradeShop
-                  level={cafeLevel}
-                  coins={coins}
-                  ownedIds={ownedUpgrades}
-                  upgrades={cafeUpgrades}
-                  onBuy={buyUpgrade}
-                />
-                {shopMessage && <div className="shop-success-banner">✨ {shopMessage}</div>}
-              </>
-            )}
-
-            {activeActivity === "contracts" && (
-              <>
-                <CafeContractBoard
-                  contracts={contracts}
-                  claimedIds={claimedContracts}
-                  onClaim={claimContract}
-                />
-                {contractMessage && <div className="contract-success-banner">🏆 {contractMessage}</div>}
-              </>
-            )}
-
-            {activeActivity === "journal" && (
-              <CafeLearningJournal
-                phrases={learningPhrases}
-                masteredIds={masteredPhrases}
-                difficultIds={difficultPhrases}
-                reviewIndex={reviewIndex}
-                reviewAnswer={reviewAnswer}
-                reviewResult={reviewResult}
-                onSpeak={speak}
-                onToggleMastery={togglePhraseMastery}
-                onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
-                onCheck={checkReviewAnswer}
-                onNext={nextReviewPhrase}
-              />
-            )}
-
-            {activeActivity === "rush" && (
-              <CafeRushChallenge
-                active={rushActive}
-                timeLeft={rushTimeLeft}
-                score={rushScore}
-                combo={rushCombo}
-                bestScore={rushBest}
-                prompt={rushPrompt}
-                options={rushOptions}
-                feedback={rushFeedback}
-                onStart={startRush}
-                onPick={pickRushOption}
-                onSpeak={speak}
-              />
-            )}
-
-            {activeActivity === "sentences" && (
-              <CafeSentenceBuilder
-                puzzle={sentencePuzzle}
-                selectedWords={sentenceWords}
-                result={sentenceResult}
-                solved={sentenceSolved}
-                total={sentencePuzzles.length}
-                best={sentenceBest}
-                onPick={(word) => pickSentenceWord(word)}
-                onRemove={removeSentenceWord}
-                onCheck={checkSentence}
-                onReset={resetSentence}
-                onNext={nextSentence}
-                onSpeak={speak}
-              />
-            )}
-
-            {activeActivity === "listening" && (
-              <CafeListeningLab
-                prompt={listeningPrompt}
-                answer={listeningAnswer}
-                result={listeningResult}
-                solved={listeningSolved}
-                total={listeningPrompts.length}
-                best={listeningBest}
-                showHint={listeningHint}
-                onAnswerChange={(value) => { setListeningAnswer(value); setListeningResult("idle"); }}
-                onListen={() => speak(listeningPrompt.fr)}
-                onCheck={checkListening}
-                onNext={nextListening}
-                onToggleHint={() => setListeningHint((value) => !value)}
-              />
-            )}
-          </div>
-        )}
+      <section className="cafe-section-heading">
+        <span>Les clients</span>
+        <h2>الزبائن</h2>
       </section>
 
       <CustomerQueue
@@ -988,7 +813,10 @@ export default function CafePage() {
         />
       </section>
 
-      <ConversationHistory entries={history} onSpeak={speak} />
+      <section className="cafe-section-heading cafe-menu-title">
+        <span>La carte</span>
+        <h2>قائمة المقهى</h2>
+      </section>
 
       <section className="cafe-pro-game">
         <aside className="cafe-pro-menu">
@@ -1116,6 +944,117 @@ export default function CafePage() {
           </button>
         </section>
       </section>
+
+      <section className="cafe-activity-hub">
+        <div className="activity-hub-heading">
+          <div>
+            <span><LayoutGrid size={18} /> أنشطة المقهى</span>
+            <h2>أنشطة المقهى</h2>
+            <p>اختر تدريبك وابدأ مباشرة.</p>
+          </div>
+          {activeActivity && (
+            <button className="activity-close" onClick={() => setActiveActivity(null)}>
+              <X size={18} /> إغلاق النشاط
+            </button>
+          )}
+        </div>
+
+        {!activeActivity && (
+          <div className="activity-card-grid">
+            <button onClick={() => setActiveActivity("journal")}>
+              <Brain />
+              <strong>دفتر التعلم</strong>
+              <span>120 عبارة مرتبة من التحية حتى الوداع</span>
+            </button>
+            <button onClick={() => setActiveActivity("rush")}>
+              <Timer />
+              <strong>تحدي السرعة</strong>
+              <span>طلبات سريعة خلال 30 ثانية</span>
+            </button>
+            <button onClick={() => setActiveActivity("sentences")}>
+              <Puzzle />
+              <strong>ورشة تركيب الجمل</strong>
+              <span>64 جملة مرتبة حسب رحلة الزبون</span>
+            </button>
+            <button onClick={() => setActiveActivity("listening")}>
+              <Headphones />
+              <strong>مختبر الاستماع</strong>
+              <span>64 عبارة استماع وإملاء متدرجة</span>
+            </button>
+          </div>
+        )}
+
+        {activeActivity && (
+          <div className="activity-panel">
+            {activeActivity === "journal" && (
+              <CafeLearningJournal
+                phrases={learningPhrases}
+                masteredIds={masteredPhrases}
+                difficultIds={difficultPhrases}
+                reviewIndex={reviewIndex}
+                reviewAnswer={reviewAnswer}
+                reviewResult={reviewResult}
+                onSpeak={speak}
+                onToggleMastery={togglePhraseMastery}
+                onAnswerChange={(value) => { setReviewAnswer(value); setReviewResult("idle"); }}
+                onCheck={checkReviewAnswer}
+                onNext={nextReviewPhrase}
+              />
+            )}
+
+            {activeActivity === "rush" && (
+              <CafeRushChallenge
+                active={rushActive}
+                timeLeft={rushTimeLeft}
+                score={rushScore}
+                combo={rushCombo}
+                bestScore={rushBest}
+                prompt={rushPrompt}
+                options={rushOptions}
+                feedback={rushFeedback}
+                onStart={startRush}
+                onPick={pickRushOption}
+                onSpeak={speak}
+              />
+            )}
+
+            {activeActivity === "sentences" && (
+              <CafeSentenceBuilder
+                puzzle={sentencePuzzle}
+                selectedWords={sentenceWords}
+                result={sentenceResult}
+                solved={sentenceSolved}
+                total={sentencePuzzles.length}
+                best={sentenceBest}
+                onPick={(word) => pickSentenceWord(word)}
+                onRemove={removeSentenceWord}
+                onCheck={checkSentence}
+                onReset={resetSentence}
+                onNext={nextSentence}
+                onSpeak={speak}
+              />
+            )}
+
+            {activeActivity === "listening" && (
+              <CafeListeningLab
+                prompt={listeningPrompt}
+                answer={listeningAnswer}
+                result={listeningResult}
+                solved={listeningSolved}
+                total={listeningPrompts.length}
+                best={listeningBest}
+                showHint={listeningHint}
+                onAnswerChange={(value) => { setListeningAnswer(value); setListeningResult("idle"); }}
+                onListen={() => speak(listeningPrompt.fr)}
+                onCheck={checkListening}
+                onNext={nextListening}
+                onToggleHint={() => setListeningHint((value) => !value)}
+              />
+            )}
+          </div>
+        )}
+      </section>
+
 
       {shiftComplete && (
         <div className="service-results-overlay">

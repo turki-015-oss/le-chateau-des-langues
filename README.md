@@ -1,12 +1,7 @@
-# Le Château des Langues — v3.1 Café Rework
+# Le Château des Langues — v3.2 Café Menu & Portrait Fix
 
-- إعادة بناء واجهة المقهى بصريًا.
-- الفرنسية كبيرة والعربية صغيرة في الواجهة الجديدة.
-- Luc بصورة احترافية مع نطق فرنسي.
-- لعبة الزبائن ببطاقات وصور مستقلة وانتقال بين الشخصيات.
-- قائمة المقهى كخانة مستقلة بأقسام: Boissons, Viennoiseries, Desserts, Repas légers, Cafés spéciaux.
-- زر نطق للعناوين والطلبات والقوائم.
-- الأنشطة المعتمدة فقط: تركيب الجمل، الاستماع، دفتر التعلم، تحدي السرعة، لعبة الزبائن.
-- حذف اختبار الطلبات وبطولة المقهى.
-
-Build: passed with existing CSS autoprefixer warnings only.
+- Clean standalone portraits for café customers.
+- Café menu opens category pages instead of using screenshots as cards.
+- Detailed categories: Boissons, Viennoiseries, Desserts, Repas légers, Cafés spéciaux.
+- Each item includes a clean image, large French name, small Arabic help text, French/Arabic description, price, and pronunciation button.
+- Production build verified with Next.js 15.

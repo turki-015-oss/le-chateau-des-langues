@@ -20,3 +20,10 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - Added Histoires courtes section.
 - Added Karim à l’aéroport and Karim rate son vol.
 - Added full-story and paragraph audio, important vocabulary, key phrases, and comprehension questions.
+
+
+## v3.8 — Royal Castle Hub
+- Opened the royal castle from the kingdom map.
+- Added a mobile-first castle interior hub.
+- Added the Grand Hall, Princes Hall, Royal Court, Achievements Gallery, Royal Library and Academy.
+- Added introductory French vocabulary and speech synthesis.

@@ -76,7 +76,7 @@ const places: Place[] = [
   { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 665, y: 760, w: 220, h: 190, open: false, icon: <Hotel /> },
   { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 45, y: 1035, w: 300, h: 195, path: "/airport", open: true, icon: <Plane /> },
   { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 700, y: 1025, w: 275, h: 220, open: false, icon: <Train /> },
-  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعة الإنجازات", x: 330, y: 75, w: 365, h: 425, open: false, icon: <Castle /> }
+  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعات التعلّم الملكية", x: 330, y: 75, w: 365, h: 425, path: "/castle", open: true, icon: <Castle /> }
 ];
 
 

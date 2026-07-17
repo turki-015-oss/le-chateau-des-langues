@@ -5,3 +5,7 @@
 - Detailed categories: Boissons, Viennoiseries, Desserts, Repas légers, Cafés spéciaux.
 - Each item includes a clean image, large French name, small Arabic help text, French/Arabic description, price, and pronunciation button.
 - Production build verified with Next.js 15.
+
+
+## v3.4 – Café Real Assets
+Clean product-only images, corrected product/image matching, no embedded text or prices.

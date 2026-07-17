@@ -42,13 +42,13 @@ const menuCategories: {key:MenuKey;fr:string;ar:string;cover:string;products:Men
   {id:"sandwich",fr:"Un sandwich au poulet",ar:"ساندويتش دجاج",descFr:"Du poulet, de la salade et du fromage.",descAr:"دجاج وسلطة وجبن.",price:6,image:"/cafe-v31/assets/bakery-7.webp"},
   {id:"salade",fr:"Une salade",ar:"سلطة",descFr:"Des légumes frais et une sauce légère.",descAr:"خضروات طازجة وصلصة خفيفة.",price:5,image:"/cafe-v31/assets/drinks-5.webp"},
   {id:"soupe",fr:"Une soupe du jour",ar:"شوربة اليوم",descFr:"Une soupe chaude préparée aujourd’hui.",descAr:"شوربة ساخنة محضرة اليوم.",price:5,image:"/cafe-v31/assets/drinks-7.webp"},
-  {id:"quiche",fr:"Une quiche",ar:"كيش",descFr:"Une tarte salée aux œufs et au fromage.",descAr:"فطيرة مالحة بالبيض والجبن.",price:6,image:"/cafe-v31/assets/desserts-6.webp"},
+  {id:"quiche",fr:"Une quiche",ar:"كيش",descFr:"Une tarte salée aux œufs et au fromage.",descAr:"فطيرة مالحة بالبيض والجبن.",price:6,image:"/cafe-v31/assets/meal-quiche.webp"},
  ]},
  {key:"specials",fr:"Cafés spéciaux",ar:"القهوة المختصة",cover:"/cafe-v31/assets/drinks-3.webp",products:[
   {id:"cafe-filtre",fr:"Un café filtre",ar:"قهوة مقطرة",descFr:"Un café doux préparé lentement.",descAr:"قهوة خفيفة محضرة ببطء.",price:5,image:"/cafe-v31/assets/drinks-1.webp"},
   {id:"cafe-lait",fr:"Un café au lait",ar:"قهوة بالحليب",descFr:"Du café chaud avec du lait.",descAr:"قهوة ساخنة مع الحليب.",price:4,image:"/cafe-v31/assets/drinks-2.webp"},
   {id:"cafe-glace",fr:"Un café glacé",ar:"قهوة مثلجة",descFr:"Du café froid servi avec des glaçons.",descAr:"قهوة باردة تقدم مع الثلج.",price:5,image:"/cafe-v31/assets/drinks-5.webp"},
-  {id:"cafe-noisette",fr:"Un café noisette",ar:"قهوة مع قليل من الحليب",descFr:"Un espresso avec une touche de lait.",descAr:"إسبريسو مع لمسة حليب.",price:4,image:"/cafe-v31/assets/drinks-3.webp"},
+  {id:"cafe-noisette",fr:"Un café noisette",ar:"قهوة مع قليل من الحليب",descFr:"Un espresso avec une touche de lait.",descAr:"إسبريسو مع لمسة حليب.",price:4,image:"/cafe-v31/assets/special-noisette.webp"},
  ]},
 ];
 

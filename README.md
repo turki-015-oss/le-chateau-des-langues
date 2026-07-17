@@ -15,3 +15,8 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - Replaced emoji section icons with realistic photographic thumbnails.
 - Enlarged section imagery on desktop and mobile.
 - Kept only the vocabulary count; no acquired/progress counter.
+
+## v3.7 Airport Stories
+- Added Histoires courtes section.
+- Added Karim à l’aéroport and Karim rate son vol.
+- Added full-story and paragraph audio, important vocabulary, key phrases, and comprehension questions.

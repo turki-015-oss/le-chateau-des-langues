@@ -27,3 +27,10 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - Added a mobile-first castle interior hub.
 - Added the Grand Hall, Princes Hall, Royal Court, Achievements Gallery, Royal Library and Academy.
 - Added introductory French vocabulary and speech synthesis.
+
+## v3.9 — Police World
+- Complete interactive police station world.
+- Eight illustrated learning sections.
+- French speech synthesis for dialogues and vocabulary.
+- "Karim au commissariat" short story.
+- Interactive comprehension exercise.

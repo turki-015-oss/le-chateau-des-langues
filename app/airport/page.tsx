@@ -7,6 +7,8 @@ import { ArrowRight, ChevronLeft, Plane, Volume2, X } from "lucide-react";
 
 type Word={fr:string;ar:string;image:string};
 type Section={id:string;fr:string;ar:string;thumbnail:string;words:Word[]};
+type StoryWord={fr:string;ar:string;image:string};
+type Story={id:string;title:string;arTitle:string;level:string;cover:string;paragraphs:string[];words:StoryWord[];phrases:{fr:string;ar:string}[];questions:{q:string;answers:string[];correct:number}[]};
 
 const w=(fr:string,ar:string,image:string):Word=>({fr,ar,image:`/airport/assets/${image}.svg`});
 const sections:Section[]=[
@@ -33,6 +35,40 @@ const sections:Section[]=[
  ]}
 ];
 
+
+const sw=(fr:string,ar:string,image:string):StoryWord=>({fr,ar,image:`/airport/assets/${image}.svg`});
+const stories:Story[]=[
+ {id:"karim-airport",title:"Karim à l’aéroport",arTitle:"كريم في المطار",level:"A1",cover:"/airport/sections/entree.webp",paragraphs:[
+  "Karim arrive à l’aéroport deux heures avant son vol. Il porte une petite valise et un sac à dos. D’abord, il regarde le tableau des départs pour trouver la porte d’embarquement. Ensuite, il enregistre ses bagages et passe le contrôle de sécurité.",
+  "Après cela, il s’assoit près de sa porte et achète un café. Pendant qu’il attend, il lit un livre et écoute les annonces. Quelques minutes plus tard, les passagers sont invités à embarquer.",
+  "Karim montre son passeport et sa carte d’embarquement. Il monte dans l’avion, trouve son siège près de la fenêtre et attache sa ceinture. Il est heureux, car il va passer une semaine de vacances en France."
+ ],words:[sw("L’aéroport","المطار","airport"),sw("Le vol","الرحلة الجوية","airplane"),sw("La valise","حقيبة السفر","suitcase"),sw("Le sac à dos","حقيبة الظهر","backpack"),sw("Le tableau des départs","لوحة المغادرة","departure-screen"),sw("La porte d’embarquement","بوابة الصعود","gate"),sw("Le contrôle de sécurité","التفتيش الأمني","metal-detector"),sw("Le passeport","جواز السفر","passport"),sw("La carte d’embarquement","بطاقة الصعود","boarding-pass"),sw("Le siège","المقعد","seat"),sw("La ceinture de sécurité","حزام الأمان","seatbelt"),sw("Les vacances","الإجازة","luggage")],phrases:[
+  {fr:"Karim arrive à l’aéroport deux heures avant son vol.",ar:"يصل كريم إلى المطار قبل رحلته بساعتين."},
+  {fr:"Il enregistre ses bagages.",ar:"يسجّل أمتعته."},
+  {fr:"Il passe le contrôle de sécurité.",ar:"يمر عبر التفتيش الأمني."},
+  {fr:"Il monte dans l’avion.",ar:"يصعد إلى الطائرة."}
+ ],questions:[
+  {q:"Quand Karim arrive-t-il à l’aéroport ?",answers:["Une heure avant","Deux heures avant","Après le départ"],correct:1},
+  {q:"Que regarde Karim d’abord ?",answers:["Le tableau des départs","Son téléphone","Le menu du café"],correct:0},
+  {q:"Où est son siège ?",answers:["Près de la fenêtre","Près de la porte","Dans le couloir"],correct:0}
+ ]},
+ {id:"karim-missed",title:"Karim rate son vol",arTitle:"كريم يتأخر عن الرحلة",level:"A1+",cover:"/airport/sections/checkin.webp",paragraphs:[
+  "Karim se réveille en retard. Il regarde l’heure et se dépêche de préparer sa valise. Sur la route, il y a beaucoup de circulation et le taxi avance très lentement.",
+  "Quand Karim arrive à l’aéroport, le comptoir d’enregistrement est déjà fermé. Il court jusqu’à la porte d’embarquement, mais il est trop tard. L’avion est déjà parti.",
+  "Karim est déçu, mais il reste calme. Il va au comptoir de la compagnie aérienne et demande un autre billet. Heureusement, il trouve un vol pour le lendemain matin.",
+  "Cette fois, il décide d’arriver trois heures avant son départ."
+ ],words:[sw("En retard","متأخر","delay"),sw("Se dépêcher","يستعجل","traveler"),sw("La circulation","حركة المرور","car"),sw("Le taxi","سيارة الأجرة","taxi"),sw("Le comptoir","الكاونتر","checkin-counter"),sw("Fermé","مغلق","cancelled"),sw("Courir","يركض","traveler"),sw("Trop tard","فات الأوان","final-call"),sw("Le billet","التذكرة","ticket"),sw("La compagnie aérienne","شركة الطيران","airplane"),sw("Le lendemain","اليوم التالي","arrival-screen"),sw("Heureusement","لحسن الحظ","boarding-pass")],phrases:[
+  {fr:"Karim se réveille en retard.",ar:"يستيقظ كريم متأخرًا."},
+  {fr:"Il rate son vol.",ar:"تفوت كريم رحلته."},
+  {fr:"Il demande un autre billet.",ar:"يطلب تذكرة أخرى."},
+  {fr:"Il trouve un vol pour le lendemain.",ar:"يجد رحلة لليوم التالي."}
+ ],questions:[
+  {q:"Pourquoi Karim arrive-t-il en retard ?",answers:["Il y a beaucoup de circulation","Il perd son passeport","Le taxi est annulé"],correct:0},
+  {q:"Que trouve-t-il à l’aéroport ?",answers:["Le comptoir est fermé","L’avion l’attend","La porte est ouverte"],correct:0},
+  {q:"Quand est le nouveau vol ?",answers:["Le soir même","Le lendemain matin","La semaine suivante"],correct:1}
+ ]}
+];
+
 function speak(text:string){
  if(typeof window==="undefined"||!("speechSynthesis" in window))return;
  window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang="fr-FR";u.rate=.82;window.speechSynthesis.speak(u);
@@ -40,7 +76,11 @@ function speak(text:string){
 
 export default function AirportPage(){
  const [activeId,setActiveId]=useState<string|null>(null);
+ const [storyListOpen,setStoryListOpen]=useState(false);
+ const [activeStoryId,setActiveStoryId]=useState<string|null>(null);
+ const [answers,setAnswers]=useState<Record<number,number>>({});
  const active=useMemo(()=>sections.find(s=>s.id===activeId)??null,[activeId]);
+ const activeStory=useMemo(()=>stories.find(s=>s.id===activeStoryId)??null,[activeStoryId]);
  return <main className="airport-page">
   <header className="airport-topbar">
    <Link href="/kingdom" className="airport-back"><ArrowRight/><span><b>Carte du Royaume</b><small>خريطة المملكة</small></span></Link>
@@ -59,7 +99,11 @@ export default function AirportPage(){
     <div className="airport-section-number">{String(i+1).padStart(2,"0")}</div>
     <div className="airport-section-copy"><h3>{s.fr}</h3><small>{s.ar}</small><p>{s.words.length} mots</p></div>
     <div className="airport-section-thumb"><Image src={s.thumbnail} alt={s.fr} fill sizes="(max-width:560px) 42vw, 300px"/></div><ChevronLeft/>
-   </button>)}</div>
+   </button>)}
+   <button className="airport-section-card airport-story-entry" onClick={()=>setStoryListOpen(true)}>
+    <div className="airport-section-number">08</div><div className="airport-section-copy"><h3>Histoires courtes</h3><small>قصص مصغرة للقراءة</small><p>{stories.length} histoires</p></div>
+    <div className="airport-section-thumb"><Image src="/airport/sections/entree.webp" alt="Histoires courtes" fill sizes="(max-width:560px) 42vw, 300px"/></div><ChevronLeft/>
+   </button></div>
   </section>
 
   {active&&<div className="airport-modal" role="dialog" aria-modal="true"><section className="airport-panel">
@@ -68,6 +112,27 @@ export default function AirportPage(){
     <div className="airport-word-image"><Image src={word.image} alt={word.fr} fill sizes="(max-width:700px) 48vw, 240px"/></div>
     <div className="airport-word-copy"><button onClick={()=>speak(word.fr)} aria-label={`Écouter ${word.fr}`}><Volume2/></button><h3>{word.fr}</h3><small>{word.ar}</small></div>
    </article>)}</div>
+  </section></div>}
+
+  {storyListOpen&&!activeStory&&<div className="airport-modal" role="dialog" aria-modal="true"><section className="airport-panel story-list-panel">
+   <div className="airport-panel-head"><button onClick={()=>setStoryListOpen(false)} aria-label="Fermer"><X/></button><div><h2>Histoires courtes</h2><small>قصص مصغرة للقراءة</small></div></div>
+   <div className="airport-story-list">{stories.map((story,i)=><button key={story.id} className="airport-story-card" onClick={()=>{setActiveStoryId(story.id);setAnswers({});}}>
+    <div className="airport-story-cover"><Image src={story.cover} alt={story.title} fill sizes="(max-width:700px) 100vw, 420px"/></div>
+    <div><span>HISTOIRE {String(i+1).padStart(2,"0")} · {story.level}</span><h3>{story.title}</h3><small>{story.arTitle}</small><p>Lire, écouter et apprendre les mots importants.</p></div><ChevronLeft/>
+   </button>)}</div>
+  </section></div>}
+
+  {activeStory&&<div className="airport-modal" role="dialog" aria-modal="true"><section className="airport-panel story-reader-panel">
+   <div className="airport-panel-head story-head"><button onClick={()=>setActiveStoryId(null)} aria-label="Retour"><ArrowRight/></button><div><div className="airport-panel-thumb"><Image src={activeStory.cover} alt={activeStory.title} fill sizes="70px"/></div><h2>{activeStory.title}</h2><small>{activeStory.arTitle} · {activeStory.level}</small></div></div>
+   <article className="airport-story-reader">
+    <div className="story-reader-actions"><button onClick={()=>speak(activeStory.paragraphs.join(' '))}><Volume2/> Écouter toute l’histoire</button></div>
+    <h3>À l’aéroport</h3>{activeStory.paragraphs.map((p,i)=><p key={i}>{p}<button className="story-line-audio" onClick={()=>speak(p)} aria-label="Écouter le paragraphe"><Volume2/></button></p>)}
+   </article>
+   <section className="story-learning"><div className="story-section-title"><h3>Les mots importants</h3><small>الكلمات المهمة</small></div>
+    <div className="airport-vocab-grid story-word-grid">{activeStory.words.map(word=><article className="airport-word" key={word.fr}><div className="airport-word-image"><Image src={word.image} alt={word.fr} fill sizes="(max-width:700px) 48vw, 240px"/></div><div className="airport-word-copy"><button onClick={()=>speak(word.fr)}><Volume2/></button><h3>{word.fr}</h3><small>{word.ar}</small></div></article>)}</div>
+   </section>
+   <section className="story-learning"><div className="story-section-title"><h3>Les phrases importantes</h3><small>الجمل المهمة</small></div><div className="story-phrases">{activeStory.phrases.map(x=><article key={x.fr}><button onClick={()=>speak(x.fr)}><Volume2/></button><h4>{x.fr}</h4><p>{x.ar}</p></article>)}</div></section>
+   <section className="story-learning story-quiz"><div className="story-section-title"><h3>Compréhension</h3><small>فهم القصة</small></div>{activeStory.questions.map((q,qi)=><article key={q.q}><h4>{qi+1}. {q.q}</h4><div>{q.answers.map((a,ai)=><button key={a} className={answers[qi]===ai?(ai===q.correct?'correct':'wrong'):''} onClick={()=>setAnswers(v=>({...v,[qi]:ai}))}>{a}</button>)}</div></article>)}</section>
   </section></div>}
  </main>
 }

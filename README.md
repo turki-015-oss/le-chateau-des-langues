@@ -9,3 +9,9 @@
 
 ## v3.4 – Café Real Assets
 Clean product-only images, corrected product/image matching, no embedded text or prices.
+
+
+## v3.6 Airport Section Images
+- Replaced emoji section icons with realistic photographic thumbnails.
+- Enlarged section imagery on desktop and mobile.
+- Kept only the vocabulary count; no acquired/progress counter.

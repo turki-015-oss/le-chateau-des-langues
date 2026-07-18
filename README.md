@@ -38,3 +38,17 @@ Clean product-only images, corrected product/image matching, no embedded text or
 
 ## v4.2 — Real Station Images
 تم استبدال صور مراحل محطة القطار الثماني بصور فوتوغرافية مرتبطة مباشرة بكل درس.
+
+
+## v4.3 Zoo World
+- Added an open Zoo building on the kingdom map.
+- Added six animal sections with 70 unique animals.
+- Added French pronunciation, Arabic translation, search, and responsive animal cards.
+- Added the approved five-star zoo entrance image with a camel walking in the center.
+
+## v4.4 Premium Building Entrances
+- Added approved five-star entrance screens for café, castle, police, airport, train station, university, stadium, restaurant, market, library, hotel, and zoo.
+- Removed the phrase "العالم مفتوح الآن" from the implemented UI.
+- Preserved all map hotspot locations and navigation settings.
+- Added the approved emerald-and-gold application icon.
+- Opened university, stadium, restaurant, library, and hotel from their existing map positions.

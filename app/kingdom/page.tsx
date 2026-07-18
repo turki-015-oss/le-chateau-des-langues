@@ -63,20 +63,20 @@ type Place = {
 };
 
 const places: Place[] = [
-  { id: "university", fr: "L'Université", ar: "الجامعة", description: "الدراسة والمحاضرات والحياة الجامعية", x: 95, y: 105, w: 205, h: 245, open: false, icon: <GraduationCap /> },
-  { id: "stadium", fr: "Le Stade", ar: "ملعب كرة القدم", description: "المباريات والتدريب والإعلام الرياضي", x: 745, y: 170, w: 225, h: 210, open: false, icon: <Trophy /> },
-  { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 70, y: 385, w: 245, h: 185, path: "/cafe", open: true, icon: <Coffee /> },
-  { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب والشكوى", x: 760, y: 370, w: 220, h: 180, open: false, icon: <Utensils /> },
-  { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 55, y: 585, w: 275, h: 195, path: "/market", open: true, icon: <ShoppingBasket /> },
+  { id: "university", fr: "L'Université", ar: "الجامعة", description: "الدراسة والمحاضرات والحياة الجامعية", x: 95, y: 105, w: 205, h: 245, path: "/entrance/university", open: true, icon: <GraduationCap /> },
+  { id: "stadium", fr: "Le Stade", ar: "ملعب كرة القدم", description: "المباريات والتدريب والإعلام الرياضي", x: 745, y: 170, w: 225, h: 210, path: "/entrance/stadium", open: true, icon: <Trophy /> },
+  { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 70, y: 385, w: 245, h: 185, path: "/entrance/cafe", open: true, icon: <Coffee /> },
+  { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب والشكوى", x: 760, y: 370, w: 220, h: 180, path: "/entrance/restaurant", open: true, icon: <Utensils /> },
+  { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 55, y: 585, w: 275, h: 195, path: "/entrance/market", open: true, icon: <ShoppingBasket /> },
   { id: "court", fr: "Le Tribunal Royal", ar: "المحكمة الملكية", description: "القضايا والشهادة واللغة الرسمية", x: 455, y: 620, w: 215, h: 185, path: "/court", open: true, icon: <Scale /> },
   { id: "hospital", fr: "L'Hôpital", ar: "المستشفى", description: "الأعراض والمواعيد وطلب المساعدة", x: 665, y: 520, w: 205, h: 190, open: false, icon: <Building2 /> },
-  { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 850, y: 680, w: 150, h: 175, open: false, icon: <Trees /> },
-  { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 65, y: 790, w: 245, h: 185, open: false, icon: <BookOpen /> },
-  { id: "police", fr: "Le Commissariat", ar: "مركز الشرطة", description: "المواقف الأمنية وطلب المساعدة", x: 355, y: 785, w: 280, h: 200, path: "/police", open: true, icon: <Landmark /> },
-  { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 665, y: 760, w: 220, h: 190, open: false, icon: <Hotel /> },
-  { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 45, y: 1035, w: 300, h: 195, path: "/airport", open: true, icon: <Plane /> },
-  { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 700, y: 1025, w: 275, h: 220, path: "/station", open: true, icon: <Train /> },
-  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعات التعلّم الملكية", x: 330, y: 75, w: 365, h: 425, path: "/castle", open: true, icon: <Castle /> }
+  { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 850, y: 680, w: 150, h: 175, path: "/entrance/zoo", open: true, icon: <Trees /> },
+  { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 65, y: 790, w: 245, h: 185, path: "/entrance/library", open: true, icon: <BookOpen /> },
+  { id: "police", fr: "Le Commissariat", ar: "مركز الشرطة", description: "المواقف الأمنية وطلب المساعدة", x: 355, y: 785, w: 280, h: 200, path: "/entrance/police", open: true, icon: <Landmark /> },
+  { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 665, y: 760, w: 220, h: 190, path: "/entrance/hotel", open: true, icon: <Hotel /> },
+  { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 45, y: 1035, w: 300, h: 195, path: "/entrance/airport", open: true, icon: <Plane /> },
+  { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 700, y: 1025, w: 275, h: 220, path: "/entrance/station", open: true, icon: <Train /> },
+  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعات التعلّم الملكية", x: 330, y: 75, w: 365, h: 425, path: "/entrance/castle", open: true, icon: <Castle /> }
 ];
 
 

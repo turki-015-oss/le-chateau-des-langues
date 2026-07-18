@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Le Château des Langues",
+  title: "Le Château",
   description: "القلعة اللغوية",
   manifest: "/manifest.webmanifest",
   icons: {

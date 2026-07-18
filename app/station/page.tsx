@@ -5,14 +5,14 @@ import { useMemo, useState } from "react";
 import { ArrowRight, BookOpen, CalendarClock, ChevronLeft, CircleParking, Clock3, Headphones, Info, Luggage, MapPinned, Menu, Route, ScanLine, Search, Ticket, TrainFront, Volume2 } from "lucide-react";
 
 const sections = [
-  { id: "arrival", fr: "Arrivée à la gare", ar: "الوصول إلى المحطة", icon: MapPinned, image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=90" },
-  { id: "ticket", fr: "Acheter un billet", ar: "شراء التذكرة", icon: Ticket, image: "https://images.unsplash.com/photo-1535535112387-56ffe8db21ff?auto=format&fit=crop&w=1400&q=90" },
-  { id: "board", fr: "Tableau des départs", ar: "لوحة المغادرات", icon: CalendarClock, image: "https://images.unsplash.com/photo-1516939884455-1445c8652f83?auto=format&fit=crop&w=1400&q=90" },
-  { id: "platform", fr: "Le quai", ar: "الرصيف", icon: CircleParking, image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1400&q=90" },
-  { id: "control", fr: "Contrôle du billet", ar: "فحص التذكرة", icon: ScanLine, image: "https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1400&q=90" },
-  { id: "boarding", fr: "Monter dans le train", ar: "الصعود إلى القطار", icon: TrainFront, image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1400&q=90" },
-  { id: "inside", fr: "Dans le train", ar: "داخل القطار", icon: Luggage, image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1400&q=90" },
-  { id: "connection", fr: "Arrivée et correspondance", ar: "الوصول وتغيير القطار", icon: Route, image: "https://images.unsplash.com/photo-1556695736-d287caebc48e?auto=format&fit=crop&w=1400&q=90" },
+  { id: "arrival", fr: "Arrivée à la gare", ar: "الوصول إلى المحطة", icon: MapPinned, image: "https://unsplash.com/photos/vsEkHU5Vpn8/download?force=true&w=1600" },
+  { id: "ticket", fr: "Acheter un billet", ar: "شراء التذكرة", icon: Ticket, image: "https://unsplash.com/photos/TnLUf0kSJEI/download?force=true&w=1600" },
+  { id: "board", fr: "Tableau des départs", ar: "لوحة المغادرات", icon: CalendarClock, image: "https://unsplash.com/photos/p022og65qHQ/download?force=true&w=1600" },
+  { id: "platform", fr: "Le quai", ar: "الرصيف", icon: CircleParking, image: "https://unsplash.com/photos/guLjfcsKC-o/download?force=true&w=1600" },
+  { id: "control", fr: "Contrôle du billet", ar: "فحص التذكرة", icon: ScanLine, image: "https://unsplash.com/photos/QbxnM4Hxz6c/download?force=true&w=1600" },
+  { id: "boarding", fr: "Monter dans le train", ar: "الصعود إلى القطار", icon: TrainFront, image: "https://unsplash.com/photos/XAezAuhVHts/download?force=true&w=1600" },
+  { id: "inside", fr: "Dans le train", ar: "داخل القطار", icon: Luggage, image: "https://unsplash.com/photos/rt6YfAyWAg0/download?force=true&w=1600" },
+  { id: "connection", fr: "Arrivée et correspondance", ar: "الوصول وتغيير القطار", icon: Route, image: "https://unsplash.com/photos/dUJWfpKyIYc/download?force=true&w=1600" },
 ];
 
 type Phrase = [string,string];

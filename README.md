@@ -34,3 +34,7 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - French speech synthesis for dialogues and vocabulary.
 - "Karim au commissariat" short story.
 - Interactive comprehension exercise.
+
+
+## v4.2 — Real Station Images
+تم استبدال صور مراحل محطة القطار الثماني بصور فوتوغرافية مرتبطة مباشرة بكل درس.

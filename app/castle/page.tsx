@@ -12,7 +12,7 @@ import {
   LockKeyhole,
   Medal,
   ScrollText,
-  ShieldCheck,
+  Search,
   Sparkles,
   Volume2
 } from "lucide-react";
@@ -39,13 +39,14 @@ const halls: Hall[] = [
     badge: "Nouveau"
   },
   {
-    id: "princes",
-    fr: "La Salle des Princes",
-    ar: "قاعة الأمراء",
-    description: "الحوار الرسمي، التعارف، والألقاب الملكية.",
-    path: "/princes",
+    id: "conjugation",
+    fr: "La Salle de Conjugaison",
+    ar: "قاعة تصريف الأفعال",
+    description: "جميع تصريفات الأفعال الفرنسية مع بحث سريع عن أي فعل.",
+    path: "/conjugation",
     open: true,
-    icon: <ShieldCheck />
+    icon: <Search />,
+    badge: "Nouveau"
   },
   {
     id: "court",

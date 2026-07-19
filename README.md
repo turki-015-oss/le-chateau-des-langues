@@ -58,3 +58,9 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - Added correct reflexive pronouns in displayed conjugations.
 - Added curated, non-repeated present-tense examples with verified Arabic translations for key verbs.
 - Search now finds pronominal verbs by either the full form or the base verb.
+
+
+## v4.9
+- أمثلة سياقية مراجعة في زمن الحاضر لجميع الأفعال الضميرية الموجودة.
+- ترجمة عربية كاملة لكل جملة مع الضمير.
+- تحسين تصريف الأفعال الضميرية الشاذة: s’appeler، s’inquiéter، se souvenir، se comprendre.

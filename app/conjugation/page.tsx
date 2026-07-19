@@ -4,7 +4,7 @@ import {useRouter} from "next/navigation";
 import {ArrowLeft,BookOpen,Search,Volume2,Star,ChevronDown} from "lucide-react";
 
 const P=["je","tu","il / elle","nous","vous","ils / elles"];
-const VERBS=['être', 'avoir', 'aller', 'faire', 'pouvoir', 'vouloir', 'devoir', 'savoir', 'venir', 'voir', 'dire', 'prendre', 'mettre', 'partir', 'sortir', 'dormir', 'lire', 'écrire', 'boire', 'croire', 'recevoir', 'vivre', 'connaître', 'naître', 'mourir', 'courir', 'tenir', 'ouvrir', 'offrir', 'attendre', 'entendre', 'répondre', 'vendre', 'perdre', 'rendre', 'descendre', 'apprendre', 'comprendre', 'surprendre', 'parler', 'aimer', 'donner', 'travailler', 'chercher', 'trouver', 'penser', 'demander', 'regarder', 'écouter', 'jouer', 'arriver', 'rester', 'entrer', 'porter', 'passer', 'marcher', 'habiter', 'étudier', 'manger', 'commencer', 'acheter', 'appeler', 'préférer', 'espérer', 'envoyer', 'payer', 'essayer', 'nettoyer', 'employer', 'finir', 'choisir', 'réussir', 'grandir', 'grossir', 'maigrir', 'réfléchir', 'remplir', 'obéir', 'punir', 'bâtir', 'rougir', 'blanchir', 'agir', 'servir', 'sentir', 'mentir', 'couvrir', 'découvrir', 'souffrir', 'cueillir', 'accueillir', 'conduire', 'produire', 'traduire', 'construire', 'détruire', 'cuire', 'suivre', 'poursuivre', 'rire', 'sourire', 'plaire', 'taire', 'décrire', 'inscrire', 'reconnaître', 'paraître', 'apparaître', 'disparaître', 'valoir', 'falloir', 'pleuvoir', 'asseoir', 'fuir', 'conclure', 'inclure', 'exclure', 'résoudre', 'craindre', 'peindre', 'joindre', 'atteindre', 'éteindre', 'vaincre', 'convaincre', 'battre', 'rompre', 'interrompre', 'promettre', 'permettre', 'admettre', 'remettre', 'commettre', 'transmettre', 'reprendre', 'entreprendre', 'devenir', 'revenir', 'parvenir', 'prévenir', 'intervenir', 'obtenir', 'retenir', 'maintenir', 'parcourir', 'secourir'];
+const VERBS=['être', 'avoir', 'aller', 'faire', 'pouvoir', 'vouloir', 'devoir', 'savoir', 'venir', 'voir', 'dire', 'prendre', 'mettre', 'partir', 'sortir', 'dormir', 'lire', 'écrire', 'boire', 'croire', 'recevoir', 'vivre', 'connaître', 'naître', 'mourir', 'courir', 'tenir', 'ouvrir', 'offrir', 'attendre', 'entendre', 'répondre', 'vendre', 'perdre', 'rendre', 'descendre', 'apprendre', 'comprendre', 'surprendre', 'parler', 'aimer', 'donner', 'travailler', 'chercher', 'trouver', 'penser', 'demander', 'regarder', 'écouter', 'jouer', 'arriver', 'rester', 'entrer', 'porter', 'passer', 'marcher', 'habiter', 'étudier', 'manger', 'commencer', 'acheter', 'appeler', 'préférer', 'espérer', 'envoyer', 'payer', 'essayer', 'nettoyer', 'employer', 'finir', 'choisir', 'réussir', 'grandir', 'grossir', 'maigrir', 'réfléchir', 'remplir', 'obéir', 'punir', 'bâtir', 'rougir', 'blanchir', 'agir', 'servir', 'sentir', 'mentir', 'couvrir', 'découvrir', 'souffrir', 'cueillir', 'accueillir', 'conduire', 'produire', 'traduire', 'construire', 'détruire', 'cuire', 'suivre', 'poursuivre', 'rire', 'sourire', 'plaire', 'taire', 'décrire', 'inscrire', 'reconnaître', 'paraître', 'apparaître', 'disparaître', 'valoir', 'falloir', 'pleuvoir', 'asseoir', 'fuir', 'conclure', 'inclure', 'exclure', 'résoudre', 'craindre', 'peindre', 'joindre', 'atteindre', 'éteindre', 'vaincre', 'convaincre', 'battre', 'rompre', 'interrompre', 'promettre', 'permettre', 'admettre', 'remettre', 'commettre', 'transmettre', 'reprendre', 'entreprendre', 'devenir', 'revenir', 'parvenir', 'prévenir', 'intervenir', 'obtenir', 'retenir', 'maintenir', 'parcourir', 'secourir', 'se lever', 'se laver', 'se coucher', 'se réveiller', "s’habiller", "se déshabiller", 'se préparer', 'se présenter', 'se reposer', 'se promener', 'se dépêcher', 'se marier', 'se souvenir', "s’appeler", "s’intéresser", "s’inquiéter", 'se sentir', 'se tromper', 'se perdre', 'se rencontrer', 'se parler', 'se voir', 'se comprendre', 'se demander', 'se servir', 'se rendre', 'se mettre', "s’arrêter", "s’amuser", 'se concentrer'];
 const AR:Record<string,string>={
   "être": "يكون",
   "avoir": "يملك",
@@ -152,45 +152,86 @@ const AR:Record<string,string>={
   "maintenir": "يحافظ",
   "parcourir": "يجوب",
   "secourir": "ينقذ",
+  "se lever": "يستيقظ / ينهض",
+  "se laver": "يغتسل",
+  "se coucher": "يذهب إلى النوم",
+  "se réveiller": "يستيقظ",
+  "s’habiller": "يرتدي ملابسه",
+  "se déshabiller": "يخلع ملابسه",
+  "se préparer": "يستعد",
+  "se présenter": "يعرّف بنفسه",
+  "se reposer": "يستريح",
+  "se promener": "يتنزّه",
+  "se dépêcher": "يسرع",
+  "se marier": "يتزوج",
+  "se souvenir": "يتذكّر",
+  "s’appeler": "يُدعى / اسمه",
+  "s’intéresser": "يهتمّ بـ",
+  "s’inquiéter": "يقلق",
+  "se sentir": "يشعر",
+  "se tromper": "يخطئ",
+  "se perdre": "يضلّ الطريق",
+  "se rencontrer": "يلتقي",
+  "se parler": "يتحدث بعضهم مع بعض",
+  "se voir": "يرى بعضهم بعضًا",
+  "se comprendre": "يفهم بعضهم بعضًا",
+  "se demander": "يتساءل",
+  "se servir": "يستخدم / يستعين بـ",
+  "se rendre": "يتوجّه",
+  "se mettre": "يبدأ / يضع نفسه",
+  "s’arrêter": "يتوقف",
+  "s’amuser": "يستمتع",
+  "se concentrer": "يركّز",
 };
 const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 "être":{p:["suis","es","est","sommes","êtes","sont"],pp:"été",f:"ser",imp:"ét"},"avoir":{p:["ai","as","a","avons","avez","ont"],pp:"eu",f:"aur",imp:"av"},"aller":{p:["vais","vas","va","allons","allez","vont"],pp:"allé",f:"ir",imp:"all"},"faire":{p:["fais","fais","fait","faisons","faites","font"],pp:"fait",f:"fer"},"pouvoir":{p:["peux","peux","peut","pouvons","pouvez","peuvent"],pp:"pu",f:"pourr"},"vouloir":{p:["veux","veux","veut","voulons","voulez","veulent"],pp:"voulu",f:"voudr"},"devoir":{p:["dois","dois","doit","devons","devez","doivent"],pp:"dû",f:"devr"},"savoir":{p:["sais","sais","sait","savons","savez","savent"],pp:"su",f:"saur"},"venir":{p:["viens","viens","vient","venons","venez","viennent"],pp:"venu",f:"viendr"},"tenir":{p:["tiens","tiens","tient","tenons","tenez","tiennent"],pp:"tenu",f:"tiendr"},"voir":{p:["vois","vois","voit","voyons","voyez","voient"],pp:"vu",f:"verr"},"dire":{p:["dis","dis","dit","disons","dites","disent"],pp:"dit",f:"dir"},"prendre":{p:["prends","prends","prend","prenons","prenez","prennent"],pp:"pris",f:"prendr"},"mettre":{p:["mets","mets","met","mettons","mettez","mettent"],pp:"mis",f:"mettr"},"partir":{p:["pars","pars","part","partons","partez","partent"],pp:"parti",f:"partir"},"sortir":{p:["sors","sors","sort","sortons","sortez","sortent"],pp:"sorti",f:"sortir"},"dormir":{p:["dors","dors","dort","dormons","dormez","dorment"],pp:"dormi",f:"dormir"},"lire":{p:["lis","lis","lit","lisons","lisez","lisent"],pp:"lu",f:"lir"},"écrire":{p:["écris","écris","écrit","écrivons","écrivez","écrivent"],pp:"écrit",f:"écrir"},"boire":{p:["bois","bois","boit","buvons","buvez","boivent"],pp:"bu",f:"boir"},"croire":{p:["crois","crois","croit","croyons","croyez","croient"],pp:"cru",f:"croir"},"recevoir":{p:["reçois","reçois","reçoit","recevons","recevez","reçoivent"],pp:"reçu",f:"recevr"},"vivre":{p:["vis","vis","vit","vivons","vivez","vivent"],pp:"vécu",f:"vivr"},"connaître":{p:["connais","connais","connaît","connaissons","connaissez","connaissent"],pp:"connu",f:"connaîtr"},"naître":{p:["nais","nais","naît","naissons","naissez","naissent"],pp:"né",f:"naîtr"},"mourir":{p:["meurs","meurs","meurt","mourons","mourez","meurent"],pp:"mort",f:"mourr"},"courir":{p:["cours","cours","court","courons","courez","courent"],pp:"couru",f:"courr"},"ouvrir":{p:["ouvre","ouvres","ouvre","ouvrons","ouvrez","ouvrent"],pp:"ouvert",f:"ouvrir"},"offrir":{p:["offre","offres","offre","offrons","offrez","offrent"],pp:"offert",f:"offrir"}};
 
-const stem=(v:string)=>v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim();
-const group=(v:string)=>v.endsWith("er")&&v!=="aller"?"1er groupe":v.endsWith("ir")?"2e / 3e groupe":"3e groupe";
-const pres=(v:string)=>I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]);
-const part=(v:string)=>I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u");
-const fs=(v:string)=>I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v);
+const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
+const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
+const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
+const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
+const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
 const imp=(v:string)=>{const r=I[v]?.imp||pres(v)[3].replace(/ons$/," ").trim();return [r+"ais",r+"ais",r+"ait",r+"ions",r+"iez",r+"aient"]};
 const fut=(v:string)=>["ai","as","a","ons","ez","ont"].map(x=>fs(v)+x);
 const cond=(v:string)=>["ais","ais","ait","ions","iez","aient"].map(x=>fs(v)+x);
 const sub=(v:string)=>{const r=pres(v)[5].replace(/ent$/," ").trim();return [r+"e",r+"es",r+"e",r+"ions",r+"iez",r+"ent"]};
-const aux=(v:string)=>["aller","venir","partir","sortir","naître","mourir","arriver","entrer","rester","descendre","retourner","tomber"].includes(v)?"être":"avoir";
+const aux=(v:string)=>isPro(v)?"être":["aller","venir","partir","sortir","naître","mourir","arriver","entrer","rester","descendre","retourner","tomber"].includes(v)?"être":"avoir";
 const AP={avoir:["ai","as","a","avons","avez","ont"],être:["suis","es","est","sommes","êtes","sont"]};
 const AI={avoir:["avais","avais","avait","avions","aviez","avaient"],être:["étais","étais","était","étions","étiez","étaient"]};
 const AF={avoir:["aurai","auras","aura","aurons","aurez","auront"],être:["serai","seras","sera","serons","serez","seront"]};
-const rows=(x:string[])=>x.map((f,i)=>P[i]+" "+f);
-const contexts=[
-  ["aujourd’hui avec beaucoup d’attention.","اليوم باهتمام كبير."],
-  ["chaque matin avant de commencer la journée.","كل صباح قبل بدء اليوم."],
-  ["dans une situation nouvelle et intéressante.","في موقف جديد ومثير للاهتمام."],
-  ["avec mes collègues pendant la réunion.","مع زملائي أثناء الاجتماع."],
-  ["quand le moment est vraiment important.","عندما تكون اللحظة مهمة فعلًا."],
-  ["pour atteindre un objectif clair.","لتحقيق هدف واضح."],
-  ["sans hésiter devant les autres.","من دون تردد أمام الآخرين."],
-  ["avec calme malgré les difficultés.","بهدوء رغم الصعوبات."],
-  ["dans la ville pendant le week-end.","في المدينة خلال عطلة نهاية الأسبوع."],
-  ["pour mieux comprendre cette expérience.","لفهم هذه التجربة بصورة أفضل."],
-  ["après avoir préparé tous les détails.","بعد تجهيز جميع التفاصيل."],
-  ["avec confiance dans ce nouveau projet.","بثقة في هذا المشروع الجديد."]
+const vowel=/^[aeiouyhàâäéèêëîïôöùûü]/i;
+const proPrefix=(i:number,form:string)=>{const short=vowel.test(form);return [[short?"j’":"je ",short?"m’":"me "],["tu ",short?"t’":"te "],["il / elle ",short?"s’":"se "],["nous ","nous "],["vous ","vous "],["ils / elles ",short?"s’":"se "]][i]};
+const rows=(x:string[],v?:string)=>x.map((f,i)=>{if(!v||!isPro(v))return P[i]+" "+f;const [sub,ref]=proPrefix(i,f);return sub+ref+f});
+const SMART:Record<string,[string,string][]>= {
+"faire":[["Je fais mes devoirs avant le dîner.","أنجز واجباتي قبل العشاء."],["Tu fais un gâteau pour l’anniversaire de ta sœur.","أنت تصنع كعكة لعيد ميلاد أختك."],["Il fait du sport trois fois par semaine.","هو يمارس الرياضة ثلاث مرات في الأسبوع."],["Nous faisons les courses ensemble le vendredi.","نحن نتسوّق معًا يوم الجمعة."],["Vous faites un excellent travail sur ce projet.","أنتم تقومون بعمل ممتاز في هذا المشروع."],["Ils font une promenade après le déjeuner.","هم يذهبون في نزهة بعد الغداء."]],
+"regarder":[["Je regarde les informations chaque soir.","أشاهد الأخبار كل مساء."],["Tu regardes la route pendant que tu conduis.","أنت تنظر إلى الطريق أثناء القيادة."],["Elle regarde une série française sans sous-titres.","هي تشاهد مسلسلًا فرنسيًا من دون ترجمة."],["Nous regardons les enfants jouer dans le jardin.","نحن نشاهد الأطفال وهم يلعبون في الحديقة."],["Vous regardez ce tableau avec beaucoup d’attention.","أنتم تنظرون إلى هذه اللوحة باهتمام كبير."],["Ils regardent le match dans un café près du stade.","هم يشاهدون المباراة في مقهى قرب الملعب."]],
+"se lever":[["Je me lève à six heures pour aller au travail.","أستيقظ الساعة السادسة للذهاب إلى العمل."],["Tu te lèves tôt quand tu as un examen.","أنت تستيقظ مبكرًا عندما يكون لديك اختبار."],["Elle se lève doucement pour ne pas réveiller son bébé.","هي تنهض بهدوء حتى لا توقظ طفلها."],["Nous nous levons avant le lever du soleil.","نحن نستيقظ قبل شروق الشمس."],["Vous vous levez dès que le réveil sonne.","أنتم تستيقظون فور رنين المنبّه."],["Ils se lèvent tard pendant les vacances.","هم يستيقظون متأخرين خلال الإجازة."]],
+"se laver":[["Je me lave les mains avant de manger.","أغسل يديّ قبل الأكل."],["Tu te laves le visage à l’eau froide.","أنت تغسل وجهك بالماء البارد."],["Il se lave après son entraînement.","هو يغتسل بعد تمرينه."],["Nous nous lavons rapidement avant de sortir.","نحن نغتسل بسرعة قبل الخروج."],["Vous vous lavez soigneusement les mains.","أنتم تغسلون أيديكم بعناية."],["Elles se lavent les cheveux le samedi.","هنّ يغسلن شعورهن يوم السبت."]],
+"se coucher":[["Je me couche tôt les jours de travail.","أذهب إلى النوم مبكرًا في أيام العمل."],["Tu te couches après avoir terminé ton livre.","أنت تذهب إلى النوم بعد إنهاء كتابك."],["Elle se couche dès que les enfants dorment.","هي تذهب إلى النوم فور نوم الأطفال."],["Nous nous couchons plus tard le week-end.","نحن نذهب إلى النوم متأخرين أكثر في عطلة نهاية الأسبوع."],["Vous vous couchez à une heure régulière.","أنتم تذهبون إلى النوم في وقت منتظم."],["Ils se couchent après le film.","هم يذهبون إلى النوم بعد الفيلم."]],
+"se réveiller":[["Je me réveille sans réveil le vendredi.","أستيقظ من دون منبّه يوم الجمعة."],["Tu te réveilles au bruit de la pluie.","أنت تستيقظ على صوت المطر."],["Il se réveille plusieurs fois pendant la nuit.","هو يستيقظ عدة مرات أثناء الليل."],["Nous nous réveillons de bonne humeur.","نحن نستيقظ بمزاج جيد."],["Vous vous réveillez avant vos enfants.","أنتم تستيقظون قبل أطفالكم."],["Elles se réveillent dès l’aube.","هنّ يستيقظن مع طلوع الفجر."]],
+"s’habiller":[["Je m’habille rapidement avant de partir.","أرتدي ملابسي بسرعة قبل المغادرة."],["Tu t’habilles élégamment pour la cérémonie.","أنت ترتدي ملابس أنيقة من أجل الحفل."],["Elle s’habille en noir pour le travail.","هي ترتدي اللون الأسود للعمل."],["Nous nous habillons chaudement en hiver.","نحن نرتدي ملابس دافئة في الشتاء."],["Vous vous habillez selon le code de l’entreprise.","أنتم ترتدون الملابس وفق نظام الشركة."],["Ils s’habillent seuls depuis cette année.","هم يرتدون ملابسهم بأنفسهم منذ هذا العام."]],
+"se préparer":[["Je me prépare pour mon entretien d’embauche.","أستعد لمقابلة العمل."],["Tu te prépares un café avant de sortir.","أنت تحضّر لنفسك قهوة قبل الخروج."],["Il se prépare mentalement pour la compétition.","هو يستعد ذهنيًا للمنافسة."],["Nous nous préparons à recevoir nos invités.","نحن نستعد لاستقبال ضيوفنا."],["Vous vous préparez pour un long voyage.","أنتم تستعدون لرحلة طويلة."],["Elles se préparent dans la loge.","هنّ يستعددن في غرفة التجهيز."]],
+"se reposer":[["Je me repose une heure après le déjeuner.","أستريح ساعة بعد الغداء."],["Tu te reposes mieux loin du bruit.","أنت تستريح بصورة أفضل بعيدًا عن الضوضاء."],["Elle se repose avant son service de nuit.","هي تستريح قبل مناوبتها الليلية."],["Nous nous reposons à l’ombre des arbres.","نحن نستريح في ظل الأشجار."],["Vous vous reposez après une semaine chargée.","أنتم تستريحون بعد أسبوع حافل."],["Ils se reposent dans leur chambre d’hôtel.","هم يستريحون في غرفتهم بالفندق."]],
+"se promener":[["Je me promène au bord de la mer chaque matin.","أتجوّل على شاطئ البحر كل صباح."],["Tu te promènes avec ton chien dans le parc.","أنت تتنزّه مع كلبك في الحديقة."],["Elle se promène dans les vieux quartiers de la ville.","هي تتجوّل في أحياء المدينة القديمة."],["Nous nous promenons après le dîner.","نحن نتنزّه بعد العشاء."],["Vous vous promenez malgré le temps frais.","أنتم تتنزّهون رغم برودة الطقس."],["Ils se promènent le long de la rivière.","هم يتنزّهون بمحاذاة النهر."]],
+"s’appeler":[["Je m’appelle Turki et je viens d’Arabie saoudite.","اسمي تركي وأنا من المملكة العربية السعودية."],["Tu t’appelles comment exactement ?","ما اسمك بالضبط؟"],["Elle s’appelle Lina et travaille à l’hôpital.","اسمها لينا وتعمل في المستشفى."],["Nous nous appelons chaque semaine.","نحن نتصل ببعضنا كل أسبوع."],["Vous vous appelez Monsieur Bernard, n’est-ce pas ?","اسمك السيد برنار، أليس كذلك؟"],["Ils s’appellent Adam et Sami.","اسماهما آدم وسامي."]]
+};
+const fallback=[
+["dans une situation concrète de la vie quotidienne.","في موقف واقعي من الحياة اليومية."],
+["avec soin pour obtenir un bon résultat.","بعناية للحصول على نتيجة جيدة."],
+["au bon moment et sans hésitation.","في الوقت المناسب ومن دون تردد."],
+["ensemble afin de terminer cette tâche.","معًا من أجل إنهاء هذه المهمة."],
+["de manière professionnelle devant l’équipe.","بأسلوب مهني أمام الفريق."],
+["pour atteindre un objectif clairement défini.","لتحقيق هدف محدد بوضوح."]
 ];
 function speak(t:string){if(typeof window==='undefined'||!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.82;u.pitch=1;const voices=speechSynthesis.getVoices();u.voice=voices.find(x=>x.lang.toLowerCase().startsWith('fr'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}
 function cap(s:string){return s.charAt(0).toUpperCase()+s.slice(1)}
-function ExampleRow({form,index,seed}:{form:string,index:number,seed:number}){const c=contexts[(index+seed)%contexts.length];const sentence=cap(form)+" "+c[0];return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><div className="conj-example-copy"><p dir="ltr">{sentence}</p><small>{c[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(sentence)} aria-label="نطق المثال"><Volume2/></button></article>}
-function Block({title,forms,seed}:{title:string,forms:string[],seed:number}){return <section className="conj-tense-pro"><h3>{title}<span>{forms.length} formes</span></h3><div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} seed={seed}/>)}</div></section>}
+function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){const curated=title==="Présent"?SMART[verb]?.[index]:undefined;const sentence=curated?.[0]||cap(form)+" "+fallback[index%fallback.length][0];const ar=curated?.[1]||fallback[index%fallback.length][1];return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><div className="conj-example-copy"><p dir="ltr">{sentence}</p><small>{ar}</small></div><button className="conj-sentence-audio" onClick={()=>speak(sentence)} aria-label="نطق المثال"><Volume2/></button></article>}
+function Block({title,forms,verb}:{title:string,forms:string[],verb:string}){return <section className="conj-tense-pro"><h3>{title}<span>{forms.length} formes</span></h3><div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
 export default function Page(){
  const r=useRouter(),[q,setQ]=useState(""),[v,setV]=useState("être"),[tab,setTab]=useState("Indicatif"),[openSearch,setOpenSearch]=useState(false);
- const list=useMemo(()=>VERBS.filter(x=>x.includes(q.toLowerCase().trim())).slice(0,100),[q]);
+ const list=useMemo(()=>VERBS.filter(x=>x.toLowerCase().includes(q.toLowerCase().trim())||baseVerb(x).toLowerCase().includes(q.toLowerCase().trim())).slice(0,120),[q]);
  const p=pres(v),pp=part(v),a=aux(v) as "avoir"|"être";
  const tabs=["Indicatif","Conditionnel","Subjonctif","Impératif","Infinitif","Participe","Gérondif"];
  return <main className="conj-page conj-pro" dir="rtl">
@@ -198,12 +239,12 @@ export default function Page(){
   <section className="conj-search-wrap"><div className="conj-search"><Search/><input dir="ltr" value={q} onFocus={()=>setOpenSearch(true)} onChange={e=>{setQ(e.target.value);setOpenSearch(true)}} placeholder="Rechercher un verbe..."/><ChevronDown/></div>{openSearch&&q&&<div className="conj-results">{list.length?list.map(x=><button key={x} onClick={()=>{setV(x);setQ('');setOpenSearch(false)}} dir="ltr"><strong>{x}</strong><small dir="rtl">{AR[x]}</small><span>{group(x)}</span></button>):<p>لم يُعثر على الفعل في الإصدار الحالي.</p>}</div>}</section>
   <nav className="conj-tabs" dir="ltr">{tabs.map(x=><button key={x} className={tab===x?'active':''} onClick={()=>setTab(x)}>{x}</button>)}</nav>
   <section className="conj-heading"><div><span>{group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><p>تصريفات واضحة، أمثلة مختلفة، وترجمة عربية مع نطق فرنسي احترافي.</p></div><button onClick={()=>speak(v)}><Volume2/></button></section>
-  <section className="conj-content">{tab==='Indicatif'&&<><h2>Indicatif</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(p)} seed={0}/><Block title="Passé composé" forms={rows(AP[a].map(x=>x+' '+pp))} seed={2}/><Block title="Imparfait" forms={rows(imp(v))} seed={4}/><Block title="Plus-que-parfait" forms={rows(AI[a].map(x=>x+' '+pp))} seed={6}/><Block title="Futur simple" forms={rows(fut(v))} seed={8}/><Block title="Futur antérieur" forms={rows(AF[a].map(x=>x+' '+pp))} seed={10}/></div></>}
-  {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(cond(v))} seed={1}/><Block title="Passé" forms={rows(["aurais","aurais","aurait","aurions","auriez","auraient"].map(x=>x+' '+pp))} seed={7}/></div></>}
-  {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro"><Block title="Présent" forms={sub(v).map((x,i)=>["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)} seed={3}/><Block title="Passé" forms={["que j’aie","que tu aies","qu’il ait","que nous ayons","que vous ayez","qu’ils aient"].map(x=>x+' '+pp)} seed={9}/></div></>}
-  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro"><Block title="Présent" forms={[p[1],p[3],p[4]]} seed={4}/><Block title="Passé" forms={["aie "+pp,"ayons "+pp,"ayez "+pp]} seed={8}/></div></>}
-  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Présent" forms={[v]} seed={2}/><Block title="Passé" forms={[a+' '+pp]} seed={6}/></div></>}
-  {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro"><Block title="Présent" forms={[p[3].replace(/ons$/,'ant')]} seed={5}/><Block title="Passé" forms={[pp,a+' '+pp]} seed={11}/></div></>}
-  {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro"><Block title="Présent" forms={["en "+p[3].replace(/ons$/,'ant')]} seed={0}/><Block title="Passé" forms={["en ayant "+pp]} seed={7}/></div></>}</section>
+  <section className="conj-content">{tab==='Indicatif'&&<><h2>Indicatif</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(p,v)} verb={v}/><Block title="Passé composé" forms={rows(AP[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Imparfait" forms={rows(imp(v),v)} verb={v}/><Block title="Plus-que-parfait" forms={rows(AI[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Futur simple" forms={rows(fut(v),v)} verb={v}/><Block title="Futur antérieur" forms={rows(AF[a].map(x=>x+' '+pp),v)} verb={v}/></div></>}
+  {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(cond(v),v)} verb={v}/><Block title="Passé" forms={rows(["aurais","aurais","aurait","aurions","auriez","auraient"].map(x=>x+' '+pp),v)} verb={v}/></div></>}
+  {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro"><Block title="Présent" forms={sub(v).map((x,i)=>["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)} verb={v}/><Block title="Passé" forms={["que j’aie","que tu aies","qu’il ait","que nous ayons","que vous ayez","qu’ils aient"].map(x=>x+' '+pp)} verb={v}/></div></>}
+  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro"><Block title="Présent" forms={[p[1],p[3],p[4]]} verb={v}/><Block title="Passé" forms={["aie "+pp,"ayons "+pp,"ayez "+pp]} verb={v}/></div></>}
+  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Présent" forms={[v]} verb={v}/><Block title="Passé" forms={[a+' '+pp]} verb={v}/></div></>}
+  {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro"><Block title="Présent" forms={[p[3].replace(/ons$/,'ant')]} verb={v}/><Block title="Passé" forms={[pp,a+' '+pp]} verb={v}/></div></>}
+  {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro"><Block title="Présent" forms={["en "+p[3].replace(/ons$/,'ant')]} verb={v}/><Block title="Passé" forms={["en ayant "+pp]} verb={v}/></div></>}</section>
  </main>
 }

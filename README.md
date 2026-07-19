@@ -52,3 +52,9 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - Preserved all map hotspot locations and navigation settings.
 - Added the approved emerald-and-gold application icon.
 - Opened university, stadium, restaurant, library, and hotel from their existing map positions.
+
+## v4.7.0
+- Added a first expanded set of French pronominal verbs (`se` / `s’`).
+- Added correct reflexive pronouns in displayed conjugations.
+- Added curated, non-repeated present-tense examples with verified Arabic translations for key verbs.
+- Search now finds pronominal verbs by either the full form or the base verb.

@@ -251,6 +251,17 @@ const SMART:Record<string,[string,string][]>= {
 ,"mettre":[["Je mets les clés dans la poche de ma veste.","أنا أضع المفاتيح في جيب سترتي."],["Tu mets la table avant l’arrivée des invités.","أنت ترتب المائدة قبل وصول الضيوف."],["Elle met vingt minutes pour se rendre au bureau.","هي تستغرق عشرين دقيقة للوصول إلى المكتب."],["Nous mettons nos téléphones en mode silencieux.","نحن نضع هواتفنا على الوضع الصامت."],["Vous mettez la signature au bas du contrat.","أنتم تضعون التوقيع أسفل العقد."],["Ils mettent leurs manteaux avant de sortir.","هم يرتدون معاطفهم قبل الخروج."]]
 ,"partir":[["Je pars de chez moi à sept heures précises.","أنا أغادر منزلي عند الساعة السابعة تمامًا."],["Tu pars en vacances avec ta famille en août.","أنت تسافر في إجازة مع عائلتك في شهر أغسطس."],["Elle part travailler à l’étranger pendant six mois.","هي تغادر للعمل في الخارج لمدة ستة أشهر."],["Nous partons dès que le taxi arrive.","نحن نغادر بمجرد وصول سيارة الأجرة."],["Vous partez de la porte numéro douze.","أنتم تنطلقون من البوابة رقم اثني عشر."],["Ils partent avant la fin de la cérémonie.","هم يغادرون قبل نهاية الحفل."]]
 ,"lire":[["Je lis un article économique pendant ma pause.","أنا أقرأ مقالًا اقتصاديًا أثناء استراحتي."],["Tu lis les instructions avant d’utiliser l’appareil.","أنت تقرأ التعليمات قبل استخدام الجهاز."],["Elle lit une histoire à ses enfants chaque soir.","هي تقرأ قصة لأطفالها كل مساء."],["Nous lisons les commentaires des clients avec attention.","نحن نقرأ تعليقات العملاء باهتمام."],["Vous lisez le contrat avant de le signer.","أنتم تقرؤون العقد قبل توقيعه."],["Ils lisent les nouvelles sur leur téléphone dans le train.","هم يقرؤون الأخبار على هواتفهم في القطار."]]
+,"sortir":[["Je sors du bureau à dix-huit heures.","أنا أخرج من المكتب الساعة السادسة مساءً."],["Tu sors les clés de ton sac avant d’ouvrir la porte.","أنت تُخرج المفاتيح من حقيبتك قبل فتح الباب."],["Elle sort avec ses amies après le cours.","هي تخرج مع صديقاتها بعد الدرس."],["Nous sortons prendre l’air pendant la pause.","نحن نخرج لاستنشاق الهواء أثناء الاستراحة."],["Vous sortez à la prochaine station.","أنتم تنزلون في المحطة القادمة."],["Ils sortent les chaises sur la terrasse.","هم يُخرجون الكراسي إلى الشرفة."]]
+,"dormir":[["Je dors huit heures quand je ne travaille pas de nuit.","أنا أنام ثماني ساعات عندما لا أعمل ليلًا."],["Tu dors près de la fenêtre parce que la chambre est chaude.","أنت تنام قرب النافذة لأن الغرفة حارة."],["Il dort profondément malgré le bruit de la rue.","هو ينام بعمق رغم ضجيج الشارع."],["Nous dormons dans un petit hôtel près de la gare.","نحن ننام في فندق صغير قرب محطة القطار."],["Vous dormez mieux après une journée calme.","أنتم تنامون بشكل أفضل بعد يوم هادئ."],["Elles dorment chez leur tante pendant le week-end.","هن ينمن في منزل خالتهن خلال عطلة نهاية الأسبوع."]]
+,"écrire":[["J’écris un courriel au service des admissions.","أنا أكتب رسالة بريد إلكتروني إلى قسم القبول."],["Tu écris l’adresse sur l’enveloppe avec soin.","أنت تكتب العنوان على الظرف بعناية."],["Elle écrit un roman inspiré de son enfance.","هي تكتب رواية مستوحاة من طفولتها."],["Nous écrivons les décisions prises pendant la réunion.","نحن نكتب القرارات التي اتُّخذت أثناء الاجتماع."],["Vous écrivez vos remarques dans la dernière colonne.","أنتم تكتبون ملاحظاتكم في العمود الأخير."],["Ils écrivent à leurs familles chaque semaine.","هم يكتبون إلى عائلاتهم كل أسبوع."]]
+,"boire":[["Je bois un verre d’eau avant de courir.","أنا أشرب كوبًا من الماء قبل الركض."],["Tu bois ton café sans sucre le matin.","أنت تشرب قهوتك من دون سكر في الصباح."],["Il boit une tisane pour apaiser sa gorge.","هو يشرب شايًا عشبيًا لتهدئة حلقه."],["Nous buvons du jus d’orange au petit-déjeuner.","نحن نشرب عصير البرتقال على الإفطار."],["Vous buvez suffisamment d’eau pendant le voyage.","أنتم تشربون كمية كافية من الماء أثناء الرحلة."],["Elles boivent du thé à la menthe après le repas.","هن يشربن شاي النعناع بعد الوجبة."]]
+,"croire":[["Je crois que ce projet peut réussir.","أنا أعتقد أن هذا المشروع يمكن أن ينجح."],["Tu crois encore aux promesses de ce vendeur.","أنت ما زلت تصدق وعود هذا البائع."],["Elle croit en ses capacités malgré les difficultés.","هي تؤمن بقدراتها رغم الصعوبات."],["Nous croyons que le train arrivera à l’heure.","نحن نعتقد أن القطار سيصل في موعده."],["Vous croyez cette histoire sans vérifier les faits.","أنتم تصدقون هذه القصة من دون التحقق من الحقائق."],["Ils croient au travail d’équipe pour résoudre le problème.","هم يؤمنون بالعمل الجماعي لحل المشكلة."]]
+,"recevoir":[["Je reçois les résultats de mon examen demain.","أنا أتلقى نتائج اختباري غدًا."],["Tu reçois un colis envoyé par ta sœur.","أنت تستلم طردًا أرسلته أختك."],["Il reçoit ses clients dans un bureau privé.","هو يستقبل عملاءه في مكتب خاص."],["Nous recevons souvent des visiteurs étrangers.","نحن نستقبل زوارًا أجانب كثيرًا."],["Vous recevez une confirmation par courrier électronique.","أنتم تتلقون تأكيدًا عبر البريد الإلكتروني."],["Elles reçoivent leurs diplômes à la fin de la cérémonie.","هن يستلمن شهاداتهن في نهاية الحفل."]]
+,"tenir":[["Je tiens la porte pour la personne derrière moi.","أنا أمسك الباب للشخص الذي خلفي."],["Tu tiens un journal pour suivre tes progrès.","أنت تحتفظ بمذكرات لمتابعة تقدمك."],["Elle tient une petite boutique au centre-ville.","هي تدير متجرًا صغيرًا في وسط المدينة."],["Nous tenons notre promesse malgré les difficultés.","نحن نفي بوعدنا رغم الصعوبات."],["Vous tenez la rampe en descendant l’escalier.","أنتم تمسكون الدرابزين أثناء نزول السلم."],["Ils tiennent une réunion chaque lundi matin.","هم يعقدون اجتماعًا كل صباح اثنين."]]
+,"rendre":[["Je rends le livre à la bibliothèque aujourd’hui.","أنا أعيد الكتاب إلى المكتبة اليوم."],["Tu rends ce travail avant la date limite.","أنت تسلّم هذا العمل قبل الموعد النهائي."],["Il rend sa chambre plus lumineuse avec de nouveaux rideaux.","هو يجعل غرفته أكثر إشراقًا بستائر جديدة."],["Nous rendons visite à nos grands-parents le vendredi.","نحن نزور أجدادنا يوم الجمعة."],["Vous rendez la monnaie au client avec exactitude.","أنتم تعيدون الباقي للعميل بدقة."],["Elles rendent hommage aux bénévoles de l’association.","هن يكرّمن متطوعي الجمعية."]]
+,"descendre":[["Je descends les escaliers sans prendre l’ascenseur.","أنا أنزل الدرج من دون استخدام المصعد."],["Tu descends du bus devant l’hôpital.","أنت تنزل من الحافلة أمام المستشفى."],["Elle descend les valises de la voiture.","هي تُنزل الحقائب من السيارة."],["Nous descendons vers la plage avant le coucher du soleil.","نحن ننزل باتجاه الشاطئ قبل غروب الشمس."],["Vous descendez le volume pendant la réunion.","أنتم تخفضون مستوى الصوت أثناء الاجتماع."],["Ils descendent la rivière en canoë.","هم ينحدرون في النهر بقارب الكانو."]]
+,"porter":[["Je porte un costume sombre pour l’entretien.","أنا أرتدي بدلة داكنة للمقابلة."],["Tu portes les courses jusqu’à la cuisine.","أنت تحمل المشتريات إلى المطبخ."],["Elle porte une attention particulière aux détails.","هي تولي اهتمامًا خاصًا للتفاصيل."],["Nous portons secours à un cycliste blessé.","نحن نُسعف راكب دراجة مصابًا."],["Vous portez plainte au commissariat après le vol.","أنتم تقدمون شكوى في مركز الشرطة بعد السرقة."],["Ils portent le nom de leur grand-père.","هم يحملون اسم جدهم."]]
+
 
 };
 
@@ -328,6 +339,53 @@ const USAGES:Record<string,Usage[]>={
  {fr:"lire un texte",ar:"يقرأ نصًا",example:"Vous lisez le règlement avant la visite.",translation:"أنتم تقرؤون التعليمات قبل الزيارة."},
  {fr:"lire à voix haute",ar:"يقرأ بصوت مرتفع",example:"Elle lit le poème à voix haute.",translation:"هي تقرأ القصيدة بصوت مرتفع."}
 ]
+,"sortir":[
+ {fr:"sortir d’un lieu",ar:"يخرج من مكان",example:"Elle sort de la bibliothèque à midi.",translation:"هي تخرج من المكتبة عند الظهر."},
+ {fr:"sortir quelque chose",ar:"يُخرج شيئًا",example:"Je sors mon passeport avant le contrôle.",translation:"أنا أُخرج جواز سفري قبل التفتيش."},
+ {fr:"sortir avec quelqu’un",ar:"يخرج برفقة شخص",example:"Nous sortons avec nos amis ce soir.",translation:"نحن نخرج مع أصدقائنا هذا المساء."}
+],
+"dormir":[
+ {fr:"dormir profondément",ar:"ينام بعمق",example:"Le bébé dort profondément après le bain.",translation:"الطفل ينام بعمق بعد الاستحمام."},
+ {fr:"dormir chez quelqu’un",ar:"يبيت عند شخص",example:"Tu dors chez ton cousin ce week-end.",translation:"أنت تبيت عند ابن عمك في عطلة نهاية الأسبوع."}
+],
+"écrire":[
+ {fr:"écrire à quelqu’un",ar:"يكتب إلى شخص",example:"J’écris à mon professeur pour demander un rendez-vous.",translation:"أنا أكتب إلى أستاذي لطلب موعد."},
+ {fr:"écrire quelque chose",ar:"يكتب شيئًا",example:"Elle écrit son numéro sur une feuille.",translation:"هي تكتب رقمها على ورقة."}
+],
+"boire":[
+ {fr:"boire une boisson",ar:"يشرب مشروبًا",example:"Nous buvons du café après le déjeuner.",translation:"نحن نشرب القهوة بعد الغداء."},
+ {fr:"boire à la santé de quelqu’un",ar:"يشرب نخب شخص",example:"Ils boivent à la santé des nouveaux mariés.",translation:"هم يشربون نخب العروسين."}
+],
+"croire":[
+ {fr:"croire que",ar:"يعتقد أن",example:"Je crois que la salle est encore ouverte.",translation:"أنا أعتقد أن القاعة ما زالت مفتوحة."},
+ {fr:"croire quelqu’un",ar:"يصدق شخصًا",example:"Elle croit son médecin parce qu’il explique clairement le traitement.",translation:"هي تصدق طبيبها لأنه يشرح العلاج بوضوح."},
+ {fr:"croire en",ar:"يؤمن بـ",example:"Nous croyons en la valeur de l’éducation.",translation:"نحن نؤمن بقيمة التعليم."}
+],
+"recevoir":[
+ {fr:"recevoir un objet / un message",ar:"يتلقى شيئًا أو رسالة",example:"Vous recevez le code de confirmation par SMS.",translation:"أنتم تتلقون رمز التأكيد عبر رسالة نصية."},
+ {fr:"recevoir quelqu’un",ar:"يستقبل شخصًا",example:"Le directeur reçoit les candidats dans son bureau.",translation:"المدير يستقبل المرشحين في مكتبه."}
+],
+"tenir":[
+ {fr:"tenir un objet",ar:"يمسك شيئًا",example:"Il tient le parapluie au-dessus de sa fille.",translation:"هو يمسك المظلة فوق ابنته."},
+ {fr:"tenir une promesse",ar:"يفي بوعد",example:"Tu tiens toujours tes promesses.",translation:"أنت تفي بوعودك دائمًا."},
+ {fr:"tenir une réunion",ar:"يعقد اجتماعًا",example:"Nous tenons une réunion urgente cet après-midi.",translation:"نحن نعقد اجتماعًا عاجلًا بعد ظهر اليوم."}
+],
+"rendre":[
+ {fr:"rendre quelque chose",ar:"يعيد شيئًا",example:"Je rends les clés au propriétaire.",translation:"أنا أعيد المفاتيح إلى المالك."},
+ {fr:"rendre + adjectif",ar:"يجعل شيئًا على حال",example:"Cette musique rend l’ambiance plus agréable.",translation:"هذه الموسيقى تجعل الأجواء أكثر متعة."},
+ {fr:"rendre visite à",ar:"يزور",example:"Elle rend visite à sa mère chaque semaine.",translation:"هي تزور والدتها كل أسبوع."}
+],
+"descendre":[
+ {fr:"descendre d’un véhicule",ar:"ينزل من وسيلة نقل",example:"Nous descendons du train à Marseille.",translation:"نحن ننزل من القطار في مرسيليا."},
+ {fr:"descendre quelque chose",ar:"يُنزل شيئًا",example:"Ils descendent les cartons au garage.",translation:"هم يُنزلون الصناديق إلى المرآب."},
+ {fr:"descendre une rue",ar:"يسير نزولًا في شارع",example:"Vous descendez cette rue jusqu’à la place.",translation:"أنتم تسيرون نزولًا في هذا الشارع حتى الساحة."}
+],
+"porter":[
+ {fr:"porter un vêtement",ar:"يرتدي لباسًا",example:"Elle porte une robe bleue pour la cérémonie.",translation:"هي ترتدي فستانًا أزرق للحفل."},
+ {fr:"porter un objet",ar:"يحمل شيئًا",example:"Je porte une boîte lourde avec les deux mains.",translation:"أنا أحمل صندوقًا ثقيلًا بكلتا يديّ."},
+ {fr:"porter plainte",ar:"يقدم شكوى",example:"Il porte plainte après la disparition de son téléphone.",translation:"هو يقدم شكوى بعد اختفاء هاتفه."}
+]
+
 
 };
 function speak(t:string){if(typeof window==='undefined'||!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.82;u.pitch=1;const voices=speechSynthesis.getVoices();u.voice=voices.find(x=>x.lang.toLowerCase().startsWith('fr'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}
@@ -347,7 +405,7 @@ export default function Page(){
   <header className="conj-top"><button onClick={()=>r.push('/castle')}><ArrowLeft/></button><div><BookOpen/><span><strong>قاعة تصريف الأفعال</strong><small>La Salle de Conjugaison</small></span></div><div className="conj-rating"><Star/><Star/><Star/><Star/><Star/></div></header>
   <section className="conj-search-wrap"><div className="conj-search"><Search/><input dir="ltr" value={q} onFocus={()=>setOpenSearch(true)} onChange={e=>{setQ(e.target.value);setOpenSearch(true)}} placeholder="Rechercher un verbe..."/><ChevronDown/></div>{openSearch&&q&&<div className="conj-results">{list.length?list.map(x=><button key={x} onClick={()=>{setV(x);setQ('');setOpenSearch(false)}} dir="ltr"><strong>{x}</strong><small dir="rtl">{AR[x]}</small><span>{group(x)}</span></button>):<p>لم يُعثر على الفعل في الإصدار الحالي.</p>}</div>}</section>
   <nav className="conj-tabs" dir="ltr">{tabs.map(x=><button key={x} className={tab===x?'active':''} onClick={()=>setTab(x)}>{x}</button>)}</nav>
-  <section className="conj-heading"><div><span>{group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><p>تصريفات واضحة، وأمثلة سياقية مراجعة في الحاضر. يضيف هذا الإصدار الدفعة الأولى من الأفعال غير الضميرية مع استعمالاتها وترجمة عربية كاملة ونطق احترافي.</p><div className="conj-review-progress">v5.0 · دفعة المراجعة الأولى · لا تُعرض أمثلة آلية غير موثوقة</div></div><button onClick={()=>speak(v)}><Volume2/></button></section>
+  <section className="conj-heading"><div><span>{group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><p>تصريفات واضحة، وأمثلة سياقية مراجعة في الحاضر. يضيف هذا الإصدار الدفعة الثانية من الأفعال غير الضميرية مع استعمالاتها وترجمة عربية كاملة ونطق احترافي.</p><div className="conj-review-progress">v5.0 · دفعة المراجعة الثانية · لا تُعرض أمثلة آلية غير موثوقة</div></div><button onClick={()=>speak(v)}><Volume2/></button></section>
   <UsagePanel verb={v}/>
   <section className="conj-content">{tab==='Indicatif'&&<><h2>Indicatif</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(p,v)} verb={v}/><Block title="Passé composé" forms={rows(AP[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Imparfait" forms={rows(imp(v),v)} verb={v}/><Block title="Plus-que-parfait" forms={rows(AI[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Futur simple" forms={rows(fut(v),v)} verb={v}/><Block title="Futur antérieur" forms={rows(AF[a].map(x=>x+' '+pp),v)} verb={v}/></div></>}
   {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(cond(v),v)} verb={v}/><Block title="Passé" forms={rows(["aurais","aurais","aurait","aurions","auriez","auraient"].map(x=>x+' '+pp),v)} verb={v}/></div></>}

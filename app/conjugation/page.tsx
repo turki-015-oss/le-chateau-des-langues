@@ -241,6 +241,17 @@ const SMART:Record<string,[string,string][]>= {
 "s’arrêter":[["Je m’arrête à la boulangerie avant de rentrer.","أنا أتوقف عند المخبز قبل العودة إلى المنزل."],["Tu t’arrêtes quelques minutes pour admirer la vue.","أنت تتوقف بضع دقائق للاستمتاع بالمنظر."],["Le bus s’arrête devant la gare centrale.","تتوقف الحافلة أمام المحطة المركزية."],["Nous nous arrêtons dès que nous entendons l’alarme.","نحن نتوقف بمجرد أن نسمع جهاز الإنذار."],["Vous vous arrêtez au feu rouge même lorsque la rue est vide.","أنتم تتوقفون عند الإشارة الحمراء حتى عندما يكون الشارع خاليًا."],["Ils s’arrêtent de parler lorsque le professeur entre.","هم يتوقفون عن الكلام عندما يدخل المعلم."]],
 "s’amuser":[["Je m’amuse à apprendre de nouvelles expressions françaises.","أنا أستمتع بتعلم تعبيرات فرنسية جديدة."],["Tu t’amuses avec tes cousins pendant le week-end.","أنت تستمتع مع أبناء عمومتك خلال عطلة نهاية الأسبوع."],["Elle s’amuse à photographier les oiseaux du jardin.","هي تستمتع بتصوير طيور الحديقة."],["Nous nous amusons beaucoup lors des soirées en famille.","نحن نستمتع كثيرًا خلال الأمسيات العائلية."],["Vous vous amusez tout en respectant les règles du parc.","أنتم تستمتعون مع احترام قواعد الحديقة."],["Ils s’amusent à inventer des histoires avant de dormir.","هم يستمتعون بابتكار القصص قبل النوم."]],
 "se concentrer":[["Je me concentre mieux dans une pièce calme.","أنا أركز بصورة أفضل في غرفة هادئة."],["Tu te concentres sur la question la plus importante.","أنت تركز على السؤال الأكثر أهمية."],["Elle se concentre sur sa respiration avant la compétition.","هي تركز على تنفسها قبل المنافسة."],["Nous nous concentrons sur les besoins réels des utilisateurs.","نحن نركز على الاحتياجات الحقيقية للمستخدمين."],["Vous vous concentrez davantage lorsque votre téléphone est éteint.","أنتم تركزون أكثر عندما يكون هاتفكم مغلقًا."],["Ils se concentrent pour terminer l’exercice sans erreur.","هم يركزون لإنهاء التمرين من دون خطأ."]]
+,"aller":[["Je vais à la bibliothèque après le travail.","أنا أذهب إلى المكتبة بعد العمل."],["Tu vas chez le médecin demain matin.","أنت تذهب إلى الطبيب صباح الغد."],["Elle va au marché pour acheter des légumes frais.","هي تذهب إلى السوق لشراء خضروات طازجة."],["Nous allons à Marseille en train ce week-end.","نحن نذهب إلى مرسيليا بالقطار في عطلة نهاية الأسبوع هذه."],["Vous allez directement à la salle de conférence.","أنتم تذهبون مباشرة إلى قاعة المؤتمر."],["Ils vont au stade pour assister au match.","هم يذهبون إلى الملعب لحضور المباراة."]]
+,"pouvoir":[["Je peux vous aider à remplir ce formulaire.","أنا أستطيع مساعدتكم في تعبئة هذه الاستمارة."],["Tu peux ouvrir la fenêtre si tu as chaud.","أنت تستطيع فتح النافذة إذا كنت تشعر بالحر."],["Il peut résoudre ce problème sans calculatrice.","هو يستطيع حل هذه المسألة من دون آلة حاسبة."],["Nous pouvons reporter la réunion à jeudi.","نحن نستطيع تأجيل الاجتماع إلى يوم الخميس."],["Vous pouvez prendre place dans la salle d’attente.","أنتم تستطيعون الجلوس في غرفة الانتظار."],["Elles peuvent communiquer en français avec les clientes.","هن يستطعن التواصل بالفرنسية مع العميلات."]]
+,"vouloir":[["Je veux apprendre à parler français avec assurance.","أنا أريد أن أتعلم التحدث بالفرنسية بثقة."],["Tu veux réserver une chambre avec vue sur la mer.","أنت تريد حجز غرفة مطلة على البحر."],["Elle veut changer de poste l’année prochaine.","هي تريد تغيير وظيفتها في العام المقبل."],["Nous voulons mieux comprendre les besoins des utilisateurs.","نحن نريد فهم احتياجات المستخدمين بصورة أفضل."],["Vous voulez recevoir la facture par courrier électronique.","أنتم تريدون استلام الفاتورة عبر البريد الإلكتروني."],["Ils veulent construire une école dans leur quartier.","هم يريدون بناء مدرسة في حيهم."]]
+,"savoir":[["Je sais utiliser ce logiciel de gestion.","أنا أعرف كيفية استخدام برنامج الإدارة هذا."],["Tu sais où se trouve la gare la plus proche.","أنت تعرف أين تقع أقرب محطة قطار."],["Il sait préparer plusieurs plats français.","هو يعرف كيفية إعداد عدة أطباق فرنسية."],["Nous savons que la décision sera difficile.","نحن نعلم أن القرار سيكون صعبًا."],["Vous savez répondre calmement aux réclamations.","أنتم تعرفون كيفية الرد بهدوء على الشكاوى."],["Elles savent exactement ce qu’elles recherchent.","هن يعرفن بالضبط ما الذي يبحثن عنه."]]
+,"venir":[["Je viens vous remettre les documents signés.","أنا آتي لتسليمكم المستندات الموقعة."],["Tu viens dîner chez nous ce soir.","أنت تأتي لتناول العشاء عندنا هذا المساء."],["Elle vient de terminer sa présentation.","هي أنهت عرضها للتو."],["Nous venons en avance pour préparer la salle.","نحن نأتي مبكرًا لتجهيز القاعة."],["Vous venez de plusieurs régions du pays.","أنتم تأتون من عدة مناطق في البلاد."],["Ils viennent chercher leurs enfants après l’école.","هم يأتون لاصطحاب أطفالهم بعد المدرسة."]]
+,"voir":[["Je vois les montagnes depuis la fenêtre de ma chambre.","أنا أرى الجبال من نافذة غرفتي."],["Tu vois ton conseiller chaque lundi matin.","أنت تقابل مستشارك صباح كل يوم اثنين."],["Elle voit clairement la différence entre les deux modèles.","هي ترى بوضوح الفرق بين النموذجين."],["Nous voyons souvent nos voisins dans le parc.","نحن نرى جيراننا كثيرًا في الحديقة."],["Vous voyez que cette solution est plus économique.","أنتم ترون أن هذا الحل أكثر توفيرًا."],["Ils voient un film français au cinéma ce soir.","هم يشاهدون فيلمًا فرنسيًا في السينما هذا المساء."]]
+,"dire":[["Je dis toujours la vérité à mes collègues.","أنا أقول الحقيقة دائمًا لزملائي."],["Tu dis bonjour au gardien en entrant.","أنت تقول صباح الخير للحارس عند الدخول."],["Il dit que le train aura dix minutes de retard.","هو يقول إن القطار سيتأخر عشر دقائق."],["Nous disons notre avis avec respect.","نحن نقول رأينا باحترام."],["Vous dites votre nom à l’agent d’accueil.","أنتم تقولون أسماءكم لموظف الاستقبال."],["Elles disent merci à toutes les personnes qui les ont aidées.","هن يقلن شكرًا لكل الأشخاص الذين ساعدوهن."]]
+,"mettre":[["Je mets les clés dans la poche de ma veste.","أنا أضع المفاتيح في جيب سترتي."],["Tu mets la table avant l’arrivée des invités.","أنت ترتب المائدة قبل وصول الضيوف."],["Elle met vingt minutes pour se rendre au bureau.","هي تستغرق عشرين دقيقة للوصول إلى المكتب."],["Nous mettons nos téléphones en mode silencieux.","نحن نضع هواتفنا على الوضع الصامت."],["Vous mettez la signature au bas du contrat.","أنتم تضعون التوقيع أسفل العقد."],["Ils mettent leurs manteaux avant de sortir.","هم يرتدون معاطفهم قبل الخروج."]]
+,"partir":[["Je pars de chez moi à sept heures précises.","أنا أغادر منزلي عند الساعة السابعة تمامًا."],["Tu pars en vacances avec ta famille en août.","أنت تسافر في إجازة مع عائلتك في شهر أغسطس."],["Elle part travailler à l’étranger pendant six mois.","هي تغادر للعمل في الخارج لمدة ستة أشهر."],["Nous partons dès que le taxi arrive.","نحن نغادر بمجرد وصول سيارة الأجرة."],["Vous partez de la porte numéro douze.","أنتم تنطلقون من البوابة رقم اثني عشر."],["Ils partent avant la fin de la cérémonie.","هم يغادرون قبل نهاية الحفل."]]
+,"lire":[["Je lis un article économique pendant ma pause.","أنا أقرأ مقالًا اقتصاديًا أثناء استراحتي."],["Tu lis les instructions avant d’utiliser l’appareil.","أنت تقرأ التعليمات قبل استخدام الجهاز."],["Elle lit une histoire à ses enfants chaque soir.","هي تقرأ قصة لأطفالها كل مساء."],["Nous lisons les commentaires des clients avec attention.","نحن نقرأ تعليقات العملاء باهتمام."],["Vous lisez le contrat avant de le signer.","أنتم تقرؤون العقد قبل توقيعه."],["Ils lisent les nouvelles sur leur téléphone dans le train.","هم يقرؤون الأخبار على هواتفهم في القطار."]]
+
 };
 
 type Usage={fr:string;ar:string;example:string;translation:string};
@@ -272,6 +283,52 @@ const USAGES:Record<string,Usage[]>={
  {fr:"être à / dans",ar:"يحدد المكان",example:"Elle est dans la salle de réunion.",translation:"هي في قاعة الاجتماع."},
  {fr:"être de",ar:"يدل على الأصل",example:"Je suis de Djeddah.",translation:"أنا من جدة."}
 ]
+,"aller":[
+ {fr:"aller à + lieu",ar:"يذهب إلى مكان",example:"Nous allons à l’université en métro.",translation:"نحن نذهب إلى الجامعة بالمترو."},
+ {fr:"aller + infinitif",ar:"يدل على المستقبل القريب",example:"Je vais appeler le responsable maintenant.",translation:"سأتصل بالمسؤول الآن."},
+ {fr:"aller bien / mal",ar:"يكون حاله جيدًا أو سيئًا",example:"Elle va beaucoup mieux aujourd’hui.",translation:"هي في حال أفضل بكثير اليوم."}
+],
+"pouvoir":[
+ {fr:"pouvoir + infinitif",ar:"يستطيع القيام بفعل",example:"Vous pouvez entrer sans attendre.",translation:"يمكنكم الدخول من دون انتظار."},
+ {fr:"pouvoir de permission",ar:"طلب الإذن أو منحه",example:"Est-ce que je peux utiliser votre téléphone ?",translation:"هل يمكنني استخدام هاتفكم؟"}
+],
+"vouloir":[
+ {fr:"vouloir + nom",ar:"يريد شيئًا",example:"Je veux un billet aller-retour.",translation:"أنا أريد تذكرة ذهاب وعودة."},
+ {fr:"vouloir + infinitif",ar:"يريد القيام بفعل",example:"Ils veulent apprendre le français.",translation:"هم يريدون تعلم الفرنسية."},
+ {fr:"je voudrais",ar:"طلب مهذب",example:"Je voudrais une chambre calme, s’il vous plaît.",translation:"أود غرفة هادئة، من فضلك."}
+],
+"savoir":[
+ {fr:"savoir + infinitif",ar:"يعرف كيفية القيام بشيء",example:"Elle sait conduire une voiture manuelle.",translation:"هي تعرف كيفية قيادة سيارة ذات ناقل يدوي."},
+ {fr:"savoir que / où / comment",ar:"يعلم معلومة",example:"Nous savons où commence la visite.",translation:"نحن نعلم أين تبدأ الجولة."}
+],
+"venir":[
+ {fr:"venir de + lieu",ar:"يأتي من مكان",example:"Il vient de Lyon.",translation:"هو يأتي من ليون."},
+ {fr:"venir de + infinitif",ar:"الماضي القريب",example:"Je viens de recevoir votre message.",translation:"لقد استلمت رسالتكم للتو."},
+ {fr:"venir + infinitif",ar:"يأتي للقيام بشيء",example:"Elle vient récupérer son dossier.",translation:"هي تأتي لاستلام ملفها."}
+],
+"voir":[
+ {fr:"voir quelque chose",ar:"يرى شيئًا",example:"Je vois un bateau au loin.",translation:"أنا أرى قاربًا في البعيد."},
+ {fr:"voir quelqu’un",ar:"يقابل شخصًا",example:"Nous voyons le directeur cet après-midi.",translation:"نحن نقابل المدير بعد ظهر اليوم."},
+ {fr:"voir un film",ar:"يشاهد فيلمًا",example:"Ils voient un documentaire au cinéma.",translation:"هم يشاهدون فيلمًا وثائقيًا في السينما."}
+],
+"dire":[
+ {fr:"dire quelque chose",ar:"يقول شيئًا",example:"Tu dis la vérité au médecin.",translation:"أنت تقول الحقيقة للطبيب."},
+ {fr:"dire à quelqu’un de + infinitif",ar:"يطلب من شخص أن يفعل",example:"Elle dit aux enfants de ranger leur chambre.",translation:"هي تطلب من الأطفال ترتيب غرفتهم."}
+],
+"mettre":[
+ {fr:"mettre un objet quelque part",ar:"يضع شيئًا في مكان",example:"Je mets le dossier sur votre bureau.",translation:"أنا أضع الملف على مكتبكم."},
+ {fr:"mettre un vêtement",ar:"يرتدي قطعة ملابس",example:"Il met une veste avant de sortir.",translation:"هو يرتدي سترة قبل الخروج."},
+ {fr:"mettre du temps",ar:"يستغرق وقتًا",example:"Le trajet met environ trente minutes.",translation:"تستغرق الرحلة نحو ثلاثين دقيقة."}
+],
+"partir":[
+ {fr:"partir de + lieu",ar:"يغادر مكانًا",example:"Le train part de la voie cinq.",translation:"يغادر القطار من الرصيف الخامس."},
+ {fr:"partir pour + destination",ar:"يتجه إلى وجهة",example:"Nous partons pour Genève demain.",translation:"نحن نتجه إلى جنيف غدًا."}
+],
+"lire":[
+ {fr:"lire un texte",ar:"يقرأ نصًا",example:"Vous lisez le règlement avant la visite.",translation:"أنتم تقرؤون التعليمات قبل الزيارة."},
+ {fr:"lire à voix haute",ar:"يقرأ بصوت مرتفع",example:"Elle lit le poème à voix haute.",translation:"هي تقرأ القصيدة بصوت مرتفع."}
+]
+
 };
 function speak(t:string){if(typeof window==='undefined'||!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.82;u.pitch=1;const voices=speechSynthesis.getVoices();u.voice=voices.find(x=>x.lang.toLowerCase().startsWith('fr'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}
 function cap(s:string){return s.charAt(0).toUpperCase()+s.slice(1)}
@@ -290,7 +347,7 @@ export default function Page(){
   <header className="conj-top"><button onClick={()=>r.push('/castle')}><ArrowLeft/></button><div><BookOpen/><span><strong>قاعة تصريف الأفعال</strong><small>La Salle de Conjugaison</small></span></div><div className="conj-rating"><Star/><Star/><Star/><Star/><Star/></div></header>
   <section className="conj-search-wrap"><div className="conj-search"><Search/><input dir="ltr" value={q} onFocus={()=>setOpenSearch(true)} onChange={e=>{setQ(e.target.value);setOpenSearch(true)}} placeholder="Rechercher un verbe..."/><ChevronDown/></div>{openSearch&&q&&<div className="conj-results">{list.length?list.map(x=><button key={x} onClick={()=>{setV(x);setQ('');setOpenSearch(false)}} dir="ltr"><strong>{x}</strong><small dir="rtl">{AR[x]}</small><span>{group(x)}</span></button>):<p>لم يُعثر على الفعل في الإصدار الحالي.</p>}</div>}</section>
   <nav className="conj-tabs" dir="ltr">{tabs.map(x=><button key={x} className={tab===x?'active':''} onClick={()=>setTab(x)}>{x}</button>)}</nav>
-  <section className="conj-heading"><div><span>{group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><p>تصريفات واضحة، وأمثلة سياقية مراجعة في الحاضر لجميع الأفعال الضميرية، وترجمة عربية كاملة مع النطق.</p></div><button onClick={()=>speak(v)}><Volume2/></button></section>
+  <section className="conj-heading"><div><span>{group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><p>تصريفات واضحة، وأمثلة سياقية مراجعة في الحاضر. يضيف هذا الإصدار الدفعة الأولى من الأفعال غير الضميرية مع استعمالاتها وترجمة عربية كاملة ونطق احترافي.</p><div className="conj-review-progress">v5.0 · دفعة المراجعة الأولى · لا تُعرض أمثلة آلية غير موثوقة</div></div><button onClick={()=>speak(v)}><Volume2/></button></section>
   <UsagePanel verb={v}/>
   <section className="conj-content">{tab==='Indicatif'&&<><h2>Indicatif</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(p,v)} verb={v}/><Block title="Passé composé" forms={rows(AP[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Imparfait" forms={rows(imp(v),v)} verb={v}/><Block title="Plus-que-parfait" forms={rows(AI[a].map(x=>x+' '+pp),v)} verb={v}/><Block title="Futur simple" forms={rows(fut(v),v)} verb={v}/><Block title="Futur antérieur" forms={rows(AF[a].map(x=>x+' '+pp),v)} verb={v}/></div></>}
   {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Présent" forms={rows(cond(v),v)} verb={v}/><Block title="Passé" forms={rows(["aurais","aurais","aurait","aurions","auriez","auraient"].map(x=>x+' '+pp),v)} verb={v}/></div></>}

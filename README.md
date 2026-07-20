@@ -64,3 +64,8 @@ Clean product-only images, corrected product/image matching, no embedded text or
 - أمثلة سياقية مراجعة في زمن الحاضر لجميع الأفعال الضميرية الموجودة.
 - ترجمة عربية كاملة لكل جملة مع الضمير.
 - تحسين تصريف الأفعال الضميرية الشاذة: s’appeler، s’inquiéter، se souvenir، se comprendre.
+
+## v5.0
+- Added the first reviewed batch of non-pronominal present-tense examples.
+- Added usage panels for aller, pouvoir, vouloir, savoir, venir, voir, dire, mettre, partir, and lire.
+- Preserved reviewed pronominal examples and hides unreviewed automatic examples.

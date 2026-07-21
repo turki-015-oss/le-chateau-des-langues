@@ -1,21 +1,28 @@
-"use client";
-import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const data:Record<string,{fr:string;ar:string;topics:string[]}>= {
- a1:{fr:'Débutant',ar:'المبتدئ',topics:['الحروف والنطق','الجنس والمفرد والجمع','أدوات التعريف والتنكير','الضمائر الشخصية','الأفعال في الحاضر (être, avoir)']},
- a2:{fr:'Les bases',ar:'الأساسيات',topics:['الماضي المركب','الماضي الناقص','المستقبل البسيط','ضمائر المفعول','المقارنة والتفضيل']},
- b1:{fr:'Intermédiaire',ar:'المتوسط',topics:['الأزمنة السردية','الشرط الحاضر','التابع الحاضر','الكلام المنقول','أدوات الربط']},
- b2:{fr:'Intermédiaire supérieur',ar:'فوق المتوسط',topics:['التابع بالتفصيل','الشرط الماضي','الجمل الشرطية المتقدمة','الضمائر الموصولة المركبة','مطابقة اسم المفعول']},
- c1:{fr:'Avancé',ar:'المتقدم',topics:['الماضي البسيط','التابع المتقدم','التقديم والتأخير','الحذف النحوي','الأسلوب الأكاديمي']},
- c2:{fr:'Maîtrise',ar:'الإتقان',topics:['الفروق الدقيقة بين الصيغ','الأسلوب الأدبي','إزالة الغموض','الإيقاع وبناء الجملة','التصحيح والتحرير']}
-};
-export default function GrammarLevelPage(){
- const router=useRouter(); const params=useParams<{level:string}>();
- const key=(params.level||'a1').toLowerCase(); const level=data[key]||data.a1;
- return <main className="v67-level-page" dir="rtl">
-   <header><button onClick={()=>router.push('/grammar')}><ArrowLeft/></button><span>Le Château des Langues</span></header>
-   <section className="v67-level-hero"><BookOpen/><p>{key.toUpperCase()}</p><h1 dir="ltr">{level.fr}</h1><h2>{level.ar}</h2></section>
-   <section className="v67-level-list"><h3>الموضوعات</h3>{level.topics.map((t,i)=><article key={t}><span>{String(i+1).padStart(2,'0')}</span><div><strong>{t}</strong><small>شرح واضح، صيغة، أمثلة صحيحة، ملاحظات وأخطاء شائعة.</small></div><ArrowLeft/></article>)}</section>
- </main>;
+const data = {
+  a1: ["A1", "Débutant", "المبتدئ"],
+  a2: ["A2", "Les bases", "الأساسيات"],
+  b1: ["B1", "Intermédiaire", "المتوسط"],
+  b2: ["B2", "Intermédiaire supérieur", "فوق المتوسط"],
+  c1: ["C1", "Avancé", "المتقدم"],
+  c2: ["C2", "Maîtrise", "الإتقان"],
+} as const;
+
+export default async function GrammarLevelPage({ params }: { params: Promise<{ level: string }> }) {
+  const { level } = await params;
+  const item = data[level as keyof typeof data];
+  if (!item) notFound();
+  return (
+    <main className="level-page" dir="rtl">
+      <div className="level-panel">
+        <span>{item[0]}</span>
+        <h1 dir="ltr">{item[1]}</h1>
+        <h2>{item[2]}</h2>
+        <p>تم ربط هذا المستوى فعليًا. ستُضاف دروس القواعد داخله وفق الخطة المعتمدة دون تمارين.</p>
+        <Link href="/grammar">العودة إلى قاعة القواعد</Link>
+      </div>
+    </main>
+  );
 }

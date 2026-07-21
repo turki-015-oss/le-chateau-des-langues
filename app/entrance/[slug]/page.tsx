@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import WorldEntrance from "../../../components/WorldEntrance";
-import CastleEntranceV67 from "../../../components/CastleEntranceV67";
 
 const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image:string;destination:string}> = {
  cafe:{titleFr:"Le Café",titleAr:"المقهى",subtitle:"المشروبات والمعجنات والمحادثة اليومية",image:"/worlds/cafe.png",destination:"/cafe"},
@@ -16,4 +15,4 @@ const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image
  hotel:{titleFr:"L’Hôtel",titleAr:"الفندق",subtitle:"الحجز والغرف والاستقبال",image:"/worlds/hotel.png",destination:"/hotel"},
  zoo:{titleFr:"Le Zoo",titleAr:"حديقة الحيوانات",subtitle:"الحيوانات والطبيعة والاكتشاف",image:"/worlds/zoo.png",destination:"/zoo"}
 };
-export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params; if(slug==="castle") return <CastleEntranceV67/>; const w=worlds[slug]; if(!w) notFound(); return <WorldEntrance {...w}/>}
+export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params; const w=worlds[slug]; if(!w) notFound(); return <WorldEntrance {...w}/>}

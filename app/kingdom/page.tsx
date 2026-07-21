@@ -76,7 +76,7 @@ const places: Place[] = [
   { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 665, y: 760, w: 220, h: 190, path: "/entrance/hotel", open: true, icon: <Hotel /> },
   { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 45, y: 1035, w: 300, h: 195, path: "/entrance/airport", open: true, icon: <Plane /> },
   { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 700, y: 1025, w: 275, h: 220, path: "/entrance/station", open: true, icon: <Train /> },
-  { id: "palace", fr: "Le Château", ar: "القلعة الملكية", description: "قلب المملكة وقاعات التعلّم الملكية", x: 330, y: 75, w: 365, h: 425, path: "/entrance/castle", open: true, icon: <Castle /> }
+  { id: "palace", fr: "Le Château", ar: "القلعة", description: "قلب القلعة وقاعات التعلّم", x: 330, y: 75, w: 365, h: 425, path: "/entrance/castle", open: true, icon: <Castle /> }
 ];
 
 
@@ -473,9 +473,9 @@ export default function KingdomMapPage() {
             <span>{selected.fr}</span>
             <h2>{selected.ar}</h2>
             <p>{selected.description}</p>
-            <div className={`world-place-state ${selected.open ? "open" : "soon"}`}><MapPin /> {selected.open ? "العالم مفتوح الآن" : "سيُفتح قريبًا"}</div>
+            <div className={`world-place-state ${selected.open ? "open" : "soon"}`}><MapPin /> {selected.open ? "متاح الآن" : "سيُفتح قريبًا"}</div>
             <button className="world-enter-button" disabled={!selected.open || !selected.path} onClick={() => enterPlace(selected)}>
-              {selected.open ? "دخول العالم" : "قريبًا"}
+              {selected.open ? "دخول المكان" : "قريبًا"}
             </button>
           </article>
         </div>

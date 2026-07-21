@@ -130,10 +130,10 @@ export default function CastlePage() {
         <div className="castle-hero-glow" />
         <div className="castle-hero-content">
           <span className="castle-kicker"><Sparkles /> Bienvenue</span>
-          <h1>Bienvenue au Château</h1>
+          <h1>Bienvenue</h1>
           <p className="castle-ar">مرحبًا بك</p>
           <p className="castle-intro">استكشف وتعلّم اللغة الفرنسية.</p>
-          <button className="castle-listen" onClick={() => speak("Bienvenue au Château. Entrez, s'il vous plaît.")}>
+          <button className="castle-listen" onClick={() => speak("Bienvenue. Entrez, s'il vous plaît.")}>
             <Volume2 /> استمع إلى الترحيب
           </button>
         </div>

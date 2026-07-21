@@ -3,7 +3,7 @@ import WorldEntrance from "../../../components/WorldEntrance";
 
 const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image:string;destination:string}> = {
  cafe:{titleFr:"Le Café",titleAr:"المقهى",subtitle:"المشروبات والمعجنات والمحادثة اليومية",image:"/worlds/cafe.png",destination:"/cafe"},
- castle:{titleFr:"Le Château",titleAr:"القلعة",subtitle:"الحياة الملكية والغرف والحوارات الراقية",image:"/worlds/castle.png",destination:"/castle"},
+ castle:{titleFr:"Le Château",titleAr:"القلعة",subtitle:"تعلّم باحترافية",image:"/images/castle-v65/entry-scene.jpg",destination:"/castle"},
  police:{titleFr:"Le Commissariat",titleAr:"مركز الشرطة",subtitle:"الضباط والتقارير والسلامة",image:"/worlds/police.png",destination:"/police"},
  airport:{titleFr:"L’Aéroport",titleAr:"المطار",subtitle:"السفر والجوازات والرحلات الجوية",image:"/worlds/airport.png",destination:"/airport"},
  station:{titleFr:"La Gare",titleAr:"محطة القطار",subtitle:"التذاكر والمواعيد والوجهات",image:"/worlds/station.png",destination:"/station"},

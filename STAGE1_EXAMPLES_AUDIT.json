@@ -1,0 +1,23 @@
+{
+  "stage": "Batch 1 correction — stage 1 of 5",
+  "verbs": [
+    "accepter",
+    "accompagner",
+    "annoncer",
+    "ajouter",
+    "aider",
+    "apporter",
+    "assurer",
+    "augmenter",
+    "avancer",
+    "éviter"
+  ],
+  "verbs_count": 10,
+  "conjugation_examples_expected": 970,
+  "usage_examples_existing": 20,
+  "unique_contexts": 60,
+  "context_duplicates": 0,
+  "typescript": "passed",
+  "next_compile": "passed",
+  "next_build_final": "stopped at Collecting page data in execution environment"
+}

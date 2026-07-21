@@ -11,8 +11,8 @@ import {
   Library,
   LockKeyhole,
   Medal,
-  ScrollText,
   Search,
+  ClipboardCheck,
   Sparkles,
   Volume2
 } from "lucide-react";
@@ -49,13 +49,13 @@ const halls: Hall[] = [
     badge: "Nouveau"
   },
   {
-    id: "court",
-    fr: "Le Tribunal Royal",
-    ar: "المحكمة الملكية",
-    description: "لغة الشهادة، الدفاع، والحكم في القضايا.",
-    path: "/court",
+    id: "grammar",
+    fr: "La Salle de Grammaire",
+    ar: "قاعة القواعد",
+    description: "رحلتك الكاملة لإتقان قواعد اللغة الفرنسية من A1 إلى C2.",
+    path: "/grammar",
     open: true,
-    icon: <ScrollText />
+    icon: <BookOpen />
   },
   {
     id: "achievements",
@@ -67,19 +67,19 @@ const halls: Hall[] = [
   },
   {
     id: "library",
-    fr: "La Bibliothèque Royale",
-    ar: "المكتبة الملكية",
+    fr: "La Bibliothèque",
+    ar: "المكتبة",
     description: "قصص، كتب قصيرة، ومهام قراءة داخل القلعة.",
     open: false,
     icon: <Library />
   },
   {
     id: "academy",
-    fr: "L’Académie Royale",
-    ar: "الأكاديمية الملكية",
-    description: "دروس متقدمة واختبارات للترقي في الرتب.",
+    fr: "La Salle des Tests",
+    ar: "قاعة الاختبارات",
+    description: "اختبر مستواك في اللغة الفرنسية وتابع تقدمك.",
     open: false,
-    icon: <BookOpen />
+    icon: <ClipboardCheck />
   }
 ];
 
@@ -121,7 +121,7 @@ export default function CastlePage() {
           <Castle />
           <div>
             <strong>Le Château</strong>
-            <small>القلعة الملكية</small>
+            <small>القلعة</small>
           </div>
         </div>
       </header>
@@ -129,10 +129,10 @@ export default function CastlePage() {
       <section className="castle-hero">
         <div className="castle-hero-glow" />
         <div className="castle-hero-content">
-          <span className="castle-kicker"><Sparkles /> Bienvenue au cœur du royaume</span>
+          <span className="castle-kicker"><Sparkles /> Bienvenue</span>
           <h1>Bienvenue au Château</h1>
-          <p className="castle-ar">مرحبًا بك في قلب المملكة</p>
-          <p className="castle-intro">استكشف القاعات الملكية، تعلّم الفرنسية في مواقف رسمية، واجمع أوسمتك.</p>
+          <p className="castle-ar">مرحبًا بك</p>
+          <p className="castle-intro">استكشف وتعلّم اللغة الفرنسية.</p>
           <button className="castle-listen" onClick={() => speak("Bienvenue au Château. Entrez, s'il vous plaît.")}>
             <Volume2 /> استمع إلى الترحيب
           </button>

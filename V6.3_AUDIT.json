@@ -1,0 +1,8 @@
+{
+  "added_verbs": 41,
+  "missing": [],
+  "usage_examples_found": 82,
+  "duplicate_usage_examples": [],
+  "build_note": "Compilation and TypeScript validation succeeded; Next.js process stalled during Collecting page data in this environment.",
+  "autoprefixer_warnings_only": true
+}

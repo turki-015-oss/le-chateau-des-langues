@@ -1,0 +1,365 @@
+{
+  "version": "v6.4 — 3000 Verbs Roadmap Batch 1 of 54",
+  "previous_count": 296,
+  "added_count": 50,
+  "total_count": 346,
+  "unique_count": 346,
+  "verb_duplicates": 0,
+  "new_usage_examples": 100,
+  "duplicate_new_usage_examples": [],
+  "all_new_complete": true,
+  "checks": {
+    "accepter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "accompagner": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "annoncer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "ajouter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "aider": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "apporter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "assurer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "augmenter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "avancer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "éviter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "expliquer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "gagner": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "garder": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "imaginer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "inviter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "laisser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "lancer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "manquer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "montrer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "oublier": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "organiser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "préparer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "proposer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "protéger": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "raconter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "refuser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "rencontrer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "représenter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "réserver": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "retourner": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "terminer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "toucher": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "utiliser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "vérifier": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "visiter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "abandonner": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "absorber": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "accélérer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "accorder": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "accumuler": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "administrer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "admirer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "adopter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "affronter": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "analyser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "appliquer": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "apprécier": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "approuver": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "arranger": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    },
+    "autoriser": {
+      "in_verbs": true,
+      "ar": true,
+      "info": true,
+      "forms": true,
+      "usages": true
+    }
+  },
+  "typescript": "passed (npx tsc --noEmit)",
+  "next_build": "compiled and type-checked, but environment timed out at Collecting page data"
+}

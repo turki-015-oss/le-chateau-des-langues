@@ -1,0 +1,89 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 9 of 18",
+  "verbs": [
+    "se reposer",
+    "se promener",
+    "se dépêcher",
+    "se marier",
+    "se souvenir",
+    "s’appeler",
+    "s’intéresser",
+    "s’inquiéter",
+    "se sentir",
+    "se tromper"
+  ],
+  "verb_count": 10,
+  "expected_conjugation_examples": 970,
+  "usage_examples_added": 40,
+  "usage_examples_scanned_cumulative": 563,
+  "duplicate_usage_examples": [],
+  "build_exit_code": 0,
+  "build_log": "BUILD_BATCH9.log",
+  "checks": {
+    "se reposer": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se promener": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se dépêcher": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se marier": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se souvenir": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "s’appeler": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "s’intéresser": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "s’inquiéter": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se sentir": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    },
+    "se tromper": {
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "smart_examples": true
+    }
+  },
+  "pronominal_checks": {
+    "auxiliary": "être",
+    "imperative_persons": 3,
+    "search_with_or_without_reflexive_pronoun": "supported by baseVerb filter"
+  }
+}

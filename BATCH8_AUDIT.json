@@ -1,0 +1,28 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 8 of 18",
+  "verbs": [
+    "parcourir",
+    "secourir",
+    "se lever",
+    "se laver",
+    "se coucher",
+    "se réveiller",
+    "s’habiller",
+    "se déshabiller",
+    "se préparer",
+    "se présenter"
+  ],
+  "verb_count": 10,
+  "duplicate_usage_examples": [],
+  "expected_conjugation_examples": 970,
+  "build_exit_code": 0,
+  "build_log": "BUILD_BATCH8.log",
+  "pronominal_checks": {
+    "subjunctive_prefix_logic": "present",
+    "infinitive_past": "s’être + participe passé",
+    "gerund_present": "en se + participe présent",
+    "imperative_persons": 3
+  },
+  "usage_examples_added": 40,
+  "duplicate_scan_scope": "443 usage examples scanned across the cumulative page"
+}

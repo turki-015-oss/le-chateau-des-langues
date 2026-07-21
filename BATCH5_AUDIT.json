@@ -1,0 +1,97 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 5 of 18",
+  "verbs": [
+    "conclure",
+    "inclure",
+    "exclure",
+    "résoudre",
+    "craindre",
+    "peindre",
+    "joindre",
+    "atteindre",
+    "éteindre",
+    "vaincre"
+  ],
+  "verb_checks": {
+    "conclure": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "inclure": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "exclure": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "résoudre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "craindre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "peindre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "joindre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "atteindre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "éteindre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    },
+    "vaincre": {
+      "in_verb_list": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_usages": true,
+      "has_context": true
+    }
+  },
+  "expected_conjugation_examples": 970,
+  "usage_examples": 40,
+  "usage_duplicate_count": 0,
+  "usage_duplicates": [],
+  "build_status": "passed",
+  "build_log": "BUILD_BATCH5.log",
+  "notes": [
+    "All ten verbs use explicit irregular tables for present, imperfect, passé simple, subjunctive present/imperfect, future stem, past participle and present participle.",
+    "Imperative is rendered with tu, nous and vous only by the existing interface."
+  ]
+}

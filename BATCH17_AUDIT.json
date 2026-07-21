@@ -1,0 +1,105 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 17 of 18",
+  "verbs": [
+    "s’engager",
+    "se fier",
+    "s’opposer",
+    "se distinguer",
+    "se soucier",
+    "se familiariser",
+    "se satisfaire",
+    "se précipiter",
+    "se méprendre",
+    "se conformer"
+  ],
+  "verb_checks": {
+    "s’engager": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se fier": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "s’opposer": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se distinguer": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se soucier": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se familiariser": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se satisfaire": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se précipiter": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se méprendre": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    },
+    "se conformer": {
+      "in_verb_list": true,
+      "has_arabic": true,
+      "has_info": true,
+      "has_forms": true,
+      "has_complements": true
+    }
+  },
+  "six_form_arrays_ok": {
+    "s’engager": true,
+    "se fier": true,
+    "s’opposer": true,
+    "se distinguer": true,
+    "se soucier": true,
+    "se familiariser": true,
+    "se satisfaire": true,
+    "se précipiter": true,
+    "se méprendre": true,
+    "se conformer": true
+  },
+  "usage_examples_added": 40,
+  "usage_translations_added": 40,
+  "empty_usage_translations": 0,
+  "normalized_duplicate_usage_examples_projectwide": 0,
+  "build_status": 0,
+  "estimated_conjugation_examples_added": 970
+}

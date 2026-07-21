@@ -1,0 +1,90 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 7 of 18",
+  "verbs": [
+    "reprendre",
+    "entreprendre",
+    "devenir",
+    "revenir",
+    "parvenir",
+    "prévenir",
+    "intervenir",
+    "obtenir",
+    "retenir",
+    "maintenir"
+  ],
+  "source_checks": {
+    "reprendre": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "entreprendre": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "devenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "revenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "parvenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "prévenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "intervenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "obtenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "retenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    },
+    "maintenir": {
+      "in_present": true,
+      "info": true,
+      "forms": true,
+      "usages": true,
+      "complements": true
+    }
+  },
+  "usage_examples_count": 40,
+  "normalized_usage_duplicates": [],
+  "build_status": 0
+}

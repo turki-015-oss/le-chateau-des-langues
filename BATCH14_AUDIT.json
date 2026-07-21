@@ -1,0 +1,21 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 14 of 18",
+  "verbs": [
+    "se renseigner",
+    "s’inscrire",
+    "se connecter",
+    "se déconnecter",
+    "se diriger",
+    "s’approcher",
+    "s’éloigner",
+    "se cacher",
+    "se disputer",
+    "s’entendre"
+  ],
+  "usage_examples_added": 40,
+  "cumulative_usage_examples_found": 763,
+  "duplicate_usage_examples": [],
+  "empty_translations": 0,
+  "missing_verbs": [],
+  "build_status": 0
+}

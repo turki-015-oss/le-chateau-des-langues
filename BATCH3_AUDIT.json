@@ -1,0 +1,22 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 3 of 18",
+  "added_verbs": ["construire", "détruire", "cuire", "suivre", "poursuivre", "rire", "sourire", "plaire", "taire", "décrire"],
+  "conjugation_examples_added": 970,
+  "usage_examples_added": 40,
+  "checks": {
+    "explicit_irregular_forms": "passed",
+    "six_person_forms": "passed",
+    "imperative_three_forms": "passed",
+    "compound_tenses_with_avoir": "passed",
+    "information_cards": "passed",
+    "usage_sections": "passed",
+    "speech_synthesis_fr_FR": "passed",
+    "learning_carousel_pause_20_seconds": "passed",
+    "search_preserved": "passed",
+    "duplicate_normalization_check": "passed"
+  },
+  "build": {
+    "result": "success",
+    "notes": "Next.js build, TypeScript checking, and static page generation completed successfully. Existing Autoprefixer warnings only."
+  }
+}

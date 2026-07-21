@@ -1,0 +1,92 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 11 of 18",
+  "verbs": [
+    "s’amuser",
+    "se concentrer",
+    "se rappeler",
+    "se décider",
+    "se déplacer",
+    "se retourner",
+    "se joindre",
+    "se plaindre",
+    "se taire",
+    "s’asseoir"
+  ],
+  "checks": {
+    "s’amuser": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 0
+    },
+    "se concentrer": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 0
+    },
+    "se rappeler": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se décider": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se déplacer": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se retourner": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se joindre": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se plaindre": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "se taire": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    },
+    "s’asseoir": {
+      "in_verbs": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4
+    }
+  },
+  "usage_examples_added": 40,
+  "conjugation_examples_expected": 970,
+  "all_usage_examples_total": 643,
+  "normalized_usage_duplicates": [],
+  "build_status": "0"
+}

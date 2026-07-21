@@ -1,0 +1,36 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 4 of 18",
+  "added_verbs": [
+    "inscrire",
+    "reconnaître",
+    "paraître",
+    "apparaître",
+    "disparaître",
+    "valoir",
+    "falloir",
+    "pleuvoir",
+    "asseoir",
+    "fuir"
+  ],
+  "conjugation_examples_added": 816,
+  "usage_examples_added": 40,
+  "checks": {
+    "all_batch4_verbs_present": true,
+    "explicit_irregular_forms": "passed",
+    "six_person_forms_for_applicable_verbs": "passed",
+    "impersonal_verbs_single_person": "passed",
+    "imperative_three_forms_for_applicable_verbs": "passed",
+    "falloir_pleuvoir_no_imperative": "passed",
+    "compound_tenses_auxiliary": "passed",
+    "information_cards": "passed",
+    "usage_sections": "passed",
+    "speech_synthesis_fr_FR": "preserved",
+    "learning_carousel_pause_20_seconds": "preserved",
+    "search_preserved": "passed",
+    "usage_duplicate_normalization_check": "passed"
+  },
+  "build": {
+    "result": "success",
+    "notes": "Next.js build, TypeScript checking, and static page generation completed successfully. Existing Autoprefixer warnings only."
+  }
+}

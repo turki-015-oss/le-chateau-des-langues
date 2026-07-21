@@ -1,0 +1,31 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 10 of 18",
+  "verbs": [
+    "se perdre",
+    "se rencontrer",
+    "se parler",
+    "se voir",
+    "se comprendre",
+    "se demander",
+    "se servir",
+    "se rendre",
+    "se mettre",
+    "s’arrêter"
+  ],
+  "usage_examples_found": 40,
+  "duplicate_usage_examples": [],
+  "forms_present": {
+    "se perdre": true,
+    "se rencontrer": true,
+    "se parler": true,
+    "se voir": true,
+    "se comprendre": true,
+    "se demander": true,
+    "se servir": true,
+    "se rendre": true,
+    "se mettre": true,
+    "s’arrêter": true
+  },
+  "build_status": "0",
+  "estimated_conjugation_examples": 970
+}

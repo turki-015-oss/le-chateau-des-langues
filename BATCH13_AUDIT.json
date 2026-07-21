@@ -1,0 +1,103 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 13 of 18",
+  "verbs": [
+    "se comporter",
+    "se calmer",
+    "se fâcher",
+    "se réjouir",
+    "se divertir",
+    "se détendre",
+    "se passer",
+    "se dérouler",
+    "se produire",
+    "se trouver"
+  ],
+  "checks": {
+    "se comporter": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se calmer": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se fâcher": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se réjouir": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se divertir": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se détendre": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se passer": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se dérouler": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se produire": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    },
+    "se trouver": {
+      "in_VERBS": true,
+      "arabic": true,
+      "info": true,
+      "forms": true,
+      "usages": 4,
+      "context": true
+    }
+  },
+  "all_usage_examples_total": 723,
+  "normalized_duplicate_examples": [],
+  "missing_or_too_short_arabic_translations": [],
+  "batch13_usage_examples": 40,
+  "batch13_conjugation_examples_expected": 970,
+  "build_status": "0"
+}

@@ -1,0 +1,37 @@
+{
+  "verbs": [
+    "sentir",
+    "mentir",
+    "couvrir",
+    "découvrir",
+    "souffrir",
+    "cueillir",
+    "accueillir",
+    "conduire",
+    "produire",
+    "traduire"
+  ],
+  "explicit_form_checks": "PASS (present, imperfect, passé simple, subjunctive, participles and future roots verified)",
+  "examples_per_verb": 97,
+  "total_examples": 970,
+  "usage_examples": 40,
+  "structural_duplicate_keys": 0,
+  "arabic_translation_generator_present": true,
+  "speech_fr_FR": true,
+  "visible_version_badge_removed": true,
+  "learning_tips_20_seconds": true,
+  "search_base_verb_supported": true,
+  "elision_j_apostrophe": true,
+  "future_roots_verified": {
+    "sentir": "sentir-",
+    "mentir": "mentir-",
+    "couvrir": "couvrir-",
+    "découvrir": "découvrir-",
+    "souffrir": "souffrir-",
+    "cueillir": "cueiller-",
+    "accueillir": "accueiller-",
+    "conduire": "conduir-",
+    "produire": "produir-",
+    "traduire": "traduir-"
+  }
+}

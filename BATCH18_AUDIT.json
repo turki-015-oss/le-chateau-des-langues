@@ -1,0 +1,22 @@
+{
+  "version": "v6.0 — Complete Conjugation Batch 18 of 18",
+  "verbs": [
+    "s’entraîner",
+    "s’échapper",
+    "se rapprocher",
+    "se détacher",
+    "se renouveler",
+    "s’affirmer",
+    "s’enrichir",
+    "s’accomplir",
+    "se nourrir",
+    "se remettre"
+  ],
+  "batch_usage_examples": 40,
+  "total_usage_examples": 923,
+  "duplicate_usage_examples_after_normalization": 0,
+  "empty_translations": 0,
+  "missing_verbs": [],
+  "build_status": 0,
+  "build_result": "success"
+}

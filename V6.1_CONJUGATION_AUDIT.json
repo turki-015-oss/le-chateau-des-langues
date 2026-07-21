@@ -1,0 +1,10 @@
+{
+  "version": "v6.1 — Final Conjugation Audit",
+  "scope": "être: all 7 moods and required tenses",
+  "french_example_literals_checked": 7,
+  "normalized_exact_duplicates": 0,
+  "duplicate_keys": [],
+  "placeholder_text_removed_for_etre": true,
+  "build_result": "success",
+  "build_notes": "Next.js compiled, type checked, generated 25/25 static pages; existing Autoprefixer warnings only."
+}

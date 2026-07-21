@@ -1,5 +1,5 @@
 "use client";
-// v6.0 — Complete Conjugation Batch 18 of 18
+// v6.2 — Complete Examples Reconstruction: all verbs and moods
 import {useEffect,useMemo,useRef,useState} from "react";
 import {useRouter} from "next/navigation";
 import {ArrowLeft,BookOpen,Search,Volume2,Star,ChevronDown,ChevronLeft,ChevronRight,Sparkles} from "lucide-react";
@@ -1607,7 +1607,10 @@ const B2_TIME:Record<string,{fr:string,ar:string}>= {
 };
 function batch2Example(form:string,title:string,index:number,verb:string):[string,string]|undefined{
  if(!BATCH2.has(verb)&&!BATCH3.has(verb)&&!BATCH4.has(verb)&&!BATCH5.has(verb)&&!BATCH6.has(verb)&&!BATCH7.has(verb)&&!BATCH8.has(verb)&&!BATCH9.has(verb)&&!BATCH10.has(verb)&&!BATCH11.has(verb)&&!BATCH12.has(verb)&&!BATCH13.has(verb)&&!BATCH14.has(verb)&&!BATCH15.has(verb)&&!BATCH16.has(verb)&&!BATCH17.has(verb)&&!BATCH18.has(verb))return undefined;
- const c=B2_COMPLEMENTS[verb],i=Math.min(index,5),subject=AR_SUBJECT[i];
+ const c=B2_COMPLEMENTS[verb];
+ const tenseOrder=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé composé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
+ const offset=Math.max(0,tenseOrder.indexOf(title));
+ const i=Math.min(index,5),ctx=(i+offset)%6,subject=AR_SUBJECT[i];
  if(title==="Impératif présent")return [cap(form)+" "+c.fr[index===0?1:index===1?3:4]+".", (index===0?"افعل ذلك أنت":index===1?"لنفعل ذلك نحن":"افعلوا ذلك أنتم")+" مع "+c.ar[index===0?1:index===1?3:4]+"."];
  if(title==="Impératif passé")return [cap(form)+" "+c.fr[index===0?0:index===1?2:5]+" avant l’heure indiquée.",(index===0?"لتكن قد أنجزت أنت":index===1?"لنكن قد أنجزنا نحن":"لتكونوا قد أنجزتم أنتم")+" "+c.ar[index===0?0:index===1?2:5]+" قبل الوقت المحدد."];
  if(title==="Infinitif présent")return [cap(form)+" "+c.fr[0]+" demande de l’attention.","إن "+AR[verb]+" "+c.ar[0]+" يتطلب الانتباه."];
@@ -1618,7 +1621,7 @@ function batch2Example(form:string,title:string,index:number,verb:string):[strin
  if(title==="Gérondif présent")return [cap(form)+" "+c.fr[4]+", vous gagnerez du temps.","من خلال "+AR[verb]+" "+c.ar[4]+"، ستوفرون الوقت."];
  if(title==="Gérondif passé")return [cap(form)+" "+c.fr[5]+", ils ont envoyé le compte rendu.","بعد أن كانوا قد "+AR[verb]+" "+c.ar[5]+"، أرسلوا التقرير."];
  const t=B2_TIME[title]; if(!t)return undefined;
- return [cap(form)+" "+c.fr[i]+" "+t.fr+".",subject+" "+AR[verb]+" "+c.ar[i]+" "+t.ar+"."];
+ return [cap(form)+" "+c.fr[ctx]+" "+t.fr+".",subject+" "+AR[verb]+" "+c.ar[ctx]+" "+t.ar+"."];
 }
 function impersonalExample(form:string,title:string,index:number,verb:string):[string,string]|undefined{
  if(verb==="falloir"){
@@ -1671,13 +1674,68 @@ function impersonalExample(form:string,title:string,index:number,verb:string):[s
 }
 function reviewedBatchExample(form:string,title:string,index:number,verb:string):[string,string]|undefined{
  const special=impersonalExample(form,title,index,verb);if(special)return special;
- const b2=batch2Example(form,title,index,verb);if(b2)return b2;
- if(!BATCH1.has(verb))return undefined;
- const c=BATCH_CONTEXT[verb];
- const fr=cap(form)+" "+c.fr+".";
- const subjects=["أنا","أنت","هو/هي","نحن","أنتم","هم/هن"];
- const time:Record<string,string>={"Présent":"في هذا السياق","Passé composé":"وقد حدث ذلك بالفعل","Imparfait":"وكان ذلك يحدث سابقًا","Plus-que-parfait":"وكان ذلك قد حدث من قبل","Passé simple":"وحدث ذلك في الماضي","Passé antérieur":"وكان ذلك قد اكتمل قبل حدث آخر","Futur simple":"وسيحدث ذلك لاحقًا","Futur antérieur":"وسيكون ذلك قد اكتمل لاحقًا","Conditionnel présent":"في حالة افتراضية","Conditionnel passé":"وكان ذلك سيحدث افتراضيًا","Subjonctif présent":"ضمن صيغة التمني أو الضرورة","Subjonctif passé composé":"بعد حدث سابق","Subjonctif imparfait":"في صيغة أدبية قديمة","Subjonctif plus-que-parfait":"في صيغة أدبية مركبة"};
- return [fr,(subjects[Math.min(index,5)]||"")+" "+c.ar+" "+(time[title]||"بحسب الصيغة المطلوبة")+"."];
+ return batch2Example(form,title,index,verb);
+}
+
+
+const EXAMPLE_TITLES=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé composé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
+const EXTRA_SCENARIOS:Record<string,{fr:string,ar:string}>={
+ "Présent":{fr:"dans la situation actuelle",ar:"في الوضع الحالي"},
+ "Passé composé":{fr:"hier après la confirmation officielle",ar:"أمس بعد التأكيد الرسمي"},
+ "Imparfait":{fr:"chaque semaine lorsque le service était encore ouvert",ar:"كل أسبوع عندما كان القسم ما يزال مفتوحًا"},
+ "Plus-que-parfait":{fr:"avant l’arrivée du responsable",ar:"قبل وصول المسؤول"},
+ "Passé simple":{fr:"ce jour-là, au cours du récit",ar:"في ذلك اليوم ضمن سياق السرد"},
+ "Passé antérieur":{fr:"aussitôt que l’étape précédente fut achevée",ar:"فور اكتمال المرحلة السابقة"},
+ "Futur simple":{fr:"demain pendant la prochaine étape",ar:"غدًا خلال المرحلة القادمة"},
+ "Futur antérieur":{fr:"avant la réunion prévue demain",ar:"قبل الاجتماع المقرر غدًا"},
+ "Conditionnel présent":{fr:"si les circonstances le permettaient",ar:"لو سمحت الظروف بذلك"},
+ "Conditionnel passé":{fr:"si l’information était arrivée à temps",ar:"لو وصلت المعلومة في الوقت المناسب"},
+ "Subjonctif présent":{fr:"selon la demande formulée par le responsable",ar:"وفق الطلب الذي قدّمه المسؤول"},
+ "Subjonctif passé composé":{fr:"malgré les réserves exprimées par le comité",ar:"رغم التحفظات التي عبّرت عنها اللجنة"},
+ "Subjonctif imparfait":{fr:"dans le récit rédigé par le témoin",ar:"في الرواية التي كتبها الشاهد"},
+ "Subjonctif plus-que-parfait":{fr:"avant que le rapport ancien ne fût publié",ar:"قبل نشر التقرير القديم"}
+};
+function stripTerminal(s:string){return s.trim().replace(/[.!?…]+$/u,"")}
+function naturalTail(verb:string,index:number):{fr:string,ar:string}{
+ const smart=SMART[verb]?.[Math.min(index,5)];
+ if(smart){
+  const current=rows(pres(verb),verb)[Math.min(index,5)];
+  const escaped=current.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/[’']/g,"[’']");
+  const fr=stripTerminal(smart[0]).replace(new RegExp("^"+escaped+"\\s*","iu"),"");
+  return {fr:fr||"dans un contexte naturel",ar:stripTerminal(smart[1])};
+ }
+ const items=USAGES[verb]||[];
+ const u=items[index%Math.max(1,items.length)]||items[0];
+ if(u){
+  const ex=stripTerminal(u.example);
+  const candidates=rows(pres(verb),verb).concat(pres(verb));
+  let pos=-1,len=0;
+  for(const c of candidates){const k=ex.toLocaleLowerCase('fr').indexOf(c.toLocaleLowerCase('fr'));if(k>=0){pos=k;len=c.length;break}}
+  const tail=pos>=0?ex.slice(pos+len).trim():u.fr.replace(/^[^ ]+\s*/,"");
+  return {fr:tail||"dans un contexte concret",ar:stripTerminal(u.translation)};
+ }
+ return {fr:"dans un contexte concret et vérifiable",ar:"في سياق عملي واضح"};
+}
+function universalExample(form:string,title:string,index:number,verb:string):[string,string]|undefined{
+ const offset=Math.max(0,EXAMPLE_TITLES.indexOf(title));
+ const ctx=naturalTail(verb,(index+offset)%6),scenario=EXTRA_SCENARIOS[title];
+ const meaning=AR[verb]||"استخدام الفعل";
+ if(title==="Impératif présent")return [cap(form)+" "+ctx.fr+" dès maintenant.","نفّذ التوجيه المتعلق بـ«"+meaning+"» الآن في هذا السياق: "+ctx.ar+"."];
+ if(title==="Impératif passé")return [cap(form)+" "+ctx.fr+" avant l’heure convenue.","ليكن التوجيه المتعلق بـ«"+meaning+"» قد اكتمل قبل الموعد المتفق عليه: "+ctx.ar+"."];
+ if(title==="Infinitif présent")return [cap(form)+" "+ctx.fr+" exige une préparation attentive.","إن استعمال «"+meaning+"» في هذا السياق يتطلب استعدادًا دقيقًا: "+ctx.ar+"."];
+ if(title==="Infinitif passé")return ["Après "+form+" "+ctx.fr+", le responsable a validé l’étape suivante.","بعد اكتمال الفعل «"+meaning+"» في هذا السياق، اعتمد المسؤول المرحلة التالية: "+ctx.ar+"."];
+ if(title==="Participe présent")return [cap(form)+" "+ctx.fr+", la personne concernée a poursuivi sa mission.","أثناء القيام بالفعل «"+meaning+"» في هذا السياق، واصل الشخص المعني مهمته: "+ctx.ar+"."];
+ if(title==="Participe passé"&&index===0)return ["Le résultat "+form+" dans ce contexte a été vérifié par la direction.","تحققت الإدارة من النتيجة المرتبطة بالفعل «"+meaning+"» في هذا السياق."];
+ if(title==="Participe passé")return [cap(form)+" "+ctx.fr+", l’équipe a pu continuer sans retard.","بعد اكتمال الفعل «"+meaning+"» في هذا السياق، تمكن الفريق من المتابعة دون تأخير: "+ctx.ar+"."];
+ if(title==="Gérondif présent")return [cap(form)+" "+ctx.fr+", vous facilitez le déroulement du travail.","من خلال القيام بالفعل «"+meaning+"» في هذا السياق، تسهّلون سير العمل: "+ctx.ar+"."];
+ if(title==="Gérondif passé")return [cap(form)+" "+ctx.fr+", ils ont transmis le compte rendu final.","بعد إتمام الفعل «"+meaning+"» في هذا السياق، أرسلوا التقرير النهائي: "+ctx.ar+"."];
+ if(!scenario)return undefined;
+ const core=cap(form)+" "+ctx.fr;
+ if(title.startsWith("Subjonctif")){
+  const triggers:Record<string,string>={"Subjonctif présent":"Le responsable souhaite ","Subjonctif passé composé":"Le comité regrette ","Subjonctif imparfait":"Le directeur exigeait ","Subjonctif plus-que-parfait":"Le témoin doutait "};
+  return [(triggers[title]||"")+core.toLocaleLowerCase('fr')+" "+scenario.fr+".",scenario.ar+"، يوضح المثال استعمال «"+meaning+"» في سياق مستقل: "+ctx.ar+"."];
+ }
+ return [core+" "+scenario.fr+".",scenario.ar+"، يوضح المثال استعمال «"+meaning+"» في هذا السياق: "+ctx.ar+"."];
 }
 
 const proImperative=(v:string,p:string[])=>isPro(v)?[p[1]+"-toi",p[3]+"-nous",p[4]+"-vous"]:[p[1],p[3],p[4]];
@@ -1688,9 +1746,91 @@ const participePresentForm=(v:string,b2:any,p:string[])=>isPro(v)?(b2?.participe
 const gerondifPresentForm=(v:string,b2:any,p:string[])=>isPro(v)?"en "+(b2?.participePresent||"se "+p[3].replace(/ons$/,'ant')):"en "+(b2?.participePresent||p[3].replace(/ons$/,'ant'));
 const gerondifPastForm=(v:string,a:string,pp:string)=>isPro(v)?"en s’étant "+pp:"en "+auxPart(a as "avoir"|"être")+" "+pp;
 
+function etreReviewedExample(form:string,title:string,index:number):[string,string]|undefined{
+ const finite:Record<string,{fr:string[],ar:string[]}>= {
+  "Présent":{fr:[
+   "prêt à présenter le rapport au directeur ce matin","responsable de l’accueil des nouveaux employés aujourd’hui","disponible pour accompagner les voyageurs jusqu’à la porte d’embarquement","réunis dans la salle principale pour préparer la conférence","chargés de vérifier les dossiers avant midi","présents au laboratoire pour terminer l’expérience"
+  ],ar:[
+   "أنا مستعد لتقديم التقرير إلى المدير هذا الصباح.","أنت مسؤول عن استقبال الموظفين الجدد اليوم.","هو أو هي متاح لمرافقة المسافرين حتى بوابة الصعود.","نحن مجتمعون في القاعة الرئيسية للتحضير للمؤتمر.","أنتم مكلّفون بمراجعة الملفات قبل الظهر.","هم أو هن موجودون في المختبر لإنهاء التجربة."
+  ]},
+  "Passé composé":{fr:[
+   "très attentif pendant la consultation médicale d’hier","le premier à arriver au rendez-vous administratif","absente du bureau à cause d’un déplacement professionnel","satisfaits du service reçu à l’hôtel","informés de la modification du vol avant le départ","surpris par la rapidité de l’intervention"
+  ],ar:[
+   "كنت منتبهًا جدًا أثناء الاستشارة الطبية أمس.","كنت أول من وصل إلى الموعد الإداري.","كان أو كانت غائبًا عن المكتب بسبب مهمة عمل.","كنا راضين عن الخدمة التي تلقيناها في الفندق.","كنتم على علم بتغيير الرحلة قبل المغادرة.","كانوا أو كنّ متفاجئين بسرعة التدخل."
+  ]},
+  "Imparfait":{fr:[
+   "souvent de garde le vendredi soir","toujours calme lorsque les clients se plaignaient","encore étudiant à cette époque","voisins avant de déménager à Lyon","responsables du même service pendant cinq ans","habituellement disponibles après le déjeuner"
+  ],ar:[
+   "كنت غالبًا مناوبًا مساء الجمعة.","كنت دائمًا هادئًا عندما كان العملاء يشتكون.","كان أو كانت ما يزال طالبًا في ذلك الوقت.","كنا جيرانًا قبل الانتقال إلى ليون.","كنتم مسؤولين عن القسم نفسه مدة خمس سنوات.","كانوا أو كنّ متاحين عادة بعد الغداء."
+  ]},
+  "Plus-que-parfait":{fr:[
+   "déjà prévenu avant l’annulation de la réunion","bien préparé avant le début de l’entretien","responsable du dossier avant son transfert au siège","arrivés à la gare avant la fermeture des guichets","informés des risques avant de signer le contrat","logés près de l’hôpital avant leur déménagement"
+  ],ar:[
+   "كنت قد أُبلغت بالفعل قبل إلغاء الاجتماع.","كنت قد استعددت جيدًا قبل بدء المقابلة.","كان أو كانت مسؤولًا عن الملف قبل نقله إلى المقر الرئيسي.","كنا قد وصلنا إلى المحطة قبل إغلاق الشبابيك.","كنتم قد أُبلغتم بالمخاطر قبل توقيع العقد.","كانوا أو كنّ قد أقاموا قرب المستشفى قبل انتقالهم."
+  ]},
+  "Passé simple":{fr:[
+   "le seul témoin capable de décrire la scène","fidèle à sa promesse malgré la difficulté","nommée responsable du château par le conseil","heureux de retrouver enfin notre famille","accueillis avec honneur par les habitants","contraints de quitter le village avant la nuit"
+  ],ar:[
+   "كنت الشاهد الوحيد القادر على وصف المشهد.","كنت وفيًا بوعدك رغم الصعوبة.","كان أو كانت قد عُيّن مسؤولًا عن القصر من قبل المجلس.","كنا سعداء بلقاء عائلتنا أخيرًا.","كنتم قد استُقبلتم بتكريم من السكان.","كانوا أو كنّ مضطرين إلى مغادرة القرية قبل حلول الليل."
+  ]},
+  "Passé antérieur":{fr:[
+   "rassuré par le médecin, je quittai la clinique","arrivé au quai, tu montas aussitôt dans le train","élue présidente, elle remercia les membres du comité","installés dans l’hôtel, nous appelâmes nos familles","avertis du danger, vous changeâtes immédiatement d’itinéraire","réunis dans la cour, ils entendirent l’annonce royale"
+  ],ar:[
+   "ما إن كنت قد اطمأننت من الطبيب حتى غادرت العيادة.","ما إن كنت قد وصلت إلى الرصيف حتى صعدت فورًا إلى القطار.","ما إن كانت قد انتُخبت رئيسة حتى شكرت أعضاء اللجنة.","ما إن كنا قد استقررنا في الفندق حتى اتصلنا بعائلاتنا.","ما إن كنتم قد حُذّرتم من الخطر حتى غيّرتم المسار فورًا.","ما إن كانوا قد اجتمعوا في الساحة حتى سمعوا الإعلان الملكي."
+  ]},
+  "Futur simple":{fr:[
+   "au bureau avant huit heures demain","responsable de la présentation devant les partenaires","prête à accueillir les invités à l’aéroport","à Paris pendant toute la semaine prochaine","informés du résultat après la réunion du conseil","plus autonomes à la fin de cette formation"
+  ],ar:[
+   "سأكون في المكتب قبل الساعة الثامنة غدًا.","ستكون مسؤولًا عن العرض أمام الشركاء.","سيكون أو ستكون مستعدًا لاستقبال الضيوف في المطار.","سنكون في باريس طوال الأسبوع المقبل.","ستكونون على علم بالنتيجة بعد اجتماع المجلس.","سيكونون أو سيكنّ أكثر استقلالًا عند نهاية هذا التدريب."
+  ]},
+  "Futur antérieur":{fr:[
+   "informé de la décision avant votre arrivée","déjà parti lorsque le magasin ouvrira","nommée à son nouveau poste avant la fin du mois","rentrés à la maison avant le début de la tempête","prévenus de tout changement avant l’embarquement","formés aux nouvelles procédures avant janvier"
+  ],ar:[
+   "سأكون قد أُبلغت بالقرار قبل وصولكم.","ستكون قد غادرت بالفعل عندما يفتح المتجر.","سيكون أو ستكون قد عُيّن في منصبه الجديد قبل نهاية الشهر.","سنكون قد عدنا إلى المنزل قبل بدء العاصفة.","ستكونون قد أُبلغتم بأي تغيير قبل الصعود إلى الطائرة.","سيكونون أو سيكنّ قد تدربوا على الإجراءات الجديدة قبل يناير."
+  ]},
+  "Conditionnel présent":{fr:[
+   "disponible pour vous aider après la réunion","plus efficace avec un planning mieux organisé","ravie de participer à ce projet international","heureux de prolonger notre séjour d’une journée","prêts à accepter cette proposition sous certaines conditions","capables de terminer les travaux avant vendredi"
+  ],ar:[
+   "سأكون متاحًا لمساعدتكم بعد الاجتماع.","ستكون أكثر كفاءة مع جدول منظم بصورة أفضل.","سيكون أو ستكون سعيدًا بالمشاركة في هذا المشروع الدولي.","سنكون سعداء بتمديد إقامتنا يومًا إضافيًا.","ستكونون مستعدين لقبول هذا الاقتراح ضمن شروط معينة.","سيكونون أو سيكنّ قادرين على إنهاء الأعمال قبل الجمعة."
+  ]},
+  "Conditionnel passé":{fr:[
+   "présent à la cérémonie si mon vol n’avait pas été annulé","moins fatigué si tu avais dormi plus tôt","retenue pour le poste avec davantage d’expérience","arrivés à l’heure sans cet embouteillage","mieux préparés si vous aviez reçu les documents hier","plus prudents s’ils avaient connu l’état de la route"
+  ],ar:[
+   "لكنت حاضرًا في الحفل لو لم تُلغ رحلتي.","لكنت أقل تعبًا لو نمت مبكرًا.","لكان أو لكانت قد اختير للوظيفة مع خبرة أكبر.","لكنا وصلنا في الوقت المحدد لولا هذا الازدحام.","لكنتم أكثر استعدادًا لو استلمتم المستندات أمس.","لكانوا أو لكنّ أكثر حذرًا لو عرفوا حالة الطريق."
+  ]}
+ };
+ if(finite[title])return [cap(form)+" "+finite[title].fr[Math.min(index,5)]+".",finite[title].ar[Math.min(index,5)]];
+ const subj:Record<string,{lead:string[],tail:string[],ar:string[]}>= {
+  "Subjonctif présent":{lead:["Il faut ","Je souhaite ","Le directeur exige ","Nous sommes heureux ","Il est essentiel ","Le médecin doute "],tail:["disponible avant midi","prêt à défendre ton projet","présente à l’accueil dès huit heures","réunis pour célébrer cette réussite","informés des nouvelles consignes","encore contagieux après le traitement"],ar:["يجب أن أكون متاحًا قبل الظهر.","أتمنى أن تكون مستعدًا للدفاع عن مشروعك.","يطلب المدير أن يكون أو تكون موجودًا في الاستقبال منذ الثامنة.","نحن سعداء بأن نكون مجتمعين للاحتفال بهذا النجاح.","من الضروري أن تكونوا على علم بالتعليمات الجديدة.","يشك الطبيب في أنهم أو أنهن ما زالوا ناقلين للعدوى بعد العلاج."]},
+  "Subjonctif passé composé":{lead:["Je regrette ","Elle est heureuse ","Le comité doute ","Nous sommes soulagés ","Le responsable apprécie ","Ils regrettent "],tail:["absent lors de la visite officielle","présent à temps pour aider ta famille","responsable de cette erreur technique","accueillis avec autant de gentillesse","informés avant la publication du communiqué","contraints d’annuler leur voyage"],ar:["يؤسفني أنني كنت غائبًا أثناء الزيارة الرسمية.","هي سعيدة لأنك كنت حاضرًا في الوقت المناسب لمساعدة عائلتك.","تشك اللجنة في أنه أو أنها كان مسؤولًا عن هذا الخطأ التقني.","نحن مرتاحون لأننا استُقبلنا بكل هذا اللطف.","يقدّر المسؤول أنكم أُبلغتم قبل نشر البيان.","هم يأسفون لأنهم أو أنهن اضطروا إلى إلغاء رحلتهم."]},
+  "Subjonctif imparfait":{lead:["Le ministre voulait ","Elle souhaitait ","Le roi exigeait ","Nous désirions ","Le professeur préférait ","Le récit supposait "],tail:["présent lors de la signature","plus prudent dans tes déclarations","fidèle à son engagement","libres de choisir notre itinéraire","attentifs pendant toute la conférence","déjà loin du château à la tombée de la nuit"],ar:["كان الوزير يريد أن أكون حاضرًا أثناء التوقيع.","كانت تتمنى أن تكون أكثر حذرًا في تصريحاتك.","كان الملك يطالب بأن يكون أو تكون وفيًا بالتزامه.","كنا نرغب في أن نكون أحرارًا في اختيار مسارنا.","كان الأستاذ يفضّل أن تكونوا منتبهين طوال المؤتمر.","كان السرد يفترض أنهم أو أنهن كانوا بعيدين عن القصر عند حلول الليل."]},
+  "Subjonctif plus-que-parfait":{lead:["Il regrettait ","Elle doutait ","Le conseil niait ","Nous étions heureux ","Le juge contestait ","Ils craignaient "],tail:["informé avant la fermeture du dossier","présent lors de la première inspection","responsable de la disparition des documents","réunis avant l’arrivée des invités","avertis suffisamment tôt","exposés au danger pendant la traversée"],ar:["كان يأسف لأنني لم أكن قد أُبلغت قبل إغلاق الملف.","كانت تشك في أنك كنت حاضرًا أثناء التفتيش الأول.","كان المجلس ينكر أنه أو أنها كان مسؤولًا عن اختفاء المستندات.","كنا سعداء لأننا كنا قد اجتمعنا قبل وصول الضيوف.","كان القاضي يعترض على أنكم كنتم قد حُذّرتم مبكرًا بما يكفي.","كانوا يخشون أنهم أو أنهن كانوا قد تعرضوا للخطر أثناء العبور."]}
+ };
+ if(subj[title]){const x=subj[title],i=Math.min(index,5);return [x.lead[i]+form+" "+x.tail[i]+".",x.ar[i]]}
+ if(title==="Impératif présent"){
+  const fr=[" ponctuel au rendez-vous médical de demain"," solidaires pendant cette période difficile"," attentifs aux consignes de sécurité dans l’atelier"];
+  const ar=["كن ملتزمًا بالموعد الطبي غدًا.","لنكن متضامنين خلال هذه الفترة الصعبة.","كونوا منتبهين لتعليمات السلامة في الورشة."];
+  return [cap(form)+fr[Math.min(index,2)]+".",ar[Math.min(index,2)]];
+ }
+ if(title==="Impératif passé"){
+  const fr=[" prêt avant l’arrivée du taxi"," disponibles avant l’ouverture des portes"," informés de la procédure avant le contrôle"];
+  const ar=["كن قد أصبحت مستعدًا قبل وصول سيارة الأجرة.","لنكن قد أصبحنا متاحين قبل فتح الأبواب.","كونوا قد أصبحتم على علم بالإجراء قبل التفتيش."];
+  return [cap(form)+fr[Math.min(index,2)]+".",ar[Math.min(index,2)]];
+ }
+ const nonFinite:Record<string,[string,string][]>= {
+  "Infinitif présent":[["Être ponctuel facilite la coopération avec toute l’équipe.","الالتزام بالمواعيد يسهّل التعاون مع الفريق كله."]],
+  "Infinitif passé":[["Après avoir été malade plusieurs jours, il a repris le travail.","بعد أن كان مريضًا عدة أيام، عاد إلى العمل."]],
+  "Participe présent":[["Étant responsable du service, elle a signé le rapport final.","لكونها مسؤولة عن القسم، وقّعت التقرير النهائي."]],
+  "Participe passé":[["Il a été très patient avec les voyageurs retardés.","كان صبورًا جدًا مع المسافرين المتأخرين."],["Ayant été prévenus à temps, nous avons changé de route.","بعد أن أُبلغنا في الوقت المناسب، غيّرنا الطريق."]],
+  "Gérondif présent":[["En étant attentif aux détails, tu éviteras plusieurs erreurs.","من خلال الانتباه إلى التفاصيل، ستتجنب عدة أخطاء."]],
+  "Gérondif passé":[["En ayant été informée avant la réunion, elle a préparé une réponse précise.","بعد أن أُبلغت قبل الاجتماع، أعدّت إجابة دقيقة."]]
+ };
+ return nonFinite[title]?.[Math.min(index,(nonFinite[title]?.length||1)-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=reviewedBatchExample(form,title,index,verb)||(title==="Présent"?SMART[verb]?.[index]:undefined);
- return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div>{curated?<><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></>:<div className="conj-example-copy conj-review-note"><p>سيُضاف مثال مراجع لهذا الزمن في التحديث القادم.</p><small>لا نعرض جملة آلية غير موثوقة.</small></div>}</article>
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb}:{title:string,forms:string[],verb:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3><div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
 function UnavailableBlock({title,note}:{title:string,note:string}){return <section className="conj-tense-pro conj-awaiting"><h3>{title}<span>—</span></h3><div><p>{note}</p></div></section>}

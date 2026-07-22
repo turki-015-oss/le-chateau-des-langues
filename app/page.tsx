@@ -53,7 +53,7 @@ export default function EntryPage() {
           ))}
         </div>
 
-        <button className="v69-primary" onClick={() => router.push("/castle")}>دخول العالم</button>
+        <button className="v69-primary" onClick={() => router.push("/kingdom")}>دخول العالم</button>
         <button className="v69-secondary" onClick={speakWelcome}>
           <Volume2 aria-hidden="true" />
           استمع إلى الترحيب

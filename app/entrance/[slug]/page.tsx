@@ -13,6 +13,7 @@ const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image
  market:{titleFr:"Le Marché",titleAr:"السوق",subtitle:"التسوق والأسعار والمفردات اليومية",image:"/worlds/market.png",destination:"/market"},
  library:{titleFr:"La Bibliothèque",titleAr:"المكتبة",subtitle:"الكتب والقراءة والهدوء",image:"/worlds/library.png",destination:"/library"},
  hotel:{titleFr:"L’Hôtel",titleAr:"الفندق",subtitle:"الحجز والغرف والاستقبال",image:"/worlds/hotel.png",destination:"/hotel"},
+ hospital:{titleFr:"L’Hôpital",titleAr:"المستشفى",subtitle:"الأعراض والمواعيد وطلب المساعدة",image:"/worlds/hospital.png",destination:"/hospital"},
  zoo:{titleFr:"Le Zoo",titleAr:"حديقة الحيوانات",subtitle:"الحيوانات والطبيعة والاكتشاف",image:"/worlds/zoo.png",destination:"/zoo"}
 };
 export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params; const w=worlds[slug]; if(!w) notFound(); return <WorldEntrance {...w}/>}

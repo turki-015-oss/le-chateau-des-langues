@@ -1,6 +1,7 @@
 "use client";
 
 import { BookOpen, Castle, MapPin, MessageCircle, Sparkles, Volume2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const features = [
@@ -10,19 +11,26 @@ const features = [
   { icon: MessageCircle, text: "مفردات وجمل واختبارات" },
 ];
 
-function speakWelcome() {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(
-    "Bienvenue au Château des Langues. Apprenez le français, explorez les lieux et progressez à travers des mots, des phrases et des tests."
-  );
-  utterance.lang = "fr-FR";
-  utterance.rate = 0.88;
-  window.speechSynthesis.speak(utterance);
-}
-
 export default function EntryPage() {
   const router = useRouter();
+  const [welcomeActive,setWelcomeActive]=useState(false);
+  const [welcomeText,setWelcomeText]=useState("");
+  const resetTimer=useRef<number|null>(null);
+  const welcome="Bienvenue au Château des Langues. Apprenez le français, explorez les lieux et progressez à travers des mots, des phrases et des tests.";
+  useEffect(()=>()=>{window.speechSynthesis?.cancel();if(resetTimer.current)window.clearTimeout(resetTimer.current)},[]);
+  const speakWelcome=()=>{
+    if(welcomeActive || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel(); setWelcomeActive(true); setWelcomeText("");
+    window.dispatchEvent(new Event("lcdl:speech-start"));
+    const u=new SpeechSynthesisUtterance(welcome);u.lang="fr-FR";u.rate=.88;
+    const words=welcome.split(" "); let index=0;
+    const reveal=()=>{index=Math.min(words.length,index+1);setWelcomeText(words.slice(0,index).join(" "));};
+    const interval=window.setInterval(reveal,Math.max(180,(welcome.length/u.rate)/3));
+    u.onboundary=(e)=>{if(e.name==="word"){const shown=welcome.slice(0,e.charIndex+e.charLength);setWelcomeText(shown)}};
+    u.onend=()=>{window.clearInterval(interval);setWelcomeText(welcome);window.dispatchEvent(new Event("lcdl:speech-end"));resetTimer.current=window.setTimeout(()=>{setWelcomeActive(false);setWelcomeText("")},10000)};
+    u.onerror=()=>{window.clearInterval(interval);window.dispatchEvent(new Event("lcdl:speech-end"));setWelcomeActive(false)};
+    window.speechSynthesis.speak(u);
+  };
 
   return (
     <main className="v69-entry" aria-label="المدخل الرئيسي لتطبيق القلعة">
@@ -54,9 +62,9 @@ export default function EntryPage() {
         </div>
 
         <button className="v69-primary" onClick={() => router.push("/kingdom")}>دخول العالم</button>
-        <button className="v69-secondary" onClick={speakWelcome}>
-          <Volume2 aria-hidden="true" />
-          استمع إلى الترحيب
+        <button className={`v69-secondary ${welcomeActive?"is-speaking":""}`} onClick={speakWelcome} disabled={welcomeActive}>
+          {!welcomeActive&&<Volume2 aria-hidden="true" />}
+          <span>{welcomeActive?(welcomeText||"Bienvenue…"):"استمع إلى الترحيب"}</span>
         </button>
       </section>
     </main>

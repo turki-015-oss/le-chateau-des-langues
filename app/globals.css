@@ -3773,3 +3773,11 @@
 @keyframes overlayIn{from{opacity:0}to{opacity:1}}
 @media(min-width:1100px){.premium-map-stage{padding-inline:120px}.map-image-shell{width:min(72vh,920px)}.map-scroll-area{padding-bottom:200px}.map-tools{left:55px}.premium-compass{right:55px}}
 @media(max-width:650px){.premium-map-header{height:82px;grid-template-columns:54px 54px 1fr 58px;padding:8px 10px;gap:8px}.premium-map-header>button{height:50px;border-radius:14px}.premium-map-title{font-size:17px}.premium-map-title i{display:none}.premium-avatar span{font-size:30px}.premium-map-stage{height:calc(100vh - 82px);padding:10px 8px 20px}.map-tools{left:14px;top:20px;gap:10px}.map-tools button{width:48px;height:48px;border-radius:15px}.premium-compass{right:14px;top:20px;width:68px;height:82px}.premium-compass svg{width:34px}.map-image-shell{width:100%}.map-image-shell>img{border-radius:22px}.avatar-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* v7.2 map correction: one real interface around a cropped city artwork. */
+.approved-city-map{background-image:url('/maps/kingdom-approved.webp');background-size:100% 100%;border-radius:30px;box-shadow:0 0 0 3px #b78b3b,0 30px 90px #000c}
+.world-map-canvas-v4{transform-origin:0 0}
+.world-map-viewport-v4{background:radial-gradient(circle at 50% 20%,#0b392b,#031710 72%)}
+.world-compass-v4{pointer-events:none}
+.world-compass-v4 svg{animation:compassFloat 5s ease-in-out infinite}
+@media(min-width:1100px){.world-map-topbar-v4{padding-inline:30px}.world-map-viewport-v4{max-width:1600px;margin-inline:auto;border-inline:1px solid #8f6b32}}

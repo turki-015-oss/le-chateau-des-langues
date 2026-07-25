@@ -11,25 +11,86 @@ const features = [
   { icon: MessageCircle, text: "مفردات وجمل واختبارات" },
 ];
 
+const welcomeSentences = [
+  "Bienvenue au Château des Langues.",
+  "Apprenez le français, explorez les lieux",
+  "et progressez à travers des mots, des phrases et des tests."
+];
+const welcome = welcomeSentences.join(" ");
+
 export default function EntryPage() {
   const router = useRouter();
-  const [welcomeActive,setWelcomeActive]=useState(false);
-  const [welcomeText,setWelcomeText]=useState("");
-  const resetTimer=useRef<number|null>(null);
-  const welcome="Bienvenue au Château des Langues. Apprenez le français, explorez les lieux et progressez à travers des mots, des phrases et des tests.";
-  useEffect(()=>()=>{window.speechSynthesis?.cancel();if(resetTimer.current)window.clearTimeout(resetTimer.current)},[]);
-  const speakWelcome=()=>{
-    if(welcomeActive || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel(); setWelcomeActive(true); setWelcomeText("");
-    window.dispatchEvent(new Event("lcdl:speech-start"));
-    const u=new SpeechSynthesisUtterance(welcome);u.lang="fr-FR";u.rate=.88;
-    const words=welcome.split(" "); let index=0;
-    const reveal=()=>{index=Math.min(words.length,index+1);setWelcomeText(words.slice(0,index).join(" "));};
-    const interval=window.setInterval(reveal,Math.max(180,(welcome.length/u.rate)/3));
-    u.onboundary=(e)=>{if(e.name==="word"){const shown=welcome.slice(0,e.charIndex+e.charLength);setWelcomeText(shown)}};
-    u.onend=()=>{window.clearInterval(interval);setWelcomeText(welcome);window.dispatchEvent(new Event("lcdl:speech-end"));resetTimer.current=window.setTimeout(()=>{setWelcomeActive(false);setWelcomeText("")},10000)};
-    u.onerror=()=>{window.clearInterval(interval);window.dispatchEvent(new Event("lcdl:speech-end"));setWelcomeActive(false)};
-    window.speechSynthesis.speak(u);
+  const [welcomeActive, setWelcomeActive] = useState(false);
+  const [welcomeText, setWelcomeText] = useState("");
+  const resetTimer = useRef<number | null>(null);
+  const fallbackTimers = useRef<number[]>([]);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  const clearTimers = () => {
+    fallbackTimers.current.forEach((id) => window.clearTimeout(id));
+    fallbackTimers.current = [];
+    if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
+    resetTimer.current = null;
+  };
+
+  useEffect(() => () => {
+    clearTimers();
+    window.speechSynthesis?.cancel();
+    utteranceRef.current = null;
+  }, []);
+
+  const speakWelcome = () => {
+    if (welcomeActive || !("speechSynthesis" in window)) return;
+    clearTimers();
+    window.speechSynthesis.cancel();
+    setWelcomeActive(true);
+    setWelcomeText(welcomeSentences[0]);
+
+    const utterance = new SpeechSynthesisUtterance(welcome);
+    utteranceRef.current = utterance;
+    utterance.lang = "fr-FR";
+    utterance.rate = 0.88;
+
+    const sentenceEnds = welcomeSentences.reduce<number[]>((ends, sentence, index) => {
+      const previous = index === 0 ? 0 : ends[index - 1] + 1;
+      ends.push(previous + sentence.length);
+      return ends;
+    }, []);
+
+    let receivedBoundary = false;
+    utterance.onboundary = (event) => {
+      receivedBoundary = true;
+      const index = sentenceEnds.findIndex((end) => event.charIndex < end);
+      const safeIndex = index < 0 ? welcomeSentences.length - 1 : index;
+      setWelcomeText(welcomeSentences.slice(0, safeIndex + 1).join(" "));
+    };
+
+    // Fallback for browsers that do not provide speech boundaries.
+    [2400, 5200].forEach((delay, index) => {
+      fallbackTimers.current.push(window.setTimeout(() => {
+        if (!receivedBoundary) setWelcomeText(welcomeSentences.slice(0, index + 2).join(" "));
+      }, delay));
+    });
+
+    utterance.onend = () => {
+      fallbackTimers.current.forEach((id) => window.clearTimeout(id));
+      fallbackTimers.current = [];
+      utteranceRef.current = null;
+      setWelcomeText(welcome);
+      resetTimer.current = window.setTimeout(() => {
+        setWelcomeActive(false);
+        setWelcomeText("");
+      }, 10000);
+    };
+
+    utterance.onerror = () => {
+      clearTimers();
+      utteranceRef.current = null;
+      setWelcomeActive(false);
+      setWelcomeText("");
+    };
+
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -42,7 +103,6 @@ export default function EntryPage() {
           <i key={i} style={{ "--x": `${(i * 47) % 100}%`, "--y": `${(i * 31) % 100}%`, "--delay": `${i * -0.35}s`, "--duration": `${4 + (i % 5)}s` } as React.CSSProperties} />
         ))}
       </div>
-
       <section className="v69-entry-panel">
         <div className="v69-brand-mark" aria-hidden="true"><Castle /></div>
         <p className="v69-brand-fr">Le Château</p>
@@ -51,20 +111,13 @@ export default function EntryPage() {
         <h2>Bienvenue</h2>
         <p className="v69-welcome-ar">مرحبًا بك</p>
         <p className="v69-description">تجربة فرنسية فاخرة للتعلّم والاستكشاف داخل عالم القلعة.</p>
-
         <div className="v69-feature-list">
-          {features.map(({ icon: Icon, text }) => (
-            <div key={text} className="v69-feature-row">
-              <Icon aria-hidden="true" />
-              <span>{text}</span>
-            </div>
-          ))}
+          {features.map(({ icon: Icon, text }) => <div key={text} className="v69-feature-row"><Icon aria-hidden="true" /><span>{text}</span></div>)}
         </div>
-
         <button className="v69-primary" onClick={() => router.push("/kingdom")}>دخول العالم</button>
-        <button className={`v69-secondary ${welcomeActive?"is-speaking":""}`} onClick={speakWelcome} disabled={welcomeActive}>
-          {!welcomeActive&&<Volume2 aria-hidden="true" />}
-          <span>{welcomeActive?(welcomeText||"Bienvenue…"):"استمع إلى الترحيب"}</span>
+        <button className={`v69-secondary ${welcomeActive ? "is-speaking" : ""}`} onClick={speakWelcome} disabled={welcomeActive}>
+          {!welcomeActive && <Volume2 aria-hidden="true" />}
+          <span>{welcomeActive ? (welcomeText || "Bienvenue…") : "استمع إلى الترحيب"}</span>
         </button>
       </section>
     </main>

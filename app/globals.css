@@ -3522,6 +3522,8 @@
 .kingdom-tile-layer-base{z-index:1}
 .kingdom-tile-layer-detail{z-index:2}
 .kingdom-map-tile{position:absolute;display:block;max-width:none;user-select:none;pointer-events:none;transform:translateZ(0);backface-visibility:hidden}
+.kingdom-region-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
+.kingdom-region-artwork{position:absolute;display:block;max-width:none;user-select:none;pointer-events:none;transform:translateZ(0);backface-visibility:hidden}
 .kingdom-interaction-layer{z-index:4}
 .world-terrain{position:absolute;display:grid;place-items:center;border:2px dashed #a8a86a35;border-radius:80px;color:#d8cd8d50;font:27px Georgia,serif;background:repeating-linear-gradient(135deg,#193c2622 0 35px,#0d2a1b22 35px 70px)}.terrain-north{left:450px;top:140px;width:2300px;height:860px}.terrain-west{left:100px;top:1100px;width:780px;height:2200px}.terrain-east{left:2320px;top:1100px;width:780px;height:2200px}.terrain-south{left:450px;top:2900px;width:2300px;height:1050px}
 .building-hitbox{position:absolute;z-index:1;border:0;border-radius:34px;background:transparent;cursor:pointer}.building-hitbox:focus{outline:none}.building-focus-ring{position:absolute;inset:12%;border:3px solid transparent;border-radius:30px;transition:.2s ease}.building-hitbox:hover .building-focus-ring,.building-hitbox:focus .building-focus-ring{border-color:#f4d26f;box-shadow:0 0 0 8px #0c2a1aa8,0 0 34px #f4d26f99;background:#ffe38a12}.building-hitbox.open:hover .building-focus-ring{border-color:#9ced66;box-shadow:0 0 0 8px #0c2a1aa8,0 0 36px #8bea5eaa}.building-hitbox.soon{cursor:not-allowed}

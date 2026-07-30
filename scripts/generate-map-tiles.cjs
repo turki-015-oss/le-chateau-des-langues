@@ -10,6 +10,7 @@ const root = path.resolve(__dirname, "..");
 const source = path.join(root, "public", "maps", "kingdom-approved.webp");
 const hdSource = path.join(root, "public", "maps", "kingdom-approved-hd.webp");
 const outputRoot = path.join(root, "public", "maps", "kingdom-tiles");
+const regionOutputRoot = path.join(root, "public", "maps", "kingdom-regions");
 const LEVELS = [
   {
     name: "base",
@@ -25,6 +26,19 @@ const LEVELS = [
     scale: 4,
     quality: 93,
     input: hdSource
+  }
+];
+const REGIONS = [
+  {
+    name: "central",
+    scale: 4,
+    left: 160,
+    top: 80,
+    width: 490,
+    height: 620,
+    feather: 64,
+    input: hdSource,
+    output: path.join(regionOutputRoot, "central-detail-4x.webp")
   }
 ];
 
@@ -119,6 +133,85 @@ async function generateLevel({
   };
 }
 
+async function generateRegion({
+  name,
+  scale,
+  left,
+  top,
+  width,
+  height,
+  feather,
+  input,
+  output
+}) {
+  const physicalWidth = width * scale;
+  const physicalHeight = height * scale;
+  const physicalLeft = left * scale;
+  const physicalTop = top * scale;
+  const innerWidth = physicalWidth - feather * 2;
+  const innerHeight = physicalHeight - feather * 2;
+  const alphaMask = Buffer.from(`
+    <svg width="${physicalWidth}" height="${physicalHeight}" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="feather">
+          <feGaussianBlur stdDeviation="${feather / 2}" />
+        </filter>
+      </defs>
+      <rect
+        x="${feather}"
+        y="${feather}"
+        width="${innerWidth}"
+        height="${innerHeight}"
+        rx="${feather / 2}"
+        fill="white"
+        filter="url(#feather)"
+      />
+    </svg>
+  `);
+
+  await fs.mkdir(path.dirname(output), { recursive: true });
+
+  const enhanced = await sharp(input)
+    .extract({
+      left: physicalLeft,
+      top: physicalTop,
+      width: physicalWidth,
+      height: physicalHeight
+    })
+    .modulate({ brightness: 1.012, saturation: 1.035 })
+    .sharpen({ sigma: 0.82, m1: 0.55, m2: 1.15 })
+    .ensureAlpha()
+    .png()
+    .toBuffer();
+
+  await sharp(enhanced)
+    .composite([{ input: alphaMask, blend: "dest-in" }])
+    .webp({ quality: 94, effort: 6, smartSubsample: true })
+    .toFile(output);
+
+  const metadata = await sharp(output).metadata();
+
+  if (
+    metadata.width !== physicalWidth ||
+    metadata.height !== physicalHeight ||
+    metadata.hasAlpha !== true
+  ) {
+    throw new Error(
+      `Invalid region ${name}: ${metadata.width}x${metadata.height}, ` +
+      `alpha=${metadata.hasAlpha}; expected ${physicalWidth}x${physicalHeight} with alpha.`
+    );
+  }
+
+  return {
+    name,
+    input: path.relative(root, input),
+    output: path.relative(root, output),
+    logicalBounds: { left, top, width, height },
+    physicalSize: { width: physicalWidth, height: physicalHeight },
+    feather
+  };
+}
+
 async function main() {
   const metadata = await sharp(source).metadata();
   const hdMetadata = await sharp(hdSource).metadata();
@@ -145,7 +238,18 @@ async function main() {
     generated.push(await generateLevel(level));
   }
 
-  console.log(JSON.stringify({ source: path.relative(root, source), generated }, null, 2));
+  const regions = [];
+  for (const region of REGIONS) {
+    regions.push(await generateRegion(region));
+  }
+
+  console.log(
+    JSON.stringify(
+      { source: path.relative(root, source), generated, regions },
+      null,
+      2
+    )
+  );
 }
 
 main().catch((error) => {

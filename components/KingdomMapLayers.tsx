@@ -1,6 +1,12 @@
 const MAP_WIDTH = 808;
 const MAP_HEIGHT = 1114;
 const TILE_SIZE = 256;
+const CENTRAL_REGION = {
+  left: 160,
+  top: 80,
+  width: 490,
+  height: 620
+};
 
 type KingdomMapLayersProps = {
   highDetail: boolean;
@@ -80,6 +86,22 @@ export default function KingdomMapLayers({ highDetail }: KingdomMapLayersProps) 
     <div className="kingdom-artwork-layer" aria-hidden="true">
       {renderLayer(MAP_LAYERS[0])}
       {highDetail && renderLayer(MAP_LAYERS[1])}
+      {highDetail && (
+        <div
+          className="kingdom-region-layer kingdom-region-layer-central"
+          data-map-layer="region-detail"
+          data-map-region="central"
+        >
+          <img
+            src="/maps/kingdom-regions/central-detail-4x.webp"
+            alt=""
+            draggable={false}
+            decoding="async"
+            className="kingdom-region-artwork"
+            style={CENTRAL_REGION}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Search, Volume2, X } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 type Animal = { fr: string; ar: string; slug: string };
 type Category = { id: string; fr: string; ar: string; icon: string; animals: Animal[] };
@@ -28,7 +29,7 @@ const categories: Category[] = [
   ].map(([fr,ar,slug])=>({fr,ar,slug}))}
 ];
 
-function speak(text:string){ if(typeof window==="undefined") return; window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang="fr-FR"; u.rate=.86; window.speechSynthesis.speak(u); }
+function speak(text:string){void speakFrench(text,{rate:.86})}
 
 export default function ZooPage(){
  const [active,setActive]=useState(categories[0]);

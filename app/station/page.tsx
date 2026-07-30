@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight, BookOpen, CalendarClock, ChevronLeft, CircleParking, Clock3, Headphones, Info, Luggage, MapPinned, Menu, Route, ScanLine, Search, Ticket, TrainFront, Volume2 } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 const sections = [
   { id: "arrival", fr: "Arrivée à la gare", ar: "الوصول إلى المحطة", icon: MapPinned, image: "https://unsplash.com/photos/vsEkHU5Vpn8/download?force=true&w=1600" },
@@ -59,7 +60,7 @@ export default function StationPage() {
   const [search,setSearch] = useState("");
   const current = useMemo(() => sections.find((s) => s.id === active) ?? sections[0], [active]);
   const vocab = useMemo(()=>vocabGroups[vocabTab].filter(([fr,ar])=>`${fr} ${ar}`.toLowerCase().includes(search.toLowerCase())),[vocabTab,search]);
-  const speak = (text: string) => { if (typeof window === "undefined") return; window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "fr-FR"; u.rate = 0.82; window.speechSynthesis.speak(u); };
+  const speak = (text: string) => {void speakFrench(text)};
 
   return <main className="station-world">
     <header className="station-topbar"><Link href="/kingdom" className="station-nav-icon" aria-label="Retour à la carte"><ArrowRight size={22}/></Link><div><span>محطة القطار</span><strong>La Gare Royale</strong></div><button className="station-nav-icon" aria-label="Menu"><Menu size={22}/></button></header>

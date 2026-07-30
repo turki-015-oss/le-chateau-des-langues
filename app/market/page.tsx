@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2, Coins, LockOpen, ShoppingBasket, Star, Volume2 } from "lucide-react";
 import { marketDialogues, marketItems } from "@/data/market";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 type Cart = Record<string, number>;
 
@@ -33,10 +34,7 @@ export default function MarketPage() {
   );
 
   const speak = (text: string) => {
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "fr-FR";
-    speech.rate = 0.82;
-    speechSynthesis.speak(speech);
+    void speakFrench(text);
   };
 
   const addItem = (id: string) => {

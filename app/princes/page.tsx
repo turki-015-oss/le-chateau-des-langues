@@ -2,16 +2,13 @@
 
 import Link from "next/link";
 import { ArrowRight, Volume2 } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 const dialogues = ['Bienvenue dans la salle royale.', 'Votre parcours mérite notre respect.', 'Le château vous ouvre ses portes.'];
 
 export default function Page() {
   const speak = (text: string) => {
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "fr-FR";
-    u.rate = 0.82;
-    speechSynthesis.speak(u);
+    void speakFrench(text);
   };
 
   return (

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Coins, Star, Volume2 } from "lucide-react";
 import { familyCharacters, familyVocabulary } from "@/data/family";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 export default function FamilyWorld() {
   const [characterIndex, setCharacterIndex] = useState(0);
@@ -22,10 +23,7 @@ export default function FamilyWorld() {
   );
 
   const speak = (text: string) => {
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "fr-FR";
-    speech.rate = 0.82;
-    speechSynthesis.speak(speech);
+    void speakFrench(text);
   };
 
   const chooseAnswer = (index: number) => {

@@ -3,6 +3,7 @@
 import { BookOpen, Castle, MapPin, MessageCircle, Sparkles, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import {cancelFrenchSpeech,speakFrench} from "@/lib/frenchSpeech";
 
 const features = [
   { icon: BookOpen, text: "تعلّم الفرنسية" },
@@ -35,21 +36,16 @@ export default function EntryPage() {
 
   useEffect(() => () => {
     clearTimers();
-    window.speechSynthesis?.cancel();
+    cancelFrenchSpeech();
     utteranceRef.current = null;
   }, []);
 
   const speakWelcome = () => {
-    if (welcomeActive || !("speechSynthesis" in window)) return;
+    if (welcomeActive) return;
     clearTimers();
-    window.speechSynthesis.cancel();
+    cancelFrenchSpeech();
     setWelcomeActive(true);
     setWelcomeText(welcomeSentences[0]);
-
-    const utterance = new SpeechSynthesisUtterance(welcome);
-    utteranceRef.current = utterance;
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.88;
 
     const sentenceEnds = welcomeSentences.reduce<number[]>((ends, sentence, index) => {
       const previous = index === 0 ? 0 : ends[index - 1] + 1;
@@ -58,12 +54,6 @@ export default function EntryPage() {
     }, []);
 
     let receivedBoundary = false;
-    utterance.onboundary = (event) => {
-      receivedBoundary = true;
-      const index = sentenceEnds.findIndex((end) => event.charIndex < end);
-      const safeIndex = index < 0 ? welcomeSentences.length - 1 : index;
-      setWelcomeText(welcomeSentences.slice(0, safeIndex + 1).join(" "));
-    };
 
     // Fallback for browsers that do not provide speech boundaries.
     [2400, 5200].forEach((delay, index) => {
@@ -72,25 +62,38 @@ export default function EntryPage() {
       }, delay));
     });
 
-    utterance.onend = () => {
-      fallbackTimers.current.forEach((id) => window.clearTimeout(id));
-      fallbackTimers.current = [];
-      utteranceRef.current = null;
-      setWelcomeText(welcome);
-      resetTimer.current = window.setTimeout(() => {
+    void speakFrench(welcome,{
+      rate:.88,
+      onBoundary:(event)=>{
+        receivedBoundary=true;
+        const index=sentenceEnds.findIndex((end)=>event.charIndex<end);
+        const safeIndex=index<0?welcomeSentences.length-1:index;
+        setWelcomeText(welcomeSentences.slice(0,safeIndex+1).join(" "));
+      },
+      onEnd:()=>{
+        fallbackTimers.current.forEach((id)=>window.clearTimeout(id));
+        fallbackTimers.current=[];
+        utteranceRef.current=null;
+        setWelcomeText(welcome);
+        resetTimer.current=window.setTimeout(()=>{
+          setWelcomeActive(false);
+          setWelcomeText("");
+        },10000);
+      },
+      onError:()=>{
+        clearTimers();
+        utteranceRef.current=null;
         setWelcomeActive(false);
         setWelcomeText("");
-      }, 10000);
-    };
-
-    utterance.onerror = () => {
-      clearTimers();
-      utteranceRef.current = null;
-      setWelcomeActive(false);
-      setWelcomeText("");
-    };
-
-    window.speechSynthesis.speak(utterance);
+      }
+    }).then((utterance)=>{
+      utteranceRef.current=utterance;
+      if(!utterance){
+        clearTimers();
+        setWelcomeActive(false);
+        setWelcomeText("");
+      }
+    });
   };
 
   return (

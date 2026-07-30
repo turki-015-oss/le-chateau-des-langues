@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, BookOpen, Car, ChevronLeft, FileWarning, Headphones, IdCard, KeyRound, Menu, MessageCircle, PackageSearch, ShieldCheck, Siren, Smartphone, Star, Volume2, WalletCards } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 const sections = [
   { id: "accueil", fr: "Accueil", ar: "الاستقبال", image: "/police-v39/accueil.webp", icon: ShieldCheck },
@@ -44,12 +45,7 @@ export default function PolicePage() {
   const [question, setQuestion] = useState(0);
 
   const speak = (text: string) => {
-    if (typeof window === "undefined") return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.82;
-    window.speechSynthesis.speak(utterance);
+    void speakFrench(text);
   };
 
   const current = sections.find((item) => item.id === active) ?? sections[0];

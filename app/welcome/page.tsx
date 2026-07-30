@@ -1,14 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 function speakWelcome() {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance("Bienvenue au Château des Langues. Découvrez et apprenez la langue française.");
-  utterance.lang = "fr-FR";
-  utterance.rate = 0.88;
-  window.speechSynthesis.speak(utterance);
+  void speakFrench("Bienvenue au Château des Langues. Découvrez et apprenez la langue française.",{rate:.88});
 }
 
 export default function WelcomePage() {

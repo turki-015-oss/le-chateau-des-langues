@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, Medal, Volume2 } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 const dialogue = [
   { fr: "Bienvenue au Château des Langues.", ar: "مرحبًا بك في قلعة اللغات." },
@@ -21,10 +22,7 @@ export default function GatePage() {
   }, []);
 
   const speak = () => {
-    const u = new SpeechSynthesisUtterance(dialogue[step].fr);
-    u.lang = "fr-FR";
-    u.rate = 0.82;
-    speechSynthesis.speak(u);
+    void speakFrench(dialogue[step].fr);
   };
 
   const next = () => {

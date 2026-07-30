@@ -17,6 +17,7 @@ import {
   courtQuestions,
   courtRewards
 } from "@/data/court";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 export default function CourtPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -48,12 +49,7 @@ export default function CourtPage() {
   }, []);
 
   const speak = (text: string) => {
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.82;
-    utterance.pitch = 1;
-    speechSynthesis.speak(utterance);
+    void speakFrench(text);
   };
 
   const playSuccessTone = () => {

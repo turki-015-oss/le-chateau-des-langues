@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight, ChevronLeft, Plane, Volume2, X } from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 
 type Word={fr:string;ar:string;image:string};
 type Section={id:string;fr:string;ar:string;thumbnail:string;words:Word[]};
@@ -70,8 +71,7 @@ const stories:Story[]=[
 ];
 
 function speak(text:string){
- if(typeof window==="undefined"||!("speechSynthesis" in window))return;
- window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang="fr-FR";u.rate=.82;window.speechSynthesis.speak(u);
+ void speakFrench(text);
 }
 
 export default function AirportPage(){

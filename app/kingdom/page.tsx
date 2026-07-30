@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import KingdomMapLayers from "../../components/KingdomMapLayers";
 import {
   BookOpen,
   Building2,
@@ -375,7 +376,6 @@ export default function KingdomMapPage() {
           <div><strong>{profile.name}</strong><small>{profile.signedIn ? "الحساب متصل" : "اضغط لإعداد الحساب"}</small></div>
         </button>
         <div className="world-brand-v4"><Castle /><div><strong>Le Château des Langues</strong><small>مملكة تعلم الفرنسية</small></div></div>
-        <div className="world-progress-v4"><span>تقدم المملكة</span><div><i style={{ width: "25%" }} /></div><b>25%</b></div>
         <button className="world-menu-v4" aria-label="القائمة" onClick={() => setMenuOpen(true)}>☰</button>
       </header>
 
@@ -396,25 +396,28 @@ export default function KingdomMapPage() {
           <div className="world-terrain terrain-south"><span>المدينة الجديدة · توسعة مستقبلية</span></div>
 
           <div className="approved-city-map" style={{ left: CITY_X, top: CITY_Y, width: CITY_W, height: CITY_H }}>
-            {places.map((place) => (
-              <button
-                key={place.id}
-                className={`building-hitbox ${place.open ? "open" : "soon"} ${selected?.id === place.id ? "selected" : ""}`}
-                style={{ left: place.x, top: place.y, width: place.w, height: place.h }}
-                onPointerDown={(event) => {
-                  event.stopPropagation();
-                  moved.current = false;
-                }}
-                onPointerUp={(event) => {
-                  event.stopPropagation();
-                  if (!moved.current) { if (place.id === "profile") setProfileOpen(true); else setSelected(place); }
-                }}
-                onClick={(event) => event.preventDefault()}
-                aria-label={`${place.ar} ${place.fr}`}
-              >
-                <span className="building-focus-ring" />
-              </button>
-            ))}
+            <KingdomMapLayers highDetail={scale >= 0.82} />
+            <div className="kingdom-interaction-layer">
+              {places.map((place) => (
+                <button
+                  key={place.id}
+                  className={`building-hitbox ${place.open ? "open" : "soon"} ${selected?.id === place.id ? "selected" : ""}`}
+                  style={{ left: place.x, top: place.y, width: place.w, height: place.h }}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                    moved.current = false;
+                  }}
+                  onPointerUp={(event) => {
+                    event.stopPropagation();
+                    if (!moved.current) { if (place.id === "profile") setProfileOpen(true); else setSelected(place); }
+                  }}
+                  onClick={(event) => event.preventDefault()}
+                  aria-label={`${place.ar} ${place.fr}`}
+                >
+                  <span className="building-focus-ring" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

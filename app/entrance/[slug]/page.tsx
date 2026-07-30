@@ -7,7 +7,7 @@ const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image
  police:{titleFr:"Le Commissariat",titleAr:"مركز الشرطة",subtitle:"الضباط والتقارير والسلامة",image:"/worlds/police.png",destination:"/police"},
  airport:{titleFr:"L’Aéroport",titleAr:"المطار",subtitle:"السفر والجوازات والرحلات الجوية",image:"/worlds/airport.png",destination:"/airport"},
  station:{titleFr:"La Gare",titleAr:"محطة القطار",subtitle:"التذاكر والمواعيد والوجهات",image:"/worlds/station.png",destination:"/station"},
- university:{titleFr:"L’Université",titleAr:"الجامعة",subtitle:"الدروس والمحاضرات والطلاب",image:"/worlds/university.png",destination:"/university"},
+ university:{titleFr:"L’Université",titleAr:"جامعة القلعة",subtitle:"الدروس والشرح والنطق من A1 إلى A2",image:"/worlds/university-entrance-v2.png",destination:"/university"},
  stadium:{titleFr:"Le Stade",titleAr:"الملعب",subtitle:"المباريات والجمهور والرياضة",image:"/worlds/stadium.png",destination:"/stadium"},
  restaurant:{titleFr:"Le Restaurant",titleAr:"المطعم",subtitle:"الطعام والطلبات والمحادثة",image:"/worlds/restaurant.png",destination:"/restaurant"},
  market:{titleFr:"Le Marché",titleAr:"السوق",subtitle:"التسوق والأسعار والمفردات اليومية",image:"/worlds/market.png",destination:"/market"},

@@ -628,8 +628,8 @@ export default function UniversityPage(){
    <div className="university-hero-copy">
     <span><School/> Campus académique</span>
     <h1>L’Université Royale</h1>
-    <h2>الجامعة الملكية للغة الفرنسية</h2>
-    <p>منهج متدرج داخل بيئة جامعية احترافية، يبدأ من الحروف وينقلك إلى التواصل المستقل دون اختبارات أو مسارات مغلقة.</p>
+    <h2>جامعة القلعة</h2>
+    <p>تعلّم الفرنسية داخل قاعات الجامعة خطوة بخطوة، مع شرح عربي واضح ونطق فرنسي للكلمات والجمل في كل وحدة.</p>
     <a href="#university-levels"><BookOpen/> دخول قاعات الدراسة</a>
    </div>
   </section>
@@ -671,13 +671,21 @@ export default function UniversityPage(){
    <article className="university-lesson" id="university-lesson">
     <header>
      <div className="university-lesson-icon"><ActiveModuleIcon/></div>
-     <div><span>{level.id} · Cours {level.modules.findIndex(item=>item.id===activeModule.id)+1}</span><h2>{activeModule.ar}</h2><h3>{activeModule.title}</h3><p>{activeModule.description}</p></div>
+     <div>
+      <span>{level.id} · Cours {level.modules.findIndex(item=>item.id===activeModule.id)+1}</span>
+      <h2>{activeModule.ar}</h2>
+      <div className="university-spoken-title">
+       <h3>{activeModule.title}</h3>
+       <button onClick={()=>void speakFrench(activeModule.title)} aria-label={`استمع إلى ${activeModule.title}`}><Volume2/><b>استمع</b></button>
+      </div>
+      <p>{activeModule.description}</p>
+     </div>
     </header>
 
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
-      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} onClick={()=>{setActiveLetter(letter);void speakFrench(letter,{rate:.72})}}>
+      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} وكلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrench(`${letter}. ${word}`,{rate:.72})}}>
        <b>{letter}</b><span>{pronunciation}</span><small>{word}</small><em>{meaning}</em>
       </button>)}
      </div>
@@ -690,13 +698,17 @@ export default function UniversityPage(){
 
     <div className="university-sections">
      {activeModule.sections.map((item,index)=><section key={item.title} className="university-explanation">
-      <div className="university-explanation-title"><span>{String(index+1).padStart(2,"0")}</span><div><h3>{item.title}</h3><small>{item.subtitle}</small></div></div>
+      <div className="university-explanation-title">
+       <span>{String(index+1).padStart(2,"0")}</span>
+       <div><h3>{item.title}</h3><small>{item.subtitle}</small></div>
+       <button onClick={()=>void speakFrench(item.title)} aria-label={`استمع إلى ${item.title}`}><Volume2/><b>نطق العنوان</b></button>
+      </div>
       <p className="university-explanation-text">{item.explanation}</p>
       <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
       <div className="university-example-list">
        <h4><MessageCircle/> Exemples expliqués</h4>
        {item.examples.map(example=><article key={example.fr}>
-        <button onClick={()=>void speakFrench(example.fr)} aria-label={`استمع إلى ${example.fr}`}><Volume2/></button>
+        <button onClick={()=>void speakFrench(example.fr)} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
         <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        </article>)}
       </div>

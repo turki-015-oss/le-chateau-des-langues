@@ -3518,8 +3518,9 @@
 .approved-city-map{position:absolute;border-radius:46px;overflow:hidden;isolation:isolate;background:#0a2b1e;box-shadow:0 0 0 14px #173d27,0 42px 120px #000d}.approved-city-map:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 90px #03130a72}
 .kingdom-artwork-layer,.kingdom-interaction-layer{position:absolute;inset:0}
 .kingdom-artwork-layer{z-index:1;overflow:hidden;background:#0a2b1e}
-.kingdom-tile-level{position:absolute;inset:0}
-.kingdom-tile-level-4x{z-index:2}
+.kingdom-tile-layer{position:absolute;inset:0}
+.kingdom-tile-layer-base{z-index:1}
+.kingdom-tile-layer-detail{z-index:2}
 .kingdom-map-tile{position:absolute;display:block;max-width:none;user-select:none;pointer-events:none;transform:translateZ(0);backface-visibility:hidden}
 .kingdom-interaction-layer{z-index:4}
 .world-terrain{position:absolute;display:grid;place-items:center;border:2px dashed #a8a86a35;border-radius:80px;color:#d8cd8d50;font:27px Georgia,serif;background:repeating-linear-gradient(135deg,#193c2622 0 35px,#0d2a1b22 35px 70px)}.terrain-north{left:450px;top:140px;width:2300px;height:860px}.terrain-west{left:100px;top:1100px;width:780px;height:2200px}.terrain-east{left:2320px;top:1100px;width:780px;height:2200px}.terrain-south{left:450px;top:2900px;width:2300px;height:1050px}

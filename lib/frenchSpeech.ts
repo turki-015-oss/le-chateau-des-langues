@@ -100,3 +100,22 @@ export async function speakFrench(text:string,options:FrenchSpeechOptions={}){
  synth.speak(utterance);
  return utterance;
 }
+
+export async function speakFrenchWithPause(
+ first:string,
+ second:string,
+ pauseMs=700,
+ options:FrenchSpeechOptions={}
+){
+ const sequenceRequest=speechRequest+1;
+ return speakFrench(first,{
+  ...options,
+  onEnd:()=>{
+   if(sequenceRequest!==speechRequest)return;
+   window.setTimeout(()=>{
+    if(sequenceRequest!==speechRequest)return;
+    void speakFrench(second,options);
+   },pauseMs);
+  }
+ });
+}

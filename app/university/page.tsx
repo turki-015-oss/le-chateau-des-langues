@@ -8,7 +8,7 @@ import {
  GraduationCap,Languages,LibraryBig,ListChecks,Map,MessageCircle,Mic2,
  NotebookTabs,Play,School,ShoppingBag,Sparkles,Users,Volume2
 } from "lucide-react";
-import {speakFrench} from "@/lib/frenchSpeech";
+import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
@@ -685,14 +685,14 @@ export default function UniversityPage(){
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
-      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} وكلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrench(`${letter}. ${word}`,{rate:.72})}}>
+      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchWithPause(letter,word,700,{rate:.72})}}>
        <b>{letter}</b><span>{pronunciation}</span><small>{word}</small><em>{meaning}</em>
       </button>)}
      </div>
      <div className="university-letter-focus">
       <div><span>الحرف المحدد</span><b>{activeLetter}</b></div>
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
-      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrench(`${activeLetter}. ${item[2]}`,{rate:.72})}}><Play/> نطق الحرف والكلمة</button>
+      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(activeLetter,item[2],700,{rate:.72})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
     </section>}
 

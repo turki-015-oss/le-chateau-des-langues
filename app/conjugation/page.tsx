@@ -1781,7 +1781,80 @@ const USAGES:Record<string,Usage[]>={
 "traduire":[{fr:"traduire un texte",ar:"يترجم نصًا",example:"Elle traduit un texte juridique en arabe.",translation:"هي تترجم نصًا قانونيًا إلى العربية."},{fr:"traduire dans une langue",ar:"يترجم إلى لغة",example:"Pouvez-vous traduire cette phrase en français ?",translation:"هل تستطيعون ترجمة هذه الجملة إلى الفرنسية؟"},{fr:"se traduire par",ar:"ينعكس أو يظهر في صورة — استعمال ضميري",example:"Cette réforme se traduit par une baisse des délais.",translation:"ينعكس هذا الإصلاح في انخفاض فترات الانتظار."},{fr:"traduire une émotion",ar:"يعبّر عن شعور",example:"Son sourire traduit une grande confiance.",translation:"تعبر ابتسامته عن ثقة كبيرة."}]
 
 };
-function speak(t:string){if(typeof window==='undefined'||!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.82;u.pitch=1;const voices=speechSynthesis.getVoices();u.voice=voices.find(x=>x.lang.toLowerCase().startsWith('fr'))||null;speechSynthesis.cancel();speechSynthesis.speak(u)}
+let frenchVoices:SpeechSynthesisVoice[]=[];
+let speechRequest=0;
+
+function updateFrenchVoices(synth:SpeechSynthesis){
+ frenchVoices=synth.getVoices().filter(voice=>voice.lang.toLowerCase().startsWith("fr"));
+ return frenchVoices;
+}
+
+function prepareFrenchVoices(){
+ if(typeof window==="undefined"||!("speechSynthesis" in window))return;
+ const synth=window.speechSynthesis;
+ const refresh=()=>{updateFrenchVoices(synth)};
+ refresh();
+ synth.addEventListener("voiceschanged",refresh);
+ return()=>synth.removeEventListener("voiceschanged",refresh);
+}
+
+function preferredFrenchVoice(voices:SpeechSynthesisVoice[]){
+ const qualityHints=["natural","online","google","microsoft","denise","hortense","audrey","thomas","amelie"];
+ return [...voices].sort((a,b)=>{
+  const score=(voice:SpeechSynthesisVoice)=>{
+   const lang=voice.lang.toLowerCase().replace("_","-");
+   const name=voice.name.toLowerCase();
+   return (lang==="fr-fr"?100:lang.startsWith("fr-fr")?90:lang.startsWith("fr")?50:0)
+    +(qualityHints.some(hint=>name.includes(hint))?20:0)
+    +(voice.default?5:0);
+  };
+  return score(b)-score(a);
+ })[0]||null;
+}
+
+function waitForFrenchVoices(synth:SpeechSynthesis){
+ const available=updateFrenchVoices(synth);
+ if(available.length)return Promise.resolve(available);
+ return new Promise<SpeechSynthesisVoice[]>(resolve=>{
+  let finished=false;
+  const finish=()=>{
+   if(finished)return;
+   const voices=updateFrenchVoices(synth);
+   if(!voices.length)return;
+   finished=true;
+   window.clearTimeout(timeout);
+   synth.removeEventListener("voiceschanged",finish);
+   resolve(voices);
+  };
+  const timeout=window.setTimeout(()=>{
+   if(finished)return;
+   finished=true;
+   synth.removeEventListener("voiceschanged",finish);
+   resolve(updateFrenchVoices(synth));
+  },1500);
+  synth.addEventListener("voiceschanged",finish);
+ });
+}
+
+async function speak(t:string){
+ if(typeof window==="undefined"||!("speechSynthesis" in window))return;
+ const synth=window.speechSynthesis;
+ const request=++speechRequest;
+ const voices=frenchVoices.length?frenchVoices:await waitForFrenchVoices(synth);
+ if(request!==speechRequest)return;
+ const utterance=new SpeechSynthesisUtterance(t);
+ utterance.lang="fr-FR";
+ utterance.rate=.82;
+ utterance.pitch=1;
+ utterance.volume=1;
+ utterance.voice=preferredFrenchVoice(voices);
+ synth.cancel();
+ window.setTimeout(()=>{
+  if(request!==speechRequest)return;
+  synth.resume();
+  synth.speak(utterance);
+ },50);
+}
 function cap(s:string){return s.charAt(0).toUpperCase()+s.slice(1)}
 
 Object.assign(USAGES,{
@@ -2463,6 +2536,7 @@ function UnavailableBlock({title,note}:{title:string,note:string}){return <secti
 function ReviewBlock({title}:{title:string}){return <section className="conj-tense-pro conj-awaiting"><h3>{title}<span>révision</span></h3><div><p>سيُضاف التصريف والأمثلة المراجعة لهذا الزمن ضمن دفعات النظام الكامل.</p><small>لا نعرض تصريفًا آليًا غير موثوق.</small></div></section>}
 function UsagePanel({verb}:{verb:string}){const items=USAGES[verb];if(!items?.length)return null;return <section className="conj-usages"><div className="conj-usages-title"><span>Les usages du verbe</span><h3>استعمالات الفعل</h3></div><div className="conj-usages-grid">{items.map((u,i)=><article key={i}><div><strong dir="ltr">{u.fr}</strong><small>{u.ar}</small></div><p dir="ltr">{u.example}</p><em>{u.translation}</em><button onClick={()=>speak(u.example)} aria-label="نطق مثال الاستعمال"><Volume2/></button></article>)}</div></section>}
 export default function Page(){
+ useEffect(()=>prepareFrenchVoices(),[]);
  const r=useRouter(),[q,setQ]=useState(""),[v,setV]=useState("être"),[tab,setTab]=useState("Indicatif"),[openSearch,setOpenSearch]=useState(false);
  const list=useMemo(()=>VERBS.filter(x=>x.toLowerCase().includes(q.toLowerCase().trim())||baseVerb(x).toLowerCase().includes(q.toLowerCase().trim())).slice(0,120),[q]);
  const p=pres(v),pp=part(v),a=(["apparaître","devenir","revenir","parvenir","intervenir"].includes(v)?"être":aux(v)) as "avoir"|"être",b2=BATCH2_FORMS[v]||BATCH3_FORMS[v]||BATCH4_FORMS[v]||BATCH5_FORMS[v]||BATCH6_FORMS[v]||BATCH7_FORMS[v]||BATCH8_FORMS[v]||BATCH9_FORMS[v]||BATCH10_FORMS[v]||BATCH11_FORMS[v]||BATCH12_FORMS[v]||BATCH13_FORMS[v]||BATCH14_FORMS[v]||BATCH15_FORMS[v]||BATCH16_FORMS[v]||BATCH17_FORMS[v]||BATCH18_FORMS[v]||BATCH19_FORMS[v]||BATCH20_FORMS[v];

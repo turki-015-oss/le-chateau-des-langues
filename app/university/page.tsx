@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useMemo,useState} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
- ArrowRight,BookOpen,Building2,CalendarDays,ChevronLeft,Clock3,Compass,
+ ArrowRight,BookOpen,Building2,CalendarDays,ChevronLeft,ChevronRight,Clock3,Compass,
  GraduationCap,Languages,LibraryBig,ListChecks,Map,MessageCircle,Mic2,
  NotebookTabs,Play,School,ShoppingBag,Sparkles,Users,Volume2
 } from "lucide-react";
@@ -595,23 +595,67 @@ const ALPHABET=[
  ["Y","i grec","stylo","قلم"],["Z","zède","zoo","حديقة حيوانات"]
 ];
 
+const SMALL_FRENCH_NUMBERS=[
+ "zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf",
+ "dix","onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf"
+];
+
+function numberToFrench(value:number){
+ if(value<20)return SMALL_FRENCH_NUMBERS[value];
+ if(value===100)return "cent";
+ if(value<70){
+  const tens=Math.floor(value/10);
+  const unit=value%10;
+  const tensWord={2:"vingt",3:"trente",4:"quarante",5:"cinquante",6:"soixante"}[tens as 2|3|4|5|6];
+  if(unit===0)return tensWord;
+  if(unit===1)return `${tensWord} et un`;
+  return `${tensWord}-${SMALL_FRENCH_NUMBERS[unit]}`;
+ }
+ if(value<80){
+  const remainder=value-60;
+  if(remainder===11)return "soixante et onze";
+  return `soixante-${SMALL_FRENCH_NUMBERS[remainder]}`;
+ }
+ if(value===80)return "quatre-vingts";
+ return `quatre-vingt-${SMALL_FRENCH_NUMBERS[value-80]}`;
+}
+
+const NUMBER_PAGES=[
+ {label:"0 – 20",numbers:Array.from({length:21},(_,index)=>index)},
+ {label:"21 – 40",numbers:Array.from({length:20},(_,index)=>index+21)},
+ {label:"41 – 60",numbers:Array.from({length:20},(_,index)=>index+41)},
+ {label:"61 – 80",numbers:Array.from({length:20},(_,index)=>index+61)},
+ {label:"81 – 100",numbers:Array.from({length:20},(_,index)=>index+81)},
+ {label:"الأعداد الكبيرة",numbers:[1000,2000,10000,1000000]}
+].map(page=>({
+ ...page,
+ items:page.numbers.map(number=>({
+  number,
+  french:number===1000?"mille":number===2000?"deux mille":number===10000?"dix mille":number===1000000?"un million":numberToFrench(number)
+ }))
+}));
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
  const [moduleId,setModuleId]=useState(A1_MODULES[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
+ const [numberPageIndex,setNumberPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
+ const numberPage=NUMBER_PAGES[numberPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
   setLevelId(id);
   setModuleId(next.modules[0].id);
+  setNumberPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
  const selectModule=(id:string)=>{
   setModuleId(id);
+  if(id==="numbers-time")setNumberPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -694,6 +738,26 @@ export default function UniversityPage(){
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
       <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(item[1],item[2],700,{rate:.72})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
+    </section>}
+
+    {activeModule.id==="numbers-time"&&<section className="university-numbers">
+     <div className="university-subheading">
+      <div><span>Nombres interactifs</span><h3>اضغط على الرقم لسماع نطقه بالفرنسية</h3></div>
+      <Volume2/>
+     </div>
+     <div className={`university-number-grid ${numberPageIndex===NUMBER_PAGES.length-1?"large":""}`}>
+      {numberPage.items.map(item=><button key={item.number} onClick={()=>void speakFrench(item.french,{rate:.75})} aria-label={`استمع إلى الرقم ${item.number} بالفرنسية`}>
+       <b>{item.number.toLocaleString("en-US")}</b>
+       <span dir="ltr">{item.french}</span>
+       <small><Volume2/> اضغط للاستماع</small>
+      </button>)}
+     </div>
+     <div className="university-number-pagination" dir="ltr">
+      <button onClick={()=>setNumberPageIndex(index=>Math.max(0,index-1))} disabled={numberPageIndex===0} aria-label="الأرقام السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>مجموعة الأرقام</small><strong>{numberPage.label}</strong><em>{numberPageIndex+1} / {NUMBER_PAGES.length}</em></div>
+      <button onClick={()=>setNumberPageIndex(index=>Math.min(NUMBER_PAGES.length-1,index+1))} disabled={numberPageIndex===NUMBER_PAGES.length-1} aria-label="الأرقام التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-number-note">ينطق الزر الرقم الفرنسي فقط. استخدم السهمين للتنقل من الصفر حتى المليون دون اختبار أو قفل.</p>
     </section>}
 
     <div className="university-sections">

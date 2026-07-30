@@ -5,31 +5,56 @@ const sharp = require("sharp");
 const SOURCE_WIDTH = 808;
 const SOURCE_HEIGHT = 1114;
 const LOGICAL_TILE_SIZE = 256;
-const LEVELS = [
-  { name: "2x", scale: 2, quality: 90 },
-  { name: "4x", scale: 4, quality: 92 }
-];
 
 const root = path.resolve(__dirname, "..");
 const source = path.join(root, "public", "maps", "kingdom-approved.webp");
+const hdSource = path.join(root, "public", "maps", "kingdom-approved-hd.webp");
 const outputRoot = path.join(root, "public", "maps", "kingdom-tiles");
+const LEVELS = [
+  {
+    name: "base",
+    directory: "base-2x",
+    scale: 2,
+    quality: 90,
+    input: source,
+    sharpen: { sigma: 0.75 }
+  },
+  {
+    name: "detail",
+    directory: "detail-4x",
+    scale: 4,
+    quality: 93,
+    input: hdSource
+  }
+];
 
-async function generateLevel({ name, scale, quality }) {
+async function generateLevel({
+  name,
+  directory,
+  scale,
+  quality,
+  input,
+  sharpen
+}) {
   const width = SOURCE_WIDTH * scale;
   const height = SOURCE_HEIGHT * scale;
   const physicalTileSize = LOGICAL_TILE_SIZE * scale;
   const columns = Math.ceil(width / physicalTileSize);
   const rows = Math.ceil(height / physicalTileSize);
-  const outputDirectory = path.join(outputRoot, name);
+  const outputDirectory = path.join(outputRoot, directory);
 
   await fs.mkdir(outputDirectory, { recursive: true });
 
-  const { data, info } = await sharp(source)
-    .resize(width, height, {
-      fit: "fill",
-      kernel: sharp.kernel.lanczos3
-    })
-    .sharpen({ sigma: scale === 4 ? 1.15 : 0.9 })
+  let pipeline = sharp(input).resize(width, height, {
+    fit: "fill",
+    kernel: sharp.kernel.lanczos3
+  });
+
+  if (sharpen) {
+    pipeline = pipeline.sharpen(sharpen);
+  }
+
+  const { data, info } = await pipeline
     .removeAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -83,16 +108,35 @@ async function generateLevel({ name, scale, quality }) {
     }
   }
 
-  return { name, width, height, columns, rows };
+  return {
+    name,
+    directory,
+    input: path.relative(root, input),
+    width,
+    height,
+    columns,
+    rows
+  };
 }
 
 async function main() {
   const metadata = await sharp(source).metadata();
+  const hdMetadata = await sharp(hdSource).metadata();
 
   if (metadata.width !== SOURCE_WIDTH || metadata.height !== SOURCE_HEIGHT) {
     throw new Error(
       `Unexpected map dimensions: ${metadata.width}x${metadata.height}. ` +
       `Expected ${SOURCE_WIDTH}x${SOURCE_HEIGHT}; refusing to generate shifted tiles.`
+    );
+  }
+
+  if (
+    hdMetadata.width !== SOURCE_WIDTH * 4 ||
+    hdMetadata.height !== SOURCE_HEIGHT * 4
+  ) {
+    throw new Error(
+      `Unexpected HD map dimensions: ${hdMetadata.width}x${hdMetadata.height}. ` +
+      `Expected ${SOURCE_WIDTH * 4}x${SOURCE_HEIGHT * 4}; refusing to generate shifted tiles.`
     );
   }
 

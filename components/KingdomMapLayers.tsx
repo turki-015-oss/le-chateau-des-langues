@@ -6,6 +6,25 @@ type KingdomMapLayersProps = {
   highDetail: boolean;
 };
 
+type MapLayer = {
+  id: "base" | "detail";
+  directory: "base-2x" | "detail-4x";
+  className: string;
+};
+
+const MAP_LAYERS: MapLayer[] = [
+  {
+    id: "base",
+    directory: "base-2x",
+    className: "kingdom-tile-layer-base"
+  },
+  {
+    id: "detail",
+    directory: "detail-4x",
+    className: "kingdom-tile-layer-detail"
+  }
+];
+
 const tiles = Array.from(
   {
     length:
@@ -32,15 +51,19 @@ const tiles = Array.from(
 );
 
 export default function KingdomMapLayers({ highDetail }: KingdomMapLayersProps) {
-  const renderLevel = (level: "2x" | "4x") => (
-    <div className={`kingdom-tile-level kingdom-tile-level-${level}`}>
+  const renderLayer = (layer: MapLayer) => (
+    <div
+      className={`kingdom-tile-layer ${layer.className}`}
+      data-map-layer={layer.id}
+    >
       {tiles.map((tile) => (
         <img
-          key={`${level}-${tile.id}`}
-          src={`/maps/kingdom-tiles/${level}/tile-${tile.row}-${tile.column}.webp`}
+          key={`${layer.id}-${tile.id}`}
+          src={`/maps/kingdom-tiles/${layer.directory}/tile-${tile.row}-${tile.column}.webp`}
           alt=""
           draggable={false}
           decoding="async"
+          loading={layer.id === "base" ? "eager" : "lazy"}
           className="kingdom-map-tile"
           style={{
             left: tile.left,
@@ -55,8 +78,8 @@ export default function KingdomMapLayers({ highDetail }: KingdomMapLayersProps) 
 
   return (
     <div className="kingdom-artwork-layer" aria-hidden="true">
-      {renderLevel("2x")}
-      {highDetail && renderLevel("4x")}
+      {renderLayer(MAP_LAYERS[0])}
+      {highDetail && renderLayer(MAP_LAYERS[1])}
     </div>
   );
 }

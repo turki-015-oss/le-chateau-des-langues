@@ -635,27 +635,118 @@ const NUMBER_PAGES=[
  }))
 }));
 
+const INTRODUCTION_PAGES=[
+ {
+  label:"التحية وبدء الحديث",
+  description:"عبارات مناسبة لفتح الحديث بطريقة رسمية أو ودية.",
+  items:[
+   {fr:"Bonjour, comment allez-vous ?",ar:"مرحبًا، كيف حالكم؟"},
+   {fr:"Salut, comment vas-tu ?",ar:"مرحبًا، كيف حالك؟"},
+   {fr:"Bonsoir, je suis heureux de vous rencontrer.",ar:"مساء الخير، سعيد بلقائكم."},
+   {fr:"Enchanté de faire votre connaissance.",ar:"تشرّفت بمعرفتكم."},
+   {fr:"Je suis ravi de vous rencontrer aujourd’hui.",ar:"يسعدني لقاؤكم اليوم."},
+   {fr:"Bienvenue, permettez-moi de me présenter.",ar:"أهلًا بكم، اسمحوا لي أن أعرّف بنفسي."},
+   {fr:"Bonjour à tous, merci de m’accueillir.",ar:"مرحبًا بالجميع، شكرًا لاستقبالكم لي."},
+   {fr:"C’est un plaisir de faire votre connaissance.",ar:"من دواعي سروري التعرّف إليكم."}
+  ]
+ },
+ {
+  label:"الاسم والعمر والأصل",
+  description:"جمل أساسية لذكر الاسم والعمر والمدينة والجنسية.",
+  items:[
+   {fr:"Je m’appelle Lina.",ar:"اسمي لينا."},
+   {fr:"Mon prénom est Sami et mon nom est Al-Harbi.",ar:"اسمي الأول سامي واسم عائلتي الحربي."},
+   {fr:"J’ai vingt-deux ans.",ar:"عمري اثنان وعشرون عامًا."},
+   {fr:"Je suis saoudienne.",ar:"أنا سعودية."},
+   {fr:"Je viens de Riyad.",ar:"أنا من الرياض."},
+   {fr:"Je suis né à Djeddah.",ar:"وُلدت في جدة."},
+   {fr:"Ma ville natale est Abha.",ar:"مدينتي الأصلية هي أبها."},
+   {fr:"Je suis originaire d’Arabie saoudite.",ar:"أنا من المملكة العربية السعودية."}
+  ]
+ },
+ {
+  label:"السكن واللغات",
+  description:"التعريف بمكان السكن واللغات التي تتحدث بها.",
+  items:[
+   {fr:"J’habite à Lyon depuis six mois.",ar:"أسكن في ليون منذ ستة أشهر."},
+   {fr:"Je vis avec ma famille dans un appartement.",ar:"أعيش مع عائلتي في شقة."},
+   {fr:"Mon quartier est calme et agréable.",ar:"حيّي هادئ ولطيف."},
+   {fr:"Je parle arabe couramment.",ar:"أتحدث العربية بطلاقة."},
+   {fr:"J’apprends le français à l’université.",ar:"أتعلم الفرنسية في الجامعة."},
+   {fr:"Je comprends un peu l’anglais.",ar:"أفهم الإنجليزية قليلًا."},
+   {fr:"Ma langue maternelle est l’arabe.",ar:"لغتي الأم هي العربية."},
+   {fr:"Je voudrais parler français avec confiance.",ar:"أرغب في التحدث بالفرنسية بثقة."}
+  ]
+ },
+ {
+  label:"الدراسة والعمل",
+  description:"جمل متنوعة لتقديم تخصصك ودراستك أو مهنتك.",
+  items:[
+   {fr:"Je suis étudiant en informatique.",ar:"أنا طالب في تخصص الحاسب."},
+   {fr:"J’étudie la médecine à l’université.",ar:"أدرس الطب في الجامعة."},
+   {fr:"Je suis en première année.",ar:"أنا في السنة الأولى."},
+   {fr:"Je travaille comme ingénieur.",ar:"أعمل مهندسًا."},
+   {fr:"Je suis professeur dans une école.",ar:"أنا معلّم في مدرسة."},
+   {fr:"Mon travail commence à huit heures.",ar:"يبدأ عملي الساعة الثامنة."},
+   {fr:"Je cherche actuellement un nouvel emploi.",ar:"أبحث حاليًا عن وظيفة جديدة."},
+   {fr:"Mon domaine préféré est le design.",ar:"مجالي المفضل هو التصميم."}
+  ]
+ },
+ {
+  label:"العائلة والهوايات",
+  description:"إضافة معلومات شخصية بسيطة تجعل التعريف أكثر طبيعية.",
+  items:[
+   {fr:"J’ai deux frères et une sœur.",ar:"لدي أخوان وأخت."},
+   {fr:"Je suis mariée et j’ai un enfant.",ar:"أنا متزوجة ولدي طفل."},
+   {fr:"Pendant mon temps libre, je lis des romans.",ar:"في وقت فراغي أقرأ الروايات."},
+   {fr:"J’aime voyager et découvrir de nouvelles cultures.",ar:"أحب السفر واكتشاف ثقافات جديدة."},
+   {fr:"Mon sport préféré est le football.",ar:"رياضتي المفضلة هي كرة القدم."},
+   {fr:"Je joue du piano le week-end.",ar:"أعزف البيانو في عطلة نهاية الأسبوع."},
+   {fr:"Je m’intéresse à la photographie.",ar:"أهتم بالتصوير."},
+   {fr:"J’adore cuisiner avec mes amis.",ar:"أحب كثيرًا الطبخ مع أصدقائي."}
+  ]
+ },
+ {
+  label:"تعريفات كاملة",
+  description:"نماذج أطول تجمع عدة معلومات في تقديم واحد.",
+  items:[
+   {fr:"Bonjour, je m’appelle Nora, j’ai dix-neuf ans et je viens de Dammam.",ar:"مرحبًا، اسمي نورة، عمري تسعة عشر عامًا وأنا من الدمام."},
+   {fr:"Salut, moi c’est Omar. Je suis étudiant et j’habite à Paris.",ar:"مرحبًا، أنا عمر. أنا طالب وأسكن في باريس."},
+   {fr:"Je m’appelle Sarah, je travaille dans un hôpital et j’aime aider les autres.",ar:"اسمي سارة، أعمل في مستشفى وأحب مساعدة الآخرين."},
+   {fr:"Je suis Khaled, ingénieur de profession et passionné de technologie.",ar:"أنا خالد، مهندس وأهتم كثيرًا بالتقنية."},
+   {fr:"Mon nom est Amal. Je parle arabe, anglais et j’apprends maintenant le français.",ar:"اسمي أمل. أتحدث العربية والإنجليزية وأتعلم الفرنسية الآن."},
+   {fr:"Je viens de La Mecque, mais je vis actuellement à Toulouse pour mes études.",ar:"أنا من مكة، لكنني أعيش حاليًا في تولوز من أجل دراستي."},
+   {fr:"Je suis une personne calme, curieuse et toujours prête à apprendre.",ar:"أنا شخص هادئ وفضولي ومستعد دائمًا للتعلم."},
+   {fr:"Merci de m’avoir écouté, j’espère mieux vous connaître bientôt.",ar:"شكرًا لاستماعكم إليّ، وآمل أن أتعرّف إليكم أكثر قريبًا."}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
  const [moduleId,setModuleId]=useState(A1_MODULES[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
+ const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
+ const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
   setLevelId(id);
   setModuleId(next.modules[0].id);
   setNumberPageIndex(0);
+  setIntroductionPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
  const selectModule=(id:string)=>{
   setModuleId(id);
   if(id==="numbers-time")setNumberPageIndex(0);
+  if(id==="greetings")setIntroductionPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -738,6 +829,26 @@ export default function UniversityPage(){
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
       <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(item[1],item[2],700,{rate:.72})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
+    </section>}
+
+    {activeModule.id==="greetings"&&<section className="university-introduction-board">
+     <div className="university-subheading">
+      <div><span>Présentations interactives</span><h3>اضغط على الجملة لسماع نطقها كاملًا</h3></div>
+      <MessageCircle/>
+     </div>
+     <div className="university-phrase-grid">
+      {introductionPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.78})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setIntroductionPageIndex(index=>Math.max(0,index-1))} disabled={introductionPageIndex===0} aria-label="أمثلة التعريف السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>موضوع الأمثلة</small><strong>{introductionPage.label}</strong><em>{introductionPageIndex+1} / {INTRODUCTION_PAGES.length}</em></div>
+      <button onClick={()=>setIntroductionPageIndex(index=>Math.min(INTRODUCTION_PAGES.length-1,index+1))} disabled={introductionPageIndex===INTRODUCTION_PAGES.length-1} aria-label="أمثلة التعريف التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{introductionPage.description} جميع الجمل مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     {activeModule.id==="numbers-time"&&<section className="university-numbers">

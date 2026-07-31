@@ -3786,12 +3786,17 @@
 .approved-city-map{border-radius:30px;box-shadow:0 0 0 3px #b78b3b,0 30px 90px #000c}
 .world-map-canvas-v4{transform-origin:0 0}
 .world-map-viewport-v4{background:radial-gradient(circle at 50% 20%,#0b392b,#031710 72%)}
-.world-compass-v4{pointer-events:auto;cursor:pointer;font-family:inherit;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.world-compass-v4{pointer-events:auto;cursor:default;font-family:inherit;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.world-compass-v4.permission,.world-compass-v4.denied{cursor:pointer}
 .world-compass-v4:hover,.world-compass-v4:focus-visible{transform:translateY(-2px);border-color:#f0cf7c;box-shadow:0 12px 28px #000b,0 0 0 3px #e4bd5c2b;outline:0}
-.world-compass-v4 svg{animation:compassFloat 5s ease-in-out infinite}
-.world-compass-v4.active svg{animation:compassOrient .8s cubic-bezier(.2,.8,.2,1)}
+.world-compass-v4 svg{animation:none;transition:transform .18s linear;will-change:transform}
+.world-compass-v4.active{border-color:#dfbd69;box-shadow:0 8px 20px #000a,0 0 18px #55bd7655}
 .world-compass-v4.active span{color:#fff}
-@keyframes compassOrient{0%{transform:rotate(0) scale(1)}45%{transform:rotate(210deg) scale(1.14)}100%{transform:rotate(360deg) scale(1)}}
+.world-compass-v4.detecting svg{animation:compassFloat 1.8s ease-in-out infinite}
+.world-compass-v4.permission{animation:compassPermissionPulse 1.8s ease-in-out infinite}
+.world-compass-v4.denied{border-color:#a66a50;color:#e6aa8d}
+.world-compass-v4 small{position:absolute;top:7px;left:50%;transform:translateX(-50%);color:#e9c782;font-size:9px;direction:ltr}
+@keyframes compassPermissionPulse{0%,100%{box-shadow:0 8px 20px #000a}50%{box-shadow:0 8px 20px #000a,0 0 0 6px #e4bd5c25}}
 @media(min-width:1100px){.world-map-topbar-v4{padding-inline:30px}.world-map-viewport-v4{max-width:1600px;margin-inline:auto;border-inline:1px solid #8f6b32}}
 
 /* ===== Royal University — complete A1/A2 campus ===== */

@@ -49,6 +49,12 @@ type PlayerProfile = {
   signedIn: boolean;
 };
 
+type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied";
+type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
+type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
+  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
+};
+
 type Place = {
   id: string;
   fr: string;
@@ -134,7 +140,9 @@ export default function KingdomMapPage() {
   const [passwordInput, setPasswordInput] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
   const [viewMode, setViewMode] = useState<"map" | "classic">("map");
-  const [compassActive, setCompassActive] = useState(false);
+  const [compassHeading, setCompassHeading] = useState<number | null>(null);
+  const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
+  const [compassAuthorized, setCompassAuthorized] = useState(false);
 
   useEffect(() => {
     const previousHtmlOverflow = document.documentElement.style.overflow;
@@ -194,12 +202,75 @@ export default function KingdomMapPage() {
     });
   };
 
-  const orientWithCompass = () => {
-    centerMap();
-    setSelected(null);
-    setCompassActive(true);
-    window.setTimeout(() => setCompassActive(false), 850);
+  useEffect(() => {
+    if (!("DeviceOrientationEvent" in window)) {
+      setCompassStatus("unavailable");
+      return;
+    }
+
+    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
+    if (typeof OrientationEvent.requestPermission === "function" && !compassAuthorized) {
+      setCompassStatus("permission");
+      return;
+    }
+
+    let receivedHeading = false;
+    const handleOrientation = (rawEvent: Event) => {
+      const event = rawEvent as CompassOrientationEvent;
+      const webkitHeading = event.webkitCompassHeading;
+      const nextHeading = typeof webkitHeading === "number" && Number.isFinite(webkitHeading)
+        ? webkitHeading
+        : event.absolute && typeof event.alpha === "number"
+          ? (360 - event.alpha + 360) % 360
+          : null;
+      if (nextHeading === null) return;
+      receivedHeading = true;
+      setCompassStatus("active");
+      setCompassHeading((previous) => {
+        if (previous === null) return nextHeading;
+        const shortestTurn = ((nextHeading - previous + 540) % 360) - 180;
+        return (previous + shortestTurn * 0.24 + 360) % 360;
+      });
+    };
+
+    const eventName = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
+    window.addEventListener(eventName, handleOrientation, true);
+    setCompassStatus("detecting");
+    const unavailableTimer = window.setTimeout(() => {
+      if (!receivedHeading) setCompassStatus("unavailable");
+    }, 2800);
+
+    return () => {
+      window.clearTimeout(unavailableTimer);
+      window.removeEventListener(eventName, handleOrientation, true);
+    };
+  }, [compassAuthorized]);
+
+  const requestCompassPermission = async () => {
+    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
+    if (typeof OrientationEvent.requestPermission !== "function") {
+      setCompassAuthorized(true);
+      return;
+    }
+    try {
+      const permission = await OrientationEvent.requestPermission(true);
+      if (permission === "granted") {
+        setCompassAuthorized(true);
+        setCompassStatus("detecting");
+      } else {
+        setCompassStatus("denied");
+      }
+    } catch {
+      setCompassStatus("denied");
+    }
   };
+
+  const compassDirection = compassHeading === null
+    ? compassStatus === "permission" ? "تفعيل الاتجاه"
+      : compassStatus === "denied" ? "الإذن مرفوض"
+        : compassStatus === "unavailable" ? "الشمال ثابت"
+          : "جارٍ التحديد"
+    : ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
 
   useEffect(() => {
     const saved = localStorage.getItem("chateau-world-camera-v4");
@@ -437,17 +508,18 @@ export default function KingdomMapPage() {
         </div>
         <button
           type="button"
-          className={`world-compass-v4 ${compassActive ? "active" : ""}`}
+          className={`world-compass-v4 ${compassStatus}`}
           onPointerDown={(event) => event.stopPropagation()}
           onClick={(event) => {
             event.stopPropagation();
-            orientWithCompass();
+            if (compassStatus === "permission" || compassStatus === "denied") void requestCompassPermission();
           }}
-          aria-label="توجيه الخريطة إلى الشمال وإعادة تمركزها"
-          title="توجيه الخريطة إلى الشمال"
+          aria-label={compassStatus === "permission" ? "تفعيل إذن بوصلة الجهاز" : `اتجاه الجهاز: ${compassDirection}`}
+          title={compassStatus === "permission" ? "يتطلب iPhone إذن الاتجاه مرة واحدة" : `اتجاه الجهاز: ${compassDirection}`}
         >
-          <Compass />
-          <span>{compassActive ? "تم التوجيه" : "الشمال"}</span>
+          <Compass style={{ transform: `rotate(${compassHeading === null ? 0 : -compassHeading}deg)` }} />
+          <span>{compassDirection}</span>
+          {compassHeading !== null && <small>{Math.round(compassHeading)}°</small>}
         </button>
       </section>
       ) : (

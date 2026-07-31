@@ -134,6 +134,7 @@ export default function KingdomMapPage() {
   const [passwordInput, setPasswordInput] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
   const [viewMode, setViewMode] = useState<"map" | "classic">("map");
+  const [compassActive, setCompassActive] = useState(false);
 
   useEffect(() => {
     const previousHtmlOverflow = document.documentElement.style.overflow;
@@ -191,6 +192,13 @@ export default function KingdomMapPage() {
       x: viewport.clientWidth / 2 - (CITY_X + CITY_W / 2) * nextScale,
       y: viewport.clientHeight / 2 - (CITY_Y + CITY_H / 2) * nextScale
     });
+  };
+
+  const orientWithCompass = () => {
+    centerMap();
+    setSelected(null);
+    setCompassActive(true);
+    window.setTimeout(() => setCompassActive(false), 850);
   };
 
   useEffect(() => {
@@ -427,7 +435,20 @@ export default function KingdomMapPage() {
           <button onClick={() => zoomCenter(-0.12)} aria-label="تصغير"><Minus /></button>
           <button onClick={centerMap} aria-label="إعادة التوسيط"><RotateCcw /></button>
         </div>
-        <div className="world-compass-v4"><Compass /><span>الشمال</span></div>
+        <button
+          type="button"
+          className={`world-compass-v4 ${compassActive ? "active" : ""}`}
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.stopPropagation();
+            orientWithCompass();
+          }}
+          aria-label="توجيه الخريطة إلى الشمال وإعادة تمركزها"
+          title="توجيه الخريطة إلى الشمال"
+        >
+          <Compass />
+          <span>{compassActive ? "تم التوجيه" : "الشمال"}</span>
+        </button>
       </section>
       ) : (
         <section className="classic-kingdom-page">

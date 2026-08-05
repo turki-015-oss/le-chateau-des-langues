@@ -1,4 +1,4 @@
-export type MarketProduct={id:string;fr:string;ar:string;emoji:string;note?:string};
+export type MarketProduct={id:string;fr:string;ar:string;emoji:string;note?:string;image?:string};
 export type MarketDepartment={id:string;fr:string;ar:string;description:string;emoji:string;kind:"shelf"|"basket";products:MarketProduct[]};
 export type MarketDialogueLine={speaker:"Le vendeur"|"La cliente"|"Le client";fr:string;ar:string};
 export type MarketConversation={id:string;title:string;ar:string;summary:string;lines:MarketDialogueLine[]};
@@ -133,6 +133,17 @@ const productVariants:Record<string,ProductVariant[]>={
  fruits:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"local",fr:"local",ar:"المحلي"},{id:"ripe",fr:"bien mûr",ar:"الناضج"},{id:"season",fr:"de saison",ar:"الموسمي"},{id:"sweet",fr:"très sucré",ar:"شديد الحلاوة"},{id:"basket",fr:"présenté en barquette",ar:"المعبأ في علبة"}]
 };
 
+const variantPhrases:Record<string,string>={
+ organic:"en version biologique",farm:"de production fermière",light:"en version allégée",calcium:"avec calcium ajouté",family:"en format familial",local:"d’origine locale",
+ artisan:"de fabrication artisanale",seeds:"avec des graines",glutenfree:"sans gluten",fresh:"de l’arrivage du jour",marinated:"avec marinade",smoked:"au goût fumé",boneless:"sans os",portions:"en portions",
+ wild:"de pêche sauvage",filleted:"en filets",cleaned:"après nettoyage",whole:"en version complète",quick:"à cuisson rapide",premium:"de qualité supérieure",fine:"en mouture fine",traditional:"selon la recette traditionnelle",
+ mild:"au goût doux",spicy:"au goût épicé",nosalt:"sans sel ajouté",natural:"avec composition 100 % naturelle",sugarfree:"sans sucre ajouté",cold:"à servir frais",salted:"avec sel",unsalted:"sans sel",mini:"en mini-format",
+ ready:"pour cuisson immédiate",steam:"pour cuisson vapeur",individual:"en portion individuelle",seasoned:"avec assaisonnement",vegan:"à base végétale",recycled:"en matière recyclée",reusable:"réutilisable",
+ transparent:"en version transparente",colored:"en version colorée",small:"en petit format",large:"en grand format",lemon:"au parfum de citron",lavender:"au parfum de lavande",sensitive:"pour usage sensible",concentrated:"en formule concentrée",
+ eco:"en version écologique",aloe:"à l’aloe vera",unscented:"sans parfum",travel:"en format voyage",white:"en couleur blanche",young:"de jeune récolte",washed:"après lavage et prêt à utiliser",season:"de saison",bundle:"en botte",
+ ripe:"à pleine maturité",sweet:"à saveur très sucrée",basket:"en barquette"
+};
+
 function buildMarketDepartments(){
  const departments=baseMarketDepartments.map(department=>({
   ...department,
@@ -144,8 +155,8 @@ function buildMarketDepartments(){
   const variants=productVariants[department.id]??[];
   return department.products.flatMap(product=>variants.map(variant=>({
    id:`${product.id}-${variant.id}`,
-   fr:`${product.fr} ${variant.fr}`,
-   ar:`${product.ar} ${variant.ar}`,
+   fr:`${product.fr} ${variantPhrases[variant.id]??variant.fr}`,
+   ar:`${product.ar} — ${variant.ar}`,
    emoji:product.emoji,
    note:`${variant.fr} · ${variant.ar}`
   }))).filter(product=>!knownIds.has(product.id)&&!knownNames.has(product.fr.toLocaleLowerCase("fr")));
@@ -169,6 +180,13 @@ function buildMarketDepartments(){
   round+=1;
  }
  if(total!==900)throw new Error(`Le catalogue du marché contient ${total} produits au lieu de 900.`);
+ const dairy=departments.find(department=>department.id==="dairy");
+ if(dairy){
+  dairy.products=dairy.products.map((product,index)=>({
+   ...product,
+   image:`/market/products/dairy/dairy-${String(index+1).padStart(2,"0")}.webp`
+  }));
+ }
  return departments;
 }
 

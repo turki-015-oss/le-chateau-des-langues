@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {useMemo,useState} from "react";
 import {ArrowLeft,ArrowRight,BookOpen,ChevronLeft,ChevronRight,LayoutGrid,MessageCircle,PauseCircle,Store,Volume2} from "lucide-react";
 import {marketConversations,marketDepartments} from "@/data/market";
@@ -104,7 +105,7 @@ export default function MarketPage(){
      {visibleProducts.map((item,index)=>{
       const id=`product-${item.id}`;const active=speakingId===id;
       return <button key={item.id} className={active?"is-speaking":""} onClick={()=>speak(id,item.fr)} aria-label={`استمع إلى ${item.fr}`}>
-       <i>{String(productPage*PRODUCT_PAGE_SIZE+index+1).padStart(2,"0")}</i><div className="market-product-picture"><span>{item.emoji}</span>{active&&<b><Volume2/></b>}</div>
+       <i>{String(productPage*PRODUCT_PAGE_SIZE+index+1).padStart(2,"0")}</i><div className="market-product-picture">{item.image?<Image src={item.image} alt={`صورة ${item.ar} — ${item.fr}`} fill sizes="(max-width: 420px) 90vw, (max-width: 760px) 42vw, 230px"/>:<span>{item.emoji}</span>}{active&&<b><Volume2/></b>}</div>
        <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note??"اضغط لسماع النطق"}</em></div><Volume2 className="market-product-volume"/>
       </button>})}
     </div>

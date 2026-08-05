@@ -72,6 +72,8 @@
 @media(max-width:420px){.market-product-learning-grid{grid-template-columns:1fr}.market-department-copy p{display:none}.market-department-card{min-height:172px}.market-department-visual{height:105px}.market-basket-card p{font-size:12px}.market-dialogue-lines>button{width:100%}}
 
 
+.market-product-picture:has(img){overflow:hidden}.market-product-picture img{object-fit:cover}
+
 /* ===== Court Module ===== */
 
 .court-world{

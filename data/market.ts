@@ -116,7 +116,7 @@ type ProductVariant={id:string;fr:string;ar:string};
 const productVariants:Record<string,ProductVariant[]>={
  dairy:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"farm",fr:"fermier",ar:"الريفي"},{id:"light",fr:"allégé",ar:"قليل الدسم"},{id:"calcium",fr:"enrichi en calcium",ar:"المدعّم بالكالسيوم"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"local",fr:"d’origine locale",ar:"محلي المصدر"}],
  bakery:[{id:"artisan",fr:"artisanal",ar:"الحرفي"},{id:"organic",fr:"biologique",ar:"العضوي"},{id:"seeds",fr:"aux graines",ar:"بالبذور"},{id:"glutenfree",fr:"sans gluten",ar:"الخالي من الغلوتين"},{id:"fresh",fr:"du jour",ar:"المحضّر اليوم"},{id:"family",fr:"format familial",ar:"بحجم عائلي"}],
- meat:[{id:"fresh",fr:"frais",ar:"الطازج"},{id:"farm",fr:"fermier",ar:"الريفي"},{id:"marinated",fr:"mariné",ar:"المتبّل"},{id:"smoked",fr:"fumé",ar:"المدخن"},{id:"boneless",fr:"sans os",ar:"منزوع العظم"},{id:"portions",fr:"en portions",ar:"المقسّم إلى حصص"}],
+ meat:[{id:"fresh",fr:"frais",ar:"الطازج"},{id:"farm",fr:"fermier",ar:"من إنتاج المزارع"},{id:"seasoned",fr:"assaisonné",ar:"المتبّل"},{id:"lean",fr:"maigre",ar:"قليل الدهون"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"portions",fr:"en portions",ar:"المقسّم إلى حصص"}],
  seafood:[{id:"fresh",fr:"frais",ar:"الطازج"},{id:"wild",fr:"sauvage",ar:"البري"},{id:"filleted",fr:"préparé en filets",ar:"المجهز كشرائح"},{id:"cleaned",fr:"nettoyé",ar:"المنظف"},{id:"local",fr:"de pêche locale",ar:"من صيد محلي"},{id:"portions",fr:"en portions",ar:"المقسّم إلى حصص"}],
  grains:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"whole",fr:"complet",ar:"الكامل"},{id:"quick",fr:"à cuisson rapide",ar:"سريع الطهي"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"local",fr:"d’origine locale",ar:"محلي المصدر"},{id:"premium",fr:"de qualité supérieure",ar:"عالي الجودة"}],
  pantry:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"fine",fr:"fin",ar:"الناعم"},{id:"whole",fr:"complet",ar:"الكامل"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"traditional",fr:"traditionnel",ar:"التقليدي"},{id:"premium",fr:"de qualité supérieure",ar:"عالي الجودة"}],
@@ -135,7 +135,7 @@ const productVariants:Record<string,ProductVariant[]>={
 
 const variantPhrases:Record<string,string>={
  organic:"en version biologique",farm:"de production fermière",light:"en version allégée",calcium:"avec calcium ajouté",family:"en format familial",local:"d’origine locale",
- artisan:"de fabrication artisanale",seeds:"avec des graines",glutenfree:"sans gluten",fresh:"de l’arrivage du jour",marinated:"avec marinade",smoked:"au goût fumé",boneless:"sans os",portions:"en portions",
+ artisan:"de fabrication artisanale",seeds:"avec des graines",glutenfree:"sans gluten",fresh:"de l’arrivage du jour",marinated:"avec marinade",smoked:"au goût fumé",boneless:"sans os",portions:"en portions",lean:"à teneur réduite en matières grasses",
  wild:"de pêche sauvage",filleted:"en filets",cleaned:"après nettoyage",whole:"en version complète",quick:"à cuisson rapide",premium:"de qualité supérieure",fine:"en mouture fine",traditional:"selon la recette traditionnelle",
  mild:"au goût doux",spicy:"au goût épicé",nosalt:"sans sel ajouté",natural:"avec composition 100 % naturelle",sugarfree:"sans sucre ajouté",cold:"à servir frais",salted:"avec sel",unsalted:"sans sel",mini:"en mini-format",
  ready:"pour cuisson immédiate",steam:"pour cuisson vapeur",individual:"en portion individuelle",seasoned:"avec assaisonnement",vegan:"à base végétale",recycled:"en matière recyclée",reusable:"réutilisable",
@@ -192,6 +192,13 @@ function buildMarketDepartments(){
   bakery.products=bakery.products.map((product,index)=>({
    ...product,
    image:`/market/products/bakery/bakery-${String(index+1).padStart(2,"0")}.webp`
+  }));
+ }
+ const meat=departments.find(department=>department.id==="meat");
+ if(meat){
+  meat.products=meat.products.map((product,index)=>({
+   ...product,
+   image:`/market/products/meat/meat-${String(index+1).padStart(2,"0")}.webp`
   }));
  }
  return departments;

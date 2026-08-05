@@ -5,7 +5,7 @@ import {useMemo,useState} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
  ArrowRight,BookOpen,Building2,CalendarDays,ChevronLeft,ChevronRight,Clock3,Compass,
- GraduationCap,Languages,LibraryBig,ListChecks,Map,MessageCircle,Mic2,
+ GraduationCap,Languages,LibraryBig,ListChecks,MessageCircle,Mic2,
  NotebookTabs,Play,School,ShoppingBag,Sparkles,Users,Volume2
 } from "lucide-react";
 import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
@@ -262,28 +262,28 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"situations",title:"Situations de la vie réelle",ar:"مواقف الحياة الواقعية",icon:Map,
-  description:"المدينة والاتجاهات والمطعم والتسوق والسفر بعبارات A1 عملية.",
+  id:"situations",title:"Entre amis",ar:"مواقف مع الأصدقاء",icon:MessageCircle,
+  description:"الدعوات والمواعيد والهوايات والآراء والرسائل والاعتذار في حوارات طبيعية مع الأصدقاء.",
   sections:[
-   section("Ville et directions","المدينة والاتجاهات","للسؤال عن مكان استخدم Où est… أو Comment aller à…؟ وللتوجيه استخدم أفعال الحركة وصيغ المكان.",[
-    "à droite يمينًا، à gauche يسارًا، tout droit مباشرة.",
-    "près de قريب من، loin de بعيد عن.",
-    "devant أمام، derrière خلف، entre بين.",
-    "Prenez la première rue: خذ الشارع الأول."
+   section("Inviter et organiser","الدعوة وتنظيم اللقاء","استخدم Tu veux… ؟ أو Ça te dit de… ؟ لدعوة صديق، ثم اتفقا على اليوم والوقت بطريقة واضحة.",[
+    "Tu veux… ? هل تريد…؟",
+    "Ça te dit de… ? ما رأيك أن…؟",
+    "On se retrouve à… نلتقي عند…",
+    "Je suis libre / Je ne suis pas libre: أنا متفرغ / غير متفرغ."
    ],[
-    {fr:"Où est la gare, s’il vous plaît ?",ar:"أين المحطة من فضلك؟"},
-    {fr:"Allez tout droit puis tournez à gauche.",ar:"اذهب مباشرة ثم انعطف يسارًا."},
-    {fr:"La banque est en face du café.",ar:"البنك مقابل المقهى."}
+    {fr:"Tu veux sortir avec nous samedi ?",ar:"هل تريد الخروج معنا يوم السبت؟"},
+    {fr:"Oui, avec plaisir. À quelle heure ?",ar:"نعم، بكل سرور. في أي ساعة؟"},
+    {fr:"On se retrouve vers quatre heures.",ar:"نلتقي قرابة الساعة الرابعة."}
    ]),
-   section("Commander et acheter","الطلب والشراء","في المطعم والمتجر استخدم Je voudrais لصيغة مهذبة، وCombien للسعر أو الكمية.",[
-    "Je voudrais… أودّ.",
-    "Combien ça coûte ? كم سعره؟",
-    "du, de la, de l’, des للكميات غير المحددة.",
-    "بعد النفي تتحول غالبًا إلى de: Je ne veux pas de sucre."
+   section("Parler et réagir","الحوار والتفاعل","حافظ على حوار طبيعي بالتعبير عن الرأي والموافقة أو الاختلاف والاعتذار وتقديم اقتراح بديل.",[
+    "Je pense que… أعتقد أن…",
+    "Je suis d’accord: أنا موافق.",
+    "Je ne suis pas tout à fait d’accord: لست موافقًا تمامًا.",
+    "Désolé, je suis en retard: آسف، أنا متأخر."
    ],[
-    {fr:"Je voudrais un café et un croissant.",ar:"أود قهوة وقطعة كرواسون."},
-    {fr:"Combien coûte cette chemise ?",ar:"كم سعر هذا القميص؟"},
-    {fr:"Je prends de l’eau sans sucre.",ar:"سآخذ ماءً دون سكر."}
+    {fr:"À mon avis, ce film est très drôle.",ar:"في رأيي، هذا الفيلم مضحك جدًا."},
+    {fr:"Moi aussi, je suis d’accord avec toi.",ar:"وأنا أيضًا، أتفق معك."},
+    {fr:"Je suis désolé, on peut changer l’heure ?",ar:"أنا آسف، هل يمكننا تغيير الوقت؟"}
    ])
   ]
  }
@@ -1393,6 +1393,149 @@ const DAILY_LIFE_PAGES=[
  }
 ];
 
+const FRIENDS_SITUATIONS_PAGES=[
+ {
+  label:"دعوة صديق",
+  description:"استخدم سؤالًا بسيطًا أو اقتراحًا لطيفًا لدعوة صديق إلى نشاط مشترك.",
+  items:[
+   {fr:"Tu veux sortir avec moi samedi ?",ar:"هل تريد الخروج معي يوم السبت؟",note:"دعوة مباشرة"},
+   {fr:"Ça te dit de regarder un film ensemble ?",ar:"ما رأيك أن نشاهد فيلمًا معًا؟",note:"اقتراح ودي"},
+   {fr:"Est-ce que tu veux jouer au football cet après-midi ?",ar:"هل تريد لعب كرة القدم بعد ظهر اليوم؟",note:"دعوة بنشاط"},
+   {fr:"On pourrait faire une promenade ce soir.",ar:"يمكننا أن نتمشى هذا المساء.",note:"اقتراح"},
+   {fr:"Tu es libre demain après-midi ?",ar:"هل أنت متفرغ غدًا بعد الظهر؟",note:"سؤال عن التفرغ"},
+   {fr:"J’aimerais passer du temps avec toi ce week-end.",ar:"أرغب في قضاء وقت معك نهاية هذا الأسبوع.",note:"رغبة"},
+   {fr:"Viens chez moi, on va écouter de la musique.",ar:"تعال إلى منزلي، سنستمع إلى الموسيقى.",note:"دعوة ودية"},
+   {fr:"Ça te ferait plaisir de voir nos amis dimanche ?",ar:"هل يسعدك لقاء أصدقائنا يوم الأحد؟",note:"دعوة مهذبة"}
+  ]
+ },
+ {
+  label:"قبول الدعوة أو رفضها",
+  description:"اقبل بحماس، أو ارفض بأدب مع سبب قصير واقتراح وقت بديل إن أمكن.",
+  items:[
+   {fr:"Oui, avec plaisir !",ar:"نعم، بكل سرور!",note:"قبول مهذب"},
+   {fr:"Bonne idée, je suis partant !",ar:"فكرة جيدة، أنا موافق!",note:"قبول متحمس"},
+   {fr:"D’accord, ça me va.",ar:"حسنًا، هذا يناسبني.",note:"قبول"},
+   {fr:"Super, j’aimerais beaucoup venir.",ar:"رائع، أود الحضور كثيرًا.",note:"قبول متحمس"},
+   {fr:"Désolé, je ne peux pas venir aujourd’hui.",ar:"آسف، لا أستطيع الحضور اليوم.",note:"رفض مهذب"},
+   {fr:"Je suis occupé samedi, mais je suis libre dimanche.",ar:"أنا مشغول السبت، لكنني متفرغ الأحد.",note:"وقت بديل"},
+   {fr:"Merci pour l’invitation, mais j’ai déjà un programme.",ar:"شكرًا على الدعوة، لكن لدي برنامج مسبق.",note:"رفض مع سبب"},
+   {fr:"Pas cette fois, peut-être la semaine prochaine.",ar:"ليس هذه المرة، ربما الأسبوع القادم.",note:"تأجيل"}
+  ]
+ },
+ {
+  label:"تحديد وقت اللقاء",
+  description:"اتفقا على اليوم والساعة وطريقة الوصول، ثم أكّدا الموعد بعبارة قصيرة.",
+  items:[
+   {fr:"À quelle heure est-ce qu’on se retrouve ?",ar:"في أي ساعة نلتقي؟",note:"سؤال عن الوقت"},
+   {fr:"On se retrouve à quatre heures.",ar:"نلتقي الساعة الرابعة.",note:"تحديد الساعة"},
+   {fr:"Est-ce que cinq heures te convient ?",ar:"هل الساعة الخامسة تناسبك؟",note:"التأكد من الوقت"},
+   {fr:"Je passe chez toi vers six heures.",ar:"سأمر بمنزلك قرابة السادسة.",note:"وقت تقريبي"},
+   {fr:"On se voit samedi ou dimanche ?",ar:"هل نلتقي السبت أم الأحد؟",note:"اختيار اليوم"},
+   {fr:"Dimanche matin, c’est parfait pour moi.",ar:"صباح الأحد مناسب تمامًا لي.",note:"تأكيد اليوم"},
+   {fr:"Envoie-moi un message quand tu arrives.",ar:"أرسل لي رسالة عندما تصل.",note:"تنسيق الوصول"},
+   {fr:"C’est confirmé : demain à trois heures.",ar:"تم التأكيد: غدًا الساعة الثالثة.",note:"تأكيد الموعد"}
+  ]
+ },
+ {
+  label:"الهوايات والاهتمامات",
+  description:"اسأل صديقك عما يحب، ثم شارك هوايتك وسبب إعجابك بها.",
+  items:[
+   {fr:"Qu’est-ce que tu aimes faire pendant ton temps libre ?",ar:"ماذا تحب أن تفعل في وقت فراغك؟",note:"سؤال مفتوح"},
+   {fr:"J’aime lire des romans et écouter de la musique.",ar:"أحب قراءة الروايات والاستماع إلى الموسيقى.",note:"هوايتان"},
+   {fr:"Mon activité préférée, c’est la photographie.",ar:"نشاطي المفضل هو التصوير.",note:"تفضيل"},
+   {fr:"Tu pratiques quel sport ?",ar:"أي رياضة تمارس؟",note:"سؤال عن الرياضة"},
+   {fr:"Je joue au football avec mes amis chaque semaine.",ar:"ألعب كرة القدم مع أصدقائي كل أسبوع.",note:"عادة"},
+   {fr:"Elle adore dessiner et créer de nouvelles choses.",ar:"هي تعشق الرسم وابتكار أشياء جديدة.",note:"اهتمام إبداعي"},
+   {fr:"Nous partageons la même passion pour les voyages.",ar:"نتشارك الشغف نفسه بالسفر.",note:"اهتمام مشترك"},
+   {fr:"Pourquoi est-ce que tu aimes cette activité ?",ar:"لماذا تحب هذا النشاط؟",note:"سؤال عن السبب"}
+  ]
+ },
+ {
+  label:"اقتراح أنشطة مشتركة",
+  description:"استخدم On peut أو On pourrait لعرض نشاط، ثم دع صديقك يختار.",
+  items:[
+   {fr:"On peut regarder un film chez moi.",ar:"يمكننا مشاهدة فيلم في منزلي.",note:"اقتراح بسيط"},
+   {fr:"On pourrait préparer le dîner ensemble.",ar:"يمكننا تحضير العشاء معًا.",note:"اقتراح ودي"},
+   {fr:"Tu préfères jouer aux cartes ou aux jeux vidéo ?",ar:"هل تفضل لعب الورق أم ألعاب الفيديو؟",note:"اختيار"},
+   {fr:"Faisons une promenade avant le coucher du soleil.",ar:"لنتمشَّ قبل غروب الشمس.",note:"اقتراح جماعي"},
+   {fr:"Pourquoi ne pas organiser un pique-nique ?",ar:"لماذا لا ننظم نزهة؟",note:"Pourquoi ne pas"},
+   {fr:"J’apporte les boissons et tu prépares les sandwichs.",ar:"سأحضر المشروبات وأنت تحضّر الشطائر.",note:"تقسيم المهام"},
+   {fr:"Invitons aussi Lina et Sami.",ar:"لندعُ لينا وسامي أيضًا.",note:"دعوة آخرين"},
+   {fr:"Choisis l’activité que tu préfères.",ar:"اختر النشاط الذي تفضله.",note:"منح الاختيار"}
+  ]
+ },
+ {
+  label:"الرأي والموافقة والاختلاف",
+  description:"عبّر عن رأيك بوضوح، ووافق أو اختلف بلطف مع احترام رأي صديقك.",
+  items:[
+   {fr:"À mon avis, cette idée est excellente.",ar:"في رأيي، هذه الفكرة ممتازة.",note:"إبداء الرأي"},
+   {fr:"Je pense que ce film est très drôle.",ar:"أعتقد أن هذا الفيلم مضحك جدًا.",note:"Je pense que"},
+   {fr:"Je suis tout à fait d’accord avec toi.",ar:"أتفق معك تمامًا.",note:"موافقة كاملة"},
+   {fr:"Moi aussi, j’aime beaucoup cette chanson.",ar:"وأنا أيضًا أحب هذه الأغنية كثيرًا.",note:"موافقة"},
+   {fr:"Je comprends ton avis, mais je préfère autre chose.",ar:"أفهم رأيك، لكنني أفضل شيئًا آخر.",note:"اختلاف مهذب"},
+   {fr:"Je ne suis pas vraiment d’accord.",ar:"أنا لا أوافق حقًا.",note:"اختلاف مباشر"},
+   {fr:"Pour moi, la deuxième option est meilleure.",ar:"بالنسبة لي، الخيار الثاني أفضل.",note:"تفضيل"},
+   {fr:"On peut choisir une solution qui nous convient à tous.",ar:"يمكننا اختيار حل يناسبنا جميعًا.",note:"حل مشترك"}
+  ]
+ },
+ {
+  label:"المكالمات والرسائل",
+  description:"استخدم عبارات قصيرة لبدء الاتصال وطلب الرد وإرسال معلومات الموعد.",
+  items:[
+   {fr:"Allô, salut ! Tu peux parler maintenant ?",ar:"مرحبًا! هل يمكنك التحدث الآن؟",note:"بدء مكالمة"},
+   {fr:"Je t’appelle pour notre programme de demain.",ar:"أتصل بك بخصوص برنامجنا غدًا.",note:"سبب الاتصال"},
+   {fr:"Je ne peux pas parler, je te rappelle plus tard.",ar:"لا أستطيع التحدث، سأتصل بك لاحقًا.",note:"تأجيل المكالمة"},
+   {fr:"Tu as reçu mon message ?",ar:"هل استلمت رسالتي؟",note:"التأكد من الرسالة"},
+   {fr:"Oui, je viens de le lire.",ar:"نعم، قرأتها للتو.",note:"رد على رسالة"},
+   {fr:"Envoie-moi l’heure exacte, s’il te plaît.",ar:"أرسل لي الوقت الدقيق من فضلك.",note:"طلب معلومة"},
+   {fr:"Je t’écris quand je suis prêt.",ar:"سأكتب لك عندما أكون مستعدًا.",note:"وعد بالرسالة"},
+   {fr:"À tout à l’heure, prends soin de toi !",ar:"أراك بعد قليل، اعتنِ بنفسك!",note:"إنهاء ودي"}
+  ]
+ },
+ {
+  label:"الاعتذار وتغيير الموعد",
+  description:"اعتذر باختصار، اشرح السبب دون إطالة، واقترح موعدًا بديلًا.",
+  items:[
+   {fr:"Je suis désolé, je suis en retard.",ar:"أنا آسف، لقد تأخرت.",note:"اعتذار"},
+   {fr:"Excuse-moi, j’ai oublié de te répondre.",ar:"اعذرني، نسيت أن أرد عليك.",note:"اعتذار لصديق"},
+   {fr:"Ce n’est pas grave, ne t’inquiète pas.",ar:"لا بأس، لا تقلق.",note:"قبول الاعتذار"},
+   {fr:"Je ne me sens pas bien, je préfère rester chez moi.",ar:"لا أشعر أنني بخير، أفضل البقاء في المنزل.",note:"سبب التغيير"},
+   {fr:"Est-ce qu’on peut reporter notre rencontre ?",ar:"هل يمكننا تأجيل لقائنا؟",note:"طلب التأجيل"},
+   {fr:"On peut changer l’heure si tu veux.",ar:"يمكننا تغيير الوقت إن أردت.",note:"مرونة"},
+   {fr:"Demain à la même heure, ça te va ?",ar:"غدًا في الوقت نفسه، هل يناسبك؟",note:"موعد بديل"},
+   {fr:"Merci de me prévenir, on se voit demain.",ar:"شكرًا لإخباري، نلتقي غدًا.",note:"تأكيد جديد"}
+  ]
+ },
+ {
+  label:"خطط عطلة نهاية الأسبوع",
+  description:"تحدث مع أصدقائك عن رغباتكم وخططكم ثم اتفقوا على برنامج بسيط.",
+  items:[
+   {fr:"Qu’est-ce que tu fais ce week-end ?",ar:"ماذا ستفعل نهاية هذا الأسبوع؟",note:"سؤال عن الخطة"},
+   {fr:"Samedi, je vais passer la journée avec mes amis.",ar:"السبت سأقضي اليوم مع أصدقائي.",note:"خطة السبت"},
+   {fr:"Dimanche, je veux me reposer à la maison.",ar:"الأحد أريد أن أرتاح في المنزل.",note:"خطة الأحد"},
+   {fr:"Nous allons jouer au football le matin.",ar:"سنلعب كرة القدم صباحًا.",note:"خطة جماعية"},
+   {fr:"L’après-midi, on peut préparer un goûter ensemble.",ar:"بعد الظهر يمكننا تحضير وجبة خفيفة معًا.",note:"اقتراح"},
+   {fr:"S’il fait beau, nous ferons une longue promenade.",ar:"إذا كان الجو جميلًا فسنتمشى طويلًا.",note:"خطة مشروطة"},
+   {fr:"Je préfère un programme calme cette semaine.",ar:"أفضل برنامجًا هادئًا هذا الأسبوع.",note:"تفضيل"},
+   {fr:"Parfait, notre week-end est organisé !",ar:"ممتاز، تم تنظيم عطلة نهاية أسبوعنا!",note:"تأكيد الخطة"}
+  ]
+ },
+ {
+  label:"حوارات كاملة بين صديقين",
+  description:"استمع إلى كل تبادل كامل ولاحظ كيف يبدأ الحوار ويتطور وينتهي طبيعيًا.",
+  items:[
+   {fr:"Nora : Salut Sami, tu es libre samedi ? Sami : Oui, pourquoi ?",ar:"نورة: مرحبًا سامي، هل أنت متفرغ السبت؟ سامي: نعم، لماذا؟",note:"بدء حوار"},
+   {fr:"Nora : Ça te dit de regarder un film ? Sami : Oui, avec plaisir.",ar:"نورة: ما رأيك أن نشاهد فيلمًا؟ سامي: نعم، بكل سرور.",note:"دعوة وقبول"},
+   {fr:"Sami : À quelle heure on se retrouve ? Nora : Vers quatre heures.",ar:"سامي: في أي ساعة نلتقي؟ نورة: قرابة الرابعة.",note:"تحديد الوقت"},
+   {fr:"Lina : Tu préfères quel film ? Amal : J’aime les comédies.",ar:"لينا: أي فيلم تفضلين؟ أمل: أحب الأفلام الكوميدية.",note:"سؤال عن التفضيل"},
+   {fr:"Omar : Je ne suis pas d’accord. Khaled : D’accord, choisissons ensemble.",ar:"عمر: أنا لا أوافق. خالد: حسنًا، لنختر معًا.",note:"اختلاف وحل"},
+   {fr:"Sarah : Désolée, je vais être en retard. Nora : Ce n’est pas grave.",ar:"سارة: آسفة، سأتأخر. نورة: لا بأس.",note:"اعتذار"},
+   {fr:"Sami : Envoie-moi un message quand tu arrives. Omar : Bien sûr.",ar:"سامي: أرسل لي رسالة عندما تصل. عمر: بالتأكيد.",note:"تنسيق الوصول"},
+   {fr:"Nora : Merci pour cette belle journée ! Lina : Moi aussi, je suis très contente.",ar:"نورة: شكرًا على هذا اليوم الجميل! لينا: وأنا أيضًا سعيدة جدًا.",note:"إنهاء الحوار"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -1406,6 +1549,7 @@ export default function UniversityPage(){
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const [familyPageIndex,setFamilyPageIndex]=useState(0);
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
+ const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -1416,6 +1560,7 @@ export default function UniversityPage(){
  const timeDatePage=TIME_DATE_PAGES[timeDatePageIndex];
  const familyPage=FAMILY_DESCRIPTION_PAGES[familyPageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
+ const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -1429,6 +1574,7 @@ export default function UniversityPage(){
   setTimeDatePageIndex(0);
   setFamilyPageIndex(0);
   setDailyPageIndex(0);
+  setFriendsPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1441,6 +1587,7 @@ export default function UniversityPage(){
   if(id==="present")setPresentPageIndex(0);
   if(id==="description")setFamilyPageIndex(0);
   if(id==="daily-life")setDailyPageIndex(0);
+  if(id==="situations")setFriendsPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1683,6 +1830,26 @@ export default function UniversityPage(){
       <button onClick={()=>setDailyPageIndex(index=>Math.min(DAILY_LIFE_PAGES.length-1,index+1))} disabled={dailyPageIndex===DAILY_LIFE_PAGES.length-1} aria-label="أمثلة الروتين التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{dailyPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="situations"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Entre amis</span><h3>اضغط على العبارة أو الحوار لسماع النطق</h3></div>
+      <MessageCircle/>
+     </div>
+     <div className="university-phrase-grid">
+      {friendsPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.73})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setFriendsPageIndex(index=>Math.max(0,index-1))} disabled={friendsPageIndex===0} aria-label="مواقف الأصدقاء السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم مواقف الأصدقاء</small><strong>{friendsPage.label}</strong><em>{friendsPageIndex+1} / {FRIENDS_SITUATIONS_PAGES.length}</em></div>
+      <button onClick={()=>setFriendsPageIndex(index=>Math.min(FRIENDS_SITUATIONS_PAGES.length-1,index+1))} disabled={friendsPageIndex===FRIENDS_SITUATIONS_PAGES.length-1} aria-label="مواقف الأصدقاء التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{friendsPage.description} جميع الأمثلة اجتماعية مع الأصدقاء ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     <div className="university-sections">

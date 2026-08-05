@@ -809,6 +809,96 @@ const NOUN_ARTICLE_PAGES=[
  }
 ];
 
+const CORE_VERB_PAGES=[
+ {
+  label:"ضمائر الفاعل",
+  description:"يأتي ضمير الفاعل قبل الفعل، ويحدد الشخص الذي يتكلم أو يقوم بالفعل.",
+  items:[
+   {fr:"Je",ar:"أنا",note:"المتكلم المفرد"},
+   {fr:"Tu",ar:"أنت",note:"مفرد غير رسمي"},
+   {fr:"Il",ar:"هو",note:"مذكر مفرد"},
+   {fr:"Elle",ar:"هي",note:"مؤنث مفرد"},
+   {fr:"On",ar:"نحن أو المرء",note:"شائع في الحديث"},
+   {fr:"Nous",ar:"نحن",note:"جمع المتكلم"},
+   {fr:"Vous",ar:"أنتم أو حضرتك",note:"جمع أو رسمي"},
+   {fr:"Ils",ar:"هم",note:"مذكر أو مختلط"},
+   {fr:"Elles",ar:"هنّ",note:"مؤنث جمع"}
+  ]
+ },
+ {
+  label:"تصريف فعل être",
+  description:"فعل être يعني يكون، ويُستخدم للهوية والصفة والحالة والمكان.",
+  items:[
+   {fr:"Je suis",ar:"أنا أكون",note:"être مع je"},
+   {fr:"Tu es",ar:"أنت تكون",note:"être مع tu"},
+   {fr:"Il est",ar:"هو يكون",note:"être مع il"},
+   {fr:"Elle est",ar:"هي تكون",note:"être مع elle"},
+   {fr:"On est",ar:"نحن نكون",note:"être مع on"},
+   {fr:"Nous sommes",ar:"نحن نكون",note:"être مع nous"},
+   {fr:"Vous êtes",ar:"أنتم تكونون",note:"être مع vous"},
+   {fr:"Ils sont",ar:"هم يكونون",note:"être مع ils"},
+   {fr:"Elles sont",ar:"هنّ يكنّ",note:"être مع elles"}
+  ]
+ },
+ {
+  label:"تصريف فعل avoir",
+  description:"فعل avoir يعني يملك، ويُستخدم كذلك مع العمر وتعبيرات جسدية كثيرة.",
+  items:[
+   {fr:"J’ai",ar:"لديّ",note:"avoir مع je"},
+   {fr:"Tu as",ar:"لديك",note:"avoir مع tu"},
+   {fr:"Il a",ar:"لديه",note:"avoir مع il"},
+   {fr:"Elle a",ar:"لديها",note:"avoir مع elle"},
+   {fr:"On a",ar:"لدينا",note:"avoir مع on"},
+   {fr:"Nous avons",ar:"لدينا",note:"avoir مع nous"},
+   {fr:"Vous avez",ar:"لديكم",note:"avoir مع vous"},
+   {fr:"Ils ont",ar:"لديهم",note:"avoir مع ils"},
+   {fr:"Elles ont",ar:"لديهنّ",note:"avoir مع elles"}
+  ]
+ },
+ {
+  label:"être داخل جمل",
+  description:"استخدم être لوصف الشخص أو حالته أو مهنته أو مكانه.",
+  items:[
+   {fr:"Je suis à l’université.",ar:"أنا في الجامعة.",note:"المكان"},
+   {fr:"Tu es en classe.",ar:"أنت في الفصل.",note:"المكان"},
+   {fr:"Il est médecin.",ar:"هو طبيب.",note:"المهنة"},
+   {fr:"Elle est française.",ar:"هي فرنسية.",note:"الجنسية"},
+   {fr:"On est ensemble.",ar:"نحن معًا.",note:"الحالة"},
+   {fr:"Nous sommes prêts.",ar:"نحن مستعدون.",note:"الصفة"},
+   {fr:"Vous êtes très calme.",ar:"أنتم هادئون جدًا.",note:"الصفة"},
+   {fr:"Ils sont dans la bibliothèque.",ar:"هم في المكتبة.",note:"المكان"}
+  ]
+ },
+ {
+  label:"avoir في التعبيرات اليومية",
+  description:"لا تُترجم avoir دائمًا بكلمة يملك؛ فهو يُستخدم مع العمر والجوع والعطش والحاجة.",
+  items:[
+   {fr:"J’ai vingt ans.",ar:"عمري عشرون عامًا.",note:"العمر"},
+   {fr:"Tu as faim.",ar:"أنت جائع.",note:"الجوع"},
+   {fr:"Il a soif.",ar:"هو عطشان.",note:"العطش"},
+   {fr:"Elle a peur.",ar:"هي خائفة.",note:"الخوف"},
+   {fr:"On a besoin d’aide.",ar:"نحن بحاجة إلى مساعدة.",note:"الحاجة"},
+   {fr:"Nous avons cours aujourd’hui.",ar:"لدينا درس اليوم.",note:"الامتلاك"},
+   {fr:"Vous avez raison.",ar:"أنتم على حق.",note:"تعبير ثابت"},
+   {fr:"Ils ont chaud.",ar:"هم يشعرون بالحر.",note:"الإحساس"}
+  ]
+ },
+ {
+  label:"الفرق بين être و avoir",
+  description:"اختر être للهوية والحالة، واختر avoir للملكية والعمر والتعبيرات الثابتة.",
+  items:[
+   {fr:"Je suis étudiant et j’ai un livre.",ar:"أنا طالب ولدي كتاب.",note:"هوية + ملكية"},
+   {fr:"Tu es fatigué et tu as besoin de repos.",ar:"أنت متعب وتحتاج إلى الراحة.",note:"حالة + حاجة"},
+   {fr:"Il est jeune et il a dix-huit ans.",ar:"هو شاب وعمره ثمانية عشر عامًا.",note:"صفة + عمر"},
+   {fr:"Elle est professeure et elle a une classe.",ar:"هي معلمة ولديها فصل.",note:"مهنة + ملكية"},
+   {fr:"On est à la maison et on a faim.",ar:"نحن في المنزل ونحن جائعون.",note:"مكان + جوع"},
+   {fr:"Nous sommes amis et nous avons un projet.",ar:"نحن أصدقاء ولدينا مشروع.",note:"هوية + ملكية"},
+   {fr:"Vous êtes en retard, mais vous avez une excuse.",ar:"أنتم متأخرون، لكن لديكم عذر.",note:"حالة + ملكية"},
+   {fr:"Ils sont heureux parce qu’ils ont des vacances.",ar:"هم سعداء لأن لديهم إجازة.",note:"حالة + امتلاك"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -817,11 +907,13 @@ export default function UniversityPage(){
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
+ const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
+ const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -830,6 +922,7 @@ export default function UniversityPage(){
   setNumberPageIndex(0);
   setIntroductionPageIndex(0);
   setNounPageIndex(0);
+  setCoreVerbPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -838,6 +931,7 @@ export default function UniversityPage(){
   if(id==="numbers-time")setNumberPageIndex(0);
   if(id==="greetings")setIntroductionPageIndex(0);
   if(id==="nouns")setNounPageIndex(0);
+  if(id==="core-verbs")setCoreVerbPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -960,6 +1054,26 @@ export default function UniversityPage(){
       <button onClick={()=>setNounPageIndex(index=>Math.min(NOUN_ARTICLE_PAGES.length-1,index+1))} disabled={nounPageIndex===NOUN_ARTICLE_PAGES.length-1} aria-label="أمثلة الأسماء التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{nounPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="core-verbs"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Conjugaison interactive</span><h3>اضغط على الضمير أو التصريف أو الجملة لسماع النطق</h3></div>
+      <Users/>
+     </div>
+     <div className="university-phrase-grid">
+      {coreVerbPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.75})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setCoreVerbPageIndex(index=>Math.max(0,index-1))} disabled={coreVerbPageIndex===0} aria-label="أمثلة الضمائر السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم التصريف</small><strong>{coreVerbPage.label}</strong><em>{coreVerbPageIndex+1} / {CORE_VERB_PAGES.length}</em></div>
+      <button onClick={()=>setCoreVerbPageIndex(index=>Math.min(CORE_VERB_PAGES.length-1,index+1))} disabled={coreVerbPageIndex===CORE_VERB_PAGES.length-1} aria-label="أمثلة الضمائر التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{coreVerbPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     {activeModule.id==="numbers-time"&&<section className="university-numbers">

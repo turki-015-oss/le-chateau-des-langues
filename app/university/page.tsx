@@ -1140,6 +1140,129 @@ const TIME_DATE_PAGES=[
  }
 ];
 
+const FAMILY_DESCRIPTION_PAGES=[
+ {
+  label:"العائلة القريبة",
+  description:"احفظ اسم فرد العائلة مع أداة التعريف لتعرف جنسه ونطقه الصحيح.",
+  items:[
+   {fr:"le père",ar:"الأب",note:"مذكر"},
+   {fr:"la mère",ar:"الأم",note:"مؤنث"},
+   {fr:"les parents",ar:"الوالدان",note:"جمع"},
+   {fr:"le fils",ar:"الابن",note:"الحرف l لا يُنطق"},
+   {fr:"la fille",ar:"الابنة",note:"مؤنث"},
+   {fr:"les enfants",ar:"الأبناء أو الأطفال",note:"جمع"},
+   {fr:"le frère",ar:"الأخ",note:"مذكر"},
+   {fr:"la sœur",ar:"الأخت",note:"مؤنث"},
+   {fr:"le mari",ar:"الزوج",note:"مذكر"},
+   {fr:"la femme",ar:"الزوجة",note:"مؤنث"}
+  ]
+ },
+ {
+  label:"العائلة الممتدة",
+  description:"تشمل العائلة الممتدة الأجداد والأعمام والأخوال وأبناءهم والأحفاد.",
+  items:[
+   {fr:"le grand-père",ar:"الجد",note:"مذكر"},
+   {fr:"la grand-mère",ar:"الجدة",note:"مؤنث"},
+   {fr:"les grands-parents",ar:"الأجداد",note:"جمع"},
+   {fr:"l’oncle",ar:"العم أو الخال",note:"مذكر"},
+   {fr:"la tante",ar:"العمة أو الخالة",note:"مؤنث"},
+   {fr:"le cousin",ar:"ابن العم أو الخال",note:"مذكر"},
+   {fr:"la cousine",ar:"بنت العم أو الخال",note:"مؤنث"},
+   {fr:"le neveu",ar:"ابن الأخ أو الأخت",note:"مذكر"},
+   {fr:"la nièce",ar:"بنت الأخ أو الأخت",note:"مؤنث"},
+   {fr:"les petits-enfants",ar:"الأحفاد",note:"جمع"}
+  ]
+ },
+ {
+  label:"أدوات الملكية",
+  description:"تتوافق أداة الملكية مع جنس الشيء المملوك وعدده، وليس مع جنس صاحبه.",
+  items:[
+   {fr:"mon père",ar:"أبي",note:"mon + مذكر"},
+   {fr:"ma mère",ar:"أمي",note:"ma + مؤنث"},
+   {fr:"mes parents",ar:"والداي",note:"mes + جمع"},
+   {fr:"ton frère",ar:"أخوك",note:"ton + مذكر"},
+   {fr:"ta sœur",ar:"أختك",note:"ta + مؤنث"},
+   {fr:"tes enfants",ar:"أبناؤك",note:"tes + جمع"},
+   {fr:"son oncle",ar:"عمه أو خاله",note:"son + مذكر"},
+   {fr:"sa tante",ar:"عمته أو خالته",note:"sa + مؤنث"},
+   {fr:"ses cousins",ar:"أبناء عمه أو خاله",note:"ses + جمع"},
+   {fr:"mon amie",ar:"صديقتي",note:"mon قبل صوت متحرك"}
+  ]
+ },
+ {
+  label:"وصف الشكل الخارجي",
+  description:"استخدم être مع الطول والبنية، وavoir مع الشعر والعينين والعمر.",
+  items:[
+   {fr:"Il est grand et mince.",ar:"هو طويل ونحيف.",note:"être + صفة"},
+   {fr:"Elle est petite et sportive.",ar:"هي قصيرة ورياضية.",note:"مؤنث"},
+   {fr:"Il est de taille moyenne.",ar:"هو متوسط الطول.",note:"الطول"},
+   {fr:"Elle a les cheveux longs.",ar:"شعرها طويل.",note:"avoir + شعر"},
+   {fr:"Il a les cheveux courts et noirs.",ar:"شعره قصير وأسود.",note:"الشعر"},
+   {fr:"Elle a les yeux bleus.",ar:"عيناها زرقاوان.",note:"avoir + عينين"},
+   {fr:"Il a les yeux marron.",ar:"عيناه بنيتان.",note:"marron لا يتغير"},
+   {fr:"Elle porte des lunettes.",ar:"هي ترتدي نظارة.",note:"علامة مميزة"}
+  ]
+ },
+ {
+  label:"وصف الشخصية والطباع",
+  description:"تأتي صفات الشخصية بعد être، ويتغير شكل معظمها مع المؤنث والجمع.",
+  items:[
+   {fr:"Mon père est calme et patient.",ar:"أبي هادئ وصبور.",note:"صفات مذكرة"},
+   {fr:"Ma mère est gentille et généreuse.",ar:"أمي لطيفة وكريمة.",note:"صفات مؤنثة"},
+   {fr:"Mon frère est drôle et sociable.",ar:"أخي مرح واجتماعي.",note:"طباع"},
+   {fr:"Ma sœur est sérieuse et organisée.",ar:"أختي جادة ومنظمة.",note:"طباع"},
+   {fr:"Mon grand-père est courageux.",ar:"جدي شجاع.",note:"مذكر -eux"},
+   {fr:"Ma grand-mère est curieuse.",ar:"جدتي فضولية.",note:"مؤنث -euse"},
+   {fr:"Mes cousins sont très actifs.",ar:"أبناء عمي نشيطون جدًا.",note:"جمع مذكر"},
+   {fr:"Mes cousines sont créatives.",ar:"بنات عمي مبدعات.",note:"جمع مؤنث"}
+  ]
+ },
+ {
+  label:"الألوان والملابس",
+  description:"تتوافق معظم الألوان مع الاسم، وتأتي غالبًا بعد اسم قطعة الملابس.",
+  items:[
+   {fr:"une chemise blanche",ar:"قميص أبيض",note:"مؤنث"},
+   {fr:"un pantalon noir",ar:"بنطال أسود",note:"مذكر"},
+   {fr:"une robe rouge",ar:"فستان أحمر",note:"مؤنث"},
+   {fr:"un manteau gris",ar:"معطف رمادي",note:"مذكر"},
+   {fr:"des chaussures marron",ar:"أحذية بنية",note:"marron ثابت"},
+   {fr:"une veste verte",ar:"سترة خضراء",note:"vert ← verte"},
+   {fr:"un chapeau bleu",ar:"قبعة زرقاء",note:"مذكر"},
+   {fr:"des lunettes violettes",ar:"نظارة بنفسجية",note:"جمع مؤنث"},
+   {fr:"Elle porte une jupe jaune.",ar:"هي ترتدي تنورة صفراء.",note:"جملة كاملة"},
+   {fr:"Il porte un pull orange.",ar:"هو يرتدي كنزة برتقالية.",note:"orange ثابت"}
+  ]
+ },
+ {
+  label:"توافق الصفات",
+  description:"نضيف غالبًا e للمؤنث وs للجمع، لكن بعض الصفات يتغير شكلها أكثر.",
+  items:[
+   {fr:"un garçon intelligent",ar:"ولد ذكي",note:"مذكر مفرد"},
+   {fr:"une fille intelligente",ar:"فتاة ذكية",note:"مؤنث مفرد"},
+   {fr:"des garçons intelligents",ar:"أولاد أذكياء",note:"مذكر جمع"},
+   {fr:"des filles intelligentes",ar:"فتيات ذكيات",note:"مؤنث جمع"},
+   {fr:"un homme heureux",ar:"رجل سعيد",note:"-eux مذكر"},
+   {fr:"une femme heureuse",ar:"امرأة سعيدة",note:"-euse مؤنث"},
+   {fr:"un beau garçon",ar:"ولد جميل",note:"beau مذكر"},
+   {fr:"une belle fille",ar:"فتاة جميلة",note:"belle مؤنث"}
+  ]
+ },
+ {
+  label:"تقديم العائلة ووصفها",
+  description:"نماذج كاملة تجمع القرابة والملكية والشكل والشخصية في وصف طبيعي.",
+  items:[
+   {fr:"Voici ma famille : mes parents, mon frère et ma sœur.",ar:"هذه عائلتي: والداي وأخي وأختي.",note:"تقديم العائلة"},
+   {fr:"Mon père s’appelle Karim et il est professeur.",ar:"اسم أبي كريم وهو معلم.",note:"اسم + مهنة"},
+   {fr:"Ma mère a les cheveux noirs et les yeux marron.",ar:"شعر أمي أسود وعيناها بنيتان.",note:"وصف الشكل"},
+   {fr:"Mon frère est grand, sportif et très drôle.",ar:"أخي طويل ورياضي ومرح جدًا.",note:"صفات متعددة"},
+   {fr:"Ma sœur porte une robe bleue et des chaussures blanches.",ar:"أختي ترتدي فستانًا أزرق وحذاءً أبيض.",note:"ملابس وألوان"},
+   {fr:"Mes grands-parents habitent dans une petite maison.",ar:"يعيش أجدادي في منزل صغير.",note:"جمع"},
+   {fr:"J’ai deux cousins gentils et une cousine généreuse.",ar:"لدي ابنا عم لطيفان وبنت عم كريمة.",note:"عدد + صفات"},
+   {fr:"Nous sommes une famille unie et nous aimons voyager ensemble.",ar:"نحن عائلة مترابطة ونحب السفر معًا.",note:"وصف كامل"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -1151,6 +1274,7 @@ export default function UniversityPage(){
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
+ const [familyPageIndex,setFamilyPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -1159,6 +1283,7 @@ export default function UniversityPage(){
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_PAGES[timeDatePageIndex];
+ const familyPage=FAMILY_DESCRIPTION_PAGES[familyPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -1170,6 +1295,7 @@ export default function UniversityPage(){
   setCoreVerbPageIndex(0);
   setPresentPageIndex(0);
   setTimeDatePageIndex(0);
+  setFamilyPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1180,6 +1306,7 @@ export default function UniversityPage(){
   if(id==="nouns")setNounPageIndex(0);
   if(id==="core-verbs")setCoreVerbPageIndex(0);
   if(id==="present")setPresentPageIndex(0);
+  if(id==="description")setFamilyPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1382,6 +1509,26 @@ export default function UniversityPage(){
       <button onClick={()=>setTimeDatePageIndex(index=>Math.min(TIME_DATE_PAGES.length-1,index+1))} disabled={timeDatePageIndex===TIME_DATE_PAGES.length-1} aria-label="أمثلة الوقت التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{timeDatePage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="description"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Famille interactive</span><h3>اضغط على الكلمة أو الجملة لسماع النطق</h3></div>
+      <Users/>
+     </div>
+     <div className="university-phrase-grid">
+      {familyPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setFamilyPageIndex(index=>Math.max(0,index-1))} disabled={familyPageIndex===0} aria-label="أمثلة العائلة السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم العائلة والوصف</small><strong>{familyPage.label}</strong><em>{familyPageIndex+1} / {FAMILY_DESCRIPTION_PAGES.length}</em></div>
+      <button onClick={()=>setFamilyPageIndex(index=>Math.min(FAMILY_DESCRIPTION_PAGES.length-1,index+1))} disabled={familyPageIndex===FAMILY_DESCRIPTION_PAGES.length-1} aria-label="أمثلة العائلة التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{familyPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     <div className="university-sections">

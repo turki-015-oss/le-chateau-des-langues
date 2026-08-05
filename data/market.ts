@@ -187,6 +187,13 @@ function buildMarketDepartments(){
    image:`/market/products/dairy/dairy-${String(index+1).padStart(2,"0")}.webp`
   }));
  }
+ const bakery=departments.find(department=>department.id==="bakery");
+ if(bakery){
+  bakery.products=bakery.products.map((product,index)=>({
+   ...product,
+   image:`/market/products/bakery/bakery-${String(index+1).padStart(2,"0")}.webp`
+  }));
+ }
  return departments;
 }
 

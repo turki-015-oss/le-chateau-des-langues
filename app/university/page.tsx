@@ -899,6 +899,126 @@ const CORE_VERB_PAGES=[
  }
 ];
 
+const PRESENT_NEGATION_PAGES=[
+ {
+  label:"أفعال -er: parler",
+  description:"احذف -er ثم أضف النهاية المناسبة: e، es، e، ons، ez، ent.",
+  items:[
+   {fr:"Je parle",ar:"أنا أتحدث",note:"نهاية -e"},
+   {fr:"Tu parles",ar:"أنت تتحدث",note:"نهاية -es"},
+   {fr:"Il parle",ar:"هو يتحدث",note:"نهاية -e"},
+   {fr:"Elle parle",ar:"هي تتحدث",note:"نهاية -e"},
+   {fr:"On parle",ar:"نحن نتحدث",note:"نهاية -e"},
+   {fr:"Nous parlons",ar:"نحن نتحدث",note:"نهاية -ons"},
+   {fr:"Vous parlez",ar:"أنتم تتحدثون",note:"نهاية -ez"},
+   {fr:"Ils parlent",ar:"هم يتحدثون",note:"نهاية -ent"},
+   {fr:"Elles parlent",ar:"هنّ يتحدثن",note:"نهاية -ent"}
+  ]
+ },
+ {
+  label:"أفعال -ir: finir",
+  description:"في نمط finir نستخدم is، is، it، issons، issez، issent.",
+  items:[
+   {fr:"Je finis",ar:"أنا أنهي",note:"نهاية -is"},
+   {fr:"Tu finis",ar:"أنت تنهي",note:"نهاية -is"},
+   {fr:"Il finit",ar:"هو ينهي",note:"نهاية -it"},
+   {fr:"Elle finit",ar:"هي تنهي",note:"نهاية -it"},
+   {fr:"On finit",ar:"نحن ننهي",note:"نهاية -it"},
+   {fr:"Nous finissons",ar:"نحن ننهي",note:"نهاية -issons"},
+   {fr:"Vous finissez",ar:"أنتم تنهون",note:"نهاية -issez"},
+   {fr:"Ils finissent",ar:"هم ينهون",note:"نهاية -issent"},
+   {fr:"Elles finissent",ar:"هنّ ينهين",note:"نهاية -issent"}
+  ]
+ },
+ {
+  label:"أفعال -re: attendre",
+  description:"في نمط attendre نحذف -re ثم نستخدم s، s، لا شيء، ons، ez، ent.",
+  items:[
+   {fr:"J’attends",ar:"أنا أنتظر",note:"نهاية -s"},
+   {fr:"Tu attends",ar:"أنت تنتظر",note:"نهاية -s"},
+   {fr:"Il attend",ar:"هو ينتظر",note:"دون إضافة"},
+   {fr:"Elle attend",ar:"هي تنتظر",note:"دون إضافة"},
+   {fr:"On attend",ar:"نحن ننتظر",note:"دون إضافة"},
+   {fr:"Nous attendons",ar:"نحن ننتظر",note:"نهاية -ons"},
+   {fr:"Vous attendez",ar:"أنتم تنتظرون",note:"نهاية -ez"},
+   {fr:"Ils attendent",ar:"هم ينتظرون",note:"نهاية -ent"},
+   {fr:"Elles attendent",ar:"هنّ ينتظرن",note:"نهاية -ent"}
+  ]
+ },
+ {
+  label:"الفعلان aller و faire",
+  description:"aller يعني يذهب وfaire يعني يفعل أو يصنع، وكلاهما غير منتظم.",
+  items:[
+   {fr:"Je vais. Je fais.",ar:"أنا أذهب. أنا أفعل.",note:"je"},
+   {fr:"Tu vas. Tu fais.",ar:"أنت تذهب. أنت تفعل.",note:"tu"},
+   {fr:"Il va. Il fait.",ar:"هو يذهب. هو يفعل.",note:"il"},
+   {fr:"Elle va. Elle fait.",ar:"هي تذهب. هي تفعل.",note:"elle"},
+   {fr:"On va. On fait.",ar:"نحن نذهب. نحن نفعل.",note:"on"},
+   {fr:"Nous allons. Nous faisons.",ar:"نحن نذهب. نحن نفعل.",note:"nous"},
+   {fr:"Vous allez. Vous faites.",ar:"أنتم تذهبون. أنتم تفعلون.",note:"vous"},
+   {fr:"Ils vont. Ils font.",ar:"هم يذهبون. هم يفعلون.",note:"ils"},
+   {fr:"Elles vont. Elles font.",ar:"هنّ يذهبن. هنّ يفعلن.",note:"elles"}
+  ]
+ },
+ {
+  label:"الفعلان venir و prendre",
+  description:"venir يعني يأتي وprendre يعني يأخذ، ولهما جذور تتغير مع بعض الضمائر.",
+  items:[
+   {fr:"Je viens. Je prends.",ar:"أنا آتي. أنا آخذ.",note:"je"},
+   {fr:"Tu viens. Tu prends.",ar:"أنت تأتي. أنت تأخذ.",note:"tu"},
+   {fr:"Il vient. Il prend.",ar:"هو يأتي. هو يأخذ.",note:"il"},
+   {fr:"Elle vient. Elle prend.",ar:"هي تأتي. هي تأخذ.",note:"elle"},
+   {fr:"On vient. On prend.",ar:"نحن نأتي. نحن نأخذ.",note:"on"},
+   {fr:"Nous venons. Nous prenons.",ar:"نحن نأتي. نحن نأخذ.",note:"nous"},
+   {fr:"Vous venez. Vous prenez.",ar:"أنتم تأتون. أنتم تأخذون.",note:"vous"},
+   {fr:"Ils viennent. Ils prennent.",ar:"هم يأتون. هم يأخذون.",note:"ils"},
+   {fr:"Elles viennent. Elles prennent.",ar:"هنّ يأتين. هنّ يأخذن.",note:"elles"}
+  ]
+ },
+ {
+  label:"المضارع في الحياة اليومية",
+  description:"تدرّب على الأفعال المنتظمة وغير المنتظمة داخل جمل طبيعية.",
+  items:[
+   {fr:"Je travaille à la bibliothèque.",ar:"أعمل في المكتبة.",note:"travailler -er"},
+   {fr:"Tu choisis un livre français.",ar:"تختار كتابًا فرنسيًا.",note:"choisir -ir"},
+   {fr:"Elle répond au professeur.",ar:"هي تجيب المعلم.",note:"répondre -re"},
+   {fr:"On va au marché le matin.",ar:"نذهب إلى السوق صباحًا.",note:"aller"},
+   {fr:"Nous faisons nos devoirs ensemble.",ar:"نؤدي واجباتنا معًا.",note:"faire"},
+   {fr:"Vous venez en bus aujourd’hui.",ar:"تأتون بالحافلة اليوم.",note:"venir"},
+   {fr:"Ils prennent le train à huit heures.",ar:"يستقلون القطار الساعة الثامنة.",note:"prendre"},
+   {fr:"Elles finissent le cours à midi.",ar:"ينهين الدرس عند الظهر.",note:"finir -ir"}
+  ]
+ },
+ {
+  label:"بناء النفي ne … pas",
+  description:"ضع ne قبل الفعل وpas بعده، وتصبح ne هي n’ قبل حرف متحرك.",
+  items:[
+   {fr:"Je ne parle pas anglais.",ar:"أنا لا أتحدث الإنجليزية.",note:"ne + فعل + pas"},
+   {fr:"Tu ne finis pas maintenant.",ar:"أنت لا تنهي الآن.",note:"ne + فعل + pas"},
+   {fr:"Il n’attend pas le bus.",ar:"هو لا ينتظر الحافلة.",note:"ne ← n’"},
+   {fr:"Elle ne va pas au travail.",ar:"هي لا تذهب إلى العمل.",note:"ne + فعل + pas"},
+   {fr:"On ne fait pas de bruit.",ar:"نحن لا نُحدث ضجيجًا.",note:"ne + فعل + pas"},
+   {fr:"Nous ne venons pas demain.",ar:"نحن لا نأتي غدًا.",note:"ne + فعل + pas"},
+   {fr:"Vous ne prenez pas le métro.",ar:"أنتم لا تستقلون المترو.",note:"ne + فعل + pas"},
+   {fr:"Ils n’aiment pas le café.",ar:"هم لا يحبون القهوة.",note:"ne ← n’"}
+  ]
+ },
+ {
+  label:"من الإثبات إلى النفي",
+  description:"استمع إلى الجملة المثبتة ثم صورتها المنفية ولاحظ موضع ne وpas.",
+  items:[
+   {fr:"Je parle français. Je ne parle pas espagnol.",ar:"أتحدث الفرنسية. لا أتحدث الإسبانية.",note:"إثبات ← نفي"},
+   {fr:"Tu travailles lundi. Tu ne travailles pas vendredi.",ar:"تعمل يوم الاثنين. لا تعمل يوم الجمعة.",note:"إثبات ← نفي"},
+   {fr:"Il finit son repas. Il ne finit pas son café.",ar:"ينهي وجبته. لا ينهي قهوته.",note:"إثبات ← نفي"},
+   {fr:"Elle attend sa sœur. Elle n’attend pas son frère.",ar:"تنتظر أختها. لا تنتظر أخاها.",note:"إثبات ← نفي"},
+   {fr:"On va à Paris. On ne va pas à Lyon.",ar:"نذهب إلى باريس. لا نذهب إلى ليون.",note:"إثبات ← نفي"},
+   {fr:"Nous faisons du sport. Nous ne faisons pas de tennis.",ar:"نمارس الرياضة. لا نلعب التنس.",note:"إثبات ← نفي"},
+   {fr:"Vous venez ce soir. Vous ne venez pas demain.",ar:"تأتون هذا المساء. لا تأتون غدًا.",note:"إثبات ← نفي"},
+   {fr:"Elles prennent le bus. Elles ne prennent pas le train.",ar:"يستقللن الحافلة. لا يستقللن القطار.",note:"إثبات ← نفي"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -908,12 +1028,14 @@ export default function UniversityPage(){
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
+ const [presentPageIndex,setPresentPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
+ const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -923,6 +1045,7 @@ export default function UniversityPage(){
   setIntroductionPageIndex(0);
   setNounPageIndex(0);
   setCoreVerbPageIndex(0);
+  setPresentPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -932,6 +1055,7 @@ export default function UniversityPage(){
   if(id==="greetings")setIntroductionPageIndex(0);
   if(id==="nouns")setNounPageIndex(0);
   if(id==="core-verbs")setCoreVerbPageIndex(0);
+  if(id==="present")setPresentPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1074,6 +1198,26 @@ export default function UniversityPage(){
       <button onClick={()=>setCoreVerbPageIndex(index=>Math.min(CORE_VERB_PAGES.length-1,index+1))} disabled={coreVerbPageIndex===CORE_VERB_PAGES.length-1} aria-label="أمثلة الضمائر التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{coreVerbPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="present"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Présent interactif</span><h3>اضغط على التصريف أو الجملة لسماع النطق</h3></div>
+      <BookOpen/>
+     </div>
+     <div className="university-phrase-grid">
+      {presentPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setPresentPageIndex(index=>Math.max(0,index-1))} disabled={presentPageIndex===0} aria-label="أمثلة المضارع السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم المضارع</small><strong>{presentPage.label}</strong><em>{presentPageIndex+1} / {PRESENT_NEGATION_PAGES.length}</em></div>
+      <button onClick={()=>setPresentPageIndex(index=>Math.min(PRESENT_NEGATION_PAGES.length-1,index+1))} disabled={presentPageIndex===PRESENT_NEGATION_PAGES.length-1} aria-label="أمثلة المضارع التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{presentPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     {activeModule.id==="numbers-time"&&<section className="university-numbers">

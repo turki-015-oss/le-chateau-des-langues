@@ -722,6 +722,93 @@ const INTRODUCTION_PAGES=[
  }
 ];
 
+const NOUN_ARTICLE_PAGES=[
+ {
+  label:"أداتا النكرة un و une",
+  description:"استخدم un قبل الاسم المذكر المفرد وune قبل الاسم المؤنث المفرد.",
+  items:[
+   {fr:"un livre",ar:"كتاب",note:"مذكر مفرد"},
+   {fr:"une table",ar:"طاولة",note:"مؤنث مفرد"},
+   {fr:"un garçon",ar:"ولد",note:"مذكر مفرد"},
+   {fr:"une fille",ar:"فتاة",note:"مؤنث مفرد"},
+   {fr:"un ami",ar:"صديق",note:"مذكر مفرد"},
+   {fr:"une amie",ar:"صديقة",note:"مؤنث مفرد"},
+   {fr:"un hôtel",ar:"فندق",note:"مذكر مفرد"},
+   {fr:"une école",ar:"مدرسة",note:"مؤنث مفرد"}
+  ]
+ },
+ {
+  label:"أدوات المعرفة le و la و l’",
+  description:"استخدم le للمذكر وla للمؤنث، وتتحول كلتاهما إلى l’ قبل حرف متحرك أو h صامت.",
+  items:[
+   {fr:"le jardin",ar:"الحديقة",note:"مذكر معرف"},
+   {fr:"la maison",ar:"المنزل",note:"مؤنث معرف"},
+   {fr:"le professeur",ar:"المعلّم",note:"مذكر معرف"},
+   {fr:"la professeure",ar:"المعلّمة",note:"مؤنث معرف"},
+   {fr:"l’homme",ar:"الرجل",note:"مذكر يبدأ بصوت متحرك"},
+   {fr:"l’université",ar:"الجامعة",note:"مؤنث يبدأ بصوت متحرك"},
+   {fr:"l’enfant",ar:"الطفل",note:"أداة مختصرة"},
+   {fr:"l’heure",ar:"الساعة",note:"أداة مختصرة"}
+  ]
+ },
+ {
+  label:"من النكرة إلى المعرفة",
+  description:"نستخدم النكرة عند ذكر الشيء أول مرة، ثم المعرفة عندما يصبح معروفًا في الحديث.",
+  items:[
+   {fr:"J’ai un livre. Le livre est intéressant.",ar:"لدي كتاب. الكتاب ممتع.",note:"un ← le"},
+   {fr:"Elle achète une robe. La robe est bleue.",ar:"تشتري فستانًا. الفستان أزرق.",note:"une ← la"},
+   {fr:"Nous visitons un musée. Le musée est ancien.",ar:"نزور متحفًا. المتحف قديم.",note:"un ← le"},
+   {fr:"Il cherche une pharmacie. La pharmacie est ouverte.",ar:"يبحث عن صيدلية. الصيدلية مفتوحة.",note:"une ← la"},
+   {fr:"C’est un enfant. L’enfant s’appelle Adam.",ar:"هذا طفل. اسم الطفل آدم.",note:"un ← l’"},
+   {fr:"Voici une école. L’école est moderne.",ar:"هذه مدرسة. المدرسة حديثة.",note:"une ← l’"},
+   {fr:"J’entends un avion. L’avion est très loin.",ar:"أسمع طائرة. الطائرة بعيدة جدًا.",note:"un ← l’"},
+   {fr:"Elle a une idée. L’idée est excellente.",ar:"لديها فكرة. الفكرة ممتازة.",note:"une ← l’"}
+  ]
+ },
+ {
+  label:"المذكر والمؤنث",
+  description:"احفظ كل اسم مع أداته؛ فالأداة هي أوضح علامة لمعرفة جنس الاسم.",
+  items:[
+   {fr:"un étudiant",ar:"طالب",note:"مذكر"},
+   {fr:"une étudiante",ar:"طالبة",note:"مؤنث"},
+   {fr:"un voisin",ar:"جار",note:"مذكر"},
+   {fr:"une voisine",ar:"جارة",note:"مؤنث"},
+   {fr:"un acteur",ar:"ممثل",note:"مذكر"},
+   {fr:"une actrice",ar:"ممثلة",note:"مؤنث"},
+   {fr:"un serveur",ar:"نادل",note:"مذكر"},
+   {fr:"une serveuse",ar:"نادلة",note:"مؤنث"}
+  ]
+ },
+ {
+  label:"تكوين الجمع الأساسي",
+  description:"غالبًا نضيف s إلى الاسم، ونستخدم des للنكرة وles للمعرفة في الجمع.",
+  items:[
+   {fr:"un livre, des livres",ar:"كتاب، كتب",note:"إضافة s"},
+   {fr:"une chaise, des chaises",ar:"كرسي، كراسٍ",note:"إضافة s"},
+   {fr:"un étudiant, des étudiants",ar:"طالب، طلاب",note:"إضافة s"},
+   {fr:"une voiture, des voitures",ar:"سيارة، سيارات",note:"إضافة s"},
+   {fr:"le livre, les livres",ar:"الكتاب، الكتب",note:"le ← les"},
+   {fr:"la fenêtre, les fenêtres",ar:"النافذة، النوافذ",note:"la ← les"},
+   {fr:"l’ami, les amis",ar:"الصديق، الأصدقاء",note:"l’ ← les"},
+   {fr:"l’école, les écoles",ar:"المدرسة، المدارس",note:"l’ ← les"}
+  ]
+ },
+ {
+  label:"جموع خاصة داخل جمل",
+  description:"بعض النهايات تتغير عند الجمع، وبعض الكلمات تبقى كتابتها كما هي.",
+  items:[
+   {fr:"Je lis un journal. Je lis des journaux.",ar:"أقرأ صحيفة. أقرأ صحفًا.",note:"-al ← -aux"},
+   {fr:"Il voit un animal. Il voit des animaux.",ar:"يرى حيوانًا. يرى حيوانات.",note:"-al ← -aux"},
+   {fr:"Voici un cheval. Voici des chevaux.",ar:"هذا حصان. هذه خيول.",note:"-al ← -aux"},
+   {fr:"Nous avons un bateau. Nous avons des bateaux.",ar:"لدينا قارب. لدينا قوارب.",note:"-eau ← -eaux"},
+   {fr:"L’enfant choisit un jeu. Les enfants choisissent des jeux.",ar:"يختار الطفل لعبة. يختار الأطفال ألعابًا.",note:"-eu ← -eux"},
+   {fr:"Le magasin affiche un prix. Il affiche plusieurs prix.",ar:"يعرض المتجر سعرًا. يعرض عدة أسعار.",note:"لا يتغير"},
+   {fr:"Le bus arrive. Les bus arrivent.",ar:"تصل الحافلة. تصل الحافلات.",note:"لا يتغير"},
+   {fr:"Les enfants jouent dans les jardins.",ar:"يلعب الأطفال في الحدائق.",note:"جمع داخل جملة"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -729,10 +816,12 @@ export default function UniversityPage(){
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
+ const [nounPageIndex,setNounPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
+ const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -740,6 +829,7 @@ export default function UniversityPage(){
   setModuleId(next.modules[0].id);
   setNumberPageIndex(0);
   setIntroductionPageIndex(0);
+  setNounPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -747,6 +837,7 @@ export default function UniversityPage(){
   setModuleId(id);
   if(id==="numbers-time")setNumberPageIndex(0);
   if(id==="greetings")setIntroductionPageIndex(0);
+  if(id==="nouns")setNounPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -849,6 +940,26 @@ export default function UniversityPage(){
       <button onClick={()=>setIntroductionPageIndex(index=>Math.min(INTRODUCTION_PAGES.length-1,index+1))} disabled={introductionPageIndex===INTRODUCTION_PAGES.length-1} aria-label="أمثلة التعريف التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{introductionPage.description} جميع الجمل مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="nouns"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Grammaire interactive</span><h3>اضغط على الكلمة أو الجملة لسماع نطقها</h3></div>
+      <NotebookTabs/>
+     </div>
+     <div className="university-phrase-grid">
+      {nounPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.76})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setNounPageIndex(index=>Math.max(0,index-1))} disabled={nounPageIndex===0} aria-label="أمثلة الأسماء السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم القاعدة</small><strong>{nounPage.label}</strong><em>{nounPageIndex+1} / {NOUN_ARTICLE_PAGES.length}</em></div>
+      <button onClick={()=>setNounPageIndex(index=>Math.min(NOUN_ARTICLE_PAGES.length-1,index+1))} disabled={nounPageIndex===NOUN_ARTICLE_PAGES.length-1} aria-label="أمثلة الأسماء التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{nounPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     {activeModule.id==="numbers-time"&&<section className="university-numbers">

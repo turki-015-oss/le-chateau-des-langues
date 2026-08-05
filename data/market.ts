@@ -3,7 +3,7 @@ export type MarketDepartment={id:string;fr:string;ar:string;description:string;e
 export type MarketDialogueLine={speaker:"Le vendeur"|"La cliente"|"Le client";fr:string;ar:string};
 export type MarketConversation={id:string;title:string;ar:string;summary:string;lines:MarketDialogueLine[]};
 
-export const marketDepartments:MarketDepartment[]=[
+const baseMarketDepartments:MarketDepartment[]=[
  {id:"dairy",fr:"Les produits laitiers",ar:"الأجبان والألبان",description:"الحليب والأجبان ومشتقات الألبان اليومية.",emoji:"🧀",kind:"shelf",products:[
   {id:"milk",fr:"le lait",ar:"الحليب",emoji:"🥛"},{id:"yogurt",fr:"le yaourt",ar:"الزبادي",emoji:"🥣"},{id:"butter",fr:"le beurre",ar:"الزبدة",emoji:"🧈"},{id:"cream",fr:"la crème",ar:"القشطة",emoji:"🥛"},{id:"cheese",fr:"le fromage",ar:"الجبن",emoji:"🧀"},{id:"goat-cheese",fr:"le fromage de chèvre",ar:"جبن الماعز",emoji:"🧀"},{id:"mozzarella",fr:"la mozzarella",ar:"جبن موزاريلا",emoji:"⚪"},{id:"eggs",fr:"les œufs",ar:"البيض",emoji:"🥚"},{id:"fresh-cheese",fr:"le fromage frais",ar:"الجبن الطازج",emoji:"🧀"},{id:"whipped-cream",fr:"la crème fouettée",ar:"الكريمة المخفوقة",emoji:"🍦"}
  ]},
@@ -56,6 +56,123 @@ export const marketDepartments:MarketDepartment[]=[
   {id:"apple",fr:"la pomme",ar:"التفاح",emoji:"🍎"},{id:"orange",fr:"l’orange",ar:"البرتقال",emoji:"🍊"},{id:"banana",fr:"la banane",ar:"الموز",emoji:"🍌"},{id:"grapes",fr:"le raisin",ar:"العنب",emoji:"🍇"},{id:"strawberry",fr:"la fraise",ar:"الفراولة",emoji:"🍓"},{id:"watermelon",fr:"la pastèque",ar:"البطيخ",emoji:"🍉"},{id:"melon",fr:"le melon",ar:"الشمام",emoji:"🍈"},{id:"pear",fr:"la poire",ar:"الكمثرى",emoji:"🍐"},{id:"peach",fr:"la pêche",ar:"الخوخ",emoji:"🍑"},{id:"pineapple",fr:"l’ananas",ar:"الأناناس",emoji:"🍍"},{id:"lemon",fr:"le citron",ar:"الليمون",emoji:"🍋"},{id:"cherries",fr:"les cerises",ar:"الكرز",emoji:"🍒"}
  ]}
 ];
+
+const extraProducts:Record<string,MarketProduct[]>={
+ dairy:[
+  {id:"whole-milk",fr:"le lait entier",ar:"الحليب كامل الدسم",emoji:"🥛"},{id:"semi-skimmed-milk",fr:"le lait demi-écrémé",ar:"الحليب شبه منزوع الدسم",emoji:"🥛"},{id:"skimmed-milk",fr:"le lait écrémé",ar:"الحليب منزوع الدسم",emoji:"🥛"},{id:"lactose-free-milk",fr:"le lait sans lactose",ar:"الحليب الخالي من اللاكتوز",emoji:"🥛"},{id:"plain-yogurt",fr:"le yaourt nature",ar:"الزبادي الطبيعي",emoji:"🥣"},{id:"fruit-yogurt",fr:"le yaourt aux fruits",ar:"زبادي الفواكه",emoji:"🥣"},{id:"greek-yogurt",fr:"le yaourt grec",ar:"الزبادي اليوناني",emoji:"🥣"},{id:"parmesan",fr:"le parmesan",ar:"جبن البارميزان",emoji:"🧀"},{id:"emmental",fr:"l’emmental",ar:"جبن الإمنتال",emoji:"🧀"},{id:"camembert",fr:"le camembert",ar:"جبن الكاممبير",emoji:"🧀"}
+ ],
+ bakery:[
+  {id:"wholemeal-bread",fr:"le pain complet",ar:"خبز القمح الكامل",emoji:"🍞"},{id:"country-bread",fr:"le pain de campagne",ar:"الخبز الريفي",emoji:"🍞"},{id:"rye-bread",fr:"le pain de seigle",ar:"خبز الجاودار",emoji:"🍞"},{id:"multigrain-bread",fr:"le pain aux céréales",ar:"خبز الحبوب",emoji:"🍞"},{id:"pain-chocolat",fr:"le pain au chocolat",ar:"خبز بالشوكولاتة",emoji:"🥐"},{id:"apple-turnover",fr:"le chausson aux pommes",ar:"فطيرة التفاح الفرنسية",emoji:"🥧"},{id:"madeleine",fr:"la madeleine",ar:"كعكة المادلين",emoji:"🧁"},{id:"muffin",fr:"le muffin",ar:"المافن",emoji:"🧁"},{id:"doughnut",fr:"le beignet",ar:"الدونات",emoji:"🍩"},{id:"breadsticks",fr:"les gressins",ar:"أعواد الخبز",emoji:"🥖"}
+ ],
+ meat:[
+  {id:"chicken-cutlet",fr:"l’escalope de poulet",ar:"شريحة صدر الدجاج",emoji:"🍗"},{id:"chicken-wings",fr:"les ailes de poulet",ar:"أجنحة الدجاج",emoji:"🍗"},{id:"chicken-thighs",fr:"les cuisses de poulet",ar:"أفخاذ الدجاج",emoji:"🍗"},{id:"lamb-chops",fr:"les côtelettes d’agneau",ar:"ريش الغنم",emoji:"🍖"},{id:"beef-fillet",fr:"le filet de bœuf",ar:"فيليه اللحم البقري",emoji:"🥩"},{id:"roast",fr:"le rôti",ar:"لحم الروستو",emoji:"🍖"},{id:"ham",fr:"le jambon",ar:"اللحم المدخن",emoji:"🍖"},{id:"bacon",fr:"le bacon",ar:"شرائح اللحم المقدد",emoji:"🥓"},{id:"merguez",fr:"la merguez",ar:"نقانق المرقاز",emoji:"🌭"},{id:"meatballs",fr:"les boulettes de viande",ar:"كرات اللحم",emoji:"🍖"}
+ ],
+ seafood:[
+  {id:"sea-bream",fr:"la dorade",ar:"سمك الدنيس",emoji:"🐟"},{id:"sea-bass",fr:"le bar",ar:"سمك القاروص",emoji:"🐟"},{id:"cod",fr:"le cabillaud",ar:"سمك القد",emoji:"🐟"},{id:"trout",fr:"la truite",ar:"سمك السلمون المرقط",emoji:"🐟"},{id:"mackerel",fr:"le maquereau",ar:"سمك الإسقمري",emoji:"🐟"},{id:"mussels",fr:"les moules",ar:"بلح البحر",emoji:"🦪"},{id:"oysters",fr:"les huîtres",ar:"المحار",emoji:"🦪"},{id:"squid",fr:"le calamar",ar:"الحبار",emoji:"🦑"},{id:"scallops",fr:"les coquilles Saint-Jacques",ar:"الإسكالوب البحري",emoji:"🐚"},{id:"fish-fillet",fr:"le filet de poisson",ar:"فيليه السمك",emoji:"🐟"}
+ ],
+ grains:[
+  {id:"bulgur",fr:"le boulgour",ar:"البرغل",emoji:"🌾"},{id:"quinoa",fr:"le quinoa",ar:"الكينوا",emoji:"🌾"},{id:"couscous",fr:"le couscous",ar:"الكسكس",emoji:"🍚"},{id:"barley",fr:"l’orge",ar:"الشعير",emoji:"🌾"},{id:"millet",fr:"le millet",ar:"الدخن",emoji:"🌾"},{id:"split-peas",fr:"les pois cassés",ar:"البازلاء المجففة",emoji:"🫘"},{id:"red-beans",fr:"les haricots rouges",ar:"الفاصوليا الحمراء",emoji:"🫘"},{id:"white-beans",fr:"les haricots blancs",ar:"الفاصوليا البيضاء",emoji:"🫘"},{id:"broad-beans",fr:"les fèves",ar:"الفول",emoji:"🫘"},{id:"chia",fr:"les graines de chia",ar:"بذور الشيا",emoji:"🌱"}
+ ],
+ pantry:[
+  {id:"spaghetti",fr:"les spaghettis",ar:"السباغيتي",emoji:"🍝"},{id:"macaroni",fr:"les macaronis",ar:"المعكرونة القصيرة",emoji:"🍝"},{id:"noodles",fr:"les nouilles",ar:"النودلز",emoji:"🍜"},{id:"cornstarch",fr:"la fécule de maïs",ar:"نشا الذرة",emoji:"🌽"},{id:"yeast",fr:"la levure",ar:"الخميرة",emoji:"🧂"},{id:"cocoa",fr:"le cacao en poudre",ar:"مسحوق الكاكاو",emoji:"🍫"},{id:"brown-sugar",fr:"le sucre roux",ar:"السكر البني",emoji:"🟫"},{id:"maple-syrup",fr:"le sirop d’érable",ar:"شراب القيقب",emoji:"🍯"},{id:"peanut-butter",fr:"le beurre de cacahuète",ar:"زبدة الفول السوداني",emoji:"🥜"},{id:"breadcrumbs",fr:"la chapelure",ar:"فتات الخبز",emoji:"🍞"}
+ ],
+ preserves:[
+  {id:"olives-jar",fr:"les olives en bocal",ar:"الزيتون المحفوظ",emoji:"🫒"},{id:"pickles",fr:"les cornichons",ar:"الخيار المخلل",emoji:"🥒"},{id:"canned-mushrooms",fr:"les champignons en conserve",ar:"الفطر المعلب",emoji:"🥫"},{id:"tomato-sauce",fr:"la sauce tomate",ar:"صلصة الطماطم",emoji:"🍅"},{id:"pesto",fr:"le pesto",ar:"صلصة البيستو",emoji:"🌿"},{id:"harissa",fr:"la harissa",ar:"الهريسة",emoji:"🌶️"},{id:"soy-sauce",fr:"la sauce soja",ar:"صلصة الصويا",emoji:"🫗"},{id:"curry",fr:"le curry",ar:"الكاري",emoji:"🟡"},{id:"turmeric",fr:"le curcuma",ar:"الكركم",emoji:"🟠"},{id:"herbs-provence",fr:"les herbes de Provence",ar:"أعشاب بروفانس",emoji:"🌿"}
+ ],
+ drinks:[
+  {id:"grape-juice",fr:"le jus de raisin",ar:"عصير العنب",emoji:"🍇"},{id:"pineapple-juice",fr:"le jus d’ananas",ar:"عصير الأناناس",emoji:"🍍"},{id:"mango-juice",fr:"le jus de mangue",ar:"عصير المانجو",emoji:"🥭"},{id:"carrot-juice",fr:"le jus de carotte",ar:"عصير الجزر",emoji:"🥕"},{id:"coconut-water",fr:"l’eau de coco",ar:"ماء جوز الهند",emoji:"🥥"},{id:"herbal-tea",fr:"la tisane",ar:"شاي الأعشاب",emoji:"🍵"},{id:"espresso",fr:"l’expresso",ar:"قهوة الإسبريسو",emoji:"☕"},{id:"cappuccino",fr:"le cappuccino",ar:"الكابتشينو",emoji:"☕"},{id:"cola",fr:"le soda au cola",ar:"مشروب الكولا",emoji:"🥤"},{id:"energy-drink",fr:"la boisson énergisante",ar:"مشروب الطاقة",emoji:"🥫"}
+ ],
+ snacks:[
+  {id:"dark-chocolate",fr:"le chocolat noir",ar:"الشوكولاتة الداكنة",emoji:"🍫"},{id:"milk-chocolate",fr:"le chocolat au lait",ar:"شوكولاتة الحليب",emoji:"🍫"},{id:"white-chocolate",fr:"le chocolat blanc",ar:"الشوكولاتة البيضاء",emoji:"🍫"},{id:"wafers",fr:"les gaufrettes",ar:"الويفر",emoji:"🧇"},{id:"cereal-bars",fr:"les barres de céréales",ar:"ألواح الحبوب",emoji:"🍫"},{id:"almonds",fr:"les amandes",ar:"اللوز",emoji:"🌰"},{id:"pistachios",fr:"les pistaches",ar:"الفستق",emoji:"🥜"},{id:"hazelnuts",fr:"les noisettes",ar:"البندق",emoji:"🌰"},{id:"raisins",fr:"les raisins secs",ar:"الزبيب",emoji:"🍇"},{id:"dried-apricots",fr:"les abricots secs",ar:"المشمش المجفف",emoji:"🟠"}
+ ],
+ frozen:[
+  {id:"frozen-spinach",fr:"les épinards surgelés",ar:"السبانخ المجمدة",emoji:"🥬"},{id:"frozen-peas",fr:"les petits pois surgelés",ar:"البازلاء المجمدة",emoji:"🟢"},{id:"frozen-beans",fr:"les haricots verts surgelés",ar:"الفاصوليا الخضراء المجمدة",emoji:"🫛"},{id:"frozen-berries",fr:"les fruits rouges surgelés",ar:"التوت المجمد",emoji:"🫐"},{id:"nuggets",fr:"les nuggets de poulet",ar:"قطع الدجاج المقرمشة",emoji:"🍗"},{id:"frozen-burger",fr:"le steak haché surgelé",ar:"قرص اللحم المجمد",emoji:"🍔"},{id:"frozen-lasagna",fr:"les lasagnes surgelées",ar:"اللازانيا المجمدة",emoji:"🍝"},{id:"frozen-soup",fr:"la soupe surgelée",ar:"الشوربة المجمدة",emoji:"🥣"},{id:"frozen-croissants",fr:"les croissants surgelés",ar:"الكرواسون المجمد",emoji:"🥐"},{id:"pizza-dough",fr:"la pâte à pizza surgelée",ar:"عجينة البيتزا المجمدة",emoji:"🍕"}
+ ],
+ icecream:[
+  {id:"caramel-ice",fr:"la glace au caramel",ar:"مثلجات الكراميل",emoji:"🍨"},{id:"coffee-ice",fr:"la glace au café",ar:"مثلجات القهوة",emoji:"🍨"},{id:"lemon-ice",fr:"la glace au citron",ar:"مثلجات الليمون",emoji:"🍧"},{id:"mango-ice",fr:"la glace à la mangue",ar:"مثلجات المانجو",emoji:"🍧"},{id:"raspberry-ice",fr:"la glace à la framboise",ar:"مثلجات التوت",emoji:"🍧"},{id:"mint-ice",fr:"la glace à la menthe",ar:"مثلجات النعناع",emoji:"🍨"},{id:"ice-sandwich",fr:"le sandwich glacé",ar:"ساندويتش المثلجات",emoji:"🍦"},{id:"ice-cake",fr:"le gâteau glacé",ar:"كعكة المثلجات",emoji:"🎂"},{id:"frozen-yogurt",fr:"le yaourt glacé",ar:"الزبادي المثلج",emoji:"🍦"},{id:"sugarfree-ice",fr:"la glace sans sucre",ar:"مثلجات دون سكر",emoji:"🍨"}
+ ],
+ plastic:[
+  {id:"lunch-box",fr:"la boîte-repas",ar:"علبة الطعام",emoji:"🍱"},{id:"plastic-tub",fr:"le bac en plastique",ar:"الحوض البلاستيكي",emoji:"🧺"},{id:"bucket",fr:"le seau en plastique",ar:"الدلو البلاستيكي",emoji:"🪣"},{id:"reusable-bottle",fr:"la gourde réutilisable",ar:"قارورة قابلة لإعادة الاستخدام",emoji:"🧴"},{id:"colander",fr:"la passoire en plastique",ar:"المصفاة البلاستيكية",emoji:"🥣"},{id:"tray",fr:"le plateau en plastique",ar:"الصينية البلاستيكية",emoji:"🍽️"},{id:"cutlery",fr:"les couverts en plastique",ar:"أدوات المائدة البلاستيكية",emoji:"🍴"},{id:"straws",fr:"les pailles",ar:"مصاصات الشراب",emoji:"🥤"},{id:"food-clips",fr:"les pinces alimentaires",ar:"مشابك أكياس الطعام",emoji:"📎"},{id:"freezer-bags",fr:"les sacs de congélation",ar:"أكياس التجميد",emoji:"🛍️"}
+ ],
+ cleaning:[
+  {id:"glass-cleaner",fr:"le nettoyant pour vitres",ar:"منظف الزجاج",emoji:"🪟"},{id:"bleach",fr:"l’eau de Javel",ar:"المبيّض",emoji:"🧴"},{id:"kitchen-cleaner",fr:"le nettoyant de cuisine",ar:"منظف المطبخ",emoji:"🧴"},{id:"bath-cleaner",fr:"le nettoyant de salle de bains",ar:"منظف الحمام",emoji:"🧴"},{id:"descaler",fr:"le détartrant",ar:"مزيل التكلس",emoji:"🧴"},{id:"microfiber",fr:"le chiffon en microfibre",ar:"قطعة قماش دقيقة",emoji:"🧽"},{id:"broom",fr:"le balai",ar:"المكنسة",emoji:"🧹"},{id:"mop",fr:"la serpillière",ar:"ممسحة الأرض",emoji:"🧹"},{id:"cleaning-brush",fr:"la brosse de nettoyage",ar:"فرشاة التنظيف",emoji:"🪥"},{id:"gloves",fr:"les gants de ménage",ar:"قفازات التنظيف",emoji:"🧤"}
+ ],
+ hygiene:[
+  {id:"conditioner",fr:"l’après-shampooing",ar:"بلسم الشعر",emoji:"🧴"},{id:"body-lotion",fr:"le lait pour le corps",ar:"مرطب الجسم",emoji:"🧴"},{id:"face-cream",fr:"la crème pour le visage",ar:"كريم الوجه",emoji:"🧴"},{id:"cotton-buds",fr:"les cotons-tiges",ar:"أعواد القطن",emoji:"⚪"},{id:"cotton-pads",fr:"les disques de coton",ar:"قطع القطن",emoji:"⚪"},{id:"dental-floss",fr:"le fil dentaire",ar:"خيط الأسنان",emoji:"🦷"},{id:"mouthwash",fr:"le bain de bouche",ar:"غسول الفم",emoji:"🧴"},{id:"perfume",fr:"le parfum",ar:"العطر",emoji:"🌸"},{id:"sunscreen",fr:"la crème solaire",ar:"واقي الشمس",emoji:"☀️"},{id:"nail-clippers",fr:"le coupe-ongles",ar:"قصّاصة الأظافر",emoji:"✂️"}
+ ],
+ paper:[
+  {id:"aluminum-foil",fr:"le papier aluminium",ar:"ورق الألمنيوم",emoji:"🧻"},{id:"gift-paper",fr:"le papier cadeau",ar:"ورق الهدايا",emoji:"🎁"},{id:"paper-tablecloth",fr:"la nappe en papier",ar:"مفرش ورقي",emoji:"◻️"},{id:"coffee-filters",fr:"les filtres à café",ar:"مرشحات القهوة",emoji:"☕"},{id:"paper-cups",fr:"les gobelets en carton",ar:"الأكواب الورقية",emoji:"🥤"},{id:"paper-plates",fr:"les assiettes en carton",ar:"الأطباق الورقية",emoji:"🍽️"},{id:"notebook",fr:"le cahier",ar:"الدفتر",emoji:"📓"},{id:"envelopes",fr:"les enveloppes",ar:"المغلفات",emoji:"✉️"},{id:"oven-bags",fr:"les sacs de cuisson",ar:"أكياس الطهي",emoji:"🛍️"},{id:"labels",fr:"les étiquettes adhésives",ar:"الملصقات الورقية",emoji:"🏷️"}
+ ],
+ vegetables:[
+  {id:"cabbage",fr:"le chou",ar:"الملفوف",emoji:"🥬"},{id:"spinach",fr:"les épinards",ar:"السبانخ",emoji:"🥬"},{id:"peas",fr:"les petits pois",ar:"البازلاء",emoji:"🫛"},{id:"green-beans",fr:"les haricots verts",ar:"الفاصوليا الخضراء",emoji:"🫛"},{id:"mushroom",fr:"le champignon",ar:"الفطر",emoji:"🍄"},{id:"celery",fr:"le céleri",ar:"الكرفس",emoji:"🥬"},{id:"leek",fr:"le poireau",ar:"الكراث",emoji:"🥬"},{id:"radish",fr:"le radis",ar:"الفجل",emoji:"🔴"},{id:"turnip",fr:"le navet",ar:"اللفت",emoji:"🟣"},{id:"beet",fr:"la betterave",ar:"الشمندر",emoji:"🟣"},{id:"artichoke",fr:"l’artichaut",ar:"الخرشوف",emoji:"🌿"},{id:"asparagus",fr:"les asperges",ar:"الهليون",emoji:"🌱"},{id:"pumpkin",fr:"la citrouille",ar:"اليقطين",emoji:"🎃"},{id:"sweet-potato",fr:"la patate douce",ar:"البطاطا الحلوة",emoji:"🍠"}
+ ],
+ fruits:[
+  {id:"kiwi",fr:"le kiwi",ar:"الكيوي",emoji:"🥝"},{id:"mango",fr:"la mangue",ar:"المانجو",emoji:"🥭"},{id:"avocado",fr:"l’avocat",ar:"الأفوكادو",emoji:"🥑"},{id:"pomegranate",fr:"la grenade",ar:"الرمان",emoji:"🔴"},{id:"fig",fr:"la figue",ar:"التين",emoji:"🟣"},{id:"apricot",fr:"l’abricot",ar:"المشمش",emoji:"🟠"},{id:"plum",fr:"la prune",ar:"البرقوق",emoji:"🟣"},{id:"raspberry",fr:"la framboise",ar:"توت العليق",emoji:"🫐"},{id:"blueberry",fr:"la myrtille",ar:"التوت الأزرق",emoji:"🫐"},{id:"coconut",fr:"la noix de coco",ar:"جوز الهند",emoji:"🥥"},{id:"grapefruit",fr:"le pamplemousse",ar:"الجريب فروت",emoji:"🍊"},{id:"mandarin",fr:"la mandarine",ar:"اليوسفي",emoji:"🍊"},{id:"papaya",fr:"la papaye",ar:"البابايا",emoji:"🟠"},{id:"passion-fruit",fr:"le fruit de la passion",ar:"فاكهة العاطفة",emoji:"🟣"}
+ ]
+};
+
+type ProductVariant={id:string;fr:string;ar:string};
+
+const productVariants:Record<string,ProductVariant[]>={
+ dairy:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"farm",fr:"fermier",ar:"الريفي"},{id:"light",fr:"allégé",ar:"قليل الدسم"},{id:"calcium",fr:"enrichi en calcium",ar:"المدعّم بالكالسيوم"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"local",fr:"d’origine locale",ar:"محلي المصدر"}],
+ bakery:[{id:"artisan",fr:"artisanal",ar:"الحرفي"},{id:"organic",fr:"biologique",ar:"العضوي"},{id:"seeds",fr:"aux graines",ar:"بالبذور"},{id:"glutenfree",fr:"sans gluten",ar:"الخالي من الغلوتين"},{id:"fresh",fr:"du jour",ar:"المحضّر اليوم"},{id:"family",fr:"format familial",ar:"بحجم عائلي"}],
+ meat:[{id:"fresh",fr:"frais",ar:"الطازج"},{id:"farm",fr:"fermier",ar:"الريفي"},{id:"marinated",fr:"mariné",ar:"المتبّل"},{id:"smoked",fr:"fumé",ar:"المدخن"},{id:"boneless",fr:"sans os",ar:"منزوع العظم"},{id:"portions",fr:"en portions",ar:"المقسّم إلى حصص"}],
+ seafood:[{id:"fresh",fr:"frais",ar:"الطازج"},{id:"wild",fr:"sauvage",ar:"البري"},{id:"filleted",fr:"préparé en filets",ar:"المجهز كشرائح"},{id:"cleaned",fr:"nettoyé",ar:"المنظف"},{id:"local",fr:"de pêche locale",ar:"من صيد محلي"},{id:"portions",fr:"en portions",ar:"المقسّم إلى حصص"}],
+ grains:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"whole",fr:"complet",ar:"الكامل"},{id:"quick",fr:"à cuisson rapide",ar:"سريع الطهي"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"local",fr:"d’origine locale",ar:"محلي المصدر"},{id:"premium",fr:"de qualité supérieure",ar:"عالي الجودة"}],
+ pantry:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"fine",fr:"fin",ar:"الناعم"},{id:"whole",fr:"complet",ar:"الكامل"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"traditional",fr:"traditionnel",ar:"التقليدي"},{id:"premium",fr:"de qualité supérieure",ar:"عالي الجودة"}],
+ preserves:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"mild",fr:"doux",ar:"المعتدل"},{id:"spicy",fr:"épicé",ar:"الحار"},{id:"nosalt",fr:"sans sel ajouté",ar:"دون ملح مضاف"},{id:"family",fr:"en grand format",ar:"بحجم كبير"},{id:"traditional",fr:"de recette traditionnelle",ar:"بالوصفة التقليدية"}],
+ drinks:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"sugarfree",fr:"sans sucre ajouté",ar:"دون سكر مضاف"},{id:"light",fr:"léger",ar:"الخفيف"},{id:"cold",fr:"à servir frais",ar:"المخصص للتقديم باردًا"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"natural",fr:"100 % naturel",ar:"الطبيعي بالكامل"}],
+ snacks:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"salted",fr:"salé",ar:"المملح"},{id:"unsalted",fr:"sans sel",ar:"دون ملح"},{id:"sugarfree",fr:"sans sucre ajouté",ar:"دون سكر مضاف"},{id:"mini",fr:"en mini-portions",ar:"بحصص صغيرة"},{id:"family",fr:"format familial",ar:"بحجم عائلي"}],
+ frozen:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"ready",fr:"prêt à cuire",ar:"الجاهز للطهي"},{id:"steam",fr:"pour cuisson vapeur",ar:"المخصص للطهي بالبخار"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"individual",fr:"en portion individuelle",ar:"بحصة فردية"},{id:"seasoned",fr:"assaisonné",ar:"المتبّل"}],
+ icecream:[{id:"artisan",fr:"artisanale",ar:"الحرفية"},{id:"organic",fr:"biologique",ar:"العضوية"},{id:"sugarfree",fr:"sans sucre ajouté",ar:"دون سكر مضاف"},{id:"mini",fr:"en mini-format",ar:"بحجم صغير"},{id:"family",fr:"format familial",ar:"بحجم عائلي"},{id:"vegan",fr:"végétale",ar:"النباتية"}],
+ plastic:[{id:"recycled",fr:"en plastique recyclé",ar:"من البلاستيك المعاد تدويره"},{id:"reusable",fr:"réutilisable",ar:"القابل لإعادة الاستخدام"},{id:"transparent",fr:"transparent",ar:"الشفاف"},{id:"colored",fr:"coloré",ar:"الملون"},{id:"small",fr:"petit format",ar:"بالحجم الصغير"},{id:"large",fr:"grand format",ar:"بالحجم الكبير"}],
+ cleaning:[{id:"lemon",fr:"parfum citron",ar:"برائحة الليمون"},{id:"lavender",fr:"parfum lavande",ar:"برائحة اللافندر"},{id:"sensitive",fr:"pour peaux sensibles",ar:"المناسب للبشرة الحساسة"},{id:"concentrated",fr:"concentré",ar:"المركّز"},{id:"eco",fr:"écologique",ar:"الصديق للبيئة"},{id:"family",fr:"grand format",ar:"بالحجم الكبير"}],
+ hygiene:[{id:"sensitive",fr:"pour peaux sensibles",ar:"للبشرة الحساسة"},{id:"natural",fr:"aux ingrédients naturels",ar:"بمكونات طبيعية"},{id:"aloe",fr:"à l’aloe vera",ar:"بالألوفيرا"},{id:"unscented",fr:"sans parfum",ar:"دون عطر"},{id:"travel",fr:"format voyage",ar:"بحجم السفر"},{id:"family",fr:"grand format",ar:"بالحجم الكبير"}],
+ paper:[{id:"recycled",fr:"en papier recyclé",ar:"من الورق المعاد تدويره"},{id:"white",fr:"blanc",ar:"الأبيض"},{id:"colored",fr:"coloré",ar:"الملون"},{id:"small",fr:"petit format",ar:"بالحجم الصغير"},{id:"large",fr:"grand format",ar:"بالحجم الكبير"},{id:"eco",fr:"écologique",ar:"الصديق للبيئة"}],
+ vegetables:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"local",fr:"local",ar:"المحلي"},{id:"young",fr:"jeune",ar:"الصغير الطازج"},{id:"washed",fr:"lavé et prêt à utiliser",ar:"المغسول والجاهز"},{id:"season",fr:"de saison",ar:"الموسمي"},{id:"bundle",fr:"vendu en botte",ar:"المربوط في حزمة"}],
+ fruits:[{id:"organic",fr:"biologique",ar:"العضوي"},{id:"local",fr:"local",ar:"المحلي"},{id:"ripe",fr:"bien mûr",ar:"الناضج"},{id:"season",fr:"de saison",ar:"الموسمي"},{id:"sweet",fr:"très sucré",ar:"شديد الحلاوة"},{id:"basket",fr:"présenté en barquette",ar:"المعبأ في علبة"}]
+};
+
+function buildMarketDepartments(){
+ const departments=baseMarketDepartments.map(department=>({
+  ...department,
+  products:[...department.products,...(extraProducts[department.id]??[])]
+ }));
+ const knownIds=new Set(departments.flatMap(department=>department.products.map(product=>product.id)));
+ const knownNames=new Set(departments.flatMap(department=>department.products.map(product=>product.fr.toLocaleLowerCase("fr"))));
+ const pools=departments.map(department=>{
+  const variants=productVariants[department.id]??[];
+  return department.products.flatMap(product=>variants.map(variant=>({
+   id:`${product.id}-${variant.id}`,
+   fr:`${product.fr} ${variant.fr}`,
+   ar:`${product.ar} ${variant.ar}`,
+   emoji:product.emoji,
+   note:`${variant.fr} · ${variant.ar}`
+  }))).filter(product=>!knownIds.has(product.id)&&!knownNames.has(product.fr.toLocaleLowerCase("fr")));
+ });
+ let total=departments.reduce((sum,department)=>sum+department.products.length,0);
+ let round=0;
+ while(total<900){
+  let added=false;
+  for(let index=0;index<departments.length&&total<900;index+=1){
+   const candidate=pools[index][round];
+   if(!candidate)continue;
+   const normalized=candidate.fr.toLocaleLowerCase("fr");
+   if(knownIds.has(candidate.id)||knownNames.has(normalized))continue;
+   departments[index].products.push(candidate);
+   knownIds.add(candidate.id);
+   knownNames.add(normalized);
+   total+=1;
+   added=true;
+  }
+  if(!added)break;
+  round+=1;
+ }
+ if(total!==900)throw new Error(`Le catalogue du marché contient ${total} produits au lieu de 900.`);
+ return departments;
+}
+
+export const marketDepartments:MarketDepartment[]=buildMarketDepartments();
 
 export const marketConversations:MarketConversation[]=[
  {id:"discovery",title:"Découvrir les rayons",ar:"التعرّف على أقسام السوق",summary:"محادثة طويلة للتعرّف على الأرفف والسلال وأسماء المنتجات.",lines:[

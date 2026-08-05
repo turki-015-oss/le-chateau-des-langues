@@ -7,23 +7,27 @@ import {marketConversations,marketDepartments} from "@/data/market";
 import {cancelFrenchSpeech,speakFrench} from "@/lib/frenchSpeech";
 
 const DIALOGUE_PAGE_SIZE=6;
+const PRODUCT_PAGE_SIZE=24;
 
 export default function MarketPage(){
  const [departmentId,setDepartmentId]=useState<string|null>(null);
  const [conversationId,setConversationId]=useState<string|null>(null);
  const [dialoguePage,setDialoguePage]=useState(0);
+ const [productPage,setProductPage]=useState(0);
  const [speakingId,setSpeakingId]=useState<string|null>(null);
  const department=marketDepartments.find(item=>item.id===departmentId)??null;
  const conversation=marketConversations.find(item=>item.id===conversationId)??null;
  const shelves=marketDepartments.filter(item=>item.kind==="shelf");
  const baskets=marketDepartments.filter(item=>item.kind==="basket");
  const dialoguePages=conversation?Math.ceil(conversation.lines.length/DIALOGUE_PAGE_SIZE):0;
+ const productPages=department?Math.ceil(department.products.length/PRODUCT_PAGE_SIZE):0;
  const visibleLines=useMemo(()=>conversation?.lines.slice(dialoguePage*DIALOGUE_PAGE_SIZE,(dialoguePage+1)*DIALOGUE_PAGE_SIZE)??[],[conversation,dialoguePage]);
+ const visibleProducts=useMemo(()=>department?.products.slice(productPage*PRODUCT_PAGE_SIZE,(productPage+1)*PRODUCT_PAGE_SIZE)??[],[department,productPage]);
 
  const scrollToContent=()=>window.setTimeout(()=>document.getElementById("market-learning")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
- const openDepartment=(id:string)=>{cancelFrenchSpeech();setConversationId(null);setDepartmentId(id);setSpeakingId(null);scrollToContent()};
+ const openDepartment=(id:string)=>{cancelFrenchSpeech();setConversationId(null);setDepartmentId(id);setProductPage(0);setSpeakingId(null);scrollToContent()};
  const openConversation=(id:string)=>{cancelFrenchSpeech();setDepartmentId(null);setConversationId(id);setDialoguePage(0);setSpeakingId(null);scrollToContent()};
- const goHome=()=>{cancelFrenchSpeech();setDepartmentId(null);setConversationId(null);setDialoguePage(0);setSpeakingId(null);scrollToContent()};
+ const goHome=()=>{cancelFrenchSpeech();setDepartmentId(null);setConversationId(null);setDialoguePage(0);setProductPage(0);setSpeakingId(null);scrollToContent()};
  const speak=(id:string,text:string,rate=.76)=>{
   setSpeakingId(id);
   void speakFrench(text,{rate,onEnd:()=>setSpeakingId(current=>current===id?null:current),onError:()=>setSpeakingId(null)});
@@ -97,13 +101,18 @@ export default function MarketPage(){
      <strong>{department.products.length} منتجات</strong>
     </div>
     <div className="market-product-learning-grid">
-     {department.products.map((item,index)=>{
+     {visibleProducts.map((item,index)=>{
       const id=`product-${item.id}`;const active=speakingId===id;
       return <button key={item.id} className={active?"is-speaking":""} onClick={()=>speak(id,item.fr)} aria-label={`استمع إلى ${item.fr}`}>
-       <i>{String(index+1).padStart(2,"0")}</i><div className="market-product-picture"><span>{item.emoji}</span>{active&&<b><Volume2/></b>}</div>
+       <i>{String(productPage*PRODUCT_PAGE_SIZE+index+1).padStart(2,"0")}</i><div className="market-product-picture"><span>{item.emoji}</span>{active&&<b><Volume2/></b>}</div>
        <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note??"اضغط لسماع النطق"}</em></div><Volume2 className="market-product-volume"/>
       </button>})}
     </div>
+    {productPages>1&&<div className="market-dialogue-pagination market-product-pagination" dir="ltr">
+     <button onClick={()=>setProductPage(page=>Math.max(0,page-1))} disabled={productPage===0} aria-label="صفحة المنتجات السابقة"><ChevronLeft/><span>السابق</span></button>
+     <div><small>صفحة المنتجات</small><strong>{productPage+1} / {productPages}</strong><em>{productPage*PRODUCT_PAGE_SIZE+1}–{Math.min((productPage+1)*PRODUCT_PAGE_SIZE,department.products.length)} من {department.products.length}</em></div>
+     <button onClick={()=>setProductPage(page=>Math.min(productPages-1,page+1))} disabled={productPage===productPages-1} aria-label="صفحة المنتجات التالية"><span>التالي</span><ChevronRight/></button>
+    </div>}
    </section>}
 
    {conversation&&<section className="market-dialogue-room">

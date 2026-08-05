@@ -1019,6 +1019,127 @@ const PRESENT_NEGATION_PAGES=[
  }
 ];
 
+const TIME_DATE_PAGES=[
+ {
+  label:"السؤال عن الوقت",
+  description:"استخدم Quelle heure est-il ? للسؤال العام، وÀ quelle heure… ? للسؤال عن موعد محدد.",
+  items:[
+   {fr:"Quelle heure est-il ?",ar:"كم الساعة؟",note:"سؤال عام"},
+   {fr:"Il est quelle heure ?",ar:"كم الساعة؟",note:"حديث يومي"},
+   {fr:"Vous avez l’heure, s’il vous plaît ?",ar:"هل لديكم الوقت من فضلكم؟",note:"سؤال مهذب"},
+   {fr:"À quelle heure commence le cours ?",ar:"في أي ساعة يبدأ الدرس؟",note:"موعد البداية"},
+   {fr:"À quelle heure finit le travail ?",ar:"في أي ساعة ينتهي العمل؟",note:"موعد النهاية"},
+   {fr:"Le train part à quelle heure ?",ar:"في أي ساعة يغادر القطار؟",note:"موعد المغادرة"},
+   {fr:"Quand est notre rendez-vous ?",ar:"متى موعدنا؟",note:"سؤال عن موعد"},
+   {fr:"Il est exactement huit heures.",ar:"الساعة الثامنة تمامًا.",note:"إجابة كاملة"}
+  ]
+ },
+ {
+  label:"الساعات الكاملة",
+  description:"نستخدم Il est une heure للمفرد وIl est … heures مع بقية الساعات.",
+  items:[
+   {fr:"Il est une heure.",ar:"الساعة الواحدة.",note:"heure مفرد"},
+   {fr:"Il est deux heures.",ar:"الساعة الثانية.",note:"heures جمع"},
+   {fr:"Il est sept heures.",ar:"الساعة السابعة.",note:"صباحًا أو مساءً"},
+   {fr:"Il est huit heures.",ar:"الساعة الثامنة.",note:"ساعة كاملة"},
+   {fr:"Il est dix heures.",ar:"الساعة العاشرة.",note:"ساعة كاملة"},
+   {fr:"Il est midi.",ar:"الساعة الثانية عشرة ظهرًا.",note:"منتصف النهار"},
+   {fr:"Il est dix-huit heures.",ar:"الساعة السادسة مساءً.",note:"نظام 24 ساعة"},
+   {fr:"Il est minuit.",ar:"الساعة الثانية عشرة ليلًا.",note:"منتصف الليل"}
+  ]
+ },
+ {
+  label:"النصف والربع والدقائق",
+  description:"استخدم et quart للربع وet demie للنصف وmoins le quart إلا مع midi وminuit.",
+  items:[
+   {fr:"Il est neuf heures et quart.",ar:"الساعة التاسعة والربع.",note:"et quart"},
+   {fr:"Il est dix heures et demie.",ar:"الساعة العاشرة والنصف.",note:"et demie"},
+   {fr:"Il est onze heures moins le quart.",ar:"الساعة الحادية عشرة إلا ربعًا.",note:"moins le quart"},
+   {fr:"Il est trois heures cinq.",ar:"الساعة الثالثة وخمس دقائق.",note:"+ 5 دقائق"},
+   {fr:"Il est quatre heures dix.",ar:"الساعة الرابعة وعشر دقائق.",note:"+ 10 دقائق"},
+   {fr:"Il est six heures vingt.",ar:"الساعة السادسة وعشرون دقيقة.",note:"+ 20 دقيقة"},
+   {fr:"Il est huit heures moins dix.",ar:"الساعة الثامنة إلا عشر دقائق.",note:"- 10 دقائق"},
+   {fr:"Il est midi et demi.",ar:"الساعة الثانية عشرة والنصف ظهرًا.",note:"demi مع midi"}
+  ]
+ },
+ {
+  label:"المواعيد وفترات اليوم",
+  description:"اربط الساعة بالنشاط واستخدم du matin وde l’après-midi وdu soir عند الحاجة.",
+  items:[
+   {fr:"Je me réveille à six heures du matin.",ar:"أستيقظ الساعة السادسة صباحًا.",note:"الصباح"},
+   {fr:"Le cours commence à huit heures et demie.",ar:"يبدأ الدرس الساعة الثامنة والنصف.",note:"بداية موعد"},
+   {fr:"Nous déjeunons à midi.",ar:"نتناول الغداء عند الظهر.",note:"منتصف النهار"},
+   {fr:"J’ai un rendez-vous à deux heures de l’après-midi.",ar:"لدي موعد الساعة الثانية بعد الظهر.",note:"بعد الظهر"},
+   {fr:"Le magasin ferme à dix-neuf heures.",ar:"يغلق المتجر الساعة السابعة مساءً.",note:"نظام 24 ساعة"},
+   {fr:"Le film commence à neuf heures du soir.",ar:"يبدأ الفيلم الساعة التاسعة مساءً.",note:"المساء"},
+   {fr:"Le train arrive à vingt-deux heures quinze.",ar:"يصل القطار الساعة العاشرة والربع مساءً.",note:"وقت دقيق"},
+   {fr:"Je me couche vers minuit.",ar:"أنام قرابة منتصف الليل.",note:"وقت تقريبي"}
+  ]
+ },
+ {
+  label:"أيام الأسبوع",
+  description:"تُكتب أيام الأسبوع بحرف صغير، ويبدأ الأسبوع عادةً بيوم lundi.",
+  items:[
+   {fr:"lundi",ar:"الاثنين",note:"بداية الأسبوع"},
+   {fr:"mardi",ar:"الثلاثاء",note:"اليوم الثاني"},
+   {fr:"mercredi",ar:"الأربعاء",note:"اليوم الثالث"},
+   {fr:"jeudi",ar:"الخميس",note:"اليوم الرابع"},
+   {fr:"vendredi",ar:"الجمعة",note:"اليوم الخامس"},
+   {fr:"samedi",ar:"السبت",note:"نهاية الأسبوع"},
+   {fr:"dimanche",ar:"الأحد",note:"نهاية الأسبوع"},
+   {fr:"Aujourd’hui, nous sommes mercredi.",ar:"اليوم هو الأربعاء.",note:"ذكر اليوم"},
+   {fr:"Demain, ce sera jeudi.",ar:"غدًا سيكون الخميس.",note:"اليوم التالي"},
+   {fr:"Hier, c’était mardi.",ar:"أمس كان الثلاثاء.",note:"اليوم السابق"}
+  ]
+ },
+ {
+  label:"أشهر السنة",
+  description:"تُكتب أسماء الأشهر بحرف صغير، ونستخدم en قبل اسم الشهر غالبًا.",
+  items:[
+   {fr:"janvier",ar:"يناير",note:"الشهر 1"},
+   {fr:"février",ar:"فبراير",note:"الشهر 2"},
+   {fr:"mars",ar:"مارس",note:"الشهر 3"},
+   {fr:"avril",ar:"أبريل",note:"الشهر 4"},
+   {fr:"mai",ar:"مايو",note:"الشهر 5"},
+   {fr:"juin",ar:"يونيو",note:"الشهر 6"},
+   {fr:"juillet",ar:"يوليو",note:"الشهر 7"},
+   {fr:"août",ar:"أغسطس",note:"الشهر 8"},
+   {fr:"septembre",ar:"سبتمبر",note:"الشهر 9"},
+   {fr:"octobre",ar:"أكتوبر",note:"الشهر 10"},
+   {fr:"novembre",ar:"نوفمبر",note:"الشهر 11"},
+   {fr:"décembre",ar:"ديسمبر",note:"الشهر 12"}
+  ]
+ },
+ {
+  label:"الفصول وقراءة التاريخ",
+  description:"صيغة التاريخ هي le ثم رقم اليوم ثم الشهر ثم السنة، ويُقال premier لليوم الأول فقط.",
+  items:[
+   {fr:"le printemps",ar:"فصل الربيع",note:"فصل السنة"},
+   {fr:"l’été",ar:"فصل الصيف",note:"فصل السنة"},
+   {fr:"l’automne",ar:"فصل الخريف",note:"فصل السنة"},
+   {fr:"l’hiver",ar:"فصل الشتاء",note:"فصل السنة"},
+   {fr:"Nous sommes le premier janvier.",ar:"نحن في الأول من يناير.",note:"اليوم الأول"},
+   {fr:"Nous sommes le cinq août.",ar:"نحن في الخامس من أغسطس.",note:"يوم + شهر"},
+   {fr:"Nous sommes le quatorze juillet.",ar:"نحن في الرابع عشر من يوليو.",note:"يوم + شهر"},
+   {fr:"Nous sommes le cinq août deux mille vingt-six.",ar:"التاريخ هو الخامس من أغسطس 2026.",note:"تاريخ كامل"}
+  ]
+ },
+ {
+  label:"الميلاد والمواعيد والتواريخ",
+  description:"استخدم le مع يوم محدد، وen مع الشهر أو السنة، وà مع الساعة.",
+  items:[
+   {fr:"Mon anniversaire est le douze mars.",ar:"عيد ميلادي في الثاني عشر من مارس.",note:"تاريخ الميلاد"},
+   {fr:"Je suis né le vingt avril.",ar:"وُلدت في العشرين من أبريل.",note:"مذكر"},
+   {fr:"Elle est née en septembre.",ar:"وُلدت في سبتمبر.",note:"مؤنث"},
+   {fr:"Le rendez-vous est le lundi dix août.",ar:"الموعد يوم الاثنين العاشر من أغسطس.",note:"يوم + تاريخ"},
+   {fr:"La réunion commence à neuf heures le mardi.",ar:"يبدأ الاجتماع الساعة التاسعة يوم الثلاثاء.",note:"ساعة + يوم"},
+   {fr:"Nous partons en vacances en juillet.",ar:"نسافر في إجازة خلال يوليو.",note:"en + شهر"},
+   {fr:"Le semestre finit en décembre.",ar:"ينتهي الفصل الدراسي في ديسمبر.",note:"en + شهر"},
+   {fr:"Le prochain cours est vendredi à dix heures.",ar:"الدرس القادم يوم الجمعة الساعة العاشرة.",note:"يوم + ساعة"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -1029,6 +1150,7 @@ export default function UniversityPage(){
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
+ const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -1036,6 +1158,7 @@ export default function UniversityPage(){
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
+ const timeDatePage=TIME_DATE_PAGES[timeDatePageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -1046,12 +1169,13 @@ export default function UniversityPage(){
   setNounPageIndex(0);
   setCoreVerbPageIndex(0);
   setPresentPageIndex(0);
+  setTimeDatePageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
  const selectModule=(id:string)=>{
   setModuleId(id);
-  if(id==="numbers-time")setNumberPageIndex(0);
+  if(id==="numbers-time"){setNumberPageIndex(0);setTimeDatePageIndex(0)}
   if(id==="greetings")setIntroductionPageIndex(0);
   if(id==="nouns")setNounPageIndex(0);
   if(id==="core-verbs")setCoreVerbPageIndex(0);
@@ -1238,6 +1362,26 @@ export default function UniversityPage(){
       <button onClick={()=>setNumberPageIndex(index=>Math.min(NUMBER_PAGES.length-1,index+1))} disabled={numberPageIndex===NUMBER_PAGES.length-1} aria-label="الأرقام التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-number-note">ينطق الزر الرقم الفرنسي فقط. استخدم السهمين للتنقل من الصفر حتى المليون دون اختبار أو قفل.</p>
+    </section>}
+
+    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Heure et date interactives</span><h3>اضغط على الكلمة أو الجملة لسماع النطق</h3></div>
+      <CalendarDays/>
+     </div>
+     <div className="university-phrase-grid">
+      {timeDatePage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setTimeDatePageIndex(index=>Math.max(0,index-1))} disabled={timeDatePageIndex===0} aria-label="أمثلة الوقت السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم الوقت والتاريخ</small><strong>{timeDatePage.label}</strong><em>{timeDatePageIndex+1} / {TIME_DATE_PAGES.length}</em></div>
+      <button onClick={()=>setTimeDatePageIndex(index=>Math.min(TIME_DATE_PAGES.length-1,index+1))} disabled={timeDatePageIndex===TIME_DATE_PAGES.length-1} aria-label="أمثلة الوقت التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{timeDatePage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     <div className="university-sections">

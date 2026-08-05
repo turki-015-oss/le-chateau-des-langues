@@ -1263,6 +1263,136 @@ const FAMILY_DESCRIPTION_PAGES=[
  }
 ];
 
+const DAILY_LIFE_PAGES=[
+ {
+  label:"الأفعال الانعكاسية اليومية",
+  description:"يعود الفعل الانعكاسي على الفاعل، ويتغير ضميره إلى me وte وse وnous وvous وse.",
+  items:[
+   {fr:"se réveiller",ar:"يستيقظ",note:"فعل انعكاسي"},
+   {fr:"se lever",ar:"ينهض من السرير",note:"فعل انعكاسي"},
+   {fr:"se laver",ar:"يغتسل",note:"فعل انعكاسي"},
+   {fr:"se brosser les dents",ar:"يفرّش أسنانه",note:"عناية شخصية"},
+   {fr:"s’habiller",ar:"يرتدي ملابسه",note:"se ← s’"},
+   {fr:"se coiffer",ar:"يمشّط شعره",note:"عناية شخصية"},
+   {fr:"se préparer",ar:"يستعد",note:"فعل انعكاسي"},
+   {fr:"se coucher",ar:"يذهب إلى الفراش",note:"روتين مسائي"},
+   {fr:"s’endormir",ar:"يغفو أو ينام",note:"se ← s’"}
+  ]
+ },
+ {
+  label:"الروتين الصباحي",
+  description:"استخدم المضارع مع الساعة لوصف الأنشطة التي تقوم بها كل صباح.",
+  items:[
+   {fr:"Je me réveille à six heures.",ar:"أستيقظ الساعة السادسة.",note:"استيقاظ"},
+   {fr:"Je me lève quelques minutes plus tard.",ar:"أنهض بعد عدة دقائق.",note:"نهوض"},
+   {fr:"Je me lave le visage.",ar:"أغسل وجهي.",note:"نظافة"},
+   {fr:"Je me brosse les dents.",ar:"أفرّش أسناني.",note:"نظافة"},
+   {fr:"Je prends une douche rapide.",ar:"آخذ حمامًا سريعًا.",note:"استحمام"},
+   {fr:"Je m’habille pour aller au travail.",ar:"أرتدي ملابسي للذهاب إلى العمل.",note:"ملابس"},
+   {fr:"Je me coiffe devant le miroir.",ar:"أمشّط شعري أمام المرآة.",note:"استعداد"},
+   {fr:"Je prépare mon sac avant de sortir.",ar:"أجهّز حقيبتي قبل الخروج.",note:"تجهيز"}
+  ]
+ },
+ {
+  label:"الدراسة والعمل",
+  description:"هذه العبارات تصف بداية يوم الدراسة أو العمل والأنشطة الأساسية خلاله.",
+  items:[
+   {fr:"Je commence le travail à huit heures.",ar:"أبدأ العمل الساعة الثامنة.",note:"بداية العمل"},
+   {fr:"Elle arrive à l’université en avance.",ar:"تصل إلى الجامعة مبكرًا.",note:"الوصول"},
+   {fr:"Nous assistons au cours de français.",ar:"نحضر درس اللغة الفرنسية.",note:"الدراسة"},
+   {fr:"Tu prends des notes dans ton cahier.",ar:"تدوّن ملاحظات في دفترك.",note:"الدراسة"},
+   {fr:"Il répond à ses messages le matin.",ar:"يرد على رسائله صباحًا.",note:"العمل"},
+   {fr:"Je travaille avec mes collègues.",ar:"أعمل مع زملائي.",note:"العمل الجماعي"},
+   {fr:"Vous faites une pause à dix heures.",ar:"تأخذون استراحة الساعة العاشرة.",note:"استراحة"},
+   {fr:"Elles finissent leurs cours à trois heures.",ar:"ينهين دروسهن الساعة الثالثة.",note:"نهاية الدراسة"}
+  ]
+ },
+ {
+  label:"الوجبات خلال اليوم",
+  description:"نستخدم prendre مع الوجبات، ويمكن أيضًا استخدام déjeuner وdîner كفعلين.",
+  items:[
+   {fr:"Je prends mon petit-déjeuner à la maison.",ar:"أتناول إفطاري في المنزل.",note:"الإفطار"},
+   {fr:"Elle boit un café sans sucre.",ar:"تشرب قهوة دون سكر.",note:"مشروب"},
+   {fr:"Nous déjeunons à midi.",ar:"نتناول الغداء عند الظهر.",note:"الغداء"},
+   {fr:"Il mange une salade au déjeuner.",ar:"يأكل سلطة في الغداء.",note:"طعام"},
+   {fr:"Je prends un goûter vers quatre heures.",ar:"أتناول وجبة خفيفة قرابة الرابعة.",note:"وجبة خفيفة"},
+   {fr:"La famille dîne ensemble le soir.",ar:"تتناول العائلة العشاء معًا مساءً.",note:"العشاء"},
+   {fr:"Tu prépares le repas dans la cuisine.",ar:"تحضّر الوجبة في المطبخ.",note:"تحضير الطعام"},
+   {fr:"Après le dîner, nous buvons du thé.",ar:"بعد العشاء نشرب الشاي.",note:"بعد الوجبة"}
+  ]
+ },
+ {
+  label:"التنقل اليومي",
+  description:"استخدم en مع وسيلة النقل وà pied للمشي، واربطها بفعل aller أو prendre.",
+  items:[
+   {fr:"Je vais au travail en voiture.",ar:"أذهب إلى العمل بالسيارة.",note:"en voiture"},
+   {fr:"Tu vas à l’école à pied.",ar:"تذهب إلى المدرسة مشيًا.",note:"à pied"},
+   {fr:"Elle prend le bus chaque matin.",ar:"تستقل الحافلة كل صباح.",note:"prendre le bus"},
+   {fr:"Nous allons à l’université en métro.",ar:"نذهب إلى الجامعة بالمترو.",note:"en métro"},
+   {fr:"Il se déplace souvent à vélo.",ar:"يتنقل غالبًا بالدراجة.",note:"à vélo"},
+   {fr:"Vous prenez le train de sept heures.",ar:"تستقلون قطار الساعة السابعة.",note:"prendre le train"},
+   {fr:"Elles attendent le taxi devant la maison.",ar:"ينتظرن سيارة الأجرة أمام المنزل.",note:"انتظار"},
+   {fr:"Je rentre chez moi en fin d’après-midi.",ar:"أعود إلى منزلي في نهاية فترة الظهر.",note:"العودة"}
+  ]
+ },
+ {
+  label:"التكرار والعادات",
+  description:"يأتي ظرف التكرار غالبًا بعد الفعل المصرف، بينما jamais يُستخدم عادة مع ne.",
+  items:[
+   {fr:"Je me lève toujours tôt.",ar:"أنهض دائمًا مبكرًا.",note:"toujours دائمًا"},
+   {fr:"Nous prenons souvent le métro.",ar:"نستقل المترو غالبًا.",note:"souvent غالبًا"},
+   {fr:"Elle cuisine régulièrement le soir.",ar:"تطبخ بانتظام مساءً.",note:"régulièrement"},
+   {fr:"Tu regardes parfois la télévision.",ar:"تشاهد التلفاز أحيانًا.",note:"parfois أحيانًا"},
+   {fr:"Il mange rarement au restaurant.",ar:"نادرًا ما يأكل في المطعم.",note:"rarement نادرًا"},
+   {fr:"Je ne bois jamais de café le soir.",ar:"لا أشرب القهوة مساءً أبدًا.",note:"ne … jamais"},
+   {fr:"Vous faites du sport deux fois par semaine.",ar:"تمارسون الرياضة مرتين أسبوعيًا.",note:"عدد المرات"},
+   {fr:"Elles visitent leur famille chaque vendredi.",ar:"يزرن عائلتهن كل يوم جمعة.",note:"chaque كل"}
+  ]
+ },
+ {
+  label:"ترتيب أحداث اليوم",
+  description:"استخدم روابط الترتيب لتقديم الأنشطة بوضوح من البداية حتى النهاية.",
+  items:[
+   {fr:"D’abord, je me réveille.",ar:"أولًا، أستيقظ.",note:"d’abord أولًا"},
+   {fr:"Ensuite, je me lève et je me lave.",ar:"بعد ذلك، أنهض وأغتسل.",note:"ensuite بعدها"},
+   {fr:"Puis, je prends mon petit-déjeuner.",ar:"ثم أتناول إفطاري.",note:"puis ثم"},
+   {fr:"Après, je m’habille rapidement.",ar:"بعدها أرتدي ملابسي بسرعة.",note:"après بعدها"},
+   {fr:"Avant de partir, je vérifie mon sac.",ar:"قبل المغادرة أتفقد حقيبتي.",note:"avant de قبل"},
+   {fr:"Pendant la journée, je travaille.",ar:"خلال النهار أعمل.",note:"pendant خلال"},
+   {fr:"Après le travail, je rentre chez moi.",ar:"بعد العمل أعود إلى منزلي.",note:"après بعد"},
+   {fr:"Enfin, je me couche vers onze heures.",ar:"أخيرًا أذهب إلى الفراش قرابة الحادية عشرة.",note:"enfin أخيرًا"}
+  ]
+ },
+ {
+  label:"المساء ووقت الفراغ",
+  description:"صف ما تفعله بعد الدراسة أو العمل وفي نهاية الأسبوع باستخدام المضارع.",
+  items:[
+   {fr:"Le soir, je me repose un peu.",ar:"في المساء أرتاح قليلًا.",note:"الراحة"},
+   {fr:"Je fais mes devoirs après le dîner.",ar:"أؤدي واجباتي بعد العشاء.",note:"الدراسة"},
+   {fr:"Nous regardons un film en famille.",ar:"نشاهد فيلمًا مع العائلة.",note:"نشاط عائلي"},
+   {fr:"Elle lit un roman avant de dormir.",ar:"تقرأ رواية قبل النوم.",note:"قراءة"},
+   {fr:"Il téléphone à ses amis.",ar:"يتصل بأصدقائه.",note:"تواصل"},
+   {fr:"Je prépare mes vêtements pour demain.",ar:"أجهّز ملابسي للغد.",note:"استعداد"},
+   {fr:"Le week-end, nous faisons une promenade.",ar:"في عطلة نهاية الأسبوع نتمشى.",note:"نهاية الأسبوع"},
+   {fr:"Avant minuit, je me couche et je m’endors.",ar:"قبل منتصف الليل أذهب إلى الفراش وأنام.",note:"نهاية اليوم"}
+  ]
+ },
+ {
+  label:"وصف يوم كامل",
+  description:"نماذج مترابطة تجمع الوقت والروتين والتنقل والعمل والوجبات والراحة.",
+  items:[
+   {fr:"Je me réveille à six heures, puis je me prépare pour le travail.",ar:"أستيقظ الساعة السادسة ثم أستعد للعمل.",note:"صباح كامل"},
+   {fr:"Après le petit-déjeuner, je prends le bus jusqu’à l’université.",ar:"بعد الإفطار أستقل الحافلة إلى الجامعة.",note:"وجبة + تنقل"},
+   {fr:"Le matin, j’assiste aux cours et je prends beaucoup de notes.",ar:"صباحًا أحضر الدروس وأدوّن ملاحظات كثيرة.",note:"دراسة"},
+   {fr:"À midi, je déjeune avec mes amis près du campus.",ar:"عند الظهر أتناول الغداء مع أصدقائي قرب الحرم.",note:"غداء"},
+   {fr:"L’après-midi, je travaille à la bibliothèque jusqu’à cinq heures.",ar:"بعد الظهر أعمل في المكتبة حتى الخامسة.",note:"عمل + وقت"},
+   {fr:"En rentrant, je fais quelques courses et je prépare le dîner.",ar:"عند عودتي أتسوق قليلًا وأحضّر العشاء.",note:"عودة + مهام"},
+   {fr:"Après le dîner, je me détends et je parle avec ma famille.",ar:"بعد العشاء أسترخي وأتحدث مع عائلتي.",note:"مساء"},
+   {fr:"Enfin, je me brosse les dents et je me couche à onze heures.",ar:"أخيرًا أفرّش أسناني وأنام الساعة الحادية عشرة.",note:"نهاية اليوم"}
+  ]
+ }
+];
+
 export default function UniversityPage(){
  const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
  const level=LEVELS.find(item=>item.id===levelId)!;
@@ -1275,6 +1405,7 @@ export default function UniversityPage(){
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const [familyPageIndex,setFamilyPageIndex]=useState(0);
+ const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -1284,6 +1415,7 @@ export default function UniversityPage(){
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_PAGES[timeDatePageIndex];
  const familyPage=FAMILY_DESCRIPTION_PAGES[familyPageIndex];
+ const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
 
  const selectLevel=(id:"A1"|"A2")=>{
   const next=LEVELS.find(item=>item.id===id)!;
@@ -1296,6 +1428,7 @@ export default function UniversityPage(){
   setPresentPageIndex(0);
   setTimeDatePageIndex(0);
   setFamilyPageIndex(0);
+  setDailyPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1307,6 +1440,7 @@ export default function UniversityPage(){
   if(id==="core-verbs")setCoreVerbPageIndex(0);
   if(id==="present")setPresentPageIndex(0);
   if(id==="description")setFamilyPageIndex(0);
+  if(id==="daily-life")setDailyPageIndex(0);
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
@@ -1529,6 +1663,26 @@ export default function UniversityPage(){
       <button onClick={()=>setFamilyPageIndex(index=>Math.min(FAMILY_DESCRIPTION_PAGES.length-1,index+1))} disabled={familyPageIndex===FAMILY_DESCRIPTION_PAGES.length-1} aria-label="أمثلة العائلة التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{familyPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+    </section>}
+
+    {activeModule.id==="daily-life"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Routine interactive</span><h3>اضغط على الفعل أو الجملة لسماع النطق</h3></div>
+      <CalendarDays/>
+     </div>
+     <div className="university-phrase-grid">
+      {dailyPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setDailyPageIndex(index=>Math.max(0,index-1))} disabled={dailyPageIndex===0} aria-label="أمثلة الروتين السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم الحياة اليومية</small><strong>{dailyPage.label}</strong><em>{dailyPageIndex+1} / {DAILY_LIFE_PAGES.length}</em></div>
+      <button onClick={()=>setDailyPageIndex(index=>Math.min(DAILY_LIFE_PAGES.length-1,index+1))} disabled={dailyPageIndex===DAILY_LIFE_PAGES.length-1} aria-label="أمثلة الروتين التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{dailyPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     <div className="university-sections">

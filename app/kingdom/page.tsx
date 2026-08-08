@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import KingdomMapLayers from "../../components/KingdomMapLayers";
+import Chateau3DMap from "../../components/Chateau3DMap";
 import {
   BookOpen,
   Building2,
@@ -40,7 +40,8 @@ import {
   LogOut,
   ImagePlus,
   CheckCircle2,
-  Home
+  Home,
+  CarFront
 } from "lucide-react";
 
 type PlayerProfile = {
@@ -77,7 +78,7 @@ const places: Place[] = [
   { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 55, y: 319, w: 193, h: 153, path: "/entrance/cafe", open: true, icon: <Coffee /> },
   { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب والشكوى", x: 600, y: 306, w: 174, h: 149, path: "/entrance/restaurant", open: true, icon: <Utensils /> },
   { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 43, y: 484, w: 217, h: 161, path: "/entrance/market", open: true, icon: <ShoppingBasket /> },
-  { id: "court", fr: "Le Tribunal Royal", ar: "المحكمة الملكية", description: "القضايا والشهادة واللغة الرسمية", x: 359, y: 513, w: 170, h: 153, path: "/court", open: true, icon: <Scale /> },
+  { id: "court", fr: "Le Tribunal", ar: "المحكمة", description: "القضايا والشهادة واللغة الرسمية", x: 359, y: 513, w: 170, h: 153, path: "/court", open: true, icon: <Scale /> },
   { id: "hospital", fr: "L'Hôpital", ar: "المستشفى", description: "الأعراض والمواعيد وطلب المساعدة", x: 525, y: 430, w: 162, h: 157, path: "/hospital", open: true, icon: <Building2 /> },
   { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 671, y: 563, w: 118, h: 145, path: "/entrance/zoo", open: true, icon: <Trees /> },
   { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 51, y: 654, w: 193, h: 153, path: "/entrance/library", open: true, icon: <BookOpen /> },
@@ -85,6 +86,7 @@ const places: Place[] = [
   { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 525, y: 629, w: 174, h: 157, path: "/entrance/hotel", open: true, icon: <Hotel /> },
   { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 36, y: 857, w: 237, h: 161, path: "/entrance/airport", open: true, icon: <Plane /> },
   { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 552, y: 848, w: 217, h: 182, path: "/entrance/station", open: true, icon: <Train /> },
+  { id: "vehicles", fr: "Le Centre des véhicules et des engins", ar: "مركز المركبات والآليات", description: "السيارات والحافلات والشاحنات والآليات المتخصصة", x: 552, y: 848, w: 217, h: 182, open: false, icon: <CarFront /> },
   { id: "palace", fr: "Le Château", ar: "القلعة", description: "قلب القلعة وقاعات التعلّم", x: 260, y: 62, w: 288, h: 352, path: "/entrance/castle", open: true, icon: <Castle /> }
 ];
 
@@ -303,8 +305,7 @@ export default function KingdomMapPage() {
     }
     const savedView = localStorage.getItem("chateau-view-mode");
     if (savedView === "classic") setViewMode("classic");
-    const guideSeen = localStorage.getItem("chateau-kingdom-guide-seen");
-    if (!guideSeen) window.setTimeout(() => setShowGuide(true), 450);
+    // The 3D map opens directly without a dimmed onboarding layer.
   }, []);
 
   useEffect(() => {
@@ -348,7 +349,7 @@ export default function KingdomMapPage() {
   };
 
   const guideSlides = [
-    { icon: <Hand />, title: "حرّك المملكة", text: "اسحب الخريطة بإصبع واحد لاستكشاف الأحياء والمناطق الجديدة." },
+    { icon: <Hand />, title: "استكشف القلعة", text: "اسحب لتدوير المشهد ثلاثي الأبعاد واستكشاف الأحياء والمناطق الجديدة." },
     { icon: <Plus />, title: "قرّب التفاصيل", text: "استخدم إصبعين للتكبير والتصغير، أو أزرار التحكم الجانبية." },
     { icon: <MousePointer2 />, title: "ادخل العوالم", text: "اضغط على المبنى نفسه لعرض معلوماته ثم ابدأ رحلتك التعليمية." }
   ];
@@ -463,58 +464,21 @@ export default function KingdomMapPage() {
           <span className="world-player-avatar">{profile.avatar.startsWith("data:image") ? <img src={profile.avatar} alt="صورة اللاعب" /> : profile.avatar}</span>
           <div><strong>{profile.name}</strong><small>{profile.signedIn ? "الحساب متصل" : "اضغط لإعداد الحساب"}</small></div>
         </button>
-        <div className="world-brand-v4"><Castle /><div><strong>Le Château des Langues</strong><small>مملكة تعلم الفرنسية</small></div></div>
+        <div className="world-brand-v4"><Castle /><div><strong>Le Château des Langues</strong><small>قلعة تعلّم اللغة الفرنسية</small></div></div>
         <button className="world-menu-v4" aria-label="القائمة" onClick={() => setMenuOpen(true)}>☰</button>
       </header>
 
       {viewMode === "map" ? (
-      <section
-        ref={viewportRef}
-        className={`world-map-viewport-v4 ${dragging ? "dragging" : ""}`}
-        onWheel={onWheel}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endPointer}
-        onPointerCancel={endPointer}
-      >
-        <div className="world-map-canvas-v4" style={{ width: WORLD_W, height: WORLD_H, transform }}>
-          <div className="world-terrain terrain-north"><span>المرتفعات الملكية · توسعة مستقبلية</span></div>
-          <div className="world-terrain terrain-west"><span>الساحل الغربي · توسعة مستقبلية</span></div>
-          <div className="world-terrain terrain-east"><span>الغابات الشرقية · توسعة مستقبلية</span></div>
-          <div className="world-terrain terrain-south"><span>المدينة الجديدة · توسعة مستقبلية</span></div>
-
-          <div className="approved-city-map" style={{ left: CITY_X, top: CITY_Y, width: CITY_W, height: CITY_H }}>
-            <KingdomMapLayers highDetail={scale >= 0.82} />
-            <div className="kingdom-interaction-layer">
-              {places.map((place) => (
-                <button
-                  key={place.id}
-                  className={`building-hitbox ${place.open ? "open" : "soon"} ${selected?.id === place.id ? "selected" : ""}`}
-                  style={{ left: place.x, top: place.y, width: place.w, height: place.h }}
-                  onPointerDown={(event) => {
-                    event.stopPropagation();
-                    moved.current = false;
-                  }}
-                  onPointerUp={(event) => {
-                    event.stopPropagation();
-                    if (!moved.current) { if (place.id === "profile") setProfileOpen(true); else setSelected(place); }
-                  }}
-                  onClick={(event) => event.preventDefault()}
-                  aria-label={`${place.ar} ${place.fr}`}
-                >
-                  <span className="building-focus-ring" />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="world-map-hint-v4">اسحب لاستكشاف المملكة · قرّب بإصبعين · اضغط على المبنى</div>
-        <div className="world-map-controls-v4">
-          <button onClick={() => zoomCenter(0.12)} aria-label="تكبير"><Plus /></button>
-          <button onClick={() => zoomCenter(-0.12)} aria-label="تصغير"><Minus /></button>
-          <button onClick={centerMap} aria-label="إعادة التوسيط"><RotateCcw /></button>
-        </div>
+      <section className="world-map-viewport-v4">
+        <Chateau3DMap
+          places={places.filter((place) => place.id !== "profile")}
+          selectedId={selected?.id}
+          onSelect={(id) => {
+            const place = places.find((item) => item.id === id);
+            if (place) setSelected(place);
+          }}
+        />
+        <div className="world-map-hint-v4">اسحب لتدوير القلعة · قرّب بإصبعين · اضغط على المبنى</div>
         <button
           type="button"
           className={`world-compass-v4 ${compassStatus}`}
@@ -538,7 +502,7 @@ export default function KingdomMapPage() {
       </section>
       ) : (
         <section className="classic-kingdom-page">
-          <div className="classic-kingdom-hero"><Castle /><span>Vue classique</span><h1>عالم المملكة</h1><p>اختر وجهتك من الخانات الواضحة، ويمكنك العودة إلى الخريطة في أي وقت.</p></div>
+          <div className="classic-kingdom-hero"><Castle /><span>Vue classique</span><h1>وجهات القلعة</h1><p>اختر وجهتك من الخانات الواضحة، ويمكنك العودة إلى الخريطة في أي وقت.</p></div>
           <div className="classic-place-grid">{places.map((place) => (
             <button key={place.id} className={place.open ? "open" : "soon"} onClick={() => place.open ? enterPlace(place) : setSelected(place)}>
               <span>{place.icon}</span><div><strong>{place.ar}</strong><small>{place.fr}</small><p>{place.description}</p></div>
@@ -551,13 +515,13 @@ export default function KingdomMapPage() {
       {menuOpen && (
         <aside className="world-nav-drawer">
           <div className="world-nav-head">
-            <div><span>Navigation royale</span><h2>وجهات المملكة</h2></div>
+            <div><span>Navigation du Château</span><h2>وجهات القلعة</h2></div>
             <button onClick={() => setMenuOpen(false)} aria-label="إغلاق"><X /></button>
           </div>
           <div className="world-nav-actions">
             <button onClick={saveProgress}><Save /><div><strong>حفظ التقدم</strong><small>حفظ يدوي على الجهاز</small></div></button>
             <button onClick={() => changeViewMode("classic")}><LayoutGrid /><div><strong>الصفحة العادية</strong><small>عرض الخانات بدل الخريطة</small></div></button>
-            <button onClick={() => changeViewMode("map")}><MapIcon /><div><strong>الرجوع للخريطة</strong><small>عرض المملكة التفاعلية</small></div></button>
+            <button onClick={() => changeViewMode("map")}><MapIcon /><div><strong>الرجوع للخريطة</strong><small>عرض القلعة ثلاثية الأبعاد</small></div></button>
             <button onClick={() => setProfileOpen(true)}><UserRound /><div><strong>الملف والأفتار</strong><small>الصورة والحساب</small></div></button>
           </div>
           {saveMessage && <div className="world-save-message"><CheckCircle2 />{saveMessage}</div>}
@@ -621,7 +585,7 @@ export default function KingdomMapPage() {
           <section className="kingdom-guide-card">
             <button className="kingdom-guide-skip" onClick={closeGuide}>تخطي</button>
             <div className="kingdom-guide-icon">{guideSlides[guideStep].icon}</div>
-            <span>مرحبًا بك في المملكة</span>
+            <span>مرحبًا بك في القلعة</span>
             <h2>{guideSlides[guideStep].title}</h2>
             <p>{guideSlides[guideStep].text}</p>
             <div className="kingdom-guide-dots">

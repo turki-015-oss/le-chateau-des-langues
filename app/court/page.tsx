@@ -146,8 +146,8 @@ export default function CourtPage() {
         <div className="court-hero-overlay" />
 
         <div className="court-hero-copy">
-          <span>B2 · Le Tribunal Royal</span>
-          <h1>المحكمة الملكية</h1>
+          <span>B2 · Le Tribunal</span>
+          <h1>المحكمة</h1>
           <p>
             استمع، افهم، ثم اختر الإجابة الفرنسية المناسبة داخل قاعة المحكمة.
           </p>

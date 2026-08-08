@@ -20,8 +20,8 @@ const worlds = [
     icon: ShieldCheck
   },
   {
-    title: "Le Tribunal Royal",
-    ar: "المحكمة الملكية",
+    title: "Le Tribunal",
+    ar: "المحكمة",
     path: "/court",
     level: "B2",
     description: "الشهادة، الأدلة، والحوار الرسمي.",

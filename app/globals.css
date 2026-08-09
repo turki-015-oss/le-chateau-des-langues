@@ -3588,7 +3588,7 @@
 .world-map-viewport-v4{cursor:default;background:#9eb7aa;isolation:isolate}
 .chateau-3d-stage{position:absolute;inset:0;z-index:1;overflow:hidden;background:linear-gradient(180deg,#a9c0b3,#829e90);touch-action:none}
 .chateau-3d-canvas,.chateau-3d-canvas canvas{display:block;width:100%;height:100%;outline:0}
-.chateau-3d-atmosphere{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 4% 0,#ffd08b4d 0,transparent 34%),linear-gradient(180deg,#fff1 0,transparent 26%),radial-gradient(circle at 50% 43%,transparent 55%,#0a1a121f 100%)}
+.chateau-3d-atmosphere{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 4% 0,#ffbc5e38 0,transparent 30%),linear-gradient(180deg,#fff0 0,transparent 28%),radial-gradient(circle at 50% 43%,transparent 52%,#08150e2b 100%)}
 .chateau-3d-loading{position:absolute;inset:0;z-index:8;display:grid;place-items:center;align-content:center;gap:18px;background:#102a20;color:#f2d98d;transition:opacity .4s ease}.chateau-3d-loading span{width:72px;height:72px;border:3px solid #d5b86a44;border-top-color:#d5b86a;border-radius:50%;animation:chateau3dSpin 1s linear infinite}.chateau-3d-loading strong{font-size:15px}
 @keyframes chateau3dSpin{to{transform:rotate(360deg)}}
 .chateau-3d-zones{position:absolute;inset:0;z-index:3;pointer-events:none}.chateau-3d-zones span{position:absolute;padding:7px 12px;border:1px solid #e1ca816b;border-radius:999px;background:#0c2418b8;color:#f5e0a6;font-size:11px;letter-spacing:.2px;box-shadow:0 7px 20px #0004;backdrop-filter:blur(8px)}.zone-education{right:14%;top:15%}.zone-services{left:13%;top:18%}.zone-life{right:12%;bottom:18%}.zone-transport{left:13%;bottom:17%}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
@@ -34,21 +35,21 @@ type MapBuilding = {
 };
 
 const BUILDINGS: MapBuilding[] = [
-  { id: "palace", position: [0, -1], scale: 1.18, color: 0xd8c28b, roof: 0x425c48, style: "castle" },
-  { id: "university", position: [-15, -13], scale: 0.92, color: 0xcdbb91, roof: 0x304d42, style: "campus" },
-  { id: "library", position: [-7, -15], scale: 0.78, color: 0xb8a77c, roof: 0x594a38, style: "civic" },
-  { id: "court", position: [9, -14], scale: 0.86, color: 0xd6c59c, roof: 0x4b4b44, style: "civic" },
-  { id: "hospital", position: [17, -10], scale: 0.88, color: 0xe2dfd1, roof: 0x477462, style: "tower" },
-  { id: "police", position: [18, -2], scale: 0.78, color: 0xb7c3c8, roof: 0x344f63, style: "civic" },
-  { id: "market", position: [-18, -3], scale: 0.98, color: 0xd7b779, roof: 0x7f3d32, style: "market" },
-  { id: "cafe", position: [-17, 5], scale: 0.72, color: 0xd0a978, roof: 0x6c4534, style: "market" },
-  { id: "restaurant", position: [-10, 10], scale: 0.78, color: 0xd6b07e, roof: 0x734338, style: "market" },
-  { id: "hotel", position: [-2, 14], scale: 0.94, color: 0xd8c7a4, roof: 0x536454, style: "tower" },
-  { id: "zoo", position: [16, 13], scale: 0.98, color: 0xb5a16b, roof: 0x49623a, style: "nature" },
-  { id: "stadium", position: [20, 5], scale: 1.02, color: 0xb7ad87, roof: 0x364e3d, style: "stadium" },
-  { id: "station", position: [8, 17], scale: 0.94, color: 0xc3af81, roof: 0x3b4b4c, style: "transport" },
-  { id: "vehicles", position: [18, 21], scale: 0.96, color: 0xb8b4a8, roof: 0x273f4a, style: "vehicles" },
-  { id: "airport", position: [-13, 22], scale: 1.0, color: 0xc9cbc4, roof: 0x3c545c, style: "transport" }
+  { id: "palace", position: [0, -2], scale: 1.08, color: 0xd8c28b, roof: 0x425c48, style: "castle" },
+  { id: "university", position: [-21, -17], scale: 0.9, color: 0xcdbb91, roof: 0x304d42, style: "campus" },
+  { id: "library", position: [-8, -23], scale: 0.8, color: 0xb8a77c, roof: 0x594a38, style: "civic" },
+  { id: "court", position: [10, -23], scale: 0.86, color: 0xd6c59c, roof: 0x4b4b44, style: "civic" },
+  { id: "hospital", position: [23, -15], scale: 0.9, color: 0xe2dfd1, roof: 0x477462, style: "tower" },
+  { id: "police", position: [27, -2], scale: 0.8, color: 0xb7c3c8, roof: 0x344f63, style: "civic" },
+  { id: "market", position: [-27, -3], scale: 0.98, color: 0xd7b779, roof: 0x7f3d32, style: "market" },
+  { id: "cafe", position: [-25, 11], scale: 0.74, color: 0xd0a978, roof: 0x6c4534, style: "market" },
+  { id: "restaurant", position: [-16, 22], scale: 0.8, color: 0xd6b07e, roof: 0x734338, style: "market" },
+  { id: "hotel", position: [-2, 27], scale: 0.94, color: 0xd8c7a4, roof: 0x536454, style: "tower" },
+  { id: "zoo", position: [20, 23], scale: 0.98, color: 0xb5a16b, roof: 0x49623a, style: "nature" },
+  { id: "stadium", position: [29, 11], scale: 1.02, color: 0xb7ad87, roof: 0x364e3d, style: "stadium" },
+  { id: "station", position: [10, 33], scale: 0.96, color: 0xc3af81, roof: 0x3b4b4c, style: "transport" },
+  { id: "vehicles", position: [29, 35], scale: 0.96, color: 0xb8b4a8, roof: 0x273f4a, style: "vehicles" },
+  { id: "airport", position: [-19, 37], scale: 1.0, color: 0xc9cbc4, roof: 0x3c545c, style: "transport" }
 ];
 
 const palette = {
@@ -348,7 +349,7 @@ function createReflectingPool(x: number, z: number, width: number, depth: number
 }
 
 function createSky() {
-  const geometry = new THREE.SphereGeometry(130, 48, 28);
+  const geometry = new THREE.SphereGeometry(320, 64, 36);
   const material = new THREE.ShaderMaterial({
     side: THREE.BackSide,
     uniforms: {
@@ -520,16 +521,17 @@ function createTree(x: number, z: number, scale = 1) {
 }
 
 function createTerrain() {
-  const geometry = new THREE.PlaneGeometry(110, 86, 110, 86);
+  const geometry = new THREE.PlaneGeometry(135, 112, 126, 104);
   const positions = geometry.attributes.position;
   for (let i = 0; i < positions.count; i += 1) {
     const x = positions.getX(i);
     const z = positions.getY(i);
-    const ridge = 3.2 * Math.exp(-((x - 25) ** 2) / 150 - ((z + 20) ** 2) / 55);
-    const hills = 1.5 * Math.exp(-((x + 28) ** 2) / 180 - ((z + 17) ** 2) / 100);
-    const coast = -1.4 * Math.exp(-((x + 31) ** 2) / 50 - ((z - 15) ** 2) / 300);
-    const detail = Math.sin(x * 0.55) * Math.cos(z * 0.44) * 0.18 + Math.sin((x + z) * 0.8) * 0.09;
-    const height = 0.25 + ridge + hills + coast + detail;
+    const ridge = 2.8 * Math.exp(-((x - 48) ** 2) / 420 - ((z + 40) ** 2) / 190);
+    const hills = 1.8 * Math.exp(-((x + 52) ** 2) / 520 - ((z + 34) ** 2) / 250);
+    const coast = -1.2 * Math.exp(-((x + 55) ** 2) / 160 - ((z - 24) ** 2) / 520);
+    const urbanPlateau = -0.22 * Math.exp(-(x ** 2) / 1300 - ((z - 5) ** 2) / 1100);
+    const detail = Math.sin(x * 0.34) * Math.cos(z * 0.29) * 0.13 + Math.sin((x + z) * 0.51) * 0.06;
+    const height = 0.3 + ridge + hills + coast + urbanPlateau + detail;
     positions.setZ(i, height);
   }
   geometry.computeVertexNormals();
@@ -565,8 +567,8 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     sceneRef.current = scene;
 
     const compactView = mount.clientWidth < 700;
-    const camera = new THREE.PerspectiveCamera(compactView ? 48 : 42, mount.clientWidth / mount.clientHeight, 0.1, 180);
-    camera.position.set(compactView ? 43 : 34, compactView ? 46 : 27, compactView ? 58 : 43);
+    const camera = new THREE.PerspectiveCamera(compactView ? 48 : 42, mount.clientWidth / mount.clientHeight, 0.1, 420);
+    camera.position.set(compactView ? 59 : 45, compactView ? 57 : 39, compactView ? 76 : 59);
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: false });
@@ -630,12 +632,12 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     controls.dampingFactor = 0.075;
     controls.target.set(0, 0, 1);
     controls.minDistance = 18;
-    controls.maxDistance = 75;
+    controls.maxDistance = 105;
     controls.minPolarAngle = 0.48;
     controls.maxPolarAngle = 1.25;
     controls.enablePan = true;
     controls.screenSpacePanning = false;
-    controls.maxTargetRadius = 20;
+    controls.maxTargetRadius = 36;
     controlsRef.current = controls;
 
     scene.add(createSky());
@@ -672,12 +674,44 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     courtyard.receiveShadow = true;
     scene.add(courtyard);
 
-    for (const spec of BUILDINGS) scene.add(createBuilding(spec));
+    for (const spec of BUILDINGS) {
+      if (spec.id !== "palace") scene.add(createBuilding(spec));
+    }
+    const palaceSpec = BUILDINGS.find((building) => building.id === "palace");
+    if (palaceSpec) {
+      const palacePlaceholder = createBuilding(palaceSpec);
+      scene.add(palacePlaceholder);
+      const loader = new GLTFLoader();
+      loader.load("/maps/models/paris-chateau.glb", (gltf) => {
+        const model = gltf.scene;
+        model.name = "Paris Chateau";
+        model.position.set(palaceSpec.position[0], 0.58, palaceSpec.position[1]);
+        model.rotation.y = 0;
+        model.scale.setScalar(0.77);
+        model.traverse((child) => {
+          child.userData.placeId = palaceSpec.id;
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        scene.remove(palacePlaceholder);
+        palacePlaceholder.traverse((child) => {
+          if (child instanceof THREE.Mesh) {
+            child.geometry.dispose();
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            mats.forEach((item) => item.dispose());
+          }
+        });
+        scene.add(model);
+      });
+    }
     scene.add(createFormalGarden());
-    scene.add(createDriveway([[-23, -4], [-15, -7], [-9, -5], [-7, 1], [-10, 8], [-4, 13]], 0x77756e));
-    scene.add(createDriveway([[23, 5], [15, 4], [9, 1], [8, -5], [12, -11], [19, -10]], 0x77756e));
-    scene.add(createDriveway([[-16, -13], [-9, -10], [-5, -7], [0, -9], [5, -10], [10, -14]], 0x77756e));
-    scene.add(createDriveway([[-13, 22], [-6, 18], [0, 17], [8, 17], [14, 20], [18, 21]], 0x41433f));
+    scene.add(createDriveway([[-34, -3], [-20, -3], [-8, -3], [8, -3], [20, -3], [34, -3]], 0x555653));
+    scene.add(createDriveway([[-29, -25], [-16, -17], [-8, -10], [0, -5], [10, -10], [22, -17], [31, -24]], 0x65645f));
+    scene.add(createDriveway([[-31, 30], [-18, 22], [-7, 14], [0, 7], [10, 15], [21, 24], [34, 32]], 0x65645f));
+    scene.add(createDriveway([[-22, -31], [-22, -17], [-23, -3], [-24, 11], [-17, 24], [-18, 39]], 0x5c5d59));
+    scene.add(createDriveway([[18, -32], [18, -18], [22, -4], [26, 11], [19, 24], [12, 40]], 0x5c5d59));
     const centralRing = new THREE.Mesh(new THREE.RingGeometry(11.55, 12.65, 128), material(0x686760, 0.94));
     centralRing.rotation.x = -Math.PI / 2;
     centralRing.position.set(0, 0.65, -1);
@@ -798,7 +832,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     if (!selectedId || !cameraRef.current || !controlsRef.current) return;
     const spec = BUILDINGS.find((building) => building.id === selectedId);
     if (!spec) return;
-    const target = new THREE.Vector3(spec.position[0], 2, spec.position[1]);
+      const target = new THREE.Vector3(spec.position[0], 2, spec.position[1]);
     const camera = new THREE.Vector3(spec.position[0] + 11, 12, spec.position[1] + 14);
     focusRef.current = { target, camera, progress: 0 };
   }, [selectedId]);
@@ -816,7 +850,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     if (!cameraRef.current || !controlsRef.current) return;
     focusRef.current = null;
     const compactView = (mountRef.current?.clientWidth || 900) < 700;
-    cameraRef.current.position.set(compactView ? 43 : 34, compactView ? 46 : 27, compactView ? 58 : 43);
+    cameraRef.current.position.set(compactView ? 59 : 45, compactView ? 57 : 39, compactView ? 76 : 59);
     controlsRef.current.target.set(0, 0, 1);
     controlsRef.current.update();
   };

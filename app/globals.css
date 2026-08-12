@@ -3721,24 +3721,24 @@
 .castle-hero:before{
   background:
     linear-gradient(90deg,rgba(3,18,13,.14),rgba(3,18,13,.76)),
-    url('/images/castle-v65/welcome-scene.jpg') center 48%/cover;
+    url('/castle-v68/welcome.png') center 48%/cover;
   opacity:.72;
   filter:saturate(.92) contrast(1.02);
 }
 .castle-halls-grid{position:relative}
-.castle-halls-grid:before{content:"";position:absolute;inset:-18px;border-radius:30px;background:linear-gradient(180deg,rgba(5,30,22,.72),rgba(3,19,14,.9)),url('/images/castle-v65/halls-scene.jpg') center/cover;opacity:.42;pointer-events:none}
+.castle-halls-grid:before{content:"";position:absolute;inset:-18px;border-radius:30px;background:linear-gradient(180deg,rgba(5,30,22,.72),rgba(3,19,14,.9)),url('/castle-v68/halls.png') center/cover;opacity:.42;pointer-events:none}
 .castle-hall-card{z-index:1;backdrop-filter:blur(12px);background:linear-gradient(145deg,rgba(14,58,42,.92),rgba(5,28,20,.9));border-color:rgba(222,181,91,.34)}
 .castle-hall-card.is-open:hover{background:linear-gradient(145deg,rgba(20,72,51,.96),rgba(6,32,23,.94))}
 
-.premium-entry:has(.premium-entry-photo[style*="castle-v65"]){background:linear-gradient(rgba(2,15,11,.3),rgba(2,15,11,.86)),url('/images/castle-v65/entry-scene.jpg') center/cover fixed}
-.premium-entry:has(.premium-entry-photo[style*="castle-v65"]) .premium-entry-card{background:linear-gradient(180deg,rgba(10,48,34,.92),rgba(4,24,17,.97));backdrop-filter:blur(16px)}
-.premium-entry:has(.premium-entry-photo[style*="castle-v65"]) .premium-entry-photo{background-position:center 32%;box-shadow:inset 0 -110px 90px #061c13}
+.premium-entry:has(.premium-entry-photo[style*="castle-v69"]){background:linear-gradient(rgba(2,15,11,.3),rgba(2,15,11,.86)),url('/castle-v69/french-entry.png') center/cover fixed}
+.premium-entry:has(.premium-entry-photo[style*="castle-v69"]) .premium-entry-card{background:linear-gradient(180deg,rgba(10,48,34,.92),rgba(4,24,17,.97));backdrop-filter:blur(16px)}
+.premium-entry:has(.premium-entry-photo[style*="castle-v69"]) .premium-entry-photo{background-position:center 32%;box-shadow:inset 0 -110px 90px #061c13}
 
 .grammar-page{min-height:100vh;background:radial-gradient(circle at 50% -10%,#183c30 0,#071d17 44%,#03110d 100%);color:#f5ead0;padding-bottom:70px}
 .grammar-topbar{height:92px;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1180px)/2));background:rgba(2,18,13,.92);border-bottom:1px solid rgba(217,177,87,.32);position:sticky;top:0;z-index:20;backdrop-filter:blur(16px)}
 .grammar-topbar button{width:54px;height:54px;border:1px solid #c69b43;border-radius:50%;display:grid;place-items:center;background:#071f17;color:#efce79;cursor:pointer}
 .grammar-topbar div{display:flex;flex-direction:column;direction:ltr;text-align:left}.grammar-topbar strong{font:34px Georgia,serif;color:#f7e8bd}.grammar-topbar small{font-size:14px;color:#c7b98c;text-align:left;margin-top:4px}
-.grammar-hero{position:relative;min-height:500px;display:grid;place-items:center;overflow:hidden;background:url('/images/castle-v65/grammar-scene.jpg') center 34%/cover}
+.grammar-hero{position:relative;min-height:500px;display:grid;place-items:center;overflow:hidden;background:url('/castle-v68/grammar.png') center 34%/cover}
 .grammar-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,15,11,.12),rgba(2,15,11,.28) 50%,#061b15 100%)}
 .grammar-hero-copy{position:relative;text-align:center;padding:45px 20px;text-shadow:0 8px 26px #000}.grammar-hero-copy>span{display:inline-flex;gap:9px;align-items:center;color:#e5bd5b;font-weight:900;letter-spacing:.08em}.grammar-hero-copy>span svg{width:17px}.grammar-hero-copy h1{direction:ltr;font:clamp(54px,8vw,90px)/.92 Georgia,serif;color:#f5df9e;margin:22px 0 13px}.grammar-hero-copy h2{font-size:clamp(27px,5vw,44px);color:#e6bc5c;margin:0}
 .grammar-shell{max-width:1180px;margin:-44px auto 0;position:relative;padding:0 22px}

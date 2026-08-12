@@ -279,7 +279,7 @@ function addArchitecturalFront(group: THREE.Group, width: number, height: number
   group.add(createBalustrade(Math.min(3.6, width * 0.56), 0, height - 0.15, frontZ + 0.36));
 }
 
-function createDriveway(points: [number, number][], color = 0xa99b77, width = 3.15) {
+function createDriveway(points: [number, number][], color = 0xa99b77, width = 3.15, elevation = 0.65) {
   const curve = new THREE.CatmullRomCurve3(points.map(([x, z]) => new THREE.Vector3(x, 0.48, z)), false, "catmullrom", 0.55);
   const group = new THREE.Group();
   const samples = curve.getPoints(96);
@@ -291,7 +291,7 @@ function createDriveway(points: [number, number][], color = 0xa99b77, width = 3.
     const next = samples[Math.min(samples.length - 1, index + 1)];
     const tangent = next.clone().sub(previous).normalize();
     const side = new THREE.Vector3(-tangent.z, 0, tangent.x).multiplyScalar(width / 2);
-    vertices.push(point.x + side.x, 0.65, point.z + side.z, point.x - side.x, 0.65, point.z - side.z);
+    vertices.push(point.x + side.x, elevation, point.z + side.z, point.x - side.x, elevation, point.z - side.z);
     uvs.push(0, index / 8, 1, index / 8);
     if (index < samples.length - 1) {
       const base = index * 2;
@@ -309,17 +309,91 @@ function createDriveway(points: [number, number][], color = 0xa99b77, width = 3.
   return group;
 }
 
+function createBoulevard(points: [number, number][], width = 3.3) {
+  const group = new THREE.Group();
+  group.add(createDriveway(points, 0xa9a18f, width + 2.15, 0.685));
+  group.add(createDriveway(points, 0x414443, width, 0.715));
+  const curve = new THREE.CatmullRomCurve3(points.map(([x, z]) => new THREE.Vector3(x, 0.742, z)), false, "catmullrom", 0.55);
+  const marking = new THREE.MeshStandardMaterial({ color: 0xc9c3b5, roughness: 0.9 });
+  for (let index = 2; index < 40; index += 4) {
+    const point = curve.getPoint(index / 40);
+    const tangent = curve.getTangent(index / 40);
+    const dash = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.025, 0.72), marking);
+    dash.position.copy(point);
+    dash.rotation.y = Math.atan2(tangent.x, tangent.z);
+    group.add(dash);
+  }
+  return group;
+}
+
+function createParisLamp(x: number, z: number, scale = 1) {
+  const group = new THREE.Group();
+  const iron = new THREE.MeshStandardMaterial({ color: 0x17211f, metalness: 0.72, roughness: 0.32 });
+  const warmGlass = new THREE.MeshStandardMaterial({ color: 0xffd990, emissive: 0xffb84d, emissiveIntensity: 1.15, roughness: 0.2 });
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.34, 16), iron);
+  base.position.y = 0.82;
+  group.add(base);
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.07, 2.25, 12), iron);
+  post.position.y = 2.05;
+  group.add(post);
+  const collar = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.035, 8, 18), iron);
+  collar.rotation.x = Math.PI / 2;
+  collar.position.y = 2.85;
+  group.add(collar);
+  const lantern = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.23, 0.48, 8), warmGlass);
+  lantern.position.y = 3.15;
+  group.add(lantern);
+  const cap = new THREE.Mesh(new THREE.ConeGeometry(0.27, 0.22, 8), iron);
+  cap.position.y = 3.49;
+  group.add(cap);
+  group.position.set(x, 0, z);
+  group.scale.setScalar(scale);
+  group.traverse((child) => { if (child instanceof THREE.Mesh) child.castShadow = true; });
+  return group;
+}
+
+function createParisBench(x: number, z: number, rotation = 0) {
+  const group = new THREE.Group();
+  const wood = material(0x4b2d1d, 0.72);
+  const iron = material(0x1b2522, 0.48, 0.55);
+  for (const y of [0.72, 1.0]) group.add(box(1.55, 0.1, 0.16, 0x4b2d1d, 0, y, 0));
+  group.add(box(1.55, 0.1, 0.52, 0x4b2d1d, 0, 0.6, 0.27));
+  for (const side of [-1, 1]) {
+    group.add(box(0.08, 0.62, 0.08, 0x1b2522, side * 0.63, 0.42, 0.2));
+    group.add(box(0.08, 0.38, 0.48, 0x1b2522, side * 0.63, 0.76, 0.18));
+  }
+  wood.dispose(); iron.dispose();
+  group.position.set(x, 0.3, z);
+  group.rotation.y = rotation;
+  return group;
+}
+
+function createStreetFurniture() {
+  const group = new THREE.Group();
+  const lamps: [number, number][] = [
+    [-15,-6],[-9,-8],[9,-8],[15,-6],[-26,-10],[-25,3],[-23,16],[-14,27],[-5,31],
+    [8,29],[17,27],[26,18],[28,5],[25,-9],[18,-20],[7,-27],[-8,-28],[-19,-23]
+  ];
+  lamps.forEach(([x,z]) => group.add(createParisLamp(x,z,0.72)));
+  const benches: [number, number, number][] = [
+    [-8,10,0.1],[8,10,-0.1],[-14,13,0.2],[14,13,-0.2],[-29,8,Math.PI/2],[-28,20,Math.PI/2],
+    [-12,34,0],[10,35,0],[27,27,Math.PI/2]
+  ];
+  benches.forEach(([x,z,r]) => group.add(createParisBench(x,z,r)));
+  return group;
+}
+
 function createParisDistrict() {
   const group = new THREE.Group();
   const district = new THREE.Mesh(
     new RoundedBoxGeometry(78, 0.24, 76, 8, 4.5),
-    new THREE.MeshStandardMaterial({ color: 0x8c887e, roughness: 0.96, metalness: 0.01 })
+    new THREE.MeshStandardMaterial({ color: 0x77766f, roughness: 0.97, metalness: 0.01 })
   );
   district.position.set(0, 0.38, 5);
   district.receiveShadow = true;
   group.add(district);
 
-  const plazaMaterial = new THREE.MeshStandardMaterial({ color: 0xbab09a, roughness: 0.93 });
+  const plazaMaterial = new THREE.MeshStandardMaterial({ color: 0xa39c8d, roughness: 0.94 });
   if (surfaceTextures?.stone) plazaMaterial.map = surfaceTextures.stone;
   const plazas: [number, number, number, number][] = [
     [0, -2, 24, 16], [-21, -17, 12, 10], [10, -23, 12, 10], [24, -10, 12, 20],
@@ -339,7 +413,7 @@ function createCrosswalk(x: number, z: number, rotation = 0) {
   const paint = new THREE.MeshStandardMaterial({ color: 0xd6d1c6, roughness: 0.88 });
   for (let stripe = -3; stripe <= 3; stripe += 1) {
     const mark = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.025, 2.35), paint);
-    mark.position.set(stripe * 0.48, 0.695, 0);
+    mark.position.set(stripe * 0.48, 0.735, 0);
     mark.receiveShadow = true;
     group.add(mark);
   }
@@ -451,7 +525,7 @@ function createParisBlock(x: number, z: number, width: number, depth: number, ro
 function createUrbanParcel(x: number, z: number, width: number, depth: number, rotation = 0) {
   const parcel = shadow(new THREE.Mesh(
     new RoundedBoxGeometry(width, 0.26, depth, 5, 0.42),
-    material(0xaaa392, 0.94)
+    material(0x999487, 0.95)
   ));
   parcel.position.set(x, 0.58, z);
   parcel.rotation.y = rotation;
@@ -463,26 +537,39 @@ function createUrbanParcel(x: number, z: number, width: number, depth: number, r
 function createCanal() {
   const group = new THREE.Group();
   const curve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-35, 0.62, -36), new THREE.Vector3(-33, 0.62, -17),
-    new THREE.Vector3(-34, 0.62, 1), new THREE.Vector3(-32, 0.62, 19), new THREE.Vector3(-34, 0.62, 42)
+    new THREE.Vector3(-34, 0.62, -36), new THREE.Vector3(-31.5, 0.62, -17),
+    new THREE.Vector3(-32.5, 0.62, 1), new THREE.Vector3(-30.5, 0.62, 19), new THREE.Vector3(-32, 0.62, 42)
   ]);
   const water = new THREE.Mesh(
-    new THREE.TubeGeometry(curve, 80, 2.35, 16, false),
-    new THREE.MeshPhysicalMaterial({ color: 0x315f69, roughness: 0.12, metalness: 0.18, transmission: 0.16, transparent: true, opacity: 0.94 })
+    new THREE.TubeGeometry(curve, 80, 2.65, 20, false),
+    new THREE.MeshPhysicalMaterial({ color: 0x234d57, roughness: 0.18, metalness: 0.12, transmission: 0.1, transparent: true, opacity: 0.97 })
   );
   water.scale.y = 0.08;
+  water.position.y = 0.72;
   group.add(water);
-  const quayMaterial = material(0x8d887a, 0.92);
+  const quayMaterial = material(0xa39b87, 0.94);
   for (const side of [-1, 1]) {
-    const quayCurve = new THREE.CatmullRomCurve3(curve.getPoints(32).map((point) => point.clone().add(new THREE.Vector3(side * 3.1, 0.08, 0))));
-    const quay = new THREE.Mesh(new THREE.TubeGeometry(quayCurve, 64, 0.48, 10, false), quayMaterial);
-    quay.scale.y = 0.18;
+    const quayCurve = new THREE.CatmullRomCurve3(curve.getPoints(32).map((point) => point.clone().add(new THREE.Vector3(side * 3.35, 0.08, 0))));
+    const quay = new THREE.Mesh(new THREE.TubeGeometry(quayCurve, 64, 0.7, 12, false), quayMaterial);
+    quay.scale.y = 0.2;
+    quay.position.y = 0.66;
     group.add(quay);
+    const railMaterial = material(0x202724, 0.46, 0.6);
+    curve.getPoints(18).forEach((point, index) => {
+      if (index === 0 || index === 18) return;
+      const x = point.x + side * 3.05;
+      group.add(box(0.07, 0.72, 0.07, 0x202724, x, 1.15, point.z));
+      if (index % 3 === 0) group.add(createParisLamp(x + side * 0.35, point.z, 0.64));
+    });
+    railMaterial.dispose();
   }
   for (const z of [-18, 5, 27]) {
-    const bridge = box(8.2, 0.32, 3.0, 0x77746c, -33.5, 0.94, z, 0.9);
+    const bridge = box(8.5, 0.38, 3.25, 0x77746c, -32, 0.94, z, 0.9);
     group.add(bridge);
-    for (const side of [-1, 1]) group.add(box(8.4, 0.38, 0.16, 0xb5aa8e, -33.5, 1.22, z + side * 1.48));
+    for (const side of [-1, 1]) {
+      group.add(box(8.7, 0.52, 0.18, 0x8f8774, -32, 1.32, z + side * 1.58));
+      for (const x of [-35,-33.5,-32,-30.5,-29]) group.add(box(0.08, 0.68, 0.08, 0x252a27, x, 1.68, z + side * 1.62));
+    }
   }
   return group;
 }
@@ -869,15 +956,16 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
       });
     }
     scene.add(createFormalGarden());
+    scene.add(createStreetFurniture());
     const avenues: [[number, number], [number, number], number][] = [
       [[-34, -3], [34, -3], 17], [[-29, -25], [31, -24], 14], [[-31, 30], [34, 32], 15],
       [[-22, -31], [-18, 39], 17], [[18, -32], [12, 40], 18]
     ];
-    scene.add(createDriveway([[-34, -3], [-20, -3], [-8, -3], [8, -3], [20, -3], [34, -3]], 0x4b4b49, 3.6));
-    scene.add(createDriveway([[-29, -25], [-16, -17], [-8, -10], [0, -5], [10, -10], [22, -17], [31, -24]], 0x555552, 3.25));
-    scene.add(createDriveway([[-31, 30], [-18, 22], [-7, 14], [0, 7], [10, 15], [21, 24], [34, 32]], 0x555552, 3.25));
-    scene.add(createDriveway([[-22, -31], [-22, -17], [-23, -3], [-24, 11], [-17, 24], [-18, 39]], 0x50514f, 3.25));
-    scene.add(createDriveway([[18, -32], [18, -18], [22, -4], [26, 11], [19, 24], [12, 40]], 0x50514f, 3.25));
+    scene.add(createBoulevard([[-34, -3], [-20, -3], [-8, -3], [8, -3], [20, -3], [34, -3]], 3.65));
+    scene.add(createBoulevard([[-29, -25], [-16, -17], [-8, -10], [0, -5], [10, -10], [22, -17], [31, -24]], 3.3));
+    scene.add(createBoulevard([[-31, 30], [-18, 22], [-7, 14], [0, 7], [10, 15], [21, 24], [34, 32]], 3.3));
+    scene.add(createBoulevard([[-22, -31], [-22, -17], [-23, -3], [-24, 11], [-17, 24], [-18, 39]], 3.3));
+    scene.add(createBoulevard([[18, -32], [18, -18], [22, -4], [26, 11], [19, 24], [12, 40]], 3.3));
     avenues.forEach(([start, end, count]) => addAvenueTrees(scene, start, end, count));
     [[-22, -3, 0], [18, -3, 0], [-18, 30, 0], [15, 31, 0], [-22, -18, Math.PI / 2], [18, -18, Math.PI / 2]].forEach(
       ([x, z, rotation]) => scene.add(createCrosswalk(x, z, rotation))

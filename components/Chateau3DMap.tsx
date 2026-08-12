@@ -52,13 +52,29 @@ const BUILDINGS: MapBuilding[] = [
   { id: "airport", position: [-19, 37], scale: 1.0, color: 0xc9cbc4, roof: 0x3c545c, style: "transport" }
 ];
 
+const MODEL_ASSETS: Partial<Record<string, { path: string; scale: number; y: number; rotation?: number }>> = {
+  palace: { path: "/maps/models/paris-chateau.glb", scale: 0.9, y: 0.58 },
+  university: { path: "/maps/models/paris-university.glb", scale: 0.86, y: 0.56 },
+  court: { path: "/maps/models/paris-court.glb", scale: 0.86, y: 0.56 },
+  library: { path: "/maps/models/paris-library.glb", scale: 0.82, y: 0.56 },
+  hotel: { path: "/maps/models/paris-hotel.glb", scale: 0.79, y: 0.56 },
+  market: { path: "/maps/models/paris-market.glb", scale: 0.88, y: 0.56 },
+  station: { path: "/maps/models/paris-station.glb", scale: 0.84, y: 0.56 },
+  hospital: { path: "/maps/models/paris-university.glb", scale: 0.7, y: 0.56 },
+  police: { path: "/maps/models/paris-court.glb", scale: 0.66, y: 0.56 },
+  cafe: { path: "/maps/models/paris-hotel.glb", scale: 0.48, y: 0.56 },
+  restaurant: { path: "/maps/models/paris-hotel.glb", scale: 0.54, y: 0.56 },
+  airport: { path: "/maps/models/paris-station.glb", scale: 1.02, y: 0.56 },
+  vehicles: { path: "/maps/models/paris-market.glb", scale: 0.72, y: 0.56 }
+};
+
 const palette = {
   gold: 0xd5b86a,
   window: 0x9ad8cf,
   darkWindow: 0x345b5a,
   stone: 0xcab98e,
   wood: 0x5e3c29,
-  greenery: [0x1f5b37, 0x2e7545, 0x487f43, 0x315d38]
+  greenery: [0x244b32, 0x315f3b, 0x426b3d, 0x2e5133]
 };
 
 const wallColors = new Set(BUILDINGS.map((building) => building.color));
@@ -259,7 +275,7 @@ function addArchitecturalFront(group: THREE.Group, width: number, height: number
   group.add(createBalustrade(Math.min(3.6, width * 0.56), 0, height - 0.15, frontZ + 0.36));
 }
 
-function createDriveway(points: [number, number][], color = 0xa99b77) {
+function createDriveway(points: [number, number][], color = 0xa99b77, width = 3.15) {
   const curve = new THREE.CatmullRomCurve3(points.map(([x, z]) => new THREE.Vector3(x, 0.48, z)), false, "catmullrom", 0.55);
   const group = new THREE.Group();
   const samples = curve.getPoints(96);
@@ -270,7 +286,7 @@ function createDriveway(points: [number, number][], color = 0xa99b77) {
     const previous = samples[Math.max(0, index - 1)];
     const next = samples[Math.min(samples.length - 1, index + 1)];
     const tangent = next.clone().sub(previous).normalize();
-    const side = new THREE.Vector3(-tangent.z, 0, tangent.x).multiplyScalar(1.02);
+    const side = new THREE.Vector3(-tangent.z, 0, tangent.x).multiplyScalar(width / 2);
     vertices.push(point.x + side.x, 0.65, point.z + side.z, point.x - side.x, 0.65, point.z - side.z);
     uvs.push(0, index / 8, 1, index / 8);
     if (index < samples.length - 1) {
@@ -286,14 +302,62 @@ function createDriveway(points: [number, number][], color = 0xa99b77) {
   const road = new THREE.Mesh(roadGeometry, material(color, 0.92));
   road.receiveShadow = true;
   group.add(road);
-  const glowMaterial = new THREE.MeshStandardMaterial({ color: 0xffd47a, emissive: 0xffb542, emissiveIntensity: 1.25, roughness: 0.35 });
-  for (let i = 3; i < 48; i += 5) {
-    const point = curve.getPoint(i / 48);
-    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.085, 10, 8), glowMaterial);
-    lamp.position.set(point.x, 0.75, point.z);
-    group.add(lamp);
-  }
   return group;
+}
+
+function createParisDistrict() {
+  const group = new THREE.Group();
+  const district = new THREE.Mesh(
+    new RoundedBoxGeometry(78, 0.24, 76, 8, 4.5),
+    new THREE.MeshStandardMaterial({ color: 0x8c887e, roughness: 0.96, metalness: 0.01 })
+  );
+  district.position.set(0, 0.38, 5);
+  district.receiveShadow = true;
+  group.add(district);
+
+  const plazaMaterial = new THREE.MeshStandardMaterial({ map: surfaceTextures?.stone, color: 0xbab09a, roughness: 0.93 });
+  const plazas: [number, number, number, number][] = [
+    [0, -2, 24, 16], [-21, -17, 12, 10], [10, -23, 12, 10], [24, -10, 12, 20],
+    [-25, 6, 13, 27], [-8, 25, 20, 15], [20, 26, 23, 15], [-18, 37, 15, 9]
+  ];
+  plazas.forEach(([x, z, width, depth]) => {
+    const plaza = new THREE.Mesh(new RoundedBoxGeometry(width, 0.18, depth, 5, 0.75), plazaMaterial);
+    plaza.position.set(x, 0.58, z);
+    plaza.receiveShadow = true;
+    group.add(plaza);
+  });
+  return group;
+}
+
+function createCrosswalk(x: number, z: number, rotation = 0) {
+  const group = new THREE.Group();
+  const paint = new THREE.MeshStandardMaterial({ color: 0xd6d1c6, roughness: 0.88 });
+  for (let stripe = -3; stripe <= 3; stripe += 1) {
+    const mark = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.025, 2.35), paint);
+    mark.position.set(stripe * 0.48, 0.695, 0);
+    mark.receiveShadow = true;
+    group.add(mark);
+  }
+  group.position.set(x, 0, z);
+  group.rotation.y = rotation;
+  return group;
+}
+
+function addAvenueTrees(scene: THREE.Scene, start: [number, number], end: [number, number], count: number, offset = 2.45) {
+  const dx = end[0] - start[0];
+  const dz = end[1] - start[1];
+  const length = Math.hypot(dx, dz) || 1;
+  const nx = -dz / length;
+  const nz = dx / length;
+  for (const side of [-1, 1]) {
+    for (let index = 1; index < count; index += 1) {
+      const t = index / count;
+      const x = start[0] + dx * t + nx * offset * side;
+      const z = start[1] + dz * t + nz * offset * side;
+      if (BUILDINGS.some((building) => Math.hypot(x - building.position[0], z - building.position[1]) < 5.1)) continue;
+      scene.add(createTree(x, z, 0.7 + (index % 3) * 0.06));
+    }
+  }
 }
 
 function createFormalGarden() {
@@ -348,14 +412,84 @@ function createReflectingPool(x: number, z: number, width: number, depth: number
   return group;
 }
 
+function createParisBlock(x: number, z: number, width: number, depth: number, rotation = 0) {
+  const group = new THREE.Group();
+  const wall = material(0xb69c71, 0.86);
+  const trim = material(0xd1c19d, 0.8);
+  const slate = material(0x30373a, 0.54, 0.08);
+  group.add(box(width, 3.8, depth, 0xb69c71, 0, 1.9, 0));
+  const blockRoof = roof(width + 0.2, depth + 0.2, 0x30373a, 3.78);
+  group.add(blockRoof);
+  const glass = new THREE.MeshStandardMaterial({ color: 0x374a4d, emissive: 0xd6903a, emissiveIntensity: 0.22, roughness: 0.22 });
+  const count = Math.max(4, Math.floor(width / 1.25));
+  for (let floor = 0; floor < 3; floor += 1) {
+    for (let index = 0; index < count; index += 1) {
+      const wx = -width * 0.4 + (index / Math.max(1, count - 1)) * width * 0.8;
+      const pane = new THREE.Mesh(new RoundedBoxGeometry(0.34, 0.5, 0.06, 2, 0.025), glass);
+      pane.position.set(wx, 0.88 + floor * 1.0, depth / 2 + 0.04);
+      group.add(pane);
+    }
+  }
+  const cornice = new THREE.Mesh(new RoundedBoxGeometry(width + 0.24, 0.18, depth + 0.24, 3, 0.04), trim);
+  cornice.position.y = 3.58;
+  group.add(cornice);
+  group.position.set(x, 0.52, z);
+  group.rotation.y = rotation;
+  group.traverse((child) => {
+    if (child instanceof THREE.Mesh) { child.castShadow = true; child.receiveShadow = true; }
+  });
+  wall.dispose();
+  slate.dispose();
+  return group;
+}
+
+function createUrbanParcel(x: number, z: number, width: number, depth: number, rotation = 0) {
+  const parcel = shadow(new THREE.Mesh(
+    new RoundedBoxGeometry(width, 0.26, depth, 5, 0.42),
+    material(0xaaa392, 0.94)
+  ));
+  parcel.position.set(x, 0.58, z);
+  parcel.rotation.y = rotation;
+  parcel.receiveShadow = true;
+  parcel.castShadow = false;
+  return parcel;
+}
+
+function createCanal() {
+  const group = new THREE.Group();
+  const curve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(-35, 0.62, -36), new THREE.Vector3(-33, 0.62, -17),
+    new THREE.Vector3(-34, 0.62, 1), new THREE.Vector3(-32, 0.62, 19), new THREE.Vector3(-34, 0.62, 42)
+  ]);
+  const water = new THREE.Mesh(
+    new THREE.TubeGeometry(curve, 80, 2.35, 16, false),
+    new THREE.MeshPhysicalMaterial({ color: 0x315f69, roughness: 0.12, metalness: 0.18, transmission: 0.16, transparent: true, opacity: 0.94 })
+  );
+  water.scale.y = 0.08;
+  group.add(water);
+  const quayMaterial = material(0x8d887a, 0.92);
+  for (const side of [-1, 1]) {
+    const quayCurve = new THREE.CatmullRomCurve3(curve.getPoints(32).map((point) => point.clone().add(new THREE.Vector3(side * 3.1, 0.08, 0))));
+    const quay = new THREE.Mesh(new THREE.TubeGeometry(quayCurve, 64, 0.48, 10, false), quayMaterial);
+    quay.scale.y = 0.18;
+    group.add(quay);
+  }
+  for (const z of [-18, 5, 27]) {
+    const bridge = box(8.2, 0.32, 3.0, 0x77746c, -33.5, 0.94, z, 0.9);
+    group.add(bridge);
+    for (const side of [-1, 1]) group.add(box(8.4, 0.38, 0.16, 0xb5aa8e, -33.5, 1.22, z + side * 1.48));
+  }
+  return group;
+}
+
 function createSky() {
   const geometry = new THREE.SphereGeometry(320, 64, 36);
   const material = new THREE.ShaderMaterial({
     side: THREE.BackSide,
     uniforms: {
-      topColor: { value: new THREE.Color(0x4f7180) },
-      horizonColor: { value: new THREE.Color(0xd9ad6c) },
-      bottomColor: { value: new THREE.Color(0x849171) }
+      topColor: { value: new THREE.Color(0x597b91) },
+      horizonColor: { value: new THREE.Color(0xc8d0c7) },
+      bottomColor: { value: new THREE.Color(0x768674) }
     },
     vertexShader: "varying vec3 vWorldPosition; void main(){ vec4 worldPosition = modelMatrix * vec4(position, 1.0); vWorldPosition = worldPosition.xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }",
     fragmentShader: "uniform vec3 topColor; uniform vec3 horizonColor; uniform vec3 bottomColor; varying vec3 vWorldPosition; void main(){ float h = normalize(vWorldPosition).y; vec3 color = h > 0.0 ? mix(horizonColor, topColor, smoothstep(0.0, 0.72, h)) : mix(horizonColor, bottomColor, smoothstep(0.0, -0.35, h)); gl_FragColor = vec4(color, 1.0); }"
@@ -507,11 +641,14 @@ function createTree(x: number, z: number, scale = 1) {
   group.add(trunk);
   const crownColor = palette.greenery[Math.abs(Math.round(x * 7 + z * 3)) % palette.greenery.length];
   const crownMaterial = material(crownColor, 0.96);
-  const crownParts: [number, number, number, number][] = [[0, 1.62, 0, .74], [-.37, 1.5, .05, .52], [.34, 1.52, -.08, .58], [.08, 1.98, .02, .53]];
+  const crownParts: [number, number, number, number][] = [
+    [0, 1.7, 0, .62], [-.34, 1.58, .04, .43], [.3, 1.61, -.07, .48],
+    [.06, 2.06, .01, .42], [-.14, 2.28, -.02, .3]
+  ];
   crownParts.forEach(([cx, cy, cz, radius]) => {
-    const crown = shadow(new THREE.Mesh(new THREE.IcosahedronGeometry(radius, 2), crownMaterial));
+    const crown = shadow(new THREE.Mesh(new THREE.IcosahedronGeometry(radius, 3), crownMaterial));
     crown.position.set(cx, cy, cz);
-    crown.scale.set(1 + Math.abs(Math.sin(x + cx)) * 0.12, 1.08 + Math.abs(Math.cos(z + cz)) * 0.18, 0.92 + Math.abs(Math.sin(z - x)) * 0.14);
+    crown.scale.set(0.88 + Math.abs(Math.sin(x + cx)) * 0.1, 1.22 + Math.abs(Math.cos(z + cz)) * 0.2, 0.82 + Math.abs(Math.sin(z - x)) * 0.12);
     crown.rotation.set(x * 0.07, z * 0.05, (x + z) * 0.03);
     group.add(crown);
   });
@@ -562,13 +699,13 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     if (!mount) return;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x91a595);
-    scene.fog = new THREE.FogExp2(0x9b9b7e, 0.0028);
+    scene.background = new THREE.Color(0x9cafb3);
+    scene.fog = new THREE.FogExp2(0x87948d, 0.0025);
     sceneRef.current = scene;
 
     const compactView = mount.clientWidth < 700;
     const camera = new THREE.PerspectiveCamera(compactView ? 48 : 42, mount.clientWidth / mount.clientHeight, 0.1, 420);
-    camera.position.set(compactView ? 59 : 45, compactView ? 57 : 39, compactView ? 76 : 59);
+    camera.position.set(compactView ? 53 : 42, compactView ? 45 : 23, compactView ? 67 : 52);
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: false });
@@ -578,7 +715,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.68;
+    renderer.toneMappingExposure = 0.78;
     mount.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -630,7 +767,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.075;
-    controls.target.set(0, 0, 1);
+    controls.target.set(0, 1.2, 5);
     controls.minDistance = 18;
     controls.maxDistance = 105;
     controls.minPolarAngle = 0.48;
@@ -641,9 +778,9 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     controlsRef.current = controls;
 
     scene.add(createSky());
-    scene.add(new THREE.HemisphereLight(0xf4ead2, 0x425241, 0.78));
-    scene.add(new THREE.AmbientLight(0xffefd0, 0.12));
-    const sun = new THREE.DirectionalLight(0xffbf67, 4.15);
+    scene.add(new THREE.HemisphereLight(0xe9f2f2, 0x3d4c3f, 0.9));
+    scene.add(new THREE.AmbientLight(0xf4eee1, 0.1));
+    const sun = new THREE.DirectionalLight(0xffe0ad, 3.35);
     sun.position.set(-42, 34, 20);
     sun.castShadow = true;
     sun.shadow.mapSize.set(2048, 2048);
@@ -655,18 +792,24 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     scene.add(sun);
 
     scene.add(createTerrain());
-
-    const water = new THREE.Mesh(
-      new THREE.CircleGeometry(8.2, 64),
-      new THREE.MeshPhysicalMaterial({ color: 0x2f8790, roughness: 0.22, metalness: 0.08, transmission: 0.08, transparent: true, opacity: 0.9 })
-    );
-    water.rotation.x = -Math.PI / 2;
-    water.scale.set(1.75, 0.72, 1);
-    water.position.set(-28, -0.05, 15);
-    scene.add(water);
+    scene.add(createParisDistrict());
 
     scene.add(createReflectingPool(-19.5, 11.8, 8.8, 3.4));
     scene.add(createReflectingPool(20.5, 15.8, 7.2, 2.8));
+    scene.add(createCanal());
+
+    const parisBlocks: [number, number, number, number, number][] = [
+      [-13, -14, 7.5, 4.3, 0.12], [2, -18, 8.2, 4.4, -0.04], [18, -12, 7.5, 4.2, -0.18],
+      [-19, 5, 7.2, 4.1, -0.12], [16, 7, 7.8, 4.2, 0.2], [-10, 17, 8.2, 4.4, 0.08],
+      [5, 21, 7.3, 4.0, -0.08], [25, 20, 7.2, 4.2, 0.18], [-28, 24, 7.4, 4.1, -0.12]
+    ];
+    parisBlocks.forEach(([x, z, width, depth, rotation]) => {
+      scene.add(createUrbanParcel(x, z, width + 3.2, depth + 3.2, rotation));
+      scene.add(createParisBlock(x, z, width, depth, rotation));
+    });
+    for (const spec of BUILDINGS) {
+      scene.add(createUrbanParcel(spec.position[0], spec.position[1], spec.id === "palace" ? 24 : 10.8, spec.id === "palace" ? 15 : 9.2));
+    }
 
     const courtyardMaterial = new THREE.MeshStandardMaterial({ map: textures.stone, color: 0xb6ad91, roughness: 0.94 });
     const courtyard = new THREE.Mesh(new THREE.CylinderGeometry(10.8, 11.5, 0.34, 64), courtyardMaterial);
@@ -674,29 +817,41 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     courtyard.receiveShadow = true;
     scene.add(courtyard);
 
+    const loader = new GLTFLoader();
     for (const spec of BUILDINGS) {
-      if (spec.id !== "palace") scene.add(createBuilding(spec));
-    }
-    const palaceSpec = BUILDINGS.find((building) => building.id === "palace");
-    if (palaceSpec) {
-      const palacePlaceholder = createBuilding(palaceSpec);
-      scene.add(palacePlaceholder);
-      const loader = new GLTFLoader();
-      loader.load("/maps/models/paris-chateau.glb", (gltf) => {
+      const asset = MODEL_ASSETS[spec.id];
+      const placeholder = createBuilding(spec);
+      scene.add(placeholder);
+      if (!asset) continue;
+      loader.load(asset.path, (gltf) => {
         const model = gltf.scene;
-        model.name = "Paris Chateau";
-        model.position.set(palaceSpec.position[0], 0.58, palaceSpec.position[1]);
-        model.rotation.y = 0;
-        model.scale.setScalar(0.77);
+        model.name = `Paris ${spec.id}`;
+        model.position.set(spec.position[0], asset.y, spec.position[1]);
+        model.rotation.y = asset.rotation || 0;
+        model.scale.setScalar(asset.scale);
         model.traverse((child) => {
-          child.userData.placeId = palaceSpec.id;
+          child.userData.placeId = spec.id;
           if (child instanceof THREE.Mesh) {
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            mats.forEach((item) => {
+              if (!(item instanceof THREE.MeshStandardMaterial)) return;
+              const name = item.name.toLowerCase();
+              if (name.includes("limestone")) {
+                item.map = textures.stone;
+                item.color.lerp(new THREE.Color(0xe8dcc4), 0.42);
+                item.roughness = 0.84;
+              } else if (name.includes("slate")) {
+                item.map = textures.slate;
+                item.roughness = 0.58;
+              }
+              item.needsUpdate = true;
+            });
             child.castShadow = true;
             child.receiveShadow = true;
           }
         });
-        scene.remove(palacePlaceholder);
-        palacePlaceholder.traverse((child) => {
+        scene.remove(placeholder);
+        placeholder.traverse((child) => {
           if (child instanceof THREE.Mesh) {
             child.geometry.dispose();
             const mats = Array.isArray(child.material) ? child.material : [child.material];
@@ -707,11 +862,19 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
       });
     }
     scene.add(createFormalGarden());
-    scene.add(createDriveway([[-34, -3], [-20, -3], [-8, -3], [8, -3], [20, -3], [34, -3]], 0x555653));
-    scene.add(createDriveway([[-29, -25], [-16, -17], [-8, -10], [0, -5], [10, -10], [22, -17], [31, -24]], 0x65645f));
-    scene.add(createDriveway([[-31, 30], [-18, 22], [-7, 14], [0, 7], [10, 15], [21, 24], [34, 32]], 0x65645f));
-    scene.add(createDriveway([[-22, -31], [-22, -17], [-23, -3], [-24, 11], [-17, 24], [-18, 39]], 0x5c5d59));
-    scene.add(createDriveway([[18, -32], [18, -18], [22, -4], [26, 11], [19, 24], [12, 40]], 0x5c5d59));
+    const avenues: [[number, number], [number, number], number][] = [
+      [[-34, -3], [34, -3], 17], [[-29, -25], [31, -24], 14], [[-31, 30], [34, 32], 15],
+      [[-22, -31], [-18, 39], 17], [[18, -32], [12, 40], 18]
+    ];
+    scene.add(createDriveway([[-34, -3], [-20, -3], [-8, -3], [8, -3], [20, -3], [34, -3]], 0x4b4b49, 3.6));
+    scene.add(createDriveway([[-29, -25], [-16, -17], [-8, -10], [0, -5], [10, -10], [22, -17], [31, -24]], 0x555552, 3.25));
+    scene.add(createDriveway([[-31, 30], [-18, 22], [-7, 14], [0, 7], [10, 15], [21, 24], [34, 32]], 0x555552, 3.25));
+    scene.add(createDriveway([[-22, -31], [-22, -17], [-23, -3], [-24, 11], [-17, 24], [-18, 39]], 0x50514f, 3.25));
+    scene.add(createDriveway([[18, -32], [18, -18], [22, -4], [26, 11], [19, 24], [12, 40]], 0x50514f, 3.25));
+    avenues.forEach(([start, end, count]) => addAvenueTrees(scene, start, end, count));
+    [[-22, -3, 0], [18, -3, 0], [-18, 30, 0], [15, 31, 0], [-22, -18, Math.PI / 2], [18, -18, Math.PI / 2]].forEach(
+      ([x, z, rotation]) => scene.add(createCrosswalk(x, z, rotation))
+    );
     const centralRing = new THREE.Mesh(new THREE.RingGeometry(11.55, 12.65, 128), material(0x686760, 0.94));
     centralRing.rotation.x = -Math.PI / 2;
     centralRing.position.set(0, 0.65, -1);
@@ -720,14 +883,14 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     scene.add(centralRing);
 
     const treePositions: [number, number, number][] = [];
-    for (let i = 0; i < 178; i += 1) {
+    for (let i = 0; i < 54; i += 1) {
       const angle = i * 2.399;
-      const radius = 12 + (i % 22) * 1.45;
+      const radius = 32 + (i % 8) * 2.1;
       const x = Math.cos(angle) * radius + (i % 5) * 0.33;
       const z = Math.sin(angle) * radius + ((i * 3) % 7) * 0.25;
-      if (BUILDINGS.some((building) => Math.hypot(x - building.position[0], z - building.position[1]) < 4.3)) continue;
-      if (x < -22 && z > 7) continue;
-      treePositions.push([x, z, 0.75 + (i % 5) * 0.08]);
+      if (BUILDINGS.some((building) => Math.hypot(x - building.position[0], z - building.position[1]) < 5.2)) continue;
+      if (x < -29 && z > -30) continue;
+      treePositions.push([x, z, 0.82 + (i % 5) * 0.08]);
     }
     treePositions.forEach(([x, z, scale]) => scene.add(createTree(x, z, scale)));
 
@@ -784,7 +947,6 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     const animate = () => {
       frame = requestAnimationFrame(animate);
       const elapsed = (performance.now() - startedAt) / 1000;
-      water.position.y = -0.03 + Math.sin(elapsed * 0.85) * 0.035;
       if (focusRef.current) {
         const focus = focusRef.current;
         focus.progress = Math.min(1, focus.progress + 0.035);
@@ -850,8 +1012,8 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     if (!cameraRef.current || !controlsRef.current) return;
     focusRef.current = null;
     const compactView = (mountRef.current?.clientWidth || 900) < 700;
-    cameraRef.current.position.set(compactView ? 59 : 45, compactView ? 57 : 39, compactView ? 76 : 59);
-    controlsRef.current.target.set(0, 0, 1);
+    cameraRef.current.position.set(compactView ? 53 : 42, compactView ? 45 : 23, compactView ? 67 : 52);
+    controlsRef.current.target.set(0, 1.2, 5);
     controlsRef.current.update();
   };
 

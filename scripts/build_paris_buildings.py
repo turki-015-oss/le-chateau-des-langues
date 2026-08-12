@@ -180,6 +180,98 @@ def hotel():
     export("paris-hotel")
 
 
+def hospital():
+    clear(); m = palette()
+    white = material("Hospital pale limestone", (0.78, 0.78, 0.71), roughness=0.68)
+    medical_glass = material("Hospital glass", (0.08, 0.25, 0.27), metallic=0.08, roughness=0.16, transmission=0.18)
+    red = material("Medical red", (0.55, 0.025, 0.018), roughness=0.48)
+    cube("Historic hospital body", (0,0,2.75), (4.8,2.55,2.75), white, 0.1)
+    mansard("Hospital slate roof", (0,0,5.5), 10.0, 5.45, 1.45, m["slate"])
+    facade(9.6,-2.59,3,7,medical_glass,m["trim"],1.05,1.45)
+    cube("Hospital entrance glass", (0,-2.72,1.35),(1.2,0.18,1.35),medical_glass,0.06)
+    cube("Hospital entrance canopy", (0,-3.15,2.72),(1.65,0.78,0.12),m["zinc"],0.04)
+    columns([-1.75,1.75],-2.82,2.15,3.45,m["trim"])
+    # Large unmistakable medical cross integrated into the facade.
+    cube("Medical cross vertical", (0,-2.94,4.5),(0.22,0.08,0.82),red,0.025)
+    cube("Medical cross horizontal", (0,-2.95,4.5),(0.68,0.08,0.22),red,0.025)
+    # Modern clinical wings distinguish it from the university.
+    for side in (-1, 1):
+        cube("Clinical glass wing", (side*5.55,0.25,2.0),(0.8,2.1,2.0),medical_glass,0.08)
+        for floor in (0.9, 2.05, 3.2):
+            cube("Wing limestone band", (side*5.55,-1.9,floor),(0.88,0.09,0.08),white,0.02)
+    export("paris-hospital")
+
+
+def police():
+    clear(); m = palette()
+    blue = material("Police blue enamel", (0.018, 0.08, 0.16), metallic=0.2, roughness=0.34)
+    cube("Police headquarters", (0,0,2.45),(4.55,2.45,2.45),m["stone"],0.1)
+    mansard("Police slate roof", (0,0,4.9),9.45,5.2,1.5,m["slate"])
+    facade(9.1,-2.49,3,7,m["glass"],m["trim"],0.95,1.3)
+    cube("Police central portal", (0,-2.65,1.35),(0.8,0.12,1.35),blue,0.055)
+    columns([-1.35,-0.92,0.92,1.35],-2.8,2.15,3.45,m["trim"])
+    cube("Police portico", (0,-2.84,3.95),(1.75,0.42,0.18),m["trim"],0.03)
+    # Central watch tower, clock and blue beacon.
+    cube("Watch tower", (0,0,6.2),(1.15,1.15,1.45),m["stone"],0.07)
+    mansard("Watch tower roof", (0,0,7.65),2.55,2.55,1.1,m["slate"])
+    cylinder("Police seal", (0,-2.99,4.55),0.52,0.13,blue,40)
+    for x in (-0.3, 0.3):
+        cube("Police seal detail", (x,-3.07,4.55),(0.08,0.05,0.38),m["trim"],0.015)
+    cylinder("Blue beacon", (0,0,8.95),0.18,0.34,blue,24)
+    export("paris-police")
+
+
+def airport():
+    clear(); m = palette()
+    terminal_glass = material("Airport curtain glass", (0.07,0.22,0.29), metallic=0.18, roughness=0.1, transmission=0.3)
+    concrete = material("Airport limestone concrete", (0.58,0.57,0.52), roughness=0.76)
+    runway = material("Runway asphalt", (0.035,0.04,0.045), roughness=0.9)
+    light = material("Runway light", (0.9,0.68,0.22), roughness=0.18, emission=(1.0,0.55,0.08))
+    cube("Airport terminal", (0,0,1.65),(6.8,2.5,1.65),terminal_glass,0.12)
+    cube("Terminal limestone frame", (0,-2.58,3.15),(7.0,0.16,0.18),concrete,0.03)
+    for x in (-5.4,-3.6,-1.8,0,1.8,3.6,5.4):
+        cube("Terminal mullion", (x,-2.62,1.72),(0.09,0.1,1.55),m["zinc"],0.015)
+    cube("Departures portal", (0,-2.75,1.1),(1.15,0.12,1.08),m["door"],0.04)
+    # Control tower.
+    cylinder("Control tower shaft", (4.9,0.85,4.3),0.55,5.3,concrete,32)
+    cylinder("Control room", (4.9,0.85,7.05),1.25,0.85,terminal_glass,40)
+    cylinder("Control room roof", (4.9,0.85,7.53),1.4,0.16,m["zinc"],40)
+    # Runway and illuminated centerline make the airport readable at map scale.
+    cube("Runway", (-1.5,5.1,0.11),(8.2,1.25,0.11),runway,0.05)
+    for x in range(-8, 6, 2):
+        cube("Runway marking", (x,5.1,0.24),(0.48,0.12,0.035),m["trim"],0.01)
+        for side in (-1,1):
+            cylinder("Runway edge light", (x,5.1+side*1.12,0.29),0.055,0.12,light,12)
+    # Two jetways.
+    for x in (-3.5,2.2):
+        cube("Passenger jetway", (x,-3.65,1.35),(0.42,1.05,0.38),m["zinc"],0.04)
+        cube("Jetway glass", (x,-4.72,1.35),(0.62,0.18,0.55),terminal_glass,0.04)
+    export("paris-airport")
+
+
+def vehicles():
+    clear(); m = palette()
+    steel = material("Workshop steel", (0.11,0.16,0.18), metallic=0.55, roughness=0.4)
+    workshop_glass = material("Workshop glass", (0.06,0.18,0.2), metallic=0.12, roughness=0.16, transmission=0.16)
+    safety = material("Safety amber", (0.85,0.34,0.035), roughness=0.42)
+    asphalt = material("Depot asphalt", (0.055,0.06,0.06), roughness=0.9)
+    cube("Vehicle centre courtyard", (0,0,0.11),(6.7,4.0,0.11),asphalt,0.04)
+    # Three individual maintenance halls with large doors.
+    for index, x in enumerate((-4.35,0,4.35)):
+        cube("Maintenance hall", (x,0.65,1.65),(1.85,3.05,1.65),m["stone"],0.09)
+        mansard("Maintenance hall roof", (x,0.65,3.3),3.95,6.35,1.05,steel)
+        cube("Vehicle bay door", (x,-2.45,1.3),(1.28,0.11,1.28),steel,0.04)
+        for stripe in (-0.85,-0.42,0,0.42,0.85):
+            cube("Bay door glass", (x+stripe,-2.58,1.45),(0.14,0.04,0.48),workshop_glass,0.012)
+        cube("Safety lintel", (x,-2.62,2.72),(1.48,0.06,0.1),safety,0.015)
+    # Administration tower and visible gear-like emblem.
+    cube("Operations tower", (0,3.85,3.0),(1.35,1.05,3.0),m["stone"],0.08)
+    mansard("Operations roof", (0,3.85,6.0),3.0,2.4,1.0,m["slate"])
+    cylinder("Vehicle centre emblem", (0,-2.72,3.6),0.55,0.13,safety,32)
+    cylinder("Emblem hub", (0,-2.8,3.6),0.2,0.15,steel,24)
+    export("paris-vehicles")
+
+
 kind = sys.argv[-1] if "--" in sys.argv else "university"
 if kind in ("university", "court", "library"):
     civic(kind)
@@ -189,5 +281,13 @@ elif kind == "station":
     station()
 elif kind == "hotel":
     hotel()
+elif kind == "hospital":
+    hospital()
+elif kind == "police":
+    police()
+elif kind == "airport":
+    airport()
+elif kind == "vehicles":
+    vehicles()
 else:
     raise SystemExit("unknown building: " + kind)

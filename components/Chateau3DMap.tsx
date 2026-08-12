@@ -60,12 +60,12 @@ const MODEL_ASSETS: Partial<Record<string, { path: string; scale: number; y: num
   hotel: { path: "/maps/models/paris-hotel.glb", scale: 0.79, y: 0.56 },
   market: { path: "/maps/models/paris-market.glb", scale: 0.88, y: 0.56 },
   station: { path: "/maps/models/paris-station.glb", scale: 0.84, y: 0.56 },
-  hospital: { path: "/maps/models/paris-university.glb", scale: 0.7, y: 0.56 },
-  police: { path: "/maps/models/paris-court.glb", scale: 0.66, y: 0.56 },
+  hospital: { path: "/maps/models/paris-hospital.glb", scale: 0.72, y: 0.56 },
+  police: { path: "/maps/models/paris-police.glb", scale: 0.65, y: 0.56 },
   cafe: { path: "/maps/models/paris-hotel.glb", scale: 0.48, y: 0.56 },
   restaurant: { path: "/maps/models/paris-hotel.glb", scale: 0.54, y: 0.56 },
-  airport: { path: "/maps/models/paris-station.glb", scale: 1.02, y: 0.56 },
-  vehicles: { path: "/maps/models/paris-market.glb", scale: 0.72, y: 0.56 }
+  airport: { path: "/maps/models/paris-airport.glb", scale: 0.82, y: 0.56 },
+  vehicles: { path: "/maps/models/paris-vehicles.glb", scale: 0.72, y: 0.56 }
 };
 
 const palette = {
@@ -93,7 +93,9 @@ const material = (color: number, roughness = 0.78, metalness = 0.04) => {
     baseColor.lerp(new THREE.Color(0xffffff), 0.08);
     roughness = 0.72;
   }
-  return new THREE.MeshStandardMaterial({ color: baseColor, map, roughness, metalness });
+  const options: THREE.MeshStandardMaterialParameters = { color: baseColor, roughness, metalness };
+  if (map) options.map = map;
+  return new THREE.MeshStandardMaterial(options);
 };
 
 function shadow(mesh: THREE.Mesh) {
@@ -315,7 +317,8 @@ function createParisDistrict() {
   district.receiveShadow = true;
   group.add(district);
 
-  const plazaMaterial = new THREE.MeshStandardMaterial({ map: surfaceTextures?.stone, color: 0xbab09a, roughness: 0.93 });
+  const plazaMaterial = new THREE.MeshStandardMaterial({ color: 0xbab09a, roughness: 0.93 });
+  if (surfaceTextures?.stone) plazaMaterial.map = surfaceTextures.stone;
   const plazas: [number, number, number, number][] = [
     [0, -2, 24, 16], [-21, -17, 12, 10], [10, -23, 12, 10], [24, -10, 12, 20],
     [-25, 6, 13, 27], [-8, 25, 20, 15], [20, 26, 23, 15], [-18, 37, 15, 9]
@@ -672,7 +675,9 @@ function createTerrain() {
     positions.setZ(i, height);
   }
   geometry.computeVertexNormals();
-  const terrain = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: surfaceTextures?.meadow, color: 0x78956b, roughness: 0.98 }));
+  const terrainMaterial = new THREE.MeshStandardMaterial({ color: 0x78956b, roughness: 0.98 });
+  if (surfaceTextures?.meadow) terrainMaterial.map = surfaceTextures.meadow;
+  const terrain = new THREE.Mesh(geometry, terrainMaterial);
   terrain.rotation.x = -Math.PI / 2;
   terrain.receiveShadow = true;
   return terrain;

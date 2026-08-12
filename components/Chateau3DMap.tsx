@@ -62,8 +62,10 @@ const MODEL_ASSETS: Partial<Record<string, { path: string; scale: number; y: num
   station: { path: "/maps/models/paris-station.glb", scale: 0.84, y: 0.56 },
   hospital: { path: "/maps/models/paris-hospital.glb", scale: 0.72, y: 0.56 },
   police: { path: "/maps/models/paris-police.glb", scale: 0.65, y: 0.56 },
-  cafe: { path: "/maps/models/paris-hotel.glb", scale: 0.48, y: 0.56 },
-  restaurant: { path: "/maps/models/paris-hotel.glb", scale: 0.54, y: 0.56 },
+  cafe: { path: "/maps/models/paris-cafe.glb", scale: 0.63, y: 0.56 },
+  restaurant: { path: "/maps/models/paris-restaurant.glb", scale: 0.62, y: 0.56 },
+  zoo: { path: "/maps/models/paris-zoo.glb", scale: 0.65, y: 0.56 },
+  stadium: { path: "/maps/models/paris-stadium.glb", scale: 0.64, y: 0.56 },
   airport: { path: "/maps/models/paris-airport.glb", scale: 0.82, y: 0.56 },
   vehicles: { path: "/maps/models/paris-vehicles.glb", scale: 0.72, y: 0.56 }
 };

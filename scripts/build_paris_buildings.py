@@ -272,6 +272,114 @@ def vehicles():
     export("paris-vehicles")
 
 
+def cafe():
+    clear(); m = palette()
+    awning = material("Cafe burgundy canvas", (0.32,0.018,0.025), roughness=0.78)
+    brass = material("Cafe brass", (0.55,0.33,0.08), metallic=0.72, roughness=0.27)
+    greenery = material("Terrace greenery", (0.055,0.22,0.095), roughness=0.86)
+    cube("Paris corner cafe", (0,0,2.05),(3.65,2.35,2.05),m["stone"],0.1)
+    mansard("Cafe mansard", (0,0,4.1),7.65,5.0,1.35,m["slate"])
+    facade(7.3,-2.39,2,6,m["glass"],m["trim"],1.0,1.48,False)
+    # Broad glazed cafe front and striped fabric awnings.
+    for x in (-2.35,0,2.35):
+        cube("Cafe storefront", (x,-2.5,1.05),(0.88,0.11,0.86),m["market_glass"],0.045)
+        canopy = cube("Cafe awning", (x,-2.9,1.95),(1.05,0.52,0.11),awning,0.025)
+        canopy.rotation_euler[0] = -0.18
+        for stripe in (-0.7,-0.23,0.23,0.7):
+            cube("Awning gold stripe", (x+stripe,-3.02,1.93),(0.08,0.52,0.025),m["trim"],0.008)
+    cube("Cafe entrance", (0,-2.55,0.95),(0.58,0.09,0.92),m["door"],0.04)
+    # Terrace tables, chairs and planters make the use unmistakable.
+    for x in (-2.4,-0.8,0.8,2.4):
+        cylinder("Round cafe table", (x,-4.25,0.55),0.42,0.08,brass,24)
+        cylinder("Table pedestal", (x,-4.25,0.28),0.08,0.52,brass,16)
+        for side in (-1,1):
+            cube("Cafe chair", (x+side*0.62,-4.25,0.38),(0.22,0.24,0.38),m["door"],0.035)
+    for x in (-3.45,3.45):
+        cube("Terrace planter", (x,-3.8,0.34),(0.38,0.7,0.34),m["trim"],0.055)
+        cylinder("Planter shrub", (x,-3.8,1.05),0.5,1.15,greenery,28)
+    export("paris-cafe")
+
+
+def restaurant():
+    clear(); m = palette()
+    velvet = material("Restaurant deep green", (0.018,0.13,0.08), roughness=0.52)
+    brass = material("Restaurant brass", (0.58,0.37,0.1), metallic=0.78, roughness=0.23)
+    cube("Grand restaurant facade", (0,0,2.55),(4.35,2.55,2.55),m["stone"],0.1)
+    mansard("Restaurant mansard", (0,0,5.1),9.1,5.4,1.55,m["slate"])
+    facade(8.7,-2.59,3,7,m["glass"],m["trim"],1.05,1.38)
+    # Formal arched entry with a deep canopy.
+    cube("Restaurant entrance", (0,-2.7,1.35),(0.78,0.1,1.35),velvet,0.06)
+    arch("Restaurant entrance arch", (0,-2.82,2.45),0.92,0.5,m["trim"],(math.pi/2,0,0))
+    cube("Restaurant canopy", (0,-3.25,3.0),(1.65,0.72,0.12),velvet,0.035)
+    for x in (-1.45,1.45):
+        cylinder("Canopy brass post", (x,-3.75,1.5),0.055,2.9,brass,16)
+    # Orangerie dining wings.
+    for side in (-1,1):
+        cube("Dining conservatory", (side*5.1,0.3,1.55),(0.85,2.25,1.55),m["market_glass"],0.075)
+        for z in (0.55,1.55,2.55):
+            cube("Conservatory frame", (side*5.1,-2.0,z),(0.91,0.06,0.045),brass,0.01)
+    cube("Restaurant name plaque", (0,-2.9,4.0),(1.55,0.07,0.3),brass,0.03)
+    export("paris-restaurant")
+
+
+def zoo():
+    clear(); m = palette()
+    green = material("Zoo botanical green", (0.03,0.19,0.085), metallic=0.1, roughness=0.55)
+    botanical_glass = material("Botanical smoked glass", (0.025,0.12,0.095), metallic=0.16, roughness=0.22, transmission=0.12)
+    leaf = material("Zoo living foliage", (0.06,0.31,0.11), roughness=0.92)
+    water = material("Zoo water", (0.04,0.28,0.32), metallic=0.06, roughness=0.16, transmission=0.15)
+    earth = material("Zoo habitat earth", (0.22,0.12,0.055), roughness=0.95)
+    # Botanical gatehouse with two conservatory wings.
+    cube("Zoo gatehouse", (0,0.55,2.3),(2.4,1.65,2.3),m["stone"],0.1)
+    mansard("Zoo gatehouse roof", (0,0.55,4.6),5.15,3.65,1.25,m["slate"])
+    cube("Zoo entrance", (0,-1.18,1.45),(0.88,0.12,1.45),green,0.07)
+    arch("Zoo entrance arch", (0,-1.34,2.7),1.05,0.45,m["trim"],(math.pi/2,0,0))
+    for side in (-1,1):
+        cube("Botanical glasshouse", (side*4.2,0.65,1.65),(1.72,2.2,1.65),botanical_glass,0.09)
+        for x in (-0.85,0,0.85):
+            arch("Glasshouse iron rib", (side*4.2+x,0.65,3.0),1.7,1,green,(0,math.pi/2,0))
+    # Habitat ring, pond and stylised mature trees.
+    cylinder("Zoo habitat island", (0,5.2,0.18),5.6,0.36,earth,56)
+    cylinder("Zoo habitat pond", (0,5.2,0.39),2.15,0.1,water,48)
+    for angle in [i*math.pi/4 for i in range(8)]:
+        x, y = math.cos(angle)*4.35, 5.2+math.sin(angle)*4.35
+        cylinder("Zoo tree trunk", (x,y,1.15),0.18,2.1,m["door"],16)
+        cylinder("Zoo tree crown", (x,y,2.65),0.72,1.45,leaf,28)
+    # Twin elephant silhouettes at the gateway, readable at map distance.
+    for side in (-1,1):
+        cylinder("Elephant body", (side*1.55,-1.65,0.72),0.62,1.35,m["zinc"],28)
+        cylinder("Elephant head", (side*1.55,-2.08,1.1),0.42,0.68,m["zinc"],28)
+        trunk = cylinder("Elephant trunk", (side*1.55,-2.45,0.65),0.11,0.85,m["zinc"],16)
+        trunk.rotation_euler[0] = math.pi/2
+    export("paris-zoo")
+
+
+def stadium():
+    clear(); m = palette()
+    steel = material("Stadium structural steel", (0.12,0.17,0.18), metallic=0.66, roughness=0.32)
+    glass = material("Stadium smoked glass", (0.025,0.095,0.11), metallic=0.18, roughness=0.2, transmission=0.1)
+    field = material("Stadium pitch", (0.025,0.22,0.07), roughness=0.94)
+    track = material("Stadium running track", (0.24,0.035,0.025), roughness=0.9)
+    # Elliptical arena bowl made from nested, scaled cylinders.
+    outer = cylinder("Stadium limestone bowl", (0,0,1.35),7.2,2.7,m["stone"],64)
+    outer.scale.y = 0.66
+    rim = cylinder("Stadium steel rim", (0,0,2.75),7.35,0.24,steel,64)
+    rim.scale.y = 0.66
+    track_obj = cylinder("Athletics track", (0,0,2.93),5.85,0.11,track,64)
+    track_obj.scale.y = 0.62
+    pitch = cylinder("Football pitch", (0,0,3.02),4.75,0.12,field,64)
+    pitch.scale.y = 0.52
+    # Glass entrance pavilion and rhythmic exterior arches.
+    cube("Stadium entrance pavilion", (0,-5.15,1.55),(2.2,0.72,1.55),glass,0.09)
+    for x in (-5.4,-3.6,-1.8,0,1.8,3.6,5.4):
+        arch("Stadium facade arch", (x,-4.82,1.6),0.72,0.45,m["trim"],(math.pi/2,0,0))
+    # Four lighting towers.
+    for x,y in ((-6,-3.7),(6,-3.7),(-6,3.7),(6,3.7)):
+        cylinder("Floodlight mast", (x,y,4.4),0.1,6.5,steel,16)
+        cube("Floodlight bank", (x,y,7.65),(0.72,0.18,0.42),glass,0.03)
+    export("paris-stadium")
+
+
 kind = sys.argv[-1] if "--" in sys.argv else "university"
 if kind in ("university", "court", "library"):
     civic(kind)
@@ -289,5 +397,13 @@ elif kind == "airport":
     airport()
 elif kind == "vehicles":
     vehicles()
+elif kind == "cafe":
+    cafe()
+elif kind == "restaurant":
+    restaurant()
+elif kind == "zoo":
+    zoo()
+elif kind == "stadium":
+    stadium()
 else:
     raise SystemExit("unknown building: " + kind)

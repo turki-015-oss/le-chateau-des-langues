@@ -102,7 +102,31 @@ def columns(xs, y, z, height, stone):
         cylinder("Column capital", (x, y, z+height/2), 0.2, 0.18, stone, 24)
 
 
+def optimize_scene():
+    """Bake modifiers and collapse the building into one multi-material mesh.
+
+    The visual result stays identical while WebGL submits dramatically fewer
+    individual draw objects, which matters most on phones.
+    """
+    mesh_objects = [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
+    if not mesh_objects:
+        return
+    bpy.ops.object.select_all(action="DESELECT")
+    for obj in mesh_objects:
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
+        for modifier in list(obj.modifiers):
+            try:
+                bpy.ops.object.modifier_apply(modifier=modifier.name)
+            except RuntimeError:
+                pass
+    bpy.context.view_layer.objects.active = mesh_objects[0]
+    bpy.ops.object.join()
+    bpy.context.object.name = "Optimized Paris landmark"
+
+
 def export(name):
+    optimize_scene()
     bpy.ops.object.select_all(action="SELECT")
     path = os.path.join(OUT_DIR, name + ".glb")
     bpy.ops.export_scene.gltf(filepath=path, export_format="GLB", export_apply=True, export_materials="EXPORT", export_yup=True)

@@ -798,12 +798,14 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     sceneRef.current = scene;
 
     const compactView = mount.clientWidth < 700;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const renderPixelRatio = Math.min(window.devicePixelRatio, compactView ? 1.25 : 1.8);
     const camera = new THREE.PerspectiveCamera(compactView ? 48 : 42, mount.clientWidth / mount.clientHeight, 0.1, 420);
     camera.position.set(compactView ? 53 : 42, compactView ? 45 : 23, compactView ? 67 : 52);
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(renderPixelRatio);
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
@@ -820,7 +822,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
 
     const composer = new EffectComposer(renderer);
     composer.setSize(mount.clientWidth, mount.clientHeight);
-    composer.setPixelRatio(Math.min(window.devicePixelRatio, compactView ? 1.35 : 1.7));
+    composer.setPixelRatio(renderPixelRatio);
     composer.addPass(new RenderPass(scene, camera));
     if (!compactView) {
       const gtaoPass = new GTAOPass(scene, camera, mount.clientWidth, mount.clientHeight);
@@ -877,7 +879,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
     const sun = new THREE.DirectionalLight(0xffe0ad, 3.35);
     sun.position.set(-42, 34, 20);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.mapSize.set(compactView ? 1024 : 2048, compactView ? 1024 : 2048);
     sun.shadow.camera.left = -42;
     sun.shadow.camera.right = 42;
     sun.shadow.camera.top = 38;
@@ -1030,18 +1032,24 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
       camera.aspect = mount.clientWidth / mount.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(mount.clientWidth, mount.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const nextCompact = mount.clientWidth < 700;
+      const nextRatio = Math.min(window.devicePixelRatio, nextCompact ? 1.25 : 1.8);
+      renderer.setPixelRatio(nextRatio);
       composer.setSize(mount.clientWidth, mount.clientHeight);
-      composer.setPixelRatio(Math.min(window.devicePixelRatio, mount.clientWidth < 700 ? 1.35 : 1.7));
+      composer.setPixelRatio(nextRatio);
     };
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(mount);
 
     const startedAt = performance.now();
     let frame = 0;
+    let lastMobileFrame = 0;
     const animate = () => {
       frame = requestAnimationFrame(animate);
-      const elapsed = (performance.now() - startedAt) / 1000;
+      const now = performance.now();
+      if (document.hidden || (compactView && now - lastMobileFrame < 30)) return;
+      lastMobileFrame = now;
+      const elapsed = (now - startedAt) / 1000;
       if (focusRef.current) {
         const focus = focusRef.current;
         focus.progress = Math.min(1, focus.progress + 0.035);
@@ -1050,7 +1058,7 @@ export default function Chateau3DMap({ places, selectedId, onSelect }: Props) {
         camera.position.lerp(focus.camera, eased * 0.1);
         if (focus.progress >= 1 && camera.position.distanceTo(focus.camera) < 0.18) focusRef.current = null;
       }
-      controls.update();
+      if (!reducedMotion || focusRef.current) controls.update();
       composer.render();
     };
     animate();

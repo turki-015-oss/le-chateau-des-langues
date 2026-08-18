@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="theme-color" content="#06170f" />
+    <title>خريطة القلعة التفاعلية</title>
+    <link rel="stylesheet" href="TemplateData/style.css" />
+  </head>
+  <body>
+    <main id="citadel-player" aria-label="خريطة القلعة ثلاثية الأبعاد">
+      <canvas id="unity-canvas" width="1280" height="720" tabindex="-1"></canvas>
+
+      <section id="citadel-loader" role="status" aria-live="polite">
+        <div class="progress-track"><i id="citadel-progress"></i></div>
+        <p id="citadel-status">جاري تحميل الخريطة…</p>
+      </section>
+
+      <div id="unity-warning" aria-live="assertive"></div>
+      <button id="citadel-fullscreen" type="button" aria-label="ملء الشاشة" title="ملء الشاشة">
+        <span></span>
+      </button>
+    </main>
+
+    <script>
+      const canvas = document.querySelector("#unity-canvas");
+      const loader = document.querySelector("#citadel-loader");
+      const progress = document.querySelector("#citadel-progress");
+      const status = document.querySelector("#citadel-status");
+      const warning = document.querySelector("#unity-warning");
+      const fullscreen = document.querySelector("#citadel-fullscreen");
+
+      function showBanner(message, type) {
+        const item = document.createElement("div");
+        item.textContent = message;
+        item.className = type === "error" ? "error" : "warning";
+        warning.appendChild(item);
+        warning.hidden = false;
+        if (type !== "error") {
+          window.setTimeout(() => {
+            item.remove();
+            warning.hidden = !warning.children.length;
+          }, 5000);
+        }
+      }
+
+      const buildUrl = "Build";
+      const buildVersion = "no-brand-2";
+      const config = {
+        arguments: [],
+        dataUrl: `${buildUrl}/WebGLPreview.data.unityweb?v=${buildVersion}`,
+        frameworkUrl: `${buildUrl}/WebGLPreview.framework.js.unityweb?v=${buildVersion}`,
+        codeUrl: `${buildUrl}/WebGLPreview.wasm.unityweb?v=${buildVersion}`,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Le Chateau des Langues",
+        productName: "La Citadelle des Langues",
+        productVersion: "1.0",
+        showBanner,
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      };
+
+      const script = document.createElement("script");
+      script.src = `${buildUrl}/WebGLPreview.loader.js?v=${buildVersion}`;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (value) => {
+          const percent = Math.round(value * 100);
+          progress.style.width = `${percent}%`;
+          status.textContent = percent < 100 ? `جاري تحميل الخريطة… ${percent}٪` : "جاري فتح بوابة القلعة…";
+        }).then((unityInstance) => {
+          loader.classList.add("is-complete");
+          window.setTimeout(() => loader.remove(), 500);
+          fullscreen.hidden = false;
+          fullscreen.addEventListener("click", () => unityInstance.SetFullscreen(1));
+          window.dispatchEvent(new CustomEvent("citadel-map-ready"));
+        }).catch((error) => {
+          status.textContent = "تعذر تشغيل الخريطة. أعد تحميل الصفحة.";
+          showBanner(String(error), "error");
+        });
+      };
+      script.onerror = () => {
+        status.textContent = "تعذر تحميل محرك الخريطة.";
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

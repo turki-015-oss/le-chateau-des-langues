@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "map:tiles": "node scripts/generate-map-tiles.cjs"
+    "map:tiles": "node scripts/generate-map-tiles.cjs",
+    "map:sync-unity": "node scripts/sync-unity-map.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

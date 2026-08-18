@@ -492,11 +492,11 @@ export default function KingdomMapPage() {
       <section className="world-map-viewport-v4">
         <iframe
           className="castle-unity-map-frame"
-          src="/unity-map/index.html?v=performance-1"
+          src="/unity-map/index.html?v=free-camera-1"
           title="الخريطة التفاعلية ثلاثية الأبعاد للقلعة"
           allow="fullscreen"
         />
-        <div className="world-map-hint-v4">اسحب لتدوير الخريطة · استخدم العجلة للتقريب · اضغط على المبنى للدخول</div>
+        <div className="world-map-hint-v4">اسحب للتدوير · Shift مع السحب أو إصبعان للتحرك · العجلة للتقريب · WASD للتجول</div>
         <button
           type="button"
           className={`world-compass-v4 ${compassStatus}`}

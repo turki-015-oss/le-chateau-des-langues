@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Chateau3DMap from "../../components/Chateau3DMap";
 import {
   BookOpen,
   Building2,
@@ -158,6 +157,27 @@ export default function KingdomMapPage() {
       document.body.style.overflow = previousBodyOverflow;
     };
   }, []);
+
+  useEffect(() => {
+    const handleUnityNavigation = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      const message = event.data as { source?: string; type?: string; path?: string } | null;
+      if (message?.source !== "castle-unity-map" || message.type !== "navigate" || !message.path) return;
+
+      const destination = places.find((place) => place.open && place.path === message.path);
+      if (!destination) return;
+
+      setEntering(destination);
+      window.setTimeout(() => {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        router.push(destination.path!);
+      }, 700);
+    };
+
+    window.addEventListener("message", handleUnityNavigation);
+    return () => window.removeEventListener("message", handleUnityNavigation);
+  }, [router]);
 
   const clampScale = (value: number) => Math.max(MIN_SCALE, Math.min(MAX_SCALE, value));
   const clampPosition = (next: { x: number; y: number }, nextScale = scale) => {
@@ -470,15 +490,13 @@ export default function KingdomMapPage() {
 
       {viewMode === "map" ? (
       <section className="world-map-viewport-v4">
-        <Chateau3DMap
-          places={places.filter((place) => place.id !== "profile")}
-          selectedId={selected?.id}
-          onSelect={(id) => {
-            const place = places.find((item) => item.id === id);
-            if (place) setSelected(place);
-          }}
+        <iframe
+          className="castle-unity-map-frame"
+          src="/unity-map/index.html?v=performance-1"
+          title="الخريطة التفاعلية ثلاثية الأبعاد للقلعة"
+          allow="fullscreen"
         />
-        <div className="world-map-hint-v4">اسحب لتدوير القلعة · قرّب بإصبعين · اضغط على المبنى</div>
+        <div className="world-map-hint-v4">اسحب لتدوير الخريطة · استخدم العجلة للتقريب · اضغط على المبنى للدخول</div>
         <button
           type="button"
           className={`world-compass-v4 ${compassStatus}`}

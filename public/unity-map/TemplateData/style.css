@@ -1,0 +1,22 @@
+:root { color-scheme: dark; font-family: Tahoma, Arial, sans-serif; }
+* { box-sizing: border-box; }
+html, body, #citadel-player { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #07160f; }
+body { touch-action: none; }
+#citadel-player { position: relative; isolation: isolate; }
+#unity-canvas { display: block; width: 100%; height: 100%; outline: 0; background: radial-gradient(circle at 50% 35%, #264d32, #07160f 72%); }
+#citadel-loader { position: absolute; inset: 0; z-index: 20; display: grid; place-content: center; justify-items: center; padding: 28px; text-align: center; background: radial-gradient(circle at 50% 35%, #173c29, #06150e 62%, #020806); transition: opacity .4s ease, visibility .4s ease; }
+#citadel-loader::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(#dfc16d 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(circle, #000, transparent 72%); }
+#citadel-loader.is-complete { opacity: 0; visibility: hidden; }
+.progress-track { position: relative; width: min(330px, 72vw); height: 9px; overflow: hidden; border: 1px solid #b6974d88; border-radius: 999px; background: #020906; box-shadow: inset 0 1px 5px #000; }
+.progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #1c8b53, #d8ba62); box-shadow: 0 0 16px #d8ba6277; transition: width .18s ease; }
+#citadel-status { position: relative; min-height: 22px; margin: 12px 0 0; color: #ddd0aa; font-size: 13px; }
+#unity-warning { position: absolute; z-index: 30; top: 16px; left: 50%; width: min(680px, calc(100% - 28px)); transform: translateX(-50%); text-align: center; }
+#unity-warning:empty { display: none; }
+#unity-warning div { margin-bottom: 8px; padding: 10px 14px; border-radius: 10px; color: #fff; background: #8a6817ee; box-shadow: 0 8px 25px #0008; }
+#unity-warning .error { background: #8e2323ee; }
+#citadel-fullscreen { position: absolute; z-index: 10; left: 16px; bottom: 16px; width: 44px; height: 44px; padding: 0; border: 1px solid #d6b75f; border-radius: 13px; background: #071b12dc; cursor: pointer; box-shadow: 0 9px 25px #0008; }
+#citadel-fullscreen[hidden] { display: none; }
+#citadel-fullscreen span, #citadel-fullscreen span::before { position: absolute; inset: 12px; content: ""; border: solid #f0d47f; border-width: 2px 0 0 2px; }
+#citadel-fullscreen span::before { inset: 5px -5px -5px 5px; transform: rotate(180deg); }
+@media (max-width: 700px) { #citadel-fullscreen { left: 10px; bottom: 10px; } }
+@media (prefers-reduced-motion: reduce) { #citadel-loader, .progress-track i { transition: none; } }

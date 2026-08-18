@@ -45,7 +45,7 @@
       }
 
       const buildUrl = "Build";
-      const buildVersion = "stable-lighting-1";
+      const buildVersion = "adaptive-performance-1";
       const config = {
         arguments: [],
         dataUrl: `${buildUrl}/WebGLPreview.data.unityweb?v=${buildVersion}`,
@@ -56,7 +56,7 @@
         productName: "La Citadelle des Langues",
         productVersion: "1.0",
         showBanner,
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, window.innerWidth < 900 ? 0.9 : 1.1),
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, window.innerWidth < 900 ? 0.75 : 0.9),
       };
 
       const script = document.createElement("script");

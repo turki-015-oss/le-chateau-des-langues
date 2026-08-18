@@ -492,7 +492,7 @@ export default function KingdomMapPage() {
       <section className="world-map-viewport-v4">
         <iframe
           className="castle-unity-map-frame"
-          src="/unity-map/index.html?v=no-brand-2"
+          src="/unity-map/index.html?v=performance-1"
           title="الخريطة التفاعلية ثلاثية الأبعاد للقلعة"
           allow="fullscreen"
         />

@@ -207,7 +207,10 @@ export default function KingdomPage() {
       <header className="castle-portal-topbar">
         <nav className="castle-portal-nav" aria-label="التنقل الرئيسي">
           <button onClick={() => router.push("/")}><span>ACCUEIL</span><small>الرئيسية</small></button>
-          <button onClick={() => setTourOpen(true)}><span>VISITE</span><small>الجولة</small></button>
+          <button onClick={() => setTourOpen(true)}><span>À PROPOS</span><small>عن القلعة</small></button>
+          <button onClick={() => router.push("/university")}><span>COURS</span><small>الدروس</small></button>
+          <button onClick={() => router.push("/library")}><span>RESSOURCES</span><small>المصادر</small></button>
+          <button onClick={() => setTourOpen(true)}><span>CONTACT</span><small>تواصل</small></button>
         </nav>
 
         <div className="castle-portal-tools">
@@ -235,6 +238,7 @@ export default function KingdomPage() {
       <section className={`castle-portal-scene ${activeTourTarget === "castle" ? "is-tour-focus" : ""}`} data-guide="castle">
         <div className="castle-portal-sun" />
         <div className="castle-portal-castle">
+          <img className="castle-facade-art" src="/kingdom-portal-assets/castle-facade.png" alt="" aria-hidden="true" />
           <button
             className={`castle-main-gate ${pressed === "castle" ? "is-pressed" : ""}`}
             onClick={() => enter("castle", "LE CHÂTEAU", "القلعة", "/entrance/castle")}
@@ -256,7 +260,7 @@ export default function KingdomPage() {
               onClick={() => enter("university", "UNIVERSITÉ", "الجامعة", "/entrance/university")}
             >
               <span className="book-copy"><strong>UNIVERSITÉ</strong><small>الجامعة</small><em>Choisissez votre niveau · اختر مستواك</em></span>
-              <span className="book-miniature"><GraduationCap /></span>
+              <img className="university-campus-art" src="/kingdom-portal-assets/university-campus.png" alt="" aria-hidden="true" />
               <span className="book-enter"><Sparkles /> ENTRER</span>
             </button>
 
@@ -265,7 +269,7 @@ export default function KingdomPage() {
               className={`book-destination library-book ${pressed === "library" ? "is-pressed" : ""} ${activeTourTarget === "library" ? "is-tour-focus" : ""}`}
               onClick={() => enter("library", "BIBLIOTHÈQUE", "المكتبة", "/entrance/library")}
             >
-              <span className="library-building"><i /><i /><i /><i /><Library /></span>
+              <img className="library-facade-art" src="/kingdom-portal-assets/library-facade.png" alt="" aria-hidden="true" />
               <span className="book-copy"><strong>BIBLIOTHÈQUE</strong><small>المكتبة</small><em>Mots, histoires et romans · كلمات وقصص وروايات</em></span>
               <span className="book-enter"><Sparkles /> ENTRER</span>
             </button>

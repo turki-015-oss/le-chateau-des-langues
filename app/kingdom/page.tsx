@@ -48,10 +48,10 @@ type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
 };
 
 const destinations: Destination[] = [
-  { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", path: "/hospital", image: "/maps/facades/civic-facade.webp", description: "الصحة والمواعيد وطلب المساعدة", icon: <Building2 /> },
-  { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/entrance/airport", image: "/airport/terminal-main.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
-  { id: "station", fr: "GARE", ar: "محطة القطار", path: "/entrance/station", image: "/worlds/station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
-  { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/entrance/market", image: "/worlds/market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
+  { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", path: "/hospital", image: "/kingdom-portal-assets/destination-hospital.png", description: "الصحة والمواعيد وطلب المساعدة", icon: <Building2 /> },
+  { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/entrance/airport", image: "/kingdom-portal-assets/destination-airport.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
+  { id: "station", fr: "GARE", ar: "محطة القطار", path: "/entrance/station", image: "/kingdom-portal-assets/destination-station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
+  { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/entrance/market", image: "/kingdom-portal-assets/destination-market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
   { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/entrance/cafe", image: "/kingdom-portal-assets/destination-cafe-v2.webp", description: "التحية والجلوس والطلب", icon: <Coffee /> },
   { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/entrance/restaurant", image: "/kingdom-portal-assets/destination-restaurant-v2.webp", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
   { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/entrance/police", image: "/kingdom-portal-assets/destination-police-v2.webp", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
@@ -290,6 +290,7 @@ export default function KingdomPage() {
           {destinations.map((destination) => (
             <button
               key={destination.id}
+              data-destination={destination.id}
               className={`destination-tab ${pressed === destination.id ? "is-pressed" : ""}`}
               onClick={() => enter(destination.id, destination.fr, destination.ar, destination.path)}
             >

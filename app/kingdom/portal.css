@@ -84,12 +84,6 @@
   .destination-tab{flex-basis:clamp(190px,17.5vw,235px)}
 }
 
-.destination-tab:nth-child(-n+4) .destination-photo{height:105px;bottom:17px;background-image:url('/kingdom-portal-assets/primary-destinations.png')!important;background-size:400% auto!important;background-repeat:no-repeat;background-color:transparent;filter:none;mix-blend-mode:normal}
-.destination-tab:nth-child(1) .destination-photo{background-position:0% 52%}
-.destination-tab:nth-child(2) .destination-photo{background-position:33.333% 52%}
-.destination-tab:nth-child(3) .destination-photo{background-position:66.666% 52%}
-.destination-tab:nth-child(4) .destination-photo{background-position:100% 52%}
-
 /* Destination cards: a dedicated title plaque above a clean architectural image. */
 .destination-tab{
   min-height:240px;
@@ -146,15 +140,15 @@
 .destination-tab:nth-child(-n+4) .destination-photo{
   left:13%;right:13%;bottom:16px;height:113px;
 }
-.destination-tab:nth-child(7) .destination-copy strong{
+.destination-tab[data-destination="police"] .destination-copy strong{
   font-size:clamp(16px,1.35vw,21px);
   letter-spacing:.02em;
 }
-.destination-tab:nth-child(n+5) .destination-photo{
+.destination-tab .destination-photo{
   transition:transform .28s ease,filter .28s ease;
   filter:drop-shadow(0 9px 7px #60472855);
 }
-.destination-tab:nth-child(n+5):hover .destination-photo{
+.destination-tab:hover .destination-photo{
   transform:translateY(-3px) scale(1.025);
   filter:drop-shadow(0 12px 10px #60472870);
 }
@@ -162,7 +156,7 @@
   .destination-tab{min-height:228px;flex-basis:210px}
   .destination-photo{height:139px}
   .destination-copy strong{font-size:20px}
-  .destination-tab:nth-child(7) .destination-copy strong{font-size:16px}
+  .destination-tab[data-destination="police"] .destination-copy strong{font-size:16px}
 }
 
 /* Final portal polish: visible library, sculpted book, and dense castle-side planting. */
@@ -432,10 +426,8 @@
     background-size:contain!important;
     background-position:center bottom!important;
   }
-  .destination-tab:nth-child(1) .destination-photo{background-image:url('/kingdom-portal-assets/destination-hospital.png')!important}
-  .destination-tab:nth-child(2) .destination-photo{background-image:url('/kingdom-portal-assets/destination-airport.png')!important}
-  .destination-tab:nth-child(3) .destination-photo{background-image:url('/kingdom-portal-assets/destination-station.png')!important}
-  .destination-tab:nth-child(4) .destination-photo{background-image:url('/kingdom-portal-assets/destination-market.png')!important}
+  .destination-tab[data-destination="stadium"] .destination-photo{height:104px}
+  .destination-tab[data-destination="court"] .destination-photo{height:122px;left:11%;right:11%}
   .destination-arrow{top:50%;width:34px;height:52px;transform:translateY(-50%)}
   .destination-arrow:focus{outline:none}
   .destination-arrow:focus-visible{outline:2px solid #c79c55;outline-offset:2px;border-radius:14px}

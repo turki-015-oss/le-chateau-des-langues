@@ -191,3 +191,59 @@
   50%{transform:scaleX(var(--garden-mirror)) rotate(.18deg) translate3d(1px,-1px,0)}
 }
 @media(prefers-reduced-motion:reduce){.castle-portal-garden{animation:none}}
+
+/* Photorealistic book base; the interactive destinations stay separate above it. */
+.enchanted-book{
+  isolation:isolate;
+  width:min(1240px,96vw);
+  height:520px;
+  bottom:-70px;
+  filter:drop-shadow(0 30px 22px #39241470) drop-shadow(0 8px 5px #8d694338);
+}
+.enchanted-book:before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:-18px -2% -12px;
+  background:url('/kingdom-portal-assets/open-book-realistic-v1.webp') center/100% 100% no-repeat;
+  pointer-events:none;
+}
+.enchanted-book:after,.book-pages:before,.book-pages:after,.book-spine,.book-edge{display:none!important}
+.book-pages{height:100%;grid-template-columns:50% 50%;filter:none}
+.book-destination{
+  z-index:2;
+  margin:34px 22px 72px;
+  overflow:visible;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease;
+}
+.book-destination:after{
+  display:block;
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:26px 22px 38px;
+  border:1px solid #8b63312b;
+  border-radius:34px;
+  background:radial-gradient(ellipse at 50% 105%,#6f481b16,transparent 63%);
+  pointer-events:none;
+}
+.book-destination:hover{transform:translateY(-4px) rotateX(1deg)}
+.book-destination.is-pressed{transform:translateY(7px) scale(.988)!important}
+.university-book .book-copy{left:12%;top:100px;max-width:47%}
+.library-book .book-copy{right:11%;top:92px;max-width:72%}
+.university-campus-art{right:-10%;bottom:76px;width:57%}
+.library-book .library-facade-art{left:8%;bottom:73px;width:84%;max-height:58%}
+
+@media(min-width:621px){
+  .destination-gallery{margin-top:-24px}
+}
+@media(max-width:620px){
+  .enchanted-book{width:760px;height:455px;bottom:-45px}
+  .enchanted-book:before{inset:-12px -1.5% -8px}
+  .book-destination{margin:28px 12px 60px}
+  .book-destination:after{inset:22px 14px 32px}
+  .university-book .book-copy{left:10%;top:100px}
+  .library-book .book-copy{right:10%;top:88px}
+  .university-campus-art{right:-13%;bottom:67px;width:59%}
+  .library-book .library-facade-art{left:7%;bottom:64px;width:86%;max-height:57%}
+}

@@ -335,3 +335,73 @@
   .university-campus-art{right:19%;bottom:22px;width:62%;max-height:49%}
   .library-book .library-facade-art{left:20%;bottom:23px;width:60%;max-height:46%}
 }
+
+/* Mobile composition: preserve the desktop scene proportions instead of cropping fixed-width art. */
+@media(max-width:620px){
+  .castle-portal-topbar{min-height:60px;padding:0 9px;flex-wrap:nowrap;overflow:hidden}
+  .castle-portal-nav{height:60px;gap:4px;flex-wrap:nowrap;white-space:nowrap}
+  .castle-portal-nav button:first-child{display:flex}
+  .castle-portal-nav button:nth-child(n+3){display:none}
+  .castle-portal-nav button{height:60px;padding-inline:6px;display:flex;align-items:center}
+  .castle-portal-nav span{font-size:10px;line-height:1;letter-spacing:.01em}
+  .castle-portal-nav button:first-child:after{bottom:10px}
+  .castle-portal-tools{gap:6px}
+  .castle-language{display:none}
+  .castle-language span{font-size:9px}
+  .castle-compass-face{width:30px;height:30px}
+
+  .castle-portal-scene{
+    height:570px;
+    min-height:570px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#6fb0e6 0 37%,#d9e5d6 64%,#cbd7cf 100%);
+  }
+  .castle-portal-scene:after{height:48%}
+  .castle-portal-castle{width:100vw;height:340px}
+  .castle-facade-art{
+    width:100vw;
+    max-width:520px;
+    height:auto;
+    bottom:0;
+    object-fit:contain;
+  }
+  .castle-main-gate{top:0;width:min(68vw,275px);height:322px}
+  .castle-main-title{top:37px}
+  .castle-main-title strong{font-size:clamp(24px,7vw,29px)}
+  .castle-main-title small{font-size:14px}
+  .castle-enter-hint{bottom:14px;font-size:8px;padding:6px 10px}
+
+  .castle-portal-garden{top:70px;width:145px;height:245px;background-size:auto 100%}
+  .castle-portal-garden-left{left:-78px}
+  .castle-portal-garden-right{right:-78px}
+
+  .enchanted-book{width:96vw;height:225px;bottom:8px}
+  .enchanted-book:before{inset:-5px -1.5% -4px}
+  .book-destination{height:auto;min-height:0;margin:12px 3px 28px;align-self:stretch}
+  .book-destination:after{inset:10px 5px 16px}
+  .university-book .book-copy,.library-book .book-copy{top:31px;width:90%;max-width:90%}
+  .university-book .book-copy{left:5%;transform:translateX(2px)}
+  .library-book .book-copy{right:5%}
+  .library-book .book-copy small{transform:translate(-3px,-3px)}
+  .book-copy strong,.library-book .book-copy strong{font-size:clamp(12px,4vw,17px)}
+  .book-copy small,.library-book .book-copy small{font-size:11px}
+  .university-campus-art{right:19%;bottom:18px;width:62%;height:auto;max-height:48%;display:block;opacity:1}
+  .library-book .library-facade-art{left:20%;bottom:18px;width:60%;height:auto;max-height:45%;display:block;opacity:1}
+
+  .destination-gallery{margin-top:0;padding:0 34px 18px;min-height:260px}
+  .destination-gallery:before{left:3%;right:3%;top:-34px;height:58px}
+  .destination-rail{gap:12px;padding:0 10px 24px;scroll-padding-inline:10px}
+  .destination-tab{flex:0 0 min(78vw,300px);min-height:238px}
+  .destination-arrow{top:45%;width:38px;height:58px}
+  .destination-arrow.previous{left:0}
+  .destination-arrow.next{right:0}
+}
+
+@media(max-width:390px){
+  .castle-portal-scene{height:548px;min-height:548px}
+  .castle-portal-castle{height:320px}
+  .castle-main-gate{height:302px}
+  .enchanted-book{height:218px;bottom:6px}
+  .destination-gallery{padding-inline:30px}
+  .destination-tab{flex-basis:min(80vw,292px)}
+}

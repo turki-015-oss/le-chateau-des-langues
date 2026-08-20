@@ -162,18 +162,32 @@
 }
 
 .castle-portal-garden{
+  --garden-mirror:1;
   z-index:3;
   top:98px;
   width:clamp(250px,28vw,440px);
   height:340px;
   background:url('/kingdom-portal-assets/castle-trees.png') left bottom/auto 100% no-repeat;
   filter:drop-shadow(0 16px 14px #22351d66);
+  -webkit-mask-image:linear-gradient(to right,#000 0 55%,rgba(0,0,0,.96) 66%,rgba(0,0,0,.52) 82%,transparent 100%);
+  mask-image:linear-gradient(to right,#000 0 55%,rgba(0,0,0,.96) 66%,rgba(0,0,0,.52) 82%,transparent 100%);
+  transform:scaleX(var(--garden-mirror));
+  transform-origin:50% 100%;
+  will-change:transform;
+  backface-visibility:hidden;
+  animation:castleGardenBreeze 8s ease-in-out infinite;
 }
 .castle-portal-garden-left{left:-15vw}
-.castle-portal-garden-right{right:-15vw}
+.castle-portal-garden-right{--garden-mirror:-1;right:-15vw}
 .castle-portal-garden:before,.castle-portal-garden:after{display:none}
 @media(max-width:620px){
   .castle-portal-garden{top:95px;width:190px;height:255px;background-size:auto 100%}
   .castle-portal-garden-left{left:-105px}
   .castle-portal-garden-right{right:-105px}
 }
+
+@keyframes castleGardenBreeze{
+  0%,100%{transform:scaleX(var(--garden-mirror)) rotate(-.16deg) translate3d(0,0,0)}
+  50%{transform:scaleX(var(--garden-mirror)) rotate(.18deg) translate3d(1px,-1px,0)}
+}
+@media(prefers-reduced-motion:reduce){.castle-portal-garden{animation:none}}

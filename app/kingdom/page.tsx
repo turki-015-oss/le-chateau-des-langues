@@ -2,52 +2,43 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import "./portal.css";
 import {
+  ArrowLeft,
+  ArrowRight,
   BookOpen,
   Building2,
   Castle,
+  ChevronLeft,
+  ChevronRight,
   Coffee,
   Compass,
   GraduationCap,
   Hotel,
   Landmark,
+  Languages,
+  Library,
   MapPin,
-  Minus,
   Plane,
-  Plus,
   Power,
-  RotateCcw,
   Scale,
   ShoppingBasket,
+  Sparkles,
   Train,
   Trees,
   Trophy,
   Utensils,
-  X,
-  Search,
-  Navigation,
-  LockKeyhole,
-  Hand,
-  Sparkles,
-  ChevronLeft,
-  MousePointer2,
-  UserRound,
-  Save,
-  LayoutGrid,
-  Map as MapIcon,
-  LogIn,
-  LogOut,
-  ImagePlus,
-  CheckCircle2,
-  Home,
-  CarFront
+  X
 } from "lucide-react";
 
-type PlayerProfile = {
-  name: string;
-  email: string;
-  avatar: string;
-  signedIn: boolean;
+type Destination = {
+  id: string;
+  fr: string;
+  ar: string;
+  path: string;
+  image: string;
+  description: string;
+  icon: React.ReactNode;
 };
 
 type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
@@ -56,227 +47,113 @@ type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
 
-type Place = {
-  id: string;
-  fr: string;
-  ar: string;
-  description: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  path?: string;
-  open: boolean;
-  icon: React.ReactNode;
-};
-
-const places: Place[] = [
-  { id: "profile", fr: "Profil", ar: "الملف الشخصي", description: "الصورة والحساب وإعدادات اللاعب", x: 10, y: 1034, w: 190, h: 64, open: true, icon: <UserRound /> },
-  { id: "university", fr: "L'Université", ar: "الجامعة", description: "الدراسة والمحاضرات والحياة الجامعية", x: 75, y: 87, w: 162, h: 203, path: "/entrance/university", open: true, icon: <GraduationCap /> },
-  { id: "stadium", fr: "Le Stade", ar: "ملعب كرة القدم", description: "المباريات والتدريب والإعلام الرياضي", x: 588, y: 141, w: 178, h: 174, path: "/entrance/stadium", open: true, icon: <Trophy /> },
-  { id: "cafe", fr: "Chez Luc", ar: "المقهى", description: "التحية والجلوس والطلب والدفع", x: 55, y: 319, w: 193, h: 153, path: "/entrance/cafe", open: true, icon: <Coffee /> },
-  { id: "restaurant", fr: "Le Restaurant", ar: "المطعم", description: "الحجز والقائمة والطلب والشكوى", x: 600, y: 306, w: 174, h: 149, path: "/entrance/restaurant", open: true, icon: <Utensils /> },
-  { id: "market", fr: "Le Grand Marché", ar: "السوق الكبير", description: "الشراء والأسعار والتفاوض", x: 43, y: 484, w: 217, h: 161, path: "/entrance/market", open: true, icon: <ShoppingBasket /> },
-  { id: "court", fr: "Le Tribunal", ar: "المحكمة", description: "القضايا والشهادة واللغة الرسمية", x: 359, y: 513, w: 170, h: 153, path: "/court", open: true, icon: <Scale /> },
-  { id: "hospital", fr: "L'Hôpital", ar: "المستشفى", description: "الأعراض والمواعيد وطلب المساعدة", x: 525, y: 430, w: 162, h: 157, path: "/hospital", open: true, icon: <Building2 /> },
-  { id: "zoo", fr: "Le Zoo", ar: "حديقة الحيوانات", description: "الحيوانات والطبيعة والاستكشاف", x: 671, y: 563, w: 118, h: 145, path: "/entrance/zoo", open: true, icon: <Trees /> },
-  { id: "library", fr: "La Bibliothèque", ar: "المكتبة", description: "القراءة والبحث والمفردات", x: 51, y: 654, w: 193, h: 153, path: "/entrance/library", open: true, icon: <BookOpen /> },
-  { id: "police", fr: "Le Commissariat", ar: "مركز الشرطة", description: "المواقف الأمنية وطلب المساعدة", x: 280, y: 650, w: 221, h: 166, path: "/entrance/police", open: true, icon: <Landmark /> },
-  { id: "hotel", fr: "L'Hôtel", ar: "الفندق", description: "الحجز والاستقبال والإقامة", x: 525, y: 629, w: 174, h: 157, path: "/entrance/hotel", open: true, icon: <Hotel /> },
-  { id: "airport", fr: "L'Aéroport", ar: "المطار", description: "السفر والجوازات والرحلات", x: 36, y: 857, w: 237, h: 161, path: "/entrance/airport", open: true, icon: <Plane /> },
-  { id: "station", fr: "La Gare", ar: "محطة القطار", description: "التذاكر والمواعيد والوجهات", x: 552, y: 848, w: 217, h: 182, path: "/entrance/station", open: true, icon: <Train /> },
-  { id: "vehicles", fr: "Le Centre des véhicules et des engins", ar: "مركز المركبات والآليات", description: "السيارات والحافلات والشاحنات والآليات المتخصصة", x: 552, y: 848, w: 217, h: 182, open: false, icon: <CarFront /> },
-  { id: "palace", fr: "Le Château", ar: "القلعة", description: "قلب القلعة وقاعات التعلّم", x: 260, y: 62, w: 288, h: 352, path: "/entrance/castle", open: true, icon: <Castle /> }
+const destinations: Destination[] = [
+  { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", path: "/hospital", image: "/maps/facades/civic-facade.webp", description: "الصحة والمواعيد وطلب المساعدة", icon: <Building2 /> },
+  { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/entrance/airport", image: "/airport/terminal-main.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
+  { id: "station", fr: "GARE", ar: "محطة القطار", path: "/entrance/station", image: "/worlds/station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
+  { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/entrance/market", image: "/worlds/market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
+  { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/entrance/cafe", image: "/kingdom-portal-assets/destination-cafe-v2.webp", description: "التحية والجلوس والطلب", icon: <Coffee /> },
+  { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/entrance/restaurant", image: "/kingdom-portal-assets/destination-restaurant-v2.webp", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
+  { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/entrance/police", image: "/kingdom-portal-assets/destination-police-v2.webp", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
+  { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", path: "/entrance/zoo", image: "/kingdom-portal-assets/destination-zoo-v2.webp", description: "الحيوانات والطبيعة والاستكشاف", icon: <Trees /> },
+  { id: "hotel", fr: "HÔTEL", ar: "الفندق", path: "/entrance/hotel", image: "/kingdom-portal-assets/destination-hotel-v2.webp", description: "الحجز والاستقبال والإقامة", icon: <Hotel /> },
+  { id: "stadium", fr: "STADE", ar: "الملعب", path: "/entrance/stadium", image: "/kingdom-portal-assets/destination-stadium-v2.webp", description: "الرياضة والمباريات والجمهور", icon: <Trophy /> },
+  { id: "court", fr: "TRIBUNAL", ar: "المحكمة", path: "/court", image: "/maps/facades/civic-facade.webp", description: "القضايا والشهادة واللغة الرسمية", icon: <Scale /> }
 ];
 
-
-const avatarOptions = [
-  { id: "royal", label: "الفارس", value: "🧑🏻‍⚔️" },
-  { id: "student", label: "الطالب", value: "🧑🏻‍🎓" },
-  { id: "explorer", label: "المستكشف", value: "🧭" },
-  { id: "scholar", label: "الباحث", value: "🧑🏻‍🏫" },
-  { id: "traveler", label: "المسافر", value: "🧳" },
-  { id: "hero", label: "البطل", value: "🦸🏻" }
+const tourSlides = [
+  {
+    target: "university",
+    icon: <GraduationCap />,
+    fr: "Apprenez selon votre niveau",
+    ar: "ابدأ من الجامعة وتعلّم حسب مستواك A1 أو A2، من الأحرف حتى المحادثة."
+  },
+  {
+    target: "castle",
+    icon: <Castle />,
+    fr: "Verbes, conjugaison et grammaire",
+    ar: "ادخل القلعة لتعلّم الأفعال وتصريفها ودراسة قواعد اللغة الفرنسية."
+  },
+  {
+    target: "library",
+    icon: <BookOpen />,
+    fr: "Cherchez, lisez, découvrez",
+    ar: "ابحث في المكتبة عن الكلمات والأسماء والقصص والروايات."
+  },
+  {
+    target: "destinations",
+    icon: <MapPin />,
+    fr: "Apprenez dans chaque lieu",
+    ar: "تجوّل بين الأماكن وتعلّم المفردات والمحادثات حسب المكان الذي تختاره."
+  }
 ];
 
-const defaultProfile: PlayerProfile = {
-  name: "متعلم جديد",
-  email: "",
-  avatar: "🧑🏻‍🎓",
-  signedIn: false
-};
-
-const ART_W = 808;
-const ART_H = 1114;
-const WORLD_W = 3200;
-const WORLD_H = 4200;
-const CITY_X = 1088;
-const CITY_Y = 1260;
-const CITY_W = 808;
-const CITY_H = 1114;
-const MIN_SCALE = 0.2;
-const MAX_SCALE = 1.6;
-
-export default function KingdomMapPage() {
+export default function KingdomPage() {
   const router = useRouter();
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const pointers = useRef(new Map<number, { x: number; y: number }>());
-  const lastPointer = useRef<{ x: number; y: number } | null>(null);
-  const pinchDistance = useRef<number | null>(null);
-  const moved = useRef(false);
-
-  const [scale, setScale] = useState(0.62);
-  const [position, setPosition] = useState({ x: -620, y: -700 });
-  const [selected, setSelected] = useState<Place | null>(null);
-  const [dragging, setDragging] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [showGuide, setShowGuide] = useState(false);
-  const [guideStep, setGuideStep] = useState(0);
-  const [entering, setEntering] = useState<Place | null>(null);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "register">("login");
-  const [profile, setProfile] = useState<PlayerProfile>(defaultProfile);
-  const [nameInput, setNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [saveMessage, setSaveMessage] = useState("");
-  const [viewMode, setViewMode] = useState<"map" | "classic">("map");
+  const railRef = useRef<HTMLDivElement>(null);
+  const [language, setLanguage] = useState<"ar" | "fr">("ar");
+  const [pressed, setPressed] = useState<string | null>(null);
+  const [entering, setEntering] = useState<{ fr: string; ar: string } | null>(null);
+  const [tourOpen, setTourOpen] = useState(false);
+  const [tourStep, setTourStep] = useState(0);
+  const [compassEnabled, setCompassEnabled] = useState(true);
+  const [compassAuthorized, setCompassAuthorized] = useState(false);
   const [compassHeading, setCompassHeading] = useState<number | null>(null);
   const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
-  const [compassAuthorized, setCompassAuthorized] = useState(false);
-  const [compassEnabled, setCompassEnabled] = useState(true);
 
   useEffect(() => {
-    const previousHtmlOverflow = document.documentElement.style.overflow;
-    const previousBodyOverflow = document.body.style.overflow;
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.documentElement.style.overflow = previousHtmlOverflow;
-      document.body.style.overflow = previousBodyOverflow;
-    };
+    const timer = window.setTimeout(() => {
+      if (!localStorage.getItem("chateau-new-portal-tour-seen-v1")) setTourOpen(true);
+    }, 850);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    const handleUnityNavigation = (event: MessageEvent) => {
-      if (event.origin !== window.location.origin) return;
-      const message = event.data as { source?: string; type?: string; path?: string } | null;
-      if (message?.source !== "castle-unity-map" || message.type !== "navigate" || !message.path) return;
-
-      const destination = places.find((place) => place.open && place.path === message.path);
-      if (!destination) return;
-
-      setEntering(destination);
-      window.setTimeout(() => {
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-        router.push(destination.path!);
-      }, 700);
-    };
-
-    window.addEventListener("message", handleUnityNavigation);
-    return () => window.removeEventListener("message", handleUnityNavigation);
-  }, [router]);
-
-  const clampScale = (value: number) => Math.max(MIN_SCALE, Math.min(MAX_SCALE, value));
-  const clampPosition = (next: { x: number; y: number }, nextScale = scale) => {
-    const viewport = viewportRef.current;
-    if (!viewport) return next;
-    const margin = 120;
-    const minX = viewport.clientWidth - WORLD_W * nextScale - margin;
-    const maxX = margin;
-    const minY = viewport.clientHeight - WORLD_H * nextScale - margin;
-    const maxY = margin;
-    return {
-      x: Math.min(maxX, Math.max(minX, next.x)),
-      y: Math.min(maxY, Math.max(minY, next.y))
-    };
-  };
-
-  const focusPlace = (place: Place) => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    const targetScale = Math.max(scale, viewport.clientWidth < 720 ? 0.85 : 0.95);
-    const worldX = CITY_X + place.x + place.w / 2;
-    const worldY = CITY_Y + place.y + place.h / 2;
-    const next = {
-      x: viewport.clientWidth / 2 - worldX * targetScale,
-      y: viewport.clientHeight / 2 - worldY * targetScale
-    };
-    setScale(targetScale);
-    setPosition(clampPosition(next, targetScale));
-    setMenuOpen(false);
-    window.setTimeout(() => setSelected(place), 260);
-  };
-
-  const filteredPlaces = places.filter((place) =>
-    `${place.ar} ${place.fr}`.toLowerCase().includes(query.trim().toLowerCase())
-  );
-
-
-  const centerMap = () => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    const nextScale = viewport.clientWidth < 720 ? 0.58 : 0.72;
-    setScale(nextScale);
-    setPosition({
-      x: viewport.clientWidth / 2 - (CITY_X + CITY_W / 2) * nextScale,
-      y: viewport.clientHeight / 2 - (CITY_Y + CITY_H / 2) * nextScale
-    });
-  };
-
-  useEffect(() => {
     if (!compassEnabled) {
-      setCompassHeading(null);
       setCompassStatus("disabled");
+      setCompassHeading(null);
       return;
     }
-
     if (!("DeviceOrientationEvent" in window)) {
       setCompassStatus("unavailable");
       return;
     }
-
     const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
     if (typeof OrientationEvent.requestPermission === "function" && !compassAuthorized) {
       setCompassStatus("permission");
       return;
     }
 
-    let receivedHeading = false;
-    const handleOrientation = (rawEvent: Event) => {
+    let received = false;
+    const onOrientation = (rawEvent: Event) => {
       const event = rawEvent as CompassOrientationEvent;
-      const webkitHeading = event.webkitCompassHeading;
-      const nextHeading = typeof webkitHeading === "number" && Number.isFinite(webkitHeading)
-        ? webkitHeading
+      const heading = typeof event.webkitCompassHeading === "number"
+        ? event.webkitCompassHeading
         : event.absolute && typeof event.alpha === "number"
           ? (360 - event.alpha + 360) % 360
           : null;
-      if (nextHeading === null) return;
-      receivedHeading = true;
+      if (heading === null || !Number.isFinite(heading)) return;
+      received = true;
       setCompassStatus("active");
       setCompassHeading((previous) => {
-        if (previous === null) return nextHeading;
-        const shortestTurn = ((nextHeading - previous + 540) % 360) - 180;
-        return (previous + shortestTurn * 0.24 + 360) % 360;
+        if (previous === null) return heading;
+        const turn = ((heading - previous + 540) % 360) - 180;
+        return (previous + turn * 0.22 + 360) % 360;
       });
     };
-
     const eventName = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
-    window.addEventListener(eventName, handleOrientation, true);
+    window.addEventListener(eventName, onOrientation, true);
     setCompassStatus("detecting");
-    const unavailableTimer = window.setTimeout(() => {
-      if (!receivedHeading) setCompassStatus("unavailable");
+    const timer = window.setTimeout(() => {
+      if (!received) setCompassStatus("unavailable");
     }, 2800);
-
     return () => {
-      window.clearTimeout(unavailableTimer);
-      window.removeEventListener(eventName, handleOrientation, true);
+      window.clearTimeout(timer);
+      window.removeEventListener(eventName, onOrientation, true);
     };
   }, [compassAuthorized, compassEnabled]);
 
-  const requestCompassPermission = async () => {
+  const requestCompass = async () => {
     const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
     if (typeof OrientationEvent.requestPermission !== "function") {
       setCompassAuthorized(true);
@@ -287,344 +164,181 @@ export default function KingdomMapPage() {
       if (permission === "granted") {
         setCompassAuthorized(true);
         setCompassStatus("detecting");
-      } else {
-        setCompassStatus("denied");
-      }
+      } else setCompassStatus("denied");
     } catch {
       setCompassStatus("denied");
     }
   };
 
-  const compassDirection = compassHeading === null
-    ? compassStatus === "disabled" ? "متوقفة"
-      : compassStatus === "permission" ? "تفعيل الاتجاه"
-      : compassStatus === "denied" ? "الإذن مرفوض"
-        : compassStatus === "unavailable" ? "الشمال ثابت"
-          : "جارٍ التحديد"
-    : ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
+  const compassLabel = useMemo(() => {
+    if (!compassEnabled) return "متوقفة";
+    if (compassStatus === "permission") return "تفعيل الاتجاه";
+    if (compassStatus === "denied") return "الإذن مرفوض";
+    if (compassStatus === "unavailable") return "الشمال";
+    if (compassHeading === null) return "جارٍ التحديد";
+    return ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
+  }, [compassEnabled, compassHeading, compassStatus]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("chateau-world-camera-v4");
-    if (saved) {
-      try {
-        const value = JSON.parse(saved) as { scale: number; x: number; y: number };
-        setScale(clampScale(value.scale));
-        setPosition({ x: value.x, y: value.y });
-        return;
-      } catch {}
-    }
-    centerMap();
-    const savedProfile = localStorage.getItem("chateau-player-profile");
-    if (savedProfile) {
-      try {
-        const parsed = JSON.parse(savedProfile) as PlayerProfile;
-        setProfile({ ...defaultProfile, ...parsed });
-        setNameInput(parsed.name || "");
-        setEmailInput(parsed.email || "");
-      } catch {}
-    }
-    const savedView = localStorage.getItem("chateau-view-mode");
-    if (savedView === "classic") setViewMode("classic");
-    // The 3D map opens directly without a dimmed onboarding layer.
-  }, []);
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      localStorage.setItem("chateau-world-camera-v4", JSON.stringify({ scale, x: position.x, y: position.y }));
-    }, 180);
-    return () => window.clearTimeout(timer);
-  }, [scale, position]);
-
-  const transform = useMemo(() => `translate3d(${position.x}px, ${position.y}px, 0) scale(${scale})`, [position, scale]);
-
-  const zoomAround = (nextScale: number, cx: number, cy: number) => {
-    const next = clampScale(nextScale);
-    const worldX = (cx - position.x) / scale;
-    const worldY = (cy - position.y) / scale;
-    setScale(next);
-    setPosition(clampPosition({ x: cx - worldX * next, y: cy - worldY * next }, next));
-  };
-
-  const zoomCenter = (delta: number) => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    zoomAround(scale + delta, viewport.clientWidth / 2, viewport.clientHeight / 2);
-  };
-
-
-  const closeGuide = () => {
-    localStorage.setItem("chateau-kingdom-guide-seen", "true");
-    setShowGuide(false);
-    setGuideStep(0);
-  };
-
-  const enterPlace = (place: Place) => {
-    if (!place.open || !place.path) return;
-    setEntering(place);
+  const enter = (id: string, fr: string, ar: string, path: string) => {
+    if (pressed || entering) return;
+    setPressed(id);
     window.setTimeout(() => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      router.push(place.path!);
-    }, 700);
+      setEntering({ fr, ar });
+      setPressed(null);
+      window.setTimeout(() => router.push(path), 920);
+    }, 170);
   };
 
-  const guideSlides = [
-    { icon: <Hand />, title: "استكشف القلعة", text: "اسحب لتدوير المشهد ثلاثي الأبعاد واستكشاف الأحياء والمناطق الجديدة." },
-    { icon: <Plus />, title: "قرّب التفاصيل", text: "استخدم إصبعين للتكبير والتصغير، أو أزرار التحكم الجانبية." },
-    { icon: <MousePointer2 />, title: "ادخل العوالم", text: "اضغط على المبنى نفسه لعرض معلوماته ثم ابدأ رحلتك التعليمية." }
-  ];
-
-  const saveProgress = () => {
-    const payload = {
-      camera: { scale, x: position.x, y: position.y },
-      profile,
-      savedAt: new Date().toISOString()
-    };
-    localStorage.setItem("chateau-manual-save", JSON.stringify(payload));
-    localStorage.setItem("chateau-world-camera-v4", JSON.stringify(payload.camera));
-    setSaveMessage("تم حفظ التقدم على هذا الجهاز");
-    window.setTimeout(() => setSaveMessage(""), 2200);
+  const closeTour = () => {
+    localStorage.setItem("chateau-new-portal-tour-seen-v1", "true");
+    setTourOpen(false);
+    setTourStep(0);
   };
 
-  const changeViewMode = (mode: "map" | "classic") => {
-    setViewMode(mode);
-    localStorage.setItem("chateau-view-mode", mode);
-    setMenuOpen(false);
+  const scrollRail = (direction: number) => {
+    railRef.current?.scrollBy({ left: direction * Math.min(720, window.innerWidth * 0.72), behavior: "smooth" });
   };
 
-  const submitAuth = () => {
-    if (!emailInput.trim() || !passwordInput.trim()) return;
-    const nextProfile: PlayerProfile = {
-      ...profile,
-      name: authMode === "register" ? (nameInput.trim() || "متعلم جديد") : (profile.name || "متعلم جديد"),
-      email: emailInput.trim(),
-      signedIn: true
-    };
-    setProfile(nextProfile);
-    localStorage.setItem("chateau-player-profile", JSON.stringify(nextProfile));
-    setPasswordInput("");
-  };
-
-  const logout = () => {
-    const next = { ...profile, signedIn: false };
-    setProfile(next);
-    localStorage.setItem("chateau-player-profile", JSON.stringify(next));
-  };
-
-  const chooseAvatar = (avatar: string) => {
-    const next = { ...profile, avatar };
-    setProfile(next);
-    localStorage.setItem("chateau-player-profile", JSON.stringify(next));
-  };
-
-  const uploadAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file || !file.type.startsWith("image/")) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result !== "string") return;
-      const next = { ...profile, avatar: reader.result };
-      setProfile(next);
-      localStorage.setItem("chateau-player-profile", JSON.stringify(next));
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const rect = event.currentTarget.getBoundingClientRect();
-    zoomAround(scale + (event.deltaY > 0 ? -0.09 : 0.09), event.clientX - rect.left, event.clientY - rect.top);
-  };
-
-  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    event.currentTarget.setPointerCapture(event.pointerId);
-    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    lastPointer.current = { x: event.clientX, y: event.clientY };
-    moved.current = false;
-    setDragging(true);
-  };
-
-  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!pointers.current.has(event.pointerId)) return;
-    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    const active = [...pointers.current.values()];
-
-    if (active.length === 2) {
-      const distance = Math.hypot(active[0].x - active[1].x, active[0].y - active[1].y);
-      if (pinchDistance.current) {
-        const rect = event.currentTarget.getBoundingClientRect();
-        zoomAround(scale * (distance / pinchDistance.current), (active[0].x + active[1].x) / 2 - rect.left, (active[0].y + active[1].y) / 2 - rect.top);
-      }
-      pinchDistance.current = distance;
-      moved.current = true;
-      return;
-    }
-
-    if (lastPointer.current) {
-      const dx = event.clientX - lastPointer.current.x;
-      const dy = event.clientY - lastPointer.current.y;
-      if (Math.abs(dx) + Math.abs(dy) > 3) moved.current = true;
-      setPosition((current) => clampPosition({ x: current.x + dx, y: current.y + dy }));
-      lastPointer.current = { x: event.clientX, y: event.clientY };
-    }
-  };
-
-  const endPointer = (event: React.PointerEvent<HTMLDivElement>) => {
-    pointers.current.delete(event.pointerId);
-    pinchDistance.current = null;
-    const remaining = [...pointers.current.values()];
-    lastPointer.current = remaining[0] || null;
-    if (!remaining.length) setDragging(false);
-  };
+  const headingRotation = compassHeading ?? 0;
+  const activeTourTarget = tourOpen ? tourSlides[tourStep].target : "";
 
   return (
-    <main className="world-map-v4" dir="rtl">
-      <header className="world-map-topbar-v4">
-        <button className="world-player-v4" onClick={() => setProfileOpen(true)} aria-label="ملف اللاعب">
-          <span className="world-player-avatar">{profile.avatar.startsWith("data:image") ? <img src={profile.avatar} alt="صورة اللاعب" /> : profile.avatar}</span>
-          <div><strong>{profile.name}</strong><small>{profile.signedIn ? "الحساب متصل" : "اضغط لإعداد الحساب"}</small></div>
-        </button>
-        <div className="world-brand-v4"><Castle /><div><strong>Le Château des Langues</strong><small>قلعة تعلّم اللغة الفرنسية</small></div></div>
-        <button className="world-menu-v4" aria-label="القائمة" onClick={() => setMenuOpen(true)}>☰</button>
+    <main className="castle-portal" dir={language === "ar" ? "rtl" : "ltr"}>
+      <header className="castle-portal-topbar">
+        <nav className="castle-portal-nav" aria-label="التنقل الرئيسي">
+          <button onClick={() => router.push("/")}><span>ACCUEIL</span><small>الرئيسية</small></button>
+          <button onClick={() => setTourOpen(true)}><span>À PROPOS</span><small>عن القلعة</small></button>
+          <button onClick={() => router.push("/university")}><span>COURS</span><small>الدروس</small></button>
+          <button onClick={() => router.push("/library")}><span>RESSOURCES</span><small>المصادر</small></button>
+          <button onClick={() => setTourOpen(true)}><span>CONTACT</span><small>تواصل</small></button>
+        </nav>
+
+        <div className="castle-portal-tools">
+          <button className="castle-language" onClick={() => setLanguage((value) => value === "ar" ? "fr" : "ar")}>
+            <Languages />
+            <span>{language === "ar" ? "FRANÇAIS" : "العربية"}</span>
+          </button>
+          <section className={`castle-compass ${compassStatus}`} aria-label={`البوصلة: ${compassLabel}`}>
+            <button
+              className="castle-compass-face"
+              onClick={compassStatus === "permission" ? requestCompass : undefined}
+              title={compassStatus === "permission" ? "اضغط مرة واحدة للسماح بالبوصلة على هذا الجهاز" : compassLabel}
+            >
+              <Compass style={{ transform: `rotate(${-headingRotation}deg)` }} />
+              <b>N</b>
+            </button>
+            <div><strong>{compassLabel}</strong><small>BOUSSOLE</small></div>
+            <button className="castle-compass-power" onClick={() => setCompassEnabled((value) => !value)} aria-label={compassEnabled ? "إيقاف البوصلة" : "تشغيل البوصلة"}>
+              <Power />
+            </button>
+          </section>
+        </div>
       </header>
 
-      {viewMode === "map" ? (
-      <section className="world-map-viewport-v4">
-        <iframe
-          className="castle-unity-map-frame"
-          src="/unity-map/index.html?v=performance-1"
-          title="الخريطة التفاعلية ثلاثية الأبعاد للقلعة"
-          allow="fullscreen"
-        />
-        <div className="world-map-hint-v4">اسحب لتدوير الخريطة · استخدم العجلة للتقريب · اضغط على المبنى للدخول</div>
-        <button
-          type="button"
-          className={`world-compass-v4 ${compassStatus}`}
-          onPointerDown={(event) => event.stopPropagation()}
-          onClick={(event) => {
-            event.stopPropagation();
-            if (compassStatus === "permission" || compassStatus === "denied") {
-              void requestCompassPermission();
-            } else {
-              setCompassEnabled((enabled) => !enabled);
-            }
-          }}
-          aria-label={compassStatus === "permission" ? "تفعيل إذن بوصلة الجهاز" : compassEnabled ? "إيقاف البوصلة التلقائية" : "تشغيل البوصلة التلقائية"}
-          title={compassStatus === "permission" ? "يتطلب iPhone إذن الاتجاه مرة واحدة" : compassEnabled ? "اضغط لإيقاف البوصلة" : "اضغط لتشغيل البوصلة"}
-        >
-          <Compass style={{ transform: `rotate(${compassHeading === null ? 0 : -compassHeading}deg)` }} />
-          <span>{compassDirection}</span>
-          {compassHeading !== null && <small>{Math.round(compassHeading)}°</small>}
-          <i className="world-compass-power"><Power />{compassEnabled ? "إيقاف" : "تشغيل"}</i>
-        </button>
-      </section>
-      ) : (
-        <section className="classic-kingdom-page">
-          <div className="classic-kingdom-hero"><Castle /><span>Vue classique</span><h1>وجهات القلعة</h1><p>اختر وجهتك من الخانات الواضحة، ويمكنك العودة إلى الخريطة في أي وقت.</p></div>
-          <div className="classic-place-grid">{places.map((place) => (
-            <button key={place.id} className={place.open ? "open" : "soon"} onClick={() => place.open ? enterPlace(place) : setSelected(place)}>
-              <span>{place.icon}</span><div><strong>{place.ar}</strong><small>{place.fr}</small><p>{place.description}</p></div>
-              {place.open ? <Navigation /> : <LockKeyhole />}
+      <section className={`castle-portal-scene ${activeTourTarget === "castle" ? "is-tour-focus" : ""}`} data-guide="castle">
+        <div className="castle-portal-sun" />
+        <div className="castle-portal-castle">
+          <img className="castle-facade-art" src="/kingdom-portal-assets/castle-facade.png" alt="" aria-hidden="true" />
+          <button
+            className={`castle-main-gate ${pressed === "castle" ? "is-pressed" : ""}`}
+            onClick={() => enter("castle", "LE CHÂTEAU", "القلعة", "/entrance/castle")}
+          >
+            <span className="castle-main-title"><strong>LE CHÂTEAU</strong><small>القلعة</small></span>
+            <span className="castle-gate-doors"><i /><i /></span>
+            <span className="castle-enter-hint"><Sparkles /> ENTREZ <small>اضغط للدخول</small></span>
+          </button>
+        </div>
+
+        <div className="castle-portal-garden castle-portal-garden-left" />
+        <div className="castle-portal-garden castle-portal-garden-right" />
+
+        <section className="enchanted-book" aria-label="الوجهات الرئيسية">
+          <div className="book-pages">
+            <button
+              data-guide="university"
+              className={`book-destination university-book ${pressed === "university" ? "is-pressed" : ""} ${activeTourTarget === "university" ? "is-tour-focus" : ""}`}
+              onClick={() => enter("university", "UNIVERSITÉ", "الجامعة", "/entrance/university")}
+            >
+              <span className="book-copy"><strong>UNIVERSITÉ</strong><small>الجامعة</small><em>Choisissez votre niveau · اختر مستواك</em></span>
+              <img className="university-campus-art" src="/kingdom-portal-assets/university-campus.png" alt="" aria-hidden="true" />
+              <span className="book-enter"><Sparkles /> ENTRER</span>
             </button>
-          ))}</div>
+
+            <button
+              data-guide="library"
+              className={`book-destination library-book ${pressed === "library" ? "is-pressed" : ""} ${activeTourTarget === "library" ? "is-tour-focus" : ""}`}
+              onClick={() => enter("library", "BIBLIOTHÈQUE", "المكتبة", "/entrance/library")}
+            >
+              <img className="library-facade-art" src="/kingdom-portal-assets/library-facade.png" alt="" aria-hidden="true" />
+              <span className="book-copy"><strong>BIBLIOTHÈQUE</strong><small>المكتبة</small><em>Mots, histoires et romans · كلمات وقصص وروايات</em></span>
+              <span className="book-enter"><Sparkles /> ENTRER</span>
+            </button>
+          </div>
+          <div className="book-spine" />
+          <div className="book-edge book-edge-one" />
+          <div className="book-edge book-edge-two" />
         </section>
-      )}
+      </section>
 
-      {menuOpen && (
-        <aside className="world-nav-drawer">
-          <div className="world-nav-head">
-            <div><span>Navigation du Château</span><h2>وجهات القلعة</h2></div>
-            <button onClick={() => setMenuOpen(false)} aria-label="إغلاق"><X /></button>
-          </div>
-          <div className="world-nav-actions">
-            <button onClick={saveProgress}><Save /><div><strong>حفظ التقدم</strong><small>حفظ يدوي على الجهاز</small></div></button>
-            <button onClick={() => changeViewMode("classic")}><LayoutGrid /><div><strong>الصفحة العادية</strong><small>عرض الخانات بدل الخريطة</small></div></button>
-            <button onClick={() => changeViewMode("map")}><MapIcon /><div><strong>الرجوع للخريطة</strong><small>عرض القلعة ثلاثية الأبعاد</small></div></button>
-            <button onClick={() => setProfileOpen(true)}><UserRound /><div><strong>الملف والأفتار</strong><small>الصورة والحساب</small></div></button>
-          </div>
-          {saveMessage && <div className="world-save-message"><CheckCircle2 />{saveMessage}</div>}
-          <label className="world-nav-search"><Search /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="ابحث عن مبنى..." /></label>
-          <div className="world-nav-list">
-            {filteredPlaces.map((place) => (
-              <button key={place.id} onClick={() => focusPlace(place)} className={place.open ? "open" : "soon"}>
-                <span>{place.icon}</span>
-                <div><strong>{place.ar}</strong><small>{place.fr}</small></div>
-                {place.open ? <Navigation /> : <LockKeyhole />}
-              </button>
-            ))}
-          </div>
-        </aside>
-      )}
-
-      {menuOpen && <button className="world-nav-overlay" onClick={() => setMenuOpen(false)} aria-label="إغلاق القائمة" />}
-
-      {selected && (
-        <div className="world-place-backdrop" onClick={() => setSelected(null)}>
-          <article className="world-place-sheet" onClick={(event) => event.stopPropagation()}>
-            <button className="world-place-close" onClick={() => setSelected(null)}><X /></button>
-            <div className="world-place-icon">{selected.icon}</div>
-            <span>{selected.fr}</span>
-            <h2>{selected.ar}</h2>
-            <p>{selected.description}</p>
-            <div className={`world-place-state ${selected.open ? "open" : "soon"}`}><MapPin /> {selected.open ? "متاح الآن" : "سيُفتح قريبًا"}</div>
-            <button className="world-enter-button" disabled={!selected.open || !selected.path} onClick={() => enterPlace(selected)}>
-              {selected.open ? "دخول المكان" : "قريبًا"}
+      <section className={`destination-gallery ${activeTourTarget === "destinations" ? "is-tour-focus" : ""}`} data-guide="destinations">
+        <div className="destination-heading">
+          <Sparkles />
+          <div><strong>CHOISISSEZ VOTRE DESTINATION</strong><small>اختر المكان الذي تريد التعلّم فيه</small></div>
+        </div>
+        <button className="destination-arrow previous" onClick={() => scrollRail(-1)} aria-label="السابق"><ChevronLeft /></button>
+        <div className="destination-rail" ref={railRef} dir="ltr">
+          {destinations.map((destination) => (
+            <button
+              key={destination.id}
+              className={`destination-tab ${pressed === destination.id ? "is-pressed" : ""}`}
+              onClick={() => enter(destination.id, destination.fr, destination.ar, destination.path)}
+            >
+              <span className="destination-photo" style={{ backgroundImage: `url('${destination.image}')` }}>
+                <i>{destination.icon}</i>
+              </span>
+              <span className="destination-copy">
+                <strong>{destination.fr}</strong>
+                <b>{destination.ar}</b>
+                <small>{destination.description}</small>
+              </span>
+              <span className="destination-open"><Sparkles /> ENTRER</span>
             </button>
-          </article>
+          ))}
         </div>
-      )}
+        <button className="destination-arrow next" onClick={() => scrollRail(1)} aria-label="التالي"><ChevronRight /></button>
+      </section>
 
-      {profileOpen && (
-        <div className="profile-modal-backdrop" onClick={() => setProfileOpen(false)}>
-          <section className="profile-modal" onClick={(event) => event.stopPropagation()}>
-            <button className="profile-modal-close" onClick={() => setProfileOpen(false)}><X /></button>
-            <div className="profile-avatar-large">{profile.avatar.startsWith("data:image") ? <img src={profile.avatar} alt="صورة اللاعب" /> : profile.avatar}</div>
-            <span>Profil du joueur</span><h2>ملف اللاعب</h2>
-            <div className="avatar-choice-grid">{avatarOptions.map((avatar) => <button key={avatar.id} className={profile.avatar === avatar.value ? "active" : ""} onClick={() => chooseAvatar(avatar.value)}><b>{avatar.value}</b><small>{avatar.label}</small></button>)}</div>
-            <label className="avatar-upload"><ImagePlus /><span>إضافة صورة من الاستديو</span><input type="file" accept="image/*" onChange={uploadAvatar} /></label>
-            {!profile.signedIn ? (
-              <div className="local-auth-box">
-                <div className="auth-tabs"><button className={authMode === "login" ? "active" : ""} onClick={() => setAuthMode("login")}>تسجيل الدخول</button><button className={authMode === "register" ? "active" : ""} onClick={() => setAuthMode("register")}>إنشاء حساب</button></div>
-                {authMode === "register" && <input value={nameInput} onChange={(e) => setNameInput(e.target.value)} placeholder="اسم اللاعب" />}
-                <input value={emailInput} onChange={(e) => setEmailInput(e.target.value)} type="email" placeholder="البريد الإلكتروني" />
-                <input value={passwordInput} onChange={(e) => setPasswordInput(e.target.value)} type="password" placeholder="كلمة المرور" />
-                <button className="auth-submit" onClick={submitAuth}><LogIn />{authMode === "login" ? "دخول" : "إنشاء الحساب"}</button>
-                <small>الحساب في هذا الإصدار محفوظ محليًا على الجهاز.</small>
-              </div>
-            ) : (
-              <div className="signed-profile"><CheckCircle2 /><div><strong>{profile.name}</strong><small>{profile.email}</small></div><button onClick={logout}><LogOut />تسجيل الخروج</button></div>
-            )}
-          </section>
-        </div>
-      )}
-
-      {showGuide && (
-        <div className="kingdom-guide-backdrop">
-          <section className="kingdom-guide-card">
-            <button className="kingdom-guide-skip" onClick={closeGuide}>تخطي</button>
-            <div className="kingdom-guide-icon">{guideSlides[guideStep].icon}</div>
-            <span>مرحبًا بك في القلعة</span>
-            <h2>{guideSlides[guideStep].title}</h2>
-            <p>{guideSlides[guideStep].text}</p>
-            <div className="kingdom-guide-dots">
-              {guideSlides.map((_, index) => <i key={index} className={index === guideStep ? "active" : ""} />)}
+      {tourOpen && (
+        <div className="portal-tour-backdrop">
+          <aside className="portal-tour-card" dir="rtl">
+            <button className="portal-tour-close" onClick={closeTour}><X /></button>
+            <div className="portal-tour-icon">{tourSlides[tourStep].icon}</div>
+            <span>VISITE GUIDÉE · جولة تعريفية</span>
+            <h2>{tourSlides[tourStep].fr}</h2>
+            <p>{tourSlides[tourStep].ar}</p>
+            <div className="portal-tour-progress">
+              {tourSlides.map((slide, index) => <i key={slide.target} className={index === tourStep ? "active" : ""} />)}
             </div>
-            <button className="kingdom-guide-next" onClick={() => guideStep < guideSlides.length - 1 ? setGuideStep((v) => v + 1) : closeGuide()}>
-              {guideStep < guideSlides.length - 1 ? <>التالي <ChevronLeft /></> : <>ابدأ الاستكشاف <Sparkles /></>}
-            </button>
-          </section>
+            <div className="portal-tour-actions">
+              <button onClick={closeTour}>تخطي الجولة</button>
+              {tourStep > 0 && <button onClick={() => setTourStep((value) => value - 1)}><ArrowRight /> السابق</button>}
+              <button className="primary" onClick={() => tourStep < tourSlides.length - 1 ? setTourStep((value) => value + 1) : closeTour()}>
+                {tourStep === tourSlides.length - 1 ? "ابدأ رحلتي" : "التالي"} <ArrowLeft />
+              </button>
+            </div>
+          </aside>
         </div>
       )}
 
       {entering && (
-        <div className="world-entry-transition">
-          <div className="world-entry-emblem">{entering.icon}</div>
-          <span>{entering.fr}</span>
-          <h2>{entering.ar}</h2>
-          <div className="world-entry-loader"><i /></div>
+        <div className="magic-entry" role="status" aria-live="polite">
+          <div className="magic-entry-particles">{Array.from({ length: 22 }).map((_, index) => <i key={index} style={{ "--i": index } as React.CSSProperties} />)}</div>
+          <div className="magic-entry-door"><span /><span /></div>
+          <Sparkles />
+          <strong>{entering.fr}</strong>
+          <small>{entering.ar}</small>
         </div>
       )}
-
     </main>
   );
 }

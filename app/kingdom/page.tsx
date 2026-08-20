@@ -116,6 +116,17 @@ export default function KingdomPage() {
     const requested = new URLSearchParams(window.location.search).get("return") || sessionStorage.getItem("castle-portal-return");
     if (!requested || !["castle", "university", "library", ...destinations.map(({ id }) => id)].includes(requested)) return;
 
+    // A horizontally centred scrollIntoView can move the whole mobile canvas
+    // when the destination lives inside the horizontal building rail. Keep the
+    // document pinned to its natural left edge and centre only that rail.
+    const pinDocumentHorizontally = () => {
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
+      document.querySelector<HTMLElement>(".castle-portal")?.scrollTo({ left: 0, behavior: "auto" });
+      document.querySelector<HTMLElement>(".castle-portal-scene")?.scrollTo({ left: 0, behavior: "auto" });
+    };
+
+    pinDocumentHorizontally();
     sessionStorage.removeItem("castle-portal-return");
     setReturnedTo(requested);
     setLoadedDestinations((current) => new Set([...current, requested]));
@@ -124,7 +135,16 @@ export default function KingdomPage() {
     const reveal = window.setTimeout(() => {
       const target = document.querySelector<HTMLElement>(`[data-destination="${requested}"], [data-guide="${requested}"]`);
       if (!target) return;
-      target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center", inline: "center" });
+      const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      const rail = target.closest<HTMLElement>(".destination-rail");
+      if (rail) {
+        const railLeft = target.offsetLeft - (rail.clientWidth - target.offsetWidth) / 2;
+        rail.scrollTo({ left: Math.max(0, railLeft), behavior });
+      }
+      const bounds = target.getBoundingClientRect();
+      const top = window.scrollY + bounds.top - Math.max(16, (window.innerHeight - bounds.height) / 2);
+      window.scrollTo({ top: Math.max(0, top), left: 0, behavior });
+      window.requestAnimationFrame(pinDocumentHorizontally);
       const focusTarget = target.matches("button") ? target : target.querySelector<HTMLElement>("button");
       focusTarget?.focus({ preventScroll: true });
     }, 140);

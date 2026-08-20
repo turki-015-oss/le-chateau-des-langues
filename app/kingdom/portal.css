@@ -230,16 +230,17 @@
 .book-destination:hover{transform:translateY(-4px) rotateX(1deg)}
 .book-destination.is-pressed{transform:translateY(7px) scale(.988)!important}
 .university-book .book-copy,.library-book .book-copy{
-  top:72px;
+  top:64px;
   width:88%;
   max-width:88%;
   align-items:center;
   text-align:center;
 }
-.university-book .book-copy{left:6%}
+.university-book .book-copy{left:6%;transform:translateX(14px)}
 .library-book .book-copy{right:6%}
-.university-campus-art{right:14%;bottom:52px;width:72%;max-height:58%;object-fit:contain}
-.library-book .library-facade-art{left:10%;bottom:53px;width:80%;max-height:57%}
+.library-book .book-copy small{position:relative;transform:translate(-9px,-7px)}
+.university-campus-art{right:15%;bottom:40px;width:70%;max-height:55%;object-fit:contain}
+.library-book .library-facade-art{left:10%;bottom:45px;width:80%;max-height:55%}
 
 @media(min-width:621px){
   .destination-gallery{margin-top:-24px}
@@ -250,10 +251,11 @@
   .book-destination{margin:20px 5px 40px}
   .book-destination:after{inset:16px 7px 23px;border-radius:18px}
   .university-book .book-copy,.library-book .book-copy{top:50px;width:92%;max-width:92%}
-  .university-book .book-copy{left:4%}
+  .university-book .book-copy{left:4%;transform:translateX(7px)}
   .library-book .book-copy{right:4%}
+  .library-book .book-copy small{transform:translate(-5px,-4px)}
   .book-copy strong,.library-book .book-copy strong{font-size:clamp(14px,4.1vw,20px)}
   .book-copy small,.library-book .book-copy small{font-size:13px}
-  .university-campus-art{right:8%;bottom:36px;width:76%;max-height:56%}
+  .university-campus-art{right:10%;bottom:29px;width:72%;max-height:53%}
   .library-book .library-facade-art{left:9%;bottom:37px;width:82%;max-height:55%}
 }

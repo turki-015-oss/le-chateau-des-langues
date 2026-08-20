@@ -42,6 +42,7 @@ type Destination = {
 };
 
 type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
+type EntryState = { id: string; fr: string; ar: string; image: string };
 type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
@@ -93,7 +94,7 @@ export default function KingdomPage() {
   const railRef = useRef<HTMLDivElement>(null);
   const [language, setLanguage] = useState<"ar" | "fr">("ar");
   const [pressed, setPressed] = useState<string | null>(null);
-  const [entering, setEntering] = useState<{ fr: string; ar: string } | null>(null);
+  const [entering, setEntering] = useState<EntryState | null>(null);
   const [tourOpen, setTourOpen] = useState(false);
   const [tourStep, setTourStep] = useState(0);
   const [compassEnabled, setCompassEnabled] = useState(true);
@@ -179,14 +180,14 @@ export default function KingdomPage() {
     return ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
   }, [compassEnabled, compassHeading, compassStatus]);
 
-  const enter = (id: string, fr: string, ar: string, path: string) => {
+  const enter = (id: string, fr: string, ar: string, path: string, image: string) => {
     if (pressed || entering) return;
     setPressed(id);
     window.setTimeout(() => {
-      setEntering({ fr, ar });
+      setEntering({ id, fr, ar, image });
       setPressed(null);
-      window.setTimeout(() => router.push(path), 920);
-    }, 170);
+      window.setTimeout(() => router.push(path), 980);
+    }, 140);
   };
 
   const closeTour = () => {
@@ -203,7 +204,7 @@ export default function KingdomPage() {
   const activeTourTarget = tourOpen ? tourSlides[tourStep].target : "";
 
   return (
-    <main className="castle-portal" dir={language === "ar" ? "rtl" : "ltr"}>
+    <main className={`castle-portal ${entering ? "is-entering" : ""}`} dir={language === "ar" ? "rtl" : "ltr"} aria-busy={Boolean(entering)}>
       <header className="castle-portal-topbar">
         <nav className="castle-portal-nav" aria-label="التنقل الرئيسي">
           <button onClick={() => router.push("/")}><span>ACCUEIL</span><small>الرئيسية</small></button>
@@ -241,7 +242,7 @@ export default function KingdomPage() {
           <img className="castle-facade-art" src="/kingdom-portal-assets/castle-facade.png" alt="" aria-hidden="true" />
           <button
             className={`castle-main-gate ${pressed === "castle" ? "is-pressed" : ""}`}
-            onClick={() => enter("castle", "LE CHÂTEAU", "القلعة", "/entrance/castle")}
+            onClick={() => enter("castle", "LE CHÂTEAU", "القلعة", "/entrance/castle", "/kingdom-portal-assets/castle-facade.png")}
           >
             <span className="castle-main-title"><strong>LE CHÂTEAU</strong><small>القلعة</small></span>
             <span className="castle-gate-doors"><i /><i /></span>
@@ -257,7 +258,7 @@ export default function KingdomPage() {
             <button
               data-guide="university"
               className={`book-destination university-book ${pressed === "university" ? "is-pressed" : ""} ${activeTourTarget === "university" ? "is-tour-focus" : ""}`}
-              onClick={() => enter("university", "UNIVERSITÉ", "الجامعة", "/entrance/university")}
+              onClick={() => enter("university", "UNIVERSITÉ", "الجامعة", "/entrance/university", "/kingdom-portal-assets/university-campus.png")}
             >
               <span className="book-copy"><strong>UNIVERSITÉ</strong><small>الجامعة</small><em>Choisissez votre niveau · اختر مستواك</em></span>
               <img className="university-campus-art" src="/kingdom-portal-assets/university-campus.png" alt="" aria-hidden="true" />
@@ -267,7 +268,7 @@ export default function KingdomPage() {
             <button
               data-guide="library"
               className={`book-destination library-book ${pressed === "library" ? "is-pressed" : ""} ${activeTourTarget === "library" ? "is-tour-focus" : ""}`}
-              onClick={() => enter("library", "BIBLIOTHÈQUE", "المكتبة", "/entrance/library")}
+              onClick={() => enter("library", "BIBLIOTHÈQUE", "المكتبة", "/entrance/library", "/kingdom-portal-assets/library-facade.png")}
             >
               <img className="library-facade-art" src="/kingdom-portal-assets/library-facade.png" alt="" aria-hidden="true" />
               <span className="book-copy"><strong>BIBLIOTHÈQUE</strong><small>المكتبة</small><em>Mots, histoires et romans · كلمات وقصص وروايات</em></span>
@@ -292,7 +293,7 @@ export default function KingdomPage() {
               key={destination.id}
               data-destination={destination.id}
               className={`destination-tab ${pressed === destination.id ? "is-pressed" : ""}`}
-              onClick={() => enter(destination.id, destination.fr, destination.ar, destination.path)}
+              onClick={() => enter(destination.id, destination.fr, destination.ar, destination.path, destination.image)}
             >
               <span className="destination-photo" style={{ backgroundImage: `url('${destination.image}')` }}>
                 <i>{destination.icon}</i>
@@ -332,12 +333,18 @@ export default function KingdomPage() {
       )}
 
       {entering && (
-        <div className="magic-entry" role="status" aria-live="polite">
-          <div className="magic-entry-particles">{Array.from({ length: 22 }).map((_, index) => <i key={index} style={{ "--i": index } as React.CSSProperties} />)}</div>
-          <div className="magic-entry-door"><span /><span /></div>
-          <Sparkles />
-          <strong>{entering.fr}</strong>
-          <small>{entering.ar}</small>
+        <div className={`magic-entry magic-entry-${entering.id}`} role="status" aria-live="polite">
+          <div className="magic-entry-particles">{Array.from({ length: 16 }).map((_, index) => <i key={index} style={{ "--i": index } as React.CSSProperties} />)}</div>
+          <div className="magic-entry-portal" aria-hidden="true">
+            <i className="magic-entry-ring" />
+            <span className="magic-entry-building" style={{ backgroundImage: `url('${entering.image}')` }} />
+            <Sparkles />
+          </div>
+          <div className="magic-entry-title">
+            <strong>{entering.fr}</strong>
+            <small>{entering.ar}</small>
+            <em>ENTRÉE EN COURS · جاري الدخول</em>
+          </div>
         </div>
       )}
     </main>

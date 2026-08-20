@@ -195,10 +195,10 @@
 /* Photorealistic book base; the interactive destinations stay separate above it. */
 .enchanted-book{
   isolation:isolate;
-  width:min(1060px,90vw);
-  height:425px;
-  bottom:-12px;
-  filter:drop-shadow(0 25px 18px #39241461) drop-shadow(0 7px 4px #8d694330);
+  width:min(940px,86vw);
+  height:365px;
+  bottom:-3px;
+  filter:drop-shadow(0 22px 16px #39241459) drop-shadow(0 6px 4px #8d69432b);
 }
 .enchanted-book:before{
   content:"";
@@ -212,7 +212,7 @@
 .book-pages{height:100%;grid-template-columns:50% 50%;filter:none}
 .book-destination{
   z-index:2;
-  margin:29px 18px 58px;
+  margin:24px 16px 48px;
   overflow:visible;
   transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease;
 }
@@ -221,7 +221,7 @@
   content:"";
   position:absolute;
   z-index:3;
-  inset:22px 18px 30px;
+  inset:18px 16px 25px;
   border:1px solid #8b63312b;
   border-radius:34px;
   background:radial-gradient(ellipse at 50% 105%,#6f481b16,transparent 63%);
@@ -230,32 +230,33 @@
 .book-destination:hover{transform:translateY(-4px) rotateX(1deg)}
 .book-destination.is-pressed{transform:translateY(7px) scale(.988)!important}
 .university-book .book-copy,.library-book .book-copy{
-  top:64px;
-  width:88%;
-  max-width:88%;
+  top:53px;
+  width:80%;
+  max-width:80%;
   align-items:center;
   text-align:center;
 }
-.university-book .book-copy{left:6%;transform:translateX(14px)}
-.library-book .book-copy{right:6%}
-.library-book .book-copy small{position:relative;transform:translate(-9px,-7px)}
-.university-campus-art{right:15%;bottom:40px;width:70%;max-height:55%;object-fit:contain}
-.library-book .library-facade-art{left:10%;bottom:45px;width:80%;max-height:55%}
+.book-copy strong,.library-book .book-copy strong{font-size:clamp(22px,2.25vw,34px);white-space:nowrap;max-width:100%}
+.university-book .book-copy{left:10%;transform:translateX(10px)}
+.library-book .book-copy{right:10%}
+.library-book .book-copy small{position:relative;transform:translate(-7px,-6px)}
+.university-campus-art{right:19%;bottom:31px;width:62%;max-height:52%;object-fit:contain}
+.library-book .library-facade-art{left:18%;bottom:33px;width:64%;max-height:49%}
 
 @media(min-width:621px){
   .destination-gallery{margin-top:-24px}
 }
 @media(max-width:620px){
-  .enchanted-book{width:98vw;height:310px;bottom:-5px}
-  .enchanted-book:before{inset:-9px -1.5% -6px}
-  .book-destination{margin:20px 5px 40px}
-  .book-destination:after{inset:16px 7px 23px;border-radius:18px}
-  .university-book .book-copy,.library-book .book-copy{top:50px;width:92%;max-width:92%}
-  .university-book .book-copy{left:4%;transform:translateX(7px)}
-  .library-book .book-copy{right:4%}
+  .enchanted-book{width:94vw;height:265px;bottom:0}
+  .enchanted-book:before{inset:-7px -1.5% -5px}
+  .book-destination{margin:16px 4px 34px}
+  .book-destination:after{inset:12px 6px 19px;border-radius:15px}
+  .university-book .book-copy,.library-book .book-copy{top:39px;width:88%;max-width:88%}
+  .university-book .book-copy{left:6%;transform:translateX(4px)}
+  .library-book .book-copy{right:6%}
   .library-book .book-copy small{transform:translate(-5px,-4px)}
-  .book-copy strong,.library-book .book-copy strong{font-size:clamp(14px,4.1vw,20px)}
-  .book-copy small,.library-book .book-copy small{font-size:13px}
-  .university-campus-art{right:10%;bottom:29px;width:72%;max-height:53%}
-  .library-book .library-facade-art{left:9%;bottom:37px;width:82%;max-height:55%}
+  .book-copy strong,.library-book .book-copy strong{font-size:clamp(12px,3.7vw,18px)}
+  .book-copy small,.library-book .book-copy small{font-size:12px}
+  .university-campus-art{right:19%;bottom:22px;width:62%;max-height:49%}
+  .library-book .library-facade-art{left:20%;bottom:23px;width:60%;max-height:46%}
 }

@@ -52,12 +52,12 @@ const destinations: Destination[] = [
   { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/entrance/airport", image: "/airport/terminal-main.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
   { id: "station", fr: "GARE", ar: "محطة القطار", path: "/entrance/station", image: "/worlds/station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
   { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/entrance/market", image: "/worlds/market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
-  { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/entrance/cafe", image: "/worlds/cafe.png", description: "التحية والجلوس والطلب", icon: <Coffee /> },
-  { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/entrance/restaurant", image: "/worlds/restaurant.png", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
-  { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/entrance/police", image: "/worlds/police.png", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
-  { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", path: "/entrance/zoo", image: "/worlds/zoo.png", description: "الحيوانات والطبيعة والاستكشاف", icon: <Trees /> },
-  { id: "hotel", fr: "HÔTEL", ar: "الفندق", path: "/entrance/hotel", image: "/worlds/hotel.png", description: "الحجز والاستقبال والإقامة", icon: <Hotel /> },
-  { id: "stadium", fr: "STADE", ar: "الملعب", path: "/entrance/stadium", image: "/worlds/stadium.png", description: "الرياضة والمباريات والجمهور", icon: <Trophy /> },
+  { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/entrance/cafe", image: "/kingdom-portal-assets/destination-cafe-v2.webp", description: "التحية والجلوس والطلب", icon: <Coffee /> },
+  { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/entrance/restaurant", image: "/kingdom-portal-assets/destination-restaurant-v2.webp", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
+  { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/entrance/police", image: "/kingdom-portal-assets/destination-police-v2.webp", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
+  { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", path: "/entrance/zoo", image: "/kingdom-portal-assets/destination-zoo-v2.webp", description: "الحيوانات والطبيعة والاستكشاف", icon: <Trees /> },
+  { id: "hotel", fr: "HÔTEL", ar: "الفندق", path: "/entrance/hotel", image: "/kingdom-portal-assets/destination-hotel-v2.webp", description: "الحجز والاستقبال والإقامة", icon: <Hotel /> },
+  { id: "stadium", fr: "STADE", ar: "الملعب", path: "/entrance/stadium", image: "/kingdom-portal-assets/destination-stadium-v2.webp", description: "الرياضة والمباريات والجمهور", icon: <Trophy /> },
   { id: "court", fr: "TRIBUNAL", ar: "المحكمة", path: "/court", image: "/maps/facades/civic-facade.webp", description: "القضايا والشهادة واللغة الرسمية", icon: <Scale /> }
 ];
 

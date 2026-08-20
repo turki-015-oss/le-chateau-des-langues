@@ -162,10 +162,18 @@
 }
 
 .castle-portal-garden{
-  width:clamp(170px,31vw,520px);
-  height:350px;
+  z-index:1;
+  top:78px;
+  width:clamp(240px,36vw,560px);
+  height:370px;
   background:url('/kingdom-portal-assets/castle-trees.png') left bottom/auto 100% no-repeat;
   filter:drop-shadow(0 16px 14px #22351d66);
 }
+.castle-portal-garden-left{left:-2vw}
+.castle-portal-garden-right{right:-2vw}
 .castle-portal-garden:before,.castle-portal-garden:after{display:none}
-@media(max-width:620px){.castle-portal-garden{width:205px;height:265px;background-size:auto 100%}}
+@media(max-width:620px){
+  .castle-portal-garden{top:82px;width:195px;height:270px;background-size:auto 100%}
+  .castle-portal-garden-left{left:-34px}
+  .castle-portal-garden-right{right:-34px}
+}

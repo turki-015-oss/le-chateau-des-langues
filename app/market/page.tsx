@@ -41,7 +41,7 @@ export default function MarketPage(){
 
  return <main className="market-world" dir="rtl">
   <header className="market-header">
-   <Link href="/" className="back-link"><ArrowRight size={20}/> المملكة</Link>
+   <Link href="/kingdom" className="back-link"><ArrowRight size={20}/> واجهة القلعة</Link>
    <div className="market-brand"><Store/><div><strong>السوق الكبير</strong><span>Le Grand Marché</span></div></div>
    <button className="market-all-button" onClick={goHome}><LayoutGrid/><span>كل الأقسام</span></button>
   </header>

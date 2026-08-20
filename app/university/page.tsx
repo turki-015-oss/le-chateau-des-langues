@@ -1593,7 +1593,7 @@ export default function UniversityPage(){
 
  return <main className="university-world" dir="rtl">
   <header className="university-topbar">
-   <Link href="/kingdom" aria-label="العودة إلى الخريطة"><ArrowRight/></Link>
+   <Link href="/kingdom" aria-label="العودة إلى واجهة القلعة"><ArrowRight/></Link>
    <div><span>جامعة القلعة</span><strong>L’Université Royale</strong></div>
    <div className="university-seal"><GraduationCap/></div>
   </header>

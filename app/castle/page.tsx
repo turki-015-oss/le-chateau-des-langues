@@ -18,7 +18,7 @@ export default function CastlePage() {
     <main className="v69-castle" aria-label="القاعات الداخلية للقلعة">
       <div className="v69-castle-bg" aria-hidden="true" />
       <header className="v69-castle-header">
-        <button onClick={() => router.push("/kingdom")} aria-label="العودة"><ArrowLeft /></button>
+        <button data-portal-return aria-label="العودة إلى واجهة القلعة"><ArrowLeft /></button>
         <div>
           <p>Le Château</p>
           <span>القلعة</span>
@@ -50,7 +50,7 @@ export default function CastlePage() {
       </section>
 
       <nav className="v69-bottom-nav" aria-label="التنقل الرئيسي">
-        <button onClick={() => router.push("/kingdom")}><MapIcon /><span>الخريطة</span></button>
+        <button data-portal-return><MapIcon /><span>واجهة القلعة</span></button>
         <button onClick={() => router.push("/library")}><BookOpen /><span>محفوظاتي</span></button>
         <button onClick={() => router.push("/achievements")}><Crown /><span>تقدمي</span></button>
         <button onClick={() => router.push("/tests")}><CheckSquare /><span>اختباراتي</span></button>

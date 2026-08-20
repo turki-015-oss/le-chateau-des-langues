@@ -332,6 +332,10 @@
   .library-book .library-facade-art{left:20%;bottom:23px;width:60%;max-height:46%}
 }
 
+.castle-portal .is-returned{animation:portalReturnedFocus 1.2s ease-in-out 2;outline:2px solid #f2cf72;outline-offset:5px;box-shadow:0 0 0 7px #f5d77a30,0 0 38px #dbaa40a3!important}
+@keyframes portalReturnedFocus{0%,100%{filter:brightness(1)}50%{filter:brightness(1.13) drop-shadow(0 0 15px #f7d878)}}
+@media(prefers-reduced-motion:reduce){.castle-portal .is-returned{animation:none}}
+
 /* Mobile composition: preserve the desktop scene proportions instead of cropping fixed-width art. */
 @media(max-width:620px){
   .castle-portal-topbar{min-height:60px;padding:0 9px;flex-wrap:nowrap;overflow:hidden}

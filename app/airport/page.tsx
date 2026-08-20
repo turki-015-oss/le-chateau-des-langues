@@ -83,7 +83,7 @@ export default function AirportPage(){
  const activeStory=useMemo(()=>stories.find(s=>s.id===activeStoryId)??null,[activeStoryId]);
  return <main className="airport-page">
   <header className="airport-topbar">
-   <Link href="/kingdom" className="airport-back"><ArrowRight/><span><b>Carte du Royaume</b><small>خريطة المملكة</small></span></Link>
+   <Link href="/kingdom" className="airport-back"><ArrowRight/><span><b>Portail du Château</b><small>واجهة القلعة</small></span></Link>
    <div className="airport-logo"><Plane/><span><b>L’Aéroport</b><small>المطار</small></span></div>
   </header>
 

@@ -95,6 +95,7 @@ export default function KingdomPage() {
   const [language, setLanguage] = useState<"ar" | "fr">("ar");
   const [pressed, setPressed] = useState<string | null>(null);
   const [entering, setEntering] = useState<EntryState | null>(null);
+  const [returnedTo, setReturnedTo] = useState<string | null>(null);
   const [loadedDestinations, setLoadedDestinations] = useState<Set<string>>(() => new Set(destinations.slice(0, 4).map(({ id }) => id)));
   const [tourOpen, setTourOpen] = useState(false);
   const [tourStep, setTourStep] = useState(0);
@@ -105,9 +106,33 @@ export default function KingdomPage() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      if (!localStorage.getItem("chateau-new-portal-tour-seen-v1")) setTourOpen(true);
+      const returning = new URLSearchParams(window.location.search).has("return") || sessionStorage.getItem("castle-portal-return");
+      if (!returning && !localStorage.getItem("chateau-new-portal-tour-seen-v1")) setTourOpen(true);
     }, 850);
     return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("return") || sessionStorage.getItem("castle-portal-return");
+    if (!requested || !["castle", "university", "library", ...destinations.map(({ id }) => id)].includes(requested)) return;
+
+    sessionStorage.removeItem("castle-portal-return");
+    setReturnedTo(requested);
+    setLoadedDestinations((current) => new Set([...current, requested]));
+    window.history.replaceState(window.history.state, "", window.location.pathname);
+
+    const reveal = window.setTimeout(() => {
+      const target = document.querySelector<HTMLElement>(`[data-destination="${requested}"], [data-guide="${requested}"]`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center", inline: "center" });
+      const focusTarget = target.matches("button") ? target : target.querySelector<HTMLElement>("button");
+      focusTarget?.focus({ preventScroll: true });
+    }, 140);
+    const clear = window.setTimeout(() => setReturnedTo(null), 2600);
+    return () => {
+      window.clearTimeout(reveal);
+      window.clearTimeout(clear);
+    };
   }, []);
 
   useEffect(() => {
@@ -215,6 +240,7 @@ export default function KingdomPage() {
   const enter = (id: string, fr: string, ar: string, path: string, image: string) => {
     if (pressed || entering) return;
     prepareEntry(path, image);
+    sessionStorage.setItem("castle-portal-return", id);
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setPressed(id);
     window.setTimeout(() => {
@@ -271,7 +297,7 @@ export default function KingdomPage() {
         </div>
       </header>
 
-      <section className={`castle-portal-scene ${activeTourTarget === "castle" ? "is-tour-focus" : ""}`} data-guide="castle">
+      <section className={`castle-portal-scene ${activeTourTarget === "castle" ? "is-tour-focus" : ""} ${returnedTo === "castle" ? "is-returned" : ""}`} data-guide="castle">
         <div className="castle-portal-sun" />
         <div className="castle-portal-castle">
           <img className="castle-facade-art" src="/kingdom-portal-assets/castle-facade.png" alt="" aria-hidden="true" decoding="async" fetchPriority="high" draggable={false} />
@@ -294,7 +320,7 @@ export default function KingdomPage() {
           <div className="book-pages">
             <button
               data-guide="university"
-              className={`book-destination university-book ${pressed === "university" ? "is-pressed" : ""} ${activeTourTarget === "university" ? "is-tour-focus" : ""}`}
+              className={`book-destination university-book ${pressed === "university" ? "is-pressed" : ""} ${activeTourTarget === "university" ? "is-tour-focus" : ""} ${returnedTo === "university" ? "is-returned" : ""}`}
               onPointerEnter={() => prepareEntry("/entrance/university", "/kingdom-portal-assets/university-campus.png")}
               onFocus={() => prepareEntry("/entrance/university", "/kingdom-portal-assets/university-campus.png")}
               onClick={() => enter("university", "UNIVERSITÉ", "الجامعة", "/entrance/university", "/kingdom-portal-assets/university-campus.png")}
@@ -306,7 +332,7 @@ export default function KingdomPage() {
 
             <button
               data-guide="library"
-              className={`book-destination library-book ${pressed === "library" ? "is-pressed" : ""} ${activeTourTarget === "library" ? "is-tour-focus" : ""}`}
+              className={`book-destination library-book ${pressed === "library" ? "is-pressed" : ""} ${activeTourTarget === "library" ? "is-tour-focus" : ""} ${returnedTo === "library" ? "is-returned" : ""}`}
               onPointerEnter={() => prepareEntry("/entrance/library", "/kingdom-portal-assets/library-facade.png")}
               onFocus={() => prepareEntry("/entrance/library", "/kingdom-portal-assets/library-facade.png")}
               onClick={() => enter("library", "BIBLIOTHÈQUE", "المكتبة", "/entrance/library", "/kingdom-portal-assets/library-facade.png")}
@@ -333,7 +359,7 @@ export default function KingdomPage() {
             <button
               key={destination.id}
               data-destination={destination.id}
-              className={`destination-tab ${pressed === destination.id ? "is-pressed" : ""}`}
+              className={`destination-tab ${pressed === destination.id ? "is-pressed" : ""} ${returnedTo === destination.id ? "is-returned" : ""}`}
               onPointerEnter={() => prepareEntry(destination.path, destination.image)}
               onFocus={() => prepareEntry(destination.path, destination.image)}
               onClick={() => enter(destination.id, destination.fr, destination.ar, destination.path, destination.image)}

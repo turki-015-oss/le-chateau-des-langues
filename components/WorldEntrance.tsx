@@ -8,7 +8,7 @@ type Props = { titleFr:string; titleAr:string; subtitle:string; image:string; de
 export default function WorldEntrance({titleFr,titleAr,subtitle,image,destination}:Props){
  const router=useRouter();
  return <main className="premium-entry" dir="rtl">
-   <button className="premium-entry-back" onClick={()=>router.push('/kingdom')} aria-label="العودة"><ArrowLeft/></button>
+   <button className="premium-entry-back" data-portal-return aria-label="العودة إلى واجهة القلعة"><ArrowLeft/></button>
    <section className="premium-entry-card">
      <div className="premium-entry-brand">Le Château des Langues</div>
      <div className="premium-entry-photo" style={{backgroundImage:`url('${image}')`}} />

@@ -53,7 +53,7 @@ export default function PolicePage() {
   return (
     <main className="police-world">
       <header className="police-topbar">
-        <Link href="/kingdom" className="police-icon-button" aria-label="Retour à la carte"><ArrowRight size={22} /></Link>
+        <Link href="/kingdom" className="police-icon-button" aria-label="Retour au portail du Château"><ArrowRight size={22} /></Link>
         <div><span>مركز الشرطة</span><strong>Le Commissariat de Police</strong></div>
         <button className="police-icon-button" aria-label="Menu"><Menu size={22} /></button>
       </header>

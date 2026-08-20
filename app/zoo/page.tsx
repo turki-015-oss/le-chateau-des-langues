@@ -113,7 +113,7 @@ export default function ZooPage(){
  const [query,setQuery]=useState("");
  const animals=useMemo(()=>active.animals.filter(a=>`${a.fr} ${a.ar}`.toLowerCase().includes(query.toLowerCase())),[active,query]);
  return <main className="zoo-world" dir="rtl">
-  <header className="zoo-header"><Link href="/kingdom" className="zoo-back"><ArrowLeft/> الخريطة</Link><strong>Le Château des Langues</strong><div className="zoo-avatar">🧑🏻‍🎓</div></header>
+  <header className="zoo-header"><Link href="/kingdom" className="zoo-back"><ArrowLeft/> واجهة القلعة</Link><strong>Le Château des Langues</strong><div className="zoo-avatar">🧑🏻‍🎓</div></header>
   <section className="zoo-hero"><img src="/image/zoo-hero.png" alt="حديقة حيوانات عالمية وجمل يمشي في وسطها"/><div className="zoo-hero-shade"/><div className="zoo-hero-copy"><span>Le Zoo</span><h1>حديقة الحيوانات</h1><p>اكتشف الحيوانات بالفرنسية داخل أقسام منظمة، مع صورة ونطق وترجمة لكل حيوان.</p></div></section>
   <nav className="zoo-categories" aria-label="أقسام الحيوانات">{categories.map(c=><button key={c.id} className={active.id===c.id?"active":""} onClick={()=>{setActive(c);setQuery("")}}><b>{c.icon}</b><span>{c.fr}<small>{c.ar}</small></span></button>)}</nav>
   <section className="zoo-content">

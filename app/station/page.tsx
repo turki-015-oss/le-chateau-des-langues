@@ -63,7 +63,7 @@ export default function StationPage() {
   const speak = (text: string) => {void speakFrench(text)};
 
   return <main className="station-world">
-    <header className="station-topbar"><Link href="/kingdom" className="station-nav-icon" aria-label="Retour à la carte"><ArrowRight size={22}/></Link><div><span>محطة القطار</span><strong>La Gare Royale</strong></div><button className="station-nav-icon" aria-label="Menu"><Menu size={22}/></button></header>
+    <header className="station-topbar"><Link href="/kingdom" className="station-nav-icon" aria-label="Retour au portail du Château"><ArrowRight size={22}/></Link><div><span>محطة القطار</span><strong>La Gare Royale</strong></div><button className="station-nav-icon" aria-label="Menu"><Menu size={22}/></button></header>
 
     <section className="station-hero"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1800&q=92" alt="Gare ferroviaire avec train de voyageurs"/><div className="station-hero-shade"/><div className="station-hero-copy"><span><TrainFront size={18}/> Monde ouvert</span><h1>La Gare Royale</h1><p>جميع المراحل مفتوحة ويمكنك التنقل بينها بحرية.</p><button onClick={() => speak("Bienvenue à la gare royale. Toutes les étapes sont ouvertes.")}><Volume2 size={20}/> Écouter l'accueil</button></div></section>
 

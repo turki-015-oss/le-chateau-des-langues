@@ -127,7 +127,7 @@ export default function CourtPage() {
   return (
     <main className="court-world">
       <header className="court-header">
-        <Link href="/" className="back-link">
+        <Link href="/kingdom" className="back-link">
           <ArrowRight size={20} />
           المملكة
         </Link>
@@ -294,7 +294,7 @@ export default function CourtPage() {
           </p>
           <strong>النتيجة: {score} / {courtQuestions.length}</strong>
 
-          <Link href="/">العودة إلى المملكة</Link>
+          <Link href="/kingdom">العودة إلى واجهة القلعة</Link>
         </section>
       )}
     </main>

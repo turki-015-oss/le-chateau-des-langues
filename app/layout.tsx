@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import FrenchSpeechLoader from "./FrenchSpeechLoader";
+import PortalJourney from "../components/PortalJourney";
 
 export const metadata: Metadata = {
   title: "Le Château",
@@ -27,8 +28,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl">
-      <body><FrenchSpeechLoader/>{children}</body>
+    <html lang="ar" dir="rtl" data-scroll-behavior="smooth">
+      <body><FrenchSpeechLoader/><PortalJourney/>{children}</body>
     </html>
   );
 }

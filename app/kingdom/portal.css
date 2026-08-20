@@ -457,3 +457,79 @@
   .magic-entry-particles i:nth-child(n+11){display:none}
   .magic-entry-building{filter:contrast(1.04) drop-shadow(0 14px 12px #0008)}
 }
+
+/* Castle-book composition: one continuous forecourt without covering the facade. */
+.castle-portal-scene{
+  --castle-stage-height:clamp(390px,53vh,500px);
+  --book-stage-height:clamp(310px,40vh,365px);
+  --book-ground-gap:18px;
+  height:calc(var(--castle-stage-height) + var(--book-stage-height) + var(--book-ground-gap));
+  min-height:0;
+}
+.castle-portal-castle{height:var(--castle-stage-height)}
+.enchanted-book{
+  height:var(--book-stage-height);
+  bottom:76px;
+}
+.castle-portal-castle:after{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:2;
+  left:50%;
+  bottom:-52px;
+  width:min(610px,68vw);
+  height:118px;
+  transform:translateX(-50%);
+  clip-path:polygon(34% 0,66% 0,96% 100%,4% 100%);
+  background:
+    radial-gradient(ellipse at 50% 4%,#fff1b38f 0 9%,#dfb8654d 28%,transparent 68%),
+    linear-gradient(90deg,transparent,#d8bd8b40 20% 80%,transparent);
+  filter:blur(.25px);
+  pointer-events:none;
+}
+.enchanted-book:after{
+  content:"";
+  display:block!important;
+  position:absolute;
+  z-index:-1;
+  left:8%;
+  right:8%;
+  bottom:-12px;
+  height:46px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,#4d352171 0 26%,#80604442 52%,transparent 74%);
+  filter:blur(8px);
+  pointer-events:none;
+}
+
+@media(min-width:621px){
+  .book-destination{pointer-events:none}
+  .book-destination:after{top:30%;pointer-events:auto}
+  .book-copy{pointer-events:auto}
+  .destination-gallery{margin-top:-96px}
+}
+
+@media(max-width:620px){
+  .castle-portal-scene{
+    --castle-stage-height:340px;
+    --book-stage-height:210px;
+    --book-ground-gap:16px;
+  }
+  .enchanted-book{bottom:56px}
+  .book-destination{pointer-events:none}
+  .book-destination:after{top:42%;pointer-events:auto}
+  .book-copy{pointer-events:auto}
+  .destination-gallery{margin-top:-56px}
+  .castle-portal-castle:after{bottom:-38px;width:76vw;height:88px}
+}
+
+@media(max-width:390px){
+  .castle-portal-scene{
+    --castle-stage-height:312px;
+    --book-stage-height:204px;
+    --book-ground-gap:14px;
+  }
+  .enchanted-book{bottom:54px}
+  .destination-gallery{margin-top:-54px}
+}

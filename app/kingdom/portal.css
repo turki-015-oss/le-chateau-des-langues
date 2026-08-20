@@ -405,3 +405,49 @@
   .destination-gallery{padding-inline:30px}
   .destination-tab{flex-basis:min(80vw,292px)}
 }
+
+/* Mobile finishing pass: tighter composition and a complete, centered destination card. */
+@media(max-width:620px){
+  .castle-portal-scene{height:540px;min-height:540px}
+  .castle-enter-hint{font-size:9px;padding:7px 11px}
+  .castle-enter-hint small{font-size:9px}
+
+  .enchanted-book{width:92vw;height:210px;bottom:24px}
+  .university-book .book-copy,.library-book .book-copy{top:28px}
+  .library-book .book-copy small{transform:none}
+  .university-campus-art{right:21%;bottom:14px;width:58%;max-height:44%}
+  .library-book .library-facade-art{left:18%;bottom:14px;width:64%;max-height:44%}
+
+  .destination-gallery{padding:0 40px 18px;min-height:235px}
+  .destination-gallery:before{left:5%;right:5%}
+  .destination-rail{gap:14px;padding:0 0 22px;scroll-padding-inline:0}
+  .destination-tab{flex:0 0 min(70vw,270px);min-height:214px;padding:14px 10px 24px}
+  .destination-copy strong{font-size:clamp(21px,6vw,26px)}
+  .destination-copy b{font-size:15px}
+  .destination-tab:nth-child(-n+4) .destination-photo{
+    left:9%;
+    right:9%;
+    bottom:10px;
+    height:112px;
+    background-size:contain!important;
+    background-position:center bottom!important;
+  }
+  .destination-tab:nth-child(1) .destination-photo{background-image:url('/kingdom-portal-assets/destination-hospital.png')!important}
+  .destination-tab:nth-child(2) .destination-photo{background-image:url('/kingdom-portal-assets/destination-airport.png')!important}
+  .destination-tab:nth-child(3) .destination-photo{background-image:url('/kingdom-portal-assets/destination-station.png')!important}
+  .destination-tab:nth-child(4) .destination-photo{background-image:url('/kingdom-portal-assets/destination-market.png')!important}
+  .destination-arrow{top:50%;width:34px;height:52px;transform:translateY(-50%)}
+  .destination-arrow:focus{outline:none}
+  .destination-arrow:focus-visible{outline:2px solid #c79c55;outline-offset:2px;border-radius:14px}
+  .destination-arrow.previous{left:3px}
+  .destination-arrow.next{right:3px}
+}
+
+@media(max-width:390px){
+  .castle-portal-scene{height:515px;min-height:515px}
+  .castle-portal-castle{height:312px}
+  .castle-main-gate{height:296px}
+  .enchanted-book{height:204px;bottom:22px}
+  .destination-gallery{padding-inline:38px}
+  .destination-tab{flex-basis:min(70vw,268px)}
+}

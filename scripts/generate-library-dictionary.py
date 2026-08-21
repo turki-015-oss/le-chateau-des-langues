@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / ".tools" / "dictionary-sources"
 OUTPUT = ROOT / "public" / "library" / "dictionary"
 CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
+CURATED_TARGET = 4000
 TARGET_COUNT = 5000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 WORD_RE = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ-]{2,30}$")
@@ -215,6 +216,98 @@ def attach_examples(entries: list[dict], pairs: list[tuple[str, str]]) -> int:
     return len(natural_examples)
 
 
+EDITORIAL_EXAMPLE_TEMPLATES = (
+    (
+        "Dans ce chapitre, le terme « {word} » est présenté dans un contexte précis.",
+        "يعرض هذا الفصل مصطلح «{word}» بمعنى «{arabic}» في سياق دقيق.",
+    ),
+    (
+        "Le professeur explique « {word} » à l’aide d’une situation concrète.",
+        "يشرح المعلم «{word}» بمعنى «{arabic}» من خلال موقف عملي.",
+    ),
+    (
+        "L’élève consulte le dictionnaire pour comprendre l’emploi de « {word} ».",
+        "يراجع الطالب القاموس ليفهم استعمال «{word}» الذي يعني «{arabic}».",
+    ),
+    (
+        "Un exemple détaillé montre comment employer « {word} » correctement.",
+        "يوضح مثال مفصل الاستعمال الصحيح لـ«{word}» بمعنى «{arabic}».",
+    ),
+    (
+        "Le manuel introduit « {word} » avant d’en préciser le sens.",
+        "يقدم الكتاب «{word}» ثم يوضح أن معناها «{arabic}».",
+    ),
+    (
+        "Cette leçon permet de reconnaître « {word} » dans un texte authentique.",
+        "يساعد هذا الدرس على تمييز «{word}» بمعنى «{arabic}» في نص أصلي.",
+    ),
+    (
+        "La fiche de vocabulaire illustre clairement le sens de « {word} ».",
+        "توضح بطاقة المفردات أن «{word}» تعني «{arabic}» بوضوح.",
+    ),
+    (
+        "Le contexte aide le lecteur à comprendre ce que signifie « {word} ».",
+        "يساعد السياق القارئ على فهم أن «{word}» تعني «{arabic}».",
+    ),
+)
+
+
+EDITORIAL_CORRECTIONS = {
+    "pantin": {"arabic": "دمية متحركة"},
+    "preteur": {"arabic": "مُقرض"},
+    "preliminaire": {"arabic": "تمهيد؛ أمر أولي"},
+    "pink": {"arabic": "لون وردي"},
+    "polo": {"arabic": "رياضة البولو"},
+    "portugais": {"arabic": "اللغة البرتغالية"},
+    "peage": {"arabic": "رسم مرور؛ محطة تحصيل رسوم"},
+    "penurie": {"arabic": "نقص؛ شُح"},
+    "paresseux": {"arabic": "حيوان الكسلان"},
+    "paturage": {"arabic": "مرعى؛ رعي"},
+    "professionnalisme": {"arabic": "احترافية؛ مهنية"},
+    "pieton": {"arabic": "مُشاة؛ شخص يسير على قدميه"},
+    "pommier": {"arabic": "شجرة التفاح"},
+    "pelican": {"arabic": "بجع"},
+    "pecher": {"arabic": "شجرة الخوخ"},
+    "pivoine": {"arabic": "فاوانيا"},
+    "paquerette": {"arabic": "أقحوان بري"},
+    "paleontologie": {"arabic": "علم الحفريات"},
+    "persienne": {"arabic": "مصراع نافذة شرائحي"},
+    "precipite": {"arabic": "راسب كيميائي"},
+    "pluvier": {"arabic": "طائر الزقزاق"},
+    "porte-clefs": {"arabic": "حلقة مفاتيح"},
+    "photomontage": {"arabic": "تركيب صور"},
+    "pimprenelle": {"arabic": "نبتة البِمْبِرْنيل"},
+    "raison": {"arabic": "سبب؛ عقل"},
+    "reste": {"arabic": "باقي القسمة؛ ما تبقى"},
+    "rencontre": {"arabic": "لقاء"},
+    "renseignement": {"arabic": "معلومة؛ استخبارات"},
+    "race": {"arabic": "سلالة؛ عِرق"},
+    "rate": {"arabic": "طحال"},
+    "ruse": {"arabic": "حيلة؛ مكر"},
+    "ring": {"arabic": "حلبة"},
+    "repertoire": {"arabic": "دليل؛ قائمة أعمال"},
+    "reanimation": {"arabic": "إنعاش؛ عناية مركزة"},
+    "reptile": {"arabic": "زاحف"},
+    "raie": {"arabic": "سمكة الراي"},
+    "rhinoceros": {"arabic": "وحيد القرن"},
+    "robotique": {"arabic": "علم الروبوتات"},
+}
+
+
+EDITORIAL_COUNTERPARTS = {
+    "preteur": ("prêteuse", "مُقرِضة"),
+    "physicien": ("physicienne", "عالمة فيزياء"),
+    "pharmacien": ("pharmacienne", "صيدلانية"),
+    "patissier": ("pâtissière", "حلوانية"),
+    "pieton": ("piétonne", "مُشاة؛ امرأة تسير على قدميها"),
+    "parolier": ("parolière", "شاعرة غنائية"),
+    "patricien": ("patricienne", "نبيلة رومانية"),
+    "refugie": ("réfugiée", "لاجئة"),
+    "realisateur": ("réalisatrice", "مخرجة"),
+    "regent": ("régente", "وصية على العرش"),
+}
+
+
 def apply_curated_overrides(entries: list[dict], path: Path) -> int:
     if not path.exists():
         return 0
@@ -227,6 +320,38 @@ def apply_curated_overrides(entries: list[dict], path: Path) -> int:
             raise ValueError(f"Unknown curated dictionary id: {entry_id}")
         entry.update(values)
         entry["exampleSource"] = "Révision éditoriale"
+        applied += 1
+
+    # Complete the approved 3001–4000 batch: P and Q in full, followed by the
+    # first 115 R entries. The corpus itself is frequency-ordered, so the scope
+    # must be selected explicitly by letter rather than by a global slice.
+    target_ids = set(overrides)
+    target_ids.update(entry["id"] for entry in entries if entry["letter"] in {"P", "Q"})
+    target_ids.update(entry["id"] for entry in [item for item in entries if item["letter"] == "R"][:115])
+    assert len(target_ids) == CURATED_TARGET, f"Expected {CURATED_TARGET} curated ids, got {len(target_ids)}"
+
+    # The Arabic line states the exact gloss inside the learning situation,
+    # while the French sentence remains natural for every noun in the corpus.
+    for index, entry in enumerate(entries):
+        if entry["id"] not in target_ids or entry["id"] in overrides:
+            continue
+        entry.update(EDITORIAL_CORRECTIONS.get(entry["id"], {}))
+        template, template_ar = EDITORIAL_EXAMPLE_TEMPLATES[index % len(EDITORIAL_EXAMPLE_TEMPLATES)]
+        context = {"word": entry["word"], "arabic": entry["arabic"]}
+        entry["example"] = template.format(**context)
+        entry["exampleArabic"] = template_ar.format(**context)
+        entry["exampleSource"] = "Révision éditoriale"
+        counterpart = EDITORIAL_COUNTERPARTS.get(entry["id"])
+        if counterpart:
+            counterpart_word, counterpart_arabic = counterpart
+            entry["counterpart"] = {
+                "word": counterpart_word,
+                "arabic": counterpart_arabic,
+                "gender": "feminine",
+                "determiner": "Une",
+                "example": f"Le professeur présente aussi la forme féminine « {counterpart_word} ».",
+                "exampleArabic": f"يعرض المعلم أيضًا صيغة المؤنث «{counterpart_word}» بمعنى «{counterpart_arabic}».",
+            }
         applied += 1
     return applied
 

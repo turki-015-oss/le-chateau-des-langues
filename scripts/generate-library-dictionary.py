@@ -174,7 +174,9 @@ def load_tatoeba_pairs(source_dir: Path) -> list[tuple[str, str]]:
             pairs.add((french[left], arabic[right]))
         elif right in french and left in arabic:
             pairs.add((french[right], arabic[left]))
-    return sorted(pairs, key=lambda pair: (len(pair[0]), pair[0]))
+    # Keep the selected translation stable when one French sentence has
+    # several Arabic translations. Set iteration order varies by process.
+    return sorted(pairs, key=lambda pair: (len(pair[0]), pair[0], len(pair[1]), pair[1]))
 
 
 def attach_examples(entries: list[dict], pairs: list[tuple[str, str]]) -> int:

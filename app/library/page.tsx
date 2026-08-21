@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, BookOpen, ChevronLeft, Search, Sparkles, Volume2, X } from "lucide-react";
-import { alphabet, dictionaryEntries, type DictionaryEntry } from "./library-data";
+import { ArrowLeft, BookOpen, ChevronLeft, LoaderCircle, Search, Sparkles, Volume2, X } from "lucide-react";
+import {
+  alphabet,
+  loadDictionaryLetter,
+  loadDictionaryManifest,
+  type DictionaryEntry,
+  type DictionaryManifest,
+} from "./library-data";
 import "./library.css";
 
 const bookPalette = ["burgundy", "emerald", "navy", "sienna", "plum", "forest", "oxblood"];
@@ -11,12 +17,24 @@ function normalize(value: string) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").trim();
 }
 
-function speakFrench(text: string) {
+function selectFrenchVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  return voices.find((voice) => voice.lang.toLowerCase() === "fr-fr" && voice.localService)
+    ?? voices.find((voice) => voice.lang.toLowerCase() === "fr-fr")
+    ?? voices.find((voice) => voice.lang.toLowerCase().startsWith("fr") && voice.localService)
+    ?? voices.find((voice) => voice.lang.toLowerCase().startsWith("fr"))
+    ?? null;
+}
+
+function speakFrench(text: string, kind: "word" | "sentence") {
   if (!("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "fr-FR";
-  utterance.rate = 0.88;
+  utterance.voice = selectFrenchVoice();
+  utterance.rate = kind === "word" ? 0.76 : 0.9;
+  utterance.pitch = 1;
+  utterance.volume = 1;
   window.speechSynthesis.speak(utterance);
 }
 
@@ -25,39 +43,62 @@ export default function LibraryPage() {
   const [activeLetter, setActiveLetter] = useState<string | null>(null);
   const [activeWord, setActiveWord] = useState<string | null>(null);
   const [openingLetter, setOpeningLetter] = useState<string | null>(null);
+  const [manifest, setManifest] = useState<DictionaryManifest | null>(null);
+  const [activeEntries, setActiveEntries] = useState<DictionaryEntry[]>([]);
+  const [loadingLetter, setLoadingLetter] = useState(false);
+  const [dictionaryError, setDictionaryError] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
 
-  const entriesByLetter = useMemo(() => Object.fromEntries(alphabet.map((letter) => [
-    letter,
-    dictionaryEntries.filter((entry) => entry.letter === letter),
-  ])) as Record<string, DictionaryEntry[]>, []);
+  useEffect(() => {
+    loadDictionaryManifest()
+      .then(setManifest)
+      .catch(() => setDictionaryError("تعذر تحميل بيانات القاموس. أعد فتح الصفحة من فضلك."));
+  }, []);
 
   const searchResults = useMemo(() => {
     const needle = normalize(query);
     if (!needle) return [];
-    return dictionaryEntries.filter((entry) =>
+    return (manifest?.search ?? []).filter((entry) =>
       normalize(entry.word).includes(needle) || entry.arabic.includes(query.trim()),
-    ).slice(0, 8);
-  }, [query]);
+    ).slice(0, 12);
+  }, [manifest, query]);
 
   const openBook = (letter: string, wordId?: string) => {
     setOpeningLetter(letter);
-    window.setTimeout(() => {
-      setActiveLetter(letter);
-      setActiveWord(wordId ?? entriesByLetter[letter]?.[0]?.id ?? null);
-      setOpeningLetter(null);
-      setQuery("");
-    }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420);
+    setLoadingLetter(true);
+    setDictionaryError("");
+    loadDictionaryLetter(letter)
+      .then((entries) => {
+        window.setTimeout(() => {
+          setActiveEntries(entries);
+          setActiveLetter(letter);
+          setActiveWord(wordId ?? entries[0]?.id ?? null);
+          setOpeningLetter(null);
+          setLoadingLetter(false);
+          setQuery("");
+        }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420);
+      })
+      .catch(() => {
+        setOpeningLetter(null);
+        setLoadingLetter(false);
+        setDictionaryError(`تعذر تحميل قاموس حرف ${letter}.`);
+      });
   };
 
   const closeBook = () => {
     setActiveLetter(null);
     setActiveWord(null);
+    setActiveEntries([]);
+  };
+
+  const focusSearch = () => {
+    closeBook();
+    window.setTimeout(() => searchRef.current?.focus(), 50);
   };
 
   useEffect(() => {
     if (!activeWord) return;
-    window.setTimeout(() => document.getElementById(`library-word-${activeWord}`)?.scrollIntoView({ block: "center", behavior: "smooth" }), 180);
+    window.setTimeout(() => document.getElementById(`library-word-${activeWord}`)?.scrollIntoView({ block: "start", behavior: "smooth" }), 180);
   }, [activeWord, activeLetter]);
 
   useEffect(() => {
@@ -73,8 +114,6 @@ export default function LibraryPage() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeLetter]);
 
-  const activeEntries = activeLetter ? entriesByLetter[activeLetter] ?? [] : [];
-
   return (
     <main className="library-world" dir="rtl">
       <header className="library-topbar">
@@ -86,7 +125,7 @@ export default function LibraryPage() {
           <span>LA BIBLIOTHÈQUE DU CHÂTEAU</span>
           <strong>مكتبة القلعة</strong>
         </div>
-        <button className="library-focus-search" onClick={() => searchRef.current?.focus()} aria-label="البحث في القواميس">
+        <button className="library-focus-search" onClick={focusSearch} aria-label="البحث في القواميس">
           <Search />
         </button>
       </header>
@@ -96,7 +135,7 @@ export default function LibraryPage() {
         <div className="library-heading">
           <span>DICTIONNAIRE ALPHABÉTIQUE</span>
           <h1>اختر كتابًا من A إلى Z</h1>
-          <p>كل حرف يفتح قاموسه الخاص، ويمكن إضافة كلمات جديدة إليه في أي وقت.</p>
+          <p>خمسة آلاف كلمة فرنسية موثقة، موزعة على 26 قاموسًا مع النوع والنطق والجمل.</p>
         </div>
 
         <div className="library-search-zone">
@@ -121,9 +160,10 @@ export default function LibraryPage() {
                   <span><strong>{entry.word}</strong><small>{entry.arabic}</small></span>
                   <BookOpen />
                 </button>
-              )) : <p>لا توجد كلمة مطابقة، ويمكن إضافتها لاحقًا إلى القاموس.</p>}
+              )) : <p>لا توجد كلمة مطابقة في الكلمات الخمسة آلاف الحالية.</p>}
             </div>
           )}
+          {dictionaryError && <p className="library-data-error" role="alert">{dictionaryError}</p>}
         </div>
 
         <div className="library-cabinet" aria-label="رفوف القواميس من A إلى Z">
@@ -141,7 +181,7 @@ export default function LibraryPage() {
                   >
                     <span className="book-gilding" aria-hidden="true" />
                     <b>{letter}</b>
-                    <small>{entriesByLetter[letter].length}</small>
+                    <small>{manifest?.counts[letter] ?? "…"}</small>
                     <i aria-hidden="true" />
                   </button>
                 ))}
@@ -170,9 +210,9 @@ export default function LibraryPage() {
               <p>الكلمات الفرنسية التي تبدأ بهذا الحرف محفوظة هنا.</p>
               <div className="dictionary-index">
                 <strong>{activeEntries.length}</strong>
-                <span>كلمة متاحة حاليًا</span>
+              <span>كلمة موثقة في هذا الكتاب</span>
               </div>
-              <small>يمكن إضافة كلمات جديدة إلى ملف بيانات المكتبة دون تغيير التصميم.</small>
+              <small>النوع والصيغة الصوتية من Lexique 4، والترجمة من Wikidata.</small>
             </div>
             <div className="dictionary-page dictionary-page-words">
               <header>
@@ -187,28 +227,59 @@ export default function LibraryPage() {
                     className={activeWord === entry.id ? "is-target" : ""}
                     onClick={() => setActiveWord(entry.id)}
                   >
-                    <button onClick={(event) => { event.stopPropagation(); speakFrench(entry.word); }} aria-label={`نطق ${entry.word}`}>
-                      <Volume2 />
-                    </button>
                     <div>
                       <h3>{entry.word}</h3>
+                      <span className={`dictionary-gender ${entry.gender}`} lang="fr">
+                        ({entry.gender === "masculine" ? "Masculin" : "Féminin"})
+                      </span>
+                      {entry.ipa && <span className="dictionary-ipa" lang="fr">/{entry.ipa}/</span>}
                       <strong>{entry.arabic}</strong>
                       <p lang="fr">{entry.example}</p>
                       <small>{entry.exampleArabic}</small>
+                      <div className="dictionary-audio-actions">
+                        <button onClick={(event) => { event.stopPropagation(); speakFrench(entry.word, "word"); }} aria-label={`نطق الكلمة ${entry.word}`}>
+                          <Volume2 /><span>نطق الكلمة</span>
+                        </button>
+                        <button onClick={(event) => { event.stopPropagation(); speakFrench(entry.example, "sentence"); }} aria-label={`نطق الجملة ${entry.example}`}>
+                          <Volume2 /><span>نطق الجملة</span>
+                        </button>
+                      </div>
+                      {entry.counterpart && (
+                        <section className={`dictionary-counterpart ${entry.counterpart.gender}`}>
+                          <div className="dictionary-counterpart-heading">
+                            <h4 lang="fr">{entry.counterpart.word}</h4>
+                            <span lang="fr">({entry.counterpart.gender === "masculine" ? "Masculin" : "Féminin"})</span>
+                          </div>
+                          <strong>{entry.counterpart.arabic}</strong>
+                          <p lang="fr">{entry.counterpart.example}</p>
+                          <small>{entry.counterpart.exampleArabic}</small>
+                          <div className="dictionary-audio-actions">
+                            <button onClick={(event) => { event.stopPropagation(); speakFrench(entry.counterpart!.word, "word"); }} aria-label={`نطق الكلمة ${entry.counterpart.word}`}>
+                              <Volume2 /><span>نطق {entry.counterpart.word}</span>
+                            </button>
+                            <button onClick={(event) => { event.stopPropagation(); speakFrench(entry.counterpart!.example, "sentence"); }} aria-label={`نطق الجملة ${entry.counterpart.example}`}>
+                              <Volume2 /><span>نطق جملة المؤنث</span>
+                            </button>
+                          </div>
+                        </section>
+                      )}
                     </div>
                   </article>
                 )) : (
                   <div className="dictionary-empty">
                     <BookOpen />
                     <h3>هذا الكتاب جاهز</h3>
-                    <p>يمكنك إضافة أول كلمة تبدأ بحرف {activeLetter} مستقبلًا.</p>
+                    <p>{loadingLetter ? "يتم تحميل الكلمات…" : `لا توجد كلمات متاحة لحرف ${activeLetter}.`}</p>
                   </div>
                 )}
               </div>
-              <footer><span>— {activeLetter} —</span><small>Bibliothèque du Château</small></footer>
+              <footer><span>— {activeLetter} —</span><small>Lexique 4 · Wikidata · Tatoeba</small></footer>
             </div>
           </article>
         </section>
+      )}
+      {loadingLetter && !activeLetter && (
+        <div className="library-loading" role="status"><LoaderCircle /><span>جاري فتح القاموس…</span></div>
       )}
     </main>
   );

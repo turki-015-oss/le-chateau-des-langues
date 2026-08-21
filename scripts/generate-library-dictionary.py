@@ -26,7 +26,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / ".tools" / "dictionary-sources"
 OUTPUT = ROOT / "public" / "library" / "dictionary"
 CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
-CURATED_TARGET = 4000
 TARGET_COUNT = 5000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 WORD_RE = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ-]{2,30}$")
@@ -291,6 +290,36 @@ EDITORIAL_CORRECTIONS = {
     "raie": {"arabic": "سمكة الراي"},
     "rhinoceros": {"arabic": "وحيد القرن"},
     "robotique": {"arabic": "علم الروبوتات"},
+    "ray": {"arabic": "شعاع"},
+    "root": {"arabic": "جذر"},
+    "roumain": {"arabic": "اللغة الرومانية"},
+    "ravine": {"arabic": "أخدود؛ وادٍ ضيق"},
+    "ragondin": {"arabic": "كُويبو؛ جرذ الماء"},
+    "reveille-matin": {"arabic": "ساعة منبّهة"},
+    "routage": {"arabic": "توجيه الشبكات"},
+    "recombinaison": {"arabic": "إعادة تركيب"},
+    "riviera": {"arabic": "ساحل سياحي؛ ريفييرا"},
+    "sherif": {"arabic": "مأمور مقاطعة؛ شريف"},
+    "star": {"arabic": "نجمة؛ شخصية مشهورة"},
+    "serveur": {"arabic": "خادم؛ نادل"},
+    "section": {"arabic": "قسم؛ مقطع"},
+    "square": {"arabic": "ساحة عامة صغيرة"},
+    "trace": {"arabic": "أثر؛ علامة"},
+    "trempe": {"arabic": "تقسية المعادن"},
+    "torrent": {"arabic": "سيل جارف؛ مجرى مائي سريع"},
+    "salsa": {"arabic": "رقصة وموسيقى السالسا"},
+    "si": {"arabic": "نغمة سي الموسيقية"},
+    "translation": {"arabic": "إزاحة؛ حركة انتقالية"},
+    "tracker": {"arabic": "متعقّب"},
+    "spam": {"arabic": "بريد مزعج؛ رسائل غير مرغوب فيها"},
+    "transparent": {"arabic": "شفاف"},
+    "venus": {"arabic": "كوكب الزهرة؛ فينوس"},
+    "tuner": {"arabic": "موالف راديو"},
+    "stance": {"arabic": "مقطع شعري"},
+    "saturnales": {"arabic": "عيد ساتورن الروماني"},
+    "socket": {"arabic": "مقبس"},
+    "tesla": {"arabic": "تسلا؛ وحدة كثافة الفيض المغناطيسي"},
+    "sensationnalisme": {"arabic": "إثارة صحفية"},
 }
 
 
@@ -305,6 +334,9 @@ EDITORIAL_COUNTERPARTS = {
     "refugie": ("réfugiée", "لاجئة"),
     "realisateur": ("réalisatrice", "مخرجة"),
     "regent": ("régente", "وصية على العرش"),
+    "serveur": ("serveuse", "نادلة؛ خادمة"),
+    "technicien": ("technicienne", "فنية؛ تقنية"),
+    "rapporteur": ("rapporteuse", "مقررة؛ عارضة تقرير"),
 }
 
 
@@ -322,37 +354,6 @@ def apply_curated_overrides(entries: list[dict], path: Path) -> int:
         entry["exampleSource"] = "Révision éditoriale"
         applied += 1
 
-    # Complete the approved 3001–4000 batch: P and Q in full, followed by the
-    # first 115 R entries. The corpus itself is frequency-ordered, so the scope
-    # must be selected explicitly by letter rather than by a global slice.
-    target_ids = set(overrides)
-    target_ids.update(entry["id"] for entry in entries if entry["letter"] in {"P", "Q"})
-    target_ids.update(entry["id"] for entry in [item for item in entries if item["letter"] == "R"][:115])
-    assert len(target_ids) == CURATED_TARGET, f"Expected {CURATED_TARGET} curated ids, got {len(target_ids)}"
-
-    # The Arabic line states the exact gloss inside the learning situation,
-    # while the French sentence remains natural for every noun in the corpus.
-    for index, entry in enumerate(entries):
-        if entry["id"] not in target_ids or entry["id"] in overrides:
-            continue
-        entry.update(EDITORIAL_CORRECTIONS.get(entry["id"], {}))
-        template, template_ar = EDITORIAL_EXAMPLE_TEMPLATES[index % len(EDITORIAL_EXAMPLE_TEMPLATES)]
-        context = {"word": entry["word"], "arabic": entry["arabic"]}
-        entry["example"] = template.format(**context)
-        entry["exampleArabic"] = template_ar.format(**context)
-        entry["exampleSource"] = "Révision éditoriale"
-        counterpart = EDITORIAL_COUNTERPARTS.get(entry["id"])
-        if counterpart:
-            counterpart_word, counterpart_arabic = counterpart
-            entry["counterpart"] = {
-                "word": counterpart_word,
-                "arabic": counterpart_arabic,
-                "gender": "feminine",
-                "determiner": "Une",
-                "example": f"Le professeur présente aussi la forme féminine « {counterpart_word} ».",
-                "exampleArabic": f"يعرض المعلم أيضًا صيغة المؤنث «{counterpart_word}» بمعنى «{counterpart_arabic}».",
-            }
-        applied += 1
     return applied
 
 

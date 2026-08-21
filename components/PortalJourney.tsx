@@ -61,7 +61,20 @@ export default function PortalJourney() {
       sessionStorage.setItem("castle-portal-return", currentPlace.id);
       setExiting(currentPlace);
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.setTimeout(() => router.push(`/kingdom?return=${currentPlace.id}`), reducedMotion ? 100 : 760);
+      const currentParams = new URLSearchParams(window.location.search);
+      const returnParams = new URLSearchParams({ return: currentPlace.id });
+      const portalRail = currentParams.get("portalRail");
+      const portalPage = currentParams.get("portalPage");
+      if (portalRail !== null) returnParams.set("rail", portalRail);
+      if (portalPage !== null) returnParams.set("page", portalPage);
+      if (portalRail !== null || portalPage !== null) {
+        sessionStorage.setItem("castle-portal-view", JSON.stringify({
+          id: currentPlace.id,
+          railX: portalRail === null ? 0 : Number(portalRail),
+          pageY: portalPage === null ? 0 : Number(portalPage),
+        }));
+      }
+      window.setTimeout(() => router.push(`/kingdom?${returnParams.toString()}`), reducedMotion ? 100 : 760);
     };
 
     document.addEventListener("click", onReturn, true);

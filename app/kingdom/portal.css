@@ -533,3 +533,260 @@
   .enchanted-book{bottom:54px}
   .destination-gallery{margin-top:-54px}
 }
+
+/* The book pages are portals: the selected page responds first, then the full entry opens from it. */
+.castle-portal.is-book-launching .book-destination{
+  transition:transform .28s cubic-bezier(.2,.78,.2,1),filter .28s ease,opacity .28s ease;
+}
+.castle-portal.book-launching-university .library-book,
+.castle-portal.book-launching-library .university-book{
+  filter:brightness(.9) saturate(.84);
+  opacity:.88;
+}
+.castle-portal.is-book-launching .book-destination.is-pressed{
+  transform:perspective(900px) translateY(8px) rotateX(2.4deg) scale(.988)!important;
+  filter:brightness(1.09) saturate(1.08) drop-shadow(0 0 17px #f4cf6c8f);
+}
+.castle-portal.is-book-launching .book-destination.is-pressed:after{
+  display:block;
+  background:radial-gradient(ellipse at 50% 55%,#fff5bd57 0 15%,#eac35e32 42%,transparent 72%);
+  border-color:#f8da83;
+  box-shadow:inset 0 0 32px #ffe9a56b,0 0 18px #efc75e5c;
+}
+.book-magic-launch{
+  --book-portal-x:25%;
+  position:absolute;
+  z-index:18;
+  left:var(--book-portal-x);
+  top:57%;
+  width:112px;
+  height:112px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
+  isolation:isolate;
+}
+.book-magic-launch-library{--book-portal-x:75%}
+.book-magic-launch:before,
+.book-magic-launch:after,
+.book-magic-launch>i{
+  content:"";
+  position:absolute;
+  inset:22%;
+  border:1px solid #ffe9a9;
+  border-radius:50%;
+  box-shadow:0 0 12px #fff4bf,0 0 34px #d8a832cc,inset 0 0 18px #fff1acb8;
+  animation:bookPortalRing .72s cubic-bezier(.15,.74,.25,1) both;
+}
+.book-magic-launch:after{
+  inset:-18% 24%;
+  border:0;
+  border-radius:50%;
+  background:radial-gradient(ellipse,#fff7c5d6 0 4%,#efc65c6b 22%,transparent 68%);
+  filter:blur(2px);
+  animation:bookPortalPlume .82s ease-out both;
+}
+.book-magic-launch>i:nth-child(2){
+  inset:4%;
+  border-style:dashed;
+  opacity:.7;
+  animation-delay:.08s;
+}
+.book-magic-launch>svg{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  width:25px;
+  color:#fff5c5;
+  transform:translate(-50%,-50%);
+  filter:drop-shadow(0 0 9px #fff);
+  animation:bookPortalSpark .56s ease-in-out infinite alternate;
+}
+.magic-entry-university{--book-entry-x:25%}
+.magic-entry-library{--book-entry-x:75%}
+.magic-entry-university,
+.magic-entry-library{
+  animation:bookPortalTakeover .4s cubic-bezier(.18,.72,.2,1) both;
+  transform-origin:var(--book-entry-x) 66%;
+}
+@keyframes bookPortalRing{
+  0%{transform:scale(.18) rotate(-18deg);opacity:0}
+  50%{opacity:1}
+  100%{transform:scale(1.38) rotate(16deg);opacity:.08}
+}
+@keyframes bookPortalPlume{
+  0%{transform:translateY(30px) scale(.32);opacity:0}
+  45%{opacity:1}
+  100%{transform:translateY(-25px) scale(1.35);opacity:.18}
+}
+@keyframes bookPortalSpark{
+  from{transform:translate(-50%,-50%) scale(.75) rotate(-8deg);opacity:.7}
+  to{transform:translate(-50%,-50%) scale(1.18) rotate(8deg);opacity:1}
+}
+@keyframes bookPortalTakeover{
+  0%{clip-path:circle(0 at var(--book-entry-x) 66%);opacity:.28;transform:scale(.985)}
+  100%{clip-path:circle(150% at var(--book-entry-x) 66%);opacity:1;transform:scale(1)}
+}
+@media(max-width:620px){
+  .book-magic-launch{top:60%;width:86px;height:86px}
+  .magic-entry-university,.magic-entry-library{transform-origin:var(--book-entry-x) 62%}
+  @keyframes bookPortalTakeover{
+    0%{clip-path:circle(0 at var(--book-entry-x) 62%);opacity:.32;transform:scale(.99)}
+    100%{clip-path:circle(165% at var(--book-entry-x) 62%);opacity:1;transform:scale(1)}
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .book-magic-launch{display:none}
+  .magic-entry-university,.magic-entry-library{clip-path:none;animation:magicFadeIn .01ms both}
+}
+
+/* Lower destinations keep their place while the chosen building rises into its portal. */
+.destination-photo{
+  transition:transform .32s cubic-bezier(.18,.8,.2,1),filter .28s ease,box-shadow .28s ease;
+  transform-origin:50% 72%;
+}
+.castle-portal.is-card-launching .destination-tab.is-pressed{
+  transform:translateY(7px) scale(.989)!important;
+  filter:none;
+  overflow:visible;
+}
+.castle-portal.is-card-launching .destination-tab.is-pressed .destination-photo{
+  transform:translateY(-10px) scale(1.045);
+  filter:brightness(1.08) saturate(1.08) drop-shadow(0 10px 13px #4b2d1870) drop-shadow(0 0 13px #f4ce6a8c);
+  box-shadow:0 0 0 1px #f5d47c,0 0 25px #e9bd545e;
+}
+.castle-portal.is-card-launching .destination-tab.is-pressed .destination-copy,
+.castle-portal.is-card-launching .destination-tab.is-pressed .destination-open{
+  transform:translateY(2px);
+}
+.card-magic-launch{
+  position:absolute;
+  z-index:12;
+  left:50%;
+  top:77px;
+  width:92px;
+  height:92px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
+  isolation:isolate;
+}
+.card-magic-launch:before,
+.card-magic-launch:after,
+.card-magic-launch>i{
+  content:"";
+  position:absolute;
+  inset:18%;
+  border:1px solid #fff0b0;
+  border-radius:50%;
+  box-shadow:0 0 12px #fff2b9,0 0 32px #dfac37b8,inset 0 0 16px #fff2b998;
+  animation:cardPortalRing .7s cubic-bezier(.16,.75,.2,1) both;
+}
+.card-magic-launch:after{
+  inset:-15% 27%;
+  border:0;
+  background:radial-gradient(ellipse,#fff8d7e8 0 5%,#e9bd526d 28%,transparent 70%);
+  filter:blur(2px);
+  animation:cardPortalLift .76s ease-out both;
+}
+.card-magic-launch>i:nth-child(2){
+  inset:2%;
+  border-style:dashed;
+  opacity:.72;
+  animation-delay:.07s;
+}
+.card-magic-launch>svg{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  width:23px;
+  color:#fff5c7;
+  transform:translate(-50%,-50%);
+  filter:drop-shadow(0 0 9px #fff);
+  animation:bookPortalSpark .54s ease-in-out infinite alternate;
+}
+.magic-entry-from-card{
+  animation:cardPortalTakeover .4s cubic-bezier(.18,.72,.2,1) both;
+  transform-origin:var(--card-entry-x) var(--card-entry-y);
+}
+@keyframes cardPortalRing{
+  0%{transform:scale(.12) rotate(-14deg);opacity:0}
+  48%{opacity:1}
+  100%{transform:scale(1.42) rotate(17deg);opacity:.06}
+}
+@keyframes cardPortalLift{
+  0%{transform:translateY(28px) scale(.25);opacity:0}
+  45%{opacity:1}
+  100%{transform:translateY(-24px) scale(1.35);opacity:.16}
+}
+@keyframes cardPortalTakeover{
+  0%{clip-path:circle(0 at var(--card-entry-x) var(--card-entry-y));opacity:.3;transform:scale(.988)}
+  100%{clip-path:circle(165% at var(--card-entry-x) var(--card-entry-y));opacity:1;transform:scale(1)}
+}
+@media(max-width:620px){
+  .card-magic-launch{top:75px;width:78px;height:78px}
+  .castle-portal.is-card-launching .destination-tab.is-pressed .destination-photo{transform:translateY(-7px) scale(1.035)}
+}
+@media(prefers-reduced-motion:reduce){
+  .card-magic-launch{display:none}
+  .magic-entry-from-card{clip-path:none;animation:magicFadeIn .01ms both}
+}
+
+/* Final stability pass: keep the document anchored while horizontal cards move independently. */
+.castle-portal{
+  width:100%;
+  max-width:100vw;
+  overflow-x:clip;
+}
+.destination-rail{
+  max-width:100%;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.castle-portal.is-entering,
+.castle-portal.is-book-launching,
+.castle-portal.is-card-launching{
+  touch-action:none;
+}
+@media(hover:none){
+  .destination-tab:not(.is-pressed):hover,
+  .book-destination:not(.is-pressed):hover{transform:none}
+}
+
+/* Merge the castle into the book and give both page landmarks more presence. */
+.university-campus-art{
+  right:14%;
+  bottom:22px;
+  width:72%;
+  max-height:57%;
+}
+.library-book .library-facade-art{
+  left:9%;
+  bottom:22px;
+  width:77%;
+  max-height:56%;
+}
+@media(max-width:620px){
+  .castle-portal-scene{
+    --book-ground-gap:0px;
+  }
+  .university-campus-art{
+    right:14%;
+    bottom:9px;
+    width:72%;
+    max-height:54%;
+  }
+  .library-book .library-facade-art{
+    left:8%;
+    bottom:9px;
+    width:78%;
+    max-height:54%;
+  }
+}
+@media(max-width:390px){
+  .castle-portal-scene{
+    --book-ground-gap:0px;
+  }
+}

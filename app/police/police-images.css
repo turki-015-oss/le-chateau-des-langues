@@ -1,0 +1,114 @@
+.police-command-hero > .police-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.86) contrast(1.04);
+}
+
+.police-command-hero::before,
+.police-command-hero::after {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.police-command-hero::after {
+  background:
+    linear-gradient(90deg, rgba(6, 23, 34, .95) 0%, rgba(6, 23, 34, .78) 38%, rgba(6, 23, 34, .16) 72%),
+    linear-gradient(0deg, rgba(6, 23, 34, .88), transparent 62%);
+}
+
+.police-rebuilt .police-section-card {
+  position: relative;
+  min-height: 215px;
+  overflow: hidden;
+  align-items: end;
+  padding-top: 98px;
+  isolation: isolate;
+}
+
+.police-rebuilt .police-section-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, #061722 5%, rgba(6, 23, 34, .92) 43%, rgba(6, 23, 34, .12) 82%);
+  pointer-events: none;
+}
+
+.police-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.police-section-card:hover .police-card-image,
+.police-section-card.active .police-card-image {
+  transform: scale(1.045);
+  filter: saturate(1.06) contrast(1.03);
+}
+
+.police-section-card > :not(.police-card-image) {
+  z-index: 2;
+}
+
+.police-stage-head {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.police-stage-head::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, #081c29 0%, rgba(8, 28, 41, .94) 52%, rgba(8, 28, 41, .38) 100%);
+  pointer-events: none;
+}
+
+.police-stage-image {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 0;
+  width: 52%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.police-stage-head > :not(.police-stage-image) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 620px) {
+  .police-command-hero > .police-hero-image {
+    object-position: 61% center;
+  }
+
+  .police-command-hero::after {
+    background: linear-gradient(0deg, rgba(6, 23, 34, .96) 8%, rgba(6, 23, 34, .66) 72%, rgba(6, 23, 34, .34));
+  }
+
+  .police-rebuilt .police-section-card {
+    min-height: 185px;
+    padding-top: 82px;
+  }
+
+  .police-stage-image {
+    width: 100%;
+    opacity: .56;
+  }
+
+  .police-stage-head::after {
+    background: linear-gradient(90deg, rgba(8, 28, 41, .97), rgba(8, 28, 41, .66));
+  }
+}

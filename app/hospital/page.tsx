@@ -145,6 +145,17 @@ const toolRooms:ToolRoom[]=[
  {id:"ophtalmo",fr:"Cabinet d’ophtalmologie",ar:"طبيب العيون",icon:"H",tools:[["L’ophtalmoscope","منظار العين"],["La lampe à fente","المصباح الشقي"],["Le tonomètre","مقياس ضغط العين"],["Le tableau d’acuité visuelle","لوحة فحص النظر"],["Les gouttes oculaires","قطرات العين"],["La lentille d’examen","عدسة الفحص"]].map(([fr,ar])=>({fr,ar}))}
 ];
 
+const toolImageFiles:Record<string,string[]>={
+ general:["stethoscope","blood-pressure-monitor","thermometer","otoscope","pulse-oximeter","tongue-depressor"],
+ dentiste:["dental-mirror","dental-probe","dental-forceps","dental-handpiece","dental-bur","saliva-ejector"],
+ chirurgien:["scalpel","surgical-forceps","surgical-scissors","needle-holder","suture","retractor"],
+ urgence:["syringe","iv-infusion","bandage","sterile-gauze","defibrillator","stretcher"],
+ dermato:["dermatoscope","medical-magnifier","examination-lamp","dermatology-curette","specimen-kit","liquid-nitrogen-canister"],
+ imagerie:["xray-machine","ultrasound-machine","ct-scanner","mri-machine","ultrasound-probe","lead-apron"],
+ laboratoire:["microscope","test-tube","pipette","centrifuge","microscope-slide","specimen-container"],
+ ophtalmo:["ophthalmoscope","slit-lamp","tonometer","eye-chart","eye-drops","examination-lens"]
+};
+
 const term=(fr:string,ar:string,note:string):AnatomyTerm=>({fr,ar,note});
 const anatomyZones:AnatomyZone[]=[
  {id:"head",fr:"La tête",ar:"الرأس",x:50,y:7,color:"#d9a56d",terms:[term("Le crâne","الجمجمة","عظام تحمي الدماغ"),term("Le cerveau","الدماغ","عضو الجهاز العصبي المركزي"),term("Le visage","الوجه","الجزء الأمامي من الرأس"),term("Le front","الجبهة","أعلى الوجه"),term("Les cheveux","الشعر","يغطي فروة الرأس")]},
@@ -225,7 +236,7 @@ export default function HospitalPage(){
    <article className="hospital-tool-cabinet">
     <header><div><Stethoscope/><span><small>Armoire spécialisée</small><h3>{currentToolRoom.fr}</h3><p>{currentToolRoom.ar}</p></span></div><button onClick={()=>speak(currentToolRoom.fr)}><Volume2/></button></header>
     <div className="hospital-tool-grid">
-     {currentToolRoom.tools.map((item,index)=><button key={item.fr} onClick={()=>speak(item.fr)}><div className="hospital-tool-visual"><span/><i>{String(index+1).padStart(2,"0")}</i></div><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small><em><Volume2/> اضغط للاستماع</em></button>)}
+     {currentToolRoom.tools.map((item,index)=><button key={item.fr} onClick={()=>speak(item.fr)}><div className="hospital-tool-visual"><img src={`/hospital/tools/${toolImageFiles[currentToolRoom.id][index]}.webp`} alt={item.fr} loading="lazy" decoding="async"/><i>{String(index+1).padStart(2,"0")}</i></div><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small><em><Volume2/> اضغط للاستماع</em></button>)}
     </div>
    </article>
   </section>}

@@ -803,6 +803,12 @@
   align-items:stretch!important;
   text-align:center!important;
 }
+.book-pages .university-book .book-copy{
+  left:calc(50% + clamp(7px,1.2vw,16px))!important;
+}
+.book-pages .library-book .book-copy{
+  left:calc(50% - clamp(7px,1.2vw,16px))!important;
+}
 .book-pages .university-book .book-copy strong,
 .book-pages .university-book .book-copy small,
 .book-pages .library-book .book-copy strong,
@@ -817,6 +823,12 @@
 .book-pages .library-book .book-copy strong{
   white-space:nowrap;
   letter-spacing:0;
+}
+@media(orientation:landscape) and (max-height:700px){
+  .book-pages .university-book .book-copy,
+  .book-pages .library-book .book-copy{
+    top:clamp(8px,1.6vh,12px)!important;
+  }
 }
 .destination-tab[data-destination="cinema"] .destination-photo{
   background-size:contain;

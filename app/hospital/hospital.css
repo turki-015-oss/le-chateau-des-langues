@@ -11,3 +11,4 @@
 @media(prefers-reduced-motion:reduce){.hospital-world *{scroll-behavior:auto!important;transition:none!important}}
 .hospital-tool-visual{height:150px;background:#f6f0e7;border:1px solid #e5d8c8}.hospital-tool-visual:before,.hospital-tool-visual:after,.hospital-tool-visual>span{display:none}.hospital-tool-visual img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .32s ease}.hospital-tool-grid>button:hover .hospital-tool-visual img{transform:scale(1.045)}.hospital-tool-visual i{right:9px;top:9px;z-index:2;min-width:27px;height:27px;padding:0 6px;display:grid;place-items:center;border-radius:999px;background:#fffdf8e8;box-shadow:0 4px 14px #5d432b24;color:#5c766f;backdrop-filter:blur(5px)}
 @media(max-width:620px){.hospital-tool-visual{height:110px}}
+.hospital-department-room{scroll-margin-top:92px}

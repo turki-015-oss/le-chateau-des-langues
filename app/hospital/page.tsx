@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {useMemo,useState} from "react";
+import {useMemo,useRef,useState} from "react";
 import type {CSSProperties} from "react";
 import {
  Activity,ArrowRight,Baby,Bone,BookOpen,Brain,Building2,ChevronLeft,
@@ -182,6 +182,7 @@ export default function HospitalPage(){
  const [activeToolRoom,setActiveToolRoom]=useState("general");
  const [activeZone,setActiveZone]=useState("head");
  const [query,setQuery]=useState("");
+ const departmentRoomRef=useRef<HTMLElement>(null);
  const currentDepartment=departments.find(item=>item.id===activeDepartment)??departments[0];
  const currentToolRoom=toolRooms.find(item=>item.id===activeToolRoom)??toolRooms[0];
  const currentZone=anatomyZones.find(item=>item.id===activeZone)??anatomyZones[0];
@@ -190,6 +191,10 @@ export default function HospitalPage(){
   return q?departments.filter(item=>`${item.fr} ${item.ar} ${item.tag}`.toLocaleLowerCase("fr").includes(q)):departments;
  },[query]);
  const speak=(text:string)=>void speakFrench(text,{rate:.76});
+ const openDepartment=(id:string)=>{
+  setActiveDepartment(id);
+  window.setTimeout(()=>departmentRoomRef.current?.scrollIntoView({behavior:"smooth",block:"start"}),0);
+ };
 
  return <main className="hospital-world" dir="rtl">
   <header className="hospital-topbar">
@@ -218,9 +223,9 @@ export default function HospitalPage(){
    <div className="hospital-section-title"><span>01 · Services</span><h2>أقسام المستشفى</h2><p>اختر القسم، ثم اضغط على أي جملة لسماع نطقها الفرنسي الصحيح.</p></div>
    <label className="hospital-search"><Search/><input value={query} onChange={event=>setQuery(event.target.value)} placeholder="ابحث عن قسم…  Rechercher un service"/></label>
    <div className="hospital-department-grid">
-    {filteredDepartments.map(item=><button key={item.id} className={activeDepartment===item.id?"active":""} onClick={()=>setActiveDepartment(item.id)}><i>{item.icon}</i><span><strong>{item.fr}</strong><small>{item.ar}</small><em>{item.tag}</em></span><ChevronLeft/></button>)}
+    {filteredDepartments.map(item=><button key={item.id} className={activeDepartment===item.id?"active":""} onClick={()=>openDepartment(item.id)}><i>{item.icon}</i><span><strong>{item.fr}</strong><small>{item.ar}</small><em>{item.tag}</em></span><ChevronLeft/></button>)}
    </div>
-   <article className="hospital-department-room">
+   <article ref={departmentRoomRef} className="hospital-department-room">
     <header><div><span>{currentDepartment.tag}</span><h3>{currentDepartment.fr}</h3><p>{currentDepartment.ar}</p></div><button onClick={()=>speak(currentDepartment.fr)} aria-label="نطق اسم القسم"><Volume2/></button></header>
     <div className="hospital-phrase-list">
      {currentDepartment.phrases.map((item,index)=><button key={item.fr} onClick={()=>speak(item.fr)}><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><Volume2/></button>)}

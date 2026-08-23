@@ -196,7 +196,7 @@ export default function HospitalPage(){
     <p>تعلّم الفرنسية داخل أقسام مستشفى متكامل: الاستقبال، التخصصات، الأدوات، وجسم الإنسان.</p>
     <button onClick={()=>speak("Bonjour, bienvenue à l’hôpital. Comment pouvons-nous vous aider ?")}><Volume2/> استمع إلى جملة الترحيب</button>
    </div>
-   <div className="hospital-hero-stats"><div><b>16</b><span>قسمًا طبيًا</span></div><div><b>48</b><span>أداة متخصصة</span></div><div><b>55+</b><span>مصطلحًا تشريحيًا</span></div></div>
+   <div className="hospital-hero-stats"><div><b>16</b><span>قسمًا طبيًا</span></div><div><b>48</b><span>أداة متخصصة</span></div><div><b>53</b><span>مصطلحًا تشريحيًا</span></div></div>
   </section>
 
   <nav className="hospital-main-nav" aria-label="أقسام التعلم">

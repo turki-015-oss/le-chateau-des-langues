@@ -1,12 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import {
   ArrowLeft,
   BookOpen,
   Building2,
   Castle,
+  ChevronLeft,
+  ChevronRight,
   Clapperboard,
   Coffee,
   GraduationCap,
@@ -103,7 +106,13 @@ function TiltCard({ item, index }: { item: ConceptDestination; index: number }) 
 }
 
 export default function KingdomConceptPage() {
+  const destinationRailRef = useRef<HTMLDivElement>(null);
   const scrollToDestinations = () => document.getElementById("concept-destinations")?.scrollIntoView({ behavior: "smooth" });
+  const moveDestinations = (direction: -1 | 1) => {
+    const rail = destinationRailRef.current;
+    if (!rail) return;
+    rail.scrollBy({ left: direction * Math.min(rail.clientWidth * 0.82, 390), behavior: "smooth" });
+  };
 
   return (
     <main className="kingdom-concept" dir="rtl">
@@ -157,8 +166,12 @@ export default function KingdomConceptPage() {
           <h2>اختر المكان الذي تريد التعلّم داخله</h2>
           <p>كل بطاقة مبنى مستقلة بطبقات 3D، وصورة ثابتة مطابقة لاسم الوجهة، ودخول مباشر إلى قسمها.</p>
         </div>
-        <div className="concept-card-grid">
-          {destinations.map((item, index) => <TiltCard key={item.id} item={item} index={index} />)}
+        <div className="concept-destination-stage">
+          <button type="button" className="concept-rail-arrow concept-rail-arrow-left" onClick={() => moveDestinations(-1)} aria-label="الوجهة السابقة"><ChevronLeft /></button>
+          <div className="concept-card-grid" ref={destinationRailRef}>
+            {destinations.map((item, index) => <TiltCard key={item.id} item={item} index={index} />)}
+          </div>
+          <button type="button" className="concept-rail-arrow concept-rail-arrow-right" onClick={() => moveDestinations(1)} aria-label="الوجهة التالية"><ChevronRight /></button>
         </div>
       </section>
 

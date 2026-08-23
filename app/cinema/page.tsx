@@ -1,140 +1,112 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Clapperboard, DoorOpen, Film, Sparkles, Ticket, Volume2 } from "lucide-react";
+import Link from "next/link";
+import {useRef,useState} from "react";
+import type {LucideIcon} from "lucide-react";
+import {ArrowRight,BadgeCheck,BookOpen,Camera,Clapperboard,Film,Headphones,Lightbulb,MessageSquareText,Mic2,MonitorPlay,Play,ScanLine,ShieldCheck,Sparkles,Users,Video,Volume2} from "lucide-react";
+import {speakFrench} from "@/lib/frenchSpeech";
 import "./cinema.css";
 
-const areas = [
-  {
-    id: "tickets",
-    fr: "LA BILLETTERIE",
-    ar: "شباك التذاكر",
-    icon: <Ticket />,
-    phrases: [
-      ["Je voudrais une place pour la séance de vingt heures.", "أريد تذكرة لعرض الساعة الثامنة مساءً."],
-      ["À quelle heure commence le film ?", "في أي وقت يبدأ الفيلم؟"],
-      ["Il reste des places au milieu de la salle ?", "هل بقيت مقاعد في وسط القاعة؟"],
-    ],
-  },
-  {
-    id: "lobby",
-    fr: "LE HALL D’ACCUEIL",
-    ar: "بهو الاستقبال",
-    icon: <DoorOpen />,
-    phrases: [
-      ["Où se trouve la salle numéro trois ?", "أين توجد القاعة رقم ثلاثة؟"],
-      ["Puis-je entrer maintenant ?", "هل يمكنني الدخول الآن؟"],
-      ["La séance va commencer dans dix minutes.", "سيبدأ العرض بعد عشر دقائق."],
-    ],
-  },
-  {
-    id: "auditorium",
-    fr: "LA SALLE",
-    ar: "قاعة العرض",
-    icon: <Film />,
-    phrases: [
-      ["Cette place est-elle libre ?", "هل هذا المقعد شاغر؟"],
-      ["Pourriez-vous parler moins fort, s’il vous plaît ?", "هل يمكنك خفض صوتك من فضلك؟"],
-      ["L’écran est très grand.", "الشاشة كبيرة جدًا."],
-    ],
-  },
-  {
-    id: "projection",
-    fr: "LA PROJECTION",
-    ar: "العرض السينمائي",
-    icon: <Clapperboard />,
-    phrases: [
-      ["La projection commence.", "يبدأ العرض الآن."],
-      ["L’image est nette et le son est clair.", "الصورة واضحة والصوت نقي."],
-      ["Il y a une courte bande-annonce avant le film.", "يوجد إعلان قصير قبل الفيلم."],
-    ],
-  },
-  {
-    id: "discussion",
-    fr: "APRÈS LE FILM",
-    ar: "بعد الفيلم",
-    icon: <Sparkles />,
-    phrases: [
-      ["J’ai beaucoup aimé ce film.", "أعجبني هذا الفيلم كثيرًا."],
-      ["L’histoire était touchante.", "كانت القصة مؤثرة."],
-      ["Quel personnage avez-vous préféré ?", "أي شخصية أعجبتك أكثر؟"],
-    ],
-  },
-  {
-    id: "exit",
-    fr: "LA SORTIE",
-    ar: "الخروج",
-    icon: <ArrowLeft />,
-    phrases: [
-      ["Où est la sortie ?", "أين المخرج؟"],
-      ["Le film vient de se terminer.", "انتهى الفيلم للتو."],
-      ["Nous pouvons discuter du film dans le hall.", "يمكننا مناقشة الفيلم في البهو."],
-    ],
-  },
-] as const;
+type Phrase={fr:string;ar:string};
+type Area={id:string;fr:string;ar:string;tag:string;image:string;phrases:Phrase[]};
+type Genre={fr:string;ar:string;definitionFr:string;definitionAr:string;example:string;Icon:LucideIcon};
+type Stage={id:string;fr:string;ar:string;roleFr:string;roleAr:string;image:string;phrases:Phrase[]};
+type Equipment={fr:string;ar:string;noteFr:string;noteAr:string;Icon:LucideIcon};
+type CritiqueTopic={id:string;fr:string;ar:string;question:string;answer:string;translation:string};
+type Dialogue={id:string;fr:string;ar:string;context:string;lines:{role:string;fr:string;ar:string}[]};
+const p=(fr:string,ar:string):Phrase=>({fr,ar});
 
-function speak(text: string) {
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "fr-FR";
-  utterance.rate = 0.86;
-  window.speechSynthesis.speak(utterance);
+const areas:Area[]=[
+ {id:"programme",fr:"Choisir un film et une séance",ar:"اختيار الفيلم وموعد العرض",tag:"Avant la séance",image:"tickets",phrases:[p("Quel film est à l’affiche ce soir ?","ما الفيلم المعروض هذا المساء؟"),p("Je préfère la séance de vingt heures trente.","أفضل عرض الساعة الثامنة والنصف مساءً."),p("Le film dure deux heures et dix minutes.","مدة الفيلم ساعتان وعشر دقائق."),p("Est-ce que ce film est en version originale sous-titrée ?","هل هذا الفيلم بلغته الأصلية مع ترجمة مكتوبة؟"),p("La prochaine séance commence dans quarante minutes.","يبدأ العرض التالي بعد أربعين دقيقة.")]},
+ {id:"billetterie",fr:"La billetterie",ar:"شباك التذاكر",tag:"Billets",image:"tickets",phrases:[p("Bonsoir, je voudrais une place pour la séance de vingt heures.","مساء الخير، أريد تذكرة لعرض الساعة الثامنة."),p("Il reste des places au milieu de la salle.","ما زالت توجد مقاعد في وسط القاعة."),p("Vous pouvez choisir votre siège sur le plan.","يمكنك اختيار مقعدك على المخطط."),p("Voici votre billet et le numéro de votre salle.","هذه تذكرتك ورقم قاعتك."),p("Le tarif réduit nécessite un justificatif.","يتطلب السعر المخفض إثباتًا.")]},
+ {id:"accueil",fr:"Le hall et l’accueil",ar:"البهو والاستقبال",tag:"Orientation",image:"tickets",phrases:[p("Excusez-moi, où se trouve la salle numéro trois ?","عذرًا، أين توجد القاعة رقم ثلاثة؟"),p("Suivez le couloir puis tournez à gauche.","اتبع الممر ثم انعطف يسارًا."),p("Les portes ouvriront quinze minutes avant la séance.","ستفتح الأبواب قبل العرض بخمس عشرة دقيقة."),p("Votre billet sera contrôlé à l’entrée.","سيتم فحص تذكرتك عند المدخل."),p("L’ascenseur se trouve au fond du hall.","يوجد المصعد في نهاية البهو.")]},
+ {id:"controle",fr:"Le contrôle des billets",ar:"فحص التذاكر",tag:"Accès",image:"tickets",phrases:[p("Puis-je voir votre billet, s’il vous plaît ?","هل يمكنني رؤية تذكرتك من فضلك؟"),p("Votre séance se déroule dans la salle cinq.","يُعرض فيلمك في القاعة الخامسة."),p("Le numéro de votre siège est indiqué ici.","رقم مقعدك موضح هنا."),p("L’accès à la salle est maintenant ouvert.","أصبح الدخول إلى القاعة متاحًا الآن."),p("Veuillez garder votre billet jusqu’à la fin de la séance.","يرجى الاحتفاظ بتذكرتك حتى نهاية العرض.")]},
+ {id:"installation",fr:"La salle et les sièges",ar:"القاعة والمقاعد",tag:"Placement",image:"hero",phrases:[p("Notre rangée se trouve près de l’allée centrale.","يقع صفنا بالقرب من الممر الأوسط."),p("Pardon, je crois que vous êtes à ma place.","عذرًا، أظن أنك تجلس في مقعدي."),p("Ce siège est-il libre ?","هل هذا المقعد شاغر؟"),p("Je vais m’installer au bout de la rangée.","سأجلس عند طرف الصف."),p("La vue sur l’écran est excellente d’ici.","الرؤية إلى الشاشة ممتازة من هنا.")]},
+ {id:"consignes",fr:"Les consignes dans la salle",ar:"تعليمات داخل القاعة",tag:"Confort",image:"hero",phrases:[p("Veuillez mettre votre téléphone en mode silencieux.","يرجى وضع هاتفك على الوضع الصامت."),p("Il est interdit d’enregistrer le film.","يُمنع تسجيل الفيلم."),p("Merci de ne pas parler pendant la projection.","شكرًا لعدم التحدث أثناء العرض."),p("Les sorties de secours doivent rester dégagées.","يجب إبقاء مخارج الطوارئ خالية."),p("La lumière va s’éteindre dans quelques instants.","ستنطفئ الإضاءة بعد لحظات.")]},
+ {id:"projection",fr:"La projection",ar:"العرض السينمائي",tag:"Image et son",image:"projection",phrases:[p("La projection vient de commencer.","بدأ العرض للتو."),p("L’image est nette et le son est bien équilibré.","الصورة واضحة والصوت متوازن جيدًا."),p("Les bandes-annonces précèdent le film.","تسبق الإعلانات الترويجية الفيلم."),p("Le film est projeté en version originale sous-titrée.","يُعرض الفيلم بلغته الأصلية مع ترجمة مكتوبة."),p("Le générique de fin commence.","بدأت شارة النهاية.")]},
+ {id:"incident",fr:"Un problème pendant la séance",ar:"مشكلة أثناء العرض",tag:"Assistance",image:"projection",phrases:[p("Excusez-moi, l’image est devenue floue.","عذرًا، أصبحت الصورة ضبابية."),p("Le son est trop faible dans notre rangée.","الصوت منخفض جدًا في صفنا."),p("Nous allons prévenir le projectionniste.","سنبلغ مشغل العرض."),p("La séance reprendra dans quelques minutes.","سيُستأنف العرض بعد بضع دقائق."),p("Merci de votre patience et de votre compréhension.","شكرًا لصبركم وتفهمكم.")]},
+ {id:"sortie",fr:"La sortie de la salle",ar:"الخروج من القاعة",tag:"Fin de séance",image:"hero",phrases:[p("Le film vient de se terminer.","انتهى الفيلم للتو."),p("La sortie principale se trouve à droite de l’écran.","يقع المخرج الرئيسي يمين الشاشة."),p("N’oubliez pas vos affaires personnelles.","لا تنسَ أغراضك الشخصية."),p("Nous pouvons attendre dans le hall.","يمكننا الانتظار في البهو."),p("La prochaine séance va bientôt commencer.","سيبدأ العرض التالي قريبًا.")]},
+ {id:"discussion",fr:"Parler du film",ar:"مناقشة الفيلم",tag:"Après le film",image:"critique",phrases:[p("Qu’as-tu pensé du film ?","ما رأيك في الفيلم؟"),p("J’ai trouvé l’histoire captivante.","وجدت القصة مشوقة."),p("Le jeu des acteurs était très convaincant.","كان أداء الممثلين مقنعًا جدًا."),p("La fin m’a surpris, mais elle reste cohérente.","فاجأتني النهاية، لكنها ظلت منطقية."),p("La musique renforçait l’émotion de plusieurs scènes.","عززت الموسيقى إحساس عدة مشاهد.")]}
+];
+
+const genres:Genre[]=[
+ {fr:"Le film d’action",ar:"فيلم الحركة",definitionFr:"Un récit rythmé par des poursuites, des combats ou des situations dangereuses.",definitionAr:"قصة سريعة تتضمن مطاردات أو مواجهات أو مواقف خطرة.",example:"Ce film d’action garde un rythme soutenu du début à la fin.",Icon:Video},
+ {fr:"La comédie",ar:"الفيلم الكوميدي",definitionFr:"Un film conçu principalement pour provoquer le rire ou l’amusement.",definitionAr:"فيلم يهدف أساسًا إلى إثارة الضحك أو الترفيه.",example:"Cette comédie repose sur des dialogues pleins d’humour.",Icon:Sparkles},
+ {fr:"Le drame",ar:"الفيلم الدرامي",definitionFr:"Un récit centré sur des conflits humains et des émotions fortes.",definitionAr:"قصة تركز على الصراعات الإنسانية والمشاعر القوية.",example:"Le drame suit une famille confrontée à une décision difficile.",Icon:Film},
+ {fr:"Le film policier",ar:"الفيلم البوليسي",definitionFr:"Une intrigue liée à une enquête, un crime ou la recherche d’un suspect.",definitionAr:"حبكة مرتبطة بتحقيق أو جريمة أو البحث عن مشتبه به.",example:"L’enquête révèle un nouvel indice dans la dernière scène.",Icon:ScanLine},
+ {fr:"Le thriller",ar:"فيلم التشويق",definitionFr:"Un film qui entretient la tension, l’incertitude et l’attente.",definitionAr:"فيلم يحافظ على التوتر والغموض والترقب.",example:"Le suspense augmente à mesure que le danger approche.",Icon:Clapperboard},
+ {fr:"Le film fantastique",ar:"الفيلم الفانتازي",definitionFr:"Un récit où l’étrange ou le surnaturel intervient dans un monde reconnaissable.",definitionAr:"قصة يدخل فيها الغريب أو الخارق ضمن عالم يمكن التعرف إليه.",example:"Un événement surnaturel bouleverse la vie du personnage.",Icon:Lightbulb},
+ {fr:"Le film de science-fiction",ar:"فيلم الخيال العلمي",definitionFr:"Une fiction fondée sur des hypothèses scientifiques, techniques ou futuristes.",definitionAr:"قصة مبنية على افتراضات علمية أو تقنية أو مستقبلية.",example:"Le film imagine une ville transformée par une technologie nouvelle.",Icon:MonitorPlay},
+ {fr:"Le film d’animation",ar:"فيلم الرسوم المتحركة",definitionFr:"Un film créé image par image à l’aide de dessins, de volumes ou d’images numériques.",definitionAr:"فيلم يُصنع صورة بعد صورة بالرسم أو المجسمات أو الصور الرقمية.",example:"L’animation donne vie à des personnages entièrement dessinés.",Icon:Play},
+ {fr:"Le documentaire",ar:"الفيلم الوثائقي",definitionFr:"Une œuvre qui observe, enquête ou informe à partir du réel.",definitionAr:"عمل يرصد الواقع أو يحقق فيه أو يقدم معلومات عنه.",example:"Ce documentaire suit le travail d’une équipe scientifique.",Icon:BookOpen},
+ {fr:"Le film historique",ar:"الفيلم التاريخي",definitionFr:"Un récit situé dans une époque passée et nourri d’éléments historiques.",definitionAr:"قصة تقع في زمن ماضٍ وتستند إلى عناصر تاريخية.",example:"Les décors reconstituent soigneusement l’époque du récit.",Icon:Users},
+ {fr:"Le film musical",ar:"الفيلم الموسيقي",definitionFr:"Un film où la musique, le chant ou la danse participent directement au récit.",definitionAr:"فيلم تدخل فيه الموسيقى أو الغناء أو الرقص ضمن بناء القصة.",example:"La chanson fait avancer l’histoire et révèle les émotions.",Icon:Headphones},
+ {fr:"Le court métrage",ar:"الفيلم القصير",definitionFr:"Une œuvre cinématographique de durée plus courte qu’un long métrage.",definitionAr:"عمل سينمائي مدته أقصر من الفيلم الطويل.",example:"Ce court métrage raconte une histoire complète en quinze minutes.",Icon:Camera}
+];
+
+const stages:Stage[]=[
+ {id:"idee",fr:"L’idée et le scénario",ar:"الفكرة والسيناريو",roleFr:"Le scénario organise l’histoire, les scènes, les actions et les dialogues.",roleAr:"ينظم السيناريو القصة والمشاهد والأفعال والحوارات.",image:"production",phrases:[p("Le scénariste développe les personnages principaux.","يطور كاتب السيناريو الشخصيات الرئيسية."),p("Cette scène se déroule dans une gare.","يدور هذا المشهد في محطة قطار."),p("Le dialogue révèle une information importante.","يكشف الحوار معلومة مهمة."),p("La fin du scénario doit rester cohérente avec le récit.","يجب أن تظل نهاية السيناريو منسجمة مع القصة.")]},
+ {id:"preparation",fr:"La préparation",ar:"مرحلة التحضير",roleFr:"L’équipe choisit les décors, prépare le plan de travail et organise les moyens du tournage.",roleAr:"يختار الفريق الديكورات ويعد خطة العمل وينظم متطلبات التصوير.",image:"production",phrases:[p("Le réalisateur visite le lieu de tournage.","يزور المخرج موقع التصوير."),p("L’équipe prépare le calendrier des scènes.","يعد الفريق جدول المشاهد."),p("Le décor doit être prêt avant l’arrivée de l’équipe.","يجب أن يكون الديكور جاهزًا قبل وصول الفريق."),p("Chaque service vérifie son matériel.","يتحقق كل قسم من معداته.")]},
+ {id:"tournage",fr:"Le tournage",ar:"التصوير",roleFr:"La caméra, la lumière, le son et la direction des acteurs se réunissent pour enregistrer les plans.",roleAr:"تجتمع الكاميرا والإضاءة والصوت وتوجيه الممثلين لتسجيل اللقطات.",image:"production",phrases:[p("La caméra est prête pour la prochaine prise.","الكاميرا جاهزة للّقطة التالية."),p("Silence, on tourne !","هدوء، بدأ التصوير!"),p("Le réalisateur demande une deuxième prise.","يطلب المخرج إعادة اللقطة."),p("Le cadreur suit le mouvement du personnage.","يتابع المصور حركة الشخصية.")]},
+ {id:"son",fr:"La prise de son",ar:"تسجيل الصوت",roleFr:"L’équipe son enregistre les dialogues et les ambiances avec précision.",roleAr:"يسجل فريق الصوت الحوارات والأجواء بدقة.",image:"production",phrases:[p("Le perchiste place le microphone hors du cadre.","يضع حامل الميكروفون الميكروفون خارج إطار الصورة."),p("Le son de cette prise est parfaitement exploitable.","صوت هذه اللقطة صالح للاستخدام تمامًا."),p("Il faut réduire le bruit dans le décor.","يجب تقليل الضوضاء في موقع التصوير."),p("L’ingénieur du son contrôle les niveaux.","يراقب مهندس الصوت المستويات.")]},
+ {id:"montage",fr:"Le montage",ar:"المونتاج",roleFr:"Le monteur sélectionne et assemble les plans pour construire le rythme et la continuité du film.",roleAr:"يختار المونتير اللقطات ويجمعها لبناء إيقاع الفيلم واستمراريته.",image:"projection",phrases:[p("Le monteur compare plusieurs prises de la même scène.","يقارن المونتير عدة لقطات للمشهد نفسه."),p("Cette coupe rend la séquence plus dynamique.","يجعل هذا القطع المشهد أكثر حيوية."),p("Le raccord assure la continuité entre les deux plans.","يضمن الربط الاستمرارية بين اللقطتين."),p("Le rythme du montage devient plus lent à la fin.","يصبح إيقاع المونتاج أبطأ في النهاية.")]},
+ {id:"postproduction",fr:"La postproduction",ar:"ما بعد الإنتاج",roleFr:"L’image, le son, la musique, les effets et les sous-titres sont finalisés avant la diffusion.",roleAr:"تُستكمل الصورة والصوت والموسيقى والمؤثرات والترجمة قبل العرض.",image:"projection",phrases:[p("L’étalonnage harmonise les couleurs du film.","يوحد تصحيح الألوان ألوان الفيلم."),p("Le mixage équilibre les dialogues, la musique et les ambiances.","يوازن المكساج الحوارات والموسيقى والأجواء."),p("Les sous-titres doivent rester lisibles.","يجب أن تظل الترجمة المكتوبة سهلة القراءة."),p("La version finale est prête pour la projection.","النسخة النهائية جاهزة للعرض.")]},
+ {id:"diffusion",fr:"La distribution et la sortie",ar:"التوزيع وطرح الفيلم",roleFr:"Le film est préparé pour les salles, présenté au public et accompagné par sa promotion.",roleAr:"يُجهز الفيلم للقاعات ويُقدم للجمهور وترافقه حملته الترويجية.",image:"critique",phrases:[p("La sortie du film est prévue pour le mois prochain.","من المقرر طرح الفيلم الشهر القادم."),p("La bande-annonce présente l’univers du film.","يقدم الإعلان الترويجي عالم الفيلم."),p("Le film sera projeté dans plusieurs salles.","سيُعرض الفيلم في عدة قاعات."),p("Une rencontre avec l’équipe suit la projection.","يتبع العرض لقاء مع فريق الفيلم.")]}
+];
+
+const equipment:Equipment[]=[
+ {fr:"La caméra",ar:"الكاميرا",noteFr:"Elle enregistre l’image du plan.",noteAr:"تسجل صورة اللقطة.",Icon:Camera},{fr:"L’objectif",ar:"العدسة",noteFr:"Il détermine l’angle de champ et le rendu de l’image.",noteAr:"تحدد زاوية الرؤية وشكل الصورة.",Icon:ScanLine},{fr:"Le trépied",ar:"الحامل الثلاثي",noteFr:"Il stabilise la caméra.",noteAr:"يثبت الكاميرا.",Icon:Camera},{fr:"Le chariot de travelling",ar:"عربة حركة الكاميرا",noteFr:"Il permet un déplacement fluide de la caméra.",noteAr:"تتيح حركة سلسة للكاميرا.",Icon:Video},{fr:"Le clap",ar:"لوح الكلاكيت",noteFr:"Il identifie la prise et aide à synchroniser l’image et le son.",noteAr:"يحدد اللقطة ويساعد في مزامنة الصورة والصوت.",Icon:Clapperboard},{fr:"La perche",ar:"ذراع الميكروفون",noteFr:"Elle place le microphone près de la scène sans entrer dans le cadre.",noteAr:"تضع الميكروفون قرب المشهد دون أن يظهر في الإطار.",Icon:Mic2},{fr:"Le microphone",ar:"الميكروفون",noteFr:"Il capte les dialogues et les sons.",noteAr:"يلتقط الحوارات والأصوات.",Icon:Mic2},{fr:"Le casque",ar:"سماعة الرأس",noteFr:"Il sert à contrôler la qualité du son.",noteAr:"تستخدم لمراقبة جودة الصوت.",Icon:Headphones},{fr:"Le projecteur d’éclairage",ar:"كشاف الإضاءة",noteFr:"Il façonne la lumière de la scène.",noteAr:"يشكل إضاءة المشهد.",Icon:Lightbulb},{fr:"Le projecteur de cinéma",ar:"جهاز العرض السينمائي",noteFr:"Il projette l’image sur l’écran de la salle.",noteAr:"يعرض الصورة على شاشة القاعة.",Icon:MonitorPlay},{fr:"L’écran",ar:"الشاشة",noteFr:"Il reçoit l’image projetée.",noteAr:"تظهر عليه الصورة المعروضة.",Icon:MonitorPlay},{fr:"Les sous-titres",ar:"الترجمة المكتوبة",noteFr:"Ils affichent une traduction ou une transcription des dialogues.",noteAr:"تعرض ترجمة الحوارات أو كتابتها على الشاشة.",Icon:BookOpen}
+];
+
+const critiqueTopics:CritiqueTopic[]=[
+ {id:"resume",fr:"Le sujet et le résumé",ar:"موضوع الفيلم وملخصه",question:"De quoi parle le film ?",answer:"Le film raconte le parcours d’un homme qui revient dans sa ville natale pour comprendre un événement ancien.",translation:"يروي الفيلم رحلة رجل يعود إلى مدينته الأصلية لفهم حدث قديم."},
+ {id:"scenario",fr:"Le scénario",ar:"السيناريو",question:"L’histoire est-elle claire et cohérente ?",answer:"Le scénario révèle progressivement les informations et relie chaque décision à la scène suivante.",translation:"يكشف السيناريو المعلومات تدريجيًا ويربط كل قرار بالمشهد التالي."},
+ {id:"personnages",fr:"Les personnages",ar:"الشخصيات",question:"Les personnages évoluent-ils au cours du récit ?",answer:"Le personnage principal change lorsqu’il accepte enfin de confronter son passé.",translation:"تتغير الشخصية الرئيسية عندما تقبل أخيرًا مواجهة ماضيها."},
+ {id:"mise",fr:"La mise en scène",ar:"الإخراج وبناء المشهد",question:"Comment le réalisateur organise-t-il l’espace et l’action ?",answer:"La mise en scène isole souvent le personnage dans de grands espaces pour renforcer sa solitude.",translation:"يعزل الإخراج الشخصية غالبًا داخل مساحات واسعة لتعزيز شعورها بالوحدة."},
+ {id:"image",fr:"Le cadre et la lumière",ar:"الإطار والإضاءة",question:"Que montrent le cadrage et la lumière ?",answer:"Les plans rapprochés montrent l’émotion, tandis que la lumière froide installe une atmosphère inquiétante.",translation:"تظهر اللقطات القريبة المشاعر، بينما تصنع الإضاءة الباردة جوًا مقلقًا."},
+ {id:"montage",fr:"Le montage et le rythme",ar:"المونتاج والإيقاع",question:"Quel effet produit le montage ?",answer:"Le montage alterne des scènes calmes et des plans plus courts pour faire monter la tension.",translation:"يتناوب المونتاج بين مشاهد هادئة ولقطات أقصر لرفع التوتر."},
+ {id:"son",fr:"Le son et la musique",ar:"الصوت والموسيقى",question:"Quel rôle joue la bande sonore ?",answer:"La musique reste discrète et les silences donnent plus de force aux dialogues.",translation:"تبقى الموسيقى هادئة وتمنح فترات الصمت الحوارات قوة أكبر."},
+ {id:"avis",fr:"Exprimer un avis argumenté",ar:"التعبير عن رأي معلل",question:"Comment justifier son opinion ?",answer:"J’ai apprécié ce film parce que sa mise en scène sert le récit sans expliquer chaque émotion.",translation:"أعجبني الفيلم لأن إخراجه يخدم القصة دون أن يشرح كل شعور بصورة مباشرة."}
+];
+
+const dialogues:Dialogue[]=[
+ {id:"ticket",fr:"Acheter un billet",ar:"شراء تذكرة",context:"محادثة كاملة عند شباك التذاكر",lines:[{role:"Client",fr:"Bonsoir, quelles séances sont encore disponibles ?",ar:"مساء الخير، ما العروض التي ما زالت متاحة؟"},{role:"Caissier",fr:"Il reste des places pour les séances de vingt heures et vingt-deux heures quinze.",ar:"توجد مقاعد لعَرضي الساعة الثامنة والعاشرة والربع."},{role:"Client",fr:"Le film de vingt heures est-il en version originale ?",ar:"هل فيلم الساعة الثامنة بلغته الأصلية؟"},{role:"Caissier",fr:"Oui, il est en version originale sous-titrée en français.",ar:"نعم، هو بلغته الأصلية مع ترجمة مكتوبة بالفرنسية."},{role:"Client",fr:"Très bien, je voudrais une place au milieu de la salle.",ar:"جيد جدًا، أريد مقعدًا في وسط القاعة."},{role:"Caissier",fr:"Je peux vous proposer le siège douze dans la rangée G.",ar:"يمكنني أن أعرض عليك المقعد اثني عشر في الصف G."},{role:"Client",fr:"Parfait. Dans quelle salle le film est-il projeté ?",ar:"ممتاز. في أي قاعة يُعرض الفيلم؟"},{role:"Caissier",fr:"Dans la salle quatre. Voici votre billet.",ar:"في القاعة الرابعة. هذه تذكرتك."}]},
+ {id:"place",fr:"Trouver sa place",ar:"العثور على المقعد",context:"بين المشاهد وموظف القاعة",lines:[{role:"Spectateur",fr:"Excusez-moi, je ne trouve pas la rangée G.",ar:"عذرًا، لا أجد الصف G."},{role:"Agent",fr:"Elle se trouve juste après l’allée centrale.",ar:"يقع مباشرة بعد الممر الأوسط."},{role:"Spectateur",fr:"Mon billet indique le siège douze.",ar:"تذكرتي تشير إلى المقعد اثني عشر."},{role:"Agent",fr:"Comptez quatre sièges à partir de l’escalier.",ar:"عد أربعة مقاعد ابتداءً من الدرج."},{role:"Spectateur",fr:"Est-ce que je peux entrer avec quelques minutes de retard ?",ar:"هل يمكنني الدخول بعد التأخر بضع دقائق؟"},{role:"Agent",fr:"Oui, mais avancez doucement pour ne pas gêner les autres spectateurs.",ar:"نعم، لكن تقدم بهدوء حتى لا تزعج بقية المشاهدين."},{role:"Spectateur",fr:"Je vais mettre mon téléphone en mode silencieux.",ar:"سأضع هاتفي على الوضع الصامت."},{role:"Agent",fr:"Merci, et je vous souhaite une bonne séance.",ar:"شكرًا، وأتمنى لك مشاهدة ممتعة."}]},
+ {id:"incident",fr:"Signaler un problème",ar:"الإبلاغ عن مشكلة",context:"عطل فني أثناء العرض",lines:[{role:"Spectateur",fr:"Excusez-moi, le son est très faible dans notre rangée.",ar:"عذرًا، الصوت منخفض جدًا في صفنا."},{role:"Agent",fr:"Merci de nous l’avoir signalé. L’image est-elle normale ?",ar:"شكرًا لإبلاغنا. هل الصورة طبيعية؟"},{role:"Spectateur",fr:"Oui, l’image est nette, mais certains dialogues sont difficiles à entendre.",ar:"نعم، الصورة واضحة، لكن يصعب سماع بعض الحوارات."},{role:"Agent",fr:"Je vais transmettre l’information à la cabine de projection.",ar:"سأنقل المعلومة إلى غرفة العرض."},{role:"Spectateur",fr:"La séance va-t-elle être interrompue ?",ar:"هل سيتوقف العرض؟"},{role:"Agent",fr:"Non, le réglage peut être effectué immédiatement.",ar:"لا، يمكن إجراء الضبط فورًا."},{role:"Spectateur",fr:"Le niveau du son vient de s’améliorer.",ar:"تحسن مستوى الصوت الآن."},{role:"Agent",fr:"Parfait. N’hésitez pas à revenir si le problème continue.",ar:"ممتاز. لا تتردد في العودة إذا استمرت المشكلة."}]},
+ {id:"friends",fr:"Après la séance",ar:"بعد العرض مع الأصدقاء",context:"نقاش طبيعي حول الفيلم",lines:[{role:"Ami 1",fr:"Alors, qu’as-tu pensé du film ?",ar:"إذًا، ما رأيك في الفيلم؟"},{role:"Ami 2",fr:"J’ai aimé l’atmosphère, surtout dans la première partie.",ar:"أعجبتني الأجواء، خصوصًا في الجزء الأول."},{role:"Ami 1",fr:"Moi aussi, mais j’ai trouvé le milieu un peu lent.",ar:"وأنا أيضًا، لكنني وجدت منتصف الفيلم بطيئًا قليلًا."},{role:"Ami 2",fr:"C’est vrai, pourtant cette lenteur prépare bien la fin.",ar:"صحيح، لكن هذا البطء يمهد للنهاية جيدًا."},{role:"Ami 1",fr:"Le personnage principal était très convaincant.",ar:"كانت الشخصية الرئيسية مقنعة جدًا."},{role:"Ami 2",fr:"Oui, son silence exprimait parfois plus que les dialogues.",ar:"نعم، كان صمته يعبر أحيانًا أكثر من الحوارات."},{role:"Ami 1",fr:"J’aimerais revoir certaines scènes pour observer le cadrage.",ar:"أود إعادة مشاهدة بعض المشاهد لملاحظة التأطير."},{role:"Ami 2",fr:"Bonne idée. La mise en scène mérite vraiment une seconde lecture.",ar:"فكرة جيدة. يستحق الإخراج فعلًا قراءة ثانية."}]},
+ {id:"set",fr:"Sur le plateau",ar:"في موقع التصوير",context:"المخرج وفريق التصوير والصوت",lines:[{role:"Réalisateur",fr:"Nous répétons une dernière fois avant de tourner.",ar:"سنتدرب مرة أخيرة قبل التصوير."},{role:"Cadreur",fr:"La caméra est placée sur le chariot de travelling.",ar:"الكاميرا موضوعة على عربة الحركة."},{role:"Ingénieur du son",fr:"Le microphone est prêt et le décor est silencieux.",ar:"الميكروفون جاهز والموقع هادئ."},{role:"Réalisateur",fr:"Le mouvement doit commencer lorsque la porte s’ouvre.",ar:"يجب أن تبدأ الحركة عندما يفتح الباب."},{role:"Cadreur",fr:"Je suivrai le personnage jusqu’à la fenêtre.",ar:"سأتابع الشخصية حتى النافذة."},{role:"Ingénieur du son",fr:"Attention, j’entends un bruit à l’extérieur.",ar:"انتبهوا، أسمع ضوضاء في الخارج."},{role:"Réalisateur",fr:"Attendons quelques secondes, puis nous lançons la prise.",ar:"لننتظر بضع ثوانٍ ثم نبدأ اللقطة."},{role:"Assistant",fr:"Silence… moteur… action !",ar:"هدوء… تشغيل… ابدأ!"}]},
+ {id:"interview",fr:"Une rencontre après le film",ar:"لقاء بعد الفيلم",context:"حوار نقدي مع فريق فيلم خيالي",lines:[{role:"Modérateur",fr:"Comment est née l’idée de ce film ?",ar:"كيف ولدت فكرة هذا الفيلم؟"},{role:"Réalisateur",fr:"Elle vient d’une question simple sur la mémoire et les lieux.",ar:"جاءت من سؤال بسيط عن الذاكرة والأماكن."},{role:"Modérateur",fr:"Pourquoi avez-vous choisi un rythme aussi progressif ?",ar:"لماذا اخترت إيقاعًا تدريجيًا بهذا الشكل؟"},{role:"Réalisateur",fr:"Je voulais laisser au spectateur le temps d’observer les détails.",ar:"أردت منح المشاهد وقتًا لملاحظة التفاصيل."},{role:"Modérateur",fr:"Le silence occupe une place importante dans plusieurs scènes.",ar:"يحتل الصمت مكانة مهمة في عدة مشاهد."},{role:"Ingénieur du son",fr:"Nous avons travaillé les ambiances pour que chaque lieu ait une présence propre.",ar:"عملنا على الأجواء الصوتية ليكون لكل مكان حضوره الخاص."},{role:"Modérateur",fr:"Que souhaitez-vous que le public retienne ?",ar:"ما الذي تريد أن يحتفظ به الجمهور؟"},{role:"Réalisateur",fr:"J’espère que chacun pourra formuler sa propre interprétation.",ar:"آمل أن يتمكن كل شخص من صياغة تفسيره الخاص."}]}
+];
+
+const navItems=[{id:"tour",fr:"Le cinéma",ar:"جولة السينما",Icon:Film},{id:"genres",fr:"Les genres",ar:"أنواع الأفلام",Icon:Clapperboard},{id:"production",fr:"La fabrication",ar:"صناعة الفيلم",Icon:Camera},{id:"equipment",fr:"Le matériel",ar:"الأدوات",Icon:Video},{id:"critique",fr:"L’analyse",ar:"التحليل والنقد",Icon:BookOpen},{id:"dialogues",fr:"Dialogues",ar:"المحادثات",Icon:MessageSquareText}] as const;
+
+export default function CinemaPage(){
+ const [view,setView]=useState<(typeof navItems)[number]["id"]>("tour");
+ const [activeArea,setActiveArea]=useState("programme");
+ const [activeStage,setActiveStage]=useState("idee");
+ const [activeCritique,setActiveCritique]=useState("resume");
+ const [activeDialogue,setActiveDialogue]=useState("ticket");
+ const detailRef=useRef<HTMLElement>(null);
+ const currentArea=areas.find(item=>item.id===activeArea)??areas[0];
+ const currentStage=stages.find(item=>item.id===activeStage)??stages[0];
+ const currentCritique=critiqueTopics.find(item=>item.id===activeCritique)??critiqueTopics[0];
+ const currentDialogue=dialogues.find(item=>item.id===activeDialogue)??dialogues[0];
+ const speak=(text:string)=>void speakFrench(text,{rate:.78});
+ const selectAndScroll=(setter:(id:string)=>void,id:string)=>{setter(id);window.setTimeout(()=>detailRef.current?.scrollIntoView({behavior:"smooth",block:"start"}),0)};
+ return <main className="cinema-world" dir="rtl">
+  <header className="cinema-topbar"><Link href="/kingdom" aria-label="العودة إلى واجهة القلعة"><ArrowRight/></Link><div><Clapperboard/><span><strong>LE CINÉMA</strong><small>أكاديمية السينما الفرنسية</small></span></div><div className="cinema-now"><i/> À L’AFFICHE</div></header>
+  <section className="cinema-hero"><img src="/cinema-v1/hero.webp" alt="قاعة سينما واقعية فاخرة من الداخل"/><div className="cinema-hero-shade"/><div className="cinema-hero-copy"><span><BadgeCheck/> FRANÇAIS DU CINÉMA</span><h1>Vivez le français<br/><em>sur grand écran</em></h1><p>من اختيار الفيلم وشراء التذكرة إلى صناعة المشهد وتحليله: لغة عملية وصحيحة في تجربة سينمائية متكاملة.</p><button onClick={()=>document.querySelector(".cinema-nav")?.scrollIntoView({behavior:"smooth"})}>ابدأ الجولة <Play/></button></div><div className="cinema-hero-stats"><div><b>{areas.length}</b><span>مواقف داخل السينما</span></div><div><b>{areas.reduce((n,item)=>n+item.phrases.length,0)}</b><span>جملة أساسية</span></div><div><b>{dialogues.length}</b><span>محادثات كاملة</span></div></div></section>
+  <nav className="cinema-nav" aria-label="أقسام تعلم الفرنسية في السينما">{navItems.map(({id,fr,ar,Icon})=><button key={id} className={view===id?"active":""} onClick={()=>setView(id)}><Icon/><span><strong dir="ltr">{fr}</strong><small>{ar}</small></span></button>)}</nav>
+  {view==="tour"&&<section className="cinema-section"><Title code="01 · PARCOURS DU SPECTATEUR" ar="جولة السينما من اختيار الفيلم إلى مناقشته" note="اختر المكان وسينقلك النظام تلقائيًا إلى جمله؛ اضغط على أي جملة لسماع نطقها الفرنسي."/><div className="cinema-area-grid">{areas.map((item,index)=><button key={item.id} className={activeArea===item.id?"active":""} onClick={()=>selectAndScroll(setActiveArea,item.id)} style={{backgroundImage:`linear-gradient(180deg,transparent 8%,#050b18f5 100%),url(/cinema-v1/${item.image}.webp)`}}><i>{String(index+1).padStart(2,"0")}</i><span><small>{item.tag}</small><strong dir="ltr">{item.fr}</strong><b>{item.ar}</b></span><ArrowRight/></button>)}</div><PhraseDetail refEl={detailRef} image={currentArea.image} tag={currentArea.tag} fr={currentArea.fr} ar={currentArea.ar} phrases={currentArea.phrases} speak={speak}/></section>}
+  {view==="genres"&&<section className="cinema-section"><Title code="02 · GENRES CINÉMATOGRAPHIQUES" ar="أنواع الأفلام ووصفها بالفرنسية" note="تعريف واضح لكل نوع مع مثال طبيعي؛ اضغط على البطاقة لسماع الاسم والتعريف والمثال."/><div className="cinema-genre-grid">{genres.map(({fr,ar,definitionFr,definitionAr,example,Icon},index)=><button key={fr} onClick={()=>speak(`${fr}. ${definitionFr} ${example}`)}><i>{String(index+1).padStart(2,"0")}</i><Icon/><h3 dir="ltr">{fr}</h3><h4>{ar}</h4><p dir="ltr">{definitionFr}</p><small>{definitionAr}</small><em dir="ltr">« {example} »</em><Volume2/></button>)}</div></section>}
+  {view==="production"&&<section className="cinema-section"><Title code="03 · FABRICATION D’UN FILM" ar="مراحل صناعة الفيلم من الفكرة إلى الشاشة" note="اختر المرحلة لعرض شرحها وجملها المهنية، مع نطق مستقل لكل جملة."/><div className="cinema-stage-grid">{stages.map((item,index)=><button key={item.id} className={activeStage===item.id?"active":""} onClick={()=>selectAndScroll(setActiveStage,item.id)}><img src={`/cinema-v1/${item.image}.webp`} alt={item.ar}/><span><i>{String(index+1).padStart(2,"0")}</i><strong dir="ltr">{item.fr}</strong><b>{item.ar}</b></span><Video/></button>)}</div><article ref={detailRef} className="cinema-detail cinema-stage-detail"><header><img src={`/cinema-v1/${currentStage.image}.webp`} alt={currentStage.ar}/><div><span>ÉTAPE DE PRODUCTION</span><h3 dir="ltr">{currentStage.fr}</h3><p>{currentStage.ar}</p></div></header><div className="cinema-stage-note"><p dir="ltr">{currentStage.roleFr}</p><small>{currentStage.roleAr}</small></div><PhraseList phrases={currentStage.phrases} speak={speak}/></article></section>}
+  {view==="equipment"&&<section className="cinema-section"><Title code="04 · MATÉRIEL DU CINÉMA" ar="أدوات التصوير والصوت والعرض" note="صورة ثابتة واقعية ومفردات مطابقة؛ اضغط على الأداة لسماع اسمها وشرحها الفرنسي."/><article className="cinema-equipment"><header><img src="/cinema-v1/equipment.webp" alt="معدات سينمائية واقعية مرتبة بوضوح"/><div><span>VOCABULAIRE VISUEL</span><h3>Le matériel</h3><p>معدات صناعة الفيلم وعرضه</p></div></header><div>{equipment.map(({fr,ar,noteFr,noteAr,Icon},index)=><button key={fr} onClick={()=>speak(`${fr}. ${noteFr}`)}><i>{String(index+1).padStart(2,"0")}</i><Icon/><span><strong dir="ltr">{fr}</strong><b>{ar}</b><small dir="ltr">{noteFr}</small><em>{noteAr}</em></span><Volume2/></button>)}</div></article></section>}
+  {view==="critique"&&<section className="cinema-section"><Title code="05 · ANALYSE ET CRITIQUE" ar="كيف تفهم الفيلم وتعبر عن رأيك؟" note="أسئلة تحليلية مبسطة ومثال فرنسي كامل لكل عنصر من عناصر الفيلم."/><div className="cinema-critique-layout"><div className="cinema-critique-image"><img src="/cinema-v1/critique.webp" alt="نقاش سينمائي لرجال مجهولي الهوية من الخلف"/><span><MessageSquareText/><b>APRÈS LA PROJECTION</b><small>قراءة الفيلم ومناقشته</small></span></div><div className="cinema-critique-tabs">{critiqueTopics.map((item,index)=><button key={item.id} className={activeCritique===item.id?"active":""} onClick={()=>setActiveCritique(item.id)}><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span></button>)}</div><article><span>QUESTION D’ANALYSE</span><h3 dir="ltr">{currentCritique.fr}</h3><h4>{currentCritique.ar}</h4><button onClick={()=>speak(`${currentCritique.question} ${currentCritique.answer}`)}><b dir="ltr">{currentCritique.question}</b><p dir="ltr">{currentCritique.answer}</p><small>{currentCritique.translation}</small><Volume2/></button></article></div></section>}
+  {view==="dialogues"&&<section className="cinema-section"><Title code="06 · CONVERSATIONS COMPLÈTES" ar="محادثات السينما وصناعة الفيلم" note="ست محادثات مختلفة، ولكل سطر نطق مستقل وترجمة واضحة دون تكرار."/><div className="cinema-dialogue-tabs">{dialogues.map(item=><button key={item.id} className={activeDialogue===item.id?"active":""} onClick={()=>selectAndScroll(setActiveDialogue,item.id)}><MessageSquareText/><span><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span></button>)}</div><article ref={detailRef} className="cinema-dialogue"><header><span>CONVERSATION</span><h3 dir="ltr">{currentDialogue.fr}</h3><p>{currentDialogue.context}</p></header><div>{currentDialogue.lines.map((line,index)=><button key={`${line.fr}-${index}`} className={index%2?"reply":"lead"} onClick={()=>speak(line.fr)}><i>{line.role}</i><span><strong dir="ltr">{line.fr}</strong><small>{line.ar}</small></span><Volume2/></button>)}</div></article></section>}
+  <section className="cinema-sources"><div><ShieldCheck/><span><strong>محتوى لغوي ومصطلحات سينمائية موثوقة</strong><small>SOURCES DE RÉFÉRENCE</small></span></div><p>صيغت الجمل خصيصًا للتعلم، ورُوجعت المصطلحات ومفاهيم السيناريو واللقطة والمونتاج مع مراجع فرنسية رسمية. جميع الأشخاص الظاهرين في الصور مولدون وخياليون، ولا تمثل الصور أي شخص معروف.</p><div><a href="https://www.culture.fr/franceterme/Actualites/Vous-pouvez-le-dire-en-francais-le-cinema" target="_blank" rel="noreferrer">FranceTerme · Le cinéma</a><a href="https://www.culture.fr/franceterme/Nos-publications/Vous-pouvez-le-dire-en-francais" target="_blank" rel="noreferrer">Ministère de la Culture · Audiovisuel</a><a href="https://eduscol.education.fr/document/21841/download" target="_blank" rel="noreferrer">Éduscol · Atelier cinéma</a></div></section>
+ </main>;
 }
 
-export default function CinemaPage() {
-  const router = useRouter();
-  const [activeId, setActiveId] = useState<(typeof areas)[number]["id"]>(areas[0].id);
-  const active = areas.find(({ id }) => id === activeId) ?? areas[0];
-
-  return (
-    <main className="cinema-world" dir="rtl">
-      <header className="cinema-header">
-        <button data-portal-return onClick={() => router.push("/kingdom")} aria-label="العودة إلى القلعة"><ArrowLeft /></button>
-        <div><Clapperboard /><span><strong>LE CINÉMA</strong><small>صالة السينما</small></span></div>
-        <button onClick={() => document.getElementById("cinema-areas")?.scrollIntoView({ behavior: "smooth" })}><Sparkles /><span>ابدأ الجولة</span></button>
-      </header>
-
-      <section className="cinema-hero">
-        <div className="cinema-hero-copy">
-          <span>UNE SOIRÉE AU CINÉMA</span>
-          <h1>LE CINÉMA</h1>
-          <h2>صالة السينما</h2>
-          <p>تعلّم الفرنسية من شباك التذاكر حتى مناقشة الفيلم، بجمل واضحة يمكن سماعها جملةً جملة.</p>
-          <button onClick={() => document.getElementById("cinema-areas")?.scrollIntoView({ behavior: "smooth" })}><Film /> اكتشف أقسام السينما</button>
-        </div>
-      </section>
-
-      <section className="cinema-learning" id="cinema-areas">
-        <div className="cinema-title">
-          <span>01</span>
-          <div><small>PARCOURS D’APPRENTISSAGE</small><h2>أقسام صالة السينما</h2><p>اختر القسم لتظهر جمله التعليمية في الأسفل.</p></div>
-        </div>
-
-        <div className="cinema-area-grid">
-          {areas.map((area) => (
-            <button key={area.id} className={activeId === area.id ? "active" : ""} onClick={() => {
-              setActiveId(area.id);
-              window.setTimeout(() => document.getElementById("cinema-phrases")?.scrollIntoView({ behavior: "smooth", block: "center" }), 80);
-            }}>
-              <i>{area.icon}</i><strong>{area.fr}</strong><span>{area.ar}</span>
-            </button>
-          ))}
-        </div>
-
-        <section className="cinema-phrase-room" id="cinema-phrases">
-          <div className="cinema-phrase-heading"><i>{active.icon}</i><div><small>{active.fr}</small><h3>{active.ar}</h3></div></div>
-          <div className="cinema-phrases">
-            {active.phrases.map(([fr, ar], index) => (
-              <button key={fr} onClick={() => speak(fr)}>
-                <em>{String(index + 1).padStart(2, "0")}</em>
-                <span><strong>{fr}</strong><small>{ar}</small></span>
-                <Volume2 />
-              </button>
-            ))}
-          </div>
-        </section>
-      </section>
-    </main>
-  );
-}
+function Title({code,ar,note}:{code:string;ar:string;note:string}){return <div className="cinema-title"><span>{code}</span><h2>{ar}</h2><p>{note}</p></div>}
+function PhraseList({phrases,speak}:{phrases:Phrase[];speak:(text:string)=>void}){return <div className="cinema-phrases">{phrases.map((item,index)=><button key={item.fr} onClick={()=>speak(item.fr)}><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><Volume2/></button>)}</div>}
+function PhraseDetail({refEl,image,tag,fr,ar,phrases,speak}:{refEl:React.RefObject<HTMLElement|null>;image:string;tag:string;fr:string;ar:string;phrases:Phrase[];speak:(text:string)=>void}){return <article ref={refEl} className="cinema-detail"><header><img src={`/cinema-v1/${image}.webp`} alt={ar}/><div><span>{tag}</span><h3 dir="ltr">{fr}</h3><p>{ar}</p></div></header><PhraseList phrases={phrases} speak={speak}/></article>}

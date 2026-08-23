@@ -790,3 +790,24 @@
     --book-ground-gap:0px;
   }
 }
+
+/* Final page-title alignment: both labels sit on the true centre of their book page. */
+.university-book .book-copy,
+.library-book .book-copy{
+  left:50%!important;
+  right:auto!important;
+  width:88%;
+  max-width:88%;
+  transform:translateX(-50%)!important;
+  align-items:center;
+  text-align:center;
+}
+.university-book .book-copy small,
+.library-book .book-copy small{
+  transform:none!important;
+}
+.destination-tab[data-destination="cinema"] .destination-photo{
+  background-size:contain;
+  background-position:center bottom;
+  background-repeat:no-repeat;
+}

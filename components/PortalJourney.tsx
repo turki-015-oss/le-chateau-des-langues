@@ -25,7 +25,7 @@ const places: Record<string, PortalPlace> = {
   zoo: { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", image: "/kingdom-portal-assets/destination-zoo-v2.webp" },
   hotel: { id: "hotel", fr: "HÔTEL", ar: "الفندق", image: "/kingdom-portal-assets/destination-hotel-v2.webp" },
   stadium: { id: "stadium", fr: "STADE", ar: "الملعب", image: "/kingdom-portal-assets/destination-stadium-v2.webp" },
-  cinema: { id: "cinema", fr: "CINÉMA", ar: "صالة السينما", image: "/kingdom-portal-assets/destination-cinema-v1.webp" },
+  cinema: { id: "cinema", fr: "CINÉMA", ar: "صالة السينما", image: "/kingdom-portal-assets/destination-cinema-v2.webp" },
   court: { id: "court", fr: "TRIBUNAL", ar: "المحكمة", image: "/maps/facades/civic-facade.webp" },
 };
 

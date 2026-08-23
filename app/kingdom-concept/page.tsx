@@ -131,6 +131,8 @@ export default function KingdomConceptPage() {
           <h1 dir="ltr">LE CHÂTEAU</h1>
           <p>القلعة</p>
         </div>
+        <div className="concept-castle-garden concept-castle-garden-left" aria-hidden="true" />
+        <div className="concept-castle-garden concept-castle-garden-right" aria-hidden="true" />
         <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة">
           <Castle />
           <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>
@@ -158,9 +160,6 @@ export default function KingdomConceptPage() {
       </section>
 
       <section className="concept-destinations" id="concept-destinations">
-        <div className="concept-section-heading concept-section-heading-light">
-          <h2>وجهات القلعة</h2>
-        </div>
         <div className="concept-destination-stage">
           <button type="button" className="concept-rail-arrow concept-rail-arrow-left" onClick={() => moveDestinations(-1)} aria-label="الوجهة السابقة"><ChevronLeft /></button>
           <div className="concept-card-grid" ref={destinationRailRef}>

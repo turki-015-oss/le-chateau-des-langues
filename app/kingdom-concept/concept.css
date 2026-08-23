@@ -19,6 +19,9 @@
 .concept-castle-title>span svg{width:14px}
 .concept-castle-title h1{margin:9px 0 2px;color:#f4dfaa;font:700 clamp(42px,5vw,70px)/.95 Georgia,serif;letter-spacing:.055em}
 .concept-castle-title p{margin:0;color:#fff4d4;font-size:15px;font-weight:700}
+.concept-castle-garden{--garden-mirror:1;position:absolute;z-index:3;bottom:155px;width:clamp(270px,30vw,430px);height:355px;background:url('/kingdom-portal-assets/castle-trees.png') left bottom/auto 100% no-repeat;filter:drop-shadow(0 15px 13px #1120187a);pointer-events:none;transform:scaleX(var(--garden-mirror));transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to right,#000 0 57%,rgba(0,0,0,.92) 68%,rgba(0,0,0,.45) 84%,transparent 100%);mask-image:linear-gradient(to right,#000 0 57%,rgba(0,0,0,.92) 68%,rgba(0,0,0,.45) 84%,transparent 100%)}
+.concept-castle-garden-left{left:-13vw}
+.concept-castle-garden-right{--garden-mirror:-1;right:-13vw}
 .concept-castle-entry{position:absolute;z-index:8;top:45.5%;left:50%;transform:translate(-50%,-50%);min-width:196px;padding:11px 17px;border:1px solid #efd683;border-radius:999px;background:linear-gradient(145deg,#092c22ed,#041711f2);color:#f5e6b9;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:0 14px 30px #0008,inset 0 1px #ffffff24;backdrop-filter:blur(8px);transition:transform .2s ease,box-shadow .2s ease}
 .concept-castle-entry:hover{transform:translate(-50%,-50%) scale(1.035);box-shadow:0 18px 38px #000a,0 0 0 2px #d9b76142}
 .concept-castle-entry:active{transform:translate(-50%,-45%) scale(.985)}
@@ -39,7 +42,7 @@
 .concept-book-platform:before{content:"";position:absolute;left:4%;right:4%;top:8%;height:45%;border-radius:50%;background:linear-gradient(180deg,#f6e9cc,#b89460);box-shadow:inset 0 2px #fff8de,0 4px 8px #5f3f236b}
 .concept-book-platform span{position:absolute;left:12%;right:12%;bottom:-17%;height:40%;border-radius:0 0 24px 24px;background:linear-gradient(90deg,#80603a,#c3a374 15%,#ae8b5d 50%,#c3a374 85%,#80603a);box-shadow:0 13px 22px #0006}
 .concept-book-platform i{position:absolute;left:22%;right:22%;bottom:-28%;height:17%;border-radius:3px 3px 18px 18px;background:#72502f;box-shadow:0 10px 18px #0007}
-.concept-destinations{padding:42px max(12px,calc((100vw - 1240px)/2)) 35px;background:radial-gradient(circle at 50% 0,#174839 0,transparent 32%),var(--concept-deep)}
+.concept-destinations{padding:12px max(12px,calc((100vw - 1240px)/2)) 35px;background:radial-gradient(circle at 50% 0,#174839 0,transparent 32%),var(--concept-deep)}
 .concept-destinations .concept-section-heading{margin-bottom:16px}
 .concept-destinations .concept-section-heading h2{margin:7px 0 4px;font-size:30px}
 .concept-destinations .concept-section-heading p{font-size:10px;line-height:1.65}
@@ -71,6 +74,9 @@
   .concept-castle-title>span{font-size:7px}
   .concept-castle-title h1{margin-top:7px;font-size:34px}
   .concept-castle-title p{font-size:11px}
+  .concept-castle-garden{bottom:138px;width:210px;height:300px}
+  .concept-castle-garden-left{left:-118px}
+  .concept-castle-garden-right{right:-118px}
   .concept-castle-entry{top:45%;min-width:160px;padding:8px 12px;gap:7px}
   .concept-castle-entry>svg{width:15px}
   .concept-castle-entry strong{font-size:11px}
@@ -79,10 +85,10 @@
   .concept-scene-book .concept-book-engraving{top:7%}
   .concept-scene-book .concept-book-engraving strong{font-size:14px}
   .concept-scene-book .concept-book-engraving b{margin-top:3px;font-size:11px}
-  .concept-scene-book .concept-book-page>img{left:20%;right:20%;bottom:8%;width:60%;height:48%}
+  .concept-scene-book .concept-book-page>img{left:10%;right:10%;bottom:2%;width:80%;height:58%;transform:scale(1.2);transform-origin:center bottom}
   .concept-scene-book .concept-book-seal{display:none}
   .concept-book-platform{left:-5%;right:-5%;bottom:-1%}
-  .concept-destinations{padding:31px 0 26px}
+  .concept-destinations{padding:7px 0 26px}
   .concept-destinations .concept-section-heading{margin-bottom:10px}
   .concept-destinations .concept-section-heading h2{font-size:23px}
   .concept-destinations .concept-section-heading p{max-width:300px;margin-inline:auto;font-size:9px}
@@ -110,7 +116,7 @@
   .concept-scene-book .concept-book-engraving strong{font-size:18px}
   .concept-scene-book .concept-book-engraving b{font-size:12px}
   .concept-scene-book .concept-book-seal{display:none}
-  .concept-destinations{padding-top:28px;padding-bottom:24px}
+  .concept-destinations{padding-top:7px;padding-bottom:24px}
   .concept-destinations .concept-section-heading{margin-bottom:8px}
   .concept-card-grid{padding-bottom:18px}
 }

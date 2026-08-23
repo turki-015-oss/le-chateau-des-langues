@@ -159,9 +159,7 @@ export default function KingdomConceptPage() {
 
       <section className="concept-destinations" id="concept-destinations">
         <div className="concept-section-heading concept-section-heading-light">
-          <span>EXPLOREZ LA CITÉ</span>
           <h2>وجهات القلعة</h2>
-          <p>أيقونات 3D صغيرة؛ اسحبها أو استخدم السهمين للدخول إلى المكان.</p>
         </div>
         <div className="concept-destination-stage">
           <button type="button" className="concept-rail-arrow concept-rail-arrow-left" onClick={() => moveDestinations(-1)} aria-label="الوجهة السابقة"><ChevronLeft /></button>

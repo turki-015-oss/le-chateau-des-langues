@@ -107,7 +107,6 @@ function TiltCard({ item, index }: { item: ConceptDestination; index: number }) 
 
 export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
-  const scrollToDestinations = () => document.getElementById("concept-destinations")?.scrollIntoView({ behavior: "smooth" });
   const moveDestinations = (direction: -1 | 1) => {
     const rail = destinationRailRef.current;
     if (!rail) return;
@@ -127,44 +126,42 @@ export default function KingdomConceptPage() {
       <section className="concept-hero">
         <img src="/kingdom-portal-assets/castle-facade.png" alt="واجهة القلعة" className="concept-hero-image" />
         <div className="concept-hero-shade" />
-        <div className="concept-hero-copy">
+        <div className="concept-castle-title">
           <span><Sparkles /> UNE LANGUE · UN MONDE</span>
-          <h1 dir="ltr">Entrez dans<br /><em>le français vivant</em></h1>
-          <p>رحلة تعليمية متكاملة؛ تختار مكانك، تدخل عالمه، وتتعلّم الفرنسية من مواقف حقيقية داخل القلعة.</p>
-          <button type="button" onClick={scrollToDestinations}>استكشف الوجهات ثلاثية الأبعاد <ArrowLeft /></button>
+          <h1 dir="ltr">LE CHÂTEAU</h1>
+          <p>القلعة</p>
         </div>
-        <div className="concept-hero-stat"><b>15</b><span>وجهة تعليمية</span></div>
-      </section>
-
-      <section className="concept-primary" aria-label="الجامعة والمكتبة">
-        <div className="concept-section-heading">
-          <span>LE LIVRE DES SAVOIRS</span>
-          <h2>الجامعة والمكتبة جزء من كتاب القلعة</h2>
-          <p>النصوص محفورة بصريًا داخل الورق، وصورة كل مبنى مطبوعة داخل صفحته لتبدو جزءًا حقيقيًا من الكتاب.</p>
-        </div>
-        <div className="concept-open-book" dir="ltr">
-          <img className="concept-book-base" src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="كتاب القلعة المفتوح" />
-          <div className="concept-book-pages">
-            <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة">
-              <span className="concept-book-engraving"><strong>UNIVERSITÉ</strong><b dir="rtl">الجامعة</b></span>
-              <img src="/kingdom-portal-assets/university-campus.png" alt="مبنى الجامعة" />
-              <span className="concept-book-seal"><GraduationCap /><small>ENTRER</small></span>
-            </Link>
-            <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة">
-              <span className="concept-book-engraving"><strong>BIBLIOTHÈQUE</strong><b dir="rtl">المكتبة</b></span>
-              <img src="/kingdom-portal-assets/library-facade.png" alt="مبنى المكتبة" />
-              <span className="concept-book-seal"><Library /><small>ENTRER</small></span>
-            </Link>
+        <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة">
+          <Castle />
+          <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>
+          <ArrowLeft />
+        </Link>
+        <div className="concept-scene-book">
+          <div className="concept-open-book" dir="ltr">
+            <img className="concept-book-base" src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="كتاب القلعة المفتوح" />
+            <div className="concept-book-pages">
+              <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة">
+                <span className="concept-book-engraving"><strong>UNIVERSITÉ</strong><b dir="rtl">الجامعة</b></span>
+                <img src="/kingdom-portal-assets/university-campus.png" alt="مبنى الجامعة" />
+                <span className="concept-book-seal"><GraduationCap /><small>ENTRER</small></span>
+              </Link>
+              <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة">
+                <span className="concept-book-engraving"><strong>BIBLIOTHÈQUE</strong><b dir="rtl">المكتبة</b></span>
+                <img src="/kingdom-portal-assets/library-facade.png" alt="مبنى المكتبة" />
+                <span className="concept-book-seal"><Library /><small>ENTRER</small></span>
+              </Link>
+            </div>
+            <span className="concept-book-glow" aria-hidden="true" />
           </div>
-          <span className="concept-book-glow" aria-hidden="true" />
+          <div className="concept-book-platform" aria-hidden="true"><span /><i /></div>
         </div>
       </section>
 
       <section className="concept-destinations" id="concept-destinations">
         <div className="concept-section-heading concept-section-heading-light">
           <span>EXPLOREZ LA CITÉ</span>
-          <h2>اختر المكان الذي تريد التعلّم داخله</h2>
-          <p>كل بطاقة مبنى مستقلة بطبقات 3D، وصورة ثابتة مطابقة لاسم الوجهة، ودخول مباشر إلى قسمها.</p>
+          <h2>وجهات القلعة</h2>
+          <p>أيقونات 3D صغيرة؛ اسحبها أو استخدم السهمين للدخول إلى المكان.</p>
         </div>
         <div className="concept-destination-stage">
           <button type="button" className="concept-rail-arrow concept-rail-arrow-left" onClick={() => moveDestinations(-1)} aria-label="الوجهة السابقة"><ChevronLeft /></button>

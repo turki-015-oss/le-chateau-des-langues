@@ -595,6 +595,10 @@ const ALPHABET=[
  ["Y","i grec","stylo","قلم"],["Z","zède","zoo","حديقة حيوانات"]
 ];
 
+// Keep the conventional written letter name in the lesson, while giving
+// speech engines a phonetic spelling for names they commonly mispronounce.
+const LETTER_SPEECH_OVERRIDES:Record<string,string>={N:"ène"};
+
 const SMALL_FRENCH_NUMBERS=[
  "zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf",
  "dix","onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf"
@@ -1661,14 +1665,14 @@ export default function UniversityPage(){
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
-      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchWithPause(pronunciation,word,700,{rate:.72})}}>
+      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchWithPause(LETTER_SPEECH_OVERRIDES[letter]??pronunciation,word,700,{rate:.72})}}>
        <b>{letter}</b><span>{pronunciation}</span><small>{word}</small><em>{meaning}</em>
       </button>)}
      </div>
      <div className="university-letter-focus">
       <div><span>الحرف المحدد</span><b>{activeLetter}</b></div>
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
-      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(item[1],item[2],700,{rate:.72})}}><Play/> نطق الحرف ثم الكلمة</button>
+      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(LETTER_SPEECH_OVERRIDES[item[0]]??item[1],item[2],700,{rate:.72})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
     </section>}
 

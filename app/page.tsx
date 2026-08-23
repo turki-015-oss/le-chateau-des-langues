@@ -117,7 +117,7 @@ export default function EntryPage() {
         <div className="v69-feature-list">
           {features.map(({ icon: Icon, text }) => <div key={text} className="v69-feature-row"><Icon aria-hidden="true" /><span>{text}</span></div>)}
         </div>
-        <button className="v69-primary" onClick={() => router.push("/kingdom")}>دخول العالم</button>
+        <button className="v69-primary" onClick={() => router.push("/kingdom")}>الدخول</button>
         <button className={`v69-secondary ${welcomeActive ? "is-speaking" : ""}`} onClick={speakWelcome} disabled={welcomeActive}>
           {!welcomeActive && <Volume2 aria-hidden="true" />}
           <span>{welcomeActive ? (welcomeText || "Bienvenue…") : "استمع إلى الترحيب"}</span>

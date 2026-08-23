@@ -1,139 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowRight, BookOpen, Car, ChevronLeft, FileWarning, Headphones, IdCard, KeyRound, Menu, MessageCircle, PackageSearch, ShieldCheck, Siren, Smartphone, Star, Volume2, WalletCards } from "lucide-react";
+import {useMemo,useRef,useState} from "react";
+import {ArrowRight,BookOpen,Car,ChevronLeft,FileWarning,Headphones,IdCard,MessageCircle,PackageSearch,ShieldCheck,Siren,Star,Volume2} from "lucide-react";
 import {speakFrench} from "@/lib/frenchSpeech";
+import "./police.css";
 
-const sections = [
-  { id: "accueil", fr: "Accueil", ar: "الاستقبال", image: "/police-v39/accueil.webp", icon: ShieldCheck },
-  { id: "vol", fr: "Déclarer un vol", ar: "الإبلاغ عن سرقة", image: "/police-v39/vol.webp", icon: FileWarning },
-  { id: "passeport", fr: "Passeport perdu", ar: "جواز سفر مفقود", image: "/police-v39/passeport.webp", icon: IdCard },
-  { id: "accident", fr: "Accident de voiture", ar: "حادث سيارة", image: "/police-v39/accident.webp", icon: Siren },
-  { id: "objets", fr: "Objets trouvés", ar: "أغراض مفقودة", image: "/police-v39/objets.webp", icon: PackageSearch },
-  { id: "vehicules", fr: "Véhicules de police", ar: "مركبات الشرطة", image: "/police-v39/vehicules.webp", icon: Car },
-  { id: "grades", fr: "Les grades", ar: "الرتب الشرطية", image: "/police-v39/grades.webp", icon: Star },
-  { id: "conversation", fr: "Conversations", ar: "المحادثات", image: "/police-v39/conversation.webp", icon: MessageCircle },
+type Pair={fr:string;ar:string};
+type Question={q:string;ar:string;options:string[];answer:number;explanation:string};
+type Section={id:string;fr:string;ar:string;label:string;note:string;icon:typeof ShieldCheck;phrases:Pair[];words:Pair[];questions:Question[]};
+const p=(fr:string,ar:string):Pair=>({fr,ar});
+
+const sections:Section[]=[
+ {id:"accueil",fr:"Accueil du public",ar:"استقبال الجمهور",label:"ORIENTATION",icon:ShieldCheck,note:"ابدأ بشرح سبب زيارتك بوضوح، وقدّم وثيقة هوية عند طلبها. في حالة الخطر الفوري في فرنسا اتصل بالرقم 17 أو 112.",phrases:[p("Bonjour, je voudrais parler à un agent.","مرحبًا، أود التحدث إلى أحد رجال الشرطة."),p("Quelle est la raison de votre visite ?","ما سبب زيارتك؟"),p("Avez-vous une pièce d’identité ?","هل لديك وثيقة هوية؟"),p("Veuillez patienter dans la salle d’attente.","يرجى الانتظار في صالة الانتظار."),p("Un agent va vous recevoir.","سيستقبلك أحد رجال الشرطة."),p("En cas d’urgence, appelez le 17 ou le 112.","في حالة الطوارئ اتصل بالرقم 17 أو 112.")],words:[p("Le commissariat","مركز الشرطة"),p("L’accueil","الاستقبال"),p("L’agent de police","رجل الشرطة"),p("La pièce d’identité","وثيقة الهوية"),p("L’urgence","حالة الطوارئ")],questions:[{q:"Quel numéro joint Police secours en France ?",ar:"ما رقم طوارئ الشرطة في فرنسا؟",options:["17","15","36"],answer:0,explanation:"Le 17 permet de joindre Police secours ; le 112 est le numéro d’urgence européen."}]},
+ {id:"vol",fr:"Dépôt de plainte pour vol",ar:"تقديم شكوى عن سرقة",label:"PLAINTE",icon:FileWarning,note:"اذكر الوقائع والتاريخ والمكان والأشياء المسروقة والشهود والأدلة المتاحة. بعد سماع الإفادة يُسلَّم إيصال، ويمكن طلب نسخة من الشكوى.",phrases:[p("Je souhaite déposer plainte pour un vol.","أرغب في تقديم شكوى عن سرقة."),p("Quand et où les faits se sont-ils produits ?","متى وأين وقعت الحادثة؟"),p("Pouvez-vous décrire l’objet volé ?","هل يمكنك وصف الشيء المسروق؟"),p("Connaissez-vous l’identité de l’auteur ?","هل تعرف هوية الفاعل؟"),p("Y avait-il des témoins ?","هل كان هناك شهود؟"),p("Puis-je obtenir une copie de ma plainte ?","هل يمكنني الحصول على نسخة من الشكوى؟")],words:[p("La plainte","الشكوى الرسمية"),p("Le vol","السرقة"),p("La victime","الضحية"),p("L’auteur","الفاعل"),p("Le récépissé","إيصال البلاغ")],questions:[{q:"Que peut demander la victime après son audition ?",ar:"ماذا يمكن للضحية طلبه بعد سماع إفادتها؟",options:["Une copie de sa plainte","Un billet","Un permis"],answer:0,explanation:"La victime reçoit un récépissé et peut demander une copie de la plainte."}]},
+ {id:"documents",fr:"Document perdu ou volé",ar:"وثيقة مفقودة أو مسروقة",label:"IDENTITÉ",icon:IdCard,note:"الإجراء يختلف بين الفقد والسرقة وبين طلب وثيقة جديدة فورًا أو لاحقًا. إعلان الفقد يجعل الوثيقة غير صالحة نهائيًا حتى لو عُثر عليها.",phrases:[p("J’ai perdu mon passeport.","فقدت جواز سفري."),p("A-t-il été perdu ou volé ?","هل فُقد أم سُرق؟"),p("Je souhaite déclarer la perte.","أرغب في الإبلاغ عن الفقد."),p("Voici une photocopie du document.","هذه صورة من الوثيقة."),p("Le passeport est-il maintenant invalide ?","هل أصبح الجواز غير صالح الآن؟"),p("Où dois-je demander son renouvellement ?","أين أطلب تجديده؟")],words:[p("Le passeport","جواز السفر"),p("La carte d’identité","بطاقة الهوية"),p("La perte","الفقد"),p("La déclaration","الإقرار"),p("Le renouvellement","التجديد")],questions:[{q:"Que devient un passeport déclaré perdu ?",ar:"ماذا يحدث لجواز أُبلغ عن فقدانه؟",options:["Il devient invalide","Il reste valable","Il est renouvelé automatiquement"],answer:0,explanation:"Un titre déclaré perdu devient définitivement invalide."}]},
+ {id:"accident",fr:"Accident de la route",ar:"حادث مروري",label:"SÉCURITÉ ROUTIÈRE",icon:Siren,note:"عند وجود مصابين تُعطى الأولوية لحماية المكان وطلب الإسعاف. أما الحادث المادي فقط فيُوثَّق عادةً بالمحضر الودي وبيانات التأمين.",phrases:[p("Un accident vient de se produire.","وقع حادث للتو."),p("Y a-t-il des blessés ?","هل يوجد مصابون؟"),p("Les secours ont-ils été appelés ?","هل تم الاتصال بالطوارئ؟"),p("Ne déplacez pas les véhicules sauf en cas de danger.","لا تحرك المركبات إلا عند وجود خطر."),p("J’ai noté le numéro d’immatriculation.","دوّنت رقم اللوحة."),p("Nous avons rempli un constat amiable.","ملأنا محضرًا وديًا.")],words:[p("L’accident","الحادث"),p("Le blessé","المصاب"),p("Les secours","الطوارئ"),p("L’assurance","التأمين"),p("Le constat amiable","المحضر الودي")],questions:[{q:"Quelle est la priorité s’il y a des blessés ?",ar:"ما الأولوية عند وجود مصابين؟",options:["Appeler les secours","Quitter les lieux","Laver la voiture"],answer:0,explanation:"Il faut sécuriser les lieux et prévenir rapidement les secours."}]},
+ {id:"objets",fr:"Objets trouvés",ar:"المفقودات والمعثورات",label:"RESTITUTION",icon:PackageSearch,note:"صف الغرض ومكان العثور عليه ووقته. الجهة المختصة بالمفقودات قد تختلف حسب المدينة ومكان العثور على الغرض.",phrases:[p("J’ai trouvé ce portefeuille dans la rue.","عثرت على هذه المحفظة في الشارع."),p("Où et quand l’avez-vous trouvé ?","أين ومتى عثرت عليها؟"),p("Pouvez-vous décrire son contenu ?","هل يمكنك وصف محتواها؟"),p("Nous allons enregistrer l’objet.","سنسجل الغرض."),p("Voici le numéro de référence.","هذا الرقم المرجعي."),p("Le service compétent vous contactera.","ستتصل بك الجهة المختصة.")],words:[p("L’objet trouvé","الغرض المعثور عليه"),p("Le propriétaire","المالك"),p("Le dépôt","الإيداع"),p("La description","الوصف"),p("La référence","الرقم المرجعي")],questions:[{q:"Quelle information facilite la restitution ?",ar:"ما المعلومة التي تسهّل إعادة الغرض؟",options:["Le lieu de découverte","Le plat préféré","Le numéro du vol"],answer:0,explanation:"Le lieu, la date et les circonstances facilitent l’enregistrement et la restitution."}]},
+ {id:"intervention",fr:"Intervention et patrouille",ar:"الدوريات والاستجابة",label:"POLICE SECOURS",icon:Car,note:"في اتصال الطوارئ اذكر موقعك بدقة وطبيعة الخطر وعدد الأشخاص، ثم اتبع التعليمات ولا تعرّض نفسك للخطر.",phrases:[p("Une patrouille est en route.","دورية في طريقها إليك."),p("Donnez-moi votre adresse exacte.","أعطني عنوانك الدقيق."),p("La personne est-elle encore sur place ?","هل الشخص ما زال في المكان؟"),p("Restez à distance.","ابقَ بعيدًا."),p("Décrivez le véhicule et sa direction.","صف المركبة واتجاهها."),p("Suivez les consignes de l’opérateur.","اتبع تعليمات موظف الطوارئ.")],words:[p("La patrouille","الدورية"),p("Le véhicule de police","مركبة الشرطة"),p("La sirène","صافرة الإنذار"),p("L’intervention","الاستجابة"),p("Les consignes","التعليمات")],questions:[{q:"Que faut-il indiquer clairement à l’opérateur ?",ar:"ماذا يجب توضيحه لموظف الطوارئ؟",options:["L’adresse exacte","Sa profession","Son repas"],answer:0,explanation:"L’adresse exacte permet aux secours d’atteindre rapidement le lieu."}]},
+ {id:"grades",fr:"Corps et grades",ar:"الرتب الشرطية",label:"HIÉRARCHIE OFFICIELLE",icon:Star,note:"هذه هي رتب الشرطة الوطنية الفرنسية الحالية. ألغيت رتبة brigadier المستقلة في 2023؛ والتسلسل الحالي للأفراد: gardien de la paix ثم brigadier-chef ثم major.",phrases:[p("Quel est votre grade ?","ما رتبتك؟"),p("Je suis gardien de la paix.","أنا حارس سلام."),p("Le brigadier-chef encadre une équipe.","يشرف البريغادييه شيف على فريق."),p("Le major est le grade supérieur de ce corps.","الميجور أعلى رتبة في هذا السلك."),p("Le corps de commandement regroupe les officiers.","يضم سلك القيادة الضباط."),p("Le commissaire dirige un service.","يدير المفوض مرفقًا شرطيًا.")],words:[p("Le corps","السلك"),p("Le grade","الرتبة"),p("L’échelon","الدرجة الوظيفية"),p("La hiérarchie","التسلسل"),p("Le commandement","القيادة")],questions:[{q:"Quel est l’ordre croissant des grades des gardiens ?",ar:"ما الترتيب التصاعدي لرتب الأفراد؟",options:["Gardien, brigadier-chef, major","Major, capitaine, gardien","Lieutenant, major, commissaire"],answer:0,explanation:"L’ordre officiel est gardien de la paix, brigadier-chef, puis major."}]},
+ {id:"conversation",fr:"Dialogue complet",ar:"محادثة كاملة",label:"MISE EN SITUATION",icon:MessageCircle,note:"محادثة تدريبية متسلسلة تجمع الاستقبال ووصف الواقعة وتسجيل الشكوى واستلام الرقم المرجعي. اضغط على كل سطر لسماعه.",phrases:[p("Bonjour, que puis-je faire pour vous ?","مرحبًا، كيف أساعدك؟"),p("Je voudrais signaler le vol de mon téléphone.","أود الإبلاغ عن سرقة هاتفي."),p("À quelle heure a-t-il disparu ?","في أي وقت اختفى؟"),p("Vers dix-huit heures, devant la gare.","قرابة السادسة أمام المحطة."),p("Avez-vous le numéro de série ?","هل لديك الرقم التسلسلي؟"),p("Voici votre récépissé et le numéro du dossier.","هذا الإيصال ورقم الملف.")],words:[p("Signaler","يُبلغ"),p("La disparition","الاختفاء"),p("Le numéro de série","الرقم التسلسلي"),p("La facture","الفاتورة"),p("Le dossier","الملف")],questions:[{q:"Où le téléphone a-t-il disparu ?",ar:"أين اختفى الهاتف؟",options:["Devant la gare","À l’hôpital","Dans l’avion"],answer:0,explanation:"La personne indique : devant la gare, vers dix-huit heures."}]}
 ];
 
-const phrases = [
-  ["Bonjour, que s'est-il passé ?", "مرحبًا، ماذا حدث؟"],
-  ["Je voudrais faire une déclaration.", "أريد تقديم بلاغ."],
-  ["On m'a volé mon téléphone.", "لقد سرقوا هاتفي."],
-  ["Où cela s'est-il passé ?", "أين حدث ذلك؟"],
-  ["Devant le café, vers dix-huit heures.", "أمام المقهى، قرابة الساعة السادسة."],
-  ["Pouvez-vous décrire le voleur ?", "هل تستطيع وصف السارق؟"],
-];
+const individualRanks=[p("Gardien de la paix","حارس سلام"),p("Brigadier-chef de police","بريغادييه شيف"),p("Major de police","ميجور شرطة")];
+const officerRanks=[p("Capitaine de police","نقيب شرطة"),p("Commandant de police","قائد شرطة"),p("Commandant divisionnaire","قائد شرطة إقليمي"),p("Commissaire de police","مفوض شرطة"),p("Commissaire divisionnaire","مفوض شرطة إقليمي"),p("Commissaire général","مفوض عام")];
 
-const vocab = [
-  { fr: "Le passeport", ar: "جواز السفر", image: "/police-v39/vocab-passport.webp", Icon: IdCard },
-  { fr: "Le téléphone", ar: "الهاتف", image: "/police-v39/vocab-phone.webp", Icon: Smartphone },
-  { fr: "Le portefeuille", ar: "المحفظة", image: "/police-v39/vocab-wallet.webp", Icon: WalletCards },
-  { fr: "Les clés", ar: "المفاتيح", image: "/police-v39/vocab-keys.webp", Icon: KeyRound },
-  { fr: "Le sac", ar: "الحقيبة", image: "/police-v39/vocab-bag.webp", Icon: PackageSearch },
-  { fr: "Le voleur", ar: "السارق", image: "/police-v39/vocab-thief.webp", Icon: FileWarning },
-];
-
-const quiz = [
-  { q: "Qu'est-ce qu'on a volé à Karim ?", ar: "ماذا سُرق من كريم؟", options: ["Son passeport", "Son téléphone", "Sa voiture"], answer: 1 },
-  { q: "Où le vol a-t-il eu lieu ?", ar: "أين وقعت السرقة؟", options: ["Devant le café", "À l'hôtel", "Dans l'avion"], answer: 0 },
-];
-
-export default function PolicePage() {
-  const [active, setActive] = useState("accueil");
-  const [answer, setAnswer] = useState<number | null>(null);
-  const [question, setQuestion] = useState(0);
-
-  const speak = (text: string) => {
-    void speakFrench(text);
-  };
-
-  const current = sections.find((item) => item.id === active) ?? sections[0];
-
-  return (
-    <main className="police-world">
-      <header className="police-topbar">
-        <Link href="/kingdom" className="police-icon-button" aria-label="Retour au portail du Château"><ArrowRight size={22} /></Link>
-        <div><span>مركز الشرطة</span><strong>Le Commissariat de Police</strong></div>
-        <button className="police-icon-button" aria-label="Menu"><Menu size={22} /></button>
-      </header>
-
-      <section className="police-hero">
-        <img src="/police-v39/hero.webp" alt="Commissariat de police" />
-        <div className="police-hero-overlay">
-          <span className="police-badge"><ShieldCheck size={18}/> Monde de la police</span>
-          <h1>Le Commissariat</h1>
-          <p>تعلّم الفرنسية من خلال البلاغات، المفقودات والمواقف الأمنية اليومية.</p>
-          <button onClick={() => speak("Bonjour, bienvenue au commissariat. Comment puis-je vous aider ?")}>
-            <Volume2 size={20}/> Bonjour, bienvenue au commissariat.
-          </button>
-        </div>
-      </section>
-
-      <section className="police-section-grid" aria-label="Sections du commissariat">
-        {sections.map(({ id, fr, ar, image, icon: Icon }, index) => (
-          <button key={id} className={`police-section-card ${active === id ? "active" : ""}`} onClick={() => setActive(id)}>
-            <img src={image} alt={fr} />
-            <span className="police-section-number">{index + 1}</span>
-            <div><Icon size={18}/><strong>{fr}</strong><small>{ar}</small></div>
-          </button>
-        ))}
-      </section>
-
-      <section className="police-content-panel">
-        <div className="police-panel-heading">
-          <div><span>{current.ar}</span><h2>{current.fr}</h2></div>
-          <button onClick={() => speak(current.fr)}><Volume2 size={19}/></button>
-        </div>
-        <div className="police-dialogue-layout">
-          <img src={current.image} alt={current.fr}/>
-          <div className="police-dialogues">
-            {phrases.slice(0, active === "conversation" || active === "vol" ? 6 : 4).map(([fr, ar], i) => (
-              <button key={fr} className={i % 2 ? "visitor" : "officer"} onClick={() => speak(fr)}>
-                <span><strong>{fr}</strong><small>{ar}</small></span><Volume2 size={18}/>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="police-content-panel">
-        <div className="police-panel-heading">
-          <div><span>المفردات الأساسية</span><h2>Le vocabulaire</h2></div><BookOpen size={24}/>
-        </div>
-        <div className="police-vocab-grid">
-          {vocab.map(({ fr, ar, image, Icon }) => (
-            <article key={fr} className="police-vocab-card">
-              <img src={image} alt={fr}/>
-              <div><Icon size={17}/><strong>{fr}</strong><small>{ar}</small></div>
-              <button onClick={() => speak(fr)} aria-label={`Écouter ${fr}`}><Volume2 size={17}/></button>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="police-story-card">
-        <div className="police-story-image"><img src="/police-v39/story.webp" alt="Karim au commissariat"/><span>Histoire A1</span></div>
-        <div className="police-story-copy">
-          <span>قصة مصغرة</span><h2>Karim au commissariat</h2>
-          <p>Karim va au commissariat parce qu'on lui a volé son téléphone. Il explique au policier où et quand le vol s'est passé. Le policier prend sa déclaration et lui donne un numéro de dossier.</p>
-          <p className="arabic">يذهب كريم إلى مركز الشرطة لأن هاتفه سُرق. يشرح للشرطي أين ومتى وقعت السرقة، ثم يسجل الشرطي البلاغ ويعطيه رقم القضية.</p>
-          <button onClick={() => speak("Karim va au commissariat parce qu'on lui a volé son téléphone. Il explique au policier où et quand le vol s'est passé. Le policier prend sa déclaration et lui donne un numéro de dossier.")}><Headphones size={20}/> Écouter l'histoire</button>
-        </div>
-      </section>
-
-      <section className="police-content-panel police-quiz">
-        <div className="police-panel-heading"><div><span>اختبار الفهم</span><h2>Exercice</h2></div><span>{question + 1} / {quiz.length}</span></div>
-        <h3>{quiz[question].q}</h3><p>{quiz[question].ar}</p>
-        <div className="police-options">
-          {quiz[question].options.map((option, index) => (
-            <button key={option} className={answer === index ? (index === quiz[question].answer ? "correct" : "wrong") : ""} onClick={() => setAnswer(index)}>
-              <span>{String.fromCharCode(65 + index)}.</span>{option}
-            </button>
-          ))}
-        </div>
-        <button className="police-next" onClick={() => { setQuestion((question + 1) % quiz.length); setAnswer(null); }}>Suivant <ChevronLeft size={18}/></button>
-      </section>
-    </main>
-  );
+export default function PolicePage(){
+ const [activeId,setActiveId]=useState("accueil"),[answer,setAnswer]=useState<number|null>(null);const detailRef=useRef<HTMLElement>(null);
+ const active=useMemo(()=>sections.find(x=>x.id===activeId)??sections[0],[activeId]);const ActiveIcon=active.icon;const question=active.questions[0];
+ const speak=(text:string)=>void speakFrench(text);const choose=(id:string)=>{setActiveId(id);setAnswer(null);setTimeout(()=>detailRef.current?.scrollIntoView({behavior:"smooth",block:"start"}),80)};
+ return <main className="police-world police-rebuilt"><header className="police-topbar"><Link href="/kingdom" className="police-icon-button" aria-label="Retour"><ArrowRight/></Link><div><span>مركز الشرطة</span><strong>Le Commissariat de Police</strong></div><div className="police-official-mark"><ShieldCheck/></div></header>
+ <section className="police-command-hero"><div className="police-hero-emblem"><ShieldCheck/><span>POLICE</span></div><div className="police-hero-copy"><span>PARCOURS LINGUISTIQUE · A1–A2</span><h1>Le Commissariat</h1><h2>مركز الشرطة</h2><p>مواقف فرنسية عملية، مصطلحات دقيقة، وتسلسل رسمي للرتب.</p><button onClick={()=>speak("Bonjour, bienvenue au commissariat. Comment puis-je vous aider ?")}><Volume2/> Bonjour, bienvenue au commissariat.</button></div><div className="police-hero-status"><Siren/><div><strong>17 · POLICE SECOURS</strong><small>112 · Urgence européenne</small></div></div></section>
+ <section className="police-navigation"><header><div><small>08 ESPACES D’APPRENTISSAGE</small><h2>Choisissez une situation</h2><p>اختر الموقف الذي تريد تعلمه</p></div><ShieldCheck/></header><div className="police-section-grid">{sections.map((s,i)=>{const Icon=s.icon;return <button key={s.id} className={`police-section-card ${activeId===s.id?"active":""}`} onClick={()=>choose(s.id)}><b>{String(i+1).padStart(2,"0")}</b><i><Icon/></i><span><small>{s.label}</small><strong>{s.fr}</strong><em>{s.ar}</em></span><ChevronLeft/></button>})}</div></section>
+ <section ref={detailRef} className="police-learning-stage"><header className="police-stage-head"><i><ActiveIcon/></i><div><small>{active.label}</small><h2>{active.fr}</h2><p>{active.ar}</p></div><button onClick={()=>speak(active.fr)}><Volume2/></button></header><aside className="police-guidance"><ShieldCheck/><p>{active.note}</p></aside>
+ {active.id==="grades"&&<section className="police-ranks"><RankGroup number="01" title="Gradés et gardiens" ar="رتب الأفراد والإشراف" ranks={individualRanks} speak={speak}/><RankGroup number="02" title="Officiers et direction" ar="رتب الضباط والقيادة" ranks={officerRanks} speak={speak}/><p>Le policier adjoint est un agent contractuel : ce n’est pas un grade du corps d’encadrement et d’application. Le capitaine porte l’appellation « lieutenant » pendant ses quatre premières années.</p></section>}
+ <div className="police-learning-columns"><Room title="Phrases en situation" ar="جمل خاصة بهذا القسم" icon={<Headphones/>}>{active.phrases.map((x,i)=><AudioRow key={x.fr} item={x} index={i} speak={speak}/>)}</Room><Room title="Vocabulaire essentiel" ar="المفردات المرتبطة بالموقف" icon={<BookOpen/>}>{active.words.map((x,i)=><AudioRow key={x.fr} item={x} index={i} speak={speak}/>)}</Room></div>
+ <section className="police-comprehension"><header><div><small>03 · COMPRÉHENSION</small><h3>Vérifiez votre compréhension</h3><p>اختبار مرتبط بالقسم الحالي فقط</p></div><strong>1 / 1</strong></header><article><h4>{question.q}</h4><p>{question.ar}</p><div>{question.options.map((o,i)=><button key={o} className={answer===i?(i===question.answer?"correct":"wrong"):""} onClick={()=>setAnswer(i)}><span>{String.fromCharCode(65+i)}</span>{o}</button>)}</div>{answer!==null&&<aside className={answer===question.answer?"correct":"wrong"}><ShieldCheck/><span><strong>{answer===question.answer?"Bonne réponse":"Réessayez"}</strong><small>{question.explanation}</small></span></aside>}</article></section>
+ <footer className="police-sources"><div><ShieldCheck/><span><strong>Sources officielles</strong><small>محتوى راجع مصادر حكومية فرنسية</small></span></div><nav><a href="https://www.police-nationale.interieur.gouv.fr/nous-decouvrir/corps-et-grades" target="_blank" rel="noreferrer">Police nationale · Corps et grades</a><a href="https://www.service-public.fr/particuliers/actualites/A17768" target="_blank" rel="noreferrer">Service-Public · Plainte</a><a href="https://www.service-public.fr/particuliers/vosdroits/R13630" target="_blank" rel="noreferrer">Service-Public · Documents perdus</a></nav></footer></section></main>
 }
+
+function Room({title,ar,icon,children}:{title:string;ar:string;icon:React.ReactNode;children:React.ReactNode}){return <section className="police-room"><header><span>0{title.startsWith("P")?1:2}</span><div><h3>{title}</h3><p>{ar}</p></div>{icon}</header><div>{children}</div></section>}
+function AudioRow({item,index,speak}:{item:Pair;index:number;speak:(x:string)=>void}){return <button className="police-audio-row" onClick={()=>speak(item.fr)}><i>{String(index+1).padStart(2,"0")}</i><span><strong>{item.fr}</strong><small>{item.ar}</small></span><Volume2/></button>}
+function RankGroup({number,title,ar,ranks,speak}:{number:string;title:string;ar:string;ranks:Pair[];speak:(x:string)=>void}){return <div className="police-rank-group"><header><span>{number}</span><div><h3>{title}</h3><p>{ar}</p></div></header><div>{ranks.map((rank,i)=><button key={rank.fr} onClick={()=>speak(rank.fr)}><i>{i+1}</i><span><strong>{rank.fr}</strong><small>{rank.ar}</small></span><Volume2/></button>)}</div></div>}

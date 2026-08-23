@@ -791,20 +791,32 @@
   }
 }
 
-/* Final page-title alignment: both labels sit on the true centre of their book page. */
-.university-book .book-copy,
-.library-book .book-copy{
+/* Lock every university/library title line to the true centre of its own page. */
+.book-pages .university-book .book-copy,
+.book-pages .library-book .book-copy{
   left:50%!important;
   right:auto!important;
-  width:88%;
-  max-width:88%;
+  width:88%!important;
+  max-width:88%!important;
+  box-sizing:border-box;
   transform:translateX(-50%)!important;
-  align-items:center;
-  text-align:center;
+  align-items:stretch!important;
+  text-align:center!important;
 }
-.university-book .book-copy small,
-.library-book .book-copy small{
+.book-pages .university-book .book-copy strong,
+.book-pages .university-book .book-copy small,
+.book-pages .library-book .book-copy strong,
+.book-pages .library-book .book-copy small{
+  display:block;
+  width:100%;
+  margin-inline:0!important;
+  text-align:center!important;
   transform:none!important;
+}
+.book-pages .university-book .book-copy strong,
+.book-pages .library-book .book-copy strong{
+  white-space:nowrap;
+  letter-spacing:0;
 }
 .destination-tab[data-destination="cinema"] .destination-photo{
   background-size:contain;

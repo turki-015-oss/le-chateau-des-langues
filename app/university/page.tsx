@@ -597,7 +597,7 @@ const ALPHABET=[
 
 // Keep the conventional written letter name in the lesson, while giving
 // speech engines a phonetic spelling for names they commonly mispronounce.
-const LETTER_SPEECH_OVERRIDES:Record<string,string>={N:"ène"};
+const LETTER_SPEECH_OVERRIDES:Record<string,string>={N:"ène",T:"thé"};
 
 const SMALL_FRENCH_NUMBERS=[
  "zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf",

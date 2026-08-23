@@ -183,7 +183,7 @@ export default function AirportPage(){
   </section></div>}
 
   {activeStory&&<div className="airport-modal" role="dialog" aria-modal="true"><section className="airport-panel story-reader-panel">
-   <div className="airport-panel-head story-head"><button onClick={()=>setActiveStoryId(null)} aria-label="Retour"><ArrowRight/></button><div><div className="airport-panel-thumb"><Image src={activeStory.cover} alt={activeStory.title} fill sizes="70px"/></div><h2>{activeStory.title}</h2><small>{activeStory.arTitle} · {activeStory.level}</small></div></div>
+   <div className="airport-panel-head story-head"><button onClick={()=>setActiveStoryId(null)} aria-label="Retour"><ArrowRight/></button><div><h2>{activeStory.title}</h2><small>{activeStory.arTitle} · {activeStory.level}</small></div></div>
    <article className="airport-story-reader">
     <div className="story-reader-actions"><button onClick={()=>speak(activeStory.paragraphs.join(' '))}><Volume2/> Écouter toute l’histoire</button></div>
     <h3>À l’aéroport</h3>{activeStory.paragraphs.map((p,i)=><p key={i}>{p}<button className="story-line-audio" onClick={()=>speak(p)} aria-label="Écouter le paragraphe"><Volume2/></button></p>)}

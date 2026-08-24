@@ -212,10 +212,6 @@ export default function KingdomConceptPage() {
   return (
     <main className="kingdom-concept" dir="rtl">
       <header className="concept-topbar">
-        <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
-          <Link href="/">ACCUEIL</Link>
-          <Link href="/welcome">À PROPOS</Link>
-        </nav>
         <section className={`concept-compass ${compassStatus}`} aria-label={`البوصلة: ${compassLabel}`}>
           <button
             type="button"
@@ -223,14 +219,22 @@ export default function KingdomConceptPage() {
             onClick={compassStatus === "permission" ? requestCompass : undefined}
             title={compassStatus === "permission" ? "اضغط للسماح بالبوصلة" : compassLabel}
           >
-            <b>N</b>
-            <Compass style={{ transform: `rotate(${compassHeading ?? 0}deg)` }} />
+            <span className="concept-compass-cardinals" aria-hidden="true">
+              <b className="north">N</b><b className="east">E</b><b className="south">S</b><b className="west">W</b>
+            </span>
+            <i className="concept-compass-needle" style={{ transform: `rotate(${-(compassHeading ?? 0)}deg)` }} aria-hidden="true">
+              <Compass />
+            </i>
           </button>
-          <div><strong>{compassLabel}</strong><small>BOUSSOLE</small></div>
+          <div><strong>{compassLabel}</strong><small>{compassHeading === null ? "—" : `${Math.round(compassHeading)}°`} · BOUSSOLE</small></div>
           <button type="button" className="concept-compass-power" onClick={() => setCompassEnabled((value) => !value)} aria-label={compassEnabled ? "إيقاف البوصلة" : "تشغيل البوصلة"}>
             <Power />
           </button>
         </section>
+        <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
+          <Link href="/">ACCUEIL</Link>
+          <Link href="/welcome">À PROPOS</Link>
+        </nav>
       </header>
 
       <section className="concept-hero">

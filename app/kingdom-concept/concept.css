@@ -6,7 +6,7 @@
 .concept-footer{min-height:150px;padding:35px;display:flex;align-items:center;justify-content:center;gap:14px;background:#020b08;color:#fff}.concept-footer>svg{color:var(--concept-gold)}.concept-footer span{display:grid}.concept-footer strong{font-size:13px}.concept-footer small{margin-top:5px;color:#aebbb5;font-size:9px}
 @media(max-width:950px){.concept-hero-copy{right:40px}.concept-book-engraving strong{font-size:clamp(21px,3.2vw,35px)}}
 @media(max-width:650px){.concept-topbar{height:64px;padding:0 14px}.concept-brand strong{font-size:18px}.concept-badge{font-size:8px;padding:7px 10px}.concept-hero{height:620px;min-height:620px}.concept-hero-image{object-position:center top}.concept-hero-shade{background:linear-gradient(0deg,#04130ff8 0%,#04130fb5 58%,transparent 100%)}.concept-hero-copy{right:20px;left:20px;top:auto;bottom:80px;transform:none;width:auto;text-align:center}.concept-hero-copy>span{justify-content:center}.concept-hero-copy h1{font-size:47px}.concept-hero-copy p{font-size:11px}.concept-hero-copy button{padding:14px 18px}.concept-hero-stat{left:50%;bottom:14px;min-width:112px;padding:9px 16px;transform:translateX(-50%)}.concept-hero-stat b{font-size:23px}.concept-primary{padding:58px 14px}.concept-destinations{padding:58px 0 45px}.concept-section-heading{margin-bottom:24px;padding-inline:14px}.concept-section-heading h2{font-size:28px}.concept-section-heading p{font-size:10px}.concept-open-book{width:110vw;margin-inline:-7vw}.concept-book-pages{inset:11% 8% 16%;gap:3%}.concept-book-engraving{top:9%}.concept-book-engraving strong{font-size:clamp(15px,4.2vw,20px)}.concept-book-engraving b{margin-top:3px;font-size:13px}.concept-book-page>img{left:18%;right:18%;bottom:10%;width:64%;height:49%}.concept-book-seal{display:none}.concept-card-grid{gap:18px;padding:14px 10vw 30px}.concept-card-grid>.concept-tilt-card{flex-basis:min(82vw,340px)}.concept-tilt-card{height:385px}.concept-card-surface{border-radius:24px}.concept-card-copy strong{font-size:27px}.concept-rail-arrow{width:40px;height:58px;top:52%;transform:translateY(-70%)}.concept-rail-arrow-left{left:4px}.concept-rail-arrow-right{right:4px}}
-@media(orientation:landscape) and (max-height:700px){.concept-hero{height:500px;min-height:500px}.concept-primary{padding:55px 24px 42px}.concept-open-book{width:min(820px,86vw)}.concept-book-engraving{top:7%}.concept-book-engraving strong{font-size:clamp(22px,3vw,35px)}.concept-book-engraving b{margin-top:4px}.concept-book-page>img{bottom:8%;height:51%}.concept-destinations{padding-top:58px;padding-bottom:42px}}
+@media(max-width:950px) and (orientation:landscape) and (max-height:700px){.concept-hero{height:500px;min-height:500px}.concept-primary{padding:55px 24px 42px}.concept-open-book{width:min(820px,86vw)}.concept-book-engraving{top:7%}.concept-book-engraving strong{font-size:clamp(22px,3vw,35px)}.concept-book-engraving b{margin-top:4px}.concept-book-page>img{bottom:8%;height:51%}.concept-destinations{padding-top:58px;padding-bottom:42px}}
 @media(hover:none){.concept-card-surface{transform:none!important}.concept-card-light{display:none}.concept-tilt-card:active .concept-card-surface{transform:translateY(7px) scale(.987)!important}}
 @media(prefers-reduced-motion:reduce){.kingdom-concept *{scroll-behavior:auto!important;transition:none!important}}
 
@@ -105,7 +105,7 @@
   .concept-footer{min-height:72px;padding:15px}
 }
 
-@media(orientation:landscape) and (max-height:700px){
+@media(max-width:950px) and (orientation:landscape) and (max-height:700px){
   .concept-hero{height:510px;min-height:510px}
   .concept-castle-title{top:12px}
   .concept-castle-title>span{display:none}
@@ -128,10 +128,16 @@
 .concept-main-nav a{position:relative;height:100%;display:flex;align-items:center;color:#5b4028;text-decoration:none;font:700 14px Georgia,serif;letter-spacing:.035em}
 .concept-main-nav a:first-child:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:2px;background:#b58c43}
 .concept-main-nav a:hover{color:#9b6d30}
-.concept-compass{direction:ltr;display:grid;grid-template-columns:40px auto 28px;align-items:center;gap:8px;padding:4px 6px;border:1px solid #ccb16f;border-radius:16px;background:#f5ecd9;box-shadow:inset 0 1px #fff}
-.concept-compass-face{position:relative;width:38px;height:38px;padding:0;border:1px solid #ad893d;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fffaf0,#dfc895);color:#8b392b;cursor:default}
-.concept-compass-face svg{width:24px;transition:transform .22s linear}
-.concept-compass-face b{position:absolute;top:-1px;color:#6b4e1e;font:8px Georgia,serif}
+.concept-compass{direction:ltr;display:grid;grid-template-columns:50px auto 28px;align-items:center;gap:9px;padding:4px 7px;border:1px solid #ccb16f;border-radius:18px;background:#f5ecd9;box-shadow:inset 0 1px #fff,0 5px 14px #5a3f1b1c}
+.concept-compass-face{position:relative;width:48px;height:48px;padding:0;border:1px solid #9d762c;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#fffdf5 0 41%,#dfc895 43% 49%,#8f6827 50% 52%,#ead8ae 53%);color:#8b392b;cursor:default;box-shadow:inset 0 0 0 2px #fff8e0,0 2px 6px #5e431f3d}
+.concept-compass-cardinals{position:absolute;inset:1px;color:#59421f;font:700 7px/1 Georgia,serif;pointer-events:none}
+.concept-compass-cardinals b{position:absolute}
+.concept-compass-cardinals .north{top:2px;left:50%;color:#9a2f27;transform:translateX(-50%)}
+.concept-compass-cardinals .east{right:3px;top:50%;transform:translateY(-50%)}
+.concept-compass-cardinals .south{bottom:2px;left:50%;transform:translateX(-50%)}
+.concept-compass-cardinals .west{left:3px;top:50%;transform:translateY(-50%)}
+.concept-compass-needle{position:relative;width:27px;height:27px;display:grid;place-items:center;transition:transform .22s linear;transform-origin:center}
+.concept-compass-needle svg{width:27px;height:27px;stroke-width:1.7;filter:drop-shadow(0 1px #fff)}
 .concept-compass>div{display:flex;flex-direction:column;min-width:70px}
 .concept-compass strong{font-size:10px;color:#4c3926}
 .concept-compass small{font:8px Georgia,serif;color:#8d7550;letter-spacing:.08em}
@@ -173,9 +179,10 @@
   .concept-main-nav{gap:18px}
   .concept-main-nav a{font-size:11px}
   .concept-main-nav a:first-child:after{bottom:10px}
-  .concept-compass{grid-template-columns:34px 24px;gap:5px;padding:3px 5px;border-radius:13px}
-  .concept-compass-face{width:32px;height:32px}
-  .concept-compass-face svg{width:21px}
+  .concept-compass{grid-template-columns:42px 24px;gap:5px;padding:3px 5px;border-radius:14px}
+  .concept-compass-face{width:40px;height:40px}
+  .concept-compass-cardinals{font-size:7px}
+  .concept-compass-needle,.concept-compass-needle svg{width:23px;height:23px}
   .concept-compass>div{display:none}
   .concept-compass-power{width:24px;height:24px}
   .concept-hero{background:linear-gradient(180deg,#a9cddb 0%,#d9e8de 56%,#8caf76 100%)}
@@ -186,7 +193,7 @@
   .concept-scene-book .concept-book-page>img{transform:scale(1.32)}
 }
 
-@media(orientation:landscape) and (max-height:700px){
+@media(max-width:950px) and (orientation:landscape) and (max-height:700px){
   .concept-castle-ground{height:150px}
   .concept-castle-garden{bottom:10px}
 }
@@ -215,7 +222,7 @@
   .concept-rail-arrow svg{width:24px}
 }
 
-@media(orientation:landscape) and (max-height:700px){
+@media(max-width:950px) and (orientation:landscape) and (max-height:700px){
   .concept-hero-image{top:50px;bottom:auto;height:315px;object-fit:contain;object-position:center top;transform:none}
   .concept-castle-garden{bottom:18px;width:280px;height:260px}
   .concept-castle-garden-left{left:calc(50% - min(210px,25vw) - 280px)}

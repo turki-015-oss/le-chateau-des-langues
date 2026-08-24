@@ -203,7 +203,8 @@
 .concept-scene-book .concept-book-page>img{filter:none;mix-blend-mode:normal;transform:none;image-rendering:auto}
 
 @media(max-width:650px) and (orientation:portrait){
-  .concept-hero-image{top:170px;bottom:auto;height:min(79.46vw,330px);object-fit:contain;object-position:center top;transform:none}
+  .concept-hero{height:590px;min-height:590px}
+  .concept-hero-image{top:100px;bottom:auto;height:min(79.46vw,330px);object-fit:contain;object-position:center top;transform:none}
   .concept-castle-garden{bottom:109px;width:185px;height:190px}
   .concept-castle-garden-left{left:-70px}
   .concept-castle-garden-right{right:-70px}

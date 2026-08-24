@@ -20,7 +20,6 @@ import {
   Power,
   Scale,
   ShoppingBasket,
-  Sparkles,
   Train,
   Trees,
   Trophy,
@@ -238,7 +237,6 @@ export default function KingdomConceptPage() {
         <img src="/kingdom-portal-assets/castle-facade.png" alt="واجهة القلعة" className="concept-hero-image" />
         <div className="concept-hero-shade" />
         <div className="concept-castle-title">
-          <span><Sparkles /> UNE LANGUE · UN MONDE</span>
           <h1 dir="ltr">LE CHÂTEAU</h1>
           <p>القلعة</p>
         </div>

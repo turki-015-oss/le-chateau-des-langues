@@ -166,8 +166,11 @@
 .concept-rail-arrow:hover{background:#b98e43;color:#fff9e9}
 
 /* Desktop book alignment: keep both engravings inside the paper and enlarge the landmarks. */
+@media (min-width:651px) and (min-height:701px), (min-width:951px){
+  .concept-hero-image{inset:auto;top:58px;left:50%;width:min(810px,81vw);height:auto;object-fit:contain;object-position:center top;transform:translateX(-50%)}
+}
+
 @media(min-width:951px){
-  .concept-hero-image{inset:auto;top:58px;left:50%;width:min(810px,70vw);height:auto;object-fit:contain;object-position:center top;transform:translateX(-50%)}
   .concept-scene-book .concept-book-engraving{top:7%;max-width:88%;margin-inline:auto}
   .concept-scene-book .concept-book-university .concept-book-engraving{left:10%;right:3%}
   .concept-scene-book .concept-book-library .concept-book-engraving{left:3%;right:10%}

@@ -240,3 +240,8 @@
   .concept-rail-arrow{width:48px;height:64px;border-radius:16px}
   .concept-rail-arrow svg{width:24px}
 }
+
+/* Keep the castle anchored on desktop even when the browser window is resized or zoomed. */
+@media(hover:hover) and (pointer:fine){
+  .concept-hero-image{inset:auto;top:58px;bottom:auto;left:50%;width:min(810px,81vw);height:auto;object-fit:contain;object-position:center top;transform:translateX(-50%)}
+}

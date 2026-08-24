@@ -10,7 +10,7 @@
 @media(hover:none){.concept-card-surface{transform:none!important}.concept-card-light{display:none}.concept-tilt-card:active .concept-card-surface{transform:translateY(7px) scale(.987)!important}}
 @media(prefers-reduced-motion:reduce){.kingdom-concept *{scroll-behavior:auto!important;transition:none!important}}
 
-/* Integrated castle, book platform, and compact 3D destinations */
+/* Integrated castle, book platform, and compact destinations */
 .concept-hero{height:760px;min-height:760px}
 .concept-hero-image{object-position:center 36%;filter:saturate(.93) contrast(1.035) brightness(1.02)}
 .concept-hero-shade{background:linear-gradient(180deg,#03120e9c 0%,transparent 19%),linear-gradient(0deg,#03120ed9 0%,transparent 32%)}
@@ -119,4 +119,63 @@
   .concept-destinations{padding-top:7px;padding-bottom:24px}
   .concept-destinations .concept-section-heading{margin-bottom:8px}
   .concept-card-grid{padding-bottom:18px}
+}
+
+/* Final home-page shell, compass, sky, and grounded castle */
+.kingdom-concept{--concept-deep:#dbe8dd;--concept-green:#285747;background:#e9e1cf}
+.concept-topbar{position:relative;z-index:30;height:76px;padding:0 clamp(18px,5vw,76px);background:#faf6ed;color:#5c4228;border-bottom:1px solid #caa85f;box-shadow:0 7px 24px #4f371724}
+.concept-main-nav{height:100%;display:flex;align-items:center;gap:28px}
+.concept-main-nav a{position:relative;height:100%;display:flex;align-items:center;color:#5b4028;text-decoration:none;font:700 14px Georgia,serif;letter-spacing:.035em}
+.concept-main-nav a:first-child:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:2px;background:#b58c43}
+.concept-main-nav a:hover{color:#9b6d30}
+.concept-compass{direction:ltr;display:grid;grid-template-columns:40px auto 28px;align-items:center;gap:8px;padding:4px 6px;border:1px solid #ccb16f;border-radius:16px;background:#f5ecd9;box-shadow:inset 0 1px #fff}
+.concept-compass-face{position:relative;width:38px;height:38px;padding:0;border:1px solid #ad893d;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fffaf0,#dfc895);color:#8b392b;cursor:default}
+.concept-compass-face svg{width:24px;transition:transform .22s linear}
+.concept-compass-face b{position:absolute;top:-1px;color:#6b4e1e;font:8px Georgia,serif}
+.concept-compass>div{display:flex;flex-direction:column;min-width:70px}
+.concept-compass strong{font-size:10px;color:#4c3926}
+.concept-compass small{font:8px Georgia,serif;color:#8d7550;letter-spacing:.08em}
+.concept-compass-power{width:26px;height:26px;padding:0;border:0;border-radius:8px;background:#e2d1ac;color:#6e5429;display:grid;place-items:center;cursor:pointer}
+.concept-compass-power svg{width:14px}
+.concept-compass.disabled{opacity:.58}
+.concept-compass.permission .concept-compass-face{cursor:pointer;animation:conceptCompassPulse 1.7s infinite}
+@keyframes conceptCompassPulse{0%,100%{box-shadow:0 0 0 0 #b58c4366}50%{box-shadow:0 0 0 7px #b58c4300}}
+
+.concept-hero{background:linear-gradient(180deg,#a8cbd8 0%,#d9e8de 55%,#8bb177 100%)}
+.concept-hero-shade{background:linear-gradient(180deg,#466d5f24 0%,transparent 24%),linear-gradient(0deg,#3f683f52 0%,transparent 31%)}
+.concept-castle-title{color:#604620;text-shadow:0 2px 9px #fff,0 1px 2px #fff}
+.concept-castle-title>span{color:#725427}
+.concept-castle-title h1{color:#b98535;text-shadow:0 2px 0 #fff6dc,0 3px 10px #5d482d61}
+.concept-castle-title p{color:#694b25;text-shadow:0 1px #fff}
+.concept-castle-ground{position:absolute;z-index:2;left:-2%;right:-2%;bottom:0;height:190px;overflow:hidden;background:linear-gradient(180deg,#8eb675 0%,#638f58 38%,#416d41 78%,#315635 100%);clip-path:polygon(0 15%,7% 12%,14% 16%,22% 11%,31% 15%,42% 10%,52% 14%,64% 9%,74% 14%,84% 10%,93% 15%,100% 12%,100% 100%,0 100%);box-shadow:inset 0 9px 18px #d8edb852}
+.concept-castle-ground:before{content:"";position:absolute;left:50%;top:-3%;bottom:-20%;width:50%;transform:translateX(-50%);clip-path:polygon(42% 0,58% 0,95% 100%,5% 100%);background:linear-gradient(#fff2d542,#c8ac7b3b),url('/maps/textures/limestone.webp') center/120px auto;filter:saturate(.72) brightness(.94);box-shadow:0 0 24px #2548274f}
+.concept-castle-ground:after{content:"";position:absolute;inset:12% 0 auto;height:18px;background:linear-gradient(180deg,#c8df9e66,transparent);filter:blur(5px)}
+.concept-castle-ground span{position:absolute;left:0;right:0;bottom:0;height:18px;background:#2e5336;box-shadow:0 -8px 17px #183b2952}
+.concept-castle-ground i{position:absolute;left:4%;right:4%;bottom:24px;height:18px;background:radial-gradient(ellipse,#8eb86a 0 42%,transparent 45%) 0 0/34px 16px repeat-x;opacity:.8}
+.concept-castle-garden{bottom:12px}
+.concept-destinations{color:#332617;background:linear-gradient(180deg,#b9d0ad 0%,#dfd7be 32%,#c5a674 100%)}
+.concept-rail-arrow{background:#315d4ee8;color:#f0d184;border-color:#b58b43;box-shadow:0 10px 24px #35504062}
+.concept-rail-arrow:hover{background:#b98e43;color:#fff9e9}
+
+@media(max-width:650px){
+  .concept-topbar{height:64px;padding:0 12px}
+  .concept-main-nav{gap:18px}
+  .concept-main-nav a{font-size:11px}
+  .concept-main-nav a:first-child:after{bottom:10px}
+  .concept-compass{grid-template-columns:34px 24px;gap:5px;padding:3px 5px;border-radius:13px}
+  .concept-compass-face{width:32px;height:32px}
+  .concept-compass-face svg{width:21px}
+  .concept-compass>div{display:none}
+  .concept-compass-power{width:24px;height:24px}
+  .concept-hero{background:linear-gradient(180deg,#a9cddb 0%,#d9e8de 56%,#8caf76 100%)}
+  .concept-hero-shade{background:linear-gradient(180deg,#456d5c1f 0%,transparent 22%),linear-gradient(0deg,#3e673e52 0%,transparent 31%)}
+  .concept-castle-ground{height:260px}
+  .concept-castle-garden{bottom:16px}
+  .concept-scene-book{bottom:3px;width:98vw}
+  .concept-scene-book .concept-book-page>img{transform:scale(1.32)}
+}
+
+@media(orientation:landscape) and (max-height:700px){
+  .concept-castle-ground{height:150px}
+  .concept-castle-garden{bottom:10px}
 }

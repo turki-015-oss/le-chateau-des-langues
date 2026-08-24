@@ -1,22 +1,23 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import {
   ArrowLeft,
-  BookOpen,
   Building2,
   Castle,
   ChevronLeft,
   ChevronRight,
   Clapperboard,
   Coffee,
+  Compass,
   GraduationCap,
   Hotel,
   Landmark,
   Library,
   Plane,
+  Power,
   Scale,
   ShoppingBasket,
   Sparkles,
@@ -36,6 +37,12 @@ type ConceptDestination = {
   image: string;
   path: string;
   icon: React.ReactNode;
+};
+
+type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
+type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
+type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
+  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
 
 const destinations: ConceptDestination[] = [
@@ -107,20 +114,124 @@ function TiltCard({ item, index }: { item: ConceptDestination; index: number }) 
 
 export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
+  const [compassEnabled, setCompassEnabled] = useState(true);
+  const [compassAuthorized, setCompassAuthorized] = useState(false);
+  const [compassHeading, setCompassHeading] = useState<number | null>(null);
+  const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
+
+  useEffect(() => {
+    if (!compassEnabled) {
+      setCompassStatus("disabled");
+      setCompassHeading(null);
+      return;
+    }
+    if (!("DeviceOrientationEvent" in window)) {
+      setCompassStatus("unavailable");
+      return;
+    }
+    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
+    if (typeof OrientationEvent.requestPermission === "function" && !compassAuthorized) {
+      setCompassStatus("permission");
+      return;
+    }
+
+    let received = false;
+    const onOrientation = (rawEvent: Event) => {
+      const event = rawEvent as CompassOrientationEvent;
+      const heading = typeof event.webkitCompassHeading === "number"
+        ? event.webkitCompassHeading
+        : event.absolute && typeof event.alpha === "number"
+          ? (360 - event.alpha + 360) % 360
+          : null;
+      if (heading === null || !Number.isFinite(heading)) return;
+      received = true;
+      setCompassStatus("active");
+      setCompassHeading((previous) => {
+        if (previous === null) return heading;
+        const turn = ((heading - previous + 540) % 360) - 180;
+        return (previous + turn * 0.22 + 360) % 360;
+      });
+    };
+    const eventName = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
+    window.addEventListener(eventName, onOrientation, true);
+    setCompassStatus("detecting");
+    const timer = window.setTimeout(() => {
+      if (!received) setCompassStatus("unavailable");
+    }, 2800);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener(eventName, onOrientation, true);
+    };
+  }, [compassAuthorized, compassEnabled]);
+
+  const requestCompass = async () => {
+    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
+    if (typeof OrientationEvent.requestPermission !== "function") {
+      setCompassAuthorized(true);
+      return;
+    }
+    try {
+      const permission = await OrientationEvent.requestPermission(true);
+      if (permission === "granted") {
+        setCompassAuthorized(true);
+        setCompassStatus("detecting");
+      } else setCompassStatus("denied");
+    } catch {
+      setCompassStatus("denied");
+    }
+  };
+
+  const compassLabel = useMemo(() => {
+    if (!compassEnabled) return "متوقفة";
+    if (compassStatus === "permission") return "تفعيل الاتجاه";
+    if (compassStatus === "denied") return "الإذن مرفوض";
+    if (compassStatus === "unavailable") return "الشمال";
+    if (compassHeading === null) return "جارٍ التحديد";
+    return ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
+  }, [compassEnabled, compassHeading, compassStatus]);
+
   const moveDestinations = (direction: -1 | 1) => {
     const rail = destinationRailRef.current;
     if (!rail) return;
-    rail.scrollBy({ left: direction * Math.min(rail.clientWidth * 0.82, 390), behavior: "smooth" });
+    const firstCard = rail.querySelector<HTMLElement>(".concept-tilt-card");
+    const gap = Number.parseFloat(window.getComputedStyle(rail).columnGap || window.getComputedStyle(rail).gap) || 0;
+    const step = (firstCard?.offsetWidth ?? Math.min(rail.clientWidth * 0.82, 390)) + gap;
+    const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const atStart = rail.scrollLeft <= Math.max(8, step * 0.35);
+    const atEnd = rail.scrollLeft >= maxScroll - Math.max(8, step * 0.35);
+    if (direction < 0 && atStart) {
+      rail.scrollTo({ left: maxScroll, behavior: "smooth" });
+      return;
+    }
+    if (direction > 0 && atEnd) {
+      rail.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    rail.scrollBy({ left: direction * step, behavior: "smooth" });
   };
 
   return (
     <main className="kingdom-concept" dir="rtl">
       <header className="concept-topbar">
-        <div className="concept-brand">
-          <Castle />
-          <span><strong dir="ltr">LE CHÂTEAU</strong><small>القلعة الفرنسية</small></span>
-        </div>
-        <span className="concept-badge"><Sparkles /> CONCEPT 3D</span>
+        <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
+          <Link href="/">ACCUEIL</Link>
+          <Link href="/welcome">À PROPOS</Link>
+        </nav>
+        <section className={`concept-compass ${compassStatus}`} aria-label={`البوصلة: ${compassLabel}`}>
+          <button
+            type="button"
+            className="concept-compass-face"
+            onClick={compassStatus === "permission" ? requestCompass : undefined}
+            title={compassStatus === "permission" ? "اضغط للسماح بالبوصلة" : compassLabel}
+          >
+            <b>N</b>
+            <Compass style={{ transform: `rotate(${compassHeading ?? 0}deg)` }} />
+          </button>
+          <div><strong>{compassLabel}</strong><small>BOUSSOLE</small></div>
+          <button type="button" className="concept-compass-power" onClick={() => setCompassEnabled((value) => !value)} aria-label={compassEnabled ? "إيقاف البوصلة" : "تشغيل البوصلة"}>
+            <Power />
+          </button>
+        </section>
       </header>
 
       <section className="concept-hero">
@@ -131,6 +242,7 @@ export default function KingdomConceptPage() {
           <h1 dir="ltr">LE CHÂTEAU</h1>
           <p>القلعة</p>
         </div>
+        <div className="concept-castle-ground" aria-hidden="true"><span /><i /></div>
         <div className="concept-castle-garden concept-castle-garden-left" aria-hidden="true" />
         <div className="concept-castle-garden concept-castle-garden-right" aria-hidden="true" />
         <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة">
@@ -168,11 +280,6 @@ export default function KingdomConceptPage() {
           <button type="button" className="concept-rail-arrow concept-rail-arrow-right" onClick={() => moveDestinations(1)} aria-label="الوجهة التالية"><ChevronRight /></button>
         </div>
       </section>
-
-      <footer className="concept-footer">
-        <BookOpen />
-        <span><strong>نسخة تجريبية مستقلة للاعتماد</strong><small>لم يتم تغيير صفحة القلعة الحالية</small></span>
-      </footer>
     </main>
   );
 }

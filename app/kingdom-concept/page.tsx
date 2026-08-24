@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Clapperboard,
   Coffee,
-  Compass,
   GraduationCap,
   Hotel,
   Landmark,
@@ -223,7 +222,7 @@ export default function KingdomConceptPage() {
               <b className="north">N</b><b className="east">E</b><b className="south">S</b><b className="west">W</b>
             </span>
             <i className="concept-compass-needle" style={{ transform: `rotate(${-(compassHeading ?? 0)}deg)` }} aria-hidden="true">
-              <Compass />
+              <span />
             </i>
           </button>
           <div><strong>{compassLabel}</strong><small>{compassHeading === null ? "—" : `${Math.round(compassHeading)}°`} · BOUSSOLE</small></div>

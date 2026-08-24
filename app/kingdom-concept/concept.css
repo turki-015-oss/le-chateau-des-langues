@@ -204,7 +204,7 @@
   .concept-castle-garden{bottom:205px;width:185px;height:190px}
   .concept-castle-garden-left{left:-70px}
   .concept-castle-garden-right{right:-70px}
-  .concept-scene-book{bottom:4px;width:96vw}
+  .concept-scene-book{bottom:82px;width:96vw}
 }
 
 @media(orientation:landscape) and (max-height:700px){
@@ -213,4 +213,6 @@
   .concept-castle-garden-left{left:-75px}
   .concept-castle-garden-right{right:-75px}
   .concept-scene-book{bottom:6px;width:min(420px,50vw)}
+  .concept-scene-book .concept-book-engraving strong{font-size:clamp(13px,1.8vw,16px);white-space:nowrap}
+  .concept-scene-book .concept-book-engraving b{font-size:10px}
 }

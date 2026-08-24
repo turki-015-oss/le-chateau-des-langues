@@ -19,6 +19,7 @@ import {
   Power,
   Scale,
   ShoppingBasket,
+  Sparkles,
   Train,
   Trees,
   Trophy,
@@ -38,6 +39,7 @@ type ConceptDestination = {
 };
 
 type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
+type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path"> & { originX: number; originY: number };
 type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
@@ -58,8 +60,7 @@ const destinations: ConceptDestination[] = [
   { id: "court", fr: "TRIBUNAL", ar: "المحكمة", path: "/court", image: "/maps/facades/civic-facade.webp", description: "القضايا والشهادة واللغة الرسمية", icon: <Scale /> },
 ];
 
-function TiltCard({ item, index }: { item: ConceptDestination; index: number }) {
-  const router = useRouter();
+function TiltCard({ item, index, onEnter }: { item: ConceptDestination; index: number; onEnter: (item: ConceptDestination, element: HTMLElement) => void }) {
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLButtonElement>) => {
     if (event.pointerType === "touch") return;
@@ -87,7 +88,7 @@ function TiltCard({ item, index }: { item: ConceptDestination; index: number }) 
       onPointerMove={handlePointerMove}
       onPointerLeave={resetTilt}
       onPointerCancel={resetTilt}
-      onClick={() => router.push(item.path)}
+      onClick={(event) => onEnter(item, event.currentTarget)}
       aria-label={`${item.fr} — ${item.ar}`}
     >
       <span className="concept-card-depth" aria-hidden="true" />
@@ -111,11 +112,34 @@ function TiltCard({ item, index }: { item: ConceptDestination; index: number }) 
 }
 
 export default function KingdomConceptPage() {
+  const router = useRouter();
   const destinationRailRef = useRef<HTMLDivElement>(null);
+  const entryTimerRef = useRef<number | null>(null);
+  const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
   const [compassEnabled, setCompassEnabled] = useState(true);
   const [compassAuthorized, setCompassAuthorized] = useState(false);
   const [compassHeading, setCompassHeading] = useState<number | null>(null);
   const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
+
+  useEffect(() => {
+    ["/entrance/castle", "/entrance/university", "/entrance/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
+    return () => {
+      if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
+    };
+  }, [router]);
+
+  const beginMagicalEntry = (item: Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path">, element: HTMLElement) => {
+    if (magicalEntry) return;
+    const bounds = element.getBoundingClientRect();
+    const entry = {
+      ...item,
+      originX: bounds.left + bounds.width / 2,
+      originY: bounds.top + bounds.height / 2,
+    };
+    setMagicalEntry(entry);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    entryTimerRef.current = window.setTimeout(() => router.push(item.path), reducedMotion ? 120 : 1050);
+  };
 
   useEffect(() => {
     if (!compassEnabled) {
@@ -246,7 +270,10 @@ export default function KingdomConceptPage() {
         <div className="concept-castle-ground" aria-hidden="true"><span /><i /></div>
         <div className="concept-castle-garden concept-castle-garden-left" aria-hidden="true" />
         <div className="concept-castle-garden concept-castle-garden-right" aria-hidden="true" />
-        <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة">
+        <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة" onClick={(event) => {
+          event.preventDefault();
+          beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/entrance/castle" }, event.currentTarget);
+        }}>
           <Castle />
           <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>
           <ArrowLeft />
@@ -255,12 +282,18 @@ export default function KingdomConceptPage() {
           <div className="concept-open-book" dir="ltr">
             <img className="concept-book-base" src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="كتاب القلعة المفتوح" />
             <div className="concept-book-pages">
-              <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة">
+              <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة" onClick={(event) => {
+                event.preventDefault();
+                beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus.png", path: "/entrance/university" }, event.currentTarget);
+              }}>
                 <span className="concept-book-engraving"><strong>UNIVERSITÉ</strong><b dir="rtl">الجامعة</b></span>
                 <img src="/kingdom-portal-assets/university-campus.png" alt="مبنى الجامعة" />
                 <span className="concept-book-seal"><GraduationCap /><small>ENTRER</small></span>
               </Link>
-              <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة">
+              <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة" onClick={(event) => {
+                event.preventDefault();
+                beginMagicalEntry({ id: "library", fr: "BIBLIOTHÈQUE", ar: "المكتبة", image: "/kingdom-portal-assets/library-facade.png", path: "/entrance/library" }, event.currentTarget);
+              }}>
                 <span className="concept-book-engraving"><strong>BIBLIOTHÈQUE</strong><b dir="rtl">المكتبة</b></span>
                 <img src="/kingdom-portal-assets/library-facade.png" alt="مبنى المكتبة" />
                 <span className="concept-book-seal"><Library /><small>ENTRER</small></span>
@@ -276,11 +309,35 @@ export default function KingdomConceptPage() {
         <div className="concept-destination-stage">
           <button type="button" className="concept-rail-arrow concept-rail-arrow-left" onClick={() => moveDestinations(-1)} aria-label="الوجهة السابقة"><ChevronLeft /></button>
           <div className="concept-card-grid" ref={destinationRailRef}>
-            {destinations.map((item, index) => <TiltCard key={item.id} item={item} index={index} />)}
+            {destinations.map((item, index) => <TiltCard key={item.id} item={item} index={index} onEnter={beginMagicalEntry} />)}
           </div>
           <button type="button" className="concept-rail-arrow concept-rail-arrow-right" onClick={() => moveDestinations(1)} aria-label="الوجهة التالية"><ChevronRight /></button>
         </div>
       </section>
+      {magicalEntry && (
+        <div
+          className={`concept-magic-entry concept-magic-entry-${magicalEntry.id}`}
+          style={{ "--entry-x": `${magicalEntry.originX}px`, "--entry-y": `${magicalEntry.originY}px` } as React.CSSProperties}
+          role="status"
+          aria-live="polite"
+          aria-label={`الدخول إلى ${magicalEntry.ar}`}
+        >
+          <div className="concept-magic-particles" aria-hidden="true">
+            {Array.from({ length: 18 }).map((_, index) => <i key={index} style={{ "--particle": index } as React.CSSProperties} />)}
+          </div>
+          <div className="concept-magic-portal" aria-hidden="true">
+            <i className="concept-magic-ring concept-magic-ring-one" />
+            <i className="concept-magic-ring concept-magic-ring-two" />
+            <span className="concept-magic-building" style={{ backgroundImage: `url('${magicalEntry.image}')` }} />
+            <Sparkles />
+          </div>
+          <div className="concept-magic-copy">
+            <strong dir="ltr">{magicalEntry.fr}</strong>
+            <b>{magicalEntry.ar}</b>
+            <small>جاري الدخول...</small>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

@@ -200,7 +200,7 @@
 .concept-book-platform i{background:repeating-linear-gradient(90deg,#321609 0 9px,#512812 10px 20px,#2c1207 21px 29px);box-shadow:0 10px 18px #25100699,inset 0 2px #8d552d}
 
 @media(max-width:650px) and (orientation:portrait){
-  .concept-hero-image{top:62px;bottom:auto;height:auto;object-fit:contain;object-position:center top;transform:none}
+  .concept-hero-image{top:62px;bottom:auto;height:min(79.46vw,330px);object-fit:contain;object-position:center top;transform:none}
   .concept-castle-garden{bottom:205px;width:185px;height:190px}
   .concept-castle-garden-left{left:-70px}
   .concept-castle-garden-right{right:-70px}

@@ -1,0 +1,24 @@
+import type {GrammarLesson} from "../grammarData";
+
+export const a1Description:GrammarLesson[]=[
+ {id:"cest-il-est",number:19,titleFr:"C’est ou il est ?",titleAr:"الفرق بين c’est وil/elle est",category:"التقديم والوصف",summary:"التمييز بين تقديم شخص أو شيء ووصفه.",rule:"نستعمل c’est أمام اسم مسبوق غالبًا بأداة أو أمام اسم شخص، ونستعمل il est أو elle est أمام صفة، أو مهنة وجنسية وديانة بلا أداة.",formula:"C’est + déterminant + nom · Il/Elle est + adjectif / profession",examples:[
+  {fr:"C’est un médecin.",ar:"هذا طبيب.",parts:[{text:"C’",role:"subject"},{text:"est",role:"verb"},{text:"un médecin",role:"object"}]},
+  {fr:"Il est très patient.",ar:"إنه صبور جدًا.",parts:[{text:"Il",role:"subject"},{text:"est",role:"verb"},{text:"très patient",role:"adjective"}]},
+  {fr:"Maya est architecte.",ar:"مايا مهندسة معمارية.",parts:[{text:"Maya",role:"subject"},{text:"est",role:"verb"},{text:"architecte",role:"object"}]}
+ ],correct:"C’est une professeure. Elle est gentille.",correctAr:"هذه أستاذة. إنها لطيفة.",incorrect:"C’est professeure.",incorrectReason:"بعد c’est يأتي اسم المهنة هنا مع أداة: une professeure.",note:"قد تأتي أداة مع المهنة عندما تُوصف أو تُحدَّد: C’est une excellente professeure."},
+ {id:"presentatives",number:20,titleFr:"C’est, ce sont, il y a, voici et voilà",titleAr:"تقديم الأشخاص والأشياء وبيان وجودها",category:"التقديم والوصف",summary:"اختيار الصيغة المناسبة للتقديم أو الإشارة أو التعبير عن الوجود.",rule:"نستعمل c’est للمفرد وce sont للجمع في الفرنسية المعيارية، وil y a لوجود شيء، وvoici لما هو قريب أو سيأتي في الكلام، وvoilà لما هو أبعد أو لاختتام العرض.",formula:"C’est + singulier · Ce sont + pluriel · Il y a + nom · Voici / Voilà",examples:[
+  {fr:"C’est mon professeur.",ar:"هذا أستاذي.",parts:[{text:"C’",role:"subject"},{text:"est",role:"verb"},{text:"mon professeur",role:"object"}]},
+  {fr:"Il y a deux cafés dans cette rue.",ar:"يوجد مقهيان في هذا الشارع.",parts:[{text:"Il y a",role:"verb"},{text:"deux cafés",role:"object"},{text:"dans cette rue",role:"marker"}]},
+  {fr:"Voici votre chambre.",ar:"تفضلوا، هذه غرفتكم.",parts:[{text:"Voici",role:"verb"},{text:"votre chambre",role:"object"}]}
+ ],correct:"Ce sont mes amis.",correctAr:"هؤلاء أصدقائي.",incorrect:"C’est mes amis.",incorrectReason:"للتعريف بجمع في الفرنسية المعيارية نستخدم ce sont.",note:"يشيع c’est مع الجمع في الكلام اليومي، لكن ce sont هو النموذج المعياري الأنسب للمتعلم."},
+ {id:"adjective-agreement",number:21,titleFr:"L’accord de l’adjectif",titleAr:"مطابقة الصفة",category:"الصفات",summary:"مطابقة الصفة للاسم في الجنس والعدد.",rule:"تتطابق الصفة مع الاسم الذي تصفه. يضاف غالبًا e للمؤنث وs للجمع، وقد يتغير شكل بعض الصفات أو يبقى كما هو إذا انتهى أصلًا بـ e.",formula:"petit → petite → petits → petites",examples:[
+  {fr:"C’est une petite ville.",ar:"هذه مدينة صغيرة.",parts:[{text:"C’",role:"subject"},{text:"est",role:"verb"},{text:"une",role:"marker"},{text:"petite",role:"adjective"},{text:"ville",role:"object"}]},
+  {fr:"Les exercices sont faciles.",ar:"التمارين سهلة.",parts:[{text:"Les exercices",role:"subject"},{text:"sont",role:"verb"},{text:"faciles",role:"adjective"}]},
+  {fr:"Elle porte une robe bleue.",ar:"ترتدي فستانًا أزرق.",parts:[{text:"Elle",role:"subject"},{text:"porte",role:"verb"},{text:"une robe",role:"object"},{text:"bleue",role:"adjective"}]}
+ ],correct:"Une voiture française.",correctAr:"سيارة فرنسية.",incorrect:"Une voiture français.",incorrectReason:"الاسم voiture مؤنث، لذلك توافقه الصفة الفرنسية في التأنيث.",note:"بعض ألوان الأشياء لا تتغير عندما تكون أسماءً مستعملة كصفات، مثل orange وmarron."},
+ {id:"adjective-position",number:22,titleFr:"La place et les formes de l’adjectif",titleAr:"مكان الصفة وأشكالها الشائعة",category:"الصفات",summary:"وضع الصفة قبل الاسم أو بعده واستعمال beau, nouveau وvieux.",rule:"تأتي أغلب الصفات بعد الاسم، لكن صفات قصيرة شائعة مثل petit, grand, beau, jeune, vieux وnouveau تأتي غالبًا قبله. قبل مذكر يبدأ بصوت متحرك نقول bel, nouvel وvieil.",formula:"une voiture rouge · un petit village · un bel hôtel",examples:[
+  {fr:"Nous visitons un vieux château.",ar:"نزور قلعة قديمة.",parts:[{text:"Nous",role:"subject"},{text:"visitons",role:"verb"},{text:"un",role:"marker"},{text:"vieux",role:"adjective"},{text:"château",role:"object"}]},
+  {fr:"Elle habite dans un bel appartement.",ar:"تسكن في شقة جميلة.",parts:[{text:"Elle",role:"subject"},{text:"habite",role:"verb"},{text:"dans un",role:"marker"},{text:"bel",role:"adjective"},{text:"appartement",role:"object"}]},
+  {fr:"Il achète une chemise blanche.",ar:"يشتري قميصًا أبيض.",parts:[{text:"Il",role:"subject"},{text:"achète",role:"verb"},{text:"une chemise",role:"object"},{text:"blanche",role:"adjective"}]}
+ ],correct:"C’est un nouvel étudiant.",correctAr:"هذا طالب جديد.",incorrect:"C’est un nouveau étudiant.",incorrectReason:"أمام étudiant الذي يبدأ بصوت متحرك نستخدم nouvel لتسهيل النطق.",note:"نستعمل beau/nouveau/vieux أمام صوت ساكن، وbel/nouvel/vieil أمام صوت متحرك أو h صامت."}
+];

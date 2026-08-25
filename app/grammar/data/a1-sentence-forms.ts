@@ -1,0 +1,24 @@
+import type {GrammarLesson} from "../grammarData";
+
+export const a1SentenceForms:GrammarLesson[]=[
+ {id:"negation",number:23,titleFr:"La négation",titleAr:"النفي في الجملة",category:"بناء الجملة",summary:"نفي الفعل باستعمال ne… pas وبعض صيغ النفي اليومية.",rule:"نضع ne قبل الفعل المصرّف وpas بعده، وتصبح ne على صورة n’ قبل صوت متحرك. وتأتي jamais أو plus مكان pas بمعنى «أبدًا» أو «لم يعد».",formula:"Sujet + ne / n’ + Verbe + pas / jamais / plus",examples:[
+  {fr:"Je ne comprends pas la question.",ar:"لا أفهم السؤال.",parts:[{text:"Je",role:"subject"},{text:"ne",role:"marker"},{text:"comprends",role:"verb"},{text:"pas",role:"marker"},{text:"la question",role:"object"}]},
+  {fr:"Elle n’habite plus ici.",ar:"لم تعد تسكن هنا.",parts:[{text:"Elle",role:"subject"},{text:"n’",role:"marker"},{text:"habite",role:"verb"},{text:"plus",role:"marker"},{text:"ici",role:"object"}]},
+  {fr:"Nous ne voyageons jamais en hiver.",ar:"لا نسافر أبدًا في الشتاء.",parts:[{text:"Nous",role:"subject"},{text:"ne",role:"marker"},{text:"voyageons",role:"verb"},{text:"jamais",role:"marker"},{text:"en hiver",role:"object"}]}
+ ],correct:"Nous ne parlons pas vite.",correctAr:"نحن لا نتحدث بسرعة.",incorrect:"Nous parlons ne pas vite.",incorrectReason:"في النفي القياسي تحيط ne وpas بالفعل المصرف: ne parlons pas.",note:"قد تُحذف ne في الحديث غير الرسمي، لكنها تبقى مطلوبة في الكتابة والفرنسية المعيارية."},
+ {id:"yes-no-questions",number:24,titleFr:"Les questions fermées",titleAr:"أسئلة نعم أو لا",category:"الاستفهام",summary:"طرح سؤال يمكن الإجابة عنه بنعم أو لا بثلاث طرق صحيحة.",rule:"يمكن استعمال نبرة السؤال في الكلام، أو est-ce que، أو قلب الفعل والفاعل في الأسلوب الرسمي. لا نجمع est-ce que مع القلب في السؤال نفسه.",formula:"Tu viens ? · Est-ce que tu viens ? · Viens-tu ?",examples:[
+  {fr:"Vous travaillez demain ?",ar:"هل تعملون غدًا؟",parts:[{text:"Vous",role:"subject"},{text:"travaillez",role:"verb"},{text:"demain",role:"object"}]},
+  {fr:"Est-ce qu’elle parle arabe ?",ar:"هل تتحدث العربية؟",parts:[{text:"Est-ce qu’",role:"marker"},{text:"elle",role:"subject"},{text:"parle",role:"verb"},{text:"arabe",role:"object"}]},
+  {fr:"Avez-vous une réservation ?",ar:"هل لديكم حجز؟",parts:[{text:"Avez",role:"verb"},{text:"-vous",role:"subject"},{text:"une réservation",role:"object"}]}
+ ],correct:"Est-ce que tu es prêt ?",correctAr:"هل أنت مستعد؟",incorrect:"Est-ce que es-tu prêt ?",incorrectReason:"لا نجمع est-ce que مع قلب الفاعل والفعل في السؤال نفسه.",note:"مع il وelle قد نضيف -t- صوتية في القلب: A-t-il un billet ?"},
+ {id:"question-words",number:25,titleFr:"Les mots interrogatifs",titleAr:"أدوات الاستفهام",category:"الاستفهام",summary:"السؤال عن الشخص والشيء والمكان والوقت والسبب والطريقة والكمية.",rule:"نستعمل qui للشخص، que أو qu’est-ce que للشيء، où للمكان، quand للوقت، pourquoi للسبب، comment للطريقة، combien للكمية، وquel/quelle للاختيار قبل اسم.",formula:"Mot interrogatif + est-ce que + Sujet + Verbe ?",examples:[
+  {fr:"Où est-ce que vous habitez ?",ar:"أين تسكنون؟",parts:[{text:"Où est-ce que",role:"marker"},{text:"vous",role:"subject"},{text:"habitez",role:"verb"}]},
+  {fr:"Pourquoi apprends-tu le français ?",ar:"لماذا تتعلم الفرنسية؟",parts:[{text:"Pourquoi",role:"marker"},{text:"apprends",role:"verb"},{text:"-tu",role:"subject"},{text:"le français",role:"object"}]},
+  {fr:"Quelle heure est-il ?",ar:"كم الساعة؟",parts:[{text:"Quelle heure",role:"marker"},{text:"est",role:"verb"},{text:"-il",role:"subject"}]}
+ ],correct:"Qu’est-ce que tu cherches ?",correctAr:"ما الذي تبحث عنه؟",incorrect:"Qu’est-ce que cherches-tu quoi ?",incorrectReason:"لا نكرر أداة السؤال quoi بعد أن بدأنا السؤال بـ qu’est-ce que.",note:"لا نكرر أداة السؤال في آخر الجملة؛ نقول Qu’est-ce que tu veux ? من دون quoi في النهاية."},
+ {id:"imperative",number:26,titleFr:"L’impératif",titleAr:"صيغة الأمر والطلب",category:"بناء الجملة",summary:"إعطاء تعليمات أو نصيحة أو دعوة باستعمال tu, nous وvous.",rule:"في الأمر نحذف ضمير الفاعل ونستعمل صيغ tu, nous أو vous. تحذف s غالبًا من أفعال -er مع tu. في النفي تحيط ne… pas بالفعل.",formula:"Écoute ! · Allons-y ! · Prenez place ! · Ne bougez pas !",examples:[
+  {fr:"Fermez la porte, s’il vous plaît.",ar:"أغلقوا الباب من فضلكم.",parts:[{text:"Fermez",role:"verb"},{text:"la porte",role:"object"},{text:"s’il vous plaît",role:"marker"}]},
+  {fr:"Allons au café !",ar:"لنذهب إلى المقهى!",parts:[{text:"Allons",role:"verb"},{text:"au café",role:"object"}]},
+  {fr:"Ne touchez pas à cet appareil.",ar:"لا تلمسوا هذا الجهاز.",parts:[{text:"Ne",role:"marker"},{text:"touchez",role:"verb"},{text:"pas",role:"marker"},{text:"à cet appareil",role:"object"}]}
+ ],correct:"Écoute le professeur.",correctAr:"استمع إلى الأستاذ.",incorrect:"Tu écoute le professeur.",incorrectReason:"صيغة الأمر مع tu تُحذف منها كلمة tu، فنقول écoute.",note:"صيغة الأمر لا يظهر معها ضمير الفاعل، لكن الضمائر المفعولية قد تأتي بعدها: Donnez-moi le menu."}
+];

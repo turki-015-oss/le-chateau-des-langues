@@ -5,8 +5,8 @@ import { ArrowLeft, BookOpen, Castle, ChevronRight, GraduationCap, Search, Spark
 import "./grammar.css";
 
 const levels = [
-  { id: "a1", fr: "Fondations", ar: "تأسيس القواعد", count: 12, status: "جاهز", active: true },
-  { id: "a2", fr: "Structures essentielles", ar: "التراكيب الأساسية", count: 14, status: "قريبًا" },
+  { id: "a1", fr: "Fondations", ar: "تأسيس القواعد", count: 41, status: "جاهز", active: true },
+  { id: "a2", fr: "Structures essentielles", ar: "التراكيب الأساسية", count: 42, status: "جاهز", active: true },
   { id: "b1", fr: "Grammaire intermédiaire", ar: "القواعد المتوسطة", count: 16, status: "قريبًا" },
   { id: "b2", fr: "Précision et nuance", ar: "الدقة والأسلوب", count: 16, status: "قريبًا" },
   { id: "c1", fr: "Grammaire avancée", ar: "القواعد المتقدمة", count: 18, status: "قريبًا" },
@@ -45,7 +45,7 @@ export default function GrammarPage() {
         </div>
         <div className="grammar-level-grid">
           {levels.map((level, index) => (
-            <Link key={level.id} href={`/grammar/${level.id}`} className={`grammar-level-card ${level.active ? "active" : "planned"}`}>
+            <Link key={level.id} href={`/grammar/${level.id}`} className={`grammar-level-card ${level.active ? "active" : "planned"}`} aria-disabled={!level.active}>
               <i>{String(index + 1).padStart(2, "0")}</i>
               <span className="grammar-level-badge">{level.id.toUpperCase()}</span>
               <div><strong>{level.fr}</strong><b>{level.ar}</b></div>

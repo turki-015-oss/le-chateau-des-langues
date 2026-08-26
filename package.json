@@ -8,7 +8,8 @@
     "start": "next start",
     "map:tiles": "node scripts/generate-map-tiles.cjs",
     "map:sync-unity": "node scripts/sync-unity-map.cjs",
-    "audit:grammar-a1": "node scripts/audit-a1-grammar.cjs"
+    "audit:grammar-a1": "node scripts/audit-a1-grammar.cjs",
+    "audit:grammar-a2": "node scripts/audit-a2-grammar.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

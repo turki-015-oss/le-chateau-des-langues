@@ -30,4 +30,4 @@
 }
 
 .grammar-hall-hero{padding:0}
-.grammar-course-header{display:block;width:100%}
+.grammar-course-header{position:relative;top:auto;z-index:auto;display:block;width:100%}

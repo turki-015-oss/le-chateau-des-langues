@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the castle library's 5,000-entry French-Arabic noun dictionary.
+"""Build the castle library's stable French-Arabic noun dictionary.
 
 Sources:
 - Lexique 4: lemma, frequency, grammatical gender and IPA.
@@ -26,7 +26,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / ".tools" / "dictionary-sources"
 OUTPUT = ROOT / "public" / "library" / "dictionary"
 CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
-TARGET_COUNT = 5000
+EXPANSION_SOURCE = ROOT / "scripts" / "library-expansion-verified.json"
+BASE_COUNT = 5000
+MAX_COUNT = 10000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 WORD_RE = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ-]{2,30}$")
 TOKEN_RE = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ'-]+")
@@ -368,12 +370,12 @@ def make_id(entry: dict, seen: set[str]) -> str:
     return value
 
 
-def validate(entries: list[dict]) -> None:
-    assert len(entries) == TARGET_COUNT, f"Expected {TARGET_COUNT}, got {len(entries)}"
-    assert len({entry["key"] for entry in entries}) == TARGET_COUNT, "Duplicate normalized words"
-    assert len({entry["id"] for entry in entries}) == TARGET_COUNT, "Duplicate ids"
-    assert len({entry["example"] for entry in entries}) == TARGET_COUNT, "Duplicate French examples"
-    assert len({entry["exampleArabic"] for entry in entries}) == TARGET_COUNT, "Duplicate Arabic examples"
+def validate(entries: list[dict], target_count: int) -> None:
+    assert len(entries) == target_count, f"Expected {target_count}, got {len(entries)}"
+    assert len({entry["key"] for entry in entries}) == target_count, "Duplicate normalized words"
+    assert len({entry["id"] for entry in entries}) == target_count, "Duplicate ids"
+    assert len({entry["example"] for entry in entries}) == target_count, "Duplicate French examples"
+    assert len({entry["exampleArabic"] for entry in entries}) == target_count, "Duplicate Arabic examples"
     assert all(entry["gender"] in {"masculine", "feminine"} for entry in entries)
     assert all(entry["determiner"] in {"Un", "Une"} for entry in entries)
     assert all(ARABIC_RE.search(entry["arabic"]) for entry in entries)
@@ -404,16 +406,21 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int) ->
         for entry in entries
     ]
     manifest = {
-        "version": 1,
+        "version": 2,
         "total": len(entries),
         "naturalExampleCount": natural_count,
         "curatedExampleCount": curated_count,
+        "lexicographicExampleCount": sum(
+            entry.get("exampleSource") == "Révision lexicographique" for entry in entries
+        ),
         "counts": counts,
         "search": search,
         "sources": [
             {"name": "Lexique 4", "url": "https://www.lexique.org/", "use": "frequency, gender and IPA"},
             {"name": "Wikidata Wikidict", "url": "https://github.com/open-dsl-dict/wikidict-dsl-fr", "use": "French-Arabic headwords"},
             {"name": "Tatoeba", "url": "https://tatoeba.org/", "use": "directly linked example sentences"},
+            {"name": "Morphalou 3.1", "url": "https://www.ortolang.fr/market/lexicons/morphalou", "use": "verified noun lemmas and grammatical gender"},
+            {"name": "Wiktionnaire (Kaikki)", "url": "https://kaikki.org/frwiktionary/Français/index.html", "use": "part of speech, definitions, pronunciation and cross-language senses"},
         ],
     }
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
@@ -424,21 +431,40 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int) ->
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--target-total", type=int, default=BASE_COUNT)
     args = parser.parse_args()
+    target_count = args.target_total
+    if target_count < BASE_COUNT or target_count > MAX_COUNT or target_count % 1000:
+        raise SystemExit(f"--target-total must be 5000, 6000, ..., {MAX_COUNT}")
 
     wikidict = load_wikidict(SOURCES / "ar-fr_wikidict.dsl")
     candidates = load_lexique(SOURCES / "lexique" / "Lexique4.tsv", wikidict)
-    if len(candidates) < TARGET_COUNT:
+    if len(candidates) < BASE_COUNT:
         raise SystemExit(f"Only {len(candidates)} eligible translated noun lemmas were found")
-    entries = candidates[:TARGET_COUNT]
+    entries = candidates[:BASE_COUNT]
     pairs = load_tatoeba_pairs(SOURCES)
     natural_count = attach_examples(entries, pairs)
     seen_ids: set[str] = set()
     for entry in entries:
         entry["id"] = make_id(entry, seen_ids)
     curated_count = apply_curated_overrides(entries, CURATED_OVERRIDES)
+    expansion_count = target_count - BASE_COUNT
+    if expansion_count:
+        expansion = json.loads(EXPANSION_SOURCE.read_text(encoding="utf-8"))
+        if len(expansion) < expansion_count:
+            raise SystemExit(f"Only {len(expansion)} verified expansion entries are available")
+        seen_keys = {entry["key"] for entry in entries}
+        for source_entry in expansion[:expansion_count]:
+            entry = dict(source_entry)
+            entry["key"] = normalize(entry["word"])
+            entry["frequency"] = 0.0
+            if entry["key"] in seen_keys:
+                raise ValueError(f"Expansion duplicates an existing word: {entry['word']}")
+            seen_keys.add(entry["key"])
+            entry["id"] = make_id(entry, seen_ids)
+            entries.append(entry)
     natural_count = sum(entry["exampleSource"] == "Tatoeba" for entry in entries)
-    validate(entries)
+    validate(entries, target_count)
 
     counts = {letter: sum(entry["letter"] == letter for entry in entries) for letter in LETTERS}
     print(json.dumps({

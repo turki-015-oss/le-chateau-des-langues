@@ -135,7 +135,7 @@ export default function LibraryPage() {
         <div className="library-heading">
           <span>DICTIONNAIRE ALPHABÉTIQUE</span>
           <h1>اختر كتابًا من A إلى Z</h1>
-          <p>خمسة آلاف كلمة فرنسية موثقة، موزعة على 26 قاموسًا مع النوع والنطق والجمل.</p>
+          <p>{(manifest?.total ?? 5000).toLocaleString("fr-FR")} كلمة فرنسية موثقة، موزعة على 26 قاموسًا مع النوع والنطق والجمل.</p>
         </div>
 
         <div className="library-search-zone">
@@ -160,7 +160,7 @@ export default function LibraryPage() {
                   <span><strong>{entry.word}</strong><small>{entry.arabic}</small></span>
                   <BookOpen />
                 </button>
-              )) : <p>لا توجد كلمة مطابقة في الكلمات الخمسة آلاف الحالية.</p>}
+              )) : <p>لا توجد كلمة مطابقة ضمن {(manifest?.total ?? 5000).toLocaleString("fr-FR")} كلمة الحالية.</p>}
             </div>
           )}
           {dictionaryError && <p className="library-data-error" role="alert">{dictionaryError}</p>}
@@ -212,7 +212,7 @@ export default function LibraryPage() {
                 <strong>{activeEntries.length}</strong>
               <span>كلمة موثقة في هذا الكتاب</span>
               </div>
-              <small>النوع والصيغة الصوتية من Lexique 4، والترجمة من Wikidata.</small>
+              <small>النوع والنطق والمعنى مدققة من معاجم فرنسية مرجعية.</small>
             </div>
             <div className="dictionary-page dictionary-page-words">
               <header>
@@ -273,7 +273,7 @@ export default function LibraryPage() {
                   </div>
                 )}
               </div>
-              <footer><span>— {activeLetter} —</span><small>Lexique 4 · Wikidata · Tatoeba</small></footer>
+              <footer><span>— {activeLetter} —</span><small>Lexique 4 · Morphalou · Wiktionnaire · Tatoeba</small></footer>
             </div>
           </article>
         </section>

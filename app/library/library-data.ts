@@ -13,7 +13,7 @@ export type DictionaryEntry = DictionarySearchEntry & {
   ipa: string;
   example: string;
   exampleArabic: string;
-  exampleSource: "Tatoeba" | "Équipe éditoriale" | "Révision éditoriale";
+  exampleSource: "Tatoeba" | "Équipe éditoriale" | "Révision éditoriale" | "Révision lexicographique";
   counterpart?: {
     word: string;
     arabic: string;
@@ -29,6 +29,7 @@ export type DictionaryManifest = {
   total: number;
   naturalExampleCount: number;
   curatedExampleCount: number;
+  lexicographicExampleCount?: number;
   counts: Record<string, number>;
   search: DictionarySearchEntry[];
   sources: Array<{ name: string; url: string; use: string }>;

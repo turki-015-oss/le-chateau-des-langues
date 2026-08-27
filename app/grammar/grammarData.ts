@@ -49,13 +49,16 @@ import {c1ArgumentLogic} from "./data/c1-argument-logic";
 import {c1TextCohesion} from "./data/c1-text-cohesion";
 import {c1WordFormationCollocation} from "./data/c1-word-formation-collocation";
 import {c1RegisterEditing} from "./data/c1-register-editing";
+import {c2Curriculum} from "./data/c2-curriculum";
 
 export type GrammarRole="subject"|"verb"|"object"|"marker"|"adjective";
 export type GrammarExample={fr:string;ar:string;parts:{text:string;role:GrammarRole}[]};
-export type GrammarLesson={id:string;number:number;titleFr:string;titleAr:string;category:string;summary:string;rule:string;formula:string;examples:GrammarExample[];correct:string;correctAr:string;incorrect:string;incorrectReason:string;note:string};
+export type GrammarRewrite={sourceFr:string;sourceAr:string;targetFr:string;targetAr:string;register:string;explanation:string};
+export type GrammarLesson={id:string;number:number;titleFr:string;titleAr:string;category:string;summary:string;rule:string;formula:string;examples:GrammarExample[];correct:string;correctAr:string;incorrect:string;incorrectReason:string;note:string;rewrite?:GrammarRewrite};
 
 export const a1Lessons:GrammarLesson[]=[...a1Foundations,...a1Determiners,...a1PresentVerbs,...a1Description,...a1SentenceForms,...a1TimeAndTenses,...a1SpaceAndExpression,...a1ActionsAndReference];
 export const a2Lessons:GrammarLesson[]=[...a2PastNarration,...a2FutureAndTime,...a2ObjectPronouns,...a2ReferenceAndIdentity,...a2DescriptionAndComparison,...a2SentenceNuance,...a2InteractionAndLinking];
 export const b1Lessons:GrammarLesson[]=[...b1Narration,...b1FutureCondition,...b1Subjunctive,...b1Pronouns,...b1Relatives,...b1Transformations,...b1Discourse,...b1Nuance];
 export const b2Lessons:GrammarLesson[]=[...b2TenseNarration,...b2ConditionModal,...b2Subjunctive,...b2VerbalForms,...b2Pronouns,...b2RelativesPrepositions,...b2Transformations,...b2ReportedSpeech,...b2LogicalRelations,...b2NegationDetermination,...b2Argumentation,...b2CohesionRegister];
 export const c1Lessons:GrammarLesson[]=[...c1TemporalViewpoint,...c1LiteraryForms,...c1Counterfactual,...c1MoodSelection,...c1EpistemicModality,...c1NonfiniteForms,...c1DetachedConstructions,...c1ComplexSubordination,...c1ReferenceSystem,...c1DeterminationAgreement,...c1FocusWordOrder,...c1PolyphonyReported,...c1ArgumentLogic,...c1TextCohesion,...c1WordFormationCollocation,...c1RegisterEditing];
+export const c2Lessons:GrammarLesson[]=c2Curriculum;

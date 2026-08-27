@@ -10,7 +10,7 @@ const levels = [
   { id: "b1", fr: "Grammaire intermédiaire", ar: "القواعد المتوسطة", count: 60, status: "جاهز", active: true },
   { id: "b2", fr: "Précision et nuance", ar: "الدقة والأسلوب", count: 72, status: "جاهز", active: true },
   { id: "c1", fr: "Maîtrise et discours", ar: "الإتقان والخطاب المتقدم", count: 96, status: "جاهز", active: true },
-  { id: "c2", fr: "Maîtrise", ar: "الإتقان اللغوي", count: 18, status: "قريبًا" },
+  { id: "c2", fr: "Maîtrise absolue", ar: "الإتقان اللغوي الكامل", count: 120, status: "جاهز", active: true },
 ];
 
 export default function GrammarPage() {

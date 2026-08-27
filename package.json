@@ -12,7 +12,8 @@
     "audit:grammar-a2": "node scripts/audit-a2-grammar.cjs",
     "audit:grammar-b1": "node scripts/audit-b1-grammar.cjs",
     "audit:grammar-b2": "node scripts/audit-b2-grammar.cjs",
-    "audit:grammar-c1": "node scripts/audit-c1-grammar.cjs"
+    "audit:grammar-c1": "node scripts/audit-c1-grammar.cjs",
+    "audit:grammar-c2": "node scripts/audit-c2-grammar.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

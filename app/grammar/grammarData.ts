@@ -33,6 +33,22 @@ import {b2LogicalRelations} from "./data/b2-logical-relations";
 import {b2NegationDetermination} from "./data/b2-negation-determination";
 import {b2Argumentation} from "./data/b2-argumentation";
 import {b2CohesionRegister} from "./data/b2-cohesion-register";
+import {c1TemporalViewpoint} from "./data/c1-temporal-viewpoint";
+import {c1LiteraryForms} from "./data/c1-literary-forms";
+import {c1Counterfactual} from "./data/c1-counterfactual";
+import {c1MoodSelection} from "./data/c1-mood-selection";
+import {c1EpistemicModality} from "./data/c1-epistemic-modality";
+import {c1NonfiniteForms} from "./data/c1-nonfinite-forms";
+import {c1DetachedConstructions} from "./data/c1-detached-constructions";
+import {c1ComplexSubordination} from "./data/c1-complex-subordination";
+import {c1ReferenceSystem} from "./data/c1-reference-system";
+import {c1DeterminationAgreement} from "./data/c1-determination-agreement";
+import {c1FocusWordOrder} from "./data/c1-focus-word-order";
+import {c1PolyphonyReported} from "./data/c1-polyphony-reported";
+import {c1ArgumentLogic} from "./data/c1-argument-logic";
+import {c1TextCohesion} from "./data/c1-text-cohesion";
+import {c1WordFormationCollocation} from "./data/c1-word-formation-collocation";
+import {c1RegisterEditing} from "./data/c1-register-editing";
 
 export type GrammarRole="subject"|"verb"|"object"|"marker"|"adjective";
 export type GrammarExample={fr:string;ar:string;parts:{text:string;role:GrammarRole}[]};
@@ -42,3 +58,4 @@ export const a1Lessons:GrammarLesson[]=[...a1Foundations,...a1Determiners,...a1P
 export const a2Lessons:GrammarLesson[]=[...a2PastNarration,...a2FutureAndTime,...a2ObjectPronouns,...a2ReferenceAndIdentity,...a2DescriptionAndComparison,...a2SentenceNuance,...a2InteractionAndLinking];
 export const b1Lessons:GrammarLesson[]=[...b1Narration,...b1FutureCondition,...b1Subjunctive,...b1Pronouns,...b1Relatives,...b1Transformations,...b1Discourse,...b1Nuance];
 export const b2Lessons:GrammarLesson[]=[...b2TenseNarration,...b2ConditionModal,...b2Subjunctive,...b2VerbalForms,...b2Pronouns,...b2RelativesPrepositions,...b2Transformations,...b2ReportedSpeech,...b2LogicalRelations,...b2NegationDetermination,...b2Argumentation,...b2CohesionRegister];
+export const c1Lessons:GrammarLesson[]=[...c1TemporalViewpoint,...c1LiteraryForms,...c1Counterfactual,...c1MoodSelection,...c1EpistemicModality,...c1NonfiniteForms,...c1DetachedConstructions,...c1ComplexSubordination,...c1ReferenceSystem,...c1DeterminationAgreement,...c1FocusWordOrder,...c1PolyphonyReported,...c1ArgumentLogic,...c1TextCohesion,...c1WordFormationCollocation,...c1RegisterEditing];

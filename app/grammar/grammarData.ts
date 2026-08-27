@@ -21,6 +21,18 @@ import {b1Relatives} from "./data/b1-relatives";
 import {b1Transformations} from "./data/b1-transformations";
 import {b1Discourse} from "./data/b1-discourse";
 import {b1Nuance} from "./data/b1-nuance";
+import {b2TenseNarration} from "./data/b2-tense-narration";
+import {b2ConditionModal} from "./data/b2-condition-modal";
+import {b2Subjunctive} from "./data/b2-subjunctive";
+import {b2VerbalForms} from "./data/b2-verbal-forms";
+import {b2Pronouns} from "./data/b2-pronouns";
+import {b2RelativesPrepositions} from "./data/b2-relatives-prepositions";
+import {b2Transformations} from "./data/b2-transformations";
+import {b2ReportedSpeech} from "./data/b2-reported-speech";
+import {b2LogicalRelations} from "./data/b2-logical-relations";
+import {b2NegationDetermination} from "./data/b2-negation-determination";
+import {b2Argumentation} from "./data/b2-argumentation";
+import {b2CohesionRegister} from "./data/b2-cohesion-register";
 
 export type GrammarRole="subject"|"verb"|"object"|"marker"|"adjective";
 export type GrammarExample={fr:string;ar:string;parts:{text:string;role:GrammarRole}[]};
@@ -29,3 +41,4 @@ export type GrammarLesson={id:string;number:number;titleFr:string;titleAr:string
 export const a1Lessons:GrammarLesson[]=[...a1Foundations,...a1Determiners,...a1PresentVerbs,...a1Description,...a1SentenceForms,...a1TimeAndTenses,...a1SpaceAndExpression,...a1ActionsAndReference];
 export const a2Lessons:GrammarLesson[]=[...a2PastNarration,...a2FutureAndTime,...a2ObjectPronouns,...a2ReferenceAndIdentity,...a2DescriptionAndComparison,...a2SentenceNuance,...a2InteractionAndLinking];
 export const b1Lessons:GrammarLesson[]=[...b1Narration,...b1FutureCondition,...b1Subjunctive,...b1Pronouns,...b1Relatives,...b1Transformations,...b1Discourse,...b1Nuance];
+export const b2Lessons:GrammarLesson[]=[...b2TenseNarration,...b2ConditionModal,...b2Subjunctive,...b2VerbalForms,...b2Pronouns,...b2RelativesPrepositions,...b2Transformations,...b2ReportedSpeech,...b2LogicalRelations,...b2NegationDetermination,...b2Argumentation,...b2CohesionRegister];

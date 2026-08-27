@@ -1,0 +1,30 @@
+const fs=require("fs");
+const path=require("path");
+
+const root=path.join(process.cwd(),"app","grammar","data");
+const files=fs.readdirSync(root).filter(name=>name.startsWith("b1-")&&name!=="b1-factory.ts").sort();
+const older=fs.readdirSync(root).filter(name=>/^a[12]-.*\.ts$/.test(name));
+const source=files.map(name=>fs.readFileSync(path.join(root,name),"utf8")).join("\n");
+const oldSource=older.map(name=>fs.readFileSync(path.join(root,name),"utf8")).join("\n");
+const lessons=[...source.matchAll(/b1Lesson\(\{id:"([^"]+)",number:(\d+),titleFr:"([^"]+)"/g)];
+const examples=[...source.matchAll(/\["((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)",\[\[/g)].map(match=>({fr:match[1],ar:match[2]}));
+const oldFrench=new Set([...oldSource.matchAll(/fr:"((?:[^"\\]|\\.)*)",ar:/g)].map(match=>match[1]));
+const comparisonPairs=[...source.matchAll(/correct:"((?:[^"\\]|\\.)*)",correctAr:"((?:[^"\\]|\\.)*)",incorrect:"((?:[^"\\]|\\.)*)",incorrectReason:"((?:[^"\\]|\\.)*)"/g)];
+const fail=[];
+if(files.length!==8)fail.push(`expected 8 data files, got ${files.length}`);
+if(lessons.length!==60)fail.push(`expected 60 lessons, got ${lessons.length}`);
+const numbers=lessons.map(match=>Number(match[2])).sort((a,b)=>a-b);
+if(numbers.some((n,index)=>n!==index+1))fail.push("lesson numbering is not exactly 1..60");
+if(lessons.some(match=>!match[1].startsWith("b1-")))fail.push("lesson id without b1- prefix");
+if(examples.length!==180)fail.push(`expected 180 examples, got ${examples.length}`);
+if(comparisonPairs.length!==60)fail.push(`expected 60 comparison pairs, got ${comparisonPairs.length}`);
+const duplicateFrench=examples.map(x=>x.fr).filter((fr,index,all)=>all.indexOf(fr)!==index);
+if(duplicateFrench.length)fail.push(`duplicate B1 examples: ${[...new Set(duplicateFrench)].join(" | ")}`);
+const collisions=examples.map(x=>x.fr).filter(fr=>oldFrench.has(fr));
+if(collisions.length)fail.push(`examples already used in A1/A2: ${[...new Set(collisions)].join(" | ")}`);
+if(examples.some(x=>!x.ar.trim()))fail.push("example without Arabic translation");
+const banned=["إذا تهتم","تم عمل","سوف يكون عنده","على المستوى من"];
+for(const phrase of banned)if(source.includes(phrase))fail.push(`suspicious literal Arabic: ${phrase}`);
+const report={ok:fail.length===0,files:files.length,lessons:lessons.length,examples:examples.length,comparisonPairs:comparisonPairs.length,duplicateExamples:new Set(duplicateFrench).size,olderLevelCollisions:new Set(collisions).size};
+console.log(JSON.stringify(report,null,2));
+if(fail.length){console.error(fail.join("\n"));process.exit(1)}

@@ -7,7 +7,7 @@ import "./grammar.css";
 const levels = [
   { id: "a1", fr: "Fondations", ar: "تأسيس القواعد", count: 41, status: "جاهز", active: true },
   { id: "a2", fr: "Structures essentielles", ar: "التراكيب الأساسية", count: 42, status: "جاهز", active: true },
-  { id: "b1", fr: "Grammaire intermédiaire", ar: "القواعد المتوسطة", count: 16, status: "قريبًا" },
+  { id: "b1", fr: "Grammaire intermédiaire", ar: "القواعد المتوسطة", count: 60, status: "جاهز", active: true },
   { id: "b2", fr: "Précision et nuance", ar: "الدقة والأسلوب", count: 16, status: "قريبًا" },
   { id: "c1", fr: "Grammaire avancée", ar: "القواعد المتقدمة", count: 18, status: "قريبًا" },
   { id: "c2", fr: "Maîtrise", ar: "الإتقان اللغوي", count: 18, status: "قريبًا" },

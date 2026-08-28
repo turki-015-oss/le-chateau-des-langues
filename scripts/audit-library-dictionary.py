@@ -113,7 +113,7 @@ def main() -> None:
         "sources": not bad_sources,
         "expansion_count": len(published_expansion) == expected_total - 5000,
         "expansion_scope": published_expansion <= expansion_keys,
-        "contextual_batch_size": len(corrections) > 0 and len(corrections) % 50 == 0,
+        "contextual_batch_size": len(corrections) > 0 and len(corrections) % 100 == 0,
         "contextual_scope": contextual_keys == correction_keys,
         "contextual_values": not correction_mismatches,
         "contextual_manifest": manifest.get("contextualExampleCount") == len(corrections),

@@ -250,5 +250,261 @@
     "arabic": "مخيم؛ معسكر",
     "example": "Les randonneurs installent leur camp près de la rivière.",
     "exampleArabic": "يقيم المتنزّهون مخيمهم قرب النهر."
+  },
+  "club": {
+    "arabic": "نادٍ",
+    "example": "Le club organise des activités sportives chaque semaine.",
+    "exampleArabic": "ينظّم النادي أنشطة رياضية كل أسبوع."
+  },
+  "professeur": {
+    "arabic": "أستاذ؛ معلّم",
+    "example": "Le professeur explique la leçon avec des exemples simples.",
+    "exampleArabic": "يشرح الأستاذ الدرس بأمثلة بسيطة."
+  },
+  "soldat": {
+    "arabic": "جندي",
+    "example": "Le soldat monte la garde devant l’entrée.",
+    "exampleArabic": "يقف الجندي للحراسة أمام المدخل."
+  },
+  "cour": {
+    "arabic": "ساحة؛ فناء",
+    "example": "Les enfants jouent dans la cour de l’école.",
+    "exampleArabic": "يلعب الأطفال في ساحة المدرسة."
+  },
+  "intérêt": {
+    "arabic": "اهتمام؛ فائدة؛ مصلحة",
+    "example": "Elle montre un grand intérêt pour la littérature française.",
+    "exampleArabic": "تُظهر اهتمامًا كبيرًا بالأدب الفرنسي."
+  },
+  "forme": {
+    "arabic": "شكل؛ هيئة",
+    "example": "Cette table a la forme d’un cercle.",
+    "exampleArabic": "هذه الطاولة على شكل دائرة."
+  },
+  "bar": {
+    "arabic": "مقهى؛ منضدة مشروبات",
+    "example": "Le bar de l’hôtel sert du café et du thé.",
+    "exampleArabic": "يقدّم مقهى الفندق القهوة والشاي."
+  },
+  "dame": {
+    "arabic": "سيدة",
+    "example": "Une dame âgée attend le bus devant la gare.",
+    "exampleArabic": "تنتظر سيدة مسنّة الحافلة أمام المحطة."
+  },
+  "compagnie": {
+    "arabic": "شركة؛ رفقة",
+    "example": "Cette compagnie aérienne dessert plusieurs villes.",
+    "exampleArabic": "تسيّر شركة الطيران هذه رحلات إلى عدة مدن."
+  },
+  "classe": {
+    "arabic": "صفّ؛ فصل دراسي",
+    "example": "La classe commence à huit heures précises.",
+    "exampleArabic": "يبدأ الصف في الساعة الثامنة تمامًا."
+  },
+  "signe": {
+    "arabic": "علامة؛ إشارة",
+    "example": "Cette fumée est un signe de danger.",
+    "exampleArabic": "هذا الدخان علامة على وجود خطر."
+  },
+  "ferme": {
+    "arabic": "مزرعة",
+    "example": "La ferme produit du lait et des légumes.",
+    "exampleArabic": "تنتج المزرعة الحليب والخضروات."
+  },
+  "membre": {
+    "arabic": "عضو",
+    "gender": "masculine",
+    "determiner": "Un",
+    "example": "Chaque membre de l’équipe participe à la réunion.",
+    "exampleArabic": "يشارك كل عضو في الفريق في الاجتماع."
+  },
+  "lieutenant": {
+    "arabic": "ملازم أول",
+    "example": "Le lieutenant présente le rapport au capitaine.",
+    "exampleArabic": "يقدّم الملازم الأول التقرير إلى النقيب."
+  },
+  "bombe": {
+    "arabic": "قنبلة",
+    "example": "Les démineurs ont neutralisé la bombe en toute sécurité.",
+    "exampleArabic": "أبطل خبراء المتفجرات مفعول القنبلة بأمان."
+  },
+  "prince": {
+    "arabic": "أمير",
+    "example": "Le prince accueille les invités au palais.",
+    "exampleArabic": "يستقبل الأمير الضيوف في القصر."
+  },
+  "société": {
+    "arabic": "مجتمع؛ شركة",
+    "example": "La société évolue avec les changements technologiques.",
+    "exampleArabic": "يتطوّر المجتمع مع التغيّرات التقنية."
+  },
+  "banque": {
+    "arabic": "بنك؛ مصرف",
+    "example": "La banque ferme ses portes à quatre heures.",
+    "exampleArabic": "يغلق البنك أبوابه في الساعة الرابعة."
+  },
+  "position": {
+    "arabic": "موقع؛ وضعية؛ منصب",
+    "example": "La carte indique notre position actuelle.",
+    "exampleArabic": "تُظهر الخريطة موقعنا الحالي."
+  },
+  "action": {
+    "arabic": "فعل؛ إجراء",
+    "example": "Une action rapide peut éviter un accident.",
+    "exampleArabic": "قد يمنع التصرّف السريع وقوع حادث."
+  },
+  "époque": {
+    "arabic": "حقبة؛ عصر",
+    "example": "Ce château a été construit à une époque ancienne.",
+    "exampleArabic": "بُنيت هذه القلعة في حقبة قديمة."
+  },
+  "magasin": {
+    "arabic": "متجر",
+    "example": "Le magasin ouvre à neuf heures du matin.",
+    "exampleArabic": "يفتح المتجر في الساعة التاسعة صباحًا."
+  },
+  "code": {
+    "arabic": "رمز؛ شفرة؛ قانون",
+    "example": "Entrez le code pour déverrouiller la porte.",
+    "exampleArabic": "أدخل الرمز لفتح الباب."
+  },
+  "centre": {
+    "arabic": "مركز؛ وسط",
+    "example": "La bibliothèque se trouve au centre de la ville.",
+    "exampleArabic": "تقع المكتبة في وسط المدينة."
+  },
+  "officier": {
+    "arabic": "ضابط",
+    "example": "L’officier donne ses instructions aux soldats.",
+    "exampleArabic": "يعطي الضابط تعليماته للجنود."
+  },
+  "espoir": {
+    "arabic": "أمل",
+    "example": "Il garde l’espoir de retrouver bientôt sa famille.",
+    "exampleArabic": "يحتفظ بالأمل في لقاء عائلته قريبًا."
+  },
+  "souvenir": {
+    "arabic": "ذكرى؛ تذكار",
+    "example": "Cette photographie est un précieux souvenir de notre voyage.",
+    "exampleArabic": "هذه الصورة ذكرى ثمينة من رحلتنا."
+  },
+  "bande": {
+    "arabic": "شريط",
+    "example": "Une bande blanche marque le bord de la route.",
+    "exampleArabic": "يحدّد شريط أبيض حافة الطريق."
+  },
+  "fou": {
+    "arabic": "فيل (قطعة شطرنج)",
+    "example": "Aux échecs, le fou se déplace en diagonale.",
+    "exampleArabic": "في الشطرنج، يتحرّك الفيل قطريًا."
+  },
+  "tas": {
+    "arabic": "كومة",
+    "example": "Un tas de livres attend d’être rangé.",
+    "exampleArabic": "تنتظر كومة من الكتب أن تُرتّب."
+  },
+  "glace": {
+    "arabic": "مثلّجات؛ ثلج؛ مرآة",
+    "example": "Les enfants mangent une glace après le déjeuner.",
+    "exampleArabic": "يتناول الأطفال المثلّجات بعد الغداء."
+  },
+  "solution": {
+    "arabic": "حل",
+    "example": "Nous cherchons une solution à ce problème.",
+    "exampleArabic": "نبحث عن حل لهذه المشكلة."
+  },
+  "sol": {
+    "arabic": "أرض؛ تربة",
+    "example": "Le sol est mouillé après la pluie.",
+    "exampleArabic": "الأرض مبتلّة بعد المطر."
+  },
+  "piste": {
+    "arabic": "مسار؛ مضمار؛ مدرج",
+    "example": "Les coureurs s’entraînent sur la piste du stade.",
+    "exampleArabic": "يتدرّب العدّاؤون على مضمار الملعب."
+  },
+  "vidéo": {
+    "arabic": "فيديو؛ مقطع مصوّر",
+    "example": "Elle regarde une vidéo pour apprendre la prononciation.",
+    "exampleArabic": "تشاهد مقطعًا مصوّرًا لتعلّم النطق."
+  },
+  "entrée": {
+    "arabic": "مدخل؛ دخول",
+    "example": "L’entrée du musée se trouve à gauche.",
+    "exampleArabic": "يقع مدخل المتحف على اليسار."
+  },
+  "espace": {
+    "arabic": "مساحة؛ فضاء",
+    "gender": "masculine",
+    "determiner": "Un",
+    "example": "Il n’y a pas assez d’espace pour garer la voiture.",
+    "exampleArabic": "لا توجد مساحة كافية لإيقاف السيارة."
+  },
+  "série": {
+    "arabic": "سلسلة؛ مسلسل",
+    "example": "Nous regardons une série française le soir.",
+    "exampleArabic": "نشاهد مسلسلًا فرنسيًا في المساء."
+  },
+  "champ": {
+    "arabic": "حقل",
+    "example": "Les agriculteurs travaillent dans le champ.",
+    "exampleArabic": "يعمل المزارعون في الحقل."
+  },
+  "église": {
+    "arabic": "كنيسة",
+    "example": "L’église se trouve près de la place principale.",
+    "exampleArabic": "تقع الكنيسة قرب الساحة الرئيسية."
+  },
+  "cousin": {
+    "arabic": "ابن العم أو الخال؛ قريب",
+    "example": "Mon cousin vient nous rendre visite ce week-end.",
+    "exampleArabic": "سيأتي ابن عمي لزيارتنا في عطلة نهاية الأسبوع."
+  },
+  "étage": {
+    "arabic": "طابق",
+    "example": "Notre chambre se trouve au troisième étage.",
+    "exampleArabic": "تقع غرفتنا في الطابق الثالث."
+  },
+  "lune": {
+    "arabic": "قمر",
+    "example": "La lune éclaire le jardin cette nuit.",
+    "exampleArabic": "يضيء القمر الحديقة هذه الليلة."
+  },
+  "carrière": {
+    "arabic": "مسيرة مهنية",
+    "example": "Il a commencé sa carrière dans un petit hôpital.",
+    "exampleArabic": "بدأ مسيرته المهنية في مستشفى صغير."
+  },
+  "langue": {
+    "arabic": "لغة؛ لسان",
+    "example": "Le français est une langue parlée dans plusieurs pays.",
+    "exampleArabic": "الفرنسية لغة يتحدث بها الناس في عدة بلدان."
+  },
+  "poche": {
+    "arabic": "جيب",
+    "example": "J’ai mis les clés dans ma poche.",
+    "exampleArabic": "وضعت المفاتيح في جيبي."
+  },
+  "pierre": {
+    "arabic": "حجر",
+    "example": "Une grosse pierre se trouve au milieu du chemin.",
+    "exampleArabic": "يوجد حجر كبير في وسط الطريق."
+  },
+  "taille": {
+    "arabic": "مقاس؛ حجم؛ طول",
+    "example": "Cette chemise n’est pas disponible dans ma taille.",
+    "exampleArabic": "هذا القميص غير متوفر بمقاسي."
+  },
+  "direction": {
+    "arabic": "اتجاه؛ إدارة",
+    "example": "Pouvez-vous m’indiquer la direction de la gare ?",
+    "exampleArabic": "هل يمكنك إرشادي إلى طريق المحطة؟"
+  },
+  "ton": {
+    "arabic": "نبرة؛ أسلوب",
+    "gender": "masculine",
+    "determiner": "Un",
+    "example": "Il a répondu sur un ton calme et respectueux.",
+    "exampleArabic": "أجاب بنبرة هادئة ومحترمة."
   }
 }

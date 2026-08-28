@@ -1,7 +1,6 @@
 import argparse
 import collections
 import json
-import re
 import unicodedata
 from pathlib import Path
 
@@ -10,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DICTIONARY = ROOT / "public" / "library" / "dictionary"
 OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION = ROOT / "scripts" / "library-expansion-verified.json"
+EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
 
 
 def normalize(value: str) -> str:
@@ -29,6 +29,7 @@ def main() -> None:
     expected_total = args.expected_total or manifest["total"]
     overrides = json.loads(OVERRIDES.read_text(encoding="utf-8"))
     expansion = json.loads(EXPANSION.read_text(encoding="utf-8")) if EXPANSION.exists() else []
+    corrections = json.loads(EXPANSION_CORRECTIONS.read_text(encoding="utf-8")) if EXPANSION_CORRECTIONS.exists() else {}
     curated = [entry for entry in entries if entry.get("exampleSource") == "Révision éditoriale"]
     duplicate_french = [
         text for text, count in collections.Counter(entry["example"] for entry in entries).items() if count > 1
@@ -59,26 +60,41 @@ def main() -> None:
     by_id = {entry["id"]: entry for entry in entries}
     normalized_words = [normalize(entry["word"]) for entry in entries]
     counts = collections.Counter(entry["letter"] for entry in entries)
+    expansion_keys = {normalize(entry["word"]) for entry in expansion}
     bad_letters = [
         entry["id"] for entry in entries
-        if entry.get("exampleSource") == "Révision lexicographique"
+        if normalize(entry["word"]) in expansion_keys
         and (not normalize(entry["word"]) or entry["letter"] != normalize(entry["word"])[0].upper())
     ]
     bad_sources = [
         entry["id"] for entry in entries
         if entry.get("exampleSource") not in {
-            "Tatoeba", "Équipe éditoriale", "Révision éditoriale", "Révision lexicographique"
+            "Tatoeba", "Équipe éditoriale", "Révision éditoriale", "Révision lexicographique", "Révision contextuelle"
         }
     ]
     base_changed = [
         entry_id for entry_id, values in overrides.items()
         if entry_id not in by_id or any(by_id[entry_id].get(key) != value for key, value in values.items())
     ]
-    expansion_keys = {normalize(entry["word"]) for entry in expansion}
     published_expansion = {
         normalize(entry["word"]) for entry in entries
-        if entry.get("exampleSource") == "Révision lexicographique"
+        if normalize(entry["word"]) in expansion_keys
     }
+    correction_keys = {normalize(word) for word in corrections}
+    contextual_entries = [entry for entry in entries if entry.get("exampleSource") == "Révision contextuelle"]
+    contextual_keys = {normalize(entry["word"]) for entry in contextual_entries}
+    correction_mismatches = [
+        word for word, values in corrections.items()
+        if normalize(word) not in {normalize(entry["word"]) for entry in contextual_entries}
+        or any(
+            next(entry for entry in contextual_entries if normalize(entry["word"]) == normalize(word)).get(field) != value
+            for field, value in values.items()
+        )
+    ]
+    bad_contextual_examples = [
+        entry["id"] for entry in contextual_entries
+        if entry["example"].startswith("Le nom «") or normalize(entry["word"]) not in normalize(entry["example"])
+    ]
 
     checks = {
         "total": len(entries) == expected_total == manifest["total"],
@@ -97,6 +113,11 @@ def main() -> None:
         "sources": not bad_sources,
         "expansion_count": len(published_expansion) == expected_total - 5000,
         "expansion_scope": published_expansion <= expansion_keys,
+        "contextual_batch_size": len(corrections) > 0 and len(corrections) % 50 == 0,
+        "contextual_scope": contextual_keys == correction_keys,
+        "contextual_values": not correction_mismatches,
+        "contextual_manifest": manifest.get("contextualExampleCount") == len(corrections),
+        "contextual_examples": not bad_contextual_examples,
         "manifest_search": len(manifest["search"]) == expected_total,
     }
 
@@ -122,6 +143,9 @@ def main() -> None:
         "badLetters": len(bad_letters),
         "badSources": len(bad_sources),
         "publishedExpansion": len(published_expansion),
+        "contextualReviewed": len(contextual_entries),
+        "correctionMismatches": len(correction_mismatches),
+        "badContextualExamples": len(bad_contextual_examples),
     }, ensure_ascii=False, indent=2))
     if not all(checks.values()):
         raise SystemExit(1)

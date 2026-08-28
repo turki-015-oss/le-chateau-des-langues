@@ -1,0 +1,254 @@
+{
+  "monde": {
+    "arabic": "عالم",
+    "example": "Le monde change rapidement grâce aux nouvelles technologies.",
+    "exampleArabic": "يتغير العالم بسرعة بفضل التقنيات الجديدة."
+  },
+  "an": {
+    "arabic": "عام؛ سنة",
+    "example": "Il y a un an, nous avons commencé à apprendre le français.",
+    "exampleArabic": "قبل عام بدأنا تعلّم الفرنسية."
+  },
+  "moment": {
+    "arabic": "لحظة؛ وقت قصير",
+    "example": "Attendez un moment, s’il vous plaît.",
+    "exampleArabic": "انتظر لحظة من فضلك."
+  },
+  "fils": {
+    "arabic": "ابن",
+    "example": "Leur fils étudie à l’université.",
+    "exampleArabic": "يدرس ابنهما في الجامعة."
+  },
+  "tête": {
+    "arabic": "رأس",
+    "example": "Elle porte un chapeau sur la tête.",
+    "exampleArabic": "ترتدي قبعة على رأسها."
+  },
+  "minute": {
+    "arabic": "دقيقة",
+    "example": "Le train part dans une minute.",
+    "exampleArabic": "ينطلق القطار بعد دقيقة."
+  },
+  "mort": {
+    "arabic": "ميت؛ متوفى",
+    "example": "La famille rend hommage au mort.",
+    "exampleArabic": "تكرّم العائلة المتوفى."
+  },
+  "année": {
+    "arabic": "سنة؛ عام",
+    "example": "Cette année, l’hiver a été particulièrement froid.",
+    "exampleArabic": "كان الشتاء شديد البرودة هذا العام."
+  },
+  "mari": {
+    "arabic": "زوج",
+    "example": "Son mari prépare le dîner ce soir.",
+    "exampleArabic": "يُعِدّ زوجها العشاء هذا المساء."
+  },
+  "porte": {
+    "arabic": "باب",
+    "example": "N’oubliez pas de fermer la porte.",
+    "exampleArabic": "لا تنسَ إغلاق الباب."
+  },
+  "genre": {
+    "arabic": "نوع؛ جنس",
+    "example": "Quel genre de musique préférez-vous ?",
+    "exampleArabic": "ما نوع الموسيقى الذي تفضّله؟"
+  },
+  "type": {
+    "arabic": "نوع؛ طراز",
+    "example": "Ce type de téléphone consomme peu d’énergie.",
+    "exampleArabic": "هذا النوع من الهواتف يستهلك قدرًا قليلًا من الطاقة."
+  },
+  "police": {
+    "arabic": "شرطة",
+    "example": "La police enquête sur l’accident.",
+    "exampleArabic": "تحقّق الشرطة في الحادث."
+  },
+  "cote": {
+    "arabic": "رمز تصنيف",
+    "example": "La cote inscrite sur le livre permet de le retrouver.",
+    "exampleArabic": "يتيح رمز التصنيف المكتوب على الكتاب العثور عليه."
+  },
+  "point": {
+    "arabic": "غرزة",
+    "example": "Elle fait un point de couture pour réparer la manche.",
+    "exampleArabic": "تقوم بغرزة خياطة لإصلاح الكمّ."
+  },
+  "salut": {
+    "arabic": "تحية؛ سلام",
+    "example": "Il m’a adressé un salut amical en entrant.",
+    "exampleArabic": "وجّه إليّ تحية ودية عند دخوله."
+  },
+  "place": {
+    "arabic": "مكان؛ مقعد؛ ساحة",
+    "example": "Cette place est réservée aux personnes âgées.",
+    "exampleArabic": "هذا المقعد مخصّص لكبار السن."
+  },
+  "corps": {
+    "arabic": "جسم",
+    "example": "L’exercice régulier renforce le corps.",
+    "exampleArabic": "تقوّي التمارين المنتظمة الجسم."
+  },
+  "suite": {
+    "arabic": "تكملة؛ بقية؛ متابعة",
+    "example": "La suite de l’histoire sera publiée demain.",
+    "exampleArabic": "ستُنشر بقية القصة غدًا."
+  },
+  "docteur": {
+    "arabic": "طبيب؛ دكتور",
+    "example": "Le docteur examine le patient avant de prescrire un traitement.",
+    "exampleArabic": "يفحص الطبيب حالة المريض قبل أن يصف له العلاج."
+  },
+  "bureau": {
+    "arabic": "مكتب",
+    "example": "Elle a laissé les documents sur son bureau.",
+    "exampleArabic": "تركت المستندات على مكتبها."
+  },
+  "plan": {
+    "arabic": "مخطط؛ خريطة؛ خطة",
+    "example": "Nous avons consulté le plan de la ville avant de partir.",
+    "exampleArabic": "اطّلعنا على خريطة المدينة قبل الانطلاق."
+  },
+  "parent": {
+    "arabic": "أحد الوالدين؛ وليّ أمر",
+    "example": "Chaque parent doit signer cette autorisation.",
+    "exampleArabic": "يجب على كل وليّ أمر توقيع هذا الإذن."
+  },
+  "capitaine": {
+    "arabic": "قبطان؛ نقيب",
+    "gender": "masculine",
+    "determiner": "Un",
+    "example": "Le capitaine donne ses ordres à l’équipage.",
+    "exampleArabic": "يصدر القبطان أوامره إلى الطاقم."
+  },
+  "service": {
+    "arabic": "خدمة",
+    "example": "Le service de livraison est disponible toute la semaine.",
+    "exampleArabic": "خدمة التوصيل متاحة طوال الأسبوع."
+  },
+  "ordre": {
+    "arabic": "ترتيب؛ نظام",
+    "example": "Les dossiers sont classés par ordre alphabétique.",
+    "exampleArabic": "الملفات مصنّفة حسب الترتيب الأبجدي."
+  },
+  "pied": {
+    "arabic": "قدم",
+    "example": "Il s’est blessé au pied pendant le match.",
+    "exampleArabic": "أُصيب في قدمه أثناء المباراة."
+  },
+  "sujet": {
+    "arabic": "موضوع",
+    "example": "Le professeur a présenté le sujet de la leçon.",
+    "exampleArabic": "عرض المعلّم موضوع الدرس."
+  },
+  "seconde": {
+    "arabic": "ثانية",
+    "example": "Il ne reste qu’une seconde avant la fin.",
+    "exampleArabic": "لم يتبقَّ سوى ثانية واحدة قبل النهاية."
+  },
+  "lit": {
+    "arabic": "سرير",
+    "example": "L’enfant s’est endormi dans son lit.",
+    "exampleArabic": "نام الطفل في سريره."
+  },
+  "avocat": {
+    "arabic": "محامٍ",
+    "example": "L’avocat défend son client devant le tribunal.",
+    "exampleArabic": "يدافع المحامي عن موكّله أمام المحكمة."
+  },
+  "roi": {
+    "arabic": "ملك",
+    "example": "Le roi a reçu les représentants étrangers au palais.",
+    "exampleArabic": "استقبل الملك الممثلين الأجانب في القصر."
+  },
+  "client": {
+    "arabic": "عميل؛ زبون",
+    "example": "Le serveur apporte le menu au client.",
+    "exampleArabic": "يحضر النادل قائمة الطعام للزبون."
+  },
+  "force": {
+    "arabic": "قوة",
+    "example": "Il faut de la force pour soulever cette caisse.",
+    "exampleArabic": "يلزم قدر من القوة لرفع هذا الصندوق."
+  },
+  "balle": {
+    "arabic": "كرة",
+    "example": "Le joueur lance la balle à son coéquipier.",
+    "exampleArabic": "يرمي اللاعب الكرة إلى زميله."
+  },
+  "effet": {
+    "arabic": "تأثير؛ مفعول",
+    "example": "Ce médicament commence à faire effet.",
+    "exampleArabic": "يبدأ مفعول هذا الدواء بالظهور."
+  },
+  "groupe": {
+    "arabic": "مجموعة؛ فريق",
+    "example": "Un groupe d’étudiants visite le musée.",
+    "exampleArabic": "تزور مجموعة من الطلاب المتحف."
+  },
+  "sens": {
+    "arabic": "معنى؛ دلالة",
+    "example": "Je ne comprends pas le sens de cette phrase.",
+    "exampleArabic": "لا أفهم معنى هذه الجملة."
+  },
+  "face": {
+    "arabic": "وجه؛ سطح",
+    "example": "Le masque couvre toute la face.",
+    "exampleArabic": "يغطي القناع الوجه بالكامل."
+  },
+  "pouvoir": {
+    "arabic": "سلطة؛ قدرة",
+    "example": "Le directeur a le pouvoir de prendre cette décision.",
+    "exampleArabic": "يملك المدير سلطة اتخاذ هذا القرار."
+  },
+  "bras": {
+    "arabic": "ذراع",
+    "example": "Elle porte son sac sous le bras.",
+    "exampleArabic": "تحمل حقيبتها تحت ذراعها."
+  },
+  "lettre": {
+    "arabic": "حرف؛ رسالة",
+    "example": "Le mot « école » commence par la lettre E.",
+    "exampleArabic": "تبدأ كلمة «école» بحرف E."
+  },
+  "patron": {
+    "arabic": "صاحب العمل؛ مدير",
+    "example": "Mon patron organise une réunion chaque lundi.",
+    "exampleArabic": "يعقد مدير عملي اجتماعًا كل يوم اثنين."
+  },
+  "clé": {
+    "arabic": "مفتاح",
+    "example": "J’ai oublié la clé de la maison dans la voiture.",
+    "exampleArabic": "نسيت مفتاح المنزل في السيارة."
+  },
+  "intérieur": {
+    "arabic": "داخل؛ جزء داخلي",
+    "example": "L’intérieur de la maison est lumineux et calme.",
+    "exampleArabic": "داخل المنزل مضيء وهادئ."
+  },
+  "voix": {
+    "arabic": "صوت",
+    "example": "Elle parle d’une voix douce et claire.",
+    "exampleArabic": "تتحدث بصوت هادئ وواضح."
+  },
+  "règle": {
+    "arabic": "مسطرة؛ قاعدة",
+    "example": "L’élève utilise une règle pour tracer une ligne droite.",
+    "exampleArabic": "يستخدم الطالب مسطرة لرسم خط مستقيم."
+  },
+  "mission": {
+    "arabic": "مهمة",
+    "example": "L’équipe a terminé sa mission avec succès.",
+    "exampleArabic": "أنهى الفريق مهمته بنجاح."
+  },
+  "bien": {
+    "arabic": "خير؛ منفعة",
+    "example": "Il essaie toujours de faire le bien autour de lui.",
+    "exampleArabic": "يحاول دائمًا فعل الخير من حوله."
+  },
+  "camp": {
+    "arabic": "مخيم؛ معسكر",
+    "example": "Les randonneurs installent leur camp près de la rivière.",
+    "exampleArabic": "يقيم المتنزّهون مخيمهم قرب النهر."
+  }
+}

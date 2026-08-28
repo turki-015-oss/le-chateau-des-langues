@@ -27,6 +27,7 @@ SOURCES = ROOT / ".tools" / "dictionary-sources"
 OUTPUT = ROOT / "public" / "library" / "dictionary"
 CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION_SOURCE = ROOT / "scripts" / "library-expansion-verified.json"
+EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
 BASE_COUNT = 5000
 MAX_COUNT = 10000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -359,6 +360,26 @@ def apply_curated_overrides(entries: list[dict], path: Path) -> int:
     return applied
 
 
+def apply_expansion_corrections(entries: list[dict], path: Path) -> int:
+    if not path.exists():
+        return 0
+    corrections = json.loads(path.read_text(encoding="utf-8"))
+    by_key = {normalize(entry["word"]): entry for entry in entries}
+    allowed_fields = {"arabic", "gender", "determiner", "example", "exampleArabic"}
+    applied = 0
+    for word, values in corrections.items():
+        entry = by_key.get(normalize(word))
+        if entry is None:
+            raise ValueError(f"Unknown expansion correction word: {word}")
+        unexpected = set(values) - allowed_fields
+        if unexpected:
+            raise ValueError(f"Unexpected correction fields for {word}: {sorted(unexpected)}")
+        entry.update(values)
+        entry["exampleSource"] = "Révision contextuelle"
+        applied += 1
+    return applied
+
+
 def make_id(entry: dict, seen: set[str]) -> str:
     base = re.sub(r"[^a-z0-9-]+", "-", normalize(entry["word"])).strip("-") or entry["letter"].lower()
     value = base
@@ -386,7 +407,7 @@ def validate(entries: list[dict], target_count: int) -> None:
     assert all(item.get("example") and item.get("exampleArabic") for item in counterparts)
 
 
-def write_output(entries: list[dict], natural_count: int, curated_count: int) -> None:
+def write_output(entries: list[dict], natural_count: int, curated_count: int, contextual_count: int) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     by_letter: dict[str, list[dict]] = {letter: [] for letter in LETTERS}
     for entry in entries:
@@ -413,6 +434,7 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int) ->
         "lexicographicExampleCount": sum(
             entry.get("exampleSource") == "Révision lexicographique" for entry in entries
         ),
+        "contextualExampleCount": contextual_count,
         "counts": counts,
         "search": search,
         "sources": [
@@ -421,6 +443,7 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int) ->
             {"name": "Tatoeba", "url": "https://tatoeba.org/", "use": "directly linked example sentences"},
             {"name": "Morphalou 3.1", "url": "https://www.ortolang.fr/market/lexicons/morphalou", "use": "verified noun lemmas and grammatical gender"},
             {"name": "Wiktionnaire (Kaikki)", "url": "https://kaikki.org/frwiktionary/Français/index.html", "use": "part of speech, definitions, pronunciation and cross-language senses"},
+            {"name": "Dictionnaire de l’Académie française", "url": "https://www.dictionnaire-academie.fr/", "use": "sense, grammatical gender and contextual review"},
         ],
     }
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
@@ -449,8 +472,10 @@ def main() -> None:
         entry["id"] = make_id(entry, seen_ids)
     curated_count = apply_curated_overrides(entries, CURATED_OVERRIDES)
     expansion_count = target_count - BASE_COUNT
+    contextual_count = 0
     if expansion_count:
         expansion = json.loads(EXPANSION_SOURCE.read_text(encoding="utf-8"))
+        contextual_count = apply_expansion_corrections(expansion, EXPANSION_CORRECTIONS)
         if len(expansion) < expansion_count:
             raise SystemExit(f"Only {len(expansion)} verified expansion entries are available")
         seen_keys = {entry["key"] for entry in entries}
@@ -473,11 +498,12 @@ def main() -> None:
         "tatoebaPairs": len(pairs),
         "naturalExamples": natural_count,
         "curatedExamples": curated_count,
+        "contextualExamples": contextual_count,
         "counts": counts,
         "first": entries[:3],
     }, ensure_ascii=True, indent=2))
     if not args.dry_run:
-        write_output(entries, natural_count, curated_count)
+        write_output(entries, natural_count, curated_count, contextual_count)
 
 
 if __name__ == "__main__":

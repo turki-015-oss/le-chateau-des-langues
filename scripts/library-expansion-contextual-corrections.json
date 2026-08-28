@@ -1006,5 +1006,505 @@
     "arabic": "مجال؛ نطاق",
     "example": "Elle possède une solide expérience dans le domaine médical.",
     "exampleArabic": "تمتلك خبرة قوية في المجال الطبي."
+  },
+  "principe": {
+    "arabic": "مبدأ؛ قاعدة",
+    "example": "Ce principe guide toutes les décisions de l’équipe.",
+    "exampleArabic": "يوجّه هذا المبدأ جميع قرارات الفريق."
+  },
+  "génération": {
+    "arabic": "جيل",
+    "example": "Cette génération utilise la technologie dès l’enfance.",
+    "exampleArabic": "يستخدم هذا الجيل التقنية منذ الطفولة."
+  },
+  "botte": {
+    "arabic": "جزمة؛ حذاء طويل",
+    "example": "Elle porte une botte imperméable à chaque pied.",
+    "exampleArabic": "ترتدي حذاءً طويلًا مقاومًا للماء في كل قدم."
+  },
+  "gloire": {
+    "arabic": "مجد؛ شهرة",
+    "example": "Ce scientifique ne recherche ni la gloire ni les honneurs.",
+    "exampleArabic": "لا يسعى هذا العالم إلى المجد ولا إلى التكريم."
+  },
+  "rang": {
+    "arabic": "صف؛ رتبة",
+    "example": "Les élèves s’assoient au premier rang.",
+    "exampleArabic": "يجلس الطلاب في الصف الأول."
+  },
+  "tribu": {
+    "arabic": "قبيلة",
+    "example": "La tribu transmet ses traditions aux jeunes générations.",
+    "exampleArabic": "تنقل القبيلة تقاليدها إلى الأجيال الشابة."
+  },
+  "man": {
+    "arabic": "يرقة خنفساء الجُعل",
+    "example": "Le man vit dans la terre avant de devenir un hanneton.",
+    "exampleArabic": "تعيش يرقة خنفساء الجُعل في التربة قبل اكتمال نموها."
+  },
+  "liquide": {
+    "arabic": "سائل",
+    "example": "Ce liquide transparent doit être conservé au frais.",
+    "exampleArabic": "يجب حفظ هذا السائل الشفاف في مكان بارد."
+  },
+  "rosé": {
+    "arabic": "نبيذ وردي",
+    "example": "Le rosé doit sa couleur au contact bref avec la peau du raisin.",
+    "exampleArabic": "يكتسب النبيذ الوردي لونه من ملامسة قصيرة لقشور العنب."
+  },
+  "sauce": {
+    "arabic": "صلصة",
+    "example": "Le cuisinier prépare une sauce légère pour le poisson.",
+    "exampleArabic": "يحضّر الطاهي صلصة خفيفة للسمك."
+  },
+  "attitude": {
+    "arabic": "موقف؛ سلوك؛ هيئة",
+    "example": "Son attitude calme rassure les autres passagers.",
+    "exampleArabic": "يطمئن سلوكه الهادئ بقية المسافرين."
+  },
+  "salade": {
+    "arabic": "سلطة",
+    "example": "La salade contient des tomates et des concombres frais.",
+    "exampleArabic": "تحتوي السلطة على طماطم وخيار طازجين."
+  },
+  "canon": {
+    "arabic": "مدفع",
+    "example": "L’ancien canon est exposé dans le musée militaire.",
+    "exampleArabic": "يُعرض المدفع القديم في المتحف العسكري."
+  },
+  "van": {
+    "arabic": "سلة غربلة الحبوب؛ مِنْسَف",
+    "example": "Le cultivateur utilise un van pour séparer le grain de la paille.",
+    "exampleArabic": "يستخدم المزارع سلة غربلة لفصل الحبوب عن القش."
+  },
+  "vanne": {
+    "arabic": "صمام؛ بوابة تحكم",
+    "example": "Le technicien ferme la vanne pour arrêter l’écoulement.",
+    "exampleArabic": "يغلق الفني الصمام لإيقاف التدفق."
+  },
+  "sommet": {
+    "arabic": "قمة",
+    "example": "Les alpinistes atteignent le sommet avant midi.",
+    "exampleArabic": "يصل متسلقو الجبال إلى القمة قبل الظهر."
+  },
+  "hôte": {
+    "arabic": "مضيف؛ ضيف",
+    "example": "Notre hôte nous accueille chaleureusement à notre arrivée.",
+    "exampleArabic": "يستقبلنا مضيفنا بحرارة عند وصولنا."
+  },
+  "expression": {
+    "arabic": "تعبير؛ عبارة",
+    "example": "Cette expression française est fréquente dans la conversation.",
+    "exampleArabic": "هذا التعبير الفرنسي شائع في المحادثة."
+  },
+  "alibi": {
+    "arabic": "حجة غياب؛ دليل وجود في مكان آخر",
+    "example": "Le témoin confirme l’alibi du suspect.",
+    "exampleArabic": "يؤكد الشاهد حجة غياب المشتبه به."
+  },
+  "flamme": {
+    "arabic": "لهب؛ شعلة",
+    "example": "La flamme de la bougie vacille dans le vent.",
+    "exampleArabic": "يهتز لهب الشمعة في الريح."
+  },
+  "souris": {
+    "arabic": "فأرة؛ فأرة حاسوب",
+    "example": "La souris se cache derrière l’armoire.",
+    "exampleArabic": "تختبئ الفأرة خلف الخزانة."
+  },
+  "ouverture": {
+    "arabic": "افتتاح؛ فتحة؛ انفتاح",
+    "example": "L’ouverture du nouveau centre est prévue lundi.",
+    "exampleArabic": "من المقرر افتتاح المركز الجديد يوم الاثنين."
+  },
+  "aube": {
+    "arabic": "فجر",
+    "example": "Les oiseaux commencent à chanter dès l’aube.",
+    "exampleArabic": "تبدأ الطيور بالغناء منذ الفجر."
+  },
+  "plateau": {
+    "arabic": "صينية؛ منصة؛ هضبة",
+    "example": "Le serveur pose le plateau sur la table.",
+    "exampleArabic": "يضع النادل الصينية على الطاولة."
+  },
+  "compétition": {
+    "arabic": "منافسة؛ مسابقة",
+    "example": "La compétition réunit des athlètes de plusieurs pays.",
+    "exampleArabic": "تجمع المنافسة رياضيين من عدة دول."
+  },
+  "commission": {
+    "arabic": "لجنة؛ عمولة",
+    "example": "La commission examine le projet avant de voter.",
+    "exampleArabic": "تدرس اللجنة المشروع قبل التصويت."
+  },
+  "micro": {
+    "arabic": "ميكروفون؛ مكبّر صوت",
+    "example": "Le journaliste approche le micro de l’invité.",
+    "exampleArabic": "يقرّب الصحفي الميكروفون من الضيف."
+  },
+  "cap": {
+    "arabic": "رأس بحري؛ اتجاه",
+    "example": "Le navire contourne le cap avant d’entrer au port.",
+    "exampleArabic": "تلتف السفينة حول الرأس البحري قبل دخول الميناء."
+  },
+  "hauteur": {
+    "arabic": "ارتفاع؛ علو",
+    "example": "La hauteur de cette tour dépasse cinquante mètres.",
+    "exampleArabic": "يتجاوز ارتفاع هذا البرج خمسين مترًا."
+  },
+  "vague": {
+    "arabic": "موجة",
+    "example": "Une grande vague frappe le bord du bateau.",
+    "exampleArabic": "تضرب موجة كبيرة جانب القارب."
+  },
+  "panne": {
+    "arabic": "عطل",
+    "example": "Une panne électrique a interrompu le service.",
+    "exampleArabic": "أوقف عطل كهربائي الخدمة."
+  },
+  "goutte": {
+    "arabic": "قطرة",
+    "example": "Une goutte de pluie tombe sur la vitre.",
+    "exampleArabic": "تسقط قطرة مطر على الزجاج."
+  },
+  "clef": {
+    "arabic": "مفتاح",
+    "example": "Cette clef ouvre la porte de la bibliothèque.",
+    "exampleArabic": "يفتح هذا المفتاح باب المكتبة."
+  },
+  "adaptation": {
+    "arabic": "تكيّف؛ اقتباس",
+    "example": "L’adaptation au nouveau climat demande du temps.",
+    "exampleArabic": "يحتاج التكيّف مع المناخ الجديد إلى وقت."
+  },
+  "min": {
+    "arabic": "لغة مين الصينية",
+    "example": "Le min regroupe plusieurs variétés linguistiques du sud-est de la Chine.",
+    "exampleArabic": "تضم لغة مين عدة تنوعات لغوية في جنوب شرق الصين."
+  },
+  "pompe": {
+    "arabic": "مضخة",
+    "example": "La pompe envoie l’eau vers le réservoir.",
+    "exampleArabic": "تدفع المضخة الماء نحو الخزان."
+  },
+  "froid": {
+    "arabic": "برد؛ برودة",
+    "example": "Le froid devient intense après le coucher du soleil.",
+    "exampleArabic": "يشتد البرد بعد غروب الشمس."
+  },
+  "écrivain": {
+    "arabic": "كاتب",
+    "example": "Cet écrivain publie un nouveau roman chaque année.",
+    "exampleArabic": "ينشر هذا الكاتب رواية جديدة كل عام."
+  },
+  "mille": {
+    "arabic": "ألف",
+    "example": "Mille personnes ont assisté au concert.",
+    "exampleArabic": "حضر الحفل ألف شخص."
+  },
+  "sous-sol": {
+    "arabic": "طابق سفلي؛ قبو",
+    "example": "Les archives sont conservées au sous-sol du bâtiment.",
+    "exampleArabic": "تُحفظ السجلات في الطابق السفلي من المبنى."
+  },
+  "caractère": {
+    "arabic": "طبع؛ شخصية؛ رمز",
+    "example": "Elle a un caractère calme mais déterminé.",
+    "exampleArabic": "تتمتع بطبع هادئ لكنه حازم."
+  },
+  "promotion": {
+    "arabic": "ترقية؛ عرض ترويجي؛ دفعة",
+    "example": "Sa promotion au poste de directeur prend effet lundi.",
+    "exampleArabic": "تدخل ترقيته إلى منصب المدير حيز التنفيذ يوم الاثنين."
+  },
+  "zombie": {
+    "arabic": "زومبي؛ ميت حي",
+    "example": "Le zombie avance lentement dans le film fantastique.",
+    "exampleArabic": "يتقدم الزومبي ببطء في الفيلم الخيالي."
+  },
+  "file": {
+    "arabic": "طابور؛ صف",
+    "example": "Une longue file se forme devant la billetterie.",
+    "exampleArabic": "يتشكل طابور طويل أمام شباك التذاكر."
+  },
+  "phase": {
+    "arabic": "مرحلة؛ طور",
+    "example": "Le projet entre dans sa dernière phase.",
+    "exampleArabic": "يدخل المشروع مرحلته الأخيرة."
+  },
+  "collection": {
+    "arabic": "مجموعة؛ تشكيلة",
+    "example": "Le musée présente une collection de pièces anciennes.",
+    "exampleArabic": "يعرض المتحف مجموعة من القطع القديمة."
+  },
+  "bol": {
+    "arabic": "وعاء؛ زبدية",
+    "example": "Il verse la soupe chaude dans un bol.",
+    "exampleArabic": "يسكب الحساء الساخن في وعاء."
+  },
+  "pouce": {
+    "arabic": "إبهام؛ بوصة",
+    "example": "Il s’est blessé au pouce en fermant la porte.",
+    "exampleArabic": "أصاب إبهامه أثناء إغلاق الباب."
+  },
+  "commentaire": {
+    "arabic": "تعليق؛ ملاحظة",
+    "example": "Le professeur ajoute un commentaire sous la réponse.",
+    "exampleArabic": "يضيف الأستاذ تعليقًا أسفل الإجابة."
+  },
+  "tendance": {
+    "arabic": "اتجاه؛ نزعة؛ صيحة",
+    "example": "Cette tendance se confirme dans les résultats récents.",
+    "exampleArabic": "يتأكد هذا الاتجاه في النتائج الأخيرة."
+  },
+  "ministère": {
+    "arabic": "وزارة",
+    "example": "Le ministère publie de nouvelles directives sanitaires.",
+    "exampleArabic": "تنشر الوزارة إرشادات صحية جديدة."
+  },
+  "combinaison": {
+    "arabic": "تركيبة؛ مجموعة؛ بدلة",
+    "example": "Cette combinaison de chiffres ouvre le coffre.",
+    "exampleArabic": "تفتح هذه التركيبة من الأرقام الخزنة."
+  },
+  "révolution": {
+    "arabic": "ثورة؛ تحول جذري",
+    "example": "La révolution industrielle a transformé les méthodes de production.",
+    "exampleArabic": "غيّرت الثورة الصناعية أساليب الإنتاج."
+  },
+  "bouclier": {
+    "arabic": "درع؛ ترس",
+    "example": "Le soldat se protège derrière son bouclier.",
+    "exampleArabic": "يحتمي الجندي خلف درعه."
+  },
+  "conflit": {
+    "arabic": "نزاع؛ صراع",
+    "example": "La médiation aide les deux parties à résoudre le conflit.",
+    "exampleArabic": "تساعد الوساطة الطرفين على حل النزاع."
+  },
+  "rage": {
+    "arabic": "غضب شديد؛ داء الكلب",
+    "example": "Il tremble de rage après avoir découvert la tromperie.",
+    "exampleArabic": "يرتجف من شدة الغضب بعد اكتشاف الخداع."
+  },
+  "poursuite": {
+    "arabic": "مطاردة؛ متابعة",
+    "example": "La poursuite policière se termine sans blessé.",
+    "exampleArabic": "تنتهي المطاردة الشرطية من دون إصابات."
+  },
+  "malin": {
+    "arabic": "شخص ماكر؛ داهية",
+    "example": "Ce malin trouve toujours une solution inattendue.",
+    "exampleArabic": "يجد هذا الداهية دائمًا حلًا غير متوقع."
+  },
+  "quart": {
+    "arabic": "رُبع",
+    "example": "Il reste un quart du gâteau dans le réfrigérateur.",
+    "exampleArabic": "بقي ربع الكعكة في الثلاجة."
+  },
+  "cookie": {
+    "arabic": "ملف تعريف ارتباط؛ كعكة صغيرة",
+    "example": "Le navigateur enregistre un cookie pour mémoriser vos préférences.",
+    "exampleArabic": "يحفظ المتصفح ملف تعريف ارتباط لتذكّر تفضيلاتك."
+  },
+  "culpabilité": {
+    "arabic": "شعور بالذنب؛ إدانة",
+    "example": "La culpabilité l’empêche de dormir tranquillement.",
+    "exampleArabic": "يمنعه الشعور بالذنب من النوم بهدوء."
+  },
+  "veille": {
+    "arabic": "عشية؛ اليوم السابق؛ مراقبة",
+    "example": "La veille de l’examen, elle relit toutes ses notes.",
+    "exampleArabic": "في اليوم السابق للاختبار، تعيد قراءة جميع ملاحظاتها."
+  },
+  "assiette": {
+    "arabic": "طبق",
+    "example": "Le serveur apporte une assiette de légumes grillés.",
+    "exampleArabic": "يحضر النادل طبقًا من الخضروات المشوية."
+  },
+  "portée": {
+    "arabic": "مدى؛ نطاق؛ دلالة",
+    "example": "La portée de ce signal ne dépasse pas dix kilomètres.",
+    "exampleArabic": "لا يتجاوز مدى هذه الإشارة عشرة كيلومترات."
+  },
+  "processus": {
+    "arabic": "عملية؛ مسار",
+    "example": "Le processus de recrutement comprend trois entretiens.",
+    "exampleArabic": "تتضمن عملية التوظيف ثلاث مقابلات."
+  },
+  "lame": {
+    "arabic": "شفرة؛ نصل",
+    "example": "La lame du couteau doit être nettoyée après usage.",
+    "exampleArabic": "يجب تنظيف نصل السكين بعد الاستخدام."
+  },
+  "mannequin": {
+    "arabic": "عارضة أزياء؛ دمية عرض",
+    "example": "La mannequin présente une robe de la nouvelle collection.",
+    "exampleArabic": "تعرض عارضة الأزياء فستانًا من التشكيلة الجديدة."
+  },
+  "arrangement": {
+    "arabic": "ترتيب؛ اتفاق؛ تنسيق",
+    "example": "Nous avons trouvé un arrangement acceptable pour tous.",
+    "exampleArabic": "توصلنا إلى ترتيب مقبول للجميع."
+  },
+  "barbe": {
+    "arabic": "لحية",
+    "example": "Il taille sa barbe devant le miroir.",
+    "exampleArabic": "يهذّب لحيته أمام المرآة."
+  },
+  "rupture": {
+    "arabic": "انقطاع؛ كسر؛ انفصال",
+    "example": "Une rupture de canalisation a coupé l’eau dans le quartier.",
+    "exampleArabic": "أدى انكسار أنبوب إلى انقطاع المياه عن الحي."
+  },
+  "carton": {
+    "arabic": "كرتون؛ صندوق كرتوني",
+    "example": "Elle range les livres dans un grand carton.",
+    "exampleArabic": "ترتب الكتب في صندوق كرتوني كبير."
+  },
+  "poignée": {
+    "arabic": "مقبض؛ حفنة",
+    "example": "La poignée de la porte doit être réparée.",
+    "exampleArabic": "يحتاج مقبض الباب إلى إصلاح."
+  },
+  "culotte": {
+    "arabic": "سروال داخلي؛ سروال قصير",
+    "example": "L’enfant met une culotte propre après le bain.",
+    "exampleArabic": "يرتدي الطفل سروالًا داخليًا نظيفًا بعد الاستحمام."
+  },
+  "impact": {
+    "arabic": "أثر؛ تأثير؛ موضع اصطدام",
+    "example": "Cette décision aura un impact durable sur l’environnement.",
+    "exampleArabic": "سيكون لهذا القرار أثر طويل الأمد على البيئة."
+  },
+  "do": {
+    "arabic": "دو (نغمة موسيقية)",
+    "example": "Le do est la première note de cette gamme.",
+    "exampleArabic": "نغمة دو هي النغمة الأولى في هذا السلم الموسيقي."
+  },
+  "anneau": {
+    "arabic": "حلقة؛ خاتم",
+    "example": "Un anneau métallique relie les deux chaînes.",
+    "exampleArabic": "تربط حلقة معدنية بين السلسلتين."
+  },
+  "trahison": {
+    "arabic": "خيانة",
+    "example": "Il considère la divulgation du secret comme une trahison.",
+    "exampleArabic": "يعد إفشاء السر خيانة."
+  },
+  "colombe": {
+    "arabic": "حمامة",
+    "example": "Une colombe blanche se pose sur le balcon.",
+    "exampleArabic": "تحط حمامة بيضاء على الشرفة."
+  },
+  "association": {
+    "arabic": "جمعية؛ رابطة؛ اقتران",
+    "example": "Cette association soutient les familles en difficulté.",
+    "exampleArabic": "تدعم هذه الجمعية الأسر المحتاجة."
+  },
+  "bouc": {
+    "arabic": "تيس",
+    "example": "Le bouc grimpe sur les rochers avec agilité.",
+    "exampleArabic": "يتسلق التيس الصخور بخفة."
+  },
+  "héritage": {
+    "arabic": "ميراث؛ إرث",
+    "example": "Ce monument fait partie de notre héritage culturel.",
+    "exampleArabic": "يشكّل هذا المعلم جزءًا من إرثنا الثقافي."
+  },
+  "conducteur": {
+    "arabic": "سائق؛ موصّل",
+    "example": "Le conducteur ralentit à l’approche de l’école.",
+    "exampleArabic": "يخفف السائق السرعة عند الاقتراب من المدرسة."
+  },
+  "volant": {
+    "arabic": "مقود؛ عجلة قيادة",
+    "example": "Le conducteur tient le volant à deux mains.",
+    "exampleArabic": "يمسك السائق المقود بكلتا يديه."
+  },
+  "demoiselle": {
+    "arabic": "آنسة؛ شابة",
+    "example": "Une demoiselle demande un renseignement à l’accueil.",
+    "exampleArabic": "تطلب شابة معلومة من مكتب الاستقبال."
+  },
+  "mobile": {
+    "arabic": "دافع؛ سبب",
+    "example": "Les enquêteurs cherchent le mobile du crime.",
+    "exampleArabic": "يبحث المحققون عن دافع الجريمة."
+  },
+  "menu": {
+    "arabic": "قائمة طعام؛ قائمة خيارات",
+    "example": "Le menu propose plusieurs plats végétariens.",
+    "exampleArabic": "تقدم قائمة الطعام عدة أطباق نباتية."
+  },
+  "drap": {
+    "arabic": "ملاءة؛ شرشف",
+    "example": "Le personnel change le drap du lit chaque matin.",
+    "exampleArabic": "يغيّر الموظفون ملاءة السرير كل صباح."
+  },
+  "calcul": {
+    "arabic": "حساب؛ عملية حسابية",
+    "example": "Ce calcul permet d’estimer le coût total.",
+    "exampleArabic": "تتيح هذه العملية الحسابية تقدير التكلفة الإجمالية."
+  },
+  "jet": {
+    "arabic": "نفث؛ دفق؛ طائرة نفاثة",
+    "example": "Un jet d’eau jaillit de la fontaine.",
+    "exampleArabic": "يندفع دفق من الماء من النافورة."
+  },
+  "couronne": {
+    "arabic": "تاج؛ إكليل",
+    "example": "La couronne est conservée dans une vitrine sécurisée.",
+    "exampleArabic": "يُحفظ التاج في خزانة عرض مؤمّنة."
+  },
+  "cheville": {
+    "arabic": "كاحل؛ وتد تثبيت",
+    "example": "Le joueur s’est blessé à la cheville pendant le match.",
+    "exampleArabic": "أصيب اللاعب في كاحله أثناء المباراة."
+  },
+  "branche": {
+    "arabic": "غصن؛ فرع",
+    "example": "Un oiseau construit son nid sur une branche.",
+    "exampleArabic": "يبني طائر عشه على غصن."
+  },
+  "manager": {
+    "arabic": "مدير",
+    "example": "Le manager organise la réunion de son équipe.",
+    "exampleArabic": "ينظم المدير اجتماع فريقه."
+  },
+  "flèche": {
+    "arabic": "سهم",
+    "example": "La flèche indique la sortie la plus proche.",
+    "exampleArabic": "يشير السهم إلى أقرب مخرج."
+  },
+  "compétence": {
+    "arabic": "مهارة؛ كفاءة؛ اختصاص",
+    "example": "La communication est une compétence essentielle dans ce métier.",
+    "exampleArabic": "التواصل مهارة أساسية في هذه المهنة."
+  },
+  "vitre": {
+    "arabic": "لوح زجاج؛ زجاج نافذة",
+    "example": "La pluie laisse des traces sur la vitre.",
+    "exampleArabic": "يترك المطر آثارًا على زجاج النافذة."
+  },
+  "orangé": {
+    "arabic": "لون برتقالي",
+    "example": "L’orangé du ciel annonce le coucher du soleil.",
+    "exampleArabic": "ينذر اللون البرتقالي في السماء بغروب الشمس."
+  },
+  "enveloppe": {
+    "arabic": "ظرف؛ غلاف",
+    "example": "Elle glisse la lettre dans une enveloppe blanche.",
+    "exampleArabic": "تضع الرسالة في ظرف أبيض."
+  },
+  "administration": {
+    "arabic": "إدارة؛ جهاز إداري",
+    "example": "L’administration traite les demandes dans un délai de cinq jours.",
+    "exampleArabic": "تعالج الإدارة الطلبات خلال خمسة أيام."
+  },
+  "papillon": {
+    "arabic": "فراشة",
+    "example": "Un papillon coloré se pose sur la fleur.",
+    "exampleArabic": "تحط فراشة ملوّنة على الزهرة."
   }
 }

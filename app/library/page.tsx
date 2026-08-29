@@ -13,8 +13,30 @@ import "./library.css";
 
 const bookPalette = ["burgundy", "emerald", "navy", "sienna", "plum", "forest", "oxblood"];
 
-function normalize(value: string) {
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").trim();
+function normalizeSearchText(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed]/g, "")
+    .replace(/\u0640/g, "")
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ؤ/g, "و")
+    .replace(/ئ/g, "ي")
+    .replace(/[’‘`]/g, "'")
+    .replace(/\s+/g, " ")
+    .toLocaleLowerCase("fr")
+    .trim();
+}
+
+function searchRank(value: string | undefined, needle: string) {
+  if (!value) return null;
+  const normalized = normalizeSearchText(value);
+  if (!normalized) return null;
+  if (normalized === needle) return 0;
+  if (normalized.startsWith(needle)) return 1;
+  if (normalized.split(/[\s'’.-]+/).some((part) => part.startsWith(needle))) return 2;
+  if (normalized.includes(needle)) return 3;
+  return null;
 }
 
 function selectFrenchVoice() {
@@ -48,6 +70,7 @@ export default function LibraryPage() {
   const [loadingLetter, setLoadingLetter] = useState(false);
   const [dictionaryError, setDictionaryError] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
+  const wordListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadDictionaryManifest()
@@ -56,11 +79,35 @@ export default function LibraryPage() {
   }, []);
 
   const searchResults = useMemo(() => {
-    const needle = normalize(query);
+    const needle = normalizeSearchText(query);
     if (!needle) return [];
-    return (manifest?.search ?? []).filter((entry) =>
-      normalize(entry.word).includes(needle) || entry.arabic.includes(query.trim()),
-    ).slice(0, 12);
+
+    return (manifest?.search ?? [])
+      .map((entry) => {
+        const primaryRanks = [searchRank(entry.word, needle), searchRank(entry.arabic, needle)]
+          .filter((rank): rank is number => rank !== null);
+        const nationalityRanks = [
+          searchRank(entry.nationality?.masculine, needle),
+          searchRank(entry.nationality?.feminine, needle),
+        ].filter((rank): rank is number => rank !== null);
+
+        const primaryRank = primaryRanks.length ? Math.min(...primaryRanks) : null;
+        const nationalityRank = nationalityRanks.length ? Math.min(...nationalityRanks) : null;
+        if (primaryRank === null && nationalityRank === null) return null;
+
+        return {
+          entry,
+          rank: primaryRank ?? 4 + (nationalityRank ?? 0),
+        };
+      })
+      .filter((result): result is { entry: DictionaryManifest["search"][number]; rank: number } => result !== null)
+      .sort((left, right) =>
+        left.rank - right.rank
+        || left.entry.word.length - right.entry.word.length
+        || left.entry.word.localeCompare(right.entry.word, "fr"),
+      )
+      .slice(0, 12)
+      .map(({ entry }) => entry);
   }, [manifest, query]);
 
   const openBook = (letter: string, wordId?: string) => {
@@ -98,7 +145,16 @@ export default function LibraryPage() {
 
   useEffect(() => {
     if (!activeWord) return;
-    window.setTimeout(() => document.getElementById(`library-word-${activeWord}`)?.scrollIntoView({ block: "start", behavior: "smooth" }), 180);
+    const timeout = window.setTimeout(() => {
+      const list = wordListRef.current;
+      const target = document.getElementById(`library-word-${activeWord}`);
+      if (!list || !target) return;
+
+      const targetTop = target.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop;
+      list.scrollTop = Math.max(0, targetTop - 8);
+    }, 180);
+
+    return () => window.clearTimeout(timeout);
   }, [activeWord, activeLetter]);
 
   useEffect(() => {
@@ -219,7 +275,7 @@ export default function LibraryPage() {
                 <span>LES MOTS</span>
                 <b>{activeLetter}</b>
               </header>
-              <div className="dictionary-word-list">
+              <div className="dictionary-word-list" ref={wordListRef}>
                 {activeEntries.length ? activeEntries.map((entry) => (
                   <article
                     id={`library-word-${entry.id}`}
@@ -238,6 +294,24 @@ export default function LibraryPage() {
                       )}
                       {entry.ipa && <span className="dictionary-ipa" lang="fr">/{entry.ipa}/</span>}
                       <strong>{entry.arabic}</strong>
+                      {entry.countryTopic && entry.article && entry.preposition && entry.nationality && (
+                        <dl className="dictionary-country-details">
+                          <div>
+                            <dt>أداة التعريف</dt>
+                            <dd lang="fr">
+                              {entry.article === "sans article" ? entry.article : `${entry.article}${entry.article === "l’" ? "" : " "}${entry.word}`}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>الاستعمال مع حرف الجر</dt>
+                            <dd lang="fr">{entry.preposition}</dd>
+                          </div>
+                          <div>
+                            <dt>الجنسية</dt>
+                            <dd lang="fr">{entry.nationality.masculine} · {entry.nationality.feminine}</dd>
+                          </div>
+                        </dl>
+                      )}
                       <p lang="fr">{entry.example}</p>
                       <small>{entry.exampleArabic}</small>
                       <div className="dictionary-audio-actions">

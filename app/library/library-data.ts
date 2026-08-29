@@ -8,6 +8,10 @@ export type DictionarySearchEntry = {
   gender?: GrammaticalGender;
   determiner?: "Un" | "Une";
   grammarLabel?: string;
+  nationality?: {
+    masculine: string;
+    feminine: string;
+  };
 };
 
 export type DictionaryEntry = DictionarySearchEntry & {
@@ -16,6 +20,9 @@ export type DictionaryEntry = DictionarySearchEntry & {
   exampleArabic: string;
   partOfSpeech?: string;
   directionTopic?: boolean;
+  countryTopic?: boolean;
+  article?: "le" | "la" | "l’" | "les" | "sans article";
+  preposition?: string;
   exampleSource: "Tatoeba" | "Équipe éditoriale" | "Révision éditoriale" | "Révision lexicographique" | "Révision contextuelle" | "Révision thématique";
   counterpart?: {
     word: string;
@@ -35,6 +42,8 @@ export type DictionaryManifest = {
   lexicographicExampleCount?: number;
   contextualExampleCount?: number;
   directionEntryCount?: number;
+  countryEntryCount?: number;
+  countryAddedCount?: number;
   counts: Record<string, number>;
   search: DictionarySearchEntry[];
   sources: Array<{ name: string; url: string; use: string }>;

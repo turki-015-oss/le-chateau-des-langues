@@ -11,6 +11,7 @@ OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION = ROOT / "scripts" / "library-expansion-verified.json"
 EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
 DIRECTION_ENTRIES = ROOT / "scripts" / "library-direction-entries.json"
+COUNTRY_ENTRIES = ROOT / "scripts" / "library-country-entries.json"
 
 
 def normalize(value: str) -> str:
@@ -32,6 +33,7 @@ def main() -> None:
     expansion = json.loads(EXPANSION.read_text(encoding="utf-8")) if EXPANSION.exists() else []
     corrections = json.loads(EXPANSION_CORRECTIONS.read_text(encoding="utf-8")) if EXPANSION_CORRECTIONS.exists() else {}
     directions = json.loads(DIRECTION_ENTRIES.read_text(encoding="utf-8")) if DIRECTION_ENTRIES.exists() else []
+    countries = json.loads(COUNTRY_ENTRIES.read_text(encoding="utf-8")) if COUNTRY_ENTRIES.exists() else []
     curated = [entry for entry in entries if entry.get("exampleSource") == "Révision éditoriale"]
     duplicate_french = [
         text for text, count in collections.Counter(entry["example"] for entry in entries).items() if count > 1
@@ -61,7 +63,10 @@ def main() -> None:
     ]
     curated_by_letter = collections.Counter(entry["letter"] for entry in curated)
     by_id = {entry["id"]: entry for entry in entries}
-    normalized_words = [normalize(entry["word"]) for entry in entries]
+    normalized_words = [
+        f"{normalize(entry['word'])}::country" if entry.get("countryTopic") else normalize(entry["word"])
+        for entry in entries
+    ]
     counts = collections.Counter(entry["letter"] for entry in entries)
     expansion_keys = {normalize(entry["word"]) for entry in expansion}
     bad_letters = [
@@ -114,6 +119,31 @@ def main() -> None:
         if normalize(entry["word"]) not in normalize(entry["example"])
         or not entry.get("exampleArabic")
     ]
+    country_keys = {normalize(entry["word"]) for entry in countries}
+    published_countries = [entry for entry in entries if entry.get("countryTopic")]
+    published_country_by_key = {normalize(entry["word"]): entry for entry in published_countries}
+    country_mismatches = [
+        source["word"] for source in countries
+        if normalize(source["word"]) not in published_country_by_key
+        or any(
+            published_country_by_key[normalize(source["word"])].get(field) != value
+            for field, value in source.items()
+            if field in {"word", "arabic", "partOfSpeech", "grammarLabel", "article", "preposition", "nationality"}
+        )
+    ]
+    bad_country_examples = [
+        entry["id"] for entry in published_countries
+        if normalize(entry["word"]) not in normalize(entry["example"])
+        or not entry.get("exampleArabic")
+    ]
+    bad_country_metadata = [
+        entry["id"] for entry in published_countries
+        if entry.get("grammarLabel") not in {"Masculin", "Féminin", "Masculin pluriel", "Féminin pluriel"}
+        or entry.get("article") not in {"le", "la", "l’", "les", "sans article"}
+        or not entry.get("preposition")
+        or not entry.get("nationality", {}).get("masculine")
+        or not entry.get("nationality", {}).get("feminine")
+    ]
 
     checks = {
         "total": len(entries) == expected_total == manifest["total"],
@@ -130,7 +160,9 @@ def main() -> None:
         "base_unchanged": not base_changed,
         "letters": not bad_letters,
         "sources": not bad_sources,
-        "expansion_count": len(published_expansion) == expected_total - 5000 - len(directions),
+        "expansion_count": len(published_expansion) == (
+            expected_total - 5000 - len(directions) - manifest.get("countryAddedCount", 0)
+        ),
         "expansion_scope": published_expansion <= expansion_keys,
         "contextual_batch_size": len(corrections) > 0 and len(corrections) % 100 == 0,
         "contextual_scope": contextual_keys == correction_keys,
@@ -141,6 +173,14 @@ def main() -> None:
         "direction_values": not direction_mismatches,
         "direction_examples": not bad_direction_examples,
         "direction_manifest": manifest.get("directionEntryCount") == len(directions),
+        "country_scope": {normalize(entry["word"]) for entry in published_countries} == country_keys,
+        "country_values": not country_mismatches,
+        "country_examples": not bad_country_examples,
+        "country_metadata": not bad_country_metadata,
+        "country_manifest": manifest.get("countryEntryCount") == len(countries) == 195,
+        "country_additions_manifest": manifest.get("countryAddedCount") == (
+            expected_total - 5000 - len(directions) - len(published_expansion)
+        ),
         "manifest_search": len(manifest["search"]) == expected_total,
     }
 
@@ -172,6 +212,10 @@ def main() -> None:
         "directionEntries": len(published_directions),
         "directionMismatches": len(direction_mismatches),
         "badDirectionExamples": len(bad_direction_examples),
+        "countryEntries": len(published_countries),
+        "countryMismatches": len(country_mismatches),
+        "badCountryExamples": len(bad_country_examples),
+        "badCountryMetadata": len(bad_country_metadata),
     }, ensure_ascii=False, indent=2))
     if not all(checks.values()):
         raise SystemExit(1)

@@ -14,6 +14,7 @@
 .dictionary-gender.feminine{border-color:#a56d71;background:#f6ded9;color:#7a4147!important}
 .dictionary-gender.thematic{border-color:#5f7d65;background:#e3eee1;color:#31533a!important}
 .dictionary-ipa{display:inline-block!important;direction:ltr;margin:0 7px 7px 0!important;color:#7c654b!important;font:12px/1.25 "Segoe UI",sans-serif!important;letter-spacing:.04em}
+.dictionary-country-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0 12px;direction:rtl}.dictionary-country-details>div{min-width:0;padding:8px 9px;border:1px solid #a87a3e55;border-radius:9px;background:#fff6dc80}.dictionary-country-details dt{color:#806541;font-size:10px;line-height:1.35}.dictionary-country-details dd{margin:3px 0 0;direction:ltr;color:#563420;font:600 12px/1.35 Georgia,serif;overflow-wrap:anywhere}.dictionary-country-details+ p{padding-top:2px}
 .dictionary-counterpart{display:block;margin-top:15px;padding:13px 12px;border:1px solid #a56d7180;border-inline-start:4px solid #a56d71;border-radius:10px;background:#f3dcd38a;color:#4d3027}
 .dictionary-counterpart-heading{display:flex;align-items:center;flex-wrap:wrap;gap:5px 10px;direction:ltr}
 .dictionary-counterpart h4{margin:0;color:#67342d;font:24px Georgia,serif}
@@ -28,3 +29,4 @@
 .dictionary-audio-actions button span{font-size:11px}
 @keyframes librarySpin{to{transform:rotate(360deg)}}
 @media(max-width:620px){.dictionary-word-list>article{display:block}.dictionary-audio-actions{gap:5px}.dictionary-audio-actions button{padding:6px 8px}.dictionary-audio-actions button span{font-size:10px}.dictionary-gender{font-size:9px!important}.library-book-spine small{width:calc(100% - 3px);font-size:7px}}
+@media(max-width:620px){.dictionary-country-details{grid-template-columns:1fr}.dictionary-country-details>div{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:8px;padding:7px 9px}.dictionary-country-details dd{margin:0}}

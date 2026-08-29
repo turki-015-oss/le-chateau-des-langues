@@ -29,6 +29,7 @@ CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION_SOURCE = ROOT / "scripts" / "library-expansion-verified.json"
 EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
 DIRECTION_ENTRIES = ROOT / "scripts" / "library-direction-entries.json"
+COUNTRY_ENTRIES = ROOT / "scripts" / "library-country-entries.json"
 BASE_COUNT = 5000
 MAX_COUNT = 10000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -422,6 +423,75 @@ def append_direction_entries(entries: list[dict], path: Path, seen_ids: set[str]
     return len(additions)
 
 
+def append_country_entries(entries: list[dict], path: Path, seen_ids: set[str]) -> tuple[int, int]:
+    if not path.exists():
+        return 0, 0
+    additions = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(additions, list) or len(additions) != 195:
+        raise ValueError("Country entries must be a JSON array containing exactly 195 countries")
+
+    seen_keys = {entry["key"] for entry in entries}
+    existing_by_key: dict[str, list[dict]] = defaultdict(list)
+    for entry in entries:
+        existing_by_key[normalize(entry["word"])].append(entry)
+    source_keys: set[str] = set()
+    added = 0
+    for source_entry in additions:
+        required = {
+            "word", "arabic", "partOfSpeech", "grammarLabel", "article", "preposition",
+            "nationality", "ipa", "example", "exampleArabic",
+        }
+        missing = required - set(source_entry)
+        if missing:
+            raise ValueError(f"Missing country fields for {source_entry.get('word', '?')}: {sorted(missing)}")
+        key = normalize(source_entry["word"])
+        if key in source_keys:
+            raise ValueError(f"Duplicate country entry: {source_entry['word']}")
+        if source_entry["grammarLabel"] not in {"Masculin", "Féminin", "Masculin pluriel", "Féminin pluriel"}:
+            raise ValueError(f"Invalid country grammar label: {source_entry['word']}")
+        if source_entry["article"] not in {"le", "la", "l’", "les", "sans article"}:
+            raise ValueError(f"Invalid country article: {source_entry['word']}")
+        nationality = source_entry["nationality"]
+        if not nationality.get("masculine") or not nationality.get("feminine"):
+            raise ValueError(f"Missing country nationality forms: {source_entry['word']}")
+        source_keys.add(key)
+
+        # A handful of countries already exist as countries in the base
+        # dictionary. Enrich those records in place. Homonyms such as
+        # « grenade » (fruit) / « Grenade » (country) remain distinct senses.
+        existing_country = next(
+            (entry for entry in existing_by_key.get(key, []) if entry.get("arabic") == source_entry["arabic"]),
+            None,
+        )
+        if existing_country is not None:
+            # Preserve the already-reviewed definition, example, IPA, source,
+            # and stable id; only add the country-specific learning metadata.
+            for field in ("gender", "determiner", "counterpart"):
+                existing_country.pop(field, None)
+            existing_country.update({
+                "word": source_entry["word"],
+                "partOfSpeech": source_entry["partOfSpeech"],
+                "grammarLabel": source_entry["grammarLabel"],
+                "article": source_entry["article"],
+                "preposition": source_entry["preposition"],
+                "nationality": source_entry["nationality"],
+            })
+            existing_country["countryTopic"] = True
+            continue
+
+        entry = dict(source_entry)
+        entry["key"] = key if key not in seen_keys else f"{key}::country"
+        entry["letter"] = first_letter(entry["word"])
+        entry["frequency"] = 0.0
+        entry["exampleSource"] = "Révision thématique"
+        entry["countryTopic"] = True
+        entry["id"] = make_id(entry, seen_ids)
+        entries.append(entry)
+        seen_keys.add(entry["key"])
+        added += 1
+    return len(additions), added
+
+
 def make_id(entry: dict, seen: set[str]) -> str:
     base = re.sub(r"[^a-z0-9-]+", "-", normalize(entry["word"])).strip("-") or entry["letter"].lower()
     value = base
@@ -453,7 +523,8 @@ def validate(entries: list[dict], target_count: int) -> None:
 
 
 def write_output(
-    entries: list[dict], natural_count: int, curated_count: int, contextual_count: int, direction_count: int
+    entries: list[dict], natural_count: int, curated_count: int, contextual_count: int,
+    direction_count: int, country_count: int, country_added_count: int
 ) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     by_letter: dict[str, list[dict]] = {letter: [] for letter in LETTERS}
@@ -470,6 +541,7 @@ def write_output(
             "arabic": entry["arabic"],
             **({"gender": entry["gender"], "determiner": entry["determiner"]} if entry.get("gender") else {}),
             **({"grammarLabel": entry["grammarLabel"]} if entry.get("grammarLabel") else {}),
+            **({"nationality": entry["nationality"]} if entry.get("nationality") else {}),
         }
         for entry in entries
     ]
@@ -483,6 +555,8 @@ def write_output(
         ),
         "contextualExampleCount": contextual_count,
         "directionEntryCount": direction_count,
+        "countryEntryCount": country_count,
+        "countryAddedCount": country_added_count,
         "counts": counts,
         "search": search,
         "sources": [
@@ -537,8 +611,9 @@ def main() -> None:
             entry["id"] = make_id(entry, seen_ids)
             entries.append(entry)
     direction_count = append_direction_entries(entries, DIRECTION_ENTRIES, seen_ids)
+    country_count, country_added_count = append_country_entries(entries, COUNTRY_ENTRIES, seen_ids)
     natural_count = sum(entry["exampleSource"] == "Tatoeba" for entry in entries)
-    validate(entries, target_count + direction_count)
+    validate(entries, target_count + direction_count + country_added_count)
 
     counts = {letter: sum(entry["letter"] == letter for entry in entries) for letter in LETTERS}
     print(json.dumps({
@@ -549,11 +624,16 @@ def main() -> None:
         "curatedExamples": curated_count,
         "contextualExamples": contextual_count,
         "directionEntries": direction_count,
+        "countryEntries": country_count,
+        "countryAdditions": country_added_count,
         "counts": counts,
         "first": entries[:3],
     }, ensure_ascii=True, indent=2))
     if not args.dry_run:
-        write_output(entries, natural_count, curated_count, contextual_count, direction_count)
+        write_output(
+            entries, natural_count, curated_count, contextual_count,
+            direction_count, country_count, country_added_count,
+        )
 
 
 if __name__ == "__main__":

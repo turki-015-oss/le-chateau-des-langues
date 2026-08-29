@@ -1,0 +1,2927 @@
+[
+  {
+    "word": "Afghanistan",
+    "arabic": "أفغانستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Afghanistan",
+    "nationality": {
+      "masculine": "Afghan",
+      "feminine": "Afghane"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en Afghanistan pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى أفغانستان في فصل الربيع."
+  },
+  {
+    "word": "Afrique du Sud",
+    "arabic": "جنوب أفريقيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Afrique du Sud",
+    "nationality": {
+      "masculine": "Sud-Africain",
+      "feminine": "Sud-Africaine"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Afrique du Sud l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في جنوب أفريقيا العام المقبل."
+  },
+  {
+    "word": "Albanie",
+    "arabic": "ألبانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Albanie",
+    "nationality": {
+      "masculine": "Albanais",
+      "feminine": "Albanaise"
+    },
+    "ipa": "",
+    "example": "Il travaille en Albanie depuis plusieurs mois.",
+    "exampleArabic": "يعمل في ألبانيا منذ عدة أشهر."
+  },
+  {
+    "word": "Algérie",
+    "arabic": "الجزائر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Algérie",
+    "nationality": {
+      "masculine": "Algérien",
+      "feminine": "Algérienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Algérie.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في الجزائر."
+  },
+  {
+    "word": "Allemagne",
+    "arabic": "ألمانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Allemagne",
+    "nationality": {
+      "masculine": "Allemand",
+      "feminine": "Allemande"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Allemagne la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى ألمانيا الأسبوع المقبل."
+  },
+  {
+    "word": "Andorre",
+    "arabic": "أندورا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Andorre",
+    "nationality": {
+      "masculine": "Andorran",
+      "feminine": "Andorrane"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Andorre pendant leurs études.",
+    "exampleArabic": "عاشوا في أندورا خلال فترة دراستهم."
+  },
+  {
+    "word": "Angola",
+    "arabic": "أنغولا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Angola",
+    "nationality": {
+      "masculine": "Angolais",
+      "feminine": "Angolaise"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Angola cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في أنغولا هذا الصيف."
+  },
+  {
+    "word": "Antigua-et-Barbuda",
+    "arabic": "أنتيغوا وبربودا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Antigua-et-Barbuda",
+    "nationality": {
+      "masculine": "Antiguayen",
+      "feminine": "Antiguayenne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire à Antigua-et-Barbuda.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في أنتيغوا وبربودا."
+  },
+  {
+    "word": "Arabie saoudite",
+    "arabic": "المملكة العربية السعودية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Arabie saoudite",
+    "nationality": {
+      "masculine": "Saoudien",
+      "feminine": "Saoudienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Arabie saoudite.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في المملكة العربية السعودية."
+  },
+  {
+    "word": "Argentine",
+    "arabic": "الأرجنتين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Argentine",
+    "nationality": {
+      "masculine": "Argentin",
+      "feminine": "Argentine"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Argentine.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في الأرجنتين."
+  },
+  {
+    "word": "Arménie",
+    "arabic": "أرمينيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Arménie",
+    "nationality": {
+      "masculine": "Arménien",
+      "feminine": "Arménienne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Arménie.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في أرمينيا."
+  },
+  {
+    "word": "Australie",
+    "arabic": "أستراليا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Australie",
+    "nationality": {
+      "masculine": "Australien",
+      "feminine": "Australienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner en Australie avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى أستراليا قبل نهاية العام."
+  },
+  {
+    "word": "Autriche",
+    "arabic": "النمسا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Autriche",
+    "nationality": {
+      "masculine": "Autrichien",
+      "feminine": "Autrichienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en Autriche pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى النمسا في فصل الربيع."
+  },
+  {
+    "word": "Azerbaïdjan",
+    "arabic": "أذربيجان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Azerbaïdjan",
+    "nationality": {
+      "masculine": "Azerbaïdjanais",
+      "feminine": "Azerbaïdjanaise"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Azerbaïdjan l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في أذربيجان العام المقبل."
+  },
+  {
+    "word": "Bahamas",
+    "arabic": "جزر البهاما",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Bahamas",
+    "nationality": {
+      "masculine": "Bahaméen",
+      "feminine": "Bahaméenne"
+    },
+    "ipa": "",
+    "example": "Il travaille aux Bahamas depuis plusieurs mois.",
+    "exampleArabic": "يعمل في جزر البهاما منذ عدة أشهر."
+  },
+  {
+    "word": "Bahreïn",
+    "arabic": "البحرين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Bahreïn",
+    "nationality": {
+      "masculine": "Bahreïnien",
+      "feminine": "Bahreïnienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne à Bahreïn.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في البحرين."
+  },
+  {
+    "word": "Bangladesh",
+    "arabic": "بنغلاديش",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Bangladesh",
+    "nationality": {
+      "masculine": "Bangladais",
+      "feminine": "Bangladaise"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera au Bangladesh la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى بنغلاديش الأسبوع المقبل."
+  },
+  {
+    "word": "Barbade",
+    "arabic": "بربادوس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "à la Barbade",
+    "nationality": {
+      "masculine": "Barbadien",
+      "feminine": "Barbadienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu à la Barbade pendant leurs études.",
+    "exampleArabic": "عاشوا في بربادوس خلال فترة دراستهم."
+  },
+  {
+    "word": "Belgique",
+    "arabic": "بلجيكا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Belgique",
+    "nationality": {
+      "masculine": "Belge",
+      "feminine": "Belge"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Belgique cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في بلجيكا هذا الصيف."
+  },
+  {
+    "word": "Belize",
+    "arabic": "بليز",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Belize",
+    "nationality": {
+      "masculine": "Bélizien",
+      "feminine": "Bélizienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Belize.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في بليز."
+  },
+  {
+    "word": "Bénin",
+    "arabic": "بنين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Bénin",
+    "nationality": {
+      "masculine": "Béninois",
+      "feminine": "Béninoise"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines au Bénin.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في بنين."
+  },
+  {
+    "word": "Bhoutan",
+    "arabic": "بوتان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Bhoutan",
+    "nationality": {
+      "masculine": "Bhoutanais",
+      "feminine": "Bhoutanaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour au Bhoutan.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في بوتان."
+  },
+  {
+    "word": "Biélorussie",
+    "arabic": "بيلاروس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Biélorussie",
+    "nationality": {
+      "masculine": "Biélorusse",
+      "feminine": "Biélorusse"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Biélorussie.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في بيلاروس."
+  },
+  {
+    "word": "Myanmar",
+    "arabic": "ميانمار",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Myanmar",
+    "nationality": {
+      "masculine": "Birman",
+      "feminine": "Birmane"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Myanmar avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى ميانمار قبل نهاية العام."
+  },
+  {
+    "word": "Bolivie",
+    "arabic": "بوليفيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Bolivie",
+    "nationality": {
+      "masculine": "Bolivien",
+      "feminine": "Bolivienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en Bolivie pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى بوليفيا في فصل الربيع."
+  },
+  {
+    "word": "Bosnie-Herzégovine",
+    "arabic": "البوسنة والهرسك",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Bosnie-Herzégovine",
+    "nationality": {
+      "masculine": "Bosnien",
+      "feminine": "Bosnienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Bosnie-Herzégovine l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في البوسنة والهرسك العام المقبل."
+  },
+  {
+    "word": "Botswana",
+    "arabic": "بوتسوانا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Botswana",
+    "nationality": {
+      "masculine": "Botswanais",
+      "feminine": "Botswanaise"
+    },
+    "ipa": "",
+    "example": "Il travaille au Botswana depuis plusieurs mois.",
+    "exampleArabic": "يعمل في بوتسوانا منذ عدة أشهر."
+  },
+  {
+    "word": "Brésil",
+    "arabic": "البرازيل",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Brésil",
+    "nationality": {
+      "masculine": "Brésilien",
+      "feminine": "Brésilienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Brésil.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في البرازيل."
+  },
+  {
+    "word": "Brunei",
+    "arabic": "بروناي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Brunei",
+    "nationality": {
+      "masculine": "Brunéien",
+      "feminine": "Brunéienne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera au Brunei la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى بروناي الأسبوع المقبل."
+  },
+  {
+    "word": "Bulgarie",
+    "arabic": "بلغاريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Bulgarie",
+    "nationality": {
+      "masculine": "Bulgare",
+      "feminine": "Bulgare"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Bulgarie pendant leurs études.",
+    "exampleArabic": "عاشوا في بلغاريا خلال فترة دراستهم."
+  },
+  {
+    "word": "Burkina Faso",
+    "arabic": "بوركينا فاسو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Burkina Faso",
+    "nationality": {
+      "masculine": "Burkinabè",
+      "feminine": "Burkinabè"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Burkina Faso cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في بوركينا فاسو هذا الصيف."
+  },
+  {
+    "word": "Burundi",
+    "arabic": "بوروندي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Burundi",
+    "nationality": {
+      "masculine": "Burundais",
+      "feminine": "Burundaise"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Burundi.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في بوروندي."
+  },
+  {
+    "word": "Cap-Vert",
+    "arabic": "الرأس الأخضر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Cap-Vert",
+    "nationality": {
+      "masculine": "Cap-Verdien",
+      "feminine": "Cap-Verdienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines au Cap-Vert.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في الرأس الأخضر."
+  },
+  {
+    "word": "Cambodge",
+    "arabic": "كمبوديا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Cambodge",
+    "nationality": {
+      "masculine": "Cambodgien",
+      "feminine": "Cambodgienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour au Cambodge.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في كمبوديا."
+  },
+  {
+    "word": "Cameroun",
+    "arabic": "الكاميرون",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Cameroun",
+    "nationality": {
+      "masculine": "Camerounais",
+      "feminine": "Camerounaise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Cameroun.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في الكاميرون."
+  },
+  {
+    "word": "Canada",
+    "arabic": "كندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Canada",
+    "nationality": {
+      "masculine": "Canadien",
+      "feminine": "Canadienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Canada avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى كندا قبل نهاية العام."
+  },
+  {
+    "word": "Chili",
+    "arabic": "تشيلي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Chili",
+    "nationality": {
+      "masculine": "Chilien",
+      "feminine": "Chilienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Chili pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى تشيلي في فصل الربيع."
+  },
+  {
+    "word": "Chine",
+    "arabic": "الصين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Chine",
+    "nationality": {
+      "masculine": "Chinois",
+      "feminine": "Chinoise"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Chine l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في الصين العام المقبل."
+  },
+  {
+    "word": "Chypre",
+    "arabic": "قبرص",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Chypre",
+    "nationality": {
+      "masculine": "Chypriote",
+      "feminine": "Chypriote"
+    },
+    "ipa": "",
+    "example": "Il travaille à Chypre depuis plusieurs mois.",
+    "exampleArabic": "يعمل في قبرص منذ عدة أشهر."
+  },
+  {
+    "word": "Colombie",
+    "arabic": "كولومبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Colombie",
+    "nationality": {
+      "masculine": "Colombien",
+      "feminine": "Colombienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Colombie.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في كولومبيا."
+  },
+  {
+    "word": "Comores",
+    "arabic": "جزر القمر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Comores",
+    "nationality": {
+      "masculine": "Comorien",
+      "feminine": "Comorienne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera aux Comores la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى جزر القمر الأسبوع المقبل."
+  },
+  {
+    "word": "Congo",
+    "arabic": "جمهورية الكونغو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Congo",
+    "nationality": {
+      "masculine": "Congolais",
+      "feminine": "Congolaise"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu au Congo pendant leurs études.",
+    "exampleArabic": "عاشوا في جمهورية الكونغو خلال فترة دراستهم."
+  },
+  {
+    "word": "Corée du Nord",
+    "arabic": "كوريا الشمالية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Corée du Nord",
+    "nationality": {
+      "masculine": "Nord-Coréen",
+      "feminine": "Nord-Coréenne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Corée du Nord cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في كوريا الشمالية هذا الصيف."
+  },
+  {
+    "word": "Corée du Sud",
+    "arabic": "كوريا الجنوبية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Corée du Sud",
+    "nationality": {
+      "masculine": "Sud-Coréen",
+      "feminine": "Sud-Coréenne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Corée du Sud.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في كوريا الجنوبية."
+  },
+  {
+    "word": "Costa Rica",
+    "arabic": "كوستاريكا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Costa Rica",
+    "nationality": {
+      "masculine": "Costaricien",
+      "feminine": "Costaricienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines au Costa Rica.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في كوستاريكا."
+  },
+  {
+    "word": "Côte d’Ivoire",
+    "arabic": "كوت ديفوار",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Côte d’Ivoire",
+    "nationality": {
+      "masculine": "Ivoirien",
+      "feminine": "Ivoirienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Côte d’Ivoire.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في كوت ديفوار."
+  },
+  {
+    "word": "Croatie",
+    "arabic": "كرواتيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Croatie",
+    "nationality": {
+      "masculine": "Croate",
+      "feminine": "Croate"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Croatie.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في كرواتيا."
+  },
+  {
+    "word": "Cuba",
+    "arabic": "كوبا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Cuba",
+    "nationality": {
+      "masculine": "Cubain",
+      "feminine": "Cubaine"
+    },
+    "ipa": "",
+    "example": "Il espère retourner à Cuba avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى كوبا قبل نهاية العام."
+  },
+  {
+    "word": "Danemark",
+    "arabic": "الدانمرك",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Danemark",
+    "nationality": {
+      "masculine": "Danois",
+      "feminine": "Danoise"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Danemark pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى الدانمرك في فصل الربيع."
+  },
+  {
+    "word": "Djibouti",
+    "arabic": "جيبوتي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Djibouti",
+    "nationality": {
+      "masculine": "Djiboutien",
+      "feminine": "Djiboutienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier à Djibouti l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في جيبوتي العام المقبل."
+  },
+  {
+    "word": "Dominique",
+    "arabic": "دومينيكا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "à la Dominique",
+    "nationality": {
+      "masculine": "Dominiquais",
+      "feminine": "Dominiquaise"
+    },
+    "ipa": "",
+    "example": "Il travaille à la Dominique depuis plusieurs mois.",
+    "exampleArabic": "يعمل في دومينيكا منذ عدة أشهر."
+  },
+  {
+    "word": "Égypte",
+    "arabic": "مصر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Égypte",
+    "nationality": {
+      "masculine": "Égyptien",
+      "feminine": "Égyptienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Égypte.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في مصر."
+  },
+  {
+    "word": "Émirats arabes unis",
+    "arabic": "الإمارات العربية المتحدة",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin pluriel",
+    "article": "les",
+    "preposition": "aux Émirats arabes unis",
+    "nationality": {
+      "masculine": "Émirati",
+      "feminine": "Émiratie"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera aux Émirats arabes unis la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى الإمارات العربية المتحدة الأسبوع المقبل."
+  },
+  {
+    "word": "Équateur",
+    "arabic": "الإكوادور",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Équateur",
+    "nationality": {
+      "masculine": "Équatorien",
+      "feminine": "Équatorienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Équateur pendant leurs études.",
+    "exampleArabic": "عاشوا في الإكوادور خلال فترة دراستهم."
+  },
+  {
+    "word": "Érythrée",
+    "arabic": "إريتريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Érythrée",
+    "nationality": {
+      "masculine": "Érythréen",
+      "feminine": "Érythréenne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Érythrée cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في إريتريا هذا الصيف."
+  },
+  {
+    "word": "Espagne",
+    "arabic": "إسبانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Espagne",
+    "nationality": {
+      "masculine": "Espagnol",
+      "feminine": "Espagnole"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Espagne.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في إسبانيا."
+  },
+  {
+    "word": "Estonie",
+    "arabic": "إستونيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Estonie",
+    "nationality": {
+      "masculine": "Estonien",
+      "feminine": "Estonienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Estonie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في إستونيا."
+  },
+  {
+    "word": "Eswatini",
+    "arabic": "إسواتيني",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Eswatini",
+    "nationality": {
+      "masculine": "Eswatinien",
+      "feminine": "Eswatinienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Eswatini.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في إسواتيني."
+  },
+  {
+    "word": "États-Unis",
+    "arabic": "الولايات المتحدة",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin pluriel",
+    "article": "les",
+    "preposition": "aux États-Unis",
+    "nationality": {
+      "masculine": "Américain",
+      "feminine": "Américaine"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif aux États-Unis.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في الولايات المتحدة."
+  },
+  {
+    "word": "Éthiopie",
+    "arabic": "إثيوبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Éthiopie",
+    "nationality": {
+      "masculine": "Éthiopien",
+      "feminine": "Éthiopienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner en Éthiopie avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى إثيوبيا قبل نهاية العام."
+  },
+  {
+    "word": "Fidji",
+    "arabic": "فيجي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Fidji",
+    "nationality": {
+      "masculine": "Fidjien",
+      "feminine": "Fidjienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage aux Fidji pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى فيجي في فصل الربيع."
+  },
+  {
+    "word": "Finlande",
+    "arabic": "فنلندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Finlande",
+    "nationality": {
+      "masculine": "Finlandais",
+      "feminine": "Finlandaise"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Finlande l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في فنلندا العام المقبل."
+  },
+  {
+    "word": "France",
+    "arabic": "فرنسا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en France",
+    "nationality": {
+      "masculine": "Français",
+      "feminine": "Française"
+    },
+    "ipa": "",
+    "example": "Il travaille en France depuis plusieurs mois.",
+    "exampleArabic": "يعمل في فرنسا منذ عدة أشهر."
+  },
+  {
+    "word": "Gabon",
+    "arabic": "الغابون",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Gabon",
+    "nationality": {
+      "masculine": "Gabonais",
+      "feminine": "Gabonaise"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Gabon.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في الغابون."
+  },
+  {
+    "word": "Gambie",
+    "arabic": "غامبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Gambie",
+    "nationality": {
+      "masculine": "Gambien",
+      "feminine": "Gambienne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Gambie la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى غامبيا الأسبوع المقبل."
+  },
+  {
+    "word": "Géorgie",
+    "arabic": "جورجيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Géorgie",
+    "nationality": {
+      "masculine": "Géorgien",
+      "feminine": "Géorgienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Géorgie pendant leurs études.",
+    "exampleArabic": "عاشوا في جورجيا خلال فترة دراستهم."
+  },
+  {
+    "word": "Ghana",
+    "arabic": "غانا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Ghana",
+    "nationality": {
+      "masculine": "Ghanéen",
+      "feminine": "Ghanéenne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Ghana cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في غانا هذا الصيف."
+  },
+  {
+    "word": "Grèce",
+    "arabic": "اليونان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Grèce",
+    "nationality": {
+      "masculine": "Grec",
+      "feminine": "Grecque"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Grèce.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في اليونان."
+  },
+  {
+    "word": "Grenade",
+    "arabic": "غرينادا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "à la Grenade",
+    "nationality": {
+      "masculine": "Grenadien",
+      "feminine": "Grenadienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines à la Grenade.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في غرينادا."
+  },
+  {
+    "word": "Guatemala",
+    "arabic": "غواتيمالا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Guatemala",
+    "nationality": {
+      "masculine": "Guatémaltèque",
+      "feminine": "Guatémaltèque"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour au Guatemala.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في غواتيمالا."
+  },
+  {
+    "word": "Guinée",
+    "arabic": "غينيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Guinée",
+    "nationality": {
+      "masculine": "Guinéen",
+      "feminine": "Guinéenne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Guinée.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في غينيا."
+  },
+  {
+    "word": "Guinée-Bissau",
+    "arabic": "غينيا بيساو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Guinée-Bissau",
+    "nationality": {
+      "masculine": "Bissau-Guinéen",
+      "feminine": "Bissau-Guinéenne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner en Guinée-Bissau avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى غينيا بيساو قبل نهاية العام."
+  },
+  {
+    "word": "Guinée équatoriale",
+    "arabic": "غينيا الاستوائية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Guinée équatoriale",
+    "nationality": {
+      "masculine": "Équatoguinéen",
+      "feminine": "Équatoguinéenne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en Guinée équatoriale pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى غينيا الاستوائية في فصل الربيع."
+  },
+  {
+    "word": "Guyana",
+    "arabic": "غيانا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Guyana",
+    "nationality": {
+      "masculine": "Guyanien",
+      "feminine": "Guyanienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier au Guyana l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في غيانا العام المقبل."
+  },
+  {
+    "word": "Haïti",
+    "arabic": "هايتي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "en Haïti",
+    "nationality": {
+      "masculine": "Haïtien",
+      "feminine": "Haïtienne"
+    },
+    "ipa": "",
+    "example": "Il travaille en Haïti depuis plusieurs mois.",
+    "exampleArabic": "يعمل في هايتي منذ عدة أشهر."
+  },
+  {
+    "word": "Honduras",
+    "arabic": "هندوراس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Honduras",
+    "nationality": {
+      "masculine": "Hondurien",
+      "feminine": "Hondurienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Honduras.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في هندوراس."
+  },
+  {
+    "word": "Hongrie",
+    "arabic": "هنغاريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Hongrie",
+    "nationality": {
+      "masculine": "Hongrois",
+      "feminine": "Hongroise"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Hongrie la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى هنغاريا الأسبوع المقبل."
+  },
+  {
+    "word": "Îles Marshall",
+    "arabic": "جزر مارشال",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Îles Marshall",
+    "nationality": {
+      "masculine": "Marshallais",
+      "feminine": "Marshallaise"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu aux Îles Marshall pendant leurs études.",
+    "exampleArabic": "عاشوا في جزر مارشال خلال فترة دراستهم."
+  },
+  {
+    "word": "Îles Salomon",
+    "arabic": "جزر سليمان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Îles Salomon",
+    "nationality": {
+      "masculine": "Salomonais",
+      "feminine": "Salomonaise"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner aux Îles Salomon cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في جزر سليمان هذا الصيف."
+  },
+  {
+    "word": "Inde",
+    "arabic": "الهند",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Inde",
+    "nationality": {
+      "masculine": "Indien",
+      "feminine": "Indienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Inde.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في الهند."
+  },
+  {
+    "word": "Indonésie",
+    "arabic": "إندونيسيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Indonésie",
+    "nationality": {
+      "masculine": "Indonésien",
+      "feminine": "Indonésienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Indonésie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في إندونيسيا."
+  },
+  {
+    "word": "Irak",
+    "arabic": "العراق",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Irak",
+    "nationality": {
+      "masculine": "Irakien",
+      "feminine": "Irakienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Irak.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في العراق."
+  },
+  {
+    "word": "Iran",
+    "arabic": "إيران",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Iran",
+    "nationality": {
+      "masculine": "Iranien",
+      "feminine": "Iranienne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Iran.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في إيران."
+  },
+  {
+    "word": "Irlande",
+    "arabic": "أيرلندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Irlande",
+    "nationality": {
+      "masculine": "Irlandais",
+      "feminine": "Irlandaise"
+    },
+    "ipa": "",
+    "example": "Il espère retourner en Irlande avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى أيرلندا قبل نهاية العام."
+  },
+  {
+    "word": "Islande",
+    "arabic": "آيسلندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Islande",
+    "nationality": {
+      "masculine": "Islandais",
+      "feminine": "Islandaise"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en Islande pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى آيسلندا في فصل الربيع."
+  },
+  {
+    "word": "Israël",
+    "arabic": "إسرائيل",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "en Israël",
+    "nationality": {
+      "masculine": "Israélien",
+      "feminine": "Israélienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Israël l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في إسرائيل العام المقبل."
+  },
+  {
+    "word": "Italie",
+    "arabic": "إيطاليا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Italie",
+    "nationality": {
+      "masculine": "Italien",
+      "feminine": "Italienne"
+    },
+    "ipa": "",
+    "example": "Il travaille en Italie depuis plusieurs mois.",
+    "exampleArabic": "يعمل في إيطاليا منذ عدة أشهر."
+  },
+  {
+    "word": "Jamaïque",
+    "arabic": "جامايكا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Jamaïque",
+    "nationality": {
+      "masculine": "Jamaïcain",
+      "feminine": "Jamaïcaine"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Jamaïque.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في جامايكا."
+  },
+  {
+    "word": "Japon",
+    "arabic": "اليابان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Japon",
+    "nationality": {
+      "masculine": "Japonais",
+      "feminine": "Japonaise"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera au Japon la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى اليابان الأسبوع المقبل."
+  },
+  {
+    "word": "Jordanie",
+    "arabic": "الأردن",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Jordanie",
+    "nationality": {
+      "masculine": "Jordanien",
+      "feminine": "Jordanienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Jordanie pendant leurs études.",
+    "exampleArabic": "عاشوا في الأردن خلال فترة دراستهم."
+  },
+  {
+    "word": "Kazakhstan",
+    "arabic": "كازاخستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Kazakhstan",
+    "nationality": {
+      "masculine": "Kazakh",
+      "feminine": "Kazakhe"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Kazakhstan cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في كازاخستان هذا الصيف."
+  },
+  {
+    "word": "Kenya",
+    "arabic": "كينيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Kenya",
+    "nationality": {
+      "masculine": "Kényan",
+      "feminine": "Kényane"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Kenya.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في كينيا."
+  },
+  {
+    "word": "Kirghizistan",
+    "arabic": "قيرغيزستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Kirghizistan",
+    "nationality": {
+      "masculine": "Kirghiz",
+      "feminine": "Kirghize"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines au Kirghizistan.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في قيرغيزستان."
+  },
+  {
+    "word": "Kiribati",
+    "arabic": "كيريباتي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Kiribati",
+    "nationality": {
+      "masculine": "Kiribatien",
+      "feminine": "Kiribatienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour aux Kiribati.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في كيريباتي."
+  },
+  {
+    "word": "Koweït",
+    "arabic": "الكويت",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Koweït",
+    "nationality": {
+      "masculine": "Koweïtien",
+      "feminine": "Koweïtienne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Koweït.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في الكويت."
+  },
+  {
+    "word": "Laos",
+    "arabic": "لاوس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Laos",
+    "nationality": {
+      "masculine": "Laotien",
+      "feminine": "Laotienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Laos avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى لاوس قبل نهاية العام."
+  },
+  {
+    "word": "Lesotho",
+    "arabic": "ليسوتو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Lesotho",
+    "nationality": {
+      "masculine": "Lésothien",
+      "feminine": "Lésothienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Lesotho pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى ليسوتو في فصل الربيع."
+  },
+  {
+    "word": "Lettonie",
+    "arabic": "لاتفيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Lettonie",
+    "nationality": {
+      "masculine": "Letton",
+      "feminine": "Lettonne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Lettonie l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في لاتفيا العام المقبل."
+  },
+  {
+    "word": "Liban",
+    "arabic": "لبنان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Liban",
+    "nationality": {
+      "masculine": "Libanais",
+      "feminine": "Libanaise"
+    },
+    "ipa": "",
+    "example": "Il travaille au Liban depuis plusieurs mois.",
+    "exampleArabic": "يعمل في لبنان منذ عدة أشهر."
+  },
+  {
+    "word": "Liberia",
+    "arabic": "ليبيريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Liberia",
+    "nationality": {
+      "masculine": "Libérien",
+      "feminine": "Libérienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Liberia.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في ليبيريا."
+  },
+  {
+    "word": "Libye",
+    "arabic": "ليبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Libye",
+    "nationality": {
+      "masculine": "Libyen",
+      "feminine": "Libyenne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Libye la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى ليبيا الأسبوع المقبل."
+  },
+  {
+    "word": "Liechtenstein",
+    "arabic": "ليختنشتاين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Liechtenstein",
+    "nationality": {
+      "masculine": "Liechtensteinois",
+      "feminine": "Liechtensteinoise"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu au Liechtenstein pendant leurs études.",
+    "exampleArabic": "عاشوا في ليختنشتاين خلال فترة دراستهم."
+  },
+  {
+    "word": "Lituanie",
+    "arabic": "ليتوانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Lituanie",
+    "nationality": {
+      "masculine": "Lituanien",
+      "feminine": "Lituanienne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Lituanie cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في ليتوانيا هذا الصيف."
+  },
+  {
+    "word": "Luxembourg",
+    "arabic": "لوكسمبورغ",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Luxembourg",
+    "nationality": {
+      "masculine": "Luxembourgeois",
+      "feminine": "Luxembourgeoise"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Luxembourg.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في لوكسمبورغ."
+  },
+  {
+    "word": "Macédoine du Nord",
+    "arabic": "مقدونيا الشمالية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Macédoine du Nord",
+    "nationality": {
+      "masculine": "Macédonien",
+      "feminine": "Macédonienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Macédoine du Nord.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في مقدونيا الشمالية."
+  },
+  {
+    "word": "Madagascar",
+    "arabic": "مدغشقر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Madagascar",
+    "nationality": {
+      "masculine": "Malgache",
+      "feminine": "Malgache"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour à Madagascar.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في مدغشقر."
+  },
+  {
+    "word": "Malaisie",
+    "arabic": "ماليزيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Malaisie",
+    "nationality": {
+      "masculine": "Malaisien",
+      "feminine": "Malaisienne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Malaisie.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في ماليزيا."
+  },
+  {
+    "word": "Malawi",
+    "arabic": "ملاوي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Malawi",
+    "nationality": {
+      "masculine": "Malawite",
+      "feminine": "Malawite"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Malawi avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى ملاوي قبل نهاية العام."
+  },
+  {
+    "word": "Maldives",
+    "arabic": "جزر المالديف",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Maldives",
+    "nationality": {
+      "masculine": "Maldivien",
+      "feminine": "Maldivienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage aux Maldives pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى جزر المالديف في فصل الربيع."
+  },
+  {
+    "word": "Mali",
+    "arabic": "مالي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Mali",
+    "nationality": {
+      "masculine": "Malien",
+      "feminine": "Malienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier au Mali l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في مالي العام المقبل."
+  },
+  {
+    "word": "Malte",
+    "arabic": "مالطا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Malte",
+    "nationality": {
+      "masculine": "Maltais",
+      "feminine": "Maltaise"
+    },
+    "ipa": "",
+    "example": "Il travaille à Malte depuis plusieurs mois.",
+    "exampleArabic": "يعمل في مالطا منذ عدة أشهر."
+  },
+  {
+    "word": "Maroc",
+    "arabic": "المغرب",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Maroc",
+    "nationality": {
+      "masculine": "Marocain",
+      "feminine": "Marocaine"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Maroc.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في المغرب."
+  },
+  {
+    "word": "Maurice",
+    "arabic": "موريشيوس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Maurice",
+    "nationality": {
+      "masculine": "Mauricien",
+      "feminine": "Mauricienne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera à Maurice la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى موريشيوس الأسبوع المقبل."
+  },
+  {
+    "word": "Mauritanie",
+    "arabic": "موريتانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Mauritanie",
+    "nationality": {
+      "masculine": "Mauritanien",
+      "feminine": "Mauritanienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Mauritanie pendant leurs études.",
+    "exampleArabic": "عاشوا في موريتانيا خلال فترة دراستهم."
+  },
+  {
+    "word": "Mexique",
+    "arabic": "المكسيك",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Mexique",
+    "nationality": {
+      "masculine": "Mexicain",
+      "feminine": "Mexicaine"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Mexique cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في المكسيك هذا الصيف."
+  },
+  {
+    "word": "Micronésie",
+    "arabic": "ميكرونيزيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Micronésie",
+    "nationality": {
+      "masculine": "Micronésien",
+      "feminine": "Micronésienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Micronésie.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في ميكرونيزيا."
+  },
+  {
+    "word": "Moldavie",
+    "arabic": "مولدوفا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Moldavie",
+    "nationality": {
+      "masculine": "Moldave",
+      "feminine": "Moldave"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Moldavie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في مولدوفا."
+  },
+  {
+    "word": "Monaco",
+    "arabic": "موناكو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Monaco",
+    "nationality": {
+      "masculine": "Monégasque",
+      "feminine": "Monégasque"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour à Monaco.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في موناكو."
+  },
+  {
+    "word": "Mongolie",
+    "arabic": "منغوليا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Mongolie",
+    "nationality": {
+      "masculine": "Mongol",
+      "feminine": "Mongole"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Mongolie.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في منغوليا."
+  },
+  {
+    "word": "Monténégro",
+    "arabic": "الجبل الأسود",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Monténégro",
+    "nationality": {
+      "masculine": "Monténégrin",
+      "feminine": "Monténégrine"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Monténégro avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى الجبل الأسود قبل نهاية العام."
+  },
+  {
+    "word": "Mozambique",
+    "arabic": "موزمبيق",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Mozambique",
+    "nationality": {
+      "masculine": "Mozambicain",
+      "feminine": "Mozambicaine"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Mozambique pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى موزمبيق في فصل الربيع."
+  },
+  {
+    "word": "Namibie",
+    "arabic": "ناميبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Namibie",
+    "nationality": {
+      "masculine": "Namibien",
+      "feminine": "Namibienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Namibie l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في ناميبيا العام المقبل."
+  },
+  {
+    "word": "Nauru",
+    "arabic": "ناورو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Nauru",
+    "nationality": {
+      "masculine": "Nauruan",
+      "feminine": "Nauruane"
+    },
+    "ipa": "",
+    "example": "Il travaille à Nauru depuis plusieurs mois.",
+    "exampleArabic": "يعمل في ناورو منذ عدة أشهر."
+  },
+  {
+    "word": "Népal",
+    "arabic": "نيبال",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Népal",
+    "nationality": {
+      "masculine": "Népalais",
+      "feminine": "Népalaise"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Népal.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في نيبال."
+  },
+  {
+    "word": "Nicaragua",
+    "arabic": "نيكاراغوا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Nicaragua",
+    "nationality": {
+      "masculine": "Nicaraguayen",
+      "feminine": "Nicaraguayenne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera au Nicaragua la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى نيكاراغوا الأسبوع المقبل."
+  },
+  {
+    "word": "Niger",
+    "arabic": "النيجر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Niger",
+    "nationality": {
+      "masculine": "Nigérien",
+      "feminine": "Nigérienne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu au Niger pendant leurs études.",
+    "exampleArabic": "عاشوا في النيجر خلال فترة دراستهم."
+  },
+  {
+    "word": "Nigeria",
+    "arabic": "نيجيريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Nigeria",
+    "nationality": {
+      "masculine": "Nigérian",
+      "feminine": "Nigériane"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Nigeria cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في نيجيريا هذا الصيف."
+  },
+  {
+    "word": "Norvège",
+    "arabic": "النرويج",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Norvège",
+    "nationality": {
+      "masculine": "Norvégien",
+      "feminine": "Norvégienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Norvège.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في النرويج."
+  },
+  {
+    "word": "Nouvelle-Zélande",
+    "arabic": "نيوزيلندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Nouvelle-Zélande",
+    "nationality": {
+      "masculine": "Néo-Zélandais",
+      "feminine": "Néo-Zélandaise"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Nouvelle-Zélande.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في نيوزيلندا."
+  },
+  {
+    "word": "Oman",
+    "arabic": "عُمان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Oman",
+    "nationality": {
+      "masculine": "Omanais",
+      "feminine": "Omanaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour à Oman.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في عُمان."
+  },
+  {
+    "word": "Ouganda",
+    "arabic": "أوغندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Ouganda",
+    "nationality": {
+      "masculine": "Ougandais",
+      "feminine": "Ougandaise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif en Ouganda.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في أوغندا."
+  },
+  {
+    "word": "Ouzbékistan",
+    "arabic": "أوزبكستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Ouzbékistan",
+    "nationality": {
+      "masculine": "Ouzbek",
+      "feminine": "Ouzbèke"
+    },
+    "ipa": "",
+    "example": "Il espère retourner en Ouzbékistan avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى أوزبكستان قبل نهاية العام."
+  },
+  {
+    "word": "Pakistan",
+    "arabic": "باكستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Pakistan",
+    "nationality": {
+      "masculine": "Pakistanais",
+      "feminine": "Pakistanaise"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Pakistan pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى باكستان في فصل الربيع."
+  },
+  {
+    "word": "Palaos",
+    "arabic": "بالاو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Palaos",
+    "nationality": {
+      "masculine": "Palaosien",
+      "feminine": "Palaosienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier aux Palaos l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في بالاو العام المقبل."
+  },
+  {
+    "word": "Palestine",
+    "arabic": "فلسطين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Palestine",
+    "nationality": {
+      "masculine": "Palestinien",
+      "feminine": "Palestinienne"
+    },
+    "ipa": "",
+    "example": "Il travaille en Palestine depuis plusieurs mois.",
+    "exampleArabic": "يعمل في فلسطين منذ عدة أشهر."
+  },
+  {
+    "word": "Panama",
+    "arabic": "بنما",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Panama",
+    "nationality": {
+      "masculine": "Panaméen",
+      "feminine": "Panaméenne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Panama.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في بنما."
+  },
+  {
+    "word": "Papouasie-Nouvelle-Guinée",
+    "arabic": "بابوا غينيا الجديدة",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Papouasie-Nouvelle-Guinée",
+    "nationality": {
+      "masculine": "Papou-Néo-Guinéen",
+      "feminine": "Papou-Néo-Guinéenne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Papouasie-Nouvelle-Guinée la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى بابوا غينيا الجديدة الأسبوع المقبل."
+  },
+  {
+    "word": "Paraguay",
+    "arabic": "باراغواي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Paraguay",
+    "nationality": {
+      "masculine": "Paraguayen",
+      "feminine": "Paraguayenne"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu au Paraguay pendant leurs études.",
+    "exampleArabic": "عاشوا في باراغواي خلال فترة دراستهم."
+  },
+  {
+    "word": "Pays-Bas",
+    "arabic": "هولندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin pluriel",
+    "article": "les",
+    "preposition": "aux Pays-Bas",
+    "nationality": {
+      "masculine": "Néerlandais",
+      "feminine": "Néerlandaise"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner aux Pays-Bas cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في هولندا هذا الصيف."
+  },
+  {
+    "word": "Pérou",
+    "arabic": "بيرو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Pérou",
+    "nationality": {
+      "masculine": "Péruvien",
+      "feminine": "Péruvienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Pérou.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في بيرو."
+  },
+  {
+    "word": "Philippines",
+    "arabic": "الفلبين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Philippines",
+    "nationality": {
+      "masculine": "Philippin",
+      "feminine": "Philippine"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines aux Philippines.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في الفلبين."
+  },
+  {
+    "word": "Pologne",
+    "arabic": "بولندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Pologne",
+    "nationality": {
+      "masculine": "Polonais",
+      "feminine": "Polonaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Pologne.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في بولندا."
+  },
+  {
+    "word": "Portugal",
+    "arabic": "البرتغال",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Portugal",
+    "nationality": {
+      "masculine": "Portugais",
+      "feminine": "Portugaise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Portugal.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في البرتغال."
+  },
+  {
+    "word": "Qatar",
+    "arabic": "قطر",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Qatar",
+    "nationality": {
+      "masculine": "Qatari",
+      "feminine": "Qatarie"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Qatar avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى قطر قبل نهاية العام."
+  },
+  {
+    "word": "République centrafricaine",
+    "arabic": "جمهورية أفريقيا الوسطى",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en République centrafricaine",
+    "nationality": {
+      "masculine": "Centrafricain",
+      "feminine": "Centrafricaine"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage en République centrafricaine pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى جمهورية أفريقيا الوسطى في فصل الربيع."
+  },
+  {
+    "word": "République démocratique du Congo",
+    "arabic": "جمهورية الكونغو الديمقراطية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en République démocratique du Congo",
+    "nationality": {
+      "masculine": "Congolais",
+      "feminine": "Congolaise"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en République démocratique du Congo l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في جمهورية الكونغو الديمقراطية العام المقبل."
+  },
+  {
+    "word": "République dominicaine",
+    "arabic": "جمهورية الدومينيكان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en République dominicaine",
+    "nationality": {
+      "masculine": "Dominicain",
+      "feminine": "Dominicaine"
+    },
+    "ipa": "",
+    "example": "Il travaille en République dominicaine depuis plusieurs mois.",
+    "exampleArabic": "يعمل في جمهورية الدومينيكان منذ عدة أشهر."
+  },
+  {
+    "word": "Roumanie",
+    "arabic": "رومانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Roumanie",
+    "nationality": {
+      "masculine": "Roumain",
+      "feminine": "Roumaine"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Roumanie.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في رومانيا."
+  },
+  {
+    "word": "Royaume-Uni",
+    "arabic": "المملكة المتحدة",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Royaume-Uni",
+    "nationality": {
+      "masculine": "Britannique",
+      "feminine": "Britannique"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera au Royaume-Uni la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى المملكة المتحدة الأسبوع المقبل."
+  },
+  {
+    "word": "Russie",
+    "arabic": "روسيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Russie",
+    "nationality": {
+      "masculine": "Russe",
+      "feminine": "Russe"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Russie pendant leurs études.",
+    "exampleArabic": "عاشوا في روسيا خلال فترة دراستهم."
+  },
+  {
+    "word": "Rwanda",
+    "arabic": "رواندا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Rwanda",
+    "nationality": {
+      "masculine": "Rwandais",
+      "feminine": "Rwandaise"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner au Rwanda cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في رواندا هذا الصيف."
+  },
+  {
+    "word": "Saint-Christophe-et-Niévès",
+    "arabic": "سانت كيتس ونيفيس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Saint-Christophe-et-Niévès",
+    "nationality": {
+      "masculine": "Kittitien ou Névicien",
+      "feminine": "Kittitienne ou Névicienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire à Saint-Christophe-et-Niévès.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في سانت كيتس ونيفيس."
+  },
+  {
+    "word": "Sainte-Lucie",
+    "arabic": "سانت لوسيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Sainte-Lucie",
+    "nationality": {
+      "masculine": "Saint-Lucien",
+      "feminine": "Saint-Lucienne"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines à Sainte-Lucie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في سانت لوسيا."
+  },
+  {
+    "word": "Saint-Marin",
+    "arabic": "سان مارينو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Saint-Marin",
+    "nationality": {
+      "masculine": "Saint-Marinais",
+      "feminine": "Saint-Marinaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour à Saint-Marin.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في سان مارينو."
+  },
+  {
+    "word": "Saint-Vincent-et-les-Grenadines",
+    "arabic": "سانت فنسنت وجزر غرينادين",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Saint-Vincent-et-les-Grenadines",
+    "nationality": {
+      "masculine": "Saint-Vincentais",
+      "feminine": "Saint-Vincentaise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif à Saint-Vincent-et-les-Grenadines.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في سانت فنسنت وجزر غرينادين."
+  },
+  {
+    "word": "Salvador",
+    "arabic": "السلفادور",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Salvador",
+    "nationality": {
+      "masculine": "Salvadorien",
+      "feminine": "Salvadorienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Salvador avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى السلفادور قبل نهاية العام."
+  },
+  {
+    "word": "Samoa",
+    "arabic": "ساموا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Samoa",
+    "nationality": {
+      "masculine": "Samoan",
+      "feminine": "Samoane"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage aux Samoa pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى ساموا في فصل الربيع."
+  },
+  {
+    "word": "Sao Tomé-et-Principe",
+    "arabic": "ساو تومي وبرينسيب",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Sao Tomé-et-Principe",
+    "nationality": {
+      "masculine": "Santoméen",
+      "feminine": "Santoméenne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier à Sao Tomé-et-Principe l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في ساو تومي وبرينسيب العام المقبل."
+  },
+  {
+    "word": "Sénégal",
+    "arabic": "السنغال",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Sénégal",
+    "nationality": {
+      "masculine": "Sénégalais",
+      "feminine": "Sénégalaise"
+    },
+    "ipa": "",
+    "example": "Il travaille au Sénégal depuis plusieurs mois.",
+    "exampleArabic": "يعمل في السنغال منذ عدة أشهر."
+  },
+  {
+    "word": "Serbie",
+    "arabic": "صربيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Serbie",
+    "nationality": {
+      "masculine": "Serbe",
+      "feminine": "Serbe"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne en Serbie.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في صربيا."
+  },
+  {
+    "word": "Seychelles",
+    "arabic": "سيشل",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Seychelles",
+    "nationality": {
+      "masculine": "Seychellois",
+      "feminine": "Seychelloise"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera aux Seychelles la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى سيشل الأسبوع المقبل."
+  },
+  {
+    "word": "Sierra Leone",
+    "arabic": "سيراليون",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Sierra Leone",
+    "nationality": {
+      "masculine": "Sierra-Léonais",
+      "feminine": "Sierra-Léonaise"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu en Sierra Leone pendant leurs études.",
+    "exampleArabic": "عاشوا في سيراليون خلال فترة دراستهم."
+  },
+  {
+    "word": "Singapour",
+    "arabic": "سنغافورة",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "sans article",
+    "preposition": "à Singapour",
+    "nationality": {
+      "masculine": "Singapourien",
+      "feminine": "Singapourienne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner à Singapour cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في سنغافورة هذا الصيف."
+  },
+  {
+    "word": "Slovaquie",
+    "arabic": "سلوفاكيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Slovaquie",
+    "nationality": {
+      "masculine": "Slovaque",
+      "feminine": "Slovaque"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Slovaquie.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في سلوفاكيا."
+  },
+  {
+    "word": "Slovénie",
+    "arabic": "سلوفينيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Slovénie",
+    "nationality": {
+      "masculine": "Slovène",
+      "feminine": "Slovène"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Slovénie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في سلوفينيا."
+  },
+  {
+    "word": "Somalie",
+    "arabic": "الصومال",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Somalie",
+    "nationality": {
+      "masculine": "Somalien",
+      "feminine": "Somalienne"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Somalie.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في الصومال."
+  },
+  {
+    "word": "Soudan",
+    "arabic": "السودان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Soudan",
+    "nationality": {
+      "masculine": "Soudanais",
+      "feminine": "Soudanaise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Soudan.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في السودان."
+  },
+  {
+    "word": "Soudan du Sud",
+    "arabic": "جنوب السودان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Soudan du Sud",
+    "nationality": {
+      "masculine": "Sud-Soudanais",
+      "feminine": "Sud-Soudanaise"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Soudan du Sud avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى جنوب السودان قبل نهاية العام."
+  },
+  {
+    "word": "Sri Lanka",
+    "arabic": "سريلانكا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Sri Lanka",
+    "nationality": {
+      "masculine": "Sri-Lankais",
+      "feminine": "Sri-Lankaise"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Sri Lanka pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى سريلانكا في فصل الربيع."
+  },
+  {
+    "word": "Suède",
+    "arabic": "السويد",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Suède",
+    "nationality": {
+      "masculine": "Suédois",
+      "feminine": "Suédoise"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Suède l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في السويد العام المقبل."
+  },
+  {
+    "word": "Suisse",
+    "arabic": "سويسرا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Suisse",
+    "nationality": {
+      "masculine": "Suisse",
+      "feminine": "Suisse"
+    },
+    "ipa": "",
+    "example": "Il travaille en Suisse depuis plusieurs mois.",
+    "exampleArabic": "يعمل في سويسرا منذ عدة أشهر."
+  },
+  {
+    "word": "Suriname",
+    "arabic": "سورينام",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Suriname",
+    "nationality": {
+      "masculine": "Surinamien",
+      "feminine": "Surinamienne"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Suriname.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في سورينام."
+  },
+  {
+    "word": "Syrie",
+    "arabic": "سوريا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Syrie",
+    "nationality": {
+      "masculine": "Syrien",
+      "feminine": "Syrienne"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Syrie la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى سوريا الأسبوع المقبل."
+  },
+  {
+    "word": "Tadjikistan",
+    "arabic": "طاجيكستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Tadjikistan",
+    "nationality": {
+      "masculine": "Tadjik",
+      "feminine": "Tadjike"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu au Tadjikistan pendant leurs études.",
+    "exampleArabic": "عاشوا في طاجيكستان خلال فترة دراستهم."
+  },
+  {
+    "word": "Tanzanie",
+    "arabic": "تنزانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Tanzanie",
+    "nationality": {
+      "masculine": "Tanzanien",
+      "feminine": "Tanzanienne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Tanzanie cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في تنزانيا هذا الصيف."
+  },
+  {
+    "word": "Tchad",
+    "arabic": "تشاد",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Tchad",
+    "nationality": {
+      "masculine": "Tchadien",
+      "feminine": "Tchadienne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire au Tchad.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في تشاد."
+  },
+  {
+    "word": "Tchéquie",
+    "arabic": "التشيك",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Tchéquie",
+    "nationality": {
+      "masculine": "Tchèque",
+      "feminine": "Tchèque"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines en Tchéquie.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في التشيك."
+  },
+  {
+    "word": "Thaïlande",
+    "arabic": "تايلاند",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Thaïlande",
+    "nationality": {
+      "masculine": "Thaïlandais",
+      "feminine": "Thaïlandaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour en Thaïlande.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في تايلاند."
+  },
+  {
+    "word": "Timor-Leste",
+    "arabic": "تيمور الشرقية",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Timor-Leste",
+    "nationality": {
+      "masculine": "Timorais",
+      "feminine": "Timoraise"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Timor-Leste.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في تيمور الشرقية."
+  },
+  {
+    "word": "Togo",
+    "arabic": "توغو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Togo",
+    "nationality": {
+      "masculine": "Togolais",
+      "feminine": "Togolaise"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Togo avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى توغو قبل نهاية العام."
+  },
+  {
+    "word": "Tonga",
+    "arabic": "تونغا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Tonga",
+    "nationality": {
+      "masculine": "Tongien",
+      "feminine": "Tongienne"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage aux Tonga pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى تونغا في فصل الربيع."
+  },
+  {
+    "word": "Trinité-et-Tobago",
+    "arabic": "ترينيداد وتوباغو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "sans article",
+    "preposition": "à Trinité-et-Tobago",
+    "nationality": {
+      "masculine": "Trinidadien",
+      "feminine": "Trinidadienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier à Trinité-et-Tobago l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في ترينيداد وتوباغو العام المقبل."
+  },
+  {
+    "word": "Tunisie",
+    "arabic": "تونس",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Tunisie",
+    "nationality": {
+      "masculine": "Tunisien",
+      "feminine": "Tunisienne"
+    },
+    "ipa": "",
+    "example": "Il travaille en Tunisie depuis plusieurs mois.",
+    "exampleArabic": "يعمل في تونس منذ عدة أشهر."
+  },
+  {
+    "word": "Turkménistan",
+    "arabic": "تركمانستان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Turkménistan",
+    "nationality": {
+      "masculine": "Turkmène",
+      "feminine": "Turkmène"
+    },
+    "ipa": "",
+    "example": "Ce documentaire présente la vie quotidienne au Turkménistan.",
+    "exampleArabic": "يعرض هذا الفيلم الوثائقي الحياة اليومية في تركمانستان."
+  },
+  {
+    "word": "Turquie",
+    "arabic": "تركيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Turquie",
+    "nationality": {
+      "masculine": "Turc",
+      "feminine": "Turque"
+    },
+    "ipa": "",
+    "example": "Une délégation arrivera en Turquie la semaine prochaine.",
+    "exampleArabic": "سيصل وفد إلى تركيا الأسبوع المقبل."
+  },
+  {
+    "word": "Tuvalu",
+    "arabic": "توفالو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin pluriel",
+    "article": "les",
+    "preposition": "aux Tuvalu",
+    "nationality": {
+      "masculine": "Tuvaluan",
+      "feminine": "Tuvaluane"
+    },
+    "ipa": "",
+    "example": "Ils ont vécu aux Tuvalu pendant leurs études.",
+    "exampleArabic": "عاشوا في توفالو خلال فترة دراستهم."
+  },
+  {
+    "word": "Ukraine",
+    "arabic": "أوكرانيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "l’",
+    "preposition": "en Ukraine",
+    "nationality": {
+      "masculine": "Ukrainien",
+      "feminine": "Ukrainienne"
+    },
+    "ipa": "",
+    "example": "Ma famille prévoit de séjourner en Ukraine cet été.",
+    "exampleArabic": "تخطط عائلتي للإقامة في أوكرانيا هذا الصيف."
+  },
+  {
+    "word": "Uruguay",
+    "arabic": "أورغواي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "l’",
+    "preposition": "en Uruguay",
+    "nationality": {
+      "masculine": "Uruguayen",
+      "feminine": "Uruguayenne"
+    },
+    "ipa": "",
+    "example": "Le professeur organise un échange scolaire en Uruguay.",
+    "exampleArabic": "ينظم المعلم برنامج تبادل مدرسيًا في أورغواي."
+  },
+  {
+    "word": "Vanuatu",
+    "arabic": "فانواتو",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Vanuatu",
+    "nationality": {
+      "masculine": "Ni-Vanuatu",
+      "feminine": "Ni-Vanuatu"
+    },
+    "ipa": "",
+    "example": "Nous aimerions passer quelques semaines au Vanuatu.",
+    "exampleArabic": "نود قضاء بضعة أسابيع في فانواتو."
+  },
+  {
+    "word": "Vatican",
+    "arabic": "الفاتيكان",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Vatican",
+    "nationality": {
+      "masculine": "Vaticanais",
+      "feminine": "Vaticanaise"
+    },
+    "ipa": "",
+    "example": "Elle a rencontré ses collègues lors d’un séjour au Vatican.",
+    "exampleArabic": "التقت بزملائها خلال إقامة في الفاتيكان."
+  },
+  {
+    "word": "Venezuela",
+    "arabic": "فنزويلا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Venezuela",
+    "nationality": {
+      "masculine": "Vénézuélien",
+      "feminine": "Vénézuélienne"
+    },
+    "ipa": "",
+    "example": "Cette association mène un projet éducatif au Venezuela.",
+    "exampleArabic": "تنفذ هذه الجمعية مشروعًا تعليميًا في فنزويلا."
+  },
+  {
+    "word": "Viêt Nam",
+    "arabic": "فيتنام",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Viêt Nam",
+    "nationality": {
+      "masculine": "Vietnamien",
+      "feminine": "Vietnamienne"
+    },
+    "ipa": "",
+    "example": "Il espère retourner au Viêt Nam avant la fin de l’année.",
+    "exampleArabic": "يأمل في العودة إلى فيتنام قبل نهاية العام."
+  },
+  {
+    "word": "Yémen",
+    "arabic": "اليمن",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Yémen",
+    "nationality": {
+      "masculine": "Yéménite",
+      "feminine": "Yéménite"
+    },
+    "ipa": "",
+    "example": "Nous préparons un voyage au Yémen pour le printemps.",
+    "exampleArabic": "نخطط لرحلة إلى اليمن في فصل الربيع."
+  },
+  {
+    "word": "Zambie",
+    "arabic": "زامبيا",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Féminin",
+    "article": "la",
+    "preposition": "en Zambie",
+    "nationality": {
+      "masculine": "Zambien",
+      "feminine": "Zambienne"
+    },
+    "ipa": "",
+    "example": "Elle souhaite étudier en Zambie l’année prochaine.",
+    "exampleArabic": "ترغب في الدراسة في زامبيا العام المقبل."
+  },
+  {
+    "word": "Zimbabwe",
+    "arabic": "زيمبابوي",
+    "partOfSpeech": "proper_noun",
+    "grammarLabel": "Masculin",
+    "article": "le",
+    "preposition": "au Zimbabwe",
+    "nationality": {
+      "masculine": "Zimbabwéen",
+      "feminine": "Zimbabwéenne"
+    },
+    "ipa": "",
+    "example": "Il travaille au Zimbabwe depuis plusieurs mois.",
+    "exampleArabic": "يعمل في زيمبابوي منذ عدة أشهر."
+  }
+]

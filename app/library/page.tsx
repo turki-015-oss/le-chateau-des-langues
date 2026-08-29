@@ -19,10 +19,12 @@ function normalizeSearchText(value: string) {
     .replace(/[\u0300-\u036f\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed]/g, "")
     .replace(/\u0640/g, "")
     .replace(/[أإآٱ]/g, "ا")
-    .replace(/ى/g, "ي")
+    .replace(/[ىیۍې]/g, "ي")
+    .replace(/[ةۀە]/g, "ه")
+    .replace(/[کڪ]/g, "ك")
     .replace(/ؤ/g, "و")
     .replace(/ئ/g, "ي")
-    .replace(/[’‘`]/g, "'")
+    .replace(/[.,،؛;:!?؟…"'’‘`´“”«»()[\]{}|\\/_‐‑‒–—―-]+/g, " ")
     .replace(/\s+/g, " ")
     .toLocaleLowerCase("fr")
     .trim();
@@ -31,11 +33,13 @@ function normalizeSearchText(value: string) {
 function searchRank(value: string | undefined, needle: string) {
   if (!value) return null;
   const normalized = normalizeSearchText(value);
+  const compact = normalized.replace(/\s/g, "");
+  const compactNeedle = needle.replace(/\s/g, "");
   if (!normalized) return null;
-  if (normalized === needle) return 0;
-  if (normalized.startsWith(needle)) return 1;
+  if (normalized === needle || compact === compactNeedle) return 0;
+  if (normalized.startsWith(needle) || compact.startsWith(compactNeedle)) return 1;
   if (normalized.split(/[\s'’.-]+/).some((part) => part.startsWith(needle))) return 2;
-  if (normalized.includes(needle)) return 3;
+  if (normalized.includes(needle) || compact.includes(compactNeedle)) return 3;
   return null;
 }
 

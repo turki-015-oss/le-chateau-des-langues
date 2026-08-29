@@ -10,6 +10,7 @@ DICTIONARY = ROOT / "public" / "library" / "dictionary"
 OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION = ROOT / "scripts" / "library-expansion-verified.json"
 EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
+DIRECTION_ENTRIES = ROOT / "scripts" / "library-direction-entries.json"
 
 
 def normalize(value: str) -> str:
@@ -30,6 +31,7 @@ def main() -> None:
     overrides = json.loads(OVERRIDES.read_text(encoding="utf-8"))
     expansion = json.loads(EXPANSION.read_text(encoding="utf-8")) if EXPANSION.exists() else []
     corrections = json.loads(EXPANSION_CORRECTIONS.read_text(encoding="utf-8")) if EXPANSION_CORRECTIONS.exists() else {}
+    directions = json.loads(DIRECTION_ENTRIES.read_text(encoding="utf-8")) if DIRECTION_ENTRIES.exists() else []
     curated = [entry for entry in entries if entry.get("exampleSource") == "Révision éditoriale"]
     duplicate_french = [
         text for text, count in collections.Counter(entry["example"] for entry in entries).items() if count > 1
@@ -45,7 +47,8 @@ def main() -> None:
     bad_gender = [
         entry["id"]
         for entry in entries
-        if (entry["gender"], entry["determiner"]) not in {("masculine", "Un"), ("feminine", "Une")}
+        if not entry.get("grammarLabel")
+        and (entry.get("gender"), entry.get("determiner")) not in {("masculine", "Un"), ("feminine", "Une")}
     ]
     bad_counterparts = [
         entry["id"]
@@ -69,7 +72,7 @@ def main() -> None:
     bad_sources = [
         entry["id"] for entry in entries
         if entry.get("exampleSource") not in {
-            "Tatoeba", "Équipe éditoriale", "Révision éditoriale", "Révision lexicographique", "Révision contextuelle"
+            "Tatoeba", "Équipe éditoriale", "Révision éditoriale", "Révision lexicographique", "Révision contextuelle", "Révision thématique"
         }
     ]
     base_changed = [
@@ -95,6 +98,22 @@ def main() -> None:
         entry["id"] for entry in contextual_entries
         if entry["example"].startswith("Le nom «") or normalize(entry["word"]) not in normalize(entry["example"])
     ]
+    direction_keys = {normalize(entry["word"]) for entry in directions}
+    published_directions = [entry for entry in entries if entry.get("directionTopic")]
+    published_direction_by_key = {normalize(entry["word"]): entry for entry in published_directions}
+    direction_mismatches = [
+        source["word"] for source in directions
+        if normalize(source["word"]) not in published_direction_by_key
+        or any(
+            published_direction_by_key[normalize(source["word"])].get(field) != value
+            for field, value in source.items()
+        )
+    ]
+    bad_direction_examples = [
+        entry["id"] for entry in published_directions
+        if normalize(entry["word"]) not in normalize(entry["example"])
+        or not entry.get("exampleArabic")
+    ]
 
     checks = {
         "total": len(entries) == expected_total == manifest["total"],
@@ -111,13 +130,17 @@ def main() -> None:
         "base_unchanged": not base_changed,
         "letters": not bad_letters,
         "sources": not bad_sources,
-        "expansion_count": len(published_expansion) == expected_total - 5000,
+        "expansion_count": len(published_expansion) == expected_total - 5000 - len(directions),
         "expansion_scope": published_expansion <= expansion_keys,
         "contextual_batch_size": len(corrections) > 0 and len(corrections) % 100 == 0,
         "contextual_scope": contextual_keys == correction_keys,
         "contextual_values": not correction_mismatches,
         "contextual_manifest": manifest.get("contextualExampleCount") == len(corrections),
         "contextual_examples": not bad_contextual_examples,
+        "direction_scope": {normalize(entry["word"]) for entry in published_directions} == direction_keys,
+        "direction_values": not direction_mismatches,
+        "direction_examples": not bad_direction_examples,
+        "direction_manifest": manifest.get("directionEntryCount") == len(directions),
         "manifest_search": len(manifest["search"]) == expected_total,
     }
 
@@ -146,6 +169,9 @@ def main() -> None:
         "contextualReviewed": len(contextual_entries),
         "correctionMismatches": len(correction_mismatches),
         "badContextualExamples": len(bad_contextual_examples),
+        "directionEntries": len(published_directions),
+        "directionMismatches": len(direction_mismatches),
+        "badDirectionExamples": len(bad_direction_examples),
     }, ensure_ascii=False, indent=2))
     if not all(checks.values()):
         raise SystemExit(1)

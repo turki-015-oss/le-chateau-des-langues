@@ -229,9 +229,13 @@ export default function LibraryPage() {
                   >
                     <div>
                       <h3>{entry.word}</h3>
-                      <span className={`dictionary-gender ${entry.gender}`} lang="fr">
-                        ({entry.gender === "masculine" ? "Masculin" : "Féminin"})
-                      </span>
+                      {entry.grammarLabel ? (
+                        <span className="dictionary-gender thematic" lang="fr">({entry.grammarLabel})</span>
+                      ) : entry.gender && (
+                        <span className={`dictionary-gender ${entry.gender}`} lang="fr">
+                          ({entry.gender === "masculine" ? "Masculin" : "Féminin"})
+                        </span>
+                      )}
                       {entry.ipa && <span className="dictionary-ipa" lang="fr">/{entry.ipa}/</span>}
                       <strong>{entry.arabic}</strong>
                       <p lang="fr">{entry.example}</p>

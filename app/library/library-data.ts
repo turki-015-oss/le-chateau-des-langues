@@ -5,15 +5,18 @@ export type DictionarySearchEntry = {
   letter: string;
   word: string;
   arabic: string;
-  gender: GrammaticalGender;
-  determiner: "Un" | "Une";
+  gender?: GrammaticalGender;
+  determiner?: "Un" | "Une";
+  grammarLabel?: string;
 };
 
 export type DictionaryEntry = DictionarySearchEntry & {
   ipa: string;
   example: string;
   exampleArabic: string;
-  exampleSource: "Tatoeba" | "Équipe éditoriale" | "Révision éditoriale" | "Révision lexicographique" | "Révision contextuelle";
+  partOfSpeech?: string;
+  directionTopic?: boolean;
+  exampleSource: "Tatoeba" | "Équipe éditoriale" | "Révision éditoriale" | "Révision lexicographique" | "Révision contextuelle" | "Révision thématique";
   counterpart?: {
     word: string;
     arabic: string;
@@ -31,6 +34,7 @@ export type DictionaryManifest = {
   curatedExampleCount: number;
   lexicographicExampleCount?: number;
   contextualExampleCount?: number;
+  directionEntryCount?: number;
   counts: Record<string, number>;
   search: DictionarySearchEntry[];
   sources: Array<{ name: string; url: string; use: string }>;

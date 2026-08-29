@@ -28,6 +28,7 @@ OUTPUT = ROOT / "public" / "library" / "dictionary"
 CURATED_OVERRIDES = ROOT / "scripts" / "library-context-overrides.json"
 EXPANSION_SOURCE = ROOT / "scripts" / "library-expansion-verified.json"
 EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
+DIRECTION_ENTRIES = ROOT / "scripts" / "library-direction-entries.json"
 BASE_COUNT = 5000
 MAX_COUNT = 10000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -380,6 +381,47 @@ def apply_expansion_corrections(entries: list[dict], path: Path) -> int:
     return applied
 
 
+def append_direction_entries(entries: list[dict], path: Path, seen_ids: set[str]) -> int:
+    if not path.exists():
+        return 0
+    additions = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(additions, list):
+        raise ValueError("Direction entries must be a JSON array")
+
+    seen_keys = {entry["key"] for entry in entries}
+    source_keys: set[str] = set()
+    for source_entry in additions:
+        required = {"word", "arabic", "partOfSpeech", "ipa", "example", "exampleArabic"}
+        missing = required - set(source_entry)
+        if missing:
+            raise ValueError(f"Missing direction fields for {source_entry.get('word', '?')}: {sorted(missing)}")
+        key = normalize(source_entry["word"])
+        if key in seen_keys:
+            raise ValueError(f"Direction entry duplicates an existing word: {source_entry['word']}")
+        if key in source_keys:
+            raise ValueError(f"Duplicate direction entry: {source_entry['word']}")
+        source_keys.add(key)
+        seen_keys.add(key)
+
+        if source_entry["partOfSpeech"] == "noun":
+            if (source_entry.get("gender"), source_entry.get("determiner")) not in {
+                ("masculine", "Un"), ("feminine", "Une")
+            }:
+                raise ValueError(f"Invalid noun gender for direction entry: {source_entry['word']}")
+        elif not source_entry.get("grammarLabel"):
+            raise ValueError(f"Missing grammarLabel for direction entry: {source_entry['word']}")
+
+        entry = dict(source_entry)
+        entry["key"] = key
+        entry["letter"] = first_letter(entry["word"])
+        entry["frequency"] = 0.0
+        entry["exampleSource"] = "Révision thématique"
+        entry["directionTopic"] = True
+        entry["id"] = make_id(entry, seen_ids)
+        entries.append(entry)
+    return len(additions)
+
+
 def make_id(entry: dict, seen: set[str]) -> str:
     base = re.sub(r"[^a-z0-9-]+", "-", normalize(entry["word"])).strip("-") or entry["letter"].lower()
     value = base
@@ -397,8 +439,11 @@ def validate(entries: list[dict], target_count: int) -> None:
     assert len({entry["id"] for entry in entries}) == target_count, "Duplicate ids"
     assert len({entry["example"] for entry in entries}) == target_count, "Duplicate French examples"
     assert len({entry["exampleArabic"] for entry in entries}) == target_count, "Duplicate Arabic examples"
-    assert all(entry["gender"] in {"masculine", "feminine"} for entry in entries)
-    assert all(entry["determiner"] in {"Un", "Une"} for entry in entries)
+    assert all(
+        bool(entry.get("grammarLabel"))
+        or (entry.get("gender"), entry.get("determiner")) in {("masculine", "Un"), ("feminine", "Une")}
+        for entry in entries
+    )
     assert all(ARABIC_RE.search(entry["arabic"]) for entry in entries)
     counterparts = [entry["counterpart"] for entry in entries if entry.get("counterpart")]
     assert all(item["gender"] in {"masculine", "feminine"} for item in counterparts)
@@ -407,7 +452,9 @@ def validate(entries: list[dict], target_count: int) -> None:
     assert all(item.get("example") and item.get("exampleArabic") for item in counterparts)
 
 
-def write_output(entries: list[dict], natural_count: int, curated_count: int, contextual_count: int) -> None:
+def write_output(
+    entries: list[dict], natural_count: int, curated_count: int, contextual_count: int, direction_count: int
+) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     by_letter: dict[str, list[dict]] = {letter: [] for letter in LETTERS}
     for entry in entries:
@@ -421,8 +468,8 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int, co
             "letter": entry["letter"],
             "word": entry["word"],
             "arabic": entry["arabic"],
-            "gender": entry["gender"],
-            "determiner": entry["determiner"],
+            **({"gender": entry["gender"], "determiner": entry["determiner"]} if entry.get("gender") else {}),
+            **({"grammarLabel": entry["grammarLabel"]} if entry.get("grammarLabel") else {}),
         }
         for entry in entries
     ]
@@ -435,6 +482,7 @@ def write_output(entries: list[dict], natural_count: int, curated_count: int, co
             entry.get("exampleSource") == "Révision lexicographique" for entry in entries
         ),
         "contextualExampleCount": contextual_count,
+        "directionEntryCount": direction_count,
         "counts": counts,
         "search": search,
         "sources": [
@@ -488,8 +536,9 @@ def main() -> None:
             seen_keys.add(entry["key"])
             entry["id"] = make_id(entry, seen_ids)
             entries.append(entry)
+    direction_count = append_direction_entries(entries, DIRECTION_ENTRIES, seen_ids)
     natural_count = sum(entry["exampleSource"] == "Tatoeba" for entry in entries)
-    validate(entries, target_count)
+    validate(entries, target_count + direction_count)
 
     counts = {letter: sum(entry["letter"] == letter for entry in entries) for letter in LETTERS}
     print(json.dumps({
@@ -499,11 +548,12 @@ def main() -> None:
         "naturalExamples": natural_count,
         "curatedExamples": curated_count,
         "contextualExamples": contextual_count,
+        "directionEntries": direction_count,
         "counts": counts,
         "first": entries[:3],
     }, ensure_ascii=True, indent=2))
     if not args.dry_run:
-        write_output(entries, natural_count, curated_count, contextual_count)
+        write_output(entries, natural_count, curated_count, contextual_count, direction_count)
 
 
 if __name__ == "__main__":

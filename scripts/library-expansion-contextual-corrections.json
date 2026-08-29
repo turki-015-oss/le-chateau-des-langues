@@ -8050,5 +8050,1009 @@
     "arabic": "شجرة الجاك فروت؛ الكاكايا",
     "example": "Le jacquier produit de très gros fruits directement sur son tronc.",
     "exampleArabic": "تنتج شجرة الكاكايا ثمارًا ضخمة تنمو مباشرة على جذعها."
+  },
+  "indigotier": {
+    "arabic": "نبات النيلة",
+    "example": "L’indigotier fournit le colorant bleu appelé indigo.",
+    "exampleArabic": "يوفر نبات النيلة الصبغة الزرقاء المسماة النيلي."
+  },
+  "microscopie": {
+    "arabic": "فحص مجهري؛ علم المجاهر",
+    "example": "La microscopie révèle des structures invisibles à l’œil nu.",
+    "exampleArabic": "يكشف الفحص المجهري بُنى لا تراها العين المجردة."
+  },
+  "factorisation": {
+    "arabic": "تحليل إلى عوامل",
+    "example": "La factorisation transforme cette expression en produit de deux termes.",
+    "exampleArabic": "يحوّل التحليل إلى عوامل هذا التعبير إلى حاصل ضرب حدين."
+  },
+  "hétérochromie": {
+    "arabic": "تغاير لون العينين أو الأنسجة المتناظرة",
+    "example": "L’hétérochromie donne à ses deux iris des couleurs différentes.",
+    "exampleArabic": "يجعل تغاير اللون قزحيتي عينيه مختلفتين في اللون."
+  },
+  "oligo-élément": {
+    "arabic": "عنصر نَزْر؛ عنصر يحتاجه الجسم بكمية ضئيلة",
+    "example": "Le zinc est un oligo-élément indispensable au bon fonctionnement de l’organisme.",
+    "exampleArabic": "الزنك عنصر نزر ضروري لعمل الجسم بصورة سليمة."
+  },
+  "navire-citerne": {
+    "arabic": "ناقلة سوائل؛ سفينة صهريج",
+    "example": "Le navire-citerne transporte du pétrole en vrac.",
+    "exampleArabic": "تنقل سفينة الصهريج النفط سائبًا."
+  },
+  "rösti": {
+    "arabic": "روستي؛ فطيرة بطاطس سويسرية",
+    "example": "Le rösti se prépare avec des pommes de terre râpées et dorées à la poêle.",
+    "exampleArabic": "تُحضّر فطيرة الروستي من بطاطس مبشورة ومحمّرة في المقلاة."
+  },
+  "fajita": {
+    "arabic": "فاهيتا",
+    "example": "La fajita contient de la viande grillée et des légumes dans une tortilla.",
+    "exampleArabic": "تحتوي الفاهيتا على لحم مشوي وخضراوات داخل خبز التورتيلا."
+  },
+  "gigabit": {
+    "arabic": "غيغابت؛ مليار بِت",
+    "example": "Un gigabit correspond à un milliard de bits.",
+    "exampleArabic": "يعادل الغيغابت مليار بِت."
+  },
+  "apoptose": {
+    "arabic": "موت خلوي مبرمج",
+    "example": "L’apoptose élimine de façon contrôlée les cellules devenues inutiles.",
+    "exampleArabic": "يزيل الموت الخلوي المبرمج الخلايا التي لم تعد لازمة بطريقة منظمة."
+  },
+  "capsicum": {
+    "arabic": "جنس الفلفل الحار والحلو",
+    "example": "Le capsicum regroupe différentes espèces de piments et de poivrons.",
+    "exampleArabic": "يضم جنس الكابسيكوم أنواعًا مختلفة من الفلفل الحار والحلو."
+  },
+  "chéloïde": {
+    "arabic": "جُدرة؛ ندبة متضخمة",
+    "example": "Une chéloïde s’est formée au-delà des limites de la blessure initiale.",
+    "exampleArabic": "تكونت ندبة متضخمة تجاوزت حدود الجرح الأصلي."
+  },
+  "téléport": {
+    "arabic": "مركز اتصالات فضائية",
+    "example": "Le téléport regroupe plusieurs antennes de communication par satellite.",
+    "exampleArabic": "يضم مركز الاتصالات الفضائية عدة هوائيات للاتصال بالأقمار الصناعية."
+  },
+  "épicondylite": {
+    "arabic": "التهاب لقيمة العضد؛ مرفق التنس",
+    "example": "L’épicondylite provoque une douleur sur le côté externe du coude.",
+    "exampleArabic": "يسبب مرفق التنس ألمًا في الجانب الخارجي للمرفق."
+  },
+  "sympathectomie": {
+    "arabic": "قطع الودي؛ استئصال جزء من الجهاز العصبي الودي",
+    "example": "La sympathectomie interrompt certains nerfs du système sympathique.",
+    "exampleArabic": "تقطع عملية قطع الودي بعض أعصاب الجهاز العصبي الودي."
+  },
+  "haka": {
+    "arabic": "هاكا؛ رقصة إنشادية ماورية",
+    "example": "Le haka accompagne certains rituels et rencontres sportives en Nouvelle-Zélande.",
+    "exampleArabic": "ترافق رقصة الهاكا بعض الطقوس والمنافسات الرياضية في نيوزيلندا."
+  },
+  "spéculoos": {
+    "arabic": "بسكويت سبيكولوس المتبل",
+    "example": "Le spéculoos est un biscuit croquant parfumé à la cannelle.",
+    "exampleArabic": "السبيكولوس بسكويت مقرمش بنكهة القرفة."
+  },
+  "myorelaxant": {
+    "arabic": "مُرخٍ للعضلات",
+    "example": "Le médecin prescrit un myorelaxant pour réduire les contractures.",
+    "exampleArabic": "يصف الطبيب مرخيًا للعضلات لتخفيف التقلصات."
+  },
+  "kinésiologie": {
+    "arabic": "علم حركة الجسم",
+    "example": "La kinésiologie analyse les mouvements et la mécanique du corps humain.",
+    "exampleArabic": "يحلل علم الحركة حركات الجسم البشري وميكانيكيته."
+  },
+  "astigmatisme": {
+    "arabic": "لَابُؤْرِيَّة؛ انحراف النظر",
+    "example": "L’astigmatisme peut rendre les lignes floues ou déformées.",
+    "exampleArabic": "قد يجعل انحراف النظر الخطوط ضبابية أو مشوهة."
+  },
+  "segmentation": {
+    "arabic": "تقسيم إلى مقاطع أو شرائح",
+    "example": "La segmentation du marché distingue plusieurs groupes de clients.",
+    "exampleArabic": "يقسم تجزؤ السوق العملاء إلى عدة مجموعات."
+  },
+  "exocet": {
+    "arabic": "سمكة طائرة",
+    "example": "L’exocet plane brièvement au-dessus de l’eau grâce à ses grandes nageoires.",
+    "exampleArabic": "تحلق السمكة الطائرة قليلًا فوق الماء بفضل زعانفها الكبيرة."
+  },
+  "castine": {
+    "arabic": "حجر جيري صَهري لصناعة الحديد",
+    "example": "La castine facilite la fusion des impuretés dans le haut fourneau.",
+    "exampleArabic": "يسهّل الحجر الجيري الصهري انصهار الشوائب في الفرن العالي."
+  },
+  "pullman": {
+    "arabic": "عربة قطار فاخرة",
+    "example": "Le pullman offre des fauteuils confortables et un service soigné.",
+    "exampleArabic": "توفر عربة القطار الفاخرة مقاعد مريحة وخدمة راقية."
+  },
+  "estancia": {
+    "arabic": "مزرعة واسعة في أمريكا الجنوبية",
+    "example": "L’estancia élève des milliers de bovins dans la pampa.",
+    "exampleArabic": "تربي المزرعة الواسعة آلاف الأبقار في سهول البامبا."
+  },
+  "colombier": {
+    "arabic": "برج حمام",
+    "example": "Le colombier abrite des centaines de niches pour les pigeons.",
+    "exampleArabic": "يضم برج الحمام مئات التجاويف المخصصة للطيور."
+  },
+  "croisillon": {
+    "arabic": "ذراع الجناح العرضي في الكنيسة",
+    "example": "Le croisillon nord du transept contient une petite chapelle.",
+    "exampleArabic": "يضم الذراع الشمالي للجناح العرضي كنيسة صغيرة."
+  },
+  "ramasse-miettes": {
+    "arabic": "أداة جمع فتات المائدة",
+    "example": "Le serveur passe le ramasse-miettes sur la nappe après le repas.",
+    "exampleArabic": "يمرر النادل أداة جمع الفتات على المفرش بعد الطعام."
+  },
+  "xhosa": {
+    "arabic": "لغة الخوسا",
+    "example": "Le xhosa est une langue bantoue à consonnes claquantes.",
+    "exampleArabic": "الخوسا لغة بانتوية تضم أصوات نقر مميزة."
+  },
+  "croisette": {
+    "arabic": "سيف تدريب ذو واقٍ صليبي",
+    "example": "Le maître d’armes utilise une croisette pendant la leçon.",
+    "exampleArabic": "يستخدم مدرب المبارزة سيف تدريب ذي واقٍ صليبي أثناء الدرس."
+  },
+  "néoréalisme": {
+    "arabic": "واقعية جديدة",
+    "example": "Le néoréalisme italien filme la vie quotidienne et les difficultés sociales.",
+    "exampleArabic": "تصور الواقعية الإيطالية الجديدة الحياة اليومية والمشكلات الاجتماعية."
+  },
+  "spiruline": {
+    "arabic": "سبيرولينا؛ طحالب مجهرية غذائية",
+    "example": "La spiruline commercialisée est riche en protéines.",
+    "exampleArabic": "تتميز السبيرولينا الغذائية المعروضة للبيع بغناها بالبروتين."
+  },
+  "simonie": {
+    "arabic": "سِيمونية؛ بيع المناصب أو المنافع الدينية",
+    "example": "La simonie consiste à tirer un avantage matériel d’une charge spirituelle.",
+    "exampleArabic": "تعني السيمونية تحقيق منفعة مادية من منصب ديني."
+  },
+  "classicisme": {
+    "arabic": "كلاسيكية؛ مذهب فني كلاسيكي",
+    "example": "Le classicisme recherche l’ordre, la mesure et l’inspiration antique.",
+    "exampleArabic": "يسعى المذهب الكلاسيكي إلى النظام والاتزان والاستلهام من العصور القديمة."
+  },
+  "dessiccation": {
+    "arabic": "تجفيف تام؛ نزع الرطوبة",
+    "example": "La dessiccation de la plante permet de la conserver dans un herbier.",
+    "exampleArabic": "يتيح التجفيف التام للنبات حفظه في معشبة."
+  },
+  "machiavélisme": {
+    "arabic": "مكيافيلية؛ دهاء سياسي بلا اعتبار أخلاقي",
+    "example": "Son machiavélisme transforme chaque alliance en instrument de pouvoir.",
+    "exampleArabic": "تحوّل مكيافيليته كل تحالف إلى أداة للسلطة."
+  },
+  "glissando": {
+    "arabic": "انزلاق موسيقي متدرج بين نغمتين",
+    "example": "Le pianiste exécute un glissando rapide sur le clavier.",
+    "exampleArabic": "يؤدي عازف البيانو انزلاقًا موسيقيًا سريعًا على لوحة المفاتيح."
+  },
+  "harki": {
+    "arabic": "حركي؛ جزائري خدم في الجيش الفرنسي خلال حرب الجزائر",
+    "example": "Le terme harki désigne un Algérien engagé aux côtés de l’armée française pendant la guerre d’Algérie.",
+    "exampleArabic": "يدل مصطلح حركي على جزائري خدم إلى جانب الجيش الفرنسي خلال حرب الجزائر."
+  },
+  "motet": {
+    "arabic": "موتيت؛ مؤلَّف غنائي ديني متعدد الأصوات",
+    "example": "Le chœur interprète un motet latin à quatre voix.",
+    "exampleArabic": "تؤدي الجوقة مؤلف موتيت لاتينيًا بأربعة أصوات."
+  },
+  "négus": {
+    "arabic": "نجاشي؛ لقب ملك إثيوبي",
+    "example": "Le négus portait un titre royal dans l’ancienne Éthiopie.",
+    "exampleArabic": "كان النجاشي يحمل لقبًا ملكيًا في إثيوبيا القديمة."
+  },
+  "pyrex": {
+    "arabic": "زجاج بوروسيليكات مقاوم للحرارة؛ بايركس",
+    "example": "Le pyrex supporte de fortes variations de température.",
+    "exampleArabic": "يتحمل زجاج البايركس تغيرات كبيرة في درجات الحرارة."
+  },
+  "dundee": {
+    "arabic": "مركب شراعي ذو صاريين لصيد التونة",
+    "example": "Le dundee quitte le port pour une longue campagne de pêche au thon.",
+    "exampleArabic": "يغادر المركب ذو الصاريين الميناء في رحلة طويلة لصيد التونة."
+  },
+  "lipome": {
+    "arabic": "ورم شحمي حميد",
+    "example": "Le lipome forme généralement une masse molle sous la peau.",
+    "exampleArabic": "يشكل الورم الشحمي عادة كتلة لينة تحت الجلد."
+  },
+  "nankin": {
+    "arabic": "قماش نانكين قطني أصفر",
+    "example": "Le nankin possède naturellement une teinte jaune chamois.",
+    "exampleArabic": "يتميز قماش نانكين طبيعيًا بلون أصفر قمحي."
+  },
+  "pairie": {
+    "arabic": "رتبة النبلاء الأقران؛ طبقة الأقران",
+    "example": "La pairie conférait autrefois un rang élevé dans la noblesse.",
+    "exampleArabic": "كانت رتبة الأقران تمنح قديمًا مكانة رفيعة في طبقة النبلاء."
+  },
+  "fellaga": {
+    "arabic": "فَلّاق؛ مقاتل في حركات التحرر بالمغرب العربي",
+    "example": "Le mot fellaga désignait des combattants des mouvements indépendantistes en Tunisie et en Algérie.",
+    "exampleArabic": "كانت كلمة فلاق تطلق على مقاتلي حركات الاستقلال في تونس والجزائر."
+  },
+  "oxydase": {
+    "arabic": "إنزيم أوكسيداز",
+    "example": "Une oxydase catalyse une réaction où l’oxygène accepte des électrons.",
+    "exampleArabic": "يحفز إنزيم الأوكسيداز تفاعلًا يستقبل فيه الأكسجين الإلكترونات."
+  },
+  "ramasse": {
+    "arabic": "زلاجة جبلية قديمة لنقل المسافرين",
+    "example": "La ramasse permettait autrefois de descendre rapidement une pente enneigée.",
+    "exampleArabic": "كانت الزلاجة الجبلية القديمة تتيح النزول سريعًا على منحدر ثلجي."
+  },
+  "rhinite": {
+    "arabic": "التهاب الأنف",
+    "example": "La rhinite allergique provoque des éternuements et un écoulement nasal.",
+    "exampleArabic": "يسبب التهاب الأنف التحسسي العطاس وسيلان الأنف."
+  },
+  "aldéhyde": {
+    "arabic": "ألدهيد؛ مركب عضوي يحوي مجموعة كربونيل طرفية",
+    "example": "Un aldéhyde possède un groupe carbonyle situé en bout de chaîne.",
+    "exampleArabic": "يحتوي الألدهيد على مجموعة كربونيل تقع في طرف السلسلة."
+  },
+  "dolomite": {
+    "arabic": "دولوميت؛ كربونات الكالسيوم والمغنيسيوم",
+    "example": "La dolomite est un minéral composé de calcium, de magnésium et de carbonate.",
+    "exampleArabic": "الدولوميت معدن يتكون من الكالسيوم والمغنيسيوم والكربونات."
+  },
+  "otoscope": {
+    "arabic": "منظار الأذن",
+    "example": "Le médecin examine le tympan avec un otoscope.",
+    "exampleArabic": "يفحص الطبيب طبلة الأذن بمنظار الأذن."
+  },
+  "pyrolyse": {
+    "arabic": "تحلل حراري دون احتراق",
+    "example": "La pyrolyse décompose la matière organique par la chaleur en absence d’oxygène.",
+    "exampleArabic": "يحلل الانحلال الحراري المادة العضوية بالحرارة في غياب الأكسجين."
+  },
+  "albinisme": {
+    "arabic": "مَهَق؛ نقص وراثي في الميلانين",
+    "example": "L’albinisme réduit ou empêche la production de mélanine.",
+    "exampleArabic": "يقلل المهق إنتاج الميلانين أو يمنعه."
+  },
+  "américium": {
+    "arabic": "أمريسيوم؛ عنصر كيميائي مشع",
+    "example": "L’américium porte le numéro atomique 95 et le symbole Am.",
+    "exampleArabic": "يحمل عنصر الأمريسيوم العدد الذري 95 والرمز Am."
+  },
+  "asymptote": {
+    "arabic": "خَطّ مُقارِب",
+    "example": "La courbe se rapproche de son asymptote sans la rejoindre à l’infini.",
+    "exampleArabic": "يقترب المنحنى من خطه المقارب من دون أن يلتقيه عند اللانهاية."
+  },
+  "céramiste": {
+    "arabic": "خزّاف؛ فنان خزف",
+    "example": "Le céramiste façonne le vase avant de le cuire au four.",
+    "exampleArabic": "يشكل الخزاف الإناء قبل حرقه في الفرن."
+  },
+  "cyanogène": {
+    "arabic": "سيانوجين؛ غاز سام",
+    "example": "Le cyanogène est un gaz toxique composé de carbone et d’azote.",
+    "exampleArabic": "السيانوجين غاز سام يتكون من الكربون والنيتروجين."
+  },
+  "extrusion": {
+    "arabic": "اندفاع حمم لزجة مكوّنة قبة أو إبرة",
+    "example": "L’extrusion d’une lave visqueuse forme un dôme au sommet du volcan.",
+    "exampleArabic": "يشكل اندفاع الحمم اللزجة قبة عند قمة البركان."
+  },
+  "germanium": {
+    "arabic": "جرمانيوم؛ عنصر شبه موصل",
+    "example": "Le germanium est un métalloïde utilisé dans certains composants électroniques.",
+    "exampleArabic": "الجرمانيوم شبه فلز يُستخدم في بعض المكونات الإلكترونية."
+  },
+  "aspidistra": {
+    "arabic": "نبات الأسبيدسترا",
+    "example": "L’aspidistra tolère les pièces peu lumineuses et demande peu d’entretien.",
+    "exampleArabic": "يتحمل نبات الأسبيدسترا الأماكن قليلة الضوء ولا يحتاج إلى عناية كبيرة."
+  },
+  "cavitation": {
+    "arabic": "تجويف؛ تكوّن فقاعات بخار في سائل",
+    "example": "La cavitation peut endommager les pales d’une hélice.",
+    "exampleArabic": "قد يؤدي التجويف إلى إتلاف شفرات المروحة."
+  },
+  "diplodocus": {
+    "arabic": "ديبلودوكس؛ ديناصور عاشب ضخم",
+    "example": "Le diplodocus possédait un cou et une queue extrêmement longs.",
+    "exampleArabic": "كان للديبلودوكس عنق وذيل طويلان جدًا."
+  },
+  "tautologie": {
+    "arabic": "تحصيل حاصل؛ تكرار المعنى بألفاظ مختلفة",
+    "example": "L’expression « monter en haut » est souvent considérée comme une tautologie.",
+    "exampleArabic": "يُعد تعبير «الصعود إلى أعلى» غالبًا تحصيل حاصل."
+  },
+  "télémesure": {
+    "arabic": "قياس عن بُعد",
+    "example": "La télémesure transmet au centre de contrôle les données du satellite.",
+    "exampleArabic": "يرسل القياس عن بعد بيانات القمر الصناعي إلى مركز التحكم."
+  },
+  "adénopathie": {
+    "arabic": "اعتلال عقد لمفاوية؛ تضخمها",
+    "example": "Une adénopathie cervicale se manifeste par un ganglion gonflé dans le cou.",
+    "exampleArabic": "يظهر اعتلال العقد اللمفاوية العنقية على هيئة عقدة متورمة في الرقبة."
+  },
+  "biosynthèse": {
+    "arabic": "تخليق حيوي",
+    "example": "La biosynthèse permet à la cellule de fabriquer des molécules complexes.",
+    "exampleArabic": "يتيح التخليق الحيوي للخلية صنع جزيئات معقدة."
+  },
+  "charbonnage": {
+    "arabic": "منجم فحم؛ استغلال الفحم الحجري",
+    "example": "Le charbonnage a longtemps employé une grande partie de la population locale.",
+    "exampleArabic": "وظّف منجم الفحم زمنًا طويلًا نسبة كبيرة من السكان المحليين."
+  },
+  "hippogriffe": {
+    "arabic": "هيبوغريف؛ مخلوق خرافي نصفه حصان ونصفه نسر",
+    "example": "L’hippogriffe traverse le ciel dans ce récit fantastique.",
+    "exampleArabic": "يعبر الهيبوغريف السماء في هذه الحكاية الخيالية."
+  },
+  "transduction": {
+    "arabic": "تحويل الإشارة داخل الخلية",
+    "example": "La transduction convertit un stimulus extérieur en signal cellulaire.",
+    "exampleArabic": "تحول عملية نقل الإشارة منبهًا خارجيًا إلى إشارة خلوية."
+  },
+  "utilitarisme": {
+    "arabic": "مذهب المنفعة",
+    "example": "L’utilitarisme évalue une action selon ses conséquences sur le bien-être collectif.",
+    "exampleArabic": "يقيّم مذهب المنفعة الفعل بحسب أثره في رفاه الجماعة."
+  },
+  "mezzo-soprano": {
+    "arabic": "صوت ميزو سوبرانو",
+    "example": "Le mezzo-soprano se situe entre le soprano et l’alto.",
+    "exampleArabic": "يقع صوت الميزو سوبرانو بين السوبرانو والألتو."
+  },
+  "péristaltisme": {
+    "arabic": "حركة دودية للأعضاء المجوفة",
+    "example": "Le péristaltisme fait progresser les aliments dans le tube digestif.",
+    "exampleArabic": "تدفع الحركة الدودية الطعام عبر القناة الهضمية."
+  },
+  "télédiffusion": {
+    "arabic": "بث تلفزيوني أو إذاعي عن بُعد",
+    "example": "La télédiffusion transmet le programme par ondes hertziennes.",
+    "exampleArabic": "ينقل البث البرنامج عبر الموجات اللاسلكية."
+  },
+  "catégorisation": {
+    "arabic": "تصنيف إلى فئات",
+    "example": "La catégorisation des documents facilite leur recherche.",
+    "exampleArabic": "يسهّل تصنيف الوثائق إلى فئات العثور عليها."
+  },
+  "réintroduction": {
+    "arabic": "إعادة إدخال نوع إلى بيئته",
+    "example": "La réintroduction du lynx vise à restaurer l’équilibre de l’écosystème.",
+    "exampleArabic": "تهدف إعادة إدخال الوشق إلى استعادة توازن النظام البيئي."
+  },
+  "parallélogramme": {
+    "arabic": "متوازي أضلاع",
+    "example": "Un parallélogramme possède deux paires de côtés opposés parallèles.",
+    "exampleArabic": "لمتوازي الأضلاع زوجان من الأضلاع المتقابلة المتوازية."
+  },
+  "turbocompresseur": {
+    "arabic": "شاحن توربيني",
+    "example": "Le turbocompresseur augmente la quantité d’air admise dans le moteur.",
+    "exampleArabic": "يزيد الشاحن التوربيني كمية الهواء الداخلة إلى المحرك."
+  },
+  "psychopharmacologie": {
+    "arabic": "علم الأدوية النفسية",
+    "example": "La psychopharmacologie étudie les effets des médicaments sur le comportement et l’humeur.",
+    "exampleArabic": "يدرس علم الأدوية النفسية آثار الأدوية في السلوك والمزاج."
+  },
+  "rif": {
+    "arabic": "جبهة قتال؛ خط نار",
+    "example": "Les soldats regagnent le rif avant la tombée de la nuit.",
+    "exampleArabic": "يعود الجنود إلى جبهة القتال قبل حلول الليل."
+  },
+  "aérobie": {
+    "arabic": "كائن هوائي يحتاج إلى الأكسجين",
+    "example": "Un aérobie utilise l’oxygène pour assurer son métabolisme.",
+    "exampleArabic": "يستخدم الكائن الهوائي الأكسجين لإتمام عملياته الأيضية."
+  },
+  "fermion": {
+    "arabic": "فرميون؛ جسيم ذو لف مغزلي نصف صحيح",
+    "example": "L’électron est un fermion de spin un demi.",
+    "exampleArabic": "الإلكترون فرميون لفه المغزلي يساوي نصفًا."
+  },
+  "nahuatl": {
+    "arabic": "لغة الناواتل",
+    "example": "Le nahuatl est encore parlé par de nombreuses communautés au Mexique.",
+    "exampleArabic": "لا تزال جماعات كثيرة في المكسيك تتحدث لغة الناواتل."
+  },
+  "consoude": {
+    "arabic": "نبات السنفِيتون؛ السنفيتون الطبي",
+    "example": "La consoude porte des feuilles velues et de petites fleurs en cloche.",
+    "exampleArabic": "يحمل نبات السنفيتون أوراقًا وبرية وأزهارًا صغيرة جرسية الشكل."
+  },
+  "intifada": {
+    "arabic": "انتفاضة؛ ثورة شعبية",
+    "example": "Le mot intifada signifie littéralement un soulèvement populaire.",
+    "exampleArabic": "تعني كلمة انتفاضة حرفيًا ثورة شعبية."
+  },
+  "népalais": {
+    "arabic": "اللغة النيبالية",
+    "example": "Le népalais est la langue officielle du Népal.",
+    "exampleArabic": "النيبالية هي اللغة الرسمية في نيبال."
+  },
+  "caryotype": {
+    "arabic": "نمط نووي؛ صورة مرتبة للصبغيات",
+    "example": "Le caryotype présente les chromosomes d’une cellule classés par paires.",
+    "exampleArabic": "يعرض النمط النووي صبغيات الخلية مرتبة في أزواج."
+  },
+  "hydrolase": {
+    "arabic": "إنزيم محلِّل مائيًا",
+    "example": "Une hydrolase coupe une liaison chimique en utilisant une molécule d’eau.",
+    "exampleArabic": "يقطع الإنزيم المحلل مائيًا رابطة كيميائية باستخدام جزيء ماء."
+  },
+  "dépresseur": {
+    "arabic": "مادة مثبطة للجهاز العصبي",
+    "example": "Un dépresseur ralentit l’activité du système nerveux central.",
+    "exampleArabic": "تبطئ المادة المثبطة نشاط الجهاز العصبي المركزي."
+  },
+  "glucomètre": {
+    "arabic": "جهاز قياس سكر الدم",
+    "example": "Le glucomètre affiche la glycémie à partir d’une goutte de sang.",
+    "exampleArabic": "يعرض جهاز قياس السكر مستوى الغلوكوز انطلاقًا من قطرة دم."
+  },
+  "quart-monde": {
+    "arabic": "فئات تعيش في فقر مدقع داخل المجتمع",
+    "example": "Le quart-monde désigne les personnes durablement exclues par l’extrême pauvreté.",
+    "exampleArabic": "يدل العالم الرابع على أشخاص يعانون إقصاءً مستمرًا بسبب الفقر المدقع."
+  },
+  "bronchiolite": {
+    "arabic": "التهاب القصيبات",
+    "example": "La bronchiolite touche fréquemment les nourrissons pendant l’hiver.",
+    "exampleArabic": "يصيب التهاب القصيبات الرضع كثيرًا خلال الشتاء."
+  },
+  "naturopathie": {
+    "arabic": "معالجة طبيعية؛ ممارسة صحية غير بديلة عن الطب",
+    "example": "La naturopathie propose des conseils d’hygiène de vie sans remplacer un suivi médical.",
+    "exampleArabic": "تقدم المعالجة الطبيعية نصائح لنمط الحياة من دون أن تحل محل المتابعة الطبية."
+  },
+  "lépidoptériste": {
+    "arabic": "عالم متخصص في الفراشات والعث",
+    "example": "Le lépidoptériste étudie les ailes et le cycle de vie des papillons.",
+    "exampleArabic": "يدرس عالم الفراشات أجنحتها ودورة حياتها."
+  },
+  "intron": {
+    "arabic": "إنترون؛ مقطع غير مشفِّر يُزال من الرنا",
+    "example": "L’intron est retiré du pré-ARN messager pendant l’épissage.",
+    "exampleArabic": "يُزال الإنترون من الرنا الرسول الأولي أثناء التضفير."
+  },
+  "scotome": {
+    "arabic": "عُتمة بصرية؛ بقعة عمياء في مجال الرؤية",
+    "example": "Le scotome crée une zone sombre dans le champ visuel.",
+    "exampleArabic": "تُحدث العتمة البصرية بقعة مظلمة في مجال الرؤية."
+  },
+  "cramoisi": {
+    "arabic": "قرمزي شديد الحمرة",
+    "example": "Le cramoisi du rideau contraste avec les murs clairs.",
+    "exampleArabic": "يتباين اللون القرمزي للستارة مع الجدران الفاتحة."
+  },
+  "paraphilie": {
+    "arabic": "انجذاب جنسي غير نمطي؛ بارافيليا",
+    "example": "Une paraphilie désigne en clinique un intérêt sexuel atypique persistant.",
+    "exampleArabic": "تدل البارافيليا سريريًا على اهتمام جنسي غير نمطي ومستمر."
+  },
+  "hypovolémie": {
+    "arabic": "نقص حجم الدم",
+    "example": "Une hypovolémie importante peut faire chuter la pression artérielle.",
+    "exampleArabic": "قد يؤدي نقص حجم الدم الشديد إلى انخفاض ضغط الدم."
+  },
+  "électromyogramme": {
+    "arabic": "مخطط كهربية العضلات",
+    "example": "L’électromyogramme enregistre l’activité électrique des muscles.",
+    "exampleArabic": "يسجل مخطط كهربية العضلات النشاط الكهربائي للعضلات."
+  },
+  "semé": {
+    "arabic": "حقل شعاري منثور بالرموز",
+    "example": "Un semé de fleurs de lys couvre tout le fond de l’écu.",
+    "exampleArabic": "يغطي نثر من زهور الزنبق كامل أرضية الترس في الشعار."
+  },
+  "oblast": {
+    "arabic": "أوبلاست؛ وحدة إدارية إقليمية",
+    "example": "Cet oblast constitue une division administrative de la Russie.",
+    "exampleArabic": "يشكل هذا الأوبلاست وحدة إدارية إقليمية في روسيا."
+  },
+  "bruxisme": {
+    "arabic": "صرير الأسنان؛ احتكاكها اللاإرادي",
+    "example": "Le bruxisme nocturne peut user l’émail des dents.",
+    "exampleArabic": "قد يؤدي صرير الأسنان الليلي إلى تآكل مينا الأسنان."
+  },
+  "chloroquine": {
+    "arabic": "كلوروكين؛ دواء مضاد للملاريا",
+    "example": "La chloroquine a été utilisée contre certaines formes sensibles du paludisme.",
+    "exampleArabic": "استُخدم الكلوروكين لعلاج بعض أنواع الملاريا الحساسة له."
+  },
+  "probiotique": {
+    "arabic": "كائن دقيق حي يُستخدم كمكمّل حيوي",
+    "example": "Un probiotique contient des micro-organismes vivants en quantité définie.",
+    "exampleArabic": "يحتوي المكمّل الحيوي على كائنات دقيقة حية بكمية محددة."
+  },
+  "arachnophobie": {
+    "arabic": "رهاب العناكب",
+    "example": "L’arachnophobie provoque chez elle une peur intense des araignées.",
+    "exampleArabic": "يسبب لها رهاب العناكب خوفًا شديدًا منها."
+  },
+  "entrepreneuriat": {
+    "arabic": "ريادة الأعمال",
+    "example": "L’entrepreneuriat transforme une idée en projet économique organisé.",
+    "exampleArabic": "تحول ريادة الأعمال الفكرة إلى مشروع اقتصادي منظم."
+  },
+  "entrelacement": {
+    "arabic": "تشابك؛ تداخل",
+    "example": "L’entrelacement des branches forme une voûte naturelle.",
+    "exampleArabic": "يشكل تشابك الأغصان قبة طبيعية."
+  },
+  "lori": {
+    "arabic": "ببغاء اللوري",
+    "example": "Le lori possède une langue adaptée à la consommation de nectar.",
+    "exampleArabic": "يمتلك ببغاء اللوري لسانًا مهيأً لامتصاص الرحيق."
+  },
+  "drave": {
+    "arabic": "نقل الأخشاب عائمًا عبر النهر",
+    "example": "La drave acheminait autrefois les troncs jusqu’aux scieries en aval.",
+    "exampleArabic": "كان تعويم الأخشاب ينقل الجذوع قديمًا إلى المناشر أسفل النهر."
+  },
+  "azurite": {
+    "arabic": "أزوريت؛ معدن أزرق من كربونات النحاس",
+    "example": "L’azurite se distingue par sa couleur bleu profond.",
+    "exampleArabic": "يتميز معدن الأزوريت بلونه الأزرق العميق."
+  },
+  "pierrot": {
+    "arabic": "عصفور دوري؛ اسم دارج",
+    "example": "Un pierrot picore des graines près de la fenêtre.",
+    "exampleArabic": "يلتقط عصفور دوري الحبوب قرب النافذة."
+  },
+  "massicot": {
+    "arabic": "مقص ورق كبير؛ آلة قطع الورق",
+    "example": "Le massicot coupe proprement toute une pile de feuilles.",
+    "exampleArabic": "تقطع آلة قص الورق رزمة كاملة من الأوراق بدقة."
+  },
+  "syllabus": {
+    "arabic": "قائمة قضايا حسمتها السلطة البابوية",
+    "example": "Le syllabus rassemble des propositions condamnées par l’autorité pontificale.",
+    "exampleArabic": "يجمع السيلابس قضايا أدانتها السلطة البابوية."
+  },
+  "rumination": {
+    "arabic": "اجترار فكري؛ استغراق متكرر في الفكرة",
+    "example": "La rumination mentale entretient son inquiétude sans résoudre le problème.",
+    "exampleArabic": "يبقي الاجترار الفكري قلقه قائمًا من دون حل المشكلة."
+  },
+  "atomisation": {
+    "arabic": "تحويل إلى ذرات حرة",
+    "example": "L’atomisation de l’échantillon précède son analyse spectrométrique.",
+    "exampleArabic": "يسبق تحويل العينة إلى ذرات حرة تحليلها الطيفي."
+  },
+  "stradivarius": {
+    "arabic": "آلة وترية صنعها ستراديفاري؛ غالبًا كمان",
+    "example": "Le stradivarius est conservé dans des conditions strictement contrôlées.",
+    "exampleArabic": "يُحفظ كمان ستراديفاريوس في ظروف مضبوطة بدقة."
+  },
+  "llano": {
+    "arabic": "سهل عشبي واسع في كولومبيا وفنزويلا",
+    "example": "Le llano s’étend à perte de vue entre la Colombie et le Venezuela.",
+    "exampleArabic": "يمتد السهل العشبي على مد البصر بين كولومبيا وفنزويلا."
+  },
+  "tannage": {
+    "arabic": "دباغة الجلود",
+    "example": "Le tannage transforme la peau brute en cuir durable.",
+    "exampleArabic": "تحول دباغة الجلد الخام إلى جلد متين."
+  },
+  "calcination": {
+    "arabic": "تكليس؛ تسخين مادة إلى حرارة عالية",
+    "example": "La calcination du calcaire produit de la chaux vive.",
+    "exampleArabic": "ينتج عن تكليس الحجر الجيري الجير الحي."
+  },
+  "turgescence": {
+    "arabic": "امتلاء خلوي؛ انتفاخ بالسوائل",
+    "example": "La turgescence maintient les jeunes tiges bien droites.",
+    "exampleArabic": "يحافظ امتلاء الخلايا بالماء على استقامة السيقان الفتية."
+  },
+  "cène": {
+    "arabic": "العشاء الأخير في التقليد المسيحي",
+    "example": "La Cène représente le dernier repas de Jésus avec ses disciples.",
+    "exampleArabic": "يمثل العشاء الأخير آخر وجبة للمسيح مع تلاميذه."
+  },
+  "dyne": {
+    "arabic": "داين؛ وحدة قوة في نظام السنتيمتر والغرام والثانية",
+    "example": "Une dyne vaut dix puissance moins cinq newton.",
+    "exampleArabic": "تعادل وحدة الداين عشرة أس سالب خمسة نيوتن."
+  },
+  "anode": {
+    "arabic": "مِصعد كهربائي؛ أنود",
+    "example": "L’oxydation se produit à l’anode d’une cellule électrochimique.",
+    "exampleArabic": "تحدث الأكسدة عند المصعد في الخلية الكهروكيميائية."
+  },
+  "béryl": {
+    "arabic": "بريل؛ معدن سيليكاتي",
+    "example": "L’émeraude et l’aigue-marine sont des variétés de béryl.",
+    "exampleArabic": "الزمرد والأكوامارين نوعان من معدن البريل."
+  },
+  "borate": {
+    "arabic": "بورات؛ ملح حمض البوريك",
+    "example": "Le borate de sodium entre dans la fabrication de certains verres.",
+    "exampleArabic": "تدخل بورات الصوديوم في صناعة بعض أنواع الزجاج."
+  },
+  "radian": {
+    "arabic": "راديان؛ وحدة قياس الزاوية",
+    "example": "Un angle plat mesure pi radians.",
+    "exampleArabic": "تساوي الزاوية المستقيمة باي راديان."
+  },
+  "anthère": {
+    "arabic": "مَتْك الزهرة؛ حامل حبوب اللقاح",
+    "example": "L’anthère libère le pollen lorsqu’elle arrive à maturité.",
+    "exampleArabic": "يطلق متك الزهرة حبوب اللقاح عند نضجه."
+  },
+  "ballote": {
+    "arabic": "نبات البالوتة؛ فراسيون أسود",
+    "example": "La ballote noire pousse souvent dans les terrains incultes.",
+    "exampleArabic": "ينمو نبات البالوتة السوداء غالبًا في الأراضي غير المزروعة."
+  },
+  "chéchia": {
+    "arabic": "شاشية؛ طربوش تونسي أحمر",
+    "example": "La chéchia traditionnelle est fabriquée en laine rouge feutrée.",
+    "exampleArabic": "تُصنع الشاشية التقليدية من صوف أحمر ملبّد."
+  },
+  "condyle": {
+    "arabic": "لُقمة عظمية؛ بروز مفصلي مستدير",
+    "example": "Le condyle s’articule avec l’os voisin pour former une jointure.",
+    "exampleArabic": "تتصل اللقمة العظمية بالعظم المجاور لتشكيل مفصل."
+  },
+  "godille": {
+    "arabic": "مجداف مؤخرة لتحريك القارب",
+    "example": "La godille fait avancer la barque par un mouvement en huit.",
+    "exampleArabic": "يدفع مجداف المؤخرة القارب بحركة تشبه الرقم ثمانية."
+  },
+  "lignine": {
+    "arabic": "لِغنين؛ بوليمر يقوي الخشب",
+    "example": "La lignine rigidifie les parois des cellules végétales.",
+    "exampleArabic": "يقوّي اللغنين جدران الخلايا النباتية."
+  },
+  "miellat": {
+    "arabic": "نَدوة عسلية تفرزها الحشرات",
+    "example": "Le puceron dépose du miellat sucré sur les feuilles.",
+    "exampleArabic": "تترك حشرة المن ندوة عسلية حلوة على الأوراق."
+  },
+  "néodyme": {
+    "arabic": "نيوديميوم؛ عنصر من الأتربة النادرة",
+    "example": "Le néodyme sert à fabriquer des aimants très puissants.",
+    "exampleArabic": "يُستخدم النيوديميوم لصناعة مغناطيسات شديدة القوة."
+  },
+  "papayer": {
+    "arabic": "شجرة البابايا",
+    "example": "Le papayer produit des fruits toute l’année sous un climat tropical.",
+    "exampleArabic": "تنتج شجرة البابايا الثمار طوال العام في المناخ الاستوائي."
+  },
+  "viscose": {
+    "arabic": "فيسكوز؛ نسيج اصطناعي من السليلوز",
+    "example": "La viscose est douce mais se froisse facilement.",
+    "exampleArabic": "نسيج الفيسكوز ناعم لكنه يتجعد بسهولة."
+  },
+  "antipape": {
+    "arabic": "بابا منافس غير معترف به",
+    "example": "L’antipape revendiquait le titre pontifical sans reconnaissance officielle.",
+    "exampleArabic": "طالب البابا المنافس باللقب البابوي من دون اعتراف رسمي."
+  },
+  "corindon": {
+    "arabic": "كورندوم؛ أكسيد ألومنيوم شديد الصلابة",
+    "example": "Le corindon est un minéral très dur utilisé comme abrasif.",
+    "exampleArabic": "الكورندوم معدن شديد الصلابة يُستخدم مادة كاشطة."
+  },
+  "épeautre": {
+    "arabic": "حنطة إسبلت؛ قمح عتيق",
+    "example": "L’épeautre donne une farine au goût légèrement noisetté.",
+    "exampleArabic": "تعطي حنطة الإسبلت دقيقًا بنكهة خفيفة تشبه البندق."
+  },
+  "iroquois": {
+    "arabic": "شخص غريب التصرف؛ استعمال قديم مهين",
+    "example": "Dans ce texte ancien, iroquois est employé péjorativement pour qualifier un homme jugé bizarre.",
+    "exampleArabic": "تُستخدم كلمة «iroquois» في هذا النص القديم استخدامًا مهينًا لوصف رجل عُد غريب التصرف."
+  },
+  "palangre": {
+    "arabic": "خيط صيد طويل متعدد الصنارات",
+    "example": "La palangre porte de nombreux hameçons espacés le long d’une ligne principale.",
+    "exampleArabic": "يحمل خيط الصيد الطويل صنارات كثيرة موزعة على الحبل الرئيسي."
+  },
+  "samarium": {
+    "arabic": "ساماريوم؛ عنصر من الأتربة النادرة",
+    "example": "Le samarium porte le symbole chimique Sm.",
+    "exampleArabic": "يحمل عنصر الساماريوم الرمز الكيميائي Sm."
+  },
+  "sorbitol": {
+    "arabic": "سوربيتول؛ كحول سكري",
+    "example": "Le sorbitol est utilisé comme édulcorant dans certains produits sans sucre.",
+    "exampleArabic": "يُستخدم السوربيتول مُحلّيًا في بعض المنتجات الخالية من السكر."
+  },
+  "vitiligo": {
+    "arabic": "بُهاق",
+    "example": "Le vitiligo entraîne l’apparition de zones dépigmentées sur la peau.",
+    "exampleArabic": "يسبب البهاق ظهور مناطق فاقدة للصبغة على الجلد."
+  },
+  "androgène": {
+    "arabic": "هرمون أندروجيني",
+    "example": "La testostérone est un androgène présent chez les hommes et les femmes.",
+    "exampleArabic": "التستوستيرون هرمون أندروجيني موجود لدى الرجال والنساء."
+  },
+  "lactosérum": {
+    "arabic": "مَصل اللبن؛ شرش الحليب",
+    "example": "Le lactosérum se sépare du caillé pendant la fabrication du fromage.",
+    "exampleArabic": "ينفصل مصل اللبن عن الخثرة أثناء صناعة الجبن."
+  },
+  "pechblende": {
+    "arabic": "بتشبلند؛ خام غني باليورانيوم",
+    "example": "La pechblende contient principalement de l’uraninite.",
+    "exampleArabic": "يحتوي خام البتشبلند أساسًا على معدن اليورانينيت."
+  },
+  "précession": {
+    "arabic": "مبادرة محورية؛ ترنّح محور جسم دوّار",
+    "example": "La précession fait lentement tourner l’orientation de l’axe terrestre.",
+    "exampleArabic": "تغير المبادرة المحورية اتجاه محور الأرض ببطء."
+  },
+  "reichsmark": {
+    "arabic": "رايخ مارك؛ عملة ألمانيا بين 1924 و1948",
+    "example": "Le reichsmark a circulé en Allemagne de 1924 à 1948.",
+    "exampleArabic": "تداولت ألمانيا عملة الرايخ مارك من عام 1924 إلى 1948."
+  },
+  "dynamomètre": {
+    "arabic": "مقياس القوة؛ دينامومتر",
+    "example": "Le dynamomètre mesure la force exercée sur son ressort.",
+    "exampleArabic": "يقيس الدينامومتر القوة المؤثرة في زنبركه."
+  },
+  "tératologie": {
+    "arabic": "علم التشوهات الخِلقية",
+    "example": "La tératologie étudie les anomalies du développement avant la naissance.",
+    "exampleArabic": "يدرس علم التشوهات الخلقية اضطرابات النمو قبل الولادة."
+  },
+  "herpétologie": {
+    "arabic": "علم الزواحف والبرمائيات",
+    "example": "L’herpétologie étudie les serpents, les lézards et les amphibiens.",
+    "exampleArabic": "يدرس علم الزواحف والبرمائيات الثعابين والسحالي والبرمائيات."
+  },
+  "volcanologie": {
+    "arabic": "علم البراكين",
+    "example": "La volcanologie analyse l’activité des volcans et les produits de leurs éruptions.",
+    "exampleArabic": "يدرس علم البراكين نشاطها ونواتج ثورانها."
+  },
+  "éléphantiasis": {
+    "arabic": "داء الفيل؛ تورم مزمن شديد في الأطراف",
+    "example": "L’éléphantiasis résulte d’une obstruction lymphatique qui provoque un gonflement massif.",
+    "exampleArabic": "ينتج داء الفيل من انسداد لمفاوي يسبب تورمًا شديدًا."
+  },
+  "gérontophilie": {
+    "arabic": "انجذاب جنسي إلى كبار السن",
+    "example": "La gérontophilie désigne une attirance sexuelle persistante envers les personnes âgées.",
+    "exampleArabic": "يدل هذا المصطلح على انجذاب جنسي مستمر إلى كبار السن."
+  },
+  "illusionnisme": {
+    "arabic": "فن الخداع البصري؛ ألعاب خفة",
+    "example": "L’illusionnisme crée l’impression qu’un objet disparaît réellement.",
+    "exampleArabic": "يوهم فن الخداع البصري المشاهد بأن الجسم اختفى فعلًا."
+  },
+  "pneumoconiose": {
+    "arabic": "سُحار رئوي بسبب استنشاق الغبار",
+    "example": "La pneumoconiose peut apparaître après une longue exposition à des poussières minérales.",
+    "exampleArabic": "قد يظهر السحار الرئوي بعد التعرض الطويل للغبار المعدني."
+  },
+  "immunothérapie": {
+    "arabic": "علاج مناعي",
+    "example": "L’immunothérapie aide le système immunitaire à combattre certaines maladies.",
+    "exampleArabic": "يساعد العلاج المناعي الجهاز المناعي على مقاومة بعض الأمراض."
+  },
+  "inflammabilité": {
+    "arabic": "قابلية الاشتعال",
+    "example": "L’inflammabilité du produit impose de le tenir loin des flammes.",
+    "exampleArabic": "تفرض قابلية المنتج للاشتعال إبعاده عن اللهب."
+  },
+  "rétroprojecteur": {
+    "arabic": "جهاز عرض شفافيات",
+    "example": "Le rétroprojecteur agrandit le contenu d’une feuille transparente sur l’écran.",
+    "exampleArabic": "يكبّر جهاز عرض الشفافيات محتوى الورقة الشفافة على الشاشة."
+  },
+  "imago": {
+    "arabic": "حشرة بالغة مكتملة النمو",
+    "gender": "masculine",
+    "determiner": "Un",
+    "example": "L’imago est le stade adulte et reproducteur de l’insecte.",
+    "exampleArabic": "طور الحشرة الكاملة هو الطور البالغ القادر على التكاثر."
+  },
+  "myosis": {
+    "arabic": "تضيّق حدقة العين",
+    "example": "Le myosis réduit le diamètre de la pupille sous une lumière intense.",
+    "exampleArabic": "يقلل تضيّق الحدقة قطرها تحت الضوء الشديد."
+  },
+  "stomie": {
+    "arabic": "فُغرة جراحية",
+    "example": "La stomie crée une ouverture chirurgicale permettant l’évacuation des selles ou de l’urine.",
+    "exampleArabic": "تنشئ الفغرة فتحة جراحية لتصريف البراز أو البول."
+  },
+  "tagalog": {
+    "arabic": "لغة التاغالوغ",
+    "example": "Le tagalog constitue la base principale de la langue philippine officielle.",
+    "exampleArabic": "تشكل التاغالوغ الأساس الرئيس للغة الفلبينية الرسمية."
+  },
+  "calcémie": {
+    "arabic": "مستوى الكالسيوم في الدم",
+    "example": "La calcémie est mesurée par une analyse sanguine.",
+    "exampleArabic": "يُقاس مستوى الكالسيوم بتحليل الدم."
+  },
+  "limonène": {
+    "arabic": "ليمونين؛ مركب عطري في الحمضيات",
+    "example": "Le limonène donne à l’écorce d’orange son odeur caractéristique.",
+    "exampleArabic": "يمنح الليمونين قشر البرتقال رائحته المميزة."
+  },
+  "asexualité": {
+    "arabic": "لاجنسية؛ غياب أو قلة الانجذاب الجنسي",
+    "example": "L’asexualité décrit une orientation marquée par peu ou pas d’attirance sexuelle.",
+    "exampleArabic": "تصف اللاجنسية توجهًا يتميز بقلة الانجذاب الجنسي أو غيابه."
+  },
+  "bioéthique": {
+    "arabic": "أخلاقيات علم الأحياء والطب",
+    "gender": "feminine",
+    "determiner": "Une",
+    "example": "La bioéthique examine les enjeux moraux des pratiques médicales et biologiques.",
+    "exampleArabic": "تبحث الأخلاقيات الحيوية القضايا الأخلاقية للممارسات الطبية والبيولوجية."
+  },
+  "margousier": {
+    "arabic": "شجرة النيم",
+    "example": "Le margousier pousse bien sous les climats chauds et secs.",
+    "exampleArabic": "تنمو شجرة النيم جيدًا في المناخات الحارة والجافة."
+  },
+  "technétium": {
+    "arabic": "تكنيتيوم؛ عنصر كيميائي مشع",
+    "example": "Le technétium porte le numéro atomique 43 et le symbole Tc.",
+    "exampleArabic": "يحمل عنصر التكنيتيوم العدد الذري 43 والرمز Tc."
+  },
+  "conjonctive": {
+    "arabic": "مُلتحمة العين",
+    "example": "La conjonctive recouvre l’intérieur des paupières et une partie du globe oculaire.",
+    "exampleArabic": "تغطي ملتحمة العين باطن الجفنين وجزءًا من مقلة العين."
+  },
+  "realpolitik": {
+    "arabic": "سياسة واقعية قائمة على المصلحة والقوة",
+    "example": "La realpolitik privilégie les intérêts concrets aux principes idéologiques.",
+    "exampleArabic": "تقدّم السياسة الواقعية المصالح العملية على المبادئ الأيديولوجية."
+  },
+  "gynécomastie": {
+    "arabic": "تثدٍّ؛ تضخم الثدي عند الرجل",
+    "example": "La gynécomastie correspond à un développement du tissu mammaire chez l’homme.",
+    "exampleArabic": "يعني التثدي نمو النسيج الغدي للثدي لدى الرجل."
+  },
+  "trichotillomanie": {
+    "arabic": "هوس نتف الشعر",
+    "example": "La trichotillomanie pousse une personne à s’arracher les cheveux de façon répétée.",
+    "exampleArabic": "يدفع هوس نتف الشعر الشخص إلى اقتلاع شعره بصورة متكررة."
+  },
+  "gastro-entérologie": {
+    "arabic": "طب الجهاز الهضمي",
+    "example": "La gastro-entérologie traite les maladies de l’œsophage, de l’estomac et des intestins.",
+    "exampleArabic": "يعالج طب الجهاز الهضمي أمراض المريء والمعدة والأمعاء."
+  },
+  "kyat": {
+    "arabic": "كيات؛ عملة ميانمار",
+    "example": "Le commerçant affiche ses prix en kyats.",
+    "exampleArabic": "يعرض التاجر أسعاره بعملة الكيات."
+  },
+  "tabun": {
+    "arabic": "تابون؛ عامل أعصاب سام",
+    "example": "Le tabun est un agent neurotoxique extrêmement dangereux.",
+    "exampleArabic": "التابون عامل أعصاب شديد الخطورة."
+  },
+  "kasbah": {
+    "arabic": "قصبة؛ قلعة أو حي محصّن",
+    "example": "La kasbah domine la vieille ville depuis sa hauteur.",
+    "exampleArabic": "تطل القصبة على المدينة القديمة من موقعها المرتفع."
+  },
+  "carthame": {
+    "arabic": "قِرطم",
+    "example": "Le carthame est cultivé pour ses graines riches en huile.",
+    "exampleArabic": "يُزرع القرطم من أجل بذوره الغنية بالزيت."
+  },
+  "dystopie": {
+    "arabic": "توضع عضو في غير موضعه الطبيعي",
+    "example": "En médecine, une dystopie désigne la position anormale d’un organe.",
+    "exampleArabic": "تدل الديستوبيا في الطب على وجود عضو في موضع غير طبيعي."
+  },
+  "biomédecine": {
+    "arabic": "طب حيوي",
+    "example": "La biomédecine applique les connaissances biologiques à la pratique clinique.",
+    "exampleArabic": "يطبق الطب الحيوي المعارف البيولوجية في الممارسة السريرية."
+  },
+  "contre-transfert": {
+    "arabic": "تحويل مضاد في العلاج النفسي",
+    "example": "Le contre-transfert concerne les réactions affectives du thérapeute envers le patient.",
+    "exampleArabic": "يتعلق التحويل المضاد باستجابات المعالج العاطفية تجاه المريض."
+  },
+  "codec": {
+    "arabic": "مرمّز وفاك ترميز رقمي",
+    "example": "Le codec compresse la vidéo avant sa transmission puis la décompresse à la lecture.",
+    "exampleArabic": "يضغط المرمّز الفيديو قبل نقله ثم يفك ضغطه عند التشغيل."
+  },
+  "fibula": {
+    "arabic": "عظم الشَّظِيّة",
+    "example": "La fibula est l’os long et fin situé sur le côté externe de la jambe.",
+    "exampleArabic": "الشظية عظم طويل ونحيف يقع في الجانب الخارجي للساق."
+  },
+  "gentrification": {
+    "arabic": "إحلال طبقي عمراني؛ ترقية حي تُقصي سكانه الأقل دخلًا",
+    "example": "La gentrification fait monter les loyers et transforme la population du quartier.",
+    "exampleArabic": "يرفع الإحلال الطبقي الإيجارات ويغيّر تركيبة سكان الحي."
+  },
+  "séné": {
+    "arabic": "سَنا مكي؛ نبات مُليّن",
+    "example": "Le séné contient des substances à effet laxatif stimulant.",
+    "exampleArabic": "يحتوي السنا على مواد ذات تأثير مليّن ومنبه للأمعاء."
+  },
+  "murex": {
+    "arabic": "موريكس؛ حلزون بحري شوكي",
+    "example": "Le murex servait autrefois à produire une teinture pourpre précieuse.",
+    "exampleArabic": "كان حلزون الموريكس يُستخدم قديمًا لإنتاج صبغة أرجوانية ثمينة."
+  },
+  "fauchon": {
+    "arabic": "سيف مقوّس متوسط الطول",
+    "example": "Le fauchon possède une lame large et une garde protectrice.",
+    "exampleArabic": "للسيف المقوس نصل عريض وواقٍ يحمي اليد."
+  },
+  "ferrite": {
+    "arabic": "فِرّيت؛ طور حديدي قليل الكربون",
+    "example": "La ferrite est une phase relativement douce présente dans certains aciers.",
+    "exampleArabic": "الفريت طور لين نسبيًا يوجد في بعض أنواع الفولاذ."
+  },
+  "observance": {
+    "arabic": "التزام بقاعدة أو شعيرة",
+    "example": "L’observance de la règle monastique organise toute la vie de la communauté.",
+    "exampleArabic": "ينظم الالتزام بالقواعد الرهبانية حياة الجماعة كلها."
+  },
+  "christiania": {
+    "arabic": "منعطف كريستيانا في التزلج",
+    "example": "Le skieur exécute un christiania en faisant déraper ses skis parallèles.",
+    "exampleArabic": "ينفذ المتزلج منعطف كريستيانا بإزلاق زلاجتيه المتوازيتين."
+  },
+  "romanisation": {
+    "arabic": "رَوْمَنة؛ اكتساب الثقافة والمؤسسات الرومانية",
+    "example": "La romanisation a diffusé la langue et les institutions de Rome dans les provinces.",
+    "exampleArabic": "نشرت الرومنة لغة روما ومؤسساتها في المقاطعات."
+  },
+  "comparateur": {
+    "arabic": "مقياس مقارنة دقيق",
+    "example": "Le comparateur détecte un très faible écart entre la pièce et l’étalon.",
+    "exampleArabic": "يكشف مقياس المقارنة فرقًا بالغ الصغر بين القطعة والمعيار."
+  },
+  "coré": {
+    "arabic": "كُورِه؛ تمثال فتاة من اليونان القديمة",
+    "example": "La coré représente une jeune femme debout vêtue d’une longue tunique.",
+    "exampleArabic": "يمثل تمثال الكوره فتاة واقفة ترتدي ثوبًا طويلًا."
+  },
+  "fauvisme": {
+    "arabic": "وحشية؛ مذهب فني بألوان جريئة",
+    "example": "Le fauvisme se caractérise par des couleurs pures, vives et peu réalistes.",
+    "exampleArabic": "يتميز المذهب الوحشي بألوان صافية وزاهية وبعيدة عن الواقعية."
+  },
+  "gérondif": {
+    "arabic": "مصدر فعلي مُصرّف في اللاتينية؛ جيروند",
+    "example": "En latin, le gérondif permet de décliner l’infinitif employé comme nom.",
+    "exampleArabic": "يتيح الجيروند في اللاتينية تصريف المصدر المستخدم اسمًا."
+  },
+  "archaïsme": {
+    "arabic": "لفظ أو استعمال قديم مهجور",
+    "example": "Ce mot constitue un archaïsme que l’on rencontre surtout dans les textes anciens.",
+    "exampleArabic": "هذه الكلمة استعمال قديم لا يُصادف غالبًا إلا في النصوص التراثية."
+  },
+  "jota": {
+    "arabic": "اسم حرف j في الإسبانية",
+    "example": "En espagnol, jota est le nom de la lettre j.",
+    "exampleArabic": "كلمة «jota» هي اسم حرف j في اللغة الإسبانية."
+  },
+  "manne": {
+    "arabic": "المَنّ؛ طعام سماوي في الرواية التوراتية",
+    "example": "La manne nourrit les enfants d’Israël dans le désert selon le récit biblique.",
+    "exampleArabic": "أطعم المن بني إسرائيل في الصحراء وفق الرواية التوراتية."
   }
 }

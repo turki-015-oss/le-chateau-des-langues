@@ -61,19 +61,23 @@ function search(query) {
 const failures = [];
 const batches = source.batches ?? [];
 const sourceEntries = batches.flatMap((batch) => Object.entries(batch.entries ?? {}));
+const sourceNoAliasEntries = batches.flatMap((batch) => Object.entries(batch.reviewedWithoutAliases ?? {}));
+const sourceReviewedIds = [...sourceEntries.map(([id]) => id), ...sourceNoAliasEntries.map(([id]) => id)];
 const manifestAliases = manifest.search.filter((entry) => entry.searchAliases?.length);
 const sourceAliasCount = sourceEntries.reduce((sum, [, aliases]) => sum + aliases.length, 0);
 
 if (!batches.length) failures.push("No synonym batches were found");
 for (const batch of batches) {
-  const count = Object.keys(batch.entries ?? {}).length;
+  const count = Object.keys(batch.entries ?? {}).length + Object.keys(batch.reviewedWithoutAliases ?? {}).length;
   if (count !== 200) failures.push(`${batch.id}: expected 200 reviewed entries, found ${count}`);
 }
-if (new Set(sourceEntries.map(([id]) => id)).size !== sourceEntries.length) {
+if (new Set(sourceReviewedIds).size !== sourceReviewedIds.length) {
   failures.push("A dictionary entry appears in more than one synonym batch");
 }
 if (manifest.searchAliasBatchCount !== batches.length) failures.push("Manifest batch count is stale");
-if (manifest.searchAliasEntryCount !== sourceEntries.length) failures.push("Manifest entry count is stale");
+if (manifest.searchAliasReviewedCount !== sourceReviewedIds.length) failures.push("Manifest reviewed entry count is stale");
+if (manifest.searchAliasEntryCount !== sourceEntries.length) failures.push("Manifest alias-bearing entry count is stale");
+if (manifest.searchAliasNoAliasCount !== sourceNoAliasEntries.length) failures.push("Manifest no-alias entry count is stale");
 if (manifest.searchAliasCount !== sourceAliasCount) failures.push("Manifest alias count is stale");
 if (manifestAliases.length !== sourceEntries.length) failures.push("Manifest alias-bearing entry count is stale");
 
@@ -90,6 +94,13 @@ for (const [id, aliases] of sourceEntries) {
   if (new Set(normalized).size !== normalized.length) failures.push(`${id}: duplicate normalized alias`);
   if (normalized.includes(normalize(entry.arabic))) failures.push(`${id}: alias duplicates the displayed Arabic meaning`);
   if (JSON.stringify(entry.searchAliases) !== JSON.stringify(aliases)) failures.push(`${id}: generated aliases are stale`);
+}
+
+for (const [id, reason] of sourceNoAliasEntries) {
+  const entry = manifestById.get(id);
+  if (!entry) failures.push(`Unknown no-alias dictionary id: ${id}`);
+  if (typeof reason !== "string" || !reason.trim()) failures.push(`${id}: missing no-alias review reason`);
+  if (entry?.searchAliases?.length) failures.push(`${id}: no-alias review unexpectedly generated aliases`);
 }
 
 const properIds = new Set();
@@ -388,6 +399,26 @@ const expected = {
   "تحويل البيانات إلى صيغة سرية": "chiffrement",
   "فتحة جراحية للقولون": "colostomie",
   "سفينة صغيرة مزودة بمدافع": "canonnière",
+  "تفكك مركب": "décomposition",
+  "حكة بسبب القارمة": "gale",
+  "أداة شد البراغي": "tournevis",
+  "فحص بالسونار": "échographie",
+  "عالم فيزيائي": "physicien",
+  "لون رصاصي": "gris",
+  "مرض السل": "tuberculose",
+  "رمز وجه ضاحك": "smiley",
+  "منظف فروة الرأس": "shampooing",
+  "أداة حفر يدوية": "pioche",
+  "كومبارس في فيلم": "figurant",
+  "دولة جمهورية": "république",
+  "كتلة لكل وحدة حجم": "densité",
+  "جهاز يلتقط الإشارة": "récepteur",
+  "موسيقى إعلان قصيرة": "jingle",
+  "قابلة قانونية": "sage-femme",
+  "علاقة قصيرة غير جادة": "flirt",
+  "جهاز عد تنازلي": "minuteur",
+  "اتحاد المكان والزمان": "espace-temps",
+  "طائر ذو ذيل ملون": "paon",
 };
 for (const [query, word] of Object.entries(expected)) {
   if (!search(query).some((entry) => entry.word === word)) {
@@ -412,7 +443,9 @@ const sharedAliases = [...collisionMap.values()].filter((ids) => new Set(ids).si
 console.log(JSON.stringify({
   status: "passed",
   batches: batches.length,
-  reviewedEntries: sourceEntries.length,
+  reviewedEntries: sourceReviewedIds.length,
+  aliasBearingEntries: sourceEntries.length,
+  reviewedWithoutAliases: sourceNoAliasEntries.length,
   aliases: sourceAliasCount,
   liveSearchCases: Object.keys(expected).length,
   sharedAccurateAliases: sharedAliases,

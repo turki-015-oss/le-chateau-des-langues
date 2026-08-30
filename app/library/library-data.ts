@@ -46,7 +46,9 @@ export type DictionaryManifest = {
   countryEntryCount?: number;
   countryAddedCount?: number;
   searchAliasBatchCount?: number;
+  searchAliasReviewedCount?: number;
   searchAliasEntryCount?: number;
+  searchAliasNoAliasCount?: number;
   searchAliasCount?: number;
   counts: Record<string, number>;
   search: DictionarySearchEntry[];

@@ -493,9 +493,9 @@ def append_country_entries(entries: list[dict], path: Path, seen_ids: set[str]) 
     return len(additions), added
 
 
-def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int]:
+def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int, int, int]:
     if not path.exists():
-        return 0, 0, 0
+        return 0, 0, 0, 0, 0
 
     source = json.loads(path.read_text(encoding="utf-8"))
     batches = source.get("batches") if isinstance(source, dict) else None
@@ -504,15 +504,19 @@ def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int
 
     by_id = {entry["id"]: entry for entry in entries}
     reviewed_ids: set[str] = set()
+    no_alias_ids: set[str] = set()
     alias_count = 0
 
     for batch in batches:
         batch_id = batch.get("id") if isinstance(batch, dict) else None
         batch_entries = batch.get("entries") if isinstance(batch, dict) else None
+        batch_no_aliases = batch.get("reviewedWithoutAliases", {}) if isinstance(batch, dict) else None
         if not batch_id or not isinstance(batch_entries, dict):
             raise ValueError("Every search-alias batch needs an id and entries object")
-        if len(batch_entries) != 200:
-            raise ValueError(f"Search-alias batch {batch_id} must contain exactly 200 entries")
+        if not isinstance(batch_no_aliases, dict):
+            raise ValueError(f"Search-alias batch {batch_id} reviewedWithoutAliases must be an object")
+        if len(batch_entries) + len(batch_no_aliases) != 200:
+            raise ValueError(f"Search-alias batch {batch_id} must review exactly 200 entries")
 
         for entry_id, aliases in batch_entries.items():
             if entry_id in reviewed_ids:
@@ -535,7 +539,18 @@ def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int
             reviewed_ids.add(entry_id)
             alias_count += len(cleaned)
 
-    return len(batches), len(reviewed_ids), alias_count
+        for entry_id, reason in batch_no_aliases.items():
+            if entry_id in reviewed_ids:
+                raise ValueError(f"Search aliases review the same entry twice: {entry_id}")
+            entry = by_id.get(entry_id)
+            if entry is None:
+                raise ValueError(f"Unknown no-alias dictionary id: {entry_id}")
+            if not isinstance(reason, str) or not reason.strip():
+                raise ValueError(f"No-alias review needs a reason: {entry_id}")
+            reviewed_ids.add(entry_id)
+            no_alias_ids.add(entry_id)
+
+    return len(batches), len(reviewed_ids), len(reviewed_ids) - len(no_alias_ids), len(no_alias_ids), alias_count
 
 
 def make_id(entry: dict, seen: set[str]) -> str:
@@ -571,7 +586,8 @@ def validate(entries: list[dict], target_count: int) -> None:
 def write_output(
     entries: list[dict], natural_count: int, curated_count: int, contextual_count: int,
     direction_count: int, country_count: int, country_added_count: int,
-    alias_batch_count: int, alias_entry_count: int, alias_count: int
+    alias_batch_count: int, alias_reviewed_count: int, alias_entry_count: int,
+    alias_no_alias_count: int, alias_count: int
 ) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     by_letter: dict[str, list[dict]] = {letter: [] for letter in LETTERS}
@@ -609,7 +625,9 @@ def write_output(
         "countryEntryCount": country_count,
         "countryAddedCount": country_added_count,
         "searchAliasBatchCount": alias_batch_count,
+        "searchAliasReviewedCount": alias_reviewed_count,
         "searchAliasEntryCount": alias_entry_count,
+        "searchAliasNoAliasCount": alias_no_alias_count,
         "searchAliasCount": alias_count,
         "counts": counts,
         "search": search,
@@ -666,7 +684,13 @@ def main() -> None:
             entries.append(entry)
     direction_count = append_direction_entries(entries, DIRECTION_ENTRIES, seen_ids)
     country_count, country_added_count = append_country_entries(entries, COUNTRY_ENTRIES, seen_ids)
-    alias_batch_count, alias_entry_count, alias_count = apply_search_aliases(entries, SEARCH_ALIASES)
+    (
+        alias_batch_count,
+        alias_reviewed_count,
+        alias_entry_count,
+        alias_no_alias_count,
+        alias_count,
+    ) = apply_search_aliases(entries, SEARCH_ALIASES)
     natural_count = sum(entry["exampleSource"] == "Tatoeba" for entry in entries)
     validate(entries, target_count + direction_count + country_added_count)
 
@@ -682,7 +706,9 @@ def main() -> None:
         "countryEntries": country_count,
         "countryAdditions": country_added_count,
         "searchAliasBatches": alias_batch_count,
+        "searchAliasReviewed": alias_reviewed_count,
         "searchAliasEntries": alias_entry_count,
+        "searchAliasNoAlias": alias_no_alias_count,
         "searchAliases": alias_count,
         "counts": counts,
         "first": entries[:3],
@@ -691,7 +717,8 @@ def main() -> None:
         write_output(
             entries, natural_count, curated_count, contextual_count,
             direction_count, country_count, country_added_count,
-            alias_batch_count, alias_entry_count, alias_count,
+            alias_batch_count, alias_reviewed_count, alias_entry_count,
+            alias_no_alias_count, alias_count,
         )
 
 

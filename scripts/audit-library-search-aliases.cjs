@@ -151,6 +151,23 @@ const expected = {
   "أوكسجين": "oxygène",
   "جوازات سفر": "passeport",
   "يوترن": "demi-tour",
+  "رئيس البعثة الدبلوماسية": "ambassadeur",
+  "فحص ما بعد الوفاة": "autopsie",
+  "أوتوستراد": "autoroute",
+  "شهر نيسان": "avril",
+  "ملامسة المدرج": "atterrissage",
+  "كلمة آمين": "amen",
+  "هوفر": "aspirateur",
+  "قاطور": "alligator",
+  "قوس المطر": "arc-en-ciel",
+  "إبينفرين": "adrénaline",
+  "أرضي شوكي": "artichaut",
+  "كاوكاو": "arachide",
+  "أوتوموبيل": "automobile",
+  "عمى الكلمات": "alexie",
+  "أبارتهايد": "apartheid",
+  "كتاب خرائط": "atlas",
+  "عدم اكتراث": "apathie",
 };
 for (const [query, word] of Object.entries(expected)) {
   if (!search(query).some((entry) => entry.word === word)) {

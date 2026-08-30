@@ -106,11 +106,11 @@ export default function LibraryPage() {
 
         return {
           entry,
-          rank: primaryRank !== null
-            ? primaryRank * 3
-            : aliasRank !== null
-              ? aliasRank * 3 + 1
-              : 20 + (nationalityRank ?? 0),
+          rank: Math.min(
+            primaryRank !== null ? primaryRank * 3 : Number.POSITIVE_INFINITY,
+            aliasRank !== null ? aliasRank * 3 + 1 : Number.POSITIVE_INFINITY,
+            nationalityRank !== null ? 20 + nationalityRank : Number.POSITIVE_INFINITY,
+          ),
         };
       })
       .filter((result): result is { entry: DictionaryManifest["search"][number]; rank: number } => result !== null)

@@ -44,7 +44,13 @@ function search(query) {
       const primaryRank = primary.length ? Math.min(...primary) : null;
       const aliasRank = aliases.length ? Math.min(...aliases) : null;
       if (primaryRank === null && aliasRank === null) return null;
-      return { entry, score: primaryRank !== null ? primaryRank * 3 : aliasRank * 3 + 1 };
+      return {
+        entry,
+        score: Math.min(
+          primaryRank !== null ? primaryRank * 3 : Number.POSITIVE_INFINITY,
+          aliasRank !== null ? aliasRank * 3 + 1 : Number.POSITIVE_INFINITY,
+        ),
+      };
     })
     .filter(Boolean)
     .sort((a, b) => a.score - b.score || a.entry.word.length - b.entry.word.length)
@@ -113,6 +119,21 @@ const expected = {
   "هرة": "chat",
   "كؤوس": "verre",
   "عرس": "mariage",
+  "اعتلال": "maladie",
+  "الويكند": "week-end",
+  "أتوبيس": "bus",
+  "كوبري": "pont",
+  "مأمور الشرطة": "shérif",
+  "دار القضاء": "tribunal",
+  "حمام سباحة": "piscine",
+  "أسانسير": "ascenseur",
+  "جراج": "garage",
+  "سندويتش": "sandwich",
+  "الفرنسية": "français",
+  "فطيرة بيتزا": "pizza",
+  "موتور": "moteur",
+  "أورام سرطانية": "cancer",
+  "تساقط الثلوج": "neige",
 };
 for (const [query, word] of Object.entries(expected)) {
   if (!search(query).some((entry) => entry.word === word)) {

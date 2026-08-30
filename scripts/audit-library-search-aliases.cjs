@@ -134,6 +134,23 @@ const expected = {
   "موتور": "moteur",
   "أورام سرطانية": "cancer",
   "تساقط الثلوج": "neige",
+  "جماهير": "foule",
+  "سكاكر": "bonbon",
+  "تقانة": "technologie",
+  "شوربة": "soupe",
+  "باركينغ": "parking",
+  "صوفا": "canapé",
+  "مرفأ": "port",
+  "دار الكتب": "bibliothèque",
+  "الظمأ": "soif",
+  "غيمة": "nuage",
+  "فكة": "monnaie",
+  "دار الآثار": "musée",
+  "ساتلايت": "satellite",
+  "كرافتة": "cravate",
+  "أوكسجين": "oxygène",
+  "جوازات سفر": "passeport",
+  "يوترن": "demi-tour",
 };
 for (const [query, word] of Object.entries(expected)) {
   if (!search(query).some((entry) => entry.word === word)) {

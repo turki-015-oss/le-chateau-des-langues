@@ -35,11 +35,12 @@ function searchRank(value: string | undefined, needle: string) {
   const normalized = normalizeSearchText(value);
   const compact = normalized.replace(/\s/g, "");
   const compactNeedle = needle.replace(/\s/g, "");
+  const compareCompact = /[a-z]/i.test(normalized) && /[a-z]/i.test(needle);
   if (!normalized) return null;
-  if (normalized === needle || compact === compactNeedle) return 0;
-  if (normalized.startsWith(needle) || compact.startsWith(compactNeedle)) return 1;
+  if (normalized === needle || (compareCompact && compact === compactNeedle)) return 0;
+  if (normalized.startsWith(needle) || (compareCompact && compact.startsWith(compactNeedle))) return 1;
   if (normalized.split(/[\s'’.-]+/).some((part) => part.startsWith(needle))) return 2;
-  if (normalized.includes(needle) || compact.includes(compactNeedle)) return 3;
+  if (normalized.includes(needle) || (compareCompact && compact.includes(compactNeedle))) return 3;
   return null;
 }
 
@@ -94,14 +95,22 @@ export default function LibraryPage() {
           searchRank(entry.nationality?.masculine, needle),
           searchRank(entry.nationality?.feminine, needle),
         ].filter((rank): rank is number => rank !== null);
+        const aliasRanks = (entry.searchAliases ?? [])
+          .map((alias) => searchRank(alias, needle))
+          .filter((rank): rank is Exclude<ReturnType<typeof searchRank>, null> => rank !== null);
 
         const primaryRank = primaryRanks.length ? Math.min(...primaryRanks) : null;
         const nationalityRank = nationalityRanks.length ? Math.min(...nationalityRanks) : null;
-        if (primaryRank === null && nationalityRank === null) return null;
+        const aliasRank = aliasRanks.length ? Math.min(...aliasRanks) : null;
+        if (primaryRank === null && aliasRank === null && nationalityRank === null) return null;
 
         return {
           entry,
-          rank: primaryRank ?? 4 + (nationalityRank ?? 0),
+          rank: primaryRank !== null
+            ? primaryRank * 3
+            : aliasRank !== null
+              ? aliasRank * 3 + 1
+              : 20 + (nationalityRank ?? 0),
         };
       })
       .filter((result): result is { entry: DictionaryManifest["search"][number]; rank: number } => result !== null)

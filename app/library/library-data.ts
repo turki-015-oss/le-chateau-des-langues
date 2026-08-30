@@ -5,6 +5,7 @@ export type DictionarySearchEntry = {
   letter: string;
   word: string;
   arabic: string;
+  searchAliases?: string[];
   gender?: GrammaticalGender;
   determiner?: "Un" | "Une";
   grammarLabel?: string;
@@ -44,6 +45,9 @@ export type DictionaryManifest = {
   directionEntryCount?: number;
   countryEntryCount?: number;
   countryAddedCount?: number;
+  searchAliasBatchCount?: number;
+  searchAliasEntryCount?: number;
+  searchAliasCount?: number;
   counts: Record<string, number>;
   search: DictionarySearchEntry[];
   sources: Array<{ name: string; url: string; use: string }>;

@@ -30,6 +30,7 @@ EXPANSION_SOURCE = ROOT / "scripts" / "library-expansion-verified.json"
 EXPANSION_CORRECTIONS = ROOT / "scripts" / "library-expansion-contextual-corrections.json"
 DIRECTION_ENTRIES = ROOT / "scripts" / "library-direction-entries.json"
 COUNTRY_ENTRIES = ROOT / "scripts" / "library-country-entries.json"
+SEARCH_ALIASES = ROOT / "scripts" / "library-search-aliases.json"
 BASE_COUNT = 5000
 MAX_COUNT = 10000
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -492,6 +493,51 @@ def append_country_entries(entries: list[dict], path: Path, seen_ids: set[str]) 
     return len(additions), added
 
 
+def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int]:
+    if not path.exists():
+        return 0, 0, 0
+
+    source = json.loads(path.read_text(encoding="utf-8"))
+    batches = source.get("batches") if isinstance(source, dict) else None
+    if not isinstance(batches, list):
+        raise ValueError("Search aliases must contain a batches array")
+
+    by_id = {entry["id"]: entry for entry in entries}
+    reviewed_ids: set[str] = set()
+    alias_count = 0
+
+    for batch in batches:
+        batch_id = batch.get("id") if isinstance(batch, dict) else None
+        batch_entries = batch.get("entries") if isinstance(batch, dict) else None
+        if not batch_id or not isinstance(batch_entries, dict):
+            raise ValueError("Every search-alias batch needs an id and entries object")
+        if len(batch_entries) != 200:
+            raise ValueError(f"Search-alias batch {batch_id} must contain exactly 200 entries")
+
+        for entry_id, aliases in batch_entries.items():
+            if entry_id in reviewed_ids:
+                raise ValueError(f"Search aliases review the same entry twice: {entry_id}")
+            entry = by_id.get(entry_id)
+            if entry is None:
+                raise ValueError(f"Unknown search-alias dictionary id: {entry_id}")
+            if entry.get("countryTopic") or entry.get("partOfSpeech") == "proper_noun":
+                raise ValueError(f"Search aliases are forbidden for proper names: {entry_id}")
+            if not isinstance(aliases, list) or not aliases:
+                raise ValueError(f"Search aliases must be a non-empty list: {entry_id}")
+            if not all(isinstance(alias, str) and ARABIC_RE.search(alias) for alias in aliases):
+                raise ValueError(f"Every search alias must be Arabic text: {entry_id}")
+
+            cleaned = [re.sub(r"\s+", " ", alias).strip() for alias in aliases]
+            normalized = [normalize(alias) for alias in cleaned]
+            if len(normalized) != len(set(normalized)):
+                raise ValueError(f"Duplicate normalized search alias: {entry_id}")
+            entry["searchAliases"] = cleaned
+            reviewed_ids.add(entry_id)
+            alias_count += len(cleaned)
+
+    return len(batches), len(reviewed_ids), alias_count
+
+
 def make_id(entry: dict, seen: set[str]) -> str:
     base = re.sub(r"[^a-z0-9-]+", "-", normalize(entry["word"])).strip("-") or entry["letter"].lower()
     value = base
@@ -524,12 +570,16 @@ def validate(entries: list[dict], target_count: int) -> None:
 
 def write_output(
     entries: list[dict], natural_count: int, curated_count: int, contextual_count: int,
-    direction_count: int, country_count: int, country_added_count: int
+    direction_count: int, country_count: int, country_added_count: int,
+    alias_batch_count: int, alias_entry_count: int, alias_count: int
 ) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     by_letter: dict[str, list[dict]] = {letter: [] for letter in LETTERS}
     for entry in entries:
-        public_entry = {key: value for key, value in entry.items() if key not in {"key", "frequency"}}
+        public_entry = {
+            key: value for key, value in entry.items()
+            if key not in {"key", "frequency", "searchAliases"}
+        }
         by_letter[entry["letter"]].append(public_entry)
 
     counts = {letter: len(by_letter[letter]) for letter in LETTERS}
@@ -539,6 +589,7 @@ def write_output(
             "letter": entry["letter"],
             "word": entry["word"],
             "arabic": entry["arabic"],
+            **({"searchAliases": entry["searchAliases"]} if entry.get("searchAliases") else {}),
             **({"gender": entry["gender"], "determiner": entry["determiner"]} if entry.get("gender") else {}),
             **({"grammarLabel": entry["grammarLabel"]} if entry.get("grammarLabel") else {}),
             **({"nationality": entry["nationality"]} if entry.get("nationality") else {}),
@@ -546,7 +597,7 @@ def write_output(
         for entry in entries
     ]
     manifest = {
-        "version": 2,
+        "version": 3,
         "total": len(entries),
         "naturalExampleCount": natural_count,
         "curatedExampleCount": curated_count,
@@ -557,6 +608,9 @@ def write_output(
         "directionEntryCount": direction_count,
         "countryEntryCount": country_count,
         "countryAddedCount": country_added_count,
+        "searchAliasBatchCount": alias_batch_count,
+        "searchAliasEntryCount": alias_entry_count,
+        "searchAliasCount": alias_count,
         "counts": counts,
         "search": search,
         "sources": [
@@ -612,6 +666,7 @@ def main() -> None:
             entries.append(entry)
     direction_count = append_direction_entries(entries, DIRECTION_ENTRIES, seen_ids)
     country_count, country_added_count = append_country_entries(entries, COUNTRY_ENTRIES, seen_ids)
+    alias_batch_count, alias_entry_count, alias_count = apply_search_aliases(entries, SEARCH_ALIASES)
     natural_count = sum(entry["exampleSource"] == "Tatoeba" for entry in entries)
     validate(entries, target_count + direction_count + country_added_count)
 
@@ -626,6 +681,9 @@ def main() -> None:
         "directionEntries": direction_count,
         "countryEntries": country_count,
         "countryAdditions": country_added_count,
+        "searchAliasBatches": alias_batch_count,
+        "searchAliasEntries": alias_entry_count,
+        "searchAliases": alias_count,
         "counts": counts,
         "first": entries[:3],
     }, ensure_ascii=True, indent=2))
@@ -633,6 +691,7 @@ def main() -> None:
         write_output(
             entries, natural_count, curated_count, contextual_count,
             direction_count, country_count, country_added_count,
+            alias_batch_count, alias_entry_count, alias_count,
         )
 
 

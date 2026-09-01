@@ -54,6 +54,25 @@ function spriteBackground(path:string,index:number,columns:number,rows:number):C
  };
 }
 
+function preciseEmotionPageThreeLayer(path:string,index:number):CSSProperties{
+ const sourceWidth=1024;
+ const sourceHeight=1536;
+ const rowTop=1022;
+ const rowHeight=231;
+ const visibleSourceWidth=rowHeight*(4/5);
+ const columnBounds=[0,205,410,614,819,1024];
+ const column=index%5;
+ const columnWidth=columnBounds[column+1]-columnBounds[column];
+ const sourceLeft=columnBounds[column]+(columnWidth-visibleSourceWidth)/2;
+ return {
+  width:`${sourceWidth/visibleSourceWidth*100}%`,
+  height:`${sourceHeight/rowHeight*100}%`,
+  left:`-${sourceLeft/visibleSourceWidth*100}%`,
+  top:`-${rowTop/rowHeight*100}%`,
+  backgroundImage:`url("${path}")`
+ };
+}
+
 const A1_MODULES:CourseModule[]=[
  {
   id:"alphabet",title:"L’alphabet et les lettres",ar:"الأبجدية والحروف",icon:Languages,
@@ -2079,7 +2098,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-visual-vocabulary-grid ${descriptionPanel}`}>
        {descriptionVisualItems.map((item:VisualVocabularyItem,index)=><button key={item.id} className="university-visual-vocabulary-card" onClick={()=>playVocabularySpeech(item.speech)} aria-label={`استمع إلى ${item.speech.join(" ثم ")}`}>
-        <span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{...spriteBackground(descriptionVisualConfig.path,item.spriteIndex,descriptionVisualConfig.columns,descriptionVisualConfig.rows),aspectRatio:descriptionVisualConfig.aspect}}/>
+        {descriptionPanel==="emotions"&&descriptionVisualPageIndex===2&&index>=4
+         ?<span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{aspectRatio:descriptionVisualConfig.aspect}}><span className="university-visual-vocabulary-sprite-layer" aria-hidden="true" style={preciseEmotionPageThreeLayer(descriptionVisualConfig.path,item.spriteIndex)}/></span>
+         :<span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{...spriteBackground(descriptionVisualConfig.path,item.spriteIndex,descriptionVisualConfig.columns,descriptionVisualConfig.rows),aspectRatio:descriptionVisualConfig.aspect}}/>}
         <span className="university-visual-vocabulary-copy">
          <i>{String(descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+index+1).padStart(2,"0")}</i>
          <strong dir="ltr">{item.fr}</strong>

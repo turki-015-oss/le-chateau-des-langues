@@ -515,8 +515,13 @@ def apply_search_aliases(entries: list[dict], path: Path) -> tuple[int, int, int
             raise ValueError("Every search-alias batch needs an id and entries object")
         if not isinstance(batch_no_aliases, dict):
             raise ValueError(f"Search-alias batch {batch_id} reviewedWithoutAliases must be an object")
-        if len(batch_entries) + len(batch_no_aliases) != 200:
-            raise ValueError(f"Search-alias batch {batch_id} must review exactly 200 entries")
+        expected_count = batch.get("expectedCount", 200)
+        if not isinstance(expected_count, int) or isinstance(expected_count, bool) or expected_count < 1:
+            raise ValueError(f"Search-alias batch {batch_id} expectedCount must be a positive integer")
+        if len(batch_entries) + len(batch_no_aliases) != expected_count:
+            raise ValueError(
+                f"Search-alias batch {batch_id} must review exactly {expected_count} entries"
+            )
 
         for entry_id, aliases in batch_entries.items():
             if entry_id in reviewed_ids:

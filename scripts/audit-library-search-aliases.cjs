@@ -69,10 +69,24 @@ const sourceAliasCount = sourceEntries.reduce((sum, [, aliases]) => sum + aliase
 if (!batches.length) failures.push("No synonym batches were found");
 for (const batch of batches) {
   const count = Object.keys(batch.entries ?? {}).length + Object.keys(batch.reviewedWithoutAliases ?? {}).length;
-  if (count !== 200) failures.push(`${batch.id}: expected 200 reviewed entries, found ${count}`);
+  const expectedCount = batch.expectedCount ?? 200;
+  if (!Number.isInteger(expectedCount) || expectedCount < 1) {
+    failures.push(`${batch.id}: invalid expectedCount`);
+  } else if (count !== expectedCount) {
+    failures.push(`${batch.id}: expected ${expectedCount} reviewed entries, found ${count}`);
+  }
 }
 if (new Set(sourceReviewedIds).size !== sourceReviewedIds.length) {
   failures.push("A dictionary entry appears in more than one synonym batch");
+}
+const reviewedIdSet = new Set(sourceReviewedIds);
+const unreviewedManifestIds = manifest.search
+  .map((entry) => entry.id)
+  .filter((id) => !reviewedIdSet.has(id));
+if (unreviewedManifestIds.length) {
+  failures.push(
+    `Every dictionary word must be reviewed with its synonyms: ${unreviewedManifestIds.length} unreviewed (${unreviewedManifestIds.slice(0, 10).join(", ")})`,
+  );
 }
 if (manifest.searchAliasBatchCount !== batches.length) failures.push("Manifest batch count is stale");
 if (manifest.searchAliasReviewedCount !== sourceReviewedIds.length) failures.push("Manifest reviewed entry count is stale");
@@ -1099,6 +1113,26 @@ const expected = {
   "دوار مروحية خلفي موضوع داخل فتحة محاطة بهيكل الذيل": "fenestron",
   "خط على خريطة يصل بين نقاط ذات ضغط جوي متساوٍ": "isobare",
   "تشابك محكم في خيط أو حبل يُستخدم للربط أو التثبيت": "nœud",
+  "نظام قياس يُستخدم للمعادن النفيسة وتساوي أونصته نحو 31.1 غرامًا": "troy",
+  "وحدة لقياس العزم ثنائي القطب الجزيئي": "debye",
+  "مجموعة شعر أو نثر في الآداب العربية والفارسية والعثمانية والأردية": "diwan",
+  "العملة الرسمية لساو تومي وبرينسيب": "dobra",
+  "لغة يتحدث بها شعب الهادزا في تنزانيا وتُعد غالبًا لغة معزولة": "hadza",
+  "حاجز أو حظيرة مكونة من أوتاد وألواح متجاورة": "hague",
+  "عدوى جلدية مزمنة تسببها بكتيريا لولبية": "pinta",
+  "تحديد الاتجاه أو اختيار المسار المناسب": "orientation",
+  "الاتجاه الواقع بين الشمال والشرق": "nord-est",
+  "الاتجاه الواقع بين الجنوب والغرب": "sud-ouest",
+  "وجود مكان على مسافة قصيرة من مكان آخر": "proximité",
+  "الطريق المحدد للوصول من نقطة إلى وجهة": "itinéraire",
+  "تقاطع دائري تسير المركبات حول جزيرته الوسطى": "rond-point",
+  "علامة تعرض اتجاهًا أو تحذيرًا أو معلومة على الطريق": "panneau",
+  "نقطة ظاهرة تساعد على تحديد الموقع أو الاتجاه": "repère",
+  "المنطقة المركزية التي تتركز فيها الأنشطة والخدمات": "centre-ville",
+  "من دون انعطاف": "tout droit",
+  "في الجهة المواجهة مباشرة": "en face de",
+  "يغير اتجاه السير نحو اليمين أو اليسار": "tourner",
+  "يتحرك باتجاه وجهة محددة": "se diriger vers",
 };
 for (const [query, word] of Object.entries(expected)) {
   if (!search(query).some((entry) => entry.word === word)) {
@@ -1127,6 +1161,7 @@ console.log(JSON.stringify({
   aliasBearingEntries: sourceEntries.length,
   reviewedWithoutAliases: sourceNoAliasEntries.length,
   aliases: sourceAliasCount,
+  unreviewedEntries: unreviewedManifestIds.length,
   liveSearchCases: Object.keys(expected).length,
   sharedAccurateAliases: sharedAliases,
 }, null, 2));

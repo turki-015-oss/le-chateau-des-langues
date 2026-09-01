@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import {useRouter} from "next/navigation";
-import {useMemo,useState} from "react";
+import {useEffect,useMemo,useState} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
- ArrowRight,BookOpen,Building2,CalendarDays,ChevronLeft,ChevronRight,Clock3,Compass,
- GraduationCap,Languages,LibraryBig,ListChecks,MessageCircle,Mic2,
- NotebookTabs,Play,School,ShoppingBag,Sparkles,Users,Volume2
+ ArrowRight,BookOpen,Building2,CalendarDays,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock3,Compass,
+ GraduationCap,Headphones,Languages,LibraryBig,ListChecks,MapPinned,MessageCircle,Mic2,
+ NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Trophy,Users,Volume2
 } from "lucide-react";
-import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import {speakArabic,speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
@@ -22,7 +22,9 @@ type CourseModule={
  sections:LessonSection[];
 };
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
-type UniversityPageProps={initialLevelId?:string;levelPage?:boolean};
+type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
+type LessonStage="learn"|"practice"|"test";
+type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -584,6 +586,19 @@ const LEVELS:Level[]=[
  {id:"A1",label:"Débutant",ar:"المستوى المبتدئ",description:"من الأبجدية والنطق إلى التواصل في المواقف اليومية الأساسية.",modules:A1_MODULES},
  {id:"A2",label:"Élémentaire",ar:"المستوى الأساسي المتقدم",description:"بناء سرد أوضح، استخدام الأزمنة، والتعامل باستقلالية أكبر.",modules:A2_MODULES}
 ];
+
+const COURSE_PHASES:Record<string,JourneyPhase[]>={
+ A1:[
+  {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والأفعال والحاضر.",moduleIds:["nouns","core-verbs","present"]},
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العدد والزمن والوصف والحياة والمواقف.",moduleIds:["numbers-time","description","daily-life","situations"]}
+ ],
+ A2:[
+  {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
+  {title:"دقة التعبير",fr:"Préciser son expression",description:"الضمائر والكميات والمقارنة والطلب المهذب.",moduleIds:["pronouns","quantity","comparison","politeness"]},
+  {title:"التواصل المستقل",fr:"Communiquer avec autonomie",description:"ربط الأفكار والتصرف في المواقف والتعبير بثقة.",moduleIds:["connectors","themes","expression"]}
+ ]
+};
 
 const ALPHABET=[
  ["A","a","ami","صديق"],["B","bé","bonjour","مرحبًا"],["C","cé","café","مقهى"],
@@ -1147,6 +1162,27 @@ const TIME_DATE_PAGES=[
  }
 ];
 
+const DAYS_OF_WEEK=[
+ {fr:"lundi",ar:"الاثنين"},{fr:"mardi",ar:"الثلاثاء"},{fr:"mercredi",ar:"الأربعاء"},
+ {fr:"jeudi",ar:"الخميس"},{fr:"vendredi",ar:"الجمعة"},{fr:"samedi",ar:"السبت"},{fr:"dimanche",ar:"الأحد"}
+];
+
+const MONTHS_OF_YEAR=[
+ {fr:"janvier",ar:"يناير"},{fr:"février",ar:"فبراير"},{fr:"mars",ar:"مارس"},{fr:"avril",ar:"أبريل"},
+ {fr:"mai",ar:"مايو"},{fr:"juin",ar:"يونيو"},{fr:"juillet",ar:"يوليو"},{fr:"août",ar:"أغسطس"},
+ {fr:"septembre",ar:"سبتمبر"},{fr:"octobre",ar:"أكتوبر"},{fr:"novembre",ar:"نوفمبر"},{fr:"décembre",ar:"ديسمبر"}
+];
+
+const CALENDAR_WORDS=[
+ {fr:"le jour",ar:"اليوم",note:"مذكر"},{fr:"la semaine",ar:"الأسبوع",note:"مؤنث"},
+ {fr:"le week-end",ar:"عطلة نهاية الأسبوع",note:"مذكر"},{fr:"le mois",ar:"الشهر",note:"مذكر"},
+ {fr:"l’année",ar:"السنة",note:"مؤنث"},{fr:"les vacances",ar:"الإجازة أو العطلة",note:"جمع مؤنث"},
+ {fr:"aujourd’hui",ar:"اليوم",note:"ظرف زمان"},{fr:"hier",ar:"أمس",note:"ظرف زمان"},
+ {fr:"demain",ar:"غدًا",note:"ظرف زمان"},{fr:"la date",ar:"التاريخ",note:"مؤنث"}
+];
+
+const TIME_DATE_APPLICATION_PAGES=TIME_DATE_PAGES.filter(page=>page.label!=="أيام الأسبوع"&&page.label!=="أشهر السنة");
+
 const FAMILY_DESCRIPTION_PAGES=[
  {
   label:"العائلة القريبة",
@@ -1543,10 +1579,17 @@ const FRIENDS_SITUATIONS_PAGES=[
  }
 ];
 
-export default function UniversityPage({initialLevelId,levelPage=false}:UniversityPageProps={}){
+export default function UniversityPage({initialLevelId,initialModuleId,levelPage=false,lessonPage=false}:UniversityPageProps={}){
  const router=useRouter();
  const level=LEVELS.find(item=>item.id.toLocaleLowerCase("fr")===initialLevelId?.toLocaleLowerCase("fr"))??LEVELS[0];
- const [moduleId,setModuleId]=useState(level.modules[0].id);
+ const requestedModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
+ const [moduleId,setModuleId]=useState(requestedModule.id);
+ const [lessonStage,setLessonStage]=useState<LessonStage>("learn");
+ const [openSectionIndex,setOpenSectionIndex]=useState(0);
+ const [openPhaseIndex,setOpenPhaseIndex]=useState(0);
+ const [quizAnswers,setQuizAnswers]=useState<Record<number,number>>({});
+ const [completedModuleIds,setCompletedModuleIds]=useState<string[]>([]);
+ const [lastModuleId,setLastModuleId]=useState(level.modules[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -1558,33 +1601,76 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
+ const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
- const timeDatePage=TIME_DATE_PAGES[timeDatePageIndex];
+ const timeDatePage=TIME_DATE_APPLICATION_PAGES[timeDatePageIndex];
  const familyPage=FAMILY_DESCRIPTION_PAGES[familyPageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
 
+ const quizQuestions=useMemo(()=>{
+  const examples=activeModule.sections.flatMap(item=>item.examples);
+  const answerPool=Array.from(new Set(level.modules.flatMap(module=>module.sections.flatMap(item=>item.examples.map(example=>example.ar)))));
+  return examples.slice(0,3).map((example,index)=>{
+   const distractors=answerPool.filter(answer=>answer!==example.ar).slice(index*2,index*2+2);
+   const raw=[example.ar,...distractors];
+   const shift=index%raw.length;
+   const choices=[...raw.slice(shift),...raw.slice(0,shift)];
+   return {prompt:example.fr,choices,correctIndex:choices.indexOf(example.ar)};
+  });
+ },[activeModule,level]);
+
+ const activeModuleIndex=level.modules.findIndex(item=>item.id===activeModule.id);
+ const previousModule=activeModuleIndex>0?level.modules[activeModuleIndex-1]:null;
+ const nextModule=activeModuleIndex<level.modules.length-1?level.modules[activeModuleIndex+1]:null;
+ const quizComplete=quizQuestions.length>0&&quizQuestions.every((question,index)=>quizAnswers[index]===question.correctIndex);
+
+ useEffect(()=>{
+  const nextModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
+  setModuleId(nextModule.id);
+  setLessonStage("learn");
+  setOpenSectionIndex(0);
+  setQuizAnswers({});
+ },[initialModuleId,level]);
+
+ useEffect(()=>{
+  try{
+   const saved=window.localStorage.getItem(`university-progress-${level.id}`);
+   const parsed=saved?JSON.parse(saved):[];
+   setCompletedModuleIds(Array.isArray(parsed)?parsed:[]);
+   const last=window.localStorage.getItem(`university-last-${level.id}`);
+   if(last&&level.modules.some(item=>item.id===last))setLastModuleId(last);
+  }catch{setCompletedModuleIds([])}
+ },[level]);
+
+ useEffect(()=>{
+  if(!lessonPage)return;
+  setLastModuleId(activeModule.id);
+  window.localStorage.setItem(`university-last-${level.id}`,activeModule.id);
+ },[activeModule.id,lessonPage,level.id]);
+
+ useEffect(()=>{
+  if(!lessonPage||!quizComplete||completedModuleIds.includes(activeModule.id))return;
+  const next=[...completedModuleIds,activeModule.id];
+  setCompletedModuleIds(next);
+  window.localStorage.setItem(`university-progress-${level.id}`,JSON.stringify(next));
+ },[activeModule.id,completedModuleIds,lessonPage,level.id,quizComplete]);
+
  const selectModule=(id:string)=>{
-  setModuleId(id);
-  if(id==="numbers-time"){setNumberPageIndex(0);setTimeDatePageIndex(0)}
-  if(id==="greetings")setIntroductionPageIndex(0);
-  if(id==="nouns")setNounPageIndex(0);
-  if(id==="core-verbs")setCoreVerbPageIndex(0);
-  if(id==="present")setPresentPageIndex(0);
-  if(id==="description")setFamilyPageIndex(0);
-  if(id==="daily-life")setDailyPageIndex(0);
-  if(id==="situations")setFriendsPageIndex(0);
-  window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
+  router.push(`/university/${level.id.toLocaleLowerCase("fr")}/${id}`);
  };
+
+ const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
+ const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
 
  return <main className={`university-world ${levelPage?"university-level-world":""}`} dir="rtl">
   <header className="university-topbar">
-   <Link href={levelPage?"/university":"/kingdom"} aria-label={levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
+   <Link href={backHref} aria-label={lessonPage?`العودة إلى منهج ${level.id}`:levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
    <div><span>جامعة القلعة</span><strong>L’Université Royale</strong></div>
    <div className="university-seal"><GraduationCap/></div>
   </header>
@@ -1624,7 +1710,7 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
   </section>
   </>}
 
-  {levelPage&&<section className="university-level-entry">
+  {levelPage&&!lessonPage&&<section className="university-level-entry">
    <div>
     <Link href="/university"><ArrowRight/> جميع المستويات</Link>
     <span>Programme {level.id}</span>
@@ -1635,16 +1721,53 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
    <aside><b>{level.id}</b><span>{level.modules.length} وحدات تعليمية</span><small>شرح · أمثلة · نطق</small></aside>
   </section>}
 
-  {levelPage&&<section className="university-course" id="university-course">
-   <aside className="university-sidebar">
-    <div><span>Programme {level.id}</span><h2>{level.ar}</h2><p>{level.description}</p></div>
-    <nav aria-label={`وحدات المستوى ${level.id}`}>
-     {level.modules.map((item,index)=>{
-      const Icon=item.icon;
-      return <button key={item.id} className={activeModule.id===item.id?"active":""} onClick={()=>selectModule(item.id)}>
-       <i><Icon/></i><span><small>الوحدة {index+1}</small><strong>{item.ar}</strong><em>{item.title}</em></span><ChevronLeft/>
-      </button>;
-     })}
+  {levelPage&&!lessonPage&&<section className="university-journey" aria-label={`مسار المستوى ${level.id}`}>
+   <div className="university-resume-card">
+    <div className="university-resume-icon"><MapPinned/></div>
+    <div><span>تابع من حيث توقفت</span><h2>{resumeModule.ar}</h2><p>{resumeModule.title}</p></div>
+    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}/${resumeModule.id}`}><Play/> متابعة الدرس</Link>
+   </div>
+   <div className="university-progress-card">
+    <div><span>تقدمك في المستوى</span><strong>{completedModuleIds.length} من {level.modules.length} وحدات</strong></div>
+    <div className="university-progress-track"><i style={{width:`${Math.round(completedModuleIds.length/level.modules.length*100)}%`}}/></div>
+    <b>{Math.round(completedModuleIds.length/level.modules.length*100)}%</b>
+   </div>
+   <div className="university-journey-heading"><span>Parcours guidé</span><h2>رحلة التعلّم الموجّهة</h2><p>افتح مرحلة واحدة، ثم ادخل الدرس المطلوب. لن تظهر محتويات الدروس كلها في الصفحة نفسها.</p></div>
+   <div className="university-phase-list">
+    {phases.map((phase,phaseIndex)=>{
+     const phaseModules=phase.moduleIds.map(id=>level.modules.find(item=>item.id===id)).filter((item):item is CourseModule=>Boolean(item));
+     const phaseCompleted=phaseModules.filter(item=>completedModuleIds.includes(item.id)).length;
+     return <details key={phase.title} className="university-phase" open={openPhaseIndex===phaseIndex}>
+      <summary onClick={event=>{event.preventDefault();setOpenPhaseIndex(current=>current===phaseIndex?-1:phaseIndex)}}>
+       <i>{String(phaseIndex+1).padStart(2,"0")}</i>
+       <div><span>{phase.fr}</span><h3>{phase.title}</h3><p>{phase.description}</p></div>
+       <em>{phaseCompleted}/{phaseModules.length}</em><ChevronDown/>
+      </summary>
+      <div className="university-phase-modules">
+       {phaseModules.map(module=>{
+        const Icon=module.icon;
+        const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
+        const completed=completedModuleIds.includes(module.id);
+        return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}`}>
+         <i className={completed?"completed":""}>{completed?<CheckCircle2/>:<Icon/>}</i>
+         <div><small>الدرس {moduleIndex+1}</small><strong>{module.ar}</strong><span>{module.title}</span></div>
+         <ChevronLeft/>
+        </Link>;
+       })}
+      </div>
+     </details>;
+    })}
+   </div>
+  </section>}
+
+  {lessonPage&&<section className="university-course university-course-focused" id="university-course">
+   <aside className="university-lesson-guide">
+    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
+    <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
+    <nav aria-label="مراحل الدرس">
+     <button className={lessonStage==="learn"?"active":""} onClick={()=>setLessonStage("learn")}><BookOpen/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
+     <button className={lessonStage==="practice"?"active":""} onClick={()=>setLessonStage("practice")}><Headphones/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
+     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>اختبر نفسك</b><small>أسئلة قصيرة</small></span></button>
     </nav>
    </aside>
 
@@ -1662,6 +1785,7 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
      </div>
     </header>
 
+    {lessonStage==="learn"&&<>
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
@@ -1778,7 +1902,40 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
 
     {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
      <div className="university-subheading">
-      <div><span>Heure et date interactives</span><h3>اضغط على الكلمة أو الجملة لسماع النطق</h3></div>
+      <div><span>Les jours de la semaine</span><h3>أيام الأسبوع</h3></div>
+      <CalendarDays/>
+     </div>
+     <p className="university-calendar-intro">قائمة مستقلة للحفظ والنطق. تُكتب أسماء الأيام بالفرنسية بحرف صغير.</p>
+     <div className="university-calendar-grid days" dir="ltr">
+      {DAYS_OF_WEEK.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.7})} aria-label={`استمع إلى ${item.fr}`}><i>{index+1}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><Volume2/></button>)}
+     </div>
+    </section>}
+
+    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Les mois de l’année</span><h3>أشهر السنة</h3></div>
+      <CalendarDays/>
+     </div>
+     <p className="university-calendar-intro">الأشهر الاثنا عشر في قائمة مستقلة، وكل شهر له نطق منفصل.</p>
+     <div className="university-calendar-grid months" dir="ltr">
+      {MONTHS_OF_YEAR.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.7})} aria-label={`استمع إلى ${item.fr}`}><i>{String(index+1).padStart(2,"0")}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><Volume2/></button>)}
+     </div>
+    </section>}
+
+    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Le calendrier</span><h3>كلمات التقويم الأساسية</h3></div>
+      <Clock3/>
+     </div>
+     <p className="university-calendar-intro">اليوم والأسبوع والشهر والسنة والإجازة في قائمتها المخصصة قبل الجمل التطبيقية.</p>
+     <div className="university-calendar-grid terms" dir="ltr">
+      {CALENDAR_WORDS.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.72})} aria-label={`استمع إلى ${item.fr}`}><i>{String(index+1).padStart(2,"0")}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><em dir="rtl">{item.note}</em><Volume2/></button>)}
+     </div>
+    </section>}
+
+    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
+     <div className="university-subheading">
+      <div><span>Heure et date en contexte</span><h3>الجمل التطبيقية للوقت والتاريخ</h3></div>
       <CalendarDays/>
      </div>
      <div className="university-phrase-grid">
@@ -1790,8 +1947,8 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
      </div>
      <div className="university-number-pagination university-phrase-pagination" dir="ltr">
       <button onClick={()=>setTimeDatePageIndex(index=>Math.max(0,index-1))} disabled={timeDatePageIndex===0} aria-label="أمثلة الوقت السابقة"><ChevronLeft/><span>السابق</span></button>
-      <div><small>قسم الوقت والتاريخ</small><strong>{timeDatePage.label}</strong><em>{timeDatePageIndex+1} / {TIME_DATE_PAGES.length}</em></div>
-      <button onClick={()=>setTimeDatePageIndex(index=>Math.min(TIME_DATE_PAGES.length-1,index+1))} disabled={timeDatePageIndex===TIME_DATE_PAGES.length-1} aria-label="أمثلة الوقت التالية"><span>التالي</span><ChevronRight/></button>
+      <div><small>قسم الجمل التطبيقية</small><strong>{timeDatePage.label}</strong><em>{timeDatePageIndex+1} / {TIME_DATE_APPLICATION_PAGES.length}</em></div>
+      <button onClick={()=>setTimeDatePageIndex(index=>Math.min(TIME_DATE_APPLICATION_PAGES.length-1,index+1))} disabled={timeDatePageIndex===TIME_DATE_APPLICATION_PAGES.length-1} aria-label="أمثلة الوقت التالية"><span>التالي</span><ChevronRight/></button>
      </div>
      <p className="university-phrase-note">{timeDatePage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
@@ -1857,26 +2014,74 @@ export default function UniversityPage({initialLevelId,levelPage=false}:Universi
     </section>}
 
     <div className="university-sections">
-     {activeModule.sections.map((item,index)=><section key={item.title} className="university-explanation">
+     {activeModule.sections.map((item,index)=><section key={item.title} className={`university-explanation ${openSectionIndex===index?"open":""}`}>
       <div className="university-explanation-title">
-       <span>{String(index+1).padStart(2,"0")}</span>
-       <div><h3>{item.title}</h3><small>{item.subtitle}</small></div>
+       <button className="university-section-toggle" onClick={()=>setOpenSectionIndex(current=>current===index?-1:index)} aria-expanded={openSectionIndex===index}>
+        <span>{String(index+1).padStart(2,"0")}</span>
+        <div><h3>{item.title}</h3><small>{item.subtitle}</small></div>
+        <ChevronDown/>
+       </button>
        <button onClick={()=>void speakFrench(item.title)} aria-label={`استمع إلى ${item.title}`}><Volume2/><b>نطق العنوان</b></button>
       </div>
-      <p className="university-explanation-text">{item.explanation}</p>
-      <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
-      <div className="university-example-list">
-       <h4><MessageCircle/> Exemples expliqués</h4>
-       {item.examples.map(example=><article key={example.fr}>
-        <button onClick={()=>void speakFrench(example.fr)} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
-        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
-       </article>)}
-      </div>
+      {openSectionIndex===index&&<div className="university-explanation-body">
+       <p className="university-explanation-text">{item.explanation}</p>
+       <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
+       <div className="university-example-list">
+        <h4><MessageCircle/> Exemples expliqués</h4>
+        {item.examples.map(example=><article key={example.fr}>
+         <button onClick={()=>void speakFrench(example.fr)} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
+         <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
+        </article>)}
+       </div>
+      </div>}
      </section>)}
     </div>
+    </>}
 
-    <footer className="university-lesson-footer">
-     <LibraryBig/><div><strong>نهاية شرح هذه الوحدة</strong><span>اختر الوحدة التالية من قائمة المنهج. لا يوجد اختبار أو قفل للمحتوى.</span></div>
+    {lessonStage==="practice"&&<section className="university-practice-stage">
+     <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، ثم استمع إلى المعنى العربي عند الحاجة.</p></div></div>
+     <div className="university-practice-list">
+      {activeModule.sections.flatMap(item=>item.examples).slice(0,6).map((example,index)=><article key={example.fr}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
+       <div className="university-dual-audio">
+        <button onClick={()=>void speakFrench(example.fr,{rate:.76})} aria-label={`استمع إلى الجملة الفرنسية ${example.fr}`}><Volume2/><b>FR</b></button>
+        <button onClick={()=>void speakArabic(example.ar,{rate:.86})} aria-label={`استمع إلى المعنى العربي ${example.ar}`}><Volume2/><b>AR</b></button>
+       </div>
+      </article>)}
+     </div>
+     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> الانتقال إلى الاختبار <ChevronLeft/></button>
+    </section>}
+
+    {lessonStage==="test"&&<section className="university-test-stage">
+     <div className="university-stage-heading"><ListChecks/><div><span>Compréhension</span><h3>اختبار فهم قصير</h3><p>شغّل السؤال أو الإجابة من زر الصوت المستقل، ثم اختر الإجابة من خانتها المنفصلة.</p></div></div>
+     <div className="university-quiz-list">
+      {quizQuestions.map((question,questionIndex)=>{
+       const selected=quizAnswers[questionIndex];
+       return <article key={question.prompt}>
+        <header><span>السؤال {questionIndex+1}</span><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`نطق السؤال ${questionIndex+1}`}><Volume2/> نطق السؤال</button></header>
+        <div className="university-answer-list">
+         {question.choices.map((choice,choiceIndex)=>{
+          const answered=typeof selected==="number";
+          const state=answered?(choiceIndex===question.correctIndex?"correct":choiceIndex===selected?"wrong":""):"";
+          return <div key={choice} className={state}>
+           <button className="university-answer-select" onClick={()=>setQuizAnswers(current=>({...current,[questionIndex]:choiceIndex}))} aria-pressed={selected===choiceIndex}><i>{String.fromCharCode(65+choiceIndex)}</i><span>{choice}</span></button>
+           <button className="university-answer-audio" onClick={()=>void speakArabic(choice,{rate:.86})} aria-label={`نطق الإجابة ${choiceIndex+1}`}><Volume2/></button>
+          </div>;
+         })}
+        </div>
+        {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة، أحسنت.":"الإجابة غير صحيحة. استمع إلى الجملة مرة أخرى ثم حاول."}</p>}
+       </article>;
+      })}
+     </div>
+     {quizComplete&&<div className="university-quiz-success"><Trophy/><div><strong>أتممت هذا الدرس بنجاح</strong><span>تم حفظ تقدمك ويمكنك الانتقال إلى الدرس التالي.</span></div></div>}
+     {!quizComplete&&Object.keys(quizAnswers).length>0&&<button className="university-quiz-reset" onClick={()=>setQuizAnswers({})}><RotateCcw/> إعادة المحاولة</button>}
+    </section>}
+
+    <footer className="university-lesson-footer university-lesson-navigation">
+     {previousModule?<button onClick={()=>selectModule(previousModule.id)}><ChevronRight/><span><small>الدرس السابق</small><strong>{previousModule.ar}</strong></span></button>:<span/>}
+     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><LibraryBig/><span><small>العودة إلى</small><strong>مسار {level.id}</strong></span></Link>
+     {nextModule?<button onClick={()=>selectModule(nextModule.id)}><span><small>الدرس التالي</small><strong>{nextModule.ar}</strong></span><ChevronLeft/></button>:<span/>}
     </footer>
    </article>
   </section>}

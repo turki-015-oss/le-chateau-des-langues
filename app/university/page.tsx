@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {useRouter} from "next/navigation";
-import {useEffect,useMemo,useState,type CSSProperties} from "react";
+import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
  ArrowRight,BookOpen,Building2,CalendarDays,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock3,Compass,
@@ -1648,6 +1648,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [familyPageIndex,setFamilyPageIndex]=useState(0);
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
+ const descriptionPaginationRef=useRef<HTMLDivElement>(null);
+ const descriptionPaginationTopRef=useRef<number|null>(null);
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
@@ -1669,6 +1671,20 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    :{items:FAMILY_VOCABULARY,path:"/university/vocabulary/family-sprite.png",columns:5,rows:4,aspect:"1 / 1",label:"أفراد العائلة",fr:"La famille"};
  const descriptionVisualPageCount=Math.max(1,Math.ceil(descriptionVisualConfig.items.length/DESCRIPTION_VISUAL_PAGE_SIZE));
  const descriptionVisualItems=descriptionVisualConfig.items.slice(descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE,descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+DESCRIPTION_VISUAL_PAGE_SIZE);
+
+ const moveDescriptionVisualPage=(nextPageIndex:number)=>{
+  descriptionPaginationTopRef.current=descriptionPaginationRef.current?.getBoundingClientRect().top??null;
+  setDescriptionVisualPageIndex(nextPageIndex);
+ };
+
+ useLayoutEffect(()=>{
+  const previousTop=descriptionPaginationTopRef.current;
+  if(previousTop===null)return;
+  const nextTop=descriptionPaginationRef.current?.getBoundingClientRect().top;
+  descriptionPaginationTopRef.current=null;
+  if(nextTop===undefined)return;
+  window.scrollBy({top:nextTop-previousTop,left:0,behavior:"auto"});
+ },[descriptionVisualPageIndex]);
 
  const practiceExamples=useMemo(()=>{
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
@@ -2072,15 +2088,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </span>
         <span className="university-visual-vocabulary-audio"><Volume2/><small>FR</small></span>
        </button>)}
-       {Array.from({length:DESCRIPTION_VISUAL_PAGE_SIZE-descriptionVisualItems.length}).map((_,index)=><span key={`description-placeholder-${index}`} className="university-visual-vocabulary-card university-visual-vocabulary-placeholder" aria-hidden="true">
-        <span className="university-visual-vocabulary-image" style={{aspectRatio:descriptionVisualConfig.aspect}}/>
-        <span className="university-visual-vocabulary-copy"/>
-       </span>)}
       </div>
-      <div className="university-number-pagination university-phrase-pagination university-description-pagination" dir="ltr">
-       <button onClick={()=>setDescriptionVisualPageIndex(index=>Math.max(0,index-1))} disabled={descriptionVisualPageIndex===0} aria-label="الصفحة السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div ref={descriptionPaginationRef} className="university-number-pagination university-phrase-pagination university-description-pagination" dir="ltr">
+       <button onClick={()=>moveDescriptionVisualPage(Math.max(0,descriptionVisualPageIndex-1))} disabled={descriptionVisualPageIndex===0} aria-label="الصفحة السابقة"><ChevronLeft/><span>السابق</span></button>
        <div><small>{descriptionVisualConfig.fr}</small><strong>{descriptionVisualConfig.label}</strong><em>{descriptionVisualPageIndex+1} / {descriptionVisualPageCount}</em></div>
-       <button onClick={()=>setDescriptionVisualPageIndex(index=>Math.min(descriptionVisualPageCount-1,index+1))} disabled={descriptionVisualPageIndex===descriptionVisualPageCount-1} aria-label="الصفحة التالية"><span>التالي</span><ChevronRight/></button>
+       <button onClick={()=>moveDescriptionVisualPage(Math.min(descriptionVisualPageCount-1,descriptionVisualPageIndex+1))} disabled={descriptionVisualPageIndex===descriptionVisualPageCount-1} aria-label="الصفحة التالية"><span>التالي</span><ChevronRight/></button>
       </div>
       <p className="university-phrase-note">في العبارات التي لها مذكر ومؤنث، ينطق الزر صيغة المذكر ثم يصمت قليلًا وينطق صيغة المؤنث؛ ولا ينطق الشرطة الظاهرة بينهما.</p>
      </>:<>

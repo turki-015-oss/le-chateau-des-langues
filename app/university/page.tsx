@@ -1905,7 +1905,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <div><span>Les jours de la semaine</span><h3>أيام الأسبوع</h3></div>
       <CalendarDays/>
      </div>
-     <p className="university-calendar-intro">قائمة مستقلة للحفظ والنطق. تُكتب أسماء الأيام بالفرنسية بحرف صغير.</p>
+     <p className="university-calendar-intro">تبدأ أيام الأسبوع بيوم الاثنين وتنتهي بيوم الأحد.</p>
      <div className="university-calendar-grid days" dir="ltr">
       {DAYS_OF_WEEK.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.7})} aria-label={`استمع إلى ${item.fr}`}><i>{index+1}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><Volume2/></button>)}
      </div>

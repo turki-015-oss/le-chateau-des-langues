@@ -608,7 +608,7 @@ const ALPHABET=[
  ["M","emme","maison","منزل"],["N","enne","nom","اسم"],["O","o","orange","برتقال"],
  ["P","pé","porte","باب"],["Q","ku","question","سؤال"],["R","erre","restaurant","مطعم"],
  ["S","esse","salut","مرحبًا"],["T","té","train","قطار"],["U","u","université","جامعة"],
- ["V","vé","ville","مدينة"],["W","double vé","wagon","عربة"],["X","iks","taxi","سيارة أجرة"],
+ ["V","vé","ville","مدينة"],["W","double vé","wagon","عربة"],["X","iks","xérus","سنجاب"],
  ["Y","i grec","yaourt","زبادي"],["Z","zède","zoo","حديقة حيوانات"]
 ];
 

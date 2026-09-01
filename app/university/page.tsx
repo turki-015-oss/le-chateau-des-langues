@@ -609,7 +609,7 @@ const ALPHABET=[
  ["P","pé","porte","باب"],["Q","ku","question","سؤال"],["R","erre","restaurant","مطعم"],
  ["S","esse","salut","مرحبًا"],["T","té","train","قطار"],["U","u","université","جامعة"],
  ["V","vé","ville","مدينة"],["W","double vé","wagon","عربة"],["X","iks","taxi","سيارة أجرة"],
- ["Y","i grec","stylo","قلم"],["Z","zède","zoo","حديقة حيوانات"]
+ ["Y","i grec","yaourt","زبادي"],["Z","zède","zoo","حديقة حيوانات"]
 ];
 
 // Keep the conventional written letter name in the lesson, while giving

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {useRouter} from "next/navigation";
-import {useEffect,useMemo,useState} from "react";
+import {useEffect,useMemo,useState,type CSSProperties} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
  ArrowRight,BookOpen,Building2,CalendarDays,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock3,Compass,
@@ -10,6 +10,10 @@ import {
  NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Trophy,Users,Volume2
 } from "lucide-react";
 import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import {
+ DESCRIPTION_PRACTICE_ITEMS,DESCRIPTION_QUIZ_ITEMS,EMOTION_VOCABULARY,FAMILY_VOCABULARY,
+ PHYSICAL_STATE_VOCABULARY,type VisualVocabularyItem
+} from "./description-data";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
@@ -24,11 +28,31 @@ type CourseModule={
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
 type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
 type LessonStage="learn"|"practice"|"test";
+type DescriptionPanel="family"|"physical"|"emotions"|"sentences";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
+const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
 });
+
+function playVocabularySpeech(speech:string[]){
+ if(speech.length>1){
+  void speakFrenchWithPause(speech[0],speech[1],760,{rate:.72});
+  return;
+ }
+ void speakFrench(speech[0],{rate:.72});
+}
+
+function spriteBackground(path:string,index:number,columns:number,rows:number):CSSProperties{
+ const column=index%columns;
+ const row=Math.floor(index/columns);
+ return {
+  backgroundImage:`url("${path}")`,
+  backgroundSize:`${columns*100}% ${rows*100}%`,
+  backgroundPosition:`${columns===1?0:column/(columns-1)*100}% ${rows===1?0:row/(rows-1)*100}%`
+ };
+}
 
 const A1_MODULES:CourseModule[]=[
  {
@@ -214,10 +238,10 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"description",title:"Famille et description",ar:"العائلة والوصف",icon:Users,
-  description:"المفردات العائلية، صفات الملكية، وصف الأشخاص والأشياء.",
+  id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:Users,
+  description:"مفردات العائلة، الحالات الجسدية اليومية، المشاعر، والوصف الأساسي في أقسام مستقلة.",
   sections:[
-   section("La famille et la possession","العائلة والملكية","تتفق صفة الملكية مع الشيء المملوك لا مع صاحب الشيء. لذلك نقول mon père وma mère.",[
+   section("La famille et la possession","العائلة والملكية","تعلّم أسماء أفراد العائلة أولًا، ثم استخدم صفات الملكية معها. تتفق صفة الملكية مع الشيء المملوك لا مع صاحب الشيء؛ لذلك نقول mon père وma mère.",[
     "mon, ma, mes: لي.",
     "ton, ta, tes: لك.",
     "son, sa, ses: له أو لها.",
@@ -226,6 +250,26 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Voici ma sœur et mon frère.",ar:"هذه أختي وهذا أخي."},
     {fr:"Nos parents habitent à Djeddah.",ar:"والدانا يسكنان في جدة."},
     {fr:"Leur maison est grande.",ar:"منزلهم كبير."}
+   ]),
+   section("Les états physiques","الحالات الجسدية واليومية","تُعبّر الفرنسية عن الحالات اليومية إما مع être مثل Je suis fatigué، أو مع avoir في عبارات ثابتة مثل J’ai faim وJ’ai soif.",[
+    "استخدم avoir مع الجوع والعطش والحر والبرد والألم.",
+    "استخدم être مع صفات مثل fatigué وmalade وprêt.",
+    "عند اختلاف المذكر والمؤنث تعلّم الصيغتين معًا.",
+    "اضغط على البطاقة لسماع المذكر، ثم وقفة قصيرة، ثم المؤنث دون نطق الشرطة."
+   ],[
+    {fr:"Je suis fatigué.",ar:"أنا متعب."},
+    {fr:"J’ai faim.",ar:"أنا جائع."},
+    {fr:"J’ai mal à la tête.",ar:"رأسي يؤلمني."}
+   ]),
+   section("Les émotions","المشاعر الأساسية","تساعدك هذه العبارات على وصف شعورك بوضوح في مواقف الحياة اليومية. بعض الصفات تتغير بين المذكر والمؤنث، وبعضها يبقى ثابتًا.",[
+    "Je suis content / contente للتعبير عن السرور.",
+    "J’ai peur تعبير ثابت عن الخوف.",
+    "Je suis calme وJe suis triste لهما الشكل نفسه للمذكر والمؤنث.",
+    "استخدم الصور والنطق معًا لربط العبارة بالحالة الصحيحة."
+   ],[
+    {fr:"Je suis heureux.",ar:"أنا سعيد."},
+    {fr:"J’ai peur.",ar:"أنا خائف."},
+    {fr:"Je suis calme.",ar:"أنا هادئ."}
    ]),
    section("Les adjectifs","الصفات والمطابقة","غالبًا تأتي الصفة بعد الاسم وتتفق معه في التذكير والتأنيث والإفراد والجمع. توجد صفات شائعة تأتي قبل الاسم.",[
     "petit → petite، grand → grande.",
@@ -1306,6 +1350,8 @@ const FAMILY_DESCRIPTION_PAGES=[
  }
 ];
 
+const DESCRIPTION_SENTENCE_PAGES=FAMILY_DESCRIPTION_PAGES.slice(2);
+
 const DAILY_LIFE_PAGES=[
  {
   label:"الأفعال الانعكاسية اليومية",
@@ -1600,6 +1646,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const [familyPageIndex,setFamilyPageIndex]=useState(0);
+ const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
+ const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
@@ -1611,18 +1659,32 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_APPLICATION_PAGES[timeDatePageIndex];
- const familyPage=FAMILY_DESCRIPTION_PAGES[familyPageIndex];
+ const familyPage=DESCRIPTION_SENTENCE_PAGES[familyPageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
+ const descriptionVisualConfig=descriptionPanel==="physical"
+  ?{items:PHYSICAL_STATE_VOCABULARY,path:"/university/vocabulary/physical-states-sprite.png",columns:5,rows:5,aspect:"1 / 1",label:"الحالات الجسدية واليومية",fr:"États physiques"}
+  :descriptionPanel==="emotions"
+   ?{items:EMOTION_VOCABULARY,path:"/university/vocabulary/emotions-sprite.png",columns:5,rows:6,aspect:"4 / 5",label:"المشاعر",fr:"Émotions"}
+   :{items:FAMILY_VOCABULARY,path:"/university/vocabulary/family-sprite.png",columns:5,rows:4,aspect:"1 / 1",label:"أفراد العائلة",fr:"La famille"};
+ const descriptionVisualPageCount=Math.max(1,Math.ceil(descriptionVisualConfig.items.length/DESCRIPTION_VISUAL_PAGE_SIZE));
+ const descriptionVisualItems=descriptionVisualConfig.items.slice(descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE,descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+DESCRIPTION_VISUAL_PAGE_SIZE);
+
+ const practiceExamples=useMemo(()=>{
+  if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
+  return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
+ },[activeModule]);
 
  const quizQuestions=useMemo(()=>{
   const examples=activeModule.sections.flatMap(item=>item.examples);
-  const seeds=[
-   {prompt:activeModule.title,answer:activeModule.ar},
-   ...activeModule.sections.map(item=>({prompt:item.title,answer:item.subtitle})),
-   ...examples.map(example=>({prompt:example.fr,answer:example.ar})),
-   {prompt:`${activeModule.title} — ${activeModule.sections[0]?.title??activeModule.title}`,answer:`${activeModule.ar} — ${activeModule.sections[0]?.subtitle??activeModule.ar}`}
-  ].filter((item,index,array)=>array.findIndex(candidate=>candidate.prompt===item.prompt)===index).slice(0,10);
+  const seeds=(activeModule.id==="description"
+   ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
+   :[
+    {prompt:activeModule.title,answer:activeModule.ar},
+    ...activeModule.sections.map(item=>({prompt:item.title,answer:item.subtitle})),
+    ...examples.map(example=>({prompt:example.fr,answer:example.ar})),
+    {prompt:`${activeModule.title} — ${activeModule.sections[0]?.title??activeModule.title}`,answer:`${activeModule.ar} — ${activeModule.sections[0]?.subtitle??activeModule.ar}`}
+   ]).filter((item,index,array)=>array.findIndex(candidate=>candidate.prompt===item.prompt)===index).slice(0,10);
   const answerPool=seeds.map(item=>item.answer);
   return seeds.map((item,index)=>{
    const distractors=answerPool.filter(answer=>answer!==item.answer);
@@ -1649,6 +1711,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setQuizAnswers({});
   setQuizQuestionIndex(0);
   setQuizFinished(false);
+  setDescriptionPanel("family");
+  setDescriptionVisualPageIndex(0);
+  setFamilyPageIndex(0);
  },[initialModuleId,level]);
 
  useEffect(()=>{
@@ -1978,24 +2043,61 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      <p className="university-phrase-note">{timeDatePage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
-    {activeModule.id==="description"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Famille interactive</span><h3>اضغط على الكلمة أو الجملة لسماع النطق</h3></div>
+    {activeModule.id==="description"&&<section className="university-introduction-board university-description-studio">
+     <div className="university-subheading university-description-heading">
+      <div><span>Vocabulaire visuel A1</span><h3>العائلة والحالة والمشاعر</h3><p>اختر القسم، ثم اضغط على أي بطاقة لمشاهدة الصورة وسماع الفرنسية.</p></div>
       <Users/>
      </div>
-     <div className="university-phrase-grid">
-      {familyPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
-       <i>{String(index+1).padStart(2,"0")}</i>
-       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
-       <Volume2/>
-      </button>)}
+
+     <div className="university-description-tabs" role="tablist" aria-label="أقسام درس العائلة والحالة والمشاعر">
+      <button className={descriptionPanel==="family"?"active":""} onClick={()=>{setDescriptionPanel("family");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="family"}><Users/><span><strong>العائلة</strong><small>La famille</small></span></button>
+      <button className={descriptionPanel==="physical"?"active":""} onClick={()=>{setDescriptionPanel("physical");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="physical"}><Mic2/><span><strong>الحالة الجسدية</strong><small>États physiques</small></span></button>
+      <button className={descriptionPanel==="emotions"?"active":""} onClick={()=>{setDescriptionPanel("emotions");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="emotions"}><Sparkles/><span><strong>المشاعر</strong><small>Les émotions</small></span></button>
+      <button className={descriptionPanel==="sentences"?"active":""} onClick={()=>{setDescriptionPanel("sentences");setFamilyPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="sentences"}><NotebookTabs/><span><strong>الوصف والجمل</strong><small>Description</small></span></button>
      </div>
-     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
-      <button onClick={()=>setFamilyPageIndex(index=>Math.max(0,index-1))} disabled={familyPageIndex===0} aria-label="أمثلة العائلة السابقة"><ChevronLeft/><span>السابق</span></button>
-      <div><small>قسم العائلة والوصف</small><strong>{familyPage.label}</strong><em>{familyPageIndex+1} / {FAMILY_DESCRIPTION_PAGES.length}</em></div>
-      <button onClick={()=>setFamilyPageIndex(index=>Math.min(FAMILY_DESCRIPTION_PAGES.length-1,index+1))} disabled={familyPageIndex===FAMILY_DESCRIPTION_PAGES.length-1} aria-label="أمثلة العائلة التالية"><span>التالي</span><ChevronRight/></button>
-     </div>
-     <p className="university-phrase-note">{familyPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
+
+     {descriptionPanel!=="sentences"?<>
+      <div className="university-description-section-title">
+       <div><small>{descriptionVisualConfig.fr}</small><h4>{descriptionVisualConfig.label}</h4></div>
+       <span>{descriptionVisualConfig.items.length} عبارة</span>
+      </div>
+      <div className={`university-visual-vocabulary-grid ${descriptionPanel}`}>
+       {descriptionVisualItems.map((item:VisualVocabularyItem,index)=><button key={item.id} className="university-visual-vocabulary-card" onClick={()=>playVocabularySpeech(item.speech)} aria-label={`استمع إلى ${item.speech.join(" ثم ")}`}>
+        <span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{...spriteBackground(descriptionVisualConfig.path,item.spriteIndex,descriptionVisualConfig.columns,descriptionVisualConfig.rows),aspectRatio:descriptionVisualConfig.aspect}}/>
+        <span className="university-visual-vocabulary-copy">
+         <i>{String(descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+index+1).padStart(2,"0")}</i>
+         <strong dir="ltr">{item.fr}</strong>
+         <b>{item.ar}</b>
+         <em>{item.note}</em>
+        </span>
+        <span className="university-visual-vocabulary-audio"><Volume2/><small>FR</small></span>
+       </button>)}
+      </div>
+      <div className="university-number-pagination university-phrase-pagination university-description-pagination" dir="ltr">
+       <button onClick={()=>setDescriptionVisualPageIndex(index=>Math.max(0,index-1))} disabled={descriptionVisualPageIndex===0} aria-label="الصفحة السابقة"><ChevronLeft/><span>السابق</span></button>
+       <div><small>{descriptionVisualConfig.fr}</small><strong>{descriptionVisualConfig.label}</strong><em>{descriptionVisualPageIndex+1} / {descriptionVisualPageCount}</em></div>
+       <button onClick={()=>setDescriptionVisualPageIndex(index=>Math.min(descriptionVisualPageCount-1,index+1))} disabled={descriptionVisualPageIndex===descriptionVisualPageCount-1} aria-label="الصفحة التالية"><span>التالي</span><ChevronRight/></button>
+      </div>
+      <p className="university-phrase-note">في العبارات التي لها مذكر ومؤنث، ينطق الزر صيغة المذكر ثم يصمت قليلًا وينطق صيغة المؤنث؛ ولا ينطق الشرطة الظاهرة بينهما.</p>
+     </>:<>
+      <div className="university-description-section-title">
+       <div><small>Description et phrases</small><h4>{familyPage.label}</h4></div>
+       <span>{DESCRIPTION_SENTENCE_PAGES.length} مجموعات</span>
+      </div>
+      <div className="university-phrase-grid">
+       {familyPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+        <i>{String(index+1).padStart(2,"0")}</i>
+        <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+        <Volume2/>
+       </button>)}
+      </div>
+      <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+       <button onClick={()=>setFamilyPageIndex(index=>Math.max(0,index-1))} disabled={familyPageIndex===0} aria-label="أمثلة الوصف السابقة"><ChevronLeft/><span>السابق</span></button>
+       <div><small>قسم الوصف والجمل</small><strong>{familyPage.label}</strong><em>{familyPageIndex+1} / {DESCRIPTION_SENTENCE_PAGES.length}</em></div>
+       <button onClick={()=>setFamilyPageIndex(index=>Math.min(DESCRIPTION_SENTENCE_PAGES.length-1,index+1))} disabled={familyPageIndex===DESCRIPTION_SENTENCE_PAGES.length-1} aria-label="أمثلة الوصف التالية"><span>التالي</span><ChevronRight/></button>
+      </div>
+      <p className="university-phrase-note">{familyPage.description}</p>
+     </>}
     </section>}
 
     {activeModule.id==="daily-life"&&<section className="university-introduction-board university-grammar-board">
@@ -2066,11 +2168,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {lessonStage==="practice"&&<section className="university-practice-stage">
      <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
      <div className="university-practice-list">
-      {activeModule.sections.flatMap(item=>item.examples).slice(0,6).map((example,index)=><article key={example.fr}>
+      {practiceExamples.map((example,index)=><article key={`${example.fr}-${index}`}>
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
-        <button onClick={()=>void speakFrench(example.fr,{rate:.76})} aria-label={`استمع إلى الجملة الفرنسية ${example.fr}`}><Volume2/><b>FR</b></button>
+        <button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
        </div>
       </article>)}
      </div>

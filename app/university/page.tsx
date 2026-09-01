@@ -2039,14 +2039,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </>}
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
-     <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، ثم استمع إلى المعنى العربي عند الحاجة.</p></div></div>
+     <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
      <div className="university-practice-list">
       {activeModule.sections.flatMap(item=>item.examples).slice(0,6).map((example,index)=><article key={example.fr}>
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
         <button onClick={()=>void speakFrench(example.fr,{rate:.76})} aria-label={`استمع إلى الجملة الفرنسية ${example.fr}`}><Volume2/><b>FR</b></button>
-        <button onClick={()=>void speakArabic(example.ar,{rate:.86})} aria-label={`استمع إلى المعنى العربي ${example.ar}`}><Volume2/><b>AR</b></button>
        </div>
       </article>)}
      </div>

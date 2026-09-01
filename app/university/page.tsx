@@ -73,6 +73,32 @@ function preciseEmotionPageThreeLayer(path:string,index:number):CSSProperties{
  };
 }
 
+function precisePhysicalStateLayer(path:string,index:number):CSSProperties{
+ const sourceSize=1254;
+ const columnBounds:[[number,number],[number,number],[number,number],[number,number],[number,number]]=[
+  [0,249],[252,500],[503,751],[754,1002],[1005,1254]
+ ];
+ const rowBounds:[[number,number],[number,number],[number,number],[number,number],[number,number]]=[
+  [0,248],[251,497],[500,738],[742,979],[983,1254]
+ ];
+ const column=index%5;
+ const row=Math.floor(index/5);
+ const [columnStart,columnEnd]=columnBounds[column];
+ const [rowStart,rowEnd]=rowBounds[row];
+ const columnWidth=columnEnd-columnStart;
+ const rowHeight=rowEnd-rowStart;
+ const visibleSourceSize=Math.min(columnWidth,rowHeight);
+ const sourceLeft=columnStart+(columnWidth-visibleSourceSize)/2;
+ const sourceTop=rowStart+(rowHeight-visibleSourceSize)/2;
+ return {
+  width:`${sourceSize/visibleSourceSize*100}%`,
+  height:`${sourceSize/visibleSourceSize*100}%`,
+  left:`-${sourceLeft/visibleSourceSize*100}%`,
+  top:`-${sourceTop/visibleSourceSize*100}%`,
+  backgroundImage:`url("${path}")`
+ };
+}
+
 const A1_MODULES:CourseModule[]=[
  {
   id:"alphabet",title:"L’alphabet et les lettres",ar:"الأبجدية والحروف",icon:Languages,
@@ -2098,7 +2124,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-visual-vocabulary-grid ${descriptionPanel}`}>
        {descriptionVisualItems.map((item:VisualVocabularyItem,index)=><button key={item.id} className="university-visual-vocabulary-card" onClick={()=>playVocabularySpeech(item.speech)} aria-label={`استمع إلى ${item.speech.join(" ثم ")}`}>
-        {descriptionPanel==="emotions"&&descriptionVisualPageIndex===2&&index>=4
+        {descriptionPanel==="physical"&&descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+index>=6&&descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+index<=19
+         ?<span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{aspectRatio:descriptionVisualConfig.aspect}}><span className="university-visual-vocabulary-sprite-layer" aria-hidden="true" style={precisePhysicalStateLayer(descriptionVisualConfig.path,item.spriteIndex)}/></span>
+         :descriptionPanel==="emotions"&&descriptionVisualPageIndex===2&&index>=4
          ?<span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{aspectRatio:descriptionVisualConfig.aspect}}><span className="university-visual-vocabulary-sprite-layer" aria-hidden="true" style={preciseEmotionPageThreeLayer(descriptionVisualConfig.path,item.spriteIndex)}/></span>
          :<span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{...spriteBackground(descriptionVisualConfig.path,item.spriteIndex,descriptionVisualConfig.columns,descriptionVisualConfig.rows),aspectRatio:descriptionVisualConfig.aspect}}/>}
         <span className="university-visual-vocabulary-copy">

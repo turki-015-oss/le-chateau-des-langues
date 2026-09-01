@@ -608,14 +608,14 @@ const ALPHABET=[
  ["M","emme","maison","منزل"],["N","enne","nom","اسم"],["O","o","orange","برتقال"],
  ["P","pé","porte","باب"],["Q","ku","question","سؤال"],["R","erre","restaurant","مطعم"],
  ["S","esse","salut","مرحبًا"],["T","té","train","قطار"],["U","u","université","جامعة"],
- ["V","vé","ville","مدينة"],["W","double vé","wagon","عربة"],["X","iks","xérus","سنجاب"],
+ ["V","vé","ville","مدينة"],["W","double vé","wagon","عربة"],["X","ixe","xérus","سنجاب"],
  ["Y","i grec","yaourt","زبادي"],["Z","zède","zoo","حديقة حيوانات"]
 ];
 
 // Keep the conventional written letter name in the lesson, while giving
 // speech engines a phonetic spelling for names they commonly mispronounce.
-const LETTER_SPEECH_OVERRIDES:Record<string,string>={N:"ène",T:"tée"};
-const LETTER_SPEECH_RATES:Record<string,number>={T:.58};
+const LETTER_SPEECH_OVERRIDES:Record<string,string>={N:"ène",T:"tée",X:"ixe"};
+const LETTER_SPEECH_RATES:Record<string,number>={T:.58,X:.62};
 
 const SMALL_FRENCH_NUMBERS=[
  "zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf",

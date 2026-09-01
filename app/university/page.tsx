@@ -14,6 +14,10 @@ import {
  DESCRIPTION_PRACTICE_ITEMS,DESCRIPTION_QUIZ_ITEMS,EMOTION_VOCABULARY,FAMILY_VOCABULARY,
  PHYSICAL_STATE_VOCABULARY,type VisualVocabularyItem
 } from "./description-data";
+import {
+ ADJECTIVE_PRACTICE_ITEMS,ADJECTIVE_QUIZ_ITEMS,APPEARANCE_ADJECTIVES,HAIR_EYES_ADJECTIVES,
+ PERSONALITY_ADJECTIVES
+} from "./adjectives-data";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
@@ -28,9 +32,11 @@ type CourseModule={
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
 type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
 type LessonStage="learn"|"practice"|"test";
-type DescriptionPanel="family"|"physical"|"emotions"|"sentences";
+type DescriptionPanel="family"|"physical"|"emotions";
+type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
+const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -284,7 +290,7 @@ const A1_MODULES:CourseModule[]=[
  },
  {
   id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:Users,
-  description:"مفردات العائلة، الحالات الجسدية اليومية، المشاعر، والوصف الأساسي في أقسام مستقلة.",
+  description:"مفردات العائلة، الحالات الجسدية اليومية، والمشاعر في أقسام مستقلة.",
   sections:[
    section("La famille et la possession","العائلة والملكية","تعلّم أسماء أفراد العائلة أولًا، ثم استخدم صفات الملكية معها. تتفق صفة الملكية مع الشيء المملوك لا مع صاحب الشيء؛ لذلك نقول mon père وma mère.",[
     "mon, ma, mes: لي.",
@@ -315,16 +321,42 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Je suis heureux.",ar:"أنا سعيد."},
     {fr:"J’ai peur.",ar:"أنا خائف."},
     {fr:"Je suis calme.",ar:"أنا هادئ."}
-   ]),
-   section("Les adjectifs","الصفات والمطابقة","غالبًا تأتي الصفة بعد الاسم وتتفق معه في التذكير والتأنيث والإفراد والجمع. توجد صفات شائعة تأتي قبل الاسم.",[
-    "petit → petite، grand → grande.",
-    "heureux → heureuse.",
-    "beau, joli, jeune, vieux غالبًا قبل الاسم.",
-    "في الجمع نضيف s غالبًا."
+   ])
+  ]
+ },
+ {
+  id:"adjectives",title:"Les adjectifs et la description",ar:"الصفات الشخصية والمظهر",icon:Sparkles,
+  description:"درس مستقل لوصف المظهر والشخصية، مع صيغ المذكر والمؤنث وتوافق الصفة مع الاسم.",
+  sections:[
+   section("La description physique","وصف المظهر","استخدم être مع صفات الطول والبنية، واستخدم avoir مع الشعر والعينين. تتغير الصفة لتوافق الشخص الموصوف.",[
+    "grand → grande، petit → petite.",
+    "استخدم être مع الطول والبنية: Il est grand.",
+    "استخدم avoir مع الشعر والعينين: Elle a les cheveux longs.",
+    "صفات الألوان تأتي غالبًا بعد الاسم."
    ],[
-    {fr:"C’est une petite maison blanche.",ar:"إنه منزل صغير أبيض."},
-    {fr:"Mon frère est sérieux et calme.",ar:"أخي جاد وهادئ."},
-    {fr:"Elle a de beaux yeux.",ar:"لديها عينان جميلتان."}
+    {fr:"Il est grand et mince.",ar:"هو طويل ونحيف."},
+    {fr:"Elle est petite et sportive.",ar:"هي قصيرة ورياضية."},
+    {fr:"Il a les cheveux courts et noirs.",ar:"شعره قصير وأسود."}
+   ]),
+   section("La personnalité et le caractère","الصفات الشخصية والطباع","تأتي صفات الشخصية غالبًا بعد فعل être. تعلّم الصفتين المذكرة والمؤنثة معًا، ولا تخلط بين الصفة الدائمة والشعور المؤقت.",[
+    "gentil → gentille، sérieux → sérieuse.",
+    "calme وsociable لهما الشكل نفسه للمذكر والمؤنث.",
+    "courageux → courageuse، curieux → curieuse.",
+    "المشاعر المؤقتة تبقى في درس المشاعر السابق."
+   ],[
+    {fr:"Il est gentil et sociable.",ar:"هو لطيف واجتماعي."},
+    {fr:"Elle est sérieuse et organisée.",ar:"هي جادة ومنظمة."},
+    {fr:"Mon ami est calme et patient.",ar:"صديقي هادئ وصبور."}
+   ]),
+   section("L’accord des adjectifs","توافق الصفات","تتوافق الصفة مع الاسم في التذكير والتأنيث والإفراد والجمع. نضيف غالبًا e للمؤنث وs للجمع، مع وجود صيغ غير منتظمة.",[
+    "petit → petite → petits → petites.",
+    "heureux → heureuse، beau → belle.",
+    "عادة لا تُنطق s الجمع في نهاية الصفة.",
+    "احفظ كل صفة داخل مثال قصير واضح."
+   ],[
+    {fr:"un garçon intelligent",ar:"ولد ذكي"},
+    {fr:"une fille intelligente",ar:"فتاة ذكية"},
+    {fr:"des filles intelligentes",ar:"فتيات ذكيات"}
    ])
   ]
  },
@@ -680,7 +712,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والأفعال والحاضر.",moduleIds:["nouns","core-verbs","present"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العدد والزمن والوصف والحياة والمواقف.",moduleIds:["numbers-time","description","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["numbers-time","description","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -1395,7 +1427,7 @@ const FAMILY_DESCRIPTION_PAGES=[
  }
 ];
 
-const DESCRIPTION_SENTENCE_PAGES=FAMILY_DESCRIPTION_PAGES.slice(2);
+const ADJECTIVE_DESCRIPTION_PAGES=FAMILY_DESCRIPTION_PAGES.slice(3,7);
 
 const DAILY_LIFE_PAGES=[
  {
@@ -1690,11 +1722,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
- const [familyPageIndex,setFamilyPageIndex]=useState(0);
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);
  const descriptionPaginationTopRef=useRef<number|null>(null);
+ const [adjectivePageIndex,setAdjectivePageIndex]=useState(0);
+ const [adjectivePanel,setAdjectivePanel]=useState<AdjectivePanel>("appearance");
+ const [adjectiveVisualPageIndex,setAdjectiveVisualPageIndex]=useState(0);
+ const adjectivePaginationRef=useRef<HTMLDivElement>(null);
+ const adjectivePaginationTopRef=useRef<number|null>(null);
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
@@ -1706,7 +1742,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_APPLICATION_PAGES[timeDatePageIndex];
- const familyPage=DESCRIPTION_SENTENCE_PAGES[familyPageIndex];
+ const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
  const descriptionVisualConfig=descriptionPanel==="physical"
@@ -1716,10 +1752,22 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    :{items:FAMILY_VOCABULARY,path:"/university/vocabulary/family-sprite-frameless.png",columns:5,rows:4,aspect:"1 / 1",label:"أفراد العائلة",fr:"La famille"};
  const descriptionVisualPageCount=Math.max(1,Math.ceil(descriptionVisualConfig.items.length/DESCRIPTION_VISUAL_PAGE_SIZE));
  const descriptionVisualItems=descriptionVisualConfig.items.slice(descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE,descriptionVisualPageIndex*DESCRIPTION_VISUAL_PAGE_SIZE+DESCRIPTION_VISUAL_PAGE_SIZE);
+ const adjectiveVisualConfig=adjectivePanel==="hairEyes"
+  ?{items:HAIR_EYES_ADJECTIVES,path:"/university/vocabulary/adjectives-hair-eyes-sprite.png",columns:4,rows:4,aspect:"1 / 1",label:"الشعر والعينان",fr:"Cheveux et yeux"}
+  :adjectivePanel==="personality"
+   ?{items:PERSONALITY_ADJECTIVES,path:"/university/vocabulary/adjectives-personality-sprite.png",columns:5,rows:6,aspect:"4 / 5",label:"الصفات الشخصية والطباع",fr:"Personnalité et caractère"}
+   :{items:APPEARANCE_ADJECTIVES,path:"/university/vocabulary/adjectives-appearance-sprite.png",columns:4,rows:4,aspect:"1 / 1",label:"المظهر العام",fr:"Apparence générale"};
+ const adjectiveVisualPageCount=Math.max(1,Math.ceil(adjectiveVisualConfig.items.length/ADJECTIVE_VISUAL_PAGE_SIZE));
+ const adjectiveVisualItems=adjectiveVisualConfig.items.slice(adjectiveVisualPageIndex*ADJECTIVE_VISUAL_PAGE_SIZE,adjectiveVisualPageIndex*ADJECTIVE_VISUAL_PAGE_SIZE+ADJECTIVE_VISUAL_PAGE_SIZE);
 
  const moveDescriptionVisualPage=(nextPageIndex:number)=>{
   descriptionPaginationTopRef.current=descriptionPaginationRef.current?.getBoundingClientRect().top??null;
   setDescriptionVisualPageIndex(nextPageIndex);
+ };
+
+ const moveAdjectiveVisualPage=(nextPageIndex:number)=>{
+  adjectivePaginationTopRef.current=adjectivePaginationRef.current?.getBoundingClientRect().top??null;
+  setAdjectiveVisualPageIndex(nextPageIndex);
  };
 
  useLayoutEffect(()=>{
@@ -1731,8 +1779,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   window.scrollBy({top:nextTop-previousTop,left:0,behavior:"auto"});
  },[descriptionVisualPageIndex]);
 
+ useLayoutEffect(()=>{
+  const previousTop=adjectivePaginationTopRef.current;
+  if(previousTop===null)return;
+  const nextTop=adjectivePaginationRef.current?.getBoundingClientRect().top;
+  adjectivePaginationTopRef.current=null;
+  if(nextTop===undefined)return;
+  window.scrollBy({top:nextTop-previousTop,left:0,behavior:"auto"});
+ },[adjectiveVisualPageIndex]);
+
  const practiceExamples=useMemo(()=>{
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
+  if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule]);
 
@@ -1740,7 +1798,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
-   :[
+   :activeModule.id==="adjectives"
+    ?ADJECTIVE_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar.split(" — ")[0]}))
+    :[
     {prompt:activeModule.title,answer:activeModule.ar},
     ...activeModule.sections.map(item=>({prompt:item.title,answer:item.subtitle})),
     ...examples.map(example=>({prompt:example.fr,answer:example.ar})),
@@ -1774,7 +1834,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setQuizFinished(false);
   setDescriptionPanel("family");
   setDescriptionVisualPageIndex(0);
-  setFamilyPageIndex(0);
+  setAdjectivePageIndex(0);
+  setAdjectivePanel("appearance");
+  setAdjectiveVisualPageIndex(0);
  },[initialModuleId,level]);
 
  useEffect(()=>{
@@ -2114,10 +2176,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <button className={descriptionPanel==="family"?"active":""} onClick={()=>{setDescriptionPanel("family");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="family"}><Users/><span><strong>العائلة</strong><small>La famille</small></span></button>
       <button className={descriptionPanel==="physical"?"active":""} onClick={()=>{setDescriptionPanel("physical");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="physical"}><Mic2/><span><strong>الحالة الجسدية</strong><small>États physiques</small></span></button>
       <button className={descriptionPanel==="emotions"?"active":""} onClick={()=>{setDescriptionPanel("emotions");setDescriptionVisualPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="emotions"}><Sparkles/><span><strong>المشاعر</strong><small>Les émotions</small></span></button>
-      <button className={descriptionPanel==="sentences"?"active":""} onClick={()=>{setDescriptionPanel("sentences");setFamilyPageIndex(0)}} role="tab" aria-selected={descriptionPanel==="sentences"}><NotebookTabs/><span><strong>الوصف والجمل</strong><small>Description</small></span></button>
      </div>
 
-     {descriptionPanel!=="sentences"?<>
+     <>
       <div className="university-description-section-title">
        <div><small>{descriptionVisualConfig.fr}</small><h4>{descriptionVisualConfig.label}</h4></div>
        <span>{descriptionVisualConfig.items.length} عبارة</span>
@@ -2144,25 +2205,58 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button onClick={()=>moveDescriptionVisualPage(Math.min(descriptionVisualPageCount-1,descriptionVisualPageIndex+1))} disabled={descriptionVisualPageIndex===descriptionVisualPageCount-1} aria-label="الصفحة التالية"><span>التالي</span><ChevronRight/></button>
       </div>
       <p className="university-phrase-note">في العبارات التي لها مذكر ومؤنث، ينطق الزر صيغة المذكر ثم يصمت قليلًا وينطق صيغة المؤنث؛ ولا ينطق الشرطة الظاهرة بينهما.</p>
-     </>:<>
-      <div className="university-description-section-title">
-       <div><small>Description et phrases</small><h4>{familyPage.label}</h4></div>
-       <span>{DESCRIPTION_SENTENCE_PAGES.length} مجموعات</span>
-      </div>
-      <div className="university-phrase-grid">
-       {familyPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
-        <i>{String(index+1).padStart(2,"0")}</i>
-        <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
-        <Volume2/>
-       </button>)}
-      </div>
-      <div className="university-number-pagination university-phrase-pagination" dir="ltr">
-       <button onClick={()=>setFamilyPageIndex(index=>Math.max(0,index-1))} disabled={familyPageIndex===0} aria-label="أمثلة الوصف السابقة"><ChevronLeft/><span>السابق</span></button>
-       <div><small>قسم الوصف والجمل</small><strong>{familyPage.label}</strong><em>{familyPageIndex+1} / {DESCRIPTION_SENTENCE_PAGES.length}</em></div>
-       <button onClick={()=>setFamilyPageIndex(index=>Math.min(DESCRIPTION_SENTENCE_PAGES.length-1,index+1))} disabled={familyPageIndex===DESCRIPTION_SENTENCE_PAGES.length-1} aria-label="أمثلة الوصف التالية"><span>التالي</span><ChevronRight/></button>
-      </div>
-      <p className="university-phrase-note">{familyPage.description}</p>
-     </>}
+     </>
+    </section>}
+
+    {activeModule.id==="adjectives"&&<section className="university-introduction-board university-description-studio university-adjectives-studio">
+     <div className="university-subheading university-description-heading">
+      <div><span>Vocabulaire visuel A1</span><h3>الصفات الشخصية والمظهر</h3><p>اختر القسم، ثم اضغط على أي بطاقة لمشاهدة الصورة وسماع الفرنسية.</p></div>
+      <Sparkles/>
+     </div>
+     <div className="university-description-tabs university-adjective-tabs" role="tablist" aria-label="أقسام درس الصفات الشخصية والمظهر">
+      <button className={adjectivePanel==="appearance"?"active":""} onClick={()=>{setAdjectivePanel("appearance");setAdjectiveVisualPageIndex(0)}} role="tab" aria-selected={adjectivePanel==="appearance"}><Users/><span><strong>المظهر العام</strong><small>Apparence</small></span></button>
+      <button className={adjectivePanel==="hairEyes"?"active":""} onClick={()=>{setAdjectivePanel("hairEyes");setAdjectiveVisualPageIndex(0)}} role="tab" aria-selected={adjectivePanel==="hairEyes"}><Sparkles/><span><strong>الشعر والعينان</strong><small>Cheveux et yeux</small></span></button>
+      <button className={adjectivePanel==="personality"?"active":""} onClick={()=>{setAdjectivePanel("personality");setAdjectiveVisualPageIndex(0)}} role="tab" aria-selected={adjectivePanel==="personality"}><NotebookTabs/><span><strong>الصفات الشخصية</strong><small>Personnalité</small></span></button>
+     </div>
+     <div className="university-description-section-title">
+      <div><small>{adjectiveVisualConfig.fr}</small><h4>{adjectiveVisualConfig.label}</h4></div>
+      <span>{adjectiveVisualConfig.items.length} صفة</span>
+     </div>
+     <div className={`university-visual-vocabulary-grid adjective-${adjectivePanel}`}>
+      {adjectiveVisualItems.map((item,index)=><button key={item.id} className="university-visual-vocabulary-card" onClick={()=>playVocabularySpeech(item.speech)} aria-label={`استمع إلى ${item.speech.join(" ثم ")}`}>
+       <span className="university-visual-vocabulary-image" role="img" aria-label={`صورة توضيحية ثابتة: ${item.ar}`} style={{...spriteBackground(adjectiveVisualConfig.path,item.spriteIndex,adjectiveVisualConfig.columns,adjectiveVisualConfig.rows),aspectRatio:adjectiveVisualConfig.aspect}}/>
+       <span className="university-visual-vocabulary-copy">
+        <i>{String(adjectiveVisualPageIndex*ADJECTIVE_VISUAL_PAGE_SIZE+index+1).padStart(2,"0")}</i>
+        <strong dir="ltr">{item.fr}</strong>
+        <b>{item.ar}</b>
+        <em>{item.note}</em>
+       </span>
+       <span className="university-visual-vocabulary-audio"><Volume2/><small>FR</small></span>
+      </button>)}
+     </div>
+     <div ref={adjectivePaginationRef} className="university-number-pagination university-phrase-pagination university-description-pagination" dir="ltr">
+      <button onClick={()=>moveAdjectiveVisualPage(Math.max(0,adjectiveVisualPageIndex-1))} disabled={adjectiveVisualPageIndex===0} aria-label="الصفحة السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>{adjectiveVisualConfig.fr}</small><strong>{adjectiveVisualConfig.label}</strong><em>{adjectiveVisualPageIndex+1} / {adjectiveVisualPageCount}</em></div>
+      <button onClick={()=>moveAdjectiveVisualPage(Math.min(adjectiveVisualPageCount-1,adjectiveVisualPageIndex+1))} disabled={adjectiveVisualPageIndex===adjectiveVisualPageCount-1} aria-label="الصفحة التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">في الصفات التي لها مذكر ومؤنث، ينطق الزر صيغة المذكر ثم يصمت قليلًا وينطق صيغة المؤنث؛ ولا ينطق الشرطة الظاهرة بينهما.</p>
+     <div className="university-description-section-title">
+      <div><small>Adjectifs et description</small><h4>{adjectivePage.label}</h4></div>
+      <span>{ADJECTIVE_DESCRIPTION_PAGES.length} مجموعات</span>
+     </div>
+     <div className="university-phrase-grid">
+      {adjectivePage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
+       <Volume2/>
+      </button>)}
+     </div>
+     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
+      <button onClick={()=>setAdjectivePageIndex(index=>Math.max(0,index-1))} disabled={adjectivePageIndex===0} aria-label="مجموعة الصفات السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>قسم الصفات والوصف</small><strong>{adjectivePage.label}</strong><em>{adjectivePageIndex+1} / {ADJECTIVE_DESCRIPTION_PAGES.length}</em></div>
+      <button onClick={()=>setAdjectivePageIndex(index=>Math.min(ADJECTIVE_DESCRIPTION_PAGES.length-1,index+1))} disabled={adjectivePageIndex===ADJECTIVE_DESCRIPTION_PAGES.length-1} aria-label="مجموعة الصفات التالية"><span>التالي</span><ChevronRight/></button>
+     </div>
+     <p className="university-phrase-note">{adjectivePage.description}</p>
     </section>}
 
     {activeModule.id==="daily-life"&&<section className="university-introduction-board university-grammar-board">
@@ -2271,10 +2365,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      {quizFinished&&<div className="university-quiz-result">
       <Trophy/>
       <span>نتيجة الاختبار</span>
-      <strong>{quizScore} <small>/ {quizQuestions.length}</small></strong>
+      <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
       <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?"أحسنت، اجتزت اختبار الدرس.":"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
-      <button onClick={resetQuiz}><RotateCcw/> إعادة الاختبار</button>
+      <button onClick={resetQuiz}><RotateCcw/> أعد الاختبار</button>
      </div>}
     </section>}
 

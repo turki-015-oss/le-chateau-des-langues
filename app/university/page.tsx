@@ -2072,6 +2072,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </span>
         <span className="university-visual-vocabulary-audio"><Volume2/><small>FR</small></span>
        </button>)}
+       {Array.from({length:DESCRIPTION_VISUAL_PAGE_SIZE-descriptionVisualItems.length}).map((_,index)=><span key={`description-placeholder-${index}`} className="university-visual-vocabulary-card university-visual-vocabulary-placeholder" aria-hidden="true">
+        <span className="university-visual-vocabulary-image" style={{aspectRatio:descriptionVisualConfig.aspect}}/>
+        <span className="university-visual-vocabulary-copy"/>
+       </span>)}
       </div>
       <div className="university-number-pagination university-phrase-pagination university-description-pagination" dir="ltr">
        <button onClick={()=>setDescriptionVisualPageIndex(index=>Math.max(0,index-1))} disabled={descriptionVisualPageIndex===0} aria-label="الصفحة السابقة"><ChevronLeft/><span>السابق</span></button>

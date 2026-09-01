@@ -1588,6 +1588,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [openSectionIndex,setOpenSectionIndex]=useState(0);
  const [openPhaseIndex,setOpenPhaseIndex]=useState(0);
  const [quizAnswers,setQuizAnswers]=useState<Record<number,number>>({});
+ const [quizQuestionIndex,setQuizQuestionIndex]=useState(0);
+ const [quizFinished,setQuizFinished]=useState(false);
  const [completedModuleIds,setCompletedModuleIds]=useState<string[]>([]);
  const [lastModuleId,setLastModuleId]=useState(level.modules[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
@@ -1615,20 +1617,29 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const quizQuestions=useMemo(()=>{
   const examples=activeModule.sections.flatMap(item=>item.examples);
-  const answerPool=Array.from(new Set(level.modules.flatMap(module=>module.sections.flatMap(item=>item.examples.map(example=>example.ar)))));
-  return examples.slice(0,3).map((example,index)=>{
-   const distractors=answerPool.filter(answer=>answer!==example.ar).slice(index*2,index*2+2);
-   const raw=[example.ar,...distractors];
+  const seeds=[
+   {prompt:activeModule.title,answer:activeModule.ar},
+   ...activeModule.sections.map(item=>({prompt:item.title,answer:item.subtitle})),
+   ...examples.map(example=>({prompt:example.fr,answer:example.ar})),
+   {prompt:`${activeModule.title} — ${activeModule.sections[0]?.title??activeModule.title}`,answer:`${activeModule.ar} — ${activeModule.sections[0]?.subtitle??activeModule.ar}`}
+  ].filter((item,index,array)=>array.findIndex(candidate=>candidate.prompt===item.prompt)===index).slice(0,10);
+  const answerPool=seeds.map(item=>item.answer);
+  return seeds.map((item,index)=>{
+   const distractors=answerPool.filter(answer=>answer!==item.answer);
+   const first=distractors[(index*2)%distractors.length];
+   const second=distractors[(index*2+1)%distractors.length];
+   const raw=[item.answer,first,second];
    const shift=index%raw.length;
    const choices=[...raw.slice(shift),...raw.slice(0,shift)];
-   return {prompt:example.fr,choices,correctIndex:choices.indexOf(example.ar)};
+   return {prompt:item.prompt,choices,correctIndex:choices.indexOf(item.answer)};
   });
- },[activeModule,level]);
+ },[activeModule]);
 
  const activeModuleIndex=level.modules.findIndex(item=>item.id===activeModule.id);
  const previousModule=activeModuleIndex>0?level.modules[activeModuleIndex-1]:null;
  const nextModule=activeModuleIndex<level.modules.length-1?level.modules[activeModuleIndex+1]:null;
- const quizComplete=quizQuestions.length>0&&quizQuestions.every((question,index)=>quizAnswers[index]===question.correctIndex);
+ const quizScore=quizQuestions.reduce((score,question,index)=>score+(quizAnswers[index]===question.correctIndex?1:0),0);
+ const quizPassed=quizFinished&&quizScore>=7;
 
  useEffect(()=>{
   const nextModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
@@ -1636,6 +1647,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setLessonStage("learn");
   setOpenSectionIndex(0);
   setQuizAnswers({});
+  setQuizQuestionIndex(0);
+  setQuizFinished(false);
  },[initialModuleId,level]);
 
  useEffect(()=>{
@@ -1655,14 +1668,26 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule.id,lessonPage,level.id]);
 
  useEffect(()=>{
-  if(!lessonPage||!quizComplete||completedModuleIds.includes(activeModule.id))return;
+  if(!lessonPage||!quizPassed||completedModuleIds.includes(activeModule.id))return;
   const next=[...completedModuleIds,activeModule.id];
   setCompletedModuleIds(next);
   window.localStorage.setItem(`university-progress-${level.id}`,JSON.stringify(next));
- },[activeModule.id,completedModuleIds,lessonPage,level.id,quizComplete]);
+ },[activeModule.id,completedModuleIds,lessonPage,level.id,quizPassed]);
 
  const selectModule=(id:string)=>{
   router.push(`/university/${level.id.toLocaleLowerCase("fr")}/${id}`);
+ };
+
+ const resetQuiz=()=>{
+  setQuizAnswers({});
+  setQuizQuestionIndex(0);
+  setQuizFinished(false);
+ };
+
+ const advanceQuiz=()=>{
+  if(typeof quizAnswers[quizQuestionIndex]!=="number")return;
+  if(quizQuestionIndex===quizQuestions.length-1)setQuizFinished(true);
+  else setQuizQuestionIndex(index=>index+1);
  };
 
  const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
@@ -2053,28 +2078,38 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ListChecks/><div><span>Compréhension</span><h3>اختبار فهم قصير</h3><p>شغّل السؤال أو الإجابة من زر الصوت المستقل، ثم اختر الإجابة من خانتها المنفصلة.</p></div></div>
-     <div className="university-quiz-list">
-      {quizQuestions.map((question,questionIndex)=>{
-       const selected=quizAnswers[questionIndex];
-       return <article key={question.prompt}>
-        <header><span>السؤال {questionIndex+1}</span><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`نطق السؤال ${questionIndex+1}`}><Volume2/> نطق السؤال</button></header>
+     <div className="university-stage-heading"><ListChecks/><div><span>Compréhension</span><h3>اختبار الدرس</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
+      const question=quizQuestions[quizQuestionIndex];
+      const selected=quizAnswers[quizQuestionIndex];
+      return <div className="university-quiz-sequence">
+       <div className="university-quiz-progress"><div><span>السؤال {quizQuestionIndex+1} من {quizQuestions.length}</span><strong>{Math.round((quizQuestionIndex+1)/quizQuestions.length*100)}%</strong></div><i><b style={{width:`${(quizQuestionIndex+1)/quizQuestions.length*100}%`}}/></i></div>
+       <article className="university-current-question">
+        <header>
+         <div><span>استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح.</span><strong dir="ltr">{question.prompt}</strong></div>
+         <button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`نطق السؤال ${quizQuestionIndex+1}`}><Volume2/><b>نطق السؤال</b></button>
+        </header>
         <div className="university-answer-list">
-         {question.choices.map((choice,choiceIndex)=>{
-          const answered=typeof selected==="number";
-          const state=answered?(choiceIndex===question.correctIndex?"correct":choiceIndex===selected?"wrong":""):"";
-          return <div key={choice} className={state}>
-           <button className="university-answer-select" onClick={()=>setQuizAnswers(current=>({...current,[questionIndex]:choiceIndex}))} aria-pressed={selected===choiceIndex}><i>{String.fromCharCode(65+choiceIndex)}</i><span>{choice}</span></button>
-           <button className="university-answer-audio" onClick={()=>void speakArabic(choice,{rate:.86})} aria-label={`نطق الإجابة ${choiceIndex+1}`}><Volume2/></button>
-          </div>;
-         })}
+         {question.choices.map((choice,choiceIndex)=><div key={choice} className={selected===choiceIndex?"selected":""}>
+          <button className="university-answer-select" onClick={()=>setQuizAnswers(current=>({...current,[quizQuestionIndex]:choiceIndex}))} aria-pressed={selected===choiceIndex}><i>{String.fromCharCode(65+choiceIndex)}</i><span>{choice}</span></button>
+          <button className="university-answer-audio" onClick={()=>void speakArabic(choice,{rate:.86})} aria-label={`نطق الإجابة ${choiceIndex+1}`}><Volume2/></button>
+         </div>)}
         </div>
-        {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة، أحسنت.":"الإجابة غير صحيحة. استمع إلى الجملة مرة أخرى ثم حاول."}</p>}
-       </article>;
-      })}
-     </div>
-     {quizComplete&&<div className="university-quiz-success"><Trophy/><div><strong>أتممت هذا الدرس بنجاح</strong><span>تم حفظ تقدمك ويمكنك الانتقال إلى الدرس التالي.</span></div></div>}
-     {!quizComplete&&Object.keys(quizAnswers).length>0&&<button className="university-quiz-reset" onClick={()=>setQuizAnswers({})}><RotateCcw/> إعادة المحاولة</button>}
+       </article>
+       <div className="university-quiz-navigation">
+        <button onClick={()=>setQuizQuestionIndex(index=>Math.max(0,index-1))} disabled={quizQuestionIndex===0}><ChevronRight/> السؤال السابق</button>
+        <button className="primary" onClick={advanceQuiz} disabled={typeof selected!=="number"}>{quizQuestionIndex===quizQuestions.length-1?"عرض النتيجة":"السؤال التالي"}<ChevronLeft/></button>
+       </div>
+      </div>;
+     })()}
+     {quizFinished&&<div className="university-quiz-result">
+      <Trophy/>
+      <span>نتيجة الاختبار</span>
+      <strong>{quizScore} <small>/ {quizQuestions.length}</small></strong>
+      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?"أحسنت، اجتزت اختبار الدرس.":"راجع الدرس ثم أعد المحاولة."}</h3>
+      <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
+      <button onClick={resetQuiz}><RotateCcw/> إعادة الاختبار</button>
+     </div>}
     </section>}
 
     <footer className="university-lesson-footer university-lesson-navigation">

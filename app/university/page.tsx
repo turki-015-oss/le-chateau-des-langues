@@ -9,7 +9,7 @@ import {
  GraduationCap,Headphones,Languages,LibraryBig,ListChecks,MapPinned,MessageCircle,Mic2,
  NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Trophy,Users,Volume2
 } from "lucide-react";
-import {speakArabic,speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
@@ -2092,7 +2092,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         <div className="university-answer-list">
          {question.choices.map((choice,choiceIndex)=><div key={choice} className={selected===choiceIndex?"selected":""}>
           <button className="university-answer-select" onClick={()=>setQuizAnswers(current=>({...current,[quizQuestionIndex]:choiceIndex}))} aria-pressed={selected===choiceIndex}><i>{String.fromCharCode(65+choiceIndex)}</i><span>{choice}</span></button>
-          <button className="university-answer-audio" onClick={()=>void speakArabic(choice,{rate:.86})} aria-label={`نطق الإجابة ${choiceIndex+1}`}><Volume2/></button>
          </div>)}
         </div>
        </article>

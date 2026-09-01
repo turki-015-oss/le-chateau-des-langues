@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {useMemo,useRef,useState} from "react";
-import {ArrowRight,BadgeCheck,BookOpenCheck,ChefHat,CircleDollarSign,Coffee,Flame,ForkKnife,GlassWater,Info,Leaf,MessageSquareText,Scale,Search,ShieldCheck,Soup,Sparkles,Utensils,Volume2,Wheat} from "lucide-react";
+import {ArrowRight,BadgeCheck,BookOpenCheck,ChefHat,CircleDollarSign,Coffee,Flame,ForkKnife,GlassWater,Info,Leaf,MessageSquareText,Scale,Search,Soup,Sparkles,Utensils,Volume2,Wheat} from "lucide-react";
 import type {LucideIcon} from "lucide-react";
 import {speakFrench} from "@/lib/frenchSpeech";
 import "./restaurant.css";
@@ -79,6 +79,5 @@ export default function RestaurantPage(){
 
   {view==="dialogues"&&<section className="restaurant-section"><div className="restaurant-title"><span>05 · Conversations complètes</span><h2>محادثات المطعم الكاملة</h2><p>أربع محادثات مختلفة؛ لكل سطر نطق مستقل وترجمة واضحة.</p></div><div className="restaurant-dialogue-tabs">{dialogues.map(item=><button key={item.id} className={activeDialogue===item.id?"active":""} onClick={()=>selectAndScroll(setActiveDialogue,item.id)}><MessageSquareText/><span><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span></button>)}</div><article ref={detailRef} className="restaurant-dialogue"><header><span>CONVERSATION</span><h3 dir="ltr">{currentDialogue.fr}</h3><p>{currentDialogue.context}</p></header><div>{currentDialogue.lines.map((line,index)=><button key={`${line.fr}-${index}`} className={line.role==="Client"?"client":"staff"} onClick={()=>speak(line.fr)}><i>{line.role}</i><span><strong dir="ltr">{line.fr}</strong><small>{line.ar}</small></span><Volume2/></button>)}</div></article></section>}
 
-  <section className="restaurant-sources"><div><ShieldCheck/><span><strong>مصطلحات ومعلومات موثوقة</strong><small>Sources françaises consultées</small></span></div><p>القيم الغذائية الرقمية لا تُفترض؛ وتُراجع عبر قاعدة Ciqual عند إضافتها إلى طبق محدد.</p><div><a href="https://ciqual.anses.fr/" target="_blank" rel="noreferrer">ANSES · Ciqual</a><a href="https://www.anses.fr/fr/content/allergies-alimentaires-et-etiquetage-de-precaution" target="_blank" rel="noreferrer">ANSES · Allergies alimentaires</a><a href="https://www.larousse.fr/dictionnaires/francais" target="_blank" rel="noreferrer">Larousse · Dictionnaire</a></div></section>
  </main>;
 }

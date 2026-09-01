@@ -266,15 +266,5 @@ export default function HospitalPage(){
    </div>
   </section>}
 
-  <section className="hospital-sources">
-   <div><ShieldCheck/><span><strong>مصادر المصطلحات والتنظيم</strong><small>Sources médicales de référence</small></span></div>
-   <p>رُوجعت أسماء الأقسام والمصطلحات الطبية وفق مصادر مؤسسية، وصيغت الجمل لأغراض تعليم اللغة الفرنسية.</p>
-   <div className="hospital-source-links">
-    <a href="https://www.chu-lyon.fr/hopital-edouard-herriot" target="_blank" rel="noreferrer">Hospices Civils de Lyon · Services hospitaliers</a>
-    <a href="https://www.chu-lyon.fr/service-soins-dentaires-odontologie-hospitaliere" target="_blank" rel="noreferrer">HCL · Odontologie hospitalière</a>
-    <a href="https://dictionnaire.academie-medecine.fr/" target="_blank" rel="noreferrer">Académie nationale de médecine · Dictionnaire</a>
-    <a href="https://terminologia-anatomica.org/en" target="_blank" rel="noreferrer">Terminologia Anatomica · Nomenclature</a>
-   </div>
-  </section>
  </main>;
 }

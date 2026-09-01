@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 import {useMemo,useState} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
@@ -20,7 +21,8 @@ type CourseModule={
  icon:LucideIcon;
  sections:LessonSection[];
 };
-type Level={id:"A1"|"A2";label:string;ar:string;description:string;modules:CourseModule[]};
+type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
+type UniversityPageProps={initialLevelId?:string;levelPage?:boolean};
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -1541,10 +1543,10 @@ const FRIENDS_SITUATIONS_PAGES=[
  }
 ];
 
-export default function UniversityPage(){
- const [levelId,setLevelId]=useState<"A1"|"A2">("A1");
- const level=LEVELS.find(item=>item.id===levelId)!;
- const [moduleId,setModuleId]=useState(A1_MODULES[0].id);
+export default function UniversityPage({initialLevelId,levelPage=false}:UniversityPageProps={}){
+ const router=useRouter();
+ const level=LEVELS.find(item=>item.id.toLocaleLowerCase("fr")===initialLevelId?.toLocaleLowerCase("fr"))??LEVELS[0];
+ const [moduleId,setModuleId]=useState(level.modules[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -1567,22 +1569,6 @@ export default function UniversityPage(){
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
 
- const selectLevel=(id:"A1"|"A2")=>{
-  const next=LEVELS.find(item=>item.id===id)!;
-  setLevelId(id);
-  setModuleId(next.modules[0].id);
-  setNumberPageIndex(0);
-  setIntroductionPageIndex(0);
-  setNounPageIndex(0);
-  setCoreVerbPageIndex(0);
-  setPresentPageIndex(0);
-  setTimeDatePageIndex(0);
-  setFamilyPageIndex(0);
-  setDailyPageIndex(0);
-  setFriendsPageIndex(0);
-  window.setTimeout(()=>document.getElementById("university-course")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
- };
-
  const selectModule=(id:string)=>{
   setModuleId(id);
   if(id==="numbers-time"){setNumberPageIndex(0);setTimeDatePageIndex(0)}
@@ -1596,13 +1582,14 @@ export default function UniversityPage(){
   window.setTimeout(()=>document.getElementById("university-lesson")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
  };
 
- return <main className="university-world" dir="rtl">
+ return <main className={`university-world ${levelPage?"university-level-world":""}`} dir="rtl">
   <header className="university-topbar">
-   <Link href="/kingdom" aria-label="العودة إلى واجهة القلعة"><ArrowRight/></Link>
+   <Link href={levelPage?"/university":"/kingdom"} aria-label={levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
    <div><span>جامعة القلعة</span><strong>L’Université Royale</strong></div>
    <div className="university-seal"><GraduationCap/></div>
   </header>
 
+  {!levelPage&&<>
   <section className="university-hero">
    <img src="/university/interior-campus.jpg" alt="ردهة داخلية حديثة في جامعة"/>
    <div className="university-hero-shade"/>
@@ -1628,15 +1615,27 @@ export default function UniversityPage(){
     <p>جميع الوحدات مفتوحة، ولا توجد اختبارات. انتقل بينها بالترتيب أو اختر ما تحتاجه مباشرة.</p>
    </div>
    <div className="university-level-grid">
-    {LEVELS.map(item=><button key={item.id} className={levelId===item.id?"active":""} onClick={()=>selectLevel(item.id)}>
+    {LEVELS.map(item=><button key={item.id} onClick={()=>router.push(`/university/${item.id.toLocaleLowerCase("fr")}`)}>
      <div className="university-level-code">{item.id}</div>
      <div><span>{item.label}</span><h3>{item.ar}</h3><p>{item.description}</p><small>{item.modules.length} وحدات · شرح وأمثلة ونطق</small></div>
      <ChevronLeft/>
     </button>)}
    </div>
   </section>
+  </>}
 
-  <section className="university-course" id="university-course">
+  {levelPage&&<section className="university-level-entry">
+   <div>
+    <Link href="/university"><ArrowRight/> جميع المستويات</Link>
+    <span>Programme {level.id}</span>
+    <h1>{level.ar}</h1>
+    <h2>{level.label}</h2>
+    <p>{level.description}</p>
+   </div>
+   <aside><b>{level.id}</b><span>{level.modules.length} وحدات تعليمية</span><small>شرح · أمثلة · نطق</small></aside>
+  </section>}
+
+  {levelPage&&<section className="university-course" id="university-course">
    <aside className="university-sidebar">
     <div><span>Programme {level.id}</span><h2>{level.ar}</h2><p>{level.description}</p></div>
     <nav aria-label={`وحدات المستوى ${level.id}`}>
@@ -1880,6 +1879,6 @@ export default function UniversityPage(){
      <LibraryBig/><div><strong>نهاية شرح هذه الوحدة</strong><span>اختر الوحدة التالية من قائمة المنهج. لا يوجد اختبار أو قفل للمحتوى.</span></div>
     </footer>
    </article>
-  </section>
+  </section>}
  </main>;
 }

@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 
 # Local portable 3D authoring tools (never published)
 .tools/
+
+# Temporary source used to verify reviewed conjugation batches
+scripts/.conjugation-*-source.json

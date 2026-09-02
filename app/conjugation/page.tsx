@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir"||b==="devoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -645,6 +645,30 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["voulu","voulue","voulus","voulues","ayant voulu"],
   "Gérondif présent":["en voulant"],
   "Gérondif passé":["en ayant voulu"]
+ },
+ "devoir":{
+  "Présent":["je dois","tu dois","il / elle doit","nous devons","vous devez","ils / elles doivent"],
+  "Passé composé":["j’ai dû","tu as dû","il / elle a dû","nous avons dû","vous avez dû","ils / elles ont dû"],
+  "Imparfait":["je devais","tu devais","il / elle devait","nous devions","vous deviez","ils / elles devaient"],
+  "Plus-que-parfait":["j’avais dû","tu avais dû","il / elle avait dû","nous avions dû","vous aviez dû","ils / elles avaient dû"],
+  "Passé simple":["je dus","tu dus","il / elle dut","nous dûmes","vous dûtes","ils / elles durent"],
+  "Passé antérieur":["j’eus dû","tu eus dû","il / elle eut dû","nous eûmes dû","vous eûtes dû","ils / elles eurent dû"],
+  "Futur simple":["je devrai","tu devras","il / elle devra","nous devrons","vous devrez","ils / elles devront"],
+  "Futur antérieur":["j’aurai dû","tu auras dû","il / elle aura dû","nous aurons dû","vous aurez dû","ils / elles auront dû"],
+  "Conditionnel présent":["je devrais","tu devrais","il / elle devrait","nous devrions","vous devriez","ils / elles devraient"],
+  "Conditionnel passé":["j’aurais dû","tu aurais dû","il / elle aurait dû","nous aurions dû","vous auriez dû","ils / elles auraient dû"],
+  "Subjonctif présent":["que je doive","que tu doives","qu’il / elle doive","que nous devions","que vous deviez","qu’ils / elles doivent"],
+  "Subjonctif passé":["que j’aie dû","que tu aies dû","qu’il / elle ait dû","que nous ayons dû","que vous ayez dû","qu’ils / elles aient dû"],
+  "Subjonctif imparfait":["que je dusse","que tu dusses","qu’il / elle dût","que nous dussions","que vous dussiez","qu’ils / elles dussent"],
+  "Subjonctif plus-que-parfait":["que j’eusse dû","que tu eusses dû","qu’il / elle eût dû","que nous eussions dû","que vous eussiez dû","qu’ils / elles eussent dû"],
+  "Impératif présent":["dois","devons","devez"],
+  "Impératif passé":["aie dû","ayons dû","ayez dû"],
+  "Infinitif présent":["devoir"],
+  "Infinitif passé":["avoir dû"],
+  "Participe présent":["devant"],
+  "Participe passé":["dû","due","dus","dues","ayant dû"],
+  "Gérondif présent":["en devant"],
+  "Gérondif passé":["en ayant dû"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -765,8 +789,32 @@ const VOULOIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم voulant، ويعبّر غالبًا عن النية أو المحاولة المصاحبة للفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant voulu، ويدل على رغبة أو محاولة سبقت الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const DEVOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر بحسب السياق عن الوجوب أو الضرورة أو الاحتمال، وقد يعني أيضًا أن يكون الشخص مدينًا بشيء.",
+ "Passé composé":"يعبّر عن ضرورة أو التزام وقع في الماضي، وقد يدل على ترجيح وقوع حدث، ويتكوّن من avoir في الحاضر ثم dû.",
+ "Imparfait":"يصف التزامًا أو ضرورة أو دَينًا كان مستمرًا في الماضي، وقد يدل على أمر كان متوقعًا.",
+ "Plus-que-parfait":"يعبّر عن ضرورة أو التزام سبق حدثًا ماضيًا آخر، ويتكوّن من avoir في الماضي الناقص ثم dû.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن ضرورة أو التزام ظهر في حدث ماضٍ مكتمل.",
+ "Passé antérieur":"زمن أدبي يعبّر عن ضرورة تحققت قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم dû.",
+ "Futur simple":"يعبّر عن التزام أو ضرورة ستكون قائمة في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم devr-.",
+ "Futur antérieur":"يعبّر عن ضرورة أو التزام سيكون قد وقع قبل موعد مستقبلي، وقد يدل بحسب السياق على استنتاج متعلق بالماضي.",
+ "Conditionnel présent":"يُستعمل لتقديم نصيحة أو للتعبير عن واجب مشروط أو احتمال غير مؤكد، مثل vous devriez.",
+ "Conditionnel passé":"يعبّر غالبًا عن واجب لم يُنفذ أو نصيحة لم تُتبع في الماضي، مثل vous auriez dû.",
+ "Subjonctif présent":"يُستعمل بعد تركيب يقتضي الـ Subjonctif للتعبير عن ضرورة أو التزام حاضر أو مستقبل.",
+ "Subjonctif passé":"يعبّر عن ضرورة أو التزام ماضٍ مكتمل ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويعبّر عن ضرورة مرتبطة بفعل رئيسي ماضٍ في نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن ضرورة أو التزام اكتمل قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"صيغة أمر نادرة في الاستعمال الفعلي للفعل devoir، وتعرض الصيغ المثبتة: dois وdevons وdevez.",
+ "Impératif passé":"صيغة نادرة جدًا تطلب أن يكون الالتزام قد تحقق قبل موعد لاحق، وتتكوّن من avoir في الأمر ثم dû.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى الوجوب أو الدَّين أو الاحتمال من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن ضرورة أو التزام سبق فعلًا آخر، وتتكوّن من avoir ثم dû.",
+ "Participe présent":"الصيغة devant ثابتة، وتعبّر غالبًا عن التزام أو ضرورة ترافق الفعل الرئيسي.",
+ "Participe passé":"يعرض الجدول صيغ dû وdue وdus وdues بحسب الجنس والعدد عند وجوب الاتفاق، ثم ayant dû للضرورة السابقة للفعل الرئيسي.",
+ "Gérondif présent":"يتكوّن من en ثم devant، ويعبّر عن ضرورة مصاحبة للفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant dû، ويدل على ضرورة أو التزام سبق الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1820,9 +1868,14 @@ const USAGES:Record<string,Usage[]>={
  {fr:"cela fait + durée",ar:"يدل على مدة مستمرة",example:"Cela fait trois mois que j’étudie le français.",translation:"أدرس الفرنسية منذ ثلاثة أشهر."}
  ],
 "devoir":[
- {fr:"devoir + infinitif",ar:"يجب أن / يتعين عليه",example:"Tu dois répondre avant demain.",translation:"يجب عليك الرد قبل الغد."},
- {fr:"devoir de l’argent",ar:"يكون مدينًا بالمال",example:"Il doit cinquante euros à son ami.",translation:"هو مدين لصديقه بخمسين يورو."},
- {fr:"devoir probablement",ar:"يفيد الاحتمال",example:"Elle doit être déjà arrivée.",translation:"لا بد أنها وصلت بالفعل."}
+ {fr:"devoir + infinitif",ar:"التعبير عن الوجوب أو الضرورة",example:"Vous devez présenter une pièce d’identité valide.",translation:"يجب عليكم إبراز وثيقة هوية سارية."},
+ {fr:"devoir de probabilité",ar:"التعبير عن احتمال مرجح",example:"Le train doit arriver dans une dizaine de minutes.",translation:"من المتوقع أن يصل القطار خلال نحو عشر دقائق."},
+ {fr:"devoir quelque chose à quelqu’un",ar:"يكون مدينًا لشخص بشيء",example:"Je dois vingt euros à mon frère.",translation:"أنا مدين لأخي بعشرين يورو."},
+ {fr:"devoir sa réussite à",ar:"يرجع الفضل في نجاحه إلى",example:"Elle doit sa réussite à un travail régulier.",translation:"يرجع نجاحها إلى عملها المنتظم."},
+ {fr:"se devoir de + infinitif",ar:"يرى أن من واجبه القيام بفعل",example:"Nous nous devons de protéger les données des utilisateurs.",translation:"نرى أن من واجبنا حماية بيانات المستخدمين."},
+ {fr:"devrait + infinitif",ar:"تقديم نصيحة أو توقع محتمل",example:"Tu devrais sauvegarder le document avant de fermer.",translation:"من الأفضل أن تحفظ المستند قبل الإغلاق."},
+ {fr:"aurait dû + infinitif",ar:"واجب أو نصيحة لم تتحقق في الماضي",example:"Il aurait dû vérifier l’adresse avant de partir.",translation:"كان ينبغي له التحقق من العنوان قبل المغادرة."},
+ {fr:"être dû à",ar:"يكون ناتجًا عن سبب",example:"Le retard est dû à un incident technique.",translation:"حدث التأخير بسبب عطل تقني."}
 ],
 "regarder":[
  {fr:"regarder un film",ar:"يشاهد فيلمًا",example:"Ils regardent un film français.",translation:"هم يشاهدون فيلمًا فرنسيًا."},
@@ -3558,8 +3611,159 @@ function vouloirReviewedExample(_form:string,title:string,index:number):[string,
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function devoirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je dois remettre ce dossier avant midi.","يجب عليّ تسليم هذا الملف قبل الظهر."],
+   ["Tu dois confirmer ta présence aujourd’hui.","يجب عليك تأكيد حضورك اليوم."],
+   ["Elle doit prendre ce médicament après le repas.","يجب عليها تناول هذا الدواء بعد الطعام."],
+   ["Nous devons respecter les consignes de sécurité.","يجب علينا الالتزام بتعليمات السلامة."],
+   ["Vous devez conserver votre reçu pendant trente jours.","يجب عليكم الاحتفاظ بالإيصال مدة ثلاثين يومًا."],
+   ["Ils doivent arriver avant l’ouverture des portes.","يجب عليهم الوصول قبل فتح الأبواب."]
+  ],
+  "Passé composé":[
+   ["J’ai dû annuler mon rendez-vous à la dernière minute.","اضطررت إلى إلغاء موعدي في اللحظة الأخيرة."],
+   ["Tu as dû attendre longtemps à l’accueil.","اضطررت إلى الانتظار طويلًا عند الاستقبال."],
+   ["Il a dû oublier son téléphone dans le taxi.","لا بد أنه نسي هاتفه في سيارة الأجرة."],
+   ["Nous avons dû changer d’itinéraire à cause des travaux.","اضطررنا إلى تغيير المسار بسبب أعمال الطريق."],
+   ["Vous avez dû fournir un document supplémentaire.","اضطررتم إلى تقديم مستند إضافي."],
+   ["Elles ont dû reporter leur voyage de deux jours.","اضطررن إلى تأجيل سفرهن يومين."]
+  ],
+  "Imparfait":[
+   ["Je devais téléphoner au directeur chaque vendredi.","كان عليّ الاتصال بالمدير كل يوم جمعة."],
+   ["Tu devais porter un uniforme dans cette école.","كان يجب عليك ارتداء زي موحد في هذه المدرسة."],
+   ["Elle devait rentrer avant la tombée de la nuit.","كان عليها العودة قبل حلول الظلام."],
+   ["Nous devions vérifier les machines tous les matins.","كان علينا فحص الآلات كل صباح."],
+   ["Vous deviez encore cinquante euros au propriétaire.","كنتم لا تزالون مدينين للمالك بخمسين يورو."],
+   ["Ils devaient se rencontrer près de la gare.","كان من المفترض أن يلتقوا قرب المحطة."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais dû quitter le bureau avant la fin de la réunion.","كنت قد اضطررت إلى مغادرة المكتب قبل انتهاء الاجتماع."],
+   ["Tu avais dû remplacer ton passeport après sa perte.","كنت قد اضطررت إلى استبدال جواز سفرك بعد فقدانه."],
+   ["Elle avait dû vendre sa voiture pour financer ses études.","كانت قد اضطرت إلى بيع سيارتها لتمويل دراستها."],
+   ["Nous avions dû fermer la route pendant plusieurs heures.","كنا قد اضطررنا إلى إغلاق الطريق عدة ساعات."],
+   ["Vous aviez dû recommencer toute la procédure.","كنتم قد اضطررتم إلى إعادة الإجراء كاملًا."],
+   ["Ils avaient dû évacuer le bâtiment par précaution.","كانوا قد اضطروا إلى إخلاء المبنى احترازًا."]
+  ],
+  "Passé simple":[
+   ["Je dus reconnaître mon erreur devant toute l’assemblée.","اضطررت إلى الاعتراف بخطئي أمام الحاضرين جميعًا."],
+   ["Tu dus traverser la forêt sans guide.","اضطررت إلى عبور الغابة من دون مرشد."],
+   ["Elle dut renoncer à son projet après la tempête.","اضطرت إلى التخلي عن مشروعها بعد العاصفة."],
+   ["Nous dûmes attendre le lever du jour pour repartir.","اضطررنا إلى انتظار طلوع النهار لمواصلة الرحلة."],
+   ["Vous dûtes défendre votre décision devant le conseil.","اضطررتم إلى الدفاع عن قراركم أمام المجلس."],
+   ["Ils durent reconstruire plusieurs maisons détruites par l’incendie.","اضطروا إلى إعادة بناء عدة منازل دمرها الحريق."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus dû reconnaître les faits, je présentai mes excuses.","ما إن اضطررت إلى الإقرار بالوقائع حتى قدمت اعتذاري."],
+   ["Après que tu eus dû céder ta place, tu quittas la salle.","بعدما اضطررت إلى التخلي عن مقعدك، غادرت القاعة."],
+   ["Lorsqu’elle eut dû abandonner son cheval, elle poursuivit à pied.","عندما اضطرت إلى ترك حصانها، واصلت السير على قدميها."],
+   ["Quand nous eûmes dû fermer les portes, le calme revint.","عندما اضطررنا إلى إغلاق الأبواب، عاد الهدوء."],
+   ["Après que vous eûtes dû modifier le plan, les travaux reprirent.","بعدما اضطررتم إلى تعديل الخطة، استؤنفت الأعمال."],
+   ["Dès qu’ils eurent dû quitter la forteresse, l’ennemi y entra.","ما إن اضطروا إلى مغادرة الحصن حتى دخله العدو."]
+  ],
+  "Futur simple":[
+   ["Je devrai renouveler mon permis le mois prochain.","سيتعين عليّ تجديد رخصتي الشهر المقبل."],
+   ["Tu devras présenter le billet avant de monter.","سيتعين عليك إبراز التذكرة قبل الصعود."],
+   ["Il devra suivre une formation complémentaire.","سيكون عليه الالتحاق بدورة تدريبية إضافية."],
+   ["Nous devrons choisir entre ces deux solutions.","سيتعين علينا الاختيار بين هذين الحلين."],
+   ["Vous devrez prévenir le service en cas de retard.","سيتعين عليكم إبلاغ القسم عند التأخر."],
+   ["Elles devront obtenir une autorisation écrite.","سيتعين عليهن الحصول على تصريح مكتوب."]
+  ],
+  "Futur antérieur":[
+   ["D’ici vendredi, j’aurai dû traiter tous les dossiers urgents.","بحلول الجمعة، سأكون قد اضطررت إلى معالجة جميع الملفات العاجلة."],
+   ["À la fin du stage, tu auras dû résoudre plusieurs cas complexes.","عند انتهاء التدريب، ستكون قد اضطررت إلى معالجة عدة حالات معقدة."],
+   ["Il aura dû prendre une autre route pour éviter le barrage.","لا بد أنه اضطر إلى سلوك طريق آخر لتجنب الحاجز."],
+   ["Avant la cérémonie, nous aurons dû répéter le programme trois fois.","قبل الحفل، سنكون قد اضطررنا إلى التدرب على البرنامج ثلاث مرات."],
+   ["À votre arrivée, vous aurez dû franchir deux contrôles de sécurité.","عند وصولكم، ستكونون قد اضطررتم إلى اجتياز نقطتي تفتيش."],
+   ["D’ici la fin du mois, elles auront dû revoir tout le calendrier.","بحلول نهاية الشهر، سيكنّ قد اضطررن إلى مراجعة الجدول كاملًا."]
+  ],
+  "Conditionnel présent":[
+   ["Je devrais consulter un spécialiste avant de décider.","من الأفضل أن أستشير اختصاصيًا قبل اتخاذ القرار."],
+   ["Tu devrais sauvegarder tes fichiers plus régulièrement.","ينبغي لك حفظ ملفاتك بصورة أكثر انتظامًا."],
+   ["Elle devrait arriver vers neuf heures.","يُتوقع أن تصل نحو الساعة التاسعة."],
+   ["Nous devrions vérifier les chiffres une dernière fois.","ينبغي لنا مراجعة الأرقام للمرة الأخيرة."],
+   ["Vous devriez éviter cette route pendant les travaux.","من الأفضل أن تتجنبوا هذا الطريق أثناء أعمال الصيانة."],
+   ["Ils devraient recevoir la réponse demain matin.","من المتوقع أن يتلقوا الرد صباح الغد."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais dû vous prévenir dès mon arrivée.","كان ينبغي لي إبلاغكم فور وصولي."],
+   ["Tu aurais dû lire les conditions avant de signer.","كان ينبغي لك قراءة الشروط قبل التوقيع."],
+   ["Il aurait dû conserver une copie du formulaire.","كان ينبغي له الاحتفاظ بنسخة من الاستمارة."],
+   ["Nous aurions dû réserver les billets plus tôt.","كان ينبغي لنا حجز التذاكر في وقت أبكر."],
+   ["Vous auriez dû demander un reçu au vendeur.","كان ينبغي لكم طلب إيصال من البائع."],
+   ["Elles auraient dû apporter des vêtements plus chauds.","كان ينبغي لهن إحضار ملابس أكثر دفئًا."]
+  ],
+  "Subjonctif présent":[
+   ["Il est possible que je doive partir avant la fin.","قد أضطر إلى المغادرة قبل النهاية."],
+   ["Je regrette que tu doives travailler ce week-end.","يؤسفني أنك مضطر إلى العمل في عطلة نهاية الأسبوع."],
+   ["Le médecin craint qu’elle doive rester sous surveillance.","يخشى الطبيب أن تضطر إلى البقاء تحت المراقبة."],
+   ["Il est normal que nous devions justifier chaque dépense.","من الطبيعي أن نضطر إلى تبرير كل نفقة."],
+   ["Je comprends que vous deviez réfléchir avant de répondre.","أتفهم حاجتكم إلى التفكير قبل الرد."],
+   ["Il se peut qu’ils doivent retarder le départ.","قد يضطرون إلى تأخير موعد الانطلاق."]
+  ],
+  "Subjonctif passé":[
+   ["Je regrette que j’aie dû interrompre votre présentation.","يؤسفني أنني اضطررت إلى مقاطعة عرضكم."],
+   ["Elle est désolée que tu aies dû attendre dehors.","تأسف لأنك اضطررت إلى الانتظار في الخارج."],
+   ["Nous comprenons qu’il ait dû protéger ses collaborateurs.","نتفهم أنه اضطر إلى حماية زملائه."],
+   ["Le directeur déplore que nous ayons dû annuler la visite.","يأسف المدير لأننا اضطررنا إلى إلغاء الزيارة."],
+   ["Il est dommage que vous ayez dû vendre cette maison.","من المؤسف أنكم اضطررتم إلى بيع هذا المنزل."],
+   ["Je suis surpris qu’elles aient dû recommencer l’examen.","تفاجأت بأنهن اضطررن إلى إعادة الاختبار."]
+  ],
+  "Subjonctif imparfait":[
+   ["Il fallait que je dusse répondre avant le coucher du soleil.","كان لا بد أن أجيب قبل غروب الشمس."],
+   ["Elle redoutait que tu dusses affronter seul cette épreuve.","كانت تخشى أن تضطر إلى مواجهة هذا الاختبار بمفردك."],
+   ["Le directeur craignait qu’il dût fermer l’atelier.","كان المدير يخشى أن يضطر إلى إغلاق الورشة."],
+   ["La situation exigeait que nous dussions agir sans délai.","كان الوضع يقتضي أن نتحرك فورًا."],
+   ["On voulait éviter que vous dussiez revenir le lendemain.","كان المطلوب تجنيبكم الاضطرار إلى العودة في اليوم التالي."],
+   ["Le commandant craignait qu’ils dussent abandonner une partie du matériel.","كان القائد يخشى أن يضطروا إلى ترك جزء من المعدات."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Elle regrettait que j’eusse dû révéler ce secret.","كانت تأسف لأنني اضطررت إلى كشف هذا السر."],
+   ["Le responsable déplorait que tu eusses dû payer cette somme.","كان المسؤول يأسف لأنك اضطررت إلى دفع هذا المبلغ."],
+   ["Personne ne croyait qu’il eût dû quitter sa famille si tôt.","لم يصدق أحد أنه اضطر إلى مغادرة عائلته بهذه السرعة."],
+   ["Le juge déplorait que nous eussions dû attendre si longtemps.","كان القاضي يأسف لأننا اضطررنا إلى الانتظار كل هذه المدة."],
+   ["Il était injuste que vous eussiez dû supporter seuls les frais.","لم يكن من العدل أن تتحملوا النفقات وحدكم."],
+   ["Le conseil regrettait qu’elles eussent dû retirer leur proposition.","كان المجلس يأسف لأنهن اضطررن إلى سحب اقتراحهن."]
+  ],
+  "Impératif présent":[
+   ["Ne dois jamais plus que tu ne peux rembourser.","لا تستدن أبدًا أكثر مما تستطيع سداده."],
+   ["Ne devons rien au hasard dans cette réussite.","فلنجعل هذا النجاح ثمرة جهدنا لا المصادفة."],
+   ["Ne devez à personne une somme que vous ne pouvez rendre.","لا تكونوا مدينين لأحد بمبلغ لا تستطيعون سداده."]
+  ],
+  "Impératif passé":[
+   ["Dans ce tableau, note « aie dû » comme forme de l’impératif passé.","دوّن في هذا الجدول «aie dû» بوصفها صيغة الأمر الماضي للمفرد."],
+   ["Pour compléter la série, écrivons « ayons dû » à la première personne du pluriel.","لإكمال المجموعة، لنكتب «ayons dû» لصيغة المتكلمين."],
+   ["Dans votre réponse, indiquez « ayez dû » à la deuxième personne du pluriel.","اكتبوا في إجابتكم «ayez dû» لصيغة المخاطبين."]
+  ],
+  "Infinitif présent":[
+   ["Devoir choisir rapidement augmente la pression.","الاضطرار إلى الاختيار سريعًا يزيد الضغط."]
+  ],
+  "Infinitif passé":[
+   ["Elle regrette d’avoir dû quitter son équipe.","تأسف لأنها اضطرت إلى مغادرة فريقها."]
+  ],
+  "Participe présent":[
+   ["Devant prendre le premier train, il a préparé sa valise la veille.","لاضطراره إلى ركوب أول قطار، جهز حقيبته في الليلة السابقة."]
+  ],
+  "Participe passé":[
+   ["Le montant dû sera versé demain matin.","سيُدفع المبلغ المستحق صباح الغد."],
+   ["La somme due apparaît clairement sur la facture.","يظهر المبلغ المستحق بوضوح في الفاتورة."],
+   ["Les intérêts dus seront calculés à la fin du mois.","ستُحسب الفوائد المستحقة في نهاية الشهر."],
+   ["Les indemnités dues seront payées la semaine prochaine.","ستُدفع التعويضات المستحقة الأسبوع المقبل."],
+   ["Ayant dû modifier son trajet, elle est arrivée plus tard.","لأنها اضطرت إلى تغيير مسارها، وصلت متأخرة."]
+  ],
+  "Gérondif présent":[
+   ["En devant gérer deux équipes, il a appris à mieux déléguer.","بسبب اضطراره إلى إدارة فريقين، تعلم تفويض المهام بصورة أفضل."]
+  ],
+  "Gérondif passé":[
+   ["En ayant dû recommencer plusieurs fois, nous avons compris la méthode.","بعدما اضطررنا إلى البدء من جديد عدة مرات، فهمنا الطريقة."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -3583,7 +3787,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -3594,7 +3798,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

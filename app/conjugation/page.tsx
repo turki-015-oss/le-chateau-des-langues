@@ -525,6 +525,8 @@ const ETRE_PASSE_SIMPLE=["fus","fus","fut","fûmes","fûtes","furent"];
 const ETRE_SUBJONCTIF_PRESENT=["sois","sois","soit","soyons","soyez","soient"];
 const ETRE_SUBJONCTIF_IMPARFAIT=["fusse","fusses","fût","fussions","fussiez","fussent"];
 const ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT=["que j’eusse été","que tu eusses été","qu’il / elle eût été","que nous eussions été","que vous eussiez été","qu’ils / elles eussent été"];
+const ETRE_IMPERATIF_PRESENT=["sois","soyons","soyez"];
+const ETRE_IMPERATIF_PASSE=["aie été","ayons été","ayez été"];
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -2513,14 +2515,16 @@ function etreReviewedExample(form:string,title:string,index:number):[string,stri
  };
  if(subj[title]){const x=subj[title],i=Math.min(index,5);return [x.fr[i],x.ar[i]]}
  if(title==="Impératif présent"){
-  const fr=[" ponctuel au rendez-vous médical de demain"," solidaires pendant cette période difficile"," attentifs aux consignes de sécurité dans l’atelier"];
-  const ar=["كن ملتزمًا بالموعد الطبي غدًا.","لنكن متضامنين خلال هذه الفترة الصعبة.","كونوا منتبهين لتعليمات السلامة في الورشة."];
-  return [cap(form)+fr[Math.min(index,2)]+".",ar[Math.min(index,2)]];
+  const fr=["Sois ponctuel au rendez-vous de demain.","Soyons solidaires pendant cette période difficile.","Soyez attentifs aux consignes de sécurité."];
+  const ar=["احضر في الموعد غدًا.","لنتكاتف خلال هذه الفترة الصعبة.","انتبهوا جيدًا إلى تعليمات السلامة."];
+  const i=Math.min(index,2);
+  return [fr[i],ar[i]];
  }
  if(title==="Impératif passé"){
-  const fr=[" prêt avant l’arrivée du taxi"," disponibles avant l’ouverture des portes"," informés de la procédure avant le contrôle"];
-  const ar=["كن قد أصبحت مستعدًا قبل وصول سيارة الأجرة.","لنكن قد أصبحنا متاحين قبل فتح الأبواب.","كونوا قد أصبحتم على علم بالإجراء قبل التفتيش."];
-  return [cap(form)+fr[Math.min(index,2)]+".",ar[Math.min(index,2)]];
+  const fr=["Aie été présent à chaque séance avant de demander ton certificat.","Ayons été clairs sur tous les points avant de clore la réunion.","Ayez été présents à toutes les étapes avant de signer le rapport final."];
+  const ar=["احرص على حضور جميع الجلسات قبل أن تطلب شهادتك.","لنحرص على توضيح جميع النقاط قبل أن نختتم الاجتماع.","احرصوا على حضور جميع المراحل قبل توقيع التقرير النهائي."];
+  const i=Math.min(index,2);
+  return [fr[i],ar[i]];
  }
  const nonFinite:Record<string,[string,string][]>= {
   "Infinitif présent":[["Être ponctuel facilite la coopération avec toute l’équipe.","الالتزام بالمواعيد يسهّل التعاون مع الفريق كله."]],
@@ -2574,7 +2578,7 @@ export default function Page(){
     <Block title="Subjonctif plus-que-parfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp))} verb={v} description={v==="être"?"زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.":undefined}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
   </div></>}
-  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={proImperative(v,p)} verb={v}/><Block title="Impératif passé" forms={isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp)} verb={v}/></>}</div></>}
+  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p)} verb={v} description={v==="être"?"صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.":undefined}/><Block title="Impératif passé" forms={v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp))} verb={v} description={v==="être"?"صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.":undefined}/></>}</div></>}
   {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={[infinitivePresent(v)]} verb={v}/><Block title="Infinitif passé" forms={[infinitivePast(v,a,pp)]} verb={v}/></div></>}
   {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={[participePresentForm(v,b2,p)]} verb={v}/>}<Block title="Participe passé" forms={[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp]} verb={v}/></div></>}
   {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de gérondif présent."/>:<Block title="Gérondif présent" forms={[gerondifPresentForm(v,b2,p)]} verb={v}/>}<Block title="Gérondif passé" forms={[gerondifPastForm(v,a,pp)]} verb={v}/></div></>}</section>

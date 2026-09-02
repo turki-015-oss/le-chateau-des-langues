@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode", "savoir":"transitif",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir"||b==="devoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir"||b==="devoir"||b==="savoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -669,6 +669,30 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["dû","due","dus","dues","ayant dû"],
   "Gérondif présent":["en devant"],
   "Gérondif passé":["en ayant dû"]
+ },
+ "savoir":{
+  "Présent":["je sais","tu sais","il / elle sait","nous savons","vous savez","ils / elles savent"],
+  "Passé composé":["j’ai su","tu as su","il / elle a su","nous avons su","vous avez su","ils / elles ont su"],
+  "Imparfait":["je savais","tu savais","il / elle savait","nous savions","vous saviez","ils / elles savaient"],
+  "Plus-que-parfait":["j’avais su","tu avais su","il / elle avait su","nous avions su","vous aviez su","ils / elles avaient su"],
+  "Passé simple":["je sus","tu sus","il / elle sut","nous sûmes","vous sûtes","ils / elles surent"],
+  "Passé antérieur":["j’eus su","tu eus su","il / elle eut su","nous eûmes su","vous eûtes su","ils / elles eurent su"],
+  "Futur simple":["je saurai","tu sauras","il / elle saura","nous saurons","vous saurez","ils / elles sauront"],
+  "Futur antérieur":["j’aurai su","tu auras su","il / elle aura su","nous aurons su","vous aurez su","ils / elles auront su"],
+  "Conditionnel présent":["je saurais","tu saurais","il / elle saurait","nous saurions","vous sauriez","ils / elles sauraient"],
+  "Conditionnel passé":["j’aurais su","tu aurais su","il / elle aurait su","nous aurions su","vous auriez su","ils / elles auraient su"],
+  "Subjonctif présent":["que je sache","que tu saches","qu’il / elle sache","que nous sachions","que vous sachiez","qu’ils / elles sachent"],
+  "Subjonctif passé":["que j’aie su","que tu aies su","qu’il / elle ait su","que nous ayons su","que vous ayez su","qu’ils / elles aient su"],
+  "Subjonctif imparfait":["que je susse","que tu susses","qu’il / elle sût","que nous sussions","que vous sussiez","qu’ils / elles sussent"],
+  "Subjonctif plus-que-parfait":["que j’eusse su","que tu eusses su","qu’il / elle eût su","que nous eussions su","que vous eussiez su","qu’ils / elles eussent su"],
+  "Impératif présent":["sache","sachons","sachez"],
+  "Impératif passé":["aie su","ayons su","ayez su"],
+  "Infinitif présent":["savoir"],
+  "Infinitif passé":["avoir su"],
+  "Participe présent":["sachant"],
+  "Participe passé":["su","sue","sus","sues","ayant su"],
+  "Gérondif présent":["en sachant"],
+  "Gérondif passé":["en ayant su"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -813,8 +837,32 @@ const DEVOIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم devant، ويعبّر عن ضرورة مصاحبة للفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant dû، ويدل على ضرورة أو التزام سبق الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const SAVOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن امتلاك معلومة أو معرفة حقيقة، وقد يدل متبوعًا بالمصدر على معرفة كيفية القيام بشيء.",
+ "Passé composé":"يعبّر بحسب السياق عن معرفة خبر أو اكتشاف معلومة أو النجاح في القيام بشيء، ويتكوّن من avoir في الحاضر ثم su.",
+ "Imparfait":"يصف معرفة أو مهارة كانت مستمرة في الماضي، أو معلومة كان الفاعل يعرفها آنذاك.",
+ "Plus-que-parfait":"يعبّر عن معرفة أو مهارة كانت قد تحققت قبل حدث ماضٍ آخر، ويتكوّن من avoir في الماضي الناقص ثم su.",
+ "Passé simple":"زمن سردي أدبي يعبّر غالبًا عن معرفة خبر أو التوصل إلى معلومة في حدث ماضٍ مكتمل.",
+ "Passé antérieur":"زمن أدبي يعبّر عن معرفة تحققت قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم su.",
+ "Futur simple":"يعبّر عن معرفة أو قدرة ستتحقق في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم saur-.",
+ "Futur antérieur":"يعبّر عن معرفة أو مهارة ستكون قد تحققت قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"يعبّر عن معرفة أو قدرة مرتبطة بشرط، وتأتي صيغة ne saurais أحيانًا بمعنى لا أستطيع أو لا أجرؤ.",
+ "Conditionnel passé":"يعبّر عن معرفة أو قدرة كان يمكن أن تتحقق في الماضي لو تحقق شرط، لكنها لم تتحقق.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الضرورة أو الرغبة أو الشك أو الشعور للتعبير عن معرفة أو مهارة حاضرة أو مستقبلية.",
+ "Subjonctif passé":"يعبّر عن معرفة أو مهارة ماضية مكتملة ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويعبّر عن معرفة مرتبطة بفعل رئيسي ماضٍ في نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن معرفة أو مهارة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"صيغة أمر غير منتظمة: sache وsachons وsachez، وتُستعمل للتنبيه إلى معلومة أو للحث على اكتساب مهارة أو حسن التصرف.",
+ "Impératif passé":"صيغة نادرة تطلب أن تكون معرفة أو مهارة قد تحققت قبل موعد لاحق، وتتكوّن من avoir في الأمر ثم su.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى المعرفة أو معرفة الكيفية من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن معرفة أو مهارة سبقت فعلًا آخر، وتتكوّن من avoir ثم su.",
+ "Participe présent":"الصيغة sachant ثابتة، وتعبّر عن معرفة ترافق الفعل الرئيسي أو توضّح سببه.",
+ "Participe passé":"يعرض الجدول صيغ su وsue وsus وsues عند وجوب الاتفاق أو الاستعمال الوصفي، ثم ayant su للمعرفة السابقة للفعل الرئيسي.",
+ "Gérondif présent":"يتكوّن من en ثم sachant، ويعبّر عن معرفة مرافقة توضّح السبب أو الكيفية، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant su، ويدل على معرفة أو مهارة تحققت قبل الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:verb==="savoir"?SAVOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1916,8 +1964,14 @@ const USAGES:Record<string,Usage[]>={
  {fr:"s’en vouloir de",ar:"يلوم نفسه على فعل",example:"Elle s’en veut d’avoir oublié ce rendez-vous.",translation:"تلوم نفسها لأنها نسيت هذا الموعد."}
  ],
 "savoir":[
- {fr:"savoir + infinitif",ar:"يعرف كيفية القيام بشيء",example:"Elle sait conduire une voiture manuelle.",translation:"هي تعرف كيفية قيادة سيارة ذات ناقل يدوي."},
- {fr:"savoir que / où / comment",ar:"يعلم معلومة",example:"Nous savons où commence la visite.",translation:"نحن نعلم أين تبدأ الجولة."}
+ {fr:"savoir quelque chose",ar:"يعرف معلومة أو حقيقة",example:"Je sais son nom et son adresse.",translation:"أعرف اسمه وعنوانه."},
+ {fr:"savoir que + indicatif",ar:"يعلم أن أمرًا ما صحيح",example:"Nous savons que le musée ferme à dix-huit heures.",translation:"نعلم أن المتحف يغلق عند الساعة السادسة مساءً."},
+ {fr:"savoir où / quand / comment",ar:"يعرف جواب سؤال غير مباشر",example:"Elle sait comment fonctionne cette machine.",translation:"تعرف كيف تعمل هذه الآلة."},
+ {fr:"savoir + infinitif",ar:"يعرف كيفية القيام بشيء",example:"Mon frère sait réparer les vélos.",translation:"أخي يعرف كيفية إصلاح الدراجات."},
+ {fr:"ne pas savoir que dire / quoi faire",ar:"لا يعرف ماذا يقول أو يفعل",example:"Face à cette nouvelle, il ne savait que répondre.",translation:"أمام هذا الخبر، لم يعرف بماذا يجيب."},
+ {fr:"faire savoir",ar:"يُبلغ أو يُعلم",example:"Merci de me faire savoir votre décision avant lundi.",translation:"يرجى إبلاغي بقراركم قبل يوم الاثنين."},
+ {fr:"à savoir",ar:"أي أو تحديدًا",example:"Deux documents sont requis, à savoir le passeport et le formulaire.",translation:"يلزم مستندان، وهما جواز السفر والاستمارة."},
+ {fr:"que je sache",ar:"على حد علمي",example:"Que je sache, aucune réunion n’est prévue demain.",translation:"على حد علمي، لا يوجد اجتماع مقرر غدًا."}
 ],
 "venir":[
  {fr:"venir de + lieu",ar:"يأتي من مكان",example:"Il vient de Lyon.",translation:"هو يأتي من ليون."},
@@ -3762,8 +3816,159 @@ function devoirReviewedExample(_form:string,title:string,index:number):[string,s
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function savoirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je sais exactement où retrouver ce dossier.","أعرف تمامًا أين أجد هذا الملف."],
+   ["Tu sais préparer ce plat sans recette.","تعرف كيف تُعد هذا الطبق من دون وصفة."],
+   ["Elle sait que la route est fermée aujourd’hui.","تعرف أن الطريق مغلق اليوم."],
+   ["Nous savons résoudre ce type de problème.","نعرف كيفية حل هذا النوع من المشكلات."],
+   ["Vous savez pourquoi le train est retardé.","تعرفون سبب تأخر القطار."],
+   ["Ils savent garder un secret professionnel.","يعرفون كيف يحافظون على سر مهني."]
+  ],
+  "Passé composé":[
+   ["J’ai su la nouvelle par mon collègue.","علمت بالخبر من زميلي."],
+   ["Tu as su répondre avec précision à chaque question.","أحسنت الإجابة بدقة عن كل سؤال."],
+   ["Elle a su convaincre le jury grâce à son exposé.","نجحت في إقناع لجنة التحكيم بفضل عرضها."],
+   ["Nous avons su que le vol avait été annulé.","علمنا أن الرحلة قد أُلغيت."],
+   ["Vous avez su adapter votre méthode aux nouveaux élèves.","نجحتم في تكييف طريقتكم مع الطلاب الجدد."],
+   ["Ils ont su trouver une solution équitable.","تمكنوا من إيجاد حل عادل."]
+  ],
+  "Imparfait":[
+   ["Je savais déjà son numéro de téléphone.","كنت أعرف رقم هاتفه مسبقًا."],
+   ["Tu savais lire avant d’entrer à l’école.","كنت تعرف القراءة قبل دخول المدرسة."],
+   ["Il savait que cette décision serait difficile.","كان يعلم أن هذا القرار سيكون صعبًا."],
+   ["Nous savions nous orienter sans carte.","كنا نعرف كيف نهتدي إلى الطريق من دون خريطة."],
+   ["Vous saviez où ranger les documents confidentiels.","كنتم تعرفون أين تُحفظ المستندات السرية."],
+   ["Elles savaient rester calmes dans les situations urgentes.","كنّ يعرفن كيف يحافظن على هدوئهن في الحالات الطارئة."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais su la vérité bien avant l’annonce officielle.","كنت قد علمت الحقيقة قبل الإعلان الرسمي بوقت طويل."],
+   ["Tu avais su anticiper les besoins de l’équipe.","كنت قد نجحت في توقع احتياجات الفريق."],
+   ["Elle avait su gagner la confiance de ses collègues.","كانت قد نجحت في كسب ثقة زملائها."],
+   ["Nous avions su préserver toutes les preuves utiles.","كنا قد أحسنا الحفاظ على جميع الأدلة المهمة."],
+   ["Vous aviez su résoudre le conflit par le dialogue.","كنتم قد نجحتم في حل النزاع بالحوار."],
+   ["Ils avaient su que le contrat serait renouvelé.","كانوا قد علموا أن العقد سيُجدد."]
+  ],
+  "Passé simple":[
+   ["Je sus immédiatement qu’il cachait quelque chose.","أدركت فورًا أنه يخفي أمرًا ما."],
+   ["Tu sus garder ton sang-froid malgré le danger.","تمكنت من الحفاظ على هدوئك رغم الخطر."],
+   ["Elle sut déchiffrer le message ancien.","نجحت في فك رموز الرسالة القديمة."],
+   ["Nous sûmes convaincre les habitants de partir.","تمكنا من إقناع السكان بالمغادرة."],
+   ["Vous sûtes trouver les mots justes pour les rassurer.","أحسنتم اختيار الكلمات المناسبة لطمأنتهم."],
+   ["Ils surent transformer cet échec en leçon utile.","نجحوا في تحويل هذا الإخفاق إلى درس مفيد."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus su la date, je réservai mon billet.","ما إن عرفت التاريخ حتى حجزت تذكرتي."],
+   ["Après que tu eus su le résultat, tu téléphonas à ta famille.","بعدما عرفت النتيجة، اتصلت بعائلتك."],
+   ["Lorsqu’elle eut su la vérité, elle exigea des explications.","عندما عرفت الحقيقة، طالبت بتوضيحات."],
+   ["Dès que nous eûmes su la route libre, nous repartîmes.","ما إن علمنا أن الطريق أصبح مفتوحًا حتى واصلنا الرحلة."],
+   ["Après que vous eûtes su les conditions, vous signâtes l’accord.","بعدما عرفتم الشروط، وقّعتم الاتفاق."],
+   ["Quand ils eurent su l’heure du départ, ils préparèrent leurs bagages.","عندما عرفوا موعد المغادرة، جهزوا أمتعتهم."]
+  ],
+  "Futur simple":[
+   ["Je saurai répondre après avoir consulté le rapport.","سأعرف كيف أجيب بعد الاطلاع على التقرير."],
+   ["Tu sauras utiliser cet appareil après la formation.","ستعرف كيفية استخدام هذا الجهاز بعد التدريب."],
+   ["Il saura bientôt si sa demande a été acceptée.","سيعرف قريبًا ما إذا كان طلبه قد قُبل."],
+   ["Nous saurons demain quelle équipe a remporté le marché.","سنعرف غدًا أي فريق فاز بالعقد."],
+   ["Vous saurez reconnaître les principaux signes d’alerte.","ستعرفون كيفية تمييز علامات التحذير الأساسية."],
+   ["Elles sauront préserver la qualité du service.","سيعرفن كيف يحافظن على جودة الخدمة."]
+  ],
+  "Futur antérieur":[
+   ["D’ici la fin du cours, j’aurai su maîtriser cette technique.","بحلول نهاية الدورة، سأكون قد أتقنت هذه التقنية."],
+   ["Quand tu auras su identifier la cause, tu pourras réparer la panne.","عندما تكون قد عرفت سبب العطل، ستتمكن من إصلاحه."],
+   ["Elle aura su convaincre tous les partenaires avant la réunion finale.","ستكون قد نجحت في إقناع جميع الشركاء قبل الاجتماع النهائي."],
+   ["Avant vendredi, nous aurons su obtenir une réponse claire.","سنكون قد نجحنا قبل يوم الجمعة في الحصول على إجابة واضحة."],
+   ["À la fin de la formation, vous aurez su appliquer chaque procédure.","عند انتهاء التدريب، ستكونون قد أتقنتم تطبيق كل إجراء."],
+   ["Ils auront su bâtir une relation durable avec leurs clients.","سيكونون قد نجحوا في بناء علاقة دائمة مع عملائهم."]
+  ],
+  "Conditionnel présent":[
+   ["Je saurais résoudre ce problème avec davantage de temps.","سأتمكن من حل هذه المشكلة لو توفر لي وقت إضافي."],
+   ["Tu saurais retrouver le chemin avec une carte précise.","ستتمكن من إيجاد الطريق لو كانت معك خريطة دقيقة."],
+   ["Elle saurait expliquer cette règle à un débutant.","ستعرف كيف تشرح هذه القاعدة لمبتدئ."],
+   ["Nous saurions réagir si la situation se reproduisait.","سنعرف كيف نتصرف لو تكرر الموقف."],
+   ["Vous sauriez prendre une meilleure décision si vous disposiez de toutes les informations.","ستتمكنون من اتخاذ قرار أفضل لو توفرت لديكم جميع المعلومات."],
+   ["Ils sauraient gérer cette urgence sans aide extérieure.","سيعرفون كيف يتعاملون مع هذه الحالة الطارئة من دون مساعدة خارجية."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais su éviter cette erreur avec des consignes plus claires.","لكنت قد تجنبت هذا الخطأ لو كانت التعليمات أوضح."],
+   ["Tu aurais su répondre si tu avais lu le dossier.","لكنت قد عرفت الإجابة لو قرأت الملف."],
+   ["Il aurait su reconnaître le lieu avec une photographie.","لكان قد تعرّف إلى المكان لو كانت معه صورة."],
+   ["Nous aurions su choisir si les prix avaient été affichés.","لكنا قد عرفنا كيف نختار لو كانت الأسعار معروضة."],
+   ["Vous auriez su convaincre le client avec une démonstration.","لكان بإمكانكم إقناع العميل لو قدمتم عرضًا عمليًا."],
+   ["Elles auraient su protéger les données avec une copie de secours.","لكُنّ قد نجحن في حماية البيانات لو توفرت نسخة احتياطية."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je sache la réponse avant midi.","يجب أن أعرف الإجابة قبل الظهر."],
+   ["Je veux que tu saches utiliser ce logiciel seul.","أريدك أن تعرف كيفية استخدام هذا البرنامج بمفردك."],
+   ["Il est essentiel qu’elle sache où trouver les secours.","من الضروري أن تعرف أين تجد خدمات الطوارئ."],
+   ["Le formateur souhaite que nous sachions expliquer chaque étape.","يريد المدرب أن نعرف كيفية شرح كل خطوة."],
+   ["Je doute que vous sachiez toute la vérité.","أشك في أنكم تعرفون الحقيقة كاملة."],
+   ["Il faut qu’ils sachent respecter la confidentialité.","يجب أن يعرفوا كيف يحافظون على السرية."]
+  ],
+  "Subjonctif passé":[
+   ["Je suis heureux que j’aie su défendre mon projet.","أنا سعيد لأنني نجحت في الدفاع عن مشروعي."],
+   ["Elle apprécie que tu aies su reconnaître ton erreur.","تقدّر أنك أحسنت الاعتراف بخطئك."],
+   ["Nous admirons le fait qu’il ait su garder son calme.","نُعجب بقدرته على الحفاظ على هدوئه."],
+   ["Le responsable se réjouit que nous ayons su respecter le délai.","يسعد المسؤول لأننا نجحنا في الالتزام بالموعد."],
+   ["Je doute que vous ayez su mesurer tous les risques.","أشك في أنكم أدركتم جميع المخاطر."],
+   ["Il est remarquable qu’elles aient su unir leurs équipes.","من اللافت أنهن نجحن في توحيد فرقهن."]
+  ],
+  "Subjonctif imparfait":[
+   ["Il fallait que je susse traduire ce passage sans dictionnaire.","كان يجب أن أعرف كيفية ترجمة هذا المقطع من دون قاموس."],
+   ["Le maître voulait que tu susses distinguer chaque symbole.","كان المعلم يريدك أن تعرف كيفية تمييز كل رمز."],
+   ["La mission exigeait qu’elle sût garder le secret.","كانت المهمة تقتضي أن تعرف كيف تحفظ السر."],
+   ["Le directeur souhaitait que nous sussions résoudre seuls le problème.","كان المدير يريدنا أن نعرف كيفية حل المشكلة بأنفسنا."],
+   ["On doutait que vous sussiez retrouver ce document ancien.","كان ثمة شك في قدرتكم على العثور على هذه الوثيقة القديمة."],
+   ["Il fallait qu’ils sussent lire les cartes marines.","كان يجب أن يعرفوا قراءة الخرائط البحرية."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Elle regrettait que j’eusse su la nouvelle si tard.","كانت تأسف لأنني علمت بالخبر متأخرًا."],
+   ["Le professeur doutait que tu eusses su résoudre l’énigme seul.","كان الأستاذ يشك في أنك تمكنت من حل اللغز بمفردك."],
+   ["On craignait qu’elle eût su nos intentions avant la négociation.","كان يُخشى أن تكون قد عرفت نوايانا قبل المفاوضات."],
+   ["Le comité se réjouissait que nous eussions su éviter le conflit.","كانت اللجنة سعيدة لأننا نجحنا في تجنب النزاع."],
+   ["Ils ne croyaient pas que vous eussiez su prévoir cette crise.","لم يصدقوا أنكم تمكنتم من توقع هذه الأزمة."],
+   ["La direction appréciait qu’elles eussent su rétablir la confiance.","كانت الإدارة تقدّر نجاحهن في استعادة الثقة."]
+  ],
+  "Impératif présent":[
+   ["Sache que je respecterai toujours ta décision.","اعلم أنني سأحترم قرارك دائمًا."],
+   ["Sachons écouter avant de répondre.","لنعرف كيف نصغي قبل أن نجيب."],
+   ["Sachez distinguer les faits des rumeurs.","اعرفوا كيف تميزون الحقائق من الشائعات."]
+  ],
+  "Impératif passé":[
+   ["Avant la fin de l’épreuve, aie su mobiliser toutes tes connaissances.","بحلول نهاية الاختبار، كن قد أحسنت توظيف جميع معارفك."],
+   ["Au moment du bilan, ayons su préserver la confiance de l’équipe.","عند التقييم، لنكن قد نجحنا في الحفاظ على ثقة الفريق."],
+   ["Avant votre départ, ayez su transmettre toutes les informations utiles.","قبل مغادرتكم، كونوا قد أحسنتم نقل جميع المعلومات المفيدة."]
+  ],
+  "Infinitif présent":[
+   ["Savoir écouter est indispensable pour bien conseiller.","معرفة كيفية الإصغاء ضرورية لتقديم نصيحة جيدة."]
+  ],
+  "Infinitif passé":[
+   ["Elle est fière d’avoir su surmonter cette difficulté.","هي فخورة لأنها نجحت في تجاوز هذه الصعوبة."]
+  ],
+  "Participe présent":[
+   ["Sachant que le magasin fermait tôt, nous sommes partis immédiatement.","لأننا كنا نعلم أن المتجر يغلق مبكرًا، غادرنا فورًا."]
+  ],
+  "Participe passé":[
+   ["Ce détail est désormais su de toute l’équipe.","أصبح هذا التفصيل معروفًا لدى الفريق كله."],
+   ["La réponse est sue de tous, mais personne ne la dit.","الإجابة معروفة للجميع، لكن لا أحد يذكرها."],
+   ["Ces faits sont sus des enquêteurs depuis longtemps.","هذه الوقائع معروفة لدى المحققين منذ وقت طويل."],
+   ["Ces règles sont sues de tous les candidats.","هذه القواعد معروفة لدى جميع المرشحين."],
+   ["Ayant su exploiter cette occasion, il a développé son entreprise.","لأنه أحسن استغلال هذه الفرصة، طوّر شركته."]
+  ],
+  "Gérondif présent":[
+   ["En sachant exactement quoi demander, elle a gagné du temps.","بمعرفتها ما ينبغي طلبه تحديدًا، وفّرت وقتًا."]
+  ],
+  "Gérondif passé":[
+   ["En ayant su réagir rapidement, vous avez évité un accident.","بفضل تصرفكم السريع، تجنبتم وقوع حادث."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):verb==="savoir"?savoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -3787,7 +3992,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -3798,7 +4003,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

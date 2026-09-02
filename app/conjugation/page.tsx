@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -621,6 +621,30 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["pu","ayant pu"],
   "Gérondif présent":["en pouvant"],
   "Gérondif passé":["en ayant pu"]
+ },
+ "vouloir":{
+  "Présent":["je veux","tu veux","il / elle veut","nous voulons","vous voulez","ils / elles veulent"],
+  "Passé composé":["j’ai voulu","tu as voulu","il / elle a voulu","nous avons voulu","vous avez voulu","ils / elles ont voulu"],
+  "Imparfait":["je voulais","tu voulais","il / elle voulait","nous voulions","vous vouliez","ils / elles voulaient"],
+  "Plus-que-parfait":["j’avais voulu","tu avais voulu","il / elle avait voulu","nous avions voulu","vous aviez voulu","ils / elles avaient voulu"],
+  "Passé simple":["je voulus","tu voulus","il / elle voulut","nous voulûmes","vous voulûtes","ils / elles voulurent"],
+  "Passé antérieur":["j’eus voulu","tu eus voulu","il / elle eut voulu","nous eûmes voulu","vous eûtes voulu","ils / elles eurent voulu"],
+  "Futur simple":["je voudrai","tu voudras","il / elle voudra","nous voudrons","vous voudrez","ils / elles voudront"],
+  "Futur antérieur":["j’aurai voulu","tu auras voulu","il / elle aura voulu","nous aurons voulu","vous aurez voulu","ils / elles auront voulu"],
+  "Conditionnel présent":["je voudrais","tu voudrais","il / elle voudrait","nous voudrions","vous voudriez","ils / elles voudraient"],
+  "Conditionnel passé":["j’aurais voulu","tu aurais voulu","il / elle aurait voulu","nous aurions voulu","vous auriez voulu","ils / elles auraient voulu"],
+  "Subjonctif présent":["que je veuille","que tu veuilles","qu’il / elle veuille","que nous voulions","que vous vouliez","qu’ils / elles veuillent"],
+  "Subjonctif passé":["que j’aie voulu","que tu aies voulu","qu’il / elle ait voulu","que nous ayons voulu","que vous ayez voulu","qu’ils / elles aient voulu"],
+  "Subjonctif imparfait":["que je voulusse","que tu voulusses","qu’il / elle voulût","que nous voulussions","que vous voulussiez","qu’ils / elles voulussent"],
+  "Subjonctif plus-que-parfait":["que j’eusse voulu","que tu eusses voulu","qu’il / elle eût voulu","que nous eussions voulu","que vous eussiez voulu","qu’ils / elles eussent voulu"],
+  "Impératif présent":["veuille / veux","veuillons / voulons","veuillez / voulez"],
+  "Impératif passé":["aie voulu","ayons voulu","ayez voulu"],
+  "Infinitif présent":["vouloir"],
+  "Infinitif passé":["avoir voulu"],
+  "Participe présent":["voulant"],
+  "Participe passé":["voulu","voulue","voulus","voulues","ayant voulu"],
+  "Gérondif présent":["en voulant"],
+  "Gérondif passé":["en ayant voulu"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -717,8 +741,32 @@ const POUVOIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم pouvant، ويعبّر عن وسيلة أو شرط قائم، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant pu، ويدل على قدرة تحققت قبل الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const VOULOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن الإرادة أو الرغبة أو النية في الحاضر، وقد يدل مع النفي على الرفض.",
+ "Passé composé":"يعبّر عن رغبة أو محاولة أو قرار وقع واكتمل في الماضي، ويتكوّن من avoir في الحاضر ثم voulu.",
+ "Imparfait":"يصف رغبة مستمرة أو نية أو طلبًا مهذبًا في الماضي، ويستعمل أيضًا في عبارة je voulais لتلطيف الكلام.",
+ "Plus-que-parfait":"يعبّر عن رغبة أو محاولة كانت قد سبقت حدثًا ماضيًا آخر، ويتكوّن من avoir في الماضي الناقص ثم voulu.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن إرادة أو قرار ظهر في حدث ماضٍ مكتمل.",
+ "Passé antérieur":"زمن أدبي يعبّر عن إرادة أو قرار تحقق قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم voulu.",
+ "Futur simple":"يعبّر عن إرادة أو قبول أو رفض في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم voudr-.",
+ "Futur antérieur":"يعبّر عن رغبة أو نية ستكون قد ظهرت أو تحققت قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"تُستعمل صيغة je voudrais وما شابهها للتعبير عن رغبة أو طلب مهذب، وقد تدل على إرادة مرتبطة بشرط.",
+ "Conditionnel passé":"يعبّر عن رغبة أو محاولة لم تتحقق في الماضي، أو عن إرادة كانت ستظهر لو تحقق شرط.",
+ "Subjonctif présent":"يُستعمل بعد تركيب يقتضي الـ Subjonctif للتعبير عن إرادة أو رغبة أو رفض حاضر أو مستقبل.",
+ "Subjonctif passé":"يعبّر عن رغبة أو إرادة ماضية مكتملة ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويعبّر عن إرادة مرتبطة بفعل رئيسي ماضٍ في نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن رغبة أو إرادة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"للفعل بدائل خاصة في الأمر: veuille أو veux، وveuillons أو voulons، وveuillez أو voulez. وتشيع veuillez في الطلب المهذب، بينما يندر بعض البدائل المثبتة.",
+ "Impératif passé":"صيغة نادرة تطلب أن تكون الإرادة أو المحاولة قد تحققت قبل موعد لاحق، وتتكوّن من avoir في الأمر ثم voulu.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى الإرادة أو الرغبة من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن رغبة أو نية سبقت فعلًا آخر، وتتكوّن من avoir ثم voulu.",
+ "Participe présent":"الصيغة voulant ثابتة، وتعبّر غالبًا عن إرادة أو نية ترافق الفعل الرئيسي.",
+ "Participe passé":"يعرض الجدول صيغ voulu بحسب الجنس والعدد عند وجوب الاتفاق، ثم ayant voulu للرغبة أو النية السابقة للفعل الرئيسي.",
+ "Gérondif présent":"يتكوّن من en ثم voulant، ويعبّر غالبًا عن النية أو المحاولة المصاحبة للفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant voulu، ويدل على رغبة أو محاولة سبقت الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1805,10 +1853,15 @@ const USAGES:Record<string,Usage[]>={
  {fr:"n’en pouvoir plus",ar:"بلوغ حد الإرهاق أو عدم الاحتمال",example:"Après douze heures de marche, les voyageurs n’en peuvent plus.",translation:"بعد اثنتي عشرة ساعة من السير، أنهك التعب المسافرين."}
  ],
 "vouloir":[
- {fr:"vouloir + nom",ar:"يريد شيئًا",example:"Je veux un billet aller-retour.",translation:"أنا أريد تذكرة ذهاب وعودة."},
- {fr:"vouloir + infinitif",ar:"يريد القيام بفعل",example:"Ils veulent apprendre le français.",translation:"هم يريدون تعلم الفرنسية."},
- {fr:"je voudrais",ar:"طلب مهذب",example:"Je voudrais une chambre calme, s’il vous plaît.",translation:"أود غرفة هادئة، من فضلك."}
-],
+ {fr:"vouloir + infinitif",ar:"إرادة القيام بفعل",example:"Nous voulons terminer ce projet avant vendredi.",translation:"نريد إنهاء هذا المشروع قبل يوم الجمعة."},
+ {fr:"vouloir + nom",ar:"الرغبة في شيء",example:"Elle veut un siège près de la fenêtre.",translation:"تريد مقعدًا قرب النافذة."},
+ {fr:"je voudrais…",ar:"صياغة طلب مهذب",example:"Je voudrais réserver une table pour quatre personnes.",translation:"أود حجز طاولة لأربعة أشخاص."},
+ {fr:"vouloir que + subjonctif",ar:"إرادة أن يقوم شخص آخر بفعل",example:"Le directeur veut que vous répondiez avant midi.",translation:"يريد المدير منكم الرد قبل الظهر."},
+ {fr:"vouloir dire",ar:"يعني أو يقصد",example:"Que veut dire cette expression dans ce contexte ?",translation:"ما معنى هذا التعبير في هذا السياق؟"},
+ {fr:"bien vouloir + infinitif",ar:"طلب رسمي مهذب",example:"Veuillez bien vouloir patienter quelques instants.",translation:"نرجو منكم الانتظار بضع لحظات."},
+ {fr:"en vouloir à quelqu’un",ar:"يعاتب شخصًا أو يحمل عليه",example:"Il en veut à son collègue d’avoir caché la vérité.",translation:"هو غاضب من زميله لأنه أخفى الحقيقة."},
+ {fr:"s’en vouloir de",ar:"يلوم نفسه على فعل",example:"Elle s’en veut d’avoir oublié ce rendez-vous.",translation:"تلوم نفسها لأنها نسيت هذا الموعد."}
+ ],
 "savoir":[
  {fr:"savoir + infinitif",ar:"يعرف كيفية القيام بشيء",example:"Elle sait conduire une voiture manuelle.",translation:"هي تعرف كيفية قيادة سيارة ذات ناقل يدوي."},
  {fr:"savoir que / où / comment",ar:"يعلم معلومة",example:"Nous savons où commence la visite.",translation:"نحن نعلم أين تبدأ الجولة."}
@@ -3354,8 +3407,159 @@ function pouvoirReviewedExample(_form:string,title:string,index:number):[string,
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function vouloirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je veux revoir le contrat avant de le signer.","أريد مراجعة العقد قبل توقيعه."],
+   ["Tu veux changer de train à Lyon.","تريد تبديل القطار في ليون."],
+   ["Elle veut parler au responsable du service.","تريد التحدث إلى مسؤول القسم."],
+   ["Nous voulons mieux organiser notre temps.","نريد تنظيم وقتنا بصورة أفضل."],
+   ["Vous voulez recevoir la confirmation par courriel.","تريدون استلام التأكيد عبر البريد الإلكتروني."],
+   ["Ils veulent ouvrir une bibliothèque dans leur quartier.","يريدون افتتاح مكتبة في حيهم."]
+  ],
+  "Passé composé":[
+   ["J’ai voulu comprendre la cause de cette panne.","حاولت فهم سبب هذا العطل."],
+   ["Tu as voulu prévenir tout le monde immédiatement.","أردت إبلاغ الجميع فورًا."],
+   ["Il a voulu régler le problème sans assistance.","حاول حل المشكلة من دون مساعدة."],
+   ["Nous avons voulu remercier chaque bénévole personnellement.","أردنا شكر كل متطوع شخصيًا."],
+   ["Vous avez voulu modifier votre réservation hier.","أردتم تعديل حجزكم أمس."],
+   ["Elles ont voulu participer à la dernière réunion.","أردن المشاركة في الاجتماع الأخير."]
+  ],
+  "Imparfait":[
+   ["Je voulais devenir architecte quand j’étais enfant.","كنت أريد أن أصبح مهندسًا معماريًا عندما كنت طفلًا."],
+   ["Tu voulais toujours t’asseoir près de la fenêtre.","كنت تفضل دائمًا الجلوس قرب النافذة."],
+   ["Elle voulait apprendre à conduire avant l’été.","كانت تريد تعلم القيادة قبل الصيف."],
+   ["Nous voulions visiter le château depuis longtemps.","كنا نرغب في زيارة القلعة منذ مدة طويلة."],
+   ["Vous vouliez me poser une question au début du cours.","كنتم تريدون سؤالي عن أمر في بداية الدرس."],
+   ["Ils voulaient rester discrets pendant l’enquête.","كانوا يريدون عدم لفت الأنظار أثناء التحقيق."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais voulu réserver plus tôt, mais le site était indisponible.","كنت قد حاولت الحجز مبكرًا، لكن الموقع لم يكن متاحًا."],
+   ["Tu avais voulu garder cette nouvelle secrète.","كنت قد أردت إبقاء هذا الخبر سرًا."],
+   ["Il avait voulu rejoindre l’équipe avant le début du projet.","كان قد أراد الانضمام إلى الفريق قبل بدء المشروع."],
+   ["Nous avions voulu éviter tout retard supplémentaire.","كنا قد حرصنا على تجنب أي تأخير إضافي."],
+   ["Vous aviez voulu consulter un autre spécialiste.","كنتم قد رغبتم في استشارة اختصاصي آخر."],
+   ["Elles avaient voulu présenter leurs résultats ensemble.","كنّ قد أردن عرض نتائجهن معًا."]
+  ],
+  "Passé simple":[
+   ["Je voulus connaître la vérité avant de prendre une décision.","أردت معرفة الحقيقة قبل اتخاذ قرار."],
+   ["Tu voulus défendre ton ami malgré les accusations.","أردت الدفاع عن صديقك رغم الاتهامات."],
+   ["Elle voulut revoir une dernière fois le jardin familial.","أرادت رؤية حديقة العائلة للمرة الأخيرة."],
+   ["Nous voulûmes poursuivre la route avant la nuit.","أردنا مواصلة الطريق قبل حلول الليل."],
+   ["Vous voulûtes entendre chaque témoin séparément.","أردتم الاستماع إلى كل شاهد على حدة."],
+   ["Ils voulurent reconstruire le pont détruit par la crue.","أرادوا إعادة بناء الجسر الذي دمره الفيضان."]
+  ],
+  "Passé antérieur":[
+   ["Lorsque j’eus voulu m’approcher, le garde m’arrêta.","عندما حاولت الاقتراب، أوقفني الحارس."],
+   ["Dès que tu eus voulu intervenir, le débat changea de ton.","ما إن حاولت التدخل حتى تغيرت لهجة النقاش."],
+   ["Lorsqu’elle eut voulu reprendre la parole, le président leva la séance.","عندما أرادت استئناف الحديث، أنهى الرئيس الجلسة."],
+   ["Après que nous eûmes voulu négocier, nos interlocuteurs refusèrent toute discussion.","بعدما حاولنا التفاوض، رفض الطرف الآخر أي نقاش."],
+   ["Dès que vous eûtes voulu ouvrir l’armoire, l’alarme se déclencha.","ما إن حاولتم فتح الخزانة حتى انطلق جهاز الإنذار."],
+   ["Lorsqu’ils eurent voulu franchir la grille, le gardien les repoussa.","عندما حاولوا عبور البوابة، منعهم الحارس."]
+  ],
+  "Futur simple":[
+   ["Je voudrai probablement relire mes notes ce soir.","سأرغب على الأرجح في مراجعة ملاحظاتي هذا المساء."],
+   ["Tu voudras te reposer après ce long trajet.","سترغب في الراحة بعد هذه الرحلة الطويلة."],
+   ["Elle voudra connaître les conditions avant d’accepter.","سترغب في معرفة الشروط قبل الموافقة."],
+   ["Nous voudrons célébrer cette réussite avec toute l’équipe.","سنرغب في الاحتفال بهذا النجاح مع الفريق كله."],
+   ["Vous voudrez peut-être conserver une copie du reçu.","قد ترغبون في الاحتفاظ بنسخة من الإيصال."],
+   ["Ils voudront vérifier les chiffres avant la publication.","سيريدون التحقق من الأرقام قبل النشر."]
+  ],
+  "Futur antérieur":[
+   ["À la fin de cette mission, j’aurai voulu servir l’intérêt de tous.","عند انتهاء هذه المهمة، سأكون قد سعيت إلى خدمة مصلحة الجميع."],
+   ["D’ici là, tu auras voulu changer plusieurs fois de méthode.","بحلول ذلك الوقت، ستكون قد رغبت في تغيير الطريقة عدة مرات."],
+   ["Il aura voulu protéger sa famille en gardant le silence.","يبدو أنه أراد حماية عائلته بالتزام الصمت."],
+   ["Quand nous ferons le bilan, nous aurons voulu privilégier la qualité à chaque étape.","عندما نراجع النتائج، سنكون قد حرصنا على إعطاء الجودة الأولوية في كل مرحلة."],
+   ["Avant la fin du séjour, vous aurez voulu découvrir chaque quartier historique.","قبل انتهاء الإقامة، ستكونون قد رغبتم في استكشاف كل حي تاريخي."],
+   ["Au terme de leur mandat, elles auront voulu améliorer durablement le service.","عند انتهاء مهمتهن، سيكنّ قد سعين إلى تحسين الخدمة على نحو مستدام."]
+  ],
+  "Conditionnel présent":[
+   ["Je voudrais un renseignement sur les horaires d’ouverture.","أود الاستفسار عن ساعات العمل."],
+   ["Tu voudrais apprendre une troisième langue.","ترغب في تعلم لغة ثالثة."],
+   ["Il voudrait déplacer son rendez-vous à mardi.","يرغب في نقل موعده إلى يوم الثلاثاء."],
+   ["Nous voudrions comparer les deux propositions avant de choisir.","نود مقارنة العرضين قبل الاختيار."],
+   ["Vous voudriez parler au médecin en privé.","ترغبون في التحدث إلى الطبيب على انفراد."],
+   ["Elles voudraient créer un espace réservé aux enfants.","يرغبن في إنشاء مساحة مخصصة للأطفال."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais voulu assister à la conférence, mais j’étais malade.","كنت أود حضور المؤتمر، لكنني كنت مريضًا."],
+   ["Tu aurais voulu recevoir la réponse plus tôt.","كنت تتمنى الحصول على الرد في وقت أبكر."],
+   ["Elle aurait voulu prolonger son séjour de deux jours.","كانت تود تمديد إقامتها يومين."],
+   ["Nous aurions voulu vous accueillir en personne.","كنا نود استقبالكم شخصيًا."],
+   ["Vous auriez voulu éviter cette dépense imprévue.","كنتم تتمنون تجنب هذه النفقة غير المتوقعة."],
+   ["Ils auraient voulu terminer les travaux avant l’hiver.","كانوا يرغبون في إنهاء الأعمال قبل الشتاء."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je veuille réellement changer mes habitudes.","يجب أن تكون لدي رغبة حقيقية في تغيير عاداتي."],
+   ["Je doute que tu veuilles abandonner si rapidement.","أستبعد أن تكون راغبًا في الاستسلام بهذه السرعة."],
+   ["Le médecin attend qu’elle veuille reprendre progressivement ses activités.","ينتظر الطبيب أن ترغب في استئناف أنشطتها تدريجيًا."],
+   ["Le projet n’avancera pas sans que nous voulions coopérer.","لن يتقدم المشروع ما لم تكن لدينا رغبة في التعاون."],
+   ["Il suffit que vous vouliez essayer une seule fois.","يكفي أن ترغبوا في المحاولة مرة واحدة."],
+   ["Ils progresseront pourvu qu’ils veuillent apprendre de leurs erreurs.","سيتقدمون ما دامت لديهم رغبة في التعلم من أخطائهم."]
+  ],
+  "Subjonctif passé":[
+   ["Il est regrettable que j’aie voulu tout décider seul.","من المؤسف أنني أردت اتخاذ جميع القرارات بمفردي."],
+   ["Je suis surpris que tu aies voulu quitter ce poste.","تفاجأت برغبتك في ترك هذا المنصب."],
+   ["Sa famille comprend qu’il ait voulu recommencer ailleurs.","تتفهم عائلته رغبته في البدء من جديد في مكان آخر."],
+   ["Le directeur apprécie que nous ayons voulu proposer une solution concrète.","يقدّر المدير حرصنا على تقديم حل عملي."],
+   ["Il est dommage que vous ayez voulu partir avant la cérémonie.","من المؤسف أنكم أردتم المغادرة قبل الحفل."],
+   ["Je ne crois pas qu’elles aient voulu vous offenser.","لا أعتقد أنهن تعمدن الإساءة إليكم."]
+  ],
+  "Subjonctif imparfait":[
+   ["Il fallait que je voulusse apprendre par moi-même.","كان لا بد أن أرغب في التعلم بنفسي."],
+   ["Elle doutait que tu voulusses réellement reprendre les négociations.","كانت تشك في رغبتك الحقيقية في استئناف المفاوضات."],
+   ["Le roi exigeait qu’il voulût défendre la cité.","كان الملك يشترط أن تكون لديه إرادة للدفاع عن المدينة."],
+   ["Notre réussite exigeait que nous voulussions agir ensemble.","كان نجاحنا يتطلب أن نرغب في العمل معًا."],
+   ["Le maître souhaitait que vous voulussiez comprendre la portée de ce geste.","كان المعلم يتمنى أن ترغبوا في فهم مغزى هذه اللفتة."],
+   ["Il était peu probable qu’ils voulussent renoncer à leurs droits.","كان من المستبعد أن يرغبوا في التنازل عن حقوقهم."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Elle regrettait que j’eusse voulu cacher cette difficulté.","كانت تأسف لأنني أردت إخفاء هذه الصعوبة."],
+   ["Le juge doutait que tu eusses voulu tromper les enquêteurs.","شك القاضي في أنك تعمدت تضليل المحققين."],
+   ["Personne ne croyait qu’il eût voulu provoquer cet incident.","لم يصدق أحد أنه تعمد إثارة هذه الحادثة."],
+   ["Le responsable appréciait que nous eussions voulu corriger l’erreur sans délai.","كان المسؤول يقدّر رغبتنا في تصحيح الخطأ فورًا."],
+   ["Il était regrettable que vous eussiez voulu interrompre la discussion.","كان من المؤسف أنكم أردتم قطع النقاش."],
+   ["Le témoin niait qu’elles eussent voulu dissimuler le document.","كان الشاهد ينفي أنهن تعمدن إخفاء الوثيقة."]
+  ],
+  "Impératif présent":[
+   ["Veuille me transmettre l’adresse avant ton départ.","تفضل بإرسال العنوان إليّ قبل مغادرتك."],
+   ["Veuillons croire encore à une issue favorable.","فلنتمسك بالأمل في نتيجة إيجابية."],
+   ["Veuillez présenter votre convocation à l’accueil.","يرجى إبراز استدعائكم عند الاستقبال."]
+  ],
+  "Impératif passé":[
+   ["Avant de juger, aie voulu comprendre les faits dans leur ensemble.","قبل إصدار حكمك، احرص على أن تكون قد حاولت فهم الوقائع كاملة."],
+   ["Avant de rompre les discussions, ayons voulu chercher un compromis.","قبل إنهاء المباحثات، لنتأكد من أننا حاولنا التوصل إلى حل وسط."],
+   ["Avant de rendre votre décision, ayez voulu examiner chaque option.","قبل إصدار قراركم، احرصوا على أن تكونوا قد درستم كل خيار."]
+  ],
+  "Infinitif présent":[
+   ["Vouloir progresser est déjà un premier pas.","الرغبة في التقدم هي الخطوة الأولى."]
+  ],
+  "Infinitif passé":[
+   ["Il regrette d’avoir voulu tout contrôler lui-même.","يندم لأنه أراد التحكم في كل شيء بنفسه."]
+  ],
+  "Participe présent":[
+   ["Voulant rassurer les voyageurs, l’agent a expliqué la situation calmement.","رغبةً منه في طمأنة المسافرين، شرح الموظف الموقف بهدوء."]
+  ],
+  "Participe passé":[
+   ["Le résultat voulu exige encore quelques ajustements.","تتطلب النتيجة المنشودة بعض التعديلات الإضافية."],
+   ["La solution voulue par l’équipe respecte toutes les contraintes.","الحل الذي اختاره الفريق يراعي جميع القيود."],
+   ["Les effets voulus apparaîtront après plusieurs semaines.","ستظهر النتائج المرجوة بعد عدة أسابيع."],
+   ["Les modifications voulues figurent désormais dans le contrat.","أُدرجت التعديلات المطلوبة الآن في العقد."],
+   ["Ayant voulu vérifier chaque détail, elle a retardé son départ.","لأنها أرادت التحقق من كل تفصيل، أخرت مغادرتها."]
+  ],
+  "Gérondif présent":[
+   ["En voulant aller trop vite, il a oublié une étape essentielle.","بسبب استعجاله، نسي خطوة أساسية."]
+  ],
+  "Gérondif passé":[
+   ["En ayant voulu aider sans demander conseil, elle a compliqué la situation.","لأنها حاولت المساعدة من دون طلب المشورة، زادت الموقف تعقيدًا."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -3379,7 +3583,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -3390,7 +3594,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

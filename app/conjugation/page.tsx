@@ -43,7 +43,7 @@ function LearningTips(){
 const VERBS=['être', 'avoir', 'aller', 'faire', 'pouvoir', 'vouloir', 'devoir', 'savoir', 'venir', 'voir', 'dire', 'prendre', 'mettre', 'partir', 'sortir', 'dormir', 'lire', 'écrire', 'boire', 'croire', 'recevoir', 'vivre', 'connaître', 'naître', 'mourir', 'courir', 'tenir', 'ouvrir', 'offrir', 'attendre', 'entendre', 'répondre', 'vendre', 'perdre', 'rendre', 'descendre', 'apprendre', 'comprendre', 'surprendre', 'parler', 'aimer', 'donner', 'travailler', 'chercher', 'trouver', 'penser', 'demander', 'regarder', 'écouter', 'jouer', 'arriver', 'rester', 'entrer', 'porter', 'monter', 'passer', 'marcher', 'habiter', 'étudier', 'manger', 'commencer', 'acheter', 'appeler', 'préférer', 'espérer', 'envoyer', 'payer', 'essayer', 'nettoyer', 'employer', 'finir', 'choisir', 'réussir', 'grandir', 'grossir', 'maigrir', 'réfléchir', 'remplir', 'obéir', 'punir', 'bâtir', 'rougir', 'blanchir', 'agir', 'servir', 'sentir', 'mentir', 'couvrir', 'découvrir', 'souffrir', 'cueillir', 'accueillir', 'conduire', 'produire', 'traduire', 'construire', 'détruire', 'cuire', 'suivre', 'poursuivre', 'rire', 'sourire', 'plaire', 'taire', 'décrire', 'inscrire', 'reconnaître', 'paraître', 'apparaître', 'disparaître', 'valoir', 'falloir', 'pleuvoir', 'asseoir', 'fuir', 'conclure', 'inclure', 'exclure', 'résoudre', 'craindre', 'peindre', 'joindre', 'atteindre', 'éteindre', 'vaincre', 'convaincre', 'battre', 'rompre', 'interrompre', 'promettre', 'permettre', 'admettre', 'remettre', 'commettre', 'transmettre', 'reprendre', 'entreprendre', 'devenir', 'revenir', 'parvenir', 'prévenir', 'intervenir', 'obtenir', 'retenir', 'maintenir', 'parcourir', 'secourir', 'se lever', 'se laver', 'se coucher', 'se réveiller', "s’habiller", "se déshabiller", 'se préparer', 'se présenter', 'se reposer', 'se promener', 'se dépêcher', 'se marier', 'se souvenir', "s’appeler", "s’intéresser", "s’inquiéter", 'se sentir', 'se tromper', 'se perdre', 'se rencontrer', 'se parler', 'se voir', 'se comprendre', 'se demander', 'se servir', 'se rendre', 'se mettre', "s’arrêter", "s’amuser", 'se concentrer', "se rappeler", "se décider", "se déplacer", "se retourner", "se joindre", "se plaindre", "se taire", "s’asseoir", "s’endormir", "s’occuper", "se débrouiller", "se battre", "se moquer", "se méfier", "s’excuser", "s’habituer", "s’évanouir", "s’épanouir", "se comporter", "se calmer", "se fâcher", "se réjouir", "se divertir", "se détendre", "se passer", "se dérouler", "se produire", "se trouver", "se renseigner", "s’inscrire", "se connecter", "se déconnecter", "se diriger", "s’approcher", "s’éloigner", "se cacher", "se disputer", "s’entendre", "s’adapter", "s’améliorer", "s’organiser", "s’installer", "se protéger", "se débarrasser", "se réunir", "s’imaginer", "se comparer", "se consacrer", "s’exprimer", "se développer", "se réaliser", "se manifester", "se transformer", "se renforcer", "se limiter", "se maintenir", "se permettre", "se convaincre", "s’engager", "se fier", "s’opposer", "se distinguer", "se soucier", "se familiariser", "se satisfaire", "se précipiter", "se méprendre", "se conformer", "s’entraîner", "s’échapper", "se rapprocher", "se détacher", "se renouveler", "s’affirmer", "s’enrichir", "s’accomplir", "se nourrir", "se remettre", "questionner", "quérir", "quereller", "se quereller", "quêter", "quémander", "quantifier", "quittancer", "quadrupler", "quadriller", "queuter", "quarter", "quintupler", "quitter", "se quitter", "qualifier", "se qualifier", "sous-payer", "sous-utiliser", "sous-employer", "sous-alimenter", "se sous-alimenter", "sous-entendre", "sous-tendre", "sous-estimer", "sous-traiter", "sous-louer", "sous-titrer", "sous-investir", "se sous-investir", "sous-évaluer", "sous-exploiter", "répugner", "repeigner", "se repeigner", "exiger", "exister", "coexister", "explorer", "exploiter", "s’exclamer", "accepter", "accompagner", "annoncer", "ajouter", "aider", "apporter", "assurer", "augmenter", "avancer", "éviter", "expliquer", "gagner", "garder", "imaginer", "inviter", "laisser", "lancer", "manquer", "montrer", "oublier", "organiser", "préparer", "proposer", "protéger", "raconter", "refuser", "rencontrer", "représenter", "réserver", "retourner", "terminer", "toucher", "utiliser", "vérifier", "visiter", "abandonner", "absorber", "accélérer", "accorder", "accumuler", "administrer", "admirer", "adopter", "affronter", "analyser", "appliquer", "apprécier", "approuver", "arranger", "autoriser"];
 const AR:Record<string,string>={
   "être": "يكون",
-  "avoir": "يملك",
+  "avoir": "يملك / لديه",
   "aller": "يذهب",
   "faire": "يفعل",
   "pouvoir": "يستطيع",
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":b==="avoir"?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -527,6 +527,58 @@ const ETRE_SUBJONCTIF_IMPARFAIT=["fusse","fusses","fût","fussions","fussiez","f
 const ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT=["que j’eusse été","que tu eusses été","qu’il / elle eût été","que nous eussions été","que vous eussiez été","qu’ils / elles eussent été"];
 const ETRE_IMPERATIF_PRESENT=["sois","soyons","soyez"];
 const ETRE_IMPERATIF_PASSE=["aie été","ayons été","ayez été"];
+const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
+ "avoir":{
+  "Présent":["j’ai","tu as","il / elle a","nous avons","vous avez","ils / elles ont"],
+  "Passé composé":["j’ai eu","tu as eu","il / elle a eu","nous avons eu","vous avez eu","ils / elles ont eu"],
+  "Imparfait":["j’avais","tu avais","il / elle avait","nous avions","vous aviez","ils / elles avaient"],
+  "Plus-que-parfait":["j’avais eu","tu avais eu","il / elle avait eu","nous avions eu","vous aviez eu","ils / elles avaient eu"],
+  "Passé simple":["j’eus","tu eus","il / elle eut","nous eûmes","vous eûtes","ils / elles eurent"],
+  "Passé antérieur":["j’eus eu","tu eus eu","il / elle eut eu","nous eûmes eu","vous eûtes eu","ils / elles eurent eu"],
+  "Futur simple":["j’aurai","tu auras","il / elle aura","nous aurons","vous aurez","ils / elles auront"],
+  "Futur antérieur":["j’aurai eu","tu auras eu","il / elle aura eu","nous aurons eu","vous aurez eu","ils / elles auront eu"],
+  "Conditionnel présent":["j’aurais","tu aurais","il / elle aurait","nous aurions","vous auriez","ils / elles auraient"],
+  "Conditionnel passé":["j’aurais eu","tu aurais eu","il / elle aurait eu","nous aurions eu","vous auriez eu","ils / elles auraient eu"],
+  "Subjonctif présent":["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"],
+  "Subjonctif passé":["que j’aie eu","que tu aies eu","qu’il / elle ait eu","que nous ayons eu","que vous ayez eu","qu’ils / elles aient eu"],
+  "Subjonctif imparfait":["que j’eusse","que tu eusses","qu’il / elle eût","que nous eussions","que vous eussiez","qu’ils / elles eussent"],
+  "Subjonctif plus-que-parfait":["que j’eusse eu","que tu eusses eu","qu’il / elle eût eu","que nous eussions eu","que vous eussiez eu","qu’ils / elles eussent eu"],
+  "Impératif présent":["aie","ayons","ayez"],
+  "Impératif passé":["aie eu","ayons eu","ayez eu"],
+  "Infinitif présent":["avoir"],
+  "Infinitif passé":["avoir eu"],
+  "Participe présent":["ayant"],
+  "Participe passé":["eu","eue","eus","eues","ayant eu"],
+  "Gérondif présent":["en ayant"],
+  "Gérondif passé":["en ayant eu"]
+ }
+};
+const AVOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن الملكية أو الحالة أو الحاجة في الوقت الحاضر، ويُستعمل avoir أيضًا فعلًا مساعدًا في الأزمنة المركبة.",
+ "Passé composé":"يعبّر عن امتلاك أو تجربة أو حالة اكتملت في الماضي، ويتكوّن هنا من avoir في الحاضر ثم eu.",
+ "Imparfait":"يصف ملكية أو حالة أو حاجة مستمرة أو متكررة في الماضي.",
+ "Plus-que-parfait":"يعبّر عن امتلاك أو تجربة اكتملت قبل حدث ماضٍ آخر، ويتكوّن من avoir في الماضي الناقص ثم eu.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن امتلاك أو تجربة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.",
+ "Passé antérieur":"زمن أدبي يعبّر عن امتلاك أو تجربة اكتملت قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم eu.",
+ "Futur simple":"يعبّر عن ملكية أو حالة أو حاجة ستتحقق في المستقبل.",
+ "Futur antérieur":"يعبّر عن امتلاك أو تجربة ستكون قد اكتملت قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"يعبّر عن ملكية أو حاجة محتملة أو مشروطة، ويُستعمل كذلك في الطلب المهذب.",
+ "Conditionnel passé":"يعبّر عن امتلاك أو تجربة لم تتحقق في الماضي أو عن نتيجة مرتبطة بشرط ماضٍ.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن ملكية أو حالة حاضرة أو مستقبلية.",
+ "Subjonctif passé":"يعبّر عن امتلاك أو تجربة ماضية مكتملة ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا بعد فعل رئيسي في الماضي ضمن نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن امتلاك أو تجربة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.",
+ "Impératif passé":"صيغة نادرة تطلب اكتمال امتلاك أو تجربة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم eu.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى avoir من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن امتلاك أو تجربة اكتملت قبل حدث آخر، وتتكوّن من avoir ثم eu.",
+ "Participe présent":"الصيغة ayant ثابتة ولا تتغير بحسب الجنس أو العدد، وتربط امتلاكًا أو حالة بالفعل الرئيسي.",
+ "Participe passé":"الصيغ eu وeue وeus وeues تتبع قواعد اتفاق اسم المفعول، أما ayant eu فهي الصيغة المركبة التي تدل على تجربة اكتملت قبل حدث آخر.",
+ "Gérondif présent":"يتكوّن من en ثم ayant، ويعبّر عن حالة مرافقة توضّح الكيفية أو السبب أو الشرط، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant eu، ويدل على امتلاك أو تجربة مكتملة سبقت الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
+const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1320,6 +1372,16 @@ const BATCH19_FORMS:Record<string,{imparfait:string[],passeSimple:string[],subjo
 };
 
 const USAGES:Record<string,Usage[]>={
+"avoir":[
+ {fr:"avoir quelque chose",ar:"امتلاك شيء",example:"Nous avons une copie du contrat dans nos dossiers.",translation:"لدينا نسخة من العقد في ملفاتنا."},
+ {fr:"avoir besoin de",ar:"الحاجة إلى",example:"J’ai besoin de votre signature avant midi.",translation:"أحتاج إلى توقيعكم قبل الظهر."},
+ {fr:"avoir envie de",ar:"الرغبة في",example:"Ils ont envie de visiter le château demain.",translation:"يرغبون في زيارة القلعة غدًا."},
+ {fr:"avoir peur de",ar:"الخوف من",example:"L’enfant a peur de rester seul dans le noir.",translation:"يخاف الطفل من البقاء وحده في الظلام."},
+ {fr:"avoir faim, soif, chaud ou froid",ar:"التعبير عن الإحساس الجسدي",example:"Après la randonnée, nous avons faim et nous avons soif.",translation:"نشعر بالجوع والعطش بعد رحلة المشي."},
+ {fr:"avoir mal à",ar:"الشعور بالألم في موضع ما",example:"Elle a mal à la tête depuis ce matin.",translation:"تشعر بألم في رأسها منذ هذا الصباح."},
+ {fr:"avoir … ans",ar:"التعبير عن العمر",example:"Mon frère a vingt ans aujourd’hui.",translation:"يبلغ أخي عشرين عامًا اليوم."},
+ {fr:"il y a",ar:"وجود شيء أو وقوعه منذ مدة",example:"Il y a une pharmacie près de la gare.",translation:"توجد صيدلية قرب محطة القطار."}
+],
 "accepter":[{fr:"accepter une proposition",ar:"قبول اقتراح",example:"Le comité accepte la proposition après l’examen du dossier.",translation:"تقبل اللجنة الاقتراح بعد دراسة الملف."},{fr:"accepter de faire quelque chose",ar:"قبول القيام بشيء",example:"Elle accepte de participer à la formation.",translation:"تقبل المشاركة في الدورة التدريبية."}],
 "accompagner":[{fr:"accompagner un voyageur",ar:"مرافقة مسافر",example:"Un agent accompagne le voyageur jusqu’à la porte d’embarquement.",translation:"يرافق موظفٌ المسافر حتى بوابة الصعود."},{fr:"accompagner quelqu’un dans une démarche",ar:"مرافقة شخص في إجراء",example:"Le conseiller accompagne la cliente dans ses démarches administratives.",translation:"يرافق المستشار العميلة في إجراءاتها الإدارية."}],
 "annoncer":[{fr:"annoncer une décision",ar:"إعلان قرار",example:"La direction annonce sa décision pendant la réunion.",translation:"تعلن الإدارة قرارها أثناء الاجتماع."},{fr:"annoncer que",ar:"الإعلان أن",example:"Le médecin annonce que les résultats sont rassurants.",translation:"يعلن الطبيب أن النتائج مطمئنة."}],
@@ -2375,8 +2437,8 @@ const proImperative=(v:string,p:string[])=>isPro(v)?[p[1]+"-toi",p[3]+"-nous",p[
 const proImperativePast=(v:string,pp:string)=>isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(aux(v) as "avoir"|"être").map(x=>x+" "+pp);
 const infinitivePresent=(v:string)=>v;
 const infinitivePast=(v:string,a:string,pp:string)=>isPro(v)?"s’être "+pp:a+" "+pp;
-const participePresentForm=(v:string,b2:any,p:string[])=>v==="être"?"étant":isPro(v)?(b2?.participePresent||"se "+p[3].replace(/ons$/,'ant')):(b2?.participePresent||p[3].replace(/ons$/,'ant'));
-const gerondifPresentForm=(v:string,b2:any,p:string[])=>v==="être"?"en étant":isPro(v)?"en "+(b2?.participePresent||"se "+p[3].replace(/ons$/,'ant')):"en "+(b2?.participePresent||p[3].replace(/ons$/,'ant'));
+const participePresentForm=(v:string,b2:any,p:string[])=>v==="être"?"étant":v==="avoir"?"ayant":isPro(v)?(b2?.participePresent||"se "+p[3].replace(/ons$/,'ant')):(b2?.participePresent||p[3].replace(/ons$/,'ant'));
+const gerondifPresentForm=(v:string,b2:any,p:string[])=>v==="être"?"en étant":v==="avoir"?"en ayant":isPro(v)?"en "+(b2?.participePresent||"se "+p[3].replace(/ons$/,'ant')):"en "+(b2?.participePresent||p[3].replace(/ons$/,'ant'));
 const gerondifPastForm=(v:string,a:string,pp:string)=>isPro(v)?"en s’étant "+pp:"en "+auxPart(a as "avoir"|"être")+" "+pp;
 
 function etreReviewedExample(form:string,title:string,index:number):[string,string]|undefined{
@@ -2537,8 +2599,159 @@ function etreReviewedExample(form:string,title:string,index:number):[string,stri
  return nonFinite[title]?.[Math.min(index,(nonFinite[title]?.length||1)-1)];
 }
 
+function avoirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["J’ai un rendez-vous chez le dentiste à midi.","لدي موعد عند طبيب الأسنان ظهرًا."],
+   ["Tu as beaucoup de courage dans les moments difficiles.","لديك شجاعة كبيرة في الأوقات الصعبة."],
+   ["Il a deux billets pour le concert de samedi.","لديه تذكرتان لحفل يوم السبت."],
+   ["Nous avons besoin de plus de temps pour terminer le rapport.","نحتاج إلى مزيد من الوقت لإنهاء التقرير."],
+   ["Vous avez une excellente connaissance du marché local.","لديكم معرفة ممتازة بالسوق المحلية."],
+   ["Elles ont plusieurs idées pour améliorer le service.","لديهن عدة أفكار لتحسين الخدمة."]
+  ],
+  "Passé composé":[
+   ["J’ai eu une forte fièvre pendant la nuit.","أُصبت بحمى شديدة خلال الليل."],
+   ["Tu as eu raison de vérifier l’adresse avant de partir.","كنت محقًا في التحقق من العنوان قبل المغادرة."],
+   ["Elle a eu la possibilité de présenter son projet au comité.","أُتيحت لها فرصة عرض مشروعها على اللجنة."],
+   ["Nous avons eu du mal à trouver l’entrée principale.","واجهنا صعوبة في العثور على المدخل الرئيسي."],
+   ["Vous avez eu beaucoup de patience avec les enfants.","تحليتم بصبر كبير مع الأطفال."],
+   ["Ils ont eu un retard de vingt minutes à cause du trafic.","تأخروا عشرين دقيقة بسبب الازدحام."]
+  ],
+  "Imparfait":[
+   ["J’avais souvent mal au dos après le travail.","كنت أشعر غالبًا بألم في ظهري بعد العمل."],
+   ["Tu avais toujours une solution à proposer.","كان لديك دائمًا حل تقترحه."],
+   ["Il avait peur de prendre l’avion.","كان يخشى ركوب الطائرة."],
+   ["Nous avions l’habitude de déjeuner ensemble.","اعتدنا تناول الغداء معًا."],
+   ["Vous aviez encore le temps de modifier le dossier.","كان لا يزال لديكم وقت لتعديل الملف."],
+   ["Elles avaient confiance en leur entraîneur.","كنّ يثقن بمدربهن."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais eu un avertissement avant cet incident.","كنت قد تلقيت تحذيرًا قبل هذه الحادثة."],
+   ["Tu avais eu la même idée avant moi.","كانت الفكرة نفسها قد خطرت لك قبلي."],
+   ["Elle avait eu besoin d’aide pour remplir le formulaire.","كانت قد احتاجت إلى مساعدة لملء الاستمارة."],
+   ["Nous avions eu plusieurs réunions avant de prendre une décision.","كنا قد عقدنا عدة اجتماعات قبل اتخاذ القرار."],
+   ["Vous aviez eu accès aux documents avant l’audit.","كان قد أُتيح لكم الاطلاع على المستندات قبل التدقيق."],
+   ["Ils avaient eu l’occasion de visiter le laboratoire.","كانت قد أُتيحت لهم فرصة زيارة المختبر."]
+  ],
+  "Passé simple":[
+   ["J’eus soudain l’impression que quelqu’un me suivait.","انتابني فجأة شعور بأن شخصًا ما يتبعني."],
+   ["Tu eus le courage d’avouer ton erreur.","تحليت بالشجاعة واعترفت بخطئك."],
+   ["Il eut un sourire en découvrant la lettre.","ارتسمت على وجهه ابتسامة عندما وجد الرسالة."],
+   ["Nous eûmes la chance de trouver un refuge avant la nuit.","حالفنا الحظ فعثرنا على مأوى قبل حلول الليل."],
+   ["Vous eûtes raison de refuser cet accord.","كنتم محقين في رفض ذلك الاتفاق."],
+   ["Ils eurent beaucoup de difficultés à traverser la montagne.","واجهوا صعوبات كثيرة في عبور الجبل."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus eu la confirmation, j’envoyai le message.","ما إن تلقيت التأكيد حتى أرسلت الرسالة."],
+   ["Lorsque tu eus eu le temps de relire le contrat, tu le signas.","بعدما أُتيحت لك فرصة مراجعة العقد، وقّعته."],
+   ["Après qu’il eut eu connaissance du danger, il prévint les habitants.","بعدما علم بالخطر، حذّر السكان."],
+   ["Dès que nous eûmes eu les résultats, nous quittâmes le laboratoire.","ما إن حصلنا على النتائج حتى غادرنا المختبر."],
+   ["Lorsque vous eûtes eu l’autorisation, vous ouvrîtes la salle.","بعدما حصلتم على الإذن، فتحتم القاعة."],
+   ["Après qu’ils eurent eu leur entretien, ils reprirent le train.","بعدما أجروا مقابلتهم، استقلوا القطار من جديد."]
+  ],
+  "Futur simple":[
+   ["J’aurai plus de temps la semaine prochaine.","سيكون لدي وقت أطول الأسبوع المقبل."],
+   ["Tu auras bientôt une réponse officielle.","ستتلقى قريبًا ردًا رسميًا."],
+   ["Elle aura vingt ans au mois de juin.","ستبلغ عشرين عامًا في شهر يونيو."],
+   ["Nous aurons besoin de votre aide demain.","سنحتاج إلى مساعدتكم غدًا."],
+   ["Vous aurez accès à la salle après l’inscription.","سيُتاح لكم دخول القاعة بعد التسجيل."],
+   ["Ils auront une réunion avec le directeur lundi.","سيكون لديهم اجتماع مع المدير يوم الاثنين."]
+  ],
+  "Futur antérieur":[
+   ["J’aurai eu le temps de terminer le rapport avant midi.","سأكون قد أنهيت التقرير قبل الظهر."],
+   ["Tu auras eu toutes les informations avant ton départ.","ستكون قد حصلت على جميع المعلومات قبل مغادرتك."],
+   ["Il aura eu plusieurs occasions de répondre avant la réunion.","ستكون قد أُتيحت له عدة فرص للرد قبل الاجتماع."],
+   ["Nous aurons eu suffisamment de pratique avant l’examen.","سنكون قد تدربنا بما يكفي قبل الاختبار."],
+   ["Vous aurez eu confirmation de la réservation d’ici demain.","ستكونون قد تلقيتم تأكيد الحجز بحلول الغد."],
+   ["Elles auront eu le soutien nécessaire pour avancer.","سيكنّ قد تلقين الدعم اللازم للتقدم."]
+  ],
+  "Conditionnel présent":[
+   ["J’aurais besoin d’un renseignement supplémentaire.","أود الحصول على معلومة إضافية."],
+   ["Tu aurais plus de temps en partant plus tôt.","سيكون لديك وقت أطول إن غادرت مبكرًا."],
+   ["Il aurait intérêt à lire toutes les conditions.","من مصلحته أن يقرأ جميع الشروط."],
+   ["Nous aurions une meilleure vue depuis l’étage supérieur.","سيكون لدينا منظر أفضل من الطابق العلوي."],
+   ["Vous auriez la possibilité de changer de date.","سيكون بإمكانكم تغيير الموعد."],
+   ["Elles auraient moins de difficultés avec une formation adaptée.","ستواجهن صعوبات أقل إذا حصلن على تدريب مناسب."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais eu plus de temps sans cette panne.","لكان لدي وقت أطول لولا هذا العطل."],
+   ["Tu aurais eu raison de demander un reçu.","لكنت محقًا لو طلبت إيصالًا."],
+   ["Elle aurait eu une meilleure note en relisant sa réponse.","لحصلت على درجة أفضل لو راجعت إجابتها."],
+   ["Nous aurions eu besoin d’une salle plus grande.","لكنا بحاجة إلى قاعة أكبر."],
+   ["Vous auriez eu accès au dossier avec l’autorisation requise.","لكان قد أُتيح لكم الملف لو حصلتم على الإذن المطلوب."],
+   ["Ils auraient eu moins de retard en prenant le métro.","لتأخروا مدة أقل لو استقلوا المترو."]
+  ],
+  "Subjonctif présent":[
+   ["Le directeur souhaite que j’aie tous les documents avant midi.","يريد المدير أن تكون لدي جميع المستندات قبل الظهر."],
+   ["Il faut que tu aies confiance en toi.","يجب أن تثق بنفسك."],
+   ["Le médecin doute qu’elle ait encore de la fièvre.","يشك الطبيب في أنها ما زالت مصابة بالحمى."],
+   ["Il est important que nous ayons assez de temps pour vérifier les chiffres.","من المهم أن يتوفر لدينا وقت كافٍ لمراجعة الأرقام."],
+   ["Je suis heureux que vous ayez cette occasion.","يسعدني أن هذه الفرصة أُتيحت لكم."],
+   ["Le professeur veut qu’ils aient accès à la bibliothèque.","يريد الأستاذ أن يُتاح لهم دخول المكتبة."]
+  ],
+  "Subjonctif passé":[
+   ["Le responsable doute que j’aie eu le message à temps.","يشك المسؤول في أنني تلقيت الرسالة في الوقت المناسب."],
+   ["Je regrette que tu aies eu autant de difficultés.","يؤسفني أنك واجهت كل هذه الصعوبات."],
+   ["Le médecin est surpris qu’il ait eu si peu de symptômes.","يستغرب الطبيب أن الأعراض التي ظهرت عليه كانت قليلة جدًا."],
+   ["Il est possible que nous ayons eu la mauvaise adresse.","من المحتمل أن العنوان الذي كان لدينا غير صحيح."],
+   ["La direction nie que vous ayez eu accès à ce fichier.","تنفي الإدارة أنكم تمكنتم من الاطلاع على هذا الملف."],
+   ["Le professeur se réjouit qu’elles aient eu de bons résultats.","يسعد الأستاذ بحصولهن على نتائج جيدة."]
+  ],
+  "Subjonctif imparfait":[
+   ["Le directeur voulait que j’eusse davantage de temps pour répondre.","أراد المدير أن يتاح لي وقت أطول للرد."],
+   ["Il aurait fallu que tu eusses plus de patience.","كان ينبغي أن تتحلى بمزيد من الصبر."],
+   ["Le médecin souhaitait qu’il eût un rendez-vous plus tôt.","أراد الطبيب أن يكون موعده أبكر."],
+   ["Le guide désirait que nous eussions une carte plus précise.","أراد المرشد أن تكون لدينا خريطة أدق."],
+   ["Le juge exigeait que vous eussiez toutes les preuves.","طالب القاضي بأن تكون لديكم جميع الأدلة."],
+   ["Le professeur voulait qu’ils eussent accès aux archives.","أراد الأستاذ أن يُتاح لهم الاطلاع على الأرشيف."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Le directeur doutait que j’eusse eu assez de temps pour tout vérifier.","شك المدير في أن الوقت كان قد كفاني لمراجعة كل شيء."],
+   ["Elle regrettait que tu eusses eu tant de difficultés pendant le voyage.","كانت تأسف لأنك واجهت صعوبات كثيرة أثناء الرحلة."],
+   ["Le médecin ignorait qu’il eût eu une réaction au traitement précédent.","لم يكن الطبيب يعلم أنه أُصيب برد فعل تجاه العلاج السابق."],
+   ["Le comité craignait que nous eussions eu de mauvaises informations.","خشيت اللجنة أن نكون قد تلقينا معلومات غير صحيحة."],
+   ["Le juge niait que vous eussiez eu accès aux documents confidentiels.","أنكر القاضي أنكم تمكنتم من الاطلاع على المستندات السرية."],
+   ["Le professeur était heureux qu’ils eussent eu la possibilité de participer.","كان الأستاذ سعيدًا لأن فرصة المشاركة أُتيحت لهم."]
+  ],
+  "Impératif présent":[
+   ["Aie confiance en toi pendant l’entretien.","ثق بنفسك أثناء المقابلة."],
+   ["Ayons le courage de reconnaître notre erreur.","لنتحلَّ بالشجاعة ونعترف بخطئنا."],
+   ["Ayez votre passeport à portée de main.","أبقوا جوازات سفركم في متناول اليد."]
+  ],
+  "Impératif passé":[
+   ["Aie eu le temps de sauvegarder le fichier avant de fermer le programme.","احرص على حفظ الملف قبل إغلاق البرنامج."],
+   ["Ayons eu toutes les informations avant de prendre une décision.","لنتأكد من حصولنا على جميع المعلومات قبل اتخاذ القرار."],
+   ["Ayez eu l’autorisation écrite avant d’ouvrir la salle au public.","احرصوا على الحصول على الإذن الكتابي قبل فتح القاعة للجمهور."]
+  ],
+  "Infinitif présent":[
+   ["Avoir un objectif clair aide à rester motivé.","وجود هدف واضح يساعد على الحفاظ على الحافز."]
+  ],
+  "Infinitif passé":[
+   ["Il est heureux d’avoir eu cette occasion.","يسعده أنه حظي بهذه الفرصة."]
+  ],
+  "Participe présent":[
+   ["Ayant une copie du contrat, le client a pu vérifier chaque clause.","بفضل احتفاظ العميل بنسخة من العقد، تمكن من مراجعة كل بند."]
+  ],
+  "Participe passé":[
+   ["Le soutien qu’il a eu pendant sa formation l’a beaucoup aidé.","ساعده كثيرًا الدعم الذي تلقاه أثناء تدريبه."],
+   ["La chance qu’elle a eue lui a permis de recommencer.","أتاحت لها الفرصة التي حصلت عليها أن تبدأ من جديد."],
+   ["Les conseils qu’ils ont eus leur ont été très utiles.","أفادتهم كثيرًا النصائح التي تلقوها."],
+   ["Les autorisations qu’elles ont eues sont encore valides.","لا تزال التصاريح التي حصلن عليها سارية."],
+   ["Ayant eu confirmation du rendez-vous, il a réservé son billet.","بعد تلقيه تأكيد الموعد، حجز تذكرته."]
+  ],
+  "Gérondif présent":[
+   ["En ayant les documents sous les yeux, vous répondrez plus précisément.","عندما تكون المستندات أمامكم، ستجيبون بدقة أكبر."]
+  ],
+  "Gérondif passé":[
+   ["En ayant eu le temps de se préparer, il a présenté son projet avec assurance.","بعدما أُتيحت له فرصة الاستعداد، عرض مشروعه بثقة."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -2558,29 +2771,29 @@ export default function Page(){
   <section className="conj-heading"><div><span>{(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.group||group(v)}</span><h1 dir="ltr">{v}</h1><h2>{AR[v]||"فعل فرنسي"}</h2><div className="conj-verb-meta" dir="ltr"><b>Groupe : {(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.group||group(v)}</b><b>{(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.regularity||regularity(v)}</b><b>{(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.trait||trait(v)}</b><b>Auxiliaire : {(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.aux||a}</b><b>Participe passé : {(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])?.pp||pp}</b>{(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v])&&<b>Remarque : {(BATCH2_INFO[v]||BATCH3_INFO[v]||BATCH4_INFO[v]||BATCH5_INFO[v]||BATCH6_INFO[v]||BATCH7_INFO[v]||BATCH8_INFO[v]||BATCH9_INFO[v]||BATCH10_INFO[v]||BATCH11_INFO[v]||BATCH12_INFO[v]||BATCH13_INFO[v]||BATCH14_INFO[v]||BATCH15_INFO[v]||BATCH16_INFO[v]||BATCH17_INFO[v]||BATCH18_INFO[v]||BATCH19_INFO[v]||BATCH20_INFO[v]).note}</b>}</div></div><button onClick={()=>speak(v)}><Volume2/></button></section>
   <UsagePanel verb={v}/>
   <section className="conj-content">{tab==='Indicatif'&&<><h2>Indicatif</h2><div className="conj-grid-pro">
-   <Block title="Présent" forms={(v==="falloir"||v==="pleuvoir")?["il "+p[0]]:rows(p,v)} verb={v}/>
-   <Block title="Passé composé" forms={(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v)} verb={v}/>
-   <Block title="Imparfait" forms={(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v)} verb={v}/>
-   <Block title="Plus-que-parfait" forms={(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v)} verb={v}/>
-   {(v==="être"||BATCH_FULL.has(v))?<>
-    <Block title="Passé simple" forms={v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v)} verb={v} description={v==="être"?"زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.":undefined}/>
-    <Block title="Passé antérieur" forms={(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v)} verb={v} description={v==="être"?"زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.":undefined}/>
+   <Block title="Présent" forms={exactForms(v,"Présent",(v==="falloir"||v==="pleuvoir")?["il "+p[0]]:rows(p,v))} verb={v} description={reviewedDescription(v,"Présent")}/>
+   <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
+   <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
+   <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
+   {(v==="être"||v==="avoir"||BATCH_FULL.has(v))?<>
+    <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
+    <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
-   <Block title="Futur simple" forms={(v==="falloir"||v==="pleuvoir")?["il "+fut(v)[2]]:rows(fut(v),v)} verb={v}/>
-   <Block title="Futur antérieur" forms={(v==="falloir"||v==="pleuvoir")?["il aura "+pp]:rows(AF[a].map(x=>x+' '+pp),v)} verb={v}/>
+   <Block title="Futur simple" forms={exactForms(v,"Futur simple",(v==="falloir"||v==="pleuvoir")?["il "+fut(v)[2]]:rows(fut(v),v))} verb={v} description={reviewedDescription(v,"Futur simple")}/>
+   <Block title="Futur antérieur" forms={exactForms(v,"Futur antérieur",(v==="falloir"||v==="pleuvoir")?["il aura "+pp]:rows(AF[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Futur antérieur")}/>
   </div></>}
-  {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Conditionnel présent" forms={(v==="falloir"||v==="pleuvoir")?["il "+cond(v)[2]]:rows(cond(v),v)} verb={v}/><Block title="Conditionnel passé" forms={(v==="falloir"||v==="pleuvoir")?["il aurait "+pp]:rows((a==="avoir"?["aurais","aurais","aurait","aurions","auriez","auraient"]:["serais","serais","serait","serions","seriez","seraient"]).map(x=>x+' '+pp),v)} verb={v}/></div></>}
+  {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Conditionnel présent" forms={exactForms(v,"Conditionnel présent",(v==="falloir"||v==="pleuvoir")?["il "+cond(v)[2]]:rows(cond(v),v))} verb={v} description={reviewedDescription(v,"Conditionnel présent")}/><Block title="Conditionnel passé" forms={exactForms(v,"Conditionnel passé",(v==="falloir"||v==="pleuvoir")?["il aurait "+pp]:rows((a==="avoir"?["aurais","aurais","aurait","aurions","auriez","auraient"]:["serais","serais","serait","serions","seriez","seraient"]).map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Conditionnel passé")}/></div></>}
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
-   <Block title="Subjonctif présent" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x))} verb={v} description={v==="être"?"يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.":undefined}/>
-   <Block title="Subjonctif passé" forms={(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp)} verb={v} description={v==="être"?"يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.":undefined}/>
-   {(v==="être"||BATCH_FULL.has(v))?<>
-    <Block title="Subjonctif imparfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x))} verb={v} description={v==="être"?"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.":undefined}/>
-    <Block title="Subjonctif plus-que-parfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp))} verb={v} description={v==="être"?"زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.":undefined}/>
+   <Block title="Subjonctif présent" forms={v==="avoir"?REVIEWED_FORMS.avoir["Subjonctif présent"]:(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
+   <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
+   {(v==="être"||v==="avoir"||BATCH_FULL.has(v))?<>
+    <Block title="Subjonctif imparfait" forms={v==="avoir"?REVIEWED_FORMS.avoir["Subjonctif imparfait"]:(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
+    <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
   </div></>}
-  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p)} verb={v} description={v==="être"?"صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.":undefined}/><Block title="Impératif passé" forms={v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp))} verb={v} description={v==="être"?"صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.":undefined}/></>}</div></>}
-  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={[infinitivePresent(v)]} verb={v} description={v==="être"?"صيغة غير شخصية تعبّر عن الحالة من دون ارتباط بفاعل أو زمن محدد، ويحدّد السياق زمنها ووظيفتها.":undefined}/><Block title="Infinitif passé" forms={[infinitivePast(v,a,pp)]} verb={v} description={v==="être"?"صيغة مركبة تعبّر عن حالة اكتملت قبل حدث آخر، وتتكوّن من avoir في المصدر ثم été.":undefined}/></div></>}
-  {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={[participePresentForm(v,b2,p)]} verb={v} description={v==="être"?"صيغة غير شخصية ثابتة تعبّر عن حالة مرافقة للفعل الرئيسي، ولا تتغير بحسب الجنس أو العدد.":undefined}/>}<Block title="Participe passé" forms={[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp]} verb={v} description={v==="être"?"يعرض الجدول été بوصفها الصيغة البسيطة، وayant été بوصفها الصيغة المركبة التي تدل على حالة اكتملت قبل حالة أو حدث آخر.":undefined}/></div></>}
-  {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de gérondif présent."/>:<Block title="Gérondif présent" forms={[gerondifPresentForm(v,b2,p)]} verb={v} description={v==="être"?"يتكوّن من en ثم étant، ويعبّر عن حالة مرافقة توضّح الكيفية أو السبب أو الشرط. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.":undefined}/>}<Block title="Gérondif passé" forms={[gerondifPastForm(v,a,pp)]} verb={v} description={v==="être"?"يتكوّن من en ثم ayant été، ويدل على حالة مكتملة سبقت الفعل الرئيسي. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.":undefined}/></div></>}</section>
+  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={exactForms(v,"Impératif présent",v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p))} verb={v} description={reviewedDescription(v,"Impératif présent","صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.")}/><Block title="Impératif passé" forms={exactForms(v,"Impératif passé",v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp)))} verb={v} description={reviewedDescription(v,"Impératif passé","صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.")}/></>}</div></>}
+  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={exactForms(v,"Infinitif présent",[infinitivePresent(v)])} verb={v} description={reviewedDescription(v,"Infinitif présent","صيغة غير شخصية تعبّر عن الحالة من دون ارتباط بفاعل أو زمن محدد، ويحدّد السياق زمنها ووظيفتها.")}/><Block title="Infinitif passé" forms={exactForms(v,"Infinitif passé",[infinitivePast(v,a,pp)])} verb={v} description={reviewedDescription(v,"Infinitif passé","صيغة مركبة تعبّر عن حالة اكتملت قبل حدث آخر، وتتكوّن من avoir في المصدر ثم été.")}/></div></>}
+  {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={exactForms(v,"Participe présent",[participePresentForm(v,b2,p)])} verb={v} description={reviewedDescription(v,"Participe présent","صيغة غير شخصية ثابتة تعبّر عن حالة مرافقة للفعل الرئيسي، ولا تتغير بحسب الجنس أو العدد.")}/>}<Block title="Participe passé" forms={exactForms(v,"Participe passé",[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp])} verb={v} description={reviewedDescription(v,"Participe passé","يعرض الجدول été بوصفها الصيغة البسيطة، وayant été بوصفها الصيغة المركبة التي تدل على حالة اكتملت قبل حالة أو حدث آخر.")}/></div></>}
+  {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de gérondif présent."/>:<Block title="Gérondif présent" forms={exactForms(v,"Gérondif présent",[gerondifPresentForm(v,b2,p)])} verb={v} description={reviewedDescription(v,"Gérondif présent","يتكوّن من en ثم étant، ويعبّر عن حالة مرافقة توضّح الكيفية أو السبب أو الشرط. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.")}/>}<Block title="Gérondif passé" forms={exactForms(v,"Gérondif passé",[gerondifPastForm(v,a,pp)])} verb={v} description={reviewedDescription(v,"Gérondif passé","يتكوّن من en ثم ayant été، ويدل على حالة مكتملة سبقت الفعل الرئيسي. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.")}/></div></>}</section>
  </main>
 }

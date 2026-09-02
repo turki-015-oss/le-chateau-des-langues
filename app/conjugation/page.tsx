@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -575,6 +575,30 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["allé","allée","allés","allées","étant allé","étant allée","étant allés","étant allées"],
   "Gérondif présent":["en allant"],
   "Gérondif passé":["en étant allé","en étant allée","en étant allés","en étant allées"]
+ },
+ "faire":{
+  "Présent":["je fais","tu fais","il / elle fait","nous faisons","vous faites","ils / elles font"],
+  "Passé composé":["j’ai fait","tu as fait","il / elle a fait","nous avons fait","vous avez fait","ils / elles ont fait"],
+  "Imparfait":["je faisais","tu faisais","il / elle faisait","nous faisions","vous faisiez","ils / elles faisaient"],
+  "Plus-que-parfait":["j’avais fait","tu avais fait","il / elle avait fait","nous avions fait","vous aviez fait","ils / elles avaient fait"],
+  "Passé simple":["je fis","tu fis","il / elle fit","nous fîmes","vous fîtes","ils / elles firent"],
+  "Passé antérieur":["j’eus fait","tu eus fait","il / elle eut fait","nous eûmes fait","vous eûtes fait","ils / elles eurent fait"],
+  "Futur simple":["je ferai","tu feras","il / elle fera","nous ferons","vous ferez","ils / elles feront"],
+  "Futur antérieur":["j’aurai fait","tu auras fait","il / elle aura fait","nous aurons fait","vous aurez fait","ils / elles auront fait"],
+  "Conditionnel présent":["je ferais","tu ferais","il / elle ferait","nous ferions","vous feriez","ils / elles feraient"],
+  "Conditionnel passé":["j’aurais fait","tu aurais fait","il / elle aurait fait","nous aurions fait","vous auriez fait","ils / elles auraient fait"],
+  "Subjonctif présent":["que je fasse","que tu fasses","qu’il / elle fasse","que nous fassions","que vous fassiez","qu’ils / elles fassent"],
+  "Subjonctif passé":["que j’aie fait","que tu aies fait","qu’il / elle ait fait","que nous ayons fait","que vous ayez fait","qu’ils / elles aient fait"],
+  "Subjonctif imparfait":["que je fisse","que tu fisses","qu’il / elle fît","que nous fissions","que vous fissiez","qu’ils / elles fissent"],
+  "Subjonctif plus-que-parfait":["que j’eusse fait","que tu eusses fait","qu’il / elle eût fait","que nous eussions fait","que vous eussiez fait","qu’ils / elles eussent fait"],
+  "Impératif présent":["fais","faisons","faites"],
+  "Impératif passé":["aie fait","ayons fait","ayez fait"],
+  "Infinitif présent":["faire"],
+  "Infinitif passé":["avoir fait"],
+  "Participe présent":["faisant"],
+  "Participe passé":["fait","faite","faits","faites","ayant fait"],
+  "Gérondif présent":["en faisant"],
+  "Gérondif passé":["en ayant fait"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -625,8 +649,32 @@ const ALLER_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم allant، ويعبّر عن حركة مرافقة توضّح الكيفية أو التزامن، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم étant allé، ويدل على انتقال مكتمل سبق الفعل الرئيسي، مع اتفاق allé مع الفاعل."
 };
+const FAIRE_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن إنجاز عمل أو ممارسة نشاط أو وصف الطقس والحالة في الحاضر، وتتغير دلالته بحسب المتمم والسياق.",
+ "Passé composé":"يعبّر عن عمل تمّ واكتمل في الماضي، ويتكوّن من avoir في الحاضر ثم fait.",
+ "Imparfait":"يصف عملًا مستمرًا أو متكررًا أو عادةً في الماضي، وقد يقدّم خلفية لحدث آخر.",
+ "Plus-que-parfait":"يعبّر عن عمل اكتمل قبل حدث ماضٍ آخر، ويتكوّن من avoir في الماضي الناقص ثم fait.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن عمل مكتمل في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.",
+ "Passé antérieur":"زمن أدبي يعبّر عن عمل اكتمل مباشرة قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم fait.",
+ "Futur simple":"يعبّر عن عمل سيُنجز أو نشاط سيحدث في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم fer-.",
+ "Futur antérieur":"يعبّر عن عمل سيكون قد اكتمل قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"يعبّر عن عمل محتمل أو مرتبط بشرط، ويُستعمل كذلك في الاقتراح والطلب المهذب.",
+ "Conditionnel passé":"يعبّر عن عمل كان يمكن أن يقع في الماضي لكنه لم يتحقق، أو عن نتيجة مرتبطة بشرط ماضٍ.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن عمل حاضر أو مستقبل.",
+ "Subjonctif passé":"يعبّر عن عمل ماضٍ مكتمل ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا بعد فعل رئيسي في الماضي ضمن نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن عمل اكتمل قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"صيغة أمر غير منتظمة تُستعمل لطلب إنجاز عمل الآن أو لاحقًا، من دون كتابة ضمير الفاعل.",
+ "Impératif passé":"صيغة نادرة تطلب أن يكون العمل قد اكتمل قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم fait.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى faire من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن عمل اكتمل قبل حدث آخر، وتتكوّن من avoir ثم fait.",
+ "Participe présent":"الصيغة faisant ثابتة، وتعبّر عن عمل متزامن مع الفعل الرئيسي أو توضّح سببه.",
+ "Participe passé":"يعرض الجدول صيغ fait بحسب الجنس والعدد عند وجوب الاتفاق، ثم ayant fait للعمل المكتمل قبل فعل آخر.",
+ "Gérondif présent":"يتكوّن من en ثم faisant، ويعبّر عن الكيفية أو التزامن أو السبب، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant fait، ويدل على عمل مكتمل سبق الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1670,10 +1718,15 @@ const USAGES:Record<string,Usage[]>={
  {fr:"prendre des photos",ar:"يلتقط صورًا",example:"Ils prennent des photos devant le musée.",translation:"هم يلتقطون صورًا أمام المتحف."}
 ],
 "faire":[
- {fr:"faire un travail",ar:"ينجز عملًا",example:"Je fais un rapport pour mon directeur.",translation:"أنا أعد تقريرًا لمديري."},
- {fr:"faire du sport",ar:"يمارس الرياضة",example:"Elle fait du sport après le travail.",translation:"هي تمارس الرياضة بعد العمل."},
- {fr:"faire les courses",ar:"يتسوّق",example:"Nous faisons les courses le vendredi.",translation:"نحن نتسوّق يوم الجمعة."}
-],
+ {fr:"faire quelque chose",ar:"يفعل أو ينجز شيئًا",example:"Je fais les démarches nécessaires aujourd’hui.",translation:"أُنجز الإجراءات اللازمة اليوم."},
+ {fr:"faire une activité",ar:"يمارس نشاطًا",example:"Elle fait de la natation deux fois par semaine.",translation:"تمارس السباحة مرتين في الأسبوع."},
+ {fr:"faire les courses",ar:"يتسوّق",example:"Nous faisons les courses au marché du quartier.",translation:"نتسوّق من سوق الحي."},
+ {fr:"faire + météo",ar:"يصف حالة الطقس",example:"Il fait froid ce matin, mais le ciel est dégagé.",translation:"الجو بارد هذا الصباح، لكن السماء صافية."},
+ {fr:"faire attention à",ar:"ينتبه إلى",example:"Faites attention aux marches à l’entrée.",translation:"انتبهوا إلى الدرج عند المدخل."},
+ {fr:"faire partie de",ar:"يكون جزءًا من",example:"Ce chapitre fait partie du programme final.",translation:"هذا الفصل جزء من المنهج النهائي."},
+ {fr:"faire + infinitif",ar:"يجعل شخصًا يقوم بفعل",example:"La professeure fait lire le dialogue aux étudiants.",translation:"تطلب المعلمة من الطلاب قراءة الحوار."},
+ {fr:"cela fait + durée",ar:"يدل على مدة مستمرة",example:"Cela fait trois mois que j’étudie le français.",translation:"أدرس الفرنسية منذ ثلاثة أشهر."}
+ ],
 "devoir":[
  {fr:"devoir + infinitif",ar:"يجب أن / يتعين عليه",example:"Tu dois répondre avant demain.",translation:"يجب عليك الرد قبل الغد."},
  {fr:"devoir de l’argent",ar:"يكون مدينًا بالمال",example:"Il doit cinquante euros à son ami.",translation:"هو مدين لصديقه بخمسين يورو."},
@@ -2962,8 +3015,159 @@ function allerReviewedExample(_form:string,title:string,index:number):[string,st
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function faireReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je fais mes exercices avant le dîner.","أؤدي تماريني قبل العشاء."],
+   ["Tu fais attention aux détails du contrat.","تنتبه إلى تفاصيل العقد."],
+   ["Elle fait la cuisine pour toute la famille.","تُعدّ الطعام لجميع أفراد الأسرة."],
+   ["Nous faisons une promenade après le déjeuner.","نخرج في نزهة بعد الغداء."],
+   ["Vous faites preuve de patience avec les débutants.","تتعاملون بصبر مع المبتدئين."],
+   ["Ils font partie de la nouvelle équipe.","هم ضمن الفريق الجديد."]
+  ],
+  "Passé composé":[
+   ["J’ai fait une copie du document original.","أعددت نسخة من المستند الأصلي."],
+   ["Tu as fait le plein avant de prendre la route.","ملأت خزان الوقود قبل الانطلاق."],
+   ["Il a fait une erreur dans le dernier calcul.","ارتكب خطأ في العملية الحسابية الأخيرة."],
+   ["Nous avons fait connaissance pendant la conférence.","تعارفنا خلال المؤتمر."],
+   ["Vous avez fait le bon choix pour ce projet.","اتخذتم القرار المناسب لهذا المشروع."],
+   ["Elles ont fait de grands progrès en français.","حققن تقدمًا كبيرًا في اللغة الفرنسية."]
+  ],
+  "Imparfait":[
+   ["Je faisais du vélo chaque matin avant le travail.","كنت أركب الدراجة كل صباح قبل العمل."],
+   ["Tu faisais toujours ton lit en te levant.","كنت ترتب سريرك دائمًا عند الاستيقاظ."],
+   ["Il faisait froid lorsque nous sommes sortis.","كان الجو باردًا عندما خرجنا."],
+   ["Nous faisions une pause vers dix heures.","كنا نأخذ استراحة قرابة الساعة العاشرة."],
+   ["Vous faisiez la navette entre Lyon et Paris.","كنتم تتنقلون بانتظام بين ليون وباريس."],
+   ["Elles faisaient du bénévolat le week-end.","كنّ يشاركن في أعمال تطوعية خلال عطلة نهاية الأسبوع."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais fait une réservation avant de partir.","كنت قد أجريت حجزًا قبل المغادرة."],
+   ["Tu avais fait tes valises la veille du voyage.","كنت قد جهزت حقائبك في اليوم السابق للسفر."],
+   ["Elle avait fait prévenir le responsable immédiatement.","كانت قد طلبت إبلاغ المسؤول فورًا."],
+   ["Nous avions fait le point avant la réunion générale.","كنا قد راجعنا الوضع قبل الاجتماع العام."],
+   ["Vous aviez fait une demande de remboursement.","كنتم قد قدمتم طلبًا لاسترداد المبلغ."],
+   ["Ils avaient fait demi-tour à cause de la neige.","كانوا قد عادوا أدراجهم بسبب الثلوج."]
+  ],
+  "Passé simple":[
+   ["Je fis un pas vers la porte entrouverte.","خطوت خطوة نحو الباب الموارب."],
+   ["Tu fis preuve d’un courage remarquable.","أظهرت شجاعة لافتة."],
+   ["Il fit signe au conducteur de s’arrêter.","أشار إلى السائق أن يتوقف."],
+   ["Nous fîmes silence lorsque le juge entra.","التزمنا الصمت عندما دخل القاضي."],
+   ["Vous fîtes le tour des remparts avant la nuit.","تجولتم حول الأسوار قبل حلول الليل."],
+   ["Elles firent face à la difficulté sans hésiter.","واجهن الصعوبة من دون تردد."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus fait le calcul, je notai le résultat.","ما إن أنهيت الحساب حتى دوّنت النتيجة."],
+   ["Lorsque tu eus fait ton choix, tu signas le formulaire.","بعدما حسمت اختيارك، وقّعت الاستمارة."],
+   ["Aussitôt qu’elle eut fait ses adieux, elle monta dans le train.","حالما ودّعتهم، صعدت إلى القطار."],
+   ["Dès que nous eûmes fait le nécessaire, nous quittâmes les lieux.","ما إن أنجزنا المطلوب حتى غادرنا المكان."],
+   ["Lorsque vous eûtes fait vos observations, la séance reprit.","بعدما أبديتم ملاحظاتكم، استؤنفت الجلسة."],
+   ["Après qu’ils eurent fait halte, ils poursuivirent leur route.","بعدما توقفوا للاستراحة، واصلوا طريقهم."]
+  ],
+  "Futur simple":[
+   ["Je ferai réparer la fenêtre demain matin.","سأطلب إصلاح النافذة صباح الغد."],
+   ["Tu feras connaissance avec tes nouveaux collègues.","ستتعرّف إلى زملائك الجدد."],
+   ["Elle fera le trajet en train cette fois-ci.","ستقطع الرحلة بالقطار هذه المرة."],
+   ["Nous ferons de notre mieux pour respecter le délai.","سنبذل قصارى جهدنا للالتزام بالموعد."],
+   ["Vous ferez appel à un spécialiste si nécessaire.","ستستعينون باختصاصي عند الحاجة."],
+   ["Ils feront construire une école près du village.","سيكلّفون ببناء مدرسة قرب القرية."]
+  ],
+  "Futur antérieur":[
+   ["J’aurai fait le ménage avant le retour des invités.","سأكون قد نظفت المنزل قبل عودة الضيوف."],
+   ["Tu auras fait dix kilomètres avant midi.","ستكون قد قطعت عشرة كيلومترات قبل الظهر."],
+   ["Il aura fait parvenir le dossier avant vendredi.","سيكون قد أوصل الملف قبل يوم الجمعة."],
+   ["Nous aurons fait le bilan à la fin du trimestre.","سنكون قد أعددنا الحصيلة في نهاية الفصل."],
+   ["Vous aurez fait toutes les vérifications avant l’ouverture.","ستكونون قد أتممتم جميع عمليات التحقق قبل الافتتاح."],
+   ["Elles auront fait leurs adieux avant notre arrivée.","سيكنّ قد ودّعن الجميع قبل وصولنا."]
+  ],
+  "Conditionnel présent":[
+   ["Je ferais volontiers une pause après cette réunion.","يسعدني أن آخذ استراحة بعد هذا الاجتماع."],
+   ["Tu ferais mieux de confirmer l’adresse.","من الأفضل أن تتأكد من العنوان."],
+   ["Il ferait chaud dans la salle sans climatisation.","سيكون الجو حارًا في القاعة من دون تكييف."],
+   ["Nous ferions escale à Marseille si le temps le permettait.","سنتوقف في مرسيليا لو سمح الوقت."],
+   ["Vous feriez un excellent guide pour ce musée.","ستكونون مرشدين ممتازين لهذا المتحف."],
+   ["Elles feraient équipe pour terminer plus vite.","سيعملن معًا لإنهاء المهمة بسرعة أكبر."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais fait le déplacement si j’avais reçu l’invitation.","لكنت حضرت بنفسي لو وصلتني الدعوة."],
+   ["Tu aurais fait des économies en réservant plus tôt.","لكنت وفرت المال لو حجزت في وقت أبكر."],
+   ["Elle aurait fait un excellent médecin.","لكانت طبيبة ممتازة."],
+   ["Nous aurions fait le tour du lac sans cette pluie.","لكنا تجولنا حول البحيرة لولا المطر."],
+   ["Vous auriez fait la même remarque à notre place.","لكان تعليقكم مماثلًا لو كنتم مكاننا."],
+   ["Ils auraient fait appel aux secours si le réseau avait fonctionné.","لطلبوا النجدة لو كانت الشبكة تعمل."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je fasse renouveler mon passeport.","يجب أن أطلب تجديد جواز سفري."],
+   ["Je veux que tu fasses attention en traversant.","أريدك أن تنتبه عند عبور الطريق."],
+   ["Le médecin exige qu’il fasse davantage d’exercice.","يطلب الطبيب منه أن يمارس مزيدًا من الرياضة."],
+   ["Il est essentiel que nous fassions preuve de prudence.","من الضروري أن نتحلى بالحذر."],
+   ["Je doute que vous fassiez ce trajet en une heure.","أشك في أنكم ستقطعون هذه المسافة خلال ساعة."],
+   ["La responsable souhaite qu’elles fassent leurs propositions demain.","ترغب المسؤولة في أن يقدمن مقترحاتهن غدًا."]
+  ],
+  "Subjonctif passé":[
+   ["Je suis content que j’aie fait ce voyage.","يسعدني أنني قمت بهذه الرحلة."],
+   ["Elle doute que tu aies fait toutes les vérifications.","تشك في أنك أجريت جميع عمليات التحقق."],
+   ["Nous regrettons qu’il ait fait ce choix trop vite.","نأسف لأنه اتخذ هذا القرار على عجل."],
+   ["Le professeur est satisfait que nous ayons fait l’exercice seuls.","يسر الأستاذ أننا أنجزنا التمرين بمفردنا."],
+   ["Il est possible que vous ayez fait une erreur de numéro.","ربما أخطأتم في الرقم."],
+   ["Je crains qu’ils aient fait fausse route.","أخشى أنهم سلكوا الطريق الخطأ."]
+  ],
+  "Subjonctif imparfait":[
+   ["Le chef exigea que je fisse un rapport détaillé.","طلب المدير أن أعد تقريرًا مفصلًا."],
+   ["Elle souhaitait que tu fisses preuve de patience.","كانت ترغب في أن تتحلى بالصبر."],
+   ["Le médecin ordonna qu’il fît une pause immédiate.","أمر الطبيب بأن يأخذ استراحة فورية."],
+   ["Le roi voulut que nous fissions préparer la grande salle.","أراد الملك أن نطلب تجهيز القاعة الكبرى."],
+   ["Il fallait que vous fissiez connaître votre décision.","كان لا بد أن تبلغوا قراركم."],
+   ["Le directeur redoutait qu’ils fissent échouer le projet.","كان المدير يخشى أن يتسببوا في فشل المشروع."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Le juge doutait que j’eusse fait cette déclaration librement.","شك القاضي في أنني أدليت بهذا التصريح بإرادتي."],
+   ["Elle regrettait que tu eusses fait le voyage seul.","كانت تأسف لأنك قمت بالرحلة وحدك."],
+   ["On ignorait qu’il eût fait modifier le contrat.","لم يكن أحد يعلم أنه طلب تعديل العقد."],
+   ["Le responsable souhaitait que nous eussions fait le nécessaire plus tôt.","كان المسؤول يتمنى لو أننا أنجزنا المطلوب في وقت أبكر."],
+   ["Il était surprenant que vous eussiez fait tant de progrès.","كان من المدهش أنكم أحرزتم كل هذا التقدم."],
+   ["Le témoin niait qu’elles eussent fait disparaître les documents.","كان الشاهد ينفي أنهن أخفين المستندات."]
+  ],
+  "Impératif présent":[
+   ["Fais une copie de cette page.","خذ نسخة من هذه الصفحة."],
+   ["Faisons le point avant de continuer.","لنراجع الوضع قبل أن نواصل."],
+   ["Faites attention à la marche.","انتبهوا إلى الدرجة."]
+  ],
+  "Impératif passé":[
+   ["Aie fait ta demande avant vendredi.","احرص على تقديم طلبك قبل يوم الجمعة."],
+   ["Ayons fait tous les préparatifs avant leur arrivée.","لنحرص على إتمام جميع الاستعدادات قبل وصولهم."],
+   ["Ayez fait vérifier le matériel avant le départ.","احرصوا على فحص المعدات قبل الانطلاق."]
+  ],
+  "Infinitif présent":[
+   ["Faire confiance à ses collègues renforce la coopération.","الثقة بالزملاء تعزز التعاون."]
+  ],
+  "Infinitif passé":[
+   ["Elle regrette d’avoir fait cette remarque devant tout le monde.","تأسف لأنها أدلت بذلك التعليق أمام الجميع."]
+  ],
+  "Participe présent":[
+   ["Faisant preuve de calme, il a rassuré les voyageurs.","بفضل هدوئه، استطاع طمأنة المسافرين."]
+  ],
+  "Participe passé":[
+   ["Le travail, fait avec soin, a été accepté immédiatement.","قُبل العمل فورًا لأنه أُنجز بعناية."],
+   ["La réservation, faite la veille, était toujours valide.","كان الحجز الذي أُجري في اليوم السابق لا يزال ساريًا."],
+   ["Les contrôles faits à l’entrée ont pris quelques minutes.","استغرقت إجراءات التفتيش عند المدخل بضع دقائق."],
+   ["Les copies faites ce matin sont rangées dans ce dossier.","النسخ التي أُعدت هذا الصباح محفوظة في هذا الملف."],
+   ["Ayant fait le plein, nous avons repris la route.","بعدما ملأنا خزان الوقود، واصلنا الطريق."]
+  ],
+  "Gérondif présent":[
+   ["En faisant cet exercice chaque jour, tu progresseras rapidement.","ستتقدم بسرعة إذا مارست هذا التمرين يوميًا."]
+  ],
+  "Gérondif passé":[
+   ["En ayant fait les vérifications à l’avance, elle a évité tout retard.","لأنها أجرت عمليات التحقق مسبقًا، تجنبت أي تأخير."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -2987,7 +3191,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -2998,7 +3202,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

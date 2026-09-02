@@ -551,6 +551,30 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["eu","eue","eus","eues","ayant eu"],
   "Gérondif présent":["en ayant"],
   "Gérondif passé":["en ayant eu"]
+ },
+ "aller":{
+  "Présent":["je vais","tu vas","il / elle va","nous allons","vous allez","ils / elles vont"],
+  "Passé composé":["je suis allé / allée","tu es allé / allée","il est allé / elle est allée","nous sommes allés / allées","vous êtes allés / allées","ils sont allés / elles sont allées"],
+  "Imparfait":["j’allais","tu allais","il / elle allait","nous allions","vous alliez","ils / elles allaient"],
+  "Plus-que-parfait":["j’étais allé / allée","tu étais allé / allée","il était allé / elle était allée","nous étions allés / allées","vous étiez allés / allées","ils étaient allés / elles étaient allées"],
+  "Passé simple":["j’allai","tu allas","il / elle alla","nous allâmes","vous allâtes","ils / elles allèrent"],
+  "Passé antérieur":["je fus allé / allée","tu fus allé / allée","il fut allé / elle fut allée","nous fûmes allés / allées","vous fûtes allés / allées","ils furent allés / elles furent allées"],
+  "Futur simple":["j’irai","tu iras","il / elle ira","nous irons","vous irez","ils / elles iront"],
+  "Futur antérieur":["je serai allé / allée","tu seras allé / allée","il sera allé / elle sera allée","nous serons allés / allées","vous serez allés / allées","ils seront allés / elles seront allées"],
+  "Conditionnel présent":["j’irais","tu irais","il / elle irait","nous irions","vous iriez","ils / elles iraient"],
+  "Conditionnel passé":["je serais allé / allée","tu serais allé / allée","il serait allé / elle serait allée","nous serions allés / allées","vous seriez allés / allées","ils seraient allés / elles seraient allées"],
+  "Subjonctif présent":["que j’aille","que tu ailles","qu’il / elle aille","que nous allions","que vous alliez","qu’ils / elles aillent"],
+  "Subjonctif passé":["que je sois allé / allée","que tu sois allé / allée","qu’il soit allé / qu’elle soit allée","que nous soyons allés / allées","que vous soyez allés / allées","qu’ils soient allés / qu’elles soient allées"],
+  "Subjonctif imparfait":["que j’allasse","que tu allasses","qu’il / elle allât","que nous allassions","que vous allassiez","qu’ils / elles allassent"],
+  "Subjonctif plus-que-parfait":["que je fusse allé / allée","que tu fusses allé / allée","qu’il fût allé / qu’elle fût allée","que nous fussions allés / allées","que vous fussiez allés / allées","qu’ils fussent allés / qu’elles fussent allées"],
+  "Impératif présent":["va","allons","allez"],
+  "Impératif passé":["sois allé / allée","soyons allés / allées","soyez allés / allées"],
+  "Infinitif présent":["aller"],
+  "Infinitif passé":["être allé","être allée","être allés","être allées"],
+  "Participe présent":["allant"],
+  "Participe passé":["allé","allée","allés","allées","étant allé","étant allée","étant allés","étant allées"],
+  "Gérondif présent":["en allant"],
+  "Gérondif passé":["en étant allé","en étant allée","en étant allés","en étant allées"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -577,8 +601,32 @@ const AVOIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم ayant، ويعبّر عن حالة مرافقة توضّح الكيفية أو السبب أو الشرط، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant eu، ويدل على امتلاك أو تجربة مكتملة سبقت الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const ALLER_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن حركة أو انتقال يحدث الآن أو بصورة معتادة، كما يدخل aller في بناء المستقبل القريب متبوعًا بالمصدر.",
+ "Passé composé":"يعبّر عن انتقال تمّ في الماضي، ويتكوّن من être في الحاضر ثم allé، ويتفق اسم المفعول مع الفاعل في الجنس والعدد.",
+ "Imparfait":"يصف انتقالًا مستمرًا أو متكررًا أو خلفيةً زمنية في الماضي.",
+ "Plus-que-parfait":"يعبّر عن انتقال اكتمل قبل حدث ماضٍ آخر، ويتكوّن من être في الماضي الناقص ثم allé المتفق مع الفاعل.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن انتقال مكتمل في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.",
+ "Passé antérieur":"زمن أدبي يعبّر عن انتقال اكتمل قبل حدث آخر في الماضي البسيط، ويتكوّن من être في الماضي البسيط ثم allé المتفق مع الفاعل.",
+ "Futur simple":"يعبّر عن انتقال سيحدث في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم ir-.",
+ "Futur antérieur":"يعبّر عن انتقال سيكون قد اكتمل قبل موعد أو حدث مستقبلي آخر، ويتكوّن من être في المستقبل ثم allé المتفق مع الفاعل.",
+ "Conditionnel présent":"يعبّر عن انتقال محتمل أو مشروط، وقد يُستعمل لتقديم اقتراح أو رغبة بلطف.",
+ "Conditionnel passé":"يعبّر عن انتقال كان يمكن أن يقع في الماضي لكنه لم يتحقق، أو عن نتيجة مرتبطة بشرط ماضٍ.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن انتقال حاضر أو مستقبل.",
+ "Subjonctif passé":"يعبّر عن انتقال ماضٍ مكتمل ضمن تركيب يقتضي استعمال الـ Subjonctif، ويتفق allé مع الفاعل.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا بعد فعل رئيسي في الماضي ضمن نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن انتقال اكتمل قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.",
+ "Impératif passé":"صيغة نادرة تطلب أن يكون الانتقال قد اكتمل قبل موعد أو حدث لاحق، ويتفق allé مع المخاطَب أو المخاطَبين.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى الانتقال من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن انتقال اكتمل قبل حدث آخر، وتتكوّن من être ثم allé مع مراعاة الجنس والعدد.",
+ "Participe présent":"الصيغة allant ثابتة ولا تتغير بحسب الجنس أو العدد، وتعبّر عن حركة مرافقة للفعل الرئيسي.",
+ "Participe passé":"يعرض الجدول صيغ allé الأربع بحسب الجنس والعدد، ثم صيغ participe passé composé المكوّنة من étant وallé.",
+ "Gérondif présent":"يتكوّن من en ثم allant، ويعبّر عن حركة مرافقة توضّح الكيفية أو التزامن، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم étant allé، ويدل على انتقال مكتمل سبق الفعل الرئيسي، مع اتفاق allé مع الفاعل."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1641,9 +1689,13 @@ const USAGES:Record<string,Usage[]>={
  {fr:"être de",ar:"يدل على الأصل",example:"Je suis de Djeddah.",translation:"أنا من جدة."}
 ]
 ,"aller":[
- {fr:"aller à + lieu",ar:"يذهب إلى مكان",example:"Nous allons à l’université en métro.",translation:"نحن نذهب إلى الجامعة بالمترو."},
- {fr:"aller + infinitif",ar:"يدل على المستقبل القريب",example:"Je vais appeler le responsable maintenant.",translation:"سأتصل بالمسؤول الآن."},
- {fr:"aller bien / mal",ar:"يكون حاله جيدًا أو سيئًا",example:"Elle va beaucoup mieux aujourd’hui.",translation:"هي في حال أفضل بكثير اليوم."}
+ {fr:"aller à + lieu",ar:"الذهاب إلى مكان",example:"Nous allons à la bibliothèque après le cours.",translation:"نذهب إلى المكتبة بعد الدرس."},
+ {fr:"aller chez + personne",ar:"الذهاب إلى شخص أو مهني",example:"Je vais chez le médecin demain matin.",translation:"سأذهب إلى الطبيب صباح الغد."},
+ {fr:"aller en / au / aux + pays",ar:"الذهاب إلى بلد",example:"Ils vont au Maroc pendant les vacances.",translation:"سيسافرون إلى المغرب خلال الإجازة."},
+ {fr:"aller + infinitif",ar:"التعبير عن المستقبل القريب",example:"Le spectacle va commencer dans quelques minutes.",translation:"سيبدأ العرض بعد بضع دقائق."},
+ {fr:"aller bien / mal",ar:"التعبير عن الحالة",example:"Après quelques jours de repos, elle va beaucoup mieux.",translation:"تحسنت حالتها كثيرًا بعد بضعة أيام من الراحة."},
+ {fr:"Comment allez-vous ?",ar:"السؤال عن الحال بأدب",example:"Bonjour madame, comment allez-vous aujourd’hui ?",translation:"مرحبًا سيدتي، كيف حالك اليوم؟"},
+ {fr:"ça va",ar:"تعبير يومي عن الحال أو القبول",example:"Tout va bien, nous pouvons continuer la visite.",translation:"كل شيء على ما يرام، ويمكننا متابعة الزيارة."}
 ],
 "pouvoir":[
  {fr:"pouvoir + infinitif",ar:"يستطيع القيام بفعل",example:"Vous pouvez entrer sans attendre.",translation:"يمكنكم الدخول من دون انتظار."},
@@ -1850,7 +1902,7 @@ const USAGES:Record<string,Usage[]>={
 "traduire":[{fr:"traduire un texte",ar:"يترجم نصًا",example:"Elle traduit un texte juridique en arabe.",translation:"هي تترجم نصًا قانونيًا إلى العربية."},{fr:"traduire dans une langue",ar:"يترجم إلى لغة",example:"Pouvez-vous traduire cette phrase en français ?",translation:"هل تستطيعون ترجمة هذه الجملة إلى الفرنسية؟"},{fr:"se traduire par",ar:"ينعكس أو يظهر في صورة — استعمال ضميري",example:"Cette réforme se traduit par une baisse des délais.",translation:"ينعكس هذا الإصلاح في انخفاض فترات الانتظار."},{fr:"traduire une émotion",ar:"يعبّر عن شعور",example:"Son sourire traduit une grande confiance.",translation:"تعبر ابتسامته عن ثقة كبيرة."}]
 
 };
-function speak(t:string){void speakFrench(t)}
+function speak(t:string){void speakFrench(t.replace(/\s*\/\s*/g,", "))}
 function cap(s:string){return s.charAt(0).toUpperCase()+s.slice(1)}
 
 Object.assign(USAGES,{
@@ -2750,8 +2802,168 @@ function avoirReviewedExample(_form:string,title:string,index:number):[string,st
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function allerReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je vais au bureau à pied chaque matin.","أذهب إلى المكتب سيرًا على الأقدام كل صباح."],
+   ["Tu vas à la piscine après ton cours.","تذهب إلى المسبح بعد درسك."],
+   ["Elle va chez sa grand-mère tous les dimanches.","تذهب إلى منزل جدتها كل يوم أحد."],
+   ["Nous allons au marché pour acheter des fruits.","نذهب إلى السوق لشراء الفاكهة."],
+   ["Vous allez directement à la porte d’embarquement.","تتوجهون مباشرة إلى بوابة الصعود."],
+   ["Ils vont en France pour poursuivre leurs études.","يسافرون إلى فرنسا لمواصلة دراستهم."]
+  ],
+  "Passé composé":[
+   ["Je suis allée à la pharmacie avant sa fermeture.","ذهبتُ إلى الصيدلية قبل إغلاقها."],
+   ["Tu es allé au commissariat pour déclarer la perte.","ذهبتَ إلى مركز الشرطة للإبلاغ عن الفقدان."],
+   ["Elle est allée voir le médecin dès le matin.","ذهبت إلى الطبيب في الصباح الباكر."],
+   ["Nous sommes allés au musée pendant notre séjour.","ذهبنا إلى المتحف خلال إقامتنا."],
+   ["Vous êtes allées à la bibliothèque après la conférence.","ذهبتنّ إلى المكتبة بعد المحاضرة."],
+   ["Ils sont allés chercher leurs bagages à l’aéroport.","ذهبوا لاستلام أمتعتهم في المطار."]
+  ],
+  "Imparfait":[
+   ["J’allais souvent lire dans ce café tranquille.","كنت أذهب كثيرًا للقراءة في هذا المقهى الهادئ."],
+   ["Tu allais au travail en train avant ton déménagement.","كنت تذهب إلى العمل بالقطار قبل انتقالك."],
+   ["Il allait mieux après quelques jours de repos.","كانت حالته تتحسن بعد بضعة أيام من الراحة."],
+   ["Nous allions à la campagne pendant les vacances d’été.","كنا نذهب إلى الريف خلال العطلة الصيفية."],
+   ["Vous alliez toujours au même restaurant le vendredi.","كنتم تذهبون دائمًا إلى المطعم نفسه يوم الجمعة."],
+   ["Elles allaient ensemble à leur cours de français.","كنّ يذهبن معًا إلى درس اللغة الفرنسية."]
+  ],
+  "Plus-que-parfait":[
+   ["J’étais allé à la banque avant de rejoindre mes collègues.","كنت قد ذهبت إلى البنك قبل أن ألتحق بزملائي."],
+   ["Tu étais allée au mauvais guichet par erreur.","كنتِ قد ذهبت إلى الشباك الخطأ عن طريق الخطأ."],
+   ["Elle était allée se reposer avant le début de la cérémonie.","كانت قد ذهبت للراحة قبل بدء الحفل."],
+   ["Nous étions allés vérifier l’adresse la veille.","كنا قد ذهبنا للتحقق من العنوان في اليوم السابق."],
+   ["Vous étiez allées en Belgique avant ce voyage.","كنتُنّ قد سافرتن إلى بلجيكا قبل هذه الرحلة."],
+   ["Ils étaient allés prévenir les secours avant notre arrivée.","كانوا قد ذهبوا لإبلاغ فرق الإنقاذ قبل وصولنا."]
+  ],
+  "Passé simple":[
+   ["J’allai jusqu’au village pour demander de l’aide.","ذهبت إلى القرية لطلب المساعدة."],
+   ["Tu allas ouvrir la porte au premier coup de sonnette.","ذهبت لفتح الباب فور سماع الجرس أول مرة."],
+   ["Elle alla s’asseoir près de la fenêtre.","ذهبت وجلست قرب النافذة."],
+   ["Nous allâmes au château avant la tombée de la nuit.","ذهبنا إلى القلعة قبل حلول الليل."],
+   ["Vous allâtes porter la nouvelle aux habitants.","ذهبتم لنقل الخبر إلى السكان."],
+   ["Ils allèrent chercher un médecin dans la ville voisine.","ذهبوا للبحث عن طبيب في المدينة المجاورة."]
+  ],
+  "Passé antérieur":[
+   ["Dès que je fus allé au bureau, je remis le dossier au directeur.","ما إن ذهبت إلى المكتب حتى سلّمت الملف للمدير."],
+   ["Lorsque tu fus allée à l’accueil, tu obtins les renseignements nécessaires.","بعدما ذهبتِ إلى الاستقبال، حصلتِ على المعلومات اللازمة."],
+   ["Après qu’elle fut allée à la mairie, elle revint avec le document signé.","بعدما ذهبت إلى البلدية، عادت بالوثيقة موقعة."],
+   ["Dès que nous fûmes allés sur les lieux, nous comprîmes la situation.","ما إن ذهبنا إلى الموقع حتى فهمنا الوضع."],
+   ["Lorsque vous fûtes allées prévenir la responsable, la réunion commença.","بعدما ذهبتنّ لإبلاغ المسؤولة، بدأ الاجتماع."],
+   ["Après qu’ils furent allés chercher du renfort, le passage fut rouvert.","بعدما ذهبوا لطلب الدعم، أُعيد فتح الممر."]
+  ],
+  "Futur simple":[
+   ["J’irai au consulat lundi pour renouveler mon passeport.","سأذهب إلى القنصلية يوم الاثنين لتجديد جواز سفري."],
+   ["Tu iras chercher les enfants après l’école.","ستذهب لاصطحاب الأطفال بعد المدرسة."],
+   ["Il ira mieux lorsqu’il aura terminé son traitement.","ستتحسن حالته بعد أن يُنهي علاجه."],
+   ["Nous irons à Lyon en train le mois prochain.","سنسافر إلى ليون بالقطار الشهر المقبل."],
+   ["Vous irez d’abord à l’accueil pour récupérer vos badges.","ستذهبون أولًا إلى الاستقبال لاستلام بطاقاتكم."],
+   ["Elles iront visiter le musée après le déjeuner.","سيذهبن لزيارة المتحف بعد الغداء."]
+  ],
+  "Futur antérieur":[
+   ["Je serai allé à la poste avant votre arrivée.","سأكون قد ذهبت إلى البريد قبل وصولكم."],
+   ["Tu seras allée chez le médecin avant de reprendre le travail.","ستكونين قد ذهبت إلى الطبيب قبل العودة إلى العمل."],
+   ["Elle sera allée déposer sa demande avant la fin du délai.","ستكون قد ذهبت لتقديم طلبها قبل انتهاء المهلة."],
+   ["Nous serons allés dans toutes les régions avant la fin du voyage.","سنكون قد زرنا جميع المناطق قبل نهاية الرحلة."],
+   ["Vous serez allées vérifier la salle avant l’arrivée des invités.","ستكنّ قد ذهبتن لتفقّد القاعة قبل وصول الضيوف."],
+   ["Ils seront allés récupérer le matériel avant midi.","سيكونون قد ذهبوا لاستلام المعدات قبل الظهر."]
+  ],
+  "Conditionnel présent":[
+   ["J’irais volontiers au concert si des places restaient disponibles.","سأذهب إلى الحفل بكل سرور لو بقيت تذاكر متاحة."],
+   ["Tu irais plus vite en prenant le métro.","ستصل أسرع إذا استقللت المترو."],
+   ["Elle irait au rendez-vous si son état s’améliorait.","ستذهب إلى الموعد لو تحسنت حالتها."],
+   ["Nous irions à pied si la gare était plus proche.","سنذهب سيرًا على الأقدام لو كانت المحطة أقرب."],
+   ["Vous iriez directement au service concerné avec ce document.","ستتوجهون مباشرة إلى القسم المختص إذا كانت هذه الوثيقة معكم."],
+   ["Ils iraient en Suisse si le voyage coûtait moins cher.","سيسافرون إلى سويسرا لو كانت تكلفة الرحلة أقل."]
+  ],
+  "Conditionnel passé":[
+   ["Je serais allé au rendez-vous si le train n’avait pas été annulé.","لذهبت إلى الموعد لو لم يُلغ القطار."],
+   ["Tu serais allée au marché si la pluie s’était arrêtée.","لذهبتِ إلى السوق لو توقف المطر."],
+   ["Elle serait allée chercher son frère si elle avait eu une voiture.","لذهبت لاصطحاب أخيها لو كانت تملك سيارة."],
+   ["Nous serions allés au stade si des billets avaient été disponibles.","لذهبنا إلى الملعب لو توفرت تذاكر."],
+   ["Vous seriez allées voir l’exposition si elle avait ouvert plus tôt.","لذهبتنّ لمشاهدة المعرض لو افتُتح في وقت أبكر."],
+   ["Ils seraient allés au secours des voyageurs sans cette tempête.","لذهبوا لمساعدة المسافرين لولا تلك العاصفة."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que j’aille à la banque avant midi.","يجب أن أذهب إلى البنك قبل الظهر."],
+   ["Je préfère que tu ailles directement à l’hôtel.","أفضل أن تذهب مباشرة إلى الفندق."],
+   ["Le médecin recommande qu’elle aille se reposer.","يوصي الطبيب بأن تذهب للراحة."],
+   ["Le guide souhaite que nous allions voir la vieille ville.","يريد المرشد أن نذهب لرؤية المدينة القديمة."],
+   ["Il est important que vous alliez au bon terminal.","من المهم أن تتوجهوا إلى مبنى الركاب الصحيح."],
+   ["Le professeur veut qu’ils aillent à la bibliothèque cet après-midi.","يريد الأستاذ أن يذهبوا إلى المكتبة بعد ظهر اليوم."]
+  ],
+  "Subjonctif passé":[
+   ["Le directeur doute que je sois allé au bon service.","يشك المدير في أنني ذهبت إلى القسم الصحيح."],
+   ["Je suis heureuse que tu sois allée à cette conférence.","يسعدني أنكِ ذهبتِ إلى هذه المحاضرة."],
+   ["Le médecin regrette qu’elle soit allée travailler malgré sa fièvre.","يأسف الطبيب لأنها ذهبت إلى العمل رغم إصابتها بالحمى."],
+   ["Il est possible que nous soyons allés trop loin.","من المحتمل أننا ابتعدنا أكثر من اللازم."],
+   ["La responsable est ravie que vous soyez allées accueillir les visiteuses.","تسعد المسؤولة لأنكن ذهبتن لاستقبال الزائرات."],
+   ["Le guide craint qu’ils soient allés dans la mauvaise direction.","يخشى المرشد أنهم اتجهوا في المسار الخطأ."]
+  ],
+  "Subjonctif imparfait":[
+   ["Le directeur exigeait que j’allasse immédiatement au siège.","كان المدير يطالب بأن أذهب فورًا إلى المقر الرئيسي."],
+   ["Elle souhaitait que tu allasses avec elle à la cérémonie.","كانت ترغب في أن تذهب معها إلى الحفل."],
+   ["Le médecin voulait qu’il allât se reposer sans attendre.","أراد الطبيب أن يذهب للراحة من دون تأخير."],
+   ["Le roi ordonna que nous allassions prévenir les gardes.","أمر الملك بأن نذهب لإبلاغ الحراس."],
+   ["Le guide préférait que vous allassiez par le chemin principal.","كان المرشد يفضّل أن تسلكوا الطريق الرئيسي."],
+   ["Le capitaine craignait qu’ils allassent trop près de la falaise.","كان القبطان يخشى أن يقتربوا كثيرًا من الجرف."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Le responsable doutait que je fusse allé remettre le dossier à temps.","شك المسؤول في أنني ذهبت لتسليم الملف في الوقت المحدد."],
+   ["Elle regrettait que tu fusses allée seule au commissariat.","كانت تأسف لأنكِ ذهبتِ وحدك إلى مركز الشرطة."],
+   ["Le médecin ignorait qu’elle fût allée consulter un spécialiste.","لم يكن الطبيب يعلم أنها ذهبت لاستشارة اختصاصي."],
+   ["Le guide était heureux que nous fussions allés jusqu’au sommet.","كان المرشد سعيدًا لأننا وصلنا إلى القمة."],
+   ["Le directeur niait que vous fussiez allées dans les bureaux interdits.","كان المدير ينفي أنكن ذهبتن إلى المكاتب المحظورة."],
+   ["Le témoin doutait qu’ils fussent allés au village cette nuit-là.","شك الشاهد في أنهم ذهبوا إلى القرية تلك الليلة."]
+  ],
+  "Impératif présent":[
+   ["Va à l’accueil et demande le formulaire bleu.","اذهب إلى الاستقبال واطلب الاستمارة الزرقاء."],
+   ["Allons vérifier l’horaire avant d’acheter les billets.","لنذهب ونتحقق من الموعد قبل شراء التذاكر."],
+   ["Allez tout droit jusqu’au prochain carrefour.","تابعوا السير إلى الأمام حتى التقاطع التالي."]
+  ],
+  "Impératif passé":[
+   ["Sois allé au secrétariat avant le retour du directeur.","احرص على الذهاب إلى السكرتارية قبل عودة المدير."],
+   ["Soyons allés sur place avant le début de l’inspection.","لنحرص على الوصول إلى الموقع قبل بدء التفتيش."],
+   ["Soyez allés récupérer vos badges avant l’ouverture des portes.","احرصوا على استلام بطاقاتكم قبل فتح الأبواب."]
+  ],
+  "Infinitif présent":[
+   ["Aller au travail à vélo permet d’éviter les embouteillages.","الذهاب إلى العمل بالدراجة يساعد على تجنب الازدحام."]
+  ],
+  "Infinitif passé":[
+   ["Il regrette d’être allé au mauvais terminal.","يأسف لأنه ذهب إلى مبنى الركاب الخطأ."],
+   ["Elle est heureuse d’être allée voir sa famille.","تسعد لأنها ذهبت لزيارة عائلتها."],
+   ["Nous sommes contents d’être allés jusqu’au bout du parcours.","يسعدنا أننا أكملنا المسار حتى نهايته."],
+   ["Elles sont fières d’être allées présenter leur projet.","يفتخرن بأنهن ذهبن لعرض مشروعهن."]
+  ],
+  "Participe présent":[
+   ["Allant chaque jour au bureau à pied, il connaît bien le quartier.","لأنه يذهب إلى المكتب سيرًا كل يوم، فهو يعرف الحي جيدًا."]
+  ],
+  "Participe passé":[
+   ["Il est allé demander conseil à son professeur.","ذهب لطلب المشورة من أستاذه."],
+   ["Elle est allée déposer les documents elle-même.","ذهبت لتسليم المستندات بنفسها."],
+   ["Ils sont allés attendre le train sur le quai.","ذهبوا لانتظار القطار على الرصيف."],
+   ["Elles sont allées préparer la salle avant la réunion.","ذهبن لتجهيز القاعة قبل الاجتماع."],
+   ["Étant allé au consulat tôt, il a évité la longue file.","لأنه ذهب إلى القنصلية مبكرًا، تجنب الطابور الطويل."],
+   ["Étant allée au laboratoire la veille, elle connaissait déjà les lieux.","لأنها ذهبت إلى المختبر في اليوم السابق، كانت تعرف المكان مسبقًا."],
+   ["Étant allés examiner le pont, les ingénieurs ont rédigé leur rapport.","بعدما ذهب المهندسون لفحص الجسر، أعدوا تقريرهم."],
+   ["Étant allées vérifier les réservations, les agentes ont corrigé deux erreurs.","بعدما ذهبت الموظفات للتحقق من الحجوزات، صححن خطأين."]
+  ],
+  "Gérondif présent":[
+   ["En allant vers la gare, nous avons trouvé une rue plus calme.","أثناء توجهنا إلى المحطة، وجدنا شارعًا أكثر هدوءًا."]
+  ],
+  "Gérondif passé":[
+   ["En étant allé au bureau plus tôt, il a pu terminer le dossier.","بذهابه إلى المكتب في وقت أبكر، تمكن من إنهاء الملف."],
+   ["En étant allée au marché dès l’ouverture, elle a trouvé tous les produits.","بذهابها إلى السوق فور افتتاحه، وجدت جميع المنتجات."],
+   ["En étant allés reconnaître le parcours la veille, nous avons gagné du temps.","بعدما استطلعنا المسار في اليوم السابق، وفرنا الوقت."],
+   ["En étant allées accueillir les délégations, elles ont rencontré les responsables.","بعدما ذهبن لاستقبال الوفود، التقين بالمسؤولين."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -2775,7 +2987,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -2784,10 +2996,10 @@ export default function Page(){
   </div></>}
   {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Conditionnel présent" forms={exactForms(v,"Conditionnel présent",(v==="falloir"||v==="pleuvoir")?["il "+cond(v)[2]]:rows(cond(v),v))} verb={v} description={reviewedDescription(v,"Conditionnel présent")}/><Block title="Conditionnel passé" forms={exactForms(v,"Conditionnel passé",(v==="falloir"||v==="pleuvoir")?["il aurait "+pp]:rows((a==="avoir"?["aurais","aurais","aurait","aurions","auriez","auraient"]:["serais","serais","serait","serions","seriez","seraient"]).map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Conditionnel passé")}/></div></>}
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
-   <Block title="Subjonctif présent" forms={v==="avoir"?REVIEWED_FORMS.avoir["Subjonctif présent"]:(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
+   <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||BATCH_FULL.has(v))?<>
-    <Block title="Subjonctif imparfait" forms={v==="avoir"?REVIEWED_FORMS.avoir["Subjonctif imparfait"]:(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
+   {(v==="être"||v==="avoir"||v==="aller"||BATCH_FULL.has(v))?<>
+    <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
   </div></>}

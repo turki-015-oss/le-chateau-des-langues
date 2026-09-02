@@ -522,6 +522,9 @@ const AF={avoir:["aurai","auras","aura","aurons","aurez","auront"],être:["serai
 const AS={avoir:["eus","eus","eut","eûmes","eûtes","eurent"],être:["fus","fus","fut","fûmes","fûtes","furent"]};
 const SI={avoir:["eusse","eusses","eût","eussions","eussiez","eussent"],être:["fusse","fusses","fût","fussions","fussiez","fussent"]};
 const ETRE_PASSE_SIMPLE=["fus","fus","fut","fûmes","fûtes","furent"];
+const ETRE_SUBJONCTIF_PRESENT=["sois","sois","soit","soyons","soyez","soient"];
+const ETRE_SUBJONCTIF_IMPARFAIT=["fusse","fusses","fût","fussions","fussiez","fussent"];
+const ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT=["que j’eusse été","que tu eusses été","qu’il / elle eût été","que nous eussions été","que vous eussiez été","qu’ils / elles eussent été"];
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -2032,14 +2035,14 @@ const B2_TIME:Record<string,{fr:string,ar:string}>= {
  "Conditionnel présent":{fr:"si les conditions étaient favorables",ar:"لو كانت الظروف مناسبة"},
  "Conditionnel passé":{fr:"si l’information avait été disponible plus tôt",ar:"لو كانت المعلومة متاحة في وقت أبكر"},
  "Subjonctif présent":{fr:"afin que le travail avance correctement",ar:"لكي يتقدم العمل بصورة صحيحة"},
- "Subjonctif passé composé":{fr:"bien que cela ait surpris le comité",ar:"مع أن ذلك فاجأ اللجنة"},
+ "Subjonctif passé":{fr:"bien que cela ait surpris le comité",ar:"مع أن ذلك فاجأ اللجنة"},
  "Subjonctif imparfait":{fr:"pour que le récit demeurât cohérent",ar:"لكي يبقى السرد متماسكًا"},
  "Subjonctif plus-que-parfait":{fr:"quoique la décision eût déjà été prise",ar:"مع أن القرار كان قد اتُخذ بالفعل"}
 };
 function batch2Example(form:string,title:string,index:number,verb:string):[string,string]|undefined{
  if(!BATCH2.has(verb)&&!BATCH3.has(verb)&&!BATCH4.has(verb)&&!BATCH5.has(verb)&&!BATCH6.has(verb)&&!BATCH7.has(verb)&&!BATCH8.has(verb)&&!BATCH9.has(verb)&&!BATCH10.has(verb)&&!BATCH11.has(verb)&&!BATCH12.has(verb)&&!BATCH13.has(verb)&&!BATCH14.has(verb)&&!BATCH15.has(verb)&&!BATCH16.has(verb)&&!BATCH17.has(verb)&&!BATCH18.has(verb))return undefined;
  const c=B2_COMPLEMENTS[verb];
- const tenseOrder=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé composé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
+ const tenseOrder=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
  const offset=Math.max(0,tenseOrder.indexOf(title));
  const i=Math.min(index,5),ctx=(i+offset)%6,subject=AR_SUBJECT[i];
  if(title==="Impératif présent")return [cap(form)+" "+c.fr[index===0?1:index===1?3:4]+".", (index===0?"افعل ذلك أنت":index===1?"لنفعل ذلك نحن":"افعلوا ذلك أنتم")+" مع "+c.ar[index===0?1:index===1?3:4]+"."];
@@ -2068,7 +2071,7 @@ function impersonalExample(form:string,title:string,index:number,verb:string):[s
    "Conditionnel présent":["Il faudrait réserver une table avant notre arrivée.","سيكون من الأفضل حجز طاولة قبل وصولنا."],
    "Conditionnel passé":["Il aurait fallu prévenir les voyageurs plus tôt.","كان ينبغي إبلاغ المسافرين في وقت أبكر."],
    "Subjonctif présent":["Je doute qu’il faille modifier tout le contrat.","أشك في ضرورة تعديل العقد كله."],
-   "Subjonctif passé composé":["Je regrette qu’il ait fallu annuler le vol.","يؤسفني أنه كان من الضروري إلغاء الرحلة."],
+   "Subjonctif passé":["Je regrette qu’il ait fallu annuler le vol.","يؤسفني أنه كان من الضروري إلغاء الرحلة."],
    "Subjonctif imparfait":["Le directeur exigeait qu’il fallût tout recommencer.","كان المدير يطالب بأن يكون من الضروري البدء من جديد بالكامل."],
    "Subjonctif plus-que-parfait":["Il doutait qu’il eût fallu fermer l’établissement.","كان يشك في أن إغلاق المنشأة كان ضروريًا."],
    "Infinitif présent":["Falloir choisir rapidement compliquait la négociation.","كون الاختيار السريع ضروريًا كان يعقّد التفاوض."],
@@ -2090,7 +2093,7 @@ function impersonalExample(form:string,title:string,index:number,verb:string):[s
    "Conditionnel présent":["Il pleuvrait davantage si le vent changeait.","قد تمطر بغزارة أكبر لو تغيّرت الرياح."],
    "Conditionnel passé":["Il aurait plu hier selon les habitants.","يُقال إن الأمطار كانت ستهطل أمس بحسب السكان."],
    "Subjonctif présent":["Je crains qu’il pleuve pendant la cérémonie.","أخشى أن تمطر أثناء الحفل."],
-   "Subjonctif passé composé":["Bien qu’il ait plu, la route reste ouverte.","مع أن الأمطار هطلت، ما زال الطريق مفتوحًا."],
+   "Subjonctif passé":["Bien qu’il ait plu, la route reste ouverte.","مع أن الأمطار هطلت، ما زال الطريق مفتوحًا."],
    "Subjonctif imparfait":["Ils souhaitaient qu’il plût avant les récoltes.","كانوا يتمنون أن تمطر قبل موسم الحصاد."],
    "Subjonctif plus-que-parfait":["Le fermier doutait qu’il eût plu assez.","كان المزارع يشك في أن الأمطار قد هطلت بما يكفي."],
    "Infinitif présent":["Pleuvoir plusieurs jours de suite reste rare ici.","هطول الأمطار عدة أيام متتالية يظل أمرًا نادرًا هنا."],
@@ -2233,7 +2236,7 @@ function stage1Arabic(title:string,index:number,verb:string,ctx:string):string{
  if(title==="Conditionnel présent")return `${kana} ${future} ${ctx} لو سمحت الظروف بذلك.`;
  if(title==="Conditionnel passé")return `لو وصلت المعلومات في الوقت المناسب، لكان الفعل المتعلق بـ${ctx} قد اكتمل.`;
  if(title==="Subjonctif présent")return `من الضروري أن ${p} ${ctx} قبل اتخاذ القرار.`;
- if(title==="Subjonctif passé composé")return `يسرّ المسؤول أن ${past} ${ctx} قبل انتهاء المهلة.`;
+ if(title==="Subjonctif passé")return `يسرّ المسؤول أن ${past} ${ctx} قبل انتهاء المهلة.`;
  if(title==="Subjonctif imparfait")return `كان المدير يريد أن ${p} ${ctx} في ذلك الوقت.`;
  if(title==="Subjonctif plus-que-parfait")return `كان المدير يشك في أن ${past} ${ctx} قبل نشر التقرير.`;
  if(title==="Impératif présent")return `قم الآن بالفعل المطلوب في سياق ${ctx}.`;
@@ -2289,7 +2292,7 @@ function stage1Example(form:string,title:string,index:number,verb:string):[strin
  else if(title==="Futur antérieur")fr=`${cap(form)} ${ctx.fr} avant la réunion prévue demain.`;
  else if(title==="Conditionnel passé")fr=`${cap(form)} ${ctx.fr} si l’information était arrivée à temps.`;
  else if(title==="Subjonctif présent")fr=`Le responsable souhaite ${form} ${ctx.fr} avant la validation finale.`;
- else if(title==="Subjonctif passé composé")fr=`Le responsable est satisfait ${form} ${ctx.fr} avant l’expiration du délai.`;
+ else if(title==="Subjonctif passé")fr=`Le responsable est satisfait ${form} ${ctx.fr} avant l’expiration du délai.`;
  else if(title==="Subjonctif imparfait")fr=`Le directeur voulait ${form} ${ctx.fr} à cette étape du récit.`;
  else if(title==="Subjonctif plus-que-parfait")fr=`Le directeur doutait ${form} ${ctx.fr} avant la publication du rapport.`;
  else if(title==="Impératif présent")fr=`${cap(form)} ${ctx.fr} dès maintenant.`;
@@ -2306,7 +2309,7 @@ function stage1Example(form:string,title:string,index:number,verb:string):[strin
 }
 
 
-const EXAMPLE_TITLES=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé composé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
+const EXAMPLE_TITLES=["Présent","Passé composé","Imparfait","Plus-que-parfait","Passé simple","Passé antérieur","Futur simple","Futur antérieur","Conditionnel présent","Conditionnel passé","Subjonctif présent","Subjonctif passé","Subjonctif imparfait","Subjonctif plus-que-parfait","Impératif présent","Impératif passé","Infinitif présent","Infinitif passé","Participe présent","Participe passé","Gérondif présent","Gérondif passé"];
 const EXTRA_SCENARIOS:Record<string,{fr:string,ar:string}>={
  "Présent":{fr:"dans la situation actuelle",ar:"في الوضع الحالي"},
  "Passé composé":{fr:"hier après la confirmation officielle",ar:"أمس بعد التأكيد الرسمي"},
@@ -2319,7 +2322,7 @@ const EXTRA_SCENARIOS:Record<string,{fr:string,ar:string}>={
  "Conditionnel présent":{fr:"si les circonstances le permettaient",ar:"لو سمحت الظروف بذلك"},
  "Conditionnel passé":{fr:"si l’information était arrivée à temps",ar:"لو وصلت المعلومة في الوقت المناسب"},
  "Subjonctif présent":{fr:"selon la demande formulée par le responsable",ar:"وفق الطلب الذي قدّمه المسؤول"},
- "Subjonctif passé composé":{fr:"malgré les réserves exprimées par le comité",ar:"رغم التحفظات التي عبّرت عنها اللجنة"},
+ "Subjonctif passé":{fr:"malgré les réserves exprimées par le comité",ar:"رغم التحفظات التي عبّرت عنها اللجنة"},
  "Subjonctif imparfait":{fr:"dans le récit rédigé par le témoin",ar:"في الرواية التي كتبها الشاهد"},
  "Subjonctif plus-que-parfait":{fr:"avant que le rapport ancien ne fût publié",ar:"قبل نشر التقرير القديم"}
 };
@@ -2360,7 +2363,7 @@ function universalExample(form:string,title:string,index:number,verb:string):[st
  if(!scenario)return undefined;
  const core=cap(form)+" "+ctx.fr;
  if(title.startsWith("Subjonctif")){
-  const triggers:Record<string,string>={"Subjonctif présent":"Le responsable souhaite ","Subjonctif passé composé":"Le comité regrette ","Subjonctif imparfait":"Le directeur exigeait ","Subjonctif plus-que-parfait":"Le témoin doutait "};
+  const triggers:Record<string,string>={"Subjonctif présent":"Le responsable souhaite ","Subjonctif passé":"Le comité regrette ","Subjonctif imparfait":"Le directeur exigeait ","Subjonctif plus-que-parfait":"Le témoin doutait "};
   return [(triggers[title]||"")+core.toLocaleLowerCase('fr')+" "+scenario.fr+".",scenario.ar+"، يوضح المثال استعمال «"+meaning+"» في سياق مستقل: "+ctx.ar+"."];
  }
  return [core+" "+scenario.fr+".",scenario.ar+"، يوضح المثال استعمال «"+meaning+"» في هذا السياق: "+ctx.ar+"."];
@@ -2446,13 +2449,69 @@ function etreReviewedExample(form:string,title:string,index:number):[string,stri
    const exampleForm=title==="Passé simple"?["Je fus","Tu fus","Il fut","Nous fûmes","Vous fûtes","Ils furent"][i]:cap(form);
    return [exampleForm+" "+finite[title].fr[i]+".",finite[title].ar[i]];
   }
- const subj:Record<string,{lead:string[],tail:string[],ar:string[]}>= {
-  "Subjonctif présent":{lead:["Il faut ","Je souhaite ","Le directeur exige ","Nous sommes heureux ","Il est essentiel ","Le médecin doute "],tail:["disponible avant midi","prêt à défendre ton projet","présente à l’accueil dès huit heures","réunis pour célébrer cette réussite","informés des nouvelles consignes","encore contagieux après le traitement"],ar:["يجب أن أكون متاحًا قبل الظهر.","أتمنى أن تكون مستعدًا للدفاع عن مشروعك.","يطلب المدير أن يكون أو تكون موجودًا في الاستقبال منذ الثامنة.","نحن سعداء بأن نكون مجتمعين للاحتفال بهذا النجاح.","من الضروري أن تكونوا على علم بالتعليمات الجديدة.","يشك الطبيب في أنهم أو أنهن ما زالوا ناقلين للعدوى بعد العلاج."]},
-  "Subjonctif passé composé":{lead:["Je regrette ","Elle est heureuse ","Le comité doute ","Nous sommes soulagés ","Le responsable apprécie ","Ils regrettent "],tail:["absent lors de la visite officielle","présent à temps pour aider ta famille","responsable de cette erreur technique","accueillis avec autant de gentillesse","informés avant la publication du communiqué","contraints d’annuler leur voyage"],ar:["يؤسفني أنني كنت غائبًا أثناء الزيارة الرسمية.","هي سعيدة لأنك كنت حاضرًا في الوقت المناسب لمساعدة عائلتك.","تشك اللجنة في أنه أو أنها كان مسؤولًا عن هذا الخطأ التقني.","نحن مرتاحون لأننا استُقبلنا بكل هذا اللطف.","يقدّر المسؤول أنكم أُبلغتم قبل نشر البيان.","هم يأسفون لأنهم أو أنهن اضطروا إلى إلغاء رحلتهم."]},
-  "Subjonctif imparfait":{lead:["Le ministre voulait ","Elle souhaitait ","Le roi exigeait ","Nous désirions ","Le professeur préférait ","Le récit supposait "],tail:["présent lors de la signature","plus prudent dans tes déclarations","fidèle à son engagement","libres de choisir notre itinéraire","attentifs pendant toute la conférence","déjà loin du château à la tombée de la nuit"],ar:["كان الوزير يريد أن أكون حاضرًا أثناء التوقيع.","كانت تتمنى أن تكون أكثر حذرًا في تصريحاتك.","كان الملك يطالب بأن يكون أو تكون وفيًا بالتزامه.","كنا نرغب في أن نكون أحرارًا في اختيار مسارنا.","كان الأستاذ يفضّل أن تكونوا منتبهين طوال المؤتمر.","كان السرد يفترض أنهم أو أنهن كانوا بعيدين عن القصر عند حلول الليل."]},
-  "Subjonctif plus-que-parfait":{lead:["Il regrettait ","Elle doutait ","Le conseil niait ","Nous étions heureux ","Le juge contestait ","Ils craignaient "],tail:["informé avant la fermeture du dossier","présent lors de la première inspection","responsable de la disparition des documents","réunis avant l’arrivée des invités","avertis suffisamment tôt","exposés au danger pendant la traversée"],ar:["كان يأسف لأنني لم أكن قد أُبلغت قبل إغلاق الملف.","كانت تشك في أنك كنت حاضرًا أثناء التفتيش الأول.","كان المجلس ينكر أنه أو أنها كان مسؤولًا عن اختفاء المستندات.","كنا سعداء لأننا كنا قد اجتمعنا قبل وصول الضيوف.","كان القاضي يعترض على أنكم كنتم قد حُذّرتم مبكرًا بما يكفي.","كانوا يخشون أنهم أو أنهن كانوا قد تعرضوا للخطر أثناء العبور."]}
+ const subj:Record<string,{fr:string[],ar:string[]}>= {
+  "Subjonctif présent":{fr:[
+   "Il faut que je sois prêt avant le début de la réunion.",
+   "Je souhaite que tu sois disponible demain matin.",
+   "Le directeur exige qu’il soit présent à l’accueil dès huit heures.",
+   "Le professeur souhaite que nous soyons attentifs pendant la présentation.",
+   "Il est essentiel que vous soyez informés des nouvelles consignes.",
+   "Le médecin doute qu’ils soient encore contagieux après le traitement."
+  ],ar:[
+   "يجب أن أكون مستعدًا قبل بدء الاجتماع.",
+   "أتمنى أن تكون متاحًا صباح الغد.",
+   "يطالب المدير بأن يكون حاضرًا في الاستقبال منذ الثامنة.",
+   "يريد الأستاذ أن نكون منتبهين أثناء العرض.",
+   "من الضروري أن تكونوا على علم بالتعليمات الجديدة.",
+   "يشك الطبيب في أنهم ما زالوا ناقلين للعدوى بعد العلاج."
+  ]},
+  "Subjonctif passé":{fr:[
+   "Le directeur doute que j’aie été suffisamment clair pendant l’entretien.",
+   "Je suis heureux que tu aies été présent pour aider ta famille.",
+   "Le comité doute qu’elle ait été responsable de cette erreur technique.",
+   "Le directeur se réjouit que nous ayons été accueillis avec autant de gentillesse.",
+   "Le responsable apprécie que vous ayez été informés avant la publication du communiqué.",
+   "Leurs proches regrettent qu’ils aient été contraints d’annuler leur voyage."
+  ],ar:[
+   "يشك المدير في أنني كنت واضحًا بما يكفي أثناء المقابلة.",
+   "أنا سعيد لأنك كنت حاضرًا لمساعدة عائلتك.",
+   "تشك اللجنة في أنها كانت مسؤولة عن هذا الخطأ التقني.",
+   "يسرّ المدير أننا استُقبلنا بكل هذا اللطف.",
+   "يقدّر المسؤول أنكم أُبلغتم قبل نشر البيان.",
+   "يأسف أقاربهم لأنهم اضطروا إلى إلغاء رحلتهم."
+  ]},
+  "Subjonctif imparfait":{fr:[
+   "Le ministre voulait que je fusse présent lors de la signature.",
+   "Elle souhaitait que tu fusses plus prudent dans tes déclarations.",
+   "Le roi exigeait qu’il fût fidèle à son engagement.",
+   "Le guide désirait que nous fussions libres de choisir notre itinéraire.",
+   "Le professeur préférait que vous fussiez attentifs pendant toute la conférence.",
+   "Le roi craignait qu’ils fussent déjà loin du château à la tombée de la nuit."
+  ],ar:[
+   "كان الوزير يريد أن أكون حاضرًا أثناء التوقيع.",
+   "كانت تتمنى أن تكون أكثر حذرًا في تصريحاتك.",
+   "كان الملك يطالب بأن يكون وفيًا بالتزامه.",
+   "كان المرشد يرغب في أن نكون أحرارًا في اختيار مسارنا.",
+   "كان الأستاذ يفضّل أن تكونوا منتبهين طوال المؤتمر.",
+   "كان الملك يخشى أن يكونوا قد ابتعدوا عن القصر عند حلول الليل."
+  ]},
+  "Subjonctif plus-que-parfait":{fr:[
+   "Le juge regrettait que j’eusse été informé trop tard pour intervenir.",
+   "Elle doutait que tu eusses été présent lors de la première inspection.",
+   "Le conseil niait qu’il eût été responsable de la disparition des documents.",
+   "Le directeur était heureux que nous eussions été réunis avant l’arrivée des invités.",
+   "Le juge contestait que vous eussiez été avertis suffisamment tôt.",
+   "Le capitaine craignait qu’ils eussent été exposés au danger pendant la traversée."
+  ],ar:[
+   "كان القاضي يأسف لأنني كنت قد أُبلغت متأخرًا جدًا فلم أتمكن من التدخل.",
+   "كانت تشك في أنك كنت حاضرًا أثناء التفتيش الأول.",
+   "كان المجلس ينكر أنه كان مسؤولًا عن اختفاء المستندات.",
+   "كان المدير سعيدًا لأننا اجتمعنا قبل وصول الضيوف.",
+   "كان القاضي يعترض على أنكم حُذّرتم مبكرًا بما يكفي.",
+   "كان القبطان يخشى أنهم تعرضوا للخطر أثناء العبور."
+  ]}
  };
- if(subj[title]){const x=subj[title],i=Math.min(index,5);return [x.lead[i]+form+" "+x.tail[i]+".",x.ar[i]]}
+ if(subj[title]){const x=subj[title],i=Math.min(index,5);return [x.fr[i],x.ar[i]]}
  if(title==="Impératif présent"){
   const fr=[" ponctuel au rendez-vous médical de demain"," solidaires pendant cette période difficile"," attentifs aux consignes de sécurité dans l’atelier"];
   const ar=["كن ملتزمًا بالموعد الطبي غدًا.","لنكن متضامنين خلال هذه الفترة الصعبة.","كونوا منتبهين لتعليمات السلامة في الورشة."];
@@ -2507,7 +2566,14 @@ export default function Page(){
    <Block title="Futur antérieur" forms={(v==="falloir"||v==="pleuvoir")?["il aura "+pp]:rows(AF[a].map(x=>x+' '+pp),v)} verb={v}/>
   </div></>}
   {tab==='Conditionnel'&&<><h2>Conditionnel</h2><div className="conj-grid-pro"><Block title="Conditionnel présent" forms={(v==="falloir"||v==="pleuvoir")?["il "+cond(v)[2]]:rows(cond(v),v)} verb={v}/><Block title="Conditionnel passé" forms={(v==="falloir"||v==="pleuvoir")?["il aurait "+pp]:rows((a==="avoir"?["aurais","aurais","aurait","aurions","auriez","auraient"]:["serais","serais","serait","serions","seriez","seraient"]).map(x=>x+' '+pp),v)} verb={v}/></div></>}
-  {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro"><Block title="Subjonctif présent" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(b2?.subjonctif||sub(v)).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x))} verb={v}/><Block title="Subjonctif passé composé" forms={(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp)} verb={v}/>{BATCH_FULL.has(v)?<><Block title="Subjonctif imparfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(b2?.subjImparfait||subjImperfect(v)).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x))} verb={v}/><Block title="Subjonctif plus-que-parfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp))} verb={v}/></>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}</div></>}
+  {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
+   <Block title="Subjonctif présent" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x))} verb={v} description={v==="être"?"يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.":undefined}/>
+   <Block title="Subjonctif passé" forms={(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp)} verb={v} description={v==="être"?"يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.":undefined}/>
+   {(v==="être"||BATCH_FULL.has(v))?<>
+    <Block title="Subjonctif imparfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x))} verb={v} description={v==="être"?"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.":undefined}/>
+    <Block title="Subjonctif plus-que-parfait" forms={(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp))} verb={v} description={v==="être"?"زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.":undefined}/>
+   </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
+  </div></>}
   {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={proImperative(v,p)} verb={v}/><Block title="Impératif passé" forms={isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp)} verb={v}/></>}</div></>}
   {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={[infinitivePresent(v)]} verb={v}/><Block title="Infinitif passé" forms={[infinitivePast(v,a,pp)]} verb={v}/></div></>}
   {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={[participePresentForm(v,b2,p)]} verb={v}/>}<Block title="Participe passé" forms={[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp]} verb={v}/></div></>}

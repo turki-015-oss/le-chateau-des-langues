@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode", "savoir":"transitif", "venir":"intransitif",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode", "savoir":"transitif", "venir":"intransitif", "voir":"transitif",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -715,8 +715,32 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Infinitif passé":["être venu","être venue","être venus","être venues"],
   "Participe présent":["venant"],
   "Participe passé":["venu","venue","venus","venues","étant venu","étant venue","étant venus","étant venues"],
-  "Gérondif présent":["en venant"],
-  "Gérondif passé":["en étant venu","en étant venue","en étant venus","en étant venues"]
+ "Gérondif présent":["en venant"],
+ "Gérondif passé":["en étant venu","en étant venue","en étant venus","en étant venues"]
+ },
+ "voir":{
+  "Présent":["je vois","tu vois","il / elle voit","nous voyons","vous voyez","ils / elles voient"],
+  "Passé composé":["j’ai vu","tu as vu","il / elle a vu","nous avons vu","vous avez vu","ils / elles ont vu"],
+  "Imparfait":["je voyais","tu voyais","il / elle voyait","nous voyions","vous voyiez","ils / elles voyaient"],
+  "Plus-que-parfait":["j’avais vu","tu avais vu","il / elle avait vu","nous avions vu","vous aviez vu","ils / elles avaient vu"],
+  "Passé simple":["je vis","tu vis","il / elle vit","nous vîmes","vous vîtes","ils / elles virent"],
+  "Passé antérieur":["j’eus vu","tu eus vu","il / elle eut vu","nous eûmes vu","vous eûtes vu","ils / elles eurent vu"],
+  "Futur simple":["je verrai","tu verras","il / elle verra","nous verrons","vous verrez","ils / elles verront"],
+  "Futur antérieur":["j’aurai vu","tu auras vu","il / elle aura vu","nous aurons vu","vous aurez vu","ils / elles auront vu"],
+  "Conditionnel présent":["je verrais","tu verrais","il / elle verrait","nous verrions","vous verriez","ils / elles verraient"],
+  "Conditionnel passé":["j’aurais vu","tu aurais vu","il / elle aurait vu","nous aurions vu","vous auriez vu","ils / elles auraient vu"],
+  "Subjonctif présent":["que je voie","que tu voies","qu’il / elle voie","que nous voyions","que vous voyiez","qu’ils / elles voient"],
+  "Subjonctif passé":["que j’aie vu","que tu aies vu","qu’il / elle ait vu","que nous ayons vu","que vous ayez vu","qu’ils / elles aient vu"],
+  "Subjonctif imparfait":["que je visse","que tu visses","qu’il / elle vît","que nous vissions","que vous vissiez","qu’ils / elles vissent"],
+  "Subjonctif plus-que-parfait":["que j’eusse vu","que tu eusses vu","qu’il / elle eût vu","que nous eussions vu","que vous eussiez vu","qu’ils / elles eussent vu"],
+  "Impératif présent":["vois","voyons","voyez"],
+  "Impératif passé":["aie vu","ayons vu","ayez vu"],
+  "Infinitif présent":["voir"],
+  "Infinitif passé":["avoir vu"],
+  "Participe présent":["voyant"],
+  "Participe passé":["vu","vue","vus","vues","ayant vu"],
+  "Gérondif présent":["en voyant"],
+  "Gérondif passé":["en ayant vu"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -909,8 +933,32 @@ const VENIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم venant، ويعبّر عن حركة مرافقة توضّح التزامن أو الكيفية، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم étant venu، ويدل على مجيء مكتمل سبق الفعل الرئيسي، مع مطابقة venu للفاعل."
 };
+const VOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن الرؤية أو الملاحظة أو الفهم في الحاضر، وتتغير دلالته بحسب المتمم والسياق.",
+ "Passé composé":"يعبّر عن رؤية أو ملاحظة اكتملت في الماضي، ويتكوّن من avoir في الحاضر ثم vu.",
+ "Imparfait":"يصف رؤية مستمرة أو متكررة أو مشهدًا كان قائمًا في الماضي.",
+ "Plus-que-parfait":"يعبّر عن رؤية سبقت حدثًا ماضيًا آخر، ويتكوّن من avoir في الماضي الناقص ثم vu.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن رؤية أو اكتشاف وقع واكتمل في الماضي.",
+ "Passé antérieur":"زمن أدبي يعبّر عن رؤية اكتملت قبل حدث آخر في الماضي البسيط.",
+ "Futur simple":"يعبّر عن رؤية أو لقاء سيحدث في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم verr-.",
+ "Futur antérieur":"يعبّر عن رؤية ستكون قد اكتملت قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"يعبّر عن رؤية محتملة أو مرتبطة بشرط، وقد يأتي في الاقتراح أو الافتراض.",
+ "Conditionnel passé":"يعبّر عن رؤية كان يمكن أن تقع في الماضي لو تحقق شرط، لكنها لم تتحقق.",
+ "Subjonctif présent":"يُستعمل بعد الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن رؤية حاضرة أو مستقبلية.",
+ "Subjonctif passé":"يعبّر عن رؤية ماضية مكتملة ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر يعبّر عن رؤية مرتبطة بفعل رئيسي ماضٍ في نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن رؤية اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي الـ Subjonctif.",
+ "Impératif présent":"تستعمل الصيغ vois وvoyons وvoyez للحث على النظر أو الملاحظة أو التحقق.",
+ "Impératif passé":"صيغة نادرة تطلب أن تكون الرؤية أو المعاينة قد اكتملت قبل موعد لاحق.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى الرؤية من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن رؤية سبقت فعلًا آخر، وتتكوّن من avoir ثم vu.",
+ "Participe présent":"الصيغة voyant ثابتة وتعبّر عن رؤية ترافق الفعل الرئيسي أو تفسّر سببه.",
+ "Participe passé":"يعرض الجدول vu وvue وvus وvues عند وجوب الاتفاق، ثم ayant vu للرؤية السابقة للفعل الرئيسي.",
+ "Gérondif présent":"يتكوّن من en ثم voyant، ويعبّر عن رؤية مرافقة توضّح التزامن أو السبب.",
+ "Gérondif passé":"يتكوّن من en ثم ayant vu، ويدل على رؤية اكتملت قبل الفعل الرئيسي."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:verb==="savoir"?SAVOIR_TENSE_NOTES[title]:verb==="venir"?VENIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:verb==="savoir"?SAVOIR_TENSE_NOTES[title]:verb==="venir"?VENIR_TENSE_NOTES[title]:verb==="voir"?VOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -2032,9 +2080,14 @@ const USAGES:Record<string,Usage[]>={
  {fr:"à venir",ar:"قادم أو سيحدث مستقبلًا",example:"Les semaines à venir seront consacrées à la formation.",translation:"ستُخصص الأسابيع القادمة للتدريب."}
 ],
 "voir":[
- {fr:"voir quelque chose",ar:"يرى شيئًا",example:"Je vois un bateau au loin.",translation:"أنا أرى قاربًا في البعيد."},
- {fr:"voir quelqu’un",ar:"يقابل شخصًا",example:"Nous voyons le directeur cet après-midi.",translation:"نحن نقابل المدير بعد ظهر اليوم."},
- {fr:"voir un film",ar:"يشاهد فيلمًا",example:"Ils voient un documentaire au cinéma.",translation:"هم يشاهدون فيلمًا وثائقيًا في السينما."}
+ {fr:"voir quelqu’un / quelque chose",ar:"يرى شخصًا أو شيئًا",example:"Je vois un bateau au loin.",translation:"أرى قاربًا في الأفق."},
+ {fr:"voir quelqu’un",ar:"يقابل شخصًا",example:"Nous voyons le directeur cet après-midi.",translation:"سنقابل المدير بعد ظهر اليوم."},
+ {fr:"voir un film / un spectacle",ar:"يشاهد فيلمًا أو عرضًا",example:"Ils voient un documentaire au cinéma.",translation:"يشاهدون فيلمًا وثائقيًا في السينما."},
+ {fr:"voir que + indicatif",ar:"يلاحظ أو يدرك حقيقة",example:"Elle voit que la situation s’améliore.",translation:"تلاحظ أن الوضع يتحسن."},
+ {fr:"voir + infinitif",ar:"يشاهد وقوع فعل",example:"J’ai vu les enfants traverser la cour.",translation:"رأيت الأطفال يعبرون الساحة."},
+ {fr:"aller voir",ar:"يذهب للقاء شخص أو معاينة شيء",example:"Tu devrais aller voir un médecin.",translation:"من الأفضل أن تراجع طبيبًا."},
+ {fr:"avoir à voir avec",ar:"تكون له علاقة بـ",example:"Cette décision n’a rien à voir avec le budget.",translation:"لا علاقة لهذا القرار بالميزانية."},
+ {fr:"on verra",ar:"سنرى أو يتضح لاحقًا",example:"On verra demain si le projet peut continuer.",translation:"سيتضح غدًا ما إذا كان المشروع يمكن أن يستمر."}
 ],
 "dire":[
  {fr:"dire quelque chose",ar:"يقول شيئًا",example:"Tu dis la vérité au médecin.",translation:"أنت تقول الحقيقة للطبيب."},
@@ -4180,8 +4233,149 @@ function venirReviewedExample(_form:string,title:string,index:number):[string,st
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function voirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je vois clairement le panneau depuis la fenêtre.","أرى اللافتة بوضوح من النافذة."],
+   ["Tu vois souvent tes voisins au marché.","ترى جيرانك كثيرًا في السوق."],
+   ["Elle voit une amélioration dans les résultats.","تلاحظ تحسنًا في النتائج."],
+   ["Nous voyons le directeur après la réunion.","سنقابل المدير بعد الاجتماع."],
+   ["Vous voyez pourquoi cette règle est importante.","تدركون سبب أهمية هذه القاعدة."],
+   ["Ils voient leurs enfants jouer dans le jardin.","يشاهدون أطفالهم يلعبون في الحديقة."]
+  ],
+  "Passé composé":[
+   ["J’ai vu votre message ce matin.","اطلعت على رسالتكم هذا الصباح."],
+   ["Tu as vu ce documentaire au cinéma.","شاهدت هذا الفيلم الوثائقي في السينما."],
+   ["Il a vu le médecin avant de partir.","راجع الطبيب قبل مغادرته."],
+   ["Nous avons vu plusieurs solutions possibles.","وجدنا عدة حلول ممكنة."],
+   ["Vous avez vu l’exposition dans son intégralité.","شاهدتم المعرض كاملًا."],
+   ["Elles ont vu l’accident depuis leur balcon.","شاهدن الحادث من شرفتهن."]
+  ],
+  "Imparfait":[
+   ["Je voyais la mer depuis mon ancienne chambre.","كنت أرى البحر من غرفتي القديمة."],
+   ["Tu voyais tes cousins chaque fin de semaine.","كنت ترى أبناء عمومتك كل عطلة أسبوعية."],
+   ["Elle voyait que son collègue était inquiet.","كانت تلاحظ أن زميلها قلق."],
+   ["Nous voyions souvent ce professeur à la bibliothèque.","كنا نرى هذا الأستاذ كثيرًا في المكتبة."],
+   ["Vous voyiez mieux avec vos nouvelles lunettes.","كنتم ترون بصورة أفضل بنظاراتكم الجديدة."],
+   ["Ils voyaient le train approcher lentement.","كانوا يشاهدون القطار يقترب ببطء."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais vu ce tableau lors d’une précédente visite.","كنت قد رأيت هذه اللوحة في زيارة سابقة."],
+   ["Tu avais vu l’erreur avant tout le monde.","كنت قد لاحظت الخطأ قبل الجميع."],
+   ["Elle avait vu son avocat la veille.","كانت قد قابلت محاميها في اليوم السابق."],
+   ["Nous avions vu la météo avant de partir.","كنا قد اطلعنا على حالة الطقس قبل المغادرة."],
+   ["Vous aviez vu les premiers signes du problème.","كنتم قد لاحظتم العلامات الأولى للمشكلة."],
+   ["Ils avaient vu cette méthode fonctionner ailleurs.","كانوا قد شاهدوا نجاح هذه الطريقة في مكان آخر."]
+  ],
+  "Passé simple":[
+   ["Je vis une lumière apparaître derrière la tour.","رأيت ضوءًا يظهر خلف البرج."],
+   ["Tu vis alors le danger qui nous menaçait.","أدركت حينها الخطر الذي كان يهددنا."],
+   ["Elle vit le messager franchir la grande porte.","رأت الرسول يعبر البوابة الكبرى."],
+   ["Nous vîmes le navire disparaître dans la brume.","شاهدنا السفينة تختفي في الضباب."],
+   ["Vous vîtes enfin la vérité dans son regard.","رأيتم أخيرًا الحقيقة في نظرته."],
+   ["Ils virent le château se dresser devant eux.","رأوا القصر شامخًا أمامهم."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus vu le document, je compris l’erreur.","ما إن رأيت الوثيقة حتى فهمت الخطأ."],
+   ["Lorsque tu eus vu le médecin, tu repris ton voyage.","بعدما راجعت الطبيب، استأنفت رحلتك."],
+   ["Après qu’elle eut vu les preuves, elle changea d’avis.","بعدما رأت الأدلة، غيرت رأيها."],
+   ["Quand nous eûmes vu les lieux, nous rédigeâmes le rapport.","بعدما عاينا المكان، كتبنا التقرير."],
+   ["Dès que vous eûtes vu le signal, vous arrêtâtes la machine.","ما إن رأيتم الإشارة حتى أوقفتم الآلة."],
+   ["Lorsqu’ils eurent vu le résultat, ils applaudirent.","عندما رأوا النتيجة، صفقوا."]
+  ],
+  "Futur simple":[
+   ["Je verrai le spécialiste lundi prochain.","سأراجع الاختصاصي يوم الاثنين القادم."],
+   ["Tu verras la différence après quelques semaines.","ستلاحظ الفرق بعد بضعة أسابيع."],
+   ["Elle verra ses amis pendant les vacances.","ستقابل أصدقاءها خلال الإجازة."],
+   ["Nous verrons cette pièce au théâtre municipal.","سنشاهد هذه المسرحية في المسرح البلدي."],
+   ["Vous verrez les détails sur la page suivante.","سترون التفاصيل في الصفحة التالية."],
+   ["Ils verront bientôt les effets de cette décision.","سيرون قريبًا آثار هذا القرار."]
+  ],
+  "Futur antérieur":[
+   ["D’ici demain, j’aurai vu tous les candidats.","بحلول الغد، سأكون قد قابلت جميع المرشحين."],
+   ["Quand tu auras vu le plan, tu comprendras le trajet.","عندما ترى الخريطة، ستفهم المسار."],
+   ["Elle aura vu trois appartements avant midi.","ستكون قد عاينت ثلاث شقق قبل الظهر."],
+   ["À la fin du séjour, nous aurons vu toute la région.","عند انتهاء الإقامة، سنكون قد زرنا المنطقة كلها."],
+   ["Vous aurez vu chaque étape avant l’examen final.","ستكونون قد شاهدتم كل مرحلة قبل الاختبار النهائي."],
+   ["Ils auront vu les résultats avant la conférence.","سيكونون قد اطلعوا على النتائج قبل المؤتمر."]
+  ],
+  "Conditionnel présent":[
+   ["Je verrais mieux avec davantage de lumière.","سأرى بصورة أفضل لو توفر ضوء أكثر."],
+   ["Tu verrais tes amis plus souvent si tu habitais près d’eux.","سترى أصدقاءك أكثر لو كنت تسكن بالقرب منهم."],
+   ["Elle verrait immédiatement la différence.","ستلاحظ الفرق فورًا."],
+   ["Nous verrions volontiers ce nouveau spectacle.","سنشاهد هذا العرض الجديد بكل سرور."],
+   ["Vous verriez la ville autrement depuis la colline.","سترون المدينة بصورة مختلفة من أعلى التل."],
+   ["Ils verraient le problème s’ils examinaient les données.","سيدركون المشكلة لو فحصوا البيانات."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais vu le panneau si la route avait été éclairée.","لكنت رأيت اللافتة لو كان الطريق مضاءً."],
+   ["Tu aurais vu ton frère si tu étais arrivé plus tôt.","لكنت قابلت أخاك لو وصلت أبكر."],
+   ["Elle aurait vu l’erreur avec un rapport complet.","لكانت لاحظت الخطأ لو كان التقرير كاملًا."],
+   ["Nous aurions vu le match sans cette panne.","لكنا شاهدنا المباراة لولا هذا العطل."],
+   ["Vous auriez vu le directeur si le rendez-vous avait été confirmé.","لكان بإمكانكم مقابلة المدير لو تأكد الموعد."],
+   ["Ils auraient vu le danger avec de meilleurs instruments.","لكانوا قد رصدوا الخطر بأجهزة أفضل."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je voie le dossier avant de décider.","يجب أن أطلع على الملف قبل اتخاذ القرار."],
+   ["Je préfère que tu voies toi-même les résultats.","أفضل أن ترى النتائج بنفسك."],
+   ["Le médecin souhaite qu’elle voie un spécialiste.","يريد الطبيب منها أن تراجع اختصاصيًا."],
+   ["Il est important que nous voyions la situation dans son ensemble.","من المهم أن ننظر إلى الوضع بصورة شاملة."],
+   ["Je veux que vous voyiez cette démonstration.","أريدكم أن تشاهدوا هذا العرض التوضيحي."],
+   ["Le guide attend qu’ils voient le signal vert.","ينتظر المرشد حتى يروا الإشارة الخضراء."]
+  ],
+  "Subjonctif passé":[
+   ["Je suis surpris que j’aie vu autant de changements.","أنا متفاجئ لأنني رأيت هذا القدر من التغييرات."],
+   ["Elle est heureuse que tu aies vu son exposition.","هي سعيدة لأنك شاهدت معرضها."],
+   ["Nous doutons qu’il ait vu le message à temps.","نشك في أنه رأى الرسالة في الوقت المناسب."],
+   ["Le directeur apprécie que nous ayons vu tous les candidats.","يقدّر المدير أننا قابلنا جميع المرشحين."],
+   ["Il est utile que vous ayez vu la procédure complète.","من المفيد أنكم شاهدتم الإجراء كاملًا."],
+   ["Je regrette qu’elles aient vu cette scène pénible.","يؤسفني أنهن شاهدن ذلك المشهد المؤلم."]
+  ],
+  "Subjonctif imparfait":[
+   ["Il fallait que je visse la lettre de mes propres yeux.","كان يجب أن أرى الرسالة بعيني."],
+   ["Elle voulait que tu visses le palais avant ton départ.","كانت تريدك أن ترى القصر قبل مغادرتك."],
+   ["Le juge exigeait qu’il vît toutes les pièces du dossier.","كان القاضي يشترط أن يطلع على جميع وثائق الملف."],
+   ["On souhaitait que nous vissions la réalité du terrain.","كانوا يريدوننا أن نرى واقع الميدان."],
+   ["Le maître désirait que vous vissiez cette œuvre rare.","كان المعلم يرغب في أن تروا هذا العمل النادر."],
+   ["Il importait qu’ils vissent les conséquences de leur choix.","كان من المهم أن يدركوا عواقب اختيارهم."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Elle doutait que j’eusse vu le véritable document.","كانت تشك في أنني رأيت الوثيقة الأصلية."],
+   ["Le professeur regrettait que tu eusses vu la réponse.","كان الأستاذ يأسف لأنك رأيت الإجابة."],
+   ["On craignait qu’il eût vu notre position depuis la tour.","كان يُخشى أنه رأى موقعنا من البرج."],
+   ["Le comité appréciait que nous eussions vu les risques à temps.","كانت اللجنة تقدّر أننا تنبهنا إلى المخاطر في الوقت المناسب."],
+   ["Ils ignoraient que vous eussiez vu le rapport secret.","لم يكونوا يعلمون أنكم اطلعتم على التقرير السري."],
+   ["La direction niait qu’elles eussent vu les données finales.","كانت الإدارة تنفي أنهن اطلعن على البيانات النهائية."]
+  ],
+  "Impératif présent":[
+   ["Vois ce que tu peux améliorer dans ce projet.","انظر إلى ما يمكنك تحسينه في هذا المشروع."],
+   ["Voyons d’abord les faits avant de juger.","لننظر أولًا إلى الحقائق قبل أن نحكم."],
+   ["Voyez le responsable pour obtenir une autorisation.","راجعوا المسؤول للحصول على تصريح."]
+  ],
+  "Impératif passé":[
+   ["Aie vu le médecin avant de reprendre le travail.","كن قد راجعت الطبيب قبل استئناف العمل."],
+   ["Ayons vu toutes les options avant la réunion.","لنكن قد اطلعنا على جميع الخيارات قبل الاجتماع."],
+   ["Ayez vu les consignes avant de commencer l’épreuve.","كونوا قد اطلعتم على التعليمات قبل بدء الاختبار."]
+  ],
+  "Infinitif présent":[["Voir la situation de près aide à mieux la comprendre.","معاينة الوضع عن قرب تساعد على فهمه بصورة أفضل."]],
+  "Infinitif passé":[["Elle se souvient d’avoir vu ce monument autrefois.","تتذكر أنها رأت هذا المعلم قديمًا."]],
+  "Participe présent":[["Voyant que la porte était fermée, nous avons attendu dehors.","عندما رأينا أن الباب مغلق، انتظرنا في الخارج."]],
+  "Participe passé":[
+   ["Vu de loin, le château semble plus petit.","يبدو القصر أصغر عند رؤيته من بعيد."],
+   ["Vue depuis la terrasse, la vallée est magnifique.","يبدو الوادي رائعًا عند رؤيته من الشرفة."],
+   ["Vus sous cet angle, les résultats sont encourageants.","تبدو النتائج مشجعة عند النظر إليها من هذه الزاوية."],
+   ["Vues ensemble, ces preuves forment un dossier solide.","تشكل هذه الأدلة عند جمعها ملفًا قويًا."],
+   ["Ayant vu l’état de la route, ils ont changé d’itinéraire.","بعدما رأوا حالة الطريق، غيروا مسارهم."]
+  ],
+  "Gérondif présent":[["En voyant son nom sur la liste, elle a souri.","ابتسمت عندما رأت اسمها في القائمة."]],
+  "Gérondif passé":[["En ayant vu les deux propositions, nous avons choisi la seconde.","بعد الاطلاع على الاقتراحين، اخترنا الثاني."]]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):verb==="savoir"?savoirReviewedExample(form,title,index):verb==="venir"?venirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):verb==="savoir"?savoirReviewedExample(form,title,index):verb==="venir"?venirReviewedExample(form,title,index):verb==="voir"?voirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -4205,7 +4399,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||v==="voir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -4216,7 +4410,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||v==="voir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

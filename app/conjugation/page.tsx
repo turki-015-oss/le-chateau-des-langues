@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode", "savoir":"transitif",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif", "vouloir":"transitif / intransitif", "devoir":"transitif / auxiliaire de mode", "savoir":"transitif", "venir":"intransitif",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir"||b==="devoir"||b==="savoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir"||b==="vouloir"||b==="devoir"||b==="savoir"||b==="venir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -691,8 +691,32 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Infinitif passé":["avoir su"],
   "Participe présent":["sachant"],
   "Participe passé":["su","sue","sus","sues","ayant su"],
-  "Gérondif présent":["en sachant"],
-  "Gérondif passé":["en ayant su"]
+ "Gérondif présent":["en sachant"],
+ "Gérondif passé":["en ayant su"]
+ },
+ "venir":{
+  "Présent":["je viens","tu viens","il / elle vient","nous venons","vous venez","ils / elles viennent"],
+  "Passé composé":["je suis venu / venue","tu es venu / venue","il est venu / elle est venue","nous sommes venus / venues","vous êtes venus / venues","ils sont venus / elles sont venues"],
+  "Imparfait":["je venais","tu venais","il / elle venait","nous venions","vous veniez","ils / elles venaient"],
+  "Plus-que-parfait":["j’étais venu / venue","tu étais venu / venue","il était venu / elle était venue","nous étions venus / venues","vous étiez venus / venues","ils étaient venus / elles étaient venues"],
+  "Passé simple":["je vins","tu vins","il / elle vint","nous vînmes","vous vîntes","ils / elles vinrent"],
+  "Passé antérieur":["je fus venu / venue","tu fus venu / venue","il fut venu / elle fut venue","nous fûmes venus / venues","vous fûtes venus / venues","ils furent venus / elles furent venues"],
+  "Futur simple":["je viendrai","tu viendras","il / elle viendra","nous viendrons","vous viendrez","ils / elles viendront"],
+  "Futur antérieur":["je serai venu / venue","tu seras venu / venue","il sera venu / elle sera venue","nous serons venus / venues","vous serez venus / venues","ils seront venus / elles seront venues"],
+  "Conditionnel présent":["je viendrais","tu viendrais","il / elle viendrait","nous viendrions","vous viendriez","ils / elles viendraient"],
+  "Conditionnel passé":["je serais venu / venue","tu serais venu / venue","il serait venu / elle serait venue","nous serions venus / venues","vous seriez venus / venues","ils seraient venus / elles seraient venues"],
+  "Subjonctif présent":["que je vienne","que tu viennes","qu’il / elle vienne","que nous venions","que vous veniez","qu’ils / elles viennent"],
+  "Subjonctif passé":["que je sois venu / venue","que tu sois venu / venue","qu’il soit venu / qu’elle soit venue","que nous soyons venus / venues","que vous soyez venus / venues","qu’ils soient venus / qu’elles soient venues"],
+  "Subjonctif imparfait":["que je vinsse","que tu vinsses","qu’il / elle vînt","que nous vinssions","que vous vinssiez","qu’ils / elles vinssent"],
+  "Subjonctif plus-que-parfait":["que je fusse venu / venue","que tu fusses venu / venue","qu’il fût venu / qu’elle fût venue","que nous fussions venus / venues","que vous fussiez venus / venues","qu’ils fussent venus / qu’elles fussent venues"],
+  "Impératif présent":["viens","venons","venez"],
+  "Impératif passé":["sois venu / venue","soyons venus / venues","soyez venus / venues"],
+  "Infinitif présent":["venir"],
+  "Infinitif passé":["être venu","être venue","être venus","être venues"],
+  "Participe présent":["venant"],
+  "Participe passé":["venu","venue","venus","venues","étant venu","étant venue","étant venus","étant venues"],
+  "Gérondif présent":["en venant"],
+  "Gérondif passé":["en étant venu","en étant venue","en étant venus","en étant venues"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -861,8 +885,32 @@ const SAVOIR_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم sachant، ويعبّر عن معرفة مرافقة توضّح السبب أو الكيفية، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant su، ويدل على معرفة أو مهارة تحققت قبل الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const VENIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن حركة باتجاه مكان المتكلم أو المكان المتخذ مرجعًا، وقد يدل مع بعض التراكيب على الأصل أو الوصول.",
+ "Passé composé":"يعبّر عن وصول أو انتقال اكتمل في الماضي، ويتكوّن من être في الحاضر ثم venu مع مطابقته للفاعل في الجنس والعدد.",
+ "Imparfait":"يصف مجيئًا مستمرًا أو متكررًا أو معتادًا في الماضي، أو حركة كانت جارية عند وقوع حدث آخر.",
+ "Plus-que-parfait":"يعبّر عن مجيء اكتمل قبل حدث ماضٍ آخر، ويتكوّن من être في الماضي الناقص ثم venu المطابق للفاعل.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن مجيء مكتمل في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.",
+ "Passé antérieur":"زمن أدبي يعبّر عن مجيء اكتمل قبل حدث آخر في الماضي البسيط، ويتكوّن من être في الماضي البسيط ثم venu المطابق للفاعل.",
+ "Futur simple":"يعبّر عن مجيء سيحدث في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم viendr-.",
+ "Futur antérieur":"يعبّر عن مجيء سيكون قد اكتمل قبل موعد أو حدث مستقبلي آخر، ويتكوّن من être في المستقبل ثم venu المطابق للفاعل.",
+ "Conditionnel présent":"يعبّر عن مجيء محتمل أو مرتبط بشرط، وقد يُستعمل في عرض المساعدة أو الاقتراح بلطف.",
+ "Conditionnel passé":"يعبّر عن مجيء كان يمكن أن يقع في الماضي لكنه لم يتحقق، أو عن نتيجة مرتبطة بشرط ماضٍ.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن مجيء حاضر أو مستقبل.",
+ "Subjonctif passé":"يعبّر عن مجيء ماضٍ مكتمل ضمن تركيب يقتضي استعمال الـ Subjonctif، ويتفق venu مع الفاعل.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويعبّر عن مجيء مرتبط بفعل رئيسي ماضٍ في نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن مجيء اكتمل قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Impératif présent":"يستعمل viens وvenons وvenez لدعوة شخص أو مجموعة إلى المجيء أو الاقتراب، من دون كتابة ضمير الفاعل.",
+ "Impératif passé":"صيغة نادرة تطلب أن يكون المجيء قد اكتمل قبل موعد لاحق، وتتكوّن من être في الأمر ثم venu المطابق للمخاطَب.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى المجيء من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن مجيء اكتمل قبل فعل آخر، وتتكوّن من être ثم venu مع مراعاة الجنس والعدد.",
+ "Participe présent":"الصيغة venant ثابتة ولا تتغير بحسب الجنس أو العدد، وتدل على شخص أو شيء آتٍ أو على حركة مرافقة.",
+ "Participe passé":"يعرض الجدول venu وvenue وvenus وvenues، ثم الصيغ المركبة المكوّنة من étant مع مطابقة اسم المفعول.",
+ "Gérondif présent":"يتكوّن من en ثم venant، ويعبّر عن حركة مرافقة توضّح التزامن أو الكيفية، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم étant venu، ويدل على مجيء مكتمل سبق الفعل الرئيسي، مع مطابقة venu للفاعل."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:verb==="savoir"?SAVOIR_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:verb==="vouloir"?VOULOIR_TENSE_NOTES[title]:verb==="devoir"?DEVOIR_TENSE_NOTES[title]:verb==="savoir"?SAVOIR_TENSE_NOTES[title]:verb==="venir"?VENIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1974,9 +2022,14 @@ const USAGES:Record<string,Usage[]>={
  {fr:"que je sache",ar:"على حد علمي",example:"Que je sache, aucune réunion n’est prévue demain.",translation:"على حد علمي، لا يوجد اجتماع مقرر غدًا."}
 ],
 "venir":[
- {fr:"venir de + lieu",ar:"يأتي من مكان",example:"Il vient de Lyon.",translation:"هو يأتي من ليون."},
- {fr:"venir de + infinitif",ar:"الماضي القريب",example:"Je viens de recevoir votre message.",translation:"لقد استلمت رسالتكم للتو."},
- {fr:"venir + infinitif",ar:"يأتي للقيام بشيء",example:"Elle vient récupérer son dossier.",translation:"هي تأتي لاستلام ملفها."}
+ {fr:"venir à / dans + lieu",ar:"يأتي إلى مكان متخذ مرجعًا",example:"Nous venons à la bibliothèque après le cours.",translation:"نأتي إلى المكتبة بعد الدرس."},
+ {fr:"venir de + lieu",ar:"يأتي من مكان أو يذكر أصله",example:"Cette étudiante vient de Marseille.",translation:"هذه الطالبة قادمة من مرسيليا."},
+ {fr:"venir de + infinitif",ar:"التعبير عن الماضي القريب",example:"Je viens de recevoir votre message.",translation:"وصلتني رسالتكم للتو."},
+ {fr:"venir + infinitif",ar:"يأتي للقيام بشيء",example:"Le technicien vient réparer l’ascenseur.",translation:"يأتي الفني لإصلاح المصعد."},
+ {fr:"faire venir",ar:"يطلب حضور شخص أو إحضار شيء",example:"Le médecin fait venir le patient dans son cabinet.",translation:"يطلب الطبيب من المريض الدخول إلى عيادته."},
+ {fr:"en venir à",ar:"يصل في تفكيره أو حديثه إلى أمر",example:"Après plusieurs échanges, ils en viennent à la même conclusion.",translation:"بعد عدة نقاشات، يتوصلون إلى النتيجة نفسها."},
+ {fr:"venir à l’esprit",ar:"يخطر بالبال",example:"Une solution simple me vient soudain à l’esprit.",translation:"يخطر ببالي فجأة حل بسيط."},
+ {fr:"à venir",ar:"قادم أو سيحدث مستقبلًا",example:"Les semaines à venir seront consacrées à la formation.",translation:"ستُخصص الأسابيع القادمة للتدريب."}
 ],
 "voir":[
  {fr:"voir quelque chose",ar:"يرى شيئًا",example:"Je vois un bateau au loin.",translation:"أنا أرى قاربًا في البعيد."},
@@ -3967,8 +4020,168 @@ function savoirReviewedExample(_form:string,title:string,index:number):[string,s
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function venirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je viens au bureau en métro chaque matin.","آتي إلى المكتب بالمترو كل صباح."],
+   ["Tu viens dîner chez nous ce soir.","ستأتي لتناول العشاء عندنا هذا المساء."],
+   ["Elle vient à la réunion avec son équipe.","تأتي إلى الاجتماع مع فريقها."],
+   ["Nous venons vous présenter notre nouveau projet.","أتينا لنعرض عليكم مشروعنا الجديد."],
+   ["Vous venez de quelle région de France ?","من أي منطقة في فرنسا أتيتم؟"],
+   ["Ils viennent chercher leurs enfants après l’école.","يأتون لاصطحاب أطفالهم بعد المدرسة."]
+  ],
+  "Passé composé":[
+   ["Je suis venu tôt pour préparer la salle.","أتيت مبكرًا لتجهيز القاعة."],
+   ["Tu es venue avec les documents demandés.","أتيتِ ومعك المستندات المطلوبة."],
+   ["Il est venu demander conseil au responsable.","أتى ليطلب المشورة من المسؤول."],
+   ["Nous sommes venues assister à la conférence.","أتينا لحضور المؤتمر."],
+   ["Vous êtes venus malgré le mauvais temps.","أتيتم رغم سوء الأحوال الجوية."],
+   ["Elles sont venues accueillir la nouvelle directrice.","أتين لاستقبال المديرة الجديدة."]
+  ],
+  "Imparfait":[
+   ["Je venais souvent travailler dans cette bibliothèque.","كنت آتي كثيرًا للعمل في هذه المكتبة."],
+   ["Tu venais à pied lorsque le temps était agréable.","كنت تأتي سيرًا عندما يكون الطقس جميلًا."],
+   ["Il venait chaque vendredi rendre visite à son grand-père.","كان يأتي كل يوم جمعة لزيارة جده."],
+   ["Nous venions de Marseille par le train de nuit.","كنا نأتي من مرسيليا بقطار الليل."],
+   ["Vous veniez toujours avec quelques minutes d’avance.","كنتم تأتون دائمًا قبل الموعد ببضع دقائق."],
+   ["Elles venaient apprendre le français après leur travail.","كنّ يأتين لتعلم الفرنسية بعد العمل."]
+  ],
+  "Plus-que-parfait":[
+   ["J’étais venu vérifier les lieux avant l’ouverture.","كنت قد أتيت لتفقد المكان قبل الافتتاح."],
+   ["Tu étais venue récupérer ton passeport la veille.","كنتِ قد أتيتِ لاستلام جواز سفرك في اليوم السابق."],
+   ["Elle était venue nous prévenir du changement d’horaire.","كانت قد أتت لتنبهنا إلى تغيير الموعد."],
+   ["Nous étions venus rencontrer les partenaires avant la cérémonie.","كنا قد أتينا لمقابلة الشركاء قبل الحفل."],
+   ["Vous étiez venues participer au premier atelier.","كنتُنّ قد أتيتن للمشاركة في ورشة العمل الأولى."],
+   ["Ils étaient venus de loin pour consulter ce spécialiste.","كانوا قد أتوا من مكان بعيد لاستشارة هذا الاختصاصي."]
+  ],
+  "Passé simple":[
+   ["Je vins lui annoncer la nouvelle sans attendre.","أتيت لأبلغه بالخبر من دون تأخير."],
+   ["Tu vins à notre rencontre au lever du jour.","أتيت للقائنا عند طلوع النهار."],
+   ["Elle vint déposer la lettre sur le bureau du juge.","أتت لتضع الرسالة على مكتب القاضي."],
+   ["Nous vînmes demander refuge avant la tempête.","أتينا نطلب المأوى قبل العاصفة."],
+   ["Vous vîntes témoigner devant toute l’assemblée.","أتيتم للإدلاء بشهادتكم أمام الجمع كله."],
+   ["Ils vinrent saluer le voyageur à son arrivée.","أتوا لتحية المسافر عند وصوله."]
+  ],
+  "Passé antérieur":[
+   ["Dès que je fus venu sur place, l’enquête commença.","ما إن أتيت إلى الموقع حتى بدأ التحقيق."],
+   ["Lorsque tu fus venue à la réception, on te remit la clé.","عندما أتيتِ إلى الاستقبال، سُلّم إليكِ المفتاح."],
+   ["Après qu’il fut venu consulter les archives, il rédigea son rapport.","بعدما أتى للاطلاع على الأرشيف، كتب تقريره."],
+   ["Quand nous fûmes venues rejoindre le groupe, la visite reprit.","عندما أتينا للانضمام إلى المجموعة، استؤنفت الجولة."],
+   ["Aussitôt que vous fûtes venus au château, les portes s’ouvrirent.","ما إن أتيتم إلى القصر حتى فُتحت الأبواب."],
+   ["Après qu’elles furent venues présenter leur requête, le conseil délibéra.","بعدما أتين لتقديم طلبهن، تداول المجلس في الأمر."]
+  ],
+  "Futur simple":[
+   ["Je viendrai signer le contrat demain matin.","سآتي لتوقيع العقد صباح الغد."],
+   ["Tu viendras me chercher à la sortie du travail.","ستأتي لاصطحابي عند خروجي من العمل."],
+   ["Il viendra expliquer la procédure aux nouveaux employés.","سيأتي لشرح الإجراء للموظفين الجدد."],
+   ["Nous viendrons en avance afin de tout installer.","سنأتي مبكرين لتركيب كل شيء."],
+   ["Vous viendrez par l’entrée réservée aux visiteurs.","ستأتون عبر المدخل المخصص للزوار."],
+   ["Elles viendront présenter leurs résultats vendredi.","سيأتين لعرض نتائجهن يوم الجمعة."]
+  ],
+  "Futur antérieur":[
+   ["D’ici midi, je serai venu remettre tous les dossiers.","بحلول الظهر، سأكون قد أتيت لتسليم جميع الملفات."],
+   ["Quand tu seras venue voir le médecin, tu comprendras mieux le traitement.","عندما تكونين قد أتيتِ لمراجعة الطبيب، ستفهمين العلاج بصورة أفضل."],
+   ["Il sera venu contrôler les équipements avant notre arrivée.","سيكون قد أتى لفحص المعدات قبل وصولنا."],
+   ["Avant la cérémonie, nous serons venues répéter deux fois.","قبل الحفل، سنكون قد أتينا للتدرب مرتين."],
+   ["D’ici vendredi, vous serez venus régler les dernières formalités.","بحلول يوم الجمعة، ستكونون قد أتيتم لإنهاء الإجراءات الأخيرة."],
+   ["Elles seront venues de plusieurs pays pour participer au forum.","سيكنّ قد أتين من عدة دول للمشاركة في المنتدى."]
+  ],
+  "Conditionnel présent":[
+   ["Je viendrais vous aider si vous en aviez besoin.","سآتي لمساعدتكم لو احتجتم إلى ذلك."],
+   ["Tu viendrais avec nous si ton emploi du temps le permettait.","ستأتي معنا لو سمح جدولك بذلك."],
+   ["Elle viendrait plus tôt si le train n’était pas retardé.","ستأتي أبكر لو لم يكن القطار متأخرًا."],
+   ["Nous viendrions volontiers découvrir cette exposition.","سنأتي بكل سرور لزيارة هذا المعرض."],
+   ["Vous viendriez en voiture ou en transports publics ?","هل ستأتون بالسيارة أم بوسائل النقل العام؟"],
+   ["Ils viendraient négocier si les conditions changeaient.","سيأتون للتفاوض لو تغيرت الشروط."]
+  ],
+  "Conditionnel passé":[
+   ["Je serais venu à la cérémonie si j’avais reçu l’invitation.","لكنت أتيت إلى الحفل لو وصلتني الدعوة."],
+   ["Tu serais venue nous voir si tu avais eu le temps.","لكنتِ أتيتِ لزيارتنا لو توفر لك الوقت."],
+   ["Il serait venu réparer la machine sans cette urgence.","لكان قد أتى لإصلاح الآلة لولا تلك الحالة الطارئة."],
+   ["Nous serions venues plus tôt si la route avait été ouverte.","لكنا قد أتينا أبكر لو كان الطريق مفتوحًا."],
+   ["Vous seriez venus participer si la date vous avait convenu.","لكان بإمكانكم الحضور لو ناسبكم التاريخ."],
+   ["Elles seraient venues soutenir leur collègue sans l’annulation du vol.","لكُنّ قد أتين لدعم زميلتهن لولا إلغاء الرحلة."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je vienne avant la fermeture des bureaux.","يجب أن آتي قبل إغلاق المكاتب."],
+   ["Je souhaite que tu viennes rencontrer notre équipe.","أرغب في أن تأتي لمقابلة فريقنا."],
+   ["Le directeur demande qu’elle vienne avec une pièce d’identité.","يطلب المدير أن تأتي ومعها وثيقة هوية."],
+   ["Il est préférable que nous venions en train.","من الأفضل أن نأتي بالقطار."],
+   ["Nous aimerions que vous veniez partager votre expérience.","نود أن تأتوا لمشاركة خبرتكم."],
+   ["Le professeur exige qu’ils viennent à l’heure.","يشترط الأستاذ أن يأتوا في الموعد." ]
+  ],
+  "Subjonctif passé":[
+   ["Ma famille se réjouit que je sois venu découvrir cette région.","تسعد عائلتي لأنني أتيت لاكتشاف هذه المنطقة."],
+   ["Nous sommes ravis que tu sois venue passer la journée avec nous.","يسعدنا أنك أتيتِ لقضاء اليوم معنا."],
+   ["Le responsable apprécie qu’il soit venu proposer une solution.","يقدّر المسؤول أنه أتى لاقتراح حل."],
+   ["Elle se réjouit que nous soyons venues soutenir le projet.","يسعدها أننا أتينا لدعم المشروع."],
+   ["Nous sommes heureux que vous soyez venus malgré la distance.","يسعدنا أنكم أتيتم رغم بُعد المسافة."],
+   ["Il est regrettable qu’elles soient venues pour rien.","من المؤسف أنهن أتين من دون جدوى."]
+  ],
+  "Subjonctif imparfait":[
+   ["Le directeur voulait que je vinsse lui parler en personne.","كان المدير يريدني أن آتي للتحدث معه شخصيًا."],
+   ["Elle souhaitait que tu vinsses passer quelques jours au village.","كانت تتمنى أن تأتي لقضاء بضعة أيام في القرية."],
+   ["Il fallait qu’il vînt témoigner avant la fin du procès.","كان يجب أن يأتي للإدلاء بشهادته قبل نهاية المحاكمة."],
+   ["Le guide préférait que nous vinssions par le chemin du nord.","كان المرشد يفضّل أن نأتي عبر الطريق الشمالي."],
+   ["On exigeait que vous vinssiez sans escorte.","كان يُشترط أن تأتوا من دون مرافقة."],
+   ["Le roi ordonna qu’ils vinssent au château le lendemain.","أمر الملك بأن يأتوا إلى القصر في اليوم التالي."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Elle aurait préféré que je fusse venu plus tôt.","كانت ستفضّل لو أنني أتيت أبكر."],
+   ["Le médecin regrettait que tu fusses venue si tard.","كان الطبيب يأسف لأنك أتيتِ متأخرة إلى هذا الحد."],
+   ["On doutait qu’il fût venu de sa propre initiative.","كان ثمة شك في أنه أتى بمبادرة منه."],
+   ["Le comité appréciait que nous fussions venues présenter nos travaux.","كانت اللجنة تقدّر أننا أتينا لعرض أعمالنا."],
+   ["Ils ignoraient que vous fussiez venus consulter les archives.","لم يكونوا يعلمون أنكم أتيتم للاطلاع على الأرشيف."],
+   ["La direction se réjouissait qu’elles fussent venues renforcer l’équipe.","كانت الإدارة سعيدة لأنهن أتين لتعزيز الفريق."]
+  ],
+  "Impératif présent":[
+   ["Viens me voir dès que tu seras disponible.","تعال لرؤيتي فور أن يتوفر لديك وقت."],
+   ["Venons préparer ensemble la prochaine étape.","لنأتِ ونحضّر الخطوة التالية معًا."],
+   ["Venez vous asseoir près de la fenêtre.","تعالوا واجلسوا قرب النافذة."]
+  ],
+  "Impératif passé":[
+   ["Sois venu avant huit heures pour ouvrir la salle.","كن قد أتيت قبل الثامنة لفتح القاعة."],
+   ["Soyons venus à temps pour accueillir les invités.","لنكن قد أتينا في الموعد لاستقبال الضيوف."],
+   ["Soyez venues avant le début de la répétition.","كُنَّ قد أتيتن قبل بدء التدريب."]
+  ],
+  "Infinitif présent":[
+   ["Venir quelques minutes en avance évite bien des problèmes.","الحضور قبل الموعد ببضع دقائق يجنب مشكلات كثيرة."]
+  ],
+  "Infinitif passé":[
+   ["Il est content d’être venu assister à cette rencontre.","هو سعيد لأنه أتى لحضور هذا اللقاء."],
+   ["Elle est fière d’être venue défendre son projet.","هي فخورة لأنها أتت للدفاع عن مشروعها."],
+   ["Ils regrettent d’être venus sans prendre rendez-vous.","هم نادمون لأنهم أتوا من دون موعد."],
+   ["Elles sont heureuses d’être venues découvrir le musée.","هن سعيدات لأنهن أتين لزيارة المتحف."]
+  ],
+  "Participe présent":[
+   ["Les voyageurs venant de Bruxelles doivent changer de quai.","على المسافرين القادمين من بروكسل تغيير الرصيف."]
+  ],
+  "Participe passé":[
+   ["Venu pour une courte visite, il est resté toute la semaine.","أتى في زيارة قصيرة، لكنه بقي طوال الأسبوع."],
+   ["Venue présenter son livre, elle a répondu aux lecteurs.","أتت لعرض كتابها، ثم أجابت عن أسئلة القراء."],
+   ["Venus de différents quartiers, les bénévoles se sont réunis ici.","أتى المتطوعون من أحياء مختلفة واجتمعوا هنا."],
+   ["Venues par le premier train, les chercheuses ont commencé tôt.","أتت الباحثات بأول قطار وبدأن مبكرًا."],
+   ["Étant venu vérifier le système, le technicien a détecté la panne.","لأنه أتى لفحص النظام، اكتشف الفني العطل."],
+   ["Étant venue remplacer sa collègue, elle connaissait déjà le dossier.","لأنها أتت لتحل محل زميلتها، كانت تعرف الملف مسبقًا."],
+   ["Étant venus livrer le matériel, ils ont attendu devant l’entrepôt.","لأنهم أتوا لتسليم المعدات، انتظروا أمام المستودع."],
+   ["Étant venues participer au concours, elles ont visité la ville.","لأنهن أتين للمشاركة في المسابقة، زرن المدينة."]
+  ],
+  "Gérondif présent":[
+   ["En venant au travail, j’ai rencontré mon ancien professeur.","في طريقي إلى العمل، قابلت أستاذي السابق."]
+  ],
+  "Gérondif passé":[
+   ["En étant venu plusieurs fois, il connaît maintenant le chemin.","بعدما أتى عدة مرات، أصبح يعرف الطريق الآن."],
+   ["En étant venue dès l’ouverture, elle a évité la file d’attente.","بمجيئها عند الافتتاح، تجنبت طابور الانتظار."],
+   ["En étant venus en avance, nous avons pu choisir nos places.","بقدومنا مبكرين، تمكنا من اختيار مقاعدنا."],
+   ["En étant venues ensemble, elles ont partagé les frais du trajet.","بقدومهن معًا، تقاسمن تكاليف الرحلة."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):verb==="savoir"?savoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):verb==="vouloir"?vouloirReviewedExample(form,title,index):verb==="devoir"?devoirReviewedExample(form,title,index):verb==="savoir"?savoirReviewedExample(form,title,index):verb==="venir"?venirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -3992,7 +4205,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -4003,7 +4216,7 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||v==="vouloir"||v==="devoir"||v==="savoir"||v==="venir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}

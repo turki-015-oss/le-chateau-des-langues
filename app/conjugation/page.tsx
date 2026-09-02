@@ -16,7 +16,7 @@ const TIPS=[
 ];
 
 const VERB_TRAITS:Record<string,string>={
- "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal",
+ "être":"verbe d’état · intransitif", "avoir":"transitif", "aller":"intransitif", "faire":"transitif / intransitif / impersonnel / pronominal", "pouvoir":"transitif / auxiliaire de mode · défectif",
  "sortir":"transitif / intransitif", "descendre":"transitif / intransitif", "monter":"transitif / intransitif",
  "passer":"transitif / intransitif", "maigrir":"intransitif", "réfléchir":"intransitif", "remplir":"transitif", "obéir":"intransitif indirect", "punir":"transitif", "bâtir":"transitif", "rougir":"intransitif / transitif", "blanchir":"transitif / intransitif", "agir":"intransitif", "servir":"transitif / intransitif", "se rendre":"pronominal", "se servir":"pronominal",
  "sentir":"transitif / intransitif selon l’emploi", "mentir":"intransitif / transitif indirect avec à", "couvrir":"transitif", "découvrir":"transitif", "souffrir":"intransitif / transitif selon l’emploi", "cueillir":"transitif", "accueillir":"transitif", "conduire":"transitif / intransitif selon l’emploi", "produire":"transitif / intransitif selon l’emploi", "traduire":"transitif / pronominal selon l’emploi", "construire":"transitif", "détruire":"transitif", "cuire":"transitif / intransitif selon l’emploi", "suivre":"transitif", "poursuivre":"transitif", "rire":"intransitif", "sourire":"intransitif / transitif indirect avec à", "plaire":"transitif indirect avec à", "taire":"transitif / pronominal selon l’emploi", "décrire":"transitif", "inscrire":"transitif / pronominal selon l’emploi", "reconnaître":"transitif", "paraître":"intransitif", "apparaître":"intransitif", "disparaître":"intransitif / transitif selon l’emploi", "valoir":"transitif / intransitif selon l’emploi", "falloir":"verbe impersonnel", "pleuvoir":"verbe impersonnel / intransitif", "asseoir":"transitif / pronominal selon l’emploi", "fuir":"transitif / intransitif selon l’emploi"
@@ -507,7 +507,7 @@ const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 const isPro=(v:string)=>v.startsWith("se ")||v.startsWith("s’")||v.startsWith("s'");
 const baseVerb=(v:string)=>v.startsWith("se ")?v.slice(3):v.replace(/^s[’']/,"");
 const stem=(v:string)=>{v=baseVerb(v);return v.endsWith("er")||v.endsWith("ir")?v.slice(0,-2):v.replace(/re$/," ").trim()};
-const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":b==="avoir"?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
+const group=(v:string)=>{const b=baseVerb(v);return isPro(v)?"verbe pronominal":(b==="avoir"||b==="pouvoir")?"3e groupe":b.endsWith("er")&&b!=="aller"?"1er groupe":b.endsWith("ir")?"2e / 3e groupe":"3e groupe"};
 const pres=(v:string)=>{v=baseVerb(v);return I[v]?.p||(v.endsWith("er")?[stem(v)+"e",stem(v)+"es",stem(v)+"e",stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"]:v.endsWith("ir")?[stem(v)+"is",stem(v)+"is",stem(v)+"it",stem(v)+"issons",stem(v)+"issez",stem(v)+"issent"]:[stem(v)+"s",stem(v)+"s",stem(v),stem(v)+"ons",stem(v)+"ez",stem(v)+"ent"])};
 const part=(v:string)=>{v=baseVerb(v);return I[v]?.pp||(v.endsWith("er")?stem(v)+"é":v.endsWith("ir")?stem(v)+"i":stem(v)+"u")};
 const fs=(v:string)=>{v=baseVerb(v);return I[v]?.f||(v.endsWith("re")?v.slice(0,-1):v)};
@@ -599,6 +599,28 @@ const REVIEWED_FORMS:Record<string,Record<string,string[]>>={
   "Participe passé":["fait","faite","faits","faites","ayant fait"],
   "Gérondif présent":["en faisant"],
   "Gérondif passé":["en ayant fait"]
+ },
+ "pouvoir":{
+  "Présent":["je peux / je puis","tu peux","il / elle peut","nous pouvons","vous pouvez","ils / elles peuvent"],
+  "Passé composé":["j’ai pu","tu as pu","il / elle a pu","nous avons pu","vous avez pu","ils / elles ont pu"],
+  "Imparfait":["je pouvais","tu pouvais","il / elle pouvait","nous pouvions","vous pouviez","ils / elles pouvaient"],
+  "Plus-que-parfait":["j’avais pu","tu avais pu","il / elle avait pu","nous avions pu","vous aviez pu","ils / elles avaient pu"],
+  "Passé simple":["je pus","tu pus","il / elle put","nous pûmes","vous pûtes","ils / elles purent"],
+  "Passé antérieur":["j’eus pu","tu eus pu","il / elle eut pu","nous eûmes pu","vous eûtes pu","ils / elles eurent pu"],
+  "Futur simple":["je pourrai","tu pourras","il / elle pourra","nous pourrons","vous pourrez","ils / elles pourront"],
+  "Futur antérieur":["j’aurai pu","tu auras pu","il / elle aura pu","nous aurons pu","vous aurez pu","ils / elles auront pu"],
+  "Conditionnel présent":["je pourrais","tu pourrais","il / elle pourrait","nous pourrions","vous pourriez","ils / elles pourraient"],
+  "Conditionnel passé":["j’aurais pu","tu aurais pu","il / elle aurait pu","nous aurions pu","vous auriez pu","ils / elles auraient pu"],
+  "Subjonctif présent":["que je puisse","que tu puisses","qu’il / elle puisse","que nous puissions","que vous puissiez","qu’ils / elles puissent"],
+  "Subjonctif passé":["que j’aie pu","que tu aies pu","qu’il / elle ait pu","que nous ayons pu","que vous ayez pu","qu’ils / elles aient pu"],
+  "Subjonctif imparfait":["que je pusse","que tu pusses","qu’il / elle pût","que nous pussions","que vous pussiez","qu’ils / elles pussent"],
+  "Subjonctif plus-que-parfait":["que j’eusse pu","que tu eusses pu","qu’il / elle eût pu","que nous eussions pu","que vous eussiez pu","qu’ils / elles eussent pu"],
+  "Infinitif présent":["pouvoir"],
+  "Infinitif passé":["avoir pu"],
+  "Participe présent":["pouvant"],
+  "Participe passé":["pu","ayant pu"],
+  "Gérondif présent":["en pouvant"],
+  "Gérondif passé":["en ayant pu"]
  }
 };
 const AVOIR_TENSE_NOTES:Record<string,string>={
@@ -673,8 +695,30 @@ const FAIRE_TENSE_NOTES:Record<string,string>={
  "Gérondif présent":"يتكوّن من en ثم faisant، ويعبّر عن الكيفية أو التزامن أو السبب، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
  "Gérondif passé":"يتكوّن من en ثم ayant fait، ويدل على عمل مكتمل سبق الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
 };
+const POUVOIR_TENSE_NOTES:Record<string,string>={
+ "Présent":"يعبّر عن القدرة أو الإمكان أو الإذن في الحاضر. تُستعمل je peux عادةً، وتأتي je puis في الأسلوب الرسمي، ويجب قول puis-je عند قلب السؤال.",
+ "Passé composé":"يعبّر عن قدرة أو فرصة تحققت في الماضي، ويتكوّن من avoir في الحاضر ثم pu الثابتة.",
+ "Imparfait":"يصف قدرة أو إمكانية مستمرة أو متكررة في الماضي، وقد يدل على إذن كان متاحًا آنذاك.",
+ "Plus-que-parfait":"يعبّر عن قدرة أو فرصة كانت قد تحققت قبل حدث ماضٍ آخر، ويتكوّن من avoir في الماضي الناقص ثم pu.",
+ "Passé simple":"زمن سردي أدبي يعبّر عن التمكن من فعل في حدث ماضٍ مكتمل، ويظهر خصوصًا في الروايات والنصوص التاريخية.",
+ "Passé antérieur":"زمن أدبي يعبّر عن قدرة تحققت مباشرة قبل حدث آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم pu.",
+ "Futur simple":"يعبّر عن قدرة أو إمكانية أو إذن سيكون متاحًا في المستقبل، وتأتي صِيَغه من الجذر غير المنتظم pourr-.",
+ "Futur antérieur":"يعبّر عن فرصة أو قدرة ستكون قد تحققت قبل موعد أو حدث مستقبلي آخر.",
+ "Conditionnel présent":"يعبّر عن قدرة أو احتمال مرتبط بشرط، ويُستعمل pourriez-vous خصوصًا لصياغة طلب مهذب.",
+ "Conditionnel passé":"يعبّر غالبًا عن فرصة كانت متاحة في الماضي لكنها لم تتحقق، أو عن قدرة ارتبطت بشرط ماضٍ.",
+ "Subjonctif présent":"يُستعمل بعد تراكيب الرغبة أو الضرورة أو الشك أو الشعور للتعبير عن قدرة أو إمكانية حاضرة أو مستقبلية.",
+ "Subjonctif passé":"يعبّر عن قدرة أو فرصة ماضية مكتملة ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Subjonctif imparfait":"زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا بعد فعل رئيسي في الماضي ضمن نص كلاسيكي.",
+ "Subjonctif plus-que-parfait":"زمن أدبي يعبّر عن قدرة أو فرصة تحققت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.",
+ "Infinitif présent":"صيغة غير شخصية تعرض معنى القدرة أو الإمكان من دون ربطه بفاعل أو زمن محدد.",
+ "Infinitif passé":"صيغة مركبة تعبّر عن التمكن من فعل قبل حدث آخر، وتتكوّن من avoir ثم pu.",
+ "Participe présent":"الصيغة pouvant ثابتة، وتعبّر عن قدرة أو إمكانية متزامنة مع الفعل الرئيسي.",
+ "Participe passé":"اسم المفعول pu ثابت لا مؤنث له ولا جمع، أما ayant pu فتدل على قدرة تحققت قبل الفعل الرئيسي.",
+ "Gérondif présent":"يتكوّن من en ثم pouvant، ويعبّر عن وسيلة أو شرط قائم، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.",
+ "Gérondif passé":"يتكوّن من en ثم ayant pu، ويدل على قدرة تحققت قبل الفعل الرئيسي، ويعود فاعله إلى فاعل الجملة الرئيسية نفسه."
+};
 const exactForms=(verb:string,title:string,fallback:string[])=>REVIEWED_FORMS[verb]?.[title]||fallback;
-const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:undefined;
+const reviewedDescription=(verb:string,title:string,etreDescription?:string)=>verb==="être"?etreDescription:verb==="avoir"?AVOIR_TENSE_NOTES[title]:verb==="aller"?ALLER_TENSE_NOTES[title]:verb==="faire"?FAIRE_TENSE_NOTES[title]:verb==="pouvoir"?POUVOIR_TENSE_NOTES[title]:undefined;
 const BATCH1=new Set(["maigrir","réfléchir","remplir","obéir","punir","bâtir","rougir","blanchir","agir","servir"]);
 const BATCH2=new Set(["sentir","mentir","couvrir","découvrir","souffrir","cueillir","accueillir","conduire","produire","traduire"]);
 const BATCH3=new Set(["construire","détruire","cuire","suivre","poursuivre","rire","sourire","plaire","taire","décrire"]);
@@ -1751,9 +1795,15 @@ const USAGES:Record<string,Usage[]>={
  {fr:"ça va",ar:"تعبير يومي عن الحال أو القبول",example:"Tout va bien, nous pouvons continuer la visite.",translation:"كل شيء على ما يرام، ويمكننا متابعة الزيارة."}
 ],
 "pouvoir":[
- {fr:"pouvoir + infinitif",ar:"يستطيع القيام بفعل",example:"Vous pouvez entrer sans attendre.",translation:"يمكنكم الدخول من دون انتظار."},
- {fr:"pouvoir de permission",ar:"طلب الإذن أو منحه",example:"Est-ce que je peux utiliser votre téléphone ?",translation:"هل يمكنني استخدام هاتفكم؟"}
-],
+ {fr:"pouvoir + infinitif",ar:"القدرة على القيام بفعل",example:"Elle peut résoudre ce problème sans aide.",translation:"تستطيع حل هذه المسألة من دون مساعدة."},
+ {fr:"pouvoir de permission",ar:"طلب الإذن أو منحه",example:"Vous pouvez entrer dès que le voyant devient vert.",translation:"يمكنكم الدخول عندما يتحول المؤشر إلى اللون الأخضر."},
+ {fr:"pouvoir de possibilité",ar:"التعبير عن احتمال",example:"Le train peut avoir quelques minutes de retard.",translation:"قد يتأخر القطار بضع دقائق."},
+ {fr:"puis-je… ?",ar:"طلب رسمي مهذب",example:"Puis-je consulter votre pièce d’identité ?",translation:"هل تسمحون لي بالاطلاع على هويتكم؟"},
+ {fr:"pourriez-vous… ?",ar:"صياغة طلب شديد التهذيب",example:"Pourriez-vous répéter la dernière phrase, s’il vous plaît ?",translation:"هل تتكرمون بإعادة الجملة الأخيرة؟"},
+ {fr:"ne pas pouvoir",ar:"عدم القدرة أو تعذر الفعل",example:"Nous ne pouvons pas ouvrir ce fichier.",translation:"يتعذر علينا فتح هذا الملف."},
+ {fr:"ne pouvoir que",ar:"لا يملك إلا خيارًا واحدًا",example:"Face à cette preuve, il ne peut qu’accepter la décision.",translation:"أمام هذا الدليل، لا يملك إلا قبول القرار."},
+ {fr:"n’en pouvoir plus",ar:"بلوغ حد الإرهاق أو عدم الاحتمال",example:"Après douze heures de marche, les voyageurs n’en peuvent plus.",translation:"بعد اثنتي عشرة ساعة من السير، أنهك التعب المسافرين."}
+ ],
 "vouloir":[
  {fr:"vouloir + nom",ar:"يريد شيئًا",example:"Je veux un billet aller-retour.",translation:"أنا أريد تذكرة ذهاب وعودة."},
  {fr:"vouloir + infinitif",ar:"يريد القيام بفعل",example:"Ils veulent apprendre le français.",translation:"هم يريدون تعلم الفرنسية."},
@@ -3166,8 +3216,146 @@ function faireReviewedExample(_form:string,title:string,index:number):[string,st
  return examples?.[Math.min(index,examples.length-1)];
 }
 
+function pouvoirReviewedExample(_form:string,title:string,index:number):[string,string]|undefined{
+ const reviewed:Record<string,[string,string][]>= {
+  "Présent":[
+   ["Je peux vous recevoir maintenant ; puis-je vous demander votre nom ?","يمكنني استقبالكم الآن؛ هل لي أن أسألكم عن اسمكم؟"],
+   ["Tu peux enregistrer le document dans ce dossier.","يمكنك حفظ المستند في هذا المجلد."],
+   ["Elle peut traduire cette lettre sans dictionnaire.","تستطيع ترجمة هذه الرسالة من دون قاموس."],
+   ["Nous pouvons reporter la réunion à jeudi.","يمكننا تأجيل الاجتماع إلى يوم الخميس."],
+   ["Vous pouvez attendre dans le salon principal.","يمكنكم الانتظار في الصالة الرئيسية."],
+   ["Ils peuvent accéder au bâtiment avec ce badge.","يستطيعون دخول المبنى باستخدام هذه البطاقة."]
+  ],
+  "Passé composé":[
+   ["J’ai pu terminer le rapport avant midi.","تمكنت من إنهاء التقرير قبل الظهر."],
+   ["Tu as pu joindre le médecin hier soir.","تمكنت من التواصل مع الطبيب مساء أمس."],
+   ["Elle a pu éviter les embouteillages en partant tôt.","تمكنت من تجنب الازدحام بانطلاقها مبكرًا."],
+   ["Nous avons pu visiter le musée avant sa fermeture.","استطعنا زيارة المتحف قبل إغلاقه."],
+   ["Vous avez pu obtenir un nouveau rendez-vous.","تمكنتم من الحصول على موعد جديد."],
+   ["Ils ont pu rentrer malgré la tempête.","استطاعوا العودة رغم العاصفة."]
+  ],
+  "Imparfait":[
+   ["Je pouvais lire pendant des heures sans me fatiguer.","كنت أستطيع القراءة لساعات من دون أن أتعب."],
+   ["Tu pouvais rester plus tard lorsque tu travaillais ici.","كان بإمكانك البقاء إلى وقت متأخر عندما كنت تعمل هنا."],
+   ["Il pouvait voir la mer depuis sa chambre.","كان يستطيع رؤية البحر من غرفته."],
+   ["Nous pouvions emprunter des livres chaque semaine.","كان بإمكاننا استعارة الكتب كل أسبوع."],
+   ["Vous pouviez choisir entre trois itinéraires.","كان بإمكانكم الاختيار بين ثلاثة مسارات."],
+   ["Elles pouvaient se parler librement dans ce bureau.","كنّ يستطعن التحدث بحرية في ذلك المكتب."]
+  ],
+  "Plus-que-parfait":[
+   ["J’avais pu mettre les documents à l’abri avant l’orage.","كنت قد تمكنت من حماية المستندات قبل العاصفة."],
+   ["Tu avais pu confirmer ta présence la veille.","كنت قد استطعت تأكيد حضورك في اليوم السابق."],
+   ["Elle avait pu réserver la dernière chambre disponible.","كانت قد تمكنت من حجز آخر غرفة متاحة."],
+   ["Nous avions pu résoudre le problème avant leur arrivée.","كنا قد تمكنا من حل المشكلة قبل وصولهم."],
+   ["Vous aviez pu rencontrer le responsable en personne.","كنتم قد تمكنتم من مقابلة المسؤول شخصيًا."],
+   ["Ils avaient pu quitter la zone à temps.","كانوا قد استطاعوا مغادرة المنطقة في الوقت المناسب."]
+  ],
+  "Passé simple":[
+   ["Je pus enfin ouvrir la porte bloquée.","تمكنت أخيرًا من فتح الباب العالق."],
+   ["Tu pus observer le phénomène depuis la terrasse.","استطعت مشاهدة الظاهرة من الشرفة."],
+   ["Il put atteindre le village avant la nuit.","تمكن من بلوغ القرية قبل حلول الليل."],
+   ["Nous pûmes traverser la rivière grâce au vieux pont.","استطعنا عبور النهر بفضل الجسر القديم."],
+   ["Vous pûtes consulter les archives du château.","تمكنتم من الاطلاع على محفوظات القلعة."],
+   ["Ils purent sauver les tableaux menacés par l’incendie.","استطاعوا إنقاذ اللوحات المهددة بالحريق."]
+  ],
+  "Passé antérieur":[
+   ["Dès que j’eus pu joindre le gardien, je lui expliquai la situation.","ما إن تمكنت من الاتصال بالحارس حتى شرحت له الموقف."],
+   ["Lorsque tu eus pu vérifier l’adresse, tu repris la route.","بعدما استطعت التحقق من العنوان، واصلت طريقك."],
+   ["Aussitôt qu’elle eut pu quitter la salle, elle prévint sa famille.","حالما تمكنت من مغادرة القاعة، أبلغت عائلتها."],
+   ["Dès que nous eûmes pu franchir le col, nous aperçûmes la vallée.","ما إن تمكنا من عبور الممر الجبلي حتى شاهدنا الوادي."],
+   ["Lorsque vous eûtes pu consulter le registre, vous trouvâtes le nom recherché.","بعدما تمكنتم من مراجعة السجل، وجدتم الاسم المطلوب."],
+   ["Après qu’ils eurent pu se reposer, ils poursuivirent leur voyage.","بعدما استطاعوا الاستراحة، واصلوا رحلتهم."]
+  ],
+  "Futur simple":[
+   ["Je pourrai vous donner une réponse demain.","سأتمكن من إعطائكم جوابًا غدًا."],
+   ["Tu pourras récupérer ton passeport à partir de lundi.","ستستطيع استلام جواز سفرك ابتداءً من يوم الاثنين."],
+   ["Elle pourra participer à la prochaine session.","ستتمكن من المشاركة في الدورة المقبلة."],
+   ["Nous pourrons commencer dès que tout le monde sera présent.","سنستطيع البدء حالما يحضر الجميع."],
+   ["Vous pourrez modifier votre réservation en ligne.","ستتمكنون من تعديل حجزكم عبر الإنترنت."],
+   ["Ils pourront reprendre le travail après l’inspection.","سيستطيعون استئناف العمل بعد التفتيش."]
+  ],
+  "Futur antérieur":[
+   ["J’aurai pu vérifier chaque dossier avant la réunion.","سأكون قد تمكنت من مراجعة كل ملف قبل الاجتماع."],
+   ["Tu auras pu te familiariser avec le système d’ici vendredi.","ستكون قد تمكنت من التعرّف إلى النظام بحلول الجمعة."],
+   ["Il aura pu réunir toutes les preuves avant l’audience.","سيكون قد استطاع جمع جميع الأدلة قبل الجلسة."],
+   ["Nous aurons pu tester les deux solutions avant de décider.","سنكون قد تمكنا من اختبار الحلين قبل اتخاذ القرار."],
+   ["Vous aurez pu visiter tout le quartier avant la tombée de la nuit.","ستكونون قد استطعتم زيارة الحي كله قبل حلول الليل."],
+   ["Elles auront pu achever leur formation avant janvier.","سيكنّ قد تمكنّ من إكمال تدريبهن قبل يناير."]
+  ],
+  "Conditionnel présent":[
+   ["Je pourrais vous accompagner jusqu’à la gare.","يمكنني مرافقتكم حتى المحطة."],
+   ["Tu pourrais essayer une méthode plus simple.","يمكنك تجربة طريقة أبسط."],
+   ["Elle pourrait arriver avec quelques minutes de retard.","قد تصل متأخرة بضع دقائق."],
+   ["Nous pourrions organiser la visite samedi matin.","يمكننا تنظيم الزيارة صباح السبت."],
+   ["Pourriez-vous fermer la fenêtre, s’il vous plaît ?","هل تتكرمون بإغلاق النافذة؟"],
+   ["Ils pourraient financer une partie du projet.","قد يمولون جزءًا من المشروع."]
+  ],
+  "Conditionnel passé":[
+   ["J’aurais pu prévenir plus tôt si j’avais eu votre numéro.","لكنت أبلغتكم في وقت أبكر لو كان رقمكم معي."],
+   ["Tu aurais pu éviter cette erreur en relisant le message.","لكان بإمكانك تجنب هذا الخطأ بمراجعة الرسالة."],
+   ["Elle aurait pu prendre le train précédent.","كان بوسعها استقلال القطار السابق."],
+   ["Nous aurions pu rester une journée de plus.","كان بإمكاننا البقاء يومًا إضافيًا."],
+   ["Vous auriez pu demander un reçu à la caisse.","كان بإمكانكم طلب إيصال من الصندوق."],
+   ["Ils auraient pu gagner sans cette blessure.","كان من الممكن أن يفوزوا لولا تلك الإصابة."]
+  ],
+  "Subjonctif présent":[
+   ["Il faut que je puisse accéder au dossier aujourd’hui.","يجب أن أتمكن من الوصول إلى الملف اليوم."],
+   ["Je souhaite que tu puisses assister à la cérémonie.","أتمنى أن تتمكن من حضور الحفل."],
+   ["Le médecin doute qu’elle puisse voyager demain.","يشك الطبيب في قدرتها على السفر غدًا."],
+   ["Nous cherchons une salle où nous puissions travailler au calme.","نبحث عن قاعة نستطيع العمل فيها بهدوء."],
+   ["Il est important que vous puissiez poser vos questions.","من المهم أن تتمكنوا من طرح أسئلتكم."],
+   ["La direction veut qu’ils puissent utiliser le nouveau matériel.","تريد الإدارة أن يتمكنوا من استخدام المعدات الجديدة."]
+  ],
+  "Subjonctif passé":[
+   ["Je suis soulagé que j’aie pu vous aider.","أشعر بالارتياح لأنني استطعت مساعدتكم."],
+   ["Elle est heureuse que tu aies pu venir.","يسعدها أنك تمكنت من الحضور."],
+   ["Nous regrettons qu’il n’ait pas pu terminer son intervention.","نأسف لأنه لم يتمكن من إكمال مداخلته."],
+   ["Le responsable se réjouit que nous ayons pu trouver un accord.","يسر المسؤول أننا تمكنا من التوصل إلى اتفاق."],
+   ["Il est remarquable que vous ayez pu agir si rapidement.","من اللافت أنكم استطعتم التصرف بهذه السرعة."],
+   ["Je doute qu’elles aient pu entendre l’annonce.","أشك في أنهن تمكنّ من سماع الإعلان."]
+  ],
+  "Subjonctif imparfait":[
+   ["Le directeur voulait que je pusse répondre sans délai.","كان المدير يريد أن أتمكن من الرد من دون تأخير."],
+   ["Elle souhaitait que tu pusses l’accompagner au tribunal.","كانت تتمنى أن تستطيع مرافقتها إلى المحكمة."],
+   ["Le médecin doutait qu’il pût reprendre son activité si tôt.","كان الطبيب يشك في قدرته على استئناف نشاطه بهذه السرعة."],
+   ["Il fallait que nous pussions entrer avant la fermeture.","كان لا بد أن نتمكن من الدخول قبل الإغلاق."],
+   ["Le guide désirait que vous pussiez voir le jardin au coucher du soleil.","كان المرشد يرغب في أن تتمكنوا من رؤية الحديقة وقت الغروب."],
+   ["Le commandant craignait qu’ils ne pussent atteindre le refuge.","كان القائد يخشى ألّا يتمكنوا من بلوغ الملجأ."]
+  ],
+  "Subjonctif plus-que-parfait":[
+   ["Le juge doutait que j’eusse pu agir seul.","شك القاضي في أنني استطعت التصرف بمفردي."],
+   ["Elle regrettait que tu n’eusses pu rester davantage.","كانت تأسف لأنك لم تتمكن من البقاء مدة أطول."],
+   ["On ignorait qu’il eût pu prévenir les secours à temps.","لم يكن أحد يعلم أنه استطاع إبلاغ فرق الإنقاذ في الوقت المناسب."],
+   ["Le directeur était satisfait que nous eussions pu respecter le délai.","كان المدير راضيًا لأننا تمكنا من الالتزام بالموعد."],
+   ["Il était surprenant que vous eussiez pu résoudre l’énigme si vite.","كان من المدهش أنكم استطعتم حل اللغز بهذه السرعة."],
+   ["Le témoin niait qu’elles eussent pu voir la scène depuis leur fenêtre.","كان الشاهد ينفي أنهن استطعن رؤية الحادثة من نافذتهن."]
+  ],
+  "Infinitif présent":[
+   ["Pouvoir choisir librement encourage la prise d’initiative.","القدرة على الاختيار بحرية تشجع على المبادرة."]
+  ],
+  "Infinitif passé":[
+   ["Il se réjouit d’avoir pu retrouver ses anciens collègues.","يسعده أنه تمكن من لقاء زملائه السابقين مجددًا."]
+  ],
+  "Participe présent":[
+   ["Pouvant compter sur son équipe, elle a accepté la mission.","لثقتها بدعم فريقها، قبلت المهمة."]
+  ],
+  "Participe passé":[
+   ["Elle a pu confirmer la réservation avant midi.","تمكنت من تأكيد الحجز قبل الظهر."],
+   ["Ayant pu examiner les deux offres, nous avons choisi la plus adaptée.","بعدما تمكنا من دراسة العرضين، اخترنا الأنسب."]
+  ],
+  "Gérondif présent":[
+   ["En pouvant travailler à distance, il organise mieux son temps.","لأنه يستطيع العمل عن بُعد، ينظم وقته بصورة أفضل."]
+  ],
+  "Gérondif passé":[
+   ["En ayant pu vérifier l’information, elle a répondu avec assurance.","بعدما تمكنت من التحقق من المعلومة، أجابت بثقة."]
+  ]
+ };
+ const examples=reviewed[title];
+ return examples?.[Math.min(index,examples.length-1)];
+}
+
 function ExampleRow({form,index,verb,title}:{form:string,index:number,verb:string,title:string}){
- const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
+ const curated=((verb==="être"?etreReviewedExample(form,title,index):verb==="avoir"?avoirReviewedExample(form,title,index):verb==="aller"?allerReviewedExample(form,title,index):verb==="faire"?faireReviewedExample(form,title,index):verb==="pouvoir"?pouvoirReviewedExample(form,title,index):undefined)||impersonalExample(form,title,index,verb)||stage1Example(form,title,index,verb)||universalExample(form,title,index,verb))!;
  return <article className="conj-example-row"><div className="conj-form-line" dir="ltr"><strong>{form}</strong><button onClick={()=>speak(form)} aria-label="نطق التصريف"><Volume2/></button></div><><div className="conj-example-copy"><p dir="ltr">{curated[0]}</p><small>{curated[1]}</small></div><button className="conj-sentence-audio" onClick={()=>speak(curated[0])} aria-label="نطق المثال"><Volume2/></button></></article>
 }
 function Block({title,forms,verb,description}:{title:string,forms:string[],verb:string,description?:string}){const shown=title.replace(/^(Conditionnel|Subjonctif|Impératif|Infinitif|Participe|Gérondif) /,"");return <section className="conj-tense-pro"><h3>{shown}<span>{forms.length} formes</span></h3>{description&&<p className="conj-tense-note">{description}</p>}<div>{forms.map((x,i)=><ExampleRow key={i} form={x} index={i} verb={verb} title={title}/>)}</div></section>}
@@ -3191,7 +3379,7 @@ export default function Page(){
    <Block title="Passé composé" forms={exactForms(v,"Passé composé",(v==="falloir"||v==="pleuvoir")?["il a "+pp]:rows(AP[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé composé")}/>
    <Block title="Imparfait" forms={exactForms(v,"Imparfait",(v==="falloir"||v==="pleuvoir")?["il "+b2!.imparfait[0]]:rows(b2?.imparfait||imp(v),v))} verb={v} description={reviewedDescription(v,"Imparfait")}/>
    <Block title="Plus-que-parfait" forms={exactForms(v,"Plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["il avait "+pp]:rows(AI[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Plus-que-parfait")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||BATCH_FULL.has(v))?<>
     <Block title="Passé simple" forms={exactForms(v,"Passé simple",v==="être"?rows(ETRE_PASSE_SIMPLE,v):(v==="falloir"||v==="pleuvoir")?["il "+b2!.passeSimple[0]]:rows(b2?.passeSimple||pastSimple(v),v))} verb={v} description={reviewedDescription(v,"Passé simple","زمن سردي أدبي يعبّر عن حالة مكتملة في الماضي، ويظهر خصوصًا في الروايات والنصوص التاريخية.")}/>
     <Block title="Passé antérieur" forms={exactForms(v,"Passé antérieur",(v==="falloir"||v==="pleuvoir")?["il eut "+pp]:rows(AS[a].map(x=>x+' '+pp),v))} verb={v} description={reviewedDescription(v,"Passé antérieur","زمن أدبي يعبّر عن حالة سبقت حدثًا آخر في الماضي البسيط، ويتكوّن من avoir في الماضي البسيط ثم été.")}/>
    </>:<><ReviewBlock title="Passé simple"/><ReviewBlock title="Passé antérieur"/></>}
@@ -3202,12 +3390,12 @@ export default function Page(){
   {tab==='Subjonctif'&&<><h2>Subjonctif</h2><div className="conj-grid-pro">
    <Block title="Subjonctif présent" forms={REVIEWED_FORMS[v]?.["Subjonctif présent"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjonctif[0]]:(v==="être"?ETRE_SUBJONCTIF_PRESENT:(b2?.subjonctif||sub(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+' '+x)))} verb={v} description={reviewedDescription(v,"Subjonctif présent","يُستعمل للتعبير عن الرغبة أو الضرورة أو الشك أو الشعور تجاه حالة حاضرة أو مستقبلية.")}/>
    <Block title="Subjonctif passé" forms={exactForms(v,"Subjonctif passé",(v==="falloir"||v==="pleuvoir")?["qu’il ait "+pp]:(a==="avoir"?["que j’aie","que tu aies","qu’il / elle ait","que nous ayons","que vous ayez","qu’ils / elles aient"]:["que je sois","que tu sois","qu’il / elle soit","que nous soyons","que vous soyez","qu’ils / elles soient"]).map(x=>x+' '+pp))} verb={v} description={reviewedDescription(v,"Subjonctif passé","يعبّر عن حالة ماضية مكتملة مرتبطة برغبة أو شك أو حكم أو شعور.")}/>
-   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||BATCH_FULL.has(v))?<>
+   {(v==="être"||v==="avoir"||v==="aller"||v==="faire"||v==="pouvoir"||BATCH_FULL.has(v))?<>
     <Block title="Subjonctif imparfait" forms={REVIEWED_FORMS[v]?.["Subjonctif imparfait"]||((v==="falloir"||v==="pleuvoir")?["qu’il "+b2!.subjImparfait[0]]:(v==="être"?ETRE_SUBJONCTIF_IMPARFAIT:(b2?.subjImparfait||subjImperfect(v))).map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x)))} verb={v} description={reviewedDescription(v,"Subjonctif imparfait","زمن أدبي نادر في الاستعمال المعاصر، ويظهر خصوصًا في السرد الكلاسيكي بعد فعل رئيسي في الماضي.")}/>
     <Block title="Subjonctif plus-que-parfait" forms={exactForms(v,"Subjonctif plus-que-parfait",(v==="falloir"||v==="pleuvoir")?["qu’il eût "+pp]:v==="être"?ETRE_SUBJONCTIF_PLUS_QUE_PARFAIT:SI[a].map((x,i)=>isPro(v)?(["que je ","que tu ","qu’il / elle ","que nous ","que vous ","qu’ils / elles "][i]+(["me ","te ","se ","nous ","vous ","se "][i])+x+" "+pp):(["que je","que tu","qu’il / elle","que nous","que vous","qu’ils / elles"][i]+" "+x+" "+pp)))} verb={v} description={reviewedDescription(v,"Subjonctif plus-que-parfait","زمن أدبي يعبّر عن حالة اكتملت قبل حدث ماضٍ ضمن تركيب يقتضي استعمال الـ Subjonctif.")}/>
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
   </div></>}
-  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={exactForms(v,"Impératif présent",v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p))} verb={v} description={reviewedDescription(v,"Impératif présent","صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.")}/><Block title="Impératif passé" forms={exactForms(v,"Impératif passé",v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp)))} verb={v} description={reviewedDescription(v,"Impératif passé","صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.")}/></>}</div></>}
+  {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir"||v==="pouvoir")?<><UnavailableBlock title="Présent" note={v==="pouvoir"?"Le verbe pouvoir est défectif et ne possède pas d’impératif.":"Ce verbe impersonnel ne possède pas d’impératif."}/><UnavailableBlock title="Passé" note={v==="pouvoir"?"Le verbe pouvoir ne possède pas d’impératif passé.":"Ce verbe impersonnel ne possède pas d’impératif passé."}/></>:<><Block title="Impératif présent" forms={exactForms(v,"Impératif présent",v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p))} verb={v} description={reviewedDescription(v,"Impératif présent","صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.")}/><Block title="Impératif passé" forms={exactForms(v,"Impératif passé",v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp)))} verb={v} description={reviewedDescription(v,"Impératif passé","صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.")}/></>}</div></>}
   {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={exactForms(v,"Infinitif présent",[infinitivePresent(v)])} verb={v} description={reviewedDescription(v,"Infinitif présent","صيغة غير شخصية تعبّر عن الحالة من دون ارتباط بفاعل أو زمن محدد، ويحدّد السياق زمنها ووظيفتها.")}/><Block title="Infinitif passé" forms={exactForms(v,"Infinitif passé",[infinitivePast(v,a,pp)])} verb={v} description={reviewedDescription(v,"Infinitif passé","صيغة مركبة تعبّر عن حالة اكتملت قبل حدث آخر، وتتكوّن من avoir في المصدر ثم été.")}/></div></>}
   {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={exactForms(v,"Participe présent",[participePresentForm(v,b2,p)])} verb={v} description={reviewedDescription(v,"Participe présent","صيغة غير شخصية ثابتة تعبّر عن حالة مرافقة للفعل الرئيسي، ولا تتغير بحسب الجنس أو العدد.")}/>}<Block title="Participe passé" forms={exactForms(v,"Participe passé",[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp])} verb={v} description={reviewedDescription(v,"Participe passé","يعرض الجدول été بوصفها الصيغة البسيطة، وayant été بوصفها الصيغة المركبة التي تدل على حالة اكتملت قبل حالة أو حدث آخر.")}/></div></>}
   {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de gérondif présent."/>:<Block title="Gérondif présent" forms={exactForms(v,"Gérondif présent",[gerondifPresentForm(v,b2,p)])} verb={v} description={reviewedDescription(v,"Gérondif présent","يتكوّن من en ثم étant، ويعبّر عن حالة مرافقة توضّح الكيفية أو السبب أو الشرط. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.")}/>}<Block title="Gérondif passé" forms={exactForms(v,"Gérondif passé",[gerondifPastForm(v,a,pp)])} verb={v} description={reviewedDescription(v,"Gérondif passé","يتكوّن من en ثم ayant été، ويدل على حالة مكتملة سبقت الفعل الرئيسي. ويعود فاعله إلى فاعل الجملة الرئيسية نفسه.")}/></div></>}</section>

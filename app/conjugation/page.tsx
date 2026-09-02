@@ -2527,8 +2527,8 @@ function etreReviewedExample(form:string,title:string,index:number):[string,stri
   return [fr[i],ar[i]];
  }
  const nonFinite:Record<string,[string,string][]>= {
-  "Infinitif présent":[["Être ponctuel facilite la coopération avec toute l’équipe.","الالتزام بالمواعيد يسهّل التعاون مع الفريق كله."]],
-  "Infinitif passé":[["Après avoir été malade plusieurs jours, il a repris le travail.","بعد أن كان مريضًا عدة أيام، عاد إلى العمل."]],
+  "Infinitif présent":[["Être attentif aux consignes permet d’éviter les erreurs.","الانتباه إلى التعليمات يساعد على تجنّب الأخطاء."]],
+  "Infinitif passé":[["Après avoir été absent pendant deux jours, il est revenu en classe.","عاد إلى الصف بعد غياب يومين."]],
   "Participe présent":[["Étant responsable du service, elle a signé le rapport final.","لكونها مسؤولة عن القسم، وقّعت التقرير النهائي."]],
   "Participe passé":[["Il a été très patient avec les voyageurs retardés.","كان صبورًا جدًا مع المسافرين المتأخرين."],["Ayant été prévenus à temps, nous avons changé de route.","بعد أن أُبلغنا في الوقت المناسب، غيّرنا الطريق."]],
   "Gérondif présent":[["En étant attentif aux détails, tu éviteras plusieurs erreurs.","من خلال الانتباه إلى التفاصيل، ستتجنب عدة أخطاء."]],
@@ -2579,7 +2579,7 @@ export default function Page(){
    </>:<><ReviewBlock title="Imparfait"/><ReviewBlock title="Plus-que-parfait"/></>}
   </div></>}
   {tab==='Impératif'&&<><h2>Impératif</h2><div className="conj-grid-pro">{(v==="falloir"||v==="pleuvoir")?<><UnavailableBlock title="Présent" note="Ce verbe impersonnel ne possède pas d’impératif."/><UnavailableBlock title="Passé" note="Ce verbe impersonnel ne possède pas d’impératif passé."/></>:<><Block title="Impératif présent" forms={v==="être"?ETRE_IMPERATIF_PRESENT:proImperative(v,p)} verb={v} description={v==="être"?"صيغة أمر غير منتظمة تُستعمل مع المخاطب المفرد، ومع المتكلم والمخاطب في الجمع، من دون كتابة ضمير الفاعل.":undefined}/><Block title="Impératif passé" forms={v==="être"?ETRE_IMPERATIF_PASSE:(isPro(v)?["sois-toi "+pp,"soyons-nous "+pp,"soyez-vous "+pp]:auxImp(a).map(x=>x+" "+pp))} verb={v} description={v==="être"?"صيغة نادرة تطلب اكتمال حالة قبل موعد أو حدث لاحق، وتتكوّن من avoir في الأمر ثم été.":undefined}/></>}</div></>}
-  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={[infinitivePresent(v)]} verb={v}/><Block title="Infinitif passé" forms={[infinitivePast(v,a,pp)]} verb={v}/></div></>}
+  {tab==='Infinitif'&&<><h2>Infinitif</h2><div className="conj-grid-pro"><Block title="Infinitif présent" forms={[infinitivePresent(v)]} verb={v} description={v==="être"?"صيغة غير شخصية تعبّر عن الحالة من دون ارتباط بفاعل أو زمن محدد، ويحدّد السياق زمنها ووظيفتها.":undefined}/><Block title="Infinitif passé" forms={[infinitivePast(v,a,pp)]} verb={v} description={v==="être"?"صيغة مركبة تعبّر عن حالة اكتملت قبل حدث آخر، وتتكوّن من avoir في المصدر ثم été.":undefined}/></div></>}
   {tab==='Participe'&&<><h2>Participe</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de participe présent."/>:<Block title="Participe présent" forms={[participePresentForm(v,b2,p)]} verb={v}/>}<Block title="Participe passé" forms={[pp,isPro(v)?"s’étant "+pp:auxPart(a)+" "+pp]} verb={v}/></div></>}
   {tab==='Gérondif'&&<><h2>Gérondif</h2><div className="conj-grid-pro">{v==="falloir"?<UnavailableBlock title="Présent" note="Le verbe falloir ne possède pas de gérondif présent."/>:<Block title="Gérondif présent" forms={[gerondifPresentForm(v,b2,p)]} verb={v}/>}<Block title="Gérondif passé" forms={[gerondifPastForm(v,a,pp)]} verb={v}/></div></>}</section>
  </main>

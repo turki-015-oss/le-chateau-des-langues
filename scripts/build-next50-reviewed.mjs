@@ -220,7 +220,11 @@ for (const verb of verbs) {
     title,
     forms.map((form, index) => {
       const fr = frenchExample(verb, title, index, form, voice);
-      return { fr, ar: knownTranslations.get(fr) ?? "" };
+      const shown = sentenceForm(form);
+      const formExplanation = title === "Participe passé" && fr.startsWith("La forme «")
+        ? `توضح الصيغة الفرنسية « ${shown} » إحدى صيغ اسم المفعول من الفعل « ${verb} » بحسب الجنس والعدد.`
+        : undefined;
+      return { fr, ar: formExplanation ?? knownTranslations.get(fr) ?? "" };
     }),
   ]));
   output[verb] = {

@@ -28,6 +28,8 @@ for (const [verb, record] of Object.entries(data)) {
       if (frenchSeen.has(example.fr)) failures.push(`${verb}/${title}/${index}: duplicate French example also used at ${frenchSeen.get(example.fr)}`);
       else frenchSeen.set(example.fr, `${verb}/${title}/${index}`);
       if (/\b(?:ils|elles) a (?:pu|transmis)\b/iu.test(example.fr)) failures.push(`${verb}/${title}/${index}: plural subject has singular auxiliary`);
+      if (/^Dès que (?:il|ils)\b/iu.test(example.fr)) failures.push(`${verb}/${title}/${index}: missing French elision after que`);
+      if (/\b(?:il|ils) que\b/iu.test(example.fr) || /\b(?:il|ils) merci\b/iu.test(example.fr)) failures.push(`${verb}/${title}/${index}: malformed subject or complement`);
       if (/\b(undefined|null)\b/iu.test(`${example.fr} ${example.ar}`)) failures.push(`${verb}/${title}/${index}: placeholder leaked`);
     });
   }

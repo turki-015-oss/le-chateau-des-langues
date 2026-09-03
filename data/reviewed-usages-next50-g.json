@@ -1,0 +1,202 @@
+{
+  "deviner": [
+    {"fr":"deviner une réponse","ar":"يخمّن إجابة","example":"Elle devine la réponse grâce au dernier indice.","translation":"تخمّن الإجابة بفضل الدليل الأخير."},
+    {"fr":"deviner que","ar":"يستنتج أن","example":"Je devine qu’il connaît déjà la nouvelle.","translation":"أستنتج أنه يعرف الخبر بالفعل."}
+  ],
+  "libérer": [
+    {"fr":"libérer un lieu","ar":"يخلي مكانًا","example":"Les participants libèrent la salle après la conférence.","translation":"يخلي المشاركون القاعة بعد المحاضرة."},
+    {"fr":"libérer quelqu’un","ar":"يطلق سراح شخص","example":"Le tribunal décide de libérer le détenu.","translation":"تقرر المحكمة إطلاق سراح المحتجز."}
+  ],
+  "rater": [
+    {"fr":"rater un train","ar":"يفوّت قطارًا","example":"Nous ratons le train à cause des embouteillages.","translation":"نفوّت القطار بسبب الازدحام."},
+    {"fr":"rater une occasion","ar":"يضيّع فرصة","example":"Il ne veut pas rater cette occasion professionnelle.","translation":"لا يريد تضييع هذه الفرصة المهنية."}
+  ],
+  "engager": [
+    {"fr":"engager un employé","ar":"يوظّف عاملًا","example":"L’entreprise engage deux spécialistes ce mois-ci.","translation":"توظّف الشركة متخصصين هذا الشهر."},
+    {"fr":"engager une discussion","ar":"يبدأ نقاشًا","example":"La directrice engage une discussion avec l’équipe.","translation":"تبدأ المديرة نقاشًا مع الفريق."}
+  ],
+  "respirer": [
+    {"fr":"respirer profondément","ar":"يتنفس بعمق","example":"Respirez profondément avant de répondre.","translation":"تنفسوا بعمق قبل الإجابة."},
+    {"fr":"respirer un air pur","ar":"يستنشق هواءً نقيًا","example":"Nous respirons un air pur à la montagne.","translation":"نستنشق هواءً نقيًا في الجبل."}
+  ],
+  "survivre": [
+    {"fr":"survivre à un accident","ar":"ينجو من حادث","example":"Le conducteur survit à l’accident sans blessure grave.","translation":"ينجو السائق من الحادث دون إصابة خطيرة."},
+    {"fr":"survivre à une période difficile","ar":"يتجاوز فترة صعبة","example":"L’entreprise survit à la crise grâce à ses clients fidèles.","translation":"تتجاوز الشركة الأزمة بفضل عملائها الأوفياء."}
+  ],
+  "mériter": [
+    {"fr":"mériter une récompense","ar":"يستحق مكافأة","example":"Votre travail mérite une récompense.","translation":"يستحق عملكم مكافأة."},
+    {"fr":"mériter de faire","ar":"يستحق أن يُفعل به شيء","example":"Cette proposition mérite d’être étudiée.","translation":"يستحق هذا الاقتراح الدراسة."}
+  ],
+  "jurer": [
+    {"fr":"jurer de faire","ar":"يقسم أن يفعل","example":"Il jure de respecter sa promesse.","translation":"يقسم أن يفي بوعده."},
+    {"fr":"jurer que","ar":"يؤكد بالقسم أن","example":"Elle jure qu’elle n’a rien oublié.","translation":"تقسم بأنها لم تنس شيئًا."}
+  ],
+  "récupérer": [
+    {"fr":"récupérer un objet","ar":"يستعيد أو يستلم شيئًا","example":"Je récupère mes clés à l’accueil.","translation":"أستلم مفاتيحي من مكتب الاستقبال."},
+    {"fr":"récupérer après un effort","ar":"يستعيد عافيته","example":"Le joueur récupère après le match.","translation":"يستعيد اللاعب عافيته بعد المباراة."}
+  ],
+  "pardonner": [
+    {"fr":"pardonner à quelqu’un","ar":"يسامح شخصًا","example":"Elle pardonne à son ami son retard.","translation":"تسامح صديقها على تأخره."},
+    {"fr":"pardonner une faute","ar":"يغفر خطأً","example":"Nous pardonnons cette faute involontaire.","translation":"نغفر هذا الخطأ غير المقصود."}
+  ],
+  "pousser": [
+    {"fr":"pousser une porte","ar":"يدفع بابًا","example":"Poussez la porte pour entrer.","translation":"ادفعوا الباب للدخول."},
+    {"fr":"pousser quelqu’un à faire","ar":"يدفع شخصًا إلى فعل شيء","example":"Son professeur le pousse à progresser.","translation":"يدفعه معلمه إلى التقدم."}
+  ],
+  "profiter": [
+    {"fr":"profiter d’une occasion","ar":"يستفيد من فرصة","example":"Elle profite de cette occasion pour se former.","translation":"تستفيد من هذه الفرصة لتطوير مهاراتها."},
+    {"fr":"profiter de ses vacances","ar":"يستمتع بإجازته","example":"Nous profitons de nos vacances au bord de la mer.","translation":"نستمتع بإجازتنا على شاطئ البحر."}
+  ],
+  "rejoindre": [
+    {"fr":"rejoindre quelqu’un","ar":"يلحق بشخص أو ينضم إليه","example":"Je rejoins mes amis devant le cinéma.","translation":"ألتحق بأصدقائي أمام السينما."},
+    {"fr":"rejoindre un lieu","ar":"يصل إلى مكان","example":"Cette route rejoint le centre-ville.","translation":"يصل هذا الطريق إلى وسط المدينة."}
+  ],
+  "attaquer": [
+    {"fr":"attaquer un adversaire","ar":"يهاجم خصمًا","example":"L’équipe attaque dès le début du match.","translation":"يهاجم الفريق منذ بداية المباراة."},
+    {"fr":"attaquer un problème","ar":"يبدأ معالجة مشكلة","example":"Nous attaquons le problème par son aspect principal.","translation":"نبدأ معالجة المشكلة من جانبها الرئيس."}
+  ],
+  "prouver": [
+    {"fr":"prouver un fait","ar":"يثبت واقعة","example":"Ces documents prouvent son identité.","translation":"تثبت هذه الوثائق هويته."},
+    {"fr":"prouver que","ar":"يثبت أن","example":"L’analyse prouve que la méthode fonctionne.","translation":"يثبت التحليل أن الطريقة ناجحة."}
+  ],
+  "réaliser": [
+    {"fr":"réaliser un projet","ar":"ينفّذ مشروعًا","example":"La ville réalise un nouveau parc public.","translation":"تنفّذ المدينة حديقة عامة جديدة."},
+    {"fr":"réaliser que","ar":"يدرك أن","example":"Il réalise qu’il a oublié son passeport.","translation":"يدرك أنه نسي جواز سفره."}
+  ],
+  "embrasser": [
+    {"fr":"embrasser quelqu’un","ar":"يقبّل شخصًا","example":"La mère embrasse son enfant avant l’école.","translation":"تقبّل الأم طفلها قبل المدرسة."},
+    {"fr":"embrasser une carrière","ar":"ينخرط في مسار مهني","example":"Elle choisit d’embrasser une carrière médicale.","translation":"تختار الانخراط في مهنة الطب."}
+  ],
+  "sauter": [
+    {"fr":"sauter par-dessus","ar":"يقفز فوق","example":"Le chat saute par-dessus le mur.","translation":"يقفز القط فوق الجدار."},
+    {"fr":"sauter un repas","ar":"يفوّت وجبة","example":"Il ne faut pas sauter le petit-déjeuner.","translation":"ينبغي عدم تفويت وجبة الإفطار."}
+  ],
+  "danser": [
+    {"fr":"danser avec quelqu’un","ar":"يرقص مع شخص","example":"Ils dansent ensemble pendant la fête.","translation":"يرقصون معًا أثناء الحفل."},
+    {"fr":"danser sur une musique","ar":"يرقص على موسيقى","example":"Les enfants dansent sur une musique joyeuse.","translation":"يرقص الأطفال على موسيقى مبهجة."}
+  ],
+  "ressentir": [
+    {"fr":"ressentir une émotion","ar":"يشعر بعاطفة","example":"Elle ressent une grande joie à cette nouvelle.","translation":"تشعر بفرح كبير عند سماع هذا الخبر."},
+    {"fr":"ressentir une douleur","ar":"يشعر بألم","example":"Le patient ressent une douleur au genou.","translation":"يشعر المريض بألم في ركبته."}
+  ],
+  "traiter": [
+    {"fr":"traiter une demande","ar":"يعالج طلبًا","example":"Le service traite votre demande aujourd’hui.","translation":"يعالج القسم طلبكم اليوم."},
+    {"fr":"traiter quelqu’un avec respect","ar":"يعامل شخصًا باحترام","example":"Nous traitons chaque client avec respect.","translation":"نعامل كل عميل باحترام."}
+  ],
+  "mener": [
+    {"fr":"mener une enquête","ar":"يجري تحقيقًا","example":"La police mène une enquête approfondie.","translation":"تجري الشرطة تحقيقًا موسعًا."},
+    {"fr":"mener à un lieu","ar":"يؤدي إلى مكان","example":"Ce chemin mène directement au château.","translation":"يؤدي هذا الطريق مباشرة إلى القلعة."}
+  ],
+  "fonctionner": [
+    {"fr":"fonctionner correctement","ar":"يعمل بصورة سليمة","example":"La machine fonctionne correctement depuis sa réparation.","translation":"تعمل الآلة بصورة سليمة منذ إصلاحها."},
+    {"fr":"fonctionner avec quelque chose","ar":"يعمل باستخدام شيء","example":"Cet appareil fonctionne avec une batterie rechargeable.","translation":"يعمل هذا الجهاز ببطارية قابلة للشحن."}
+  ],
+  "approcher": [
+    {"fr":"approcher un objet","ar":"يقرّب شيئًا","example":"Elle approche la lampe du bureau.","translation":"تقرّب المصباح من المكتب."},
+    {"fr":"approcher quelqu’un","ar":"يقترب من شخص","example":"Il approche le responsable pour lui parler.","translation":"يقترب من المسؤول للتحدث إليه."}
+  ],
+  "forcer": [
+    {"fr":"forcer une serrure","ar":"يكسر قفلًا بالقوة","example":"Les pompiers forcent la serrure pour entrer.","translation":"يكسر رجال الإطفاء القفل للدخول."},
+    {"fr":"forcer quelqu’un à faire","ar":"يجبر شخصًا على فعل شيء","example":"Personne ne peut vous forcer à accepter.","translation":"لا يستطيع أحد إجباركم على القبول."}
+  ],
+  "épouser": [
+    {"fr":"épouser quelqu’un","ar":"يتزوج شخصًا","example":"Il épouse sa compagne au printemps.","translation":"يتزوج شريكته في الربيع."},
+    {"fr":"épouser une idée","ar":"يتبنّى فكرة","example":"Le groupe épouse pleinement cette idée.","translation":"تتبنى المجموعة هذه الفكرة تمامًا."}
+  ],
+  "prévoir": [
+    {"fr":"prévoir un événement","ar":"يخطط لحدث","example":"Nous prévoyons une visite vendredi.","translation":"نخطط لزيارة يوم الجمعة."},
+    {"fr":"prévoir que","ar":"يتوقع أن","example":"La météo prévoit qu’il pleuvra demain.","translation":"تتوقع الأرصاد أن تمطر غدًا."}
+  ],
+  "dégager": [
+    {"fr":"dégager le passage","ar":"يفسح الطريق","example":"Les agents dégagent le passage rapidement.","translation":"يفسح الموظفون الطريق بسرعة."},
+    {"fr":"dégager une odeur","ar":"تنبعث منه رائحة","example":"Cette fleur dégage une odeur agréable.","translation":"تنبعث من هذه الزهرة رائحة طيبة."}
+  ],
+  "souhaiter": [
+    {"fr":"souhaiter quelque chose à quelqu’un","ar":"يتمنى لشخص شيئًا","example":"Je vous souhaite un bon voyage.","translation":"أتمنى لكم رحلة سعيدة."},
+    {"fr":"souhaiter faire","ar":"يرغب في فعل شيء","example":"Elle souhaite apprendre le français.","translation":"ترغب في تعلم الفرنسية."}
+  ],
+  "surveiller": [
+    {"fr":"surveiller des enfants","ar":"يراقب أطفالًا","example":"Un adulte surveille les enfants dans la piscine.","translation":"يراقب شخص بالغ الأطفال في المسبح."},
+    {"fr":"surveiller une évolution","ar":"يتابع تطورًا","example":"Le médecin surveille l’évolution de son état.","translation":"يتابع الطبيب تطور حالته."}
+  ],
+  "risquer": [
+    {"fr":"risquer de faire","ar":"قد يفعل أو يوشك أن يفعل","example":"Vous risquez d’arriver en retard.","translation":"قد تصلون متأخرين."},
+    {"fr":"risquer quelque chose","ar":"يخاطر بشيء","example":"Il risque sa carrière en agissant ainsi.","translation":"يخاطر بمسيرته المهنية بتصرفه هكذا."}
+  ],
+  "signifier": [
+    {"fr":"signifier quelque chose","ar":"يعني شيئًا","example":"Ce panneau signifie que l’accès est interdit.","translation":"تعني هذه اللافتة أن الدخول ممنوع."},
+    {"fr":"signifier une décision","ar":"يبلّغ قرارًا رسميًا","example":"L’administration lui signifie sa décision par écrit.","translation":"تبلّغه الإدارة قرارها كتابيًا."}
+  ],
+  "retirer": [
+    {"fr":"retirer de l’argent","ar":"يسحب مالًا","example":"Elle retire cent euros au distributeur.","translation":"تسحب مئة يورو من جهاز الصراف."},
+    {"fr":"retirer un vêtement","ar":"يخلع قطعة ملابس","example":"Retirez votre manteau en entrant.","translation":"اخلعوا معطفكم عند الدخول."}
+  ],
+  "tenter": [
+    {"fr":"tenter de faire","ar":"يحاول فعل شيء","example":"Nous tentons de trouver une solution durable.","translation":"نحاول إيجاد حل مستدام."},
+    {"fr":"tenter quelqu’un","ar":"يغري شخصًا","example":"Cette offre pourrait tenter plusieurs clients.","translation":"قد يغري هذا العرض عددًا من العملاء."}
+  ],
+  "régler": [
+    {"fr":"régler une facture","ar":"يسدّد فاتورة","example":"Je règle la facture par carte bancaire.","translation":"أسدّد الفاتورة بالبطاقة المصرفية."},
+    {"fr":"régler un problème","ar":"يحل مشكلة","example":"Le technicien règle le problème en quelques minutes.","translation":"يحل الفني المشكلة خلال دقائق."}
+  ],
+  "diriger": [
+    {"fr":"diriger une équipe","ar":"يدير فريقًا","example":"Elle dirige une équipe internationale.","translation":"تدير فريقًا دوليًا."},
+    {"fr":"diriger quelqu’un vers un lieu","ar":"يوجّه شخصًا إلى مكان","example":"L’agent dirige les visiteurs vers la sortie.","translation":"يوجه الموظف الزوار إلى المخرج."}
+  ],
+  "échapper": [
+    {"fr":"échapper à un danger","ar":"ينجو من خطر","example":"Les habitants échappent à l’incendie.","translation":"ينجو السكان من الحريق."},
+    {"fr":"échapper à quelqu’un","ar":"يفلت من شخص","example":"Le suspect échappe à la police.","translation":"يفلت المشتبه به من الشرطة."}
+  ],
+  "remonter": [
+    {"fr":"remonter une horloge","ar":"يعبّئ نابض ساعة","example":"L’horloger remonte la pendule avec précaution.","translation":"يعبّئ صانع الساعات نابض الساعة بحذر."},
+    {"fr":"remonter une rue","ar":"يصعد شارعًا","example":"Nous remontons la rue jusqu’à la place centrale.","translation":"نصعد الشارع حتى الساحة المركزية."}
+  ],
+  "ravir": [
+    {"fr":"ravir le public","ar":"يسعد الجمهور","example":"Le spectacle ravit le public de tous âges.","translation":"يسعد العرض الجمهور من جميع الأعمار."},
+    {"fr":"être ravi de","ar":"يكون سعيدًا بـ","example":"Nous sommes ravis de vous accueillir.","translation":"يسعدنا استقبالكم."}
+  ],
+  "brûler": [
+    {"fr":"brûler quelque chose","ar":"يحرق شيئًا","example":"Il brûle les vieux documents en sécurité.","translation":"يحرق المستندات القديمة بأمان."},
+    {"fr":"se brûler","ar":"يصاب بحرق","example":"Attention à ne pas vous brûler avec la casserole.","translation":"احذروا أن تصابوا بحرق من القدر."}
+  ],
+  "crier": [
+    {"fr":"crier un nom","ar":"ينادي باسم بصوت مرتفع","example":"Elle crie le nom de son frère dans la gare.","translation":"تنادي باسم أخيها بصوت مرتفع في المحطة."},
+    {"fr":"crier de joie","ar":"يصرخ فرحًا","example":"Les supporters crient de joie après le but.","translation":"يصرخ المشجعون فرحًا بعد الهدف."}
+  ],
+  "obliger": [
+    {"fr":"obliger quelqu’un à faire","ar":"يلزم شخصًا بفعل شيء","example":"La règle oblige les visiteurs à présenter une pièce d’identité.","translation":"تلزم القاعدة الزوار بإبراز وثيقة هوية."},
+    {"fr":"être obligé de","ar":"يكون مضطرًا إلى","example":"Je suis obligé de reporter le rendez-vous.","translation":"أُضطر إلى تأجيل الموعد."}
+  ],
+  "rêver": [
+    {"fr":"rêver de faire","ar":"يحلم بفعل شيء","example":"Elle rêve de visiter le Canada.","translation":"تحلم بزيارة كندا."},
+    {"fr":"rêver de quelque chose","ar":"يحلم بشيء","example":"Il rêve d’une maison près de la mer.","translation":"يحلم بمنزل قرب البحر."}
+  ],
+  "remarquer": [
+    {"fr":"remarquer un détail","ar":"يلاحظ تفصيلًا","example":"Le lecteur remarque une erreur dans le texte.","translation":"يلاحظ القارئ خطأً في النص."},
+    {"fr":"faire remarquer que","ar":"يلفت الانتباه إلى أن","example":"Elle fait remarquer que le délai est court.","translation":"تلفت الانتباه إلى أن المهلة قصيرة."}
+  ],
+  "traverser": [
+    {"fr":"traverser une rue","ar":"يعبر شارعًا","example":"Les élèves traversent la rue avec prudence.","translation":"يعبر الطلاب الشارع بحذر."},
+    {"fr":"traverser une période","ar":"يمر بفترة","example":"L’entreprise traverse une période difficile.","translation":"تمر الشركة بفترة صعبة."}
+  ],
+  "charger": [
+    {"fr":"charger un véhicule","ar":"يحمّل مركبة","example":"Ils chargent le camion avant le départ.","translation":"يحمّلون الشاحنة قبل الانطلاق."},
+    {"fr":"charger un appareil","ar":"يشحن جهازًا","example":"Je charge mon téléphone pendant la nuit.","translation":"أشحن هاتفي أثناء الليل."}
+  ],
+  "appartenir": [
+    {"fr":"appartenir à quelqu’un","ar":"يعود ملكه إلى شخص","example":"Ce sac appartient à ma sœur.","translation":"هذه الحقيبة ملك لأختي."},
+    {"fr":"appartenir à un groupe","ar":"ينتمي إلى مجموعة","example":"Il appartient à une association sportive.","translation":"ينتمي إلى جمعية رياضية."}
+  ],
+  "répéter": [
+    {"fr":"répéter une phrase","ar":"يكرر جملة","example":"Répétez la phrase après le professeur.","translation":"كرروا الجملة بعد المعلم."},
+    {"fr":"répéter un spectacle","ar":"يتدرّب على عرض","example":"Les acteurs répètent la pièce chaque soir.","translation":"يتدرّب الممثلون على المسرحية كل مساء."}
+  ],
+  "reposer": [
+    {"fr":"reposer un objet","ar":"يعيد وضع شيء","example":"Elle repose le dossier sur le bureau.","translation":"تعيد وضع الملف على المكتب."},
+    {"fr":"reposer sur quelque chose","ar":"يقوم أو يعتمد على شيء","example":"La décision repose sur des faits précis.","translation":"يقوم القرار على وقائع دقيقة."}
+  ],
+  "plaisanter": [
+    {"fr":"plaisanter avec quelqu’un","ar":"يمزح مع شخص","example":"Il plaisante avec ses collègues à la pause.","translation":"يمزح مع زملائه أثناء الاستراحة."},
+    {"fr":"plaisanter sur un sujet","ar":"يمزح بشأن موضوع","example":"Nous plaisantons sur nos petites erreurs.","translation":"نمزح بشأن أخطائنا البسيطة."}
+  ]
+}

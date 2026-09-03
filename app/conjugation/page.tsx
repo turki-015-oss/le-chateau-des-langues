@@ -7,6 +7,7 @@ import {speakFrench} from "@/lib/frenchSpeech";
 import reviewedNext50Source from "@/data/reviewed-conjugations-next50.json";
 import reviewedNext50BSource from "@/data/reviewed-conjugations-next50-b.json";
 import reviewedNext50CSource from "@/data/reviewed-conjugations-next50-c.json";
+import reviewedUsagesNext50CSource from "@/data/reviewed-usages-next50-c.json";
 import {REVIEWED_NEXT50_ACTIVE} from "@/data/reviewed-next50-active";
 import {REVIEWED_NEXT50_B_ACTIVE} from "@/data/reviewed-next50-b-active";
 import {REVIEWED_NEXT50_C_ACTIVE} from "@/data/reviewed-next50-c-active";
@@ -2327,6 +2328,10 @@ Object.assign(USAGES,{
  "se nourrir":[{fr:"se nourrir sainement",ar:"يتغذى بصورة صحية",example:"Nous nous nourrissons sainement pendant la période d’entraînement.",translation:"نتغذى بصورة صحية خلال فترة التدريب."},{fr:"se nourrir de légumes",ar:"يتغذى على الخضروات",example:"Cet animal se nourrit principalement de légumes et de fruits.",translation:"يتغذى هذا الحيوان أساسًا على الخضروات والفواكه."},{fr:"se nourrir d’idées",ar:"يستمد غذاءه من الأفكار",example:"Son travail se nourrit des idées partagées pendant les réunions.",translation:"يستمد عمله مادته من الأفكار المتبادلة أثناء الاجتماعات."},{fr:"se nourrir correctement",ar:"يتناول غذاءً مناسبًا",example:"Le médecin lui a conseillé de se nourrir correctement après l’opération.",translation:"نصحه الطبيب بأن يتغذى بصورة مناسبة بعد العملية."}],
  "se remettre":[{fr:"se remettre d’une maladie",ar:"يتعافى من مرض",example:"Elle se remet progressivement de sa maladie.",translation:"تتعافى تدريجيًا من مرضها."},{fr:"se remettre au travail",ar:"يعود إلى العمل",example:"Nous nous sommes remis au travail après la courte pause.",translation:"عدنا إلى العمل بعد الاستراحة القصيرة."},{fr:"se remettre en question",ar:"يراجع نفسه",example:"Le responsable a accepté de se remettre en question.",translation:"وافق المسؤول على مراجعة نفسه."},{fr:"se remettre en route",ar:"يستأنف السير",example:"Le bus s’est remis en route après la réparation.",translation:"استأنفت الحافلة السير بعد الإصلاح."}]
 });
+
+for(const [verb,items] of Object.entries(reviewedUsagesNext50CSource as Record<string,Usage[]>)){
+ USAGES[verb]=[...(USAGES[verb]||[]),...items];
+}
 
 const B2_COMPLEMENTS:Record<string,{fr:string[],ar:string[]}>= {
  "questionner":{fr:["dans le rapport de ce matin", "pendant la réunion avec le directeur", "dans une situation officielle", "au cours de notre projet commun", "devant votre équipe professionnelle", "dans leurs activités quotidiennes"],ar:["في تقرير هذا الصباح", "أثناء الاجتماع مع المدير", "في موقف رسمي", "خلال مشروعنا المشترك", "أمام فريقكم المهني", "في أنشطتهم اليومية"]},

@@ -20,6 +20,7 @@ const etreOnlyByBatch = {
   c: ["devenir", "revenir", "parvenir", "intervenir"],
   d: [],
   e: [],
+  f: ["rentrer", "tomber"],
 };
 const dualAuxByBatch = {
   "": ["sortir", "descendre", "monter", "passer"],
@@ -27,6 +28,7 @@ const dualAuxByBatch = {
   c: [],
   d: [],
   e: [],
+  f: ["rentrer", "tomber"],
 };
 const etreOnly = new Set(etreOnlyByBatch[batchName] ?? []);
 const dualAux = new Set(dualAuxByBatch[batchName] ?? []);

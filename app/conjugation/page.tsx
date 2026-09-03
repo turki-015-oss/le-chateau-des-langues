@@ -9,20 +9,23 @@ import reviewedNext50BSource from "@/data/reviewed-conjugations-next50-b.json";
 import reviewedNext50CSource from "@/data/reviewed-conjugations-next50-c.json";
 import reviewedNext50DSource from "@/data/reviewed-conjugations-next50-d.json";
 import reviewedNext50ESource from "@/data/reviewed-conjugations-next50-e.json";
+import reviewedNext50FSource from "@/data/reviewed-conjugations-next50-f.json";
 import reviewedUsagesNext50Source from "@/data/reviewed-usages-next50.json";
 import reviewedUsagesNext50BSource from "@/data/reviewed-usages-next50-b.json";
 import reviewedUsagesNext50CSource from "@/data/reviewed-usages-next50-c.json";
 import reviewedUsagesNext50DSource from "@/data/reviewed-usages-next50-d.json";
 import reviewedUsagesNext50ESource from "@/data/reviewed-usages-next50-e.json";
+import reviewedUsagesNext50FSource from "@/data/reviewed-usages-next50-f.json";
 import {REVIEWED_NEXT50_ACTIVE} from "@/data/reviewed-next50-active";
 import {REVIEWED_NEXT50_B_ACTIVE} from "@/data/reviewed-next50-b-active";
 import {REVIEWED_NEXT50_C_ACTIVE} from "@/data/reviewed-next50-c-active";
 import {REVIEWED_NEXT50_D_ACTIVE} from "@/data/reviewed-next50-d-active";
 import {REVIEWED_NEXT50_E_ACTIVE} from "@/data/reviewed-next50-e-active";
+import {REVIEWED_NEXT50_F_ACTIVE} from "@/data/reviewed-next50-f-active";
 
 type ReviewedNext50Record={auxiliary:string;primaryAuxiliary:"avoir"|"être";dualAuxiliary:boolean;pastParticiple:string;forms:Record<string,string[]>;examples:Record<string,{fr:string;ar:string}[]>};
-const REVIEWED_NEXT50={...(reviewedNext50Source as Record<string,ReviewedNext50Record>),...(reviewedNext50BSource as Record<string,ReviewedNext50Record>),...(reviewedNext50CSource as Record<string,ReviewedNext50Record>),...(reviewedNext50DSource as Record<string,ReviewedNext50Record>),...(reviewedNext50ESource as Record<string,ReviewedNext50Record>)};
-const REVIEWED_NEXT50_SET=new Set<string>([...REVIEWED_NEXT50_ACTIVE,...REVIEWED_NEXT50_B_ACTIVE,...REVIEWED_NEXT50_C_ACTIVE,...REVIEWED_NEXT50_D_ACTIVE,...REVIEWED_NEXT50_E_ACTIVE]);
+const REVIEWED_NEXT50={...(reviewedNext50Source as Record<string,ReviewedNext50Record>),...(reviewedNext50BSource as Record<string,ReviewedNext50Record>),...(reviewedNext50CSource as Record<string,ReviewedNext50Record>),...(reviewedNext50DSource as Record<string,ReviewedNext50Record>),...(reviewedNext50ESource as Record<string,ReviewedNext50Record>),...(reviewedNext50FSource as Record<string,ReviewedNext50Record>)};
+const REVIEWED_NEXT50_SET=new Set<string>([...REVIEWED_NEXT50_ACTIVE,...REVIEWED_NEXT50_B_ACTIVE,...REVIEWED_NEXT50_C_ACTIVE,...REVIEWED_NEXT50_D_ACTIVE,...REVIEWED_NEXT50_E_ACTIVE,...REVIEWED_NEXT50_F_ACTIVE]);
 const reviewedNext50=(verb:string)=>REVIEWED_NEXT50_SET.has(verb)?REVIEWED_NEXT50[verb]:undefined;
 
 const P=["je","tu","il / elle","nous","vous","ils / elles"];
@@ -61,7 +64,7 @@ function LearningTips(){
 }
 
 const VERBS=['être', 'avoir', 'aller', 'faire', 'pouvoir', 'vouloir', 'devoir', 'savoir', 'venir', 'voir', 'dire', 'prendre', 'mettre', 'partir', 'sortir', 'dormir', 'lire', 'écrire', 'boire', 'croire', 'recevoir', 'vivre', 'connaître', 'naître', 'mourir', 'courir', 'tenir', 'ouvrir', 'offrir', 'attendre', 'entendre', 'répondre', 'vendre', 'perdre', 'rendre', 'descendre', 'apprendre', 'comprendre', 'surprendre', 'parler', 'aimer', 'donner', 'travailler', 'chercher', 'trouver', 'penser', 'demander', 'regarder', 'écouter', 'jouer', 'arriver', 'rester', 'entrer', 'porter', 'monter', 'passer', 'marcher', 'habiter', 'étudier', 'manger', 'commencer', 'acheter', 'appeler', 'préférer', 'espérer', 'envoyer', 'payer', 'essayer', 'nettoyer', 'employer', 'finir', 'choisir', 'réussir', 'grandir', 'grossir', 'maigrir', 'réfléchir', 'remplir', 'obéir', 'punir', 'bâtir', 'rougir', 'blanchir', 'agir', 'servir', 'sentir', 'mentir', 'couvrir', 'découvrir', 'souffrir', 'cueillir', 'accueillir', 'conduire', 'produire', 'traduire', 'construire', 'détruire', 'cuire', 'suivre', 'poursuivre', 'rire', 'sourire', 'plaire', 'taire', 'décrire', 'inscrire', 'reconnaître', 'paraître', 'apparaître', 'disparaître', 'valoir', 'falloir', 'pleuvoir', 'asseoir', 'fuir', 'conclure', 'inclure', 'exclure', 'résoudre', 'craindre', 'peindre', 'joindre', 'atteindre', 'éteindre', 'vaincre', 'convaincre', 'battre', 'rompre', 'interrompre', 'promettre', 'permettre', 'admettre', 'remettre', 'commettre', 'transmettre', 'reprendre', 'entreprendre', 'devenir', 'revenir', 'parvenir', 'prévenir', 'intervenir', 'obtenir', 'retenir', 'maintenir', 'parcourir', 'secourir', 'se lever', 'se laver', 'se coucher', 'se réveiller', "s’habiller", "se déshabiller", 'se préparer', 'se présenter', 'se reposer', 'se promener', 'se dépêcher', 'se marier', 'se souvenir', "s’appeler", "s’intéresser", "s’inquiéter", 'se sentir', 'se tromper', 'se perdre', 'se rencontrer', 'se parler', 'se voir', 'se comprendre', 'se demander', 'se servir', 'se rendre', 'se mettre', "s’arrêter", "s’amuser", 'se concentrer', "se rappeler", "se décider", "se déplacer", "se retourner", "se joindre", "se plaindre", "se taire", "s’asseoir", "s’endormir", "s’occuper", "se débrouiller", "se battre", "se moquer", "se méfier", "s’excuser", "s’habituer", "s’évanouir", "s’épanouir", "se comporter", "se calmer", "se fâcher", "se réjouir", "se divertir", "se détendre", "se passer", "se dérouler", "se produire", "se trouver", "se renseigner", "s’inscrire", "se connecter", "se déconnecter", "se diriger", "s’approcher", "s’éloigner", "se cacher", "se disputer", "s’entendre", "s’adapter", "s’améliorer", "s’organiser", "s’installer", "se protéger", "se débarrasser", "se réunir", "s’imaginer", "se comparer", "se consacrer", "s’exprimer", "se développer", "se réaliser", "se manifester", "se transformer", "se renforcer", "se limiter", "se maintenir", "se permettre", "se convaincre", "s’engager", "se fier", "s’opposer", "se distinguer", "se soucier", "se familiariser", "se satisfaire", "se précipiter", "se méprendre", "se conformer", "s’entraîner", "s’échapper", "se rapprocher", "se détacher", "se renouveler", "s’affirmer", "s’enrichir", "s’accomplir", "se nourrir", "se remettre", "questionner", "quérir", "quereller", "se quereller", "quêter", "quémander", "quantifier", "quittancer", "quadrupler", "quadriller", "queuter", "quarter", "quintupler", "quitter", "se quitter", "qualifier", "se qualifier", "sous-payer", "sous-utiliser", "sous-employer", "sous-alimenter", "se sous-alimenter", "sous-entendre", "sous-tendre", "sous-estimer", "sous-traiter", "sous-louer", "sous-titrer", "sous-investir", "se sous-investir", "sous-évaluer", "sous-exploiter", "répugner", "repeigner", "se repeigner", "exiger", "exister", "coexister", "explorer", "exploiter", "s’exclamer", "accepter", "accompagner", "annoncer", "ajouter", "aider", "apporter", "assurer", "augmenter", "avancer", "éviter", "expliquer", "gagner", "garder", "imaginer", "inviter", "laisser", "lancer", "manquer", "montrer", "oublier", "organiser", "préparer", "proposer", "protéger", "raconter", "refuser", "rencontrer", "représenter", "réserver", "retourner", "terminer", "toucher", "utiliser", "vérifier", "visiter", "abandonner", "absorber", "accélérer", "accorder", "accumuler", "administrer", "admirer", "adopter", "affronter", "analyser", "appliquer", "apprécier", "approuver", "arranger", "autoriser"];
-for(const verb of [...REVIEWED_NEXT50_D_ACTIVE,...REVIEWED_NEXT50_E_ACTIVE])if(!VERBS.includes(verb))VERBS.push(verb);
+for(const verb of [...REVIEWED_NEXT50_D_ACTIVE,...REVIEWED_NEXT50_E_ACTIVE,...REVIEWED_NEXT50_F_ACTIVE])if(!VERBS.includes(verb))VERBS.push(verb);
 const AR:Record<string,string>={
   "être": "يكون",
   "avoir": "يملك / لديه",
@@ -455,6 +458,56 @@ const AR:Record<string,string>={
  "informer": "يبلّغ",
  "observer": "يراقب / يلتزم بـ",
  "publier": "ينشر",
+ "arrêter": "يوقف / يتوقف",
+ "tuer": "يقتل / يقضي على",
+ "rentrer": "يعود / يُدخل",
+ "occuper": "يشغل",
+ "tomber": "يسقط",
+ "excuser": "يعذر",
+ "tirer": "يسحب / يطلق",
+ "importer": "يستورد",
+ "sembler": "يبدو",
+ "rappeler": "يذكّر / يعاود الاتصال",
+ "retrouver": "يعثر على / يلتقي مجددًا",
+ "sauver": "ينقذ / يحفظ",
+ "emmener": "يأخذ معه",
+ "adorer": "يعشق",
+ "voler": "يطير / يسرق",
+ "inquiéter": "يقلق",
+ "prier": "يرجو / يصلّي",
+ "compter": "يعدّ / يعتمد على",
+ "poser": "يضع / يطرح",
+ "cacher": "يخفي",
+ "amener": "يوصل / يدفع إلى",
+ "bouger": "يتحرك / يحرّك",
+ "supposer": "يفترض",
+ "ramener": "يعيد / يرجع بـ",
+ "jeter": "يرمي",
+ "marier": "يزوّج / ينسّق",
+ "tourner": "يدير / ينعطف",
+ "ressembler": "يشبه",
+ "enlever": "يزيل / يخلع",
+ "suffire": "يكفي",
+ "détester": "يكره",
+ "ignorer": "يجهل / يتجاهل",
+ "coucher": "يضع في الفراش / يدوّن",
+ "frapper": "يضرب / يطرق",
+ "réveiller": "يوقظ",
+ "lâcher": "يفلت / يترك",
+ "lever": "يرفع",
+ "revoir": "يرى مجددًا / يراجع",
+ "amuser": "يسلّي / يضحك",
+ "attraper": "يمسك / يلحق بـ",
+ "chanter": "يغني",
+ "pleurer": "يبكي",
+ "calmer": "يهدّئ",
+ "tromper": "يخدع / يضلّل",
+ "blesser": "يجرح / يصيب",
+ "intéresser": "يثير اهتمام",
+ "casser": "يكسر",
+ "déranger": "يزعج",
+ "remercier": "يشكر",
+ "empêcher": "يمنع",
 };
 const I:Record<string,{p:string[],pp:string,f:string,imp?:string}>={
 "être":{p:["suis","es","est","sommes","êtes","sont"],pp:"été",f:"ser",imp:"ét"},"avoir":{p:["ai","as","a","avons","avez","ont"],pp:"eu",f:"aur",imp:"av"},"aller":{p:["vais","vas","va","allons","allez","vont"],pp:"allé",f:"ir",imp:"all"},"faire":{p:["fais","fais","fait","faisons","faites","font"],pp:"fait",f:"fer"},"pouvoir":{p:["peux","peux","peut","pouvons","pouvez","peuvent"],pp:"pu",f:"pourr"},"vouloir":{p:["veux","veux","veut","voulons","voulez","veulent"],pp:"voulu",f:"voudr"},"devoir":{p:["dois","dois","doit","devons","devez","doivent"],pp:"dû",f:"devr"},"savoir":{p:["sais","sais","sait","savons","savez","savent"],pp:"su",f:"saur"},"venir":{p:["viens","viens","vient","venons","venez","viennent"],pp:"venu",f:"viendr"},"tenir":{p:["tiens","tiens","tient","tenons","tenez","tiennent"],pp:"tenu",f:"tiendr"},"voir":{p:["vois","vois","voit","voyons","voyez","voient"],pp:"vu",f:"verr"},"dire":{p:["dis","dis","dit","disons","dites","disent"],pp:"dit",f:"dir"},"prendre":{p:["prends","prends","prend","prenons","prenez","prennent"],pp:"pris",f:"prendr"},"mettre":{p:["mets","mets","met","mettons","mettez","mettent"],pp:"mis",f:"mettr"},"partir":{p:["pars","pars","part","partons","partez","partent"],pp:"parti",f:"partir"},"sortir":{p:["sors","sors","sort","sortons","sortez","sortent"],pp:"sorti",f:"sortir"},"dormir":{p:["dors","dors","dort","dormons","dormez","dorment"],pp:"dormi",f:"dormir"},"lire":{p:["lis","lis","lit","lisons","lisez","lisent"],pp:"lu",f:"lir"},"écrire":{p:["écris","écris","écrit","écrivons","écrivez","écrivent"],pp:"écrit",f:"écrir"},"boire":{p:["bois","bois","boit","buvons","buvez","boivent"],pp:"bu",f:"boir"},"croire":{p:["crois","crois","croit","croyons","croyez","croient"],pp:"cru",f:"croir"},"recevoir":{p:["reçois","reçois","reçoit","recevons","recevez","reçoivent"],pp:"reçu",f:"recevr"},"vivre":{p:["vis","vis","vit","vivons","vivez","vivent"],pp:"vécu",f:"vivr"},"connaître":{p:["connais","connais","connaît","connaissons","connaissez","connaissent"],pp:"connu",f:"connaîtr"},"naître":{p:["nais","nais","naît","naissons","naissez","naissent"],pp:"né",f:"naîtr"},"mourir":{p:["meurs","meurs","meurt","mourons","mourez","meurent"],pp:"mort",f:"mourr"},"courir":{p:["cours","cours","court","courons","courez","courent"],pp:"couru",f:"courr"},"ouvrir":{p:["ouvre","ouvres","ouvre","ouvrons","ouvrez","ouvrent"],pp:"ouvert",f:"ouvrir"},"offrir":{p:["offre","offres","offre","offrons","offrez","offrent"],pp:"offert",f:"offrir"},"appeler":{p:["appelle","appelles","appelle","appelons","appelez","appellent"],pp:"appelé",f:"appeller"},"inquiéter":{p:["inquiète","inquiètes","inquiète","inquiétons","inquiétez","inquiètent"],pp:"inquiété",f:"inquiéter"},"souvenir":{p:["souviens","souviens","souvient","souvenons","souvenez","souviennent"],pp:"souvenu",f:"souviendr"},"attendre":{p:["attends","attends","attend","attendons","attendez","attendent"],pp:"attendu",f:"attendr"},"répondre":{p:["réponds","réponds","répond","répondons","répondez","répondent"],pp:"répondu",f:"répondr"},"apprendre":{p:["apprends","apprends","apprend","apprenons","apprenez","apprennent"],pp:"appris",f:"apprendr"},"conduire":{p:["conduis","conduis","conduit","conduisons","conduisez","conduisent"],pp:"conduit",f:"conduir"},"comprendre":{p:["comprends","comprends","comprend","comprenons","comprenez","comprennent"],pp:"compris",f:"comprendr"},"manger":{p:["mange","manges","mange","mangeons","mangez","mangent"],pp:"mangé",f:"manger"},"commencer":{p:["commence","commences","commence","commençons","commencez","commencent"],pp:"commencé",f:"commencer"},"acheter":{p:["achète","achètes","achète","achetons","achetez","achètent"],pp:"acheté",f:"achèter"},"préférer":{p:["préfère","préfères","préfère","préférons","préférez","préfèrent"],pp:"préféré",f:"préférer"},"espérer":{p:["espère","espères","espère","espérons","espérez","espèrent"],pp:"espéré",f:"espérer"},"envoyer":{p:["envoie","envoies","envoie","envoyons","envoyez","envoient"],pp:"envoyé",f:"enverr"},"payer":{p:["paie","paies","paie","payons","payez","paient"],pp:"payé",f:"paier"},"essayer":{p:["essaie","essaies","essaie","essayons","essayez","essaient"],pp:"essayé",f:"essaier"},"nettoyer":{p:["nettoie","nettoies","nettoie","nettoyons","nettoyez","nettoient"],pp:"nettoyé",f:"nettoier"},"employer":{p:["emploie","emploies","emploie","employons","employez","emploient"],pp:"employé",f:"emploier"},"servir":{p:["sers","sers","sert","servons","servez","servent"],pp:"servi",f:"servir"},
@@ -2384,7 +2437,7 @@ Object.assign(USAGES,{
  "se remettre":[{fr:"se remettre d’une maladie",ar:"يتعافى من مرض",example:"Elle se remet progressivement de sa maladie.",translation:"تتعافى تدريجيًا من مرضها."},{fr:"se remettre au travail",ar:"يعود إلى العمل",example:"Nous nous sommes remis au travail après la courte pause.",translation:"عدنا إلى العمل بعد الاستراحة القصيرة."},{fr:"se remettre en question",ar:"يراجع نفسه",example:"Le responsable a accepté de se remettre en question.",translation:"وافق المسؤول على مراجعة نفسه."},{fr:"se remettre en route",ar:"يستأنف السير",example:"Le bus s’est remis en route après la réparation.",translation:"استأنفت الحافلة السير بعد الإصلاح."}]
 });
 
-for(const reviewedBatch of [reviewedUsagesNext50Source,reviewedUsagesNext50BSource,reviewedUsagesNext50CSource,reviewedUsagesNext50DSource,reviewedUsagesNext50ESource] as Record<string,Usage[]>[]){
+for(const reviewedBatch of [reviewedUsagesNext50Source,reviewedUsagesNext50BSource,reviewedUsagesNext50CSource,reviewedUsagesNext50DSource,reviewedUsagesNext50ESource,reviewedUsagesNext50FSource] as Record<string,Usage[]>[]){
  for(const [verb,items] of Object.entries(reviewedBatch))USAGES[verb]=[...(USAGES[verb]||[]),...items];
 }
 

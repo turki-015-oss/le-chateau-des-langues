@@ -40,7 +40,11 @@ def fetch(verb: str) -> tuple[str, dict]:
     response = session.get(f"https://www.dictionnaire-academie.fr/conjuguer/{code}", timeout=45)
     response.raise_for_status()
     soup = BeautifulSoup(response.content, "html.parser", from_encoding="utf-8")
-    voice = soup.select_one("#voix_active")
+    # Depending on the auxiliary, the Academy page can expose more than one
+    # active table. Prefer être for the common intransitive use of movement
+    # verbs; otherwise retain the generic/avoir table.
+    active_voices = soup.select('div[id^="voix_active"]')
+    voice = active_voices[-1] if verb in {"rentrer", "tomber"} and len(active_voices) > 1 else (active_voices[0] if active_voices else None)
     if not voice:
         raise RuntimeError(f"{verb}: active conjugation table not found")
     result: dict = {"participe": {"passe": {}}}

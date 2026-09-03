@@ -1,0 +1,202 @@
+{
+  "arrêter": [
+    {"fr":"arrêter un véhicule","ar":"يوقف مركبة","example":"L’agent arrête le véhicule devant l’entrée.","translation":"يوقف الموظف المركبة أمام المدخل."},
+    {"fr":"arrêter de faire quelque chose","ar":"يتوقف عن فعل شيء","example":"Il arrête de travailler à dix-huit heures.","translation":"يتوقف عن العمل عند الساعة السادسة مساءً."}
+  ],
+  "tuer": [
+    {"fr":"tuer un être vivant","ar":"يقتل كائنًا حيًا","example":"Ce produit peut tuer les insectes nuisibles.","translation":"قد يقضي هذا المنتج على الحشرات الضارة."},
+    {"fr":"tuer le temps","ar":"يقتل الوقت؛ يمضي الوقت","example":"Elle lit pour tuer le temps dans la salle d’attente.","translation":"تقرأ لتمضية الوقت في قاعة الانتظار."}
+  ],
+  "rentrer": [
+    {"fr":"rentrer chez soi","ar":"يعود إلى المنزل","example":"Nous rentrons chez nous avant la nuit.","translation":"نعود إلى منزلنا قبل حلول الليل."},
+    {"fr":"rentrer quelque chose","ar":"يدخل شيئًا أو يعيده إلى الداخل","example":"Il rentre les chaises avant la pluie.","translation":"يُدخل الكراسي قبل هطول المطر."}
+  ],
+  "occuper": [
+    {"fr":"occuper un poste","ar":"يشغل منصبًا","example":"Elle occupe ce poste depuis trois ans.","translation":"تشغل هذا المنصب منذ ثلاث سنوات."},
+    {"fr":"occuper un espace","ar":"يشغل مساحة","example":"Cette armoire occupe beaucoup d’espace.","translation":"تشغل هذه الخزانة مساحة كبيرة."}
+  ],
+  "tomber": [
+    {"fr":"tomber par terre","ar":"يسقط على الأرض","example":"Le livre tombe par terre.","translation":"يسقط الكتاب على الأرض."},
+    {"fr":"tomber malade","ar":"يمرض","example":"Il est tombé malade pendant son voyage.","translation":"مرض أثناء سفره."}
+  ],
+  "excuser": [
+    {"fr":"excuser quelqu’un","ar":"يعذر شخصًا","example":"Le responsable excuse son retard exceptionnel.","translation":"يعذر المسؤول تأخره الاستثنائي."},
+    {"fr":"excuser une erreur","ar":"يتغاضى عن خطأ أو يعذره","example":"Nous pouvons excuser cette erreur involontaire.","translation":"يمكننا التغاضي عن هذا الخطأ غير المقصود."}
+  ],
+  "tirer": [
+    {"fr":"tirer un objet","ar":"يسحب شيئًا","example":"Elle tire la chaise vers la table.","translation":"تسحب الكرسي نحو الطاولة."},
+    {"fr":"tirer une conclusion","ar":"يستخلص نتيجة","example":"Le chercheur tire une conclusion des résultats.","translation":"يستخلص الباحث نتيجة من المعطيات."}
+  ],
+  "importer": [
+    {"fr":"importer des marchandises","ar":"يستورد بضائع","example":"L’entreprise importe des produits européens.","translation":"تستورد الشركة منتجات أوروبية."},
+    {"fr":"importer un fichier","ar":"يستورد ملفًا إلى برنامج","example":"Vous pouvez importer le fichier dans l’application.","translation":"يمكنكم استيراد الملف إلى التطبيق."}
+  ],
+  "sembler": [
+    {"fr":"sembler suivi d’un adjectif","ar":"يبدو متصفًا بشيء","example":"La solution semble simple et efficace.","translation":"يبدو الحل بسيطًا وفعالًا."},
+    {"fr":"sembler faire quelque chose","ar":"يبدو أنه يفعل شيئًا","example":"Il semble comprendre la consigne.","translation":"يبدو أنه يفهم التعليمات."}
+  ],
+  "rappeler": [
+    {"fr":"rappeler une information","ar":"يذكّر بمعلومة","example":"Le professeur rappelle les règles avant l’exercice.","translation":"يذكّر الأستاذ بالقواعد قبل التمرين."},
+    {"fr":"rappeler quelqu’un au téléphone","ar":"يعاود الاتصال بشخص","example":"Je vous rappellerai cet après-midi.","translation":"سأعاود الاتصال بكم بعد ظهر اليوم."}
+  ],
+  "retrouver": [
+    {"fr":"retrouver un objet perdu","ar":"يعثر على شيء مفقود","example":"Elle retrouve ses clés sous la table.","translation":"تعثر على مفاتيحها تحت الطاولة."},
+    {"fr":"retrouver quelqu’un","ar":"يلتقي شخصًا من جديد","example":"Nous retrouvons nos amis devant le musée.","translation":"نلتقي أصدقاءنا مجددًا أمام المتحف."}
+  ],
+  "sauver": [
+    {"fr":"sauver une personne","ar":"ينقذ شخصًا","example":"Les pompiers sauvent les habitants de l’immeuble.","translation":"ينقذ رجال الإطفاء سكان المبنى."},
+    {"fr":"sauver un document","ar":"يحفظ مستندًا","example":"Sauvez le document avant de fermer le programme.","translation":"احفظوا المستند قبل إغلاق البرنامج."}
+  ],
+  "emmener": [
+    {"fr":"emmener quelqu’un quelque part","ar":"يأخذ شخصًا معه إلى مكان","example":"Elle emmène les enfants au parc.","translation":"تأخذ الأطفال معها إلى الحديقة."},
+    {"fr":"emmener un animal","ar":"يأخذ حيوانًا معه","example":"Il emmène son chien chez le vétérinaire.","translation":"يأخذ كلبه معه إلى الطبيب البيطري."}
+  ],
+  "adorer": [
+    {"fr":"adorer quelque chose","ar":"يعشق شيئًا أو يحبه كثيرًا","example":"J’adore la cuisine française.","translation":"أعشق المطبخ الفرنسي."},
+    {"fr":"adorer faire quelque chose","ar":"يحب كثيرًا فعل شيء","example":"Ils adorent voyager en train.","translation":"يحبون السفر بالقطار كثيرًا."}
+  ],
+  "voler": [
+    {"fr":"voler dans les airs","ar":"يطير في الهواء","example":"L’avion vole au-dessus des nuages.","translation":"تطير الطائرة فوق السحب."},
+    {"fr":"voler quelque chose","ar":"يسرق شيئًا","example":"Un homme a volé son téléphone dans le métro.","translation":"سرق رجل هاتفه في المترو."}
+  ],
+  "inquiéter": [
+    {"fr":"inquiéter quelqu’un","ar":"يقلق شخصًا","example":"Ce retard inquiète toute la famille.","translation":"يثير هذا التأخر قلق الأسرة كلها."},
+    {"fr":"une situation qui inquiète","ar":"وضع يبعث على القلق","example":"La hausse des prix inquiète les habitants.","translation":"يثير ارتفاع الأسعار قلق السكان."}
+  ],
+  "prier": [
+    {"fr":"prier Dieu","ar":"يدعو الله أو يصلي له","example":"Ils prient dans un lieu calme.","translation":"يصلّون في مكان هادئ."},
+    {"fr":"prier quelqu’un de faire quelque chose","ar":"يرجو من شخص فعل شيء","example":"Je vous prie de patienter quelques minutes.","translation":"أرجو منكم الانتظار بضع دقائق."}
+  ],
+  "compter": [
+    {"fr":"compter des éléments","ar":"يعدّ عناصر","example":"L’organisateur compte les participants.","translation":"يعدّ المنظم المشاركين."},
+    {"fr":"compter sur quelqu’un","ar":"يعتمد على شخص","example":"Vous pouvez compter sur notre équipe.","translation":"يمكنكم الاعتماد على فريقنا."}
+  ],
+  "poser": [
+    {"fr":"poser un objet","ar":"يضع شيئًا","example":"Il pose le dossier sur le bureau.","translation":"يضع الملف على المكتب."},
+    {"fr":"poser une question","ar":"يطرح سؤالًا","example":"L’étudiante pose une question au professeur.","translation":"تطرح الطالبة سؤالًا على الأستاذ."}
+  ],
+  "cacher": [
+    {"fr":"cacher un objet","ar":"يخفي شيئًا","example":"Elle cache la clé dans un tiroir.","translation":"تخفي المفتاح في درج."},
+    {"fr":"cacher la vérité","ar":"يخفي الحقيقة","example":"Il ne faut pas cacher la vérité au client.","translation":"ينبغي ألّا نخفي الحقيقة عن العميل."}
+  ],
+  "amener": [
+    {"fr":"amener quelqu’un quelque part","ar":"يوصل شخصًا إلى مكان","example":"Je vous amène à la gare en voiture.","translation":"أوصلكم إلى المحطة بالسيارة."},
+    {"fr":"amener quelqu’un à faire quelque chose","ar":"يدفع شخصًا إلى فعل شيء","example":"Cette expérience l’amène à changer d’avis.","translation":"تدفعه هذه التجربة إلى تغيير رأيه."}
+  ],
+  "bouger": [
+    {"fr":"bouger un objet","ar":"يحرّك شيئًا","example":"Nous bougeons la table près de la fenêtre.","translation":"نحرّك الطاولة إلى جوار النافذة."},
+    {"fr":"ne pas bouger","ar":"يبقى ساكنًا","example":"Le patient ne doit pas bouger pendant l’examen.","translation":"يجب ألّا يتحرك المريض أثناء الفحص."}
+  ],
+  "supposer": [
+    {"fr":"supposer que","ar":"يفترض أن","example":"Je suppose que le train arrivera à l’heure.","translation":"أفترض أن القطار سيصل في موعده."},
+    {"fr":"supposer quelque chose","ar":"يفترض شيئًا","example":"Cette méthode suppose une bonne préparation.","translation":"تفترض هذه الطريقة استعدادًا جيدًا."}
+  ],
+  "ramener": [
+    {"fr":"ramener quelqu’un chez lui","ar":"يعيد شخصًا إلى منزله","example":"Le taxi ramène les voyageurs à leur hôtel.","translation":"يعيد سائق الأجرة المسافرين إلى فندقهم."},
+    {"fr":"ramener un objet","ar":"يعيد شيئًا معه","example":"Je ramène les livres à la bibliothèque.","translation":"أعيد الكتب إلى المكتبة."}
+  ],
+  "jeter": [
+    {"fr":"jeter quelque chose","ar":"يرمي شيئًا","example":"Il jette le papier dans la poubelle.","translation":"يرمي الورقة في سلة المهملات."},
+    {"fr":"jeter un regard","ar":"يلقي نظرة","example":"Elle jette un regard rapide au document.","translation":"تلقي نظرة سريعة على المستند."}
+  ],
+  "marier": [
+    {"fr":"marier deux personnes","ar":"يعقد قران شخصين","example":"L’officier d’état civil marie le couple samedi.","translation":"يعقد موظف الأحوال المدنية قران الزوجين يوم السبت."},
+    {"fr":"marier des couleurs","ar":"ينسّق بين ألوان","example":"La décoratrice marie le bleu et le blanc.","translation":"تنسّق المصممة بين اللونين الأزرق والأبيض."}
+  ],
+  "tourner": [
+    {"fr":"tourner un objet","ar":"يدير شيئًا","example":"Tournez la poignée vers la droite.","translation":"أديروا المقبض نحو اليمين."},
+    {"fr":"tourner un film","ar":"يصوّر فيلمًا","example":"L’équipe tourne un film dans cette ville.","translation":"يصور الفريق فيلمًا في هذه المدينة."}
+  ],
+  "ressembler": [
+    {"fr":"ressembler à quelqu’un","ar":"يشبه شخصًا","example":"Il ressemble beaucoup à son père.","translation":"يشبه والده كثيرًا."},
+    {"fr":"ressembler à quelque chose","ar":"يشبه شيئًا","example":"Ce bâtiment ressemble à un château.","translation":"يشبه هذا المبنى قلعة."}
+  ],
+  "enlever": [
+    {"fr":"enlever un vêtement","ar":"يخلع قطعة ملابس","example":"Elle enlève son manteau en entrant.","translation":"تخلع معطفها عند الدخول."},
+    {"fr":"enlever une tache","ar":"يزيل بقعة","example":"Ce produit enlève les taches difficiles.","translation":"يزيل هذا المنتج البقع الصعبة."}
+  ],
+  "suffire": [
+    {"fr":"suffire à quelqu’un","ar":"يكفي شخصًا","example":"Une petite chambre me suffit.","translation":"تكفيني غرفة صغيرة."},
+    {"fr":"suffire pour faire quelque chose","ar":"يكفي لفعل شيء","example":"Dix minutes suffisent pour terminer l’exercice.","translation":"تكفي عشر دقائق لإنهاء التمرين."}
+  ],
+  "détester": [
+    {"fr":"détester quelque chose","ar":"يكره شيئًا","example":"Il déteste le bruit dans les lieux calmes.","translation":"يكره الضوضاء في الأماكن الهادئة."},
+    {"fr":"détester faire quelque chose","ar":"يكره فعل شيء","example":"Nous détestons attendre sans information.","translation":"نكره الانتظار دون معلومات."}
+  ],
+  "ignorer": [
+    {"fr":"ignorer une information","ar":"يجهل معلومة","example":"J’ignore la cause exacte de la panne.","translation":"أجهل السبب الدقيق للعطل."},
+    {"fr":"ignorer quelqu’un","ar":"يتجاهل شخصًا","example":"Il ignore volontairement mes messages.","translation":"يتجاهل رسائلي عمدًا."}
+  ],
+  "coucher": [
+    {"fr":"coucher un enfant","ar":"يضع طفلًا في فراشه","example":"Les parents couchent le bébé à huit heures.","translation":"يضع الوالدان الرضيع في فراشه عند الثامنة."},
+    {"fr":"coucher quelque chose par écrit","ar":"يدوّن شيئًا كتابةً","example":"Elle couche ses idées sur le papier.","translation":"تدوّن أفكارها على الورق."}
+  ],
+  "frapper": [
+    {"fr":"frapper à la porte","ar":"يطرق الباب","example":"Frappez à la porte avant d’entrer.","translation":"اطرقوا الباب قبل الدخول."},
+    {"fr":"frapper quelqu’un ou quelque chose","ar":"يضرب شخصًا أو شيئًا","example":"La balle frappe le mur avec force.","translation":"ترتطم الكرة بالجدار بقوة."}
+  ],
+  "réveiller": [
+    {"fr":"réveiller quelqu’un","ar":"يوقظ شخصًا","example":"Je réveille les enfants à sept heures.","translation":"أوقظ الأطفال عند السابعة."},
+    {"fr":"réveiller un souvenir","ar":"يوقظ ذكرى","example":"Cette chanson réveille de beaux souvenirs.","translation":"توقظ هذه الأغنية ذكريات جميلة."}
+  ],
+  "lâcher": [
+    {"fr":"lâcher un objet","ar":"يفلت شيئًا من يده","example":"Ne lâchez pas la corde avant le signal.","translation":"لا تفلتوا الحبل قبل الإشارة."},
+    {"fr":"lâcher prise","ar":"يتوقف عن المقاومة؛ يتقبل الأمر","example":"Il apprend à lâcher prise face aux difficultés.","translation":"يتعلم أن يتقبل ما لا يستطيع تغييره أمام الصعوبات."}
+  ],
+  "lever": [
+    {"fr":"lever la main","ar":"يرفع يده","example":"L’élève lève la main pour répondre.","translation":"يرفع الطالب يده للإجابة."},
+    {"fr":"lever une interdiction","ar":"يرفع حظرًا","example":"La ville lève l’interdiction après l’inspection.","translation":"ترفع البلدية الحظر بعد المعاينة."}
+  ],
+  "revoir": [
+    {"fr":"revoir quelqu’un","ar":"يرى شخصًا مجددًا","example":"Je suis heureux de revoir mes anciens collègues.","translation":"يسعدني أن أرى زملائي السابقين مجددًا."},
+    {"fr":"revoir un document","ar":"يراجع مستندًا","example":"La responsable revoit le rapport avant l’envoi.","translation":"تراجع المسؤولة التقرير قبل إرساله."}
+  ],
+  "amuser": [
+    {"fr":"amuser quelqu’un","ar":"يسلي شخصًا أو يضحكه","example":"Cette histoire amuse beaucoup les enfants.","translation":"تسلي هذه القصة الأطفال كثيرًا."},
+    {"fr":"une situation qui amuse","ar":"موقف يثير الضحك","example":"Son imitation amuse toute l’équipe.","translation":"يضحك تقليده الفريق كله."}
+  ],
+  "attraper": [
+    {"fr":"attraper un objet","ar":"يمسك شيئًا","example":"Elle attrape la balle d’une seule main.","translation":"تمسك الكرة بيد واحدة."},
+    {"fr":"attraper un transport","ar":"يلحق بوسيلة نقل","example":"Nous devons partir tôt pour attraper le train.","translation":"يجب أن نغادر مبكرًا للحاق بالقطار."}
+  ],
+  "chanter": [
+    {"fr":"chanter une chanson","ar":"يغني أغنية","example":"Les élèves chantent une chanson française.","translation":"يغني الطلاب أغنية فرنسية."},
+    {"fr":"chanter juste","ar":"يغني بنغم صحيح","example":"Elle chante juste sans accompagnement musical.","translation":"تغني بنغم صحيح من دون مرافقة موسيقية."}
+  ],
+  "pleurer": [
+    {"fr":"pleurer de tristesse","ar":"يبكي حزنًا","example":"L’enfant pleure parce qu’il a perdu son jouet.","translation":"يبكي الطفل لأنه فقد لعبته."},
+    {"fr":"pleurer de joie","ar":"يبكي فرحًا","example":"Elle pleure de joie en apprenant la nouvelle.","translation":"تبكي فرحًا عند سماع الخبر."}
+  ],
+  "calmer": [
+    {"fr":"calmer quelqu’un","ar":"يهدّئ شخصًا","example":"L’infirmier calme le patient avant l’examen.","translation":"يهدّئ الممرض المريض قبل الفحص."},
+    {"fr":"calmer une douleur","ar":"يخفف ألمًا","example":"Ce médicament calme rapidement la douleur.","translation":"يخفف هذا الدواء الألم سريعًا."}
+  ],
+  "tromper": [
+    {"fr":"tromper quelqu’un","ar":"يخدع شخصًا","example":"Cette publicité peut tromper les consommateurs.","translation":"قد يخدع هذا الإعلان المستهلكين."},
+    {"fr":"tromper l’attente","ar":"يخفف وطأة الانتظار","example":"Il écoute un podcast pour tromper l’attente.","translation":"يستمع إلى تدوين صوتي لتمضية وقت الانتظار."}
+  ],
+  "blesser": [
+    {"fr":"blesser physiquement quelqu’un","ar":"يصيب شخصًا بجرح","example":"La chute a blessé deux joueurs.","translation":"أصابت السقطة لاعبين اثنين بجروح."},
+    {"fr":"blesser les sentiments","ar":"يجرح المشاعر","example":"Ses paroles ont blessé son ami.","translation":"جرحت كلماته مشاعر صديقه."}
+  ],
+  "intéresser": [
+    {"fr":"intéresser quelqu’un","ar":"يثير اهتمام شخص","example":"Ce sujet intéresse beaucoup les étudiants.","translation":"يثير هذا الموضوع اهتمام الطلاب كثيرًا."},
+    {"fr":"intéresser un public à quelque chose","ar":"يجذب اهتمام جمهور إلى شيء","example":"Le guide intéresse les visiteurs à l’histoire du lieu.","translation":"يجذب المرشد اهتمام الزوار إلى تاريخ المكان."}
+  ],
+  "casser": [
+    {"fr":"casser un objet","ar":"يكسر شيئًا","example":"Il casse un verre en rangeant la cuisine.","translation":"يكسر كأسًا أثناء ترتيب المطبخ."},
+    {"fr":"casser un prix","ar":"يخفض سعرًا كثيرًا","example":"Le magasin casse les prix pendant les soldes.","translation":"يخفض المتجر الأسعار كثيرًا خلال التخفيضات."}
+  ],
+  "déranger": [
+    {"fr":"déranger quelqu’un","ar":"يزعج شخصًا","example":"La musique forte dérange les voisins.","translation":"تزعج الموسيقى الصاخبة الجيران."},
+    {"fr":"cela ne me dérange pas","ar":"هذا لا يزعجني أو لا أمانع","example":"Attendre quelques minutes ne me dérange pas.","translation":"لا أمانع الانتظار بضع دقائق."}
+  ],
+  "remercier": [
+    {"fr":"remercier quelqu’un","ar":"يشكر شخصًا","example":"La directrice remercie toute son équipe.","translation":"تشكر المديرة فريقها كله."},
+    {"fr":"remercier quelqu’un pour quelque chose","ar":"يشكر شخصًا على شيء","example":"Je vous remercie pour votre aide.","translation":"أشكركم على مساعدتكم."}
+  ],
+  "empêcher": [
+    {"fr":"empêcher quelqu’un de faire quelque chose","ar":"يمنع شخصًا من فعل شيء","example":"La barrière empêche les visiteurs d’entrer.","translation":"يمنع الحاجز الزوار من الدخول."},
+    {"fr":"empêcher un événement","ar":"يحول دون وقوع حدث","example":"Une vérification régulière empêche de nombreux accidents.","translation":"يحول الفحص المنتظم دون وقوع حوادث كثيرة."}
+  ]
+}

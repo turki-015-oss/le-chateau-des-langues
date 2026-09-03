@@ -198,7 +198,16 @@ function frenchExample(verb, title, index, form, voice) {
     : title.startsWith("Gérondif") ? (/^en étant/iu.test(shown) ? genderedIndex : 0)
     : title.startsWith("Infinitif") || title === "Participe présent" ? 0
     : index;
-  const tail = smartTail(verb, contextIndex, voice).replace(/\btoujours\b\s*/iu, "").trim();
+  let tail = smartTail(verb, contextIndex, voice).replace(/\btoujours\b\s*/iu, "").trim();
+  const historicalTitles = new Set(["Passé composé", "Imparfait", "Plus-que-parfait", "Passé simple", "Passé antérieur", "Conditionnel passé", "Subjonctif imparfait", "Subjonctif plus-que-parfait"]);
+  if (historicalTitles.has(title)) {
+    tail = tail
+      .replace(/\baujourd’hui\b/giu, "ce jour-là")
+      .replace(/\bhier\b/giu, "la veille")
+      .replace(/\bdemain\b/giu, "le lendemain")
+      .replace(/\bla semaine prochaine\b/giu, "la semaine suivante")
+      .replace(/\bde le lendemain\b/giu, "du lendemain");
+  }
   const core = `${capitalized(shown)} ${tail}`.trim();
   if (title === "Présent") return `${core}.`;
   if (title === "Passé composé") return `${core}, comme prévu.`;
@@ -212,12 +221,12 @@ function frenchExample(verb, title, index, form, voice) {
   if (title === "Futur antérieur") return `${core} avant la réunion de demain.`;
   if (title === "Conditionnel présent") return `${core} si les circonstances le permettaient.`;
   if (title === "Conditionnel passé") return `${core} si les informations étaient arrivées à temps.`;
-  if (title === "Subjonctif présent") return `Le responsable souhaite ${lower} ${tail}.`;
-  if (title === "Subjonctif passé") return `Le comité se réjouit ${lower} ${tail}.`;
-  if (title === "Subjonctif imparfait") return `Le directeur souhaitait ${lower} ${tail}.`;
-  if (title === "Subjonctif plus-que-parfait") return `Le témoin doutait ${lower} ${tail}.`;
+  if (title === "Subjonctif présent") return `Il est possible ${lower} ${tail}.`;
+  if (title === "Subjonctif passé") return `Il est possible ${lower} ${tail}.`;
+  if (title === "Subjonctif imparfait") return `Il était possible ${lower} ${tail}.`;
+  if (title === "Subjonctif plus-que-parfait") return `Il était possible ${lower} ${tail}.`;
   if (title === "Impératif présent") return `${core} dès maintenant.`;
-  if (title === "Impératif passé") return `${core} avant l’heure convenue.`;
+  if (title === "Impératif passé") return /\bavant\b/iu.test(tail) ? `${core}.` : `${core} avant l’heure convenue.`;
   if (title === "Infinitif présent") return `${capitalized(shown)} ${tail} demande une attention particulière.`;
   if (title === "Infinitif passé") return `Après ${lower} ${tail}, l’équipe a poursuivi son travail.`;
   if (title === "Participe présent") return `${core}, j’ai poursuivi ma mission.`;

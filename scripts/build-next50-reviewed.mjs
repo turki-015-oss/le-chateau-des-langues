@@ -8,19 +8,23 @@ const sourcePath = path.join(root, "scripts", `.conjugation-next50${batch}-sourc
 const listPath = path.join(root, "scripts", `conjugation-next50${batch}.txt`);
 const outputPath = path.join(root, "data", `reviewed-conjugations-next50${batch}.json`);
 const pagePath = path.join(root, "app", "conjugation", "page.tsx");
+const contextsPath = path.join(root, "scripts", `conjugation-next50${batch}-contexts.json`);
 
 const source = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
+const reviewedContexts = fs.existsSync(contextsPath) ? JSON.parse(fs.readFileSync(contextsPath, "utf8")) : {};
 const previous = fs.existsSync(outputPath) ? JSON.parse(fs.readFileSync(outputPath, "utf8")) : {};
 const verbs = fs.readFileSync(listPath, "utf8").split(/\r?\n/u).map((x) => x.trim().split(":", 1)[0]).filter(Boolean);
 const etreOnlyByBatch = {
   "": ["partir", "sortir", "naître", "mourir", "descendre", "arriver", "rester", "entrer", "monter", "passer"],
   b: ["apparaître"],
   c: ["devenir", "revenir", "parvenir", "intervenir"],
+  d: [],
 };
 const dualAuxByBatch = {
   "": ["sortir", "descendre", "monter", "passer"],
   b: ["paraître", "apparaître", "disparaître"],
   c: [],
+  d: [],
 };
 const etreOnly = new Set(etreOnlyByBatch[batchName] ?? []);
 const dualAux = new Set(dualAuxByBatch[batchName] ?? []);
@@ -172,8 +176,8 @@ function formsForVoice(verb, entry, auxiliary) {
   forms["Impératif passé"] = Object.values(voice.imperatif?.passe ?? {}).map((value) => value.split(";")[0]);
   forms["Infinitif présent"] = [verb];
   const pp = voice.participe.passe;
-  const simpleParticiples = [...new Set([pp.sm, pp.sf, pp.pm, pp.pf])];
-  const compoundParticiples = [...new Set([pp.compound_sm, pp.compound_sf, pp.compound_pm, pp.compound_pf])];
+  const simpleParticiples = [...new Set([pp.sm, pp.sf, pp.pm, pp.pf].filter(Boolean))];
+  const compoundParticiples = [...new Set([pp.compound_sm, pp.compound_sf, pp.compound_pm, pp.compound_pf].filter(Boolean))];
   const pronominal = /^(?:se\s+|s[’'])/u.test(verb);
   forms["Infinitif passé"] = auxiliary === "être"
     ? simpleParticiples.map((participle) => `${pronominal ? "s’être" : "être"} ${participle}`)
@@ -211,6 +215,7 @@ function capitalized(text) {
 }
 
 function smartTail(verb, index, voice) {
+  if (reviewedContexts[verb]) return reviewedContexts[verb];
   if (verb === "pleuvoir") return index === 1 ? "sur le boxeur pendant le combat" : "sur la ville pendant la nuit";
   if (forcedSafeContexts.has(verb)) return safeFallbackTails[verb];
   const smartSentence = smartExamples[verb]?.[Math.min(index, 5)]?.[0];

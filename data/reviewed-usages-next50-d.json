@@ -1,0 +1,78 @@
+{
+  "continuer": [
+    {"fr":"continuer à faire quelque chose","ar":"يواصل فعل شيء","example":"Elle continue à apprendre le français chaque soir.","translation":"تواصل تعلم الفرنسية كل مساء."},
+    {"fr":"continuer son chemin","ar":"يتابع طريقه","example":"Après une courte pause, les randonneurs continuent leur chemin.","translation":"يتابع المتنزهون طريقهم بعد استراحة قصيرة."}
+  ],
+  "décider": [
+    {"fr":"décider de faire quelque chose","ar":"يقرر فعل شيء","example":"Nous décidons de reporter la réunion à lundi.","translation":"نقرر تأجيل الاجتماع إلى يوم الاثنين."},
+    {"fr":"décider quelqu’un à faire quelque chose","ar":"يدفع شخصًا إلى اتخاذ قرار بفعل شيء","example":"Ces résultats l’ont décidé à modifier sa méthode.","translation":"دفعته هذه النتائج إلى اتخاذ قرار بتغيير طريقته."}
+  ],
+  "changer": [
+    {"fr":"changer de méthode","ar":"يغيّر طريقته","example":"L’équipe change de méthode après les premiers résultats.","translation":"يغيّر الفريق طريقته بعد ظهور النتائج الأولى."},
+    {"fr":"changer quelque chose en autre chose","ar":"يحوّل شيئًا إلى شيء آخر","example":"Le froid change l’eau en glace.","translation":"يحوّل البرد الماء إلى جليد."}
+  ],
+  "voyager": [
+    {"fr":"voyager en train","ar":"يسافر بالقطار","example":"Ils voyagent en train pour réduire les émissions.","translation":"يسافرون بالقطار للحد من الانبعاثات."},
+    {"fr":"voyager à travers un pays","ar":"يجوب بلدًا أو يسافر في أنحائه","example":"Elle voyage à travers le pays pendant trois semaines.","translation":"تجوب أنحاء البلاد مدة ثلاثة أسابيع."}
+  ],
+  "fermer": [
+    {"fr":"fermer une porte à clé","ar":"يقفل بابًا بالمفتاح","example":"Le gardien ferme la porte à clé chaque soir.","translation":"يقفل الحارس الباب بالمفتاح كل مساء."},
+    {"fr":"fermer un compte","ar":"يغلق حسابًا","example":"Le client demande à la banque de fermer son ancien compte.","translation":"يطلب العميل من البنك إغلاق حسابه القديم."}
+  ],
+  "partager": [
+    {"fr":"partager quelque chose avec quelqu’un","ar":"يتقاسم شيئًا أو يشاركه مع شخص","example":"Nous partageons les résultats avec toute l’équipe.","translation":"نشارك النتائج مع الفريق كاملًا."},
+    {"fr":"partager un avis","ar":"يشاطر رأيًا","example":"Je partage votre avis sur cette question.","translation":"أشاطركم الرأي في هذه المسألة."}
+  ],
+  "participer": [
+    {"fr":"participer à une formation","ar":"يشارك في دورة تدريبية","example":"Je participe à la formation de demain.","translation":"أشارك في دورة الغد التدريبية."},
+    {"fr":"participer aux frais","ar":"يساهم في التكاليف","example":"Chaque service participe aux frais du projet.","translation":"يساهم كل قسم في تكاليف المشروع."}
+  ],
+  "créer": [
+    {"fr":"créer un compte","ar":"ينشئ حسابًا","example":"Vous devez créer un compte pour accéder au service.","translation":"يجب إنشاء حساب للوصول إلى الخدمة."},
+    {"fr":"créer des emplois","ar":"يوفر فرص عمل","example":"La nouvelle entreprise crée cinquante emplois dans la région.","translation":"توفر الشركة الجديدة خمسين فرصة عمل في المنطقة."}
+  ],
+  "présenter": [
+    {"fr":"présenter un projet","ar":"يعرض مشروعًا","example":"Elle présente le projet devant le comité.","translation":"تعرض المشروع أمام اللجنة."},
+    {"fr":"présenter quelqu’un à quelqu’un","ar":"يعرّف شخصًا إلى شخص آخر","example":"Je vous présente la nouvelle responsable du service.","translation":"أعرّفكم إلى المسؤولة الجديدة عن القسم."}
+  ],
+  "développer": [
+    {"fr":"développer une application","ar":"يطور تطبيقًا","example":"Cette équipe développe une application éducative.","translation":"يطور هذا الفريق تطبيقًا تعليميًا."},
+    {"fr":"développer une idée","ar":"يوسع فكرة ويشرحها","example":"L’auteur développe cette idée dans le chapitre suivant.","translation":"يوسع الكاتب هذه الفكرة ويشرحها في الفصل التالي."}
+  ],
+  "améliorer": [
+    {"fr":"améliorer la qualité","ar":"يحسن الجودة","example":"Ces mesures améliorent la qualité du service.","translation":"تحسن هذه الإجراءات جودة الخدمة."},
+    {"fr":"améliorer ses compétences","ar":"يطور مهاراته","example":"Elle suit cette formation pour améliorer ses compétences.","translation":"تلتحق بهذه الدورة لتطوير مهاراتها."}
+  ],
+  "contacter": [
+    {"fr":"contacter quelqu’un par téléphone","ar":"يتصل بشخص هاتفيًا","example":"Je contacte le service client par téléphone.","translation":"أتصل بخدمة العملاء هاتفيًا."},
+    {"fr":"contacter quelqu’un par courrier électronique","ar":"يتواصل مع شخص عبر البريد الإلكتروني","example":"Vous pouvez contacter la responsable par courrier électronique.","translation":"يمكنكم التواصل مع المسؤولة عبر البريد الإلكتروني."}
+  ],
+  "confirmer": [
+    {"fr":"confirmer une réservation","ar":"يؤكد حجزًا","example":"L’hôtel confirme notre réservation par courrier électronique.","translation":"يؤكد الفندق حجزنا عبر البريد الإلكتروني."},
+    {"fr":"confirmer que","ar":"يؤكد أن","example":"Le laboratoire confirme que les résultats sont exacts.","translation":"يؤكد المختبر أن النتائج صحيحة."}
+  ],
+  "modifier": [
+    {"fr":"modifier un document","ar":"يعدل مستندًا","example":"Elle modifie le document après l’avoir relu.","translation":"تعدل المستند بعد مراجعته."},
+    {"fr":"modifier une réservation","ar":"يغيّر تفاصيل حجز","example":"Le voyageur souhaite modifier sa réservation.","translation":"يرغب المسافر في تغيير تفاصيل حجزه."}
+  ],
+  "célébrer": [
+    {"fr":"célébrer une réussite","ar":"يحتفل بنجاح","example":"Toute l’équipe célèbre la réussite du projet.","translation":"يحتفل الفريق كاملًا بنجاح المشروع."},
+    {"fr":"célébrer un anniversaire","ar":"يحتفل بذكرى أو عيد ميلاد","example":"Ils célèbrent leur anniversaire de mariage en famille.","translation":"يحتفلون بذكرى زواجهم مع العائلة."}
+  ],
+  "commander": [
+    {"fr":"commander un repas","ar":"يطلب وجبة","example":"Nous commandons un repas pour toute la table.","translation":"نطلب وجبة لجميع الجالسين إلى الطاولة."},
+    {"fr":"commander un produit en ligne","ar":"يطلب منتجًا عبر الإنترنت","example":"Elle commande ses livres en ligne.","translation":"تطلب كتبها عبر الإنترنت."}
+  ],
+  "livrer": [
+    {"fr":"livrer un colis","ar":"يسلم طردًا","example":"Le transporteur livre le colis à l’adresse indiquée.","translation":"يسلم الناقل الطرد إلى العنوان المحدد."},
+    {"fr":"livrer un travail","ar":"يسلم عملًا منجزًا","example":"L’agence doit livrer le travail avant vendredi.","translation":"يجب على الوكالة تسليم العمل قبل يوم الجمعة."}
+  ],
+  "réparer": [
+    {"fr":"réparer une machine","ar":"يصلح آلة","example":"Le technicien répare la machine avant la reprise du travail.","translation":"يصلح الفني الآلة قبل استئناف العمل."},
+    {"fr":"réparer une erreur","ar":"يتدارك خطأ أو يصلحه","example":"Une mise à jour rapide a réparé cette erreur.","translation":"أصلح تحديث سريع هذا الخطأ."}
+  ],
+  "signer": [
+    {"fr":"signer un contrat","ar":"يوقع عقدًا","example":"Les deux parties signent le contrat après l’avoir lu.","translation":"يوقع الطرفان العقد بعد قراءته."},
+    {"fr":"signer de son nom","ar":"يضع توقيعه باسمه","example":"Veuillez signer de votre nom au bas du formulaire.","translation":"يرجى وضع توقيعكم باسمكم أسفل النموذج."}
+  ]
+}

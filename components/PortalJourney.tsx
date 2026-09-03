@@ -40,7 +40,7 @@ function placeFromPath(pathname: string): PortalPlace | null {
 export default function PortalJourney() {
   const pathname = usePathname();
   const router = useRouter();
-  const currentPlace = useMemo(() => placeFromPath(pathname), [pathname]);
+  const currentPlace = useMemo(() => placeFromPath(pathname ?? "/"), [pathname]);
   const [exiting, setExiting] = useState<PortalPlace | null>(null);
 
   useEffect(() => {

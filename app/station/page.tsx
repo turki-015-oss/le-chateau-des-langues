@@ -6,14 +6,14 @@ import { ArrowRight, BookOpen, CalendarClock, ChevronLeft, CircleParking, Clock3
 import {speakFrench} from "@/lib/frenchSpeech";
 
 const sections = [
-  { id: "arrival", fr: "Arrivée à la gare", ar: "الوصول إلى المحطة", icon: MapPinned, image: "https://unsplash.com/photos/vsEkHU5Vpn8/download?force=true&w=1600" },
-  { id: "ticket", fr: "Acheter un billet", ar: "شراء التذكرة", icon: Ticket, image: "https://unsplash.com/photos/TnLUf0kSJEI/download?force=true&w=1600" },
-  { id: "board", fr: "Tableau des départs", ar: "لوحة المغادرات", icon: CalendarClock, image: "https://unsplash.com/photos/p022og65qHQ/download?force=true&w=1600" },
-  { id: "platform", fr: "Le quai", ar: "الرصيف", icon: CircleParking, image: "https://unsplash.com/photos/guLjfcsKC-o/download?force=true&w=1600" },
-  { id: "control", fr: "Contrôle du billet", ar: "فحص التذكرة", icon: ScanLine, image: "https://unsplash.com/photos/QbxnM4Hxz6c/download?force=true&w=1600" },
-  { id: "boarding", fr: "Monter dans le train", ar: "الصعود إلى القطار", icon: TrainFront, image: "https://unsplash.com/photos/XAezAuhVHts/download?force=true&w=1600" },
-  { id: "inside", fr: "Dans le train", ar: "داخل القطار", icon: Luggage, image: "https://unsplash.com/photos/rt6YfAyWAg0/download?force=true&w=1600" },
-  { id: "connection", fr: "Arrivée et correspondance", ar: "الوصول وتغيير القطار", icon: Route, image: "https://unsplash.com/photos/dUJWfpKyIYc/download?force=true&w=1600" },
+  { id: "arrival", fr: "Arrivée à la gare", ar: "الوصول إلى المحطة", icon: MapPinned, image: "/station-assets/arrival.webp" },
+  { id: "ticket", fr: "Acheter un billet", ar: "شراء التذكرة", icon: Ticket, image: "/station-assets/ticket.webp" },
+  { id: "board", fr: "Tableau des départs", ar: "لوحة المغادرات", icon: CalendarClock, image: "/station-assets/board.webp" },
+  { id: "platform", fr: "Le quai", ar: "الرصيف", icon: CircleParking, image: "/station-assets/platform.webp" },
+  { id: "control", fr: "Contrôle du billet", ar: "فحص التذكرة", icon: ScanLine, image: "/station-assets/control.webp" },
+  { id: "boarding", fr: "Monter dans le train", ar: "الصعود إلى القطار", icon: TrainFront, image: "/station-assets/boarding.webp" },
+  { id: "inside", fr: "Dans le train", ar: "داخل القطار", icon: Luggage, image: "/station-assets/inside.webp" },
+  { id: "connection", fr: "Arrivée et correspondance", ar: "الوصول وتغيير القطار", icon: Route, image: "/station-assets/connection.webp" },
 ];
 
 type Phrase = [string,string];
@@ -65,7 +65,7 @@ export default function StationPage() {
   return <main className="station-world">
     <header className="station-topbar"><Link href="/kingdom" className="station-nav-icon" aria-label="Retour au portail du Château"><ArrowRight size={22}/></Link><div><span>محطة القطار</span><strong>La Gare Royale</strong></div><button className="station-nav-icon" aria-label="Menu"><Menu size={22}/></button></header>
 
-    <section className="station-hero"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1800&q=92" alt="Gare ferroviaire avec train de voyageurs"/><div className="station-hero-shade"/><div className="station-hero-copy"><span><TrainFront size={18}/> Monde ouvert</span><h1>La Gare Royale</h1><p>جميع المراحل مفتوحة ويمكنك التنقل بينها بحرية.</p><button onClick={() => speak("Bienvenue à la gare royale. Toutes les étapes sont ouvertes.")}><Volume2 size={20}/> Écouter l'accueil</button></div></section>
+    <section className="station-hero"><img src="/station-assets/hero.webp" alt="Gare ferroviaire avec train de voyageurs"/><div className="station-hero-shade"/><div className="station-hero-copy"><span><TrainFront size={18}/> Monde ouvert</span><h1>La Gare Royale</h1><p>جميع المراحل مفتوحة ويمكنك التنقل بينها بحرية.</p><button onClick={() => speak("Bienvenue à la gare royale. Toutes les étapes sont ouvertes.")}><Volume2 size={20}/> Écouter l'accueil</button></div></section>
 
     <section className="station-section-grid">{sections.map(({id, fr, ar, image, icon: Icon}, index) => <button key={id} onClick={() => { setActive(id); document.getElementById("station-lesson")?.scrollIntoView({behavior:"smooth"}); }} className={`station-section-card ${active === id ? "active" : ""}`}><img src={image} alt={fr}/><span className="station-card-index">{String(index + 1).padStart(2,"0")}</span><div className="station-card-copy"><span className="station-red-icon"><Icon size={21}/></span><strong>{fr}</strong><small>{ar}</small></div></button>)}</section>
 

@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const batchName = process.argv.find((arg) => arg.startsWith("--batch="))?.split("=", 2)[1] ?? "";
+const batch = batchName ? `-${batchName}` : "";
 const dataPath = path.join(root, "data", `reviewed-conjugations-next50${batch}.json`);
 const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 const pending = [];
@@ -10,6 +11,9 @@ const refreshImperativePast = process.argv.includes("--refresh-imperative-past")
 
 function imperativeParaphrase(french) {
   return french
+    .replace(/^Sois-toi /u, "Veille à t’être ")
+    .replace(/^Soyons-nous /u, "Veillons à nous être ")
+    .replace(/^Soyez-vous /u, "Veillez à vous être ")
     .replace(/^Aie /u, "Veille à avoir ")
     .replace(/^Ayons /u, "Veillons à avoir ")
     .replace(/^Ayez /u, "Veillez à avoir ")

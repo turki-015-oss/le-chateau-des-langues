@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const batchName = process.argv.find((arg) => arg.startsWith("--batch="))?.split("=", 2)[1] ?? "";
+const batch = batchName ? `-${batchName}` : "";
 const sourcePath = path.join(root, "scripts", `.conjugation-next50${batch}-source.json`);
 const listPath = path.join(root, "scripts", `conjugation-next50${batch}.txt`);
 const outputPath = path.join(root, "data", `reviewed-conjugations-next50${batch}.json`);
@@ -11,8 +12,18 @@ const pagePath = path.join(root, "app", "conjugation", "page.tsx");
 const source = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
 const previous = fs.existsSync(outputPath) ? JSON.parse(fs.readFileSync(outputPath, "utf8")) : {};
 const verbs = fs.readFileSync(listPath, "utf8").split(/\r?\n/u).map((x) => x.trim().split(":", 1)[0]).filter(Boolean);
-const etreOnly = new Set(batch ? ["apparaître"] : ["partir", "sortir", "naître", "mourir", "descendre", "arriver", "rester", "entrer", "monter", "passer"]);
-const dualAux = new Set(batch ? ["paraître", "apparaître", "disparaître"] : ["sortir", "descendre", "monter", "passer"]);
+const etreOnlyByBatch = {
+  "": ["partir", "sortir", "naître", "mourir", "descendre", "arriver", "rester", "entrer", "monter", "passer"],
+  b: ["apparaître"],
+  c: ["devenir", "revenir", "parvenir", "intervenir"],
+};
+const dualAuxByBatch = {
+  "": ["sortir", "descendre", "monter", "passer"],
+  b: ["paraître", "apparaître", "disparaître"],
+  c: [],
+};
+const etreOnly = new Set(etreOnlyByBatch[batchName] ?? []);
+const dualAux = new Set(dualAuxByBatch[batchName] ?? []);
 const personPairs = [["1sm", "1sf"], ["2sm", "2sf"], ["3sm", "3sf"], ["1pm", "1pf"], ["2pm", "2pf"], ["3pm", "3pf"]];
 const subjects = ["je", "tu", "il / elle", "nous", "vous", "ils / elles"];
 const subjSubjects = ["que je", "que tu", "qu’il / elle", "que nous", "que vous", "qu’ils / elles"];
@@ -61,11 +72,33 @@ const usageExamples = readUsageExamples();
 const safeFallbackTails = {
   mentir: "à son médecin",
   taire: "une information confidentielle",
+  valoir: "beaucoup aux yeux de cette équipe",
+  asseoir: "un enfant sur une chaise",
+  exclure: "cette possibilité du rapport final",
+  joindre: "la facture au courriel",
+  atteindre: "l’objectif annuel en juin",
+  vaincre: "l’adversaire lors de la finale",
+  convaincre: "l’équipe de vérifier les faits",
+  battre: "le record précédent",
+  rompre: "le contrat d’un commun accord",
+  interrompre: "la réunion pendant quelques minutes",
+  promettre: "de respecter le délai convenu",
+  permettre: "à l’équipe de poursuivre son travail",
+  admettre: "une erreur devant l’équipe",
+  remettre: "le dossier au responsable",
+  commettre: "une erreur dans le calcul",
+  transmettre: "le rapport au service concerné",
+  devenir: "en mesure de gérer cette mission",
+  prévenir: "le responsable de ce retard",
+  maintenir: "la position initiale pendant les négociations",
 };
+const forcedSafeContexts = new Set(["valoir", "asseoir", "exclure", "joindre", "atteindre", "vaincre", "convaincre", "battre", "admettre", "devenir", "prévenir", "maintenir"]);
 
 function findEntry(verb) {
   if (source[verb]) return source[verb];
-  const normalized = verb.normalize("NFD").replace(/\p{M}/gu, "");
+  const sourceVerb = verb.replace(/^se\s+/u, "").replace(/^s[’'](?=\p{L})/u, "");
+  if (source[sourceVerb]) return source[sourceVerb];
+  const normalized = sourceVerb.normalize("NFD").replace(/\p{M}/gu, "");
   const key = Object.keys(source).find((candidate) => candidate.normalize("NFD").replace(/\p{M}/gu, "") === normalized);
   if (!key) throw new Error(`Missing source entry for ${verb}`);
   return source[key];
@@ -87,10 +120,20 @@ function elided(prefix, form) {
   return prefix === "je" ? `j’${form}` : `que j’${form}`;
 }
 
-function finiteRows(table, subjunctive = false) {
-  return personPairs.map(([maleKey, femaleKey], index) => {
-    const male = valueFor(table, maleKey);
-    const female = valueFor(table, femaleKey);
+function optionalValueFor(table, person) {
+  const key = Object.keys(table).find((candidate) => candidate.split(";").includes(person));
+  return key ? table[key].split(";")[0] : undefined;
+}
+
+function finiteRows(table, subjunctive = false, verb = "") {
+  return personPairs.flatMap(([maleKey, femaleKey], index) => {
+    const male = optionalValueFor(table, maleKey);
+    const female = optionalValueFor(table, femaleKey);
+    if (!male && !female) return [];
+    if (verb === "falloir") return [subjunctive ? `qu’il ${male ?? female}` : `il ${male ?? female}`];
+    if (verb === "pleuvoir" && index === 2) return [subjunctive ? `qu’il ${male ?? female}` : `il ${male ?? female}`];
+    if (!male) return [elided(subjunctive ? (index === 2 ? "qu’elle" : subjSubjects[index]) : (index === 2 ? "elle" : subjects[index]), female)];
+    if (!female) return [elided(subjunctive ? (index === 2 ? "qu’il" : subjSubjects[index]) : (index === 2 ? "il" : subjects[index]), male)];
     const prefix = (subjunctive ? subjSubjects : subjects)[index];
     if (index === 2 && male !== female) return `il ${male} / elle ${female}`.replace(/^il /u, subjunctive ? "qu’il " : "il ");
     let combined = male;
@@ -103,11 +146,15 @@ function finiteRows(table, subjunctive = false) {
         ? `${maleWords.slice(0, common).join(" ")} ${maleWords.slice(common).join(" ")} / ${femaleWords.slice(common).join(" ")}`
         : `${male} / ${female}`;
     }
-    return elided(prefix, combined);
+    return [elided(prefix, combined)];
   });
 }
 
 function voiceFor(entry, verb, auxiliary) {
+  if (/^(?:se\s+|s[’'])/u.test(verb)) {
+    if (!entry.voix_prono) throw new Error(`No pronominal voice for ${verb}`);
+    return entry.voix_prono;
+  }
   const wanted = auxiliary === "être" ? "voix_active_etre" : "voix_active_avoir";
   const voice = entry[wanted] ?? entry.voix_active ?? entry.voix_active_avoir ?? entry.voix_active_etre;
   if (!voice) throw new Error(`No active voice for ${verb} (${auxiliary})`);
@@ -119,20 +166,21 @@ function formsForVoice(verb, entry, auxiliary) {
   const forms = {};
   for (const [title, [mood, tense]] of Object.entries(tenseMap)) {
     if (!voice[mood]?.[tense]) throw new Error(`Missing ${mood}.${tense} for ${verb} (${auxiliary})`);
-    forms[title] = finiteRows(voice[mood][tense], mood === "subjonctif");
+    forms[title] = finiteRows(voice[mood][tense], mood === "subjonctif", verb);
   }
-  forms["Impératif présent"] = Object.values(voice.imperatif.present);
-  forms["Impératif passé"] = Object.values(voice.imperatif.passe);
+  forms["Impératif présent"] = Object.values(voice.imperatif?.present ?? {}).map((value) => value.split(";")[0]);
+  forms["Impératif passé"] = Object.values(voice.imperatif?.passe ?? {}).map((value) => value.split(";")[0]);
   forms["Infinitif présent"] = [verb];
   const pp = voice.participe.passe;
   const simpleParticiples = [...new Set([pp.sm, pp.sf, pp.pm, pp.pf])];
   const compoundParticiples = [...new Set([pp.compound_sm, pp.compound_sf, pp.compound_pm, pp.compound_pf])];
+  const pronominal = /^(?:se\s+|s[’'])/u.test(verb);
   forms["Infinitif passé"] = auxiliary === "être"
-    ? simpleParticiples.map((participle) => `être ${participle}`)
+    ? simpleParticiples.map((participle) => `${pronominal ? "s’être" : "être"} ${participle}`)
     : [`avoir ${pp.sm}`];
-  forms["Participe présent"] = [voice.participe.present];
+  forms["Participe présent"] = voice.participe.present ? [voice.participe.present] : [];
   forms["Participe passé"] = [...simpleParticiples, ...compoundParticiples];
-  forms["Gérondif présent"] = [`en ${voice.participe.present}`];
+  forms["Gérondif présent"] = voice.participe.present ? [`en ${voice.participe.present}`] : [];
   forms["Gérondif passé"] = compoundParticiples.map((participle) => `en ${participle}`);
   return { forms, pp: pp.sm };
 }
@@ -163,19 +211,19 @@ function capitalized(text) {
 }
 
 function smartTail(verb, index, voice) {
+  if (verb === "pleuvoir") return index === 1 ? "sur le boxeur pendant le combat" : "sur la ville pendant la nuit";
+  if (forcedSafeContexts.has(verb)) return safeFallbackTails[verb];
   const smartSentence = smartExamples[verb]?.[Math.min(index, 5)]?.[0];
   const usagePool = usageExamples[verb]?.map((usage) => usage.example).filter(Boolean) ?? [];
   const sentences = smartSentence ? [smartSentence] : usagePool;
+  if (!sentences.length && safeFallbackTails[verb]) return safeFallbackTails[verb];
   if (!sentences.length) throw new Error(`No contextual example is available for ${verb}`);
   const table = voice.indicatif.present;
-  const [maleKey, femaleKey] = personPairs[Math.min(index, 5)];
-  const candidates = smartSentence
-    ? [...new Set([valueFor(table, maleKey), valueFor(table, femaleKey)])]
-    : [...new Set(personPairs.flatMap(([male, female]) => [valueFor(table, male), valueFor(table, female)]))];
+  const candidates = [...new Set(Object.values(table).map((value) => value.split(";")[0]))];
   for (const sentence of sentences) {
-    const lower = sentence.toLocaleLowerCase("fr");
+    const lower = sentence.toLocaleLowerCase("fr").replace(/’/gu, "'");
     for (const conjugated of candidates) {
-      const escaped = conjugated.toLocaleLowerCase("fr").replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+      const escaped = conjugated.toLocaleLowerCase("fr").replace(/’/gu, "'").replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
       const match = lower.match(new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "u"));
       if (match?.index !== undefined) {
         return sentence.slice(match.index + match[0].length).trim().replace(/[.!?…]+$/u, "") || "dans ce contexte précis";
@@ -189,13 +237,16 @@ function smartTail(verb, index, voice) {
 function frenchExample(verb, title, index, form, voice) {
   const shown = sentenceForm(form);
   const lower = afterQue(shown[0].toLocaleLowerCase("fr") + shown.slice(1));
-  const imperativeMap = form.includes(" / ") || (voice.imperatif.present && Object.keys(voice.imperatif.present).length > 3)
+  const imperativeMap = form.includes(" / ")
+    || (title === "Impératif passé" && Object.keys(voice.imperatif?.passe ?? {}).length > 3)
+    || (voice.imperatif?.present && Object.keys(voice.imperatif.present).length > 3)
     ? [1, 1, 3, 3, 4, 4]
     : [1, 3, 4];
   const genderedIndex = /(?:ées|ies|ues|tes)$/u.test(shown) ? 5 : /(?:ée|ie|ue|te)$/u.test(shown) ? 2 : /s$/u.test(shown) ? 5 : 2;
   const contextIndex = title.startsWith("Impératif") ? (imperativeMap[index] ?? 4)
     : title === "Participe passé" && /^(ayant|étant)/iu.test(shown) ? (/^étant/iu.test(shown) ? genderedIndex : 0)
-    : title.startsWith("Gérondif") ? (/^en étant/iu.test(shown) ? genderedIndex : 0)
+    : title.startsWith("Gérondif") ? (/^en (?:étant|s['’]étant)/iu.test(shown) ? genderedIndex : 0)
+    : title === "Infinitif passé" && /^(?:être|s’être)/iu.test(shown) ? genderedIndex
     : title.startsWith("Infinitif") || title === "Participe présent" ? 0
     : index;
   let tail = smartTail(verb, contextIndex, voice).replace(/\btoujours\b\s*/iu, "").trim();
@@ -209,6 +260,13 @@ function frenchExample(verb, title, index, form, voice) {
       .replace(/\bde le lendemain\b/giu, "du lendemain");
   }
   const core = `${capitalized(shown)} ${tail}`.trim();
+  if (verb === "pleuvoir" && /(?:ils|elles)/iu.test(shown)) return `La forme « ${lower} ${tail} » renvoie ici aux coups qui frappent le boxeur.`;
+  if (verb === "falloir" && title === "Infinitif passé") return `La tournure « ${lower} ${tail} » exprime une nécessité antérieure.`;
+  if (verb === "falloir" && title === "Participe passé" && /^ayant/iu.test(shown)) return `La tournure « ${lower} ${tail} » exprime une nécessité accomplie.`;
+  if (verb === "falloir" && title === "Gérondif passé") return `La tournure « ${lower} ${tail} » est très rare en français contemporain.`;
+  if (verb === "pleuvoir" && title === "Participe présent") return `La forme « ${shown} » apparaît surtout dans des constructions littéraires.`;
+  if (verb === "pleuvoir" && title === "Participe passé" && /^ayant/iu.test(shown)) return `La tournure « ${lower} ${tail} » décrit une pluie antérieure.`;
+  if (verb === "pleuvoir" && title.startsWith("Gérondif")) return `La tournure « ${lower} ${tail} » est rare et s’emploie surtout dans un style recherché.`;
   if (title === "Présent") return `${core}.`;
   if (title === "Passé composé") return `${core}, comme prévu.`;
   if (title === "Imparfait") return `${core}, à cette époque.`;
@@ -228,7 +286,13 @@ function frenchExample(verb, title, index, form, voice) {
   if (title === "Impératif présent") return `${core} dès maintenant.`;
   if (title === "Impératif passé") return /\bavant\b/iu.test(tail) ? `${core}.` : `${core} avant l’heure convenue.`;
   if (title === "Infinitif présent") return `${capitalized(shown)} ${tail} demande une attention particulière.`;
-  if (title === "Infinitif passé") return `Après ${lower} ${tail}, l’équipe a poursuivi son travail.`;
+  if (title === "Infinitif passé") {
+    if (/^(?:être|s’être)/iu.test(shown)) {
+      const subject = /(?:ées|ies|ues|tes)$/u.test(shown) ? "elles" : /(?:ée|ie|ue|te)$/u.test(shown) ? "elle" : /s$/u.test(shown) ? "ils" : "il";
+      return `Après ${lower} ${tail}, ${subject} ${subject === "ils" || subject === "elles" ? "ont" : "a"} poursuivi son travail.`;
+    }
+    return `Après ${lower} ${tail}, j’ai poursuivi mon travail.`;
+  }
   if (title === "Participe présent") return `${core}, j’ai poursuivi ma mission.`;
   if (title === "Participe passé" && /^ayant/iu.test(shown)) return `${core}, j’ai pu continuer.`;
   if (title === "Participe passé" && /^étant/iu.test(shown)) {
@@ -237,7 +301,7 @@ function frenchExample(verb, title, index, form, voice) {
   }
   if (title === "Participe passé") return `La forme « ${shown} » illustre l’accord du participe passé du verbe ${verb}.`;
   if (title === "Gérondif présent") return `${core}, je facilite le travail.`;
-  if (title === "Gérondif passé" && /^en étant/iu.test(shown)) {
+  if (title === "Gérondif passé" && /^en (?:étant|s['’]étant)/iu.test(shown)) {
     const subject = /(?:ées|ies|ues|tes)$/u.test(shown) ? "elles" : /(?:ée|ie|ue|te)$/u.test(shown) ? "elle" : /s$/u.test(shown) ? "ils" : "il";
     return `${core}, ${subject} ${subject === "ils" || subject === "elles" ? "ont" : "a"} transmis le compte rendu.`;
   }
@@ -248,7 +312,7 @@ function frenchExample(verb, title, index, form, voice) {
 const output = {};
 for (const verb of verbs) {
   const entry = findEntry(verb);
-  const auxiliary = etreOnly.has(verb) ? "être" : "avoir";
+  const auxiliary = /^(?:se\s+|s[’'])/u.test(verb) || etreOnly.has(verb) ? "être" : "avoir";
   const primary = formsForVoice(verb, entry, auxiliary);
   const voice = voiceFor(entry, verb, auxiliary);
   const knownTranslations = new Map(
@@ -261,6 +325,10 @@ for (const verb of verbs) {
       const shown = sentenceForm(form);
       const formExplanation = title === "Participe passé" && fr.startsWith("La forme «")
         ? `توضح الصيغة الفرنسية « ${shown} » إحدى صيغ اسم المفعول من الفعل « ${verb} » بحسب الجنس والعدد.`
+        : verb === "pleuvoir" && title === "Participe présent"
+          ? `تظهر الصيغة الفرنسية « ${shown} » غالبًا في تراكيب أدبية.`
+        : verb === "pleuvoir" && title.startsWith("Gérondif")
+          ? `الصيغة الفرنسية « ${shown} » نادرة وتظهر خصوصًا في الأسلوب الأدبي الرفيع.`
         : undefined;
       return { fr, ar: formExplanation ?? knownTranslations.get(fr) ?? "" };
     }),

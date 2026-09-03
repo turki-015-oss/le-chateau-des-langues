@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const batchName = process.argv.find((arg) => arg.startsWith("--batch="))?.split("=", 2)[1] ?? "";
+const batch = batchName ? `-${batchName}` : "";
 const data = JSON.parse(fs.readFileSync(path.join(root, "data", `reviewed-conjugations-next50${batch}.json`), "utf8"));
 const expectedTitles = ["Présent", "Passé composé", "Imparfait", "Plus-que-parfait", "Passé simple", "Passé antérieur", "Futur simple", "Futur antérieur", "Conditionnel présent", "Conditionnel passé", "Subjonctif présent", "Subjonctif passé", "Subjonctif imparfait", "Subjonctif plus-que-parfait", "Impératif présent", "Impératif passé", "Infinitif présent", "Infinitif passé", "Participe présent", "Participe passé", "Gérondif présent", "Gérondif passé"];
 const failures = [];
@@ -20,7 +21,9 @@ for (const [verb, record] of Object.entries(data)) {
   for (const title of expectedTitles) {
     const forms = record.forms[title] ?? [];
     const examples = record.examples[title] ?? [];
-    if (!forms.length) failures.push(`${verb}/${title}: no forms`);
+    const intentionallyUnavailable = verb === "falloir" && ["Impératif présent", "Impératif passé", "Participe présent", "Gérondif présent"].includes(title)
+      || verb === "pleuvoir" && ["Impératif présent", "Impératif passé"].includes(title);
+    if (!forms.length && !intentionallyUnavailable) failures.push(`${verb}/${title}: no forms`);
     if (forms.length !== examples.length) failures.push(`${verb}/${title}: ${forms.length} forms but ${examples.length} examples`);
     examples.forEach((example, index) => {
       const form = shownForm(forms[index] ?? "");

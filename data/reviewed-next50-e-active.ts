@@ -1,2 +1,2 @@
 // The fifth reviewed rollout contains fifty fully validated verbs.
-export const REVIEWED_NEXT50_E_ACTIVE = ["lancer","manquer"] as const;
+export const REVIEWED_NEXT50_E_ACTIVE = ["lancer","manquer","raconter"] as const;

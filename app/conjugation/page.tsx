@@ -7,6 +7,7 @@ import {speakFrench} from "@/lib/frenchSpeech";
 import reviewedNext50Source from "@/data/reviewed-conjugations-next50.json";
 import reviewedNext50BSource from "@/data/reviewed-conjugations-next50-b.json";
 import reviewedNext50CSource from "@/data/reviewed-conjugations-next50-c.json";
+import reviewedUsagesNext50BSource from "@/data/reviewed-usages-next50-b.json";
 import reviewedUsagesNext50CSource from "@/data/reviewed-usages-next50-c.json";
 import {REVIEWED_NEXT50_ACTIVE} from "@/data/reviewed-next50-active";
 import {REVIEWED_NEXT50_B_ACTIVE} from "@/data/reviewed-next50-b-active";
@@ -2329,8 +2330,8 @@ Object.assign(USAGES,{
  "se remettre":[{fr:"se remettre d’une maladie",ar:"يتعافى من مرض",example:"Elle se remet progressivement de sa maladie.",translation:"تتعافى تدريجيًا من مرضها."},{fr:"se remettre au travail",ar:"يعود إلى العمل",example:"Nous nous sommes remis au travail après la courte pause.",translation:"عدنا إلى العمل بعد الاستراحة القصيرة."},{fr:"se remettre en question",ar:"يراجع نفسه",example:"Le responsable a accepté de se remettre en question.",translation:"وافق المسؤول على مراجعة نفسه."},{fr:"se remettre en route",ar:"يستأنف السير",example:"Le bus s’est remis en route après la réparation.",translation:"استأنفت الحافلة السير بعد الإصلاح."}]
 });
 
-for(const [verb,items] of Object.entries(reviewedUsagesNext50CSource as Record<string,Usage[]>)){
- USAGES[verb]=[...(USAGES[verb]||[]),...items];
+for(const reviewedBatch of [reviewedUsagesNext50BSource,reviewedUsagesNext50CSource] as Record<string,Usage[]>[]){
+ for(const [verb,items] of Object.entries(reviewedBatch))USAGES[verb]=[...(USAGES[verb]||[]),...items];
 }
 
 const B2_COMPLEMENTS:Record<string,{fr:string[],ar:string[]}>= {

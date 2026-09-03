@@ -8,6 +8,17 @@ const data = JSON.parse(fs.readFileSync(path.join(root, "data", `reviewed-conjug
 const expectedTitles = ["Présent", "Passé composé", "Imparfait", "Plus-que-parfait", "Passé simple", "Passé antérieur", "Futur simple", "Futur antérieur", "Conditionnel présent", "Conditionnel passé", "Subjonctif présent", "Subjonctif passé", "Subjonctif imparfait", "Subjonctif plus-que-parfait", "Impératif présent", "Impératif passé", "Infinitif présent", "Infinitif passé", "Participe présent", "Participe passé", "Gérondif présent", "Gérondif passé"];
 const failures = [];
 const frenchSeen = new Map();
+const rejectedArabic = [
+  /من الممكن أنني قد قد/u,
+  /أنا حل المشكلة/u,
+  /قبل الفتح/u,
+  /التغلب على الرقم القياسي/u,
+  /(?:خرق|خرقت) العقد/u,
+  /المشي على البحر/u,
+  /(?:مرر|مررت|نقل|نقلت) التقرير/u,
+  /أقدم تقريرًا إلى المدير/u,
+  /إنجاز إنجاز/u,
+];
 
 function shownForm(form) {
   return form.includes(" / ") ? form.split(" / ")[0] : form;
@@ -35,6 +46,8 @@ for (const [verb, record] of Object.entries(data)) {
       if (/^Dès que (?:il|ils)\b/iu.test(example.fr)) failures.push(`${verb}/${title}/${index}: missing French elision after que`);
       if (/\b(?:il|ils) que\b/iu.test(example.fr) || /\b(?:il|ils) merci\b/iu.test(example.fr)) failures.push(`${verb}/${title}/${index}: malformed subject or complement`);
       if (/\b(undefined|null)\b/iu.test(`${example.fr} ${example.ar}`)) failures.push(`${verb}/${title}/${index}: placeholder leaked`);
+      if (rejectedArabic.some((pattern) => pattern.test(example.ar))) failures.push(`${verb}/${title}/${index}: rejected literal Arabic translation « ${example.ar} »`);
+      if (title === "Présent" && /^(?:و)?(?:لقد|سأ|سوف)/u.test(example.ar)) failures.push(`${verb}/${title}/${index}: Arabic translation uses a past/future marker for French present`);
     });
   }
 }

@@ -1210,12 +1210,12 @@
         "ils / elles rentrent"
       ],
       "Passé composé": [
-        "je suis rentré, rentrée",
-        "tu es rentré, rentrée",
-        "il / elle est rentré, rentrée",
-        "nous sommes rentrés, rentrées",
-        "vous êtes rentrés, rentrées",
-        "ils / elles sont rentrés, rentrées"
+        "je suis rentré / rentrée",
+        "tu es rentré / rentrée",
+        "il est rentré / elle est rentrée",
+        "nous sommes rentrés / rentrées",
+        "vous êtes rentrés / rentrées",
+        "ils / elles sont rentrés / rentrées"
       ],
       "Imparfait": [
         "je rentrais",
@@ -1226,12 +1226,12 @@
         "ils / elles rentraient"
       ],
       "Plus-que-parfait": [
-        "j’étais rentré, rentrée",
-        "tu étais rentré, rentrée",
-        "il / elle était rentré, rentrée",
-        "nous étions rentrés, rentrées",
-        "vous étiez rentrés, rentrées",
-        "ils / elles étaient rentrés, rentrées"
+        "j’étais rentré / rentrée",
+        "tu étais rentré / rentrée",
+        "il était rentré / elle était rentrée",
+        "nous étions rentrés / rentrées",
+        "vous étiez rentrés / rentrées",
+        "ils / elles étaient rentrés / rentrées"
       ],
       "Passé simple": [
         "je rentrai",
@@ -1242,12 +1242,12 @@
         "ils / elles rentrèrent"
       ],
       "Passé antérieur": [
-        "je fus rentré, rentrée",
-        "tu fus rentré, rentrée",
-        "il / elle fut rentré, rentrée",
-        "nous fûmes rentrés, rentrées",
-        "vous fûtes rentrés, rentrées",
-        "ils / elles furent rentrés, rentrées"
+        "je fus rentré / rentrée",
+        "tu fus rentré / rentrée",
+        "il fut rentré / elle fut rentrée",
+        "nous fûmes rentrés / rentrées",
+        "vous fûtes rentrés / rentrées",
+        "ils / elles furent rentrés / rentrées"
       ],
       "Futur simple": [
         "je rentrerai",
@@ -1258,12 +1258,12 @@
         "ils / elles rentreront"
       ],
       "Futur antérieur": [
-        "je serai rentré, rentrée",
-        "tu seras rentré, rentrée",
-        "il / elle sera rentré, rentrée",
-        "nous serons rentrés, rentrées",
-        "vous serez rentrés, rentrées",
-        "ils / elles seront rentrés, rentrées"
+        "je serai rentré / rentrée",
+        "tu seras rentré / rentrée",
+        "il sera rentré / elle sera rentrée",
+        "nous serons rentrés / rentrées",
+        "vous serez rentrés / rentrées",
+        "ils / elles seront rentrés / rentrées"
       ],
       "Conditionnel présent": [
         "je rentrerais",
@@ -1274,12 +1274,12 @@
         "ils / elles rentreraient"
       ],
       "Conditionnel passé": [
-        "je serais rentré, rentrée",
-        "tu serais rentré, rentrée",
-        "il / elle serait rentré, rentrée",
-        "nous serions rentrés, rentrées",
-        "vous seriez rentrés, rentrées",
-        "ils / elles seraient rentrés, rentrées"
+        "je serais rentré / rentrée",
+        "tu serais rentré / rentrée",
+        "il serait rentré / elle serait rentrée",
+        "nous serions rentrés / rentrées",
+        "vous seriez rentrés / rentrées",
+        "ils / elles seraient rentrés / rentrées"
       ],
       "Subjonctif présent": [
         "que je rentre",
@@ -1290,12 +1290,12 @@
         "qu’ils / elles rentrent"
       ],
       "Subjonctif passé": [
-        "que je sois rentré, rentrée",
-        "que tu sois rentré, rentrée",
-        "qu’il / elle soit rentré, rentrée",
-        "que nous soyons rentrés, rentrées",
-        "que vous soyez rentrés, rentrées",
-        "qu’ils / elles soient rentrés, rentrées"
+        "que je sois rentré / rentrée",
+        "que tu sois rentré / rentrée",
+        "qu’il soit rentré / elle soit rentrée",
+        "que nous soyons rentrés / rentrées",
+        "que vous soyez rentrés / rentrées",
+        "qu’ils / elles soient rentrés / rentrées"
       ],
       "Subjonctif imparfait": [
         "que je rentrasse",
@@ -1306,12 +1306,12 @@
         "qu’ils / elles rentrassent"
       ],
       "Subjonctif plus-que-parfait": [
-        "que je fusse rentré, rentrée",
-        "que tu fusses rentré, rentrée",
-        "qu’il / elle fût rentré, rentrée",
-        "que nous fussions rentrés, rentrées",
-        "que vous fussiez rentrés, rentrées",
-        "qu’ils / elles fussent rentrés, rentrées"
+        "que je fusse rentré / rentrée",
+        "que tu fusses rentré / rentrée",
+        "qu’il fût rentré / elle fût rentrée",
+        "que nous fussions rentrés / rentrées",
+        "que vous fussiez rentrés / rentrées",
+        "qu’ils / elles fussent rentrés / rentrées"
       ],
       "Impératif présent": [
         "rentre",
@@ -1378,28 +1378,28 @@
       ],
       "Passé composé": [
         {
-          "fr": "Je suis rentré, rentrée à la maison avant la tombée de la nuit, comme prévu.",
-          "ar": "لقد عدت، وصلت إلى المنزل قبل حلول الظلام، كما خططت."
+          "fr": "Je suis rentré à la maison avant la tombée de la nuit, comme prévu.",
+          "ar": "وصلت إلى المنزل قبل حلول الظلام، كما خططت."
         },
         {
-          "fr": "Tu es rentré, rentrée à la maison avant la tombée de la nuit, comme prévu.",
-          "ar": "لقد عدت، عدت إلى المنزل قبل حلول الظلام، كما هو مخطط له."
+          "fr": "Tu es rentré à la maison avant la tombée de la nuit, comme prévu.",
+          "ar": "وصلت إلى المنزل قبل حلول الظلام، كما هو مخطط لها."
         },
         {
-          "fr": "Il est rentré, rentrée à la maison avant la tombée de la nuit, comme prévu.",
+          "fr": "Il est rentré à la maison avant la tombée de la nuit, comme prévu.",
           "ar": "لقد عاد إلى المنزل قبل حلول الظلام، كما خطط له."
         },
         {
-          "fr": "Nous sommes rentrés, rentrées à la maison avant la tombée de la nuit, comme prévu.",
-          "ar": "عدنا، عدنا إلى المنزل قبل حلول الظلام، كما خططنا."
+          "fr": "Nous sommes rentrés à la maison avant la tombée de la nuit, comme prévu.",
+          "ar": "وصلنا إلى المنزل قبل حلول الظلام، كما خططنا."
         },
         {
-          "fr": "Vous êtes rentrés, rentrées à la maison avant la tombée de la nuit, comme prévu.",
-          "ar": "لقد عدت إلى المنزل قبل حلول الظلام، كما هو مخطط له."
+          "fr": "Vous êtes rentrés à la maison avant la tombée de la nuit, comme prévu.",
+          "ar": "وصلت إلى المنزل قبل حلول الظلام، كما هو مخطط لها."
         },
         {
-          "fr": "Ils sont rentrés, rentrées à la maison avant la tombée de la nuit, comme prévu.",
-          "ar": "لقد عادوا إلى المنزل قبل حلول الظلام، كما كان مخططا لهم."
+          "fr": "Ils sont rentrés à la maison avant la tombée de la nuit, comme prévu.",
+          "ar": "وعادوا إلى منازلهم قبل حلول الظلام، كما كان مخططا لهم."
         }
       ],
       "Imparfait": [
@@ -1430,28 +1430,28 @@
       ],
       "Plus-que-parfait": [
         {
-          "fr": "J’étais rentré, rentrée à la maison avant la tombée de la nuit avant le début de la réunion.",
-          "ar": "وصلت إلى المنزل، وصلت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
+          "fr": "J’étais rentré à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "ar": "وصلت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
         },
         {
-          "fr": "Tu étais rentré, rentrée à la maison avant la tombée de la nuit avant le début de la réunion.",
-          "ar": "لقد عدت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
+          "fr": "Tu étais rentré à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "ar": "لقد وصلت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
         },
         {
-          "fr": "Il était rentré, rentrée à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "fr": "Il était rentré à la maison avant la tombée de la nuit avant le début de la réunion.",
           "ar": "لقد عاد إلى منزله قبل حلول الظلام قبل بدء الاجتماع."
         },
         {
-          "fr": "Nous étions rentrés, rentrées à la maison avant la tombée de la nuit avant le début de la réunion.",
-          "ar": "لقد عدنا إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
+          "fr": "Nous étions rentrés à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "ar": "وصلنا إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
         },
         {
-          "fr": "Vous étiez rentrés, rentrées à la maison avant la tombée de la nuit avant le début de la réunion.",
-          "ar": "لقد عدت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
+          "fr": "Vous étiez rentrés à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "ar": "لقد وصلت إلى المنزل قبل حلول الظلام قبل بدء الاجتماع."
         },
         {
-          "fr": "Ils étaient rentrés, rentrées à la maison avant la tombée de la nuit avant le début de la réunion.",
-          "ar": "لقد عادوا، عادوا إلى منازلهم قبل حلول الظلام قبل بدء الاجتماع."
+          "fr": "Ils étaient rentrés à la maison avant la tombée de la nuit avant le début de la réunion.",
+          "ar": "لقد عادوا إلى منازلهم قبل حلول الظلام قبل بدء الاجتماع."
         }
       ],
       "Passé simple": [
@@ -1482,27 +1482,27 @@
       ],
       "Passé antérieur": [
         {
-          "fr": "Dès que je fus rentré, rentrée à la maison avant la tombée de la nuit, la séance commença.",
+          "fr": "Dès que je fus rentré à la maison avant la tombée de la nuit, la séance commença.",
           "ar": "بمجرد عودتي إلى المنزل قبل حلول الظلام، بدأت الجلسة."
         },
         {
-          "fr": "Dès que tu fus rentré, rentrée à la maison avant la tombée de la nuit, la séance commença.",
-          "ar": "بمجرد وصولك إلى المنزل، وصلت إلى المنزل قبل حلول الظلام، بدأت الجلسة."
-        },
-        {
-          "fr": "Dès qu’il fut rentré, rentrée à la maison avant la tombée de la nuit, la séance commença.",
-          "ar": "وبمجرد وصوله إلى المنزل قبل حلول الظلام، بدأت الجلسة."
-        },
-        {
-          "fr": "Dès que nous fûmes rentrés, rentrées à la maison avant la tombée de la nuit, la séance commença.",
-          "ar": "بمجرد عودتنا إلى المنزل قبل حلول الظلام، بدأت الجلسة."
-        },
-        {
-          "fr": "Dès que vous fûtes rentrés, rentrées à la maison avant la tombée de la nuit, la séance commença.",
+          "fr": "Dès que tu fus rentré à la maison avant la tombée de la nuit, la séance commença.",
           "ar": "بمجرد عودتك إلى المنزل قبل حلول الظلام، بدأت الجلسة."
         },
         {
-          "fr": "Dès qu’ils furent rentrés, rentrées à la maison avant la tombée de la nuit, la séance commença.",
+          "fr": "Dès qu’il fut rentré à la maison avant la tombée de la nuit, la séance commença.",
+          "ar": "وبمجرد وصوله إلى المنزل قبل حلول الظلام، بدأت الجلسة."
+        },
+        {
+          "fr": "Dès que nous fûmes rentrés à la maison avant la tombée de la nuit, la séance commença.",
+          "ar": "بمجرد وصولنا إلى المنزل قبل حلول الظلام، بدأت الجلسة."
+        },
+        {
+          "fr": "Dès que vous fûtes rentrés à la maison avant la tombée de la nuit, la séance commença.",
+          "ar": "بمجرد عودتك إلى المنزل قبل حلول الظلام، بدأت الجلسة."
+        },
+        {
+          "fr": "Dès qu’ils furent rentrés à la maison avant la tombée de la nuit, la séance commença.",
           "ar": "وبمجرد وصولهم إلى المنزل قبل حلول الظلام، بدأت الجلسة."
         }
       ],
@@ -1534,28 +1534,28 @@
       ],
       "Futur antérieur": [
         {
-          "fr": "Je serai rentré, rentrée à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "fr": "Je serai rentré à la maison avant la tombée de la nuit avant la réunion de demain.",
           "ar": "سأعود إلى المنزل قبل حلول الظلام قبل اجتماع الغد."
         },
         {
-          "fr": "Tu seras rentré, rentrée à la maison avant la tombée de la nuit avant la réunion de demain.",
-          "ar": "ستعود إلى المنزل قبل حلول الظلام قبل اجتماع الغد."
+          "fr": "Tu seras rentré à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "ar": "ستعود إلى المنزل قبل حلول الظلام قبل الاجتماع غدًا."
         },
         {
-          "fr": "Il sera rentré, rentrée à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "fr": "Il sera rentré à la maison avant la tombée de la nuit avant la réunion de demain.",
           "ar": "سيعود إلى المنزل قبل حلول الظلام قبل اجتماع الغد."
         },
         {
-          "fr": "Nous serons rentrés, rentrées à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "fr": "Nous serons rentrés à la maison avant la tombée de la nuit avant la réunion de demain.",
           "ar": "سنعود إلى المنزل قبل حلول الظلام قبل اجتماع الغد."
         },
         {
-          "fr": "Vous serez rentrés, rentrées à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "fr": "Vous serez rentrés à la maison avant la tombée de la nuit avant la réunion de demain.",
           "ar": "ستعود إلى المنزل قبل حلول الظلام قبل اجتماع الغد."
         },
         {
-          "fr": "Ils seront rentrés, rentrées à la maison avant la tombée de la nuit avant la réunion de demain.",
-          "ar": "سوف يعودون إلى منازلهم قبل حلول الظلام قبل الاجتماع غدًا."
+          "fr": "Ils seront rentrés à la maison avant la tombée de la nuit avant la réunion de demain.",
+          "ar": "سيعودون إلى منازلهم قبل حلول الظلام قبل اجتماع الغد."
         }
       ],
       "Conditionnel présent": [
@@ -1586,28 +1586,28 @@
       ],
       "Conditionnel passé": [
         {
-          "fr": "Je serais rentré, rentrée à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "fr": "Je serais rentré à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
           "ar": "كنت سأعود إلى المنزل قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Tu serais rentré, rentrée à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
-          "ar": "كان من الممكن أن تعود إلى المنزل قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
+          "fr": "Tu serais rentré à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "ar": "كان من الممكن أن تصل إلى المنزل قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Il serait rentré, rentrée à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "fr": "Il serait rentré à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
           "ar": "وكان سيعود إلى منزله قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Nous serions rentrés, rentrées à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "fr": "Nous serions rentrés à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
           "ar": "كنا سنعود إلى المنزل قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Vous seriez rentrés, rentrées à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "fr": "Vous seriez rentrés à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
           "ar": "كان من الممكن أن تعود إلى المنزل قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Ils seraient rentrés, rentrées à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
-          "ar": "وكان من الممكن أن يعودوا إلى منازلهم قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
+          "fr": "Ils seraient rentrés à la maison avant la tombée de la nuit si les informations étaient arrivées à temps.",
+          "ar": "وكانوا سيعودون إلى منازلهم قبل حلول الظلام إذا وصلت المعلومات في الوقت المناسب."
         }
       ],
       "Subjonctif présent": [
@@ -1638,28 +1638,28 @@
       ],
       "Subjonctif passé": [
         {
-          "fr": "Il est possible que je sois rentré, rentrée à la maison avant la tombée de la nuit.",
-          "ar": "من المحتمل أنني عدت إلى المنزل قبل حلول الظلام."
+          "fr": "Il est possible que je sois rentré à la maison avant la tombée de la nuit.",
+          "ar": "ربما وصلت إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il est possible que tu sois rentré, rentrée à la maison avant la tombée de la nuit.",
+          "fr": "Il est possible que tu sois rentré à la maison avant la tombée de la nuit.",
           "ar": "ربما تكون قد وصلت إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il est possible qu’il soit rentré, rentrée à la maison avant la tombée de la nuit.",
-          "ar": "من الممكن أنه عاد إلى المنزل قبل حلول الظلام."
+          "fr": "Il est possible qu’il soit rentré à la maison avant la tombée de la nuit.",
+          "ar": "ومن المحتمل أنه عاد إلى منزله قبل حلول الظلام."
         },
         {
-          "fr": "Il est possible que nous soyons rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "من الممكن أن نعود إلى المنزل قبل حلول الظلام."
+          "fr": "Il est possible que nous soyons rentrés à la maison avant la tombée de la nuit.",
+          "ar": "ربما وصلنا إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il est possible que vous soyez rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "ربما تكون قد عدت إلى المنزل قبل حلول الظلام."
+          "fr": "Il est possible que vous soyez rentrés à la maison avant la tombée de la nuit.",
+          "ar": "ربما تكون قد وصلت إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il est possible qu’ils soient rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "من الممكن أنهم عادوا، عادوا إلى منازلهم قبل حلول الظلام."
+          "fr": "Il est possible qu’ils soient rentrés à la maison avant la tombée de la nuit.",
+          "ar": "ومن المحتمل أنهم عادوا إلى منازلهم قبل حلول الظلام."
         }
       ],
       "Subjonctif imparfait": [
@@ -1690,28 +1690,28 @@
       ],
       "Subjonctif plus-que-parfait": [
         {
-          "fr": "Il était possible que je fusse rentré, rentrée à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن أعود، أعود إلى المنزل قبل حلول الظلام."
+          "fr": "Il était possible que je fusse rentré à la maison avant la tombée de la nuit.",
+          "ar": "كان من الممكن أن أعود إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il était possible que tu fusses rentré, rentrée à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن تكون قد عدت، عدت إلى المنزل قبل حلول الظلام."
+          "fr": "Il était possible que tu fusses rentré à la maison avant la tombée de la nuit.",
+          "ar": "كان من الممكن أن تكون قد وصلت إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il était possible qu’il fût rentré, rentrée à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن يعود، يعود إلى منزله قبل حلول الظلام."
+          "fr": "Il était possible qu’il fût rentré à la maison avant la tombée de la nuit.",
+          "ar": "وكان من الممكن أن يعود إلى منزله قبل حلول الظلام."
         },
         {
-          "fr": "Il était possible que nous fussions rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن نعود، نعود إلى المنزل قبل حلول الظلام."
+          "fr": "Il était possible que nous fussions rentrés à la maison avant la tombée de la nuit.",
+          "ar": "كان من الممكن أن نعود إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il était possible que vous fussiez rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن تكون قد عدت، عدت إلى المنزل قبل حلول الظلام."
+          "fr": "Il était possible que vous fussiez rentrés à la maison avant la tombée de la nuit.",
+          "ar": "كان من الممكن أن تكون قد وصلت إلى المنزل قبل حلول الظلام."
         },
         {
-          "fr": "Il était possible qu’ils fussent rentrés, rentrées à la maison avant la tombée de la nuit.",
-          "ar": "كان من الممكن أن يعودوا، عادوا إلى منازلهم قبل حلول الظلام."
+          "fr": "Il était possible qu’ils fussent rentrés à la maison avant la tombée de la nuit.",
+          "ar": "كان من الممكن أن يعودوا إلى منازلهم قبل حلول الظلام."
         }
       ],
       "Impératif présent": [
@@ -2421,12 +2421,12 @@
         "ils / elles tombent"
       ],
       "Passé composé": [
-        "je suis tombé, tombée",
-        "tu es tombé, tombée",
-        "il / elle est tombé, tombée",
-        "nous sommes tombés, tombées",
-        "vous êtes tombés, tombées",
-        "ils / elles sont tombés, tombées"
+        "je suis tombé / tombée",
+        "tu es tombé / tombée",
+        "il est tombé / elle est tombée",
+        "nous sommes tombés / tombées",
+        "vous êtes tombés / tombées",
+        "ils / elles sont tombés / tombées"
       ],
       "Imparfait": [
         "je tombais",
@@ -2437,12 +2437,12 @@
         "ils / elles tombaient"
       ],
       "Plus-que-parfait": [
-        "j’étais tombé, tombée",
-        "tu étais tombé, tombée",
-        "il / elle était tombé, tombée",
-        "nous étions tombés, tombées",
-        "vous étiez tombés, tombées",
-        "ils / elles étaient tombés, tombées"
+        "j’étais tombé / tombée",
+        "tu étais tombé / tombée",
+        "il était tombé / elle était tombée",
+        "nous étions tombés / tombées",
+        "vous étiez tombés / tombées",
+        "ils / elles étaient tombés / tombées"
       ],
       "Passé simple": [
         "je tombai",
@@ -2453,12 +2453,12 @@
         "ils / elles tombèrent"
       ],
       "Passé antérieur": [
-        "je fus tombé, tombée",
-        "tu fus tombé, tombée",
-        "il / elle fut tombé, tombée",
-        "nous fûmes tombés, tombées",
-        "vous fûtes tombés, tombées",
-        "ils / elles furent tombés, tombées"
+        "je fus tombé / tombée",
+        "tu fus tombé / tombée",
+        "il fut tombé / elle fut tombée",
+        "nous fûmes tombés / tombées",
+        "vous fûtes tombés / tombées",
+        "ils / elles furent tombés / tombées"
       ],
       "Futur simple": [
         "je tomberai",
@@ -2469,12 +2469,12 @@
         "ils / elles tomberont"
       ],
       "Futur antérieur": [
-        "je serai tombé, tombée",
-        "tu seras tombé, tombée",
-        "il / elle sera tombé, tombée",
-        "nous serons tombés, tombées",
-        "vous serez tombés, tombées",
-        "ils / elles seront tombés, tombées"
+        "je serai tombé / tombée",
+        "tu seras tombé / tombée",
+        "il sera tombé / elle sera tombée",
+        "nous serons tombés / tombées",
+        "vous serez tombés / tombées",
+        "ils / elles seront tombés / tombées"
       ],
       "Conditionnel présent": [
         "je tomberais",
@@ -2485,12 +2485,12 @@
         "ils / elles tomberaient"
       ],
       "Conditionnel passé": [
-        "je serais tombé, tombée",
-        "tu serais tombé, tombée",
-        "il / elle serait tombé, tombée",
-        "nous serions tombés, tombées",
-        "vous seriez tombés, tombées",
-        "ils / elles seraient tombés, tombées"
+        "je serais tombé / tombée",
+        "tu serais tombé / tombée",
+        "il serait tombé / elle serait tombée",
+        "nous serions tombés / tombées",
+        "vous seriez tombés / tombées",
+        "ils / elles seraient tombés / tombées"
       ],
       "Subjonctif présent": [
         "que je tombe",
@@ -2501,12 +2501,12 @@
         "qu’ils / elles tombent"
       ],
       "Subjonctif passé": [
-        "que je sois tombé, tombée",
-        "que tu sois tombé, tombée",
-        "qu’il / elle soit tombé, tombée",
-        "que nous soyons tombés, tombées",
-        "que vous soyez tombés, tombées",
-        "qu’ils / elles soient tombés, tombées"
+        "que je sois tombé / tombée",
+        "que tu sois tombé / tombée",
+        "qu’il soit tombé / elle soit tombée",
+        "que nous soyons tombés / tombées",
+        "que vous soyez tombés / tombées",
+        "qu’ils / elles soient tombés / tombées"
       ],
       "Subjonctif imparfait": [
         "que je tombasse",
@@ -2517,12 +2517,12 @@
         "qu’ils / elles tombassent"
       ],
       "Subjonctif plus-que-parfait": [
-        "que je fusse tombé, tombée",
-        "que tu fusses tombé, tombée",
-        "qu’il / elle fût tombé, tombée",
-        "que nous fussions tombés, tombées",
-        "que vous fussiez tombés, tombées",
-        "qu’ils / elles fussent tombés, tombées"
+        "que je fusse tombé / tombée",
+        "que tu fusses tombé / tombée",
+        "qu’il fût tombé / elle fût tombée",
+        "que nous fussions tombés / tombées",
+        "que vous fussiez tombés / tombées",
+        "qu’ils / elles fussent tombés / tombées"
       ],
       "Impératif présent": [
         "tombe",
@@ -2589,28 +2589,28 @@
       ],
       "Passé composé": [
         {
-          "fr": "Je suis tombé, tombée sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقطت، سقطت على الأرض أثناء نزولي الدرج، كما خططت."
+          "fr": "Je suis tombé sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "لقد سقطت على الأرض وأنا أهبط الدرج كما توقعت."
         },
         {
-          "fr": "Tu es tombé, tombée sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقطت، وسقطت على الأرض أثناء نزولك على الدرج، كما هو متوقع."
+          "fr": "Tu es tombé sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "لقد سقطت على الأرض أثناء نزولك الدرج كما توقعت."
         },
         {
-          "fr": "Il est tombé, tombée sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقط، وسقط على الأرض أثناء نزوله على الدرج، كما كان متوقعا."
+          "fr": "Il est tombé sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "لقد سقط على الأرض وهو ينزل على الدرج، كما كان متوقعا."
         },
         {
-          "fr": "Nous sommes tombés, tombées sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقطنا، سقطنا على الأرض أثناء نزولنا الدرج، كما هو مخطط لنا."
+          "fr": "Nous sommes tombés sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "لقد سقطنا على الأرض أثناء نزولنا الدرج، كما خططنا."
         },
         {
-          "fr": "Vous êtes tombés, tombées sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقطت، سقطت على الأرض أثناء نزولك الدرج، كما هو متوقع."
+          "fr": "Vous êtes tombés sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "لقد سقطت على الأرض أثناء نزولك الدرج كما توقعت."
         },
         {
-          "fr": "Ils sont tombés, tombées sur le sol en descendant l’escalier, comme prévu.",
-          "ar": "لقد سقطوا، سقطوا على الأرض وهم ينزلون الدرج، كما كان متوقعا."
+          "fr": "Ils sont tombés sur le sol en descendant l’escalier, comme prévu.",
+          "ar": "سقطوا على الأرض وهم ينزلون الدرج، كما كان متوقعا."
         }
       ],
       "Imparfait": [
@@ -2641,28 +2641,28 @@
       ],
       "Plus-que-parfait": [
         {
-          "fr": "J’étais tombé, tombée sur le sol en descendant l’escalier avant le début de la réunion.",
-          "ar": "لقد سقطت، وسقطت على الأرض أثناء نزولي الدرج قبل بدء الاجتماع."
+          "fr": "J’étais tombé sur le sol en descendant l’escalier avant le début de la réunion.",
+          "ar": "لقد سقطت على الأرض أثناء نزولي الدرج قبل بدء الاجتماع."
         },
         {
-          "fr": "Tu étais tombé, tombée sur le sol en descendant l’escalier avant le début de la réunion.",
-          "ar": "لقد سقطت، وسقطت على الأرض أثناء نزولك على الدرج قبل بدء الاجتماع."
+          "fr": "Tu étais tombé sur le sol en descendant l’escalier avant le début de la réunion.",
+          "ar": "لقد سقطت على الأرض أثناء نزولك الدرج قبل بدء الاجتماع."
         },
         {
-          "fr": "Il était tombé, tombée sur le sol en descendant l’escalier avant le début de la réunion.",
+          "fr": "Il était tombé sur le sol en descendant l’escalier avant le début de la réunion.",
           "ar": "لقد سقط على الأرض أثناء نزوله على الدرج قبل بدء الاجتماع."
         },
         {
-          "fr": "Nous étions tombés, tombées sur le sol en descendant l’escalier avant le début de la réunion.",
-          "ar": "لقد سقطنا، سقطنا على الأرض أثناء نزولنا الدرج قبل بدء الاجتماع."
+          "fr": "Nous étions tombés sur le sol en descendant l’escalier avant le début de la réunion.",
+          "ar": "لقد سقطنا على الأرض أثناء نزولنا الدرج قبل بدء الاجتماع."
         },
         {
-          "fr": "Vous étiez tombés, tombées sur le sol en descendant l’escalier avant le début de la réunion.",
-          "ar": "لقد سقطت، وسقطت على الأرض أثناء نزولك الدرج قبل بدء الاجتماع."
+          "fr": "Vous étiez tombés sur le sol en descendant l’escalier avant le début de la réunion.",
+          "ar": "لقد سقطت على الأرض أثناء نزولك الدرج قبل بدء الاجتماع."
         },
         {
-          "fr": "Ils étaient tombés, tombées sur le sol en descendant l’escalier avant le début de la réunion.",
-          "ar": "لقد سقطوا، وسقطوا على الأرض وهم ينزلون الدرج قبل بدء الاجتماع."
+          "fr": "Ils étaient tombés sur le sol en descendant l’escalier avant le début de la réunion.",
+          "ar": "لقد سقطوا على الأرض وهم ينزلون الدرج قبل بدء الاجتماع."
         }
       ],
       "Passé simple": [
@@ -2693,27 +2693,27 @@
       ],
       "Passé antérieur": [
         {
-          "fr": "Dès que je fus tombé, tombée sur le sol en descendant l’escalier, la séance commença.",
-          "ar": "وبمجرد سقوطي على الأرض أثناء نزولي الدرج، بدأت الجلسة."
+          "fr": "Dès que je fus tombé sur le sol en descendant l’escalier, la séance commença.",
+          "ar": "بمجرد أن سقطت على الأرض أثناء نزولي الدرج، بدأت الجلسة."
         },
         {
-          "fr": "Dès que tu fus tombé, tombée sur le sol en descendant l’escalier, la séance commença.",
-          "ar": "وبمجرد سقوطك على الأرض أثناء نزولك على الدرج، بدأت الجلسة."
+          "fr": "Dès que tu fus tombé sur le sol en descendant l’escalier, la séance commença.",
+          "ar": "بمجرد سقوطك على الأرض أثناء نزولك الدرج، بدأت الجلسة."
         },
         {
-          "fr": "Dès qu’il fut tombé, tombée sur le sol en descendant l’escalier, la séance commença.",
+          "fr": "Dès qu’il fut tombé sur le sol en descendant l’escalier, la séance commença.",
           "ar": "وبمجرد سقوطه على الأرض أثناء نزوله على الدرج، بدأت الجلسة."
         },
         {
-          "fr": "Dès que nous fûmes tombés, tombées sur le sol en descendant l’escalier, la séance commença.",
-          "ar": "وبمجرد سقوطنا على الأرض أثناء نزولنا الدرج، بدأت الجلسة."
+          "fr": "Dès que nous fûmes tombés sur le sol en descendant l’escalier, la séance commença.",
+          "ar": "بمجرد أن وصلنا إلى الأرض أثناء نزولنا الدرج، بدأت الجلسة."
         },
         {
-          "fr": "Dès que vous fûtes tombés, tombées sur le sol en descendant l’escalier, la séance commença.",
-          "ar": "بمجرد سقوطك، وسقوطك على الأرض أثناء نزولك على الدرج، بدأت الجلسة."
+          "fr": "Dès que vous fûtes tombés sur le sol en descendant l’escalier, la séance commença.",
+          "ar": "بمجرد سقوطك على الأرض أثناء نزولك الدرج، بدأت الجلسة."
         },
         {
-          "fr": "Dès qu’ils furent tombés, tombées sur le sol en descendant l’escalier, la séance commença.",
+          "fr": "Dès qu’ils furent tombés sur le sol en descendant l’escalier, la séance commença.",
           "ar": "وبمجرد سقوطهم على الأرض أثناء نزولهم الدرج، بدأت الجلسة."
         }
       ],
@@ -2745,28 +2745,28 @@
       ],
       "Futur antérieur": [
         {
-          "fr": "Je serai tombé, tombée sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "سأكون قد سقطت، وسقطت على الأرض أثناء نزولي الدرج قبل اجتماع الغد."
+          "fr": "Je serai tombé sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "سأكون قد سقطت على الأرض أثناء نزولي الدرج قبل اجتماع الغد."
         },
         {
-          "fr": "Tu seras tombé, tombée sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "ستكون قد سقطت، وسقطت على الأرض أثناء نزولك الدرج قبل اجتماع الغد."
+          "fr": "Tu seras tombé sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "ستكون قد سقطت على الأرض أثناء نزولك الدرج قبل اجتماع الغد."
         },
         {
-          "fr": "Il sera tombé, tombée sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "سيكون قد سقط، سقط على الأرض وهو ينزل على الدرج قبل اجتماع الغد."
+          "fr": "Il sera tombé sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "سيكون قد سقط على الأرض وهو ينزل على الدرج قبل اجتماع الغد."
         },
         {
-          "fr": "Nous serons tombés, tombées sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "سنكون قد سقطنا، سقطنا على الأرض وننزل الدرج قبل اجتماع الغد."
+          "fr": "Nous serons tombés sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "سنكون قد سقطنا على الأرض وننزل الدرج قبل الاجتماع غدًا."
         },
         {
-          "fr": "Vous serez tombés, tombées sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "ستكون قد سقطت، وسقطت على الأرض أثناء نزولك الدرج قبل اجتماع الغد."
+          "fr": "Vous serez tombés sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "ستكون قد سقطت على الأرض أثناء نزولك على الدرج قبل اجتماع الغد."
         },
         {
-          "fr": "Ils seront tombés, tombées sur le sol en descendant l’escalier avant la réunion de demain.",
-          "ar": "سيكونون قد سقطوا، سقطوا على الأرض وهم ينزلون الدرج قبل اجتماع الغد."
+          "fr": "Ils seront tombés sur le sol en descendant l’escalier avant la réunion de demain.",
+          "ar": "سيكونون قد سقطوا على الأرض أثناء نزولهم الدرج قبل اجتماع الغد."
         }
       ],
       "Conditionnel présent": [
@@ -2797,28 +2797,28 @@
       ],
       "Conditionnel passé": [
         {
-          "fr": "Je serais tombé, tombée sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
-          "ar": "كنت سأسقط، وأسقط على الأرض أثناء نزولي الدرج لو وصلت المعلومات في الوقت المناسب."
+          "fr": "Je serais tombé sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "ar": "كنت سأسقط على الأرض وأنا أنزل الدرج لو وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Tu serais tombé, tombée sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
-          "ar": "كنت ستسقط أو تسقط على الأرض أثناء نزولك الدرج لو وصلت المعلومات في الوقت المناسب."
+          "fr": "Tu serais tombé sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "ar": "كنت ستسقط على الأرض وأنت تنزل على الدرج لو وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Il serait tombé, tombée sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "fr": "Il serait tombé sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
           "ar": "كان سيسقط على الأرض وهو ينزل على الدرج لو وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Nous serions tombés, tombées sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
-          "ar": "كنا سنسقط، ونسقط على الأرض وننزل على الدرج لو وصلت المعلومات في الوقت المناسب."
+          "fr": "Nous serions tombés sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "ar": "كنا سنسقط على الأرض وننزل الدرج لو وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Vous seriez tombés, tombées sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
-          "ar": "كنت ستسقط أو تسقط على الأرض أثناء نزولك الدرج لو وصلت المعلومات في الوقت المناسب."
+          "fr": "Vous seriez tombés sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "ar": "كنت ستسقط على الأرض وأنت تنزل على الدرج لو وصلت المعلومات في الوقت المناسب."
         },
         {
-          "fr": "Ils seraient tombés, tombées sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
-          "ar": "كان من الممكن أن يسقطوا على الأرض وهم ينزلون الدرج لو وصلت المعلومات في الوقت المناسب."
+          "fr": "Ils seraient tombés sur le sol en descendant l’escalier si les informations étaient arrivées à temps.",
+          "ar": "كان من الممكن أن يسقطوا على الأرض وهم ينزلون الدرج إذا وصلت المعلومات في الوقت المناسب."
         }
       ],
       "Subjonctif présent": [
@@ -2849,28 +2849,28 @@
       ],
       "Subjonctif passé": [
         {
-          "fr": "Il est possible que je sois tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أنني قد سقطت، سقطت على الأرض أثناء نزولي الدرج."
+          "fr": "Il est possible que je sois tombé sur le sol en descendant l’escalier.",
+          "ar": "من المحتمل أني سقطت على الأرض أثناء نزولي الدرج."
         },
         {
-          "fr": "Il est possible que tu sois tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أنك سقطت وسقطت على الأرض أثناء نزولك على الدرج."
-        },
-        {
-          "fr": "Il est possible qu’il soit tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "ومن المحتمل أنه سقط على الأرض أثناء نزوله على الدرج."
-        },
-        {
-          "fr": "Il est possible que nous soyons tombés, tombées sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أننا سقطنا، سقطنا على الأرض أثناء نزولنا على الدرج."
-        },
-        {
-          "fr": "Il est possible que vous soyez tombés, tombées sur le sol en descendant l’escalier.",
+          "fr": "Il est possible que tu sois tombé sur le sol en descendant l’escalier.",
           "ar": "ربما سقطت على الأرض أثناء نزولك الدرج."
         },
         {
-          "fr": "Il est possible qu’ils soient tombés, tombées sur le sol en descendant l’escalier.",
-          "ar": "من المحتمل أنهم سقطوا، سقطوا على الأرض أثناء نزولهم الدرج."
+          "fr": "Il est possible qu’il soit tombé sur le sol en descendant l’escalier.",
+          "ar": "ومن المحتمل أنه سقط على الأرض أثناء نزوله على الدرج."
+        },
+        {
+          "fr": "Il est possible que nous soyons tombés sur le sol en descendant l’escalier.",
+          "ar": "ربما سقطنا على الأرض أثناء نزولنا الدرج."
+        },
+        {
+          "fr": "Il est possible que vous soyez tombés sur le sol en descendant l’escalier.",
+          "ar": "ربما سقطت على الأرض أثناء نزولك الدرج."
+        },
+        {
+          "fr": "Il est possible qu’ils soient tombés sur le sol en descendant l’escalier.",
+          "ar": "ومن المحتمل أنهم سقطوا على الأرض أثناء نزولهم الدرج."
         }
       ],
       "Subjonctif imparfait": [
@@ -2901,28 +2901,28 @@
       ],
       "Subjonctif plus-que-parfait": [
         {
-          "fr": "Il était possible que je fusse tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "كان من الممكن أن أكون قد سقطت، أو سقطت على الأرض أثناء نزولي على الدرج."
+          "fr": "Il était possible que je fusse tombé sur le sol en descendant l’escalier.",
+          "ar": "من الممكن أن أكون قد سقطت على الأرض أثناء نزولي الدرج."
         },
         {
-          "fr": "Il était possible que tu fusses tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أنك سقطت أو سقطت على الأرض أثناء نزولك على الدرج."
+          "fr": "Il était possible que tu fusses tombé sur le sol en descendant l’escalier.",
+          "ar": "من المحتمل أنك سقطت على الأرض أثناء نزولك على الدرج."
         },
         {
-          "fr": "Il était possible qu’il fût tombé, tombée sur le sol en descendant l’escalier.",
-          "ar": "ومن المحتمل أن يكون قد سقط، أو سقط على الأرض أثناء نزوله على الدرج."
+          "fr": "Il était possible qu’il fût tombé sur le sol en descendant l’escalier.",
+          "ar": "ومن المحتمل أنه سقط على الأرض أثناء نزوله على الدرج."
         },
         {
-          "fr": "Il était possible que nous fussions tombés, tombées sur le sol en descendant l’escalier.",
-          "ar": "كان من الممكن أننا سقطنا، سقطنا على الأرض أثناء نزولنا على الدرج."
+          "fr": "Il était possible que nous fussions tombés sur le sol en descendant l’escalier.",
+          "ar": "كان من الممكن أننا سقطنا على الأرض أثناء نزولنا الدرج."
         },
         {
-          "fr": "Il était possible que vous fussiez tombés, tombées sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أنك سقطت أو سقطت على الأرض أثناء نزولك على الدرج."
+          "fr": "Il était possible que vous fussiez tombés sur le sol en descendant l’escalier.",
+          "ar": "من المحتمل أنك سقطت على الأرض أثناء نزولك على الدرج."
         },
         {
-          "fr": "Il était possible qu’ils fussent tombés, tombées sur le sol en descendant l’escalier.",
-          "ar": "من الممكن أن يكونوا قد سقطوا أو سقطوا على الأرض أثناء نزولهم الدرج."
+          "fr": "Il était possible qu’ils fussent tombés sur le sol en descendant l’escalier.",
+          "ar": "ومن الممكن أن يكونوا قد سقطوا على الأرض أثناء نزولهم الدرج."
         }
       ],
       "Impératif présent": [

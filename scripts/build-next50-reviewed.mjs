@@ -130,7 +130,17 @@ function elided(prefix, form) {
 
 function optionalValueFor(table, person) {
   const key = Object.keys(table).find((candidate) => candidate.split(";").includes(person));
-  return key ? table[key].split(";")[0] : undefined;
+  if (!key) return undefined;
+  const value = table[key].split(";")[0];
+  const persons = key.split(";");
+  const alternatives = value.split(",").map((part) => part.trim()).filter(Boolean);
+  if (alternatives.length === persons.length) {
+    const selected = alternatives[persons.indexOf(person)];
+    if (persons.indexOf(person) === 0 || /\s/u.test(selected)) return selected;
+    const firstWords = alternatives[0].split(/\s+/u);
+    return `${firstWords.slice(0, -1).join(" ")} ${selected}`.trim();
+  }
+  return value;
 }
 
 function finiteRows(table, subjunctive = false, verb = "") {

@@ -4,7 +4,8 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const pagePath = path.join(root, "app", "conjugation", "page.tsx");
 const batchName = process.argv.find((arg) => arg.startsWith("--batch="))?.split("=", 2)[1] ?? "c";
-const listPath = path.join(root, "scripts", `conjugation-next50-${batchName}.txt`);
+const batchSuffix = batchName === "a" ? "" : `-${batchName}`;
+const listPath = path.join(root, "scripts", `conjugation-next50${batchSuffix}.txt`);
 const source = fs.readFileSync(pagePath, "utf8");
 
 function objectAt(index) {
@@ -34,7 +35,7 @@ const assignMarker = "Object.assign(USAGES,";
 for (let index = source.indexOf(assignMarker); index >= 0; index = source.indexOf(assignMarker, index + assignMarker.length)) {
   Object.assign(usages, Function(`"use strict"; return (${objectAt(index + assignMarker.length)});`)());
 }
-const reviewedPath = path.join(root, "data", `reviewed-usages-next50-${batchName}.json`);
+const reviewedPath = path.join(root, "data", `reviewed-usages-next50${batchSuffix}.json`);
 if (fs.existsSync(reviewedPath)) {
   const reviewed = JSON.parse(fs.readFileSync(reviewedPath, "utf8"));
   for (const [verb, items] of Object.entries(reviewed)) usages[verb] = [...(usages[verb] ?? []), ...items];

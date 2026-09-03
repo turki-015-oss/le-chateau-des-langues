@@ -2,16 +2,17 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const sourcePath = path.join(root, "scripts", ".conjugation-next50-source.json");
-const listPath = path.join(root, "scripts", "conjugation-next50.txt");
-const outputPath = path.join(root, "data", "reviewed-conjugations-next50.json");
+const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const sourcePath = path.join(root, "scripts", `.conjugation-next50${batch}-source.json`);
+const listPath = path.join(root, "scripts", `conjugation-next50${batch}.txt`);
+const outputPath = path.join(root, "data", `reviewed-conjugations-next50${batch}.json`);
 const pagePath = path.join(root, "app", "conjugation", "page.tsx");
 
 const source = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
 const previous = fs.existsSync(outputPath) ? JSON.parse(fs.readFileSync(outputPath, "utf8")) : {};
 const verbs = fs.readFileSync(listPath, "utf8").split(/\r?\n/u).map((x) => x.trim().split(":", 1)[0]).filter(Boolean);
-const etreOnly = new Set(["partir", "sortir", "naître", "mourir", "descendre", "arriver", "rester", "entrer", "monter", "passer"]);
-const dualAux = new Set(["sortir", "descendre", "monter", "passer"]);
+const etreOnly = new Set(batch ? ["apparaître"] : ["partir", "sortir", "naître", "mourir", "descendre", "arriver", "rester", "entrer", "monter", "passer"]);
+const dualAux = new Set(batch ? ["paraître", "apparaître", "disparaître"] : ["sortir", "descendre", "monter", "passer"]);
 const personPairs = [["1sm", "1sf"], ["2sm", "2sf"], ["3sm", "3sf"], ["1pm", "1pf"], ["2pm", "2pf"], ["3pm", "3pf"]];
 const subjects = ["je", "tu", "il / elle", "nous", "vous", "ils / elles"];
 const subjSubjects = ["que je", "que tu", "qu’il / elle", "que nous", "que vous", "qu’ils / elles"];
@@ -45,6 +46,23 @@ function readSmartExamples() {
 
 const smartExamples = readSmartExamples();
 
+function readUsageExamples() {
+  const page = fs.readFileSync(pagePath, "utf8");
+  const marker = "const USAGES:Record<string,Usage[]>=";
+  const start = page.indexOf(marker);
+  if (start < 0) throw new Error("USAGES examples were not found");
+  const objectStart = page.indexOf("{", start + marker.length);
+  const objectEnd = page.indexOf("\n};", objectStart);
+  if (objectEnd < 0) throw new Error("USAGES examples are not terminated");
+  return Function(`"use strict"; return (${page.slice(objectStart, objectEnd + 2)});`)();
+}
+
+const usageExamples = readUsageExamples();
+const safeFallbackTails = {
+  mentir: "à son médecin",
+  taire: "une information confidentielle",
+};
+
 function findEntry(verb) {
   if (source[verb]) return source[verb];
   const normalized = verb.normalize("NFD").replace(/\p{M}/gu, "");
@@ -56,7 +74,10 @@ function findEntry(verb) {
 function valueFor(table, person) {
   const key = Object.keys(table).find((candidate) => candidate.split(";").includes(person));
   if (!key) throw new Error(`Missing person ${person}`);
-  return table[key];
+  // The source can include a modern spelling variant after a semicolon.
+  // Keep the first, standard display form so the learner never sees an
+  // implementation delimiter inside the conjugation.
+  return table[key].split(";")[0];
 }
 
 function elided(prefix, form) {
@@ -142,19 +163,27 @@ function capitalized(text) {
 }
 
 function smartTail(verb, index, voice) {
-  const sentence = smartExamples[verb]?.[Math.min(index, 5)]?.[0];
-  if (!sentence) return "dans un contexte clair et concret";
+  const smartSentence = smartExamples[verb]?.[Math.min(index, 5)]?.[0];
+  const usagePool = usageExamples[verb]?.map((usage) => usage.example).filter(Boolean) ?? [];
+  const sentences = smartSentence ? [smartSentence] : usagePool;
+  if (!sentences.length) throw new Error(`No contextual example is available for ${verb}`);
   const table = voice.indicatif.present;
   const [maleKey, femaleKey] = personPairs[Math.min(index, 5)];
-  const candidates = [...new Set([valueFor(table, maleKey), valueFor(table, femaleKey)])];
-  const lower = sentence.toLocaleLowerCase("fr");
-  for (const conjugated of candidates) {
-    const position = lower.indexOf(conjugated.toLocaleLowerCase("fr"));
-    if (position >= 0) {
-      return sentence.slice(position + conjugated.length).trim().replace(/[.!?…]+$/u, "") || "dans ce contexte précis";
+  const candidates = smartSentence
+    ? [...new Set([valueFor(table, maleKey), valueFor(table, femaleKey)])]
+    : [...new Set(personPairs.flatMap(([male, female]) => [valueFor(table, male), valueFor(table, female)]))];
+  for (const sentence of sentences) {
+    const lower = sentence.toLocaleLowerCase("fr");
+    for (const conjugated of candidates) {
+      const escaped = conjugated.toLocaleLowerCase("fr").replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+      const match = lower.match(new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "u"));
+      if (match?.index !== undefined) {
+        return sentence.slice(match.index + match[0].length).trim().replace(/[.!?…]+$/u, "") || "dans ce contexte précis";
+      }
     }
   }
-  return sentence.replace(/^\S+\s+/u, "").replace(/[.!?…]+$/u, "");
+  if (safeFallbackTails[verb]) return safeFallbackTails[verb];
+  throw new Error(`Could not derive a safe contextual complement for ${verb}`);
 }
 
 function frenchExample(verb, title, index, form, voice) {

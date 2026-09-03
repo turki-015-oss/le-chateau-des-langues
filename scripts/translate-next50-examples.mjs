@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const dataPath = path.join(root, "data", "reviewed-conjugations-next50.json");
+const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const dataPath = path.join(root, "data", `reviewed-conjugations-next50${batch}.json`);
 const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 const pending = [];
 const refreshImperativePast = process.argv.includes("--refresh-imperative-past");

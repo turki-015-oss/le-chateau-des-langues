@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const data = JSON.parse(fs.readFileSync(path.join(root, "data", "reviewed-conjugations-next50.json"), "utf8"));
+const batch = process.argv.includes("--batch=b") ? "-b" : "";
+const data = JSON.parse(fs.readFileSync(path.join(root, "data", `reviewed-conjugations-next50${batch}.json`), "utf8"));
 const expectedTitles = ["Présent", "Passé composé", "Imparfait", "Plus-que-parfait", "Passé simple", "Passé antérieur", "Futur simple", "Futur antérieur", "Conditionnel présent", "Conditionnel passé", "Subjonctif présent", "Subjonctif passé", "Subjonctif imparfait", "Subjonctif plus-que-parfait", "Impératif présent", "Impératif passé", "Infinitif présent", "Infinitif passé", "Participe présent", "Participe passé", "Gérondif présent", "Gérondif passé"];
 const failures = [];
 const frenchSeen = new Map();

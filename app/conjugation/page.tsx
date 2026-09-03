@@ -5,11 +5,13 @@ import {useRouter} from "next/navigation";
 import {ArrowLeft,BookOpen,Search,Volume2,Star,ChevronDown,ChevronLeft,ChevronRight,Sparkles} from "lucide-react";
 import {speakFrench} from "@/lib/frenchSpeech";
 import reviewedNext50Source from "@/data/reviewed-conjugations-next50.json";
+import reviewedNext50BSource from "@/data/reviewed-conjugations-next50-b.json";
 import {REVIEWED_NEXT50_ACTIVE} from "@/data/reviewed-next50-active";
+import {REVIEWED_NEXT50_B_ACTIVE} from "@/data/reviewed-next50-b-active";
 
 type ReviewedNext50Record={auxiliary:string;primaryAuxiliary:"avoir"|"être";dualAuxiliary:boolean;pastParticiple:string;forms:Record<string,string[]>;examples:Record<string,{fr:string;ar:string}[]>};
-const REVIEWED_NEXT50=reviewedNext50Source as Record<string,ReviewedNext50Record>;
-const REVIEWED_NEXT50_SET=new Set<string>(REVIEWED_NEXT50_ACTIVE);
+const REVIEWED_NEXT50={...(reviewedNext50Source as Record<string,ReviewedNext50Record>),...(reviewedNext50BSource as Record<string,ReviewedNext50Record>)};
+const REVIEWED_NEXT50_SET=new Set<string>([...REVIEWED_NEXT50_ACTIVE,...REVIEWED_NEXT50_B_ACTIVE]);
 const reviewedNext50=(verb:string)=>REVIEWED_NEXT50_SET.has(verb)?REVIEWED_NEXT50[verb]:undefined;
 
 const P=["je","tu","il / elle","nous","vous","ils / elles"];

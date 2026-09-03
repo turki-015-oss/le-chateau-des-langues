@@ -1,0 +1,110 @@
+{
+  "remplacer": [
+    {"fr":"remplacer quelque chose par autre chose","ar":"يستبدل شيئًا بشيء آخر","example":"Le service remplace l’ancien équipement par un modèle récent.","translation":"يستبدل القسم المعدات القديمة بطراز حديث."},
+    {"fr":"remplacer quelqu’un","ar":"يحل محل شخص","example":"Une collègue me remplacera pendant mon absence.","translation":"ستحل زميلة محلي أثناء غيابي."}
+  ],
+  "examiner": [
+    {"fr":"examiner un dossier","ar":"يفحص ملفًا","example":"La commission examine chaque dossier avec attention.","translation":"تفحص اللجنة كل ملف بعناية."},
+    {"fr":"examiner une possibilité","ar":"يدرس احتمالًا أو خيارًا","example":"Nous examinons la possibilité de prolonger le délai.","translation":"ندرس إمكانية تمديد المهلة."}
+  ],
+  "former": [
+    {"fr":"former quelqu’un à quelque chose","ar":"يدرّب شخصًا على شيء","example":"L’entreprise forme les nouveaux employés aux règles de sécurité.","translation":"تدرّب الشركة الموظفين الجدد على قواعد السلامة."},
+    {"fr":"former un groupe","ar":"يشكّل مجموعة","example":"Les participants forment trois groupes de travail.","translation":"يشكّل المشاركون ثلاث مجموعات عمل."}
+  ],
+  "calculer": [
+    {"fr":"calculer un coût","ar":"يحسب تكلفة","example":"L’équipe calcule le coût total du projet.","translation":"يحسب الفريق التكلفة الإجمالية للمشروع."},
+    {"fr":"calculer une distance","ar":"يحسب مسافة","example":"Cette application calcule la distance entre les deux villes.","translation":"يحسب هذا التطبيق المسافة بين المدينتين."}
+  ],
+  "communiquer": [
+    {"fr":"communiquer une information à quelqu’un","ar":"يبلغ شخصًا بمعلومة","example":"La direction communique les résultats aux participants.","translation":"تبلغ الإدارة المشاركين بالنتائج."},
+    {"fr":"communiquer avec quelqu’un","ar":"يتواصل مع شخص","example":"Je communique avec le fournisseur par courrier électronique.","translation":"أتواصل مع المورد عبر البريد الإلكتروني."}
+  ],
+  "comparer": [
+    {"fr":"comparer deux éléments","ar":"يقارن بين عنصرين","example":"Nous comparons les deux offres selon les mêmes critères.","translation":"نقارن بين العرضين وفق المعايير نفسها."},
+    {"fr":"comparer quelque chose à autre chose","ar":"يشبّه شيئًا بشيء آخر أو يقارنه به","example":"L’auteur compare la ville à un grand théâtre.","translation":"يشبّه الكاتب المدينة بمسرح كبير."}
+  ],
+  "compléter": [
+    {"fr":"compléter un formulaire","ar":"يستكمل تعبئة نموذج","example":"Veuillez compléter le formulaire avec les informations demandées.","translation":"يرجى استكمال تعبئة النموذج بالمعلومات المطلوبة."},
+    {"fr":"compléter une équipe","ar":"يكمل قوام فريق","example":"Deux spécialistes complètent l’équipe du projet.","translation":"يكمل مختصان قوام فريق المشروع."}
+  ],
+  "conserver": [
+    {"fr":"conserver un document","ar":"يحتفظ بمستند","example":"Conservez une copie du reçu dans votre dossier.","translation":"احتفظوا بنسخة من الإيصال في ملفكم."},
+    {"fr":"conserver au frais","ar":"يحفظ في مكان بارد","example":"Ce médicament doit être conservé au frais.","translation":"يجب حفظ هذا الدواء في مكان بارد."}
+  ],
+  "constater": [
+    {"fr":"constater une amélioration","ar":"يلاحظ تحسنًا","example":"Nous constatons une amélioration après les changements.","translation":"نلاحظ تحسنًا بعد التغييرات."},
+    {"fr":"constater que","ar":"يلاحظ أو يتبين له أن","example":"Le technicien constate que la machine fonctionne normalement.","translation":"يتبين للفني أن الآلة تعمل بصورة طبيعية."}
+  ],
+  "consulter": [
+    {"fr":"consulter un spécialiste","ar":"يستشير مختصًا","example":"Il consulte un spécialiste avant de prendre une décision.","translation":"يستشير مختصًا قبل اتخاذ القرار."},
+    {"fr":"consulter un document","ar":"يراجع مستندًا أو يطالعه","example":"Vous pouvez consulter le règlement sur le site.","translation":"يمكنكم الاطلاع على اللائحة في الموقع."}
+  ],
+  "contrôler": [
+    {"fr":"contrôler une identité","ar":"يتحقق من الهوية","example":"Les agents contrôlent l’identité des visiteurs à l’entrée.","translation":"يتحقق الموظفون من هوية الزوار عند المدخل."},
+    {"fr":"contrôler une situation","ar":"يسيطر على موقف","example":"Les secours ont rapidement contrôlé la situation.","translation":"سيطرت فرق الطوارئ على الموقف سريعًا."}
+  ],
+  "corriger": [
+    {"fr":"corriger une erreur","ar":"يصحح خطأ","example":"Elle corrige les erreurs avant l’envoi du document.","translation":"تصحح الأخطاء قبل إرسال المستند."},
+    {"fr":"corriger des copies","ar":"يصحح أوراق الطلاب","example":"Le professeur corrige les copies après l’examen.","translation":"يصحح الأستاذ أوراق الطلاب بعد الاختبار."}
+  ],
+  "couper": [
+    {"fr":"couper l’électricité","ar":"يقطع التيار الكهربائي","example":"Le technicien coupe l’électricité avant l’intervention.","translation":"يقطع الفني التيار الكهربائي قبل التدخل."},
+    {"fr":"couper la parole à quelqu’un","ar":"يقاطع شخصًا أثناء كلامه","example":"Il est impoli de couper la parole à son interlocuteur.","translation":"من غير اللائق مقاطعة المتحدث أثناء كلامه."}
+  ],
+  "dessiner": [
+    {"fr":"dessiner un plan","ar":"يرسم مخططًا","example":"L’architecte dessine un plan détaillé du bâtiment.","translation":"يرسم المهندس المعماري مخططًا تفصيليًا للمبنى."},
+    {"fr":"dessiner au crayon","ar":"يرسم بقلم رصاص","example":"L’enfant dessine un château au crayon.","translation":"يرسم الطفل قلعة بقلم رصاص."}
+  ],
+  "discuter": [
+    {"fr":"discuter un contrat","ar":"يناقش عقدًا","example":"Les deux parties discutent les conditions du contrat.","translation":"يناقش الطرفان شروط العقد."},
+    {"fr":"discuter de quelque chose avec quelqu’un","ar":"يتناقش مع شخص في موضوع","example":"Je discute du calendrier avec la responsable.","translation":"أتناقش مع المسؤولة في الجدول الزمني."}
+  ],
+  "déposer": [
+    {"fr":"déposer une demande","ar":"يودع طلبًا أو يقدمه رسميًا","example":"Le candidat dépose sa demande au guichet avant midi.","translation":"يودع المرشح طلبه لدى الشباك قبل الظهر."},
+    {"fr":"déposer quelqu’un quelque part","ar":"يوصل شخصًا إلى مكان","example":"Le taxi nous dépose devant l’hôtel.","translation":"يوصلنا سائق الأجرة إلى أمام الفندق."}
+  ],
+  "échanger": [
+    {"fr":"échanger des idées","ar":"يتبادل الأفكار","example":"Les membres échangent des idées pendant la réunion.","translation":"يتبادل الأعضاء الأفكار أثناء الاجتماع."},
+    {"fr":"échanger un article","ar":"يستبدل سلعة","example":"Le magasin accepte d’échanger cet article défectueux.","translation":"يوافق المتجر على استبدال هذه السلعة المعيبة."}
+  ],
+  "effectuer": [
+    {"fr":"effectuer une vérification","ar":"يجري فحصًا","example":"Le technicien effectue une vérification avant le démarrage.","translation":"يجري الفني فحصًا قبل التشغيل."},
+    {"fr":"effectuer un paiement","ar":"يجري عملية دفع","example":"Le client effectue le paiement par carte.","translation":"يجري العميل عملية الدفع بالبطاقة."}
+  ],
+  "emprunter": [
+    {"fr":"emprunter un livre","ar":"يستعير كتابًا","example":"J’emprunte un livre à la bibliothèque municipale.","translation":"أستعير كتابًا من المكتبة البلدية."},
+    {"fr":"emprunter un chemin","ar":"يسلك طريقًا","example":"Les visiteurs empruntent le chemin qui longe le jardin.","translation":"يسلك الزوار الطريق المحاذي للحديقة."}
+  ],
+  "encourager": [
+    {"fr":"encourager quelqu’un à faire quelque chose","ar":"يشجع شخصًا على فعل شيء","example":"Le professeur encourage les étudiants à participer au débat.","translation":"يشجع الأستاذ الطلاب على المشاركة في النقاش."},
+    {"fr":"encourager une initiative","ar":"يدعم مبادرة","example":"La ville encourage les initiatives écologiques.","translation":"تدعم المدينة المبادرات البيئية."}
+  ],
+  "enseigner": [
+    {"fr":"enseigner une langue à quelqu’un","ar":"يدرّس شخصًا لغة","example":"Elle enseigne le français à un groupe de débutants.","translation":"تدرّس الفرنسية لمجموعة من المبتدئين."},
+    {"fr":"enseigner dans un établissement","ar":"يدرّس في مؤسسة تعليمية","example":"Il enseigne dans cette université depuis dix ans.","translation":"يدرّس في هذه الجامعة منذ عشر سنوات."}
+  ],
+  "fabriquer": [
+    {"fr":"fabriquer des pièces","ar":"يصنع قطعًا","example":"L’usine fabrique ces pièces dans un atelier spécialisé.","translation":"يصنع المصنع هذه القطع في ورشة متخصصة."},
+    {"fr":"fabriquer à la main","ar":"يصنع يدويًا","example":"Ces objets sont fabriqués à la main par des artisans locaux.","translation":"يصنع حرفيون محليون هذه القطع يدويًا."}
+  ],
+  "fixer": [
+    {"fr":"fixer une date","ar":"يحدد موعدًا","example":"Nous fixons une date précise pour la prochaine réunion.","translation":"نحدد موعدًا دقيقًا للاجتماع المقبل."},
+    {"fr":"fixer quelque chose au mur","ar":"يثبت شيئًا على الحائط","example":"Le technicien fixe l’écran au mur.","translation":"يثبت الفني الشاشة على الحائط."}
+  ],
+  "gérer": [
+    {"fr":"gérer des réservations","ar":"يدير الحجوزات","example":"L’équipe gère les réservations au moyen de la plateforme.","translation":"يدير الفريق الحجوزات عن طريق المنصة."},
+    {"fr":"gérer une crise","ar":"يتعامل مع أزمة ويديرها","example":"La responsable gère la crise avec calme.","translation":"تدير المسؤولة الأزمة بهدوء."}
+  ],
+  "informer": [
+    {"fr":"informer quelqu’un de quelque chose","ar":"يبلغ شخصًا بشيء","example":"La mairie informe le public du changement d’horaire.","translation":"تبلغ البلدية الجمهور بتغيير الموعد."},
+    {"fr":"informer que","ar":"يبلغ بأن","example":"Nous vous informons que votre demande a été acceptée.","translation":"نبلغكم بأن طلبكم قد قُبل."}
+  ],
+  "observer": [
+    {"fr":"observer une réaction","ar":"يراقب رد فعل","example":"Les chercheurs observent la réaction des utilisateurs.","translation":"يراقب الباحثون رد فعل المستخدمين."},
+    {"fr":"observer une règle","ar":"يلتزم بقاعدة","example":"Tous les visiteurs doivent observer les règles de sécurité.","translation":"يجب على جميع الزوار الالتزام بقواعد السلامة."}
+  ],
+  "publier": [
+    {"fr":"publier des résultats","ar":"ينشر نتائج","example":"Le laboratoire publie les résultats après leur validation.","translation":"ينشر المختبر النتائج بعد اعتمادها."},
+    {"fr":"publier un livre","ar":"ينشر كتابًا","example":"Cette maison d’édition publie des ouvrages éducatifs.","translation":"تنشر دار النشر هذه كتبًا تعليمية."}
+  ]
+}

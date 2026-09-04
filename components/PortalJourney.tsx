@@ -13,7 +13,7 @@ type PortalPlace = {
 
 const places: Record<string, PortalPlace> = {
   castle: { id: "castle", fr: "LE CHÂTEAU", ar: "القلعة", image: "/kingdom-portal-assets/castle-facade.png" },
-  university: { id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus.png" },
+  university: { id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-v2.webp" },
   library: { id: "library", fr: "BIBLIOTHÈQUE", ar: "المكتبة", image: "/kingdom-portal-assets/library-facade.png" },
   hospital: { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", image: "/kingdom-portal-assets/destination-hospital.png" },
   airport: { id: "airport", fr: "AÉROPORT", ar: "المطار", image: "/kingdom-portal-assets/destination-airport.png" },

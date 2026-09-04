@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 export default function WelcomeBook() {
   const host = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
+  const [software, setSoftware] = useState(false);
   useEffect(() => {
     let disposed = false;
     let destroy: (() => void) | undefined;
@@ -13,28 +14,38 @@ export default function WelcomeBook() {
       import("three"),
       import("three/examples/jsm/geometries/RoundedBoxGeometry.js"),
       import("three/examples/jsm/environments/RoomEnvironment.js"),
-    ]).then(([T, { RoundedBoxGeometry }, { RoomEnvironment }]) => {
+      import("@/lib/BookCanvasRenderer"),
+    ]).then(([T, { RoundedBoxGeometry }, { RoomEnvironment }, { BookCanvasRenderer }]) => {
       if (disposed || !host.current) return;
       const container = host.current;
-      let renderer: InstanceType<typeof T.WebGLRenderer>;
-      try { renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "low-power" }); }
-      catch { return; }
+      let renderer: InstanceType<typeof T.WebGLRenderer> | InstanceType<typeof BookCanvasRenderer>;
+      try {
+        if (software) throw new Error("Use CPU renderer");
+        renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "default" });
+      } catch { renderer = new BookCanvasRenderer(); }
+      const gpu = renderer instanceof T.WebGLRenderer;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
-      renderer.setClearColor(0, 0);
-      renderer.outputColorSpace = T.SRGBColorSpace;
-      renderer.toneMapping = T.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.25;
+      if (renderer instanceof T.WebGLRenderer) {
+        renderer.setClearColor(0, 0);
+        renderer.outputColorSpace = T.SRGBColorSpace;
+        renderer.toneMapping = T.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.25;
+      }
+      container.dataset.renderer = gpu ? "webgl" : "canvas";
       container.appendChild(renderer.domElement);
       renderer.domElement.style.cssText = "width:100%;height:100%;display:block;pointer-events:none";
       const scene = new T.Scene();
       const camera = new T.PerspectiveCamera(34, 1, .1, 30);
       camera.position.set(0, .3, 7.7);
       camera.lookAt(0, 0, 0);
-      const environment = new RoomEnvironment();
-      const pmrem = new T.PMREMGenerator(renderer);
-      const env = pmrem.fromScene(environment, .04);
-      scene.environment = env.texture;
-      environment.dispose(); pmrem.dispose();
+      let env: { texture: InstanceType<typeof T.Texture>; dispose: () => void } | undefined;
+      if (renderer instanceof T.WebGLRenderer) {
+        const environment = new RoomEnvironment();
+        const pmrem = new T.PMREMGenerator(renderer);
+        try { env = pmrem.fromScene(environment, .04); scene.environment = env.texture; }
+        catch { /* Direct lights still illuminate the book without an environment map. */ }
+        finally { environment.dispose(); pmrem.dispose(); }
+      }
       scene.add(new T.HemisphereLight(0xffedcf, 0x172e23, 2));
       const key = new T.DirectionalLight(0xffdeb2, 4); key.position.set(-3, 4, 5); scene.add(key);
       const rim = new T.DirectionalLight(0xf8d998, 2); rim.position.set(4, 1, -3); scene.add(rim);
@@ -55,7 +66,7 @@ export default function WelcomeBook() {
       const paper = new T.MeshStandardMaterial({ color: 0xddc59a, roughness: .92 });
       const pageLine = new T.MeshStandardMaterial({ color: 0xb49a70, roughness: 1 });
       const box = (w: number, h: number, d: number, x: number, y: number, z: number, material: InstanceType<typeof T.Material>, radius = .018) => {
-        const mesh = new T.Mesh(new RoundedBoxGeometry(w, h, d, 2, radius), material);
+        const mesh = new T.Mesh(gpu ? new RoundedBoxGeometry(w, h, d, 2, radius) : new T.BoxGeometry(w,h,d), material);
         mesh.position.set(x,y,z); book.add(mesh); return mesh;
       };
       box(1.95, 2.75, .49, .035, 0, 0, paper);
@@ -147,7 +158,7 @@ export default function WelcomeBook() {
         renderer.render(scene,camera);
       });
       setReady(true);
-      const lost = (event: Event) => { event.preventDefault(); setReady(false); renderer.setAnimationLoop(null); };
+      const lost = (event: Event) => { event.preventDefault(); setReady(false); renderer.setAnimationLoop(null); setSoftware(true); };
       renderer.domElement.addEventListener("webglcontextlost",lost);
       destroy = () => {
         renderer.setAnimationLoop(null); observer.disconnect();
@@ -160,11 +171,11 @@ export default function WelcomeBook() {
         renderer.domElement.removeEventListener("webglcontextlost",lost);
         book.traverse(object => { if (object instanceof T.Mesh) object.geometry.dispose(); });
         [leather,spineLeather,gold,paper,pageLine,titleMaterial].forEach(material => material.dispose());
-        texture.dispose(); titleTexture.dispose(); env.dispose(); renderer.dispose(); renderer.domElement.remove();
+        texture.dispose(); titleTexture.dispose(); env?.dispose(); renderer.dispose(); renderer.domElement.remove();
       };
     }).catch(() => { /* Keep the static fallback if graphics cannot initialize. */ });
     return () => { disposed = true; destroy?.(); };
-  }, []);
+  }, [software]);
   return <div style={{ position:"absolute", inset:0 }}>
     <div ref={host} role="group" aria-label="كتاب بني عتيق: اسحب يمينًا ويسارًا لتدويره، أو استخدم سهمي لوحة المفاتيح" tabIndex={ready ? 0 : -1} style={{ position:"absolute", inset:0, opacity:ready ? 1 : 0, cursor:"grab", touchAction:"pan-y", userSelect:"none" }} />
     {!ready && <img src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="" style={{ width:"100%",height:"100%",objectFit:"contain" }} />}

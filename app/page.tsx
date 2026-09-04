@@ -1,9 +1,10 @@
 "use client";
 
-import { BookOpen, Castle, MapPin, MessageCircle, Sparkles, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, MapPin, MessageCircle, Pause, Play, Sparkles, Square, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {cancelFrenchSpeech,speakFrench} from "@/lib/frenchSpeech";
+import styles from "./entry.module.css";
 
 const features = [
   { icon: BookOpen, text: "تعلّم الفرنسية" },
@@ -23,6 +24,7 @@ export default function EntryPage() {
   const router = useRouter();
   const [welcomeActive, setWelcomeActive] = useState(false);
   const [welcomeText, setWelcomeText] = useState("");
+  const [motionPaused, setMotionPaused] = useState(false);
   const resetTimer = useRef<number | null>(null);
   const fallbackTimers = useRef<number[]>([]);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -75,6 +77,7 @@ export default function EntryPage() {
         fallbackTimers.current=[];
         utteranceRef.current=null;
         setWelcomeText(welcome);
+        setWelcomeActive(false);
         resetTimer.current=window.setTimeout(()=>{
           setWelcomeActive(false);
           setWelcomeText("");
@@ -97,32 +100,55 @@ export default function EntryPage() {
   };
 
   return (
-    <main className="v69-entry" aria-label="المدخل الرئيسي لتطبيق القلعة">
-      <div className="v69-entry-bg" aria-hidden="true" />
-      <div className="v69-glow v69-glow-one" aria-hidden="true" />
-      <div className="v69-glow v69-glow-two" aria-hidden="true" />
-      <div className="v69-sparkles" aria-hidden="true">
-        {Array.from({ length: 18 }).map((_, i) => (
-          <i key={i} style={{ "--x": `${(i * 47) % 100}%`, "--y": `${(i * 31) % 100}%`, "--delay": `${i * -0.35}s`, "--duration": `${4 + (i % 5)}s` } as React.CSSProperties} />
-        ))}
-      </div>
-      <section className="v69-entry-panel">
-        <div className="v69-brand-mark" aria-hidden="true"><Castle /></div>
-        <p className="v69-brand-fr">Le Château</p>
-        <h1>القلعة</h1>
-        <div className="v69-divider"><span /></div>
-        <h2>Bienvenue</h2>
-        <p className="v69-welcome-ar">مرحبًا بك</p>
-        <p className="v69-description">تجربة فرنسية فاخرة للتعلّم والاستكشاف داخل عالم القلعة.</p>
-        <div className="v69-feature-list">
-          {features.map(({ icon: Icon, text }) => <div key={text} className="v69-feature-row"><Icon aria-hidden="true" /><span>{text}</span></div>)}
-        </div>
-        <button className="v69-primary" onClick={() => router.push("/kingdom")}>الدخول</button>
-        <button className={`v69-secondary ${welcomeActive ? "is-speaking" : ""}`} onClick={speakWelcome} disabled={welcomeActive}>
-          {!welcomeActive && <Volume2 aria-hidden="true" />}
-          <span>{welcomeActive ? (welcomeText || "Bienvenue…") : "استمع إلى الترحيب"}</span>
+    <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة" data-motion-paused={motionPaused}>
+      <header className={styles.topbar}>
+        <span className={styles.wordmark} lang="fr" dir="ltr">LE CHÂTEAU<span>DES LANGUES</span></span>
+        <button className={styles.motion} type="button" onClick={() => setMotionPaused(value => !value)} aria-pressed={motionPaused} aria-label={motionPaused ? "تشغيل حركة القلعة" : "إيقاف حركة القلعة"}>
+          {motionPaused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}
         </button>
-      </section>
+      </header>
+      <div className={styles.experience}>
+        <section className={styles.identity} aria-label="القلعة">
+          <div className={styles.stage}>
+            <div className={styles.halo} aria-hidden="true" />
+            <div className={styles.castleMotion}>
+              <img className={styles.castle} src="/kingdom-portal-assets/castle-facade.png" alt="قلعة التطبيق" width="1408" height="1120" fetchPriority="high" draggable={false} />
+            </div>
+            <div className={styles.groundLight} aria-hidden="true" />
+          </div>
+          <p className={styles.brandFr} lang="fr" dir="ltr">Le Château</p>
+          <p className={styles.brandAr}>القلعة</p>
+          <span className={styles.brandRule} aria-hidden="true" />
+        </section>
+        <section className={styles.welcome} aria-labelledby="entry-welcome">
+          <div className={styles.greeting}>
+            <span className={styles.eyebrow}><Sparkles aria-hidden="true" /> رحلتك إلى الفرنسية</span>
+            <h1 id="entry-welcome" lang="fr" dir="ltr">Bienvenue</h1>
+            <h2>مرحبًا بك</h2>
+            <p>تجربة فرنسية فاخرة للتعلّم والاستكشاف داخل عالم القلعة.</p>
+          </div>
+          <div className={styles.features}>
+            {features.map(({ icon: Icon, text }) => <div key={text} className={styles.feature}><span><Icon aria-hidden="true" /></span><p>{text}</p></div>)}
+          </div>
+          <div className={styles.audio} data-active={welcomeActive}>
+            <button type="button" className={styles.listen} onClick={() => {
+              if (welcomeActive) {
+                clearTimers(); cancelFrenchSpeech(); utteranceRef.current = null;
+                setWelcomeActive(false); setWelcomeText("");
+              } else speakWelcome();
+            }} aria-label={welcomeActive ? "إيقاف الترحيب" : "استمع إلى الترحيب"}>
+              {welcomeActive ? <Square aria-hidden="true" /> : <Volume2 aria-hidden="true" />}
+            </button>
+            <div className={styles.audioCopy}>
+              <strong>{welcomeActive ? "الترحيب بك" : "استمع إلى الترحيب"}</strong>
+              <span lang="fr" dir="ltr">{welcomeActive ? "Bienvenue au Château" : "Écouter le message de bienvenue"}</span>
+            </div>
+            <div className={styles.wave} aria-hidden="true">{[0,1,2,3,4].map(i => <i key={i} style={{ animationDelay: `${i * .13}s` }} />)}</div>
+          </div>
+          <div className={styles.transcript} aria-live="polite" lang="fr" dir="ltr"><p>{welcomeText || "Bienvenue au Château des Langues."}</p></div>
+          <button className={styles.enter} onClick={() => router.push("/kingdom")}><span>الدخول<span lang="fr">Entrer dans le Château</span></span><ArrowLeft aria-hidden="true" /></button>
+        </section>
+      </div>
     </main>
   );
 }

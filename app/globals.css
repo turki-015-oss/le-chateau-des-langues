@@ -3901,3 +3901,33 @@
 @keyframes portalReturnFade{from{opacity:0}}@keyframes portalReturnAurora{to{transform:rotate(360deg)}}@keyframes portalReturnRing{from{opacity:0;transform:scale(.55) rotate(22deg)}to{opacity:1;transform:scale(1) rotate(0)}}@keyframes portalReturnOrbit{to{transform:rotate(360deg)}}@keyframes portalReturnBuilding{from{opacity:0;transform:translateY(-18px) scale(.76)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes portalReturnParticle{to{opacity:0;transform:rotate(var(--return-angle)) translateX(min(48vw,330px)) scale(.2)}}@keyframes portalReturnSparkle{to{transform:scale(1.2) rotate(10deg);opacity:.7}}
 @media(max-width:620px){.portal-return-overlay{backdrop-filter:blur(5px) saturate(.9)}.portal-return-overlay:before{animation:none;opacity:.62}.portal-return-particles i:nth-child(n+9){display:none}.portal-return-window{width:70vw;height:32vh;max-height:240px}.portal-return-window>span{filter:contrast(1.03) drop-shadow(0 12px 10px #0008)}}
 @media(prefers-reduced-motion:reduce){.portal-return-overlay *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Market department labels: French leads, Arabic supports, and pronunciation stays independent from navigation. */
+.market-department-card,.market-basket-card,.market-detail-heading{position:relative;isolation:isolate}
+.market-department-open{position:absolute;z-index:2;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}
+.market-department-open:focus-visible{outline:3px solid #174b39;outline-offset:3px}
+.market-department-card>i,.market-department-visual,.market-department-copy,.market-basket-fruit,.market-basket-copy,.market-department-card>svg,.market-basket-card>svg{pointer-events:none}
+.market-department-speech,.market-detail-speech{position:absolute;z-index:4;display:grid;place-items:center;border:1px solid #c59b4d;background:#174b39;color:#f5d895;box-shadow:0 6px 13px #173c2d38;cursor:pointer}
+.market-department-speech{top:10px;left:47px;width:34px;height:34px;border-radius:11px}
+.market-department-speech svg{width:17px;height:17px}
+.market-department-speech:hover,.market-department-speech:focus-visible,.market-detail-speech:hover,.market-detail-speech:focus-visible{background:#21634d;outline:2px solid #e0bb69;outline-offset:2px}
+.market-department-copy small{font:700 21px/1.3 Georgia,"Times New Roman",serif;color:#71521f}
+.market-department-copy strong{margin-top:6px;font-size:15px;font-weight:700;color:#3e5148}
+.market-basket-copy small{display:block;font:700 24px/1.25 Georgia,"Times New Roman",serif;color:#71521f}
+.market-basket-copy strong{display:block;margin:5px 0;font-size:16px;font-weight:700;color:#3e5148}
+.market-basket-copy p{margin:0;color:#625d4e}
+.market-detail-speech{top:18px;left:18px;width:42px;height:42px;border-radius:13px}
+.market-detail-speech svg{width:20px;height:20px}
+.market-detail-heading h3{margin:2px 0 0;font:700 30px/1.25 Georgia,"Times New Roman",serif;color:#79581f}
+.market-detail-heading h2{margin:5px 0 0;font-size:18px;color:#405249}
+@media(max-width:760px){
+  .market-department-speech{top:9px;left:40px;width:30px;height:30px;border-radius:9px}
+  .market-department-speech svg{width:15px;height:15px}
+  .market-department-copy small{font-size:18px}
+  .market-department-copy strong{font-size:13px}
+  .market-basket-copy small{font-size:20px}
+  .market-basket-copy strong{font-size:14px}
+  .market-detail-speech{top:12px;left:12px;width:36px;height:36px;border-radius:11px}
+  .market-detail-heading h3{font-size:22px}
+  .market-detail-heading h2{font-size:15px}
+}

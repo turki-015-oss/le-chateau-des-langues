@@ -66,20 +66,23 @@ export default function MarketPage(){
     <section className="market-shelf-zone">
      <div className="market-zone-title"><span>01</span><div><small>Les rayons</small><h3>الأرفف</h3></div></div>
      <div className="market-department-grid">
-      {shelves.map((item,index)=><button key={item.id} className="market-department-card" onClick={()=>openDepartment(item.id)} aria-label={`فتح رف ${item.ar}`}>
+      {shelves.map((item,index)=><article key={item.id} className="market-department-card">
+       <button className="market-department-open" onClick={()=>openDepartment(item.id)} aria-label={`فتح رف ${item.ar}`}/>
        <i>{String(index+1).padStart(2,"0")}</i><div className="market-department-visual"><span>{item.emoji}</span></div>
        <div className="market-department-copy"><small>{item.fr}</small><strong>{item.ar}</strong><p>{item.description}</p><em>{item.products.length} منتجات</em></div>
-       <ArrowLeft/>
-      </button>)}
+       <button className="market-department-speech" onClick={()=>speak(`department-${item.id}`,item.fr)} aria-label={`استمع إلى ${item.fr}`}><Volume2/></button><ArrowLeft/>
+      </article>)}
      </div>
     </section>
 
     <section className="market-basket-zone">
      <div className="market-zone-title"><span>02</span><div><small>Les corbeilles fraîches</small><h3>السلال الطازجة</h3></div></div>
      <div className="market-basket-grid">
-      {baskets.map(item=><button key={item.id} className="market-basket-card" onClick={()=>openDepartment(item.id)} aria-label={`فتح ${item.ar}`}>
-       <div className="market-basket-fruit">{item.emoji}</div><div><small>{item.fr}</small><strong>{item.ar}</strong><p>{item.description}</p><em>{item.products.length} منتجات طازجة</em></div><ArrowLeft/>
-      </button>)}
+      {baskets.map(item=><article key={item.id} className="market-basket-card">
+       <button className="market-department-open" onClick={()=>openDepartment(item.id)} aria-label={`فتح ${item.ar}`}/>
+       <div className="market-basket-fruit">{item.emoji}</div><div className="market-basket-copy"><small>{item.fr}</small><strong>{item.ar}</strong><p>{item.description}</p><em>{item.products.length} منتجات طازجة</em></div>
+       <button className="market-department-speech" onClick={()=>speak(`department-${item.id}`,item.fr)} aria-label={`استمع إلى ${item.fr}`}><Volume2/></button><ArrowLeft/>
+      </article>)}
      </div>
     </section>
 
@@ -98,7 +101,8 @@ export default function MarketPage(){
     <button className="market-back-sections" onClick={goHome}><ArrowRight/> العودة إلى جميع الأقسام</button>
     <div className="market-detail-heading">
      <div className="market-detail-icon">{department.emoji}</div>
-     <div><span>{department.kind==="basket"?"Corbeille fraîche":"Rayon du marché"}</span><h2>{department.ar}</h2><h3>{department.fr}</h3><p>{department.description} اضغط على صورة المنتج لسماع نطقه.</p></div>
+     <div><span>{department.kind==="basket"?"Corbeille fraîche":"Rayon du marché"}</span><h3>{department.fr}</h3><h2>{department.ar}</h2><p>{department.description} اضغط على صورة المنتج لسماع نطقه.</p></div>
+     <button className="market-detail-speech" onClick={()=>speak(`detail-${department.id}`,department.fr)} aria-label={`استمع إلى ${department.fr}`}><Volume2/></button>
      <strong>{department.products.length} منتجات</strong>
     </div>
     <div className="market-product-learning-grid">

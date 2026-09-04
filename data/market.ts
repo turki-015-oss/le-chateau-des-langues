@@ -4,7 +4,7 @@ export type MarketDialogueLine={speaker:"Le vendeur"|"La cliente"|"Le client";fr
 export type MarketConversation={id:string;title:string;ar:string;summary:string;lines:MarketDialogueLine[]};
 
 const baseMarketDepartments:MarketDepartment[]=[
- {id:"dairy",fr:"Les produits laitiers",ar:"الأجبان والألبان",description:"الحليب والأجبان ومشتقات الألبان اليومية.",emoji:"🧀",kind:"shelf",products:[
+ {id:"dairy",fr:"Les produits laitiers",ar:"منتجات الألبان",description:"الحليب والأجبان ومشتقات الألبان اليومية.",emoji:"🧀",kind:"shelf",products:[
   {id:"milk",fr:"le lait",ar:"الحليب",emoji:"🥛"},{id:"yogurt",fr:"le yaourt",ar:"الزبادي",emoji:"🥣"},{id:"butter",fr:"le beurre",ar:"الزبدة",emoji:"🧈"},{id:"cream",fr:"la crème",ar:"القشطة",emoji:"🥛"},{id:"cheese",fr:"le fromage",ar:"الجبن",emoji:"🧀"},{id:"goat-cheese",fr:"le fromage de chèvre",ar:"جبن الماعز",emoji:"🧀"},{id:"mozzarella",fr:"la mozzarella",ar:"جبن موزاريلا",emoji:"⚪"},{id:"eggs",fr:"les œufs",ar:"البيض",emoji:"🥚"},{id:"fresh-cheese",fr:"le fromage frais",ar:"الجبن الطازج",emoji:"🧀"},{id:"whipped-cream",fr:"la crème fouettée",ar:"الكريمة المخفوقة",emoji:"🍦"}
  ]},
  {id:"bakery",fr:"La boulangerie",ar:"المخبوزات",description:"أنواع الخبز والمخبوزات الفرنسية.",emoji:"🥖",kind:"shelf",products:[
@@ -19,7 +19,7 @@ const baseMarketDepartments:MarketDepartment[]=[
  {id:"grains",fr:"Les céréales et légumineuses",ar:"الحبوب والبقوليات",description:"الحبوب والبقول المستخدمة في الوجبات اليومية.",emoji:"🌾",kind:"shelf",products:[
   {id:"rice",fr:"le riz",ar:"الأرز",emoji:"🍚"},{id:"oats",fr:"l’avoine",ar:"الشوفان",emoji:"🌾"},{id:"wheat",fr:"le blé",ar:"القمح",emoji:"🌾"},{id:"lentils",fr:"les lentilles",ar:"العدس",emoji:"🫘"},{id:"beans",fr:"les haricots secs",ar:"الفاصوليا المجففة",emoji:"🫘"},{id:"chickpeas",fr:"les pois chiches",ar:"الحمص",emoji:"🫘"},{id:"corn",fr:"le maïs",ar:"الذرة",emoji:"🌽"},{id:"cereal",fr:"les céréales",ar:"حبوب الإفطار",emoji:"🥣"}
  ]},
- {id:"pantry",fr:"Les produits de base",ar:"المواد الأساسية",description:"مكونات أساسية موجودة في كل مطبخ.",emoji:"🫙",kind:"shelf",products:[
+ {id:"pantry",fr:"Les produits de base",ar:"المواد الغذائية الأساسية",description:"مكونات أساسية موجودة في كل مطبخ.",emoji:"🫙",kind:"shelf",products:[
   {id:"pasta",fr:"les pâtes",ar:"المعكرونة",emoji:"🍝"},{id:"flour",fr:"la farine",ar:"الدقيق",emoji:"🌾"},{id:"sugar",fr:"le sucre",ar:"السكر",emoji:"🧂"},{id:"salt",fr:"le sel",ar:"الملح",emoji:"🧂"},{id:"oil",fr:"l’huile",ar:"الزيت",emoji:"🫗"},{id:"olive-oil",fr:"l’huile d’olive",ar:"زيت الزيتون",emoji:"🫒"},{id:"honey",fr:"le miel",ar:"العسل",emoji:"🍯"},{id:"vinegar",fr:"le vinaigre",ar:"الخل",emoji:"🫗"},{id:"pepper",fr:"le poivre",ar:"الفلفل الأسود",emoji:"🧂"},{id:"semolina",fr:"la semoule",ar:"السميد",emoji:"🌾"}
  ]},
  {id:"preserves",fr:"Les conserves, sauces et épices",ar:"المعلبات والصلصات والتوابل",description:"معلبات وصلصات وتوابل لتنويع الطعام.",emoji:"🥫",kind:"shelf",products:[
@@ -28,10 +28,10 @@ const baseMarketDepartments:MarketDepartment[]=[
  {id:"drinks",fr:"Les boissons",ar:"المشروبات",description:"مشروبات باردة وساخنة شائعة.",emoji:"🧃",kind:"shelf",products:[
   {id:"water",fr:"l’eau",ar:"الماء",emoji:"💧"},{id:"sparkling",fr:"l’eau gazeuse",ar:"الماء الفوّار",emoji:"🫧"},{id:"orange-juice",fr:"le jus d’orange",ar:"عصير البرتقال",emoji:"🍊"},{id:"apple-juice",fr:"le jus de pomme",ar:"عصير التفاح",emoji:"🧃"},{id:"tea",fr:"le thé",ar:"الشاي",emoji:"🍵"},{id:"coffee",fr:"le café",ar:"القهوة",emoji:"☕"},{id:"hot-chocolate",fr:"le chocolat chaud",ar:"الشوكولاتة الساخنة",emoji:"☕"},{id:"lemonade",fr:"la limonade",ar:"الليمونادة",emoji:"🍋"},{id:"soft-drink",fr:"la boisson gazeuse",ar:"المشروب الغازي",emoji:"🥤"}
  ]},
- {id:"snacks",fr:"Les biscuits et confiseries",ar:"الحلويات والوجبات الخفيفة",description:"بسكويت وشوكولاتة ووجبات خفيفة.",emoji:"🍪",kind:"shelf",products:[
+ {id:"snacks",fr:"Les biscuits et confiseries",ar:"البسكويت والحلويات",description:"بسكويت وشوكولاتة ووجبات خفيفة.",emoji:"🍪",kind:"shelf",products:[
   {id:"biscuits",fr:"les biscuits",ar:"البسكويت",emoji:"🍪"},{id:"chocolate",fr:"le chocolat",ar:"الشوكولاتة",emoji:"🍫"},{id:"candy",fr:"les bonbons",ar:"الحلوى",emoji:"🍬"},{id:"chips",fr:"les chips",ar:"رقائق البطاطس",emoji:"🥔"},{id:"popcorn",fr:"le pop-corn",ar:"الفشار",emoji:"🍿"},{id:"nuts",fr:"les noix",ar:"المكسرات",emoji:"🥜"},{id:"dates",fr:"les dattes",ar:"التمر",emoji:"🌴"},{id:"cracker",fr:"les crackers",ar:"المقرمشات",emoji:"🍘"}
  ]},
- {id:"frozen",fr:"Les produits surgelés",ar:"الأطعمة المجمدة",description:"أطعمة محفوظة في قسم التجميد.",emoji:"❄️",kind:"shelf",products:[
+ {id:"frozen",fr:"Les produits surgelés",ar:"المنتجات المجمّدة",description:"أطعمة محفوظة في قسم التجميد.",emoji:"❄️",kind:"shelf",products:[
   {id:"frozen-veg",fr:"les légumes surgelés",ar:"الخضروات المجمدة",emoji:"🥦"},{id:"frozen-fruit",fr:"les fruits surgelés",ar:"الفواكه المجمدة",emoji:"🫐"},{id:"frozen-pizza",fr:"la pizza surgelée",ar:"البيتزا المجمدة",emoji:"🍕"},{id:"fries",fr:"les frites surgelées",ar:"البطاطس المقلية المجمدة",emoji:"🍟"},{id:"fish-fingers",fr:"les bâtonnets de poisson",ar:"أصابع السمك",emoji:"🐟"},{id:"frozen-chicken",fr:"le poulet surgelé",ar:"الدجاج المجمد",emoji:"🍗"},{id:"frozen-pastry",fr:"la pâte feuilletée",ar:"العجينة المورقة",emoji:"🥐"},{id:"ice-cubes",fr:"les glaçons",ar:"مكعبات الثلج",emoji:"🧊"}
  ]},
  {id:"icecream",fr:"Les glaces",ar:"المثلجات",description:"نكهات وأشكال مختلفة من المثلجات.",emoji:"🍦",kind:"shelf",products:[
@@ -43,16 +43,16 @@ const baseMarketDepartments:MarketDepartment[]=[
  {id:"cleaning",fr:"Les savons et produits d’entretien",ar:"الصابون ومنتجات التنظيف",description:"أنواع الصابون ومنظفات المنزل.",emoji:"🧼",kind:"shelf",products:[
   {id:"soap",fr:"le savon",ar:"الصابون",emoji:"🧼"},{id:"liquid-soap",fr:"le savon liquide",ar:"الصابون السائل",emoji:"🧴"},{id:"hand-soap",fr:"le savon pour les mains",ar:"صابون اليدين",emoji:"🫧"},{id:"dish-liquid",fr:"le liquide vaisselle",ar:"سائل غسل الصحون",emoji:"🧴"},{id:"laundry",fr:"la lessive",ar:"مسحوق الغسيل",emoji:"🧺"},{id:"softener",fr:"l’adoucissant",ar:"منعّم الملابس",emoji:"🧴"},{id:"disinfectant",fr:"le désinfectant",ar:"المطهر",emoji:"🧴"},{id:"floor-cleaner",fr:"le nettoyant pour le sol",ar:"منظف الأرضيات",emoji:"🪣"},{id:"sponge",fr:"l’éponge",ar:"الإسفنجة",emoji:"🧽"},{id:"trash-bags",fr:"les sacs-poubelle",ar:"أكياس النفايات",emoji:"🗑️"}
  ]},
- {id:"hygiene",fr:"L’hygiène personnelle",ar:"العناية الشخصية",description:"منتجات النظافة والعناية اليومية.",emoji:"🪥",kind:"shelf",products:[
+ {id:"hygiene",fr:"L’hygiène personnelle",ar:"مستلزمات النظافة الشخصية",description:"منتجات النظافة والعناية اليومية.",emoji:"🪥",kind:"shelf",products:[
   {id:"toothpaste",fr:"le dentifrice",ar:"معجون الأسنان",emoji:"🪥"},{id:"toothbrush",fr:"la brosse à dents",ar:"فرشاة الأسنان",emoji:"🪥"},{id:"shampoo",fr:"le shampooing",ar:"الشامبو",emoji:"🧴"},{id:"shower-gel",fr:"le gel douche",ar:"جل الاستحمام",emoji:"🧴"},{id:"deodorant",fr:"le déodorant",ar:"مزيل العرق",emoji:"🧴"},{id:"comb",fr:"le peigne",ar:"المشط",emoji:"🪮"},{id:"razor",fr:"le rasoir",ar:"شفرة الحلاقة",emoji:"🪒"},{id:"hand-cream",fr:"la crème pour les mains",ar:"كريم اليدين",emoji:"🧴"}
  ]},
  {id:"paper",fr:"Les produits en papier",ar:"المنتجات الورقية",description:"منتجات ورقية للمنزل والنظافة.",emoji:"🧻",kind:"shelf",products:[
   {id:"tissues",fr:"les mouchoirs",ar:"المناديل",emoji:"🤧"},{id:"paper-towels",fr:"l’essuie-tout",ar:"ورق المطبخ",emoji:"🧻"},{id:"toilet-paper",fr:"le papier toilette",ar:"ورق الحمام",emoji:"🧻"},{id:"napkins",fr:"les serviettes en papier",ar:"مناديل المائدة",emoji:"◻️"},{id:"baking-paper",fr:"le papier cuisson",ar:"ورق الخَبز",emoji:"📜"},{id:"paper-bags",fr:"les sacs en papier",ar:"الأكياس الورقية",emoji:"🛍️"}
  ]},
- {id:"vegetables",fr:"Les légumes",ar:"سلة الخضروات",description:"خضروات طازجة مرتبة في سلال السوق.",emoji:"🥕",kind:"basket",products:[
+ {id:"vegetables",fr:"Les légumes",ar:"الخضروات",description:"خضروات طازجة مرتبة في سلال السوق.",emoji:"🥕",kind:"basket",products:[
   {id:"tomato",fr:"la tomate",ar:"الطماطم",emoji:"🍅"},{id:"potato",fr:"la pomme de terre",ar:"البطاطس",emoji:"🥔"},{id:"carrot",fr:"la carotte",ar:"الجزر",emoji:"🥕"},{id:"cucumber",fr:"le concombre",ar:"الخيار",emoji:"🥒"},{id:"onion",fr:"l’oignon",ar:"البصل",emoji:"🧅"},{id:"garlic",fr:"l’ail",ar:"الثوم",emoji:"🧄"},{id:"pepper-veg",fr:"le poivron",ar:"الفلفل الحلو",emoji:"🫑"},{id:"lettuce",fr:"la laitue",ar:"الخس",emoji:"🥬"},{id:"eggplant",fr:"l’aubergine",ar:"الباذنجان",emoji:"🍆"},{id:"broccoli",fr:"le brocoli",ar:"البروكلي",emoji:"🥦"},{id:"cauliflower",fr:"le chou-fleur",ar:"القرنبيط",emoji:"🥦"},{id:"zucchini",fr:"la courgette",ar:"الكوسا",emoji:"🥒"}
  ]},
- {id:"fruits",fr:"Les fruits",ar:"سلة الفواكه",description:"فواكه طازجة وملونة في سلال مستقلة.",emoji:"🍎",kind:"basket",products:[
+ {id:"fruits",fr:"Les fruits",ar:"الفواكه",description:"فواكه طازجة وملونة في سلال مستقلة.",emoji:"🍎",kind:"basket",products:[
   {id:"apple",fr:"la pomme",ar:"التفاح",emoji:"🍎"},{id:"orange",fr:"l’orange",ar:"البرتقال",emoji:"🍊"},{id:"banana",fr:"la banane",ar:"الموز",emoji:"🍌"},{id:"grapes",fr:"le raisin",ar:"العنب",emoji:"🍇"},{id:"strawberry",fr:"la fraise",ar:"الفراولة",emoji:"🍓"},{id:"watermelon",fr:"la pastèque",ar:"البطيخ",emoji:"🍉"},{id:"melon",fr:"le melon",ar:"الشمام",emoji:"🍈"},{id:"pear",fr:"la poire",ar:"الكمثرى",emoji:"🍐"},{id:"peach",fr:"la pêche",ar:"الخوخ",emoji:"🍑"},{id:"pineapple",fr:"l’ananas",ar:"الأناناس",emoji:"🍍"},{id:"lemon",fr:"le citron",ar:"الليمون",emoji:"🍋"},{id:"cherries",fr:"les cerises",ar:"الكرز",emoji:"🍒"}
  ]}
 ];

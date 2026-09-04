@@ -48,7 +48,7 @@ function screenAngle() {
 
 export default function SmartCompass() {
   const [open,setOpen]=useState(false);
-  const [enabled,setEnabled]=useState(true);
+  const [enabled,setEnabled]=useState(false);
   const [authorized,setAuthorized]=useState(false);
   const [compassStatus,setCompassStatus]=useState<CompassStatus>("detecting");
   const [locationStatus,setLocationStatus]=useState<LocationStatus>("idle");
@@ -139,11 +139,7 @@ export default function SmartCompass() {
     }
   };
 
-  const activate=async()=>{
-    setOpen(true);
-    if(enabled)await requestSensorPermission();
-    if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
-  };
+  const activate=()=>setOpen(true);
 
   const togglePower=async()=>{
     if(enabled){
@@ -158,36 +154,34 @@ export default function SmartCompass() {
   const headingLabel=useMemo(()=>heading===null?"لم يُحدّد بعد":directions[Math.round(heading/45)%8],[heading]);
   const relativeQibla=qiblaBearing===null?null:normalizeDegrees(qiblaBearing-(heading??0));
   const aligned=enabled&&relativeQibla!==null&&(relativeQibla<=4||relativeQibla>=356);
-  const rotorStyle={transform:`rotate(${-(heading??0)}deg)`};
+  const northRotation=normalizeDegrees(-(heading??0));
+  const qiblaRotation=relativeQibla??0;
 
   return <>
-    <button type="button" className={`smart-compass-trigger ${aligned?"aligned":""} ${enabled?"":"disabled"}`} onClick={activate} aria-label="فتح بوصلة الشمال والقبلة">
-      <span className="smart-compass-mini" aria-hidden="true">
-        <span className="smart-compass-rotor" style={rotorStyle}>
-          <b>N</b><i className="smart-north-needle"/>
-          {qiblaBearing!==null&&<i className="smart-qibla-mini" style={{transform:`rotate(${qiblaBearing}deg)`}}/>}
+    <div className="smart-compass-control">
+      <button type="button" className={`smart-compass-trigger ${aligned?"aligned":""} ${enabled?"":"disabled"}`} onClick={activate} aria-label="فتح بوصلة الشمال والقبلة">
+        <span className="smart-compass-mini" aria-hidden="true">
+          <b>N</b>
+          <i className="smart-north-needle" style={{transform:`rotate(${northRotation}deg)`}}/>
+          {qiblaBearing!==null&&<i className="smart-qibla-mini" style={{transform:`rotate(${qiblaRotation}deg)`}}/>}
         </span>
-      </span>
-      <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة — اضغط للفتح":qiblaBearing===null?"اضغط للتحديد":aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
-    </button>
+        <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة":qiblaBearing===null?"جارٍ تحديد القبلة":aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
+      </button>
+      <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
+    </div>
 
     {open&&<div className="smart-compass-overlay" onClick={()=>setOpen(false)}>
       <section className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title" onClick={event=>event.stopPropagation()}>
         <header>
           <div><small>COMPASS · QIBLA</small><h2 id="smart-compass-title">البوصلة العالمية</h2></div>
-          <nav>
-            <button type="button" className={`smart-compass-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
-            <button type="button" onClick={()=>setOpen(false)} aria-label="إغلاق البوصلة"><X/></button>
-          </nav>
+          <button type="button" onClick={()=>setOpen(false)} aria-label="إغلاق البوصلة"><X/></button>
         </header>
 
         <div className={`smart-compass-instrument ${aligned?"aligned":""}`}>
           <div className="smart-compass-dial">
-            <span className="smart-compass-rotor" style={rotorStyle}>
-              <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
-              <i className="smart-north-hand"><span/></i>
-              {qiblaBearing!==null&&<i className="smart-qibla-hand" style={{transform:`rotate(${qiblaBearing}deg)`}}><span><b>◆</b><small>القبلة</small></span></i>}
-            </span>
+            <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
+            <i className="smart-north-hand" style={{transform:`rotate(${northRotation}deg)`}}><span/></i>
+            {qiblaBearing!==null&&<i className="smart-qibla-hand" style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>القبلة</small></span></i>}
             <span className="smart-heading-index" aria-hidden="true"/>
             <div className="smart-heading-value"><strong>{heading===null?"—":String(Math.round(heading)).padStart(3,"0")}°</strong><small>{headingLabel}</small></div>
           </div>
@@ -201,7 +195,7 @@ export default function SmartCompass() {
         </div>
 
         {enabled&&(compassStatus!=="active"||locationStatus!=="ready")&&<div className="smart-compass-actions">
-          <button type="button" onClick={activate}><Navigation/> {compassStatus==="permission"?"السماح بحساس الاتجاه":"إعادة تشغيل الاتجاه"}</button>
+          <button type="button" onClick={requestSensorPermission}><Navigation/> {compassStatus==="permission"?"السماح بحساس الاتجاه":"إعادة تشغيل الاتجاه"}</button>
           <button type="button" onClick={locateQibla}><LocateFixed/> {locationStatus==="locating"?"جارٍ تحديد الموقع…":"تحديد القبلة من موقعي"}</button>
         </div>}
 

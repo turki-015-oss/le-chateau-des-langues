@@ -12,5 +12,5 @@ const sandbox={T,renderer,document,gpu:false,desktop:true};
 vm.runInNewContext(compile(block)+'\nglobalThis.model={scene,camera,book};',sandbox);
 const {scene,camera,book}=sandbox.model;camera.aspect=1;camera.updateProjectionMatrix();
 const sheet=createCanvas(1320,660),ctx=sheet.getContext('2d');ctx.fillStyle='#102f26';ctx.fillRect(0,0,1320,660);
-[-.35,1.25].forEach((angle,i)=>{book.rotation.set(.08,angle,-.07);renderer.render(scene,camera);ctx.drawImage(renderer.domElement,i*660,0);});
+[-.35,-1.25].forEach((angle,i)=>{book.rotation.set(.08,angle,-.07);renderer.render(scene,camera);ctx.drawImage(renderer.domElement,i*660,0);});
 const target=path.join(process.env.TEMP,'chateau-desktop-book.png');fs.writeFileSync(target,sheet.toBuffer('image/png'));console.log(target);

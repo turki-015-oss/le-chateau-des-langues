@@ -64,8 +64,12 @@ export default function WelcomeBook() {
       const leather = new T.MeshStandardMaterial({ color: desktop ? 0xb78454 : 0x593019, roughness: .72, bumpMap: texture, bumpScale: .022 });
       const spineLeather = new T.MeshStandardMaterial({ color: desktop ? 0x93633e : 0x3b1d10, roughness: .67, bumpMap: texture, bumpScale: .018 });
       const gold = new T.MeshStandardMaterial({ color: desktop ? 0xffd064 : 0xc49a4b, metalness: .78, roughness: .35 });
-      const paper = new T.MeshStandardMaterial({ color: 0xddc59a, roughness: .92 });
-      const pageLine = new T.MeshStandardMaterial({ color: 0xb49a70, roughness: 1 });
+      const paper = desktop
+        ? new T.MeshBasicMaterial({ color: 0xcbb992, toneMapped: false })
+        : new T.MeshStandardMaterial({ color: 0xddc59a, roughness: .92 });
+      const pageLine = desktop
+        ? new T.MeshBasicMaterial({ color: 0xb9a780, toneMapped: false })
+        : new T.MeshStandardMaterial({ color: 0xb49a70, roughness: 1 });
       const box = (w: number, h: number, d: number, x: number, y: number, z: number, material: InstanceType<typeof T.Material>, radius = .018) => {
         const mesh = new T.Mesh(gpu ? new RoundedBoxGeometry(w, h, d, 2, radius) : new T.BoxGeometry(w,h,d), material);
         mesh.position.set(x,y,z); book.add(mesh); return mesh;
@@ -76,11 +80,13 @@ export default function WelcomeBook() {
       box(2.16, 2.96, .105, 0, 0, coverZ, leather, .035);
       box(2.16, 2.96, .105, 0, 0, -coverZ, leather, .035);
       box(.20, 2.95, desktop ? .87 : .69, -1.025, 0, 0, spineLeather, .065);
-      for (let i = 0; i < 30; i++) {
-        const z = desktop ? -.33 + i * .022 : -.235 + i * .016;
-        box(.006, desktop ? 2.78 : 2.70, .0025, desktop ? 1.04 : 1.009, 0, z, pageLine, .001);
-        box(desktop ? 1.96 : 1.90, .004, .0025, .045, desktop ? 1.416 : 1.376, z, pageLine, .001);
-        box(desktop ? 1.96 : 1.90, .004, .0025, .045, desktop ? -1.416 : -1.376, z, pageLine, .001);
+      // Subpixel page grooves shimmer in the desktop CPU renderer. Keep its
+      // paper edge continuous and matte; preserve the mobile page detailing.
+      for (let i = 0; !desktop && i < 30; i++) {
+        const z = -.235 + i * .016;
+        box(.006, 2.70, .0025, 1.009, 0, z, pageLine, .001);
+        box(1.90, .004, .0025, .045, 1.376, z, pageLine, .001);
+        box(1.90, .004, .0025, .045, -1.376, z, pageLine, .001);
       }
       for (const y of [-1.17, -.73, .73, 1.17]) {
         box(.235, .074, desktop ? .895 : .715, -1.025, y, 0, leather, .028);

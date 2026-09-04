@@ -51,7 +51,8 @@ export class BookCanvasRenderer {
         // Desktop CPU rendering has no environment lighting: compensate for
         // that missing ambient light instead of darkening the approved leather.
         const illumination = this.depthBuffered ? .96+.24*Math.max(0,normal.dot(light)) : .62+.38*Math.max(0,normal.dot(light));
-        const color=material.color.clone().multiplyScalar(illumination);
+        const unlit = (material as unknown as T.MeshBasicMaterial).isMeshBasicMaterial;
+        const color=material.color.clone().multiplyScalar(unlit ? 1 : illumination);
         const rgb=color.clone().convertLinearToSRGB();
         faces.push({p,uv:ids.map(id=>uv ? new T.Vector2().fromBufferAttribute(uv,id) : new T.Vector2()),depth:(p[0].z+p[1].z+p[2].z)/3,color:color.getStyle(),image:(material.map?.image as CanvasImageSource | undefined) ?? null,opacity:material.opacity,rgb:[rgb.r*255,rgb.g*255,rgb.b*255],q:world.map(v=>-1/v.clone().applyMatrix4(camera.matrixWorldInverse).z)});
       }

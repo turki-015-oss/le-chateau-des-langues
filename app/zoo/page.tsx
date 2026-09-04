@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Search, Volume2, X } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Search, Volume2, X } from "lucide-react";
 import {speakFrench} from "@/lib/frenchSpeech";
 
 type Animal = { fr: string; ar: string; slug: string };
-type Category = { id: string; fr: string; ar: string; icon: string; animals: Animal[] };
+type Category = { id: string; fr: string; ar: string; icon: string; cover: string; animals: Animal[] };
 
 const animalImageFiles:Record<string,string>={
  "lion":"020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
@@ -81,27 +81,25 @@ const animalImageFiles:Record<string,string>={
  "bumblebee":"Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg"
 };
 
-function animalImage(slug:string){
- return `https://commons.wikimedia.org/wiki/Special:Redirect/file/${animalImageFiles[slug]}?width=900`;
-}
+const animalImage = (slug:string) => `/zoo/animals/${slug}.webp`;
 
 const categories: Category[] = [
-  { id:"mammals", fr:"Les mammifères", ar:"الثدييات", icon:"🦁", animals:[
+  { id:"mammals", fr:"Les mammifères", ar:"الثدييات", icon:"🦁", cover:"lion", animals:[
     ["Le lion","الأسد","lion"],["Le tigre","النمر","tiger"],["Le léopard","الفهد المرقط","leopard"],["Le guépard","الفهد الصياد","cheetah"],["L'éléphant","الفيل","elephant"],["La girafe","الزرافة","giraffe"],["Le zèbre","الحمار الوحشي","zebra"],["Le rhinocéros","وحيد القرن","rhinoceros"],["L'hippopotame","فرس النهر","hippopotamus"],["Le chameau","الجمل","camel"],["Le gorille","الغوريلا","gorilla"],["Le chimpanzé","الشمبانزي","chimpanzee"],["L'ours brun","الدب البني","brown-bear"],["L'ours polaire","الدب القطبي","polar-bear"],["Le panda géant","الباندا العملاقة","giant-panda"],["Le loup","الذئب","wolf"],["Le renard","الثعلب","fox"],["Le kangourou","الكنغر","kangaroo"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))},
-  { id:"birds", fr:"Les oiseaux", ar:"الطيور", icon:"🦅", animals:[
-    ["L'aigle","النسر","eagle"],["Le faucon","الصقر","falcon"],["Le hibou","البومة","owl"],["Le perroquet","الببغاء","parrot"],["Le paon","الطاووس","peacock"],["Le flamant rose","طائر الفلامنجو","flamingo"],["L'autruche","النعامة","ostrich"],["Le pélican","البجع","pelican"],["Le cygne","البجعة","swan"],["Le pingouin","البطريق","penguin"],["La cigogne","اللقلق","stork"],["Le toucan","الطوقان","toucan"]
+  { id:"birds", fr:"Les oiseaux", ar:"الطيور", icon:"🦅", cover:"falcon", animals:[
+    ["L'aigle","النسر","eagle"],["Le faucon","الصقر","falcon"],["Le hibou","البومة","owl"],["Le perroquet","الببغاء","parrot"],["Le paon","الطاووس","peacock"],["Le flamant rose","طائر الفلامنجو","flamingo"],["L'autruche","النعامة","ostrich"],["Le pélican","البجع","pelican"],["Le cygne","البجعة","swan"],["Le manchot","البطريق","penguin"],["La cigogne","اللقلق","stork"],["Le toucan","الطوقان","toucan"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))},
-  { id:"reptiles", fr:"Les reptiles", ar:"الزواحف", icon:"🐍", animals:[
+  { id:"reptiles", fr:"Les reptiles", ar:"الزواحف", icon:"🐍", cover:"crocodile", animals:[
     ["Le crocodile","التمساح","crocodile"],["L'alligator","القاطور","alligator"],["Le cobra","الكوبرا","cobra"],["Le python","الأصلة","python-snake"],["Le varan","الورل","monitor-lizard"],["L'iguane","الإغوانا","iguana"],["Le caméléon","الحرباء","chameleon"],["La tortue terrestre","السلحفاة البرية","tortoise"],["La tortue marine","السلحفاة البحرية","sea-turtle"],["Le gecko","الوزغ","gecko"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))},
-  { id:"marine", fr:"Les animaux marins", ar:"الحيوانات البحرية", icon:"🐬", animals:[
-    ["Le dauphin","الدلفين","dolphin"],["La baleine bleue","الحوت الأزرق","blue-whale"],["L'orque","الحوت القاتل","orca"],["Le requin blanc","القرش الأبيض","great-white-shark"],["La raie manta","شيطان البحر","manta-ray"],["Le phoque","الفقمة","seal"],["Le morse","حصان البحر","walrus"],["La pieuvre","الأخطبوط","octopus"],["La méduse","قنديل البحر","jellyfish"],["L'hippocampe","فرس البحر","seahorse"]
+  { id:"marine", fr:"Les animaux marins", ar:"الحيوانات البحرية", icon:"🐬", cover:"dolphin", animals:[
+    ["Le dauphin","الدلفين","dolphin"],["La baleine bleue","الحوت الأزرق","blue-whale"],["L'orque","الحوت القاتل","orca"],["Le requin blanc","القرش الأبيض","great-white-shark"],["La raie manta","سمكة المانتا","manta-ray"],["Le phoque","الفقمة","seal"],["Le morse","الفظ","walrus"],["La pieuvre","الأخطبوط","octopus"],["La méduse","قنديل البحر","jellyfish"],["L'hippocampe","فرس البحر","seahorse"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))},
-  { id:"farm", fr:"Les animaux de la ferme", ar:"حيوانات المزرعة", icon:"🐄", animals:[
+  { id:"farm", fr:"Les animaux de la ferme", ar:"حيوانات المزرعة", icon:"🐄", cover:"horse", animals:[
     ["La vache","البقرة","cow"],["Le cheval","الحصان","horse"],["Le mouton","الخروف","sheep"],["La chèvre","الماعز","goat"],["L'âne","الحمار","donkey"],["Le cochon","الخنزير","pig"],["Le lapin","الأرنب","rabbit"],["La poule","الدجاجة","chicken"],["Le canard","البطة","duck"],["La dinde","الديك الرومي","turkey"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))},
-  { id:"insects", fr:"Les insectes", ar:"الحشرات", icon:"🦋", animals:[
+  { id:"insects", fr:"Les insectes", ar:"الحشرات", icon:"🦋", cover:"butterfly", animals:[
     ["Le papillon","الفراشة","butterfly"],["L'abeille","النحلة","bee"],["La fourmi","النملة","ant"],["La coccinelle","الدعسوقة","ladybug"],["La libellule","اليعسوب","dragonfly"],["Le scarabée","الخنفساء","beetle"],["La sauterelle","الجندب","grasshopper"],["La mante religieuse","فرس النبي","praying-mantis"],["Le phasme","الحشرة العصوية","stick-insect"],["Le bourdon","النحلة الطنانة","bumblebee"]
   ].map(([fr,ar,slug])=>({fr,ar,slug}))}
 ];
@@ -111,14 +109,26 @@ function speak(text:string){void speakFrench(text,{rate:.86})}
 export default function ZooPage(){
  const [active,setActive]=useState(categories[0]);
  const [query,setQuery]=useState("");
+ const [page,setPage]=useState(0);
+ const contentRef=useRef<HTMLElement>(null);
  const animals=useMemo(()=>active.animals.filter(a=>`${a.fr} ${a.ar}`.toLowerCase().includes(query.toLowerCase())),[active,query]);
+ const pageCount=Math.max(1,Math.ceil(animals.length/8));
+ const visibleAnimals=animals.slice(page*8,page*8+8);
+ useEffect(()=>setPage(0),[active,query]);
+ const chooseCategory=(category:Category)=>{
+  setActive(category);
+  setQuery("");
+  requestAnimationFrame(()=>contentRef.current?.scrollIntoView({behavior:"smooth",block:"start"}));
+ };
  return <main className="zoo-world" dir="rtl">
   <header className="zoo-header"><Link href="/kingdom" className="zoo-back"><ArrowLeft/> واجهة القلعة</Link><strong>Le Château des Langues</strong><div className="zoo-avatar">🧑🏻‍🎓</div></header>
-  <section className="zoo-hero"><img src="/image/zoo-hero.png" alt="حديقة حيوانات عالمية وجمل يمشي في وسطها"/><div className="zoo-hero-shade"/><div className="zoo-hero-copy"><span>Le Zoo</span><h1>حديقة الحيوانات</h1><p>اكتشف الحيوانات بالفرنسية داخل أقسام منظمة، مع صورة ونطق وترجمة لكل حيوان.</p></div></section>
-  <nav className="zoo-categories" aria-label="أقسام الحيوانات">{categories.map(c=><button key={c.id} className={active.id===c.id?"active":""} onClick={()=>{setActive(c);setQuery("")}}><b>{c.icon}</b><span>{c.fr}<small>{c.ar}</small></span></button>)}</nav>
-  <section className="zoo-content">
+  <section className="zoo-hero"><img src="/zoo/zoo-camel-hero-v1.png" alt="جمل أمام مدخل حديقة حيوانات فخم"/><div className="zoo-hero-shade"/><div className="zoo-hero-copy"><span><MapPin/> Le Zoo Royal</span><h1>حديقة الحيوانات</h1><p>تعلّم أسماء الحيوانات بالفرنسية داخل جولة مصوّرة منظّمة، مع ترجمة عربية ونطق مستقل لكل كلمة.</p><button onClick={()=>contentRef.current?.scrollIntoView({behavior:"smooth"})}>ابدأ الجولة <ChevronLeft/></button></div></section>
+  <nav className="zoo-categories" aria-label="أقسام الحيوانات">{categories.map((c,index)=><button key={c.id} className={active.id===c.id?"active":""} onClick={()=>chooseCategory(c)}><img src={animalImage(c.cover)} alt=""/><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{c.fr}</strong><small>{c.ar}</small><em>{c.animals.length} حيوانًا</em></span></button>)}</nav>
+  <section className="zoo-content" ref={contentRef}>
    <div className="zoo-title"><div><span>{active.fr}</span><h2>{active.ar}</h2><p>{active.animals.length} حيوانًا دون تكرار</p></div><label><Search/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="ابحث عن حيوان..."/>{query&&<button onClick={()=>setQuery("")}><X/></button>}</label></div>
-   <div className="animal-grid">{animals.map(a=><article key={a.slug} className="animal-card"><div className="animal-photo"><img loading="lazy" src={animalImage(a.slug)} alt={`${a.fr} - ${a.ar}`}/><button onClick={()=>speak(a.fr)} aria-label={`استمع إلى ${a.fr}`}><Volume2/></button></div><div><h3 dir="ltr">{a.fr}</h3><p>{a.ar}</p></div></article>)}</div>
+   <div className="animal-grid">{visibleAnimals.map((a,index)=><article key={a.slug} className="animal-card"><div className="animal-photo"><img loading="lazy" src={animalImage(a.slug)} alt={`${a.fr} - ${a.ar}`}/><span>{String(page*8+index+1).padStart(2,"0")}</span><button onClick={()=>speak(a.fr)} aria-label={`استمع إلى ${a.fr}`}><Volume2/></button></div><div><h3 dir="ltr">{a.fr}</h3><p>{a.ar}</p></div></article>)}</div>
+   {animals.length===0&&<div className="zoo-empty">لا توجد نتيجة مطابقة. جرّب كلمة أخرى.</div>}
+   {pageCount>1&&<div className="zoo-pagination" aria-label="صفحات الحيوانات"><button disabled={page===0} onClick={()=>setPage(value=>Math.max(0,value-1))}><ChevronRight/> السابق</button><strong>{page+1} <small>/ {pageCount}</small></strong><button disabled={page===pageCount-1} onClick={()=>setPage(value=>Math.min(pageCount-1,value+1))}>التالي <ChevronLeft/></button></div>}
   </section>
  </main>
 }

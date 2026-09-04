@@ -3931,3 +3931,55 @@
   .market-detail-heading h3{font-size:22px}
   .market-detail-heading h2{font-size:15px}
 }
+
+/* Zoo visual system v2 — hospital-style structure with stable local imagery. */
+.zoo-world{overflow-x:hidden;background:radial-gradient(circle at 50% -10%,#174a38 0,#061d16 38%,#020d0a 100%);padding-bottom:70px}
+.zoo-header{height:76px;grid-template-columns:180px 1fr 180px;padding-inline:max(18px,4vw);background:rgba(2,18,13,.94);box-shadow:0 8px 30px #0005}
+.zoo-back{width:max-content;padding:10px 14px;border:1px solid #a98337;border-radius:13px;background:#0a3427}
+.zoo-hero{height:min(68vh,690px);min-height:520px;border-bottom:1px solid #9c7733}
+.zoo-hero>img{object-position:center 55%;filter:saturate(.94) contrast(1.04)}
+.zoo-hero-shade{background:linear-gradient(90deg,rgba(2,16,11,.15) 0%,rgba(2,16,11,.42) 45%,rgba(2,16,11,.94) 100%),linear-gradient(0deg,#03140ee8 0%,transparent 48%)}
+.zoo-hero-copy{right:max(22px,7vw);bottom:auto;top:50%;transform:translateY(-50%);max-width:590px}
+.zoo-hero-copy>span{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 13px;border:1px solid #d0a94d;border-radius:999px;background:#0b392bd9;color:#f5d57d;font:700 15px Georgia,serif}
+.zoo-hero-copy>span svg{width:17px}
+.zoo-hero-copy h1{margin:18px 0 9px;font-size:clamp(42px,6vw,76px);text-shadow:0 7px 25px #000}
+.zoo-hero-copy p{max-width:570px;margin:0;font-size:clamp(16px,2vw,20px);line-height:1.9;color:#f2ead6}
+.zoo-hero-copy>button{display:inline-flex;align-items:center;gap:9px;margin-top:20px;padding:12px 18px;border:1px solid #e0ba61;border-radius:14px;background:linear-gradient(135deg,#1b6947,#0b3c2b);color:#fff4c9;font-weight:900;box-shadow:0 12px 28px #0005}
+.zoo-categories{max-width:1220px;margin:-62px auto 0;padding:0 18px;grid-template-columns:repeat(3,1fr);gap:15px}
+.zoo-categories button{position:relative;min-width:0;min-height:205px;overflow:hidden;display:block;padding:0;border-color:#9b7836;border-radius:22px;text-align:initial;background:#08261c;box-shadow:0 18px 36px #0007;isolation:isolate}
+.zoo-categories button:hover,.zoo-categories button.active{transform:translateY(-5px);border-color:#f0cd71;box-shadow:0 0 0 2px #d9b55755,0 22px 42px #0008}
+.zoo-categories button>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.zoo-categories button:hover>img{transform:scale(1.045)}
+.zoo-categories button:after{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(0deg,#02130ff5 2%,#061c13a6 51%,transparent 100%)}
+.zoo-categories button>i{position:absolute;z-index:2;top:12px;left:12px;width:34px;height:34px;display:grid;place-items:center;border:1px solid #e1bb5d;border-radius:50%;background:#073024df;color:#f5d477;font:12px Georgia,serif}
+.zoo-categories button>span{position:absolute;z-index:2;right:16px;left:16px;bottom:14px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2px 10px;color:#fff}
+.zoo-categories button strong{font:700 22px/1.15 Georgia,serif;color:#f7dc91;text-align:right}
+.zoo-categories button small{grid-column:1;color:#fff;font:700 15px/1.4 Tahoma,sans-serif}
+.zoo-categories button em{grid-column:2;grid-row:1/3;padding:5px 8px;border-radius:999px;background:#e6c66b22;color:#e8ce85;font-size:10px;font-style:normal;white-space:nowrap}
+.zoo-content{max-width:1220px;padding:58px 18px 30px;scroll-margin-top:88px}
+.zoo-title{padding:22px;border:1px solid #7b6533;border-radius:22px;background:linear-gradient(145deg,#0a3024,#041a13);box-shadow:0 15px 35px #0004}
+.zoo-title>div>span{font-size:26px;color:#e9c86d}
+.zoo-title h2{font-size:34px}.zoo-title label{background:#031710;border-color:#9b7939}
+.animal-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.animal-card{border-radius:20px;background:linear-gradient(145deg,#0c382a,#041b14);box-shadow:0 14px 30px #0006}
+.animal-photo{aspect-ratio:4/3;background:#0a281d}
+.animal-photo img{display:block;object-fit:cover;object-position:center}
+.animal-photo>span{position:absolute;top:11px;right:11px;min-width:31px;height:31px;display:grid;place-items:center;border:1px solid #e4bd61;border-radius:999px;background:#06251bdf;color:#efd079;font:11px Georgia,serif}
+.animal-photo button{left:11px;bottom:11px;width:42px;height:42px;background:#063024eb;box-shadow:0 7px 17px #0007}
+.animal-card>div:last-child{min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.animal-card h3{font-size:27px}.animal-card p{font-size:15px;color:#d8ccb0}
+.zoo-pagination{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:28px}
+.zoo-pagination button{display:flex;align-items:center;gap:7px;padding:11px 16px;border:1px solid #b28b3c;border-radius:13px;background:#0b3a2b;color:#f5d986;font-weight:800}
+.zoo-pagination button:disabled{opacity:.35;cursor:not-allowed}
+.zoo-pagination strong{min-width:72px;text-align:center;color:#fff;font-size:20px}.zoo-pagination small{color:#c5b17b}
+.zoo-empty{padding:50px 20px;text-align:center;border:1px dashed #8f7438;border-radius:20px;color:#d9c690}
+@media(max-width:1000px){.animal-grid{grid-template-columns:repeat(3,1fr)}.zoo-categories{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){
+ .zoo-header{height:66px;grid-template-columns:54px 1fr 54px;padding:8px 10px}.zoo-back{width:44px;height:44px;padding:0;justify-content:center}.zoo-avatar{width:44px;height:44px;font-size:22px}
+ .zoo-hero{height:590px;min-height:0}.zoo-hero>img{object-position:42% center}.zoo-hero-shade{background:linear-gradient(0deg,#02130ff7 0%,#02130fa8 37%,transparent 75%)}
+ .zoo-hero-copy{top:auto;right:18px;left:18px;bottom:33px;max-width:none;transform:none;text-align:right}.zoo-hero-copy>span{font-size:12px}.zoo-hero-copy h1{max-width:100%;font-size:38px;line-height:1.15;white-space:normal}.zoo-hero-copy p{max-width:100%;font-size:14px;line-height:1.75}
+ .zoo-categories{margin:-1px auto 0;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}.zoo-categories button{min-width:0;min-height:178px}.zoo-categories button strong{overflow:hidden;font-size:17px;text-overflow:ellipsis;white-space:nowrap}.zoo-categories button small{font-size:13px}.zoo-categories button em{display:none}
+ .zoo-content{padding:35px 12px 25px}.zoo-title{padding:16px}.zoo-title h2{font-size:28px}.zoo-title>div>span{font-size:21px}
+ .animal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.animal-card h3{font-size:19px}.animal-card p{font-size:13px}.animal-card>div:last-child{min-height:76px;padding:10px 6px}.animal-photo button{width:36px;height:36px}.animal-photo button svg{width:17px}
+ .zoo-pagination{gap:8px}.zoo-pagination button{padding:10px 11px;font-size:12px}.zoo-pagination strong{min-width:52px;font-size:17px}
+}

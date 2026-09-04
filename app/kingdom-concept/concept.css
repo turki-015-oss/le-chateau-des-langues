@@ -253,7 +253,7 @@
 .concept-magic-portal{position:relative;width:min(310px,68vw);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 28px 28px #0009)}
 .concept-magic-ring{position:absolute;border-radius:50%;border:2px solid #ffe49a;box-shadow:0 0 18px #fff0b8,0 0 70px #dca94c,inset 0 0 34px #fff1b9;animation:conceptMagicRing .92s cubic-bezier(.16,.82,.22,1) both}
 .concept-magic-ring-one{inset:3%}.concept-magic-ring-two{inset:13%;border-style:dashed;animation-delay:.06s;animation-direction:reverse}
-.concept-magic-building{position:relative;z-index:2;width:84%;height:78%;background:center bottom/contain no-repeat;filter:contrast(1.06) drop-shadow(0 18px 14px #000a) drop-shadow(0 0 13px #ffe7a879);animation:conceptMagicBuilding .92s cubic-bezier(.14,.82,.2,1) both}
+.concept-magic-building{position:relative;z-index:2;width:84%;height:78%;background:center center/contain no-repeat;filter:contrast(1.06) drop-shadow(0 18px 14px #000a) drop-shadow(0 0 13px #ffe7a879);animation:conceptMagicBuilding .92s cubic-bezier(.14,.82,.2,1) both}
 .concept-magic-portal>svg{position:absolute;z-index:3;right:7%;top:8%;width:34px;height:34px;color:#fff6cc;filter:drop-shadow(0 0 12px #fff);animation:conceptMagicSpark .55s ease-in-out infinite alternate}
 .concept-magic-copy{position:relative;z-index:3;margin-top:8px;display:flex;flex-direction:column;align-items:center;text-align:center;text-shadow:0 3px 18px #000}.concept-magic-copy strong{font:clamp(30px,5vw,54px)/1 Georgia,"Times New Roman",serif;letter-spacing:.055em}.concept-magic-copy b{margin-top:8px;font-size:clamp(18px,3vw,25px)}.concept-magic-copy small{margin-top:13px;padding:7px 15px;border:1px solid #e6c77791;border-radius:999px;background:#0b2b23bd;color:#ffe9ae}
 .concept-magic-particles{position:absolute;inset:0;overflow:hidden}.concept-magic-particles i{--angle:calc(var(--particle)*20deg);position:absolute;left:50%;top:48%;width:5px;height:5px;border-radius:50%;background:#fff1ae;box-shadow:0 0 13px #fff1ae;transform:rotate(var(--angle)) translateX(52px);animation:conceptMagicParticle 1s calc(var(--particle)*-38ms) ease-out infinite}
@@ -329,7 +329,7 @@
 /* The circular ENTER control uses the same premium app language as every destination badge. */
 .concept-card-enter{
   position:absolute;z-index:9;left:13px;bottom:13px;width:43px;height:43px;
-  display:grid;grid-template-rows:18px 10px;place-content:center;justify-items:center;gap:1px;
+  display:grid;place-items:center;
   box-sizing:border-box;border:1px solid #f2d789;border-radius:14px;
   background:linear-gradient(145deg,#18523f 0%,#082e24 50%,#031a14 100%);
   color:#f5d879;font:700 7px/1 Georgia,"Times New Roman",serif;letter-spacing:.07em;
@@ -345,13 +345,12 @@
   content:"";position:absolute;left:10%;right:10%;top:5%;height:35%;border-radius:50%;
   background:linear-gradient(#fff8d538,transparent);transform:rotate(-8deg);pointer-events:none;
 }
-.concept-card-enter svg{grid-row:1;width:13px;height:13px;stroke-width:1.75;color:#f5d879;filter:drop-shadow(0 2px 3px #0008);transform:scaleX(-1);transition:transform .16s ease}
-.concept-card-enter span{grid-row:2}
+.concept-card-enter svg{width:17px;height:17px;stroke-width:1.75;color:#f5d879;filter:drop-shadow(0 2px 3px #0008);transform:scaleX(-1);transition:transform .16s ease}
 .concept-tilt-card:hover .concept-card-enter{transform:translateZ(50px) translateY(-2px);box-shadow:inset 0 2px #fff2b780,inset 2px 0 #43806b66,inset -2px -3px #00120db8,0 10px 18px #06191285,0 0 0 2px #d0a34d5c}
 .concept-tilt-card:active .concept-card-enter{transform:translateZ(50px) translateY(2px) scale(.92);box-shadow:inset 0 4px 8px #00100bb5,0 2px 4px #0009,0 0 0 2px #e3bd5e70}
 .concept-tilt-card:active .concept-card-enter svg{transform:translateX(2px) scaleX(-1)}
 @media(max-width:650px){
-  .concept-card-enter{display:grid;left:10px;bottom:11px;width:37px;height:37px;border-radius:12px;grid-template-rows:15px 8px;font-size:6px}
+  .concept-card-enter{display:grid;left:10px;bottom:11px;width:37px;height:37px;border-radius:12px}
   .concept-card-enter:before{border-radius:8px}
-  .concept-card-enter svg{width:12px;height:12px}
+  .concept-card-enter svg{width:15px;height:15px}
 }

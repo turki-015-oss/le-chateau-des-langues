@@ -61,8 +61,8 @@ export default function WelcomeBook() {
       }
       const texture = new T.DataTexture(grain, 128, 128);
       texture.wrapS = texture.wrapT = T.RepeatWrapping; texture.repeat.set(3, 4); texture.needsUpdate = true;
-      const leather = new T.MeshStandardMaterial({ color: 0x593019, roughness: .72, bumpMap: texture, bumpScale: .022 });
-      const spineLeather = new T.MeshStandardMaterial({ color: 0x3b1d10, roughness: .67, bumpMap: texture, bumpScale: .018 });
+      const leather = new T.MeshStandardMaterial({ color: desktop ? 0xb78454 : 0x593019, roughness: .72, bumpMap: texture, bumpScale: .022 });
+      const spineLeather = new T.MeshStandardMaterial({ color: desktop ? 0x93633e : 0x3b1d10, roughness: .67, bumpMap: texture, bumpScale: .018 });
       const gold = new T.MeshStandardMaterial({ color: 0xc49a4b, metalness: .78, roughness: .35 });
       const paper = new T.MeshStandardMaterial({ color: 0xddc59a, roughness: .92 });
       const pageLine = new T.MeshStandardMaterial({ color: 0xb49a70, roughness: 1 });

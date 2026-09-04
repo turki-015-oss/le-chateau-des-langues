@@ -1,16 +1,21 @@
 "use client";
 
-import { ArrowLeft, BookOpen, MapPin, MessageCircle, Sparkles, Square, Volume2 } from "lucide-react";
+import { BookOpen, MapPin, MessageCircle, Sparkles, Square, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {cancelFrenchSpeech,speakFrench} from "@/lib/frenchSpeech";
 import styles from "./entry.module.css";
 import WelcomeBook from "@/components/WelcomeBook";
+import SlideToEnter from "@/components/SlideToEnter";
+
+function RomanColumn() {
+  return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 6h20M8 10h16M10 12v13m4-13v13m4-13v13m4-13v13M8 26h16M6 29h20M10 9C3 11 3 3 8 3h16c5 0 5 8-2 6" /></svg>;
+}
 
 const features = [
   { icon: BookOpen, text: "تعلّم الفرنسية" },
   { icon: MapPin, text: "جولة حول الأماكن" },
-  { icon: Sparkles, text: "أساسيات اللغة عن طريق القلعة" },
+  { icon: RomanColumn, text: "أساسيات اللغة عن طريق القلعة" },
   { icon: MessageCircle, text: "مفردات وجمل واختبارات" },
 ];
 
@@ -139,7 +144,7 @@ export default function EntryPage() {
             <div className={styles.wave} aria-hidden="true">{[0,1,2,3,4].map(i => <i key={i} style={{ animationDelay: `${i * .13}s` }} />)}</div>
           </div>
           <div className={styles.transcript} aria-live="polite" lang="fr" dir="ltr"><p>{welcomeText || "Bienvenue au Château des Langues."}</p></div>
-          <button className={styles.enter} onClick={() => router.push("/kingdom")}><span>الدخول<span lang="fr">Entrer dans le Château</span></span><ArrowLeft aria-hidden="true" /></button>
+          <SlideToEnter onEnter={() => router.push("/kingdom")} />
         </section>
       </div>
     </main>

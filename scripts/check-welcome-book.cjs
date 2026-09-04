@@ -27,7 +27,8 @@ assert.ok(Math.abs(yaw-before-Math.PI/2)<1e-9,'quarter-width drag produces quart
 now=150; frame(150); assert.equal(yaw,before+Math.PI/2,'auto rotation pauses while dragging');
 events.pointerup({pointerId:1}); assert.equal(capture,null);
 now=300; frame(300); assert.equal(yaw,before+Math.PI/2,'brief hold after release');
-now=2200; frame(2200); assert.ok(yaw>before+Math.PI/2,'automatic rotation resumes');
+now=501; frame(501); assert.ok(yaw>before+Math.PI/2,'automatic rotation resumes after 350ms');
+assert.ok(!source.includes('const diamond ='),'central diamond removed');
 let prevented=false; events.keydown({key:'ArrowLeft',preventDefault(){prevented=true;}});
 assert.equal(prevented,true);
 const page=fs.readFileSync('app/page.tsx','utf8');

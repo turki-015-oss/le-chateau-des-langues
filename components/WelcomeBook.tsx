@@ -83,7 +83,6 @@ export default function WelcomeBook() {
         }
         const emblem = new T.Mesh(new T.TorusGeometry(.32, .009, 6, 48), gold);
         emblem.position.set(0, .22, z); book.add(emblem);
-        const diamond = box(.26, .26, .018, 0, .22, z, gold, .008); diamond.rotation.z = Math.PI / 4;
       }
       const titleCanvas = document.createElement("canvas"); titleCanvas.width = 512; titleCanvas.height = 256;
       const ctx = titleCanvas.getContext("2d");
@@ -119,7 +118,7 @@ export default function WelcomeBook() {
       };
       const endDrag = (event: PointerEvent) => {
         if (pointer !== event.pointerId) return;
-        pointer = null; resumeAt = performance.now() + 1800;
+        pointer = null; resumeAt = performance.now() + 350;
         container.style.cursor = "grab";
         if (container.hasPointerCapture(event.pointerId)) container.releasePointerCapture(event.pointerId);
       };
@@ -127,7 +126,7 @@ export default function WelcomeBook() {
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
         event.preventDefault();
         angle += (event.key === "ArrowRight" ? 1 : -1) * Math.PI / 8;
-        resumeAt = performance.now() + 1800;
+        resumeAt = performance.now() + 350;
       };
       container.addEventListener("pointerdown",beginDrag);
       container.addEventListener("pointermove",drag);

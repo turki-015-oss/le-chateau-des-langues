@@ -24,8 +24,9 @@
 .greeting>p{font-size:15px;line-height:1.85;color:#c5d0c4;margin:0;max-width:400px;}
 .features{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;margin:24px 0;}
 .feature{display:flex;align-items:center;gap:10px;min-width:0;}
-.feature>span{width:38px;height:38px;flex:0 0 auto;border-radius:12px;background:linear-gradient(145deg,#275c4380,#0a302880);border:1px solid #c6ad662b;display:grid;place-items:center;}
-.feature svg{width:18px;height:18px;color:var(--gold);}
+.feature>span{position:relative;width:52px;height:52px;flex:0 0 auto;border-radius:27%;background:radial-gradient(ellipse at 30% 0,#71986865,transparent 66%),linear-gradient(145deg,#24654b,#083322 75%);border:1px solid #ceb77980;display:grid;place-items:center;box-shadow:inset 0 2px 2px #fff5,inset 0 -3px 5px #001b1699,0 5px 9px #0003;cursor:default;}
+.feature>span::after{content:"";position:absolute;inset:3px;border:1px solid #e8ce872b;border-radius:24%;pointer-events:none;}
+.feature svg{width:28px;height:28px;color:#efd087;filter:drop-shadow(0 2px 1px #00180ecc);}
 .feature p{font-size:12px;line-height:1.7;margin:0;color:#e2e6d9;}
 .audio{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #d1b57540;border-radius:20px;background:linear-gradient(110deg,#ffffff09,#ffffff03);}
 .listen{width:44px;height:44px;flex:0 0 auto;display:grid;place-items:center;border:1px solid #e4cb8b70;border-radius:14px;background:#e8d29b;color:#103c2c;cursor:pointer;}
@@ -53,8 +54,19 @@
  .identity{width:100%;}.stage{width:min(280px,76vw);height:210px;aspect-ratio:auto;margin:auto;}
  .castle{max-height:220px;object-fit:contain;}.brandFr{font-size:32px;margin:0;}.brandAr{font-size:18px;margin:4px 0;}.brandRule{display:none;}
  .welcome{max-width:440px;}.greeting{text-align:center;}.eyebrow{justify-content:center;font-size:11px;}.greeting h1{text-align:center;font-size:43px;margin-top:10px;}.greeting h2{font-size:24px;margin:3px 0 8px;}.greeting>p{font-size:13px;margin-inline:auto;max-width:310px;}
- .features{margin:20px 0;gap:12px;}.feature p{font-size:11px;}.feature>span{width:34px;height:34px;}.feature{gap:8px;}
+ .features{margin:20px 0;gap:12px;}.feature p{font-size:11px;}.feature>span{width:46px;height:46px;}.feature{gap:8px;}
  .transcript{min-height:76px;}.transcript p{font-size:12px;}.enter{min-height:62px;}.audioCopy>span{font-size:10px;}
 }
 @media(max-width:380px){.entry{--entry-gutter:16px;}.stage{height:180px;width:240px;}.features{gap:10px 8px;}.wave{display:none;}}
 @media(prefers-reduced-motion:reduce){.castleMotion,.audio[data-active=true] .wave i{animation:none;}.enter{transition:none;}.motion{display:none;}}
+.slideEntry{position:relative;isolation:isolate;width:100%;height:70px;padding:0;border:1px solid #efd397;border-radius:24px;background:linear-gradient(115deg,#f2dda7,#c7a259);color:#103a2b;box-shadow:inset 0 1px #fff8,0 12px 28px #0003;overflow:hidden;touch-action:pan-y;cursor:grab;}
+.slideLabel{position:relative;z-index:1;display:grid;gap:3px;text-align:center;font-size:21px;font-weight:700;pointer-events:none;}
+.slideLabel small{font:11px Georgia,serif;}
+.slideThumb{position:absolute;z-index:2;right:8px;top:8px;bottom:8px;width:52px;border-radius:18px;background:linear-gradient(145deg,#287251,#083c29);border:1px solid #f2d79088;color:#f8dfa3;box-shadow:0 4px 10px #15322244,inset 0 1px #c5e4ba60;display:grid;place-items:center;transform:translateX(var(--slide-distance,0px));transition:transform .22s ease;pointer-events:none;}
+.slideThumb svg{width:25px;height:25px;}
+.slideWave{position:absolute;z-index:0;top:-50%;height:200%;left:0;width:55%;border-radius:50%;background:radial-gradient(ellipse,#1c965575 0,#3fba653b 40%,transparent 70%);filter:blur(6px);animation:unlockWave 2.8s ease-in-out infinite;pointer-events:none;}
+.slideEntry[data-dragging=true]{cursor:grabbing;}.slideEntry[data-dragging=true] .slideThumb{transition:none;}
+.slideEntry[data-dragging=true] .slideLabel,.slideEntry[data-unlocked=true] .slideLabel{opacity:.25;}
+.slideEntry[data-unlocked=true] .slideWave{animation:none;opacity:0;}
+@keyframes unlockWave{0%{transform:translateX(195%);opacity:0;}18%{opacity:1;}82%{opacity:1;}100%{transform:translateX(-110%);opacity:0;}}
+@media(prefers-reduced-motion:reduce){.slideWave{animation:none;transform:translateX(110%);opacity:.5;}.slideThumb{transition:none;}}

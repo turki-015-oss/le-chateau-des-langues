@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import {
   ArrowLeft,
@@ -13,7 +13,6 @@ import {
   Hotel,
   Landmark,
   Plane,
-  Power,
   Scale,
   ShoppingBasket,
   Sparkles,
@@ -24,6 +23,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import "./concept.css";
+import SmartCompass from "./SmartCompass";
 
 type ConceptDestination = {
   id: string;
@@ -35,12 +35,7 @@ type ConceptDestination = {
   icon: React.ReactNode;
 };
 
-type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
 type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path"> & { originX: number; originY: number };
-type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
-type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
-  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
-};
 
 function CastleAppIcon() {
   return (
@@ -124,10 +119,6 @@ export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
   const entryTimerRef = useRef<number | null>(null);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
-  const [compassEnabled, setCompassEnabled] = useState(true);
-  const [compassAuthorized, setCompassAuthorized] = useState(false);
-  const [compassHeading, setCompassHeading] = useState<number | null>(null);
-  const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
 
   useEffect(() => {
     ["/castle", "/university", "/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
@@ -148,81 +139,6 @@ export default function KingdomConceptPage() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     entryTimerRef.current = window.setTimeout(() => router.push(item.path), reducedMotion ? 120 : 1050);
   };
-
-  useEffect(() => {
-    if (!compassEnabled) {
-      setCompassStatus("disabled");
-      setCompassHeading(null);
-      return;
-    }
-    if (!("DeviceOrientationEvent" in window)) {
-      setCompassStatus("unavailable");
-      return;
-    }
-    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
-    if (typeof OrientationEvent.requestPermission === "function" && !compassAuthorized) {
-      setCompassStatus("permission");
-      return;
-    }
-
-    let received = false;
-    let frame: number | null = null;
-    let latestHeading = 0;
-    const onOrientation = (rawEvent: Event) => {
-      const event = rawEvent as CompassOrientationEvent;
-      const heading = typeof event.webkitCompassHeading === "number"
-        ? event.webkitCompassHeading
-        : event.absolute && typeof event.alpha === "number"
-          ? (360 - event.alpha + 360) % 360
-          : null;
-      if (heading === null || !Number.isFinite(heading)) return;
-      if (!received) setCompassStatus("active");
-      received = true;
-      latestHeading = ((heading % 360) + 360) % 360;
-      // Use the freshest sensor reading once per display frame, without trailing smoothing.
-      if (frame === null) frame = window.requestAnimationFrame(() => {
-        frame = null;
-        setCompassHeading(latestHeading);
-      });
-    };
-    const eventName = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
-    window.addEventListener(eventName, onOrientation, true);
-    setCompassStatus("detecting");
-    const timer = window.setTimeout(() => {
-      if (!received) setCompassStatus("unavailable");
-    }, 2800);
-    return () => {
-      window.clearTimeout(timer);
-      if (frame !== null) window.cancelAnimationFrame(frame);
-      window.removeEventListener(eventName, onOrientation, true);
-    };
-  }, [compassAuthorized, compassEnabled]);
-
-  const requestCompass = async () => {
-    const OrientationEvent = window.DeviceOrientationEvent as CompassOrientationConstructor;
-    if (typeof OrientationEvent.requestPermission !== "function") {
-      setCompassAuthorized(true);
-      return;
-    }
-    try {
-      const permission = await OrientationEvent.requestPermission(true);
-      if (permission === "granted") {
-        setCompassAuthorized(true);
-        setCompassStatus("detecting");
-      } else setCompassStatus("denied");
-    } catch {
-      setCompassStatus("denied");
-    }
-  };
-
-  const compassLabel = useMemo(() => {
-    if (!compassEnabled) return "متوقفة";
-    if (compassStatus === "permission") return "تفعيل الاتجاه";
-    if (compassStatus === "denied") return "الإذن مرفوض";
-    if (compassStatus === "unavailable") return "البوصلة غير متاحة";
-    if (compassHeading === null) return "جارٍ التحديد";
-    return ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
-  }, [compassEnabled, compassHeading, compassStatus]);
 
   const moveDestinations = (direction: -1 | 1) => {
     const rail = destinationRailRef.current;
@@ -247,27 +163,7 @@ export default function KingdomConceptPage() {
   return (
     <main className="kingdom-concept" dir="rtl">
       <header className="concept-topbar">
-        <section className={`concept-compass ${compassStatus}`} aria-label={`البوصلة: ${compassLabel}`}>
-          <button
-            type="button"
-            className="concept-compass-face"
-            onClick={compassStatus === "permission" ? requestCompass : undefined}
-            title={compassStatus === "permission" ? "اضغط للسماح بالبوصلة" : compassLabel}
-          >
-            <span className="concept-compass-rotor" style={{ transform: `rotate(${-(compassHeading ?? 0)}deg)` }} aria-hidden="true">
-            <span className="concept-compass-cardinals">
-              <b className="north">N</b><b className="east">E</b><b className="south">S</b><b className="west">W</b>
-            </span>
-            <i className="concept-compass-needle">
-              <span />
-            </i>
-            </span>
-          </button>
-          <div><strong>{compassLabel}</strong><small>{compassHeading === null ? "—" : `${Math.round(compassHeading)}°`} · BOUSSOLE</small></div>
-          <button type="button" className="concept-compass-power" onClick={() => setCompassEnabled((value) => !value)} aria-label={compassEnabled ? "إيقاف البوصلة" : "تشغيل البوصلة"}>
-            <Power />
-          </button>
-        </section>
+        <SmartCompass />
         <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
           <Link href="/">ACCUEIL</Link>
           <Link href="/welcome">À PROPOS</Link>

@@ -22,7 +22,7 @@ export default function WelcomeBook() {
       try {
         if (software) throw new Error("Use CPU renderer");
         renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "default" });
-      } catch { renderer = new BookCanvasRenderer(); }
+      } catch { renderer = new BookCanvasRenderer(window.matchMedia("(hover: hover) and (pointer: fine)").matches); }
       const gpu = renderer instanceof T.WebGLRenderer;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
       if (renderer instanceof T.WebGLRenderer) {

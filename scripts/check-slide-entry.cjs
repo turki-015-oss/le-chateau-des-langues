@@ -2,16 +2,17 @@ const fs = require('node:fs'), vm = require('node:vm'), ts = require('typescript
 const source = fs.readFileSync('components/SlideToEnter.tsx','utf8');
 const compiled = ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;
 const exportsObject = {};
+let timer=null;
 vm.runInNewContext(compiled, { exports:exportsObject, require(name) {
-  if (name === 'react') return {useRef:value=>({current:value}),useState:value=>[value,()=>{}]};
+  if (name === 'react') return {useEffect(){},useRef:value=>({current:value}),useState:value=>[value,()=>{}]};
   if (name === 'react/jsx-runtime') return {jsx:(type,props)=>({type,props}),jsxs:(type,props)=>({type,props})};
   if (name === 'lucide-react') return {ArrowLeft:'arrow',Check:'check'};
   return {default:{}};
-}});
+},window:{matchMedia:()=>({matches:true})},setTimeout(fn){timer=fn;return 1;},clearTimeout(){timer=null;}});
 function setup(){
   let count=0,captured=false;
   const button=exportsObject.default({onEnter:()=>count++});
-  const target={clientWidth:400,setPointerCapture(){captured=true;},hasPointerCapture(){return captured;},releasePointerCapture(){captured=false;}};
+  const target={clientWidth:400,getBoundingClientRect(){return {left:0};},setPointerCapture(){captured=true;},hasPointerCapture(){return captured;},releasePointerCapture(){captured=false;}};
   const event=x=>({isPrimary:true,button:0,pointerId:1,clientX:x,currentTarget:target});
   return {props:button.props,event,count:()=>count};
 }
@@ -21,4 +22,6 @@ t=setup(); t.props.onPointerDown(t.event(360)); t.props.onPointerMove(t.event(60
 t=setup(); t.props.onPointerDown(t.event(100)); t.props.onPointerMove(t.event(380)); t.props.onPointerUp(t.event(380)); assert.equal(t.count(),0,'right drag does not unlock');
 t=setup(); t.props.onPointerDown(t.event(360)); t.props.onPointerMove(t.event(20)); t.props.onPointerCancel(t.event(20)); assert.equal(t.count(),0,'cancel never unlocks');
 t=setup(); t.props.onClick({detail:0}); assert.equal(t.count(),1,'keyboard and assistive activation supported');
+t=setup();t.props.onPointerDown({...t.event(25),pointerType:'mouse'});t.props.onPointerUp(t.event(25));assert.equal(t.count(),0,'desktop endpoint waits for arrow animation');assert.ok(timer);timer();assert.equal(t.count(),1,'desktop endpoint opens after animation');
+t=setup();t.props.onPointerDown({...t.event(25),pointerType:'touch'});t.props.onPointerUp(t.event(25));assert.equal(t.count(),0,'mobile endpoint tap remains inert');
 console.log('Slide entry passed: tap, short swipe, left swipe, wrong direction, cancel, keyboard, duplicate protection.');

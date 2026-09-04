@@ -93,7 +93,12 @@ export default function WelcomeBook() {
       }
       const titleTexture = new T.CanvasTexture(titleCanvas); titleTexture.colorSpace = T.SRGBColorSpace;
       const titleMaterial = new T.MeshBasicMaterial({ map: titleTexture, transparent: true, depthWrite: false });
-      const title = new T.Mesh(new T.PlaneGeometry(1.65,.825), titleMaterial); title.position.set(0,-.61,.374); book.add(title);
+      for (const side of [1, -1]) {
+        const title = new T.Mesh(new T.PlaneGeometry(1.65,.825), titleMaterial);
+        title.position.set(0,-.61,side * .374);
+        title.rotation.y = side === 1 ? 0 : Math.PI;
+        book.add(title);
+      }
       const resize = () => {
         const { width, height } = container.getBoundingClientRect();
         if (!width || !height) return;

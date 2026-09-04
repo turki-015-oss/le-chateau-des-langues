@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import styles from "./hall-icons.module.css";
 
 const halls = [
-  { fr: "La Grande Salle", ar: "القاعة الكبرى", desc: "كيف تتعلم ومن أين تبدأ", path: "/grand-hall", icon: "grand-hall" },
   { fr: "La Salle de Conjugaison", ar: "قاعة تصريف الأفعال", desc: "أتقن تصريف الأفعال الفرنسية في جميع الأزمنة.", path: "/conjugation", icon: "conjugation" },
   { fr: "La Salle de Grammaire", ar: "قاعة القواعد", desc: "تعلّم القواعد الفرنسية من A1 إلى C2.", path: "/grammar", icon: "grammar" },
   { fr: "La Bibliothèque", ar: "المكتبة", desc: "اقرأ القصص والمقالات ووسّع مفرداتك.", path: "/library", icon: "library" },

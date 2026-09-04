@@ -317,11 +317,12 @@
 .concept-entry-app{position:relative;isolation:isolate;width:39px;height:39px;flex:0 0 39px;border:1px solid #efd37e;border-radius:12px;display:grid!important;place-items:center;background:linear-gradient(145deg,#18523f,#082e24 50%,#031a14);color:#f4d879;box-shadow:inset 0 2px #fff2b75c,inset 2px 0 #43806b55,inset -2px -3px #00120db8,0 5px 12px #00120d80,0 0 0 2px #a77c3552;transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s ease}
 .concept-entry-app:before{content:"";position:absolute;z-index:-1;inset:3px;border:1px solid #ddb95870;border-radius:8px;background:radial-gradient(circle at 30% 20%,#5a9b7c6b,transparent 42%)}
 .concept-entry-app svg{width:20px!important;height:20px;color:#f4d879!important;filter:drop-shadow(0 2px 3px #0008)}
+.concept-entry-castle svg{width:15px!important;height:15px!important;filter:drop-shadow(0 1px 0 #fff2b75c) drop-shadow(0 2px 3px #0009)}
 .concept-castle-entry:hover .concept-entry-arrow{animation:conceptSmartPress 1.05s ease-in-out infinite}
 .concept-castle-entry:active .concept-entry-app{transform:translateY(2px) scale(.91);box-shadow:inset 0 4px 8px #00100bb5,0 2px 4px #0009,0 0 0 2px #e3bd5e70}
 .concept-castle-entry:active .concept-entry-arrow svg{transform:translateX(-2px)}
 @keyframes conceptSmartPress{0%,100%{transform:translateX(0);box-shadow:inset 0 2px #fff2b75c,inset 2px 0 #43806b55,inset -2px -3px #00120db8,0 5px 12px #00120d80,0 0 0 2px #a77c3552}45%{transform:translateX(-3px) scale(.94);box-shadow:inset 0 4px 8px #00100bb5,0 2px 5px #0009,0 0 0 3px #f0cd7470}}
-@media(max-width:650px){.concept-castle-entry{padding:5px 6px}.concept-entry-app{width:32px;height:32px;flex-basis:32px;border-radius:10px}.concept-entry-app:before{inset:3px;border-radius:7px}.concept-entry-app svg{width:17px!important;height:17px}}
+@media(max-width:650px){.concept-castle-entry{padding:5px 6px}.concept-entry-app{width:32px;height:32px;flex-basis:32px;border-radius:10px}.concept-entry-app:before{inset:3px;border-radius:7px}.concept-entry-app svg{width:17px!important;height:17px}.concept-entry-castle svg{width:13px!important;height:13px!important}}
 
 /* The circular ENTER control uses the same premium app language as every destination badge. */
 .concept-card-enter{

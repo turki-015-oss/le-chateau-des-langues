@@ -6,7 +6,6 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import {
   ArrowLeft,
   Building2,
-  Castle,
   ChevronLeft,
   ChevronRight,
   Clapperboard,
@@ -43,6 +42,18 @@ type CompassOrientationEvent = DeviceOrientationEvent & { webkitCompassHeading?:
 type CompassOrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
+
+function CastleAppIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M7 39V20l5-5 5 5v5h5V13l6-7 6 7v12h5v-5l5-5 5 5v19H7Z" fill="currentColor" opacity=".94" />
+      <path d="M10 15 12 8l2 7M26 9l2-6 2 6M42 15l2-7 2 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5 39h38M17 25h14v14H17z" stroke="#fff1b2" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M21 39V30.5a3 3 0 0 1 6 0V39" fill="#082e24" stroke="#fff1b2" strokeWidth="1.4" />
+      <path d="M10 23h4m20 0h4M25 17h6" stroke="#082e24" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 const destinations: ConceptDestination[] = [
   { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", path: "/hospital", image: "/kingdom-portal-assets/destination-hospital.png", description: "الصحة والمواعيد وطلب المساعدة", icon: <Building2 /> },
@@ -279,7 +290,7 @@ export default function KingdomConceptPage() {
           event.preventDefault();
           beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/entrance/castle" }, event.currentTarget);
         }}>
-          <span className="concept-entry-app concept-entry-castle" aria-hidden="true"><Castle /></span>
+          <span className="concept-entry-app concept-entry-castle" aria-hidden="true"><CastleAppIcon /></span>
           <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>
           <span className="concept-entry-app concept-entry-arrow" aria-hidden="true"><ArrowLeft /></span>
         </Link>

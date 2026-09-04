@@ -296,3 +296,17 @@
   background:#69472f url('/kingdom-portal-assets/rough-natural-wood-v1.webp') center 90%/100% auto;
   box-shadow:0 8px 14px #29190e65,inset 0 3px 6px #25180e80;
 }
+
+/* Premium app-style destination badges. */
+.concept-card-icon{
+  isolation:isolate;overflow:hidden;
+  width:50px;height:50px;border:1px solid #f2d789;border-radius:15px;
+  background:linear-gradient(145deg,#164d3d 0%,#0a3026 48%,#031d17 100%);
+  color:#f5d879;
+  box-shadow:0 2px 0 #fff1b86b inset,2px 2px 0 #2f6b56 inset,-2px -3px 0 #00110d70 inset,0 10px 19px #06191265,0 0 0 2px #8c692f52;
+}
+.concept-card-icon:before{content:"";position:absolute;z-index:-1;inset:4px;border:1px solid #d8b85f70;border-radius:11px;background:radial-gradient(circle at 32% 23%,#4c8a706b,transparent 40%)}
+.concept-card-icon:after{content:"";position:absolute;left:11%;right:11%;top:6%;height:36%;border-radius:50%;background:linear-gradient(#fff8d53f,transparent);transform:rotate(-8deg);pointer-events:none}
+.concept-card-icon svg{width:25px;height:25px;stroke-width:1.8;filter:drop-shadow(0 1px 0 #fff1ae40) drop-shadow(0 3px 4px #0008)}
+.concept-tilt-card:hover .concept-card-icon{transform:translateZ(52px) translateY(-2px);box-shadow:0 2px 0 #fff1b880 inset,2px 2px 0 #3b8068 inset,-2px -3px 0 #00110d70 inset,0 14px 24px #06191278,0 0 0 2px #c49b485f}
+@media(max-width:650px){.concept-card-icon{right:10px;top:9px;width:42px;height:42px;border-radius:13px}.concept-card-icon:before{inset:3px;border-radius:10px}.concept-card-icon svg{width:21px;height:21px}}

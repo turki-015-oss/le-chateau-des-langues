@@ -84,16 +84,16 @@ export default function WelcomeBook() {
         const emblem = new T.Mesh(new T.TorusGeometry(.32, .009, 6, 48), gold);
         emblem.position.set(0, .22, z); book.add(emblem);
       }
-      const titleCanvas = document.createElement("canvas"); titleCanvas.width = 512; titleCanvas.height = 256;
+      const titleCanvas = document.createElement("canvas"); titleCanvas.width = 1024; titleCanvas.height = 512;
       const ctx = titleCanvas.getContext("2d");
       if (ctx) {
-        ctx.fillStyle = "#e3c181"; ctx.textAlign = "center";
-        ctx.font = "36px Georgia"; ctx.fillText("LE CHÂTEAU",256,90);
-        ctx.font = "22px Georgia"; ctx.fillText("DES LANGUES",256,140);
+        ctx.fillStyle = "#10294d"; ctx.textAlign = "center";
+        ctx.font = "bold 100px Georgia"; ctx.fillText("LE CHÂTEAU",512,190);
+        ctx.font = "bold 70px Georgia"; ctx.fillText("DES LANGUES",512,300);
       }
       const titleTexture = new T.CanvasTexture(titleCanvas); titleTexture.colorSpace = T.SRGBColorSpace;
       const titleMaterial = new T.MeshBasicMaterial({ map: titleTexture, transparent: true, depthWrite: false });
-      const title = new T.Mesh(new T.PlaneGeometry(1.4,.7), titleMaterial); title.position.set(0,-.61,.374); book.add(title);
+      const title = new T.Mesh(new T.PlaneGeometry(1.65,.825), titleMaterial); title.position.set(0,-.61,.374); book.add(title);
       const resize = () => {
         const { width, height } = container.getBoundingClientRect();
         if (!width || !height) return;

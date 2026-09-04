@@ -48,7 +48,10 @@ export class BookCanvasRenderer {
         p.forEach(v=>{v.x=(v.x+1)*this.width/2;v.y=(1-v.y)*this.height/2;});
         if((p[1].x-p[0].x)*(p[2].y-p[0].y)-(p[1].y-p[0].y)*(p[2].x-p[0].x)>=0) continue;
         const normal=world[1].clone().sub(world[0]).cross(world[2].clone().sub(world[0])).normalize();
-        const color=material.color.clone().multiplyScalar(.62+.38*Math.max(0,normal.dot(light)));
+        // Desktop CPU rendering has no environment lighting: compensate for
+        // that missing ambient light instead of darkening the approved leather.
+        const illumination = this.depthBuffered ? .96+.24*Math.max(0,normal.dot(light)) : .62+.38*Math.max(0,normal.dot(light));
+        const color=material.color.clone().multiplyScalar(illumination);
         const rgb=color.clone().convertLinearToSRGB();
         faces.push({p,uv:ids.map(id=>uv ? new T.Vector2().fromBufferAttribute(uv,id) : new T.Vector2()),depth:(p[0].z+p[1].z+p[2].z)/3,color:color.getStyle(),image:(material.map?.image as CanvasImageSource | undefined) ?? null,opacity:material.opacity,rgb:[rgb.r*255,rgb.g*255,rgb.b*255],q:world.map(v=>-1/v.clone().applyMatrix4(camera.matrixWorldInverse).z)});
       }

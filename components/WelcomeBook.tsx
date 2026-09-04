@@ -24,6 +24,7 @@ export default function WelcomeBook() {
         renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "default" });
       } catch { renderer = new BookCanvasRenderer(window.matchMedia("(hover: hover) and (pointer: fine)").matches); }
       const gpu = renderer instanceof T.WebGLRenderer;
+      const desktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
       if (renderer instanceof T.WebGLRenderer) {
         renderer.setClearColor(0, 0);
@@ -92,8 +93,10 @@ export default function WelcomeBook() {
         for (const x of [-.78, .78]) for (const y of [-1.14, 1.14]) {
           const ornament = box(.10, .10, .014, x, y, z, gold, .012); ornament.rotation.z = Math.PI / 4;
         }
-        const emblem = new T.Mesh(new T.TorusGeometry(.32, .009, 6, 48), gold);
-        emblem.position.set(0, .22, z); book.add(emblem);
+        if (!desktop) {
+          const emblem = new T.Mesh(new T.TorusGeometry(.32, .009, 6, 48), gold);
+          emblem.position.set(0, .22, z); book.add(emblem);
+        }
       }
       const titleCanvas = document.createElement("canvas"); titleCanvas.width = 1024; titleCanvas.height = 512;
       const ctx = titleCanvas.getContext("2d");

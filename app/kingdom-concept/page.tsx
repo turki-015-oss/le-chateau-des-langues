@@ -57,16 +57,16 @@ function CastleAppIcon() {
 
 const destinations: ConceptDestination[] = [
   { id: "hospital", fr: "HÔPITAL", ar: "المستشفى", path: "/hospital", image: "/kingdom-portal-assets/destination-hospital.png", description: "الصحة والمواعيد وطلب المساعدة", icon: <Building2 /> },
-  { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/entrance/airport", image: "/kingdom-portal-assets/destination-airport.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
-  { id: "station", fr: "GARE", ar: "محطة القطار", path: "/entrance/station", image: "/kingdom-portal-assets/destination-station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
-  { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/entrance/market", image: "/kingdom-portal-assets/destination-market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
-  { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/entrance/cafe", image: "/kingdom-portal-assets/destination-cafe-v2.webp", description: "التحية والجلوس والطلب", icon: <Coffee /> },
-  { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/entrance/restaurant", image: "/kingdom-portal-assets/destination-restaurant-v2.webp", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
-  { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/entrance/police", image: "/kingdom-portal-assets/destination-police-v2.webp", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
-  { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", path: "/entrance/zoo", image: "/kingdom-portal-assets/destination-zoo-v2.webp", description: "الحيوانات والطبيعة والاستكشاف", icon: <Trees /> },
-  { id: "hotel", fr: "HÔTEL", ar: "الفندق", path: "/entrance/hotel", image: "/kingdom-portal-assets/destination-hotel-v2.webp", description: "الحجز والاستقبال والإقامة", icon: <Hotel /> },
-  { id: "stadium", fr: "STADE", ar: "الملعب", path: "/entrance/stadium", image: "/kingdom-portal-assets/destination-stadium-v2.webp", description: "الرياضة والمباريات والجمهور", icon: <Trophy /> },
-  { id: "cinema", fr: "CINÉMA", ar: "صالة السينما", path: "/entrance/cinema", image: "/kingdom-portal-assets/destination-cinema-v2.webp", description: "الأفلام والعروض والحوار الثقافي", icon: <Clapperboard /> },
+  { id: "airport", fr: "AÉROPORT", ar: "المطار", path: "/airport", image: "/kingdom-portal-assets/destination-airport.png", description: "السفر والجوازات والرحلات", icon: <Plane /> },
+  { id: "station", fr: "GARE", ar: "محطة القطار", path: "/station", image: "/kingdom-portal-assets/destination-station.png", description: "التذاكر والمواعيد والوجهات", icon: <Train /> },
+  { id: "market", fr: "MARCHÉ", ar: "السوق الكبير", path: "/market", image: "/kingdom-portal-assets/destination-market.png", description: "المنتجات والمفردات والمحادثات", icon: <ShoppingBasket /> },
+  { id: "cafe", fr: "CAFÉ", ar: "المقهى", path: "/cafe", image: "/kingdom-portal-assets/destination-cafe-v2.webp", description: "التحية والجلوس والطلب", icon: <Coffee /> },
+  { id: "restaurant", fr: "RESTAURANT", ar: "المطعم", path: "/restaurant", image: "/kingdom-portal-assets/destination-restaurant-v2.webp", description: "الحجز والقائمة والمحادثة", icon: <Utensils /> },
+  { id: "police", fr: "COMMISSARIAT", ar: "مركز الشرطة", path: "/police", image: "/kingdom-portal-assets/destination-police-v2.webp", description: "المساعدة والمواقف الأمنية", icon: <Landmark /> },
+  { id: "zoo", fr: "ZOO", ar: "حديقة الحيوانات", path: "/zoo", image: "/kingdom-portal-assets/destination-zoo-v2.webp", description: "الحيوانات والطبيعة والاستكشاف", icon: <Trees /> },
+  { id: "hotel", fr: "HÔTEL", ar: "الفندق", path: "/hotel", image: "/kingdom-portal-assets/destination-hotel-v2.webp", description: "الحجز والاستقبال والإقامة", icon: <Hotel /> },
+  { id: "stadium", fr: "STADE", ar: "الملعب", path: "/stadium", image: "/kingdom-portal-assets/destination-stadium-v2.webp", description: "الرياضة والمباريات والجمهور", icon: <Trophy /> },
+  { id: "cinema", fr: "CINÉMA", ar: "صالة السينما", path: "/cinema", image: "/kingdom-portal-assets/destination-cinema-v2.webp", description: "الأفلام والعروض والحوار الثقافي", icon: <Clapperboard /> },
   { id: "court", fr: "TRIBUNAL", ar: "المحكمة", path: "/court", image: "/maps/facades/civic-facade.webp", description: "القضايا والشهادة واللغة الرسمية", icon: <Scale /> },
 ];
 
@@ -132,7 +132,7 @@ export default function KingdomConceptPage() {
   const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
 
   useEffect(() => {
-    ["/castle", "/entrance/university", "/entrance/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
+    ["/castle", "/university", "/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
     return () => {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
     };
@@ -298,14 +298,14 @@ export default function KingdomConceptPage() {
           <div className="concept-open-book concept-integrated-book" dir="ltr">
             <img className="concept-book-base" src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="كتاب مفتوح تخرج من صفحتيه الجامعة والمكتبة، وعناوينهما مطبوعة على الورق" />
             <div className="concept-book-pages">
-              <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة" onClick={(event) => {
+              <Link href="/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة" onClick={(event) => {
                 event.preventDefault();
-                beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-front-v3.webp", path: "/entrance/university" }, event.currentTarget);
+                beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-front-v3.webp", path: "/university" }, event.currentTarget);
               }}>
               </Link>
-              <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة" onClick={(event) => {
+              <Link href="/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة" onClick={(event) => {
                 event.preventDefault();
-                beginMagicalEntry({ id: "library", fr: "BIBLIOTHÈQUE", ar: "المكتبة", image: "/kingdom-portal-assets/library-facade.png", path: "/entrance/library" }, event.currentTarget);
+                beginMagicalEntry({ id: "library", fr: "BIBLIOTHÈQUE", ar: "المكتبة", image: "/kingdom-portal-assets/library-facade.png", path: "/library" }, event.currentTarget);
               }}>
               </Link>
             </div>

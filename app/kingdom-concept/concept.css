@@ -322,3 +322,33 @@
 .concept-castle-entry:active .concept-entry-arrow svg{transform:translateX(-2px)}
 @keyframes conceptSmartPress{0%,100%{transform:translateX(0);box-shadow:inset 0 2px #fff2b75c,inset 2px 0 #43806b55,inset -2px -3px #00120db8,0 5px 12px #00120d80,0 0 0 2px #a77c3552}45%{transform:translateX(-3px) scale(.94);box-shadow:inset 0 4px 8px #00100bb5,0 2px 5px #0009,0 0 0 3px #f0cd7470}}
 @media(max-width:650px){.concept-castle-entry{padding:5px 6px}.concept-entry-app{width:32px;height:32px;flex-basis:32px;border-radius:10px}.concept-entry-app:before{inset:3px;border-radius:7px}.concept-entry-app svg{width:17px!important;height:17px}}
+
+/* The circular ENTER control uses the same premium app language as every destination badge. */
+.concept-card-enter{
+  position:absolute;z-index:9;left:13px;bottom:13px;width:43px;height:43px;
+  display:grid;grid-template-rows:18px 10px;place-content:center;justify-items:center;gap:1px;
+  box-sizing:border-box;border:1px solid #f2d789;border-radius:14px;
+  background:linear-gradient(145deg,#18523f 0%,#082e24 50%,#031a14 100%);
+  color:#f5d879;font:700 7px/1 Georgia,"Times New Roman",serif;letter-spacing:.07em;
+  box-shadow:inset 0 2px #fff2b75c,inset 2px 0 #43806b55,inset -2px -3px #00120db8,0 7px 14px #06191270,0 0 0 2px #a77c354d;
+  transform:translateZ(50px);overflow:hidden;
+  transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s ease;
+}
+.concept-card-enter:before{
+  content:"";position:absolute;z-index:-1;inset:3px;border:1px solid #ddb95870;border-radius:10px;
+  background:radial-gradient(circle at 30% 20%,#5a9b7c6b,transparent 42%);
+}
+.concept-card-enter:after{
+  content:"";position:absolute;left:10%;right:10%;top:5%;height:35%;border-radius:50%;
+  background:linear-gradient(#fff8d538,transparent);transform:rotate(-8deg);pointer-events:none;
+}
+.concept-card-enter svg{grid-row:1;width:17px;height:17px;stroke-width:2;color:#f5d879;filter:drop-shadow(0 2px 3px #0008);transition:transform .16s ease}
+.concept-card-enter span{grid-row:2}
+.concept-tilt-card:hover .concept-card-enter{transform:translateZ(50px) translateY(-2px);box-shadow:inset 0 2px #fff2b780,inset 2px 0 #43806b66,inset -2px -3px #00120db8,0 10px 18px #06191285,0 0 0 2px #d0a34d5c}
+.concept-tilt-card:active .concept-card-enter{transform:translateZ(50px) translateY(2px) scale(.92);box-shadow:inset 0 4px 8px #00100bb5,0 2px 4px #0009,0 0 0 2px #e3bd5e70}
+.concept-tilt-card:active .concept-card-enter svg{transform:translateX(-2px)}
+@media(max-width:650px){
+  .concept-card-enter{display:grid;left:10px;bottom:11px;width:37px;height:37px;border-radius:12px;grid-template-rows:15px 8px;font-size:6px}
+  .concept-card-enter:before{border-radius:8px}
+  .concept-card-enter svg{width:15px;height:15px}
+}

@@ -63,32 +63,34 @@ export default function WelcomeBook() {
       texture.wrapS = texture.wrapT = T.RepeatWrapping; texture.repeat.set(3, 4); texture.needsUpdate = true;
       const leather = new T.MeshStandardMaterial({ color: desktop ? 0xb78454 : 0x593019, roughness: .72, bumpMap: texture, bumpScale: .022 });
       const spineLeather = new T.MeshStandardMaterial({ color: desktop ? 0x93633e : 0x3b1d10, roughness: .67, bumpMap: texture, bumpScale: .018 });
-      const gold = new T.MeshStandardMaterial({ color: 0xc49a4b, metalness: .78, roughness: .35 });
+      const gold = new T.MeshStandardMaterial({ color: desktop ? 0xffd064 : 0xc49a4b, metalness: .78, roughness: .35 });
       const paper = new T.MeshStandardMaterial({ color: 0xddc59a, roughness: .92 });
       const pageLine = new T.MeshStandardMaterial({ color: 0xb49a70, roughness: 1 });
       const box = (w: number, h: number, d: number, x: number, y: number, z: number, material: InstanceType<typeof T.Material>, radius = .018) => {
         const mesh = new T.Mesh(gpu ? new RoundedBoxGeometry(w, h, d, 2, radius) : new T.BoxGeometry(w,h,d), material);
         mesh.position.set(x,y,z); book.add(mesh); return mesh;
       };
-      box(1.95, 2.75, .49, .035, 0, 0, paper);
-      box(2.16, 2.96, .105, 0, 0, .30, leather, .035);
-      box(2.16, 2.96, .105, 0, 0, -.30, leather, .035);
-      box(.20, 2.95, .69, -1.025, 0, 0, spineLeather, .065);
+      const pageDepth = desktop ? .69 : .49;
+      const coverZ = desktop ? .39 : .30;
+      box(desktop ? 2.01 : 1.95, desktop ? 2.83 : 2.75, pageDepth, .035, 0, 0, paper);
+      box(2.16, 2.96, .105, 0, 0, coverZ, leather, .035);
+      box(2.16, 2.96, .105, 0, 0, -coverZ, leather, .035);
+      box(.20, 2.95, desktop ? .87 : .69, -1.025, 0, 0, spineLeather, .065);
       for (let i = 0; i < 30; i++) {
-        const z = -.235 + i * .016;
-        box(.006, 2.70, .0025, 1.009, 0, z, pageLine, .001);
-        box(1.90, .004, .0025, .045, 1.376, z, pageLine, .001);
-        box(1.90, .004, .0025, .045, -1.376, z, pageLine, .001);
+        const z = desktop ? -.33 + i * .022 : -.235 + i * .016;
+        box(.006, desktop ? 2.78 : 2.70, .0025, desktop ? 1.04 : 1.009, 0, z, pageLine, .001);
+        box(desktop ? 1.96 : 1.90, .004, .0025, .045, desktop ? 1.416 : 1.376, z, pageLine, .001);
+        box(desktop ? 1.96 : 1.90, .004, .0025, .045, desktop ? -1.416 : -1.376, z, pageLine, .001);
       }
       for (const y of [-1.17, -.73, .73, 1.17]) {
-        box(.235, .074, .715, -1.025, y, 0, leather, .028);
-        box(.244, .012, .724, -1.025, y, 0, gold, .005);
+        box(.235, .074, desktop ? .895 : .715, -1.025, y, 0, leather, .028);
+        box(.244, desktop ? .026 : .012, desktop ? .904 : .724, -1.025, y, 0, gold, .005);
       }
       // Embossed gilt frames and corner ornaments on both covers.
-      for (const z of [-.359, .359]) {
+      for (const z of desktop ? [-.449, .449] : [-.359, .359]) {
         for (const inset of [0, .065]) {
-          for (const x of [-.89 + inset, .89 - inset]) box(.014, 2.52 - inset * 2, .012, x, 0, z, gold, .004);
-          for (const y of [-1.26 + inset, 1.26 - inset]) box(1.79 - inset * 2, .014, .012, 0, y, z, gold, .004);
+          for (const x of [-.89 + inset, .89 - inset]) box(desktop ? .034 : .014, 2.52 - inset * 2, .012, x, 0, z, gold, .004);
+          for (const y of [-1.26 + inset, 1.26 - inset]) box(1.79 - inset * 2, desktop ? .034 : .014, .012, 0, y, z, gold, .004);
         }
         for (const x of [-.78, .78]) for (const y of [-1.14, 1.14]) {
           const ornament = box(.10, .10, .014, x, y, z, gold, .012); ornament.rotation.z = Math.PI / 4;
@@ -109,7 +111,7 @@ export default function WelcomeBook() {
       const titleMaterial = new T.MeshBasicMaterial({ map: titleTexture, transparent: true, depthWrite: false });
       for (const side of [1, -1]) {
         const title = new T.Mesh(new T.PlaneGeometry(1.65,.825), titleMaterial);
-        title.position.set(0,-.61,side * .374);
+        title.position.set(0,-.61,side * (desktop ? .464 : .374));
         title.rotation.y = side === 1 ? 0 : Math.PI;
         book.add(title);
       }

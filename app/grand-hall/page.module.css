@@ -1,71 +1,76 @@
-.page {
-  min-height: 100svh;
-  background: linear-gradient(180deg, rgb(3 25 19 / 88%), rgb(3 25 19 / 97%)), url('/castle-v68/halls.png') center / cover;
-  color: #fff7df;
-  padding-bottom: max(32px, env(safe-area-inset-bottom));
-}
-.header {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr) 52px;
-  align-items: center;
-  gap: 16px;
-  padding: 14px max(18px, calc((100% - 880px) / 2));
-  background: #06291f;
-  border-bottom: 1px solid #8e763d;
-}
-.header > div { display: grid; gap: 4px; text-align: center; }
-.header strong, .header span[lang] { font-size: 19px; color: #f3d58a; }
-.back {
-  display: grid; place-items: center; width: 48px; height: 48px;
-  color: #f3d58a; border: 1px solid #ad9152; border-radius: 16px;
-  text-decoration: none;
-}
-.back svg { width: 25px; height: 25px; }
-.crest { display: block; width: 48px; height: 48px; overflow: hidden; border-radius: 25%; }
-.crest img { display: block; width: 100%; height: 100%; transform: scale(1.09); }
-.content { width: min(880px, calc(100% - 32px)); margin: 0 auto; }
-.intro { text-align: center; padding: 30px 0 24px; }
-.intro h1 { font-size: clamp(24px, 4vw, 34px); color: #f4d68a; margin: 0 0 8px; line-height: 1.5; }
-.intro > p { font-size: clamp(24px, 4vw, 34px); color: #f4d68a; margin: 0 0 18px; line-height: 1.4; font-family: Georgia, serif; }
-.intro > span { display: block; font-size: 14px; line-height: 1.8; color: #ddd8c8; }
-.guides { display: grid; gap: 12px; }
-.guide { border: 1px solid #8f7944; border-radius: 20px; background: #09372a; overflow: hidden; }
-.summary { display: flex; align-items: center; gap: 18px; list-style: none; cursor: pointer; padding: 16px 20px; }
-.summary::-webkit-details-marker { display: none; }
-.symbol {
-  width: 58px; height: 58px; flex: 0 0 auto; display: grid; place-items: center;
-  color: #f3d58a; border-radius: 25%; border: 1px solid #c0a15d;
-  background: linear-gradient(140deg, #176c4d, #043725 70%);
-  box-shadow: inset 0 1px 2px #b9d4b74d, 0 4px 10px #0004;
-}
-.symbol svg { width: 30px; height: 30px; stroke-width: 1.65; }
-.label { display: grid; flex: 1; gap: 3px; min-width: 0; }
-.label strong, .label > span { color: #f3d58a; font-size: 19px; line-height: 1.5; text-align: start; }
-.label > span { text-align: right; font-family: Georgia, serif; }
-.chevron { width: 22px; height: 22px; flex: 0 0 auto; color: #f3d58a; transition: transform .18s; }
-.guide[open] .chevron { transform: rotate(180deg); }
-.guide[open] .summary { border-bottom: 1px solid #8f7944; }
-.instructions { background: #fcf7ea; color: #163a2e; padding: 10px 24px 24px; }
-.instructions ol { margin: 0; padding-inline-start: 26px; }
+.page { min-height: 100svh; color: #fff3cf; background: linear-gradient(180deg, #031b14aa, #031b14c9), url('/castle-v68/halls.png') center / cover; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+.header { display: flex; align-items: center; justify-content: space-between; padding: 10px max(18px, calc((100% - 960px) / 2)); background: #04291ee8; border-bottom: 1px solid #b3984f; }
+.back { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: #f3d58a; text-decoration: none; }
+.back svg { width: 29px; height: 29px; }
+.brand { font: 20px Georgia, serif; color: #f3d58a; }
+.content { width: min(960px, calc(100% - 32px)); margin: 0 auto; }
+.intro { text-align: center; padding: 24px 0 28px; }
+.intro h1, .intro > p { color: #f4d68a; font-size: clamp(29px, 4vw, 42px); margin: 0; line-height: 1.4; }
+.intro > p { font-family: Georgia, serif; margin-bottom: 14px; }
+.intro > span { display: block; color: #f4e9ca; font-size: 16px; line-height: 1.6; }
+.grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; padding: 16px 0 24px; }
+.app { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; padding: 6px 0; background: none; border: 0; color: #f3d58a; cursor: pointer; border-radius: 20px; -webkit-tap-highlight-color: transparent; }
+.art { display: block; position: relative; width: min(100%, 145px); aspect-ratio: 1; overflow: hidden; border-radius: 25%; box-shadow: 0 8px 20px #0005; transition: transform .18s; }
+.art img { position: absolute; display: block; max-width: none; width: var(--art-width); height: var(--art-height); left: var(--art-left); top: var(--art-top); user-select: none; }
+.app:hover .art { transform: translateY(-3px); }
+.app:active .art { transform: scale(.96); }
+.label { display: grid; gap: 4px; text-align: center; }
+.label strong, .label > span { font-size: 17px; line-height: 1.4; color: #ffe6a7; }
+.label > span { font-family: Georgia, serif; }
+.dialog { position: fixed; inset: 0; margin: auto; width: min(650px, calc(100% - 40px)); max-width: none; max-height: min(85dvh, 850px); padding: 0; border: 1px solid #b69955; border-radius: 26px; background: #fcf7ea; color: #173b2c; overflow: hidden; box-shadow: 0 24px 80px #0007; }
+.dialog[open] { display: flex; flex-direction: column; animation: reveal .2s ease-out; }
+.dialog::backdrop { background: #00170fc2; backdrop-filter: blur(4px); }
+.grip { display: none; }
+.panelHeader { display: flex; align-items: center; gap: 16px; justify-content: space-between; padding: 20px 24px; background: #093d2d; border-bottom: 1px solid #b69955; flex: 0 0 auto; }
+.panelHeader h2, .panelHeader p { font-size: 22px; line-height: 1.5; color: #f4d68a; margin: 0; }
+.panelHeader p { font-family: Georgia, serif; text-align: right; }
+.close { width: 44px; height: 44px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid #b69955; border-radius: 50%; background: #ffffff0c; color: #ffe6a7; cursor: pointer; }
+.close svg { width: 24px; height: 24px; }
+.instructions { overflow-y: auto; min-height: 0; overscroll-behavior: contain; padding: 8px 24px max(24px, env(safe-area-inset-bottom)); -webkit-overflow-scrolling: touch; }
+.instructions ol { margin: 0; padding-inline-start: 24px; }
 .instructions li { padding: 16px 4px; border-bottom: 1px solid #dfd4b8; }
 .instructions li::marker { font-weight: 700; color: #765b23; }
-.instructions p { margin: 0; font-size: 17px; line-height: 1.9; color: #163a2e; overflow-wrap: anywhere; }
+.instructions p { margin: 0; color: #173b2c; font-size: 17px; line-height: 1.85; overflow-wrap: anywhere; }
 .instructions p[lang] { margin-top: 8px; color: #365447; text-align: left; line-height: 1.7; }
 .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 .links a { flex: 1 1 170px; display: grid; gap: 4px; text-align: center; padding: 12px 16px; background: #0b4935; border: 1px solid #957a38; color: #fff3cd; border-radius: 12px; text-decoration: none; }
 .links a span { font-size: 15px; }
-.back:focus-visible, .summary:focus-visible, .links a:focus-visible { outline: 3px solid #dbb75f; outline-offset: -4px; }
-.back:hover, .summary:hover { background-color: #11513b; }
-.links a:hover { background: #126346; }
-@media (max-width: 600px) {
-  .header { padding: 12px 16px; gap: 8px; }
-  .header strong, .header span[lang] { font-size: 17px; }
-  .intro { padding-top: 22px; }
-  .summary { padding: 14px 12px; gap: 12px; }
-  .symbol { width: 50px; height: 50px; }
-  .symbol svg { width: 27px; height: 27px; }
-  .label strong, .label > span { font-size: 17px; }
-  .instructions { padding: 4px 14px 18px; }
+.back:focus-visible, .app:focus-visible, .close:focus-visible, .links a:focus-visible { outline: 3px solid #dbb75f; outline-offset: 3px; }
+.back:hover, .close:hover, .links a:hover { background-color: #176247; }
+@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) {
+  .intro { padding: 20px 0 18px; }
+  .intro h1, .intro > p { font-size: 29px; }
+  .intro > span { font-size: 14px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 380px; margin: 0 auto; gap: 16px 28px; padding-top: 6px; }
+  .app:last-child { grid-column: 1 / -1; justify-self: center; width: calc((100% - 28px) / 2); }
+  .art { width: min(100%, 112px); }
+  .app { gap: 8px; }
+  .label strong, .label > span { font-size: 15px; }
+  .dialog { inset: auto 0 0; margin: 0 auto; width: 100%; max-height: 88dvh; border-bottom: 0; border-radius: 26px 26px 0 0; transform: translateY(var(--drag-y, 0px)); }
+  .dialog[open] { animation: sheetReveal .24s ease-out; }
+  .grip { display: grid; place-items: center; flex: 0 0 30px; background: #093d2d; touch-action: none; cursor: grab; }
+  .grip span { width: 42px; height: 5px; border-radius: 10px; background: #cbb574; }
+  .panelHeader { padding: 2px 18px 14px; }
+  .panelHeader h2, .panelHeader p { font-size: 20px; }
+  .instructions { padding-inline: 18px; }
   .instructions p { font-size: 16px; }
 }
-@media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
+@media (orientation: landscape) and (max-height: 540px) {
+  .intro { padding: 12px 0; }
+  .intro h1, .intro > p { font-size: 24px; }
+  .intro > p { margin-bottom: 6px; }
+  .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 850px; gap: 12px; }
+  .app:last-child { grid-column: auto; width: auto; justify-self: stretch; }
+  .art { width: 80px; }
+  .label strong, .label > span { font-size: 14px; }
+}
+@keyframes sheetReveal { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+@media (pointer: coarse) and (min-width: 701px) and (max-width: 1100px) {
+  .dialog { inset: auto 0 0; margin: 0 auto; width: min(100%, 760px); max-height: 90dvh; border-bottom: 0; border-radius: 26px 26px 0 0; transform: translateY(var(--drag-y, 0px)); }
+  .dialog[open] { animation: sheetReveal .24s ease-out; }
+  .grip { display: grid; place-items: center; flex: 0 0 30px; background: #093d2d; touch-action: none; }
+  .grip span { width: 42px; height: 5px; border-radius: 10px; background: #cbb574; }
+  .panelHeader { padding-top: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .dialog[open] { animation: none; } .art { transition: none; } }

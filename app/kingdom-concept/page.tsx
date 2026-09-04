@@ -11,10 +11,8 @@ import {
   ChevronRight,
   Clapperboard,
   Coffee,
-  GraduationCap,
   Hotel,
   Landmark,
-  Library,
   Plane,
   Power,
   Scale,
@@ -285,27 +283,20 @@ export default function KingdomConceptPage() {
           <ArrowLeft />
         </Link>
         <div className="concept-scene-book">
-          <div className="concept-open-book" dir="ltr">
-            <img className="concept-book-base" src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="كتاب القلعة المفتوح" />
+          <div className="concept-open-book concept-integrated-book" dir="ltr">
+            <img className="concept-book-base" src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="كتاب مفتوح تخرج من صفحتيه الجامعة والمكتبة، وعناوينهما مطبوعة على الورق" />
             <div className="concept-book-pages">
               <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة" onClick={(event) => {
                 event.preventDefault();
                 beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-front-v3.webp", path: "/entrance/university" }, event.currentTarget);
               }}>
-                <span className="concept-book-engraving"><strong>UNIVERSITÉ</strong><b dir="rtl">الجامعة</b></span>
-                <img src="/kingdom-portal-assets/university-campus-front-v3.webp" alt="مبنى الجامعة" />
-                <span className="concept-book-seal"><GraduationCap /><small>ENTRER</small></span>
               </Link>
               <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة" onClick={(event) => {
                 event.preventDefault();
                 beginMagicalEntry({ id: "library", fr: "BIBLIOTHÈQUE", ar: "المكتبة", image: "/kingdom-portal-assets/library-facade.png", path: "/entrance/library" }, event.currentTarget);
               }}>
-                <span className="concept-book-engraving"><strong>BIBLIOTHÈQUE</strong><b dir="rtl">المكتبة</b></span>
-                <img src="/kingdom-portal-assets/library-facade.png" alt="مبنى المكتبة" />
-                <span className="concept-book-seal"><Library /><small>ENTRER</small></span>
               </Link>
             </div>
-            <span className="concept-book-glow" aria-hidden="true" />
           </div>
           <div className="concept-book-platform" aria-hidden="true"><span /><i /></div>
         </div>

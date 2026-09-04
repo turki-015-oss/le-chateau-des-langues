@@ -265,3 +265,9 @@
 @keyframes conceptMagicParticle{to{opacity:0;transform:rotate(var(--angle)) translateX(min(48vw,390px)) scale(.15)}}
 @media(max-width:650px){.concept-magic-portal{width:min(270px,72vw)}.concept-magic-copy{margin-top:2px}}
 @media(prefers-reduced-motion:reduce){.concept-magic-entry,.concept-magic-ring,.concept-magic-building{animation-duration:.01ms}.concept-magic-entry:before,.concept-magic-particles{display:none}}
+
+/* One painted spread: the links are transparent hit areas, not separate artwork. */
+.concept-scene-book .concept-integrated-book .concept-book-pages{inset:8% 5% 9%;gap:3%}
+.concept-integrated-book .concept-book-page,
+.concept-integrated-book .concept-book-page:hover{transform:none;filter:none;background:transparent}
+.concept-integrated-book .concept-book-page:focus-visible{outline:3px solid #c29745;outline-offset:-6px;border-radius:18px}

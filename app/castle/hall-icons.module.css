@@ -1,0 +1,26 @@
+.icon {
+  display: block;
+  width: 78px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: 25%;
+  isolation: isolate;
+  background: #03452d;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 24%);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Hide the generated exterior margin without altering the icon artwork. */
+  transform: scale(1.09);
+}
+
+@media (max-width: 700px) {
+  .icon {
+    width: 58px;
+    height: 58px;
+  }
+}

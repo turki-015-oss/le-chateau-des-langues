@@ -1,14 +1,15 @@
 "use client";
 
-import { ArrowLeft, BookOpen, CheckSquare, Crown, LibraryBig, Map as MapIcon, Menu, Settings, Sparkles } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckSquare, Crown, Map as MapIcon, Menu, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
+import styles from "./hall-icons.module.css";
 
 const halls = [
-  { fr: "La Grande Salle", ar: "القاعة الكبرى", desc: "ابدأ بالتحيات والعبارات الأساسية والخطوات الأولى.", path: "/family", icon: Crown },
-  { fr: "La Salle de Conjugaison", ar: "قاعة تصريف الأفعال", desc: "أتقن تصريف الأفعال الفرنسية في جميع الأزمنة.", path: "/conjugation", icon: BookOpen },
-  { fr: "La Salle de Grammaire", ar: "قاعة القواعد", desc: "تعلّم القواعد الفرنسية من A1 إلى C2.", path: "/grammar", icon: Sparkles },
-  { fr: "La Bibliothèque", ar: "المكتبة", desc: "اقرأ القصص والمقالات ووسّع مفرداتك.", path: "/library", icon: LibraryBig },
-  { fr: "La Salle des Tests", ar: "قاعة الاختبارات", desc: "اختبر مستواك وتابع تقدمك.", path: "/tests", icon: CheckSquare },
+  { fr: "La Grande Salle", ar: "القاعة الكبرى", desc: "ابدأ بالتحيات والعبارات الأساسية والخطوات الأولى.", path: "/family", icon: "grand-hall" },
+  { fr: "La Salle de Conjugaison", ar: "قاعة تصريف الأفعال", desc: "أتقن تصريف الأفعال الفرنسية في جميع الأزمنة.", path: "/conjugation", icon: "conjugation" },
+  { fr: "La Salle de Grammaire", ar: "قاعة القواعد", desc: "تعلّم القواعد الفرنسية من A1 إلى C2.", path: "/grammar", icon: "grammar" },
+  { fr: "La Bibliothèque", ar: "المكتبة", desc: "اقرأ القصص والمقالات ووسّع مفرداتك.", path: "/library", icon: "library" },
+  { fr: "La Salle des Tests", ar: "قاعة الاختبارات", desc: "اختبر مستواك وتابع تقدمك.", path: "/tests", icon: "tests" },
 ];
 
 export default function CastlePage() {
@@ -34,10 +35,12 @@ export default function CastlePage() {
         </div>
 
         <div className="v69-halls-list">
-          {halls.map(({ fr, ar, desc, path, icon: Icon }, index) => (
+          {halls.map(({ fr, ar, desc, path, icon }, index) => (
             <button key={fr} className="v69-hall-card" onClick={() => router.push(path)}>
               <span className="v69-hall-index">0{index + 1}</span>
-              <span className="v69-hall-icon"><Icon /></span>
+              <span className={styles.icon} aria-hidden="true">
+                <img src={`/castle-hall-icons/${icon}.webp`} alt="" width={256} height={256} className={styles.image} decoding="async" />
+              </span>
               <span className="v69-hall-copy">
                 <strong>{fr}</strong>
                 <b>{ar}</b>

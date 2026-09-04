@@ -7,7 +7,7 @@ type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "de
 type LocationStatus = "idle" | "locating" | "ready" | "denied" | "unavailable";
 type OrientationWithWebkit = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type OrientationConstructor = typeof DeviceOrientationEvent & {
-  requestPermission?: () => Promise<PermissionState>;
+  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
 
 const KAABA = { latitude: 21.422487, longitude: 39.826206 };
@@ -48,7 +48,7 @@ function screenAngle() {
 
 export default function SmartCompass() {
   const [open,setOpen]=useState(false);
-  const [enabled,setEnabled]=useState(false);
+  const [enabled,setEnabled]=useState(true);
   const [authorized,setAuthorized]=useState(false);
   const [compassStatus,setCompassStatus]=useState<CompassStatus>("detecting");
   const [locationStatus,setLocationStatus]=useState<LocationStatus>("idle");
@@ -128,7 +128,7 @@ export default function SmartCompass() {
       const OrientationEvent=window.DeviceOrientationEvent as OrientationConstructor;
       if(typeof OrientationEvent.requestPermission==="function"&&!authorized){
         try{
-          const permission=await OrientationEvent.requestPermission();
+          const permission=await OrientationEvent.requestPermission(true);
           if(permission==="granted"){
             setAuthorized(true);
             return;
@@ -139,7 +139,12 @@ export default function SmartCompass() {
     }
   };
 
-  const activate=()=>setOpen(true);
+  const activate=()=>{
+    setOpen(true);
+    if(!enabled)setEnabled(true);
+    void requestSensorPermission();
+    if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
+  };
 
   const togglePower=async()=>{
     if(enabled){
@@ -147,7 +152,7 @@ export default function SmartCompass() {
       return;
     }
     setEnabled(true);
-    await requestSensorPermission();
+    void requestSensorPermission();
     if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
   };
 
@@ -203,7 +208,7 @@ export default function SmartCompass() {
           <ShieldCheck/>
           <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":"يُستخدم موقعك داخل جهازك لحساب القبلة ولا يتم حفظه أو إرساله."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
         </div>
-        <p className="smart-compass-calibration">لأفضل دقة: أبعد الهاتف عن المعادن، حرّكه على شكل الرقم 8 مرة أو مرتين، ثم أمسكه مستويًا.</p>
+        <p className="smart-compass-calibration">اترك الهاتف بوضعه الطبيعي؛ ستتجه الإبرة الحمراء إلى الشمال تلقائيًا. أبعده فقط عن المعادن عند ضعف الدقة.</p>
       </section>
     </div>}
   </>;

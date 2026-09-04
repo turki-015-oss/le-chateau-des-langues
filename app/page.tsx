@@ -107,9 +107,7 @@ export default function EntryPage() {
       <div className={styles.experience}>
         <section className={styles.identity} aria-label="القلعة">
           <div className={styles.stage}>
-            <div className={styles.halo} aria-hidden="true" />
             <WelcomeBook />
-            <div className={styles.groundLight} aria-hidden="true" />
           </div>
           <p className={styles.brandFr} lang="fr" dir="ltr">Le Château</p>
           <p className={styles.brandAr}>القلعة</p>

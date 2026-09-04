@@ -101,12 +101,44 @@ export default function WelcomeBook() {
         renderer.setSize(width,height,false); camera.aspect = width/height; camera.updateProjectionMatrix();
       };
       const observer = new ResizeObserver(resize); observer.observe(container); resize();
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
       let angle = -.35, last = 0;
+      let pointer: number | null = null, previousX = 0, resumeAt = 0;
+      const beginDrag = (event: PointerEvent) => {
+        if (!event.isPrimary || event.button !== 0) return;
+        pointer = event.pointerId; previousX = event.clientX;
+        container.setPointerCapture(event.pointerId);
+        container.style.cursor = "grabbing";
+      };
+      const drag = (event: PointerEvent) => {
+        if (pointer !== event.pointerId) return;
+        const width = Math.max(container.clientWidth, 1);
+        angle += (event.clientX - previousX) / width * Math.PI * 2;
+        previousX = event.clientX;
+        book.rotation.set(.08, angle, -.07);
+        renderer.render(scene,camera);
+      };
+      const endDrag = (event: PointerEvent) => {
+        if (pointer !== event.pointerId) return;
+        pointer = null; resumeAt = performance.now() + 1800;
+        container.style.cursor = "grab";
+        if (container.hasPointerCapture(event.pointerId)) container.releasePointerCapture(event.pointerId);
+      };
+      const keyTurn = (event: KeyboardEvent) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        angle += (event.key === "ArrowRight" ? 1 : -1) * Math.PI / 8;
+        resumeAt = performance.now() + 1800;
+      };
+      container.addEventListener("pointerdown",beginDrag);
+      container.addEventListener("pointermove",drag);
+      container.addEventListener("pointerup",endDrag);
+      container.addEventListener("pointercancel",endDrag);
+      container.addEventListener("lostpointercapture",endDrag);
+      container.addEventListener("keydown",keyTurn);
       renderer.setAnimationLoop((time: number) => {
         const delta = last ? Math.min((time-last)/1000,.05) : 0; last = time;
         if (document.hidden) return;
-        if (!reduced.matches) angle += delta * Math.PI * 2 / 18;
+        if (pointer === null && performance.now() >= resumeAt) angle += delta * Math.PI * 2 / 18;
         book.rotation.set(.08, angle, -.07);
         renderer.render(scene,camera);
       });
@@ -115,6 +147,12 @@ export default function WelcomeBook() {
       renderer.domElement.addEventListener("webglcontextlost",lost);
       destroy = () => {
         renderer.setAnimationLoop(null); observer.disconnect();
+        container.removeEventListener("pointerdown",beginDrag);
+        container.removeEventListener("pointermove",drag);
+        container.removeEventListener("pointerup",endDrag);
+        container.removeEventListener("pointercancel",endDrag);
+        container.removeEventListener("lostpointercapture",endDrag);
+        container.removeEventListener("keydown",keyTurn);
         renderer.domElement.removeEventListener("webglcontextlost",lost);
         book.traverse(object => { if (object instanceof T.Mesh) object.geometry.dispose(); });
         [leather,spineLeather,gold,paper,pageLine,titleMaterial].forEach(material => material.dispose());
@@ -123,8 +161,8 @@ export default function WelcomeBook() {
     }).catch(() => { /* Keep the static fallback if graphics cannot initialize. */ });
     return () => { disposed = true; destroy?.(); };
   }, []);
-  return <div style={{ position:"absolute", inset:0 }} role="img" aria-label="كتاب بني عتيق بزخارف ذهبية يدور حول نفسه">
-    <div ref={host} style={{ position:"absolute", inset:0, opacity:ready ? 1 : 0, pointerEvents:"none" }} />
+  return <div style={{ position:"absolute", inset:0 }}>
+    <div ref={host} role="group" aria-label="كتاب بني عتيق: اسحب يمينًا ويسارًا لتدويره، أو استخدم سهمي لوحة المفاتيح" tabIndex={ready ? 0 : -1} style={{ position:"absolute", inset:0, opacity:ready ? 1 : 0, cursor:"grab", touchAction:"pan-y", userSelect:"none" }} />
     {!ready && <img src="/kingdom-portal-assets/open-book-realistic-v1.webp" alt="" style={{ width:"100%",height:"100%",objectFit:"contain" }} />}
   </div>;
 }

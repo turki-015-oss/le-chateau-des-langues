@@ -1,10 +1,11 @@
 "use client";
 
-import { ArrowLeft, BookOpen, MapPin, MessageCircle, Pause, Play, Sparkles, Square, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, MapPin, MessageCircle, Sparkles, Square, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {cancelFrenchSpeech,speakFrench} from "@/lib/frenchSpeech";
 import styles from "./entry.module.css";
+import WelcomeBook from "@/components/WelcomeBook";
 
 const features = [
   { icon: BookOpen, text: "تعلّم الفرنسية" },
@@ -24,7 +25,6 @@ export default function EntryPage() {
   const router = useRouter();
   const [welcomeActive, setWelcomeActive] = useState(false);
   const [welcomeText, setWelcomeText] = useState("");
-  const [motionPaused, setMotionPaused] = useState(false);
   const resetTimer = useRef<number | null>(null);
   const fallbackTimers = useRef<number[]>([]);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -100,20 +100,15 @@ export default function EntryPage() {
   };
 
   return (
-    <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة" data-motion-paused={motionPaused}>
+    <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة">
       <header className={styles.topbar}>
         <span className={styles.wordmark} lang="fr" dir="ltr">LE CHÂTEAU<span>DES LANGUES</span></span>
-        <button className={styles.motion} type="button" onClick={() => setMotionPaused(value => !value)} aria-pressed={motionPaused} aria-label={motionPaused ? "تشغيل حركة القلعة" : "إيقاف حركة القلعة"}>
-          {motionPaused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}
-        </button>
       </header>
       <div className={styles.experience}>
         <section className={styles.identity} aria-label="القلعة">
           <div className={styles.stage}>
             <div className={styles.halo} aria-hidden="true" />
-            <div className={styles.castleMotion}>
-              <img className={styles.castle} src="/kingdom-portal-assets/castle-facade.png" alt="قلعة التطبيق" width="1408" height="1120" fetchPriority="high" draggable={false} />
-            </div>
+            <WelcomeBook />
             <div className={styles.groundLight} aria-hidden="true" />
           </div>
           <p className={styles.brandFr} lang="fr" dir="ltr">Le Château</p>

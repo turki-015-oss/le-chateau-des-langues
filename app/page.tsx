@@ -100,7 +100,7 @@ export default function EntryPage() {
   };
 
   return (
-    <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة">
+    <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة" onCopy={event => event.preventDefault()} onContextMenu={event => event.preventDefault()}>
       <header className={styles.topbar}>
         <span className={styles.wordmark} lang="fr" dir="ltr">LE CHÂTEAU<span>DES LANGUES</span></span>
       </header>

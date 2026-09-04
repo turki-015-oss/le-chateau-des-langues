@@ -1,4 +1,5 @@
 .entry{--gold:#e6c77f;--cream:#f7efda;--entry-gutter:max(24px,calc((100vw - 1180px)/2));position:relative;isolation:isolate;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 24% 30%,#204c3d55,transparent 62%),linear-gradient(145deg,#102f26,#071f19 70%,#0c2820);color:var(--cream);padding:0 var(--entry-gutter) max(28px,env(safe-area-inset-bottom));}
+.entry,.entry *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 .topbar{height:96px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d7b86426;padding-top:env(safe-area-inset-top);margin-inline:calc(-1 * var(--entry-gutter));padding-inline:var(--entry-gutter);background:#071f19;}
 .wordmark{font:17px Georgia,serif;letter-spacing:.12em;color:var(--gold);display:grid;gap:5px;}
 .wordmark>span{font-size:8px;letter-spacing:.4em;}

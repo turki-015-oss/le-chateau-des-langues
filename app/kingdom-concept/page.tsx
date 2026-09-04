@@ -158,6 +158,8 @@ export default function KingdomConceptPage() {
     }
 
     let received = false;
+    let frame: number | null = null;
+    let latestHeading = 0;
     const onOrientation = (rawEvent: Event) => {
       const event = rawEvent as CompassOrientationEvent;
       const heading = typeof event.webkitCompassHeading === "number"
@@ -166,12 +168,13 @@ export default function KingdomConceptPage() {
           ? (360 - event.alpha + 360) % 360
           : null;
       if (heading === null || !Number.isFinite(heading)) return;
+      if (!received) setCompassStatus("active");
       received = true;
-      setCompassStatus("active");
-      setCompassHeading((previous) => {
-        if (previous === null) return heading;
-        const turn = ((heading - previous + 540) % 360) - 180;
-        return (previous + turn * 0.22 + 360) % 360;
+      latestHeading = ((heading % 360) + 360) % 360;
+      // Use the freshest sensor reading once per display frame, without trailing smoothing.
+      if (frame === null) frame = window.requestAnimationFrame(() => {
+        frame = null;
+        setCompassHeading(latestHeading);
       });
     };
     const eventName = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
@@ -182,6 +185,7 @@ export default function KingdomConceptPage() {
     }, 2800);
     return () => {
       window.clearTimeout(timer);
+      if (frame !== null) window.cancelAnimationFrame(frame);
       window.removeEventListener(eventName, onOrientation, true);
     };
   }, [compassAuthorized, compassEnabled]);
@@ -207,7 +211,7 @@ export default function KingdomConceptPage() {
     if (!compassEnabled) return "متوقفة";
     if (compassStatus === "permission") return "تفعيل الاتجاه";
     if (compassStatus === "denied") return "الإذن مرفوض";
-    if (compassStatus === "unavailable") return "الشمال";
+    if (compassStatus === "unavailable") return "البوصلة غير متاحة";
     if (compassHeading === null) return "جارٍ التحديد";
     return ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"][Math.round(compassHeading / 45) % 8];
   }, [compassEnabled, compassHeading, compassStatus]);
@@ -242,12 +246,14 @@ export default function KingdomConceptPage() {
             onClick={compassStatus === "permission" ? requestCompass : undefined}
             title={compassStatus === "permission" ? "اضغط للسماح بالبوصلة" : compassLabel}
           >
-            <span className="concept-compass-cardinals" aria-hidden="true">
+            <span className="concept-compass-rotor" style={{ transform: `rotate(${-(compassHeading ?? 0)}deg)` }} aria-hidden="true">
+            <span className="concept-compass-cardinals">
               <b className="north">N</b><b className="east">E</b><b className="south">S</b><b className="west">W</b>
             </span>
-            <i className="concept-compass-needle" style={{ transform: `rotate(${-(compassHeading ?? 0)}deg)` }} aria-hidden="true">
+            <i className="concept-compass-needle">
               <span />
             </i>
+            </span>
           </button>
           <div><strong>{compassLabel}</strong><small>{compassHeading === null ? "—" : `${Math.round(compassHeading)}°`} · BOUSSOLE</small></div>
           <button type="button" className="concept-compass-power" onClick={() => setCompassEnabled((value) => !value)} aria-label={compassEnabled ? "إيقاف البوصلة" : "تشغيل البوصلة"}>

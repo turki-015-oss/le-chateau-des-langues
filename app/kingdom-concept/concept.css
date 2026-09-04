@@ -136,7 +136,8 @@
 .concept-compass-cardinals .east{right:3px;top:50%;transform:translateY(-50%)}
 .concept-compass-cardinals .south{bottom:2px;left:50%;transform:translateX(-50%)}
 .concept-compass-cardinals .west{left:3px;top:50%;transform:translateY(-50%)}
-.concept-compass-needle{position:relative;z-index:2;width:14px;height:28px;display:block;transition:transform .22s linear;transform-origin:center;filter:drop-shadow(0 1px 1px #4f321d66)}
+.concept-compass-rotor{position:absolute;inset:0;display:grid;place-items:center;transform-origin:center;transition:none}
+.concept-compass-needle{position:relative;z-index:2;width:14px;height:28px;display:block;transform-origin:center;filter:drop-shadow(0 1px 1px #4f321d66)}
 .concept-compass-needle:before{content:"";position:absolute;left:2px;top:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:14px solid #a6352d}
 .concept-compass-needle:after{content:"";position:absolute;left:2px;bottom:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:14px solid #c9a44e}
 .concept-compass-needle span{position:absolute;z-index:2;left:50%;top:50%;width:6px;height:6px;border:1px solid #6c4a20;border-radius:50%;background:#fff6d9;transform:translate(-50%,-50%)}

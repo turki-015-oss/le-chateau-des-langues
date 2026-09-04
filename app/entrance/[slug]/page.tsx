@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import WorldEntrance from "../../../components/WorldEntrance";
 
 const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image:string;destination:string}> = {
  cafe:{titleFr:"Le Café",titleAr:"المقهى",subtitle:"المشروبات والمعجنات والمحادثة اليومية",image:"/worlds/cafe.png",destination:"/cafe"},
- castle:{titleFr:"Le Château",titleAr:"القلعة",subtitle:"تعلّم باحترافية",image:"/castle-v69/french-entry.png",destination:"/castle"},
  police:{titleFr:"Le Commissariat",titleAr:"مركز الشرطة",subtitle:"الضباط والتقارير والسلامة",image:"/worlds/police.png",destination:"/police"},
  airport:{titleFr:"L’Aéroport",titleAr:"المطار",subtitle:"السفر والجوازات والرحلات الجوية",image:"/worlds/airport.png",destination:"/airport"},
  station:{titleFr:"La Gare",titleAr:"محطة القطار",subtitle:"التذاكر والمواعيد والوجهات",image:"/worlds/station.png",destination:"/station"},
@@ -17,4 +16,4 @@ const worlds: Record<string,{titleFr:string;titleAr:string;subtitle:string;image
  hospital:{titleFr:"L’Hôpital",titleAr:"المستشفى",subtitle:"الأعراض والمواعيد وطلب المساعدة",image:"/maps/facades/civic-facade.webp",destination:"/hospital"},
  zoo:{titleFr:"Le Zoo",titleAr:"حديقة الحيوانات",subtitle:"الحيوانات والطبيعة والاكتشاف",image:"/worlds/zoo.png",destination:"/zoo"}
 };
-export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params; const w=worlds[slug]; if(!w) notFound(); return <WorldEntrance {...w}/>}
+export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params; if(slug === "castle") redirect("/castle"); const w=worlds[slug]; if(!w) notFound(); return <WorldEntrance {...w}/>}

@@ -132,7 +132,7 @@ export default function KingdomConceptPage() {
   const [compassStatus, setCompassStatus] = useState<CompassStatus>("detecting");
 
   useEffect(() => {
-    ["/entrance/castle", "/entrance/university", "/entrance/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
+    ["/castle", "/entrance/university", "/entrance/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
     return () => {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
     };
@@ -286,9 +286,9 @@ export default function KingdomConceptPage() {
         <div className="concept-castle-ground" aria-hidden="true"><span /><i /></div>
         <div className="concept-castle-garden concept-castle-garden-left" aria-hidden="true" />
         <div className="concept-castle-garden concept-castle-garden-right" aria-hidden="true" />
-        <Link href="/entrance/castle" className="concept-castle-entry" aria-label="دخول القلعة" onClick={(event) => {
+        <Link href="/castle" className="concept-castle-entry" aria-label="دخول قاعات القلعة" onClick={(event) => {
           event.preventDefault();
-          beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/entrance/castle" }, event.currentTarget);
+          beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "قاعات القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/castle" }, event.currentTarget);
         }}>
           <span className="concept-entry-app concept-entry-castle" aria-hidden="true"><CastleAppIcon /></span>
           <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>

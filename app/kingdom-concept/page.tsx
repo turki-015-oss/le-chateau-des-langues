@@ -290,10 +290,10 @@ export default function KingdomConceptPage() {
             <div className="concept-book-pages">
               <Link href="/entrance/university" className="concept-book-page concept-book-university" aria-label="UNIVERSITÉ — الجامعة" onClick={(event) => {
                 event.preventDefault();
-                beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-v2.webp", path: "/entrance/university" }, event.currentTarget);
+                beginMagicalEntry({ id: "university", fr: "UNIVERSITÉ", ar: "الجامعة", image: "/kingdom-portal-assets/university-campus-front-v3.webp", path: "/entrance/university" }, event.currentTarget);
               }}>
                 <span className="concept-book-engraving"><strong>UNIVERSITÉ</strong><b dir="rtl">الجامعة</b></span>
-                <img src="/kingdom-portal-assets/university-campus-v2.webp" alt="مبنى الجامعة" />
+                <img src="/kingdom-portal-assets/university-campus-front-v3.webp" alt="مبنى الجامعة" />
                 <span className="concept-book-seal"><GraduationCap /><small>ENTRER</small></span>
               </Link>
               <Link href="/entrance/library" className="concept-book-page concept-book-library" aria-label="BIBLIOTHÈQUE — المكتبة" onClick={(event) => {

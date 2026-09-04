@@ -278,9 +278,9 @@ export default function KingdomConceptPage() {
           event.preventDefault();
           beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/entrance/castle" }, event.currentTarget);
         }}>
-          <Castle />
+          <span className="concept-entry-app concept-entry-castle" aria-hidden="true"><Castle /></span>
           <span><strong dir="ltr">ENTREZ</strong><small>دخول القلعة</small></span>
-          <ArrowLeft />
+          <span className="concept-entry-app concept-entry-arrow" aria-hidden="true"><ArrowLeft /></span>
         </Link>
         <div className="concept-scene-book">
           <div className="concept-open-book concept-integrated-book" dir="ltr">

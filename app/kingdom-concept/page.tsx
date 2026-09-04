@@ -13,6 +13,7 @@ import {
   Coffee,
   Hotel,
   Landmark,
+  LogIn,
   Plane,
   Power,
   Scale,
@@ -103,7 +104,7 @@ function TiltCard({ item, index, onEnter }: { item: ConceptDestination; index: n
           <b>{item.ar}</b>
           <em>{item.description}</em>
         </span>
-        <span className="concept-card-enter"><span>ENTRER</span><ArrowLeft /></span>
+        <span className="concept-card-enter"><span>ENTRER</span><LogIn /></span>
       </span>
     </button>
   );

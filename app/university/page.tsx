@@ -558,6 +558,74 @@ const A2_PASSE_COMPOSE_DIALOGUES=[
  {context:"On vous demande : « Pourquoi êtes-vous rentrés tôt ? »",prompt:"اختر السبب الطبيعي.",choices:["Parce que nous avons été fatigués demain.","Donc nous rentrons hier.","Parce que nous avons fini plus tôt."],correctIndex:2,feedback:"السبب حدث مكتمل أيضًا، لذلك جاء finir في الماضي المركب."}
 ];
 
+const A2_IMPARFAIT_PRACTICE_ITEMS:Example[]=[
+ {fr:"Quand j’avais dix ans, j’habitais près de la mer.",ar:"عندما كان عمري عشر سنوات، كنت أعيش قرب البحر."},
+ {fr:"Nous dînions toujours ensemble le dimanche.",ar:"كنا نتناول العشاء معًا دائمًا يوم الأحد."},
+ {fr:"Elle lisait pendant que son frère préparait le café.",ar:"كانت تقرأ بينما كان أخوها يحضّر القهوة."},
+ {fr:"Il ne faisait pas chaud, mais le ciel était clair.",ar:"لم يكن الجو حارًا، لكن السماء كانت صافية."},
+ {fr:"Vous alliez souvent au travail à pied.",ar:"كنتم تذهبون إلى العمل سيرًا على الأقدام كثيرًا."},
+ {fr:"Les rues étaient calmes et les magasins fermaient tôt.",ar:"كانت الشوارع هادئة وكانت المتاجر تغلق مبكرًا."},
+ {fr:"Je dormais quand quelqu’un a frappé à la porte.",ar:"كنت نائمًا عندما طرق أحدهم الباب."},
+ {fr:"À cette époque, nous ne connaissions personne ici.",ar:"في ذلك الوقت لم نكن نعرف أحدًا هنا."},
+ {fr:"Chaque été, ils partaient chez leurs grands-parents.",ar:"كانوا يذهبون إلى منزل أجدادهم كل صيف."},
+ {fr:"Le serveur apportait les boissons quand les lumières se sont éteintes.",ar:"كان النادل يحضر المشروبات عندما انطفأت الأنوار."}
+];
+
+const A2_IMPARFAIT_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Nous ___ souvent au parc après l’école.",speech:"Conjuguez le verbe jouer à l’imparfait avec nous.",instruction:"صرّف jouer في الماضي الناقص مع nous.",choices:["jouions","jouaient","avons joué"],correctIndex:0,explanation:"نأخذ jouons ونحذف -ons ثم نضيف -ions: nous jouions."},
+ {prompt:"Quand elle était petite, elle ___ à la campagne.",speech:"Choisissez la forme correcte du verbe vivre à l’imparfait.",instruction:"اختر تصريف vivre الصحيح مع elle.",choices:["vivais","vivait","a vécu"],correctIndex:1,explanation:"جذر nous vivons هو viv-، ونهاية elle في الماضي الناقص هي -ait."},
+ {prompt:"Vous ___ vos devoirs après le dîner.",speech:"Conjuguez le verbe faire à l’imparfait avec vous.",instruction:"اختر تصريف faire الصحيح.",choices:["faisaient","avez fait","faisiez"],correctIndex:2,explanation:"من nous faisons نأخذ fais- ونضيف -iez: vous faisiez."},
+ {prompt:"À huit heures, il ___ encore nuit.",speech:"Choisissez la forme du verbe faire utilisée pour décrire la météo.",instruction:"أكمل وصف الحالة في الماضي.",choices:["faisait","a fait","faisions"],correctIndex:0,explanation:"الوصف المستمر في الخلفية يستخدم الماضي الناقص: il faisait nuit."},
+ {prompt:"Nous ___ au restaurant quand Paul est arrivé.",speech:"Complétez l’action en cours interrompue par l’arrivée de Paul.",instruction:"اختر الزمن المناسب للفعل الجاري.",choices:["avons dîné","dînions","dînerons"],correctIndex:1,explanation:"تناول العشاء كان جاريًا عندما وقع حدث الوصول؛ لذلك نستخدم dînions."},
+ {prompt:"Hier, le bus ___ soudainement.",speech:"Choisissez le temps du fait ponctuel et terminé.",instruction:"اختر الزمن المناسب لحدث مفاجئ ومكتمل.",choices:["s’arrêtait","arrêtait","s’est arrêté"],correctIndex:2,explanation:"الحدث المفاجئ المكتمل يستخدم الماضي المركب: s’est arrêté."},
+ {prompt:"Je ___ pas le chemin.",speech:"Complétez le verbe connaître à l’imparfait dans une phrase négative.",instruction:"أكمل النفي بالتصريف الصحيح.",choices:["ne connaissais","n’ai connu","ne connaissait"],correctIndex:0,explanation:"مع je نستخدم connaissais، ويوضع النفي حول الفعل البسيط: je ne connaissais pas."},
+ {prompt:"Nous ___ le français à l’université.",speech:"Choisissez l’orthographe correcte du verbe étudier à l’imparfait.",instruction:"اختر الكتابة الصحيحة مع nous.",choices:["étudions","étudiions","étudiais"],correctIndex:1,explanation:"الصيغة الصحيحة هي nous étudiions باجتماع حرفي i."},
+ {prompt:"Pendant que je travaillais, elle ___.",speech:"Choisissez une action simultanée et continue.",instruction:"اختر فعلًا متزامنًا ومستمرًا.",choices:["a téléphoné une fois","est partie soudain","préparait le repas"],correctIndex:2,explanation:"حدثان جاريان في الوقت نفسه يأتيان في الماضي الناقص مع pendant que."},
+ {prompt:"Avant, je prenais le train tous les jours.",speech:"Choisissez la traduction arabe correcte.",instruction:"اختر الترجمة المناسبة للسياق.",choices:["في السابق، كنت أستقل القطار كل يوم.","استقلت القطار مرة واحدة أمس.","سأستقل القطار غدًا."],correctIndex:0,explanation:"avant وtous les jours يدلان هنا على عادة متكررة في الماضي."}
+];
+
+const A2_IMPARFAIT_READING={
+ title:"Le quartier de mon enfance",arTitle:"حي طفولتي",
+ text:"Quand j’étais enfant, j’habitais dans un quartier calme près d’un grand parc. Les maisons étaient petites et les voisins se connaissaient tous. Chaque matin, je marchais jusqu’à l’école avec ma sœur. Après les cours, nous jouions souvent sous les arbres pendant que nos parents discutaient devant la boulangerie. Un jour, une nouvelle famille est arrivée dans notre rue. Leur fils avait mon âge, et nous sommes rapidement devenus amis.",
+ translation:"عندما كنت طفلًا، كنت أعيش في حي هادئ قرب حديقة كبيرة. كانت المنازل صغيرة وكان جميع الجيران يعرف بعضهم بعضًا. كنت أمشي كل صباح إلى المدرسة مع أختي. وبعد الدروس، كنا نلعب كثيرًا تحت الأشجار بينما كان والدانا يتحدثان أمام المخبز. وفي أحد الأيام وصلت عائلة جديدة إلى شارعنا. كان ابنهم في عمري، وسرعان ما أصبحنا صديقين.",
+ questions:[
+  {question:"Comment était le quartier ?",answer:"Il était calme et se trouvait près d’un grand parc.",ar:"كان هادئًا ويقع قرب حديقة كبيرة."},
+  {question:"Que faisaient les enfants après les cours ?",answer:"Ils jouaient souvent sous les arbres.",ar:"كانوا يلعبون كثيرًا تحت الأشجار."},
+  {question:"Quel événement a changé la situation ?",answer:"Une nouvelle famille est arrivée dans la rue.",ar:"وصلت عائلة جديدة إلى الشارع."}
+ ]
+};
+
+const A2_IMPARFAIT_LISTENING={
+ title:"Les vacances chez ma grand-mère",arTitle:"العطلة عند جدتي",
+ text:"Avant, je passais toutes mes vacances d’été chez ma grand-mère. Elle vivait dans un village où tout le monde se connaissait. Le matin, nous préparions le petit-déjeuner ensemble, puis j’aidais dans le jardin. L’après-midi, mes cousins venaient jouer avec moi. Il faisait souvent très chaud, alors nous restions sous les arbres. Un soir, un orage a commencé soudainement et nous sommes tous rentrés en courant.",
+ questions:[
+  {prompt:"Où vivait la grand-mère ?",choices:["Dans un village","Près d’une gare","Dans une grande ville"],correctIndex:0},
+  {prompt:"Que faisaient-ils le matin ?",choices:["Ils allaient au marché.","Ils préparaient le petit-déjeuner.","Ils jouaient sous les arbres."],correctIndex:1},
+  {prompt:"Pourquoi restaient-ils sous les arbres ?",choices:["Parce qu’il pleuvait.","Parce qu’ils jardinaient.","Parce qu’il faisait très chaud."],correctIndex:2},
+  {prompt:"Quel événement soudain s’est produit ?",choices:["Un orage a commencé.","Les cousins sont partis.","La grand-mère a déménagé."],correctIndex:0}
+ ]
+};
+
+const A2_IMPARFAIT_WRITING_MODEL="Quand j’étais enfant, j’habitais dans une petite ville avec ma famille. Notre maison était près de l’école et je marchais chaque matin avec mon frère. Après les cours, nous jouions souvent au parc, puis nous rentrions pour dîner. Je ne regardais jamais la télévision avant de finir mes devoirs. Le week-end, mes grands-parents venaient nous voir et nous préparions un grand repas ensemble. J’aimais beaucoup cette période.";
+
+const A2_IMPARFAIT_DICTATION=[
+ {speech:"Quand j’étais enfant, je jouais souvent dehors.",ar:"عندما كنت طفلًا، كنت ألعب كثيرًا في الخارج."},
+ {speech:"Nous ne connaissions pas ce quartier.",ar:"لم نكن نعرف هذا الحي."},
+ {speech:"Il pleuvait pendant que nous attendions le bus.",ar:"كانت السماء تمطر بينما كنا ننتظر الحافلة."}
+];
+
+const A2_IMPARFAIT_BUILDERS=[
+ {tokens:["matin.","prenais","Je","chaque","bus","le"],answer:["Je","prenais","le","bus","chaque","matin."],ar:"كنت أستقل الحافلة كل صباح."},
+ {tokens:["pas","chemin.","connaissions","Nous","le","ne"],answer:["Nous","ne","connaissions","pas","le","chemin."],ar:"لم نكن نعرف الطريق."},
+ {tokens:["quand","dînions","sonné.","Nous","téléphone","le","a"],answer:["Nous","dînions","quand","le","téléphone","a","sonné."],ar:"كنا نتناول العشاء عندما رن الهاتف."}
+];
+
+const A2_IMPARFAIT_DIALOGUES=[
+ {context:"Votre ami demande : « Que faisais-tu après l’école ? »",prompt:"اختر إجابة تعبّر عن عادة قديمة.",choices:["Je jouais souvent au parc.","J’ai joué une fois demain.","Je vais au parc hier."],correctIndex:0,feedback:"السؤال بالماضي الناقص عن عادة، والإجابة الطبيعية تستخدم الزمن نفسه."},
+ {context:"On vous demande : « Comment était votre ancien quartier ? »",prompt:"اختر وصفًا مناسبًا.",choices:["Il a été ouvert soudain.","Il était calme et agréable.","Il sera près du parc."],correctIndex:1,feedback:"وصف مكان في الماضي يأتي طبيعيًا بالماضي الناقص."},
+ {context:"Votre collègue demande : « Que faisiez-vous quand l’alarme a sonné ? »",prompt:"اختر الفعل الذي كان جاريًا.",choices:["Nous avons commencé demain.","Nous finirons le travail.","Nous préparions la réunion."],correctIndex:2,feedback:"العمل الجاري عند وقوع الحدث يأتي في الماضي الناقص."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -694,27 +762,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"imparfait",title:"L’imparfait et le récit",ar:"الماضي الناقص والسرد",icon:BookOpen,
-  description:"وصف الماضي والعادات والتمييز بين الخلفية والحدث.",
+  description:"كوّن الماضي الناقص بدقة، واستخدمه لوصف العادات والحالات والخلفية، ثم ميّزه عن الماضي المركب داخل سرد مترابط.",
   sections:[
-   section("Former l’imparfait","تكوين الماضي الناقص","نأخذ جذر صيغة nous في الحاضر بعد حذف -ons ثم نضيف النهايات: ais, ais, ait, ions, iez, aient.",[
-    "nous parlons → je parlais.",
-    "nous finissons → elle finissait.",
-    "être استثناء: j’étais.",
-    "يستخدم للعادات والوصف والحالة المستمرة."
+   section("Former l’imparfait","تكوين الماضي الناقص","نأخذ صيغة nous في الحاضر، نحذف النهاية -ons، ثم نضيف نهايات الماضي الناقص نفسها إلى جميع الأفعال.",[
+    "النهايات: -ais, -ais, -ait, -ions, -iez, -aient.",
+    "nous parlons → parl- → je parlais؛ nous finissons → finiss- → ils finissaient.",
+    "nous prenons → pren- → vous preniez؛ nous faisons → fais- → elle faisait.",
+    "يحافظ كل ضمير على نهايته نفسها مهما كانت مجموعة الفعل."
    ],[
-    {fr:"Quand j’étais petit, je jouais dehors.",ar:"عندما كنت صغيرًا كنت ألعب في الخارج."},
-    {fr:"Il faisait froid et la rue était calme.",ar:"كان الجو باردًا والشارع هادئًا."},
-    {fr:"Nous allions souvent chez nos grands-parents.",ar:"كنا نذهب كثيرًا إلى بيت أجدادنا."}
+    {fr:"Je travaillais dans une librairie près de la gare.",ar:"كنت أعمل في مكتبة لبيع الكتب قرب المحطة."},
+    {fr:"Nous choisissions toujours une table près de la fenêtre.",ar:"كنا نختار دائمًا طاولة قرب النافذة."},
+    {fr:"Vous preniez le même bus chaque matin.",ar:"كنتم تستقلون الحافلة نفسها كل صباح."}
    ]),
-   section("Imparfait ou passé composé","التمييز بين الماضيين","الماضي الناقص يرسم الخلفية أو العادة، والماضي المركب يقدّم الحدث المحدد الذي وقع وانتهى.",[
-    "الخلفية: Il pleuvait.",
-    "الحدث: Le bus est arrivé.",
-    "قد يجتمعان: Je dormais quand le téléphone a sonné.",
-    "استخدم soudain للحدث المفاجئ وpendant que للخلفية."
+   section("Être et les particularités d’écriture","فعل être وخصائص الكتابة","الفعل être هو الاستثناء الوحيد في تكوين الجذر؛ جذره ét-. كما تظهر تغييرات إملائية تحافظ على النطق في بعض الأفعال.",[
+    "être: j’étais، tu étais، il était، nous étions، vous étiez، ils étaient.",
+    "manger: je mangeais ولكن nous mangions؛ تحذف e قبل i.",
+    "commencer: je commençais ولكن nous commencions؛ تتحول c إلى ç قبل a فقط.",
+    "étudier: nous étudiions وvous étudiiez؛ اجتماع حرفي i صحيح."
    ],[
-    {fr:"Je marchais quand j’ai vu Paul.",ar:"كنت أمشي عندما رأيت بول."},
-    {fr:"Pendant qu’elle travaillait, son ami a appelé.",ar:"بينما كانت تعمل اتصل صديقها."},
-    {fr:"La salle était pleine, puis le concert a commencé.",ar:"كانت القاعة ممتلئة، ثم بدأ الحفل."}
+    {fr:"À cette époque, j’étais étudiant à Lyon.",ar:"في ذلك الوقت كنت طالبًا في ليون."},
+    {fr:"Les enfants mangeaient dans la cuisine.",ar:"كان الأطفال يأكلون في المطبخ."},
+    {fr:"Nous étudiions ensemble après les cours.",ar:"كنا ندرس معًا بعد الدروس."}
+   ]),
+   section("Habitudes et répétitions passées","العادات والتكرار في الماضي","نستخدم الماضي الناقص لما كان يحدث بانتظام أو يتكرر في فترة ماضية، دون التركيز على بداية الفعل أو نهايته.",[
+    "مؤشرات شائعة: souvent، toujours، d’habitude، tous les jours، chaque semaine.",
+    "avant وà cette époque تقدمان عادة أو وضعًا قديمًا.",
+    "يمكن وصف روتين كامل بسلسلة أفعال في الماضي الناقص.",
+    "السؤال عن العادة: Qu’est-ce que tu faisais le week-end ?"
+   ],[
+    {fr:"Quand j’étais enfant, je passais mes vacances à la campagne.",ar:"عندما كنت طفلًا، كنت أقضي عطلتي في الريف."},
+    {fr:"Chaque samedi, mes parents faisaient les courses au marché.",ar:"كان والداي يتسوقان من السوق كل يوم سبت."},
+    {fr:"Avant, nous ne regardions jamais la télévision le matin.",ar:"في السابق، لم نكن نشاهد التلفاز صباحًا أبدًا."}
+   ]),
+   section("Descriptions, états et arrière-plan","الوصف والحالات وخلفية الأحداث","يصف الماضي الناقص الأشخاص والأماكن والطقس والوقت والعمر والمشاعر، ويرسم الخلفية التي وقع داخلها الحدث.",[
+    "الطقس والوقت: Il faisait beau؛ Il était huit heures.",
+    "العمر والحالة: J’avais dix ans؛ Elle était fatiguée.",
+    "الوصف: La rue était calme et les magasins étaient fermés.",
+    "الأفعال الذهنية والحسية مثل aimer، penser، vouloir وsavoir تأتي كثيرًا في الماضي الناقص."
+   ],[
+    {fr:"Il faisait froid et le vent soufflait très fort.",ar:"كان الجو باردًا وكانت الرياح تهب بقوة."},
+    {fr:"La salle était lumineuse et les invités semblaient heureux.",ar:"كانت القاعة مضيئة وبدا الضيوف سعداء."},
+    {fr:"Je voulais partir, mais je ne connaissais pas le chemin.",ar:"كنت أريد المغادرة، لكنني لم أكن أعرف الطريق."}
+   ]),
+   section("Imparfait ou passé composé","التمييز بين الماضيين","يرسم الماضي الناقص الخلفية أو العادة أو الفعل الجاري، بينما يقدّم الماضي المركب حدثًا محددًا وقع واكتمل أو قطع فعلًا جاريًا.",[
+    "الخلفية: Il pleuvait؛ والحدث المكتمل: Le bus est arrivé.",
+    "الفعل الجاري + الحدث القاطع: Je dormais quand le téléphone a sonné.",
+    "سلسلة أحداث منتهية تستخدم الماضي المركب، والوصف المحيط بها يستخدم الماضي الناقص.",
+    "لا يحدد الظرف الزمن وحده؛ المعنى المقصود هو الذي يحدد الاختيار."
+   ],[
+    {fr:"Je préparais le dîner quand tu as appelé.",ar:"كنت أحضّر العشاء عندما اتصلت."},
+    {fr:"Pendant qu’ils marchaient, il a commencé à pleuvoir.",ar:"بينما كانوا يمشون، بدأ المطر يهطل."},
+    {fr:"La salle était silencieuse, puis la porte s’est ouverte.",ar:"كانت القاعة هادئة، ثم فُتح الباب."}
+   ]),
+   section("Organiser un récit au passé","تنظيم سرد في الماضي","امزج الزمنين لبناء مشهد واضح: ابدأ بالخلفية، قدّم الحدث الرئيس، ثم أضف النتيجة أو رد الفعل.",[
+    "pendant que وalors que يربطان حدثين جاريين أو متزامنين.",
+    "quand يقدم الحدث الذي وقع أثناء الوضع المستمر.",
+    "soudain وtout à coup يقدمان حدثًا مفاجئًا بالماضي المركب.",
+    "رتّب السرد: خلفية + حدث + نتيجة + انطباع."
+   ],[
+    {fr:"Pendant que je cherchais mon billet, le train est parti.",ar:"بينما كنت أبحث عن تذكرتي، غادر القطار."},
+    {fr:"Les clients attendaient dehors quand le magasin a ouvert.",ar:"كان الزبائن ينتظرون في الخارج عندما فتح المتجر."},
+    {fr:"Nous rentrions tranquillement quand nous avons entendu un bruit.",ar:"كنا عائدين بهدوء عندما سمعنا صوتًا."}
    ])
   ]
  },
@@ -1977,17 +2085,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const isA2Revision=level.id==="A2"&&activeModule.id==="revision";
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose;
- const activeA2Reading=isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait;
+ const activeA2Reading=isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2006,7 +2115,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
  const passeComposeVerbCount=(revisionWritingText.match(/\b(?:j['’]ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont|je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/gi)??[]).length;
- const revisionWritingChecks=isA2PasseCompose?[
+ const imparfaitVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:ais|ait|ions|iez|aient)\b/gi)??[]).filter(word=>!["mais","jamais","français"].includes(word.toLocaleLowerCase("fr"))).length;
+ const revisionWritingChecks=isA2Imparfait?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"خمسة أفعال في الماضي الناقص",passed:imparfaitVerbCount>=5},
+  {label:"وصف أو حالة في الماضي",passed:/\b(?:était|étaient|avait|avaient|faisait|semblait|sembl[a-zà-ÿ]*aient)\b/i.test(revisionWritingText)},
+  {label:"علامة على عادة متكررة",passed:["souvent","toujours","d’habitude","d'habitude","chaque","tous les","toutes les","avant"].some(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker))},
+  {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)}
+ ]:isA2PasseCompose?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"خمسة أفعال في الماضي المركب",passed:passeComposeVerbCount>=5},
   {label:"فعل واحد على الأقل مع être",passed:/\b(?:je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/i.test(revisionWritingText)},
@@ -2066,12 +2182,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -2718,7 +2836,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

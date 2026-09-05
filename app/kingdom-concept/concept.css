@@ -104,6 +104,11 @@
   .concept-rail-arrow-right{right:2px}
   .concept-footer{min-height:72px;padding:15px}
 }
+@media(max-width:950px) and (orientation:landscape) and (max-height:700px){
+ .smart-compass-overlay{align-items:center;padding:8px}.smart-compass-panel{width:min(720px,96vw);max-height:96dvh;padding:11px 16px 12px;border-radius:20px}.smart-compass-panel h2{font-size:19px}.smart-compass-panel>header>button{width:36px;height:36px}
+ .smart-compass-instrument{margin-top:3px}.smart-compass-dial{width:min(210px,43vh)}.smart-north-hand:before{border-left-width:7px;border-right-width:7px;border-bottom-width:62px}.smart-north-hand:after{border-left-width:7px;border-right-width:7px;border-top-width:62px}.smart-qibla-hand:before{top:20px;width:5px}.smart-qibla-hand b{width:20px;height:20px;font-size:11px}.smart-qibla-hand small{font-size:7px}.smart-heading-value{min-width:76px;padding:6px 8px}.smart-heading-value strong{font-size:17px}.smart-alignment-message{margin-top:5px;font-size:10px}
+ .smart-compass-readings{margin-top:7px}.smart-compass-readings article{padding:7px}.smart-compass-actions{margin-top:7px}.smart-compass-actions button{min-height:36px;padding:6px}.smart-compass-status{margin-top:7px;padding:7px}.smart-compass-calibration{display:none}
+}
 
 @media(max-width:950px) and (orientation:landscape) and (max-height:700px){
   .concept-hero{height:510px;min-height:510px}

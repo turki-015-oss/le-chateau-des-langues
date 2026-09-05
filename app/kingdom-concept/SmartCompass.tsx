@@ -11,6 +11,8 @@ type OrientationConstructor = typeof DeviceOrientationEvent & {
 };
 
 const KAABA = { latitude: 21.422487, longitude: 39.826206 };
+const OPEN_STATE_KEY = "smart-compass-open";
+const QIBLA_STATE_KEY = "smart-compass-qibla";
 const directions = ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"];
 
 const normalizeDegrees = (value:number) => ((value % 360) + 360) % 360;
@@ -57,6 +59,22 @@ export default function SmartCompass() {
   const [distance,setDistance]=useState<number|null>(null);
   const [accuracy,setAccuracy]=useState<number|null>(null);
   const latestHeading=useRef(0);
+
+  useEffect(()=>{
+    try{
+      if(sessionStorage.getItem(OPEN_STATE_KEY)==="1")setOpen(true);
+      const cached=sessionStorage.getItem(QIBLA_STATE_KEY);
+      if(cached){
+        const value=JSON.parse(cached) as {bearing:number;distance:number;accuracy:number};
+        if(Number.isFinite(value.bearing)&&Number.isFinite(value.distance)){
+          setQiblaBearing(value.bearing);
+          setDistance(value.distance);
+          setAccuracy(value.accuracy);
+          setLocationStatus("ready");
+        }
+      }
+    }catch{}
+  },[]);
 
   useEffect(()=>{
     if(!enabled){
@@ -118,6 +136,13 @@ export default function SmartCompass() {
       setDistance(distanceToKaaba(latitude,longitude));
       setAccuracy(positionAccuracy);
       setLocationStatus("ready");
+      try{
+        sessionStorage.setItem(QIBLA_STATE_KEY,JSON.stringify({
+          bearing:bearingToKaaba(latitude,longitude),
+          distance:distanceToKaaba(latitude,longitude),
+          accuracy:positionAccuracy,
+        }));
+      }catch{}
     },error=>{
       setLocationStatus(error.code===error.PERMISSION_DENIED?"denied":"unavailable");
     },{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
@@ -139,8 +164,13 @@ export default function SmartCompass() {
     }
   };
 
+  const setCompassOpen=(next:boolean)=>{
+    setOpen(next);
+    try{sessionStorage.setItem(OPEN_STATE_KEY,next?"1":"0")}catch{}
+  };
+
   const activate=()=>{
-    setOpen(true);
+    setCompassOpen(true);
     if(!enabled)setEnabled(true);
     void requestSensorPermission();
     if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
@@ -175,11 +205,11 @@ export default function SmartCompass() {
       <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
     </div>
 
-    {open&&<div className="smart-compass-overlay" onClick={()=>setOpen(false)}>
+    {open&&<div className="smart-compass-overlay" onClick={()=>setCompassOpen(false)}>
       <section className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title" onClick={event=>event.stopPropagation()}>
         <header>
           <div><small>COMPASS · QIBLA</small><h2 id="smart-compass-title">البوصلة العالمية</h2></div>
-          <button type="button" onClick={()=>setOpen(false)} aria-label="إغلاق البوصلة"><X/></button>
+          <button type="button" onClick={()=>setCompassOpen(false)} aria-label="إغلاق البوصلة"><X/></button>
         </header>
 
         <div className={`smart-compass-instrument ${aligned?"aligned":""}`}>
@@ -206,7 +236,7 @@ export default function SmartCompass() {
 
         <div className="smart-compass-status">
           <ShieldCheck/>
-          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":"يُستخدم موقعك داخل جهازك لحساب القبلة ولا يتم حفظه أو إرساله."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
+          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
         </div>
         <p className="smart-compass-calibration">اترك الهاتف بوضعه الطبيعي؛ ستتجه الإبرة الحمراء إلى الشمال تلقائيًا. أبعده فقط عن المعادن عند ضعف الدقة.</p>
       </section>

@@ -3991,3 +3991,22 @@
  .animal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.animal-card h3{font-size:19px}.animal-card p{font-size:13px}.animal-card>div:last-child{min-height:76px;padding:10px 6px}.animal-photo button{width:36px;height:36px}.animal-photo button svg{width:17px}
  .zoo-pagination{gap:8px}.zoo-pagination button{padding:10px 11px;font-size:12px}.zoo-pagination strong{min-width:52px;font-size:17px}
 }
+
+/* French-first hierarchy for every bilingual university lesson and section title. */
+.university-world .university-section-heading>span{display:block;font-size:clamp(25px,3vw,36px);line-height:1.3;text-transform:none}.university-world .university-section-heading h2{font-size:clamp(18px,2.2vw,25px)}
+.university-world .university-level-grid span{font-size:clamp(19px,2vw,24px);line-height:1.35}.university-world .university-level-grid h3{font-size:clamp(15px,1.5vw,18px)}
+.university-world .university-level-entry h2{font-size:clamp(31px,4vw,48px);line-height:1.25}.university-world .university-level-entry h1{font-size:clamp(20px,2.4vw,29px)}
+.university-world .university-resume-card p{color:#173d68;font-size:clamp(20px,2vw,25px);line-height:1.35}.university-world .university-resume-card h2{font-size:clamp(15px,1.5vw,18px)}
+.university-world .university-journey-heading>span{display:block;font-size:clamp(25px,3vw,34px);line-height:1.3}.university-world .university-journey-heading h2{font-size:clamp(18px,2vw,23px)}
+.university-world .university-phase>summary span{display:block;font-size:clamp(18px,2vw,23px);line-height:1.35}.university-world .university-phase>summary h3{font-size:clamp(14px,1.5vw,17px)}
+.university-world .university-phase-modules span{order:1;color:#173d68;font-size:clamp(16px,1.6vw,19px);line-height:1.35;white-space:normal}.university-world .university-phase-modules strong{order:2;color:#68778b;font-size:clamp(12px,1.2vw,14px)}
+.university-world .university-lesson-guide>div p{color:#173d68;font-size:clamp(18px,2vw,22px);line-height:1.35}.university-world .university-lesson-guide>div h2{font-size:clamp(14px,1.4vw,17px)}
+.university-world .university-lesson>header .university-spoken-title h3{font-size:clamp(27px,3vw,36px);line-height:1.3}.university-world .university-lesson>header h2{font-size:clamp(18px,2vw,23px)}
+.university-world .university-subheading span{display:block;font-size:clamp(21px,2.4vw,28px);line-height:1.35}.university-world .university-subheading h3{font-size:clamp(15px,1.7vw,19px)}
+.university-world .university-section-toggle h3{font-size:clamp(22px,2.4vw,29px);line-height:1.35}.university-world .university-section-toggle small{display:block;font-size:clamp(13px,1.4vw,16px);line-height:1.55}
+.university-world .university-stage-heading span{display:block;font-size:clamp(21px,2.4vw,28px);line-height:1.35}.university-world .university-stage-heading h3{font-size:clamp(16px,1.8vw,20px)}
+.university-world .a2-reading-text>header h4{font-size:clamp(22px,2.4vw,29px);line-height:1.35}.university-world .a2-reading-text>header span{font-size:clamp(14px,1.5vw,17px)}
+.university-world .a2-listening-lab>header span,.university-world .a2-interactive-workshop>header>span{display:block;font-size:clamp(22px,2.5vw,29px);line-height:1.35}.university-world .a2-listening-lab>header h3,.university-world .a2-interactive-workshop>header h3{font-size:clamp(16px,1.8vw,20px)}
+.university-world .a2-interactive-workshop>nav small{font-size:clamp(13px,1.3vw,15px);line-height:1.35}.university-world .a2-interactive-workshop>nav strong{font-size:clamp(10px,1.1vw,12px)}
+.university-world .a2-production-grid>article>span{font-size:clamp(20px,2.2vw,26px);line-height:1.35}.university-world .a2-production-grid>article>h4{font-size:clamp(15px,1.7vw,19px)}
+.university-world .a2-quiz-review>header span{font-size:clamp(18px,2vw,23px);line-height:1.35}.university-world .a2-quiz-review>header h4{font-size:clamp(14px,1.5vw,17px)}

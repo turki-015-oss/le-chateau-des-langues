@@ -694,6 +694,74 @@ const A2_FUTURE_DIALOGUES=[
  {context:"On vous demande : « S’il pleut demain, que ferez-vous ? »",prompt:"اختر نتيجة الشرط الصحيحة.",choices:["Nous restons hier.","Nous sommes restés demain.","Nous resterons à la maison."],correctIndex:2,feedback:"بعد si + présent تأتي النتيجة هنا في المستقبل البسيط."}
 ];
 
+const A2_PRONOUNS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Cette collègue, je la connais depuis deux ans.",ar:"أعرف هذه الزميلة منذ عامين."},
+ {fr:"Mes lunettes ? Je ne les trouve plus.",ar:"نظارتي؟ لم أعد أجدها."},
+ {fr:"Nous lui téléphonons chaque dimanche.",ar:"نتصل به كل يوم أحد."},
+ {fr:"Le professeur leur explique la consigne.",ar:"يشرح المعلم لهم التعليمات."},
+ {fr:"Je vais vous envoyer le programme ce soir.",ar:"سأرسل إليكم البرنامج هذا المساء."},
+ {fr:"Tu peux me prêter ton dictionnaire ?",ar:"هل يمكنك أن تعيرني قاموسك؟"},
+ {fr:"Cette robe, elle l’a achetée hier.",ar:"اشترت هذا الفستان أمس."},
+ {fr:"Ne lui donne pas cette adresse.",ar:"لا تعطه هذا العنوان."},
+ {fr:"Ces billets, montrez-les-moi, s’il vous plaît.",ar:"أروني هذه التذاكر، من فضلكم."},
+ {fr:"Je le leur confirmerai demain matin.",ar:"سأؤكد لهم ذلك صباح الغد."}
+];
+
+const A2_PRONOUNS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je regarde cette série. → Je ___ regarde.",speech:"Remplacez cette série par un pronom complément.",instruction:"استبدل cette série بضمير مفعول مباشر.",choices:["la","lui","leur"],correctIndex:0,explanation:"regarder يأخذ مفعولًا مباشرًا، وsérie مؤنث مفرد؛ لذلك نستخدم la."},
+ {prompt:"Nous écrivons à nos voisins. → Nous ___ écrivons.",speech:"Remplacez à nos voisins par le pronom correct.",instruction:"استبدل à nos voisins بالضمير الصحيح.",choices:["les","leur","lui"],correctIndex:1,explanation:"écrire à quelqu’un يأخذ مفعولًا غير مباشر، والجمع يُستبدل بـ leur."},
+ {prompt:"Il va acheter les billets. → Il va ___ acheter.",speech:"Placez le pronom les dans cette phrase.",instruction:"ضع ضمير المفعول في مكانه الصحيح.",choices:["les","acheter les","leur"],correctIndex:0,explanation:"مع مصدر تابع لفعل آخر، يأتي الضمير قبل المصدر: il va les acheter."},
+ {prompt:"J’ai rencontré Lina hier. → Je ___ ai rencontrée hier.",speech:"Complétez avec le pronom qui remplace Lina.",instruction:"أكمل بالضمير الذي يحل محل Lina.",choices:["lui","l’","la lui"],correctIndex:1,explanation:"Lina مفعول مباشر؛ نستخدم l’ قبل حرف متحرك، ويتوافق participe passé معها: rencontrée."},
+ {prompt:"Tu parles à ton médecin. → Tu ___ parles.",speech:"Choisissez le pronom complément indirect.",instruction:"اختر ضمير المفعول غير المباشر.",choices:["le","lui","la"],correctIndex:1,explanation:"parler à quelqu’un يُستبدل مفعوله غير المباشر المفرد بـ lui."},
+ {prompt:"Je ne connais pas ces personnes. → Je ne ___ connais pas.",speech:"Complétez la phrase négative.",instruction:"أكمل الجملة المنفية.",choices:["leur","lui","les"],correctIndex:2,explanation:"ces personnes مفعول مباشر جمع، والضمير les يأتي بين ne والفعل."},
+ {prompt:"Donne le dossier à Paul. → Donne-___-___ .",speech:"Transformez cette phrase à l’impératif affirmatif.",instruction:"اختر ترتيب الضميرين في الأمر المثبت.",choices:["lui-le","le-lui","le-leur"],correctIndex:1,explanation:"في الأمر المثبت يأتي المفعول المباشر ثم غير المباشر: donne-le-lui."},
+ {prompt:"Ne raconte pas cette histoire aux enfants. → Ne ___ raconte pas.",speech:"Placez les deux pronoms dans la phrase négative.",instruction:"اختر ترتيب الضميرين في النفي.",choices:["la leur","leur la","les lui"],correctIndex:0,explanation:"قبل الفعل يكون الترتيب هنا le/la/les ثم lui/leur: ne la leur raconte pas."},
+ {prompt:"Elle nous attend devant la gare.",speech:"Elle nous attend devant la gare.",instruction:"ما وظيفة nous في هذه الجملة؟",choices:["مفعول مباشر","مفعول غير مباشر","فاعل"],correctIndex:0,explanation:"attendre quelqu’un دون à، لذلك nous مفعول مباشر."},
+ {prompt:"Je lui ai répondu ce matin.",speech:"Je lui ai répondu ce matin.",instruction:"اختر الترجمة العربية المناسبة.",choices:["أجبته هذا الصباح.","رأيته هذا الصباح.","أرسلني هذا الصباح."],correctIndex:0,explanation:"répondre à quelqu’un يُستبدل مفعوله بـ lui، والمعنى: أجبته/أجبتها."}
+];
+
+const A2_PRONOUNS_READING={
+ title:"Un service entre voisins",arTitle:"مساعدة بين الجيران",
+ text:"Nadia part en déplacement demain et demande un service à son voisin Marc. Elle lui donne les clés de son appartement et lui explique tout. Son chat mange deux fois par jour : Marc devra le nourrir le matin et le soir. Les plantes du balcon ont aussi besoin d’eau ; il les arrosera mercredi. Nadia a préparé une liste et l’a posée sur la table. Marc la rassure : il connaît bien les animaux et il lui enverra un message chaque soir.",
+ translation:"ستغادر ناديا غدًا في مهمة عمل وتطلب خدمة من جارها مارك. تعطيه مفاتيح شقتها وتشرح له كل شيء. يأكل قطها مرتين يوميًا، ولذلك سيتعين على مارك إطعامه صباحًا ومساءً. كما تحتاج نباتات الشرفة إلى الماء، وسيسقيها يوم الأربعاء. أعدت ناديا قائمة ووضعتها على الطاولة. يطمئنها مارك بأنه يعرف الحيوانات جيدًا، وأنه سيرسل إليها رسالة كل مساء.",
+ questions:[
+  {question:"Que donne Nadia à Marc ?",answer:"Elle lui donne les clés de son appartement.",ar:"تعطيه مفاتيح شقتها."},
+  {question:"Quand Marc nourrira-t-il le chat ?",answer:"Il le nourrira le matin et le soir.",ar:"سيطعمه صباحًا ومساءً."},
+  {question:"Comment Marc va-t-il rassurer Nadia ?",answer:"Il lui enverra un message chaque soir.",ar:"سيرسل إليها رسالة كل مساء."}
+ ]
+};
+
+const A2_PRONOUNS_LISTENING={
+ title:"Une invitation à confirmer",arTitle:"دعوة تحتاج إلى تأكيد",
+ text:"Écoute, Karim, j’ai reçu l’invitation de Léa, mais je ne l’ai pas encore confirmée. Peux-tu lui répondre pour nous deux ? Dis-lui que nous viendrons samedi et demande-lui l’adresse exacte. Je connais déjà ses amis, mais Samir ne les connaît pas. Léa veut aussi apporter des desserts. Nous pouvons les acheter demain et les lui donner avant la fête. N’oublie pas de me montrer sa réponse.",
+ questions:[
+  {prompt:"Qu’est-ce qui n’est pas encore confirmé ?",choices:["L’invitation","L’adresse de Karim","Le dessert de Samir"],correctIndex:0},
+  {prompt:"À qui Karim doit-il répondre ?",choices:["À Samir","À Léa","Aux amis"],correctIndex:1},
+  {prompt:"Qui ne connaît pas les amis de Léa ?",choices:["Karim","La narratrice","Samir"],correctIndex:2},
+  {prompt:"Que doivent-ils acheter demain ?",choices:["Des desserts","Des invitations","Des billets"],correctIndex:0}
+ ]
+};
+
+const A2_PRONOUNS_WRITING_MODEL="Ma collègue m’a demandé des informations sur notre cours. Je lui ai répondu ce matin et je lui ai envoyé le programme. Elle ne connaissait pas les horaires, alors je les lui ai expliqués. Elle voulait aussi les exercices, mais je ne les avais pas avec moi. Je vais les retrouver ce soir et les lui transmettre demain. Si elle a encore des questions, elle pourra me téléphoner après dix-huit heures.";
+
+const A2_PRONOUNS_DICTATION=[
+ {speech:"Je lui expliquerai le problème demain.",ar:"سأشرح له المشكلة غدًا."},
+ {speech:"Ces documents, nous ne les avons pas reçus.",ar:"لم نتلقَّ هذه المستندات."},
+ {speech:"Montrez-les-moi, s’il vous plaît.",ar:"أروني إياها، من فضلكم."}
+];
+
+const A2_PRONOUNS_BUILDERS=[
+ {tokens:["demain.","lui","Je","répondrai"],answer:["Je","lui","répondrai","demain."],ar:"سأجيبه غدًا."},
+ {tokens:["pas.","les","Nous","connaissons","ne"],answer:["Nous","ne","les","connaissons","pas."],ar:"نحن لا نعرفهم."},
+ {tokens:["plaît.","Donnez-le-lui,","vous","s’il"],answer:["Donnez-le-lui,","s’il","vous","plaît."],ar:"أعطوه إياه، من فضلكم."}
+];
+
+const A2_PRONOUNS_DIALOGUES=[
+ {context:"Votre collègue demande : « Tu as vu mes clés ? »",prompt:"اختر إجابة مناسبة بضمير مباشر.",choices:["Oui, je les ai posées sur la table.","Oui, je leur ai parlé.","Oui, je lui pose demain."],correctIndex:0,feedback:"les يحل محل clés، ويتوافق معه participe passé: posées."},
+ {context:"Votre ami demande : « Tu peux répondre à Lina ? »",prompt:"اختر إجابة مناسبة بضمير غير مباشر.",choices:["Oui, je peux la réponse.","Oui, je vais lui répondre.","Oui, je les réponds."],correctIndex:1,feedback:"répondre à quelqu’un يتطلب lui للمفرد."},
+ {context:"Un agent vous demande : « Je vous rends vos passeports ? »",prompt:"اختر جواب الأمر الصحيح.",choices:["Oui, rendez-nous-les.","Oui, les nous rendez.","Oui, rendez-les-nous, s’il vous plaît."],correctIndex:2,feedback:"في الأمر المثبت يأتي ضمير المفعول المباشر قبل nous: rendez-les-nous."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -962,27 +1030,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"pronouns",title:"Pronoms compléments",ar:"ضمائر المفعول",icon:Users,
-  description:"استبدال الأسماء لتجنب التكرار: le, la, les, lui, leur.",
+  description:"استبدل الأشخاص والأشياء دون تكرار، وميّز بين المفعول المباشر وغير المباشر، ثم ضع الضمير في موضعه الصحيح مع الأزمنة والأمر.",
   sections:[
-   section("Complément direct","المفعول المباشر","ضمائر المفعول المباشر le, la, les تأتي قبل الفعل المصرف وتستبدل شخصًا أو شيئًا دون حرف جر.",[
-    "Je vois Marie → Je la vois.",
-    "Il achète le livre → Il l’achète.",
-    "Nous invitons nos amis → Nous les invitons.",
-    "في الماضي: Je l’ai acheté."
+   section("Les pronoms COD","ضمائر المفعول المباشر","يحل ضمير المفعول المباشر محل اسم يتصل بالفعل دون حرف جر. اختر الضمير بحسب الشخص والجنس والعدد.",[
+    "me/m’، te/t’، le/l’، la/l’، nous، vous، les.",
+    "Je vois Lina → Je la vois؛ Il prend le dossier → Il le prend.",
+    "قبل حرف متحرك نحذف حركة le أو la: Je l’attends؛ Je l’écoute.",
+    "السؤال المساعد: qui ? أو quoi ? بعد الفعل دون à."
    ],[
-    {fr:"Cette chanson, je l’écoute souvent.",ar:"هذه الأغنية أستمع إليها كثيرًا."},
-    {fr:"Tes clés ? Je ne les trouve pas.",ar:"مفاتيحك؟ لا أجدها."},
-    {fr:"Nous l’avons rencontré hier.",ar:"قابلناه أمس."}
+    {fr:"Le directeur nous attend dans son bureau.",ar:"المدير ينتظرنا في مكتبه."},
+    {fr:"Cette adresse, je ne la connais pas.",ar:"لا أعرف هذا العنوان."},
+    {fr:"Vos billets, vous les recevrez par courriel.",ar:"ستتلقون تذاكركم عبر البريد الإلكتروني."}
    ]),
-   section("Complément indirect","المفعول غير المباشر","lui وleur يستبدلان شخصًا يأتي عادة بعد à. لا يتغير lui حسب الجنس.",[
-    "Je parle à Lina → Je lui parle.",
-    "Il écrit à ses parents → Il leur écrit.",
-    "الضمير يسبق الفعل.",
-    "مع المصدر يبقى قبل المصدر: Je vais lui téléphoner."
+   section("Les pronoms COI","ضمائر المفعول غير المباشر","يحل ضمير المفعول غير المباشر محل شخص يسبقه à مع أفعال مثل parler à وrépondre à وtéléphoner à.",[
+    "me/m’، te/t’، lui، nous، vous، leur.",
+    "Je parle à Lina → Je lui parle؛ J’écris à mes parents → Je leur écris.",
+    "lui للمفرد المذكر والمؤنث، وleur لجمع الأشخاص.",
+    "السؤال المساعد: à qui ?"
    ],[
-    {fr:"Je lui envoie un message.",ar:"أرسل له/لها رسالة."},
-    {fr:"Nous leur expliquons le problème.",ar:"نشرح لهم المشكلة."},
-    {fr:"Tu peux lui répondre demain.",ar:"يمكنك الرد عليه/عليها غدًا."}
+    {fr:"Je lui ai répondu dès mon arrivée.",ar:"أجبته فور وصولي."},
+    {fr:"Nous leur téléphonons chaque semaine.",ar:"نتصل بهم كل أسبوع."},
+    {fr:"Pouvez-vous me montrer le chemin ?",ar:"هل يمكنكم أن تدلوني على الطريق؟"}
+   ]),
+   section("COD ou COI ?","المباشر أم غير المباشر؟","لا تختَر الضمير من المعنى العربي وحده؛ تحقّق من تركيب الفعل الفرنسي ومن وجود à قبل الشخص.",[
+    "attendre quelqu’un → l’attendre؛ écouter quelqu’un → l’écouter.",
+    "parler à quelqu’un → lui parler؛ répondre à quelqu’un → lui répondre.",
+    "me، te، nous، vous لها الشكل نفسه في الوظيفتين؛ الفعل هو الذي يحدد الوظيفة.",
+    "أشياء مسبوقة بـ à لا تُستبدل عادة بـ lui/leur؛ سيأتي استعمال y في درس مستقل."
+   ],[
+    {fr:"J’attends mes amis : je les attends devant la gare.",ar:"أنتظر أصدقائي أمام المحطة."},
+    {fr:"Je parle à mes amis : je leur parle du voyage.",ar:"أتحدث مع أصدقائي عن الرحلة."},
+    {fr:"Elle nous écoute, puis elle nous répond.",ar:"تستمع إلينا، ثم تجيبنا."}
+   ]),
+   section("La place du pronom","موضع الضمير","يأتي الضمير غالبًا قبل الفعل الذي يتعلّق به. في الزمن المركب يسبق الفعل المساعد، ومع المصدر يسبق المصدر.",[
+    "الحاضر والمستقبل: Je le prends؛ Je le prendrai.",
+    "الزمن المركب: Je l’ai vu؛ Nous leur avons écrit.",
+    "فعل + مصدر: Je vais le réserver؛ Tu peux lui répondre.",
+    "النفي يحيط بالفعل المصرف: Je ne le prends pas؛ Je ne vais pas lui écrire."
+   ],[
+    {fr:"Nous ne les avons pas encore reçus.",ar:"لم نتلقَّها بعد."},
+    {fr:"Elle veut vous présenter son projet.",ar:"تريد أن تعرض عليكم مشروعها."},
+    {fr:"Je ne pourrai pas lui répondre ce soir.",ar:"لن أتمكن من الرد عليه هذا المساء."}
+   ]),
+   section("Deux pronoms et l’accord","ضميران واتفاق اسم المفعول","عند اجتماع ضميرين قبل الفعل نتبع ترتيبًا ثابتًا. ومع avoir يتوافق اسم المفعول مع المفعول المباشر إذا سبقه.",[
+    "الترتيب الشائع: me/te/nous/vous ثم le/la/les: Il me le donne.",
+    "مع الغائب: le/la/les ثم lui/leur: Je le lui explique؛ Je les leur envoie.",
+    "COD قبل avoir: La lettre ? Je l’ai écrite؛ Les clés ? Je les ai trouvées.",
+    "لا يفرض lui أو leur اتفاقًا: Je leur ai parlé."
+   ],[
+    {fr:"Ce formulaire, je vous le rendrai demain.",ar:"سأعيد إليكم هذه الاستمارة غدًا."},
+    {fr:"Les photos, elle les a envoyées ce matin.",ar:"أرسلت الصور هذا الصباح."},
+    {fr:"Cette règle, le professeur la leur explique clairement.",ar:"يشرح المعلم لهم هذه القاعدة بوضوح."}
+   ]),
+   section("Les pronoms à l’impératif","الضمائر مع صيغة الأمر","في الأمر المثبت يأتي الضمير بعد الفعل بشرطات ويتغيّر me إلى moi. وفي الأمر المنفي يعود الضمير قبل الفعل.",[
+    "مثبت: Regarde-le؛ Téléphone-lui؛ Écoutez-moi.",
+    "ضميران في المثبت: Donne-le-moi؛ Montrez-la-leur.",
+    "منفي: Ne le regarde pas؛ Ne lui téléphonez pas.",
+    "في المثبت يأتي le/la/les قبل moi/toi/lui/nous/vous/leur."
+   ],[
+    {fr:"Expliquez-la-moi encore une fois.",ar:"اشرحوها لي مرة أخرى."},
+    {fr:"Ne leur montrez pas ce document.",ar:"لا تروهم هذا المستند."},
+    {fr:"Ces clés, rendez-les-lui aujourd’hui.",ar:"أعيدوا إليه هذه المفاتيح اليوم."}
    ])
   ]
  },
@@ -2195,17 +2303,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future;
- const activeA2Reading=isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns;
+ const activeA2Reading=isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2227,7 +2336,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const imparfaitVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:ais|ait|ions|iez|aient)\b/gi)??[]).filter(word=>!["mais","jamais","français"].includes(word.toLocaleLowerCase("fr"))).length;
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
- const revisionWritingChecks=isA2Future?[
+ const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
+ const revisionWritingChecks=isA2Pronouns?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"خمسة ضمائر مفعول على الأقل",passed:objectPronounCount>=5},
+  {label:"ضمير مباشر: le أو la أو les",passed:/(?:\b(?:le|la|les)\b|\bl[’'][a-zà-ÿ]+)/i.test(revisionWritingText)},
+  {label:"ضمير غير مباشر: lui أو leur",passed:/\b(?:lui|leur)\b/i.test(revisionWritingText)},
+  {label:"ضميران متتاليان وصيغة نفي",passed:/(?:\b(?:me|te|nous|vous)\s+(?:le|la|les)\b|\b(?:le|la|les)\s+(?:lui|leur)\b)/i.test(revisionWritingText)&&/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)}
+ ]:isA2Future?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"خمس صيغ مستقبلية على الأقل",passed:futureSimpleVerbCount+futureProcheVerbCount>=5},
   {label:"المستقبل القريب والبسيط معًا",passed:futureSimpleVerbCount>0&&futureProcheVerbCount>0},
@@ -2301,6 +2417,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2309,6 +2426,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -2955,7 +3073,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

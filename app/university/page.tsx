@@ -32,9 +32,10 @@ type CourseModule={
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
 type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
 type LessonStage="learn"|"practice"|"test";
-type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instruction?:string;speech?:string};
+type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instruction?:string;speech?:string;explanation?:string};
 type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
+type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
@@ -49,6 +50,10 @@ function playVocabularySpeech(speech:string[]){
   return;
  }
  void speakFrench(speech[0],{rate:.72});
+}
+
+function normalizeExerciseText(value:string){
+ return value.normalize("NFC").toLocaleLowerCase("fr").replace(/[’]/g,"'").replace(/[.,!?;:]/g,"").replace(/\s+/g," ").trim();
 }
 
 function spriteBackground(path:string,index:number,columns:number,rows:number):CSSProperties{
@@ -429,16 +434,16 @@ const A2_REVISION_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A2_REVISION_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Nous ___ le bus à huit heures.",speech:"Choisissez la bonne forme du verbe prendre.",instruction:"اختر التصريف الصحيح للفعل prendre.",choices:["prenons","prenez","prennent"],correctIndex:0},
- {prompt:"Elle ___ à sept heures chaque matin.",speech:"Choisissez le bon pronom et la bonne forme du verbe se lever.",instruction:"أكمل بالفعل الضميري الصحيح.",choices:["me lève","se lève","te lèves"],correctIndex:1},
- {prompt:"Il ne travaille ___ le dimanche.",speech:"Complétez la phrase négative.",instruction:"اختر كلمة النفي المناسبة لمعنى «أبدًا».",choices:["personne","rien","jamais"],correctIndex:2},
- {prompt:"___ habitez-vous ici ? — Depuis 2024.",speech:"Choisissez le mot interrogatif adapté à la réponse depuis deux mille vingt-quatre.",instruction:"اختر أداة السؤال المناسبة للإجابة المعطاة.",choices:["Depuis quand","Pourquoi","Combien"],correctIndex:0},
- {prompt:"On ___ souvent au parc après le travail.",speech:"Choisissez la bonne forme du verbe aller avec on.",instruction:"اختر تصريف aller الصحيح مع on.",choices:["allez","va","vont"],correctIndex:1},
- {prompt:"J’habite à Lyon ___ trois ans.",speech:"Complétez la phrase pour exprimer une durée qui continue.",instruction:"اختر الأداة التي تعبّر عن مدة ما زالت مستمرة.",choices:["pendant","il y a","depuis"],correctIndex:2},
- {prompt:"Le magasin est fermé, ___ nous revenons demain.",speech:"Choisissez le connecteur qui exprime la conséquence.",instruction:"اختر الرابط الذي يعبّر عن النتيجة.",choices:["donc","mais","parce que"],correctIndex:0},
- {prompt:"Quel jour Nadia ne travaille-t-elle jamais ?",speech:"Quel jour Nadia ne travaille-t-elle jamais ?",instruction:"أجب وفق نص «أسبوع ناديا».",choices:["Le mardi","Le lundi","Le samedi"],correctIndex:1},
- {prompt:"Je ne veux rien acheter aujourd’hui.",speech:"Je ne veux rien acheter aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أريد شراء أي شيء اليوم.","لم أعد أذهب إلى السوق اليوم.","لا أعرف أحدًا في المتجر."],correctIndex:0},
- {prompt:"D’abord, je termine mon travail, ___ je rentre chez moi.",speech:"Complétez la suite logique de la phrase.",instruction:"اختر الرابط الذي يكمل ترتيب الأحداث.",choices:["parce que","puis","pourtant"],correctIndex:1}
+ {prompt:"Nous ___ le bus à huit heures.",speech:"Choisissez la bonne forme du verbe prendre.",instruction:"اختر التصريف الصحيح للفعل prendre.",choices:["prenons","prenez","prennent"],correctIndex:0,explanation:"مع الضمير nous يُصرّف prendre هكذا: nous prenons."},
+ {prompt:"Elle ___ à sept heures chaque matin.",speech:"Choisissez le bon pronom et la bonne forme du verbe se lever.",instruction:"أكمل بالفعل الضميري الصحيح.",choices:["me lève","se lève","te lèves"],correctIndex:1,explanation:"الضمير الانعكاسي الموافق لـ elle هو se: elle se lève."},
+ {prompt:"Il ne travaille ___ le dimanche.",speech:"Complétez la phrase négative.",instruction:"اختر كلمة النفي المناسبة لمعنى «أبدًا».",choices:["personne","rien","jamais"],correctIndex:2,explanation:"ne…jamais تعني «لا… أبدًا»، بينما rien للأشياء وpersonne للأشخاص."},
+ {prompt:"___ habitez-vous ici ? — Depuis 2024.",speech:"Choisissez le mot interrogatif adapté à la réponse depuis deux mille vingt-quatre.",instruction:"اختر أداة السؤال المناسبة للإجابة المعطاة.",choices:["Depuis quand","Pourquoi","Combien"],correctIndex:0,explanation:"الإجابة التي تبدأ بـ depuis تحدد بداية مدة مستمرة؛ لذلك نسأل Depuis quand ؟"},
+ {prompt:"On ___ souvent au parc après le travail.",speech:"Choisissez la bonne forme du verbe aller avec on.",instruction:"اختر تصريف aller الصحيح مع on.",choices:["allez","va","vont"],correctIndex:1,explanation:"الضمير on يأخذ تصريف المفرد الغائب: on va."},
+ {prompt:"J’habite à Lyon ___ trois ans.",speech:"Complétez la phrase pour exprimer une durée qui continue.",instruction:"اختر الأداة التي تعبّر عن مدة ما زالت مستمرة.",choices:["pendant","il y a","depuis"],correctIndex:2,explanation:"depuis تربط مدة بدأت في الماضي وما زالت مستمرة في الحاضر."},
+ {prompt:"Le magasin est fermé, ___ nous revenons demain.",speech:"Choisissez le connecteur qui exprime la conséquence.",instruction:"اختر الرابط الذي يعبّر عن النتيجة.",choices:["donc","mais","parce que"],correctIndex:0,explanation:"donc يقدّم النتيجة: المتجر مغلق، لذلك سنعود غدًا."},
+ {prompt:"Quel jour Nadia ne travaille-t-elle jamais ?",speech:"Quel jour Nadia ne travaille-t-elle jamais ?",instruction:"أجب وفق نص «أسبوع ناديا».",choices:["Le mardi","Le lundi","Le samedi"],correctIndex:1,explanation:"ورد في النص صراحةً أنها لا تعمل يوم الاثنين."},
+ {prompt:"Je ne veux rien acheter aujourd’hui.",speech:"Je ne veux rien acheter aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أريد شراء أي شيء اليوم.","لم أعد أذهب إلى السوق اليوم.","لا أعرف أحدًا في المتجر."],correctIndex:0,explanation:"ne…rien تنفي الشيء، والمعنى هنا: لا أريد شراء أي شيء."},
+ {prompt:"D’abord, je termine mon travail, ___ je rentre chez moi.",speech:"Complétez la suite logique de la phrase.",instruction:"اختر الرابط الذي يكمل ترتيب الأحداث.",choices:["parce que","puis","pourtant"],correctIndex:1,explanation:"بعد d’abord نستخدم puis لترتيب الحدث التالي: أولًا… ثم…"}
 ];
 
 const A2_REVISION_READING={
@@ -466,6 +471,24 @@ const A2_REVISION_LISTENING={
 };
 
 const A2_REVISION_WRITING_MODEL="En général, je me lève à six heures et demie. D’abord, je prends mon petit-déjeuner, puis je me prépare pour aller au travail. Je pars à sept heures et je prends souvent le bus. Je ne travaille jamais le vendredi. Après le travail, je fais mes courses ou je retrouve un ami. Enfin, je rentre chez moi parce que j’aime passer une soirée calme avec ma famille.";
+
+const A2_REVISION_DICTATION=[
+ {speech:"Je me réveille à sept heures pendant la semaine.",ar:"أستيقظ الساعة السابعة خلال أيام الأسبوع."},
+ {speech:"Nous ne prenons jamais le métro le dimanche.",ar:"لا نستقل المترو يوم الأحد أبدًا."},
+ {speech:"D’abord, elle finit son travail, puis elle rentre chez elle.",ar:"تنهي عملها أولًا، ثم تعود إلى منزلها."}
+];
+
+const A2_REVISION_BUILDERS=[
+ {tokens:["semaine.","tôt","Je","pendant","lève","la","me"],answer:["Je","me","lève","tôt","pendant","la","semaine."],ar:"أستيقظ مبكرًا خلال أيام الأسبوع."},
+ {tokens:["télévision","jamais","matin.","Elle","la","regarde","le","ne"],answer:["Elle","ne","regarde","jamais","la","télévision","le","matin."],ar:"لا تشاهد التلفاز صباحًا أبدًا."},
+ {tokens:["puis","repas,","table.","D’abord,","mettons","nous","le","la","préparons","nous"],answer:["D’abord,","nous","préparons","le","repas,","puis","nous","mettons","la","table."],ar:"نحضّر الطعام أولًا، ثم نرتب المائدة."}
+];
+
+const A2_REVISION_DIALOGUES=[
+ {context:"Votre collègue demande : « Depuis quand travaillez-vous ici ? »",prompt:"ما الإجابة الطبيعية؟",choices:["Depuis deux ans.","Pendant mardi.","Il y a maintenant."],correctIndex:0,feedback:"تستخدم depuis مع مدة بدأت في الماضي وما زالت مستمرة."},
+ {context:"Votre ami propose : « On se retrouve devant la gare à huit heures ? »",prompt:"كيف توافق وتؤكد الموعد؟",choices:["Je ne vois personne.","Oui, ça me va. À huit heures devant la gare.","Depuis huit heures."],correctIndex:1,feedback:"الإجابة تؤكد القبول والوقت والمكان بوضوح."},
+ {context:"On vous demande : « Tu regardes la télévision le matin ? »",prompt:"كيف تنفي العادة تمامًا؟",choices:["Je ne la regarde jamais le matin.","Je ne regarde personne.","Je regarde depuis le matin."],correctIndex:0,feedback:"ne…jamais هي الصيغة المناسبة لنفي عادة بصورة تامة."}
+];
 
 const A2_MODULES:CourseModule[]=[
  {
@@ -1827,6 +1850,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
  const [revisionListeningAnswers,setRevisionListeningAnswers]=useState<Record<number,number>>({});
+ const [revisionWorkshopPanel,setRevisionWorkshopPanel]=useState<RevisionWorkshopPanel>("dictation");
+ const [revisionDictationIndex,setRevisionDictationIndex]=useState(0);
+ const [revisionDictationText,setRevisionDictationText]=useState("");
+ const [revisionDictationChecked,setRevisionDictationChecked]=useState(false);
+ const [revisionBuilderIndex,setRevisionBuilderIndex]=useState(0);
+ const [revisionBuilderSelection,setRevisionBuilderSelection]=useState<number[]>([]);
+ const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
+ const [revisionDialogueAnswers,setRevisionDialogueAnswers]=useState<Record<number,number>>({});
  const [revisionWritingText,setRevisionWritingText]=useState("");
  const [isRecording,setIsRecording]=useState(false);
  const [recordingUrl,setRecordingUrl]=useState("");
@@ -1847,6 +1878,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
+ const revisionDictationItem=A2_REVISION_DICTATION[revisionDictationIndex];
+ const revisionDictationCorrect=revisionDictationChecked&&normalizeExerciseText(revisionDictationText)===normalizeExerciseText(revisionDictationItem.speech);
+ const revisionBuilderItem=A2_REVISION_BUILDERS[revisionBuilderIndex];
+ const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
+ const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
  const revisionWritingChecks=[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
@@ -1904,7 +1940,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
- const quizQuestions=useMemo(()=>{
+ const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
@@ -1949,6 +1985,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAdjectivePanel("appearance");
   setAdjectiveVisualPageIndex(0);
   setRevisionListeningAnswers({});
+  setRevisionWorkshopPanel("dictation");
+  setRevisionDictationIndex(0);
+  setRevisionDictationText("");
+  setRevisionDictationChecked(false);
+  setRevisionBuilderIndex(0);
+  setRevisionBuilderSelection([]);
+  setRevisionBuilderChecked(false);
+  setRevisionDialogueAnswers({});
   setRevisionWritingText("");
  },[initialModuleId,level]);
 
@@ -2506,6 +2550,33 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{A2_REVISION_LISTENING.title}</h4><p dir="ltr">{A2_REVISION_LISTENING.text}</p></details>
      </section>}
+     {isA2Revision&&<section className="a2-interactive-workshop">
+      <header><span>Atelier interactif</span><h3>مختبر التطبيق</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
+      <nav aria-label="أنشطة مختبر التطبيق">
+       <button className={revisionWorkshopPanel==="dictation"?"active":""} onClick={()=>setRevisionWorkshopPanel("dictation")}><Headphones/><span><strong>إملاء صوتي</strong><small>Écouter et écrire</small></span></button>
+       <button className={revisionWorkshopPanel==="builder"?"active":""} onClick={()=>setRevisionWorkshopPanel("builder")}><NotebookTabs/><span><strong>بناء الجملة</strong><small>Construire</small></span></button>
+       <button className={revisionWorkshopPanel==="dialogue"?"active":""} onClick={()=>setRevisionWorkshopPanel("dialogue")}><MessageCircle/><span><strong>حوار تفاعلي</strong><small>Réagir</small></span></button>
+      </nav>
+      {revisionWorkshopPanel==="dictation"&&<article className="a2-dictation-panel">
+       <div className="a2-workshop-progress"><span>الجملة {revisionDictationIndex+1} من {A2_REVISION_DICTATION.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/A2_REVISION_DICTATION.length*100}%`}}/></i></div>
+       <h4>استمع ثم اكتب الجملة الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الجملة المكتوبة إلا بعد التحقق.</p>
+       <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:.7})}><Volume2/> استمع إلى الجملة</button>
+       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder="Écrivez la phrase ici…" aria-label="اكتب الجملة الفرنسية التي سمعتها"/>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<A2_REVISION_DICTATION.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
+      </article>}
+      {revisionWorkshopPanel==="builder"&&<article className="a2-builder-panel">
+       <div className="a2-workshop-progress"><span>الجملة {revisionBuilderIndex+1} من {A2_REVISION_BUILDERS.length}</span><i><b style={{width:`${(revisionBuilderIndex+1)/A2_REVISION_BUILDERS.length*100}%`}}/></i></div>
+       <h4>رتّب الكلمات لتكوين جملة صحيحة</h4><p>{revisionBuilderItem.ar}</p>
+       <div className="a2-built-sentence" dir="ltr">{revisionBuilderWords.length?revisionBuilderSelection.map((tokenIndex,position)=><button key={`${tokenIndex}-${position}`} onClick={()=>{setRevisionBuilderSelection(current=>current.filter((_,itemIndex)=>itemIndex!==position));setRevisionBuilderChecked(false)}}>{revisionBuilderItem.tokens[tokenIndex]}</button>):<span>اضغط على الكلمات بالترتيب…</span>}</div>
+       <div className="a2-word-bank" dir="ltr">{revisionBuilderItem.tokens.map((token,index)=><button key={`${token}-${index}`} disabled={revisionBuilderSelection.includes(index)} onClick={()=>{setRevisionBuilderSelection(current=>[...current,index]);setRevisionBuilderChecked(false)}}>{token}</button>)}</div>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<A2_REVISION_BUILDERS.length-1&&<button className="secondary" onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
+      </article>}
+      {revisionWorkshopPanel==="dialogue"&&<div className="a2-dialogue-panel">
+       {A2_REVISION_DIALOGUES.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
+      </div>}
+     </section>}
      <div className="university-practice-list">
       {practiceExamples.map((example,index)=><article key={`${example.fr}-${index}`}>
        <i>{String(index+1).padStart(2,"0")}</i>
@@ -2552,6 +2623,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
       <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isA2Revision?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
+      {isA2Revision&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
       <button onClick={resetQuiz}><RotateCcw/> {isA2Revision?"أعد التمرين":"أعد الاختبار"}</button>
      </div>}
     </section>}

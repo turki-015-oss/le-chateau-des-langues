@@ -155,7 +155,9 @@ export default function SmartCompass() {
       let value:number|null=null;
       if (typeof event.webkitCompassHeading === "number" && Number.isFinite(event.webkitCompassHeading)) {
         value=event.webkitCompassHeading;
-      } else if (typeof event.alpha === "number" && (event.absolute || rawEvent.type === "deviceorientationabsolute")) {
+      } else if (typeof event.alpha === "number" && Number.isFinite(event.alpha)) {
+        // Several Android browsers expose usable compass data through
+        // `deviceorientation` while reporting `absolute: false`.
         value=360-event.alpha+screenAngle();
       }
       if (value === null) return;

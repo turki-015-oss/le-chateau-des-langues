@@ -3738,7 +3738,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>
      </section>}
      {isEnhancedA2Lesson&&<section className="a2-interactive-workshop">
-      <header><span>Atelier interactif</span><h3>تمرين تطبيقي</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
+      <header><span>Exercice pratique</span><h3>تمرين تطبيقي</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
       <nav aria-label="أنشطة التمرين التطبيقي">
        <button className={revisionWorkshopPanel==="dictation"?"active":""} onClick={()=>setRevisionWorkshopPanel("dictation")}><Headphones/><span><strong>إملاء صوتي</strong><small>Écouter et écrire</small></span></button>
        <button className={revisionWorkshopPanel==="builder"?"active":""} onClick={()=>setRevisionWorkshopPanel("builder")}><NotebookTabs/><span><strong>بناء الجملة</strong><small>Construire</small></span></button>

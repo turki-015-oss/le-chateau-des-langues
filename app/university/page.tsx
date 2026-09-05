@@ -428,7 +428,7 @@ const A2_REVISION_PRACTICE_ITEMS:Example[]=[
  {fr:"Est-ce que vous prenez le métro pour aller au travail ?",ar:"هل تستقلون المترو للذهاب إلى العمل؟"},
  {fr:"Je ne veux rien acheter aujourd’hui.",ar:"لا أريد شراء أي شيء اليوم."},
  {fr:"On va souvent au marché le samedi.",ar:"غالبًا ما نذهب إلى السوق يوم السبت."},
- {fr:"D’abord, ils préparent le repas, puis ils mettent la table.",ar:"يُحضّرون الطعام أولًا، ثم يرتبون المائدة."},
+ {fr:"D’abord, ils préparent le repas, puis ils mettent la table.",ar:"أولًا، يُحضّرون الطعام، ثم يرتبون المائدة."},
  {fr:"Mes enfants se couchent vers neuf heures.",ar:"يخلد أطفالي إلى النوم قرابة الساعة التاسعة."},
  {fr:"À mon avis, ce quartier est pratique parce qu’il est bien desservi.",ar:"في رأيي، هذا الحي عملي لأن وسائل النقل تصل إليه جيدًا."}
 ];
@@ -475,13 +475,13 @@ const A2_REVISION_WRITING_MODEL="En général, je me lève à six heures et demi
 const A2_REVISION_DICTATION=[
  {speech:"Je me réveille à sept heures pendant la semaine.",ar:"أستيقظ الساعة السابعة خلال أيام الأسبوع."},
  {speech:"Nous ne prenons jamais le métro le dimanche.",ar:"لا نستقل المترو يوم الأحد أبدًا."},
- {speech:"D’abord, elle finit son travail, puis elle rentre chez elle.",ar:"تنهي عملها أولًا، ثم تعود إلى منزلها."}
+ {speech:"D’abord, elle finit son travail, puis elle rentre chez elle.",ar:"أولًا، تنهي عملها، ثم تعود إلى منزلها."}
 ];
 
 const A2_REVISION_BUILDERS=[
  {tokens:["semaine.","tôt","Je","pendant","lève","la","me"],answer:["Je","me","lève","tôt","pendant","la","semaine."],ar:"أستيقظ مبكرًا خلال أيام الأسبوع."},
  {tokens:["télévision","jamais","matin.","Elle","la","regarde","le","ne"],answer:["Elle","ne","regarde","jamais","la","télévision","le","matin."],ar:"لا تشاهد التلفاز صباحًا أبدًا."},
- {tokens:["puis","repas,","table.","D’abord,","mettons","nous","le","la","préparons","nous"],answer:["D’abord,","nous","préparons","le","repas,","puis","nous","mettons","la","table."],ar:"نحضّر الطعام أولًا، ثم نرتب المائدة."}
+ {tokens:["puis","repas,","table.","D’abord,","mettons","nous","le","la","préparons","nous"],answer:["D’abord,","nous","préparons","le","repas,","puis","nous","mettons","la","table."],ar:"أولًا، نحضّر الطعام، ثم نرتب المائدة."}
 ];
 
 const A2_REVISION_DIALOGUES=[
@@ -499,7 +499,7 @@ const A2_PASSE_COMPOSE_PRACTICE_ITEMS:Example[]=[
  {fr:"Est-ce que tu as trouvé ton portefeuille ?",ar:"هل وجدت محفظتك؟"},
  {fr:"Ils se sont levés avant six heures.",ar:"استيقظوا قبل الساعة السادسة."},
  {fr:"J’ai beaucoup aimé cette exposition.",ar:"أعجبني هذا المعرض كثيرًا."},
- {fr:"D’abord, elle a téléphoné, puis elle a envoyé un courriel.",ar:"اتصلت أولًا، ثم أرسلت بريدًا إلكترونيًا."},
+ {fr:"D’abord, elle a téléphoné, puis elle a envoyé un courriel.",ar:"أولًا، اتصلت، ثم أرسلت بريدًا إلكترونيًا."},
  {fr:"Le spectacle a commencé en retard, mais il a été excellent.",ar:"بدأ العرض متأخرًا، لكنه كان ممتازًا."}
 ];
 
@@ -543,13 +543,13 @@ const A2_PASSE_COMPOSE_WRITING_MODEL="Samedi dernier, je me suis levé à huit h
 const A2_PASSE_COMPOSE_DICTATION=[
  {speech:"Hier, nous avons visité un quartier historique.",ar:"زرنا حيًا تاريخيًا أمس."},
  {speech:"Elle n’est pas arrivée à l’heure prévue.",ar:"لم تصل في الوقت المحدد."},
- {speech:"D’abord, ils ont réservé, puis ils sont partis.",ar:"حجزوا أولًا، ثم غادروا."}
+ {speech:"D’abord, ils ont réservé, puis ils sont partis.",ar:"أولًا، أجروا الحجز، ثم غادروا."}
 ];
 
 const A2_PASSE_COMPOSE_BUILDERS=[
  {tokens:["hier.","avons","Nous","musée","visité","le"],answer:["Nous","avons","visité","le","musée","hier."],ar:"زرنا المتحف أمس."},
  {tokens:["pas","train.","n’est","Elle","du","descendue"],answer:["Elle","n’est","pas","descendue","du","train."],ar:"لم تنزل من القطار."},
- {tokens:["puis","fenêtres,","maison.","D’abord,","sommes","avons","les","de","fermé","nous","sortis","nous","la"],answer:["D’abord,","nous","avons","fermé","les","fenêtres,","puis","nous","sommes","sortis","de","la","maison."],ar:"أغلقنا النوافذ أولًا، ثم خرجنا من المنزل."}
+ {tokens:["puis","fenêtres,","maison.","D’abord,","sommes","avons","les","de","fermé","nous","sortis","nous","la"],answer:["D’abord,","nous","avons","fermé","les","fenêtres,","puis","nous","sommes","sortis","de","la","maison."],ar:"أولًا، أغلقنا النوافذ، ثم خرجنا من المنزل."}
 ];
 
 const A2_PASSE_COMPOSE_DIALOGUES=[
@@ -635,7 +635,7 @@ const A2_FUTURE_PRACTICE_ITEMS:Example[]=[
  {fr:"Est-ce que tu viendras à la réunion demain ?",ar:"هل ستحضر الاجتماع غدًا؟"},
  {fr:"Je vous enverrai l’adresse dès que je la connaîtrai.",ar:"سأرسل إليكم العنوان فور معرفتي به."},
  {fr:"Si le temps est agréable, nous déjeunerons dehors.",ar:"إذا كان الطقس لطيفًا، فسنتناول الغداء في الخارج."},
- {fr:"D’abord, nous allons réserver les billets, puis nous choisirons l’hôtel.",ar:"سنحجز التذاكر أولًا، ثم سنختار الفندق."},
+ {fr:"D’abord, nous allons réserver les billets, puis nous choisirons l’hôtel.",ar:"أولًا، سنحجز التذاكر، ثم سنختار الفندق."},
  {fr:"À mon avis, les transports seront plus rapides dans quelques années.",ar:"في رأيي، ستكون وسائل النقل أسرع بعد بضع سنوات."}
 ];
 
@@ -974,7 +974,7 @@ const A2_CONNECTORS_PRACTICE_ITEMS:Example[]=[
  {fr:"Je prends le bus parce que ma voiture est en panne.",ar:"أستقل الحافلة لأن سيارتي معطلة."},
  {fr:"Le magasin était fermé, donc nous sommes revenus le lendemain.",ar:"كان المتجر مغلقًا، لذلك عدنا في اليوم التالي."},
  {fr:"La chambre est petite ; pourtant, elle est très confortable.",ar:"الغرفة صغيرة، لكنها مريحة جدًا رغم ذلك."},
- {fr:"D’abord, vérifiez l’adresse, puis envoyez le formulaire.",ar:"تحققوا من العنوان أولًا، ثم أرسلوا الاستمارة."},
+ {fr:"D’abord, vérifiez l’adresse, puis envoyez le formulaire.",ar:"أولًا، تحققوا من العنوان، ثم أرسلوا الاستمارة."},
  {fr:"Le quartier est calme et, de plus, il est bien desservi.",ar:"الحي هادئ، كما أن المواصلات تخدمه جيدًا."},
  {fr:"En résumé, cette solution est simple et économique.",ar:"باختصار، هذا الحل بسيط واقتصادي."}
 ];
@@ -1019,13 +1019,13 @@ const A2_CONNECTORS_WRITING_MODEL="Samedi, j’ai participé à une activité qu
 const A2_CONNECTORS_DICTATION=[
  {speech:"Voici le document que vous devez compléter.",ar:"هذا هو المستند الذي يجب عليكم إكماله."},
  {speech:"Le bus était en retard, donc j’ai pris le métro.",ar:"كانت الحافلة متأخرة، لذلك استقللت المترو."},
- {speech:"D’abord, nous avons réservé, puis nous avons confirmé l’adresse.",ar:"حجزنا أولًا، ثم أكدنا العنوان."}
+ {speech:"D’abord, nous avons réservé, puis nous avons confirmé l’adresse.",ar:"أولًا، أجرينا الحجز، ثم أكدنا العنوان."}
 ];
 
 const A2_CONNECTORS_BUILDERS=[
  {tokens:["parle.","qui","C’est","professeur","le"],answer:["C’est","le","professeur","qui","parle."],ar:"هذا هو المعلم الذي يتحدث."},
  {tokens:["annulée.","donc","pleut,","sortie","Il","la","est"],answer:["Il","pleut,","donc","la","sortie","est","annulée."],ar:"تمطر، ولذلك أُلغيت النزهة."},
- {tokens:["l’adresse.","D’abord,","puis","réservez,","confirmez"],answer:["D’abord,","réservez,","puis","confirmez","l’adresse."],ar:"احجزوا أولًا، ثم أكدوا العنوان."}
+ {tokens:["l’adresse.","D’abord,","puis","réservez,","confirmez"],answer:["D’abord,","réservez,","puis","confirmez","l’adresse."],ar:"أولًا، أجروا الحجز، ثم أكدوا العنوان."}
 ];
 
 const A2_CONNECTORS_DIALOGUES=[
@@ -1106,7 +1106,7 @@ const A2_EXPRESSION_PRACTICE_ITEMS=[
  {fr:"À mon avis, ce quartier est agréable parce qu’il est calme.",ar:"في رأيي، السكن في هذا الحي مريح لأنه هادئ."},
  {fr:"Je suis tout à fait d’accord avec cette proposition.",ar:"أنا موافق تمامًا على هذا الاقتراح."},
  {fr:"Je comprends votre point de vue, mais je préfère une autre solution.",ar:"أتفهم وجهة نظركم، لكنني أفضل حلًا آخر."},
- {fr:"D’abord, je vais présenter le problème, puis je proposerai une solution.",ar:"سأعرض المشكلة أولًا، ثم سأقترح حلًا."},
+ {fr:"D’abord, je vais présenter le problème, puis je proposerai une solution.",ar:"أولًا، سأعرض المشكلة، ثم سأقترح حلًا."},
  {fr:"Par exemple, nous pourrions prolonger les horaires le samedi.",ar:"يمكننا مثلًا تمديد ساعات العمل يوم السبت."},
  {fr:"En résumé, cette activité est utile et facile à organiser.",ar:"خلاصة القول: هذا النشاط مفيد وسهل التنظيم."},
  {fr:"Je vous écris pour demander des informations sur la formation.",ar:"أكتب إليكم للاستفسار عن الدورة التدريبية."},
@@ -1231,7 +1231,7 @@ const A2_MODULES:CourseModule[]=[
     "mais وpourtant لإظهار التعارض.",
     "ابنِ فقرة قصيرة: عادة + تفصيل + سبب + رأي."
    ],[
-    {fr:"D’abord, je consulte mes messages, puis je commence mon travail.",ar:"أطّلع أولًا على رسائلي، ثم أبدأ عملي."},
+    {fr:"D’abord, je consulte mes messages, puis je commence mon travail.",ar:"أولًا، أتفقّد رسائلي، ثم أبدأ عملي."},
     {fr:"Je préfère marcher parce que mon bureau est près de chez moi.",ar:"أفضل المشي لأن مكتبي قريب من منزلي."},
     {fr:"Le trajet est long, mais le quartier est très agréable.",ar:"الطريق طويل، لكن الحي لطيف جدًا."}
    ])
@@ -1298,7 +1298,7 @@ const A2_MODULES:CourseModule[]=[
     "السبب والنتيجة: parce que، alors، donc.",
     "لإجابة مترابطة: حدد الزمن، ثم الحدث، ثم النتيجة أو الانطباع."
    ],[
-    {fr:"D’abord, nous avons acheté les billets, puis nous sommes entrés dans la salle.",ar:"اشترينا التذاكر أولًا، ثم دخلنا القاعة."},
+    {fr:"D’abord, nous avons acheté les billets, puis nous sommes entrés dans la salle.",ar:"أولًا، اشترينا التذاكر، ثم دخلنا القاعة."},
     {fr:"Le bus est arrivé en retard, alors j’ai appelé mon collègue.",ar:"وصلت الحافلة متأخرة، لذلك اتصلت بزميلي."},
     {fr:"J’ai passé une excellente journée parce que j’ai découvert plusieurs endroits.",ar:"قضيت يومًا رائعًا لأنني اكتشفت عدة أماكن."}
    ])
@@ -1750,7 +1750,7 @@ const A2_MODULES:CourseModule[]=[
     "التزامن: pendant que؛ والنهاية: enfin، finalement.",
     "لا تبدأ كل جملة بالرابط نفسه؛ اختره وفق العلاقة الزمنية الحقيقية."
    ],[
-    {fr:"D’abord, remplissez le formulaire, puis signez-le.",ar:"عبئوا الاستمارة أولًا، ثم وقّعوها."},
+    {fr:"D’abord, remplissez le formulaire, puis signez-le.",ar:"أولًا، عبّئوا الاستمارة، ثم وقّعوها."},
     {fr:"Pendant que je préparais le repas, Lina mettait la table.",ar:"بينما كنت أحضّر الطعام، كانت لينا ترتب المائدة."},
     {fr:"Finalement, nous avons trouvé une solution acceptable.",ar:"في النهاية توصلنا إلى حل مقبول."}
    ]),
@@ -1863,7 +1863,7 @@ const A2_MODULES:CourseModule[]=[
      "اختم بـ en résumé أو pour conclure مع موقف نهائي واضح."
     ],[
      {fr:"Aujourd’hui, je voudrais présenter une activité de mon quartier.",ar:"أود اليوم أن أعرّف بنشاط يقام في حيي."},
-     {fr:"D’abord, je décrirai le projet ; ensuite, j’expliquerai son intérêt.",ar:"سأصف المشروع أولًا، ثم سأوضح أهميته."},
+     {fr:"D’abord, je décrirai le projet ; ensuite, j’expliquerai son intérêt.",ar:"أولًا، سأصف المشروع، ثم سأوضح أهميته."},
      {fr:"En résumé, cette proposition répond à nos besoins.",ar:"وخلاصة القول أن هذا الاقتراح يلبي احتياجاتنا."}
     ]),
     section("Écrire un message adapté","كتابة رسالة ملائمة للموقف","اختر التحية والختام بحسب المخاطَب، ثم اجعل سبب الرسالة والتفاصيل والطلب سهلة العثور عليها.",[

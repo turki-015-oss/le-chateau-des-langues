@@ -11,7 +11,7 @@ type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "de
 type LocationStatus = "idle" | "locating" | "ready" | "denied" | "unavailable";
 type OrientationWithWebkit = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type OrientationConstructor = typeof DeviceOrientationEvent & {
-  requestPermission?: () => Promise<PermissionState>;
+  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
 type TrueNorthPlugin = {
   getDeclination(options:{latitude:number;longitude:number;altitude?:number;timestamp?:number}):Promise<{declination:number}>;
@@ -67,6 +67,7 @@ export default function SmartCompass() {
   const [distance,setDistance]=useState<number|null>(null);
   const [accuracy,setAccuracy]=useState<number|null>(null);
   const latestHeading=useRef(0);
+  const latestAlphaHeading=useRef<number|null>(null);
   const androidDeclination=useRef(0);
   const overlayRef=useRef<HTMLDivElement|null>(null);
   const panelRef=useRef<HTMLElement|null>(null);
@@ -150,28 +151,38 @@ export default function SmartCompass() {
 
     let received=false;
     let frame:number|null=null;
-    const onOrientation=(rawEvent:Event)=>{
-      const event=rawEvent as OrientationWithWebkit;
-      let value:number|null=null;
-      if (typeof event.webkitCompassHeading === "number" && Number.isFinite(event.webkitCompassHeading)) {
-        value=event.webkitCompassHeading;
-      } else if (typeof event.alpha === "number" && Number.isFinite(event.alpha)) {
-        // Several Android browsers expose usable compass data through
-        // `deviceorientation` while reporting `absolute: false`.
-        value=360-event.alpha+screenAngle();
-      }
-      if (value === null) return;
+    const publishHeading=(value:number)=>{
       received=true;
       latestHeading.current=normalizeDegrees(value);
-      if (frame === null) frame=window.requestAnimationFrame(()=>{
+      if(frame===null)frame=window.requestAnimationFrame(()=>{
         frame=null;
         setHeading(latestHeading.current);
         setCompassStatus("active");
       });
     };
+    const onOrientation=(rawEvent:Event)=>{
+      const event=rawEvent as OrientationWithWebkit;
+      let value:number|null=null;
+      if (typeof event.webkitCompassHeading === "number" && Number.isFinite(event.webkitCompassHeading)) {
+        latestAlphaHeading.current=null;
+        value=event.webkitCompassHeading;
+      } else if (typeof event.alpha === "number" && Number.isFinite(event.alpha)) {
+        // Several Android browsers expose usable compass data through
+        // `deviceorientation` while reporting `absolute: false`.
+        latestAlphaHeading.current=360-event.alpha;
+        value=latestAlphaHeading.current+screenAngle();
+      }
+      if (value === null) return;
+      publishHeading(value);
+    };
+    const onScreenOrientationChange=()=>{
+      if(latestAlphaHeading.current!==null)publishHeading(latestAlphaHeading.current+screenAngle());
+    };
 
     window.addEventListener("deviceorientationabsolute",onOrientation,true);
     window.addEventListener("deviceorientation",onOrientation,true);
+    window.addEventListener("orientationchange",onScreenOrientationChange);
+    window.screen.orientation?.addEventListener("change",onScreenOrientationChange);
     setCompassStatus("detecting");
     const timer=window.setTimeout(()=>{if(!received)setCompassStatus("unavailable")},4500);
     return()=>{
@@ -179,6 +190,8 @@ export default function SmartCompass() {
       if(frame!==null)window.cancelAnimationFrame(frame);
       window.removeEventListener("deviceorientationabsolute",onOrientation,true);
       window.removeEventListener("deviceorientation",onOrientation,true);
+      window.removeEventListener("orientationchange",onScreenOrientationChange);
+      window.screen.orientation?.removeEventListener("change",onScreenOrientationChange);
     };
   },[authorized,enabled]);
 
@@ -224,12 +237,17 @@ export default function SmartCompass() {
       return;
     }
     setLocationStatus("locating");
-    navigator.geolocation.getCurrentPosition(position=>{
+    const applyWebPosition=(position:GeolocationPosition)=>{
       const {latitude,longitude,accuracy:positionAccuracy}=position.coords;
       applyPosition(latitude,longitude,positionAccuracy);
+    };
+    navigator.geolocation.getCurrentPosition(position=>{
+      applyWebPosition(position);
+      navigator.geolocation.getCurrentPosition(applyWebPosition,()=>{},
+        {enableHighAccuracy:true,timeout:12000,maximumAge:0});
     },error=>{
       setLocationStatus(error.code===error.PERMISSION_DENIED?"denied":"unavailable");
-    },{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
+    },{enableHighAccuracy:false,timeout:8000,maximumAge:86400000});
   };
 
   const requestSensorPermission=async()=>{
@@ -241,7 +259,7 @@ export default function SmartCompass() {
       const OrientationEvent=window.DeviceOrientationEvent as OrientationConstructor;
       if(typeof OrientationEvent.requestPermission==="function"&&!authorized){
         try{
-          const permission=await OrientationEvent.requestPermission();
+          const permission=await OrientationEvent.requestPermission(true);
           if(permission==="granted"){
             setAuthorized(true);
             return;
@@ -279,6 +297,7 @@ export default function SmartCompass() {
   const aligned=enabled&&relativeQibla!==null&&(relativeQibla<=4||relativeQibla>=356);
   const northRotation=normalizeDegrees(-(heading??0));
   const qiblaRotation=relativeQibla??0;
+  const qiblaPendingLabel=locationStatus==="locating"?"جارٍ تحديد القبلة":locationStatus==="denied"?"اسمح بالموقع":locationStatus==="unavailable"?"تعذر تحديد الموقع":"اضغط لتحديد القبلة";
 
   return <>
     <div className="smart-compass-control">
@@ -290,7 +309,7 @@ export default function SmartCompass() {
           </span>
           <i className={`smart-qibla-mini ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}/>
         </span>
-        <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة":qiblaBearing===null?"جارٍ تحديد القبلة":aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
+        <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة":qiblaBearing===null?qiblaPendingLabel:aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
       </button>
       <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
     </div>
@@ -308,7 +327,7 @@ export default function SmartCompass() {
               <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
               <i className="smart-north-hand"><span/></i>
             </span>
-            <i className={`smart-qibla-hand ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>{qiblaBearing===null?"جارٍ تحديد القبلة":"القبلة"}</small></span></i>
+            <i className={`smart-qibla-hand ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>{qiblaBearing===null?qiblaPendingLabel:"القبلة"}</small></span></i>
             <span className="smart-heading-index" aria-hidden="true"/>
             <div className="smart-heading-value"><strong>{heading===null?"—":String(Math.round(heading)).padStart(3,"0")}°</strong><small>{headingLabel}</small></div>
           </div>

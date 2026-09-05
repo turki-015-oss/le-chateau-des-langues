@@ -490,6 +490,74 @@ const A2_REVISION_DIALOGUES=[
  {context:"On vous demande : « Tu regardes la télévision le matin ? »",prompt:"كيف تنفي العادة تمامًا؟",choices:["Je ne la regarde jamais le matin.","Je ne regarde personne.","Je regarde depuis le matin."],correctIndex:0,feedback:"ne…jamais هي الصيغة المناسبة لنفي عادة بصورة تامة."}
 ];
 
+const A2_PASSE_COMPOSE_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ce matin, j’ai oublié mes clés sur la table.",ar:"نسيت مفاتيحي على الطاولة هذا الصباح."},
+ {fr:"Nous avons choisi un restaurant près de l’hôtel.",ar:"اخترنا مطعمًا قريبًا من الفندق."},
+ {fr:"Elle est descendue du train à Marseille.",ar:"نزلت من القطار في مرسيليا."},
+ {fr:"Mes amis sont venus dîner chez moi hier.",ar:"جاء أصدقائي لتناول العشاء في منزلي أمس."},
+ {fr:"Vous n’avez pas répondu à mon message.",ar:"لم تردّوا على رسالتي."},
+ {fr:"Est-ce que tu as trouvé ton portefeuille ?",ar:"هل وجدت محفظتك؟"},
+ {fr:"Ils se sont levés avant six heures.",ar:"استيقظوا قبل الساعة السادسة."},
+ {fr:"J’ai beaucoup aimé cette exposition.",ar:"أعجبني هذا المعرض كثيرًا."},
+ {fr:"D’abord, elle a téléphoné, puis elle a envoyé un courriel.",ar:"اتصلت أولًا، ثم أرسلت بريدًا إلكترونيًا."},
+ {fr:"Le spectacle a commencé en retard, mais il a été excellent.",ar:"بدأ العرض متأخرًا، لكنه كان ممتازًا."}
+];
+
+const A2_PASSE_COMPOSE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Hier, nous ___ un film français.",speech:"Complétez la phrase avec le verbe regarder au passé composé.",instruction:"صرّف regarder في الماضي المركب مع nous.",choices:["avons regardé","sommes regardés","avez regardé"],correctIndex:0,explanation:"معظم الأفعال ومنها regarder تستخدم avoir: nous avons regardé."},
+ {prompt:"Lina ___ à neuf heures.",speech:"Choisissez la forme correcte du verbe arriver au passé composé.",instruction:"اختر صيغة arriver الصحيحة مع Lina.",choices:["a arrivé","est arrivée","est arrivé"],correctIndex:1,explanation:"arriver يستخدم être، واسم المفعول يطابق Lina في المؤنث: arrivée."},
+ {prompt:"Ils ont ___ le train de midi.",speech:"Choisissez le participe passé du verbe prendre.",instruction:"اختر اسم المفعول الصحيح من prendre.",choices:["prendu","prend","pris"],correctIndex:2,explanation:"اسم المفعول غير المنتظم من prendre هو pris."},
+ {prompt:"Elles se sont ___ très tôt.",speech:"Complétez avec le participe passé du verbe se lever.",instruction:"اختر المطابقة الصحيحة مع جمع المؤنث.",choices:["levées","levé","levés"],correctIndex:0,explanation:"مع elles والفعل الضميري نضيف -es: elles se sont levées."},
+ {prompt:"Je ___ pas compris la question.",speech:"Complétez la négation au passé composé.",instruction:"أكمل النفي بصورة صحيحة.",choices:["n’ai","ne suis","n’as"],correctIndex:0,explanation:"النفي يحيط بالفعل المساعد: je n’ai pas compris."},
+ {prompt:"___ vous avez réservé une table ?",speech:"Choisissez le début de la question neutre.",instruction:"اختر بداية السؤال المحايد.",choices:["Pourquoi est","Est-ce que","Quand êtes"],correctIndex:1,explanation:"Est-ce que تسبق الجملة الخبرية لتكوين سؤال محايد."},
+ {prompt:"Nous avons ___ terminé le projet.",speech:"Choisissez l’adverbe qui indique que l’action est accomplie.",instruction:"اختر الظرف المناسب لمعنى «بالفعل».",choices:["demain","déjà","pendant"],correctIndex:1,explanation:"déjà تأتي غالبًا بين المساعد واسم المفعول: avons déjà terminé."},
+ {prompt:"Elle a sorti son téléphone.",speech:"Pourquoi le verbe sortir utilise-t-il avoir dans cette phrase ?",instruction:"لماذا استُخدم avoir هنا؟",choices:["لأن sortir أخذ مفعولًا مباشرًا.","لأن الفاعل مؤنث.","لأن الجملة منفية."],correctIndex:0,explanation:"عندما يعني sortir «أخرج شيئًا» ويأخذ مفعولًا مباشرًا، يستخدم avoir."},
+ {prompt:"Le bus est arrivé, ___ nous sommes montés.",speech:"Choisissez le connecteur qui exprime la suite des événements.",instruction:"اختر رابط ترتيب الأحداث.",choices:["parce que","puis","jamais"],correctIndex:1,explanation:"puis تعني «ثم» وتربط حدثين متتابعين."},
+ {prompt:"Hier soir, j’ai lu ce livre.",speech:"Choisissez la traduction arabe correcte.",instruction:"اختر الترجمة العربية المناسبة للسياق.",choices:["سأقرأ هذا الكتاب مساءً.","أقرأ هذا الكتاب كل مساء.","قرأت هذا الكتاب مساء أمس."],correctIndex:2,explanation:"j’ai lu ماضٍ مركب وhier soir تحدد الزمن: قرأت مساء أمس."}
+];
+
+const A2_PASSE_COMPOSE_READING={
+ title:"Un samedi mouvementé",arTitle:"يوم سبت حافل",
+ text:"Samedi dernier, Amine s’est réveillé tard parce qu’il n’a pas entendu son réveil. Il a pris un café rapidement, puis il est sorti de chez lui. À la station, il n’a pas trouvé sa carte de transport. Il est donc retourné à la maison. Finalement, il a pris le bus suivant et il est arrivé au rendez-vous avec vingt minutes de retard. Ses amis ont attendu devant le cinéma et ils ont choisi une séance plus tardive.",
+ translation:"استيقظ أمين متأخرًا يوم السبت الماضي لأنه لم يسمع المنبّه. شرب قهوة بسرعة، ثم خرج من منزله. وفي المحطة لم يجد بطاقة المواصلات، فعاد إلى المنزل. وفي النهاية استقل الحافلة التالية ووصل إلى الموعد متأخرًا عشرين دقيقة. انتظره أصدقاؤه أمام السينما واختاروا عرضًا لاحقًا.",
+ questions:[
+  {question:"Pourquoi Amine s’est-il réveillé tard ?",answer:"Parce qu’il n’a pas entendu son réveil.",ar:"لأنه لم يسمع المنبّه."},
+  {question:"Qu’a-t-il oublié à la maison ?",answer:"Il a oublié sa carte de transport.",ar:"نسي بطاقة المواصلات."},
+  {question:"Quelle solution ses amis ont-ils choisie ?",answer:"Ils ont choisi une séance plus tardive.",ar:"اختاروا عرضًا سينمائيًا لاحقًا."}
+ ]
+};
+
+const A2_PASSE_COMPOSE_LISTENING={
+ title:"Le premier jour de Clara",arTitle:"يوم كلارا الأول",
+ text:"Lundi, Clara a commencé un nouveau travail dans une agence de voyages. Elle est arrivée à huit heures quarante-cinq et sa responsable lui a présenté l’équipe. Ensuite, Clara a visité les bureaux et elle a reçu son ordinateur. À midi, elle a déjeuné avec deux collègues dans un petit restaurant. Elle n’est pas rentrée tard : elle a quitté l’agence à dix-sept heures trente. Le soir, elle a raconté sa journée à sa sœur.",
+ questions:[
+  {prompt:"Où Clara a-t-elle commencé à travailler ?",choices:["Dans une agence de voyages","Dans une gare","Dans un hôtel"],correctIndex:0},
+  {prompt:"Qui lui a présenté l’équipe ?",choices:["Sa sœur","Sa responsable","Une cliente"],correctIndex:1},
+  {prompt:"Avec qui a-t-elle déjeuné ?",choices:["Avec sa responsable","Avec sa famille","Avec deux collègues"],correctIndex:2},
+  {prompt:"À quelle heure a-t-elle quitté l’agence ?",choices:["À dix-sept heures trente","À huit heures quarante-cinq","À midi"],correctIndex:0}
+ ]
+};
+
+const A2_PASSE_COMPOSE_WRITING_MODEL="Samedi dernier, je me suis levé à huit heures. D’abord, j’ai pris mon petit-déjeuner, puis je suis allé au marché avec mon frère. Nous avons acheté des fruits et nous avons déjeuné dans un petit restaurant. L’après-midi, j’ai retrouvé mes amis au parc. Nous avons beaucoup discuté. Enfin, je suis rentré chez moi vers dix-neuf heures parce que la journée a été longue, mais j’ai passé un très bon moment.";
+
+const A2_PASSE_COMPOSE_DICTATION=[
+ {speech:"Hier, nous avons visité un quartier historique.",ar:"زرنا حيًا تاريخيًا أمس."},
+ {speech:"Elle n’est pas arrivée à l’heure prévue.",ar:"لم تصل في الوقت المحدد."},
+ {speech:"D’abord, ils ont réservé, puis ils sont partis.",ar:"حجزوا أولًا، ثم غادروا."}
+];
+
+const A2_PASSE_COMPOSE_BUILDERS=[
+ {tokens:["hier.","avons","Nous","musée","visité","le"],answer:["Nous","avons","visité","le","musée","hier."],ar:"زرنا المتحف أمس."},
+ {tokens:["pas","train.","n’est","Elle","du","descendue"],answer:["Elle","n’est","pas","descendue","du","train."],ar:"لم تنزل من القطار."},
+ {tokens:["puis","fenêtres,","maison.","D’abord,","sommes","avons","les","de","fermé","nous","sortis","nous","la"],answer:["D’abord,","nous","avons","fermé","les","fenêtres,","puis","nous","sommes","sortis","de","la","maison."],ar:"أغلقنا النوافذ أولًا، ثم خرجنا من المنزل."}
+];
+
+const A2_PASSE_COMPOSE_DIALOGUES=[
+ {context:"Votre ami demande : « Qu’est-ce que tu as fait hier soir ? »",prompt:"اختر إجابة مناسبة ومكتملة.",choices:["J’ai regardé un film chez moi.","Je regarde un film demain.","Je suis un film."],correctIndex:0,feedback:"السؤال عن حدث مكتمل، لذلك نجيب بالماضي المركب."},
+ {context:"Votre collègue demande : « Est-ce que Lina est arrivée ? »",prompt:"كيف تنفي وصولها حتى الآن؟",choices:["Non, elle n’arrive jamais hier.","Non, elle n’est pas encore arrivée.","Non, elle n’a pas arrivée."],correctIndex:1,feedback:"arriver يستخدم être، وpas encore تعني «ليس بعد»."},
+ {context:"On vous demande : « Pourquoi êtes-vous rentrés tôt ? »",prompt:"اختر السبب الطبيعي.",choices:["Parce que nous avons été fatigués demain.","Donc nous rentrons hier.","Parce que nous avons fini plus tôt."],correctIndex:2,feedback:"السبب حدث مكتمل أيضًا، لذلك جاء finir في الماضي المركب."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -559,27 +627,68 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"passe-compose",title:"Le passé composé",ar:"الماضي المركب",icon:Clock3,
-  description:"رواية حدث مكتمل في الماضي باستخدام avoir أو être.",
+  description:"كوّن الماضي المركب بدقة، واختر الفعل المساعد الصحيح، وطابق اسم المفعول عند الحاجة، ثم استخدمه لسرد أحداث مكتملة ومترابطة.",
   sections:[
-   section("Avec avoir","الماضي مع avoir","نبني الماضي المركب من فعل مساعد في الحاضر واسم المفعول. معظم الأفعال تستخدم avoir.",[
-    "parler → j’ai parlé.",
-    "finir → j’ai fini.",
-    "prendre → j’ai pris.",
-    "في النفي: Je n’ai pas compris."
+   section("Former le passé composé","تكوين الماضي المركب","يتكون الماضي المركب من فعل مساعد مصرّف في الحاضر، avoir أو être، يليه اسم المفعول. تبدأ بإتقان هذه البنية قبل الانتقال إلى المطابقة.",[
+    "الصيغة الأساسية: sujet + auxiliaire au présent + participe passé.",
+    "أفعال -er: parler → parlé، و-er تتحول إلى -é.",
+    "أفعال -ir من نوع finir: finir → fini، و-ir تتحول إلى -i.",
+    "أفعال -re المنتظمة: vendre → vendu، و-re تتحول غالبًا إلى -u.",
+    "مع avoir يبقى اسم المفعول ثابتًا عادةً؛ ويطابق المفعول المباشر إذا سبقه: les lettres que j’ai écrites."
    ],[
-    {fr:"Hier, j’ai visité le musée.",ar:"أمس زرت المتحف."},
-    {fr:"Nous avons terminé le projet.",ar:"أنهينا المشروع."},
-    {fr:"Elle n’a pas reçu le message.",ar:"لم تستلم الرسالة."}
+    {fr:"Hier, j’ai visité le musée avec mes amis.",ar:"زرت المتحف أمس مع أصدقائي."},
+    {fr:"Nous avons fini notre travail à dix-huit heures.",ar:"أنهينا عملنا الساعة السادسة مساءً."},
+    {fr:"Tu as vendu ton ancien vélo la semaine dernière.",ar:"بعت دراجتك القديمة الأسبوع الماضي."}
    ]),
-   section("Avec être","الماضي مع être","تستخدم مجموعة من أفعال الحركة وعموم الأفعال الضميرية être. يطابق اسم المفعول جنس الفاعل وعدده.",[
-    "Elle est arrivée، Ils sont partis.",
-    "Nous sommes restés à la maison.",
-    "Elle s’est levée tôt.",
-    "مع الجمع المؤنث: Elles sont arrivées."
+   section("Les participes passés fréquents","أسماء المفعول الشائعة","لا تتبع الأفعال غير المنتظمة قاعدة واحدة؛ لذلك تعلّم أسماء المفعول الأكثر استعمالًا داخل جمل وسياقات واضحة.",[
+    "avoir → eu، être → été، faire → fait، lire → lu.",
+    "prendre → pris، mettre → mis، écrire → écrit.",
+    "voir → vu، boire → bu، recevoir → reçu.",
+    "pouvoir → pu، vouloir → voulu، devoir → dû، venir → venu."
    ],[
-    {fr:"Marie est arrivée à huit heures.",ar:"وصلت ماري الساعة الثامنة."},
-    {fr:"Ils sont partis en train.",ar:"غادروا بالقطار."},
-    {fr:"Nous nous sommes rencontrés à Paris.",ar:"التقينا في باريس."}
+    {fr:"Elle a pris le train de neuf heures.",ar:"استقلت قطار الساعة التاسعة."},
+    {fr:"Vous avez reçu ma confirmation hier soir.",ar:"تلقيتم تأكيدي مساء أمس."},
+    {fr:"On a fait les courses avant le déjeuner.",ar:"تسوّقنا قبل الغداء."}
+   ]),
+   section("Choisir l’auxiliaire être","اختيار الفعل المساعد être","تستخدم بعض الأفعال اللازمة الدالة على الحركة أو تغير الحالة être، وكذلك جميع الأفعال الضميرية. ويطابق اسم المفعول الفاعل في الجنس والعدد.",[
+    "aller, venir, arriver, partir, entrer, sortir, naître, mourir تستخدم être عندما تكون لازمة.",
+    "المذكر المفرد بلا إضافة: Il est parti؛ والمؤنث: Elle est partie.",
+    "جمع المذكر: Ils sont arrivés؛ وجمع المؤنث: Elles sont arrivées.",
+    "بعض الأفعال قد تستخدم avoir إذا أخذت مفعولًا مباشرًا: Elle a sorti son téléphone."
+   ],[
+    {fr:"Lina est rentrée chez elle après le cours.",ar:"عادت لينا إلى منزلها بعد الدرس."},
+    {fr:"Mes parents sont arrivés samedi matin.",ar:"وصل والداي صباح السبت."},
+    {fr:"Elles sont sorties ensemble après le travail.",ar:"خرجن معًا بعد العمل."}
+   ]),
+   section("Les verbes pronominaux au passé","الأفعال الضميرية في الماضي","تأخذ الأفعال الضميرية être في الماضي المركب. يأتي الضمير الانعكاسي قبل الفعل المساعد، وتظهر المطابقة في الحالات الأساسية التي يدرسها مستوى A2.",[
+    "Je me suis levé(e)، tu t’es préparé(e)، elle s’est couchée.",
+    "Nous nous sommes réveillés، vous vous êtes habillés، elles se sont reposées.",
+    "في النفي: Elle ne s’est pas levée tôt.",
+    "مع السؤال: À quelle heure vous êtes-vous réveillés ?"
+   ],[
+    {fr:"Je me suis réveillé tôt ce matin.",ar:"استيقظت مبكرًا هذا الصباح."},
+    {fr:"Sara s’est préparée en vingt minutes.",ar:"استعدت سارة خلال عشرين دقيقة."},
+    {fr:"Nous ne nous sommes pas couchés tard.",ar:"لم نخلد إلى النوم متأخرين."}
+   ]),
+   section("Négation, questions et adverbes","النفي والسؤال والظروف","ضع النفي حول الفعل المساعد، واستعمل صيغة السؤال المناسبة. تأتي ظروف قصيرة مثل bien وdéjà وbeaucoup غالبًا بين الفعل المساعد واسم المفعول.",[
+    "النفي: sujet + ne/n’ + auxiliaire + pas/jamais/plus + participe passé.",
+    "السؤال المحايد: Est-ce que vous avez réservé ?",
+    "القلب: Avez-vous compris ? وOù êtes-vous allés ?",
+    "الظرف القصير: J’ai bien compris؛ Nous avons déjà mangé."
+   ],[
+    {fr:"Je n’ai jamais essayé cette recette.",ar:"لم أجرّب هذه الوصفة قط."},
+    {fr:"Est-ce que vous avez envoyé le document ?",ar:"هل أرسلتم المستند؟"},
+    {fr:"Ils ont déjà réservé une chambre.",ar:"لقد حجزوا غرفة بالفعل."}
+   ]),
+   section("Raconter des événements terminés","سرد أحداث مكتملة","يستخدم الماضي المركب لحدث وقع وانتهى، أو لسلسلة أحداث متتابعة. رتّب السرد بعلامات زمنية وروابط واضحة.",[
+    "مؤشرات شائعة: hier، ce matin، la semaine dernière، en 2025.",
+    "ترتيب الأحداث: d’abord، ensuite، puis، enfin.",
+    "السبب والنتيجة: parce que، alors، donc.",
+    "لإجابة مترابطة: حدد الزمن، ثم الحدث، ثم النتيجة أو الانطباع."
+   ],[
+    {fr:"D’abord, nous avons acheté les billets, puis nous sommes entrés dans la salle.",ar:"اشترينا التذاكر أولًا، ثم دخلنا القاعة."},
+    {fr:"Le bus est arrivé en retard, alors j’ai appelé mon collègue.",ar:"وصلت الحافلة متأخرة، لذلك اتصلت بزميلي."},
+    {fr:"J’ai passé une excellente journée parce que j’ai découvert plusieurs endroits.",ar:"قضيت يومًا رائعًا لأنني اكتشفت عدة أماكن."}
    ])
   ]
  },
@@ -1867,6 +1976,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const recordingChunksRef=useRef<Blob[]>([]);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const isA2Revision=level.id==="A2"&&activeModule.id==="revision";
+ const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose;
+ const activeA2Reading=isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -1878,13 +1999,20 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
- const revisionDictationItem=A2_REVISION_DICTATION[revisionDictationIndex];
+ const revisionDictationItem=activeA2Dictation[revisionDictationIndex];
  const revisionDictationCorrect=revisionDictationChecked&&normalizeExerciseText(revisionDictationText)===normalizeExerciseText(revisionDictationItem.speech);
- const revisionBuilderItem=A2_REVISION_BUILDERS[revisionBuilderIndex];
+ const revisionBuilderItem=activeA2Builders[revisionBuilderIndex];
  const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
- const revisionWritingChecks=[
+ const passeComposeVerbCount=(revisionWritingText.match(/\b(?:j['’]ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont|je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/gi)??[]).length;
+ const revisionWritingChecks=isA2PasseCompose?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"خمسة أفعال في الماضي المركب",passed:passeComposeVerbCount>=5},
+  {label:"فعل واحد على الأقل مع être",passed:/\b(?:je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/i.test(revisionWritingText)},
+  {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)},
+  {label:"رابطان مختلفان على الأقل",passed:["d’abord","puis","ensuite","enfin","parce que","donc","mais","alors"].filter(link=>revisionWritingText.toLocaleLowerCase("fr").includes(link)).length>=2}
+ ]:[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"فعل ضميري واحد على الأقل",passed:/\b(?:je\s+m[’']|tu\s+t[’']|(?:il|elle|on)\s+s[’']|nous\s+nous\s|vous\s+vous\s|(?:ils|elles)\s+se\s)/i.test(revisionWritingText)},
   {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)},
@@ -1937,11 +2065,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -2179,7 +2309,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <nav aria-label="مراحل الدرس">
      <button className={lessonStage==="learn"?"active":""} onClick={()=>setLessonStage("learn")}><BookOpen/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
      <button className={lessonStage==="practice"?"active":""} onClick={()=>setLessonStage("practice")}><Headphones/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
-     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isA2Revision?"التمرين النهائي":"اختبر نفسك"}</b><small>{isA2Revision?"10 أسئلة ونتيجة":"أسئلة قصيرة"}</small></span></button>
+     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{isEnhancedA2Lesson?"10 أسئلة ونتيجة":"أسئلة قصيرة"}</small></span></button>
     </nav>
    </aside>
 
@@ -2521,25 +2651,25 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>}
      </section>)}
     </div>
-    {level.id==="A2"&&activeModule.id==="revision"&&<section className="a2-reading-workshop">
+    {isEnhancedA2Lesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
      <article className="a2-reading-text">
-      <header><div><small>Texte A2</small><h4>{A2_REVISION_READING.title}</h4><span>{A2_REVISION_READING.arTitle}</span></div><button onClick={()=>void speakFrench(A2_REVISION_READING.text,{rate:.76})}><Volume2/> استمع إلى النص</button></header>
-      <p dir="ltr">{A2_REVISION_READING.text}</p>
-      <details><summary>عرض الترجمة بعد المحاولة</summary><p>{A2_REVISION_READING.translation}</p></details>
+      <header><div><small>Texte A2</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void speakFrench(activeA2Reading.text,{rate:.76})}><Volume2/> استمع إلى النص</button></header>
+      <p dir="ltr">{activeA2Reading.text}</p>
+      <details><summary>عرض الترجمة بعد المحاولة</summary><p>{activeA2Reading.translation}</p></details>
      </article>
      <div className="a2-reading-questions">
-      {A2_REVISION_READING.questions.map((item,index)=><article key={item.question}><span>{index+1}</span><div><strong dir="ltr">{item.question}</strong><details><summary>تحقق من إجابتك</summary><p dir="ltr">{item.answer}</p><small>{item.ar}</small></details></div><button onClick={()=>void speakFrench(item.question,{rate:.76})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>)}
+      {activeA2Reading.questions.map((item,index)=><article key={item.question}><span>{index+1}</span><div><strong dir="ltr">{item.question}</strong><details><summary>تحقق من إجابتك</summary><p dir="ltr">{item.answer}</p><small>{item.ar}</small></details></div><button onClick={()=>void speakFrench(item.question,{rate:.76})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>)}
      </div>
     </section>}
     </>}
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
      <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
-     {level.id==="A2"&&activeModule.id==="revision"&&<section className="a2-listening-lab">
-      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(A2_REVISION_LISTENING.text,{rate:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
+     {isEnhancedA2Lesson&&<section className="a2-listening-lab">
+      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(activeA2Listening.text,{rate:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
       <div className="a2-listening-questions">
-       {A2_REVISION_LISTENING.questions.map((question,index)=>{
+       {activeA2Listening.questions.map((question,index)=>{
         const selected=revisionListeningAnswers[index];
         return <article key={question.prompt}>
          <div><i>{index+1}</i><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
@@ -2548,9 +2678,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </article>;
        })}
       </div>
-      <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{A2_REVISION_LISTENING.title}</h4><p dir="ltr">{A2_REVISION_LISTENING.text}</p></details>
+      <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>
      </section>}
-     {isA2Revision&&<section className="a2-interactive-workshop">
+     {isEnhancedA2Lesson&&<section className="a2-interactive-workshop">
       <header><span>Atelier interactif</span><h3>مختبر التطبيق</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
       <nav aria-label="أنشطة مختبر التطبيق">
        <button className={revisionWorkshopPanel==="dictation"?"active":""} onClick={()=>setRevisionWorkshopPanel("dictation")}><Headphones/><span><strong>إملاء صوتي</strong><small>Écouter et écrire</small></span></button>
@@ -2558,23 +2688,23 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button className={revisionWorkshopPanel==="dialogue"?"active":""} onClick={()=>setRevisionWorkshopPanel("dialogue")}><MessageCircle/><span><strong>حوار تفاعلي</strong><small>Réagir</small></span></button>
       </nav>
       {revisionWorkshopPanel==="dictation"&&<article className="a2-dictation-panel">
-       <div className="a2-workshop-progress"><span>الجملة {revisionDictationIndex+1} من {A2_REVISION_DICTATION.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/A2_REVISION_DICTATION.length*100}%`}}/></i></div>
+       <div className="a2-workshop-progress"><span>الجملة {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
        <h4>استمع ثم اكتب الجملة الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الجملة المكتوبة إلا بعد التحقق.</p>
        <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:.7})}><Volume2/> استمع إلى الجملة</button>
        <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder="Écrivez la phrase ici…" aria-label="اكتب الجملة الفرنسية التي سمعتها"/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<A2_REVISION_DICTATION.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
       </article>}
       {revisionWorkshopPanel==="builder"&&<article className="a2-builder-panel">
-       <div className="a2-workshop-progress"><span>الجملة {revisionBuilderIndex+1} من {A2_REVISION_BUILDERS.length}</span><i><b style={{width:`${(revisionBuilderIndex+1)/A2_REVISION_BUILDERS.length*100}%`}}/></i></div>
+       <div className="a2-workshop-progress"><span>الجملة {revisionBuilderIndex+1} من {activeA2Builders.length}</span><i><b style={{width:`${(revisionBuilderIndex+1)/activeA2Builders.length*100}%`}}/></i></div>
        <h4>رتّب الكلمات لتكوين جملة صحيحة</h4><p>{revisionBuilderItem.ar}</p>
        <div className="a2-built-sentence" dir="ltr">{revisionBuilderWords.length?revisionBuilderSelection.map((tokenIndex,position)=><button key={`${tokenIndex}-${position}`} onClick={()=>{setRevisionBuilderSelection(current=>current.filter((_,itemIndex)=>itemIndex!==position));setRevisionBuilderChecked(false)}}>{revisionBuilderItem.tokens[tokenIndex]}</button>):<span>اضغط على الكلمات بالترتيب…</span>}</div>
        <div className="a2-word-bank" dir="ltr">{revisionBuilderItem.tokens.map((token,index)=><button key={`${token}-${index}`} disabled={revisionBuilderSelection.includes(index)} onClick={()=>{setRevisionBuilderSelection(current=>[...current,index]);setRevisionBuilderChecked(false)}}>{token}</button>)}</div>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<A2_REVISION_BUILDERS.length-1&&<button className="secondary" onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<activeA2Builders.length-1&&<button className="secondary" onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
        {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
       </article>}
       {revisionWorkshopPanel==="dialogue"&&<div className="a2-dialogue-panel">
-       {A2_REVISION_DIALOGUES.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
+       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
      <div className="university-practice-list">
@@ -2586,15 +2716,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
      </article>)}
      </div>
-     {level.id==="A2"&&activeModule.id==="revision"&&<div className="a2-production-grid">
-      <article className="a2-writing-task"><span>Production écrite</span><h4>اكتب عن روتينك اليومي</h4><p>اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة كتابة فقرة عن الروتين اليومي" placeholder="En général, je me lève…" rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{A2_REVISION_WRITING_MODEL}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.</p><button onClick={()=>void speakFrench("Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.",{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+     {isEnhancedA2Lesson&&<div className="a2-production-grid">
+      <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
-     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isA2Revision?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
+     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ListChecks/><div><span>Exercice final</span><h3>{isA2Revision?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     <div className="university-stage-heading"><ListChecks/><div><span>Exercice final</span><h3>{isEnhancedA2Lesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
      {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
       const question=quizQuestions[quizQuestionIndex];
       const selected=quizAnswers[quizQuestionIndex];
@@ -2619,12 +2749,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      })()}
      {quizFinished&&<div className="university-quiz-result">
       <Trophy/>
-      <span>{isA2Revision?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
+      <span>{isEnhancedA2Lesson?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
       <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
-      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isA2Revision?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
+      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isEnhancedA2Lesson?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
-      {isA2Revision&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
-      <button onClick={resetQuiz}><RotateCcw/> {isA2Revision?"أعد التمرين":"أعد الاختبار"}</button>
+      {isEnhancedA2Lesson&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
+      <button onClick={resetQuiz}><RotateCcw/> {isEnhancedA2Lesson?"أعد التمرين":"أعد الاختبار"}</button>
      </div>}
     </section>}
 

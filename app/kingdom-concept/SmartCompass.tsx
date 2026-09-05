@@ -9,6 +9,7 @@ import { Compass, type Heading } from "@capawesome/capacitor-compass";
 
 type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
 type LocationStatus = "idle" | "locating" | "ready" | "denied" | "unavailable";
+type LocationSource = "device" | "network";
 type OrientationWithWebkit = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type OrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
@@ -66,6 +67,7 @@ export default function SmartCompass() {
   const [qiblaBearing,setQiblaBearing]=useState<number|null>(null);
   const [distance,setDistance]=useState<number|null>(null);
   const [accuracy,setAccuracy]=useState<number|null>(null);
+  const [locationSource,setLocationSource]=useState<LocationSource>("device");
   const latestHeading=useRef(0);
   const latestAlphaHeading=useRef<number|null>(null);
   const androidDeclination=useRef(0);
@@ -77,11 +79,12 @@ export default function SmartCompass() {
       if(sessionStorage.getItem(OPEN_STATE_KEY)==="1")setOpen(true);
       const cached=localStorage.getItem(QIBLA_STATE_KEY)??sessionStorage.getItem(QIBLA_STATE_KEY);
       if(cached){
-        const value=JSON.parse(cached) as {bearing:number;distance:number;accuracy:number};
+        const value=JSON.parse(cached) as {bearing:number;distance:number;accuracy?:number|null;source?:LocationSource};
         if(Number.isFinite(value.bearing)&&Number.isFinite(value.distance)){
           setQiblaBearing(value.bearing);
           setDistance(value.distance);
-          setAccuracy(value.accuracy);
+          setAccuracy(typeof value.accuracy==="number"&&Number.isFinite(value.accuracy)?value.accuracy:null);
+          setLocationSource(value.source==="network"?"network":"device");
           setLocationStatus("ready");
         }
       }
@@ -195,18 +198,36 @@ export default function SmartCompass() {
     };
   },[authorized,enabled]);
 
-  const applyPosition=(latitude:number,longitude:number,positionAccuracy:number)=>{
+  const applyPosition=(latitude:number,longitude:number,positionAccuracy:number|null,source:LocationSource="device")=>{
     const bearing=bearingToKaaba(latitude,longitude);
     const kaabaDistance=distanceToKaaba(latitude,longitude);
     setQiblaBearing(bearing);
     setDistance(kaabaDistance);
     setAccuracy(positionAccuracy);
+    setLocationSource(source);
     setLocationStatus("ready");
     try{
-      const cachedPosition=JSON.stringify({bearing,distance:kaabaDistance,accuracy:positionAccuracy});
+      const cachedPosition=JSON.stringify({bearing,distance:kaabaDistance,accuracy:positionAccuracy,source});
       localStorage.setItem(QIBLA_STATE_KEY,cachedPosition);
       sessionStorage.setItem(QIBLA_STATE_KEY,cachedPosition);
     }catch{}
+  };
+
+  const locateFromNetwork=async()=>{
+    try{
+      const response=await fetch("/api/approximate-location",{cache:"no-store"});
+      if(!response.ok)return false;
+      const result=await response.json() as {available?:boolean;latitude?:number;longitude?:number};
+      if(
+        result.available!==true
+        || typeof result.latitude!=="number"
+        || typeof result.longitude!=="number"
+        || !Number.isFinite(result.latitude)
+        || !Number.isFinite(result.longitude)
+      )return false;
+      applyPosition(result.latitude,result.longitude,null,"network");
+      return true;
+    }catch{return false}
   };
 
   const locateQibla=async()=>{
@@ -215,7 +236,10 @@ export default function SmartCompass() {
       try{
         let permission=await Geolocation.checkPermissions();
         if(permission.location!=="granted")permission=await Geolocation.requestPermissions({permissions:["location"]});
-        if(permission.location!=="granted"){setLocationStatus("denied");return}
+        if(permission.location!=="granted"){
+          if(!await locateFromNetwork())setLocationStatus("denied");
+          return;
+        }
         const position=await Geolocation.getCurrentPosition({enableHighAccuracy:true,timeout:12000,maximumAge:300000});
         if(Capacitor.getPlatform()==="android"){
           try{
@@ -228,8 +252,10 @@ export default function SmartCompass() {
             if(Number.isFinite(result.declination))androidDeclination.current=result.declination;
           }catch{}
         }
-        applyPosition(position.coords.latitude,position.coords.longitude,position.coords.accuracy);
-      }catch{setLocationStatus("unavailable")}
+        applyPosition(position.coords.latitude,position.coords.longitude,position.coords.accuracy,"device");
+      }catch{
+        if(!await locateFromNetwork())setLocationStatus("unavailable");
+      }
       return;
     }
     if (!("geolocation" in navigator)) {
@@ -239,14 +265,16 @@ export default function SmartCompass() {
     setLocationStatus("locating");
     const applyWebPosition=(position:GeolocationPosition)=>{
       const {latitude,longitude,accuracy:positionAccuracy}=position.coords;
-      applyPosition(latitude,longitude,positionAccuracy);
+      applyPosition(latitude,longitude,positionAccuracy,"device");
     };
     navigator.geolocation.getCurrentPosition(position=>{
       applyWebPosition(position);
       navigator.geolocation.getCurrentPosition(applyWebPosition,()=>{},
         {enableHighAccuracy:true,timeout:12000,maximumAge:0});
     },error=>{
-      setLocationStatus(error.code===error.PERMISSION_DENIED?"denied":"unavailable");
+      void locateFromNetwork().then(found=>{
+        if(!found)setLocationStatus(error.code===error.PERMISSION_DENIED?"denied":"unavailable");
+      });
     },{enableHighAccuracy:false,timeout:8000,maximumAge:86400000});
   };
 
@@ -348,7 +376,7 @@ export default function SmartCompass() {
 
         <div className="smart-compass-status">
           <ShieldCheck/>
-          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":Capacitor.isNativePlatform()?"تعمل البوصلة الآن بحساس النظام الأصلي، ويُستخدم موقعك داخل الجهاز فقط لحساب القبلة.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
+          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":locationSource==="network"?"تعذر وصول GPS من نافذة التطبيق، لذلك حُسب اتجاه القبلة تلقائيًا من موقع الشبكة التقريبي.":Capacitor.isNativePlatform()?"تعمل البوصلة الآن بحساس النظام الأصلي، ويُستخدم موقعك داخل الجهاز فقط لحساب القبلة.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
         </div>
         <p className="smart-compass-calibration">يدور قرص الاتجاهات تلقائيًا حتى يتجه حرف N والإبرة الحمراء إلى الشمال، بينما تتحرك الإبرة الذهبية وحدها نحو القبلة. لا يلزم جعل القراءة 0°.</p>
       </section>

@@ -168,7 +168,7 @@ export default function SmartCompass() {
         <span className="smart-compass-mini" aria-hidden="true">
           <b>N</b>
           <i className="smart-north-needle" style={{transform:`rotate(${northRotation}deg)`}}/>
-          {qiblaBearing!==null&&<i className="smart-qibla-mini" style={{transform:`rotate(${qiblaRotation}deg)`}}/>}
+          <i className={`smart-qibla-mini ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}/>
         </span>
         <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة":qiblaBearing===null?"جارٍ تحديد القبلة":aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
       </button>
@@ -186,7 +186,7 @@ export default function SmartCompass() {
           <div className="smart-compass-dial">
             <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
             <i className="smart-north-hand" style={{transform:`rotate(${northRotation}deg)`}}><span/></i>
-            {qiblaBearing!==null&&<i className="smart-qibla-hand" style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>القبلة</small></span></i>}
+            <i className={`smart-qibla-hand ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>{qiblaBearing===null?"جارٍ تحديد القبلة":"القبلة"}</small></span></i>
             <span className="smart-heading-index" aria-hidden="true"/>
             <div className="smart-heading-value"><strong>{heading===null?"—":String(Math.round(heading)).padStart(3,"0")}°</strong><small>{headingLabel}</small></div>
           </div>

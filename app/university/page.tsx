@@ -1034,6 +1034,74 @@ const A2_CONNECTORS_DIALOGUES=[
  {context:"Vous expliquez comment envoyer un dossier.",prompt:"اختر تسلسلًا واضحًا.",choices:["Parce que, pourtant, qui.","Donc le dossier où.","D’abord, remplissez le formulaire ; ensuite, ajoutez les pièces ; enfin, envoyez le dossier."],correctIndex:2,feedback:"d’abord، ensuite، enfin ترتب الخطوات من البداية إلى النهاية."}
 ];
 
+const A2_REAL_LIFE_PRACTICE_ITEMS:Example[]=[
+ {fr:"J’ai mal à la gorge depuis trois jours.",ar:"أعاني من ألم في الحلق منذ ثلاثة أيام."},
+ {fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
+ {fr:"Le chauffage de mon appartement ne fonctionne plus.",ar:"لم تعد التدفئة تعمل في شقتي."},
+ {fr:"Pourriez-vous envoyer quelqu’un pour vérifier la fuite ?",ar:"هل يمكنكم إرسال شخص لفحص التسرّب؟"},
+ {fr:"Mes horaires ont changé à partir de lundi.",ar:"ستتغير ساعات عملي ابتداءً من يوم الاثنين."},
+ {fr:"J’ai un entretien d’embauche jeudi à dix heures.",ar:"لدي مقابلة عمل يوم الخميس الساعة العاشرة."},
+ {fr:"Je voudrais confirmer ma réservation pour deux nuits.",ar:"أود تأكيد حجزي لليلتين."},
+ {fr:"J’ai raté mon train à cause du retard du bus.",ar:"فاتني القطار بسبب تأخر الحافلة."},
+ {fr:"Ma valise n’est pas arrivée avec mon vol.",ar:"لم تصل حقيبتي مع رحلتي الجوية."},
+ {fr:"Cet appareil ne fonctionne pas ; je voudrais l’échanger.",ar:"هذا الجهاز لا يعمل، وأود استبداله."}
+];
+
+const A2_REAL_LIFE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Vous avez mal au dos depuis deux jours. Que dites-vous au médecin ?",speech:"Vous avez mal au dos depuis deux jours. Que dites-vous au médecin ?",instruction:"اختر العبارة التي تصف المشكلة والمدة.",choices:["J’ai mal au dos depuis deux jours.","J’aurai le dos dans deux jours.","Je suis le médecin du dos."],correctIndex:0,explanation:"J’ai mal à… يحدد موضع الألم، وdepuis يبين مدة حالة ما زالت مستمرة."},
+ {prompt:"Le robinet fuit dans votre appartement. Quelle demande est adaptée ?",speech:"Le robinet fuit dans votre appartement. Quelle demande est adaptée ?",instruction:"اختر طلب الصيانة المناسب.",choices:["Le robinet travaille bien.","Pourriez-vous envoyer un plombier ?","Je voudrais acheter le voisin."],correctIndex:1,explanation:"الجملة تصف الحل المطلوب بأدب: إرسال سباك."},
+ {prompt:"Votre responsable demande quand vous êtes disponible.",speech:"Votre responsable demande quand vous êtes disponible.",instruction:"اختر إجابة مهنية واضحة.",choices:["Je suis un horaire.","Hier sera possible.","Je suis disponible mardi après-midi."],correctIndex:2,explanation:"الإجابة تحدد يومًا وفترة زمنية واضحة دون معلومات غير ضرورية."},
+ {prompt:"Vous voulez vérifier une réservation d’hôtel. Quelle information donnez-vous d’abord ?",speech:"Vous voulez vérifier une réservation d’hôtel. Quelle information donnez-vous d’abord ?",instruction:"اختر المعلومة الأكثر فائدة.",choices:["Le nom de réservation et les dates.","Votre couleur préférée.","Le prix d’un autre hôtel."],correctIndex:0,explanation:"الاسم والتواريخ يمكّنان الموظف من العثور على الحجز."},
+ {prompt:"Votre train est annulé. Que demandez-vous ?",speech:"Votre train est annulé. Que demandez-vous ?",instruction:"اختر طلب الحل المناسب.",choices:["Pourquoi le train était bleu ?","Pourriez-vous me proposer un autre départ ?","Je veux une chambre d’hôpital."],correctIndex:1,explanation:"عند إلغاء الرحلة نطلب بديلًا محددًا ومهذبًا."},
+ {prompt:"Votre bagage manque à l’aéroport. Quelle phrase est correcte ?",speech:"Votre bagage manque à l’aéroport. Quelle phrase est correcte ?",instruction:"اختر وصف المشكلة الصحيح.",choices:["Ma valise va dans le billet.","Je suis arrivé dans la valise.","Ma valise n’est pas arrivée avec le vol."],correctIndex:2,explanation:"الجملة تذكر بوضوح أن الحقيبة لم تصل مع الرحلة."},
+ {prompt:"Un produit acheté hier ne fonctionne pas. Que devez-vous apporter ?",speech:"Un produit acheté hier ne fonctionne pas. Que devez-vous apporter ?",instruction:"اختر ما يساعد في طلب الاستبدال.",choices:["Le produit et le ticket de caisse.","Une ordonnance médicale.","Un billet de train."],correctIndex:0,explanation:"المنتج وإثبات الشراء هما المعلومتان المرتبطتان بعملية الإرجاع أو الاستبدال."},
+ {prompt:"Vous écrivez pour signaler une panne. Quel ordre est le plus clair ?",speech:"Vous écrivez pour signaler une panne. Quel ordre est le plus clair ?",instruction:"اختر ترتيب الرسالة الوظيفي.",choices:["حل، تحية، مشكلة مجهولة","تحية، تعريف بالمكان، وصف المشكلة، طلب الحل","شكوى بلا عنوان أو طلب"],correctIndex:1,explanation:"هذا الترتيب يساعد المستلم على فهم المكان والمشكلة والإجراء المطلوب."},
+ {prompt:"Le pharmacien demande : « Depuis quand avez-vous ces symptômes ? »",speech:"Depuis quand avez-vous ces symptômes ?",instruction:"اختر جوابًا يحدد بداية الحالة.",choices:["Pour demain matin.","À la pharmacie.","Depuis lundi soir."],correctIndex:2,explanation:"depuis lundi soir يحدد متى بدأت الأعراض التي لا تزال مستمرة."},
+ {prompt:"Je suis disponible au 06 12 34 56 78 après dix-sept heures.",speech:"Je suis disponible par téléphone après dix-sept heures.",instruction:"ما وظيفة هذه العبارة في رسالة المشكلة؟",choices:["تحديد وسيلة ووقت التواصل","وصف سبب العطل","طلب استرداد تذكرة"],correctIndex:0,explanation:"تتيح العبارة للجهة المعنية معرفة متى وكيف يمكن التواصل مع المرسل."}
+];
+
+const A2_REAL_LIFE_READING={
+ title:"Une panne dans l’appartement",arTitle:"عطل في الشقة",
+ text:"Mardi matin, Adam remarque que le chauffage de son appartement ne fonctionne plus. Il vérifie les radiateurs, mais ils restent froids. Comme la température baisse, il écrit immédiatement à l’agence. Il indique son nom, son adresse et le numéro de l’appartement. Il explique que la panne a commencé pendant la nuit et précise qu’un enfant vit dans le logement. Il demande si un technicien pourrait venir dans la journée. L’agence répond une heure plus tard et confirme un passage entre quatorze et seize heures. Adam restera chez lui pour ouvrir la porte.",
+ translation:"يلاحظ آدم صباح الثلاثاء أن التدفئة في شقته توقفت عن العمل. يفحص أجهزة التدفئة، لكنها تظل باردة. ولأن درجة الحرارة تنخفض، يكتب إلى الوكالة فورًا. يذكر اسمه وعنوانه ورقم الشقة، ويوضح أن العطل بدأ أثناء الليل وأن طفلًا يعيش في المسكن. ويسأل إن كان بإمكان فني الحضور خلال اليوم. ترد الوكالة بعد ساعة وتؤكد زيارة بين الثانية والرابعة بعد الظهر. وسيبقى آدم في المنزل لفتح الباب.",
+ questions:[
+  {question:"Quel problème Adam signale-t-il ?",answer:"Le chauffage de son appartement ne fonctionne plus.",ar:"توقفت التدفئة في شقته عن العمل."},
+  {question:"Quelles informations donne-t-il à l’agence ?",answer:"Il donne son nom, son adresse, le numéro de l’appartement et le moment où la panne a commencé.",ar:"يذكر اسمه وعنوانه ورقم الشقة ووقت بدء العطل."},
+  {question:"Quand le technicien doit-il passer ?",answer:"Il doit passer entre quatorze et seize heures.",ar:"سيحضر بين الثانية والرابعة بعد الظهر."}
+ ]
+};
+
+const A2_REAL_LIFE_LISTENING={
+ title:"Une valise qui n’est pas arrivée",arTitle:"حقيبة لم تصل",
+ text:"Bonjour, je viens d’arriver par le vol trois cent vingt en provenance de Madrid, mais ma valise n’est pas sur le tapis. C’est une grande valise noire avec une étiquette rouge. Mon nom et mon numéro de téléphone sont écrits sur l’étiquette. Voici mon reçu de bagage. Je reste à l’hôtel Central jusqu’à vendredi. Pourriez-vous me contacter dès que vous aurez retrouvé la valise ? Je peux aussi venir la chercher à l’aéroport demain matin.",
+ questions:[
+  {prompt:"Quel est le numéro du vol ?",choices:["Trois cent vingt","Deux cent trente","Trois cent douze"],correctIndex:0},
+  {prompt:"D’où vient le vol ?",choices:["De Rome","De Madrid","De Lyon"],correctIndex:1},
+  {prompt:"Comment est la valise ?",choices:["Petite et rouge","Bleue avec une étiquette noire","Grande et noire avec une étiquette rouge"],correctIndex:2},
+  {prompt:"Jusqu’à quand la personne reste-t-elle à l’hôtel ?",choices:["Jusqu’à vendredi","Jusqu’à demain soir","Jusqu’à lundi"],correctIndex:0}
+ ]
+};
+
+const A2_REAL_LIFE_WRITING_MODEL="Bonjour, je vous écris au sujet de ma réservation numéro 4582 pour le 12 septembre. À mon arrivée, la chambre n’était pas prête et la climatisation ne fonctionnait pas. Comme il faisait très chaud, je n’ai pas pu y rester. Pourriez-vous me proposer une autre chambre aujourd’hui ou modifier ma réservation sans frais ? Je suis disponible par téléphone après quinze heures. Merci de me confirmer la solution dès que possible. Cordialement, Sami Alami.";
+
+const A2_REAL_LIFE_DICTATION=[
+ {speech:"J’ai mal à la gorge depuis trois jours.",ar:"أعاني من ألم في الحلق منذ ثلاثة أيام."},
+ {speech:"Le chauffage ne fonctionne plus dans mon appartement.",ar:"لم تعد التدفئة تعمل في شقتي."},
+ {speech:"Pourriez-vous me proposer un autre départ ?",ar:"هل يمكنكم اقتراح موعد مغادرة آخر؟"}
+];
+
+const A2_REAL_LIFE_BUILDERS=[
+ {tokens:["jours.","dos","J’ai","depuis","au","deux","mal"],answer:["J’ai","mal","au","dos","depuis","deux","jours."],ar:"أعاني من ألم في الظهر منذ يومين."},
+ {tokens:["fonctionne","chauffage","plus.","Le","ne"],answer:["Le","chauffage","ne","fonctionne","plus."],ar:"لم تعد التدفئة تعمل."},
+ {tokens:["départ ?","autre","proposer","Pourriez-vous","un","me"],answer:["Pourriez-vous","me","proposer","un","autre","départ ?"],ar:"هل يمكنكم اقتراح موعد مغادرة آخر؟"}
+];
+
+const A2_REAL_LIFE_DIALOGUES=[
+ {context:"Chez le médecin, on vous demande : « Qu’est-ce qui vous arrive ? »",prompt:"اختر وصفًا مفيدًا للحالة.",choices:["J’ai de la fièvre et je tousse depuis hier soir.","Je suis une ordonnance demain.","Le médecin est un billet."],correctIndex:0,feedback:"العبارة تحدد عرضين ووقت بدايتهما، وهي معلومات يحتاجها الطبيب."},
+ {context:"Vous appelez l’agence pour une fuite d’eau.",prompt:"اختر شرحًا وطلبًا واضحين.",choices:["L’eau est intéressante.","Il y a une fuite sous l’évier. Pourriez-vous envoyer quelqu’un aujourd’hui ?","Je veux changer de train."],correctIndex:1,feedback:"الجملة تحدد مكان العطل والإجراء المطلوب والموعد."},
+ {context:"À la gare, votre train est supprimé.",prompt:"اختر التفاعل الذي يقود إلى حل.",choices:["Je ne dis rien.","Le train était confortable.","Quel est le prochain départ, et puis-je utiliser le même billet ?"],correctIndex:2,feedback:"السؤالان يطلبان معلومات عملية عن البديل وصلاحية التذكرة."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -1632,27 +1700,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"themes",title:"Communiquer dans la vie réelle",ar:"التواصل في الحياة الواقعية",icon:Compass,
-  description:"الصحة والسكن والعمل والسفر والمشكلات اليومية بمستوى A2.",
+  description:"تعامل مع مواقف A2 اليومية: اشرح وضعك، قدّم التفاصيل اللازمة، افهم الرد، واطلب إجراءً واضحًا في الصحة والسكن والعمل والسفر والخدمات.",
   sections:[
-   section("Santé, logement et travail","الصحة والسكن والعمل","في A2 تستطيع وصف مشكلة بتفاصيلها، شرح مدتها، وطلب حل مناسب.",[
-    "J’ai mal à… لوصف الألم.",
-    "depuis لحدث ما زال مستمرًا.",
-    "السكن: loyer, voisin, panne, chauffage.",
-    "العمل: contrat, horaires, collègue, entretien."
+   section("Santé et rendez-vous","الصحة وحجز الموعد","ابدأ بالعرض الأساسي، ثم حدّد مكانه ووقت بدايته وشدته. اطلب موعدًا أو نصيحة، وافهم التعليمات البسيطة دون محاولة تشخيص نفسك.",[
+    "العرض: J’ai mal à…؛ J’ai de la fièvre؛ Je tousse؛ Je suis allergique à…",
+    "المدة: depuis hier، depuis trois jours؛ البداية: depuis lundi soir.",
+    "الموعد: Je voudrais prendre rendez-vous؛ Avez-vous une disponibilité aujourd’hui ?",
+    "التعليمات: prenez…، reposez-vous، avant/après les repas، deux fois par jour."
    ],[
-    {fr:"J’ai mal au dos depuis trois jours.",ar:"أشعر بألم في الظهر منذ ثلاثة أيام."},
-    {fr:"Le chauffage ne fonctionne plus dans l’appartement.",ar:"لم تعد التدفئة تعمل في الشقة."},
-    {fr:"J’ai un entretien d’embauche lundi matin.",ar:"لدي مقابلة عمل صباح الاثنين."}
+    {fr:"J’ai de la fièvre et je tousse depuis hier.",ar:"أعاني من الحمى والسعال منذ الأمس."},
+    {fr:"Avez-vous un rendez-vous disponible cet après-midi ?",ar:"هل لديكم موعد متاح بعد ظهر اليوم؟"},
+    {fr:"Prenez ce médicament après les repas.",ar:"تناولوا هذا الدواء بعد الوجبات."}
    ]),
-   section("Voyage et imprévus","السفر والمواقف الطارئة","تعلم شرح ما حدث، ما تحتاجه الآن، وما الحل الذي تقترحه.",[
-    "وصف المشكلة بالماضي المركب.",
-    "إضافة الخلفية بالماضي الناقص.",
-    "طلب الحل بالشرط المهذب.",
-    "تأكيد التفاصيل: رقم الحجز، الوقت، المكان."
+   section("Logement et réparations","السكن والصيانة","عند الإبلاغ عن مشكلة في المسكن، اذكر العنوان أو رقم الشقة، ومكان العطل، ووقت ظهوره، وأثره، ثم اطلب موعدًا للتدخل.",[
+    "الأعطال: une panne، une fuite، le chauffage، l’électricité، la serrure.",
+    "المكان: sous l’évier، dans la salle de bains، près de la fenêtre.",
+    "الزمن: depuis ce matin؛ la panne a commencé cette nuit.",
+    "الطلب: Pourriez-vous envoyer un technicien ? Quand peut-il passer ?"
    ],[
-    {fr:"J’ai raté mon train parce que le bus était en retard.",ar:"فاتني القطار لأن الحافلة كانت متأخرة."},
-    {fr:"Pourriez-vous me proposer un autre départ ?",ar:"هل يمكنكم اقتراح موعد مغادرة آخر؟"},
-    {fr:"Ma valise n’est pas arrivée avec le vol.",ar:"لم تصل حقيبتي مع الرحلة."}
+    {fr:"Il y a une fuite d’eau sous l’évier.",ar:"يوجد تسرّب للماء تحت حوض المطبخ."},
+    {fr:"La panne a commencé pendant la nuit.",ar:"بدأ العطل أثناء الليل."},
+    {fr:"Je serai chez moi entre quatorze et dix-sept heures.",ar:"سأكون في المنزل بين الثانية والخامسة مساءً."}
+   ]),
+   section("Travail et démarches professionnelles","العمل والإجراءات المهنية","تبادل معلومات مباشرة عن المواعيد والمهام والخبرة. في الرسائل المهنية استخدم تحية وموضوعًا واضحًا وختامًا مناسبًا.",[
+    "الوقت: horaires، disponibilité، temps plein/partiel، commencer à، finir à.",
+    "العمل: contrat، poste، expérience، équipe، responsable، tâche.",
+    "الموعد: Je confirme l’entretien de jeudi à dix heures.",
+    "الخبرة البسيطة: J’ai travaillé…؛ Je sais utiliser…؛ Je peux commencer…"
+   ],[
+    {fr:"Je suis disponible du lundi au vendredi.",ar:"أنا متاح من الاثنين إلى الجمعة."},
+    {fr:"Je vous confirme notre entretien de jeudi matin.",ar:"أؤكد لكم موعد مقابلتنا صباح الخميس."},
+    {fr:"J’ai travaillé deux ans dans le service client.",ar:"عملت لمدة عامين في خدمة العملاء."}
+   ]),
+   section("Voyage et hébergement","السفر والإقامة","قبل الطلب اجمع المعلومات التي ستحتاجها الجهة: التاريخ والوجهة والاسم ورقم الحجز. ثم تأكد من السعر والوقت والشروط.",[
+    "النقل: départ، arrivée، correspondance، quai، retard، billet aller-retour.",
+    "الإقامة: réservation، chambre، deux nuits، petit-déjeuner compris، départ avant…",
+    "التأكيد: Je voudrais confirmer…؛ La réservation est au nom de…",
+    "الاستيضاح: À quelle heure… ? Où dois-je changer ? Le prix comprend-il… ?"
+   ],[
+    {fr:"La réservation est au nom de Salim Haddad.",ar:"الحجز باسم سليم حداد."},
+    {fr:"Où dois-je changer de train ?",ar:"أين يجب أن أبدّل القطار؟"},
+    {fr:"Le petit-déjeuner est-il compris dans le prix ?",ar:"هل الإفطار مشمول في السعر؟"}
+   ]),
+   section("Services, achats et réclamations","الخدمات والمشتريات والشكاوى","في المتجر أو البنك أو البريد، اذكر العملية المطلوبة والمبلغ أو المنتج. وعند وجود مشكلة صفها بهدوء واطلب حلًا محددًا.",[
+    "الشراء: taille، modèle، prix، paiement، reçu، garantie.",
+    "الخدمات: envoyer un colis، retirer de l’argent، ouvrir un compte، remplir un formulaire.",
+    "المشكلة: ne fonctionne pas، abîmé، incorrect، je n’ai pas reçu…",
+    "الحل: échanger، rembourser، corriger، renvoyer؛ مع ticket de caisse أو numéro de dossier."
+   ],[
+    {fr:"Je voudrais envoyer ce colis en courrier suivi.",ar:"أود إرسال هذا الطرد ببريد يمكن تتبعه."},
+    {fr:"Cette veste est abîmée ; puis-je l’échanger ?",ar:"هذه السترة تالفة، هل يمكنني استبدالها؟"},
+    {fr:"Voici le ticket de caisse et la garantie.",ar:"هذا إيصال الشراء وشهادة الضمان."}
+   ]),
+   section("Expliquer un imprévu et obtenir une solution","شرح موقف طارئ والحصول على حل","نظّم كلامك في أربع خطوات: عرّف بنفسك أو بملفك، اشرح ما حدث، بيّن حاجتك الحالية، ثم اطلب حلًا وتأكد من الخطوة التالية.",[
+    "1. المرجع: رقم الرحلة أو الحجز أو الملف والاسم.",
+    "2. الحدث: J’ai raté…؛ Ma valise n’est pas arrivée؛ le train a été supprimé.",
+    "3. الحاجة: Je dois arriver avant…؛ Je reste à l’hôtel jusqu’à…",
+    "4. الحل والمتابعة: Que dois-je faire ? Pourriez-vous me contacter ?"
+   ],[
+    {fr:"Mon vol a été annulé et je dois arriver ce soir.",ar:"أُلغيت رحلتي ويجب أن أصل هذا المساء."},
+    {fr:"Voici mon reçu de bagage et mon numéro de vol.",ar:"هذا إيصال الأمتعة ورقم رحلتي."},
+    {fr:"Pourriez-vous me prévenir dès que vous aurez une réponse ?",ar:"هل يمكنكم إبلاغي فور حصولكم على رد؟"}
    ])
   ]
  },
@@ -2740,17 +2848,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
  const isA2Politeness=level.id==="A2"&&activeModule.id==="politeness";
  const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors;
- const activeA2Reading=isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife;
+ const activeA2Reading=isA2RealLife?A2_REAL_LIFE_READING:isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2RealLife?A2_REAL_LIFE_LISTENING:isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2RealLife?A2_REAL_LIFE_DICTATION:isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2RealLife?A2_REAL_LIFE_BUILDERS:isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2RealLife?A2_REAL_LIFE_DIALOGUES:isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2RealLife?A2_REAL_LIFE_WRITING_MODEL:isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2RealLife?"اكتب رسالة لحل مشكلة واقعية":isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2RealLife?"اكتب من 60 إلى 80 كلمة إلى فندق أو وكالة أو جهة خدمة. اذكر مرجعًا أو تاريخًا، واشرح المشكلة وأثرها، واطلب حلًا مهذبًا، وحدد طريقة أو وقت التواصل.":isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2RealLife?"Bonjour, je vous écris au sujet de…":isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2773,7 +2882,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2Connectors?[
+ const revisionWritingChecks=isA2RealLife?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"مرجع أو تاريخ واضح",passed:/\b(?:réservation|dossier|vol|train|commande|numéro|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\b/i.test(revisionWritingText)},
+  {label:"وصف المشكلة وأثرها",passed:/\b(?:ne fonctionne|n’est pas|n'est pas|en panne|annulé|annulée|retard|perdu|perdue|raté|abîmé|abîmée|fuite|problème)\b/i.test(revisionWritingText)&&/\b(?:donc|alors|parce que|comme|je ne peux|je n’ai pas pu|je n'ai pas pu)\b/i.test(revisionWritingText)},
+  {label:"طلب حل مهذب",passed:/\b(?:pourriez-vous|serait-il possible|je voudrais|j’aimerais|j'aimerais)\b/i.test(revisionWritingText)},
+  {label:"طريقة أو وقت للتواصل",passed:/\b(?:téléphone|courriel|e-mail|email|joindre|contacter|disponible|après|avant|entre)\b/i.test(revisionWritingText)}
+ ]:isA2Connectors?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"ضميران نسبيان مختلفان",passed:[" qui "," que "," où "," dont "].filter(marker=>` ${revisionWritingText.toLocaleLowerCase("fr")} `.includes(marker)).length>=2},
   {label:"سبب ونتيجة",passed:/\b(?:parce que|car|comme|à cause de|grâce à)\b/i.test(revisionWritingText)&&/\b(?:donc|c’est pourquoi|c'est pourquoi|alors|par conséquent)\b/i.test(revisionWritingText)},
@@ -2882,6 +2997,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="connectors")return A2_CONNECTORS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="themes")return A2_REAL_LIFE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2895,6 +3011,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="connectors")return A2_CONNECTORS_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="themes")return A2_REAL_LIFE_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -3541,7 +3658,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

@@ -830,6 +830,74 @@ const A2_QUANTITY_DIALOGUES=[
  {context:"On vous demande : « Il reste du café ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Oui, il y reste du.","Oui, je le reste.","Oui, il en reste un peu."],correctIndex:2,feedback:"en يستبدل du café، وتبقى الكمية un peu ظاهرة."}
 ];
 
+const A2_COMPARISON_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ce quartier est plus calme que le centre-ville.",ar:"هذا الحي أهدأ من وسط المدينة."},
+ {fr:"La chambre bleue est moins lumineuse que la blanche.",ar:"الغرفة الزرقاء أقل إضاءة من البيضاء."},
+ {fr:"Le train est aussi confortable que l’autocar.",ar:"القطار مريح بقدر الحافلة."},
+ {fr:"Nous avons plus de temps qu’hier.",ar:"لدينا وقت أكثر من الأمس."},
+ {fr:"Elle travaille aussi efficacement que sa collègue.",ar:"تعمل بالكفاءة نفسها التي تعمل بها زميلتها."},
+ {fr:"Cette solution fonctionne mieux que l’ancienne.",ar:"هذا الحل يعمل بصورة أفضل من الحل السابق."},
+ {fr:"C’est le meilleur restaurant du quartier.",ar:"هذا أفضل مطعم في الحي."},
+ {fr:"Parmi ces itinéraires, celui-ci est le moins long.",ar:"هذا المسار هو الأقصر بين هذه المسارات."},
+ {fr:"Le service est assez rapide, mais la salle est un peu bruyante.",ar:"الخدمة سريعة إلى حدٍّ كافٍ، لكن القاعة صاخبة قليلًا."},
+ {fr:"Le guide explique clairement et répond très patiemment.",ar:"يشرح المرشد بوضوح ويجيب بصبر كبير."}
+];
+
+const A2_COMPARISON_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Ce sac est ___ lourd que l’autre.",speech:"Complétez le comparatif de supériorité.",instruction:"أكمل مقارنة الزيادة.",choices:["plus","aussi de","le plus de"],correctIndex:0,explanation:"مع الصفة نستخدم plus + adjectif + que: plus lourd que."},
+ {prompt:"Cette chambre est ___ chère que la première.",speech:"Complétez le comparatif d’infériorité.",instruction:"أكمل مقارنة النقصان.",choices:["le moins","moins","moins de"],correctIndex:1,explanation:"مع الصفة نستخدم moins + adjectif + que: moins chère que."},
+ {prompt:"Il court ___ vite que son frère.",speech:"Complétez le comparatif d’égalité avec un adverbe.",instruction:"أكمل مقارنة التساوي.",choices:["autant de","le plus","aussi"],correctIndex:2,explanation:"مع الظرف vite نستخدم aussi…que للتساوي: aussi vite que."},
+ {prompt:"Nous avons ___ clients qu’avant.",speech:"Complétez la comparaison d’une quantité.",instruction:"اختر صيغة مقارنة الاسم.",choices:["plus de","plus","aussi"],correctIndex:0,explanation:"عند مقارنة كمية اسم نستخدم plus de + nom + que."},
+ {prompt:"Elle voyage ___ que moi.",speech:"Complétez la comparaison du verbe au degré d’égalité.",instruction:"اختر صيغة مقارنة الفعل.",choices:["aussi","autant","autant de"],correctIndex:1,explanation:"بعد الفعل نستخدم autant que للتساوي: elle voyage autant que moi."},
+ {prompt:"Ce café est bon, mais celui-là est ___.",speech:"Choisissez le comparatif correct de bon.",instruction:"اختر مقارنة bon الصحيحة.",choices:["plus bien","mieux","meilleur"],correctIndex:2,explanation:"meilleur هو صيغة المقارنة للصفة bon."},
+ {prompt:"Lina parle français ___ que moi.",speech:"Choisissez le comparatif correct de bien.",instruction:"اختر مقارنة bien الصحيحة.",choices:["mieux","meilleure","plus bonne"],correctIndex:0,explanation:"mieux هو صيغة المقارنة للظرف bien ويصف طريقة الكلام."},
+ {prompt:"C’est ___ solution de toutes.",speech:"Complétez le superlatif de bon.",instruction:"أكمل صيغة التفضيل.",choices:["la mieux","la meilleure","la plus bonne"],correctIndex:1,explanation:"solution مؤنث، وصيغة تفضيل bon هي la meilleure."},
+ {prompt:"Le serveur répond ___.",speech:"Formez l’adverbe à partir de poli.",instruction:"اختر الظرف المشتق من poli.",choices:["politesse","plus poli","poliment"],correctIndex:2,explanation:"الظرف الصحيح المشتق من poli هو poliment، ومعناه «بأدب»."},
+ {prompt:"Le trajet est assez court.",speech:"Le trajet est assez court.",instruction:"اختر المعنى العربي المناسب لـ assez هنا.",choices:["المسار قصير إلى حدٍّ كافٍ.","المسار قصير جدًا.","المسار أقصر من الجميع."],correctIndex:0,explanation:"assez يعبّر هنا عن درجة كافية أو معتدلة، لا عن التفضيل."}
+];
+
+const A2_COMPARISON_READING={
+ title:"Deux appartements à comparer",arTitle:"المقارنة بين شقتين",
+ text:"Maya visite deux appartements. Le premier est plus grand et plus lumineux que le second, mais il est aussi plus cher. Il se trouve près du centre et les transports y sont meilleurs. Le second appartement a moins de pièces, mais il est aussi calme que le premier. Sa cuisine est plus moderne et le loyer est nettement moins élevé. Maya travaille souvent chez elle : pour elle, la lumière est le critère le plus important. Pourtant, elle pense que le second offre le meilleur rapport qualité-prix.",
+ translation:"تزور مايا شقتين. الأولى أكبر وأكثر إضاءة من الثانية، لكنها أغلى أيضًا. تقع قرب وسط المدينة والمواصلات فيها أفضل. أما الشقة الثانية ففيها غرف أقل، لكنها هادئة بقدر الأولى. مطبخها أحدث وإيجارها أقل بوضوح. تعمل مايا كثيرًا من المنزل، ولذلك تُعد الإضاءة أهم معيار بالنسبة إليها. ومع ذلك، ترى أن الشقة الثانية تقدم أفضل قيمة مقابل السعر.",
+ questions:[
+  {question:"Quel appartement est le plus lumineux ?",answer:"Le premier appartement est le plus lumineux.",ar:"الشقة الأولى هي الأكثر إضاءة."},
+  {question:"Quel avantage possède la cuisine du second ?",answer:"Elle est plus moderne.",ar:"مطبخ الشقة الثانية أحدث."},
+  {question:"Pourquoi Maya hésite-t-elle ?",answer:"La lumière favorise le premier, mais le second offre un meilleur rapport qualité-prix.",ar:"الإضاءة ترجح الأولى، لكن الثانية تقدم قيمة أفضل مقابل السعر."}
+ ]
+};
+
+const A2_COMPARISON_LISTENING={
+ title:"Train ou autocar ?",arTitle:"القطار أم الحافلة؟",
+ text:"Pour aller à Lyon, Samir compare le train et l’autocar. Le train est beaucoup plus rapide : le voyage dure deux heures au lieu de cinq. Il est également plus confortable, mais son billet coûte nettement plus cher. L’autocar part plus tôt et arrive moins près du centre. En revanche, il transporte autant de bagages sans supplément. Samir préfère voyager rapidement, mais son budget est assez limité. Finalement, il choisit l’autocar, car le prix est le critère le plus important pour lui.",
+ questions:[
+  {prompt:"Quel moyen de transport est le plus rapide ?",choices:["Le train","L’autocar","Ils sont aussi rapides"],correctIndex:0},
+  {prompt:"Quel billet coûte nettement plus cher ?",choices:["Le billet d’autocar","Le billet de train","Les deux billets"],correctIndex:1},
+  {prompt:"Quel avantage possède l’autocar ?",choices:["Il arrive plus près du centre.","Il dure deux heures.","Il accepte autant de bagages sans supplément."],correctIndex:2},
+  {prompt:"Pourquoi Samir choisit-il l’autocar ?",choices:["Parce que le prix est prioritaire.","Parce qu’il est plus rapide.","Parce qu’il part plus tard."],correctIndex:0}
+ ]
+};
+
+const A2_COMPARISON_WRITING_MODEL="J’ai comparé deux hôtels pour mon prochain voyage. Le premier est plus proche du centre et ses chambres sont plus grandes. Il est aussi mieux noté, mais il coûte beaucoup plus cher. Le second est moins moderne, pourtant il est aussi propre que le premier. Son petit-déjeuner est meilleur et le personnel répond très rapidement. Pour moi, le prix est le critère le plus important ; je choisirai donc le second hôtel, qui offre le meilleur équilibre.";
+
+const A2_COMPARISON_DICTATION=[
+ {speech:"Cette chambre est plus lumineuse que l’autre.",ar:"هذه الغرفة أكثر إضاءة من الأخرى."},
+ {speech:"Le train coûte moins cher, mais il est aussi confortable.",ar:"القطار أقل سعرًا، لكنه مريح بالقدر نفسه."},
+ {speech:"C’est la meilleure solution pour notre groupe.",ar:"هذا أفضل حل لمجموعتنا."}
+];
+
+const A2_COMPARISON_BUILDERS=[
+ {tokens:["bus.","rapide","Le","plus","train","le","est","que"],answer:["Le","train","est","plus","rapide","que","le","bus."],ar:"القطار أسرع من الحافلة."},
+ {tokens:["qu’avant.","avons","moins","temps","Nous","de"],answer:["Nous","avons","moins","de","temps","qu’avant."],ar:"لدينا وقت أقل من السابق."},
+ {tokens:["quartier.","le","C’est","restaurant","meilleur","du"],answer:["C’est","le","meilleur","restaurant","du","quartier."],ar:"هذا أفضل مطعم في الحي."}
+];
+
+const A2_COMPARISON_DIALOGUES=[
+ {context:"Votre ami demande : « Quel trajet est le plus court ? »",prompt:"اختر إجابة مقارنة واضحة.",choices:["Le trajet par le parc est plus court que l’autre.","Le trajet est aussi de court.","Le parc court mieux."],correctIndex:0,feedback:"plus court que يبني مقارنة صحيحة بين المسارين."},
+ {context:"Une cliente demande : « Les deux chambres sont aussi calmes ? »",prompt:"اختر إجابة تنفي التساوي بأدب.",choices:["Oui, la première a aussi calme.","Non, la seconde est un peu moins calme.","Non, elle est moins de calme."],correctIndex:1,feedback:"un peu moins calme يحدد فرقًا صغيرًا بصورة طبيعية."},
+ {context:"On vous demande : « Quel restaurant préférez-vous ? »",prompt:"اختر تفضيلًا مع سبب.",choices:["Je préfère le mieux restaurant.","Je préfère autant le restaurant.","Je préfère celui-ci : le service y est meilleur."],correctIndex:2,feedback:"meilleur يصف الاسم service، والجملة تذكر الاختيار وسببه."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -1230,27 +1298,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"comparison",title:"Comparer et préciser",ar:"المقارنة والتحديد",icon:ListChecks,
-  description:"المقارنة، التفضيل، والظروف التي تجعل التعبير أدق.",
+  description:"قارن الصفات والكميات والأفعال وطرائق القيام بها، ثم حدّد الدرجة واستعمل التفضيل والصيغ غير المنتظمة بدقة.",
   sections:[
-   section("Comparatif et superlatif","المقارنة والتفضيل","نستخدم plus… que للزيادة، moins… que للنقصان، aussi… que للتساوي. وصيغة التفضيل مع le/la/les plus.",[
-    "plus grand que: أكبر من.",
-    "moins cher que: أرخص من.",
-    "aussi intéressant que: ممتع بالقدر نفسه.",
-    "bon → meilleur، bien → mieux."
+   section("Comparer des qualités","مقارنة الصفات","توضع أداة المقارنة قبل الصفة، ثم يأتي que قبل العنصر الثاني. تتوافق الصفة مع الاسم في الجنس والعدد.",[
+    "الزيادة: plus + adjectif + que؛ plus grand que.",
+    "النقصان: moins + adjectif + que؛ moins cher que.",
+    "التساوي: aussi + adjectif + que؛ aussi pratique que.",
+    "التوافق: une chambre plus lumineuse؛ des rues moins bruyantes."
    ],[
-    {fr:"Ce train est plus rapide que le bus.",ar:"هذا القطار أسرع من الحافلة."},
-    {fr:"Cette chambre est moins chère.",ar:"هذه الغرفة أقل سعرًا."},
-    {fr:"C’est le meilleur restaurant du quartier.",ar:"هذا أفضل مطعم في الحي."}
+    {fr:"Cette rue est plus animée que la précédente.",ar:"هذا الشارع أكثر حيوية من الشارع السابق."},
+    {fr:"Les chambres du fond sont moins bruyantes.",ar:"الغرف الخلفية أقل ضوضاء."},
+    {fr:"Le second exercice est aussi utile que le premier.",ar:"التمرين الثاني مفيد بقدر التمرين الأول."}
    ]),
-   section("Adverbes et intensité","الظروف ودرجة الوصف","تحوّل ظروف كثيرة الصفة إلى وصف للفعل، وغالبًا تنتهي بـ -ment.",[
-    "rapide → rapidement.",
-    "sérieux → sérieusement.",
-    "très, assez, trop, vraiment لدرجة الصفة.",
-    "ضع الظرف بعد الفعل البسيط غالبًا."
+   section("Comparer quantités, actions et manières","مقارنة الكميات والأفعال والطرائق","تتغير بنية المقارنة بحسب ما نقارنه: اسمًا أو فعلًا أو ظرفًا يصف طريقة حدوث الفعل.",[
+    "مع الاسم: plus de / moins de / autant de + nom + que.",
+    "مع الفعل: verbe + plus / moins / autant + que.",
+    "مع الظرف: plus / moins / aussi + adverbe + que.",
+    "أمثلة: plus de temps؛ travaille autant؛ répond plus rapidement."
    ],[
-    {fr:"Elle parle lentement et clairement.",ar:"هي تتحدث ببطء ووضوح."},
-    {fr:"Cet exercice est assez facile.",ar:"هذا التمرين سهل إلى حد ما."},
-    {fr:"Il conduit trop rapidement.",ar:"هو يقود بسرعة زائدة."}
+    {fr:"Cette équipe a autant de clients que l’autre.",ar:"لدى هذا الفريق عدد العملاء نفسه لدى الفريق الآخر."},
+    {fr:"Je voyage moins qu’avant.",ar:"أسافر أقل مما كنت أفعل سابقًا."},
+    {fr:"Elle répond plus clairement que son collègue.",ar:"تجيب بوضوح أكبر من زميلها."}
+   ]),
+   section("Le superlatif","صيغة التفضيل","تحدد صيغة التفضيل أعلى درجة أو أدناها داخل مجموعة. تتوافق أداة التعريف مع الاسم، بينما يبقى الظرف ثابتًا.",[
+    "مع الصفة: le/la/les plus أو le/la/les moins + adjectif.",
+    "المجموعة تأتي غالبًا مع de: la plus grande de la ville.",
+    "مع الظرف: le plus / le moins + adverbe؛ elle répond le plus clairement.",
+    "يمكن ذكر معيار التفضيل لتجنب حكم غامض: le moins cher de ces hôtels."
+   ],[
+    {fr:"C’est la station la plus proche de l’hôtel.",ar:"هذه أقرب محطة إلى الفندق."},
+    {fr:"Ces billets sont les moins chers du site.",ar:"هذه التذاكر هي الأقل سعرًا في الموقع."},
+    {fr:"De toute l’équipe, Lina travaille le plus efficacement.",ar:"تعمل لينا بأعلى كفاءة بين أفراد الفريق."}
+   ]),
+   section("Meilleur, mieux et pire","الصيغ غير المنتظمة","لا نقول plus bon أو plus bien في الاستعمال المعياري؛ meilleur يصف اسمًا، أما mieux فيصف فعلًا أو حالة.",[
+    "bon → meilleur / meilleure / meilleurs / meilleures.",
+    "bien → mieux؛ Il travaille mieux؛ Je vais mieux.",
+    "le meilleur يرافق اسمًا، وle mieux يرتبط بالفعل: le meilleur choix؛ il explique le mieux.",
+    "mauvais → plus mauvais أو pire بحسب السياق؛ تجنب plus pire."
+   ],[
+    {fr:"Cette proposition est meilleure que la première.",ar:"هذا الاقتراح أفضل من الأول."},
+    {fr:"Aujourd’hui, je comprends mieux la règle.",ar:"أفهم القاعدة اليوم بصورة أفضل."},
+    {fr:"C’est le pire moment pour téléphoner.",ar:"هذا أسوأ وقت للاتصال."}
+   ]),
+   section("Préciser le degré","تحديد درجة الوصف","تضيف ظروف الدرجة فرقًا مهمًا: بعضها يقوّي الصفة أو يخففها، وبعضها يعني أن الدرجة تجاوزت الحد المناسب.",[
+    "très وvraiment للتقوية: très utile، vraiment intéressant.",
+    "assez لدرجة كافية أو معتدلة: assez grand.",
+    "un peu للتخفيف: un peu loin؛ plutôt لانطباع نسبي: plutôt calme.",
+    "trop يعني أكثر من اللازم: trop cher؛ beaucoup يقوي المقارنة: beaucoup plus rapide."
+   ],[
+    {fr:"L’hôtel est plutôt calme et très bien situé.",ar:"الفندق هادئ نسبيًا وموقعه ممتاز."},
+    {fr:"Ce sac est un peu lourd pour moi.",ar:"هذه الحقيبة ثقيلة قليلًا بالنسبة إليّ."},
+    {fr:"Le trajet est beaucoup plus court par le parc.",ar:"المسار أقصر بكثير عبر الحديقة."}
+   ]),
+   section("Former et placer les adverbes","تكوين الظروف ووضعها","تصف الظروف طريقة حدوث الفعل، وكثير منها ينتهي بـ -ment. اختر الصيغة الصحيحة ثم ضعها قريبًا من الفعل الذي تصفه.",[
+    "غالبًا المؤنث + -ment: lent → lente → lentement؛ clair → clairement.",
+    "إذا انتهت الصفة بـ -ant: constant → constamment؛ وبـ -ent: prudent → prudemment.",
+    "صيغ شائعة يجب حفظها: bon → bien؛ gentil → gentiment؛ précis → précisément.",
+    "بعد فعل بسيط غالبًا: Il parle clairement؛ ومع المقارنة: plus clairement que."
+   ],[
+    {fr:"Le réceptionniste nous accueille poliment.",ar:"يستقبلنا موظف الاستقبال بأدب."},
+    {fr:"Veuillez répondre précisément à la question.",ar:"يرجى الإجابة عن السؤال بدقة."},
+    {fr:"Elle conduit prudemment quand il pleut.",ar:"تقود بحذر عندما تمطر."}
    ])
   ]
  },
@@ -2413,17 +2521,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity;
- const activeA2Reading=isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison;
+ const activeA2Reading=isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2446,7 +2555,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2Quantity?[
+ const revisionWritingChecks=isA2Comparison?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"مقارنة بـ plus وmoins",passed:/\bplus\b/i.test(revisionWritingText)&&/\bmoins\b/i.test(revisionWritingText)},
+  {label:"مقارنة مساواة بـ aussi أو autant",passed:/\b(?:aussi|autant)\b/i.test(revisionWritingText)},
+  {label:"صيغة تفضيل واحدة",passed:/\b(?:le|la|les)\s+(?:plus|moins|meilleur|meilleure|meilleurs|meilleures)\b/i.test(revisionWritingText)},
+  {label:"ظرف لتحديد الدرجة",passed:/\b(?:très|assez|trop|vraiment|plutôt|nettement|beaucoup|un peu)\b/i.test(revisionWritingText)}
+ ]:isA2Quantity?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"أداتا تجزئة مختلفتان",passed:["du ","de la ","de l’","de l'","des "].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
   {label:"تعبيران عن الكمية",passed:["beaucoup de","un peu de","assez de","trop de","un kilo de","une bouteille de","deux ","trois ","quatre "].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
@@ -2534,6 +2649,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2544,6 +2660,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -3190,7 +3307,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

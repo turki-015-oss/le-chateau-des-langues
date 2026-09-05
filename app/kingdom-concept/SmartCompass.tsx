@@ -74,7 +74,7 @@ export default function SmartCompass() {
   useEffect(()=>{
     try{
       if(sessionStorage.getItem(OPEN_STATE_KEY)==="1")setOpen(true);
-      const cached=sessionStorage.getItem(QIBLA_STATE_KEY);
+      const cached=localStorage.getItem(QIBLA_STATE_KEY)??sessionStorage.getItem(QIBLA_STATE_KEY);
       if(cached){
         const value=JSON.parse(cached) as {bearing:number;distance:number;accuracy:number};
         if(Number.isFinite(value.bearing)&&Number.isFinite(value.distance)){
@@ -188,7 +188,9 @@ export default function SmartCompass() {
     setAccuracy(positionAccuracy);
     setLocationStatus("ready");
     try{
-      sessionStorage.setItem(QIBLA_STATE_KEY,JSON.stringify({bearing,distance:kaabaDistance,accuracy:positionAccuracy}));
+      const cachedPosition=JSON.stringify({bearing,distance:kaabaDistance,accuracy:positionAccuracy});
+      localStorage.setItem(QIBLA_STATE_KEY,cachedPosition);
+      sessionStorage.setItem(QIBLA_STATE_KEY,cachedPosition);
     }catch{}
   };
 
@@ -253,11 +255,11 @@ export default function SmartCompass() {
     try{sessionStorage.setItem(OPEN_STATE_KEY,next?"1":"0")}catch{}
   };
 
-  const activate=()=>{
+  const activate=async()=>{
     setCompassOpen(true);
     if(!enabled)setEnabled(true);
-    void requestSensorPermission();
-    if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
+    await requestSensorPermission();
+    if(locationStatus!=="ready"&&locationStatus!=="locating")await locateQibla();
   };
 
   const togglePower=async()=>{
@@ -266,8 +268,8 @@ export default function SmartCompass() {
       return;
     }
     setEnabled(true);
-    void requestSensorPermission();
-    if(locationStatus!=="ready"&&locationStatus!=="locating")locateQibla();
+    await requestSensorPermission();
+    if(locationStatus!=="ready"&&locationStatus!=="locating")await locateQibla();
   };
 
   const headingLabel=useMemo(()=>heading===null?"لم يُحدّد بعد":directions[Math.round(heading/45)%8],[heading]);
@@ -278,7 +280,7 @@ export default function SmartCompass() {
 
   return <>
     <div className="smart-compass-control">
-      <button type="button" className={`smart-compass-trigger ${aligned?"aligned":""} ${enabled?"":"disabled"}`} onClick={activate} aria-label="فتح بوصلة الشمال والقبلة">
+      <button type="button" className={`smart-compass-trigger ${aligned?"aligned":""} ${enabled?"":"disabled"}`} onClick={()=>void activate()} aria-label="فتح بوصلة الشمال والقبلة">
         <span className="smart-compass-mini" aria-hidden="true">
           <span className="smart-compass-rotor" style={{transform:`rotate(${northRotation}deg)`}}>
             <b>N</b>

@@ -205,8 +205,8 @@ export default function SmartCompass() {
       <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
     </div>
 
-    {open&&<div className="smart-compass-overlay" onClick={()=>setCompassOpen(false)}>
-      <section className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title" onClick={event=>event.stopPropagation()}>
+    {open&&<div className="smart-compass-overlay">
+      <section className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title">
         <header>
           <div><small>COMPASS · QIBLA</small><h2 id="smart-compass-title">البوصلة العالمية</h2></div>
           <button type="button" onClick={()=>setCompassOpen(false)} aria-label="إغلاق البوصلة"><X/></button>
@@ -220,6 +220,7 @@ export default function SmartCompass() {
             <span className="smart-heading-index" aria-hidden="true"/>
             <div className="smart-heading-value"><strong>{heading===null?"—":String(Math.round(heading)).padStart(3,"0")}°</strong><small>{headingLabel}</small></div>
           </div>
+          <div className="smart-compass-legend" aria-label="دليل مؤشرات البوصلة"><span><i className="north"/>إبرة الشمال</span><span><i className="qibla"/>إبرة القبلة</span></div>
           <p className="smart-alignment-message">{!enabled?"البوصلة متوقفة — اضغط تشغيل للمتابعة":aligned?"أنت الآن باتجاه القبلة":"حرّك الهاتف حتى يصل مؤشر القبلة الذهبي إلى العلامة العليا"}</p>
         </div>
 

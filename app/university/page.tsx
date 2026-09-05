@@ -414,30 +414,108 @@ const A1_MODULES:CourseModule[]=[
  }
 ];
 
+const A2_REVISION_PRACTICE_ITEMS:Example[]=[
+ {fr:"Tous les jours, je me réveille à six heures et demie.",ar:"أستيقظ كل يوم في السادسة والنصف."},
+ {fr:"Nous mettons nos manteaux avant de sortir.",ar:"نرتدي معاطفنا قبل الخروج."},
+ {fr:"Elle ne regarde jamais la télévision le matin.",ar:"لا تشاهد التلفاز صباحًا أبدًا."},
+ {fr:"Depuis quand travaillez-vous dans cette entreprise ?",ar:"منذ متى تعملون في هذه الشركة؟"},
+ {fr:"Est-ce que vous prenez le métro pour aller au travail ?",ar:"هل تستقلون المترو للذهاب إلى العمل؟"},
+ {fr:"Je ne veux rien acheter aujourd’hui.",ar:"لا أريد شراء أي شيء اليوم."},
+ {fr:"On va souvent au marché le samedi.",ar:"نذهب كثيرًا إلى السوق يوم السبت."},
+ {fr:"D’abord, ils préparent le repas, puis ils mettent la table.",ar:"يُحضّرون الطعام أولًا، ثم يرتبون المائدة."},
+ {fr:"Mes enfants se couchent vers neuf heures.",ar:"يخلد أطفالي إلى النوم قرابة الساعة التاسعة."},
+ {fr:"À mon avis, ce quartier est pratique parce qu’il est bien desservi.",ar:"في رأيي، هذا الحي عملي لأن وسائل النقل تصل إليه جيدًا."}
+];
+
+const A2_REVISION_QUIZ_ITEMS:Example[]=[
+ {fr:"Mon frère fait les courses après son travail.",ar:"يتسوق أخي بعد انتهاء عمله."},
+ {fr:"Nous ne sortons plus le soir pendant la semaine.",ar:"لم نعد نخرج مساءً خلال أيام الأسبوع."},
+ {fr:"Pourquoi est-ce que vous apprenez le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
+ {fr:"Elles se préparent rapidement pour partir.",ar:"يستعددن بسرعة للمغادرة."},
+ {fr:"Je vais à la piscine une fois par semaine.",ar:"أذهب إلى المسبح مرة واحدة في الأسبوع."},
+ {fr:"Tu dois répondre à ce message aujourd’hui.",ar:"يجب أن تجيب عن هذه الرسالة اليوم."},
+ {fr:"Nous habitons dans cet appartement depuis janvier.",ar:"نسكن في هذه الشقة منذ شهر يناير."},
+ {fr:"Il veut venir, mais il termine son travail à huit heures.",ar:"يريد المجيء، لكنه ينهي عمله الساعة الثامنة."},
+ {fr:"À qui téléphonez-vous chaque soir ?",ar:"بمن تتصلون كل مساء؟"},
+ {fr:"Enfin, je range mes affaires et je rentre chez moi.",ar:"وأخيرًا، أرتب أغراضي وأعود إلى منزلي."}
+];
+
+const A2_REVISION_READING={
+ title:"La semaine de Nadia",
+ arTitle:"أسبوع ناديا",
+ text:"Nadia habite à Toulouse depuis deux ans. Elle travaille dans une librairie du mardi au samedi. Chaque matin, elle se lève à sept heures, prend son petit-déjeuner, puis va au travail en bus parce que la librairie est loin de chez elle. Elle ne travaille jamais le lundi. Ce jour-là, elle fait ses courses et retrouve parfois une amie au café.",
+ translation:"تعيش ناديا في تولوز منذ عامين. تعمل في مكتبة لبيع الكتب من الثلاثاء إلى السبت. تستيقظ كل صباح الساعة السابعة، وتتناول فطورها، ثم تذهب إلى العمل بالحافلة لأن المكتبة بعيدة عن منزلها. لا تعمل يوم الاثنين أبدًا؛ ففي ذلك اليوم تتسوق وتلتقي أحيانًا بصديقة في المقهى.",
+ questions:[
+  {question:"Depuis quand Nadia habite-t-elle à Toulouse ?",answer:"Elle habite à Toulouse depuis deux ans.",ar:"تعيش في تولوز منذ عامين."},
+  {question:"Pourquoi va-t-elle au travail en bus ?",answer:"Parce que la librairie est loin de chez elle.",ar:"لأن المكتبة بعيدة عن منزلها."},
+  {question:"Que fait-elle parfois le lundi ?",answer:"Elle retrouve parfois une amie au café.",ar:"تلتقي أحيانًا بصديقة في المقهى."}
+ ]
+};
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
-  description:"مراجعة ذكية للحاضر مع أسئلة أكثر طبيعية وإجابات أطول.",
+  description:"ثبّت أساس A2: الحاضر، الأفعال الضميرية، النفي، السؤال، الزمن، وبناء إجابة مترابطة في مواقف الحياة اليومية.",
   sections:[
-   section("Présent et verbes fréquents","الحاضر والأفعال الشائعة","في A2 ننتقل من الجملة القصيرة إلى فقرة مترابطة. ركّز على الأفعال غير المنتظمة الأكثر استعمالًا وعلى توافقها مع الفاعل.",[
-    "aller, venir, prendre, mettre, pouvoir, vouloir, devoir.",
-    "استخدم d’abord، ensuite، puis لترتيب الأفكار.",
-    "اجمع العادة والرأي والسبب في إجابة واحدة.",
-    "راجع النفي مع jamais، plus، rien."
+   section("Le présent bien construit","بناء الحاضر بصورة صحيحة","ابدأ بتثبيت نهايات الأفعال المنتظمة، ثم اربطها بأكثر الأفعال غير المنتظمة استعمالًا. يجب أن يتوافق التصريف دائمًا مع الفاعل.",[
+    "أفعال -er: je parle، tu parles، il parle، nous parlons، vous parlez، ils parlent.",
+    "أفعال -ir من نوع finir: je finis، nous finissons، ils finissent.",
+    "ثبّت تصريف aller, venir, faire, prendre, mettre, pouvoir, vouloir وdevoir.",
+    "مع on نستخدم تصريف المفرد الغائب: On prend، On va، On fait."
    ],[
-    {fr:"D’abord, je prends le métro, puis je marche jusqu’au bureau.",ar:"أولًا أستقل المترو، ثم أمشي حتى المكتب."},
-    {fr:"Je ne travaille plus le samedi.",ar:"لم أعد أعمل يوم السبت."},
-    {fr:"Nous devons partir parce que le magasin ferme.",ar:"يجب أن نغادر لأن المتجر يغلق."}
+    {fr:"Chaque matin, je pars à sept heures et je prends le bus.",ar:"أغادر كل صباح الساعة السابعة وأستقل الحافلة."},
+    {fr:"Ma sœur finit ses cours à quatre heures.",ar:"تنهي أختي دروسها الساعة الرابعة."},
+    {fr:"Nous pouvons vous aider après le déjeuner.",ar:"يمكننا مساعدتكم بعد الغداء."}
    ]),
-   section("Questions naturelles","الأسئلة الطبيعية","تعلم اختيار صيغة السؤال المناسبة: نبرة الحديث، est-ce que، أو القلب في السياق الرسمي.",[
+   section("Les verbes pronominaux","الأفعال الضميرية والروتين","تأتي الضمائر me, te, se, nous, vous, se قبل الفعل، وتتغير مع الفاعل. تستخدم هذه الأفعال كثيرًا لوصف اليوم والعادات.",[
+    "Je me lève، tu te lèves، elle se lève.",
+    "Nous nous préparons، vous vous préparez، ils se préparent.",
+    "في النفي نحيط الضمير والفعل بـ ne…pas: Je ne me couche pas tard.",
+    "قبل حرف صوتي تصبح me وte وse: m’, t’, s’."
+   ],[
+    {fr:"Je me lève tôt pendant la semaine.",ar:"أستيقظ مبكرًا خلال أيام الأسبوع."},
+    {fr:"Vous vous préparez avant de sortir.",ar:"تستعدون قبل الخروج."},
+    {fr:"On se retrouve devant la bibliothèque.",ar:"نلتقي أمام المكتبة."}
+   ]),
+   section("La négation précise","النفي بصورة أدق","لا يقتصر النفي في A2 على ne…pas؛ اختر الصيغة التي تنقل المعنى المقصود، وضع جزأي النفي حول الفعل المصرف.",[
+    "ne…jamais: أبدًا، وne…plus: لم يعد.",
+    "ne…rien: لا شيء، وne…personne: لا أحد.",
+    "مع المصدر: Je préfère ne rien dire.",
+    "في الحديث قد تُحذف ne، لكن تعلّم الصيغة الكاملة في الكتابة."
+   ],[
+    {fr:"Il ne prend jamais de café le soir.",ar:"لا يشرب القهوة مساءً أبدًا."},
+    {fr:"Nous ne travaillons plus dans ce quartier.",ar:"لم نعد نعمل في هذا الحي."},
+    {fr:"Je ne connais personne dans cette ville.",ar:"لا أعرف أحدًا في هذه المدينة."}
+   ]),
+   section("Poser une question naturelle","طرح سؤال طبيعي","اختر صيغة السؤال بحسب الموقف: نبرة الحديث مع المقربين، est-ce que في الاستعمال المحايد، أو القلب في السياق الأكثر رسمية.",[
     "Tu viens demain ? شائع في الحديث.",
     "Est-ce que vous avez réservé ? واضح ومحايد.",
     "Où allez-vous ? مناسب ورسمي.",
-    "استخدم pourquoi وcomment وdepuis quand لتوسيع الحوار."
+    "استخدم qui, que, où, quand, comment, pourquoi, combien وdepuis quand للحصول على معلومة محددة."
    ],[
-    {fr:"Depuis quand habitez-vous ici ?",ar:"منذ متى تسكن هنا؟"},
-    {fr:"Pourquoi est-ce que tu apprends le français ?",ar:"لماذا تتعلم الفرنسية؟"},
-    {fr:"Comment avez-vous trouvé cet appartement ?",ar:"كيف وجدت هذه الشقة؟"}
+    {fr:"À quelle heure commence le cours ?",ar:"في أي ساعة يبدأ الدرس؟"},
+    {fr:"Est-ce que tu peux venir avec nous ?",ar:"هل يمكنك المجيء معنا؟"},
+    {fr:"Pourquoi choisissez-vous ce trajet ?",ar:"لماذا تختارون هذا الطريق؟"}
+   ]),
+   section("Le temps, la durée et la fréquence","الزمن والمدة والتكرار","حدّد متى يحدث الفعل وكم مرة ومدة استمراره. هذه العناصر تحول الإجابة القصيرة إلى معلومة واضحة.",[
+    "depuis + مدة أو بداية لحدث ما زال مستمرًا.",
+    "toujours, souvent, parfois, rarement, jamais للتكرار.",
+    "une fois / deux fois par semaine لتحديد العدد.",
+    "en général, tous les jours, le week-end لتنظيم الحديث عن العادة."
+   ],[
+    {fr:"Je travaille ici depuis six mois.",ar:"أعمل هنا منذ ستة أشهر."},
+    {fr:"Nous faisons du sport deux fois par semaine.",ar:"نمارس الرياضة مرتين في الأسبوع."},
+    {fr:"Il déjeune parfois avec ses collègues.",ar:"يتناول الغداء أحيانًا مع زملائه."}
+   ]),
+   section("Construire une réponse liée","بناء إجابة مترابطة","في A2 لا تكتفِ بجمل منفصلة. رتّب الفكرة، أضف سببًا أو تعارضًا، ثم اختم بمعلومة واضحة.",[
+    "d’abord, ensuite, puis, enfin لترتيب الأحداث.",
+    "parce que وcar لذكر السبب، donc لذكر النتيجة.",
+    "mais وpourtant لإظهار التعارض.",
+    "ابنِ فقرة قصيرة: عادة + تفصيل + سبب + رأي."
+   ],[
+    {fr:"D’abord, je consulte mes messages, puis je commence mon travail.",ar:"أطّلع أولًا على رسائلي، ثم أبدأ عملي."},
+    {fr:"Je préfère marcher parce que mon bureau est près de chez moi.",ar:"أفضل المشي لأن مكتبي قريب من منزلي."},
+    {fr:"Le trajet est long, mais le quartier est très agréable.",ar:"الطريق طويل، لكن الحي لطيف جدًا."}
    ])
   ]
  },
@@ -1791,12 +1869,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const practiceExamples=useMemo(()=>{
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
+  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
- },[activeModule]);
+ },[activeModule,level.id]);
 
  const quizQuestions=useMemo(()=>{
   const examples=activeModule.sections.flatMap(item=>item.examples);
-  const seeds=(activeModule.id==="description"
+  const seeds=(level.id==="A2"&&activeModule.id==="revision"
+   ?A2_REVISION_QUIZ_ITEMS.map(item=>({prompt:item.fr,answer:item.ar}))
+   :activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
    :activeModule.id==="adjectives"
     ?ADJECTIVE_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar.split(" — ")[0]}))
@@ -1816,7 +1897,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    const choices=[...raw.slice(shift),...raw.slice(0,shift)];
    return {prompt:item.prompt,choices,correctIndex:choices.indexOf(item.answer)};
   });
- },[activeModule]);
+ },[activeModule,level.id]);
 
  const activeModuleIndex=level.modules.findIndex(item=>item.id===activeModule.id);
  const previousModule=activeModuleIndex>0?level.modules[activeModuleIndex-1]:null;
@@ -2322,6 +2403,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>}
      </section>)}
     </div>
+    {level.id==="A2"&&activeModule.id==="revision"&&<section className="a2-reading-workshop">
+     <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
+     <article className="a2-reading-text">
+      <header><div><small>Texte A2</small><h4>{A2_REVISION_READING.title}</h4><span>{A2_REVISION_READING.arTitle}</span></div><button onClick={()=>void speakFrench(A2_REVISION_READING.text,{rate:.76})}><Volume2/> استمع إلى النص</button></header>
+      <p dir="ltr">{A2_REVISION_READING.text}</p>
+      <details><summary>عرض الترجمة بعد المحاولة</summary><p>{A2_REVISION_READING.translation}</p></details>
+     </article>
+     <div className="a2-reading-questions">
+      {A2_REVISION_READING.questions.map((item,index)=><article key={item.question}><span>{index+1}</span><div><strong dir="ltr">{item.question}</strong><details><summary>تحقق من إجابتك</summary><p dir="ltr">{item.answer}</p><small>{item.ar}</small></details></div><button onClick={()=>void speakFrench(item.question,{rate:.76})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>)}
+     </div>
+    </section>}
     </>}
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
@@ -2333,8 +2425,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="university-dual-audio">
         <button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
        </div>
-      </article>)}
+     </article>)}
      </div>
+     {level.id==="A2"&&activeModule.id==="revision"&&<div className="a2-production-grid">
+      <article><span>Production écrite</span><h4>اكتب عن روتينك اليومي</h4><p>اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.</p><textarea dir="ltr" aria-label="مساحة كتابة فقرة عن الروتين اليومي" placeholder="En général, je me lève…" rows={7}/><small>راجع توافق الفعل مع الفاعل وترتيب الأفكار قبل الانتقال للاختبار.</small></article>
+      <article><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p>Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.</p><button onClick={()=>void speakFrench("Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.",{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></ul></article>
+     </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> الانتقال إلى الاختبار <ChevronLeft/></button>
     </section>}
 

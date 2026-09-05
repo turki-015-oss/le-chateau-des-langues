@@ -7,7 +7,7 @@ import type {LucideIcon} from "lucide-react";
 import {
  ArrowRight,BookOpen,Building2,CalendarDays,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock3,Compass,
  GraduationCap,Headphones,Languages,LibraryBig,ListChecks,MapPinned,MessageCircle,Mic2,
- NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Trophy,Users,Volume2
+ NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Square,Trash2,Trophy,Users,Volume2
 } from "lucide-react";
 import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
 import {
@@ -452,6 +452,20 @@ const A2_REVISION_READING={
   {question:"Que fait-elle parfois le lundi ?",answer:"Elle retrouve parfois une amie au café.",ar:"تلتقي أحيانًا بصديقة في المقهى."}
  ]
 };
+
+const A2_REVISION_LISTENING={
+ title:"Une matinée bien organisée",
+ arTitle:"صباح منظّم",
+ text:"Bonjour, je m’appelle Lucas. J’habite à Nantes depuis trois ans et je travaille dans un hôtel près de la gare. En semaine, je me réveille à six heures et demie. Je prends toujours un café, mais je ne mange jamais à la maison. Je pars à sept heures et je vais au travail à vélo parce que c’est rapide. Le lundi, je commence plus tard, donc je fais mes courses avant de partir.",
+ questions:[
+  {prompt:"Depuis combien de temps Lucas habite-t-il à Nantes ?",choices:["Depuis trois ans","Depuis six mois","Depuis sept ans"],correctIndex:0},
+  {prompt:"Où travaille Lucas ?",choices:["Dans une librairie","Dans un hôtel","Dans une gare"],correctIndex:1},
+  {prompt:"Que ne fait-il jamais à la maison ?",choices:["Il ne boit jamais de café.","Il ne fait jamais ses courses.","Il ne mange jamais."],correctIndex:2},
+  {prompt:"Pourquoi va-t-il au travail à vélo ?",choices:["Parce que c’est rapide.","Parce qu’il commence tard.","Parce qu’il habite à la gare."],correctIndex:0}
+ ]
+};
+
+const A2_REVISION_WRITING_MODEL="En général, je me lève à six heures et demie. D’abord, je prends mon petit-déjeuner, puis je me prépare pour aller au travail. Je pars à sept heures et je prends souvent le bus. Je ne travaille jamais le vendredi. Après le travail, je fais mes courses ou je retrouve un ami. Enfin, je rentre chez moi parce que j’aime passer une soirée calme avec ma famille.";
 
 const A2_MODULES:CourseModule[]=[
  {
@@ -1812,6 +1826,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const adjectivePaginationTopRef=useRef<number|null>(null);
  const [dailyPageIndex,setDailyPageIndex]=useState(0);
  const [friendsPageIndex,setFriendsPageIndex]=useState(0);
+ const [revisionListeningAnswers,setRevisionListeningAnswers]=useState<Record<number,number>>({});
+ const [revisionWritingText,setRevisionWritingText]=useState("");
+ const [isRecording,setIsRecording]=useState(false);
+ const [recordingUrl,setRecordingUrl]=useState("");
+ const [recordingError,setRecordingError]=useState("");
+ const mediaRecorderRef=useRef<MediaRecorder|null>(null);
+ const recordingStreamRef=useRef<MediaStream|null>(null);
+ const recordingChunksRef=useRef<Blob[]>([]);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
@@ -1824,6 +1846,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
+ const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
+ const revisionWritingChecks=[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"فعل ضميري واحد على الأقل",passed:/\b(?:je\s+m[’']|tu\s+t[’']|(?:il|elle|on)\s+s[’']|nous\s+nous\s|vous\s+vous\s|(?:ils|elles)\s+se\s)/i.test(revisionWritingText)},
+  {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)},
+  {label:"رابطان مختلفان على الأقل",passed:["d’abord","puis","ensuite","enfin","parce que","donc","mais"].filter(link=>revisionWritingText.toLocaleLowerCase("fr").includes(link)).length>=2}
+ ];
  const descriptionVisualConfig=descriptionPanel==="physical"
   ?{items:PHYSICAL_STATE_VOCABULARY,path:"/university/vocabulary/physical-states-sprite.png",columns:5,rows:5,aspect:"1 / 1",label:"الحالات الجسدية واليومية",fr:"États physiques"}
   :descriptionPanel==="emotions"
@@ -1918,7 +1947,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAdjectivePageIndex(0);
   setAdjectivePanel("appearance");
   setAdjectiveVisualPageIndex(0);
+  setRevisionListeningAnswers({});
+  setRevisionWritingText("");
  },[initialModuleId,level]);
+
+ useEffect(()=>()=>{
+  recordingStreamRef.current?.getTracks().forEach(track=>track.stop());
+  if(recordingUrl)URL.revokeObjectURL(recordingUrl);
+ },[recordingUrl]);
 
  useEffect(()=>{
   try{
@@ -1957,6 +1993,43 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(typeof quizAnswers[quizQuestionIndex]!=="number")return;
   if(quizQuestionIndex===quizQuestions.length-1)setQuizFinished(true);
   else setQuizQuestionIndex(index=>index+1);
+ };
+
+ const startRevisionRecording=async()=>{
+  setRecordingError("");
+  if(!navigator.mediaDevices?.getUserMedia||typeof MediaRecorder==="undefined"){
+   setRecordingError("التسجيل غير مدعوم في هذا المتصفح. افتح الدرس في Safari أو Chrome وحدّث الصفحة.");
+   return;
+  }
+  try{
+   const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+   const recorder=new MediaRecorder(stream);
+   recordingStreamRef.current=stream;
+   recordingChunksRef.current=[];
+   recorder.ondataavailable=event=>{if(event.data.size>0)recordingChunksRef.current.push(event.data)};
+   recorder.onstop=()=>{
+    const blob=new Blob(recordingChunksRef.current,{type:recorder.mimeType||"audio/webm"});
+    setRecordingUrl(previous=>{if(previous)URL.revokeObjectURL(previous);return URL.createObjectURL(blob)});
+    stream.getTracks().forEach(track=>track.stop());
+    recordingStreamRef.current=null;
+    setIsRecording(false);
+   };
+   mediaRecorderRef.current=recorder;
+   recorder.start();
+   setIsRecording(true);
+  }catch{
+   setRecordingError("تعذّر تشغيل الميكروفون. اسمح للموقع باستخدامه من إعدادات المتصفح ثم حاول مجددًا.");
+  }
+ };
+
+ const stopRevisionRecording=()=>{
+  if(mediaRecorderRef.current?.state==="recording")mediaRecorderRef.current.stop();
+ };
+
+ const deleteRevisionRecording=()=>{
+  if(recordingUrl)URL.revokeObjectURL(recordingUrl);
+  setRecordingUrl("");
+  setRecordingError("");
  };
 
  const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
@@ -2418,6 +2491,20 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
      <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
+     {level.id==="A2"&&activeModule.id==="revision"&&<section className="a2-listening-lab">
+      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(A2_REVISION_LISTENING.text,{rate:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
+      <div className="a2-listening-questions">
+       {A2_REVISION_LISTENING.questions.map((question,index)=>{
+        const selected=revisionListeningAnswers[index];
+        return <article key={question.prompt}>
+         <div><i>{index+1}</i><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
+         <div className="a2-listening-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionListeningAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
+         {typeof selected==="number"&&<small className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"حاول مرة أخرى واستمع إلى المقطع"}</small>}
+        </article>;
+       })}
+      </div>
+      <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{A2_REVISION_LISTENING.title}</h4><p dir="ltr">{A2_REVISION_LISTENING.text}</p></details>
+     </section>}
      <div className="university-practice-list">
       {practiceExamples.map((example,index)=><article key={`${example.fr}-${index}`}>
        <i>{String(index+1).padStart(2,"0")}</i>
@@ -2428,8 +2515,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </article>)}
      </div>
      {level.id==="A2"&&activeModule.id==="revision"&&<div className="a2-production-grid">
-      <article><span>Production écrite</span><h4>اكتب عن روتينك اليومي</h4><p>اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.</p><textarea dir="ltr" aria-label="مساحة كتابة فقرة عن الروتين اليومي" placeholder="En général, je me lève…" rows={7}/><small>راجع توافق الفعل مع الفاعل وترتيب الأفكار قبل الانتقال للاختبار.</small></article>
-      <article><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p>Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.</p><button onClick={()=>void speakFrench("Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.",{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></ul></article>
+      <article className="a2-writing-task"><span>Production écrite</span><h4>اكتب عن روتينك اليومي</h4><p>اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة كتابة فقرة عن الروتين اليومي" placeholder="En général, je me lève…" rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{A2_REVISION_WRITING_MODEL}</p></details></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.</p><button onClick={()=>void speakFrench("Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.",{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> الانتقال إلى الاختبار <ChevronLeft/></button>
     </section>}

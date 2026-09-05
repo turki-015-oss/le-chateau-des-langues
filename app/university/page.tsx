@@ -762,6 +762,74 @@ const A2_PRONOUNS_DIALOGUES=[
  {context:"Un agent vous demande : « Je vous rends vos passeports ? »",prompt:"اختر جواب الأمر الصحيح.",choices:["Oui, rendez-nous-les.","Oui, les nous rendez.","Oui, rendez-les-nous, s’il vous plaît."],correctIndex:2,feedback:"في الأمر المثبت يأتي ضمير المفعول المباشر قبل nous: rendez-les-nous."}
 ];
 
+const A2_QUANTITY_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je voudrais du pain et de la confiture.",ar:"أود خبزًا ومربّى."},
+ {fr:"Nous n’achetons pas de viande cette semaine.",ar:"لن نشتري لحمًا هذا الأسبوع."},
+ {fr:"Tu veux des pommes ? Oui, j’en prends trois.",ar:"هل تريد تفاحًا؟ نعم، سآخذ ثلاثًا."},
+ {fr:"Elle parle souvent de son voyage : elle en garde un excellent souvenir.",ar:"تتحدث كثيرًا عن رحلتها وتحتفظ منها بذكرى رائعة."},
+ {fr:"Nous allons au marché et nous y retrouvons nos voisins.",ar:"نذهب إلى السوق ونلتقي بجيراننا هناك."},
+ {fr:"Vous pensez à votre rendez-vous ? Oui, j’y pense.",ar:"هل تتذكرون موعدكم؟ نعم، أتذكره."},
+ {fr:"Combien de billets avez-vous ? J’en ai deux.",ar:"كم تذكرة لديكم؟ لدي تذكرتان."},
+ {fr:"Je vais y aller après le travail.",ar:"سأذهب إلى هناك بعد العمل."},
+ {fr:"N’en ajoutez pas trop.",ar:"لا تضيفوا منه الكثير."},
+ {fr:"Il y a assez de chaises, mais il n’y en a pas assez pour tout le monde.",ar:"توجد كراسٍ كافية، لكنها لا تكفي الجميع."}
+];
+
+const A2_QUANTITY_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je bois ___ eau chaque matin.",speech:"Complétez avec l’article partitif correct.",instruction:"اختر أداة التجزئة الصحيحة.",choices:["de l’","du","des"],correctIndex:0,explanation:"eau اسم مفرد يبدأ بحرف متحرك، لذلك نستخدم de l’."},
+ {prompt:"Nous achetons beaucoup ___ légumes.",speech:"Complétez l’expression de quantité.",instruction:"أكمل تركيب الكمية.",choices:["des","de","du"],correctIndex:1,explanation:"بعد تعبير الكمية beaucoup نستخدم de: beaucoup de légumes."},
+ {prompt:"Elle ne mange pas ___ viande.",speech:"Complétez la phrase négative.",instruction:"اختر الأداة المناسبة بعد النفي.",choices:["de la","du","de"],correctIndex:2,explanation:"بعد النفي تصبح أداة التجزئة غالبًا de: elle ne mange pas de viande."},
+ {prompt:"Tu veux du café ? Oui, j’___ veux.",speech:"Remplacez du café par le pronom correct.",instruction:"استبدل du café بالضمير الصحيح.",choices:["en","y","le"],correctIndex:0,explanation:"en يحل محل اسم سبقه de أو أداة تجزئة: j’en veux."},
+ {prompt:"Combien de croissants prenez-vous ? J’___ prends deux.",speech:"Complétez la réponse avec le pronom correct.",instruction:"أكمل إجابة الكمية.",choices:["y","en","les"],correctIndex:1,explanation:"نستبدل الاسم بـ en ونُبقي العدد ظاهرًا: j’en prends deux."},
+ {prompt:"Nous allons à la bibliothèque. → Nous ___ allons.",speech:"Remplacez à la bibliothèque par le pronom correct.",instruction:"استبدل المكان بالضمير المناسب.",choices:["en","la","y"],correctIndex:2,explanation:"y يحل محل مكان يسبقه à: nous y allons."},
+ {prompt:"Il pense à son examen. → Il ___ pense.",speech:"Remplacez à son examen par le pronom correct.",instruction:"استبدل التركيب المسبوق بـ à.",choices:["y","en","lui"],correctIndex:0,explanation:"عندما يعود à على شيء، يُستبدل التركيب عادة بـ y: il y pense."},
+ {prompt:"Je vais parler de ce problème. → Je vais ___ parler.",speech:"Placez le pronom en dans cette phrase.",instruction:"ضع en في موضعه الصحيح.",choices:["parler en","en","y"],correctIndex:1,explanation:"مع فعل مصرف يتبعه مصدر، يسبق الضمير المصدر الذي يتعلق به: je vais en parler."},
+ {prompt:"Va au bureau ! → ___ !",speech:"Transformez la phrase avec le pronom y à l’impératif affirmatif.",instruction:"استبدل المكان بـ y في الأمر المثبت.",choices:["Y va","N’y va pas","Vas-y"],correctIndex:2,explanation:"في الأمر المثبت يأتي y بعد الفعل بشرطة، ونكتب vas-y."},
+ {prompt:"Il n’y en a plus.",speech:"Il n’y en a plus.",instruction:"اختر الترجمة العربية المناسبة.",choices:["لم يعد هناك شيء منه.","سأذهب إلى هناك لاحقًا.","يوجد منه اثنان."],correctIndex:0,explanation:"il y a يعني «يوجد»، وen يستبدل الشيء، وne…plus تعني «لم يعد»."}
+];
+
+const A2_QUANTITY_READING={
+ title:"Les courses pour le dîner",arTitle:"مشتريات العشاء",
+ text:"Ce soir, Inès reçoit quatre amis. Elle va au marché parce qu’elle y trouve des produits frais. Pour la soupe, elle achète un kilo de tomates, deux oignons et un peu de crème. Elle prend aussi du fromage, mais elle n’achète pas de pain : elle en a encore à la maison. Le marchand propose des fraises. Inès en choisit deux barquettes pour le dessert. Avant de partir, elle pense aux boissons et en prend trois bouteilles.",
+ translation:"ستستقبل إيناس أربعة أصدقاء هذا المساء. تذهب إلى السوق لأنها تجد هناك منتجات طازجة. ولإعداد الحساء تشتري كيلوغرامًا من الطماطم وبصلتين وقليلًا من الكريمة. وتأخذ بعض الجبن، لكنها لا تشتري خبزًا لأن لديها منه في المنزل. يعرض البائع الفراولة، فتختار إيناس عبوتين منها للتحلية. وقبل أن تغادر تتذكر المشروبات وتأخذ منها ثلاث زجاجات.",
+ questions:[
+  {question:"Pourquoi Inès va-t-elle au marché ?",answer:"Parce qu’elle y trouve des produits frais.",ar:"لأنها تجد هناك منتجات طازجة."},
+  {question:"Pourquoi n’achète-t-elle pas de pain ?",answer:"Parce qu’elle en a encore à la maison.",ar:"لأن لديها منه في المنزل."},
+  {question:"Combien de barquettes de fraises choisit-elle ?",answer:"Elle en choisit deux.",ar:"تختار عبوتين منها."}
+ ]
+};
+
+const A2_QUANTITY_LISTENING={
+ title:"Une recette très simple",arTitle:"وصفة سهلة جدًا",
+ text:"Pour préparer cette salade, mettez d’abord trois tomates et un concombre dans un grand bol. Ajoutez un peu de sel, mais n’en mettez pas trop. Il faut aussi de l’huile d’olive : versez-en deux cuillères. Vous pouvez ajouter des olives si vous en avez. Ensuite, placez la salade au réfrigérateur et laissez-la-y pendant vingt minutes. J’en prépare souvent en été parce que cette recette est rapide et légère.",
+ questions:[
+  {prompt:"Combien de tomates faut-il ?",choices:["Trois","Deux","Quatre"],correctIndex:0},
+  {prompt:"Que ne faut-il pas mettre en trop grande quantité ?",choices:["Les tomates","Le sel","Le concombre"],correctIndex:1},
+  {prompt:"Combien de cuillères d’huile faut-il verser ?",choices:["Une","Trois","Deux"],correctIndex:2},
+  {prompt:"Pourquoi cette recette est-elle souvent préparée en été ?",choices:["Parce qu’elle est rapide et légère.","Parce qu’elle est chaude.","Parce qu’elle demande beaucoup d’ingrédients."],correctIndex:0}
+ ]
+};
+
+const A2_QUANTITY_WRITING_MODEL="Demain, je vais au marché pour préparer un déjeuner. J’y achèterai des légumes, du fromage et un peu de pain. Il me faut aussi deux bouteilles d’eau, mais je n’achèterai pas de jus parce que j’en ai déjà à la maison. Si je trouve des fraises, j’en prendrai deux barquettes. Ensuite, j’irai chez le boulanger et j’y choisirai quatre desserts. Je pense que ces quantités seront suffisantes pour six personnes.";
+
+const A2_QUANTITY_DICTATION=[
+ {speech:"Nous avons besoin d’un kilo de tomates.",ar:"نحتاج إلى كيلوغرام من الطماطم."},
+ {speech:"Je n’en veux pas beaucoup.",ar:"لا أريد منه الكثير."},
+ {speech:"Vous allez au marché ? Oui, nous y allons.",ar:"هل ستذهبون إلى السوق؟ نعم، سنذهب إليه."}
+];
+
+const A2_QUANTITY_BUILDERS=[
+ {tokens:["légumes.","beaucoup","achetons","de","Nous"],answer:["Nous","achetons","beaucoup","de","légumes."],ar:"نشتري الكثير من الخضروات."},
+ {tokens:["trois.","en","J’","prends"],answer:["J’","en","prends","trois."],ar:"سآخذ ثلاثًا منها."},
+ {tokens:["demain.","y","Nous","retournerons"],answer:["Nous","y","retournerons","demain."],ar:"سنعود إلى هناك غدًا."}
+];
+
+const A2_QUANTITY_DIALOGUES=[
+ {context:"Le vendeur demande : « Combien de pommes voulez-vous ? »",prompt:"اختر جوابًا يحافظ على العدد.",choices:["J’en voudrais six, s’il vous plaît.","Je les voudrais de.","J’y voudrais six."],correctIndex:0,feedback:"en يستبدل pommes بينما يبقى العدد ظاهرًا."},
+ {context:"Votre ami demande : « Tu vas souvent à cette bibliothèque ? »",prompt:"اختر إجابة بضمير المكان.",choices:["Oui, j’en vais chaque semaine.","Oui, j’y vais chaque semaine.","Oui, je lui vais."],correctIndex:1,feedback:"y يحل محل à cette bibliothèque."},
+ {context:"On vous demande : « Il reste du café ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Oui, il y reste du.","Oui, je le reste.","Oui, il en reste un peu."],correctIndex:2,feedback:"en يستبدل du café، وتبقى الكمية un peu ظاهرة."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -1096,27 +1164,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"quantity",title:"Quantités, y et en",ar:"الكميات والضميران y وen",icon:ShoppingBag,
-  description:"التعبير عن الكمية واستبدال المكان أو الشيء المسبوق بـ de وà.",
+  description:"عبّر عن كمية محددة أو غير محددة، ثم استخدم en وy لتجنب التكرار مع الحفاظ على العدد والمعنى وموضع الضمير الصحيح.",
   sections:[
-   section("Articles partitifs et quantité","أدوات التجزئة والكمية","نستخدم du, de la, de l’, des لكمية غير محددة. بعد كمية محددة نستخدم de.",[
-    "du pain، de la soupe، de l’eau، des légumes.",
-    "un kilo de pommes، beaucoup de travail.",
-    "بعد النفي غالبًا de: Je ne bois pas de café.",
-    "السؤال عن الكمية: combien de… ?"
+   section("Les articles partitifs","أدوات التجزئة","نستخدم أدوات التجزئة عندما نتحدث عن جزء أو كمية غير محددة من مادة أو طعام أو مفهوم لا يُعدّ مباشرة.",[
+    "du مع المذكر: du pain؛ de la مع المؤنث: de la soupe.",
+    "de l’ قبل حرف متحرك أو h صامت: de l’eau، de l’huile.",
+    "des مع الجمع غير المحدد: des légumes، des informations.",
+    "لا تعني الأداة «كل» الشيء، بل كمية غير محددة منه."
    ],[
-    {fr:"Je voudrais un peu de fromage.",ar:"أود قليلًا من الجبن."},
-    {fr:"Nous achetons beaucoup de légumes.",ar:"نشتري الكثير من الخضروات."},
-    {fr:"Il ne mange pas de viande.",ar:"هو لا يأكل اللحم."}
+    {fr:"Elle boit de l’eau pendant le repas.",ar:"تشرب ماءً أثناء الوجبة."},
+    {fr:"Nous préparons de la soupe pour ce soir.",ar:"نحضّر حساءً لهذا المساء."},
+    {fr:"Ils achètent du riz et des légumes.",ar:"يشترون أرزًا وخضروات."}
    ]),
-   section("Les pronoms y et en","الضميران y وen","y يستبدل مكانًا أو تركيبًا مع à، وen يستبدل تركيبًا مع de أو كمية.",[
-    "Je vais à la gare → J’y vais.",
-    "Je parle de ce projet → J’en parle.",
-    "Tu veux du café ? Oui, j’en veux.",
-    "مع المستقبل القريب: Je vais y aller."
+   section("Exprimer une quantité","التعبير عن الكمية","بعد مقدار أو عدد أو تعبير كمية نستخدم de أو d’ قبل الاسم، سواء أكان الاسم مفردًا أم جمعًا.",[
+    "un kilo de tomates، une bouteille d’eau، trois tranches de pain.",
+    "beaucoup de، un peu de، assez de، trop de، moins de، plus de.",
+    "السؤال: combien de… ? والجواب يذكر العدد أو المقدار.",
+    "الأعداد المباشرة لا تحتاج de: deux pommes، cinq billets."
    ],[
-    {fr:"Tu vas à l’université ? Oui, j’y vais.",ar:"هل تذهب إلى الجامعة؟ نعم، أذهب إليها."},
-    {fr:"Vous avez des questions ? J’en ai deux.",ar:"هل لديكم أسئلة؟ لدي سؤالان."},
-    {fr:"Ce problème, nous en parlons demain.",ar:"هذه المشكلة سنتحدث عنها غدًا."}
+    {fr:"Je voudrais deux cents grammes de fromage.",ar:"أود مئتي غرام من الجبن."},
+    {fr:"Il y a trop de sucre dans cette boisson.",ar:"توجد كمية زائدة من السكر في هذا المشروب."},
+    {fr:"Combien de places reste-t-il ?",ar:"كم مقعدًا متبقيًا؟"}
+   ]),
+   section("La quantité et la négation","الكمية مع النفي","بعد النفي تتحول du وde la وde l’ وdes غالبًا إلى de أو d’. لكن الأداة لا تتغير بعد être، وتبقى الكمية المحددة كما هي.",[
+    "Je bois du café → Je ne bois pas de café.",
+    "Elle achète des fruits → Elle n’achète pas de fruits.",
+    "مع être: Ce n’est pas du café؛ Ce ne sont pas des pommes.",
+    "العدد يبقى: Je n’ai pas deux billets، بل تذكرة واحدة."
+   ],[
+    {fr:"Nous ne mettons pas de sel dans cette recette.",ar:"لا نضيف ملحًا إلى هذه الوصفة."},
+    {fr:"Ce n’est pas de l’huile, c’est du vinaigre.",ar:"هذا ليس زيتًا، بل خلّ."},
+    {fr:"Elle n’a pas assez de temps pour cuisiner.",ar:"ليس لديها وقت كافٍ للطهي."}
+   ]),
+   section("Le pronom en","الضمير en","يحل en محل اسم أو تركيب يسبقه de، ويستبدل أيضًا أدوات التجزئة والاسم بعد العدد. عند وجود كمية، نحذف الاسم ونُبقي مقدارها.",[
+    "Tu veux du thé ? Oui, j’en veux.",
+    "Il parle de son projet → Il en parle.",
+    "J’ai trois frères → J’en ai trois؛ Elle achète un kilo de pommes → Elle en achète un kilo.",
+    "en لا يستبدل عادة شخصًا محددًا: Je parle de Lina → Je parle d’elle."
+   ],[
+    {fr:"Des tomates ? Il en faut six.",ar:"الطماطم؟ نحتاج إلى ست حبات منها."},
+    {fr:"Cette expérience, elle en parle souvent.",ar:"تتحدث عن هذه التجربة كثيرًا."},
+    {fr:"Nous n’en avons acheté qu’une bouteille.",ar:"لم نشترِ منه سوى زجاجة واحدة."}
+   ]),
+   section("Le pronom y","الضمير y","يحل y محل مكان سبقته à أو dans أو chez أو sur، كما يحل محل تركيب à + شيء مع أفعال مثل penser à وparticiper à.",[
+    "Je vais à la gare → J’y vais؛ Il reste chez lui → Il y reste.",
+    "Nous pensons à ce problème → Nous y pensons.",
+    "مع الأشخاص نستخدم غالبًا الضمير المشدد: Je pense à Lina → Je pense à elle.",
+    "لا نستخدم y إذا لم يوجد مرجع مفهوم في السياق."
+   ],[
+    {fr:"Cette bibliothèque est calme ; j’y travaille souvent.",ar:"هذه المكتبة هادئة، وأعمل فيها كثيرًا."},
+    {fr:"Vous participez à la réunion ? Oui, j’y participe.",ar:"هل ستشاركون في الاجتماع؟ نعم، سأشارك فيه."},
+    {fr:"Ils sont allés chez le médecin et ils y sont restés une heure.",ar:"ذهبوا إلى عيادة الطبيب وبقوا هناك ساعة."}
+   ]),
+   section("La place de y et en","موضع y وen","يأتي y وen قبل الفعل المصرف، وقبل المصدر الذي يتعلقان به. في الأمر المثبت يأتيان بعد الفعل، وفي النفي يعودان قبله.",[
+    "الحاضر والمركب: J’y vais؛ J’en ai acheté؛ Nous y sommes restés.",
+    "مع المصدر: Je vais y aller؛ Elle veut en parler.",
+    "الأمر المثبت: Vas-y؛ Prenez-en؛ الأمر المنفي: N’y va pas؛ N’en prenez pas.",
+    "عند اجتماعهما يأتي y قبل en: Il y en a؛ Je n’y en trouve plus."
+   ],[
+    {fr:"Nous allons y retourner la semaine prochaine.",ar:"سنعود إلى هناك الأسبوع المقبل."},
+    {fr:"Achetez-en deux pour demain.",ar:"اشتروا اثنتين منه للغد."},
+    {fr:"Dans ce magasin, il n’y en a plus.",ar:"لم يعد منه شيء في هذا المتجر."}
    ])
   ]
  },
@@ -2304,17 +2412,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns;
- const activeA2Reading=isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity;
+ const activeA2Reading=isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2337,7 +2446,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2Pronouns?[
+ const revisionWritingChecks=isA2Quantity?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"أداتا تجزئة مختلفتان",passed:["du ","de la ","de l’","de l'","des "].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
+  {label:"تعبيران عن الكمية",passed:["beaucoup de","un peu de","assez de","trop de","un kilo de","une bouteille de","deux ","trois ","quatre "].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
+  {label:"استعمال صحيح لـ y وen",passed:/\by\b/i.test(revisionWritingText)&&/(?:\ben\b|\b[’']en\b)/i.test(revisionWritingText)},
+  {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)}
+ ]:isA2Pronouns?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"خمسة ضمائر مفعول على الأقل",passed:objectPronounCount>=5},
   {label:"ضمير مباشر: le أو la أو les",passed:/(?:\b(?:le|la|les)\b|\bl[’'][a-zà-ÿ]+)/i.test(revisionWritingText)},
@@ -2418,6 +2533,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2427,6 +2543,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -3073,7 +3190,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

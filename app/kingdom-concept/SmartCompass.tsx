@@ -2,6 +2,7 @@
 
 import { LocateFixed, Navigation, Power, ShieldCheck, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Capacitor, registerPlugin, type PluginListenerHandle } from "@capacitor/core";
 import { Geolocation } from "@capacitor/geolocation";
 import { Compass, type Heading } from "@capawesome/capacitor-compass";
@@ -279,8 +280,10 @@ export default function SmartCompass() {
     <div className="smart-compass-control">
       <button type="button" className={`smart-compass-trigger ${aligned?"aligned":""} ${enabled?"":"disabled"}`} onClick={activate} aria-label="فتح بوصلة الشمال والقبلة">
         <span className="smart-compass-mini" aria-hidden="true">
-          <b>N</b>
-          <i className="smart-north-needle" style={{transform:`rotate(${northRotation}deg)`}}/>
+          <span className="smart-compass-rotor" style={{transform:`rotate(${northRotation}deg)`}}>
+            <b>N</b>
+            <i className="smart-north-needle"/>
+          </span>
           <i className={`smart-qibla-mini ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}/>
         </span>
         <span><strong>البوصلة والقبلة</strong><small>{!enabled?"متوقفة":qiblaBearing===null?"جارٍ تحديد القبلة":aligned?"أنت باتجاه القبلة":`${Math.round(qiblaBearing)}° QIBLA`}</small></span>
@@ -288,7 +291,7 @@ export default function SmartCompass() {
       <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
     </div>
 
-    {open&&<div ref={overlayRef} className="smart-compass-overlay">
+    {open&&typeof document!=="undefined"&&createPortal(<div ref={overlayRef} className="smart-compass-overlay">
       <section ref={panelRef} className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title">
         <header>
           <div><small>COMPASS · QIBLA</small><h2 id="smart-compass-title">البوصلة العالمية</h2></div>
@@ -297,8 +300,10 @@ export default function SmartCompass() {
 
         <div className={`smart-compass-instrument ${aligned?"aligned":""}`}>
           <div className="smart-compass-dial">
-            <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
-            <i className="smart-north-hand" style={{transform:`rotate(${northRotation}deg)`}}><span/></i>
+            <span className="smart-compass-rotor" style={{transform:`rotate(${northRotation}deg)`}}>
+              <span className="smart-cardinals"><b className="n">N</b><b className="e">E</b><b className="s">S</b><b className="w">W</b></span>
+              <i className="smart-north-hand"><span/></i>
+            </span>
             <i className={`smart-qibla-hand ${qiblaBearing===null?"pending":""}`} style={{transform:`rotate(${qiblaRotation}deg)`}}><span><b>◆</b><small>{qiblaBearing===null?"جارٍ تحديد القبلة":"القبلة"}</small></span></i>
             <span className="smart-heading-index" aria-hidden="true"/>
             <div className="smart-heading-value"><strong>{heading===null?"—":String(Math.round(heading)).padStart(3,"0")}°</strong><small>{headingLabel}</small></div>
@@ -322,8 +327,8 @@ export default function SmartCompass() {
           <ShieldCheck/>
           <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":Capacitor.isNativePlatform()?"تعمل البوصلة الآن بحساس النظام الأصلي، ويُستخدم موقعك داخل الجهاز فقط لحساب القبلة.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
         </div>
-        <p className="smart-compass-calibration">اترك الهاتف بوضعه الطبيعي؛ ستتجه الإبرة الحمراء إلى الشمال تلقائيًا. أبعده فقط عن المعادن عند ضعف الدقة.</p>
+        <p className="smart-compass-calibration">يدور قرص الاتجاهات تلقائيًا حتى يتجه حرف N والإبرة الحمراء إلى الشمال، بينما تتحرك الإبرة الذهبية وحدها نحو القبلة. لا يلزم جعل القراءة 0°.</p>
       </section>
-    </div>}
+    </div>,document.body)}
   </>;
 }

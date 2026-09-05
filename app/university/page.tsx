@@ -626,6 +626,74 @@ const A2_IMPARFAIT_DIALOGUES=[
  {context:"Votre collègue demande : « Que faisiez-vous quand l’alarme a sonné ? »",prompt:"اختر الفعل الذي كان جاريًا.",choices:["Nous avons commencé demain.","Nous finirons le travail.","Nous préparions la réunion."],correctIndex:2,feedback:"العمل الجاري عند وقوع الحدث يأتي في الماضي الناقص."}
 ];
 
+const A2_FUTURE_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ce soir, je vais préparer mes affaires pour le voyage.",ar:"سأجهز أغراضي للرحلة هذا المساء."},
+ {fr:"Nous partirons tôt pour éviter les embouteillages.",ar:"سنغادر مبكرًا لتجنب الازدحام."},
+ {fr:"Elle ne va pas accepter cette proposition.",ar:"لن تقبل هذا الاقتراح."},
+ {fr:"Vous recevrez les résultats la semaine prochaine.",ar:"ستتلقون النتائج الأسبوع المقبل."},
+ {fr:"Ils vont se retrouver devant la bibliothèque.",ar:"سيلتقون أمام المكتبة."},
+ {fr:"Est-ce que tu viendras à la réunion demain ?",ar:"هل ستحضر الاجتماع غدًا؟"},
+ {fr:"Je vous enverrai l’adresse dès que je la connaîtrai.",ar:"سأرسل إليكم العنوان فور معرفتي به."},
+ {fr:"Si le temps est agréable, nous déjeunerons dehors.",ar:"إذا كان الطقس لطيفًا، فسنتناول الغداء في الخارج."},
+ {fr:"D’abord, nous allons réserver les billets, puis nous choisirons l’hôtel.",ar:"سنحجز التذاكر أولًا، ثم سنختار الفندق."},
+ {fr:"À mon avis, les transports seront plus rapides dans quelques années.",ar:"في رأيي، ستكون وسائل النقل أسرع خلال بضع سنوات."}
+];
+
+const A2_FUTURE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Demain, nous ___ le musée.",speech:"Conjuguez le verbe visiter au futur simple avec nous.",instruction:"صرّف visiter في المستقبل البسيط مع nous.",choices:["visiterons","allons visité","visitons hier"],correctIndex:0,explanation:"نحتفظ بمصدر visiter ونضيف نهاية nous، وهي -ons: nous visiterons."},
+ {prompt:"Je ___ appeler le médecin cet après-midi.",speech:"Complétez la phrase au futur proche.",instruction:"أكمل الجملة بالمستقبل القريب.",choices:["vais","irai","ai"],correctIndex:0,explanation:"المستقبل القريب يتكوّن من aller في الحاضر ثم المصدر: je vais appeler."},
+ {prompt:"Tu ___ terminer avant dix heures.",speech:"Conjuguez le verbe pouvoir au futur simple avec tu.",instruction:"اختر تصريف pouvoir الصحيح.",choices:["pouveras","pourras","vas pu"],correctIndex:1,explanation:"جذر pouvoir في المستقبل هو pourr-، ومع tu نضيف -as: tu pourras."},
+ {prompt:"Choisissez le futur simple du verbe être avec ils.",speech:"Choisissez le futur simple du verbe être avec ils.",instruction:"اختر تصريف être الصحيح في المستقبل البسيط.",choices:["seront","étaient","ont été"],correctIndex:0,explanation:"جذر être في المستقبل هو ser-، ومع ils نضيف -ont: ils seront."},
+ {prompt:"___ vous viendrez demain ?",speech:"Complétez cette question neutre.",instruction:"أكمل السؤال المحايد.",choices:["Est-ce que","Pourquoi est","Quand êtes"],correctIndex:0,explanation:"Est-ce que تسبق الجملة الخبرية لتكوين سؤال محايد: Est-ce que vous viendrez ?"},
+ {prompt:"Si j’ai le temps, je vous ___.",speech:"Complétez la conséquence au futur simple avec le verbe appeler.",instruction:"أكمل نتيجة الشرط بالمستقبل البسيط.",choices:["appellerai","appelais","ai appelé"],correctIndex:0,explanation:"بعد si نستخدم الحاضر هنا، وفي النتيجة نستخدم المستقبل: si j’ai…, j’appellerai."},
+ {prompt:"Quand tu ___, nous dînerons.",speech:"Conjuguez le verbe arriver pour parler d’un fait futur.",instruction:"اختر التصريف المناسب لحدث مستقبلي.",choices:["arriveras","arrivais","es arrivé"],correctIndex:0,explanation:"عندما يشير quand إلى المستقبل، يأتي الفعل هنا في المستقبل: quand tu arriveras."},
+ {prompt:"Le ciel est noir : il ___ pleuvoir.",speech:"Complétez cette prévision fondée sur un signe présent.",instruction:"أكمل التوقع القريب.",choices:["va","a","allait demain"],correctIndex:0,explanation:"السحب الداكنة علامة حاضرة على حدث وشيك، لذلك نقول: il va pleuvoir."},
+ {prompt:"Je vais lui envoyer le document.",speech:"Je vais lui envoyer le document.",instruction:"اختر الترجمة العربية المناسبة للسياق.",choices:["سأرسل إليه المستند.","أرسل إليّ المستند.","لقد أرسل إليهم المستند."],correctIndex:0,explanation:"lui تعني «إليه/إليها»، وvais envoyer تعبّر عن نية قريبة."},
+ {prompt:"Choisissez la phrase qui exprime une promesse.",speech:"Choisissez la phrase qui exprime une promesse.",instruction:"اختر الجملة التي تعبّر عن وعد.",choices:["Ne t’inquiète pas, je te rappellerai ce soir.","Je t’appelais tous les soirs.","Je ne t’ai pas appelé hier."],correctIndex:0,explanation:"je te rappellerai في المستقبل البسيط يأتي هنا بوصفه وعدًا."}
+];
+
+const A2_FUTURE_READING={
+ title:"Un projet de voyage",arTitle:"خطة لرحلة",
+ text:"Le mois prochain, Salma et son frère vont passer quatre jours à Strasbourg. Ils partiront vendredi matin et prendront le train de sept heures. À leur arrivée, ils déposeront leurs bagages à l’hôtel, puis ils visiteront le centre historique. S’il fait beau, ils feront une promenade en bateau. Samedi soir, ils vont dîner chez une amie qui habite près de la cathédrale. Salma pense que ce court séjour sera une bonne occasion de pratiquer son français.",
+ translation:"ستقضي سلمى وأخوها أربعة أيام في ستراسبورغ الشهر المقبل. سيغادران صباح الجمعة ويستقلان قطار الساعة السابعة. وعند وصولهما سيضعان حقائبهما في الفندق، ثم سيزوران وسط المدينة التاريخي. وإذا كان الطقس جميلًا، فسيذهبان في جولة بالقارب. وفي مساء السبت سيتناولان العشاء لدى صديقة تسكن قرب الكاتدرائية. وترى سلمى أن هذه الرحلة القصيرة ستكون فرصة جيدة لممارسة الفرنسية.",
+ questions:[
+  {question:"Quand partiront-ils ?",answer:"Ils partiront vendredi matin.",ar:"سيغادران صباح الجمعة."},
+  {question:"Que feront-ils s’il fait beau ?",answer:"Ils feront une promenade en bateau.",ar:"سيذهبان في جولة بالقارب."},
+  {question:"Pourquoi Salma attend-elle ce séjour ?",answer:"Parce qu’elle pourra pratiquer son français.",ar:"لأنها ستتمكن من ممارسة الفرنسية."}
+ ]
+};
+
+const A2_FUTURE_LISTENING={
+ title:"Le programme de la semaine prochaine",arTitle:"برنامج الأسبوع المقبل",
+ text:"La semaine prochaine, Hugo va commencer une formation dans un nouvel établissement. Lundi, il arrivera à neuf heures et rencontrera son formateur. Mardi, il va participer à un atelier informatique. Mercredi après-midi, il n’aura pas de cours, alors il ira à la bibliothèque. Jeudi, son groupe préparera un projet, et vendredi ils présenteront leur travail. Hugo pense que la semaine sera chargée, mais très utile.",
+ questions:[
+  {prompt:"Où Hugo va-t-il commencer une formation ?",choices:["Dans un nouvel établissement","Dans un hôtel","Dans une gare"],correctIndex:0},
+  {prompt:"Qui rencontrera-t-il lundi ?",choices:["Un ami","Son formateur","Un médecin"],correctIndex:1},
+  {prompt:"Où ira-t-il mercredi après-midi ?",choices:["À l’atelier","Au restaurant","À la bibliothèque"],correctIndex:2},
+  {prompt:"Que fera son groupe vendredi ?",choices:["Il présentera son travail.","Il commencera la formation.","Il préparera un repas."],correctIndex:0}
+ ]
+};
+
+const A2_FUTURE_WRITING_MODEL="Le mois prochain, je vais commencer une nouvelle formation. D’abord, je préparerai mon emploi du temps et j’achèterai le matériel nécessaire. Je ne travaillerai pas le vendredi, alors je pourrai réviser à la bibliothèque. Le week-end, je vais pratiquer le français avec mes amis. Si j’ai assez de temps, je regarderai aussi des films en français. Je pense que cette organisation sera utile et que je progresserai rapidement.";
+
+const A2_FUTURE_DICTATION=[
+ {speech:"Demain, nous visiterons un nouvel appartement.",ar:"سنزور شقة جديدة غدًا."},
+ {speech:"Elle ne va pas prendre le train ce soir.",ar:"لن تستقل القطار هذا المساء."},
+ {speech:"Si vous réservez maintenant, vous paierez moins cher.",ar:"إذا حجزتم الآن، فستدفعون سعرًا أقل."}
+];
+
+const A2_FUTURE_BUILDERS=[
+ {tokens:["matin.","partirons","Nous","demain","tôt"],answer:["Nous","partirons","tôt","demain","matin."],ar:"سنغادر مبكرًا صباح الغد."},
+ {tokens:["pas","rendez-vous.","vais","Je","oublier","le","ne"],answer:["Je","ne","vais","pas","oublier","le","rendez-vous."],ar:"لن أنسى الموعد."},
+ {tokens:["déjeunerons","est","dehors.","temps","agréable,","le","nous","Si"],answer:["Si","le","temps","est","agréable,","nous","déjeunerons","dehors."],ar:"إذا كان الطقس لطيفًا، فسنتناول الغداء في الخارج."}
+];
+
+const A2_FUTURE_DIALOGUES=[
+ {context:"Votre ami demande : « Qu’est-ce que tu vas faire ce soir ? »",prompt:"اختر إجابة طبيعية عن خطة قريبة.",choices:["Je vais préparer ma présentation.","J’ai préparé demain.","Je préparais ce soir prochain."],correctIndex:0,feedback:"السؤال عن خطة هذا المساء، لذلك يناسبه المستقبل القريب."},
+ {context:"Votre collègue demande : « Vous pourrez venir lundi ? »",prompt:"اختر إجابة مناسبة عن قدرتك المستقبلية.",choices:["Oui, j’étais disponible lundi prochain.","Oui, je serai disponible après quatorze heures.","Oui, j’ai disponible demain."],correctIndex:1,feedback:"serai هو تصريف être في المستقبل، ويقدّم موعدًا واضحًا."},
+ {context:"On vous demande : « S’il pleut demain, que ferez-vous ? »",prompt:"اختر نتيجة الشرط الصحيحة.",choices:["Nous restons hier.","Nous sommes restés demain.","Nous resterons à la maison."],correctIndex:2,feedback:"بعد si + présent تأتي النتيجة هنا في المستقبل البسيط."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -828,27 +896,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"future",title:"Parler de l’avenir",ar:"التحدث عن المستقبل",icon:CalendarDays,
-  description:"المستقبل القريب والبسيط والخطط والمواعيد والتوقعات.",
+  description:"عبّر عن النية والخطة والموعد والتوقع والوعد باستخدام المستقبل القريب والبسيط، مع اختيار الصيغة المناسبة لكل سياق.",
   sections:[
-   section("Le futur proche","المستقبل القريب","نستخدم aller في الحاضر مع المصدر للخطط القريبة أو النية الواضحة.",[
-    "Je vais étudier ce soir.",
-    "Nous allons voyager en juin.",
-    "في النفي: Je ne vais pas sortir.",
-    "أضف bientôt، ce soir، la semaine prochaine."
+   section("Le futur proche","المستقبل القريب","يتكوّن المستقبل القريب من aller في الحاضر ثم مصدر الفعل، ويعبّر غالبًا عن نية واضحة أو حدث قريب تدل عليه الظروف الحالية.",[
+    "الصيغة: sujet + aller au présent + infinitif.",
+    "je vais، tu vas، il va، nous allons، vous allez، ils vont + المصدر.",
+    "الضمير يسبق المصدر: Je vais le réserver؛ Nous allons nous préparer.",
+    "في النفي نحيط aller بـ ne…pas: Je ne vais pas sortir."
    ],[
-    {fr:"Je vais commencer un nouveau cours.",ar:"سأبدأ دورة جديدة."},
-    {fr:"Nous allons déménager le mois prochain.",ar:"سننتقل إلى منزل آخر الشهر القادم."},
-    {fr:"Il ne va pas travailler demain.",ar:"لن يعمل غدًا."}
+    {fr:"Je vais appeler le médecin cet après-midi.",ar:"سأتصل بالطبيب بعد ظهر اليوم."},
+    {fr:"Nous allons nous installer dans un autre quartier.",ar:"سننتقل للسكن في حي آخر."},
+    {fr:"Elle ne va pas participer à la réunion.",ar:"لن تشارك في الاجتماع."}
    ]),
-   section("Le futur simple","المستقبل البسيط","يستخدم للوعد أو التوقع أو حدث أبعد. نضيف النهايات ai, as, a, ons, ez, ont إلى المصدر غالبًا.",[
-    "parler → je parlerai.",
-    "finir → nous finirons.",
-    "être → je serai، avoir → j’aurai.",
-    "aller → j’irai، faire → je ferai."
+   section("Former le futur simple","تكوين المستقبل البسيط","نضيف نهايات المستقبل إلى المصدر في أفعال -er و-ir، ونحذف e الأخيرة من أفعال -re قبل إضافة النهايات.",[
+    "النهايات: -ai, -as, -a, -ons, -ez, -ont.",
+    "parler → je parlerai؛ finir → nous finirons.",
+    "vendre → vous vendrez؛ attendre → ils attendront.",
+    "النهايات هي نفسها لجميع الأفعال، لكن بعض الجذور غير منتظمة."
    ],[
-    {fr:"Un jour, je parlerai français couramment.",ar:"يومًا ما سأتحدث الفرنسية بطلاقة."},
-    {fr:"Vous recevrez une réponse demain.",ar:"ستتلقى ردًا غدًا."},
-    {fr:"Nous serons à Paris en juillet.",ar:"سنكون في باريس في يوليو."}
+    {fr:"Je terminerai ce rapport avant vendredi.",ar:"سأنهي هذا التقرير قبل يوم الجمعة."},
+    {fr:"Vous choisirez la date qui vous convient.",ar:"ستختارون التاريخ الذي يناسبكم."},
+    {fr:"Ils répondront à votre demande demain.",ar:"سيردّون على طلبكم غدًا."}
+   ]),
+   section("Les radicaux irréguliers","الجذور غير المنتظمة","تحافظ الأفعال غير المنتظمة على نهايات المستقبل نفسها، لكن جذرها يتغير ويجب تثبيته داخل أمثلة متداولة.",[
+    "être → ser-، avoir → aur-، aller → ir-، faire → fer-.",
+    "venir → viendr-، tenir → tiendr-، voir → verr-، envoyer → enverr-.",
+    "pouvoir → pourr-، vouloir → voudr-، devoir → devr-، savoir → saur-.",
+    "recevoir → recevr-، falloir → il faudra، pleuvoir → il pleuvra."
+   ],[
+    {fr:"Nous serons disponibles après quatorze heures.",ar:"سنكون متاحين بعد الساعة الثانية ظهرًا."},
+    {fr:"Tu pourras récupérer ton dossier demain.",ar:"ستتمكن من استلام ملفك غدًا."},
+    {fr:"Il faudra confirmer la réservation avant lundi.",ar:"سيكون من الضروري تأكيد الحجز قبل يوم الاثنين."}
+   ]),
+   section("Négation, questions et pronoms","النفي والسؤال والضمائر","ضع النفي حول الفعل المصرف، واختر صيغة السؤال المناسبة. ومع المستقبل القريب تبقى ضمائر المفعول قبل المصدر.",[
+    "المستقبل البسيط: Je ne viendrai pas؛ Ils ne répondront jamais.",
+    "المستقبل القريب: Nous n’allons pas partir؛ Je vais lui écrire.",
+    "السؤال المحايد: Est-ce que vous viendrez demain ?",
+    "القلب: Quand arrivera-t-il ? وOù irez-vous ?"
+   ],[
+    {fr:"Je ne pourrai pas vous accompagner demain.",ar:"لن أستطيع مرافقتكم غدًا."},
+    {fr:"Est-ce que tu vas lui envoyer l’adresse ?",ar:"هل سترسل إليه العنوان؟"},
+    {fr:"À quelle heure arriverez-vous à la gare ?",ar:"في أي ساعة ستصلون إلى المحطة؟"}
+   ]),
+   section("Projets, prévisions et promesses","الخطط والتوقعات والوعود","حدّد الزمن وأضف درجة اليقين أو الاحتمال. يُستخدم المستقبل للتخطيط، والتوقع، والوعد، وتقديم المساعدة.",[
+    "الوقت: ce soir، demain، bientôt، la semaine prochaine، dans deux ans.",
+    "التوقع: Je pense que…؛ probablement؛ peut-être.",
+    "الوعد: Je te rappellerai؛ Nous vous aiderons.",
+    "الخطة المنظمة: d’abord، ensuite، puis، enfin."
+   ],[
+    {fr:"La semaine prochaine, nous allons visiter trois appartements.",ar:"سنزور ثلاثة منازل الأسبوع المقبل."},
+    {fr:"Je pense que le voyage sera très agréable.",ar:"أعتقد أن الرحلة ستكون ممتعة جدًا."},
+    {fr:"Ne vous inquiétez pas, je vous préviendrai dès que possible.",ar:"لا تقلقوا، سأبلغكم في أقرب وقت ممكن."}
+   ]),
+   section("Choisir la forme et relier les idées","اختيار الصيغة وربط الأفكار","استخدم المستقبل القريب للنية أو الحدث الوشيك، والمستقبل البسيط للتوقع والوعد والحدث الأبعد. وقد تكون الصيغتان صحيحتين مع اختلاف النظرة إلى الحدث.",[
+    "نية مقررة: Je vais changer de travail؛ توقع أو قرار: Je changerai un jour.",
+    "مع si: si + présent، ثم futur: Si j’ai le temps, je viendrai.",
+    "مع quand في الحديث عن المستقبل نستخدم المستقبل: Quand tu arriveras, nous dînerons.",
+    "اربط الشرط أو الزمن بالنتيجة لتكوين إجابة كاملة."
+   ],[
+    {fr:"Si vous réservez aujourd’hui, vous paierez moins cher.",ar:"إذا حجزتم اليوم، فستدفعون سعرًا أقل."},
+    {fr:"Quand nous arriverons à Nice, nous prendrons un taxi.",ar:"عندما نصل إلى نيس، سنستقل سيارة أجرة."},
+    {fr:"Le ciel est très sombre : il va probablement pleuvoir.",ar:"السماء شديدة الظلمة؛ من المحتمل أن تمطر بعد قليل."}
    ])
   ]
  },
@@ -2086,17 +2194,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Revision=level.id==="A2"&&activeModule.id==="revision";
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait;
- const activeA2Reading=isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Future=level.id==="A2"&&activeModule.id==="future";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future;
+ const activeA2Reading=isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2116,7 +2225,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
  const passeComposeVerbCount=(revisionWritingText.match(/\b(?:j['’]ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont|je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const imparfaitVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:ais|ait|ions|iez|aient)\b/gi)??[]).filter(word=>!["mais","jamais","français"].includes(word.toLocaleLowerCase("fr"))).length;
- const revisionWritingChecks=isA2Imparfait?[
+ const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
+ const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
+ const revisionWritingChecks=isA2Future?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"خمس صيغ مستقبلية على الأقل",passed:futureSimpleVerbCount+futureProcheVerbCount>=5},
+  {label:"المستقبل القريب والبسيط معًا",passed:futureSimpleVerbCount>0&&futureProcheVerbCount>0},
+  {label:"صيغة نفي واحدة على الأقل",passed:/\bne\s+|\bn[’'][a-zà-ÿ]+\s+(?:pas|jamais|plus|rien|personne)\b/i.test(revisionWritingText)},
+  {label:"مؤشران زمنيان أو رابطان",passed:["demain","bientôt","la semaine prochaine","le mois prochain","dans","d’abord","puis","ensuite","enfin","si","quand","alors"].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2}
+ ]:isA2Imparfait?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"خمسة أفعال في الماضي الناقص",passed:imparfaitVerbCount>=5},
   {label:"وصف أو حالة في الماضي",passed:/\b(?:était|étaient|avait|avaient|faisait|semblait|sembl[a-zà-ÿ]*aient)\b/i.test(revisionWritingText)},
@@ -2180,9 +2297,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const practiceExamples=useMemo(()=>{
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
-  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
-  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
-  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+ if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+ if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+ if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2190,6 +2308,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="future")return A2_FUTURE_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -2836,7 +2955,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

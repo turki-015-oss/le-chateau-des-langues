@@ -32,6 +32,7 @@ type CourseModule={
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
 type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
 type LessonStage="learn"|"practice"|"test";
+type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instruction?:string;speech?:string};
 type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
@@ -427,17 +428,17 @@ const A2_REVISION_PRACTICE_ITEMS:Example[]=[
  {fr:"À mon avis, ce quartier est pratique parce qu’il est bien desservi.",ar:"في رأيي، هذا الحي عملي لأن وسائل النقل تصل إليه جيدًا."}
 ];
 
-const A2_REVISION_QUIZ_ITEMS:Example[]=[
- {fr:"Mon frère fait les courses après son travail.",ar:"يتسوق أخي بعد انتهاء عمله."},
- {fr:"Nous ne sortons plus le soir pendant la semaine.",ar:"لم نعد نخرج مساءً خلال أيام الأسبوع."},
- {fr:"Pourquoi est-ce que vous apprenez le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
- {fr:"Elles se préparent rapidement pour partir.",ar:"يستعددن بسرعة للمغادرة."},
- {fr:"Je vais à la piscine une fois par semaine.",ar:"أذهب إلى المسبح مرة واحدة في الأسبوع."},
- {fr:"Tu dois répondre à ce message aujourd’hui.",ar:"يجب أن تجيب عن هذه الرسالة اليوم."},
- {fr:"Nous habitons dans cet appartement depuis janvier.",ar:"نسكن في هذه الشقة منذ شهر يناير."},
- {fr:"Il veut venir, mais il termine son travail à huit heures.",ar:"يريد المجيء، لكنه ينهي عمله الساعة الثامنة."},
- {fr:"À qui téléphonez-vous chaque soir ?",ar:"بمن تتصلون كل مساء؟"},
- {fr:"Enfin, je range mes affaires et je rentre chez moi.",ar:"وأخيرًا، أرتب أغراضي وأعود إلى منزلي."}
+const A2_REVISION_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Nous ___ le bus à huit heures.",speech:"Choisissez la bonne forme du verbe prendre.",instruction:"اختر التصريف الصحيح للفعل prendre.",choices:["prenons","prenez","prennent"],correctIndex:0},
+ {prompt:"Elle ___ à sept heures chaque matin.",speech:"Choisissez le bon pronom et la bonne forme du verbe se lever.",instruction:"أكمل بالفعل الضميري الصحيح.",choices:["me lève","se lève","te lèves"],correctIndex:1},
+ {prompt:"Il ne travaille ___ le dimanche.",speech:"Complétez la phrase négative.",instruction:"اختر كلمة النفي المناسبة لمعنى «أبدًا».",choices:["personne","rien","jamais"],correctIndex:2},
+ {prompt:"___ habitez-vous ici ? — Depuis 2024.",speech:"Choisissez le mot interrogatif adapté à la réponse depuis deux mille vingt-quatre.",instruction:"اختر أداة السؤال المناسبة للإجابة المعطاة.",choices:["Depuis quand","Pourquoi","Combien"],correctIndex:0},
+ {prompt:"On ___ souvent au parc après le travail.",speech:"Choisissez la bonne forme du verbe aller avec on.",instruction:"اختر تصريف aller الصحيح مع on.",choices:["allez","va","vont"],correctIndex:1},
+ {prompt:"J’habite à Lyon ___ trois ans.",speech:"Complétez la phrase pour exprimer une durée qui continue.",instruction:"اختر الأداة التي تعبّر عن مدة ما زالت مستمرة.",choices:["pendant","il y a","depuis"],correctIndex:2},
+ {prompt:"Le magasin est fermé, ___ nous revenons demain.",speech:"Choisissez le connecteur qui exprime la conséquence.",instruction:"اختر الرابط الذي يعبّر عن النتيجة.",choices:["donc","mais","parce que"],correctIndex:0},
+ {prompt:"Quel jour Nadia ne travaille-t-elle jamais ?",speech:"Quel jour Nadia ne travaille-t-elle jamais ?",instruction:"أجب وفق نص «أسبوع ناديا».",choices:["Le mardi","Le lundi","Le samedi"],correctIndex:1},
+ {prompt:"Je ne veux rien acheter aujourd’hui.",speech:"Je ne veux rien acheter aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أريد شراء أي شيء اليوم.","لم أعد أذهب إلى السوق اليوم.","لا أعرف أحدًا في المتجر."],correctIndex:0},
+ {prompt:"D’abord, je termine mon travail, ___ je rentre chez moi.",speech:"Complétez la suite logique de la phrase.",instruction:"اختر الرابط الذي يكمل ترتيب الأحداث.",choices:["parce que","puis","pourtant"],correctIndex:1}
 ];
 
 const A2_REVISION_READING={
@@ -1874,10 +1875,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule,level.id]);
 
  const quizQuestions=useMemo(()=>{
+  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
-  const seeds=(level.id==="A2"&&activeModule.id==="revision"
-   ?A2_REVISION_QUIZ_ITEMS.map(item=>({prompt:item.fr,answer:item.ar}))
-   :activeModule.id==="description"
+  const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
    :activeModule.id==="adjectives"
     ?ADJECTIVE_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar.split(" — ")[0]}))
@@ -1895,7 +1895,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    const raw=[item.answer,first,second];
    const shift=index%raw.length;
    const choices=[...raw.slice(shift),...raw.slice(0,shift)];
-   return {prompt:item.prompt,choices,correctIndex:choices.indexOf(item.answer)};
+   return {prompt:item.prompt,choices,correctIndex:choices.indexOf(item.answer),instruction:"استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح.",speech:item.prompt};
   });
  },[activeModule,level.id]);
 
@@ -2443,8 +2443,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="university-quiz-progress"><div><span>السؤال {quizQuestionIndex+1} من {quizQuestions.length}</span><strong>{Math.round((quizQuestionIndex+1)/quizQuestions.length*100)}%</strong></div><i><b style={{width:`${(quizQuestionIndex+1)/quizQuestions.length*100}%`}}/></i></div>
        <article className="university-current-question">
         <header>
-         <div><span>استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح.</span><strong dir="ltr">{question.prompt}</strong></div>
-         <button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`نطق السؤال ${quizQuestionIndex+1}`}><Volume2/><b>نطق السؤال</b></button>
+         <div><span>{question.instruction??"استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح."}</span><strong dir="ltr">{question.prompt}</strong></div>
+         <button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`نطق السؤال ${quizQuestionIndex+1}`}><Volume2/><b>نطق السؤال</b></button>
         </header>
         <div className="university-answer-list">
          {question.choices.map((choice,choiceIndex)=><div key={choice} className={selected===choiceIndex?"selected":""}>

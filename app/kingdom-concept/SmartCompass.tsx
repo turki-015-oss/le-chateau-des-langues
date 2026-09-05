@@ -11,7 +11,7 @@ type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "de
 type LocationStatus = "idle" | "locating" | "ready" | "denied" | "unavailable";
 type OrientationWithWebkit = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type OrientationConstructor = typeof DeviceOrientationEvent & {
-  requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
+  requestPermission?: () => Promise<PermissionState>;
 };
 type TrueNorthPlugin = {
   getDeclination(options:{latitude:number;longitude:number;altitude?:number;timestamp?:number}):Promise<{declination:number}>;
@@ -241,7 +241,7 @@ export default function SmartCompass() {
       const OrientationEvent=window.DeviceOrientationEvent as OrientationConstructor;
       if(typeof OrientationEvent.requestPermission==="function"&&!authorized){
         try{
-          const permission=await OrientationEvent.requestPermission(true);
+          const permission=await OrientationEvent.requestPermission();
           if(permission==="granted"){
             setAuthorized(true);
             return;

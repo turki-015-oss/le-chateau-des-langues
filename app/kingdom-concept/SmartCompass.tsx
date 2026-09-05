@@ -67,6 +67,8 @@ export default function SmartCompass() {
   const [accuracy,setAccuracy]=useState<number|null>(null);
   const latestHeading=useRef(0);
   const androidDeclination=useRef(0);
+  const overlayRef=useRef<HTMLDivElement|null>(null);
+  const panelRef=useRef<HTMLElement|null>(null);
 
   useEffect(()=>{
     try{
@@ -83,6 +85,25 @@ export default function SmartCompass() {
       }
     }catch{}
   },[]);
+
+  useEffect(()=>{
+    if(!open)return;
+    const previousOverflow=document.body.style.overflow;
+    const resetCompassTop=()=>{
+      overlayRef.current?.scrollTo({top:0,left:0});
+      panelRef.current?.scrollTo({top:0,left:0});
+    };
+    document.body.style.overflow="hidden";
+    const frame=window.requestAnimationFrame(resetCompassTop);
+    window.addEventListener("orientationchange",resetCompassTop);
+    window.visualViewport?.addEventListener("resize",resetCompassTop);
+    return()=>{
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("orientationchange",resetCompassTop);
+      window.visualViewport?.removeEventListener("resize",resetCompassTop);
+      document.body.style.overflow=previousOverflow;
+    };
+  },[open]);
 
   useEffect(()=>{
     if(!enabled){
@@ -267,8 +288,8 @@ export default function SmartCompass() {
       <button type="button" className={`smart-compass-side-power ${enabled?"active":""}`} onClick={togglePower} aria-label={enabled?"إيقاف البوصلة":"تشغيل البوصلة"} title={enabled?"إيقاف البوصلة":"تشغيل البوصلة"}><Power/><span>{enabled?"إيقاف":"تشغيل"}</span></button>
     </div>
 
-    {open&&<div className="smart-compass-overlay">
-      <section className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title">
+    {open&&<div ref={overlayRef} className="smart-compass-overlay">
+      <section ref={panelRef} className="smart-compass-panel" role="dialog" aria-modal="true" aria-labelledby="smart-compass-title">
         <header>
           <div><small>COMPASS · QIBLA</small><h2 id="smart-compass-title">البوصلة العالمية</h2></div>
           <button type="button" onClick={()=>setCompassOpen(false)} aria-label="إغلاق البوصلة"><X/></button>

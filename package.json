@@ -13,9 +13,17 @@
     "audit:grammar-b1": "node scripts/audit-b1-grammar.cjs",
     "audit:grammar-b2": "node scripts/audit-b2-grammar.cjs",
     "audit:grammar-c1": "node scripts/audit-c1-grammar.cjs",
-    "audit:grammar-c2": "node scripts/audit-c2-grammar.cjs"
+    "audit:grammar-c2": "node scripts/audit-c2-grammar.cjs",
+    "native:sync": "cap sync",
+    "native:android": "cap open android",
+    "native:ios": "cap open ios"
   },
   "dependencies": {
+    "@capacitor/android": "8.5.1",
+    "@capacitor/core": "8.5.1",
+    "@capacitor/geolocation": "8.2.2",
+    "@capacitor/ios": "8.5.1",
+    "@capawesome/capacitor-compass": "0.1.2",
     "lucide-react": "^0.468.0",
     "next": "16.3.4",
     "react": "^19.0.0",
@@ -23,6 +31,7 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "8.5.1",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/three": "^0.185.4",

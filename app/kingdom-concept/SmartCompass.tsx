@@ -2,6 +2,9 @@
 
 import { LocateFixed, Navigation, Power, ShieldCheck, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Capacitor, registerPlugin, type PluginListenerHandle } from "@capacitor/core";
+import { Geolocation } from "@capacitor/geolocation";
+import { Compass, type Heading } from "@capawesome/capacitor-compass";
 
 type CompassStatus = "detecting" | "permission" | "active" | "unavailable" | "denied" | "disabled";
 type LocationStatus = "idle" | "locating" | "ready" | "denied" | "unavailable";
@@ -9,11 +12,15 @@ type OrientationWithWebkit = DeviceOrientationEvent & { webkitCompassHeading?: n
 type OrientationConstructor = typeof DeviceOrientationEvent & {
   requestPermission?: (absolute?: boolean) => Promise<PermissionState>;
 };
+type TrueNorthPlugin = {
+  getDeclination(options:{latitude:number;longitude:number;altitude?:number;timestamp?:number}):Promise<{declination:number}>;
+};
 
 const KAABA = { latitude: 21.422487, longitude: 39.826206 };
 const OPEN_STATE_KEY = "smart-compass-open";
 const QIBLA_STATE_KEY = "smart-compass-qibla";
 const directions = ["الشمال", "شمال شرق", "الشرق", "جنوب شرق", "الجنوب", "جنوب غرب", "الغرب", "شمال غرب"];
+const TrueNorth=registerPlugin<TrueNorthPlugin>("TrueNorth");
 
 const normalizeDegrees = (value:number) => ((value % 360) + 360) % 360;
 const toRadians = (value:number) => value * Math.PI / 180;
@@ -59,6 +66,7 @@ export default function SmartCompass() {
   const [distance,setDistance]=useState<number|null>(null);
   const [accuracy,setAccuracy]=useState<number|null>(null);
   const latestHeading=useRef(0);
+  const androidDeclination=useRef(0);
 
   useEffect(()=>{
     try{
@@ -81,6 +89,32 @@ export default function SmartCompass() {
       setCompassStatus("disabled");
       setHeading(null);
       return;
+    }
+    if(Capacitor.isNativePlatform()){
+      let disposed=false;
+      let listener:PluginListenerHandle|null=null;
+      const applyNativeHeading=(event:Heading)=>{
+        if(disposed)return;
+        const value=event.trueHeading??normalizeDegrees(event.magneticHeading+androidDeclination.current);
+        if(!Number.isFinite(value))return;
+        latestHeading.current=normalizeDegrees(value);
+        setHeading(latestHeading.current);
+        setCompassStatus("active");
+      };
+      void (async()=>{
+        try{
+          const {available}=await Compass.isAvailable();
+          if(!available){setCompassStatus("unavailable");return}
+          listener=await Compass.addListener("headingChange",applyNativeHeading);
+          await Compass.startHeadingUpdates();
+          applyNativeHeading(await Compass.getHeading());
+        }catch{if(!disposed)setCompassStatus("unavailable")}
+      })();
+      return()=>{
+        disposed=true;
+        void listener?.remove();
+        void Compass.stopHeadingUpdates();
+      };
     }
     if (!("DeviceOrientationEvent" in window)) {
       setCompassStatus("unavailable");
@@ -124,7 +158,41 @@ export default function SmartCompass() {
     };
   },[authorized,enabled]);
 
-  const locateQibla=()=>{
+  const applyPosition=(latitude:number,longitude:number,positionAccuracy:number)=>{
+    const bearing=bearingToKaaba(latitude,longitude);
+    const kaabaDistance=distanceToKaaba(latitude,longitude);
+    setQiblaBearing(bearing);
+    setDistance(kaabaDistance);
+    setAccuracy(positionAccuracy);
+    setLocationStatus("ready");
+    try{
+      sessionStorage.setItem(QIBLA_STATE_KEY,JSON.stringify({bearing,distance:kaabaDistance,accuracy:positionAccuracy}));
+    }catch{}
+  };
+
+  const locateQibla=async()=>{
+    if(Capacitor.isNativePlatform()){
+      setLocationStatus("locating");
+      try{
+        let permission=await Geolocation.checkPermissions();
+        if(permission.location!=="granted")permission=await Geolocation.requestPermissions({permissions:["location"]});
+        if(permission.location!=="granted"){setLocationStatus("denied");return}
+        const position=await Geolocation.getCurrentPosition({enableHighAccuracy:true,timeout:12000,maximumAge:300000});
+        if(Capacitor.getPlatform()==="android"){
+          try{
+            const result=await TrueNorth.getDeclination({
+              latitude:position.coords.latitude,
+              longitude:position.coords.longitude,
+              altitude:position.coords.altitude??0,
+              timestamp:position.timestamp,
+            });
+            if(Number.isFinite(result.declination))androidDeclination.current=result.declination;
+          }catch{}
+        }
+        applyPosition(position.coords.latitude,position.coords.longitude,position.coords.accuracy);
+      }catch{setLocationStatus("unavailable")}
+      return;
+    }
     if (!("geolocation" in navigator)) {
       setLocationStatus("unavailable");
       return;
@@ -132,23 +200,17 @@ export default function SmartCompass() {
     setLocationStatus("locating");
     navigator.geolocation.getCurrentPosition(position=>{
       const {latitude,longitude,accuracy:positionAccuracy}=position.coords;
-      setQiblaBearing(bearingToKaaba(latitude,longitude));
-      setDistance(distanceToKaaba(latitude,longitude));
-      setAccuracy(positionAccuracy);
-      setLocationStatus("ready");
-      try{
-        sessionStorage.setItem(QIBLA_STATE_KEY,JSON.stringify({
-          bearing:bearingToKaaba(latitude,longitude),
-          distance:distanceToKaaba(latitude,longitude),
-          accuracy:positionAccuracy,
-        }));
-      }catch{}
+      applyPosition(latitude,longitude,positionAccuracy);
     },error=>{
       setLocationStatus(error.code===error.PERMISSION_DENIED?"denied":"unavailable");
     },{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
   };
 
   const requestSensorPermission=async()=>{
+    if(Capacitor.isNativePlatform()){
+      setAuthorized(true);
+      return;
+    }
     if ("DeviceOrientationEvent" in window) {
       const OrientationEvent=window.DeviceOrientationEvent as OrientationConstructor;
       if(typeof OrientationEvent.requestPermission==="function"&&!authorized){
@@ -237,7 +299,7 @@ export default function SmartCompass() {
 
         <div className="smart-compass-status">
           <ShieldCheck/>
-          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
+          <p>{compassStatus==="disabled"?"البوصلة متوقفة ولا تقرأ حساس الاتجاه الآن.":compassStatus==="denied"?"تم رفض إذن الحركة. فعّله من إعدادات المتصفح ثم أعد المحاولة.":compassStatus==="unavailable"?"لا يرسل هذا الجهاز بيانات بوصلة؛ يمكنك رؤية زاوية القبلة لكن التوجيه الحي يحتاج هاتفًا مزودًا بحساس اتجاه.":locationStatus==="denied"?"تم رفض إذن الموقع. اسمح بالموقع لحساب القبلة من مكانك.":Capacitor.isNativePlatform()?"تعمل البوصلة الآن بحساس النظام الأصلي، ويُستخدم موقعك داخل الجهاز فقط لحساب القبلة.":"يُستخدم موقعك داخل جهازك فقط لحساب القبلة، ولا يُرسل إلى أي جهة."}{accuracy!==null&&locationStatus==="ready"?<small> دقة الموقع الحالية نحو {Math.round(accuracy)} متر.</small>:null}</p>
         </div>
         <p className="smart-compass-calibration">اترك الهاتف بوضعه الطبيعي؛ ستتجه الإبرة الحمراء إلى الشمال تلقائيًا. أبعده فقط عن المعادن عند ضعف الدقة.</p>
       </section>

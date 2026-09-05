@@ -1835,6 +1835,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const recordingStreamRef=useRef<MediaStream|null>(null);
  const recordingChunksRef=useRef<Blob[]>([]);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
+ const isA2Revision=level.id==="A2"&&activeModule.id==="revision";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2134,7 +2135,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <nav aria-label="مراحل الدرس">
      <button className={lessonStage==="learn"?"active":""} onClick={()=>setLessonStage("learn")}><BookOpen/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
      <button className={lessonStage==="practice"?"active":""} onClick={()=>setLessonStage("practice")}><Headphones/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
-     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>اختبر نفسك</b><small>أسئلة قصيرة</small></span></button>
+     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isA2Revision?"التمرين النهائي":"اختبر نفسك"}</b><small>{isA2Revision?"10 أسئلة ونتيجة":"أسئلة قصيرة"}</small></span></button>
     </nav>
    </aside>
 
@@ -2518,11 +2519,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <article className="a2-writing-task"><span>Production écrite</span><h4>اكتب عن روتينك اليومي</h4><p>اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة كتابة فقرة عن الروتين اليومي" placeholder="En général, je me lève…" rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{A2_REVISION_WRITING_MODEL}</p></details></article>
       <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.</p><button onClick={()=>void speakFrench("Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.",{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
-     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> الانتقال إلى الاختبار <ChevronLeft/></button>
+     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isA2Revision?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ListChecks/><div><span>Compréhension</span><h3>اختبار الدرس</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     <div className="university-stage-heading"><ListChecks/><div><span>Exercice final</span><h3>{isA2Revision?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
      {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
       const question=quizQuestions[quizQuestionIndex];
       const selected=quizAnswers[quizQuestionIndex];
@@ -2547,11 +2548,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      })()}
      {quizFinished&&<div className="university-quiz-result">
       <Trophy/>
-      <span>نتيجة الاختبار</span>
+      <span>{isA2Revision?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
       <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
-      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?"أحسنت، اجتزت اختبار الدرس.":"راجع الدرس ثم أعد المحاولة."}</h3>
+      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isA2Revision?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
-      <button onClick={resetQuiz}><RotateCcw/> أعد الاختبار</button>
+      <button onClick={resetQuiz}><RotateCcw/> {isA2Revision?"أعد التمرين":"أعد الاختبار"}</button>
      </div>}
     </section>}
 

@@ -1102,6 +1102,74 @@ const A2_REAL_LIFE_DIALOGUES=[
  {context:"À la gare, votre train est supprimé.",prompt:"اختر التفاعل الذي يقود إلى حل.",choices:["Je ne dis rien.","Le train était confortable.","Quel est le prochain départ, et puis-je utiliser le même billet ?"],correctIndex:2,feedback:"السؤالان يطلبان معلومات عملية عن البديل وصلاحية التذكرة."}
 ];
 
+const A2_EXPRESSION_PRACTICE_ITEMS=[
+ {fr:"À mon avis, ce quartier est agréable parce qu’il est calme.",ar:"في رأيي، هذا الحي مريح لأنه هادئ."},
+ {fr:"Je suis tout à fait d’accord avec cette proposition.",ar:"أنا موافق تمامًا على هذا الاقتراح."},
+ {fr:"Je comprends votre point de vue, mais je préfère une autre solution.",ar:"أتفهم وجهة نظركم، لكنني أفضل حلًا آخر."},
+ {fr:"D’abord, je vais présenter le problème, puis je proposerai une solution.",ar:"سأعرض المشكلة أولًا، ثم سأقترح حلًا."},
+ {fr:"Par exemple, nous pourrions prolonger les horaires le samedi.",ar:"يمكننا مثلًا تمديد ساعات العمل يوم السبت."},
+ {fr:"En résumé, cette activité est utile et facile à organiser.",ar:"خلاصة القول: هذا النشاط مفيد وسهل التنظيم."},
+ {fr:"Je vous écris pour demander des informations sur la formation.",ar:"أكتب إليكم للاستفسار عن الدورة التدريبية."},
+ {fr:"L’année dernière, j’ai participé à un projet qui m’a beaucoup plu.",ar:"شاركت العام الماضي في مشروع أعجبني كثيرًا."},
+ {fr:"Le mois prochain, je vais commencer un nouveau cours.",ar:"سأبدأ دورة جديدة الشهر المقبل."},
+ {fr:"Excusez-moi, pourriez-vous reformuler la dernière question ?",ar:"عذرًا، هل يمكنكم إعادة صياغة السؤال الأخير؟"}
+];
+
+const A2_EXPRESSION_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"… , cette idée est intéressante.",speech:"À mon avis, cette idée est intéressante.",instruction:"اختر العبارة التي تبدأ رأيًا شخصيًا بصورة طبيعية.",choices:["À mon avis","À cause de","Tout à coup"],correctIndex:0,explanation:"À mon avis تعني «في رأيي» وتقدّم وجهة نظر شخصية."},
+ {prompt:"Je préfère le train … il est plus confortable.",speech:"Je préfère le train parce qu’il est plus confortable.",instruction:"اختر الرابط الذي يعلل الرأي.",choices:["pourtant","parce qu’","ensuite"],correctIndex:1,explanation:"parce que يقدّم سببًا، وتصبح قبل il: parce qu’il."},
+ {prompt:"Je comprends votre idée, … je ne suis pas tout à fait d’accord.",speech:"Je comprends votre idée, mais je ne suis pas tout à fait d’accord.",instruction:"أكمل الاختلاف المهذب بالرابط المناسب.",choices:["donc","mais","d’abord"],correctIndex:1,explanation:"mais يربط بين تفهم الرأي ثم مخالفته بأدب."},
+ {prompt:"… je présente le sujet ; ensuite, je donne un exemple.",speech:"D’abord, je présente le sujet ; ensuite, je donne un exemple.",instruction:"اختر رابط بداية الترتيب.",choices:["D’abord,","Enfin,","Parce que"],correctIndex:0,explanation:"D’abord يفتتح الخطوة الأولى، ثم تأتي ensuite للخطوة التالية."},
+ {prompt:"Quel connecteur introduit un exemple ?",speech:"Par exemple, on peut organiser une réunion le samedi.",instruction:"اختر الرابط الذي يقدّم مثالًا.",choices:["Par exemple","En résumé","Cependant"],correctIndex:0,explanation:"Par exemple تعني «على سبيل المثال» وتوضّح الفكرة بمثال."},
+ {prompt:"Je vous écris … demander des renseignements.",speech:"Je vous écris pour demander des renseignements.",instruction:"أكمل سبب كتابة الرسالة.",choices:["pour","mais","depuis"],correctIndex:0,explanation:"pour + مصدر يعبّر عن الغرض: أكتب إليكم من أجل طلب معلومات."},
+ {prompt:"L’an dernier, j’ai suivi une formation qui m’a beaucoup aidé.",instruction:"ماذا تفعل هذه الجملة؟",choices:["تحكي تجربة سابقة","تطلب توضيحًا","تعلن موعدًا مستقبليًا"],correctIndex:0,explanation:"المؤشر L’an dernier والماضي المركب يقدّمان تجربة انتهت في الماضي."},
+ {prompt:"Le mois prochain, je vais participer à un nouveau projet.",instruction:"ماذا تعبّر الجملة؟",choices:["عن عادة قديمة","عن مشروع قادم","عن اختلاف في الرأي"],correctIndex:1,explanation:"المستقبل القريب مع Le mois prochain يقدّم خطة قادمة."},
+ {prompt:"Vous n’avez pas compris un mot. Que dites-vous ?",speech:"Excusez-moi, qu’est-ce que ce mot veut dire ?",instruction:"اختر طلب التوضيح المناسب.",choices:["Je suis tout à fait d’accord.","Qu’est-ce que ce mot veut dire ?","Pour conclure, merci."],correctIndex:1,explanation:"هذا السؤال يطلب معنى الكلمة مباشرة وبأدب."},
+ {prompt:"Pour conclure, cette solution répond à nos besoins.",instruction:"ما وظيفة Pour conclure؟",choices:["عرض السبب","إنهاء الكلام بخلاصة","تصحيح سوء فهم"],correctIndex:1,explanation:"Pour conclure يعلن الخاتمة ويلخّص الموقف النهائي."}
+];
+
+const A2_EXPRESSION_READING={
+ title:"Un avis sur un nouvel espace",arTitle:"رأي في مساحة جديدة",
+ text:"La mairie veut transformer une ancienne salle en espace de travail partagé. Lina répond à l’enquête du quartier. À son avis, ce projet est utile parce que beaucoup d’habitants travaillent chez eux. Elle propose, par exemple, d’installer de grandes tables et une connexion internet rapide. Elle comprend que certains voisins préfèrent une salle de sport, mais elle pense que les deux activités peuvent partager le même bâtiment. Pour conclure, Lina soutient le projet si l’espace reste ouvert le soir et le samedi.",
+ translation:"تريد البلدية تحويل قاعة قديمة إلى مساحة عمل مشتركة. تجيب لينا عن استطلاع الحي. وترى أن المشروع مفيد لأن كثيرًا من السكان يعملون من منازلهم. وتقترح مثلًا توفير طاولات كبيرة واتصال سريع بالإنترنت. وهي تتفهم أن بعض الجيران يفضلون قاعة رياضية، لكنها ترى أن النشاطين يمكن أن يتقاسما المبنى نفسه. وفي الختام، تؤيد لينا المشروع بشرط أن تظل المساحة مفتوحة مساءً ويوم السبت.",
+ questions:[
+  {question:"Pourquoi Lina trouve-t-elle le projet utile ?",answer:"Parce que beaucoup d’habitants travaillent chez eux.",ar:"لأن كثيرًا من السكان يعملون من منازلهم."},
+  {question:"Quels équipements propose-t-elle ?",answer:"Elle propose de grandes tables et une connexion internet rapide.",ar:"تقترح طاولات كبيرة واتصالًا سريعًا بالإنترنت."},
+  {question:"À quelle condition soutient-elle le projet ?",answer:"Elle le soutient si l’espace reste ouvert le soir et le samedi.",ar:"تؤيده إذا ظلت المساحة مفتوحة مساءً ويوم السبت."}
+ ]
+};
+
+const A2_EXPRESSION_LISTENING={
+ title:"Une expérience et un nouveau projet",arTitle:"تجربة ومشروع جديد",
+ text:"L’année dernière, j’ai suivi un atelier de photographie dans mon quartier. Au début, je trouvais les exercices difficiles, mais le professeur expliquait chaque étape avec patience. Ensuite, j’ai commencé à prendre de meilleures photos et j’ai présenté mon travail à une petite exposition. Cette expérience m’a donné confiance. Le mois prochain, je vais rejoindre un groupe qui prépare un reportage sur notre ville. À mon avis, ce projet sera une excellente occasion de progresser et de rencontrer d’autres passionnés.",
+ questions:[
+  {prompt:"Quel atelier la personne a-t-elle suivi ?",choices:["Un atelier de théâtre","Un atelier de photographie","Un atelier de cuisine"],correctIndex:1},
+  {prompt:"Comment trouvait-elle les exercices au début ?",choices:["Faciles","Inutiles","Difficiles"],correctIndex:2},
+  {prompt:"Qu’a-t-elle présenté à une exposition ?",choices:["Son travail","Un livre","Un projet sportif"],correctIndex:0},
+  {prompt:"Quel projet va-t-elle rejoindre ?",choices:["Un reportage sur la ville","Un voyage à la campagne","Une nouvelle formation en ligne"],correctIndex:0}
+ ]
+};
+
+const A2_EXPRESSION_WRITING_MODEL="Bonjour Madame, je vous écris pour donner mon avis sur les nouveaux horaires de la bibliothèque. À mon avis, l’ouverture le samedi est très utile parce que beaucoup d’étudiants travaillent en semaine. Je comprends que cela demande plus de personnel ; pourtant, on pourrait ouvrir seulement le matin. Par exemple, un horaire de neuf à treize heures serait suffisant. Pour conclure, je suis favorable à ce changement. Pourriez-vous me dire quand la décision sera annoncée ? Cordialement, Lina Benali.";
+
+const A2_EXPRESSION_DICTATION=[
+ {speech:"À mon avis, cette solution est la plus pratique.",ar:"في رأيي، هذا الحل هو الأكثر ملاءمة."},
+ {speech:"Je comprends votre idée, mais je ne suis pas tout à fait d’accord.",ar:"أتفهم فكرتكم، لكنني لا أوافق عليها تمامًا."},
+ {speech:"Pourriez-vous répéter la dernière question ?",ar:"هل يمكنكم إعادة السؤال الأخير؟"}
+];
+
+const A2_EXPRESSION_BUILDERS=[
+ {tokens:["calme.","parce","quartier","J’aime","qu’il","est","ce"],answer:["J’aime","ce","quartier","parce","qu’il","est","calme."],ar:"أحب هذا الحي لأنه هادئ."},
+ {tokens:["je","Ensuite,","un","donnerai","exemple."],answer:["Ensuite,","je","donnerai","un","exemple."],ar:"بعد ذلك، سأقدّم مثالًا."},
+ {tokens:["reformuler","Pourriez-vous","question ?","cette"],answer:["Pourriez-vous","reformuler","cette","question ?"],ar:"هل يمكنكم إعادة صياغة هذا السؤال؟"}
+];
+
+const A2_EXPRESSION_DIALOGUES=[
+ {context:"Un collègue vous demande : « Que pensez-vous du nouvel horaire ? »",prompt:"اختر رأيًا معللًا.",choices:["À mon avis, il est pratique parce que nous finissons plus tôt.","Demain était lundi.","Je ne comprends une chaise."],correctIndex:0,feedback:"الإجابة تعرض رأيًا واضحًا ثم تبرره بسبب مباشر."},
+ {context:"Votre ami propose une solution qui ne vous convient pas.",prompt:"اختر اختلافًا مهذبًا.",choices:["C’est faux et inutile.","Je comprends ton idée, mais je préférerais une solution plus simple.","Par exemple, hier."],correctIndex:1,feedback:"تبدأ العبارة بتفهم الاقتراح ثم تعرض تفضيلًا بديلًا دون حدة."},
+ {context:"Vous n’avez pas compris la dernière consigne.",prompt:"اختر العبارة التي تحافظ على الحوار.",choices:["Pour conclure, je pars.","Je suis contre la question.","Excusez-moi, pourriez-vous l’expliquer autrement ?"],correctIndex:2,feedback:"طلب إعادة الشرح بطريقة أخرى يصلح سوء الفهم ويتيح استمرار التفاعل."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -1764,32 +1832,72 @@ const A2_MODULES:CourseModule[]=[
    ])
   ]
  },
- {
-  id:"expression",title:"S’exprimer avec autonomie",ar:"التعبير باستقلالية",icon:GraduationCap,
-  description:"الرأي والموافقة والاختلاف ورسالة أو فقرة منظمة في نهاية A2.",
-  sections:[
-   section("Donner son opinion","إبداء الرأي","ابدأ برأيك، أعط سببًا ومثالًا، ثم اختم بفكرة واضحة. هذه البنية مناسبة للكلام والكتابة.",[
-    "À mon avis… في رأيي.",
-    "Je pense que… أعتقد أن.",
-    "Je suis d’accord / Je ne suis pas tout à fait d’accord.",
-    "مثال: par exemple، خاتمة: finalement أو pour conclure."
-   ],[
-    {fr:"À mon avis, les transports publics sont très utiles.",ar:"في رأيي، وسائل النقل العامة مفيدة جدًا."},
-    {fr:"Je suis d’accord, mais il faut améliorer les horaires.",ar:"أنا موافق، لكن يجب تحسين المواعيد."},
-    {fr:"Pour conclure, cette solution est la plus pratique.",ar:"في الختام، هذا الحل هو الأكثر عملية."}
-   ]),
-   section("Écrire un message structuré","كتابة رسالة منظمة","تتكون الرسالة من تحية، سبب الكتابة، التفاصيل أو الطلب، ثم صيغة ختام مناسبة.",[
-    "Bonjour Madame / Monsieur للسياق الرسمي.",
-    "Je vous écris pour… أكتب إليكم من أجل.",
-    "Merci d’avance pour votre réponse.",
-    "Cordialement ختام رسمي، À bientôt ختام ودي."
-   ],[
-    {fr:"Je vous écris pour confirmer mon rendez-vous.",ar:"أكتب إليكم لتأكيد موعدي."},
-    {fr:"Pourriez-vous m’envoyer les informations nécessaires ?",ar:"هل يمكنكم إرسال المعلومات اللازمة لي؟"},
-    {fr:"Merci d’avance. Cordialement, Sara.",ar:"شكرًا مقدمًا. مع التحية، سارة."}
-   ])
-  ]
- }
+  {
+   id:"expression",title:"S’exprimer avec autonomie",ar:"التعبير باستقلالية",icon:GraduationCap,
+   description:"عبّر عن رأيك بثقة، علّله، ناقش غيرك بأدب، ونظّم رسالة أو حديثًا واضحًا في مواقف A2.",
+   sections:[
+    section("Donner son opinion et la justifier","إبداء الرأي وتعليله","لا يكفي أن تقول ما تفضله؛ قدّم رأيًا مفهومًا، ثم سببًا ومثالًا قصيرًا يساعدان المستمع أو القارئ على متابعة فكرتك.",[
+     "ابدأ بـ À mon avis, Pour moi, Je pense que أو Je trouve que.",
+     "علّل رأيك بـ parce que أو car، ولا تكرر صيغة الرأي في كل جملة.",
+     "وضّح الفكرة بمثال يبدأ بـ par exemple أو comme.",
+     "البنية العملية: رأي ← سبب ← مثال."
+    ],[
+     {fr:"Je trouve ce service pratique parce qu’il est disponible le soir.",ar:"أرى أن هذه الخدمة مناسبة لأنها متاحة مساءً."},
+     {fr:"Pour moi, apprendre en groupe est plus motivant.",ar:"بالنسبة إليّ، التعلم ضمن مجموعة أكثر تحفيزًا."},
+     {fr:"Par exemple, nous pouvons réviser ensemble après le cours.",ar:"يمكننا مثلًا أن نراجع معًا بعد الدرس."}
+    ]),
+    section("Être d’accord ou nuancer","الموافقة والاختلاف بأدب","تفاعل مع رأي الطرف الآخر قبل أن تعرض موقفك. وتجنب الرفض الحاد، خصوصًا في الحوار الرسمي أو عند مناقشة اقتراح.",[
+     "للموافقة: Je suis d’accord، Tout à fait، Vous avez raison.",
+     "للموافقة الجزئية: Je suis plutôt d’accord، C’est vrai, mais…",
+     "للاختلاف بأدب: Je comprends votre point de vue, mais…",
+     "Je ne suis pas tout à fait d’accord ألطف من قول C’est faux."
+    ],[
+     {fr:"Vous avez raison : il faut mieux informer les habitants.",ar:"أنتم محقون؛ يجب إبلاغ السكان بصورة أفضل."},
+     {fr:"C’est vrai, mais le prix reste encore trop élevé.",ar:"هذا صحيح، لكن السعر لا يزال مرتفعًا جدًا."},
+     {fr:"Je comprends ton choix ; pourtant, je préfère attendre.",ar:"أتفهم اختيارك، ومع ذلك أفضل الانتظار."}
+    ]),
+    section("Organiser une prise de parole","تنظيم الحديث","قدّم فكرة واحدة في كل خطوة، واستخدم روابط واضحة كي لا يبدو كلامك مجموعة جمل منفصلة.",[
+     "قدّم الموضوع: Je vais parler de… أو Aujourd’hui, je voudrais présenter…",
+     "رتّب الأفكار بـ d’abord، ensuite، puis وenfin.",
+     "أضف فكرة بـ de plus، وقابلها بـ mais أو pourtant.",
+     "اختم بـ en résumé أو pour conclure مع موقف نهائي واضح."
+    ],[
+     {fr:"Aujourd’hui, je voudrais présenter une activité de mon quartier.",ar:"أود اليوم أن أعرّف بنشاط يقام في حيي."},
+     {fr:"D’abord, je décrirai le projet ; ensuite, j’expliquerai son intérêt.",ar:"سأصف المشروع أولًا، ثم سأوضح أهميته."},
+     {fr:"En résumé, cette proposition répond à nos besoins.",ar:"وخلاصة القول أن هذا الاقتراح يلبي احتياجاتنا."}
+    ]),
+    section("Écrire un message adapté","كتابة رسالة ملائمة للموقف","اختر التحية والختام بحسب المخاطَب، ثم اجعل سبب الرسالة والتفاصيل والطلب سهلة العثور عليها.",[
+     "ودي: Bonjour Lina / Salut Karim؛ رسمي: Bonjour Madame, Bonjour Monsieur.",
+     "اذكر الغرض مبكرًا: Je vous écris pour… أو Je voudrais vous informer que…",
+     "نظّم التفاصيل في فقرات قصيرة، ثم صغ طلبًا محددًا ومهذبًا.",
+     "اختم بـ À bientôt مع المقربين، أو Cordialement في المراسلات الرسمية."
+    ],[
+     {fr:"Je vous écris pour donner mon avis sur les nouveaux horaires.",ar:"أكتب إليكم لإبداء رأيي في المواعيد الجديدة."},
+     {fr:"Serait-il possible d’ouvrir la salle le samedi matin ?",ar:"هل يمكن فتح القاعة صباح السبت؟"},
+     {fr:"Merci pour votre attention. Cordialement, Nour.",ar:"شكرًا لاهتمامكم. مع خالص التحية، نور."}
+    ]),
+    section("Raconter une expérience et présenter un projet","وصف تجربة وعرض مشروع","اجمع ما تعلمته في A2: صف خلفية في الماضي الناقص، احكِ أحداثًا منتهية بالماضي المركب، ثم قدّم خطة قادمة.",[
+     "الخلفية: Il faisait beau، J’étais débutant، Nous habitions près du centre.",
+     "الحدث المنتهي: J’ai participé، Nous avons terminé، Elle est arrivée.",
+     "عبّر عن الانطباع: Cette expérience m’a plu / m’a beaucoup appris.",
+     "قدّم المشروع بـ je vais + مصدر أو المستقبل البسيط مع موعد واضح."
+    ],[
+     {fr:"Au début, j’étais inquiet, mais l’équipe était très accueillante.",ar:"كنت قلقًا في البداية، لكن الفريق كان ودودًا جدًا."},
+     {fr:"J’ai appris à organiser mon travail et à parler en public.",ar:"تعلمت تنظيم عملي والتحدث أمام الجمهور."},
+     {fr:"L’été prochain, je participerai à un autre projet.",ar:"سأشارك في مشروع آخر الصيف المقبل."}
+    ]),
+    section("Maintenir et réparer l’échange","متابعة الحوار وتصحيح الفهم","الاستقلالية لا تعني فهم كل شيء من المرة الأولى؛ بل أن تعرف كيف تطلب التكرار أو المعنى أو إعادة الصياغة وتؤكد ما فهمته.",[
+     "اطلب التكرار: Pardon ? أو Pourriez-vous répéter, s’il vous plaît ?",
+     "اسأل عن المعنى: Qu’est-ce que ce mot veut dire ?",
+     "تحقق من الفهم: Vous voulez dire que… ? أو Si j’ai bien compris…",
+     "اطلب صياغة أخرى: Pourriez-vous l’expliquer autrement ? ثم أعد الفكرة بكلماتك."
+    ],[
+     {fr:"Excusez-moi, je n’ai pas bien compris la dernière phrase.",ar:"عذرًا، لم أفهم الجملة الأخيرة جيدًا."},
+     {fr:"Si j’ai bien compris, la réunion commence à neuf heures.",ar:"إذا كنت قد فهمت جيدًا، فالاجتماع يبدأ الساعة التاسعة."},
+     {fr:"Vous voulez dire que je dois envoyer le document aujourd’hui ?",ar:"هل تقصدون أن عليّ إرسال المستند اليوم؟"}
+    ])
+   ]
+  }
 ];
 
 const LEVELS:Level[]=[
@@ -2849,17 +2957,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Politeness=level.id==="A2"&&activeModule.id==="politeness";
  const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";
  const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife;
- const activeA2Reading=isA2RealLife?A2_REAL_LIFE_READING:isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2RealLife?A2_REAL_LIFE_LISTENING:isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2RealLife?A2_REAL_LIFE_DICTATION:isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2RealLife?A2_REAL_LIFE_BUILDERS:isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2RealLife?A2_REAL_LIFE_DIALOGUES:isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2RealLife?A2_REAL_LIFE_WRITING_MODEL:isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2RealLife?"اكتب رسالة لحل مشكلة واقعية":isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2RealLife?"اكتب من 60 إلى 80 كلمة إلى فندق أو وكالة أو جهة خدمة. اذكر مرجعًا أو تاريخًا، واشرح المشكلة وأثرها، واطلب حلًا مهذبًا، وحدد طريقة أو وقت التواصل.":isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2RealLife?"Bonjour, je vous écris au sujet de…":isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Expression=level.id==="A2"&&activeModule.id==="expression";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife||isA2Expression;
+ const activeA2Reading=isA2Expression?A2_EXPRESSION_READING:isA2RealLife?A2_REAL_LIFE_READING:isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Expression?A2_EXPRESSION_LISTENING:isA2RealLife?A2_REAL_LIFE_LISTENING:isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Expression?A2_EXPRESSION_DICTATION:isA2RealLife?A2_REAL_LIFE_DICTATION:isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Expression?A2_EXPRESSION_BUILDERS:isA2RealLife?A2_REAL_LIFE_BUILDERS:isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Expression?A2_EXPRESSION_DIALOGUES:isA2RealLife?A2_REAL_LIFE_DIALOGUES:isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Expression?A2_EXPRESSION_WRITING_MODEL:isA2RealLife?A2_REAL_LIFE_WRITING_MODEL:isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Expression?"اكتب رأيًا منظمًا":isA2RealLife?"اكتب رسالة لحل مشكلة واقعية":isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Expression?"اكتب من 60 إلى 80 كلمة لإبداء رأيك في تغيير داخل مكتبة أو حي أو مركز تعليمي. اذكر رأيك وسببًا ومثالًا، أضف مخالفة أو تحفظًا مهذبًا، ثم اختم بموقف واضح وطلب مناسب.":isA2RealLife?"اكتب من 60 إلى 80 كلمة إلى فندق أو وكالة أو جهة خدمة. اذكر مرجعًا أو تاريخًا، واشرح المشكلة وأثرها، واطلب حلًا مهذبًا، وحدد طريقة أو وقت التواصل.":isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Expression?"Bonjour, je vous écris pour donner mon avis sur…":isA2RealLife?"Bonjour, je vous écris au sujet de…":isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Expression?"Donnez votre avis sur une nouvelle activité dans votre quartier. Présentez le sujet, expliquez votre position avec une raison et un exemple, réagissez poliment à une opinion différente, puis concluez.":isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2882,7 +2991,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2RealLife?[
+ const revisionWritingChecks=isA2Expression?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},
+  {label:"مثال يوضّح الفكرة",passed:/\b(?:par exemple|comme exemple|notamment)\b/i.test(revisionWritingText)},
+  {label:"اختلاف أو تحفظ مهذب",passed:/\b(?:je comprends|mais|pourtant|cependant|en revanche|je ne suis pas tout à fait d’accord)\b/i.test(revisionWritingText)},
+  {label:"خاتمة وطلب مناسب",passed:/\b(?:en résumé|pour conclure|finalement)\b/i.test(revisionWritingText)&&/\b(?:pourriez-vous|serait-il possible|je voudrais|j’aimerais|j'aimerais)\b/i.test(revisionWritingText)}
+ ]:isA2RealLife?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"مرجع أو تاريخ واضح",passed:/\b(?:réservation|dossier|vol|train|commande|numéro|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\b/i.test(revisionWritingText)},
   {label:"وصف المشكلة وأثرها",passed:/\b(?:ne fonctionne|n’est pas|n'est pas|en panne|annulé|annulée|retard|perdu|perdue|raté|abîmé|abîmée|fuite|problème)\b/i.test(revisionWritingText)&&/\b(?:donc|alors|parce que|comme|je ne peux|je n’ai pas pu|je n'ai pas pu)\b/i.test(revisionWritingText)},
@@ -2998,6 +3113,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="connectors")return A2_CONNECTORS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="themes")return A2_REAL_LIFE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="expression")return A2_EXPRESSION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -3012,6 +3128,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="connectors")return A2_CONNECTORS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="themes")return A2_REAL_LIFE_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="expression")return A2_EXPRESSION_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -3658,7 +3775,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

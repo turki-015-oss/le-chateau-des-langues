@@ -427,7 +427,7 @@ const A2_REVISION_PRACTICE_ITEMS:Example[]=[
  {fr:"Depuis quand travaillez-vous dans cette entreprise ?",ar:"منذ متى تعملون في هذه الشركة؟"},
  {fr:"Est-ce que vous prenez le métro pour aller au travail ?",ar:"هل تستقلون المترو للذهاب إلى العمل؟"},
  {fr:"Je ne veux rien acheter aujourd’hui.",ar:"لا أريد شراء أي شيء اليوم."},
- {fr:"On va souvent au marché le samedi.",ar:"نذهب كثيرًا إلى السوق يوم السبت."},
+ {fr:"On va souvent au marché le samedi.",ar:"غالبًا ما نذهب إلى السوق يوم السبت."},
  {fr:"D’abord, ils préparent le repas, puis ils mettent la table.",ar:"يُحضّرون الطعام أولًا، ثم يرتبون المائدة."},
  {fr:"Mes enfants se couchent vers neuf heures.",ar:"يخلد أطفالي إلى النوم قرابة الساعة التاسعة."},
  {fr:"À mon avis, ce quartier est pratique parce qu’il est bien desservi.",ar:"في رأيي، هذا الحي عملي لأن وسائل النقل تصل إليه جيدًا."}
@@ -563,7 +563,7 @@ const A2_IMPARFAIT_PRACTICE_ITEMS:Example[]=[
  {fr:"Nous dînions toujours ensemble le dimanche.",ar:"كنا نتناول العشاء معًا دائمًا يوم الأحد."},
  {fr:"Elle lisait pendant que son frère préparait le café.",ar:"كانت تقرأ بينما كان أخوها يحضّر القهوة."},
  {fr:"Il ne faisait pas chaud, mais le ciel était clair.",ar:"لم يكن الجو حارًا، لكن السماء كانت صافية."},
- {fr:"Vous alliez souvent au travail à pied.",ar:"كنتم تذهبون إلى العمل سيرًا على الأقدام كثيرًا."},
+ {fr:"Vous alliez souvent au travail à pied.",ar:"كنتم غالبًا تذهبون إلى العمل سيرًا على الأقدام."},
  {fr:"Les rues étaient calmes et les magasins fermaient tôt.",ar:"كانت الشوارع هادئة وكانت المتاجر تغلق مبكرًا."},
  {fr:"Je dormais quand quelqu’un a frappé à la porte.",ar:"كنت نائمًا عندما طرق أحدهم الباب."},
  {fr:"À cette époque, nous ne connaissions personne ici.",ar:"في ذلك الوقت لم نكن نعرف أحدًا هنا."},
@@ -587,10 +587,10 @@ const A2_IMPARFAIT_QUIZ_ITEMS:QuizQuestion[]=[
 const A2_IMPARFAIT_READING={
  title:"Le quartier de mon enfance",arTitle:"حي طفولتي",
  text:"Quand j’étais enfant, j’habitais dans un quartier calme près d’un grand parc. Les maisons étaient petites et les voisins se connaissaient tous. Chaque matin, je marchais jusqu’à l’école avec ma sœur. Après les cours, nous jouions souvent sous les arbres pendant que nos parents discutaient devant la boulangerie. Un jour, une nouvelle famille est arrivée dans notre rue. Leur fils avait mon âge, et nous sommes rapidement devenus amis.",
- translation:"عندما كنت طفلًا، كنت أعيش في حي هادئ قرب حديقة كبيرة. كانت المنازل صغيرة وكان جميع الجيران يعرف بعضهم بعضًا. كنت أمشي كل صباح إلى المدرسة مع أختي. وبعد الدروس، كنا نلعب كثيرًا تحت الأشجار بينما كان والدانا يتحدثان أمام المخبز. وفي أحد الأيام وصلت عائلة جديدة إلى شارعنا. كان ابنهم في عمري، وسرعان ما أصبحنا صديقين.",
+  translation:"عندما كنت طفلًا، كنت أعيش في حي هادئ قرب حديقة كبيرة. كانت المنازل صغيرة وكان جميع الجيران يعرف بعضهم بعضًا. كنت أمشي كل صباح إلى المدرسة مع أختي. وبعد الدروس، كنا غالبًا نلعب تحت الأشجار بينما كان والدانا يتحدثان أمام المخبز. وفي أحد الأيام وصلت عائلة جديدة إلى شارعنا. كان ابنهم في عمري، وسرعان ما أصبحنا صديقين.",
  questions:[
   {question:"Comment était le quartier ?",answer:"Il était calme et se trouvait près d’un grand parc.",ar:"كان هادئًا ويقع قرب حديقة كبيرة."},
-  {question:"Que faisaient les enfants après les cours ?",answer:"Ils jouaient souvent sous les arbres.",ar:"كانوا يلعبون كثيرًا تحت الأشجار."},
+  {question:"Que faisaient les enfants après les cours ?",answer:"Ils jouaient souvent sous les arbres.",ar:"كانوا غالبًا يلعبون تحت الأشجار."},
   {question:"Quel événement a changé la situation ?",answer:"Une nouvelle famille est arrivée dans la rue.",ar:"وصلت عائلة جديدة إلى الشارع."}
  ]
 };
@@ -609,7 +609,7 @@ const A2_IMPARFAIT_LISTENING={
 const A2_IMPARFAIT_WRITING_MODEL="Quand j’étais enfant, j’habitais dans une petite ville avec ma famille. Notre maison était près de l’école et je marchais chaque matin avec mon frère. Après les cours, nous jouions souvent au parc, puis nous rentrions pour dîner. Je ne regardais jamais la télévision avant de finir mes devoirs. Le week-end, mes grands-parents venaient nous voir et nous préparions un grand repas ensemble. J’aimais beaucoup cette période.";
 
 const A2_IMPARFAIT_DICTATION=[
- {speech:"Quand j’étais enfant, je jouais souvent dehors.",ar:"عندما كنت طفلًا، كنت ألعب كثيرًا في الخارج."},
+ {speech:"Quand j’étais enfant, je jouais souvent dehors.",ar:"عندما كنت طفلًا، كنت غالبًا ألعب في الخارج."},
  {speech:"Nous ne connaissions pas ce quartier.",ar:"لم نكن نعرف هذا الحي."},
  {speech:"Il pleuvait pendant que nous attendions le bus.",ar:"كانت السماء تمطر بينما كنا ننتظر الحافلة."}
 ];
@@ -636,7 +636,7 @@ const A2_FUTURE_PRACTICE_ITEMS:Example[]=[
  {fr:"Je vous enverrai l’adresse dès que je la connaîtrai.",ar:"سأرسل إليكم العنوان فور معرفتي به."},
  {fr:"Si le temps est agréable, nous déjeunerons dehors.",ar:"إذا كان الطقس لطيفًا، فسنتناول الغداء في الخارج."},
  {fr:"D’abord, nous allons réserver les billets, puis nous choisirons l’hôtel.",ar:"سنحجز التذاكر أولًا، ثم سنختار الفندق."},
- {fr:"À mon avis, les transports seront plus rapides dans quelques années.",ar:"في رأيي، ستكون وسائل النقل أسرع خلال بضع سنوات."}
+ {fr:"À mon avis, les transports seront plus rapides dans quelques années.",ar:"في رأيي، ستكون وسائل النقل أسرع بعد بضع سنوات."}
 ];
 
 const A2_FUTURE_QUIZ_ITEMS:QuizQuestion[]=[
@@ -655,11 +655,11 @@ const A2_FUTURE_QUIZ_ITEMS:QuizQuestion[]=[
 const A2_FUTURE_READING={
  title:"Un projet de voyage",arTitle:"خطة لرحلة",
  text:"Le mois prochain, Salma et son frère vont passer quatre jours à Strasbourg. Ils partiront vendredi matin et prendront le train de sept heures. À leur arrivée, ils déposeront leurs bagages à l’hôtel, puis ils visiteront le centre historique. S’il fait beau, ils feront une promenade en bateau. Samedi soir, ils vont dîner chez une amie qui habite près de la cathédrale. Salma pense que ce court séjour sera une bonne occasion de pratiquer son français.",
- translation:"ستقضي سلمى وأخوها أربعة أيام في ستراسبورغ الشهر المقبل. سيغادران صباح الجمعة ويستقلان قطار الساعة السابعة. وعند وصولهما سيضعان حقائبهما في الفندق، ثم سيزوران وسط المدينة التاريخي. وإذا كان الطقس جميلًا، فسيذهبان في جولة بالقارب. وفي مساء السبت سيتناولان العشاء لدى صديقة تسكن قرب الكاتدرائية. وترى سلمى أن هذه الرحلة القصيرة ستكون فرصة جيدة لممارسة الفرنسية.",
+  translation:"ستقضي سلمى وأخوها أربعة أيام في ستراسبورغ الشهر المقبل. سيغادران صباح الجمعة ويستقلان قطار الساعة السابعة. وعند وصولهما سيضعان حقائبهما في الفندق، ثم سيزوران وسط المدينة التاريخي. وإذا كان الطقس جميلًا، فسيذهبان في جولة بالقارب. وفي مساء السبت سيتناولان العشاء لدى صديقة تسكن قرب الكاتدرائية. وترى سلمى أن هذه الرحلة القصيرة ستكون فرصة جيدة للتدرّب على الفرنسية.",
  questions:[
   {question:"Quand partiront-ils ?",answer:"Ils partiront vendredi matin.",ar:"سيغادران صباح الجمعة."},
   {question:"Que feront-ils s’il fait beau ?",answer:"Ils feront une promenade en bateau.",ar:"سيذهبان في جولة بالقارب."},
-  {question:"Pourquoi Salma attend-elle ce séjour ?",answer:"Parce qu’elle pourra pratiquer son français.",ar:"لأنها ستتمكن من ممارسة الفرنسية."}
+  {question:"Pourquoi Salma attend-elle ce séjour ?",answer:"Parce qu’elle pourra pratiquer son français.",ar:"لأنها ستتمكن من التدرّب على الفرنسية."}
  ]
 };
 
@@ -764,11 +764,11 @@ const A2_PRONOUNS_DIALOGUES=[
 
 const A2_QUANTITY_PRACTICE_ITEMS:Example[]=[
  {fr:"Je voudrais du pain et de la confiture.",ar:"أود خبزًا ومربّى."},
- {fr:"Nous n’achetons pas de viande cette semaine.",ar:"لن نشتري لحمًا هذا الأسبوع."},
+ {fr:"Nous n’achetons pas de viande cette semaine.",ar:"لا نشتري لحمًا هذا الأسبوع."},
  {fr:"Tu veux des pommes ? Oui, j’en prends trois.",ar:"هل تريد تفاحًا؟ نعم، سآخذ ثلاثًا."},
- {fr:"Elle parle souvent de son voyage : elle en garde un excellent souvenir.",ar:"تتحدث كثيرًا عن رحلتها وتحتفظ منها بذكرى رائعة."},
+ {fr:"Elle parle souvent de son voyage : elle en garde un excellent souvenir.",ar:"تتحدث كثيرًا عن رحلتها، ولا تزال تحتفظ بذكرى رائعة عنها."},
  {fr:"Nous allons au marché et nous y retrouvons nos voisins.",ar:"نذهب إلى السوق ونلتقي بجيراننا هناك."},
- {fr:"Vous pensez à votre rendez-vous ? Oui, j’y pense.",ar:"هل تتذكرون موعدكم؟ نعم، أتذكره."},
+ {fr:"Vous pensez à votre rendez-vous ? Oui, j’y pense.",ar:"هل تفكرون في موعدكم؟ نعم، أفكر فيه."},
  {fr:"Combien de billets avez-vous ? J’en ai deux.",ar:"كم تذكرة لديكم؟ لدي تذكرتان."},
  {fr:"Je vais y aller après le travail.",ar:"سأذهب إلى هناك بعد العمل."},
  {fr:"N’en ajoutez pas trop.",ar:"لا تضيفوا منه الكثير."},
@@ -815,7 +815,7 @@ const A2_QUANTITY_WRITING_MODEL="Demain, je vais au marché pour préparer un d�
 const A2_QUANTITY_DICTATION=[
  {speech:"Nous avons besoin d’un kilo de tomates.",ar:"نحتاج إلى كيلوغرام من الطماطم."},
  {speech:"Je n’en veux pas beaucoup.",ar:"لا أريد منه الكثير."},
- {speech:"Vous allez au marché ? Oui, nous y allons.",ar:"هل ستذهبون إلى السوق؟ نعم، سنذهب إليه."}
+  {speech:"Vous allez au marché ? Oui, nous y allons.",ar:"هل أنتم ذاهبون إلى السوق؟ نعم، نحن ذاهبون إليه."}
 ];
 
 const A2_QUANTITY_BUILDERS=[
@@ -834,12 +834,12 @@ const A2_COMPARISON_PRACTICE_ITEMS:Example[]=[
  {fr:"Ce quartier est plus calme que le centre-ville.",ar:"هذا الحي أهدأ من وسط المدينة."},
  {fr:"La chambre bleue est moins lumineuse que la blanche.",ar:"الغرفة الزرقاء أقل إضاءة من البيضاء."},
  {fr:"Le train est aussi confortable que l’autocar.",ar:"القطار مريح بقدر الحافلة."},
- {fr:"Nous avons plus de temps qu’hier.",ar:"لدينا وقت أكثر من الأمس."},
+ {fr:"Nous avons plus de temps qu’hier.",ar:"لدينا وقت أكثر مما كان لدينا أمس."},
  {fr:"Elle travaille aussi efficacement que sa collègue.",ar:"تعمل بالكفاءة نفسها التي تعمل بها زميلتها."},
  {fr:"Cette solution fonctionne mieux que l’ancienne.",ar:"هذا الحل يعمل بصورة أفضل من الحل السابق."},
  {fr:"C’est le meilleur restaurant du quartier.",ar:"هذا أفضل مطعم في الحي."},
  {fr:"Parmi ces itinéraires, celui-ci est le moins long.",ar:"هذا المسار هو الأقصر بين هذه المسارات."},
- {fr:"Le service est assez rapide, mais la salle est un peu bruyante.",ar:"الخدمة سريعة إلى حدٍّ كافٍ، لكن القاعة صاخبة قليلًا."},
+ {fr:"Le service est assez rapide, mais la salle est un peu bruyante.",ar:"الخدمة سريعة إلى حدٍّ ما، لكن القاعة صاخبة قليلًا."},
  {fr:"Le guide explique clairement et répond très patiemment.",ar:"يشرح المرشد بوضوح ويجيب بصبر كبير."}
 ];
 
@@ -1004,7 +1004,7 @@ const A2_CONNECTORS_READING={
 };
 
 const A2_CONNECTORS_LISTENING={
- title:"Une journée pleine d’imprévus",arTitle:"يوم مليء بالمفاجآت",
+  title:"Une journée pleine d’imprévus",arTitle:"يوم مليء بالأحداث غير المتوقعة",
  text:"Hier, nous devions visiter un musée qui se trouve près de la gare. D’abord, notre train est arrivé en retard à cause d’un problème technique. Ensuite, nous avons pris un bus, mais nous sommes descendus au mauvais arrêt. Une passante nous a montré le chemin, donc nous avons enfin trouvé le musée. Il était presque midi ; pourtant, nous avons pu suivre la dernière visite guidée. Après la visite, nous avons déjeuné dans un restaurant que notre guide nous avait conseillé. Finalement, la journée a été fatigante, mais très réussie.",
  questions:[
   {prompt:"Pourquoi le train est-il arrivé en retard ?",choices:["À cause d’un problème technique","Grâce au guide","Parce que le musée était fermé"],correctIndex:0},
@@ -1014,7 +1014,7 @@ const A2_CONNECTORS_LISTENING={
  ]
 };
 
-const A2_CONNECTORS_WRITING_MODEL="Samedi, j’ai participé à une activité qui était organisée dans mon quartier. D’abord, nous avons nettoyé le parc, puis nous avons planté des fleurs. Le matériel que la mairie avait fourni était très utile. Il faisait chaud ; pourtant, tout le monde a continué avec enthousiasme. Comme nous étions nombreux, le travail a donc avancé rapidement. De plus, les voisins ont préparé un repas. Finalement, cette journée m’a plu parce qu’elle nous a permis de mieux nous connaître.";
+const A2_CONNECTORS_WRITING_MODEL="Samedi, j’ai participé à une activité qui était organisée dans mon quartier. D’abord, nous avons nettoyé le parc, puis nous avons planté des fleurs. Le matériel que la mairie avait fourni était très utile. Il faisait chaud ; pourtant, tout le monde a continué avec enthousiasme. Comme nous étions nombreux, le travail a avancé rapidement. De plus, les voisins ont préparé un repas. Finalement, cette journée m’a plu parce qu’elle nous a permis de mieux nous connaître.";
 
 const A2_CONNECTORS_DICTATION=[
  {speech:"Voici le document que vous devez compléter.",ar:"هذا هو المستند الذي يجب عليكم إكماله."},
@@ -1039,7 +1039,7 @@ const A2_REAL_LIFE_PRACTICE_ITEMS:Example[]=[
  {fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
  {fr:"Le chauffage de mon appartement ne fonctionne plus.",ar:"لم تعد التدفئة تعمل في شقتي."},
  {fr:"Pourriez-vous envoyer quelqu’un pour vérifier la fuite ?",ar:"هل يمكنكم إرسال شخص لفحص التسرّب؟"},
- {fr:"Mes horaires ont changé à partir de lundi.",ar:"ستتغير ساعات عملي ابتداءً من يوم الاثنين."},
+ {fr:"Mes horaires ont changé à partir de lundi.",ar:"تغيّرت ساعات عملي ابتداءً من يوم الاثنين."},
  {fr:"J’ai un entretien d’embauche jeudi à dix heures.",ar:"لدي مقابلة عمل يوم الخميس الساعة العاشرة."},
  {fr:"Je voudrais confirmer ma réservation pour deux nuits.",ar:"أود تأكيد حجزي لليلتين."},
  {fr:"J’ai raté mon train à cause du retard du bus.",ar:"فاتني القطار بسبب تأخر الحافلة."},
@@ -1103,7 +1103,7 @@ const A2_REAL_LIFE_DIALOGUES=[
 ];
 
 const A2_EXPRESSION_PRACTICE_ITEMS=[
- {fr:"À mon avis, ce quartier est agréable parce qu’il est calme.",ar:"في رأيي، هذا الحي مريح لأنه هادئ."},
+ {fr:"À mon avis, ce quartier est agréable parce qu’il est calme.",ar:"في رأيي، السكن في هذا الحي مريح لأنه هادئ."},
  {fr:"Je suis tout à fait d’accord avec cette proposition.",ar:"أنا موافق تمامًا على هذا الاقتراح."},
  {fr:"Je comprends votre point de vue, mais je préfère une autre solution.",ar:"أتفهم وجهة نظركم، لكنني أفضل حلًا آخر."},
  {fr:"D’abord, je vais présenter le problème, puis je proposerai une solution.",ar:"سأعرض المشكلة أولًا، ثم سأقترح حلًا."},
@@ -1154,7 +1154,7 @@ const A2_EXPRESSION_WRITING_MODEL="Bonjour Madame, je vous écris pour donner mo
 
 const A2_EXPRESSION_DICTATION=[
  {speech:"À mon avis, cette solution est la plus pratique.",ar:"في رأيي، هذا الحل هو الأكثر ملاءمة."},
- {speech:"Je comprends votre idée, mais je ne suis pas tout à fait d’accord.",ar:"أتفهم فكرتكم، لكنني لا أوافق عليها تمامًا."},
+ {speech:"Je comprends votre idée, mais je ne suis pas tout à fait d’accord.",ar:"أتفهم فكرتكم، لكنني لا أوافقكم الرأي بالكامل."},
  {speech:"Pourriez-vous répéter la dernière question ?",ar:"هل يمكنكم إعادة السؤال الأخير؟"}
 ];
 
@@ -1497,7 +1497,7 @@ const A2_MODULES:CourseModule[]=[
     "في المثبت يأتي le/la/les قبل moi/toi/lui/nous/vous/leur."
    ],[
     {fr:"Expliquez-la-moi encore une fois.",ar:"اشرحوها لي مرة أخرى."},
-    {fr:"Ne leur montrez pas ce document.",ar:"لا تروهم هذا المستند."},
+    {fr:"Ne leur montrez pas ce document.",ar:"لا تعرضوا عليهم هذا المستند."},
     {fr:"Ces clés, rendez-les-lui aujourd’hui.",ar:"أعيدوا إليه هذه المفاتيح اليوم."}
    ])
   ]
@@ -1553,7 +1553,7 @@ const A2_MODULES:CourseModule[]=[
     "لا نستخدم y إذا لم يوجد مرجع مفهوم في السياق."
    ],[
     {fr:"Cette bibliothèque est calme ; j’y travaille souvent.",ar:"هذه المكتبة هادئة، وأعمل فيها كثيرًا."},
-    {fr:"Vous participez à la réunion ? Oui, j’y participe.",ar:"هل ستشاركون في الاجتماع؟ نعم، سأشارك فيه."},
+    {fr:"Vous participez à la réunion ? Oui, j’y participe.",ar:"هل تشاركون في الاجتماع؟ نعم، أشارك فيه."},
     {fr:"Ils sont allés chez le médecin et ils y sont restés une heure.",ar:"ذهبوا إلى عيادة الطبيب وبقوا هناك ساعة."}
    ]),
    section("La place de y et en","موضع y وen","يأتي y وen قبل الفعل المصرف، وقبل المصدر الذي يتعلقان به. في الأمر المثبت يأتيان بعد الفعل، وفي النفي يعودان قبله.",[
@@ -1563,7 +1563,7 @@ const A2_MODULES:CourseModule[]=[
     "عند اجتماعهما يأتي y قبل en: Il y en a؛ Je n’y en trouve plus."
    ],[
     {fr:"Nous allons y retourner la semaine prochaine.",ar:"سنعود إلى هناك الأسبوع المقبل."},
-    {fr:"Achetez-en deux pour demain.",ar:"اشتروا اثنتين منه للغد."},
+    {fr:"Achetez-en deux pour demain.",ar:"اشتروا اثنتين منها للغد."},
     {fr:"Dans ce magasin, il n’y en a plus.",ar:"لم يعد منه شيء في هذا المتجر."}
    ])
   ]
@@ -1588,7 +1588,7 @@ const A2_MODULES:CourseModule[]=[
     "مع الظرف: plus / moins / aussi + adverbe + que.",
     "أمثلة: plus de temps؛ travaille autant؛ répond plus rapidement."
    ],[
-    {fr:"Cette équipe a autant de clients que l’autre.",ar:"لدى هذا الفريق عدد العملاء نفسه لدى الفريق الآخر."},
+    {fr:"Cette équipe a autant de clients que l’autre.",ar:"لدى هذا الفريق عدد من العملاء يساوي عدد عملاء الفريق الآخر."},
     {fr:"Je voyage moins qu’avant.",ar:"أسافر أقل مما كنت أفعل سابقًا."},
     {fr:"Elle répond plus clairement que son collègue.",ar:"تجيب بوضوح أكبر من زميلها."}
    ]),
@@ -1696,7 +1696,7 @@ const A2_MODULES:CourseModule[]=[
    ],[
     {fr:"Bien sûr, je vais vous l’envoyer tout de suite.",ar:"بالتأكيد، سأرسله إليكم حالًا."},
     {fr:"Je suis désolée, je ne suis pas disponible ce matin.",ar:"أنا آسفة، لست متاحة هذا الصباح."},
-    {fr:"Je ne peux pas mardi ; en revanche, je pourrais venir mercredi.",ar:"لا أستطيع الحضور يوم الثلاثاء، لكن يمكنني الحضور يوم الأربعاء."}
+    {fr:"Je ne peux pas mardi ; en revanche, je pourrais venir mercredi.",ar:"لا أستطيع الحضور يوم الثلاثاء؛ أما يوم الأربعاء فيمكنني الحضور."}
    ])
   ]
  },
@@ -1721,7 +1721,7 @@ const A2_MODULES:CourseModule[]=[
     "à cause de + اسم لسبب سلبي؛ grâce à + اسم لسبب إيجابي."
    ],[
     {fr:"Nous sommes partis tôt parce que la route était longue.",ar:"غادرنا مبكرًا لأن الطريق كان طويلًا."},
-    {fr:"Le vol est retardé à cause du mauvais temps.",ar:"تأخرت الرحلة بسبب سوء الأحوال الجوية."},
+    {fr:"Le vol est retardé à cause du mauvais temps.",ar:"الرحلة متأخرة بسبب سوء الأحوال الجوية."},
     {fr:"Grâce à votre aide, j’ai terminé à l’heure.",ar:"بفضل مساعدتكم أنهيت العمل في الموعد."}
    ]),
    section("Exprimer la conséquence","التعبير عن النتيجة","تأتي النتيجة بعد السبب أو المعلومة الأولى. استخدم رابطًا واضحًا ولا تكرر عدة روابط تؤدي الوظيفة نفسها.",[
@@ -1760,7 +1760,7 @@ const A2_MODULES:CourseModule[]=[
     "التلخيص: en résumé؛ والخاتمة: finalement، pour conclure.",
     "فقرة A2 جيدة: فكرة، سبب أو مثال، نتيجة أو تعارض، ثم خاتمة قصيرة."
    ],[
-    {fr:"Le quartier est calme ; de plus, les transports sont pratiques.",ar:"الحي هادئ، كما أن المواصلات فيه عملية."},
+    {fr:"Le quartier est calme ; de plus, les transports sont pratiques.",ar:"الحي هادئ، كما أن وسائل النقل فيه ملائمة."},
     {fr:"On peut pratiquer dehors, par exemple dans le parc.",ar:"يمكننا التمرن في الخارج، مثلًا في الحديقة."},
     {fr:"En résumé, cette activité est utile et facile à organiser.",ar:"باختصار، هذا النشاط مفيد وسهل التنظيم."}
    ])
@@ -1893,7 +1893,7 @@ const A2_MODULES:CourseModule[]=[
      "اطلب صياغة أخرى: Pourriez-vous l’expliquer autrement ? ثم أعد الفكرة بكلماتك."
     ],[
      {fr:"Excusez-moi, je n’ai pas bien compris la dernière phrase.",ar:"عذرًا، لم أفهم الجملة الأخيرة جيدًا."},
-     {fr:"Si j’ai bien compris, la réunion commence à neuf heures.",ar:"إذا كنت قد فهمت جيدًا، فالاجتماع يبدأ الساعة التاسعة."},
+     {fr:"Si j’ai bien compris, la réunion commence à neuf heures.",ar:"حسب ما فهمت، يبدأ الاجتماع الساعة التاسعة."},
      {fr:"Vous voulez dire que je dois envoyer le document aujourd’hui ?",ar:"هل تقصدون أن عليّ إرسال المستند اليوم؟"}
     ])
    ]

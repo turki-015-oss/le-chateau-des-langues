@@ -898,6 +898,74 @@ const A2_COMPARISON_DIALOGUES=[
  {context:"On vous demande : « Quel restaurant préférez-vous ? »",prompt:"اختر تفضيلًا مع سبب.",choices:["Je préfère le mieux restaurant.","Je préfère autant le restaurant.","Je préfère celui-ci : le service y est meilleur."],correctIndex:2,feedback:"meilleur يصف الاسم service، والجملة تذكر الاختيار وسببه."}
 ];
 
+const A2_POLITENESS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je voudrais réserver une table pour quatre personnes.",ar:"أود حجز طاولة لأربعة أشخاص."},
+ {fr:"Pourriez-vous répéter un peu plus lentement ?",ar:"هل يمكنكم إعادة الكلام ببطء أكثر قليلًا؟"},
+ {fr:"Est-ce que je peux essayer cette veste ?",ar:"هل يمكنني تجربة هذه السترة؟"},
+ {fr:"Tu devrais te reposer avant le voyage.",ar:"ينبغي أن ترتاح قبل الرحلة."},
+ {fr:"À votre place, je comparerais les deux offres.",ar:"لو كنت مكانكم لقارنت بين العرضين."},
+ {fr:"Il faut présenter une pièce d’identité.",ar:"يجب إبراز إثبات هوية."},
+ {fr:"Vous ne devez pas utiliser votre téléphone ici.",ar:"يجب ألا تستخدموا هاتفكم هنا."},
+ {fr:"On pourrait prendre le train de huit heures.",ar:"يمكننا أن نستقل قطار الساعة الثامنة."},
+ {fr:"Pourquoi ne pas demander un autre rendez-vous ?",ar:"لماذا لا نطلب موعدًا آخر؟"},
+ {fr:"Je suis désolé, je ne pourrai pas vous aider aujourd’hui.",ar:"أنا آسف، لن أتمكن من مساعدتكم اليوم."}
+];
+
+const A2_POLITENESS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ un renseignement, s’il vous plaît.",speech:"Complétez cette demande polie avec le verbe vouloir.",instruction:"أكمل الطلب المهذب.",choices:["voudrais","veux absolument","voulais hier"],correctIndex:0,explanation:"je voudrais صيغة مهذبة شائعة لطلب شيء أو معلومة."},
+ {prompt:"___-vous m’indiquer le chemin ?",speech:"Complétez la demande au conditionnel de politesse.",instruction:"اختر الصيغة الأكثر تهذيبًا.",choices:["Pouvez hier","Pourriez","Deviez"],correctIndex:1,explanation:"pourriez-vous + infinitif طلب مهذب ورسمي."},
+ {prompt:"Tu es très fatigué. Tu ___ te coucher plus tôt.",speech:"Complétez ce conseil avec devoir au conditionnel.",instruction:"أكمل النصيحة المناسبة.",choices:["dois hier","devras toujours","devrais"],correctIndex:2,explanation:"tu devrais يقدّم نصيحة لطيفة، لا أمرًا مباشرًا."},
+ {prompt:"Pour entrer, ___ montrer son billet.",speech:"Exprimez une nécessité générale.",instruction:"اختر صيغة الضرورة العامة.",choices:["il faut","on voudrait","pourriez-vous"],correctIndex:0,explanation:"il faut + infinitif يعبّر عن قاعدة أو ضرورة عامة."},
+ {prompt:"À votre place, je ___ cette option.",speech:"Complétez le conseil avec choisir au conditionnel.",instruction:"أكمل النصيحة غير المباشرة.",choices:["choisis hier","choisirais","choisirai certainement"],correctIndex:1,explanation:"À votre place, je choisirais… صيغة طبيعية لتقديم الرأي بوصفه نصيحة."},
+ {prompt:"___ prendre un taxi ?",speech:"Choisissez une suggestion faite au groupe.",instruction:"اختر اقتراحًا مناسبًا للمجموعة.",choices:["Il faut interdit de","Vous devez toujours","Et si on prenait"],correctIndex:2,explanation:"Et si on + imparfait صيغة شائعة لاقتراح نشاط جماعي."},
+ {prompt:"Dans cette salle, vous ___ parler fort.",speech:"Complétez cette interdiction.",instruction:"أكمل صيغة المنع.",choices:["ne devez pas","devriez de","pourriez pas de"],correctIndex:0,explanation:"ne devez pas + infinitif يعبّر عن منع أو تعليمات ملزمة."},
+ {prompt:"Choisissez la réponse qui accepte poliment.",speech:"Choisissez la réponse qui accepte poliment.",instruction:"اختر رد القبول المهذب.",choices:["Non, jamais.","Bien sûr, avec plaisir.","Faites-le vous-même."],correctIndex:1,explanation:"Bien sûr, avec plaisir تقبل الطلب بوضوح وأدب."},
+ {prompt:"Choisissez le refus poli.",speech:"Choisissez le refus poli.",instruction:"اختر الرفض المهذب.",choices:["Je refuse.","Ce n’est pas mon problème.","Je suis désolé, ce ne sera pas possible aujourd’hui."],correctIndex:2,explanation:"يبدأ الرد بالاعتذار ويشرح عدم الإمكان دون لهجة حادة."},
+ {prompt:"Vous feriez mieux de réserver à l’avance.",speech:"Vous feriez mieux de réserver à l’avance.",instruction:"اختر الترجمة العربية المناسبة.",choices:["من الأفضل أن تحجزوا مسبقًا.","لقد حجزتم مسبقًا.","يُمنع الحجز مسبقًا."],correctIndex:0,explanation:"feriez mieux de + infinitif يقدّم توصية قوية نسبيًا."}
+];
+
+const A2_POLITENESS_READING={
+ title:"Une demande à l’hôtel",arTitle:"طلب في الفندق",
+ text:"À son arrivée à l’hôtel, Nour découvre que sa chambre donne sur une rue bruyante. Elle appelle la réception : « Bonjour, je voudrais savoir s’il serait possible de changer de chambre. Pourriez-vous vérifier si une chambre plus calme est disponible ? » Le réceptionniste lui conseille d’attendre jusqu’à midi et propose de garder ses bagages. Il ajoute : « Vous devriez visiter le quartier pendant ce temps. » Nour accepte la proposition et demande poliment qu’on la prévienne dès que la nouvelle chambre sera prête.",
+ translation:"تكتشف نور عند وصولها إلى الفندق أن غرفتها تطل على شارع صاخب. فتتصل بالاستقبال وتطلب معرفة إمكانية تغيير الغرفة، وتسأل الموظف إن كانت هناك غرفة أكثر هدوءًا. ينصحها موظف الاستقبال بالانتظار حتى الظهر ويعرض الاحتفاظ بحقائبها. ويقترح عليها زيارة الحي في أثناء الانتظار. تقبل نور الاقتراح وتطلب بأدب إبلاغها فور تجهيز الغرفة الجديدة.",
+ questions:[
+  {question:"Pourquoi Nour veut-elle changer de chambre ?",answer:"Parce que sa chambre donne sur une rue bruyante.",ar:"لأن غرفتها تطل على شارع صاخب."},
+  {question:"Que lui conseille le réceptionniste ?",answer:"Il lui conseille d’attendre jusqu’à midi et de visiter le quartier.",ar:"ينصحها بالانتظار حتى الظهر وزيارة الحي."},
+  {question:"Quel service propose-t-il ?",answer:"Il propose de garder ses bagages.",ar:"يعرض الاحتفاظ بحقائبها."}
+ ]
+};
+
+const A2_POLITENESS_LISTENING={
+ title:"Des conseils avant un examen",arTitle:"نصائح قبل الاختبار",
+ text:"Yanis téléphone à son amie parce qu’il est inquiet avant son examen. Elle lui dit : « Tu devrais préparer un programme simple et faire des pauses régulières. Il faut dormir suffisamment, alors ne travaille pas toute la nuit. Tu pourrais aussi réviser avec un camarade. » Yanis lui demande : « Est-ce que tu pourrais m’aider demain après-midi ? » Son amie accepte avec plaisir, mais elle lui conseille d’apporter ses notes et de préparer ses questions à l’avance.",
+ questions:[
+  {prompt:"Pourquoi Yanis téléphone-t-il à son amie ?",choices:["Parce qu’il est inquiet avant un examen.","Parce qu’il veut voyager.","Parce qu’il a perdu ses notes."],correctIndex:0},
+  {prompt:"Que doit-il faire régulièrement ?",choices:["Téléphoner","Des pauses","Des voyages"],correctIndex:1},
+  {prompt:"Que ne doit-il pas faire ?",choices:["Préparer ses questions.","Réviser avec un camarade.","Travailler toute la nuit."],correctIndex:2},
+  {prompt:"Que lui demande-t-il ?",choices:["De l’aider demain après-midi.","De passer l’examen à sa place.","De lui acheter un livre."],correctIndex:0}
+ ]
+};
+
+const A2_POLITENESS_WRITING_MODEL="Bonjour Sami, tu m’as dit que tu étais fatigué avant ton examen. Tu devrais organiser tes révisions et dormir au moins sept heures. À ta place, je préparerais une petite liste de priorités. Il ne faut pas travailler toute la nuit. On pourrait réviser ensemble samedi matin. Pourrais-tu m’envoyer les chapitres difficiles avant vendredi ? Je voudrais préparer quelques exercices pour toi. Dis-moi si cet horaire te convient. Bon courage !";
+
+const A2_POLITENESS_DICTATION=[
+ {speech:"Pourriez-vous m’envoyer les horaires, s’il vous plaît ?",ar:"هل يمكنكم إرسال المواعيد إليّ، من فضلكم؟"},
+ {speech:"À votre place, je réserverais dès aujourd’hui.",ar:"لو كنت مكانكم لحجزت اليوم دون تأخير."},
+ {speech:"Il ne faut pas utiliser cette porte.",ar:"يجب عدم استخدام هذا الباب."}
+];
+
+const A2_POLITENESS_BUILDERS=[
+ {tokens:["plaît ?","répéter,","Pourriez-vous","vous","s’il"],answer:["Pourriez-vous","répéter,","s’il","vous","plaît ?"],ar:"هل يمكنكم إعادة الكلام، من فضلكم؟"},
+ {tokens:["reposer.","devrais","Tu","te"],answer:["Tu","devrais","te","reposer."],ar:"ينبغي أن ترتاح."},
+ {tokens:["réservait","si","Et","maintenant ?","on"],answer:["Et","si","on","réservait","maintenant ?"],ar:"ما رأيكم أن نحجز الآن؟"}
+];
+
+const A2_POLITENESS_DIALOGUES=[
+ {context:"À la réception, vous avez besoin d’une information.",prompt:"اختر الطلب الأنسب للموقف الرسمي.",choices:["Pourriez-vous m’indiquer l’heure du départ ?","Dis-moi l’heure tout de suite.","Tu dois donner l’heure."],correctIndex:0,feedback:"Pourriez-vous… ? يحافظ على المسافة والتهذيب في موقف رسمي."},
+ {context:"Votre ami hésite entre deux offres.",prompt:"اختر نصيحة لطيفة لا أمرًا.",choices:["Tu choisiras celle-ci, point final.","À ta place, je comparerais les conditions.","Il est interdit de comparer."],correctIndex:1,feedback:"À ta place, je… بالشرط الحاضر تعرض الرأي دون فرضه."},
+ {context:"Un collègue demande votre aide, mais vous êtes occupé.",prompt:"اختر رفضًا مهذبًا مع بديل.",choices:["Non.","Débrouille-toi.","Je suis désolé, je ne peux pas maintenant, mais je pourrais vous aider demain."],correctIndex:2,feedback:"الاعتذار وذكر السبب واقتراح بديل يجعل الرفض واضحًا ومهذبًا."}
+];
+
 const A2_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
@@ -1364,27 +1432,67 @@ const A2_MODULES:CourseModule[]=[
  },
  {
   id:"politeness",title:"Demander et conseiller",ar:"الطلب والنصيحة",icon:MessageCircle,
-  description:"الشرط الحاضر للتهذيب والنصيحة والاقتراح والاحتمال.",
+  description:"اطلب خدمة أو إذنًا بدرجة مناسبة من التهذيب، وقدّم نصيحة أو اقتراحًا، وميّز بين التوصية والالتزام والمنع.",
   sections:[
-   section("Le conditionnel de politesse","الشرط للطلب المهذب","تظهر صيغ مثل je voudrais وpourriez-vous باستمرار في الخدمات والمواقف الرسمية.",[
-    "Je voudrais… لطلب مهذب.",
-    "Pourriez-vous… ? هل يمكنكم؟",
-    "J’aimerais… أرغب في.",
-    "صيغة الشرط أخف من الأمر المباشر."
+   section("Demander poliment","الطلب المهذب","تخفف صيغة الشرط الحاضر مباشرة الطلب، وتناسب الخدمات والمواقف الرسمية. أضف التحية وs’il vous plaît عند الحاجة.",[
+    "Je voudrais + nom أو infinitif: Je voudrais réserver.",
+    "J’aimerais + nom أو infinitif: J’aimerais changer de chambre.",
+    "Pourriez-vous + infinitif ? لطلب خدمة رسمي.",
+    "Serait-il possible de + infinitif ? لصيغة أكثر رسمية."
    ],[
-    {fr:"Je voudrais réserver une chambre.",ar:"أود حجز غرفة."},
-    {fr:"Pourriez-vous parler moins vite ?",ar:"هل يمكنكم التحدث ببطء أكثر؟"},
-    {fr:"J’aimerais changer de billet.",ar:"أرغب في تغيير التذكرة."}
+    {fr:"Je voudrais obtenir un rendez-vous cette semaine.",ar:"أود الحصول على موعد هذا الأسبوع."},
+    {fr:"Pourriez-vous vérifier cette réservation ?",ar:"هل يمكنكم التحقق من هذا الحجز؟"},
+    {fr:"Serait-il possible de payer par carte ?",ar:"هل يمكن الدفع بالبطاقة؟"}
    ]),
-   section("Conseils et obligation","النصيحة والالتزام","نستخدم devoir للواجب، il faut للضرورة العامة، وpouvoir للإمكان أو الإذن.",[
-    "Tu devrais… نصيحة لطيفة.",
-    "Vous devez… واجب مباشر.",
-    "Il faut + مصدر: يجب بشكل عام.",
-    "On peut… اقتراح أو إمكانية."
+   section("Demander une permission ou un service","طلب الإذن أو الخدمة","اختر الصيغة حسب العلاقة: الحاضر مناسب للمواقف اليومية، والشرط ألطف، أما الأمر فيحتاج إلى عبارة تهذيب حتى لا يبدو حادًا.",[
+    "Est-ce que je peux + infinitif ? لطلب إذن عادي.",
+    "Vous pouvez + infinitif ? لطلب يومي؛ Pourriez-vous… ? ألطف وأكثر رسمية.",
+    "Ça vous dérange si + présent ? للسؤال عن الإزعاج أو الاعتراض.",
+    "الأمر المهذب: Veuillez patienter؛ Attendez ici, s’il vous plaît."
    ],[
-    {fr:"Tu devrais consulter un médecin.",ar:"ينبغي أن تستشير طبيبًا."},
-    {fr:"Il faut apporter une pièce d’identité.",ar:"يجب إحضار إثبات هوية."},
-    {fr:"On peut prendre le métro.",ar:"يمكننا استخدام المترو."}
+    {fr:"Est-ce que je peux laisser mes bagages ici ?",ar:"هل يمكنني ترك حقائبي هنا؟"},
+    {fr:"Ça vous dérange si j’ouvre la fenêtre ?",ar:"هل يزعجكم أن أفتح النافذة؟"},
+    {fr:"Veuillez remplir ce formulaire, s’il vous plaît.",ar:"يرجى تعبئة هذه الاستمارة."}
+   ]),
+   section("Donner un conseil","تقديم النصيحة","قدّم النصيحة بوصفها اقتراحًا قابلًا للاختيار. devoir في الشرط وعبارات الرأي ألطف من الأمر أو devoir في الحاضر.",[
+    "Tu devrais / Vous devriez + infinitif.",
+    "À ta/votre place, je + conditionnel.",
+    "Vous feriez mieux de + infinitif لتوصية أقوى نسبيًا.",
+    "Je vous conseille de / Je te recommande de + infinitif."
+   ],[
+    {fr:"Vous devriez comparer les prix avant de réserver.",ar:"ينبغي أن تقارنوا الأسعار قبل الحجز."},
+    {fr:"À ta place, je parlerais directement au responsable.",ar:"لو كنت مكانك لتحدثت مباشرة مع المسؤول."},
+    {fr:"Je vous conseille d’arriver vingt minutes plus tôt.",ar:"أنصحكم بالوصول قبل الموعد بعشرين دقيقة."}
+   ]),
+   section("Obligation, interdiction et permission","الإلزام والمنع والإذن","ميّز بين نصيحة يمكن تجاهلها وقاعدة يجب اتباعها. يُحدَّد الفاعل مع devoir، بينما il faut يعبّر عن ضرورة عامة.",[
+    "الالتزام المحدد: Vous devez présenter votre billet.",
+    "الضرورة العامة: Il faut réserver؛ Il est nécessaire de confirmer.",
+    "المنع: Vous ne devez pas…؛ Il ne faut pas…؛ Il est interdit de…",
+    "الإذن: Vous pouvez entrer؛ Il est permis de prendre des photos."
+   ],[
+    {fr:"Les visiteurs doivent garder leur billet.",ar:"يجب على الزوار الاحتفاظ بتذكرتهم."},
+    {fr:"Il est interdit de fumer dans le bâtiment.",ar:"يُمنع التدخين داخل المبنى."},
+    {fr:"Vous pouvez utiliser cette salle jusqu’à dix-huit heures.",ar:"يمكنكم استخدام هذه القاعة حتى الساعة السادسة مساءً."}
+   ]),
+   section("Faire une suggestion","تقديم اقتراح","اجعل الاقتراح جماعيًا ومفتوحًا للنقاش. لكل صيغة درجة مختلفة قليلًا، لكن جميعها مناسبة في الحديث اليومي.",[
+    "On pourrait + infinitif: On pourrait partir plus tôt.",
+    "Et si on + imparfait ? مثل: Et si on prenait le train ?",
+    "Pourquoi ne pas + infinitif ? مثل: Pourquoi ne pas appeler ?",
+    "On peut aussi… / Je propose de… لإضافة خيار عملي."
+   ],[
+    {fr:"On pourrait reporter la réunion à jeudi.",ar:"يمكننا تأجيل الاجتماع إلى يوم الخميس."},
+    {fr:"Et si on demandait une chambre plus calme ?",ar:"ما رأيكم أن نطلب غرفة أكثر هدوءًا؟"},
+    {fr:"Pourquoi ne pas partager un taxi ?",ar:"لماذا لا نتشارك سيارة أجرة؟"}
+   ]),
+   section("Répondre avec tact","الرد بلباقة","لا يكفي أن يكون الطلب صحيحًا؛ يجب أن يكون الرد واضحًا أيضًا. اقبل بأدب، أو ارفض باعتذار وسبب مختصر وبديل إن أمكن.",[
+    "القبول: Bien sûr؛ Avec plaisir؛ Oui, volontiers؛ Pas de problème.",
+    "قبول مشروط: Oui, mais seulement après quinze heures.",
+    "الرفض: Je suis désolé, ce ne sera pas possible؛ Je crains de ne pas pouvoir.",
+    "البديل: En revanche, je pourrais vous aider demain."
+   ],[
+    {fr:"Bien sûr, je vais vous l’envoyer tout de suite.",ar:"بالتأكيد، سأرسله إليكم حالًا."},
+    {fr:"Je suis désolée, je ne suis pas disponible ce matin.",ar:"أنا آسفة، لست متاحة هذا الصباح."},
+    {fr:"Je ne peux pas mardi ; en revanche, je pourrais venir mercredi.",ar:"لا أستطيع الحضور يوم الثلاثاء، لكن يمكنني الحضور يوم الأربعاء."}
    ])
   ]
  },
@@ -2522,17 +2630,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
- const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison;
- const activeA2Reading=isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isA2Politeness=level.id==="A2"&&activeModule.id==="politeness";
+ const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness;
+ const activeA2Reading=isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -2555,7 +2664,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2Comparison?[
+ const revisionWritingChecks=isA2Politeness?[
+  {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
+  {label:"طلبان مهذبان",passed:["je voudrais","j’aimerais","pourrais-tu","pourriez-vous","serait-il possible","est-ce que tu pourrais","est-ce que vous pourriez"].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
+  {label:"صيغتان للنصيحة",passed:["tu devrais","vous devriez","à ta place","à votre place","ferais mieux","feriez mieux","je te conseille","je vous conseille"].filter(marker=>revisionWritingText.toLocaleLowerCase("fr").includes(marker)).length>=2},
+  {label:"ضرورة أو منع",passed:/\b(?:il faut|il ne faut pas|tu dois|vous devez|interdit de|nécessaire de)\b/i.test(revisionWritingText)},
+  {label:"اقتراح واحد",passed:/\b(?:on pourrait|et si on|pourquoi ne pas|je propose de)\b/i.test(revisionWritingText)}
+ ]:isA2Comparison?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"مقارنة بـ plus وmoins",passed:/\bplus\b/i.test(revisionWritingText)&&/\bmoins\b/i.test(revisionWritingText)},
   {label:"مقارنة مساواة بـ aussi أو autant",passed:/\b(?:aussi|autant)\b/i.test(revisionWritingText)},
@@ -2650,6 +2765,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   return activeModule.sections.flatMap(item=>item.examples).slice(0,6).map(item=>({...item,speech:[item.fr]}));
  },[activeModule,level.id]);
 
@@ -2661,6 +2777,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A2"&&activeModule.id==="pronouns")return A2_PRONOUNS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="quantity")return A2_QUANTITY_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="comparison")return A2_COMPARISON_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="politeness")return A2_POLITENESS_QUIZ_ITEMS;
   const examples=activeModule.sections.flatMap(item=>item.examples);
   const seeds=(activeModule.id==="description"
    ?DESCRIPTION_QUIZ_ITEMS.map(item=>({prompt:item.speech[0],answer:item.quizAr??item.ar}))
@@ -3307,7 +3424,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>
      {isEnhancedA2Lesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

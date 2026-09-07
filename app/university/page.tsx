@@ -3282,7 +3282,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <span><School/> Campus académique</span>
     <h1>L’Université Royale</h1>
     <h2>جامعة القلعة</h2>
-    <p>تعلّم الفرنسية داخل قاعات الجامعة خطوة بخطوة، مع شرح عربي واضح ونطق فرنسي للكلمات والجمل في كل وحدة.</p>
+    <p>تعلّم الفرنسية داخل قاعات الجامعة خطوة بخطوة.</p>
     <a href="#university-levels"><BookOpen/> دخول قاعات الدراسة</a>
    </div>
   </section>

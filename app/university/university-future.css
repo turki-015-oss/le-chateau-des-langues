@@ -267,7 +267,7 @@
  .university-level-world .university-resume-card>a{transition:none}
 }
 
-/* 2030 phase console: a structural replacement for the former accordion list. */
+/* Phase console: a structural replacement for the former accordion list. */
 .university-level-world .university-phase-console{
  position:relative;
  margin-top:28px;
@@ -277,19 +277,6 @@
  background:linear-gradient(145deg,rgba(232,242,252,.72),rgba(255,255,255,.66));
  box-shadow:0 28px 65px rgba(10,42,79,.13),inset 0 1px rgba(255,255,255,.95);
  backdrop-filter:blur(24px) saturate(1.15);
-}
-.university-level-world .university-phase-console:before{
- content:"LEARNING SYSTEM  ·  2030";
- position:absolute;
- top:-11px;
- left:32px;
- padding:4px 11px;
- border:1px solid rgba(195,157,78,.42);
- border-radius:999px;
- background:#edf4fb;
- color:#8e6b2e;
- font:700 8px/1 Georgia,serif;
- letter-spacing:.17em;
 }
 .university-level-world .university-phase-dock{
  display:grid;
@@ -524,7 +511,6 @@
 }
 @media(max-width:560px){
  .university-level-world .university-phase-console{margin-top:22px;padding:8px;border-radius:25px}
- .university-level-world .university-phase-console:before{left:22px}
  .university-level-world .university-phase-dock{gap:8px}
  .university-level-world .university-phase-node>button{min-height:104px;grid-template-columns:55px 1fr 26px;gap:11px;padding:12px;border-radius:19px}
  .university-level-world .university-phase-app{width:53px;height:53px;border-radius:16px}
@@ -545,7 +531,7 @@
 }
 @media(prefers-reduced-motion:reduce){.university-level-world .university-phase-workspace-shell{transition:none}}
 
-/* University home — the same 2030 visual language used by level journeys. */
+/* University home — the same visual language used by level journeys. */
 .university-main-world{
  --um-navy:#061a35;
  --um-blue:#124a82;

@@ -836,6 +836,32 @@ const A1_ALPHABET_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"A comme ami.",speech:"A comme ami.",instruction:"اختر المعنى العربي الصحيح للكلمة المصاحبة للحرف.",choices:["مدينة","مدرسة","صديق"],correctIndex:2,explanation:"ami تعني صديق."}
 ];
 
+const A1_SOUNDS_PRACTICE_ITEMS:Example[]=[
+ {fr:"La voiture rouge roule doucement.",ar:"تسير السيارة الحمراء بهدوء."},
+ {fr:"Moi, je bois trois cafés par jour.",ar:"أنا أشرب ثلاثة أكواب من القهوة يوميًا."},
+ {fr:"Le bateau blanc est très beau.",ar:"القارب الأبيض جميل جدًا."},
+ {fr:"Mon oncle habite à Lyon.",ar:"يسكن عمي في ليون."},
+ {fr:"Un enfant attend devant l’école.",ar:"ينتظر طفل أمام المدرسة."},
+ {fr:"Ce matin, le train arrive à cinq heures.",ar:"يصل القطار هذا الصباح الساعة الخامسة."},
+ {fr:"Le chat cherche sa chaussure.",ar:"تبحث القطة عن حذائها."},
+ {fr:"Le garçon français mange une glace.",ar:"يتناول الصبي الفرنسي مثلجات."},
+ {fr:"Le petit chat dort sur le lit.",ar:"تنام القطة الصغيرة على السرير."},
+ {fr:"Les enfants arrivent à onze heures.",ar:"يصل الأطفال الساعة الحادية عشرة."}
+];
+
+const A1_SOUNDS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Dans « vous », quel groupe produit le son entendu ?",speech:"Vous. Vous. Quel groupe de lettres produit le son ou ?",instruction:"اختر مجموعة الحروف التي تكوّن صوت ou في كلمة vous.",choices:["oi","ou","au"],correctIndex:1,explanation:"في vous تكتب مجموعة الصوت ou."},
+ {prompt:"Dans « moi », quel groupe se prononce comme « wa » ?",speech:"Moi. Moi. Quel groupe de lettres se prononce comme wa ?",instruction:"اختر مجموعة الحروف في كلمة moi.",choices:["oi","on","in"],correctIndex:0,explanation:"oi تُنطق قريبًا من «وا» في moi."},
+ {prompt:"Quel groupe de lettres entend-on à la fin de « bateau » ?",speech:"Bateau. Bateau. Quel groupe de lettres produit le son final ?",instruction:"اختر مجموعة الحروف التي تكوّن الصوت الأخير في bateau.",choices:["ou","eu","eau"],correctIndex:2,explanation:"eau تُنطق مثل صوت o في bateau."},
+ {prompt:"Quel mot contient le son nasal écrit « on » ?",speech:"Écoutez. Bonjour. Merci. Salut. Quel mot contient le son nasal on ?",instruction:"اختر الكلمة التي تحتوي على المجموعة الأنفية on.",choices:["bonjour","merci","salut"],correctIndex:0,explanation:"bonjour تحتوي على on."},
+ {prompt:"Quel mot contient le son nasal écrit « an » ou « en » ?",speech:"Écoutez. Livre. Enfant. École. Quel mot contient le son nasal an ?",instruction:"اختر الكلمة التي تحتوي على صوت an أو en الأنفي.",choices:["livre","enfant","école"],correctIndex:1,explanation:"enfant تحتوي على en ثم an، وهما صوتان أنفيان متقاربان."},
+ {prompt:"Quel mot contient le groupe nasal « in » ?",speech:"Écoutez. Maison. Matin. Voiture. Quel mot contient le groupe in ?",instruction:"اختر الكلمة التي تحتوي على المجموعة الأنفية in.",choices:["voiture","maison","matin"],correctIndex:2,explanation:"matin تنتهي بالمجموعة الأنفية in."},
+ {prompt:"Dans « chat », comment se prononce le groupe ch ?",speech:"Chat. Chat. Comment se prononce le groupe ch ?",instruction:"اختر الوصف الصحيح لصوت ch في chat.",choices:["مثل ش العربية","مثل ك العربية","مثل ز العربية"],correctIndex:0,explanation:"ch يُنطق غالبًا قريبًا من «ش» في chat."},
+ {prompt:"Dans « garçon », quel son produit la lettre ç ?",speech:"Garçon. Garçon. Quel son produit la lettre c cédille ?",instruction:"اختر الصوت الذي تنتجه ç في garçon.",choices:["صوت k","صوت s","صوت ch"],correctIndex:1,explanation:"ç تجعل c تُنطق مثل s."},
+ {prompt:"Quelle lettre finale est généralement muette dans « petit » ?",speech:"Petit. Petit. Quelle lettre finale est généralement muette ?",instruction:"اختر الحرف النهائي الذي لا يُنطق عادةً في petit.",choices:["p","i","t"],correctIndex:2,explanation:"الحرف t الأخير في petit لا يُنطق عادةً."},
+ {prompt:"Dans « les amis », quel son fait la liaison ?",speech:"Les amis. Les amis. Quel son entendez-vous entre les deux mots ?",instruction:"اختر صوت الربط بين les وamis.",choices:["صوت z","صوت t","لا يوجد ربط"],correctIndex:0,explanation:"تُنطق s في les بصوت z عند الربط مع amis."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3778,6 +3804,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const practiceExamples=useMemo(()=>{
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3806,6 +3833,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

@@ -810,6 +810,32 @@ const A1_MODULES:CourseModule[]=[
  }
 ];
 
+const A1_ALPHABET_PRACTICE_ITEMS:Example[]=[
+ {fr:"Mon prénom commence par la lettre N.",ar:"يبدأ اسمي بحرف N."},
+ {fr:"Paris s’écrit P, A, R, I, S.",ar:"تُكتب باريس بالأحرف P، A، R، I، S."},
+ {fr:"Quelle est la première lettre du mot bonjour ?",ar:"ما الحرف الأول في كلمة bonjour؟"},
+ {fr:"La lettre qui suit C est D.",ar:"الحرف الذي يأتي بعد C هو D."},
+ {fr:"La lettre qui précède M est L.",ar:"الحرف الذي يأتي قبل M هو L."},
+ {fr:"Dans le mot école, la lettre E porte un accent aigu.",ar:"في كلمة école يحمل حرف E علامة النبرة الحادة."},
+ {fr:"La cédille se place sous la lettre C.",ar:"توضع علامة السيدي تحت حرف C."},
+ {fr:"Le W se prononce double vé.",ar:"يُنطق اسم حرف W «دوبل ڤي»."},
+ {fr:"Le Y se prononce i grec.",ar:"يُنطق اسم حرف Y «إي غريك»."},
+ {fr:"Il y a vingt-six lettres dans l’alphabet français.",ar:"توجد ستة وعشرون حرفًا في الأبجدية الفرنسية."}
+];
+
+const A1_ALPHABET_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Le mot « famille » commence par la lettre ___.",speech:"Quelle est la première lettre du mot famille ?",instruction:"اختر الحرف الأول في كلمة famille.",choices:["V","F","P"],correctIndex:1,explanation:"famille تبدأ بحرف F."},
+ {prompt:"Le mot « hôtel » commence par la lettre ___.",speech:"Quelle est la première lettre du mot hôtel ?",instruction:"اختر الحرف الأول في كلمة hôtel.",choices:["H","O","A"],correctIndex:0,explanation:"hôtel تبدأ بحرف H."},
+ {prompt:"Quelle lettre vient après A ?",speech:"Quelle lettre vient après A ?",instruction:"اختر الحرف الذي يأتي بعد A.",choices:["C","D","B"],correctIndex:2,explanation:"ترتيب البداية هو A ثم B."},
+ {prompt:"Quelle lettre vient avant Z ?",speech:"Quelle lettre vient avant Z ?",instruction:"اختر الحرف الذي يأتي قبل Z.",choices:["Y","X","W"],correctIndex:0,explanation:"ينتهي ترتيب الأبجدية بـ X ثم Y ثم Z."},
+ {prompt:"L’alphabet français compte ___ lettres.",speech:"Combien de lettres compte l’alphabet français ?",instruction:"اختر عدد حروف الأبجدية الفرنسية.",choices:["24","26","28"],correctIndex:1,explanation:"تتكون الأبجدية الفرنسية من 26 حرفًا."},
+ {prompt:"Comment s’appelle la lettre W ?",speech:"Comment s’appelle la lettre W ?",instruction:"اختر الاسم الفرنسي الصحيح لحرف W.",choices:["double vé","i grec","zède"],correctIndex:0,explanation:"اسم W بالفرنسية هو double vé."},
+ {prompt:"Comment s’appelle la lettre Y ?",speech:"Comment s’appelle la lettre Y ?",instruction:"اختر الاسم الفرنسي الصحيح لحرف Y.",choices:["ixe","ku","i grec"],correctIndex:2,explanation:"اسم Y بالفرنسية هو i grec."},
+ {prompt:"Dans « école », quel signe porte la lettre E ?",speech:"Dans le mot école, quel signe porte la lettre E ?",instruction:"اختر العلامة الموجودة فوق E في كلمة école.",choices:["un accent grave","un accent aigu","une cédille"],correctIndex:1,explanation:"é يحمل accent aigu."},
+ {prompt:"La cédille se place sous quelle lettre ?",speech:"La cédille se place sous quelle lettre ?",instruction:"اختر الحرف الذي توضع تحته السيدي.",choices:["C","S","E"],correctIndex:0,explanation:"السيدي توضع تحت C لتكوين ç."},
+ {prompt:"A comme ami.",speech:"A comme ami.",instruction:"اختر المعنى العربي الصحيح للكلمة المصاحبة للحرف.",choices:["مدينة","مدرسة","صديق"],correctIndex:2,explanation:"ami تعني صديق."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3751,6 +3777,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[adjectiveVisualPageIndex]);
 
  const practiceExamples=useMemo(()=>{
+  if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3778,6 +3805,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule,level.id]);
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
+  if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

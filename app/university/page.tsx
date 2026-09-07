@@ -977,6 +977,32 @@ const A1_PRESENT_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Nous ne prenons pas la voiture aujourd’hui.",speech:"Nous ne prenons pas la voiture aujourd’hui.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["لن نذهب بالسيارة اليوم.","نبحث عن السيارة اليوم.","نغسل السيارة اليوم."],correctIndex:0,explanation:"prendre la voiture يعني الذهاب بالسيارة، والجملة هنا تنفي ذلك اليوم."}
 ];
 
+const A1_NUMBERS_TIME_PRACTICE_ITEMS:Example[]=[
+ {fr:"Le billet coûte quarante-deux euros.",ar:"سعر التذكرة اثنان وأربعون يورو."},
+ {fr:"J’habite au numéro soixante et onze.",ar:"أسكن في المبنى رقم واحد وسبعين."},
+ {fr:"Mon numéro de téléphone commence par zéro six.",ar:"يبدأ رقم هاتفي بصفر ستة."},
+ {fr:"Il est huit heures et quart.",ar:"الساعة الثامنة والربع."},
+ {fr:"Le magasin ferme à dix-neuf heures trente.",ar:"يُغلق المتجر الساعة السابعة والنصف مساءً."},
+ {fr:"Le train arrive à midi moins dix.",ar:"يصل القطار قبل الظهر بعشر دقائق."},
+ {fr:"Nous sommes le premier avril.",ar:"اليوم هو الأول من أبريل."},
+ {fr:"Mon rendez-vous est le jeudi douze octobre.",ar:"موعدي يوم الخميس الثاني عشر من أكتوبر."},
+ {fr:"Je pars en vacances au mois d’août.",ar:"أسافر في إجازة خلال شهر أغسطس."},
+ {fr:"La bibliothèque est ouverte du lundi au samedi.",ar:"المكتبة مفتوحة من الاثنين إلى السبت."}
+];
+
+const A1_NUMBERS_TIME_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"72",speech:"Soixante-douze.",instruction:"اختر كتابة العدد 72 بالفرنسية.",choices:["soixante-douze","soixante-deux","quatre-vingt-douze"],correctIndex:0,explanation:"72 يُبنى من soixante + douze: soixante-douze."},
+ {prompt:"81",speech:"Quatre-vingt-un.",instruction:"اختر كتابة العدد 81 بالفرنسية.",choices:["quatre-vingts-un","quatre-vingt-un","quatre et vingt-un"],correctIndex:1,explanation:"في 81 لا نكتب s في vingt ولا نضيف et: quatre-vingt-un."},
+ {prompt:"Il est 9 h 30.",speech:"Il est neuf heures et demie.",instruction:"اختر التعبير الفرنسي المطابق للوقت.",choices:["Il est neuf heures moins le quart.","Il est dix heures et demie.","Il est neuf heures et demie."],correctIndex:2,explanation:"9 h 30 تعني neuf heures et demie."},
+ {prompt:"Il est midi moins cinq.",speech:"Il est midi moins cinq.",instruction:"اختر الوقت الرقمي الصحيح.",choices:["11 h 55","12 h 05","12 h 50"],correctIndex:0,explanation:"midi moins cinq يعني خمس دقائق قبل الظهر: 11 h 55."},
+ {prompt:"Le cours commence ___ huit heures.",speech:"Le cours commence à huit heures.",instruction:"اختر حرف الجر المستخدم مع الساعة.",choices:["en","à","le"],correctIndex:1,explanation:"نستخدم à قبل الساعة: à huit heures."},
+ {prompt:"اليوم هو الأول من مايو.",speech:"Nous sommes le premier mai.",instruction:"اختر الترجمة الفرنسية الصحيحة.",choices:["Nous sommes le un mai.","Nous avons premier mai.","Nous sommes le premier mai."],correctIndex:2,explanation:"مع اليوم الأول من الشهر نستخدم premier: le premier mai."},
+ {prompt:"Je travaille du lundi au vendredi.",speech:"Je travaille du lundi au vendredi.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعمل من الاثنين إلى الجمعة.","أعمل يومي الاثنين والجمعة فقط.","لا أعمل من الاثنين إلى الجمعة."],correctIndex:0,explanation:"du … au … تعني من … إلى … ضمن مدة متصلة."},
+ {prompt:"Quel jour vient après mercredi ?",speech:"Quel jour vient après mercredi ? Jeudi.",instruction:"أي يوم يأتي بعد mercredi؟",choices:["mardi","jeudi","vendredi"],correctIndex:1,explanation:"اليوم الذي يلي الأربعاء mercredi هو الخميس jeudi."},
+ {prompt:"Quel mois vient avant décembre ?",speech:"Quel mois vient avant décembre ? Novembre.",instruction:"أي شهر يأتي قبل décembre؟",choices:["octobre","janvier","novembre"],correctIndex:2,explanation:"الشهر الذي يسبق ديسمبر décembre هو نوفمبر novembre."},
+ {prompt:"Le musée ouvre à quatorze heures.",speech:"Le musée ouvre à quatorze heures.",instruction:"اختر الوقت المقابل بنظام 12 ساعة.",choices:["الثانية بعد الظهر.","الرابعة بعد الظهر.","الثانية صباحًا."],correctIndex:0,explanation:"14 h تساوي الثانية بعد الظهر في نظام 12 ساعة."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3924,6 +3950,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3957,6 +3984,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

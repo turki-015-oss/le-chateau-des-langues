@@ -5,9 +5,12 @@ import {useRouter} from "next/navigation";
 import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties} from "react";
 import type {LucideIcon} from "lucide-react";
 import {
- ArrowRight,BookOpen,Building2,CalendarDays,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock3,Compass,
- GraduationCap,Headphones,Languages,LibraryBig,ListChecks,MapPinned,MessageCircle,Mic2,
- NotebookTabs,Play,RotateCcw,School,ShoppingBag,Sparkles,Square,Trash2,Trophy,Users,Volume2
+ Activity,ArrowRight,AudioLines,BadgeCheck,Blocks,BookOpen,Building2,CalendarClock,CalendarDays,CaseUpper,CheckCircle2,
+ ChevronDown,ChevronLeft,ChevronRight,CircleHelp,ClipboardPenLine,Clock3,CloudSun,Coffee,Earth,FastForward,Gauge,
+ GraduationCap,Hand,HandHeart,Headphones,History,House,Languages,Layers3,LibraryBig,Link2,ListChecks,MapPin,MapPinned,
+ MessageCircle,MessagesSquare,Mic2,Navigation,NotebookTabs,Orbit,Play,RefreshCw,Repeat2,Replace,Rocket,RotateCcw,
+ Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
+ Tags,Telescope,Trash2,Trophy,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
 } from "lucide-react";
 import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
 import {
@@ -114,7 +117,7 @@ function precisePhysicalStateLayer(path:string,index:number):CSSProperties{
 
 const A1_MODULES:CourseModule[]=[
  {
-  id:"alphabet",title:"L’alphabet et les lettres",ar:"الأبجدية والحروف",icon:Languages,
+  id:"alphabet",title:"L’alphabet et les lettres",ar:"الأبجدية والحروف",icon:CaseUpper,
   description:"ابدأ من الصفر: أسماء الحروف الفرنسية، شكلها، وطريقة استخدامها داخل كلمات بسيطة.",
   sections:[
    section("Les 26 lettres","الحروف الفرنسية الأساسية","تستخدم الفرنسية الحروف اللاتينية الستة والعشرين. تعلّم اسم كل حرف أولًا، ثم اربطه بكلمة واضحة. اسم الحرف لا يساوي دائمًا صوته داخل الكلمة؛ لذلك يأتي تدريب الأصوات في الوحدة التالية.",[
@@ -140,7 +143,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"sounds",title:"Les sons essentiels",ar:"الأصوات الأساسية",icon:Mic2,
+  id:"sounds",title:"Les sons essentiels",ar:"الأصوات الأساسية",icon:AudioLines,
   description:"قواعد النطق الأولى: الحروف المركبة، الحروف الصامتة، والربط بين الكلمات.",
   sections:[
    section("Voyelles et groupes de lettres","الحركات ومجموعات الحروف","في الفرنسية قد تصنع عدة حروف صوتًا واحدًا. معرفة المجموعات المتكررة تجعل قراءة الكلمات الجديدة أسهل بكثير.",[
@@ -166,7 +169,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"greetings",title:"Saluer et se présenter",ar:"التحية والتعريف بالنفس",icon:MessageCircle,
+  id:"greetings",title:"Saluer et se présenter",ar:"التحية والتعريف بالنفس",icon:Hand,
   description:"التحية، الاسم، البلد، اللغة، المهنة، وطرح الأسئلة الشخصية البسيطة.",
   sections:[
    section("Les salutations","عبارات التحية","تختلف التحية حسب الوقت ودرجة الرسمية. Bonjour مناسبة في أغلب المواقف، بينما Salut تستخدم مع الأصدقاء.",[
@@ -192,7 +195,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"nouns",title:"Noms, articles et pluriel",ar:"الأسماء وأدوات التعريف والجمع",icon:NotebookTabs,
+  id:"nouns",title:"Noms, articles et pluriel",ar:"الأسماء وأدوات التعريف والجمع",icon:Tags,
   description:"تمييز المذكر والمؤنث، أدوات التعريف والنكرة، وصناعة الجمع.",
   sections:[
    section("Le genre et les articles","الجنس وأدوات الاسم","كل اسم فرنسي مذكر أو مؤنث. احفظ الاسم مع أداته دائمًا، لأن شكل الاسم وحده لا يكفي لمعرفة جنسه.",[
@@ -218,7 +221,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"core-verbs",title:"Pronoms, être et avoir",ar:"الضمائر وفعلا être وavoir",icon:Users,
+  id:"core-verbs",title:"Pronoms, être et avoir",ar:"الضمائر وفعلا être وavoir",icon:UserRoundCog,
   description:"أساس بناء الجملة الفرنسية: ضمائر الفاعل وتصريف أهم فعلين.",
   sections:[
    section("Les pronoms sujets","ضمائر الفاعل","يظهر ضمير الفاعل عادة قبل الفعل. الفرنسية لا تحذف الضمير كما يحدث أحيانًا في العربية.",[
@@ -244,7 +247,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"structures",title:"Présenter, montrer et situer",ar:"التقديم والإشارة وتحديد المكان",icon:MapPinned,
+  id:"structures",title:"Présenter, montrer et situer",ar:"التقديم والإشارة وتحديد المكان",icon:MapPin,
   description:"استخدام C’est وCe sont وIl y a وأدوات الإشارة لتقديم الأشخاص والأشياء والإشارة إليها وتحديد وجودها.",
   sections:[
    section("C’est, ce sont et la négation","التقديم بالمفرد والجمع","نستخدم C’est لتقديم شخص أو شيء مفرد، ونستخدم Ce sont لتقديم أكثر من شخص أو شيء. وفي النفي نقول Ce n’est pas وCe ne sont pas.",[
@@ -283,7 +286,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"questions",title:"Poser des questions et répondre",ar:"طرح الأسئلة والإجابة عنها",icon:MessageCircle,
+  id:"questions",title:"Poser des questions et répondre",ar:"طرح الأسئلة والإجابة عنها",icon:CircleHelp,
   description:"تكوين أسئلة نعم أو لا، استخدام أدوات الاستفهام، واختيار quel وquelle وquels وquelles وفق الاسم.",
   sections:[
    section("Les questions fermées","أسئلة نعم أو لا","يمكن تكوين السؤال البسيط بالنبرة الصاعدة أو بوضع Est-ce que قبل جملة مثبتة. تكون الإجابة نعم أو لا، ويُفضّل إضافة جملة قصيرة توضحها.",[
@@ -322,7 +325,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
- id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:BookOpen,
+ id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:Activity,
   description:"تصريف أفعال الحاضر المنتظمة والشائعة، ثم بناء الجملة المثبتة والمنفية والسؤال البسيط.",
   sections:[
    section("Verbes réguliers","الأفعال المنتظمة","لأفعال -er نحذف er ونضيف النهايات المناسبة. أفعال -ir و-re لها أنماط أخرى، ويجب تعلّم المجموعة مع أمثلة.",[
@@ -359,7 +362,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:ListChecks,
+  id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
    section("Pouvoir","الاستطاعة والإذن","يأتي pouvoir قبل فعل في المصدر للتعبير عن القدرة أو الإمكانية، ويُستخدم في السؤال لطلب الإذن أو المساعدة.",[
@@ -398,7 +401,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"future-imperative",title:"Le futur proche et l’impératif",ar:"المستقبل القريب وصيغة الأمر",icon:CalendarDays,
+  id:"future-imperative",title:"Le futur proche et l’impératif",ar:"المستقبل القريب وصيغة الأمر",icon:FastForward,
   description:"التحدث عن خطة قريبة باستخدام aller مع المصدر، وإعطاء تعليمات أو نصائح قصيرة بصيغة الأمر المثبتة والمنفية.",
   sections:[
    section("Former le futur proche","تكوين المستقبل القريب","يتكوّن المستقبل القريب من فعل aller مصرّفًا في الحاضر، ثم فعل آخر في المصدر. الذي يتغير مع الفاعل هو aller فقط.",[
@@ -437,7 +440,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"food-shopping",title:"L’alimentation et les achats",ar:"الطعام والتسوق",icon:ShoppingBag,
+  id:"food-shopping",title:"L’alimentation et les achats",ar:"الطعام والتسوق",icon:ShoppingBasket,
   description:"اختيار أدوات التجزئة، التعبير عن الكمية، وطلب الطعام وشراء المنتجات بعبارات بسيطة ومهذبة.",
   sections:[
    section("Du, de la, de l’ et des","أدوات التجزئة","نستخدم أدوات التجزئة عندما نتحدث عن كمية غير محددة من طعام أو شراب. تتغير الأداة بحسب جنس الاسم وبدايته، بينما des تستخدم مع جمع أشياء معدودة.",[
@@ -476,7 +479,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"city-directions",title:"Se repérer en ville",ar:"التنقل وتحديد المكان في المدينة",icon:Compass,
+  id:"city-directions",title:"Se repérer en ville",ar:"التنقل وتحديد المكان في المدينة",icon:Navigation,
   description:"تحديد الوجهة والموقع، السؤال عن الطريق، وفهم تعليمات الاتجاه الأساسية داخل المدينة.",
   sections:[
    section("À, au, à la et aux","الذهاب إلى مكان","نستخدم à للتعبير عن الوجهة. تندمج à مع le فتصبح au، ومع les فتصبح aux، بينما تبقى à la وà l’ دون دمج.",[
@@ -515,7 +518,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"numbers-time",title:"Nombres, heure et date",ar:"الأرقام والوقت والتاريخ",icon:Clock3,
+  id:"numbers-time",title:"Nombres, heure et date",ar:"الأرقام والوقت والتاريخ",icon:CalendarClock,
   description:"العد، الأسعار، رقم الهاتف، الساعة، أيام الأسبوع، الأشهر والتاريخ.",
   sections:[
    section("Les nombres","الأعداد والاستخدام اليومي","تُستخدم الأرقام في العمر والسعر والهاتف والعنوان. بعد 69 تصبح البنية الفرنسية خاصة، مثل soixante-dix وquatre-vingts.",[
@@ -541,7 +544,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"weather-clothes",title:"La météo, les saisons et les vêtements",ar:"الطقس والفصول والملابس",icon:Sparkles,
+  id:"weather-clothes",title:"La météo, les saisons et les vêtements",ar:"الطقس والفصول والملابس",icon:CloudSun,
   description:"فهم نشرة جوية بسيطة، تسمية الفصول، واختيار الملابس المناسبة باستخدام عبارات يومية واضحة.",
   sections:[
    section("Parler de la météo","وصف حالة الطقس","نستخدم Quel temps fait-il ؟ للسؤال عن الطقس، ثم نجيب بتراكيب ثابتة مع il fait وil y a، أو بأفعال مثل pleuvoir وneiger.",[
@@ -580,7 +583,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"home-housing",title:"Le logement et la maison",ar:"السكن والمنزل",icon:Building2,
+  id:"home-housing",title:"Le logement et la maison",ar:"السكن والمنزل",icon:House,
   description:"تسمية أنواع السكن والغرف والأثاث، وتحديد موضع الأشياء، ووصف المنزل والعنوان بعبارات بسيطة.",
   sections:[
    section("Les types de logement et les pièces","أنواع السكن والغرف","يمكنك تقديم مسكنك بفعل habiter، ثم تسمية الغرف باستخدام Il y a. احفظ كل اسم مع أداته لمعرفة جنسه.",[
@@ -619,7 +622,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:Users,
+  id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:UsersRound,
   description:"مفردات العائلة، الحالات الجسدية اليومية، والمشاعر في أقسام مستقلة.",
   sections:[
    section("La famille et la possession","العائلة والملكية","تعلّم أسماء أفراد العائلة أولًا، ثم استخدم صفات الملكية معها. تتفق صفة الملكية مع الشيء المملوك لا مع صاحب الشيء؛ لذلك نقول mon père وma mère.",[
@@ -655,7 +658,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"health-needs",title:"La santé et les besoins essentiels",ar:"الصحة والاحتياجات الأساسية",icon:Headphones,
+  id:"health-needs",title:"La santé et les besoins essentiels",ar:"الصحة والاحتياجات الأساسية",icon:Stethoscope,
   description:"وصف عرض صحي بسيط، تحديد موضع الألم، وفهم الأسئلة والتعليمات الأساسية عند الطبيب أو الصيدلي.",
   sections:[
    section("Dire ce qu’on a","وصف الأعراض","نستخدم avoir مع كثير من الأعراض، ونستخدم être مع الحالة العامة. ولتحديد الألم نقول avoir mal à ثم نختار الأداة الموافقة لعضو الجسم.",[
@@ -694,7 +697,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"adjectives",title:"Les adjectifs et la description",ar:"الصفات الشخصية والمظهر",icon:Sparkles,
+  id:"adjectives",title:"Les adjectifs et la description",ar:"الصفات الشخصية والمظهر",icon:WandSparkles,
   description:"درس مستقل لوصف المظهر والشخصية، مع صيغ المذكر والمؤنث وتوافق الصفة مع الاسم.",
   sections:[
    section("La description physique","وصف المظهر","استخدم être مع صفات الطول والبنية، واستخدم avoir مع الشعر والعينين. تتغير الصفة لتوافق الشخص الموصوف.",[
@@ -730,7 +733,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
- id:"daily-life",title:"La vie quotidienne",ar:"الحياة اليومية",icon:CalendarDays,
+ id:"daily-life",title:"La vie quotidienne",ar:"الحياة اليومية",icon:Repeat2,
   description:"وصف الروتين اليومي، والأفعال الضميرية، وترتيب الأنشطة والتعبير عن تكرارها.",
   sections:[
    section("Les verbes pronominaux","الأفعال الضميرية","تأتي أفعال الروتين كثيرًا مع ضمير يعود على الفاعل: me, te, se, nous, vous, se.",[
@@ -766,7 +769,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
- id:"situations",title:"Entre amis",ar:"مواقف مع الأصدقاء",icon:MessageCircle,
+ id:"situations",title:"Entre amis",ar:"مواقف مع الأصدقاء",icon:Coffee,
   description:"توجيه الدعوات وقبولها أو الاعتذار عنها، وتنظيم المواعيد والتعبير عن الرأي في حوارات طبيعية مع الأصدقاء.",
   sections:[
    section("Inviter et organiser","الدعوة وتنظيم اللقاء","استخدم Tu veux… ؟ أو Ça te dit de… ؟ لدعوة صديق، ثم اتفقا على اليوم والوقت بطريقة واضحة.",[
@@ -802,7 +805,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"messages-forms",title:"Messages, formulaires et informations pratiques",ar:"الرسائل والنماذج والمعلومات اليومية",icon:NotebookTabs,
+  id:"messages-forms",title:"Messages, formulaires et informations pratiques",ar:"الرسائل والنماذج والمعلومات اليومية",icon:ClipboardPenLine,
   description:"قراءة البيانات واللوحات الشائعة، تعبئة نموذج بسيط، وكتابة رسالة قصيرة واضحة للتحية أو الموعد أو الاعتذار.",
   sections:[
    section("Remplir un formulaire","تعبئة نموذج بسيط","اقرأ اسم كل خانة قبل الكتابة. في الفرنسية يختلف prénom، أي الاسم الأول، عن nom de famille، أي اسم العائلة.",[
@@ -2088,7 +2091,7 @@ const A2_EXPRESSION_DIALOGUES=[
 
 const A2_MODULES:CourseModule[]=[
  {
-  id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:Sparkles,
+  id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:RefreshCw,
   description:"ثبّت أساس A2: الحاضر، الأفعال الضميرية، النفي، السؤال، الزمن، وبناء إجابة مترابطة في مواقف الحياة اليومية.",
   sections:[
    section("Le présent bien construit","بناء الحاضر بصورة صحيحة","ابدأ بتثبيت نهايات الأفعال المنتظمة، ثم اربطها بأكثر الأفعال غير المنتظمة استعمالًا. يجب أن يتوافق التصريف دائمًا مع الفاعل.",[
@@ -2154,7 +2157,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"passe-compose",title:"Le passé composé",ar:"الماضي المركب",icon:Clock3,
+  id:"passe-compose",title:"Le passé composé",ar:"الماضي المركب",icon:History,
   description:"كوّن الماضي المركب بدقة، واختر الفعل المساعد الصحيح، وطابق اسم المفعول عند الحاجة، ثم استخدمه لسرد أحداث مكتملة ومترابطة.",
   sections:[
    section("Former le passé composé","تكوين الماضي المركب","يتكون الماضي المركب من فعل مساعد مصرّف في الحاضر، avoir أو être، يليه اسم المفعول. تبدأ بإتقان هذه البنية قبل الانتقال إلى المطابقة.",[
@@ -2221,7 +2224,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"imparfait",title:"L’imparfait et le récit",ar:"الماضي الناقص والسرد",icon:BookOpen,
+  id:"imparfait",title:"L’imparfait et le récit",ar:"الماضي الناقص والسرد",icon:ScrollText,
   description:"كوّن الماضي الناقص بدقة، واستخدمه لوصف العادات والحالات والخلفية، ثم ميّزه عن الماضي المركب داخل سرد مترابط.",
   sections:[
    section("Former l’imparfait","تكوين الماضي الناقص","نأخذ صيغة nous في الحاضر، نحذف النهاية -ons، ثم نضيف نهايات الماضي الناقص نفسها إلى جميع الأفعال.",[
@@ -2287,7 +2290,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"future",title:"Parler de l’avenir",ar:"التحدث عن المستقبل",icon:CalendarDays,
+  id:"future",title:"Parler de l’avenir",ar:"التحدث عن المستقبل",icon:Telescope,
   description:"عبّر عن النية والخطة والموعد والتوقع والوعد باستخدام المستقبل القريب والبسيط، مع اختيار الصيغة المناسبة لكل سياق.",
   sections:[
    section("Le futur proche","المستقبل القريب","يتكوّن المستقبل القريب من aller في الحاضر ثم مصدر الفعل، ويعبّر غالبًا عن نية واضحة أو حدث قريب تدل عليه الظروف الحالية.",[
@@ -2353,7 +2356,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"pronouns",title:"Pronoms compléments",ar:"ضمائر المفعول",icon:Users,
+  id:"pronouns",title:"Pronoms compléments",ar:"ضمائر المفعول",icon:Replace,
   description:"استبدل الأشخاص والأشياء دون تكرار، وميّز بين المفعول المباشر وغير المباشر، ثم ضع الضمير في موضعه الصحيح مع الأزمنة والأمر.",
   sections:[
    section("Les pronoms COD","ضمائر المفعول المباشر","يحل ضمير المفعول المباشر محل اسم يتصل بالفعل دون حرف جر. اختر الضمير بحسب الشخص والجنس والعدد.",[
@@ -2419,7 +2422,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"quantity",title:"Quantités, y et en",ar:"الكميات والضميران y وen",icon:ShoppingBag,
+  id:"quantity",title:"Quantités, y et en",ar:"الكميات والضميران y وen",icon:SlidersHorizontal,
   description:"عبّر عن كمية محددة أو غير محددة، ثم استخدم en وy لتجنب التكرار مع الحفاظ على العدد والمعنى وموضع الضمير الصحيح.",
   sections:[
    section("Les articles partitifs","أدوات التجزئة","نستخدم أدوات التجزئة عندما نتحدث عن جزء أو كمية غير محددة من مادة أو طعام أو مفهوم لا يُعدّ مباشرة.",[
@@ -2485,7 +2488,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"comparison",title:"Comparer et préciser",ar:"المقارنة والتحديد",icon:ListChecks,
+  id:"comparison",title:"Comparer et préciser",ar:"المقارنة والتحديد",icon:Scale,
   description:"قارن الصفات والكميات والأفعال وطرائق القيام بها، ثم حدّد الدرجة واستعمل التفضيل والصيغ غير المنتظمة بدقة.",
   sections:[
    section("Comparer des qualités","مقارنة الصفات","توضع أداة المقارنة قبل الصفة، ثم يأتي que قبل العنصر الثاني. تتوافق الصفة مع الاسم في الجنس والعدد.",[
@@ -2551,7 +2554,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"politeness",title:"Demander et conseiller",ar:"الطلب والنصيحة",icon:MessageCircle,
+  id:"politeness",title:"Demander et conseiller",ar:"الطلب والنصيحة",icon:HandHeart,
   description:"اطلب خدمة أو إذنًا بدرجة مناسبة من التهذيب، وقدّم نصيحة أو اقتراحًا، وميّز بين التوصية والالتزام والمنع.",
   sections:[
    section("Demander poliment","الطلب المهذب","تخفف صيغة الشرط الحاضر مباشرة الطلب، وتناسب الخدمات والمواقف الرسمية. أضف التحية وs’il vous plaît عند الحاجة.",[
@@ -2617,7 +2620,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"connectors",title:"Relier ses idées",ar:"ربط الأفكار",icon:NotebookTabs,
+  id:"connectors",title:"Relier ses idées",ar:"ربط الأفكار",icon:Link2,
   description:"اجمع الجمل دون تكرار، ووضّح علاقة السبب والنتيجة والتعارض، ورتّب الأحداث والمعلومات لبناء فقرة مترابطة.",
   sections:[
    section("Qui, que, où et dont","الضمائر النسبية","تربط الضمائر النسبية جملتين حول الاسم نفسه. اختر الضمير بحسب وظيفة الاسم المحذوف في الجملة الثانية.",[
@@ -2683,7 +2686,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"themes",title:"Communiquer dans la vie réelle",ar:"التواصل في الحياة الواقعية",icon:Compass,
+  id:"themes",title:"Communiquer dans la vie réelle",ar:"التواصل في الحياة الواقعية",icon:Earth,
   description:"تعامل مع مواقف A2 اليومية: اشرح وضعك، قدّم التفاصيل اللازمة، افهم الرد، واطلب إجراءً واضحًا في الصحة والسكن والعمل والسفر والخدمات.",
   sections:[
    section("Santé et rendez-vous","الصحة وحجز الموعد","ابدأ بالعرض الأساسي، ثم حدّد مكانه ووقت بدايته وشدته. اطلب موعدًا أو نصيحة، وافهم التعليمات البسيطة دون محاولة تشخيص نفسك.",[
@@ -2749,7 +2752,7 @@ const A2_MODULES:CourseModule[]=[
   ]
  },
   {
-   id:"expression",title:"S’exprimer avec autonomie",ar:"التعبير باستقلالية",icon:GraduationCap,
+   id:"expression",title:"S’exprimer avec autonomie",ar:"التعبير باستقلالية",icon:Speech,
    description:"عبّر عن رأيك بثقة، علّله، ناقش غيرك بأدب، ونظّم رسالة أو حديثًا واضحًا في مواقف A2.",
    sections:[
     section("Donner son opinion et la justifier","إبداء الرأي وتعليله","لا يكفي أن تقول ما تفضله؛ قدّم رأيًا مفهومًا، ثم سببًا ومثالًا قصيرًا يساعدان المستمع أو القارئ على متابعة فكرتك.",[
@@ -2832,6 +2835,11 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
   {title:"دقة التعبير",fr:"Préciser son expression",description:"الضمائر والكميات والمقارنة والطلب المهذب.",moduleIds:["pronouns","quantity","comparison","politeness"]},
   {title:"التواصل المستقل",fr:"Communiquer avec autonomie",description:"ربط الأفكار والتصرف في المواقف والتعبير بثقة.",moduleIds:["connectors","themes","expression"]}
  ]
+};
+
+const COURSE_PHASE_ICONS:Record<string,LucideIcon[]>={
+ A1:[Rocket,Blocks,MessagesSquare],
+ A2:[BadgeCheck,Layers3,Orbit]
 };
 
 const ALPHABET=[
@@ -4300,7 +4308,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      {phases.map((phase,phaseIndex)=>{
       const phaseModules=phase.moduleIds.map(id=>level.modules.find(item=>item.id===id)).filter((item):item is CourseModule=>Boolean(item));
       const phaseCompleted=phaseModules.filter(item=>completedModuleIds.includes(item.id)).length;
-      const PhaseIcon=[Sparkles,NotebookTabs,MessageCircle][phaseIndex]??BookOpen;
+      const PhaseIcon=COURSE_PHASE_ICONS[level.id]?.[phaseIndex]??BookOpen;
       const isOpen=openPhaseIndex===phaseIndex;
       return <section id={`university-phase-node-${phaseIndex}`} key={phase.title} className={`university-phase-node ${isOpen?"open":""}`}>
        <button type="button" aria-expanded={isOpen} aria-controls={`university-phase-${phaseIndex}`} className={isOpen?"active":""} onClick={()=>toggleJourneyPhase(phaseIndex)}>
@@ -4321,7 +4329,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
           const completed=completedModuleIds.includes(module.id);
           return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}`}>
-           <i className={completed?"completed":""}>{completed?<CheckCircle2/>:<Icon/>}</i>
+           <i className={completed?"completed":""}><Icon/>{completed&&<CheckCircle2 className="university-module-check"/>}</i>
            <div><small>Cours {String(moduleIndex+1).padStart(2,"0")}</small><span>{module.title}</span><strong>{module.ar}</strong></div>
            <ChevronLeft/>
           </Link>;

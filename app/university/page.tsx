@@ -729,8 +729,8 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"daily-life",title:"La vie quotidienne",ar:"الحياة اليومية",icon:CalendarDays,
-  description:"الروتين، الأفعال الضميرية، التكرار، الدعوات، والأنشطة اليومية.",
+ id:"daily-life",title:"La vie quotidienne",ar:"الحياة اليومية",icon:CalendarDays,
+  description:"وصف الروتين اليومي، والأفعال الضميرية، وترتيب الأنشطة والتعبير عن تكرارها.",
   sections:[
    section("Les verbes pronominaux","الأفعال الضميرية","تأتي أفعال الروتين كثيرًا مع ضمير يعود على الفاعل: me, te, se, nous, vous, se.",[
     "Je me lève: أستيقظ/أنهض.",
@@ -740,17 +740,27 @@ const A1_MODULES:CourseModule[]=[
    ],[
     {fr:"Je me lève à sept heures.",ar:"أنهض الساعة السابعة."},
     {fr:"Nous nous préparons pour le cours.",ar:"نستعد للدرس."},
-    {fr:"Elle se couche tôt.",ar:"هي تنام مبكرًا."}
+    {fr:"Elle se couche tôt.",ar:"تخلد إلى النوم مبكرًا."}
    ]),
-   section("Fréquence et activités","التكرار والأنشطة","تساعد ظروف التكرار على وصف العادات. ضعها غالبًا بعد الفعل المصرف.",[
+   section("Fréquence et activités","التكرار والأنشطة","تساعد ظروف التكرار على وصف العادات. تأتي غالبًا بعد الفعل المصرف، أما jamais فتأتي في النفي مع ne.",[
     "toujours دائمًا، souvent غالبًا، parfois أحيانًا.",
-    "rarement نادرًا، jamais أبدًا.",
+    "rarement نادرًا، ne… jamais أبدًا.",
     "faire du sport، lire، regarder un film.",
-    "للرغبة: Je voudrais… وللدعوة: Tu veux… ?"
+    "faire les courses، préparer le repas، ranger la maison."
    ],[
     {fr:"Je vais souvent à la bibliothèque.",ar:"أذهب غالبًا إلى المكتبة."},
     {fr:"Nous faisons du sport le soir.",ar:"نمارس الرياضة مساءً."},
-    {fr:"Tu veux prendre un café ?",ar:"هل تريد تناول قهوة؟"}
+    {fr:"Elle ne regarde jamais la télévision le matin.",ar:"لا تشاهد التلفاز صباحًا أبدًا."}
+   ]),
+   section("Organiser sa journée","ترتيب أحداث اليوم","استخدم روابط زمنية قصيرة لعرض الأنشطة بترتيب واضح، وأضف وقتًا أو جزءًا من اليوم عند الحاجة.",[
+    "d’abord: أولًا، puis / ensuite: ثم، enfin: وأخيرًا.",
+    "le matin، l’après-midi، le soir: صباحًا، بعد الظهر، مساءً.",
+    "avant le travail / après le cours: قبل العمل / بعد الدرس.",
+    "ابدأ بالفعل المصرف: Ensuite, je prends le bus."
+   ],[
+    {fr:"D’abord, je prends mon petit-déjeuner.",ar:"أولًا، أتناول فطوري."},
+    {fr:"Ensuite, je pars au travail.",ar:"ثم أذهب إلى العمل."},
+    {fr:"Enfin, je me repose à la maison.",ar:"وأخيرًا، أستريح في المنزل."}
    ])
   ]
  },
@@ -1001,6 +1011,32 @@ const A1_NUMBERS_TIME_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Quel jour vient après mercredi ?",speech:"Quel jour vient après mercredi ? Jeudi.",instruction:"أي يوم يأتي بعد mercredi؟",choices:["mardi","jeudi","vendredi"],correctIndex:1,explanation:"اليوم الذي يلي الأربعاء mercredi هو الخميس jeudi."},
  {prompt:"Quel mois vient avant décembre ?",speech:"Quel mois vient avant décembre ? Novembre.",instruction:"أي شهر يأتي قبل décembre؟",choices:["octobre","janvier","novembre"],correctIndex:2,explanation:"الشهر الذي يسبق ديسمبر décembre هو نوفمبر novembre."},
  {prompt:"Le musée ouvre à quatorze heures.",speech:"Le musée ouvre à quatorze heures.",instruction:"اختر الوقت المقابل بنظام 12 ساعة.",choices:["الثانية بعد الظهر.","الرابعة بعد الظهر.","الثانية صباحًا."],correctIndex:0,explanation:"14 h تساوي الثانية بعد الظهر في نظام 12 ساعة."}
+];
+
+const A1_DAILY_LIFE_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je me réveille à six heures et demie.",ar:"أستيقظ الساعة السادسة والنصف."},
+ {fr:"Après la douche, je m’habille rapidement.",ar:"بعد الاستحمام، أرتدي ملابسي بسرعة."},
+ {fr:"Mon frère prend son petit-déjeuner dans la cuisine.",ar:"يتناول أخي فطوره في المطبخ."},
+ {fr:"Nous partons au travail à huit heures.",ar:"نغادر إلى العمل الساعة الثامنة."},
+ {fr:"Elle déjeune souvent avec ses collègues.",ar:"غالبًا ما تتناول الغداء مع زملائها."},
+ {fr:"Je fais les courses après le travail.",ar:"أتسوق بعد العمل."},
+ {fr:"Les enfants font leurs devoirs avant le dîner.",ar:"ينجز الأطفال واجباتهم قبل العشاء."},
+ {fr:"Le soir, nous nous reposons dans le salon.",ar:"في المساء، نستريح في غرفة الجلوس."},
+ {fr:"Il ne se couche jamais après minuit.",ar:"لا يخلد إلى النوم بعد منتصف الليل أبدًا."},
+ {fr:"Enfin, je prépare mes affaires pour demain.",ar:"وأخيرًا، أجهّز أغراضي للغد."}
+];
+
+const A1_DAILY_LIFE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ lève à sept heures.",speech:"Complétez la phrase. Je me lève à sept heures.",instruction:"اختر الضمير الانعكاسي الصحيح مع je.",choices:["me","te","se"],correctIndex:0,explanation:"مع je نستخدم الضمير الانعكاسي me: je me lève."},
+ {prompt:"Nous ___ préparons pour sortir.",speech:"Complétez la phrase. Nous nous préparons pour sortir.",instruction:"اختر الضمير الانعكاسي الصحيح مع nous.",choices:["vous","nous","se"],correctIndex:1,explanation:"مع nous يأتي الضمير الانعكاسي nous: nous nous préparons."},
+ {prompt:"Elles ___ couchent tôt.",speech:"Complétez la phrase. Elles se couchent tôt.",instruction:"اختر الضمير الانعكاسي الصحيح مع elles.",choices:["me","nous","se"],correctIndex:2,explanation:"مع elles نستخدم se: elles se couchent."},
+ {prompt:"Je ___ prends ___ le bus le dimanche.",speech:"Complétez la phrase. Je ne prends jamais le bus le dimanche.",instruction:"اختر صيغة «أبدًا» الصحيحة.",choices:["ne … jamais","jamais … ne","ne … souvent"],correctIndex:0,explanation:"نحيط الفعل بـ ne وjamais: je ne prends jamais."},
+ {prompt:"Je vais ___ à la bibliothèque.",speech:"Complétez la phrase. Je vais souvent à la bibliothèque.",instruction:"اختر ظرف التكرار الذي يعني «غالبًا».",choices:["enfin","souvent","demain"],correctIndex:1,explanation:"souvent تعني غالبًا وتأتي هنا بعد الفعل المصرف."},
+ {prompt:"___, je me brosse les dents et je me couche.",speech:"Complétez la phrase. Enfin, je me brosse les dents et je me couche.",instruction:"اختر الرابط المناسب لنهاية تسلسل الأحداث.",choices:["D’abord","Ensuite","Enfin"],correctIndex:2,explanation:"Enfin تعني «وأخيرًا» وتقدم آخر حدث في التسلسل."},
+ {prompt:"Je rentre à la maison après le travail.",speech:"Je rentre à la maison après le travail.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعود إلى المنزل بعد العمل.","أغادر المنزل قبل العمل.","أعمل من المنزل اليوم."],correctIndex:0,explanation:"rentrer à la maison يعني العودة إلى المنزل، وaprès تعني بعد."},
+ {prompt:"قبل العشاء",speech:"Avant le dîner.",instruction:"اختر التعبير الفرنسي الصحيح.",choices:["après le dîner","avant le dîner","pendant le dîner"],correctIndex:1,explanation:"avant le dîner تعني قبل العشاء."},
+ {prompt:"Elle fait les courses le samedi.",speech:"Elle fait les courses le samedi.",instruction:"ماذا تفعل يوم السبت؟",choices:["تستريح في المنزل.","تعد الغداء.","تتسوق."],correctIndex:2,explanation:"faire les courses تعني التسوق وشراء الاحتياجات."},
+ {prompt:"D’abord, je consulte mes messages, puis je commence mon travail.",speech:"D’abord, je consulte mes messages, puis je commence mon travail.",instruction:"اختر الترجمة العربية الطبيعية في السياق.",choices:["أولًا، أتفقد رسائلي، ثم أبدأ عملي.","أبدأ عملي قبل قراءة الرسائل.","أنهي عملي ثم أرسل رسالة."],correctIndex:0,explanation:"D’abord تعني أولًا أو في البداية، وpuis تعني ثم."}
 ];
 
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
@@ -3951,6 +3987,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3985,6 +4022,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

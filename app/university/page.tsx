@@ -4274,7 +4274,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   {levelPage&&!lessonPage&&<section className="university-level-entry">
    <div>
-    <Link href="/university"><ArrowRight/> جميع المستويات</Link>
+    <Link className="university-levels-visual-link" href="/university"><ArrowRight/><span>جميع المستويات</span></Link>
     <span>Programme {level.id}</span>
     <h1>{level.ar}</h1>
     <h2>{level.label}</h2>
@@ -4287,7 +4287,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    <div className="university-resume-card">
     <div className="university-resume-icon"><MapPinned/></div>
     <div><span>تابع من حيث توقفت</span><h2>{resumeModule.ar}</h2><p>{resumeModule.title}</p></div>
-    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}/${resumeModule.id}`}><Play/> متابعة الدرس</Link>
+    <Link className="university-resume-visual-link" href={`/university/${level.id.toLocaleLowerCase("fr")}/${resumeModule.id}`}><Play/><span>متابعة الدرس</span></Link>
    </div>
    <div className="university-progress-card">
     <div><span>تقدمك في المستوى</span><strong>{completedModuleIds.length} من {level.modules.length} وحدات</strong></div>

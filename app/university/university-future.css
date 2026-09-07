@@ -110,6 +110,36 @@
  border-color:var(--u30-gold-light);
  background:rgba(255,255,255,.13);
 }
+.university-level-world .university-level-entry .university-levels-visual-link{
+ min-width:184px;
+ min-height:58px;
+ display:inline-grid;
+ grid-template-columns:42px 1fr;
+ align-items:center;
+ gap:11px;
+ margin-bottom:24px;
+ padding:7px 9px 7px 16px;
+ border:1px solid rgba(245,218,151,.78);
+ border-radius:18px;
+ background:
+  radial-gradient(circle at 18% 12%,rgba(255,255,255,.19),transparent 34%),
+  linear-gradient(145deg,rgba(34,91,146,.95),rgba(5,27,56,.98));
+ color:#f8e4ae;
+ font-weight:900;
+ text-decoration:none;
+ box-shadow:inset 0 1px rgba(255,255,255,.2),inset 0 -1px rgba(0,0,0,.22),0 14px 28px rgba(0,0,0,.24),0 0 0 4px rgba(219,178,86,.07);
+}
+.university-level-world .university-level-entry .university-levels-visual-link>svg{
+ width:42px;
+ height:42px;
+ padding:11px;
+ border:1px solid rgba(250,225,166,.5);
+ border-radius:13px;
+ background:linear-gradient(145deg,#e2b85c,#9f701e);
+ color:#fff9e9;
+ box-shadow:inset 0 1px rgba(255,255,255,.42),0 7px 15px rgba(0,0,0,.24);
+}
+.university-level-world .university-level-entry .university-levels-visual-link>span{white-space:nowrap;text-decoration:none}
 .university-level-world .university-level-entry h1{color:#dce9f7;letter-spacing:.02em}
 .university-level-world .university-level-entry h2{color:#f3d28a;text-shadow:0 6px 25px rgba(0,0,0,.22)}
 .university-level-world .university-level-entry p{color:#cbd9e9}
@@ -164,6 +194,42 @@
  background:linear-gradient(135deg,#194d84,#09284f);
  box-shadow:0 12px 24px rgba(7,38,74,.2),inset 0 1px rgba(255,255,255,.13);
  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.university-level-world .university-resume-card>.university-resume-visual-link{
+ min-width:190px;
+ min-height:62px;
+ display:inline-grid;
+ grid-template-columns:43px 1fr;
+ align-items:center;
+ gap:11px;
+ padding:8px 9px 8px 17px;
+ border-color:rgba(228,188,98,.78);
+ border-radius:18px;
+ background:
+  radial-gradient(circle at 20% 10%,rgba(255,255,255,.16),transparent 38%),
+  linear-gradient(145deg,#1c568e,#061f43);
+ color:#fff7e3;
+ font-size:15px;
+ text-decoration:none;
+ box-shadow:inset 0 1px rgba(255,255,255,.2),inset 0 -1px rgba(0,0,0,.28),0 14px 28px rgba(6,34,67,.25),0 0 0 4px rgba(215,174,83,.07);
+}
+.university-level-world .university-resume-card>.university-resume-visual-link>svg{
+ width:43px;
+ height:43px;
+ padding:12px;
+ border:1px solid rgba(250,226,169,.6);
+ border-radius:13px;
+ background:linear-gradient(145deg,#e3ba61,#a16e1c);
+ color:#fffbed;
+ fill:#fffbed;
+ box-shadow:inset 0 1px rgba(255,255,255,.45),0 7px 15px rgba(5,24,47,.28);
+}
+.university-level-world .university-resume-card>.university-resume-visual-link>span{
+ color:#fff7e3;
+ font:900 15px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+ letter-spacing:0;
+ white-space:nowrap;
+ text-decoration:none;
 }
 .university-level-world .university-resume-card>a:hover,
 .university-level-world .university-resume-card>a:focus-visible{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 16px 30px rgba(7,38,74,.27);outline:0}

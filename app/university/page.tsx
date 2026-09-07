@@ -4286,41 +4286,40 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
    <div className="university-journey-heading"><span>Parcours d’apprentissage</span><h2>رحلة تعلّم</h2><p>افتح مرحلة واحدة، ثم ادخل الدرس المطلوب.</p></div>
    <div className="university-phase-console">
-    <div className="university-phase-dock" role="tablist" aria-label="مراحل رحلة التعلم">
+    <div className="university-phase-dock" aria-label="مراحل رحلة التعلم">
      {phases.map((phase,phaseIndex)=>{
       const phaseModules=phase.moduleIds.map(id=>level.modules.find(item=>item.id===id)).filter((item):item is CourseModule=>Boolean(item));
       const phaseCompleted=phaseModules.filter(item=>completedModuleIds.includes(item.id)).length;
       const PhaseIcon=[Sparkles,NotebookTabs,MessageCircle][phaseIndex]??BookOpen;
-      return <button key={phase.title} type="button" role="tab" aria-selected={openPhaseIndex===phaseIndex} className={openPhaseIndex===phaseIndex?"active":""} onClick={()=>setOpenPhaseIndex(phaseIndex)}>
-       <span className="university-phase-app"><PhaseIcon/><b>{String(phaseIndex+1).padStart(2,"0")}</b></span>
-       <span className="university-phase-dock-copy"><strong>{phase.fr}</strong><small>{phase.title}</small></span>
-       <span className="university-phase-dock-progress"><i style={{width:`${phaseModules.length?phaseCompleted/phaseModules.length*100:0}%`}}/><em>{phaseCompleted}/{phaseModules.length}</em></span>
-      </button>;
+      const isOpen=openPhaseIndex===phaseIndex;
+      return <section key={phase.title} className={`university-phase-node ${isOpen?"open":""}`}>
+       <button type="button" aria-expanded={isOpen} aria-controls={`university-phase-${phaseIndex}`} className={isOpen?"active":""} onClick={()=>setOpenPhaseIndex(current=>current===phaseIndex?-1:phaseIndex)}>
+        <span className="university-phase-app"><PhaseIcon/><b>{String(phaseIndex+1).padStart(2,"0")}</b></span>
+        <span className="university-phase-dock-copy"><strong>{phase.fr}</strong><small>{phase.title}</small></span>
+        <span className="university-phase-dock-progress"><i style={{width:`${phaseModules.length?phaseCompleted/phaseModules.length*100:0}%`}}/><em>{phaseCompleted}/{phaseModules.length}</em></span>
+        <ChevronDown className="university-phase-chevron"/>
+       </button>
+       {isOpen&&<div id={`university-phase-${phaseIndex}`} className="university-phase-workspace">
+        <header>
+         <div><span>Étape {String(phaseIndex+1).padStart(2,"0")}</span><h3>{phase.fr}</h3><h4>{phase.title}</h4><p>{phase.description}</p></div>
+         <aside><strong>{phaseCompleted}</strong><span>من {phaseModules.length}</span><small>دروس مكتملة</small></aside>
+        </header>
+        <div className="university-phase-modules">
+         {phaseModules.map(module=>{
+          const Icon=module.icon;
+          const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
+          const completed=completedModuleIds.includes(module.id);
+          return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}`}>
+           <i className={completed?"completed":""}>{completed?<CheckCircle2/>:<Icon/>}</i>
+           <div><small>Cours {String(moduleIndex+1).padStart(2,"0")}</small><span>{module.title}</span><strong>{module.ar}</strong></div>
+           <ChevronLeft/>
+          </Link>;
+         })}
+        </div>
+       </div>}
+      </section>;
      })}
     </div>
-    {phases.map((phase,phaseIndex)=>{
-     if(openPhaseIndex!==phaseIndex)return null;
-     const phaseModules=phase.moduleIds.map(id=>level.modules.find(item=>item.id===id)).filter((item):item is CourseModule=>Boolean(item));
-     const phaseCompleted=phaseModules.filter(item=>completedModuleIds.includes(item.id)).length;
-     return <section key={phase.title} className="university-phase-workspace" role="tabpanel">
-      <header>
-       <div><span>Étape {String(phaseIndex+1).padStart(2,"0")}</span><h3>{phase.fr}</h3><h4>{phase.title}</h4><p>{phase.description}</p></div>
-       <aside><strong>{phaseCompleted}</strong><span>من {phaseModules.length}</span><small>دروس مكتملة</small></aside>
-      </header>
-      <div className="university-phase-modules">
-       {phaseModules.map(module=>{
-        const Icon=module.icon;
-        const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
-        const completed=completedModuleIds.includes(module.id);
-        return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}`}>
-         <i className={completed?"completed":""}>{completed?<CheckCircle2/>:<Icon/>}</i>
-         <div><small>Cours {String(moduleIndex+1).padStart(2,"0")}</small><span>{module.title}</span><strong>{module.ar}</strong></div>
-         <ChevronLeft/>
-        </Link>;
-       })}
-      </div>
-     </section>;
-    })}
    </div>
   </section>}
 

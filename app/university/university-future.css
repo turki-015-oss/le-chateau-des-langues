@@ -293,16 +293,17 @@
 }
 .university-level-world .university-phase-dock{
  display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
+ grid-template-columns:1fr;
  gap:12px;
  direction:rtl;
 }
-.university-level-world .university-phase-dock>button{
+.university-level-world .university-phase-node{min-width:0;display:grid;gap:0}
+.university-level-world .university-phase-node>button{
  min-width:0;
  min-height:178px;
  position:relative;
  display:grid;
- grid-template-columns:74px minmax(0,1fr);
+ grid-template-columns:74px minmax(0,1fr) 34px;
  grid-template-rows:1fr auto;
  align-items:center;
  gap:15px;
@@ -317,7 +318,7 @@
  cursor:pointer;
  transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
 }
-.university-level-world .university-phase-dock>button:before{
+.university-level-world .university-phase-node>button:before{
  content:"";
  position:absolute;
  width:150px;
@@ -328,14 +329,14 @@
  border-radius:50%;
  box-shadow:0 0 0 24px rgba(28,82,137,.035),0 0 0 48px rgba(28,82,137,.025);
 }
-.university-level-world .university-phase-dock>button:hover,
-.university-level-world .university-phase-dock>button:focus-visible{
+.university-level-world .university-phase-node>button:hover,
+.university-level-world .university-phase-node>button:focus-visible{
  transform:translateY(-4px);
  border-color:#c69d4b;
  box-shadow:0 18px 34px rgba(9,43,80,.14),0 0 0 4px rgba(211,174,89,.07);
  outline:0;
 }
-.university-level-world .university-phase-dock>button.active{
+.university-level-world .university-phase-node>button.active{
  border-color:rgba(232,198,119,.88);
  background:
   radial-gradient(circle at 15% 0,rgba(83,151,213,.28),transparent 13rem),
@@ -344,6 +345,8 @@
  box-shadow:0 22px 42px rgba(5,31,63,.25),inset 0 1px rgba(255,255,255,.13),0 0 0 5px rgba(204,164,82,.075);
 }
 .university-level-world .university-phase-app{
+ grid-column:1;
+ grid-row:1;
  width:72px;
  height:72px;
  position:relative;
@@ -355,7 +358,7 @@
  color:#f1d18a;
  box-shadow:inset 0 1px rgba(255,255,255,.17),0 13px 24px rgba(6,37,72,.2),0 0 0 5px rgba(31,87,142,.055);
 }
-.university-level-world .university-phase-dock>button.active .university-phase-app{
+.university-level-world .university-phase-node>button.active .university-phase-app{
  background:linear-gradient(145deg,#f1d181,#ac7d27);
  color:#09284e;
  box-shadow:inset 0 1px rgba(255,255,255,.48),0 13px 28px rgba(0,0,0,.27),0 0 25px rgba(238,199,106,.2);
@@ -376,13 +379,14 @@
  color:#0b315d;
  font:800 9px Georgia,serif;
 }
-.university-level-world .university-phase-dock-copy{min-width:0;display:flex;flex-direction:column;gap:7px}
+.university-level-world .university-phase-dock-copy{grid-column:2;grid-row:1;min-width:0;display:flex;flex-direction:column;gap:7px}
 .university-level-world .university-phase-dock-copy>strong{color:#174477;font:700 clamp(18px,1.7vw,23px)/1.25 Georgia,"Times New Roman",serif}
 .university-level-world .university-phase-dock-copy>small{color:#687c93;font-size:13px;font-weight:800}
-.university-level-world .university-phase-dock>button.active .university-phase-dock-copy>strong{color:#f4d58f}
-.university-level-world .university-phase-dock>button.active .university-phase-dock-copy>small{color:#dbe7f3}
+.university-level-world .university-phase-node>button.active .university-phase-dock-copy>strong{color:#f4d58f}
+.university-level-world .university-phase-node>button.active .university-phase-dock-copy>small{color:#dbe7f3}
 .university-level-world .university-phase-dock-progress{
  grid-column:1/-1;
+ grid-row:2;
  height:28px;
  position:relative;
  display:block;
@@ -410,9 +414,11 @@
  font-style:normal;
  text-shadow:0 1px rgba(255,255,255,.72);
 }
-.university-level-world .university-phase-dock>button.active .university-phase-dock-progress{border-color:rgba(231,200,128,.2);background:rgba(255,255,255,.1)}
-.university-level-world .university-phase-dock>button.active .university-phase-dock-progress>i{background:linear-gradient(90deg,#f0d58f,#bb8730)}
-.university-level-world .university-phase-dock>button.active .university-phase-dock-progress>em{color:#fff;text-shadow:0 1px 3px #00152d}
+.university-level-world .university-phase-node>button.active .university-phase-dock-progress{border-color:rgba(231,200,128,.2);background:rgba(255,255,255,.1)}
+.university-level-world .university-phase-node>button.active .university-phase-dock-progress>i{background:linear-gradient(90deg,#f0d58f,#bb8730)}
+.university-level-world .university-phase-node>button.active .university-phase-dock-progress>em{color:#fff;text-shadow:0 1px 3px #00152d}
+.university-level-world .university-phase-chevron{grid-column:3;grid-row:1;width:28px;height:28px;padding:5px;border:1px solid rgba(155,180,207,.45);border-radius:50%;background:rgba(229,238,247,.8);color:#174474;transition:transform .25s ease,background .25s ease,color .25s ease}
+.university-level-world .university-phase-node>button.active .university-phase-chevron{transform:rotate(180deg);border-color:rgba(232,200,126,.25);background:rgba(255,255,255,.11);color:#f2d38d}
 
 .university-level-world .university-phase-workspace{
  position:relative;
@@ -490,7 +496,7 @@
 
 @media(max-width:900px){
  .university-level-world .university-phase-dock{grid-template-columns:1fr}
- .university-level-world .university-phase-dock>button{min-height:116px;grid-template-columns:62px 1fr;grid-template-rows:1fr 22px;padding:14px 16px}
+ .university-level-world .university-phase-node>button{min-height:116px;grid-template-columns:62px 1fr 30px;grid-template-rows:1fr 22px;padding:14px 16px}
  .university-level-world .university-phase-app{width:60px;height:60px;border-radius:19px}
  .university-level-world .university-phase-app>svg{width:26px;height:26px}
  .university-level-world .university-phase-dock-progress{height:22px}
@@ -500,7 +506,7 @@
  .university-level-world .university-phase-console{margin-top:22px;padding:8px;border-radius:25px}
  .university-level-world .university-phase-console:before{left:22px}
  .university-level-world .university-phase-dock{gap:8px}
- .university-level-world .university-phase-dock>button{min-height:104px;grid-template-columns:55px 1fr;gap:11px;padding:12px;border-radius:19px}
+ .university-level-world .university-phase-node>button{min-height:104px;grid-template-columns:55px 1fr 26px;gap:11px;padding:12px;border-radius:19px}
  .university-level-world .university-phase-app{width:53px;height:53px;border-radius:16px}
  .university-level-world .university-phase-app>svg{width:23px;height:23px}
  .university-level-world .university-phase-dock-copy>strong{font-size:18px}

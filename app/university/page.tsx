@@ -862,6 +862,32 @@ const A1_SOUNDS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Dans « les amis », quel son fait la liaison ?",speech:"Les amis. Les amis. Quel son entendez-vous entre les deux mots ?",instruction:"اختر صوت الربط بين les وamis.",choices:["صوت z","صوت t","لا يوجد ربط"],correctIndex:0,explanation:"تُنطق s في les بصوت z عند الربط مع amis."}
 ];
 
+const A1_GREETINGS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Bonjour monsieur, comment allez-vous ?",ar:"مرحبًا سيدي، كيف حالكم؟"},
+ {fr:"Salut Karim, comment vas-tu ?",ar:"مرحبًا كريم، كيف حالك؟"},
+ {fr:"Je m’appelle Youssef et j’ai vingt ans.",ar:"اسمي يوسف وعمري عشرون عامًا."},
+ {fr:"Je viens du Maroc et j’habite à Nice.",ar:"أنا من المغرب وأسكن في نيس."},
+ {fr:"Je suis infirmier dans un hôpital.",ar:"أنا ممرض في مستشفى."},
+ {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية."},
+ {fr:"Pendant mon temps libre, j’aime nager.",ar:"أحب السباحة في وقت فراغي."},
+ {fr:"Comment vous appelez-vous ?",ar:"ما اسمكم؟"},
+ {fr:"Enchanté, bienvenue dans notre classe.",ar:"تشرفت بمعرفتكم، أهلًا بكم في فصلنا."},
+ {fr:"Au revoir madame, à demain !",ar:"إلى اللقاء سيدتي، أراكِ غدًا!"}
+];
+
+const A1_GREETINGS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Il est neuf heures du matin. Je dis : ___.",speech:"Il est neuf heures du matin. Quelle formule de salutation choisissez-vous ?",instruction:"اختر التحية المناسبة في الصباح.",choices:["Bonsoir","Bonjour","Bonne nuit"],correctIndex:1,explanation:"Bonjour هي التحية المناسبة نهارًا."},
+ {prompt:"Je parle à un ami. Je dis : ___.",speech:"Je parle à un ami. Quelle formule familière choisissez-vous ?",instruction:"اختر التحية الودية المناسبة لصديق.",choices:["Salut","Bonjour madame","Au revoir monsieur"],correctIndex:0,explanation:"Salut تحية غير رسمية تستخدم مع الأصدقاء."},
+ {prompt:"Comment vous ___-vous ?",speech:"Complétez la question. Comment vous appelez-vous ?",instruction:"أكمل السؤال الرسمي عن الاسم.",choices:["habitez","appelez","parlez"],correctIndex:1,explanation:"Comment vous appelez-vous ؟ تعني ما اسمكم؟"},
+ {prompt:"Je ___ Lina.",speech:"Complétez la phrase. Je m’appelle Lina.",instruction:"اختر الصيغة الصحيحة لذكر الاسم.",choices:["m’appelle","s’appelle","t’appelles"],correctIndex:0,explanation:"مع je نقول je m’appelle."},
+ {prompt:"J’___ vingt-deux ans.",speech:"Complétez la phrase. J’ai vingt-deux ans.",instruction:"اختر الفعل الصحيح لذكر العمر.",choices:["est","suis","ai"],correctIndex:2,explanation:"العمر في الفرنسية يستخدم فعل avoir: j’ai."},
+ {prompt:"Je ___ de Djeddah.",speech:"Complétez la phrase. Je viens de Djeddah.",instruction:"اختر الفعل المناسب لذكر المكان الذي أتيت منه.",choices:["viens","habite","parle"],correctIndex:0,explanation:"venir de يستخدم لذكر الأصل أو المكان الذي يأتي منه الشخص."},
+ {prompt:"J’___ à Toulouse.",speech:"Complétez la phrase. J’habite à Toulouse.",instruction:"اختر الفعل المناسب لذكر مكان السكن.",choices:["aime","habite","étudie de"],correctIndex:1,explanation:"habiter à يستخدم مع اسم المدينة."},
+ {prompt:"Je suis ___.",speech:"Je travaille dans une école. Je suis professeur.",instruction:"اختر المهنة المناسبة لشخص يعمل في مدرسة.",choices:["pharmacien","serveur","professeur"],correctIndex:2,explanation:"الشخص الذي يدرّس في المدرسة هو professeur."},
+ {prompt:"Je parle arabe et ___ français.",speech:"Complétez la phrase. Je parle arabe et un peu français.",instruction:"اختر العبارة التي تعني «قليلًا من».",choices:["un peu","beaucoup de","jamais"],correctIndex:0,explanation:"un peu تعني قليلًا."},
+ {prompt:"Au revoir et à bientôt.",speech:"Au revoir et à bientôt.",instruction:"اختر المعنى العربي الصحيح.",choices:["مرحبًا وتشرفت بمعرفتك.","إلى اللقاء وأراك قريبًا.","مساء الخير وكيف حالك؟"],correctIndex:1,explanation:"Au revoir et à bientôt عبارة وداع تعني إلى اللقاء وأراك قريبًا."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3805,6 +3831,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const practiceExamples=useMemo(()=>{
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3834,6 +3861,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

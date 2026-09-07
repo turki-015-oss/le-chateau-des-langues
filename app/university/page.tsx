@@ -347,6 +347,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"future-imperative",title:"Le futur proche et l’impératif",ar:"المستقبل القريب وصيغة الأمر",icon:CalendarDays,
+  description:"التحدث عن خطة قريبة باستخدام aller مع المصدر، وإعطاء تعليمات أو نصائح قصيرة بصيغة الأمر المثبتة والمنفية.",
+  sections:[
+   section("Former le futur proche","تكوين المستقبل القريب","يتكوّن المستقبل القريب من فعل aller مصرّفًا في الحاضر، ثم فعل آخر في المصدر. الذي يتغير مع الفاعل هو aller فقط.",[
+    "je vais، tu vas، il / elle / on va + مصدر.",
+    "nous allons، vous allez، ils / elles vont + مصدر.",
+    "Je vais travailler: سأعمل.",
+    "Nous allons partir: سنغادر."
+   ],[
+    {fr:"Je vais préparer le dîner.",ar:"سأحضّر العشاء."},
+    {fr:"Tu vas prendre le bus.",ar:"ستستقل الحافلة."},
+    {fr:"Nous allons visiter le château.",ar:"سنزور القلعة."},
+    {fr:"Elles vont commencer le cours.",ar:"سيبدأن الدرس."}
+   ]),
+   section("Le temps et la négation","الزمن والنفي","نستخدم المستقبل القريب مع وقت قريب أو خطة مقررة. في النفي نضع ne وpas حول فعل aller، ويبقى الفعل الثاني في المصدر.",[
+    "ce soir، demain، bientôt: هذا المساء، غدًا، قريبًا.",
+    "la semaine prochaine: الأسبوع المقبل.",
+    "Je ne vais pas sortir: لن أخرج.",
+    "Ils ne vont pas venir: لن يأتوا."
+   ],[
+    {fr:"Ce soir, on va regarder un film.",ar:"سنشاهد فيلمًا هذا المساء."},
+    {fr:"Demain, vous allez rencontrer le directeur.",ar:"ستقابلون المدير غدًا."},
+    {fr:"Je ne vais pas travailler samedi.",ar:"لن أعمل يوم السبت."},
+    {fr:"Ils ne vont pas voyager cette semaine.",ar:"لن يسافروا هذا الأسبوع."}
+   ]),
+   section("Donner une instruction","إعطاء التعليمات بصيغة الأمر","تُستعمل صيغة الأمر مع tu وnous وvous من دون كتابة ضمير الفاعل. وفي أفعال -er نحذف s من صيغة tu غالبًا.",[
+    "tu: Regarde !، Finis !، Attends !",
+    "nous: Regardons !، Finissons !، Attendons !",
+    "vous: Regardez !، Finissez !، Attendez !",
+    "في النفي: Ne parle pas !، N’oubliez pas !"
+   ],[
+    {fr:"Tournez à droite après la banque.",ar:"انعطفوا يمينًا بعد البنك."},
+    {fr:"Prends ton passeport avec toi.",ar:"خذ جواز سفرك معك."},
+    {fr:"Allons au marché ensemble.",ar:"لنذهب إلى السوق معًا."},
+    {fr:"Ne fermez pas cette porte.",ar:"لا تغلقوا هذا الباب."}
+   ])
+  ]
+ },
+ {
   id:"food-shopping",title:"L’alimentation et les achats",ar:"الطعام والتسوق",icon:ShoppingBag,
   description:"اختيار أدوات التجزئة، التعبير عن الكمية، وطلب الطعام وشراء المنتجات بعبارات بسيطة ومهذبة.",
   sections:[
@@ -808,6 +847,32 @@ const A1_MODAL_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Vous ___ attendre ici.",speech:"Complétez la phrase. Vous devez attendre ici.",instruction:"اختر تصريف devoir الصحيح مع vous.",choices:["doivent","devez","dois"],correctIndex:1,explanation:"مع vous نقول vous devez."},
  {prompt:"Il ___ respecter les règles.",speech:"Complétez la nécessité générale. Il faut respecter les règles.",instruction:"اختر التعبير عن ضرورة عامة.",choices:["peut","veut","faut"],correctIndex:2,explanation:"Il faut + مصدر يعبّر عن ضرورة عامة."},
  {prompt:"Il ne faut pas fumer ici.",speech:"Il ne faut pas fumer ici.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا يمكنني الانتظار هنا.","يُمنع التدخين هنا.","أريد الخروج من هنا."],correctIndex:1,explanation:"Il ne faut pas fumer تعني أن التدخين ممنوع."}
+];
+
+const A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je vais appeler le médecin cet après-midi.",ar:"سأتصل بالطبيب بعد ظهر اليوم."},
+ {fr:"Elle va acheter les billets en ligne.",ar:"ستشتري التذاكر عبر الإنترنت."},
+ {fr:"Vous allez arriver à neuf heures.",ar:"ستصلون الساعة التاسعة."},
+ {fr:"Nous allons dîner chez nos amis demain.",ar:"سنتناول العشاء عند أصدقائنا غدًا."},
+ {fr:"Tu ne vas pas oublier ton rendez-vous.",ar:"لن تنسى موعدك."},
+ {fr:"Ils ne vont pas prendre la voiture.",ar:"لن يستقلوا السيارة."},
+ {fr:"Écoutez attentivement la question.",ar:"استمعوا إلى السؤال بانتباه."},
+ {fr:"Ouvre le livre à la page dix.",ar:"افتح الكتاب على الصفحة العاشرة."},
+ {fr:"Prenons une pause de cinq minutes.",ar:"لنأخذ استراحة لمدة خمس دقائق."},
+ {fr:"Ne traversez pas quand le feu est rouge.",ar:"لا تعبروا عندما تكون الإشارة حمراء."}
+];
+
+const A1_FUTURE_IMPERATIVE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ préparer le repas.",speech:"Complétez le futur proche. Je vais préparer le repas.",instruction:"اختر تصريف aller الصحيح مع je.",choices:["va","vais","allons"],correctIndex:1,explanation:"المستقبل القريب مع je يبدأ بـ je vais."},
+ {prompt:"Nous ___ visiter le musée.",speech:"Complétez le futur proche. Nous allons visiter le musée.",instruction:"اختر تصريف aller الصحيح مع nous.",choices:["allons","allez","vont"],correctIndex:0,explanation:"مع nous نقول nous allons + المصدر."},
+ {prompt:"Elles ___ commencer le cours.",speech:"Complétez le futur proche. Elles vont commencer le cours.",instruction:"اختر تصريف aller الصحيح مع elles.",choices:["vas","va","vont"],correctIndex:2,explanation:"مع elles نقول elles vont + المصدر."},
+ {prompt:"Je ne vais pas ___ samedi.",speech:"Complétez la phrase négative. Je ne vais pas travailler samedi.",instruction:"اختر شكل الفعل الذي يأتي بعد aller.",choices:["travaille","travailler","travaillé"],correctIndex:1,explanation:"بعد aller يأتي الفعل في المصدر: travailler."},
+ {prompt:"___, nous allons prendre le train.",speech:"Complétez avec un indicateur de temps futur. Demain, nous allons prendre le train.",instruction:"اختر مؤشر الزمن المناسب لخطة مستقبلية.",choices:["Hier","Maintenant","Demain"],correctIndex:2,explanation:"demain تعني غدًا وتناسب المستقبل القريب."},
+ {prompt:"___ le livre !",speech:"Donnez l’instruction avec tu. Ouvre le livre !",instruction:"اختر صيغة الأمر من ouvrir مع tu.",choices:["Ouvre","Ouvres","Ouvrez"],correctIndex:0,explanation:"صيغة الأمر مع tu هي ouvre من دون ضمير."},
+ {prompt:"___ la question !",speech:"Donnez l’instruction avec vous. Écoutez la question !",instruction:"اختر صيغة الأمر من écouter مع vous.",choices:["Écoute","Écoutons","Écoutez"],correctIndex:2,explanation:"صيغة الأمر مع vous هي écoutez."},
+ {prompt:"___ au parc ensemble !",speech:"Faites une proposition avec nous. Allons au parc ensemble !",instruction:"اختر صيغة الأمر من aller مع nous.",choices:["Allez","Allons","Vont"],correctIndex:1,explanation:"صيغة الأمر من aller مع nous هي allons."},
+ {prompt:"Ne ___ pas cette porte !",speech:"Donnez l’ordre négatif. Ne fermez pas cette porte !",instruction:"اختر صيغة الأمر المنفي مع vous.",choices:["fermez","fermer","fermons"],correctIndex:0,explanation:"نضع ne وpas حول صيغة الأمر: Ne fermez pas."},
+ {prompt:"Ce soir, on va regarder un film.",speech:"Ce soir, on va regarder un film.",instruction:"اختر المعنى العربي الصحيح.",choices:["شاهدنا فيلمًا مساء أمس.","نشاهد الأفلام كل مساء.","سنشاهد فيلمًا هذا المساء."],correctIndex:2,explanation:"aller + المصدر هنا يعبّر عن خطة هذا المساء."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2298,7 +2363,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة وأفعال الحاضر والقدرة والرغبة والضرورة.",moduleIds:["nouns","core-verbs","structures","present","modal-verbs"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","present","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","adjectives","daily-life","situations"]}
  ],
  A2:[
@@ -3499,6 +3564,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3520,6 +3586,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

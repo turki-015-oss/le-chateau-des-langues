@@ -297,7 +297,7 @@
  gap:12px;
  direction:rtl;
 }
-.university-level-world .university-phase-node{min-width:0;display:grid;gap:0}
+.university-level-world .university-phase-node{min-width:0;display:grid;gap:0;scroll-margin-top:94px}
 .university-level-world .university-phase-node>button{
  min-width:0;
  min-height:178px;
@@ -420,6 +420,26 @@
 .university-level-world .university-phase-chevron{grid-column:3;grid-row:1;width:28px;height:28px;padding:5px;border:1px solid rgba(155,180,207,.45);border-radius:50%;background:rgba(229,238,247,.8);color:#174474;transition:transform .25s ease,background .25s ease,color .25s ease}
 .university-level-world .university-phase-node>button.active .university-phase-chevron{transform:rotate(180deg);border-color:rgba(232,200,126,.25);background:rgba(255,255,255,.11);color:#f2d38d}
 
+.university-level-world .university-phase-workspace-shell{
+ display:grid;
+ grid-template-rows:0fr;
+ padding-top:0;
+ opacity:0;
+ transform:translateY(-10px) scale(.995);
+ transform-origin:top center;
+ visibility:hidden;
+ transition:grid-template-rows .48s cubic-bezier(.22,.78,.2,1),padding-top .48s cubic-bezier(.22,.78,.2,1),opacity .28s ease,transform .48s cubic-bezier(.22,.78,.2,1),visibility 0s linear .48s;
+}
+.university-level-world .university-phase-workspace-shell.open{
+ grid-template-rows:1fr;
+ padding-top:14px;
+ opacity:1;
+ transform:none;
+ visibility:visible;
+ transition:grid-template-rows .52s cubic-bezier(.2,.82,.2,1),padding-top .52s cubic-bezier(.2,.82,.2,1),opacity .3s ease .06s,transform .52s cubic-bezier(.2,.82,.2,1),visibility 0s;
+}
+.university-level-world .university-phase-workspace-shell>.university-phase-workspace{min-height:0;margin-top:0}
+
 .university-level-world .university-phase-workspace{
  position:relative;
  margin-top:14px;
@@ -523,3 +543,4 @@
  .university-level-world .university-phase-workspace .university-phase-modules>a>i{width:46px;height:46px;border-radius:14px}
  .university-level-world .university-phase-workspace .university-phase-modules span{font-size:16px}
 }
+@media(prefers-reduced-motion:reduce){.university-level-world .university-phase-workspace-shell{transition:none}}

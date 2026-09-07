@@ -4220,6 +4220,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
  const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
+ const toggleJourneyPhase=(phaseIndex:number)=>{
+  const willOpen=openPhaseIndex!==phaseIndex;
+  setOpenPhaseIndex(willOpen?phaseIndex:-1);
+  window.setTimeout(()=>{
+   document.getElementById(`university-phase-node-${phaseIndex}`)?.scrollIntoView({
+    behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+    block:"start"
+   });
+  },willOpen?90:0);
+ };
 
  return <main className={`university-world ${levelPage?"university-level-world":""}`} dir="rtl">
   <header className="university-topbar">
@@ -4292,14 +4302,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       const phaseCompleted=phaseModules.filter(item=>completedModuleIds.includes(item.id)).length;
       const PhaseIcon=[Sparkles,NotebookTabs,MessageCircle][phaseIndex]??BookOpen;
       const isOpen=openPhaseIndex===phaseIndex;
-      return <section key={phase.title} className={`university-phase-node ${isOpen?"open":""}`}>
-       <button type="button" aria-expanded={isOpen} aria-controls={`university-phase-${phaseIndex}`} className={isOpen?"active":""} onClick={()=>setOpenPhaseIndex(current=>current===phaseIndex?-1:phaseIndex)}>
+      return <section id={`university-phase-node-${phaseIndex}`} key={phase.title} className={`university-phase-node ${isOpen?"open":""}`}>
+       <button type="button" aria-expanded={isOpen} aria-controls={`university-phase-${phaseIndex}`} className={isOpen?"active":""} onClick={()=>toggleJourneyPhase(phaseIndex)}>
         <span className="university-phase-app"><PhaseIcon/><b>{String(phaseIndex+1).padStart(2,"0")}</b></span>
         <span className="university-phase-dock-copy"><strong>{phase.fr}</strong><small>{phase.title}</small></span>
         <span className="university-phase-dock-progress"><i style={{width:`${phaseModules.length?phaseCompleted/phaseModules.length*100:0}%`}}/><em>{phaseCompleted}/{phaseModules.length}</em></span>
         <ChevronDown className="university-phase-chevron"/>
        </button>
-       {isOpen&&<div id={`university-phase-${phaseIndex}`} className="university-phase-workspace">
+       <div className={`university-phase-workspace-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
+       <div id={`university-phase-${phaseIndex}`} className="university-phase-workspace">
         <header>
          <div><span>Étape {String(phaseIndex+1).padStart(2,"0")}</span><h3>{phase.fr}</h3><h4>{phase.title}</h4><p>{phase.description}</p></div>
          <aside><strong>{phaseCompleted}</strong><span>من {phaseModules.length}</span><small>دروس مكتملة</small></aside>
@@ -4316,7 +4327,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           </Link>;
          })}
         </div>
-       </div>}
+       </div>
+       </div>
       </section>;
      })}
     </div>

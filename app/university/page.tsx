@@ -914,6 +914,32 @@ const A1_NOUNS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Les enfants jouent dans les jardins.",speech:"Les enfants jouent dans les jardins.",instruction:"اختر المعنى العربي الصحيح.",choices:["يلعب الأطفال في الحدائق.","يقرأ الطلاب في المكتبة.","ينتظر الآباء أمام المدرسة."],correctIndex:0,explanation:"les enfants تعني الأطفال وles jardins تعني الحدائق."}
 ];
 
+const A1_CORE_VERBS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je suis disponible cet après-midi.",ar:"أنا متاح بعد ظهر اليوم."},
+ {fr:"Tu es dans la bonne salle.",ar:"أنت في القاعة الصحيحة."},
+ {fr:"On est prêts pour le cours.",ar:"نحن مستعدون للدرس."},
+ {fr:"Nous sommes voisins depuis peu.",ar:"نحن جيران منذ وقت قريب."},
+ {fr:"Elles sont étudiantes en médecine.",ar:"هن طالبات في كلية الطب."},
+ {fr:"J’ai un vélo rouge.",ar:"لدي دراجة حمراء."},
+ {fr:"Il a trente ans aujourd’hui.",ar:"بلغ اليوم ثلاثين عامًا."},
+ {fr:"Nous avons rendez-vous à dix heures.",ar:"لدينا موعد الساعة العاشرة."},
+ {fr:"Vous avez faim après le voyage ?",ar:"هل تشعرون بالجوع بعد الرحلة؟"},
+ {fr:"Ils ont besoin d’un taxi.",ar:"يحتاجون إلى سيارة أجرة."}
+];
+
+const A1_CORE_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ à la gare.",speech:"Complétez la phrase. Je suis à la gare.",instruction:"اختر تصريف être الصحيح مع je.",choices:["suis","es","ai"],correctIndex:0,explanation:"مع je يُصرّف être هكذا: je suis."},
+ {prompt:"Tu ___ très calme.",speech:"Complétez la phrase. Tu es très calme.",instruction:"اختر تصريف être الصحيح مع tu.",choices:["est","es","as"],correctIndex:1,explanation:"مع tu يُصرّف être هكذا: tu es."},
+ {prompt:"Elle ___ professeure.",speech:"Complétez la phrase. Elle est professeure.",instruction:"اختر تصريف être الصحيح مع elle.",choices:["a","êtes","est"],correctIndex:2,explanation:"مع elle يُصرّف être هكذا: elle est."},
+ {prompt:"Nous ___ en retard.",speech:"Complétez la phrase. Nous sommes en retard.",instruction:"اختر تصريف être الصحيح مع nous.",choices:["sommes","avons","sont"],correctIndex:0,explanation:"مع nous يُصرّف être هكذا: nous sommes."},
+ {prompt:"Vous ___ au premier étage.",speech:"Complétez la phrase. Vous êtes au premier étage.",instruction:"اختر تصريف être الصحيح مع vous.",choices:["avez","êtes","sont"],correctIndex:1,explanation:"مع vous يُصرّف être هكذا: vous êtes."},
+ {prompt:"Ils ___ dans le jardin.",speech:"Complétez la phrase. Ils sont dans le jardin.",instruction:"اختر تصريف être الصحيح مع ils.",choices:["ont","est","sont"],correctIndex:2,explanation:"مع ils يُصرّف être هكذا: ils sont."},
+ {prompt:"J’___ vingt-cinq ans.",speech:"Complétez la phrase. J’ai vingt-cinq ans.",instruction:"اختر تصريف avoir الصحيح لذكر العمر.",choices:["ai","suis","as"],correctIndex:0,explanation:"مع je يُصرّف avoir هكذا: j’ai، ونستخدمه لذكر العمر."},
+ {prompt:"On ___ une réservation.",speech:"Complétez la phrase. On a une réservation.",instruction:"اختر تصريف avoir الصحيح مع on.",choices:["est","a","avons"],correctIndex:1,explanation:"مع on يُصرّف avoir هكذا: on a."},
+ {prompt:"Nous ___ deux enfants.",speech:"Complétez la phrase. Nous avons deux enfants.",instruction:"اختر تصريف avoir الصحيح مع nous.",choices:["sommes","ont","avons"],correctIndex:2,explanation:"مع nous يُصرّف avoir هكذا: nous avons."},
+ {prompt:"Elles ont froid.",speech:"Elles ont froid.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["يشعرن بالبرد.","هن في الخارج.","لديهن معاطف."],correctIndex:0,explanation:"avoir froid تعبير ثابت يعني الشعور بالبرد."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3859,6 +3885,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3890,6 +3917,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

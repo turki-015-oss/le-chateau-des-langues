@@ -3330,7 +3330,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <div className="university-progress-track"><i style={{width:`${Math.round(completedModuleIds.length/level.modules.length*100)}%`}}/></div>
     <b>{Math.round(completedModuleIds.length/level.modules.length*100)}%</b>
    </div>
-   <div className="university-journey-heading"><span>Parcours d’apprentissage</span><h2>رحلة تعلّم</h2><p>افتح مرحلة واحدة، ثم ادخل الدرس المطلوب. لن تظهر محتويات الدروس كلها في الصفحة نفسها.</p></div>
+   <div className="university-journey-heading"><span>Parcours d’apprentissage</span><h2>رحلة تعلّم</h2><p>افتح مرحلة واحدة، ثم ادخل الدرس المطلوب.</p></div>
    <div className="university-phase-list">
     {phases.map((phase,phaseIndex)=>{
      const phaseModules=phase.moduleIds.map(id=>level.modules.find(item=>item.id===id)).filter((item):item is CourseModule=>Boolean(item));

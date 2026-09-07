@@ -321,8 +321,8 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:BookOpen,
-  description:"تصريف أفعال الحاضر المنتظمة، أهم الأفعال الشائعة، وبناء النفي.",
+ id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:BookOpen,
+  description:"تصريف أفعال الحاضر المنتظمة والشائعة، ثم بناء الجملة المثبتة والمنفية والسؤال البسيط.",
   sections:[
    section("Verbes réguliers","الأفعال المنتظمة","لأفعال -er نحذف er ونضيف النهايات المناسبة. أفعال -ir و-re لها أنماط أخرى، ويجب تعلّم المجموعة مع أمثلة.",[
     "parler: parle, parles, parle, parlons, parlez, parlent.",
@@ -334,6 +334,17 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Nous finissons le cours.",ar:"ننهي الدرس."},
     {fr:"Ils attendent le professeur.",ar:"هم ينتظرون المعلم."}
    ]),
+   section("Verbes fréquents","أفعال شائعة","بعض الأفعال كثيرة الاستخدام لا تتبع نهايات الأفعال المنتظمة؛ نتعلم تصريفها داخل جمل قصيرة.",[
+    "aller: vais, vas, va, allons, allez, vont.",
+    "faire: fais, fais, fait, faisons, faites, font.",
+    "prendre: prends, prends, prend, prenons, prenez, prennent.",
+    "venir: viens, viens, vient, venons, venez, viennent."
+   ],[
+    {fr:"Je vais au travail en bus.",ar:"أذهب إلى العمل بالحافلة."},
+    {fr:"Vous faites du sport le samedi.",ar:"تمارسون الرياضة يوم السبت."},
+    {fr:"Elle prend le métro chaque matin.",ar:"تستقل المترو كل صباح."},
+    {fr:"Mes amis viennent ce soir.",ar:"سيأتي أصدقائي هذا المساء."}
+   ]),
    section("Négation et questions","النفي والسؤال","نضع ne قبل الفعل وpas بعده. وفي الكلام قد تسقط ne، لكن الأفضل كتابتها في المستوى الأول.",[
     "Je parle → Je ne parle pas.",
     "قبل الحركة تصبح ne إلى n’: Je n’habite pas ici.",
@@ -342,7 +353,7 @@ const A1_MODULES:CourseModule[]=[
    ],[
     {fr:"Je ne comprends pas.",ar:"أنا لا أفهم."},
     {fr:"Est-ce que tu étudies aujourd’hui ?",ar:"هل تدرس اليوم؟"},
-    {fr:"Où habitez-vous ?",ar:"أين تسكن؟"}
+    {fr:"Où habitez-vous ?",ar:"أين تسكنون؟"}
    ])
   ]
  },
@@ -938,6 +949,32 @@ const A1_CORE_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"On ___ une réservation.",speech:"Complétez la phrase. On a une réservation.",instruction:"اختر تصريف avoir الصحيح مع on.",choices:["est","a","avons"],correctIndex:1,explanation:"مع on يُصرّف avoir هكذا: on a."},
  {prompt:"Nous ___ deux enfants.",speech:"Complétez la phrase. Nous avons deux enfants.",instruction:"اختر تصريف avoir الصحيح مع nous.",choices:["sommes","ont","avons"],correctIndex:2,explanation:"مع nous يُصرّف avoir هكذا: nous avons."},
  {prompt:"Elles ont froid.",speech:"Elles ont froid.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["يشعرن بالبرد.","هن في الخارج.","لديهن معاطف."],correctIndex:0,explanation:"avoir froid تعبير ثابت يعني الشعور بالبرد."}
+];
+
+const A1_PRESENT_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je prépare le dîner à la maison.",ar:"أُحضّر العشاء في المنزل."},
+ {fr:"Tu finis ton travail à cinq heures.",ar:"تنهي عملك الساعة الخامسة."},
+ {fr:"Le bus arrive devant la gare.",ar:"تصل الحافلة أمام المحطة."},
+ {fr:"Nous choisissons une table près de la fenêtre.",ar:"نختار طاولة قرب النافذة."},
+ {fr:"Vous attendez votre tour.",ar:"تنتظرون دوركم."},
+ {fr:"Elles prennent le train chaque matin.",ar:"يستقللن القطار كل صباح."},
+ {fr:"Je ne travaille pas le dimanche.",ar:"لا أعمل يوم الأحد."},
+ {fr:"Il n’habite pas dans ce quartier.",ar:"هو لا يسكن في هذا الحي."},
+ {fr:"Est-ce que vous parlez français ?",ar:"هل تتحدثون الفرنسية؟"},
+ {fr:"Pourquoi est-ce qu’elle rentre tôt ?",ar:"لماذا تعود مبكرًا؟"}
+];
+
+const A1_PRESENT_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ français avec mes collègues.",speech:"Complétez la phrase. Je parle français avec mes collègues.",instruction:"اختر تصريف parler الصحيح مع je.",choices:["parle","parles","parlons"],correctIndex:0,explanation:"مع je يأخذ الفعل parler النهاية -e: je parle."},
+ {prompt:"Nous ___ le cours à midi.",speech:"Complétez la phrase. Nous finissons le cours à midi.",instruction:"اختر تصريف finir الصحيح مع nous.",choices:["finissez","finissons","finissent"],correctIndex:1,explanation:"مع nous يُصرّف finir هكذا: nous finissons."},
+ {prompt:"Ils ___ devant le cinéma.",speech:"Complétez la phrase. Ils attendent devant le cinéma.",instruction:"اختر تصريف attendre الصحيح مع ils.",choices:["attend","attendez","attendent"],correctIndex:2,explanation:"مع ils يأخذ attendre النهاية -ent: ils attendent."},
+ {prompt:"Tu ___ le bus numéro dix.",speech:"Complétez la phrase. Tu prends le bus numéro dix.",instruction:"اختر تصريف prendre الصحيح مع tu.",choices:["prends","prend","prenez"],correctIndex:0,explanation:"مع tu يُصرّف prendre هكذا: tu prends."},
+ {prompt:"Vous ___ vos devoirs le soir.",speech:"Complétez la phrase. Vous faites vos devoirs le soir.",instruction:"اختر تصريف faire الصحيح مع vous.",choices:["faisons","faites","font"],correctIndex:1,explanation:"مع vous يُصرّف faire هكذا: vous faites."},
+ {prompt:"Elle ___ au marché à pied.",speech:"Complétez la phrase. Elle va au marché à pied.",instruction:"اختر تصريف aller الصحيح مع elle.",choices:["vas","vont","va"],correctIndex:2,explanation:"مع elle يُصرّف aller هكذا: elle va."},
+ {prompt:"Je ___ comprends ___ cette phrase.",speech:"Complétez la phrase négative. Je ne comprends pas cette phrase.",instruction:"اختر أداتي النفي المناسبتين.",choices:["ne … pas","pas … ne","n’ … jamais"],correctIndex:0,explanation:"في النفي البسيط نضع ne قبل الفعل وpas بعده: je ne comprends pas."},
+ {prompt:"Il ___ habite pas ici.",speech:"Complétez la phrase. Il n’habite pas ici.",instruction:"اختر الصيغة الصحيحة قبل الفعل المبدوء بحرف متحرك.",choices:["ne","n’","pas"],correctIndex:1,explanation:"تتحول ne إلى n’ قبل حرف متحرك: il n’habite pas."},
+ {prompt:"___ vous travaillez aujourd’hui ?",speech:"Complétez la question. Est-ce que vous travaillez aujourd’hui ?",instruction:"اختر بداية السؤال الصحيحة.",choices:["Qu’est-ce","Est-ce qui","Est-ce que"],correctIndex:2,explanation:"Est-ce que تسبق الجملة المثبتة لتكوين سؤال واضح."},
+ {prompt:"Nous ne prenons pas la voiture aujourd’hui.",speech:"Nous ne prenons pas la voiture aujourd’hui.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["لن نذهب بالسيارة اليوم.","نبحث عن السيارة اليوم.","نغسل السيارة اليوم."],correctIndex:0,explanation:"prendre la voiture يعني الذهاب بالسيارة، والجملة هنا تنفي ذلك اليوم."}
 ];
 
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
@@ -3886,6 +3923,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3918,6 +3956,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

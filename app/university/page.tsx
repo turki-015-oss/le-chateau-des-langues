@@ -4231,7 +4231,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   },willOpen?90:0);
  };
 
- return <main className={`university-world ${levelPage?"university-level-world":""}`} dir="rtl">
+ return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
   <header className="university-topbar">
    <Link href={backHref} aria-label={lessonPage?`العودة إلى منهج ${level.id}`:levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
    <div><span>جامعة القلعة</span><strong>L’Université Royale</strong></div>

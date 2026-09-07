@@ -544,3 +544,221 @@
  .university-level-world .university-phase-workspace .university-phase-modules span{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){.university-level-world .university-phase-workspace-shell{transition:none}}
+
+/* University home — the same 2030 visual language used by level journeys. */
+.university-main-world{
+ --um-navy:#061a35;
+ --um-blue:#124a82;
+ --um-gold:#d8b15b;
+ --um-gold-light:#f4da95;
+ position:relative;
+ overflow-x:hidden;
+ background:
+  radial-gradient(circle at 8% 8%,rgba(75,145,213,.22),transparent 27rem),
+  radial-gradient(circle at 93% 40%,rgba(222,184,92,.16),transparent 24rem),
+  linear-gradient(180deg,#e7f0fa,#f9f6ee 46rem,#edf3f9);
+}
+.university-main-world:before{
+ content:"";
+ position:fixed;
+ z-index:0;
+ inset:0;
+ pointer-events:none;
+ opacity:.32;
+ background-image:linear-gradient(rgba(18,65,113,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(18,65,113,.055) 1px,transparent 1px);
+ background-size:42px 42px;
+ mask-image:linear-gradient(#000,transparent 80%);
+}
+.university-main-world>.university-topbar,
+.university-main-world>.university-hero,
+.university-main-world>.university-intro,
+.university-main-world>.university-level-section{position:relative;z-index:1}
+.university-main-world .university-topbar{
+ height:82px;
+ border-bottom:1px solid rgba(241,208,127,.42);
+ background:linear-gradient(110deg,rgba(4,19,42,.97),rgba(10,45,82,.94) 50%,rgba(5,24,49,.97));
+ box-shadow:0 14px 38px rgba(4,19,42,.22),inset 0 -1px rgba(255,255,255,.05);
+ backdrop-filter:blur(24px) saturate(1.25);
+}
+.university-main-world .university-topbar:after{content:"";position:absolute;right:12%;bottom:-1px;left:12%;height:1px;background:linear-gradient(90deg,transparent,var(--um-gold-light),transparent)}
+.university-main-world .university-topbar>a,.university-main-world .university-seal{
+ border-color:rgba(245,218,151,.58);
+ border-radius:16px;
+ background:linear-gradient(145deg,rgba(41,91,143,.88),rgba(5,25,52,.96));
+ box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 22px rgba(0,0,0,.22),0 0 0 4px rgba(221,183,92,.055);
+}
+.university-main-world .university-hero{
+ width:min(1500px,calc(100% - 44px));
+ min-height:610px;
+ margin:28px auto 0;
+ border:1px solid rgba(227,192,111,.78);
+ border-radius:38px;
+ isolation:isolate;
+ box-shadow:0 32px 75px rgba(5,29,58,.3),0 0 0 7px rgba(255,255,255,.3);
+}
+.university-main-world .university-hero:before{
+ content:"UNIVERSITY  ·  LEARNING OS";
+ position:absolute;
+ z-index:4;
+ top:24px;
+ left:26px;
+ padding:7px 12px;
+ border:1px solid rgba(239,207,135,.45);
+ border-radius:999px;
+ background:rgba(5,27,56,.6);
+ color:#e9ca80;
+ font:700 9px Georgia,serif;
+ letter-spacing:.16em;
+ backdrop-filter:blur(12px);
+}
+.university-main-world .university-hero>img{transform:scale(1.015);filter:saturate(.85) contrast(1.08)}
+.university-main-world .university-hero-shade{
+ background:
+  radial-gradient(circle at 18% 25%,rgba(59,127,193,.23),transparent 26rem),
+  linear-gradient(90deg,rgba(3,18,39,.38),rgba(5,26,53,.72) 46%,rgba(3,18,39,.96)),
+  linear-gradient(0deg,rgba(3,17,36,.92),transparent 56%);
+}
+.university-main-world .university-hero-copy{width:min(1360px,calc(100% - 70px));padding:95px 30px 115px}
+.university-main-world .university-hero-copy>span{
+ border-color:rgba(239,207,135,.62);
+ background:linear-gradient(135deg,rgba(23,75,124,.72),rgba(5,28,57,.8));
+ box-shadow:inset 0 1px rgba(255,255,255,.13),0 9px 24px rgba(0,0,0,.16);
+}
+.university-main-world .university-hero-copy h1{font-size:clamp(54px,7vw,94px);letter-spacing:-.035em;text-shadow:0 10px 38px rgba(0,0,0,.42)}
+.university-main-world .university-hero-copy h2{color:#e8eef7;font-size:clamp(28px,3.4vw,43px)}
+.university-main-world .university-hero-copy p{color:#cbd9e9}
+.university-main-world .university-hero-copy>a{
+ position:relative;
+ overflow:hidden;
+ padding:16px 24px;
+ border-color:#f5da96;
+ border-radius:17px;
+ background:linear-gradient(135deg,#dfb85f,#a87625);
+ box-shadow:0 17px 36px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.4),0 0 0 5px rgba(232,193,101,.08);
+}
+.university-main-world .university-hero-copy>a:after{content:"";position:absolute;inset:0;transform:translateX(110%);background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transition:transform .55s ease}
+.university-main-world .university-hero-copy>a:hover:after{transform:translateX(-110%)}
+
+.university-main-world .university-intro{
+ width:min(1260px,calc(100% - 60px));
+ margin-top:-68px;
+ gap:14px;
+}
+.university-main-world .university-intro article{
+ min-height:128px;
+ position:relative;
+ overflow:hidden;
+ border-color:rgba(178,199,222,.86);
+ border-radius:25px;
+ background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(234,242,251,.9));
+ box-shadow:0 22px 48px rgba(8,40,77,.14),inset 0 1px #fff;
+ backdrop-filter:blur(22px);
+ transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+.university-main-world .university-intro article:after{content:"";position:absolute;right:0;bottom:0;left:0;height:3px;background:linear-gradient(90deg,transparent,#d8b15b,#225e98,transparent)}
+.university-main-world .university-intro article:hover{transform:translateY(-5px);border-color:#cfa858;box-shadow:0 27px 54px rgba(8,40,77,.19),inset 0 1px #fff}
+.university-main-world .university-intro article>svg{
+ width:52px;
+ height:52px;
+ padding:13px;
+ border:1px solid rgba(222,184,96,.58);
+ border-radius:17px;
+ background:linear-gradient(145deg,#1a548c,#07264e);
+ color:#f2d38c;
+ box-shadow:inset 0 1px rgba(255,255,255,.15),0 11px 23px rgba(6,37,73,.2);
+}
+.university-main-world .university-intro strong{color:#133b6a;font-size:19px}
+.university-main-world .university-intro span{color:#718297}
+
+.university-main-world .university-level-section{
+ width:min(1260px,calc(100% - 44px));
+ margin:104px auto 90px;
+ padding:38px;
+ border:1px solid rgba(158,185,212,.74);
+ border-radius:36px;
+ background:linear-gradient(145deg,rgba(233,243,252,.78),rgba(255,255,255,.69));
+ box-shadow:0 30px 68px rgba(9,42,79,.13),inset 0 1px rgba(255,255,255,.94);
+ backdrop-filter:blur(24px);
+}
+.university-main-world .university-level-section:before{
+ content:"ACADEMIC PATH  ·  01";
+ position:absolute;
+ top:-12px;
+ left:34px;
+ padding:5px 12px;
+ border:1px solid rgba(198,159,79,.42);
+ border-radius:999px;
+ background:#edf4fb;
+ color:#896529;
+ font:700 8px Georgia,serif;
+ letter-spacing:.17em;
+}
+.university-main-world .university-section-heading>span{color:#17487d}
+.university-main-world .university-section-heading h2{color:#99702b}
+.university-main-world .university-level-grid{gap:18px;margin-top:38px}
+.university-main-world .university-level-grid>button{
+ min-height:210px;
+ grid-template-columns:118px minmax(0,1fr) 38px;
+ padding:30px;
+ border-color:rgba(171,195,219,.9);
+ border-radius:28px;
+ background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(233,242,251,.92));
+ box-shadow:0 17px 36px rgba(11,46,83,.1),inset 0 1px #fff;
+ transition:transform .26s cubic-bezier(.2,.8,.2,1),border-color .26s ease,box-shadow .26s ease,background .26s ease;
+}
+.university-main-world .university-level-grid>button:after{
+ content:"";
+ position:absolute;
+ width:190px;
+ height:190px;
+ top:-120px;
+ left:-85px;
+ border:1px solid rgba(35,93,151,.12);
+ border-radius:50%;
+ box-shadow:0 0 0 30px rgba(35,93,151,.035),0 0 0 62px rgba(35,93,151,.022);
+}
+.university-main-world .university-level-grid>button:hover,
+.university-main-world .university-level-grid>button:focus-visible{
+ transform:translateY(-6px) scale(1.008);
+ border-color:#c79d49;
+ background:linear-gradient(145deg,#fff,#eff6fd);
+ box-shadow:0 25px 48px rgba(9,42,79,.17),0 0 0 5px rgba(214,175,88,.07);
+ outline:0;
+}
+.university-main-world .university-level-code{
+ width:110px;
+ height:110px;
+ border:1px solid rgba(234,200,120,.7);
+ border-radius:29px;
+ background:linear-gradient(145deg,#1d5b94,#061f42);
+ font-size:42px;
+ box-shadow:inset 0 1px rgba(255,255,255,.16),0 17px 30px rgba(6,36,71,.23),0 0 0 6px rgba(27,81,135,.055);
+}
+.university-main-world .university-level-grid h3{color:#687a90}
+.university-main-world .university-level-grid>button>svg{width:28px;height:28px;padding:6px;border-radius:50%;background:#e6eef7;color:#98722e}
+
+@media(max-width:760px){
+ .university-main-world:before{background-size:30px 30px;opacity:.24}
+ .university-main-world .university-topbar{height:70px}
+ .university-main-world .university-hero{width:calc(100% - 20px);min-height:610px;margin-top:12px;border-radius:28px;box-shadow:0 23px 50px rgba(5,29,58,.28),0 0 0 4px rgba(255,255,255,.28)}
+ .university-main-world .university-hero:before{top:17px;left:17px;font-size:7px}
+ .university-main-world .university-hero-copy{width:calc(100% - 26px);padding:82px 5px 120px}
+ .university-main-world .university-hero-copy h1{font-size:45px;line-height:1.05}
+ .university-main-world .university-hero-copy h2{font-size:27px}
+ .university-main-world .university-hero-copy p{font-size:14px}
+ .university-main-world .university-intro{width:calc(100% - 28px);margin-top:-82px;grid-template-columns:1fr;gap:9px}
+ .university-main-world .university-intro article{min-height:88px;padding:15px;border-radius:19px}
+ .university-main-world .university-intro article:hover{transform:none}
+ .university-main-world .university-intro article>svg{width:44px;height:44px;padding:11px;border-radius:14px}
+ .university-main-world .university-intro strong{font-size:16px}
+ .university-main-world .university-intro span{font-size:12px}
+ .university-main-world .university-level-section{width:calc(100% - 20px);margin:76px auto 55px;padding:22px 10px 12px;border-radius:27px}
+ .university-main-world .university-level-section:before{left:21px}
+ .university-main-world .university-level-grid{gap:10px;margin-top:26px}
+ .university-main-world .university-level-grid>button{min-height:150px;grid-template-columns:78px minmax(0,1fr) 25px;gap:13px;padding:17px 13px;border-radius:21px}
+ .university-main-world .university-level-grid>button:hover,.university-main-world .university-level-grid>button:focus-visible{transform:none}
+ .university-main-world .university-level-code{width:74px;height:74px;border-radius:21px;font-size:29px}
+ .university-main-world .university-level-grid p{font-size:12px}
+ .university-main-world .university-level-grid small{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.university-main-world .university-intro article,.university-main-world .university-level-grid>button,.university-main-world .university-hero-copy>a:after{transition:none}}

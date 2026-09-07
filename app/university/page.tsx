@@ -18,6 +18,7 @@ import {
  ADJECTIVE_PRACTICE_ITEMS,ADJECTIVE_QUIZ_ITEMS,APPEARANCE_ADJECTIVES,HAIR_EYES_ADJECTIVES,
  PERSONALITY_ADJECTIVES
 } from "./adjectives-data";
+import "./university-future.css";
 
 type Example={fr:string;ar:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};

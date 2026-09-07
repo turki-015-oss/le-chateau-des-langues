@@ -1,0 +1,268 @@
+/* University visual layer — interface-only, no course behavior changes. */
+.university-level-world{
+ --u30-navy:#061a35;
+ --u30-blue:#103d72;
+ --u30-blue-soft:#eaf3ff;
+ --u30-gold:#d6af58;
+ --u30-gold-light:#f5dc9a;
+ --u30-ink:#102b50;
+ position:relative;
+ overflow-x:hidden;
+ background:
+  radial-gradient(circle at 8% 7%,rgba(76,142,214,.2),transparent 27rem),
+  radial-gradient(circle at 92% 28%,rgba(221,183,92,.16),transparent 25rem),
+  linear-gradient(180deg,#e7f0fb 0,#f8f5ec 29rem,#edf3f9 100%);
+}
+.university-level-world:before{
+ content:"";
+ position:fixed;
+ z-index:0;
+ inset:0;
+ pointer-events:none;
+ opacity:.34;
+ background-image:
+  linear-gradient(rgba(19,62,108,.055) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(19,62,108,.055) 1px,transparent 1px);
+ background-size:42px 42px;
+ mask-image:linear-gradient(#000,transparent 75%);
+}
+.university-level-world>.university-topbar,
+.university-level-world>.university-level-entry,
+.university-level-world>.university-journey,
+.university-level-world>.university-course{position:relative;z-index:1}
+
+.university-level-world .university-topbar{
+ height:82px;
+ border-bottom:1px solid rgba(241,208,127,.42);
+ background:linear-gradient(110deg,rgba(4,19,42,.97),rgba(10,45,82,.94) 50%,rgba(5,24,49,.97));
+ box-shadow:0 14px 38px rgba(4,19,42,.22),inset 0 -1px rgba(255,255,255,.05);
+ backdrop-filter:blur(24px) saturate(1.25);
+}
+.university-level-world .university-topbar:after{
+ content:"";
+ position:absolute;
+ right:12%;
+ bottom:-1px;
+ left:12%;
+ height:1px;
+ background:linear-gradient(90deg,transparent,var(--u30-gold-light),transparent);
+}
+.university-level-world .university-topbar>a,
+.university-level-world .university-seal{
+ border-color:rgba(245,218,151,.58);
+ border-radius:16px;
+ background:linear-gradient(145deg,rgba(41,91,143,.88),rgba(5,25,52,.96));
+ box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 22px rgba(0,0,0,.22),0 0 0 4px rgba(221,183,92,.055);
+}
+.university-level-world .university-topbar>a:hover,
+.university-level-world .university-topbar>a:focus-visible{
+ transform:translateX(3px) scale(1.04);
+ box-shadow:inset 0 1px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.27),0 0 0 4px rgba(221,183,92,.13);
+ outline:0;
+}
+
+.university-level-world .university-level-entry{
+ width:min(1440px,calc(100% - 44px));
+ min-height:292px;
+ margin-top:34px;
+ padding:42px 48px;
+ border:1px solid rgba(230,195,114,.72);
+ border-radius:34px;
+ isolation:isolate;
+ background:
+  radial-gradient(circle at 82% 18%,rgba(110,174,235,.22),transparent 20rem),
+  linear-gradient(125deg,rgba(4,20,45,.99),rgba(15,59,105,.97) 60%,rgba(7,29,57,.99));
+ box-shadow:0 28px 70px rgba(7,32,63,.26),inset 0 1px rgba(255,255,255,.1),0 0 0 7px rgba(255,255,255,.26);
+}
+.university-level-world .university-level-entry:before,
+.university-level-world .university-level-entry:after{
+ content:"";
+ position:absolute;
+ z-index:-1;
+ pointer-events:none;
+ border-radius:50%;
+}
+.university-level-world .university-level-entry:before{
+ width:360px;
+ height:360px;
+ top:-210px;
+ left:12%;
+ border:1px solid rgba(241,211,142,.2);
+ box-shadow:0 0 0 34px rgba(241,211,142,.035),0 0 0 72px rgba(241,211,142,.025);
+}
+.university-level-world .university-level-entry:after{
+ width:190px;
+ height:190px;
+ right:-70px;
+ bottom:-95px;
+ background:radial-gradient(circle,rgba(77,150,220,.22),transparent 70%);
+ filter:blur(2px);
+}
+.university-level-world .university-level-entry a{
+ border-color:rgba(243,215,151,.48);
+ background:rgba(255,255,255,.075);
+ box-shadow:inset 0 1px rgba(255,255,255,.1);
+ backdrop-filter:blur(12px);
+ transition:transform .2s ease,background .2s ease,border-color .2s ease;
+}
+.university-level-world .university-level-entry a:hover{
+ transform:translateY(-2px);
+ border-color:var(--u30-gold-light);
+ background:rgba(255,255,255,.13);
+}
+.university-level-world .university-level-entry h1{color:#dce9f7;letter-spacing:.02em}
+.university-level-world .university-level-entry h2{color:#f3d28a;text-shadow:0 6px 25px rgba(0,0,0,.22)}
+.university-level-world .university-level-entry p{color:#cbd9e9}
+.university-level-world .university-level-entry aside{
+ min-height:190px;
+ position:relative;
+ border-color:rgba(243,211,139,.6);
+ border-radius:30px;
+ background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045));
+ box-shadow:inset 0 1px rgba(255,255,255,.16),0 18px 36px rgba(0,0,0,.18),0 0 35px rgba(89,153,214,.1);
+ backdrop-filter:blur(16px);
+}
+.university-level-world .university-level-entry aside:before{
+ content:"";
+ position:absolute;
+ inset:10px;
+ border:1px solid rgba(242,213,145,.13);
+ border-radius:22px;
+ pointer-events:none;
+}
+.university-level-world .university-level-entry aside b{text-shadow:0 5px 20px rgba(0,0,0,.28)}
+
+.university-level-world .university-journey{width:min(1200px,calc(100% - 44px));margin-top:4px}
+.university-level-world .university-resume-card{
+ position:relative;
+ overflow:hidden;
+ padding:26px;
+ border-color:rgba(185,202,222,.85);
+ border-radius:28px;
+ background:linear-gradient(130deg,rgba(255,255,255,.96),rgba(242,247,253,.91));
+ box-shadow:0 22px 50px rgba(13,47,84,.12),inset 0 1px #fff;
+ backdrop-filter:blur(20px);
+}
+.university-level-world .university-resume-card:before{
+ content:"";
+ position:absolute;
+ top:0;
+ right:0;
+ bottom:0;
+ width:5px;
+ background:linear-gradient(var(--u30-gold-light),var(--u30-blue));
+}
+.university-level-world .university-resume-icon{
+ border:1px solid rgba(239,207,134,.6);
+ border-radius:22px;
+ background:linear-gradient(145deg,#1b528c,#061d3f);
+ box-shadow:inset 0 1px rgba(255,255,255,.16),0 13px 25px rgba(5,33,67,.23),0 0 0 5px rgba(25,78,130,.06);
+}
+.university-level-world .university-resume-card>a{
+ border:1px solid rgba(240,205,126,.55);
+ border-radius:16px;
+ background:linear-gradient(135deg,#194d84,#09284f);
+ box-shadow:0 12px 24px rgba(7,38,74,.2),inset 0 1px rgba(255,255,255,.13);
+ transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.university-level-world .university-resume-card>a:hover,
+.university-level-world .university-resume-card>a:focus-visible{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 16px 30px rgba(7,38,74,.27);outline:0}
+.university-level-world .university-progress-card{
+ margin-top:14px;
+ border-color:rgba(188,204,223,.9);
+ border-radius:20px;
+ background:rgba(255,255,255,.82);
+ box-shadow:0 13px 34px rgba(15,48,84,.08),inset 0 1px #fff;
+ backdrop-filter:blur(18px);
+}
+.university-level-world .university-progress-track{height:10px;background:#dfe9f3;box-shadow:inset 0 1px 3px rgba(15,50,88,.12)}
+.university-level-world .university-progress-track i{background:linear-gradient(90deg,#174c82,#6da4d5 55%,#e2bc69);box-shadow:0 0 12px rgba(34,102,166,.28)}
+.university-level-world .university-journey-heading{margin-top:50px}
+.university-level-world .university-journey-heading>span{color:#17487d;text-shadow:0 1px #fff}
+.university-level-world .university-journey-heading h2{color:#9a722d}
+
+.university-level-world .university-phase-list{gap:17px}
+.university-level-world .university-phase{
+ position:relative;
+ border-color:rgba(177,197,219,.9);
+ border-radius:26px;
+ background:rgba(255,255,255,.88);
+ box-shadow:0 16px 38px rgba(13,45,81,.085),inset 0 1px #fff;
+ backdrop-filter:blur(16px);
+ transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+.university-level-world .university-phase:hover{transform:translateY(-2px);border-color:rgba(193,153,75,.75);box-shadow:0 22px 48px rgba(13,45,81,.13),inset 0 1px #fff}
+.university-level-world .university-phase[open]{border-color:rgba(194,153,73,.75);box-shadow:0 24px 54px rgba(13,45,81,.14),0 0 0 5px rgba(204,164,84,.055)}
+.university-level-world .university-phase>summary{min-height:100px;padding:23px 25px}
+.university-level-world .university-phase>summary>i{
+ border:1px solid rgba(213,174,89,.48);
+ border-radius:17px;
+ background:linear-gradient(145deg,#174d83,#08264d);
+ color:#f3d58f;
+ box-shadow:inset 0 1px rgba(255,255,255,.14),0 10px 23px rgba(7,38,74,.19);
+}
+.university-level-world .university-phase>summary h3{color:#536a84}
+.university-level-world .university-phase>summary em{border:1px solid rgba(211,174,91,.26);background:linear-gradient(135deg,#fff8e9,#f2e5c7)}
+.university-level-world .university-phase>summary>svg{width:22px;height:22px;padding:3px;border-radius:50%;background:#edf3fa}
+.university-level-world .university-phase-modules{gap:12px;padding:2px 20px 21px}
+.university-level-world .university-phase-modules>a{
+ min-height:86px;
+ position:relative;
+ border-color:#d8e3ef;
+ border-radius:19px;
+ background:linear-gradient(145deg,#fbfdff,#f1f6fb);
+ box-shadow:inset 0 1px #fff,0 8px 20px rgba(14,49,87,.055);
+ transition:transform .22s cubic-bezier(.2,.8,.2,1),border-color .22s ease,box-shadow .22s ease,background .22s ease;
+}
+.university-level-world .university-phase-modules>a:hover,
+.university-level-world .university-phase-modules>a:focus-visible{
+ transform:translateY(-3px) scale(1.008);
+ border-color:#cda557;
+ background:linear-gradient(145deg,#fff,#f3f8fd);
+ box-shadow:0 15px 30px rgba(13,49,88,.13),0 0 0 4px rgba(213,174,89,.07);
+ outline:0;
+}
+.university-level-world .university-phase-modules>a>i{
+ width:50px;
+ height:50px;
+ border:1px solid rgba(218,183,101,.55);
+ border-radius:16px;
+ background:linear-gradient(145deg,#1b578f,#08274f);
+ color:#f1d28b;
+ box-shadow:inset 0 1px rgba(255,255,255,.16),0 10px 20px rgba(6,38,75,.18);
+}
+.university-level-world .university-phase-modules>a>i.completed{
+ border-color:rgba(91,154,124,.5);
+ background:linear-gradient(145deg,#2f8561,#15523d);
+ color:#ecfff5;
+}
+.university-level-world .university-phase-modules>a>svg{width:19px;padding:3px;border-radius:50%;background:#e8eff7;color:#94702f}
+
+@media(max-width:680px){
+ .university-level-world{background:radial-gradient(circle at 15% 8%,rgba(74,143,211,.2),transparent 20rem),linear-gradient(180deg,#e6eff9 0,#f8f5ed 25rem,#edf3f9 100%)}
+ .university-level-world:before{background-size:30px 30px;opacity:.25}
+ .university-level-world .university-topbar{height:70px}
+ .university-level-world .university-level-entry{width:calc(100% - 20px);margin-top:12px;padding:22px 18px;border-radius:25px;box-shadow:0 20px 45px rgba(7,32,63,.23),0 0 0 4px rgba(255,255,255,.25)}
+ .university-level-world .university-level-entry:before{width:230px;height:230px;top:-150px;left:-40px}
+ .university-level-world .university-level-entry aside{min-height:105px;border-radius:22px}
+ .university-level-world .university-journey{width:calc(100% - 20px)}
+ .university-level-world .university-resume-card{padding:16px;border-radius:22px}
+ .university-level-world .university-resume-icon{border-radius:17px}
+ .university-level-world .university-progress-card{border-radius:17px}
+ .university-level-world .university-journey-heading{margin-top:40px}
+ .university-level-world .university-phase-list{gap:12px}
+ .university-level-world .university-phase{border-radius:21px}
+ .university-level-world .university-phase:hover{transform:none}
+ .university-level-world .university-phase>summary{min-height:84px;padding:14px 12px}
+ .university-level-world .university-phase>summary>i{border-radius:14px}
+ .university-level-world .university-phase-modules{gap:9px;padding:0 9px 10px}
+ .university-level-world .university-phase-modules>a{min-height:77px;border-radius:16px}
+ .university-level-world .university-phase-modules>a:hover,.university-level-world .university-phase-modules>a:focus-visible{transform:none}
+ .university-level-world .university-phase-modules>a>i{width:43px;height:43px;border-radius:14px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .university-level-world .university-phase,
+ .university-level-world .university-phase-modules>a,
+ .university-level-world .university-resume-card>a{transition:none}
+}

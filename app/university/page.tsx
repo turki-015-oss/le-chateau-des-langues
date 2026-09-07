@@ -451,6 +451,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"home-housing",title:"Le logement et la maison",ar:"السكن والمنزل",icon:Building2,
+  description:"تسمية أنواع السكن والغرف والأثاث، وتحديد موضع الأشياء، ووصف المنزل والعنوان بعبارات بسيطة.",
+  sections:[
+   section("Les types de logement et les pièces","أنواع السكن والغرف","يمكنك تقديم مسكنك بفعل habiter، ثم تسمية الغرف باستخدام Il y a. احفظ كل اسم مع أداته لمعرفة جنسه.",[
+    "une maison، un appartement، un studio: منزل، شقة، استوديو.",
+    "un salon، une chambre، une cuisine: غرفة جلوس، غرفة نوم، مطبخ.",
+    "une salle de bains، un balcon، un jardin.",
+    "J’habite dans… أسكن في…، Chez moi… في منزلي…"
+   ],[
+    {fr:"J’habite dans un appartement calme.",ar:"أسكن في شقة هادئة."},
+    {fr:"Notre maison a trois chambres.",ar:"يحتوي منزلنا على ثلاث غرف نوم."},
+    {fr:"La cuisine est à côté du salon.",ar:"يقع المطبخ بجوار غرفة الجلوس."},
+    {fr:"Il y a un petit balcon devant la chambre.",ar:"توجد شرفة صغيرة أمام غرفة النوم."}
+   ]),
+   section("Les meubles et leur place","الأثاث ومواقع الأشياء","استخدم Il y a لتذكر الأثاث، ثم أضف حرف مكان لتوضح موضعه. تأتي عبارات المكان غالبًا بعد الشيء الذي نصفه.",[
+    "un lit، une armoire، une table، un canapé.",
+    "sur فوق، sous تحت، dans داخل.",
+    "devant أمام، derrière خلف، entre بين.",
+    "à côté de بجوار، en face de مقابل."
+   ],[
+    {fr:"Le livre est sur la table.",ar:"الكتاب فوق الطاولة."},
+    {fr:"Les chaussures sont sous le lit.",ar:"الحذاء تحت السرير."},
+    {fr:"L’armoire est en face de la fenêtre.",ar:"تقع الخزانة مقابل النافذة."},
+    {fr:"Le canapé est entre les deux fauteuils.",ar:"تقع الأريكة بين المقعدين."}
+   ]),
+   section("Décrire son logement","وصف المسكن","للوصف البسيط اذكر مكان السكن وحجمه وغرفه وما يعجبك فيه. استخدم être للصفة وavoir أو Il y a لذكر المكونات.",[
+    "Mon adresse est… عنواني هو…",
+    "J’habite au deuxième étage: أسكن في الطابق الثاني.",
+    "L’appartement est grand / petit / lumineux.",
+    "Ma pièce préférée est… غرفتي المفضلة هي…"
+   ],[
+    {fr:"Mon adresse est le douze, rue des Fleurs.",ar:"عنواني هو 12 شارع الزهور."},
+    {fr:"J’habite au deuxième étage avec ma famille.",ar:"أسكن في الطابق الثاني مع عائلتي."},
+    {fr:"L’appartement est petit, mais lumineux.",ar:"الشقة صغيرة لكنها مضيئة."},
+    {fr:"Ma pièce préférée est le salon.",ar:"غرفتي المفضلة هي غرفة الجلوس."}
+   ])
+  ]
+ },
+ {
   id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:Users,
   description:"مفردات العائلة، الحالات الجسدية اليومية، والمشاعر في أقسام مستقلة.",
   sections:[
@@ -678,6 +717,32 @@ const A1_WEATHER_CLOTHES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Mets ton manteau, ___ il fait froid.",speech:"Complétez la phrase. Mets ton manteau, parce qu’il fait froid.",instruction:"اختر الرابط الذي يوضح السبب.",choices:["mais","puis","parce qu’"],correctIndex:2,explanation:"parce que يقدّم سبب ارتداء المعطف."},
  {prompt:"une veste ___.",speech:"Choisissez l’accord correct. Une veste noire.",instruction:"اختر صيغة اللون الموافقة للاسم المؤنث.",choices:["noire","noir","noirs"],correctIndex:0,explanation:"veste مؤنث مفرد، ولذلك تصبح noir إلى noire."},
  {prompt:"Elle prend son parapluie.",speech:"Elle prend son parapluie.",instruction:"اختر المعنى العربي الصحيح.",choices:["ترتدي حذاءها.","تأخذ مظلتها.","تغلق نافذتها."],correctIndex:1,explanation:"prendre son parapluie تعني أخذ المظلة."}
+];
+
+const A1_HOME_HOUSING_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je vis dans une petite maison avec un jardin.",ar:"أعيش في منزل صغير له حديقة."},
+ {fr:"Mon appartement se trouve au troisième étage.",ar:"تقع شقتي في الطابق الثالث."},
+ {fr:"Il y a deux chambres et une salle de bains.",ar:"توجد غرفتا نوم وحمام واحد."},
+ {fr:"Nous mangeons dans la cuisine.",ar:"نتناول الطعام في المطبخ."},
+ {fr:"La télévision est devant le canapé.",ar:"يقع التلفاز أمام الأريكة."},
+ {fr:"La lampe est à côté du lit.",ar:"يقع المصباح بجوار السرير."},
+ {fr:"Mes vêtements sont dans l’armoire.",ar:"ملابسي داخل الخزانة."},
+ {fr:"Le chat dort sous la chaise.",ar:"تنام القطة تحت الكرسي."},
+ {fr:"Ma chambre est claire et confortable.",ar:"غرفة نومي مضيئة ومريحة."},
+ {fr:"Chez moi, le salon donne sur le jardin.",ar:"في منزلي، تطل غرفة الجلوس على الحديقة."}
+];
+
+const A1_HOME_HOUSING_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"J’___ dans un appartement.",speech:"Complétez la phrase. J’habite dans un appartement.",instruction:"اختر الفعل المناسب للتعبير عن مكان السكن.",choices:["habite","porte","tourne"],correctIndex:0,explanation:"habiter يعني يسكن."},
+ {prompt:"Il y a un lit dans la ___.",speech:"Complétez la phrase. Il y a un lit dans la chambre.",instruction:"اختر الغرفة التي يوجد فيها السرير عادةً.",choices:["cuisine","chambre","salle de bains"],correctIndex:1,explanation:"un lit يوجد عادةً في une chambre."},
+ {prompt:"Nous préparons le repas dans la ___.",speech:"Complétez la phrase. Nous préparons le repas dans la cuisine.",instruction:"اختر اسم الغرفة المناسب.",choices:["cuisine","chambre","balcon"],correctIndex:0,explanation:"نحضّر الطعام في المطبخ: la cuisine."},
+ {prompt:"Le livre est ___ la table.",speech:"Complétez la phrase. Le livre est sur la table.",instruction:"اختر حرف المكان الذي يعني «فوق».",choices:["sous","dans","sur"],correctIndex:2,explanation:"sur تعني فوق أو على."},
+ {prompt:"Les chaussures sont ___ le lit.",speech:"Complétez la phrase. Les chaussures sont sous le lit.",instruction:"اختر حرف المكان الذي يعني «تحت».",choices:["devant","sous","entre"],correctIndex:1,explanation:"sous تعني تحت."},
+ {prompt:"La table est ___ les deux chaises.",speech:"Complétez la phrase. La table est entre les deux chaises.",instruction:"اختر حرف المكان الذي يعني «بين».",choices:["entre","derrière","sur"],correctIndex:0,explanation:"entre تعني بين."},
+ {prompt:"L’armoire est en face ___ lit.",speech:"Complétez la phrase. L’armoire est en face du lit.",instruction:"اختر الشكل الصحيح بعد en face de مع اسم مذكر معرف.",choices:["au","du","le"],correctIndex:1,explanation:"de مع le تندمج لتصبح du."},
+ {prompt:"J’habite ___ deuxième étage.",speech:"Complétez la phrase. J’habite au deuxième étage.",instruction:"اختر حرف الجر والأداة الصحيحين مع الطابق.",choices:["du","aux","au"],correctIndex:2,explanation:"نقول au deuxième étage."},
+ {prompt:"L’appartement est petit, ___ lumineux.",speech:"Complétez la phrase. L’appartement est petit, mais lumineux.",instruction:"اختر الرابط المناسب للجمع بين صفتين متقابلتين.",choices:["mais","ou","parce que"],correctIndex:0,explanation:"mais تعني لكن وتربط فكرتين متقابلتين."},
+ {prompt:"Ma pièce préférée est le salon.",speech:"Ma pièce préférée est le salon.",instruction:"اختر المعنى العربي الصحيح.",choices:["غرفة نومي بجوار الصالة.","غرفتي المفضلة هي غرفة الجلوس.","منزلي لا يحتوي على غرفة جلوس."],correctIndex:1,explanation:"la pièce préférée تعني الغرفة المفضلة."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2169,7 +2234,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والاتجاهات والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","description","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3367,6 +3432,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3386,6 +3452,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

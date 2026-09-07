@@ -30,13 +30,3 @@
 @keyframes librarySpin{to{transform:rotate(360deg)}}
 @media(max-width:620px){.dictionary-word-list>article{display:block}.dictionary-audio-actions{gap:5px}.dictionary-audio-actions button{padding:6px 8px}.dictionary-audio-actions button span{font-size:10px}.dictionary-gender{font-size:9px!important}.library-book-spine small{width:calc(100% - 3px);font-size:7px}}
 @media(max-width:620px){.dictionary-country-details{grid-template-columns:1fr}.dictionary-country-details>div{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:8px;padding:7px 9px}.dictionary-country-details dd{margin:0}}
-
-/* Fast mobile dictionary navigation */
-.library-search-results>p.library-searching{display:flex;align-items:center;justify-content:center;gap:8px}
-.library-searching svg{width:18px;height:18px;animation:librarySpin .9s linear infinite}
-.dictionary-pagination{position:relative;display:grid;grid-template-columns:92px 1fr 92px;align-items:center;gap:8px;margin:9px 0 5px;direction:rtl}
-.dictionary-pagination button{min-height:34px;border:1px solid #9d7440;border-radius:999px;background:#6e3e24;color:#f8dea0;cursor:pointer}
-.dictionary-pagination button:disabled{opacity:.38;cursor:default}
-.dictionary-pagination span{text-align:center;color:#765b3d;font-size:11px}
-.dictionary-pagination b{color:#69381f;font-size:14px}
-@media(max-width:620px){.dictionary-pagination{grid-template-columns:72px 1fr 72px}.dictionary-pagination button{font-size:11px}}

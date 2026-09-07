@@ -888,6 +888,32 @@ const A1_GREETINGS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Au revoir et à bientôt.",speech:"Au revoir et à bientôt.",instruction:"اختر المعنى العربي الصحيح.",choices:["مرحبًا وتشرفت بمعرفتك.","إلى اللقاء وأراك قريبًا.","مساء الخير وكيف حالك؟"],correctIndex:1,explanation:"Au revoir et à bientôt عبارة وداع تعني إلى اللقاء وأراك قريبًا."}
 ];
 
+const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
+ {fr:"C’est un ordinateur portable.",ar:"هذا حاسوب محمول."},
+ {fr:"Voilà une fenêtre ouverte.",ar:"تلك نافذة مفتوحة."},
+ {fr:"Le directeur est dans son bureau.",ar:"المدير في مكتبه."},
+ {fr:"La bibliothèque ferme à dix-huit heures.",ar:"تغلق المكتبة الساعة السادسة مساءً."},
+ {fr:"L’étudiante attend devant l’université.",ar:"تنتظر الطالبة أمام الجامعة."},
+ {fr:"J’achète des cahiers pour le cours.",ar:"أشتري دفاتر للدرس."},
+ {fr:"Les cahiers sont dans mon sac.",ar:"الدفاتر داخل حقيبتي."},
+ {fr:"Ce quartier a plusieurs nouveaux bureaux.",ar:"يضم هذا الحي عدة مكاتب جديدة."},
+ {fr:"Les travaux commencent lundi matin.",ar:"تبدأ الأعمال صباح الاثنين."},
+ {fr:"Deux autobus passent devant la gare.",ar:"تمر حافلتان أمام المحطة."}
+];
+
+const A1_NOUNS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"C’est ___ livre.",speech:"Complétez la phrase. C’est un livre.",instruction:"اختر أداة النكرة المناسبة لاسم مذكر مفرد.",choices:["une","un","des"],correctIndex:1,explanation:"livre اسم مذكر مفرد؛ لذلك نستخدم un."},
+ {prompt:"Voilà ___ chaise.",speech:"Complétez la phrase. Voilà une chaise.",instruction:"اختر أداة النكرة المناسبة لاسم مؤنث مفرد.",choices:["une","un","le"],correctIndex:0,explanation:"chaise اسم مؤنث مفرد؛ لذلك نستخدم une."},
+ {prompt:"___ école est près d’ici.",speech:"Complétez la phrase. L’école est près d’ici.",instruction:"اختر أداة المعرفة قبل اسم يبدأ بصوت متحرك.",choices:["La","Le","L’"],correctIndex:2,explanation:"نستخدم l’ قبل الاسم الذي يبدأ بصوت متحرك."},
+ {prompt:"J’achète ___ pommes.",speech:"Complétez la phrase. J’achète des pommes.",instruction:"اختر أداة الجمع غير المعرف عند ذكر الأشياء أول مرة.",choices:["des","les","une"],correctIndex:0,explanation:"des أداة جمع غير معرف."},
+ {prompt:"J’ai des pommes. ___ pommes sont rouges.",speech:"Complétez la deuxième phrase. Les pommes sont rouges.",instruction:"اختر أداة الجمع المعرف بعد أن أصبحت الثمار معروفة.",choices:["Des","Les","Le"],correctIndex:1,explanation:"نستخدم les لأن pommes ذُكرت وأصبحت معروفة."},
+ {prompt:"Un étudiant, deux ___.",speech:"Mettez le nom au pluriel. Un étudiant, deux étudiants.",instruction:"اختر جمع étudiant الصحيح.",choices:["étudiantes","étudiants","étudiant"],correctIndex:1,explanation:"الجمع المذكر العادي يضاف إليه s: étudiants."},
+ {prompt:"Un journal, des ___.",speech:"Mettez le nom au pluriel. Un journal, des journaux.",instruction:"اختر جمع journal الصحيح.",choices:["journals","journales","journaux"],correctIndex:2,explanation:"journal من الكلمات التي تتحول فيها -al إلى -aux."},
+ {prompt:"Un bateau, des ___.",speech:"Mettez le nom au pluriel. Un bateau, des bateaux.",instruction:"اختر جمع bateau الصحيح.",choices:["bateaux","bateaus","bataux"],correctIndex:0,explanation:"الأسماء المنتهية بـ -eau تأخذ x غالبًا في الجمع."},
+ {prompt:"Un prix, plusieurs ___.",speech:"Mettez le nom au pluriel. Un prix, plusieurs prix.",instruction:"اختر جمع prix الصحيح.",choices:["prises","prixs","prix"],correctIndex:2,explanation:"prix ينتهي أصلًا بـ x ولا تتغير كتابته في الجمع."},
+ {prompt:"Les enfants jouent dans les jardins.",speech:"Les enfants jouent dans les jardins.",instruction:"اختر المعنى العربي الصحيح.",choices:["يلعب الأطفال في الحدائق.","يقرأ الطلاب في المكتبة.","ينتظر الآباء أمام المدرسة."],correctIndex:0,explanation:"les enfants تعني الأطفال وles jardins تعني الحدائق."}
+];
+
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
  {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
  {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
@@ -3832,6 +3858,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3862,6 +3889,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

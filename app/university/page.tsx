@@ -3295,8 +3295,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   <section className="university-level-section" id="university-levels">
    <div className="university-section-heading">
-    <span>Facultés de langue</span>
-    <h2>اختر المستوى الدراسي</h2>
+     <span>Choisissez votre niveau</span>
+     <h2>اختر مستواك</h2>
     <p>جميع الوحدات مفتوحة، ولا توجد اختبارات. انتقل بينها بالترتيب أو اختر ما تحتاجه مباشرة.</p>
    </div>
    <div className="university-level-grid">

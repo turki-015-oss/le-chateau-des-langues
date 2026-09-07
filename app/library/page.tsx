@@ -12,6 +12,7 @@ import {
 import "./library.css";
 
 const bookPalette = ["burgundy", "emerald", "navy", "sienna", "plum", "forest", "oxblood"];
+const WORDS_PER_PAGE = 80;
 
 function normalizeSearchText(value: string) {
   return value
@@ -30,9 +31,8 @@ function normalizeSearchText(value: string) {
     .trim();
 }
 
-function searchRank(value: string | undefined, needle: string) {
-  if (!value) return null;
-  const normalized = normalizeSearchText(value);
+function searchRank(normalized: string | undefined, needle: string) {
+  if (!normalized) return null;
   const compact = normalized.replace(/\s/g, "");
   const compactNeedle = needle.replace(/\s/g, "");
   const compareCompact = /[a-z]/i.test(normalized) && /[a-z]/i.test(needle);
@@ -67,8 +67,10 @@ function speakFrench(text: string, kind: "word" | "sentence") {
 
 export default function LibraryPage() {
   const [query, setQuery] = useState("");
+  const [searchNeedle, setSearchNeedle] = useState("");
   const [activeLetter, setActiveLetter] = useState<string | null>(null);
   const [activeWord, setActiveWord] = useState<string | null>(null);
+  const [activePage, setActivePage] = useState(0);
   const [openingLetter, setOpeningLetter] = useState<string | null>(null);
   const [manifest, setManifest] = useState<DictionaryManifest | null>(null);
   const [activeEntries, setActiveEntries] = useState<DictionaryEntry[]>([]);
@@ -76,6 +78,7 @@ export default function LibraryPage() {
   const [dictionaryError, setDictionaryError] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
   const wordListRef = useRef<HTMLDivElement>(null);
+  const openRequestRef = useRef(0);
 
   useEffect(() => {
     loadDictionaryManifest()
@@ -83,19 +86,37 @@ export default function LibraryPage() {
       .catch(() => setDictionaryError("تعذر تحميل بيانات القاموس. أعد فتح الصفحة من فضلك."));
   }, []);
 
+  useEffect(() => {
+    const normalized = normalizeSearchText(query);
+    if (!normalized) {
+      setSearchNeedle("");
+      return;
+    }
+
+    const timeout = window.setTimeout(() => setSearchNeedle(normalized), 140);
+    return () => window.clearTimeout(timeout);
+  }, [query]);
+
+  const searchIndex = useMemo(() => (manifest?.search ?? []).map((entry) => ({
+    entry,
+    primary: [entry.word, entry.arabic].map(normalizeSearchText),
+    nationalities: [entry.nationality?.masculine, entry.nationality?.feminine]
+      .filter((value): value is string => Boolean(value))
+      .map(normalizeSearchText),
+    aliases: (entry.searchAliases ?? []).map(normalizeSearchText),
+  })), [manifest]);
+
   const searchResults = useMemo(() => {
-    const needle = normalizeSearchText(query);
+    const needle = searchNeedle;
     if (!needle) return [];
 
-    return (manifest?.search ?? [])
-      .map((entry) => {
-        const primaryRanks = [searchRank(entry.word, needle), searchRank(entry.arabic, needle)]
-          .filter((rank): rank is number => rank !== null);
-        const nationalityRanks = [
-          searchRank(entry.nationality?.masculine, needle),
-          searchRank(entry.nationality?.feminine, needle),
-        ].filter((rank): rank is number => rank !== null);
-        const aliasRanks = (entry.searchAliases ?? [])
+    return searchIndex
+      .map(({ entry, primary, nationalities, aliases }) => {
+        const primaryRanks = primary.map((value) => searchRank(value, needle))
+          .filter((rank): rank is Exclude<ReturnType<typeof searchRank>, null> => rank !== null);
+        const nationalityRanks = nationalities.map((value) => searchRank(value, needle))
+          .filter((rank): rank is Exclude<ReturnType<typeof searchRank>, null> => rank !== null);
+        const aliasRanks = aliases
           .map((alias) => searchRank(alias, needle))
           .filter((rank): rank is Exclude<ReturnType<typeof searchRank>, null> => rank !== null);
 
@@ -121,24 +142,36 @@ export default function LibraryPage() {
       )
       .slice(0, 12)
       .map(({ entry }) => entry);
-  }, [manifest, query]);
+  }, [searchIndex, searchNeedle]);
+
+  const pageCount = Math.max(1, Math.ceil(activeEntries.length / WORDS_PER_PAGE));
+  const visibleEntries = useMemo(
+    () => activeEntries.slice(activePage * WORDS_PER_PAGE, (activePage + 1) * WORDS_PER_PAGE),
+    [activeEntries, activePage],
+  );
+  const searchIsPending = Boolean(query) && (!manifest || normalizeSearchText(query) !== searchNeedle);
 
   const openBook = (letter: string, wordId?: string) => {
+    const requestId = ++openRequestRef.current;
     setOpeningLetter(letter);
     setLoadingLetter(true);
     setDictionaryError("");
     loadDictionaryLetter(letter)
       .then((entries) => {
-        window.setTimeout(() => {
-          setActiveEntries(entries);
-          setActiveLetter(letter);
-          setActiveWord(wordId ?? entries[0]?.id ?? null);
-          setOpeningLetter(null);
-          setLoadingLetter(false);
-          setQuery("");
-        }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420);
+        if (requestId !== openRequestRef.current) return;
+        const targetId = wordId ?? entries[0]?.id ?? null;
+        const targetIndex = targetId ? entries.findIndex((entry) => entry.id === targetId) : 0;
+        setActiveEntries(entries);
+        setActivePage(Math.floor(Math.max(0, targetIndex) / WORDS_PER_PAGE));
+        setActiveLetter(letter);
+        setActiveWord(targetId);
+        setOpeningLetter(null);
+        setLoadingLetter(false);
+        setQuery("");
+        setSearchNeedle("");
       })
       .catch(() => {
+        if (requestId !== openRequestRef.current) return;
         setOpeningLetter(null);
         setLoadingLetter(false);
         setDictionaryError(`تعذر تحميل قاموس حرف ${letter}.`);
@@ -146,9 +179,11 @@ export default function LibraryPage() {
   };
 
   const closeBook = () => {
+    openRequestRef.current += 1;
     setActiveLetter(null);
     setActiveWord(null);
     setActiveEntries([]);
+    setActivePage(0);
   };
 
   const focusSearch = () => {
@@ -158,17 +193,31 @@ export default function LibraryPage() {
 
   useEffect(() => {
     if (!activeWord) return;
-    const timeout = window.setTimeout(() => {
+    let frame = 0;
+    let attempts = 0;
+    const revealTarget = () => {
       const list = wordListRef.current;
       const target = document.getElementById(`library-word-${activeWord}`);
-      if (!list || !target) return;
+      if (!list || !target) {
+        attempts += 1;
+        if (attempts < 20) frame = window.requestAnimationFrame(revealTarget);
+        return;
+      }
 
       const targetTop = target.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop;
-      list.scrollTop = Math.max(0, targetTop - 8);
-    }, 180);
+      list.scrollTo({ top: Math.max(0, targetTop - 8), behavior: "auto" });
+    };
+    frame = window.requestAnimationFrame(revealTarget);
 
-    return () => window.clearTimeout(timeout);
-  }, [activeWord, activeLetter]);
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeWord, activeLetter, activePage]);
+
+  const changePage = (nextPage: number) => {
+    const boundedPage = Math.max(0, Math.min(pageCount - 1, nextPage));
+    setActivePage(boundedPage);
+    setActiveWord(activeEntries[boundedPage * WORDS_PER_PAGE]?.id ?? null);
+    wordListRef.current?.scrollTo({ top: 0, behavior: "auto" });
+  };
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -216,14 +265,16 @@ export default function LibraryPage() {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="ابحث بالفرنسية أو العربية..."
               aria-label="البحث عن كلمة في جميع القواميس"
+              disabled={!manifest && !dictionaryError}
               autoComplete="off"
             />
             <kbd>Ctrl K</kbd>
             {query && <button onClick={() => setQuery("")} aria-label="مسح البحث"><X /></button>}
           </label>
           {query && (
-            <div className="library-search-results" role="listbox">
-              {searchResults.length ? searchResults.map((entry) => (
+            <div className="library-search-results" role="listbox" aria-busy={searchIsPending}>
+              {searchIsPending ? <p className="library-searching"><LoaderCircle /> جاري تجهيز النتائج…</p>
+              : searchResults.length ? searchResults.map((entry) => (
                 <button key={entry.id} onClick={() => openBook(entry.letter, entry.id)} role="option">
                   <b>{entry.letter}</b>
                   <span><strong>{entry.word}</strong><small>{entry.arabic}</small></span>
@@ -289,7 +340,7 @@ export default function LibraryPage() {
                 <b>{activeLetter}</b>
               </header>
               <div className="dictionary-word-list" ref={wordListRef}>
-                {activeEntries.length ? activeEntries.map((entry) => (
+                {visibleEntries.length ? visibleEntries.map((entry) => (
                   <article
                     id={`library-word-${entry.id}`}
                     key={entry.id}
@@ -364,6 +415,13 @@ export default function LibraryPage() {
                   </div>
                 )}
               </div>
+              {pageCount > 1 && (
+                <nav className="dictionary-pagination" aria-label="صفحات كلمات القاموس">
+                  <button onClick={() => changePage(activePage - 1)} disabled={activePage === 0}>السابق</button>
+                  <span>صفحة <b>{activePage + 1}</b> من {pageCount}</span>
+                  <button onClick={() => changePage(activePage + 1)} disabled={activePage === pageCount - 1}>التالي</button>
+                </nav>
+              )}
               <footer><span>— {activeLetter} —</span><small>Lexique 4 · Morphalou · Wiktionnaire · Tatoeba</small></footer>
             </div>
           </article>

@@ -765,8 +765,8 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"situations",title:"Entre amis",ar:"مواقف مع الأصدقاء",icon:MessageCircle,
-  description:"الدعوات والمواعيد والهوايات والآراء والرسائل والاعتذار في حوارات طبيعية مع الأصدقاء.",
+ id:"situations",title:"Entre amis",ar:"مواقف مع الأصدقاء",icon:MessageCircle,
+  description:"توجيه الدعوات وقبولها أو الاعتذار عنها، وتنظيم المواعيد والتعبير عن الرأي في حوارات طبيعية مع الأصدقاء.",
   sections:[
    section("Inviter et organiser","الدعوة وتنظيم اللقاء","استخدم Tu veux… ؟ أو Ça te dit de… ؟ لدعوة صديق، ثم اتفقا على اليوم والوقت بطريقة واضحة.",[
     "Tu veux… ? هل تريد…؟",
@@ -778,6 +778,16 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Oui, avec plaisir. À quelle heure ?",ar:"نعم، بكل سرور. في أي ساعة؟"},
     {fr:"On se retrouve vers quatre heures.",ar:"نلتقي قرابة الساعة الرابعة."}
    ]),
+   section("Accepter, refuser et proposer","القبول والاعتذار واقتراح بديل","أجب بوضوح على الدعوة. عند عدم القدرة على الحضور، اذكر السبب باختصار واقترح موعدًا أو نشاطًا بديلًا.",[
+    "Avec plaisir ! / Bonne idée ! للقبول بحماس.",
+    "Désolé, je ne peux pas… للاعتذار بلطف.",
+    "Je préfère… / On peut plutôt… لاقتراح بديل.",
+    "Et dimanche, tu es libre ? للسؤال عن موعد آخر."
+   ],[
+    {fr:"Avec plaisir ! J’adore ce restaurant.",ar:"بكل سرور! أحب هذا المطعم."},
+    {fr:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء."},
+    {fr:"On peut plutôt se voir dimanche ?",ar:"هل يمكن أن نلتقي يوم الأحد بدلًا من ذلك؟"}
+   ]),
    section("Parler et réagir","الحوار والتفاعل","حافظ على حوار طبيعي بالتعبير عن الرأي والموافقة أو الاختلاف والاعتذار وتقديم اقتراح بديل.",[
     "Je pense que… أعتقد أن…",
     "Je suis d’accord: أنا موافق.",
@@ -785,7 +795,7 @@ const A1_MODULES:CourseModule[]=[
     "Désolé, je suis en retard: آسف، أنا متأخر."
    ],[
     {fr:"À mon avis, ce film est très drôle.",ar:"في رأيي، هذا الفيلم مضحك جدًا."},
-    {fr:"Moi aussi, je suis d’accord avec toi.",ar:"وأنا أيضًا، أتفق معك."},
+    {fr:"Moi aussi, je suis d’accord avec toi.",ar:"وأنا أيضًا أتفق معك."},
     {fr:"Je suis désolé, on peut changer l’heure ?",ar:"أنا آسف، هل يمكننا تغيير الوقت؟"}
    ])
   ]
@@ -1037,6 +1047,32 @@ const A1_DAILY_LIFE_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"قبل العشاء",speech:"Avant le dîner.",instruction:"اختر التعبير الفرنسي الصحيح.",choices:["après le dîner","avant le dîner","pendant le dîner"],correctIndex:1,explanation:"avant le dîner تعني قبل العشاء."},
  {prompt:"Elle fait les courses le samedi.",speech:"Elle fait les courses le samedi.",instruction:"ماذا تفعل يوم السبت؟",choices:["تستريح في المنزل.","تعد الغداء.","تتسوق."],correctIndex:2,explanation:"faire les courses تعني التسوق وشراء الاحتياجات."},
  {prompt:"D’abord, je consulte mes messages, puis je commence mon travail.",speech:"D’abord, je consulte mes messages, puis je commence mon travail.",instruction:"اختر الترجمة العربية الطبيعية في السياق.",choices:["أولًا، أتفقد رسائلي، ثم أبدأ عملي.","أبدأ عملي قبل قراءة الرسائل.","أنهي عملي ثم أرسل رسالة."],correctIndex:0,explanation:"D’abord تعني أولًا أو في البداية، وpuis تعني ثم."}
+];
+
+const A1_FRIENDS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ça te dit d’aller au cinéma vendredi ?",ar:"ما رأيك أن نذهب إلى السينما يوم الجمعة؟"},
+ {fr:"Avec plaisir ! À quelle heure commence le film ?",ar:"بكل سرور! في أي ساعة يبدأ الفيلم؟"},
+ {fr:"On se retrouve devant le cinéma à sept heures.",ar:"نلتقي أمام السينما الساعة السابعة."},
+ {fr:"Je suis désolé, je ne suis pas libre ce soir.",ar:"أنا آسف، لست متفرغًا هذا المساء."},
+ {fr:"Ce n’est pas grave. Et demain, tu peux ?",ar:"لا بأس. وهل تستطيع غدًا؟"},
+ {fr:"Je préfère prendre un café en terrasse.",ar:"أفضّل أن نتناول قهوة في الجلسة الخارجية."},
+ {fr:"À mon avis, ce jeu est très amusant.",ar:"في رأيي، هذه اللعبة ممتعة جدًا."},
+ {fr:"Je ne suis pas tout à fait d’accord avec toi.",ar:"لا أتفق معك تمامًا."},
+ {fr:"Excuse-moi pour mon retard. Il y a beaucoup de circulation.",ar:"اعذرني على التأخير؛ فالازدحام شديد."},
+ {fr:"Merci pour cette belle soirée, à bientôt !",ar:"شكرًا على هذه الأمسية الجميلة، أراك قريبًا!"}
+];
+
+const A1_FRIENDS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"___ d’aller au parc cet après-midi ?",speech:"Complétez l’invitation. Ça te dit d’aller au parc cet après-midi ?",instruction:"اختر العبارة الطبيعية لدعوة صديق.",choices:["Ça te dit","Est-ce que tu es","À mon avis"],correctIndex:0,explanation:"Ça te dit de + مصدر صيغة شائعة وغير رسمية لاقتراح نشاط على صديق."},
+ {prompt:"— Tu veux venir avec nous ? — Oui, ___.",speech:"Tu veux venir avec nous ? Oui, avec plaisir.",instruction:"اختر الرد المناسب لقبول الدعوة.",choices:["je suis désolé","avec plaisir","je ne peux pas"],correctIndex:1,explanation:"Avec plaisir تعبير طبيعي لقبول الدعوة بسرور."},
+ {prompt:"Je ne peux pas samedi. On peut ___ se voir dimanche ?",speech:"Je ne peux pas samedi. On peut plutôt se voir dimanche ?",instruction:"اختر الكلمة التي تقدم اقتراحًا بديلًا.",choices:["jamais","aussi","plutôt"],correctIndex:2,explanation:"plutôt تعني هنا «بدلًا من ذلك» وتقدم خيارًا بديلًا."},
+ {prompt:"On se retrouve ___ la gare à dix heures.",speech:"On se retrouve devant la gare à dix heures.",instruction:"اختر كلمة المكان الصحيحة: أمام المحطة.",choices:["devant","pendant","avec"],correctIndex:0,explanation:"devant la gare تعني أمام المحطة."},
+ {prompt:"À mon avis, ce restaurant est excellent.",speech:"À mon avis, ce restaurant est excellent.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أعرف هذا المطعم.","في رأيي، هذا المطعم ممتاز.","هذا المطعم مغلق اليوم."],correctIndex:1,explanation:"À mon avis تُستخدم لتقديم الرأي وتعني «في رأيي»."},
+ {prompt:"Moi aussi, je suis d’accord.",speech:"Moi aussi, je suis d’accord.",instruction:"ماذا يعبّر المتحدث؟",choices:["عن الاعتذار.","عن رفض الدعوة.","عن الموافقة."],correctIndex:2,explanation:"je suis d’accord تعني أن المتحدث موافق."},
+ {prompt:"___, je suis en retard.",speech:"Complétez la phrase. Désolé, je suis en retard.",instruction:"اختر كلمة الاعتذار المناسبة.",choices:["Désolé","Bienvenue","Bravo"],correctIndex:0,explanation:"Désolé تُستخدم للاعتذار، وهنا الاعتذار عن التأخر."},
+ {prompt:"À quelle heure ?",speech:"À quelle heure ?",instruction:"اختر السؤال العربي المطابق.",choices:["في أي يوم؟","في أي ساعة؟","في أي مكان؟"],correctIndex:1,explanation:"À quelle heure ? سؤال عن الساعة أو الموعد."},
+ {prompt:"Je ne suis pas libre ce soir.",speech:"Je ne suis pas libre ce soir.",instruction:"اختر الرد الأنسب للحفاظ على الحوار.",choices:["Le film est intéressant.","Je prends le métro.","Et demain, tu es libre ?"],correctIndex:2,explanation:"عند تعذر الموعد، من الطبيعي اقتراح وقت آخر بالسؤال عن الغد."},
+ {prompt:"Merci pour l’invitation, mais je dois travailler.",speech:"Merci pour l’invitation, mais je dois travailler.",instruction:"اختر الترجمة العربية الطبيعية في السياق.",choices:["شكرًا على الدعوة، لكن يجب أن أعمل.","سأرسل لك دعوة بعد العمل.","أحب العمل مع أصدقائي."],correctIndex:0,explanation:"المتحدث يشكر على الدعوة ثم يعتذر عنها بسبب العمل."}
 ];
 
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
@@ -3988,6 +4024,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="situations")return A1_FRIENDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -4023,6 +4060,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="situations")return A1_FRIENDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;

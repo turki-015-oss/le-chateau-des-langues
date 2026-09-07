@@ -243,6 +243,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"structures",title:"Présenter, montrer et situer",ar:"التقديم والإشارة وتحديد المكان",icon:MapPinned,
+  description:"استخدام C’est وCe sont وIl y a وأدوات الإشارة لتقديم الأشخاص والأشياء والإشارة إليها وتحديد وجودها.",
+  sections:[
+   section("C’est, ce sont et la négation","التقديم بالمفرد والجمع","نستخدم C’est لتقديم شخص أو شيء مفرد، ونستخدم Ce sont لتقديم أكثر من شخص أو شيء. وفي النفي نقول Ce n’est pas وCe ne sont pas.",[
+    "C’est + اسم مفرد: C’est une étudiante.",
+    "Ce sont + اسم جمع: Ce sont mes voisins.",
+    "Ce n’est pas + اسم مفرد: Ce n’est pas mon sac.",
+    "Ce ne sont pas + اسم جمع: Ce ne sont pas mes clés."
+   ],[
+    {fr:"C’est mon professeur de français.",ar:"هذا معلّم اللغة الفرنسية لديّ."},
+    {fr:"Ce sont mes nouveaux voisins.",ar:"هؤلاء جيراني الجدد."},
+    {fr:"Ce n’est pas notre salle.",ar:"هذه ليست قاعتنا."},
+    {fr:"Ce ne sont pas mes lunettes.",ar:"هذه ليست نظارتي."}
+   ]),
+   section("Il y a et il n’y a pas","التعبير عن وجود شيء","نستخدم Il y a بمعنى يوجد أو توجد، وهي صيغة ثابتة لا تتغير مع المفرد أو الجمع. بعد النفي نستعمل غالبًا de أو d’ بدل أداة النكرة.",[
+    "Il y a + مفرد: Il y a un café ici.",
+    "Il y a + جمع: Il y a deux fenêtres.",
+    "Il n’y a pas de… للنفي: Il n’y a pas de bus.",
+    "Est-ce qu’il y a… ? للسؤال عن وجود شيء."
+   ],[
+    {fr:"Il y a une pharmacie près d’ici.",ar:"توجد صيدلية بالقرب من هنا."},
+    {fr:"Il y a trois livres sur la table.",ar:"توجد ثلاثة كتب على الطاولة."},
+    {fr:"Il n’y a pas de gare dans ce village.",ar:"لا توجد محطة قطار في هذه القرية."},
+    {fr:"Est-ce qu’il y a un ascenseur dans l’hôtel ?",ar:"هل يوجد مصعد في الفندق؟"}
+   ]),
+   section("Ce, cet, cette et ces","أدوات الإشارة","تأتي أداة الإشارة قبل الاسم وتتوافق معه في الجنس والعدد. نستخدم cet مع الاسم المذكر الذي يبدأ بحرف متحرك أو h صامت.",[
+    "ce مع المذكر المفرد: ce livre.",
+    "cet مع المذكر قبل صوت متحرك: cet hôtel.",
+    "cette مع المؤنث المفرد: cette maison.",
+    "ces مع جمع المذكر والمؤنث: ces étudiants، ces voitures."
+   ],[
+    {fr:"Ce livre est facile.",ar:"هذا الكتاب سهل."},
+    {fr:"Cet appartement est lumineux.",ar:"هذه الشقة مضيئة."},
+    {fr:"Cette rue est très calme.",ar:"هذا الشارع هادئ جدًا."},
+    {fr:"Ces chaussures sont confortables.",ar:"هذه الأحذية مريحة."}
+   ])
+  ]
+ },
+ {
   id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:BookOpen,
   description:"تصريف أفعال الحاضر المنتظمة، أهم الأفعال الشائعة، وبناء النفي.",
   sections:[
@@ -418,6 +457,32 @@ const A1_MODULES:CourseModule[]=[
    ])
   ]
  }
+];
+
+const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
+ {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
+ {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
+ {fr:"Ce n’est pas mon téléphone.",ar:"هذا ليس هاتفي."},
+ {fr:"Ce ne sont pas nos places.",ar:"هذه ليست أماكننا."},
+ {fr:"Il y a un arrêt de bus devant l’école.",ar:"توجد محطة حافلات أمام المدرسة."},
+ {fr:"Il n’y a pas de toilettes à cet étage.",ar:"لا توجد دورات مياه في هذا الطابق."},
+ {fr:"Est-ce qu’il y a une boulangerie près d’ici ?",ar:"هل يوجد مخبز بالقرب من هنا؟"},
+ {fr:"Ce restaurant est ouvert aujourd’hui.",ar:"هذا المطعم مفتوح اليوم."},
+ {fr:"Cet homme est le directeur de l’hôtel.",ar:"هذا الرجل هو مدير الفندق."},
+ {fr:"Ces fleurs sont pour ma mère.",ar:"هذه الزهور لأمي."}
+];
+
+const A1_STRUCTURES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"___ une étudiante française.",speech:"Choisissez entre C’est et Ce sont. C’est une étudiante française.",instruction:"اختر صيغة التقديم الصحيحة للمفرد.",choices:["C’est","Ce sont","Il y a"],correctIndex:0,explanation:"نستخدم C’est قبل الاسم المفرد."},
+ {prompt:"___ mes deux frères.",speech:"Choisissez entre C’est et Ce sont. Ce sont mes deux frères.",instruction:"اختر صيغة التقديم الصحيحة للجمع.",choices:["C’est","Ce sont","Cette"],correctIndex:1,explanation:"نستخدم Ce sont لتقديم اسم جمع."},
+ {prompt:"Ce ___ pas mon passeport.",speech:"Complétez la négation. Ce n’est pas mon passeport.",instruction:"أكمل نفي C’est بصورة صحيحة.",choices:["ne sont","n’est","n’y a"],correctIndex:1,explanation:"نفي C’est هو Ce n’est pas."},
+ {prompt:"___ une banque près de la gare.",speech:"Complétez avec Il y a. Il y a une banque près de la gare.",instruction:"اختر التعبير الذي يعني «توجد».",choices:["Il est","C’est","Il y a"],correctIndex:2,explanation:"Il y a تعني يوجد أو توجد."},
+ {prompt:"Il n’y a pas ___ métro ici.",speech:"Complétez la phrase négative. Il n’y a pas de métro ici.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["de","un","du"],correctIndex:0,explanation:"بعد Il n’y a pas نستخدم de قبل الاسم."},
+ {prompt:"___ livre est intéressant.",speech:"Choisissez l’adjectif démonstratif. Ce livre est intéressant.",instruction:"اختر أداة الإشارة المناسبة لاسم مذكر مفرد يبدأ بصامت.",choices:["Cette","Ces","Ce"],correctIndex:2,explanation:"livre مذكر مفرد يبدأ بصامت؛ لذلك نستخدم ce."},
+ {prompt:"___ hôtel est moderne.",speech:"Choisissez l’adjectif démonstratif. Cet hôtel est moderne.",instruction:"اختر أداة الإشارة المناسبة لاسم مذكر يبدأ بـ h صامت.",choices:["Cet","Ce","Cette"],correctIndex:0,explanation:"نستخدم cet قبل الاسم المذكر الذي يبدأ بصوت متحرك."},
+ {prompt:"___ maison est grande.",speech:"Choisissez l’adjectif démonstratif. Cette maison est grande.",instruction:"اختر أداة الإشارة المناسبة لاسم مؤنث مفرد.",choices:["Ce","Cette","Ces"],correctIndex:1,explanation:"maison مؤنث مفرد؛ لذلك نستخدم cette."},
+ {prompt:"___ enfants jouent dans le jardin.",speech:"Choisissez l’adjectif démonstratif. Ces enfants jouent dans le jardin.",instruction:"اختر أداة الإشارة المناسبة للجمع.",choices:["Cet","Cette","Ces"],correctIndex:2,explanation:"نستخدم ces مع جميع أسماء الجمع."},
+ {prompt:"Est-ce qu’___ un ascenseur ?",speech:"Complétez la question. Est-ce qu’il y a un ascenseur ?",instruction:"أكمل السؤال عن وجود المصعد.",choices:["il est","il y a","c’est"],correctIndex:1,explanation:"صيغة السؤال هي Est-ce qu’il y a… ?"}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -1908,7 +1973,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والأفعال والحاضر.",moduleIds:["nouns","core-verbs","present"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["numbers-time","description","adjectives","daily-life","situations"]}
  ],
  A2:[
@@ -3103,6 +3168,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const practiceExamples=useMemo(()=>{
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
+  if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3118,6 +3184,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule,level.id]);
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
+  if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;
@@ -3365,7 +3432,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <nav aria-label="مراحل الدرس">
      <button className={lessonStage==="learn"?"active":""} onClick={()=>setLessonStage("learn")}><BookOpen/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
      <button className={lessonStage==="practice"?"active":""} onClick={()=>setLessonStage("practice")}><Headphones/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
-     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{isEnhancedA2Lesson?"10 أسئلة ونتيجة":"أسئلة قصيرة"}</small></span></button>
+     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{quizQuestions.length} أسئلة ونتيجة</small></span></button>
     </nav>
    </aside>
 

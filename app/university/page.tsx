@@ -6,7 +6,7 @@ import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties} fr
 import type {LucideIcon} from "lucide-react";
 import {
  Activity,ArrowRight,AudioLines,BadgeCheck,Blocks,BookOpen,Building2,CalendarClock,CalendarDays,CaseUpper,CheckCircle2,
- ChevronDown,ChevronLeft,ChevronRight,CircleHelp,ClipboardPenLine,Clock3,CloudSun,Coffee,Earth,FastForward,Gauge,
+ ChevronDown,ChevronLeft,ChevronRight,CircleHelp,CircleMinus,ClipboardPenLine,Clock3,CloudSun,Coffee,Earth,FastForward,Gauge,
  GraduationCap,Hand,HandHeart,Headphones,History,House,Languages,Layers3,LibraryBig,Link2,ListChecks,MapPin,MapPinned,
  MessageCircle,MessagesSquare,Mic2,Navigation,NotebookTabs,Orbit,Play,RefreshCw,Repeat2,Replace,Rocket,RotateCcw,
  Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
@@ -2842,6 +2842,8 @@ const COURSE_PHASE_ICONS:Record<string,LucideIcon[]>={
  A2:[BadgeCheck,Layers3,Orbit]
 };
 
+const REVISION_SECTION_ICONS:LucideIcon[]=[Activity,Repeat2,CircleMinus,CircleHelp,CalendarClock,Link2];
+
 const ALPHABET=[
  ["A","a","ami","صديق"],["B","bé","bonjour","مرحبًا"],["C","cé","café","مقهى"],
  ["D","dé","deux","اثنان"],["E","e","école","مدرسة"],["F","effe","famille","عائلة"],
@@ -4343,7 +4345,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className="university-course university-course-focused" id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${activeModule.id==="revision"?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
@@ -4670,10 +4672,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
 
     <div className="university-sections">
-     {activeModule.sections.map((item,index)=><section key={item.title} className={`university-explanation ${openSectionIndex===index?"open":""}`}>
+     {activeModule.sections.map((item,index)=>{const SectionIcon=activeModule.id==="revision"?REVISION_SECTION_ICONS[index]:undefined;return <section key={item.title} className={`university-explanation ${openSectionIndex===index?"open":""}`}>
       <div className="university-explanation-title">
        <button className="university-section-toggle" onClick={()=>setOpenSectionIndex(current=>current===index?-1:index)} aria-expanded={openSectionIndex===index}>
-        <span>{String(index+1).padStart(2,"0")}</span>
+        <span>{SectionIcon?<SectionIcon/>:String(index+1).padStart(2,"0")}{SectionIcon&&<b>{String(index+1).padStart(2,"0")}</b>}</span>
         <div><h3>{item.title}</h3><small>{item.subtitle}</small></div>
         <ChevronDown/>
        </button>
@@ -4690,7 +4692,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </article>)}
        </div>
       </div>}
-     </section>)}
+     </section>})}
     </div>
     {isEnhancedA2Lesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>

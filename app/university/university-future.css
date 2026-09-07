@@ -671,6 +671,274 @@
 }
 @media(prefers-reduced-motion:reduce){.university-level-world .university-phase-workspace-shell{transition:none}}
 
+/* Lesson interior pilot — A2 revision. */
+.university-level-world .university-course-revision{
+ --ur-navy:#061b38;
+ --ur-blue:#124b82;
+ --ur-gold:#d9b25c;
+ --ur-gold-soft:#f3d58d;
+ gap:28px;
+}
+.university-level-world .university-course-revision .university-lesson-guide{
+ overflow:hidden;
+ border:1px solid rgba(224,188,101,.62);
+ border-radius:27px;
+ background:
+  radial-gradient(circle at 0 0,rgba(74,146,211,.27),transparent 14rem),
+  linear-gradient(155deg,#103f73,#061b38 72%);
+ color:#fff;
+ box-shadow:0 24px 52px rgba(5,29,58,.25),inset 0 1px rgba(255,255,255,.14),0 0 0 5px rgba(255,255,255,.18);
+}
+.university-level-world .university-course-revision .university-lesson-guide>a{
+ min-height:57px;
+ margin:10px;
+ padding:9px 12px;
+ border:1px solid rgba(244,216,148,.62);
+ border-radius:16px;
+ background:linear-gradient(145deg,rgba(48,108,165,.86),rgba(7,31,62,.94));
+ color:#f6d98f;
+ text-decoration:none;
+ box-shadow:inset 0 1px rgba(255,255,255,.16),0 10px 21px rgba(0,0,0,.18);
+}
+.university-level-world .university-course-revision .university-lesson-guide>a>svg{
+ width:37px;
+ height:37px;
+ padding:9px;
+ border-radius:11px;
+ background:linear-gradient(145deg,#e6bf66,#a87420);
+ color:#fff9e8;
+}
+.university-level-world .university-course-revision .university-lesson-guide>div{padding:22px;border-color:rgba(232,202,131,.18)}
+.university-level-world .university-course-revision .university-lesson-guide>div span{color:#e2bc68}
+.university-level-world .university-course-revision .university-lesson-guide>div h2{color:#e8f1fa}
+.university-level-world .university-course-revision .university-lesson-guide>div p{color:#f2d58c}
+.university-level-world .university-course-revision .university-lesson-guide nav{gap:8px;padding:11px}
+.university-level-world .university-course-revision .university-lesson-guide nav button{
+ min-height:68px;
+ grid-template-columns:44px 1fr;
+ padding:10px;
+ border:1px solid rgba(172,201,229,.17);
+ border-radius:16px;
+ background:rgba(255,255,255,.055);
+ color:#dbe8f5;
+ box-shadow:inset 0 1px rgba(255,255,255,.06);
+ transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.university-level-world .university-course-revision .university-lesson-guide nav button:hover{transform:translateX(-3px);border-color:rgba(235,202,124,.44);background:rgba(255,255,255,.1)}
+.university-level-world .university-course-revision .university-lesson-guide nav button.active{
+ border-color:rgba(242,209,130,.78);
+ background:linear-gradient(145deg,#225d93,#0a2c56);
+ color:#fff;
+ box-shadow:0 11px 23px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.14);
+}
+.university-level-world .university-course-revision .university-lesson-guide nav button>svg{
+ width:43px;
+ height:43px;
+ padding:10px;
+ border:1px solid rgba(240,209,137,.28);
+ border-radius:13px;
+ background:linear-gradient(145deg,#1f5a92,#08284f);
+ color:#edcd80;
+ box-shadow:inset 0 1px rgba(255,255,255,.15),0 7px 14px rgba(0,0,0,.2);
+}
+.university-level-world .university-course-revision .university-lesson-guide nav button.active>svg{background:linear-gradient(145deg,#efd078,#ab7923);color:#09284e}
+.university-level-world .university-course-revision .university-lesson-guide nav button small{color:#9fb5cb}
+.university-level-world .university-course-revision .university-lesson-guide nav button.active small{color:#d8e5f1}
+
+.university-level-world .university-course-revision .university-lesson>header{
+ position:relative;
+ overflow:hidden;
+ padding:34px;
+ border:1px solid rgba(230,195,113,.7);
+ border-radius:30px;
+ background:
+  radial-gradient(circle at 5% 0,rgba(77,150,218,.3),transparent 18rem),
+  linear-gradient(135deg,#124879,#061b38 72%);
+ box-shadow:0 25px 55px rgba(5,31,62,.22),inset 0 1px rgba(255,255,255,.13),0 0 0 6px rgba(255,255,255,.2);
+}
+.university-level-world .university-course-revision .university-lesson>header:after{
+ content:"";
+ position:absolute;
+ width:220px;
+ height:220px;
+ top:-140px;
+ left:-80px;
+ border:1px solid rgba(239,206,128,.16);
+ border-radius:50%;
+ box-shadow:0 0 0 35px rgba(239,206,128,.035),0 0 0 70px rgba(239,206,128,.02);
+}
+.university-level-world .university-course-revision .university-lesson-icon{
+ z-index:1;
+ width:86px;
+ height:86px;
+ border:1px solid rgba(255,226,160,.76);
+ border-radius:25px;
+ background:radial-gradient(circle at 27% 16%,#fff0bd,transparent 29%),linear-gradient(145deg,#efcc75,#a87421);
+ color:#08284e;
+ box-shadow:inset 0 1px rgba(255,255,255,.58),inset 0 -8px 18px rgba(111,70,8,.19),0 15px 28px rgba(0,0,0,.3),0 0 0 6px rgba(219,177,83,.08);
+}
+.university-level-world .university-course-revision .university-lesson>header>div:last-child{z-index:1}
+.university-level-world .university-course-revision .university-lesson>header span{color:#e0b963}
+.university-level-world .university-course-revision .university-lesson>header h2{color:#dbe9f7}
+.university-level-world .university-course-revision .university-spoken-title h3{color:#f2d38a;text-shadow:0 6px 22px rgba(0,0,0,.25)}
+.university-level-world .university-course-revision .university-lesson>header p{color:#c7d7e8}
+.university-level-world .university-course-revision .university-spoken-title button{
+ border-color:rgba(245,216,149,.6);
+ border-radius:13px;
+ background:rgba(255,255,255,.09);
+ color:#f4d58d;
+ box-shadow:inset 0 1px rgba(255,255,255,.12);
+}
+
+.university-level-world .university-course-revision .university-sections{gap:13px;margin-top:22px}
+.university-level-world .university-course-revision .university-explanation{
+ margin-top:0;
+ padding:0;
+ overflow:hidden;
+ border:1px solid rgba(191,211,230,.88);
+ border-radius:23px;
+ background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(235,243,251,.94));
+ box-shadow:0 16px 34px rgba(8,40,77,.1),inset 0 1px #fff;
+ transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
+}
+.university-level-world .university-course-revision .university-explanation:hover{transform:translateY(-2px);border-color:#cfaa59;box-shadow:0 21px 40px rgba(8,40,77,.15),inset 0 1px #fff}
+.university-level-world .university-course-revision .university-explanation.open{border-color:rgba(224,185,94,.72);box-shadow:0 22px 46px rgba(7,37,73,.16),0 0 0 4px rgba(216,175,82,.06)}
+.university-level-world .university-course-revision .university-explanation-title{padding:15px}
+.university-level-world .university-course-revision .university-section-toggle>span{
+ width:60px;
+ height:60px;
+ position:relative;
+ border:1px solid rgba(246,218,151,.67);
+ border-radius:18px;
+ background:radial-gradient(circle at 28% 17%,rgba(255,255,255,.36),transparent 28%),linear-gradient(145deg,#225f98,#071f42);
+ color:#f1d180;
+ box-shadow:inset 0 1px rgba(255,255,255,.17),0 10px 20px rgba(5,31,62,.24),0 0 0 4px rgba(29,84,138,.06);
+}
+.university-level-world .university-course-revision .university-section-toggle>span>svg{width:27px;height:27px}
+.university-level-world .university-course-revision .university-section-toggle>span>b{
+ position:absolute;
+ right:-5px;
+ bottom:-5px;
+ min-width:21px;
+ height:21px;
+ display:grid;
+ place-items:center;
+ padding:0 4px;
+ border:2px solid #eef4fa;
+ border-radius:999px;
+ background:#edcd7b;
+ color:#0a315e;
+ font:800 8px Georgia,serif;
+}
+.university-level-world .university-course-revision .university-section-toggle h3{color:#174777;font-size:clamp(23px,2.5vw,31px)}
+.university-level-world .university-course-revision .university-section-toggle small{color:#876526;font-size:14px;font-weight:800}
+.university-level-world .university-course-revision .university-section-toggle>svg{width:29px;height:29px;padding:5px;border:1px solid #cfdae6;border-radius:50%;background:#edf3f9;color:#174777}
+.university-level-world .university-course-revision .university-explanation-title>button:last-child{
+ border-color:#c7d6e5;
+ border-radius:13px;
+ background:#edf4fa;
+ color:#154879;
+}
+.university-level-world .university-course-revision .university-explanation-body{padding:0 20px 20px}
+.university-level-world .university-course-revision .university-explanation-text{border-right-color:#d4aa54;border-radius:14px;background:linear-gradient(135deg,#fffaf0,#f6f9fc);color:#3f5168}
+.university-level-world .university-course-revision .university-rule-list p{border-color:#d9e2eb;border-radius:14px;background:rgba(255,255,255,.82);box-shadow:inset 0 1px #fff}
+.university-level-world .university-course-revision .university-example-list article{margin-top:8px;padding:12px;border:1px solid #dce4ed;border-radius:14px;background:#fff;box-shadow:0 7px 16px rgba(12,49,86,.055)}
+.university-level-world .university-course-revision .university-example-list article:last-child{border-bottom:1px solid #dce4ed}
+.university-level-world .university-course-revision .university-example-list button{border-color:rgba(225,188,98,.65);background:linear-gradient(145deg,#1d558b,#08274d);color:#f2d38a}
+
+.university-level-world .university-course-revision .a2-reading-workshop,
+.university-level-world .university-course-revision .university-practice-stage,
+.university-level-world .university-course-revision .university-test-stage{
+ overflow:hidden;
+ border:1px solid rgba(183,205,225,.82);
+ border-radius:28px;
+ background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(235,243,251,.94));
+ box-shadow:0 22px 49px rgba(8,40,77,.13),inset 0 1px #fff;
+}
+.university-level-world .university-course-revision .university-stage-heading{
+ margin:-28px -28px 24px;
+ padding:25px 28px;
+ border-bottom-color:rgba(229,194,112,.27);
+ background:radial-gradient(circle at 5% 0,rgba(71,144,211,.25),transparent 14rem),linear-gradient(135deg,#114677,#071d3c);
+}
+.university-level-world .university-course-revision .university-stage-heading>svg{border:1px solid rgba(247,219,151,.67);background:linear-gradient(145deg,#efcf78,#aa7722);color:#08274c;box-shadow:0 11px 21px rgba(0,0,0,.25)}
+.university-level-world .university-course-revision .university-stage-heading span{color:#e1ba65;font:700 clamp(23px,2.5vw,30px)/1.25 Georgia,"Times New Roman",serif}
+.university-level-world .university-course-revision .university-stage-heading h3{margin-top:5px;color:#f1d38a;font-size:clamp(17px,1.8vw,21px)}
+.university-level-world .university-course-revision .university-stage-heading p{color:#c9d8e8}
+.university-level-world .university-course-revision .a2-reading-text,
+.university-level-world .university-course-revision .a2-listening-lab,
+.university-level-world .university-course-revision .a2-interactive-workshop,
+.university-level-world .university-course-revision .a2-production-grid>article{
+ border-color:rgba(208,176,99,.58);
+ border-radius:21px;
+ background:linear-gradient(145deg,#fffdf7,#f3f7fb);
+ box-shadow:0 12px 26px rgba(10,43,79,.08),inset 0 1px #fff;
+}
+.university-level-world .university-course-revision .university-practice-list article,
+.university-level-world .university-course-revision .university-current-question,
+.university-level-world .university-course-revision .university-answer-select{
+ border-radius:16px;
+ background:linear-gradient(145deg,#fff,#f0f5fa);
+ box-shadow:0 8px 18px rgba(10,43,79,.065),inset 0 1px #fff;
+}
+.university-level-world .university-course-revision .university-dual-audio button,
+.university-level-world .university-course-revision .university-stage-next,
+.university-level-world .university-course-revision .university-current-question>header>button,
+.university-level-world .university-course-revision .university-quiz-navigation>button.primary,
+.university-level-world .university-course-revision .university-quiz-result>button{
+ border:1px solid rgba(232,197,115,.57);
+ border-radius:13px;
+ background:linear-gradient(145deg,#1d558b,#08274d);
+ color:#f8df9d;
+ box-shadow:inset 0 1px rgba(255,255,255,.14),0 9px 19px rgba(7,35,68,.2);
+}
+.university-level-world .university-course-revision .university-lesson-navigation{
+ margin-top:22px;
+ border-color:rgba(206,169,82,.62);
+ border-radius:21px;
+ background:linear-gradient(145deg,#0f3f71,#061b38);
+ box-shadow:0 17px 35px rgba(5,29,58,.2),inset 0 1px rgba(255,255,255,.12);
+}
+.university-level-world .university-course-revision .university-lesson-navigation>button,
+.university-level-world .university-course-revision .university-lesson-navigation>a{border-color:rgba(239,205,128,.42);background:rgba(255,255,255,.07);color:#fff;text-decoration:none}
+.university-level-world .university-course-revision .university-lesson-navigation small{color:#d3ae59}
+.university-level-world .university-course-revision .university-lesson-navigation strong{color:#e7eef6}
+
+@media(max-width:1000px){
+ .university-level-world .university-course-revision .university-lesson-guide{position:static}
+ .university-level-world .university-course-revision .university-lesson-guide nav button:hover{transform:none}
+}
+@media(max-width:680px){
+ .university-level-world .university-course-revision{width:calc(100% - 20px);gap:16px}
+ .university-level-world .university-course-revision .university-lesson-guide{border-radius:23px}
+ .university-level-world .university-course-revision .university-lesson-guide>a{min-height:51px;margin:8px}
+ .university-level-world .university-course-revision .university-lesson-guide>div{padding:16px}
+ .university-level-world .university-course-revision .university-lesson-guide nav{gap:6px;padding:8px}
+ .university-level-world .university-course-revision .university-lesson-guide nav button{min-height:82px;grid-template-columns:1fr;justify-items:center;padding:8px 4px;text-align:center}
+ .university-level-world .university-course-revision .university-lesson-guide nav button>svg{width:39px;height:39px}
+ .university-level-world .university-course-revision .university-lesson>header{grid-template-columns:62px 1fr;padding:20px 15px;border-radius:24px}
+ .university-level-world .university-course-revision .university-lesson-icon{width:60px;height:60px;border-radius:18px}
+ .university-level-world .university-course-revision .university-spoken-title{align-items:flex-start;flex-direction:column}
+ .university-level-world .university-course-revision .university-spoken-title button{align-self:flex-start}
+ .university-level-world .university-course-revision .university-sections{gap:9px;margin-top:14px}
+ .university-level-world .university-course-revision .university-explanation{border-radius:19px}
+ .university-level-world .university-course-revision .university-explanation-title{gap:8px;padding:11px}
+ .university-level-world .university-course-revision .university-section-toggle{grid-template-columns:47px minmax(0,1fr) 24px!important;gap:9px!important}
+ .university-level-world .university-course-revision .university-section-toggle>span{width:47px;height:47px;border-radius:14px}
+ .university-level-world .university-course-revision .university-section-toggle>span>svg{width:21px;height:21px}
+ .university-level-world .university-course-revision .university-section-toggle h3{font-size:19px}
+ .university-level-world .university-course-revision .university-section-toggle small{font-size:11px}
+ .university-level-world .university-course-revision .university-explanation-body{padding:0 12px 12px}
+ .university-level-world .university-course-revision .university-rule-list{grid-template-columns:1fr}
+ .university-level-world .university-course-revision .university-example-list article{grid-template-columns:70px 1fr;padding:10px}
+ .university-level-world .university-course-revision .university-stage-heading{margin:-17px -17px 19px;padding:20px 17px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .university-level-world .university-course-revision .university-explanation,
+ .university-level-world .university-course-revision .university-lesson-guide nav button{transition:none}
+}
+
 /* University home — the same visual language used by level journeys. */
 .university-main-world{
  --um-navy:#061a35;

@@ -3297,7 +3297,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    <div className="university-section-heading">
      <span>Choisissez votre niveau</span>
      <h2>اختر مستواك</h2>
-    <p>جميع الوحدات مفتوحة، ولا توجد اختبارات. انتقل بينها بالترتيب أو اختر ما تحتاجه مباشرة.</p>
    </div>
    <div className="university-level-grid">
     {LEVELS.map(item=><button key={item.id} onClick={()=>router.push(`/university/${item.id.toLocaleLowerCase("fr")}`)}>

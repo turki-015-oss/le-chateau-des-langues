@@ -158,16 +158,23 @@ export default function LibraryPage() {
 
   useEffect(() => {
     if (!activeWord) return;
-    const timeout = window.setTimeout(() => {
+    const revealTarget = () => {
       const list = wordListRef.current;
       const target = document.getElementById(`library-word-${activeWord}`);
       if (!list || !target) return;
 
-      const targetTop = target.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop;
-      list.scrollTop = Math.max(0, targetTop - 8);
-    }, 180);
+      const listRect = list.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const isVisible = targetRect.top >= listRect.top + 4 && targetRect.top < listRect.bottom - 20;
+      if (isVisible) return;
 
-    return () => window.clearTimeout(timeout);
+      // offsetTop is measured inside the list and is not distorted by the book-opening transform.
+      // Some Samsung browsers finish the animated layout later than iOS, so retry briefly.
+      list.scrollTop = Math.max(0, target.offsetTop - 8);
+    };
+    const retries = [0, 80, 240, 520, 760].map((delay) => window.setTimeout(revealTarget, delay));
+
+    return () => retries.forEach((timeout) => window.clearTimeout(timeout));
   }, [activeWord, activeLetter]);
 
   useEffect(() => {

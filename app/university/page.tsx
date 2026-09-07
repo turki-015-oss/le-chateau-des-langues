@@ -347,6 +347,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"city-directions",title:"Se repérer en ville",ar:"التنقل وتحديد المكان في المدينة",icon:Compass,
+  description:"تحديد الوجهة والموقع، السؤال عن الطريق، وفهم تعليمات الاتجاه الأساسية داخل المدينة.",
+  sections:[
+   section("À, au, à la et aux","الذهاب إلى مكان","نستخدم à للتعبير عن الوجهة. تندمج à مع le فتصبح au، ومع les فتصبح aux، بينما تبقى à la وà l’ دون دمج.",[
+    "à + le = au: Je vais au marché.",
+    "à + la = à la: Elle va à la banque.",
+    "à + l’ = à l’: Nous allons à l’aéroport.",
+    "à + les = aux: Ils vont aux urgences."
+   ],[
+    {fr:"Je vais au centre-ville en bus.",ar:"أذهب إلى وسط المدينة بالحافلة."},
+    {fr:"Elle marche jusqu’à la pharmacie.",ar:"تمشي حتى الصيدلية."},
+    {fr:"Nous allons à l’hôtel à pied.",ar:"نذهب إلى الفندق مشيًا."},
+    {fr:"Ils vont aux magasins en métro.",ar:"يذهبون إلى المتاجر بالمترو."}
+   ]),
+   section("De, du, de la et des","القدوم من مكان","نستخدم de للتعبير عن نقطة الانطلاق أو المصدر. تندمج de مع le فتصبح du، ومع les فتصبح des، بينما تبقى de la وde l’ دون دمج.",[
+    "de + le = du: Je viens du marché.",
+    "de + la = de la: Elle sort de la gare.",
+    "de + l’ = de l’: Nous revenons de l’aéroport.",
+    "de + les = des: Ils arrivent des magasins."
+   ],[
+    {fr:"Le bus part du centre-ville.",ar:"تنطلق الحافلة من وسط المدينة."},
+    {fr:"Je sors de la bibliothèque.",ar:"أخرج من المكتبة."},
+    {fr:"Le taxi arrive de l’aéroport.",ar:"تصل سيارة الأجرة من المطار."},
+    {fr:"Nous revenons des urgences.",ar:"نعود من قسم الطوارئ."}
+   ]),
+   section("Demander et indiquer le chemin","السؤال عن الطريق وإعطاء الاتجاه","ابدأ بسؤال مهذب عن المكان، ثم استخدم أفعالًا واضحة مثل aller وtourner وtraverser وprendre لإعطاء الطريق خطوة خطوة.",[
+    "Où se trouve… ? أين يوجد…؟",
+    "Pour aller à… ? كيف أصل إلى…؟",
+    "Allez tout droit، ثم Tournez à droite / à gauche.",
+    "الموقع: devant، derrière، entre، à côté de، en face de."
+   ],[
+    {fr:"Excusez-moi, où se trouve la gare ?",ar:"عذرًا، أين توجد محطة القطار؟"},
+    {fr:"Allez tout droit jusqu’au feu.",ar:"اذهب مباشرة حتى إشارة المرور."},
+    {fr:"Tournez à gauche après la banque.",ar:"انعطف يسارًا بعد البنك."},
+    {fr:"Le musée est en face du parc.",ar:"يقع المتحف مقابل الحديقة."}
+   ])
+  ]
+ },
+ {
   id:"numbers-time",title:"Nombres, heure et date",ar:"الأرقام والوقت والتاريخ",icon:Clock3,
   description:"العد، الأسعار، رقم الهاتف، الساعة، أيام الأسبوع، الأشهر والتاريخ.",
   sections:[
@@ -548,6 +587,32 @@ const A1_FOOD_SHOPPING_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"___ un café, s’il vous plaît.",speech:"Formulez une demande polie. Je voudrais un café, s’il vous plaît.",instruction:"اختر العبارة المهذبة المناسبة للطلب.",choices:["Je vais","Je voudrais","Je suis"],correctIndex:1,explanation:"Je voudrais صيغة بسيطة ومهذبة لطلب شيء."},
  {prompt:"___ coûte ce fromage ?",speech:"Posez la question du prix. Combien coûte ce fromage ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Comment","Pourquoi","Combien"],correctIndex:2,explanation:"Combien coûte… ؟ تعني كم سعر…؟"},
  {prompt:"Je paie par carte.",speech:"Je paie par carte.",instruction:"اختر المعنى العربي الصحيح.",choices:["سأدفع بالبطاقة.","أحتاج إلى بطاقة.","سعر البطاقة مرتفع."],correctIndex:0,explanation:"payer par carte تعني الدفع بالبطاقة."}
+];
+
+const A1_CITY_DIRECTIONS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je vais à la poste à pied.",ar:"أذهب إلى مكتب البريد مشيًا."},
+ {fr:"Nous prenons le train à la gare centrale.",ar:"نستقل القطار من المحطة المركزية."},
+ {fr:"Elle revient du supermarché en voiture.",ar:"تعود من السوبرماركت بالسيارة."},
+ {fr:"Le métro arrive de l’aéroport.",ar:"يصل المترو من المطار."},
+ {fr:"Excusez-moi, pour aller à l’hôpital ?",ar:"عذرًا، كيف أصل إلى المستشفى؟"},
+ {fr:"Continuez tout droit pendant deux minutes.",ar:"تابع السير مباشرة لمدة دقيقتين."},
+ {fr:"Prenez la première rue à droite.",ar:"اسلك أول شارع على اليمين."},
+ {fr:"Traversez la place devant la mairie.",ar:"اعبر الساحة أمام مبنى البلدية."},
+ {fr:"La boulangerie est entre la banque et le café.",ar:"يقع المخبز بين البنك والمقهى."},
+ {fr:"L’arrêt de bus est à côté de l’école.",ar:"تقع محطة الحافلات بجوار المدرسة."}
+];
+
+const A1_CITY_DIRECTIONS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je vais ___ marché.",speech:"Complétez la phrase. Je vais au marché.",instruction:"اختر الشكل الصحيح لـ à مع اسم مذكر معرف.",choices:["à le","au","du"],correctIndex:1,explanation:"تندمج à مع le وتصبح au."},
+ {prompt:"Elle va ___ banque.",speech:"Complétez la phrase. Elle va à la banque.",instruction:"اختر حرف الجر والأداة المناسبين للاسم المؤنث.",choices:["à la","au","de la"],correctIndex:0,explanation:"مع الاسم المؤنث نقول à la."},
+ {prompt:"Nous allons ___ aéroport.",speech:"Complétez la phrase. Nous allons à l’aéroport.",instruction:"اختر الشكل المناسب قبل الاسم الذي يبدأ بصوت متحرك.",choices:["au","à l’","aux"],correctIndex:1,explanation:"نستخدم à l’ قبل الاسم الذي يبدأ بصوت متحرك."},
+ {prompt:"Ils vont ___ magasins.",speech:"Complétez la phrase. Ils vont aux magasins.",instruction:"اختر الشكل الصحيح لـ à مع اسم جمع معرف.",choices:["aux","à les","des"],correctIndex:0,explanation:"تندمج à مع les وتصبح aux."},
+ {prompt:"Le bus part ___ centre-ville.",speech:"Complétez la phrase. Le bus part du centre-ville.",instruction:"اختر الشكل الصحيح لـ de مع اسم مذكر معرف.",choices:["de le","au","du"],correctIndex:2,explanation:"تندمج de مع le وتصبح du."},
+ {prompt:"Nous revenons ___ magasins.",speech:"Complétez la phrase. Nous revenons des magasins.",instruction:"اختر الشكل الصحيح لـ de مع اسم جمع معرف.",choices:["aux","des","de les"],correctIndex:1,explanation:"تندمج de مع les وتصبح des."},
+ {prompt:"___ se trouve la gare ?",speech:"Posez la question. Où se trouve la gare ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Quand","Où","Combien"],correctIndex:1,explanation:"Où تستخدم للسؤال عن المكان."},
+ {prompt:"Allez tout ___.",speech:"Complétez l’instruction. Allez tout droit.",instruction:"أكمل تعليمات السير مباشرة.",choices:["droit","droite","devant"],correctIndex:0,explanation:"التعبير الثابت هو aller tout droit."},
+ {prompt:"Tournez ___ gauche après le café.",speech:"Complétez l’instruction. Tournez à gauche après le café.",instruction:"اختر حرف الجر الصحيح مع الاتجاه.",choices:["de","en","à"],correctIndex:2,explanation:"نقول à gauche وà droite."},
+ {prompt:"Le musée est en face du parc.",speech:"Le musée est en face du parc.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع المتحف خلف الحديقة.","يقع المتحف مقابل الحديقة.","يقع المتحف داخل الحديقة."],correctIndex:1,explanation:"en face de تعني مقابل."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2039,7 +2104,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والعدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","numbers-time","description","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والاتجاهات والعدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","description","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3234,6 +3299,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3251,6 +3317,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;

@@ -282,6 +282,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"questions",title:"Poser des questions et répondre",ar:"طرح الأسئلة والإجابة عنها",icon:MessageCircle,
+  description:"تكوين أسئلة نعم أو لا، استخدام أدوات الاستفهام، واختيار quel وquelle وquels وquelles وفق الاسم.",
+  sections:[
+   section("Les questions fermées","أسئلة نعم أو لا","يمكن تكوين السؤال البسيط بالنبرة الصاعدة أو بوضع Est-ce que قبل جملة مثبتة. تكون الإجابة نعم أو لا، ويُفضّل إضافة جملة قصيرة توضحها.",[
+    "بالنبرة: Vous habitez ici ?",
+    "مع Est-ce que: Est-ce que vous habitez ici ?",
+    "الإجابة المثبتة: Oui, j’habite ici.",
+    "الإجابة المنفية: Non, je n’habite pas ici."
+   ],[
+    {fr:"Tu parles français ? — Oui, un peu.",ar:"هل تتحدث الفرنسية؟ — نعم، قليلًا."},
+    {fr:"Est-ce que vous travaillez aujourd’hui ?",ar:"هل تعملون اليوم؟"},
+    {fr:"Oui, nous commençons à neuf heures.",ar:"نعم، نبدأ الساعة التاسعة."},
+    {fr:"Non, elle ne prend pas le bus.",ar:"لا، هي لا تستقل الحافلة."}
+   ]),
+   section("Les mots interrogatifs","أدوات الاستفهام","تحدد أداة الاستفهام نوع المعلومة المطلوبة. ضعها في بداية السؤال، ثم استخدم صيغة بسيطة تناسب مستوى A1.",[
+    "qui مَن، que / qu’est-ce que ماذا، où أين.",
+    "quand متى، comment كيف، pourquoi لماذا.",
+    "combien كم، combien de كم من.",
+    "للسبب نجيب غالبًا بـ parce que."
+   ],[
+    {fr:"Qui est votre professeur ?",ar:"من معلّمكم؟"},
+    {fr:"Qu’est-ce que tu fais ce soir ?",ar:"ماذا ستفعل هذا المساء؟"},
+    {fr:"Où habite votre famille ?",ar:"أين تسكن عائلتكم؟"},
+    {fr:"Pourquoi apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟"}
+   ]),
+   section("Quel, quelle, quels et quelles","السؤال عن اختيار أو معلومة","تأتي quel قبل اسم، وتتوافق معه في التذكير والتأنيث والإفراد والجمع. نستخدمها للسؤال عن الاسم أو الوقت أو الاختيار أو النوع.",[
+    "quel + مذكر مفرد: Quel jour ?",
+    "quelle + مؤنث مفرد: Quelle heure ?",
+    "quels + مذكر جمع: Quels sports ?",
+    "quelles + مؤنث جمع: Quelles langues ?"
+   ],[
+    {fr:"Quel est votre nom ?",ar:"ما اسمكم؟"},
+    {fr:"Quelle heure est-il ?",ar:"كم الساعة؟"},
+    {fr:"Quels sports est-ce que tu pratiques ?",ar:"ما الرياضات التي تمارسها؟"},
+    {fr:"Quelles langues parlez-vous ?",ar:"ما اللغات التي تتحدثونها؟"}
+   ])
+  ]
+ },
+ {
   id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:BookOpen,
   description:"تصريف أفعال الحاضر المنتظمة، أهم الأفعال الشائعة، وبناء النفي.",
   sections:[
@@ -938,6 +977,32 @@ const A1_HEALTH_NEEDS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Prenez ce médicament ___ le repas.",speech:"Complétez l’instruction. Prenez ce médicament après le repas.",instruction:"اختر الكلمة المناسبة لتوقيت تناول الدواء.",choices:["entre","sous","après"],correctIndex:2,explanation:"après le repas تعني بعد الوجبة."},
  {prompt:"J’ai besoin ___ aide.",speech:"Complétez la phrase. J’ai besoin d’aide.",instruction:"اختر الصيغة الصحيحة بعد avoir besoin.",choices:["d’","à l’","de l’"],correctIndex:0,explanation:"نقول avoir besoin de، وتصبح d’ قبل صوت متحرك."},
  {prompt:"Je suis allergique à ce médicament.",speech:"Je suis allergique à ce médicament.",instruction:"اختر المعنى العربي الصحيح.",choices:["نسيت تناول هذا الدواء.","أحتاج إلى وصفة لهذا الدواء.","لدي حساسية تجاه هذا الدواء."],correctIndex:2,explanation:"être allergique à تعني أن لدى الشخص حساسية تجاه شيء."}
+];
+
+const A1_QUESTIONS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Est-ce que tu habites près d’ici ?",ar:"هل تسكن بالقرب من هنا؟"},
+ {fr:"Vous avez une réservation ? — Oui, au nom de Sami.",ar:"هل لديكم حجز؟ — نعم، باسم سامي."},
+ {fr:"Elle vient avec nous ? — Non, elle travaille.",ar:"هل ستأتي معنا؟ — لا، إنها تعمل."},
+ {fr:"Qui est cette personne ?",ar:"من هذا الشخص؟"},
+ {fr:"Où se trouve la station de métro ?",ar:"أين توجد محطة المترو؟"},
+ {fr:"Quand commence le prochain cours ?",ar:"متى يبدأ الدرس القادم؟"},
+ {fr:"Comment allez-vous à l’université ?",ar:"كيف تذهبون إلى الجامعة؟"},
+ {fr:"Combien coûte ce billet ?",ar:"كم سعر هذه التذكرة؟"},
+ {fr:"Quel bus va au centre-ville ?",ar:"أي حافلة تذهب إلى وسط المدينة؟"},
+ {fr:"Quelle couleur préfères-tu ?",ar:"أي لون تفضل؟"}
+];
+
+const A1_QUESTIONS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"___ vous habitez ici ?",speech:"Complétez la question. Est-ce que vous habitez ici ?",instruction:"اختر بداية سؤال نعم أو لا.",choices:["Est-ce que","Qu’est-ce que","Pourquoi est-ce que"],correctIndex:0,explanation:"Est-ce que توضع قبل جملة لتكوين سؤال نعم أو لا."},
+ {prompt:"Tu parles français ? — ___, un peu.",speech:"Complétez la réponse affirmative. Oui, un peu.",instruction:"اختر إجابة الإثبات المناسبة.",choices:["Non","Oui","Pourquoi"],correctIndex:1,explanation:"Oui تستخدم للإجابة المثبتة."},
+ {prompt:"___ est votre professeur ?",speech:"Complétez la question. Qui est votre professeur ?",instruction:"اختر أداة السؤال عن شخص.",choices:["Où","Quand","Qui"],correctIndex:2,explanation:"Qui تعني مَن."},
+ {prompt:"___ habitez-vous ?",speech:"Complétez la question. Où habitez-vous ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Où","Comment","Combien"],correctIndex:0,explanation:"Où تعني أين."},
+ {prompt:"___ commence le film ?",speech:"Complétez la question. Quand commence le film ?",instruction:"اختر أداة السؤال عن الوقت.",choices:["Qui","Quand","Que"],correctIndex:1,explanation:"Quand تعني متى."},
+ {prompt:"___ allez-vous au travail ? — En métro.",speech:"Complétez la question. Comment allez-vous au travail ?",instruction:"اختر أداة السؤال عن الكيفية.",choices:["Pourquoi","Où","Comment"],correctIndex:2,explanation:"Comment تعني كيف، والإجابة هنا وسيلة النقل."},
+ {prompt:"___ coûte cette veste ?",speech:"Complétez la question. Combien coûte cette veste ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Combien","Quelle","Quand"],correctIndex:0,explanation:"Combien تستخدم للسؤال عن السعر أو العدد."},
+ {prompt:"___ jour sommes-nous ?",speech:"Complétez la question. Quel jour sommes-nous ?",instruction:"اختر صيغة quel الموافقة لاسم مذكر مفرد.",choices:["Quelle","Quel","Quels"],correctIndex:1,explanation:"jour مذكر مفرد؛ لذلك نستخدم quel."},
+ {prompt:"___ heure est-il ?",speech:"Complétez la question. Quelle heure est-il ?",instruction:"اختر صيغة quel الموافقة لاسم مؤنث مفرد.",choices:["Quelles","Quel","Quelle"],correctIndex:2,explanation:"heure مؤنث مفرد؛ لذلك نستخدم quelle."},
+ {prompt:"Quelles langues parlez-vous ?",speech:"Quelles langues parlez-vous ?",instruction:"اختر المعنى العربي الصحيح.",choices:["ما اللغات التي تتحدثونها؟","كم ساعة تدرسون؟","أين تتعلمون اللغة؟"],correctIndex:0,explanation:"quelles langues تعني ما اللغات."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2428,7 +2493,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","present","modal-verbs","future-imperative"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والأسئلة وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","questions","present","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والصحة والزمن والطقس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations"]}
  ],
  A2:[
@@ -3631,6 +3696,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3654,6 +3720,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

@@ -308,6 +308,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"food-shopping",title:"L’alimentation et les achats",ar:"الطعام والتسوق",icon:ShoppingBag,
+  description:"اختيار أدوات التجزئة، التعبير عن الكمية، وطلب الطعام وشراء المنتجات بعبارات بسيطة ومهذبة.",
+  sections:[
+   section("Du, de la, de l’ et des","أدوات التجزئة","نستخدم أدوات التجزئة عندما نتحدث عن كمية غير محددة من طعام أو شراب. تتغير الأداة بحسب جنس الاسم وبدايته، بينما des تستخدم مع جمع أشياء معدودة.",[
+    "du قبل الاسم المذكر: du pain.",
+    "de la قبل الاسم المؤنث: de la soupe.",
+    "de l’ قبل صوت متحرك: de l’eau، de l’huile.",
+    "des قبل الاسم الجمع: des tomates."
+   ],[
+    {fr:"Je mange du pain au petit-déjeuner.",ar:"أتناول الخبز في الإفطار."},
+    {fr:"Elle prépare de la soupe pour le dîner.",ar:"تحضّر الحساء للعشاء."},
+    {fr:"Nous buvons de l’eau avec le repas.",ar:"نشرب الماء مع الوجبة."},
+    {fr:"Ils achètent des tomates au marché.",ar:"يشترون الطماطم من السوق."}
+   ]),
+   section("La négation et les quantités","النفي والتعبير عن الكمية","بعد النفي تتحول أداة التجزئة غالبًا إلى de أو d’. وبعد مقدار محدد نستخدم de أيضًا بين المقدار واسم المنتج.",[
+    "Je bois du café → Je ne bois pas de café.",
+    "قبل صوت متحرك نكتب d’: Je ne bois pas d’eau.",
+    "un kilo de، une bouteille de، un verre de.",
+    "مع aimer نستخدم أداة المعرفة: J’aime le fromage."
+   ],[
+    {fr:"Je ne prends pas de sucre.",ar:"لا أتناول السكر."},
+    {fr:"Il n’achète pas de viande aujourd’hui.",ar:"لا يشتري اللحم اليوم."},
+    {fr:"Je voudrais un kilo de pommes.",ar:"أرغب في كيلوغرام من التفاح."},
+    {fr:"Nous avons besoin d’une bouteille d’huile.",ar:"نحتاج إلى زجاجة من الزيت."}
+   ]),
+   section("Commander et payer","الطلب والدفع","استخدم Je voudrais لطلب شيء بأدب، ثم اسأل عن السعر أو وسيلة الدفع بعبارات قصيرة واضحة.",[
+    "Je voudrais… أودّ أو أرغب في…",
+    "Vous désirez autre chose ? هل ترغبون في شيء آخر؟",
+    "Combien coûte… ? للسؤال عن سعر شيء مفرد.",
+    "Je paie par carte / en espèces: أدفع بالبطاقة / نقدًا."
+   ],[
+    {fr:"Je voudrais un sandwich et un jus d’orange, s’il vous plaît.",ar:"أرغب في شطيرة وعصير برتقال، من فضلك."},
+    {fr:"Combien coûte cette baguette ?",ar:"كم سعر خبز الباغيت هذا؟"},
+    {fr:"Ça fait huit euros cinquante.",ar:"المجموع ثمانية يورو وخمسون سنتًا."},
+    {fr:"Je paie par carte, merci.",ar:"سأدفع بالبطاقة، شكرًا."}
+   ])
+  ]
+ },
+ {
   id:"numbers-time",title:"Nombres, heure et date",ar:"الأرقام والوقت والتاريخ",icon:Clock3,
   description:"العد، الأسعار، رقم الهاتف، الساعة، أيام الأسبوع، الأشهر والتاريخ.",
   sections:[
@@ -483,6 +522,32 @@ const A1_STRUCTURES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"___ maison est grande.",speech:"Choisissez l’adjectif démonstratif. Cette maison est grande.",instruction:"اختر أداة الإشارة المناسبة لاسم مؤنث مفرد.",choices:["Ce","Cette","Ces"],correctIndex:1,explanation:"maison مؤنث مفرد؛ لذلك نستخدم cette."},
  {prompt:"___ enfants jouent dans le jardin.",speech:"Choisissez l’adjectif démonstratif. Ces enfants jouent dans le jardin.",instruction:"اختر أداة الإشارة المناسبة للجمع.",choices:["Cet","Cette","Ces"],correctIndex:2,explanation:"نستخدم ces مع جميع أسماء الجمع."},
  {prompt:"Est-ce qu’___ un ascenseur ?",speech:"Complétez la question. Est-ce qu’il y a un ascenseur ?",instruction:"أكمل السؤال عن وجود المصعد.",choices:["il est","il y a","c’est"],correctIndex:1,explanation:"صيغة السؤال هي Est-ce qu’il y a… ?"}
+];
+
+const A1_FOOD_SHOPPING_PRACTICE_ITEMS:Example[]=[
+ {fr:"Au petit-déjeuner, je bois du lait.",ar:"أشرب الحليب في الإفطار."},
+ {fr:"Tu veux de la salade avec le poisson ?",ar:"هل تريد سلطة مع السمك؟"},
+ {fr:"Elle met de l’huile dans la poêle.",ar:"تضع الزيت في المقلاة."},
+ {fr:"Nous achetons des légumes frais.",ar:"نشتري خضراوات طازجة."},
+ {fr:"Je ne mange pas de viande.",ar:"لا أتناول اللحم."},
+ {fr:"Il faut deux cents grammes de fromage.",ar:"نحتاج إلى مئتي غرام من الجبن."},
+ {fr:"Je voudrais une tasse de thé, s’il vous plaît.",ar:"أرغب في كوب من الشاي، من فضلك."},
+ {fr:"Vous avez du pain complet ?",ar:"هل لديكم خبز كامل الحبوب؟"},
+ {fr:"Combien coûtent ces oranges ?",ar:"كم سعر هذه البرتقالات؟"},
+ {fr:"Je vais payer en espèces.",ar:"سأدفع نقدًا."}
+];
+
+const A1_FOOD_SHOPPING_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je mange ___ pain.",speech:"Complétez la phrase. Je mange du pain.",instruction:"اختر أداة التجزئة المناسبة للاسم المذكر.",choices:["de la","du","des"],correctIndex:1,explanation:"pain اسم مذكر؛ لذلك نستخدم du."},
+ {prompt:"Elle prépare ___ soupe.",speech:"Complétez la phrase. Elle prépare de la soupe.",instruction:"اختر أداة التجزئة المناسبة للاسم المؤنث.",choices:["de la","du","de l’"],correctIndex:0,explanation:"soupe اسم مؤنث؛ لذلك نستخدم de la."},
+ {prompt:"Nous buvons ___ eau.",speech:"Complétez la phrase. Nous buvons de l’eau.",instruction:"اختر الأداة المناسبة قبل الاسم الذي يبدأ بصوت متحرك.",choices:["des","du","de l’"],correctIndex:2,explanation:"نستخدم de l’ قبل الاسم الذي يبدأ بصوت متحرك."},
+ {prompt:"Ils achètent ___ fraises.",speech:"Complétez la phrase. Ils achètent des fraises.",instruction:"اختر الأداة المناسبة لاسم الجمع.",choices:["des","de la","du"],correctIndex:0,explanation:"fraises اسم جمع؛ لذلك نستخدم des."},
+ {prompt:"Je ne prends pas ___ sucre.",speech:"Complétez la négation. Je ne prends pas de sucre.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["du","de","le"],correctIndex:1,explanation:"بعد النفي تتحول أداة التجزئة إلى de."},
+ {prompt:"Une bouteille ___ jus de pomme.",speech:"Complétez l’expression de quantité. Une bouteille de jus de pomme.",instruction:"اختر حرف الربط الصحيح بعد المقدار.",choices:["du","de la","de"],correctIndex:2,explanation:"بعد تعبير الكمية une bouteille نستخدم de."},
+ {prompt:"J’aime ___ fromage.",speech:"Complétez la phrase. J’aime le fromage.",instruction:"اختر الأداة الصحيحة بعد فعل الإعجاب للتحدث عن الطعام عمومًا.",choices:["le","du","de"],correctIndex:0,explanation:"بعد aimer نستخدم أداة المعرفة عند الحديث عن الشيء بصفة عامة."},
+ {prompt:"___ un café, s’il vous plaît.",speech:"Formulez une demande polie. Je voudrais un café, s’il vous plaît.",instruction:"اختر العبارة المهذبة المناسبة للطلب.",choices:["Je vais","Je voudrais","Je suis"],correctIndex:1,explanation:"Je voudrais صيغة بسيطة ومهذبة لطلب شيء."},
+ {prompt:"___ coûte ce fromage ?",speech:"Posez la question du prix. Combien coûte ce fromage ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Comment","Pourquoi","Combien"],correctIndex:2,explanation:"Combien coûte… ؟ تعني كم سعر…؟"},
+ {prompt:"Je paie par carte.",speech:"Je paie par carte.",instruction:"اختر المعنى العربي الصحيح.",choices:["سأدفع بالبطاقة.","أحتاج إلى بطاقة.","سعر البطاقة مرتفع."],correctIndex:0,explanation:"payer par carte تعني الدفع بالبطاقة."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -1974,7 +2039,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["numbers-time","description","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والعدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","numbers-time","description","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3169,6 +3234,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(activeModule.id==="description")return DESCRIPTION_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(activeModule.id==="adjectives")return ADJECTIVE_PRACTICE_ITEMS.map(item=>({fr:item.fr,ar:item.ar,speech:item.speech}));
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3185,6 +3251,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  const quizQuestions=useMemo<QuizQuestion[]>(()=>{
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

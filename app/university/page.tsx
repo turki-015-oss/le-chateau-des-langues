@@ -604,6 +604,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"health-needs",title:"La santé et les besoins essentiels",ar:"الصحة والاحتياجات الأساسية",icon:Headphones,
+  description:"وصف عرض صحي بسيط، تحديد موضع الألم، وفهم الأسئلة والتعليمات الأساسية عند الطبيب أو الصيدلي.",
+  sections:[
+   section("Dire ce qu’on a","وصف الأعراض","نستخدم avoir مع كثير من الأعراض، ونستخدم être مع الحالة العامة. ولتحديد الألم نقول avoir mal à ثم نختار الأداة الموافقة لعضو الجسم.",[
+    "J’ai de la fièvre / de la toux: لدي حمى / سعال.",
+    "Je suis malade / fatigué: أنا مريض / متعب.",
+    "J’ai mal à la tête، au ventre، au dos.",
+    "J’ai mal aux dents: أسناني تؤلمني."
+   ],[
+    {fr:"J’ai de la fièvre et je suis très fatigué.",ar:"لدي حمى وأشعر بتعب شديد."},
+    {fr:"Elle a mal à la gorge.",ar:"تشعر بألم في حلقها."},
+    {fr:"Mon fils a mal au ventre.",ar:"يشعر ابني بألم في بطنه."},
+    {fr:"J’ai mal aux dents depuis hier.",ar:"أشعر بألم في أسناني منذ أمس."}
+   ]),
+   section("Chez le médecin et à la pharmacie","عند الطبيب وفي الصيدلية","ابدأ بشرح المشكلة بجملة قصيرة، ثم أجب عن أسئلة الطبيب المتعلقة ببداية العرض والدواء. وفي الصيدلية اطلب ما تحتاجه بأدب.",[
+    "Qu’est-ce que vous avez ? ما المشكلة الصحية التي تعانون منها؟",
+    "Depuis quand ? منذ متى؟",
+    "Je voudrais prendre rendez-vous: أود حجز موعد.",
+    "Prenez ce médicament matin et soir: تناولوا هذا الدواء صباحًا ومساءً."
+   ],[
+    {fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
+    {fr:"Depuis quand avez-vous mal à la tête ?",ar:"منذ متى تشعرون بألم في الرأس؟"},
+    {fr:"Prenez un comprimé après le repas.",ar:"تناولوا قرصًا واحدًا بعد الوجبة."},
+    {fr:"Je cherche une pharmacie ouverte.",ar:"أبحث عن صيدلية مفتوحة."}
+   ]),
+   section("Demander de l’aide","طلب المساعدة","في الموقف الصحي استخدم عبارة قصيرة ومباشرة، واذكر الشخص الذي يحتاج إلى المساعدة والمشكلة إن استطعت.",[
+    "J’ai besoin d’aide: أحتاج إلى مساعدة.",
+    "Appelez un médecin / une ambulance.",
+    "Où sont les urgences ? أين قسم الطوارئ؟",
+    "Je suis allergique à… لدي حساسية تجاه…"
+   ],[
+    {fr:"Excusez-moi, j’ai besoin d’aide.",ar:"عذرًا، أحتاج إلى مساعدة."},
+    {fr:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."},
+    {fr:"Où se trouve le service des urgences ?",ar:"أين يقع قسم الطوارئ؟"},
+    {fr:"Je suis allergique à ce médicament.",ar:"لدي حساسية تجاه هذا الدواء."}
+   ])
+  ]
+ },
+ {
   id:"adjectives",title:"Les adjectifs et la description",ar:"الصفات الشخصية والمظهر",icon:Sparkles,
   description:"درس مستقل لوصف المظهر والشخصية، مع صيغ المذكر والمؤنث وتوافق الصفة مع الاسم.",
   sections:[
@@ -873,6 +912,32 @@ const A1_FUTURE_IMPERATIVE_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"___ au parc ensemble !",speech:"Faites une proposition avec nous. Allons au parc ensemble !",instruction:"اختر صيغة الأمر من aller مع nous.",choices:["Allez","Allons","Vont"],correctIndex:1,explanation:"صيغة الأمر من aller مع nous هي allons."},
  {prompt:"Ne ___ pas cette porte !",speech:"Donnez l’ordre négatif. Ne fermez pas cette porte !",instruction:"اختر صيغة الأمر المنفي مع vous.",choices:["fermez","fermer","fermons"],correctIndex:0,explanation:"نضع ne وpas حول صيغة الأمر: Ne fermez pas."},
  {prompt:"Ce soir, on va regarder un film.",speech:"Ce soir, on va regarder un film.",instruction:"اختر المعنى العربي الصحيح.",choices:["شاهدنا فيلمًا مساء أمس.","نشاهد الأفلام كل مساء.","سنشاهد فيلمًا هذا المساء."],correctIndex:2,explanation:"aller + المصدر هنا يعبّر عن خطة هذا المساء."}
+];
+
+const A1_HEALTH_NEEDS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je ne me sens pas bien ce matin.",ar:"لا أشعر أنني بخير هذا الصباح."},
+ {fr:"Il a un rhume et il tousse beaucoup.",ar:"لديه زكام ويسعل كثيرًا."},
+ {fr:"Nous avons mal au dos.",ar:"نشعر بألم في الظهر."},
+ {fr:"Elle a mal à l’oreille droite.",ar:"تشعر بألم في أذنها اليمنى."},
+ {fr:"Est-ce que vous avez de la fièvre ?",ar:"هل لديكم حمى؟"},
+ {fr:"Le médecin est disponible à quinze heures.",ar:"الطبيب متاح الساعة الثالثة عصرًا."},
+ {fr:"J’ai une ordonnance pour ce médicament.",ar:"لدي وصفة طبية لهذا الدواء."},
+ {fr:"Prenez ce sirop trois fois par jour.",ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."},
+ {fr:"Mon ami ne peut pas marcher.",ar:"لا يستطيع صديقي المشي."},
+ {fr:"Je suis allergique aux noix.",ar:"لدي حساسية تجاه المكسرات."}
+];
+
+const A1_HEALTH_NEEDS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"J’___ de la fièvre.",speech:"Complétez la phrase. J’ai de la fièvre.",instruction:"اختر الفعل الصحيح مع الحمى.",choices:["ai","suis","fais"],correctIndex:0,explanation:"نقول avoir de la fièvre: j’ai de la fièvre."},
+ {prompt:"Je ___ malade.",speech:"Complétez la phrase. Je suis malade.",instruction:"اختر الفعل الصحيح لوصف الحالة العامة.",choices:["fais","ai","suis"],correctIndex:2,explanation:"نستخدم être مع malade: je suis malade."},
+ {prompt:"Elle a mal ___ tête.",speech:"Complétez la phrase. Elle a mal à la tête.",instruction:"اختر حرف الجر والأداة المناسبين مع الرأس.",choices:["au","à la","aux"],correctIndex:1,explanation:"tête مؤنث؛ لذلك نقول à la tête."},
+ {prompt:"Il a mal ___ ventre.",speech:"Complétez la phrase. Il a mal au ventre.",instruction:"اختر الشكل الصحيح مع اسم مذكر معرف.",choices:["au","à la","aux"],correctIndex:0,explanation:"à مع le تندمج وتصبح au."},
+ {prompt:"J’ai mal ___ dents.",speech:"Complétez la phrase. J’ai mal aux dents.",instruction:"اختر الشكل الصحيح مع اسم جمع معرف.",choices:["des","aux","à la"],correctIndex:1,explanation:"à مع les تندمج وتصبح aux."},
+ {prompt:"___ quand avez-vous mal ?",speech:"Posez la question. Depuis quand avez-vous mal ?",instruction:"اختر الكلمة التي تسأل عن بداية الألم.",choices:["Depuis","Comment","Combien"],correctIndex:0,explanation:"Depuis quand ؟ تعني منذ متى؟"},
+ {prompt:"Je voudrais ___ rendez-vous.",speech:"Complétez la phrase. Je voudrais prendre rendez-vous.",instruction:"اختر الفعل المستخدم مع حجز الموعد.",choices:["faire un","prendre","avoir à"],correctIndex:1,explanation:"التعبير الصحيح هو prendre rendez-vous."},
+ {prompt:"Prenez ce médicament ___ le repas.",speech:"Complétez l’instruction. Prenez ce médicament après le repas.",instruction:"اختر الكلمة المناسبة لتوقيت تناول الدواء.",choices:["entre","sous","après"],correctIndex:2,explanation:"après le repas تعني بعد الوجبة."},
+ {prompt:"J’ai besoin ___ aide.",speech:"Complétez la phrase. J’ai besoin d’aide.",instruction:"اختر الصيغة الصحيحة بعد avoir besoin.",choices:["d’","à l’","de l’"],correctIndex:0,explanation:"نقول avoir besoin de، وتصبح d’ قبل صوت متحرك."},
+ {prompt:"Je suis allergique à ce médicament.",speech:"Je suis allergique à ce médicament.",instruction:"اختر المعنى العربي الصحيح.",choices:["نسيت تناول هذا الدواء.","أحتاج إلى وصفة لهذا الدواء.","لدي حساسية تجاه هذا الدواء."],correctIndex:2,explanation:"être allergique à تعني أن لدى الشخص حساسية تجاه شيء."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2364,7 +2429,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","present","modal-verbs","future-imperative"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والصحة والزمن والطقس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3565,6 +3630,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3587,6 +3653,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

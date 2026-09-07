@@ -768,6 +768,45 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Je suis désolé, on peut changer l’heure ?",ar:"أنا آسف، هل يمكننا تغيير الوقت؟"}
    ])
   ]
+ },
+ {
+  id:"messages-forms",title:"Messages, formulaires et informations pratiques",ar:"الرسائل والنماذج والمعلومات اليومية",icon:NotebookTabs,
+  description:"قراءة البيانات واللوحات الشائعة، تعبئة نموذج بسيط، وكتابة رسالة قصيرة واضحة للتحية أو الموعد أو الاعتذار.",
+  sections:[
+   section("Remplir un formulaire","تعبئة نموذج بسيط","اقرأ اسم كل خانة قبل الكتابة. في الفرنسية يختلف prénom، أي الاسم الأول، عن nom de famille، أي اسم العائلة.",[
+    "prénom: الاسم الأول، nom de famille: اسم العائلة.",
+    "date de naissance: تاريخ الميلاد، nationalité: الجنسية.",
+    "adresse، code postal، ville: العنوان، الرمز البريدي، المدينة.",
+    "numéro de téléphone، adresse électronique: رقم الهاتف، البريد الإلكتروني."
+   ],[
+    {fr:"Mon prénom est Nora et mon nom de famille est Alami.",ar:"اسمي الأول نورة واسم عائلتي العلمي."},
+    {fr:"Ma date de naissance est le quinze mars deux mille.",ar:"تاريخ ميلادي هو الخامس عشر من مارس عام 2000."},
+    {fr:"J’habite au vingt, rue Victor-Hugo, à Lyon.",ar:"أسكن في 20 شارع فيكتور هوغو في ليون."},
+    {fr:"Mon adresse électronique est nora@example.com.",ar:"عنوان بريدي الإلكتروني هو nora@example.com."}
+   ]),
+   section("Écrire un message court","كتابة رسالة قصيرة","ابدأ بتحية مناسبة، ثم اذكر سبب الرسالة والمعلومة المهمة مثل الوقت أو المكان، واختم بعبارة وداع واسمك.",[
+    "Bonjour رسمي أو عام، Salut ودي.",
+    "Je vous écris pour… أكتب إليكم من أجل…",
+    "Rendez-vous à… موعدنا في…",
+    "Merci، À bientôt، Cordialement: شكرًا، إلى لقاء قريب، مع التحية."
+   ],[
+    {fr:"Bonjour, je confirme notre rendez-vous de demain à dix heures.",ar:"مرحبًا، أؤكد موعدنا غدًا الساعة العاشرة."},
+    {fr:"Salut Lina, je suis devant la bibliothèque.",ar:"مرحبًا لينا، أنا أمام المكتبة."},
+    {fr:"Désolé, je vais arriver dix minutes en retard.",ar:"آسف، سأتأخر عشر دقائق."},
+    {fr:"Merci pour votre message. Cordialement, Sami.",ar:"شكرًا على رسالتكم. مع التحية، سامي."}
+   ]),
+   section("Comprendre les informations pratiques","فهم المعلومات واللوحات","تعرض اللوحات اليومية كلمات قصيرة عن المكان والوقت والتعليمات. اربط الكلمة بالموقف بدل ترجمتها منفردة فقط.",[
+    "entrée / sortie: دخول / خروج.",
+    "ouvert / fermé: مفتوح / مغلق.",
+    "horaires: أوقات العمل، gratuit: مجاني، complet: مكتمل العدد.",
+    "interdit de… ممنوع…، en panne: معطّل."
+   ],[
+    {fr:"La bibliothèque est ouverte de neuf heures à dix-huit heures.",ar:"المكتبة مفتوحة من التاسعة صباحًا حتى السادسة مساءً."},
+    {fr:"Le musée est fermé le lundi.",ar:"المتحف مغلق يوم الاثنين."},
+    {fr:"Entrée gratuite pour les enfants.",ar:"الدخول مجاني للأطفال."},
+    {fr:"L’ascenseur est en panne.",ar:"المصعد معطّل."}
+   ])
+  ]
  }
 ];
 
@@ -1003,6 +1042,32 @@ const A1_QUESTIONS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"___ jour sommes-nous ?",speech:"Complétez la question. Quel jour sommes-nous ?",instruction:"اختر صيغة quel الموافقة لاسم مذكر مفرد.",choices:["Quelle","Quel","Quels"],correctIndex:1,explanation:"jour مذكر مفرد؛ لذلك نستخدم quel."},
  {prompt:"___ heure est-il ?",speech:"Complétez la question. Quelle heure est-il ?",instruction:"اختر صيغة quel الموافقة لاسم مؤنث مفرد.",choices:["Quelles","Quel","Quelle"],correctIndex:2,explanation:"heure مؤنث مفرد؛ لذلك نستخدم quelle."},
  {prompt:"Quelles langues parlez-vous ?",speech:"Quelles langues parlez-vous ?",instruction:"اختر المعنى العربي الصحيح.",choices:["ما اللغات التي تتحدثونها؟","كم ساعة تدرسون؟","أين تتعلمون اللغة؟"],correctIndex:0,explanation:"quelles langues تعني ما اللغات."}
+];
+
+const A1_MESSAGES_FORMS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Écrivez votre nom et votre prénom ici.",ar:"اكتبوا اسم العائلة والاسم الأول هنا."},
+ {fr:"Quel est votre numéro de téléphone ?",ar:"ما رقم هاتفكم؟"},
+ {fr:"Ma nationalité est saoudienne.",ar:"جنسيتي سعودية."},
+ {fr:"Le code postal est six neuf zéro zéro deux.",ar:"الرمز البريدي هو 69002."},
+ {fr:"Bonjour, je voudrais déplacer mon rendez-vous.",ar:"مرحبًا، أود تغيير موعدي."},
+ {fr:"Je suis disponible vendredi après-midi.",ar:"أنا متاح بعد ظهر الجمعة."},
+ {fr:"À bientôt et bonne journée !",ar:"إلى لقاء قريب ويوم سعيد!"},
+ {fr:"La gare ouvre à cinq heures trente.",ar:"تفتح المحطة الساعة الخامسة والنصف."},
+ {fr:"Le train de Marseille est complet.",ar:"قطار مرسيليا مكتمل العدد."},
+ {fr:"Il est interdit de manger dans cette salle.",ar:"يُمنع تناول الطعام في هذه القاعة."}
+];
+
+const A1_MESSAGES_FORMS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Prénom",speech:"Prénom.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","الاسم الأول","الجنسية"],correctIndex:1,explanation:"prénom يعني الاسم الأول."},
+ {prompt:"Nom de famille",speech:"Nom de famille.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","تاريخ الميلاد","رقم الهاتف"],correctIndex:0,explanation:"nom de famille يعني اسم العائلة."},
+ {prompt:"Date de naissance",speech:"Date de naissance.",instruction:"اختر المعلومة المطلوبة في هذه الخانة.",choices:["مكان السكن","البريد الإلكتروني","تاريخ الميلاد"],correctIndex:2,explanation:"date de naissance تعني تاريخ الميلاد."},
+ {prompt:"Je vous écris ___ confirmer le rendez-vous.",speech:"Complétez la phrase. Je vous écris pour confirmer le rendez-vous.",instruction:"اختر الكلمة التي توضح سبب الرسالة.",choices:["pour","dans","chez"],correctIndex:0,explanation:"pour + مصدر يوضح الغرض من الكتابة."},
+ {prompt:"Désolé, je vais arriver en ___.",speech:"Complétez le message. Désolé, je vais arriver en retard.",instruction:"أكمل عبارة الاعتذار عن التأخر.",choices:["panne","avance","retard"],correctIndex:2,explanation:"arriver en retard تعني الوصول متأخرًا."},
+ {prompt:"Merci pour votre message. ___.",speech:"Choisissez une formule de fin. Merci pour votre message. Cordialement.",instruction:"اختر خاتمة مناسبة لرسالة مهذبة.",choices:["Quel âge avez-vous","Cordialement","Entrée gratuite"],correctIndex:1,explanation:"Cordialement خاتمة مهذبة شائعة في الرسائل."},
+ {prompt:"Ouvert",speech:"Ouvert.",instruction:"اختر معنى الكلمة على لوحة المكان.",choices:["مفتوح","مغلق","مكتمل العدد"],correctIndex:0,explanation:"ouvert تعني مفتوح."},
+ {prompt:"Entrée gratuite",speech:"Entrée gratuite.",instruction:"اختر معنى العبارة.",choices:["الدخول ممنوع","الدخول من الجهة الأخرى","الدخول مجاني"],correctIndex:2,explanation:"gratuit تعني مجاني."},
+ {prompt:"L’ascenseur est en panne.",speech:"L’ascenseur est en panne.",instruction:"اختر المعنى العربي الصحيح.",choices:["المصعد معطّل.","المصعد في الطابق الأول.","المصعد مخصص للموظفين."],correctIndex:0,explanation:"en panne تعني معطّل."},
+ {prompt:"Le musée est fermé le lundi.",speech:"Le musée est fermé le lundi.",instruction:"متى يكون المتحف مغلقًا؟",choices:["يوم الجمعة","يوم الاثنين","كل صباح"],correctIndex:1,explanation:"le lundi تعني يوم الاثنين."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2494,7 +2559,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والأسئلة وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","questions","present","modal-verbs","future-imperative"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والصحة والزمن والطقس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والمدينة والسكن والصحة والزمن والطقس والعائلة والحياة والرسائل والمعلومات اليومية.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations","messages-forms"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3697,6 +3762,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="messages-forms")return A1_MESSAGES_FORMS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3721,6 +3787,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="future-imperative")return A1_FUTURE_IMPERATIVE_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="messages-forms")return A1_MESSAGES_FORMS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

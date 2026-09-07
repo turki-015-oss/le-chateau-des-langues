@@ -308,6 +308,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:ListChecks,
+  description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
+  sections:[
+   section("Pouvoir","الاستطاعة والإذن","يأتي pouvoir قبل فعل في المصدر للتعبير عن القدرة أو الإمكانية، ويُستخدم في السؤال لطلب الإذن أو المساعدة.",[
+    "je peux، tu peux، il / elle / on peut.",
+    "nous pouvons، vous pouvez، ils / elles peuvent.",
+    "pouvoir + مصدر: Je peux venir.",
+    "Est-ce que je peux… ? لطلب الإذن."
+   ],[
+    {fr:"Je peux parler un peu français.",ar:"أستطيع التحدث بالفرنسية قليلًا."},
+    {fr:"Est-ce que je peux entrer ?",ar:"هل يمكنني الدخول؟"},
+    {fr:"Nous pouvons vous aider.",ar:"يمكننا مساعدتكم."},
+    {fr:"Elle ne peut pas venir aujourd’hui.",ar:"لا تستطيع الحضور اليوم."}
+   ]),
+   section("Vouloir","الرغبة والطلب","يأتي vouloir قبل اسم أو فعل في المصدر للتعبير عن الرغبة. وعند الطلب من شخص آخر يكون Je voudrais ألطف من Je veux.",[
+    "je veux، tu veux، il / elle / on veut.",
+    "nous voulons، vous voulez، ils / elles veulent.",
+    "vouloir + مصدر: Nous voulons partir.",
+    "Je voudrais… صيغة مهذبة شائعة للطلب."
+   ],[
+    {fr:"Je veux apprendre le français.",ar:"أريد تعلم الفرنسية."},
+    {fr:"Tu veux prendre un café ?",ar:"هل تريد تناول قهوة؟"},
+    {fr:"Ils veulent visiter le musée.",ar:"يريدون زيارة المتحف."},
+    {fr:"Je voudrais un billet pour Lyon, s’il vous plaît.",ar:"أرغب في تذكرة إلى ليون، من فضلك."}
+   ]),
+   section("Devoir et il faut","الواجب والضرورة","نستخدم devoir عندما يرتبط الواجب بشخص محدد، ونستخدم il faut للتعبير عن قاعدة أو ضرورة عامة دون تحديد شخص.",[
+    "je dois، tu dois، il / elle / on doit.",
+    "nous devons، vous devez، ils / elles doivent.",
+    "devoir + مصدر: Vous devez attendre.",
+    "Il faut + مصدر، والنفي Il ne faut pas + مصدر."
+   ],[
+    {fr:"Je dois finir mes devoirs.",ar:"يجب عليّ إنهاء واجباتي."},
+    {fr:"Vous devez présenter votre passeport.",ar:"يجب عليكم إبراز جواز سفركم."},
+    {fr:"Il faut arriver à l’heure.",ar:"يجب الوصول في الموعد."},
+    {fr:"Il ne faut pas fumer ici.",ar:"يُمنع التدخين هنا."}
+   ])
+  ]
+ },
+ {
   id:"food-shopping",title:"L’alimentation et les achats",ar:"الطعام والتسوق",icon:ShoppingBag,
   description:"اختيار أدوات التجزئة، التعبير عن الكمية، وطلب الطعام وشراء المنتجات بعبارات بسيطة ومهذبة.",
   sections:[
@@ -743,6 +782,32 @@ const A1_HOME_HOUSING_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"J’habite ___ deuxième étage.",speech:"Complétez la phrase. J’habite au deuxième étage.",instruction:"اختر حرف الجر والأداة الصحيحين مع الطابق.",choices:["du","aux","au"],correctIndex:2,explanation:"نقول au deuxième étage."},
  {prompt:"L’appartement est petit, ___ lumineux.",speech:"Complétez la phrase. L’appartement est petit, mais lumineux.",instruction:"اختر الرابط المناسب للجمع بين صفتين متقابلتين.",choices:["mais","ou","parce que"],correctIndex:0,explanation:"mais تعني لكن وتربط فكرتين متقابلتين."},
  {prompt:"Ma pièce préférée est le salon.",speech:"Ma pièce préférée est le salon.",instruction:"اختر المعنى العربي الصحيح.",choices:["غرفة نومي بجوار الصالة.","غرفتي المفضلة هي غرفة الجلوس.","منزلي لا يحتوي على غرفة جلوس."],correctIndex:1,explanation:"la pièce préférée تعني الغرفة المفضلة."}
+];
+
+const A1_MODAL_VERBS_PRACTICE_ITEMS:Example[]=[
+ {fr:"Tu peux répéter plus lentement ?",ar:"هل يمكنك التكرار ببطء أكثر؟"},
+ {fr:"On peut prendre le métro jusqu’au centre.",ar:"يمكننا استقلال المترو حتى وسط المدينة."},
+ {fr:"Vous pouvez payer par carte.",ar:"يمكنكم الدفع بالبطاقة."},
+ {fr:"Je ne peux pas ouvrir cette porte.",ar:"لا أستطيع فتح هذا الباب."},
+ {fr:"Nous voulons réserver une chambre pour deux nuits.",ar:"نريد حجز غرفة لليلتين."},
+ {fr:"Elle veut acheter une veste bleue.",ar:"تريد شراء سترة زرقاء."},
+ {fr:"Vous voulez autre chose ?",ar:"هل ترغبون في شيء آخر؟"},
+ {fr:"Je dois prendre ce médicament le matin.",ar:"يجب عليّ تناول هذا الدواء صباحًا."},
+ {fr:"Nous devons partir avant huit heures.",ar:"يجب علينا المغادرة قبل الساعة الثامنة."},
+ {fr:"Il faut traverser au passage piéton.",ar:"يجب العبور من ممر المشاة."}
+];
+
+const A1_MODAL_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ parler français.",speech:"Complétez la phrase. Je peux parler français.",instruction:"اختر تصريف pouvoir الصحيح مع je.",choices:["peut","peux","pouvons"],correctIndex:1,explanation:"مع je نقول je peux."},
+ {prompt:"Nous ___ vous aider.",speech:"Complétez la phrase. Nous pouvons vous aider.",instruction:"اختر تصريف pouvoir الصحيح مع nous.",choices:["pouvons","pouvez","peuvent"],correctIndex:0,explanation:"مع nous نقول nous pouvons."},
+ {prompt:"Ils ne ___ pas venir.",speech:"Complétez la phrase. Ils ne peuvent pas venir.",instruction:"اختر تصريف pouvoir الصحيح مع ils.",choices:["pouvez","peut","peuvent"],correctIndex:2,explanation:"مع ils نقول ils peuvent."},
+ {prompt:"Tu ___ prendre un café ?",speech:"Complétez la phrase. Tu veux prendre un café ?",instruction:"اختر تصريف vouloir الصحيح مع tu.",choices:["veux","veut","voulez"],correctIndex:0,explanation:"مع tu نقول tu veux."},
+ {prompt:"Elles ___ visiter Paris.",speech:"Complétez la phrase. Elles veulent visiter Paris.",instruction:"اختر تصريف vouloir الصحيح مع elles.",choices:["voulons","veulent","voulez"],correctIndex:1,explanation:"مع elles نقول elles veulent."},
+ {prompt:"___ un verre d’eau, s’il vous plaît.",speech:"Formulez une demande polie. Je voudrais un verre d’eau, s’il vous plaît.",instruction:"اختر الصيغة الأكثر تهذيبًا للطلب.",choices:["Je suis","Je dois","Je voudrais"],correctIndex:2,explanation:"Je voudrais صيغة مهذبة للطلب."},
+ {prompt:"Je ___ partir maintenant.",speech:"Complétez la phrase. Je dois partir maintenant.",instruction:"اختر تصريف devoir الصحيح مع je.",choices:["dois","doit","devons"],correctIndex:0,explanation:"مع je نقول je dois."},
+ {prompt:"Vous ___ attendre ici.",speech:"Complétez la phrase. Vous devez attendre ici.",instruction:"اختر تصريف devoir الصحيح مع vous.",choices:["doivent","devez","dois"],correctIndex:1,explanation:"مع vous نقول vous devez."},
+ {prompt:"Il ___ respecter les règles.",speech:"Complétez la nécessité générale. Il faut respecter les règles.",instruction:"اختر التعبير عن ضرورة عامة.",choices:["peut","veut","faut"],correctIndex:2,explanation:"Il faut + مصدر يعبّر عن ضرورة عامة."},
+ {prompt:"Il ne faut pas fumer ici.",speech:"Il ne faut pas fumer ici.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا يمكنني الانتظار هنا.","يُمنع التدخين هنا.","أريد الخروج من هنا."],correctIndex:1,explanation:"Il ne faut pas fumer تعني أن التدخين ممنوع."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2233,7 +2298,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة وأفعال الحاضر والقدرة والرغبة والضرورة.",moduleIds:["nouns","core-verbs","structures","present","modal-verbs"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والسكن والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","adjectives","daily-life","situations"]}
  ],
  A2:[
@@ -3433,6 +3498,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3453,6 +3519,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="home-housing")return A1_HOME_HOUSING_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="modal-verbs")return A1_MODAL_VERBS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

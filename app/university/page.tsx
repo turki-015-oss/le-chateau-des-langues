@@ -412,6 +412,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"weather-clothes",title:"La météo, les saisons et les vêtements",ar:"الطقس والفصول والملابس",icon:Sparkles,
+  description:"فهم نشرة جوية بسيطة، تسمية الفصول، واختيار الملابس المناسبة باستخدام عبارات يومية واضحة.",
+  sections:[
+   section("Parler de la météo","وصف حالة الطقس","نستخدم Quel temps fait-il ؟ للسؤال عن الطقس، ثم نجيب بتراكيب ثابتة مع il fait وil y a، أو بأفعال مثل pleuvoir وneiger.",[
+    "Il fait beau / mauvais: الطقس جميل / سيئ.",
+    "Il fait chaud / froid: الجو حار / بارد.",
+    "Il pleut / Il neige: تمطر / تثلج.",
+    "Il y a du vent / des nuages: توجد رياح / غيوم."
+   ],[
+    {fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟"},
+    {fr:"Il fait beau et il y a du soleil.",ar:"الطقس جميل ومشمس."},
+    {fr:"Il pleut depuis ce matin.",ar:"تمطر منذ هذا الصباح."},
+    {fr:"Il fait dix-huit degrés à Lyon.",ar:"درجة الحرارة ثماني عشرة درجة في ليون."}
+   ]),
+   section("Les quatre saisons","الفصول الأربعة","أسماء الفصول مذكرة في الفرنسية. نقول au printemps، لكننا نستخدم en مع été وautomne وhiver.",[
+    "au printemps: في فصل الربيع.",
+    "en été: في فصل الصيف.",
+    "en automne: في فصل الخريف.",
+    "en hiver: في فصل الشتاء."
+   ],[
+    {fr:"Au printemps, les jardins sont fleuris.",ar:"في الربيع تكون الحدائق مزهرة."},
+    {fr:"En été, les journées sont longues.",ar:"في الصيف تكون الأيام طويلة."},
+    {fr:"En automne, il y a souvent du vent.",ar:"في الخريف تهب الرياح كثيرًا."},
+    {fr:"En hiver, il neige dans les montagnes.",ar:"في الشتاء تتساقط الثلوج في الجبال."}
+   ]),
+   section("Choisir ses vêtements","اختيار الملابس","نستخدم porter لوصف الملابس التي يرتديها الشخص، ونستخدم mettre عندما يرتدي قطعة أو يضعها استعدادًا للخروج.",[
+    "porter un pantalon / une robe: ارتداء بنطال / فستان.",
+    "mettre un manteau: ارتداء معطف.",
+    "prendre un parapluie: أخذ مظلة.",
+    "اتفاق اللون: un pull noir، une veste noire."
+   ],[
+    {fr:"Je porte un pantalon bleu et une chemise blanche.",ar:"أرتدي بنطالًا أزرق وقميصًا أبيض."},
+    {fr:"Mets ton manteau, il fait froid.",ar:"ارتدِ معطفك، فالجو بارد."},
+    {fr:"Elle prend son parapluie parce qu’il pleut.",ar:"تأخذ مظلتها لأن الجو ممطر."},
+    {fr:"Ces chaussures sont confortables pour marcher.",ar:"هذه الأحذية مريحة للمشي."}
+   ])
+  ]
+ },
+ {
   id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:Users,
   description:"مفردات العائلة، الحالات الجسدية اليومية، والمشاعر في أقسام مستقلة.",
   sections:[
@@ -613,6 +652,32 @@ const A1_CITY_DIRECTIONS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Allez tout ___.",speech:"Complétez l’instruction. Allez tout droit.",instruction:"أكمل تعليمات السير مباشرة.",choices:["droit","droite","devant"],correctIndex:0,explanation:"التعبير الثابت هو aller tout droit."},
  {prompt:"Tournez ___ gauche après le café.",speech:"Complétez l’instruction. Tournez à gauche après le café.",instruction:"اختر حرف الجر الصحيح مع الاتجاه.",choices:["de","en","à"],correctIndex:2,explanation:"نقول à gauche وà droite."},
  {prompt:"Le musée est en face du parc.",speech:"Le musée est en face du parc.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع المتحف خلف الحديقة.","يقع المتحف مقابل الحديقة.","يقع المتحف داخل الحديقة."],correctIndex:1,explanation:"en face de تعني مقابل."}
+];
+
+const A1_WEATHER_CLOTHES_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ce matin, le ciel est gris et il fait froid.",ar:"هذا الصباح السماء غائمة والجو بارد."},
+ {fr:"Il y a beaucoup de vent près de la mer.",ar:"تهب رياح قوية بالقرب من البحر."},
+ {fr:"Demain, il va pleuvoir dans le nord.",ar:"ستمطر غدًا في الشمال."},
+ {fr:"La température est de vingt-cinq degrés.",ar:"درجة الحرارة خمس وعشرون درجة."},
+ {fr:"Au printemps, je me promène dans les parcs.",ar:"في الربيع أتنزه في الحدائق."},
+ {fr:"En été, nous allons souvent à la plage.",ar:"في الصيف نذهب كثيرًا إلى الشاطئ."},
+ {fr:"En automne, les feuilles changent de couleur.",ar:"في الخريف يتغير لون أوراق الأشجار."},
+ {fr:"En hiver, je porte un manteau chaud.",ar:"في الشتاء أرتدي معطفًا دافئًا."},
+ {fr:"Il fait chaud, mets un tee-shirt léger.",ar:"الجو حار، ارتدِ قميصًا خفيفًا."},
+ {fr:"N’oublie pas ton parapluie aujourd’hui.",ar:"لا تنسَ مظلتك اليوم."}
+];
+
+const A1_WEATHER_CLOTHES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Quel temps ___-il ?",speech:"Complétez la question. Quel temps fait-il ?",instruction:"أكمل السؤال الشائع عن الطقس.",choices:["est","fait","a"],correctIndex:1,explanation:"السؤال الثابت هو Quel temps fait-il ؟"},
+ {prompt:"Il ___ froid aujourd’hui.",speech:"Complétez la phrase. Il fait froid aujourd’hui.",instruction:"اختر الفعل الصحيح لوصف برودة الجو.",choices:["fait","est","a"],correctIndex:0,explanation:"نستخدم il fait مع chaud وfroid."},
+ {prompt:"Il y a ___ vent.",speech:"Complétez la phrase. Il y a du vent.",instruction:"اختر الأداة الصحيحة في التعبير عن وجود الرياح.",choices:["de la","des","du"],correctIndex:2,explanation:"التعبير الثابت هو Il y a du vent."},
+ {prompt:"Il ___ depuis ce matin.",speech:"Complétez la phrase. Il pleut depuis ce matin.",instruction:"اختر الفعل الذي يعني أن المطر يهطل.",choices:["pleut","neige","porte"],correctIndex:0,explanation:"Il pleut تعني تمطر."},
+ {prompt:"___ printemps, les fleurs apparaissent.",speech:"Complétez la phrase. Au printemps, les fleurs apparaissent.",instruction:"اختر حرف الجر الصحيح مع فصل الربيع.",choices:["En","À la","Au"],correctIndex:2,explanation:"نقول au printemps."},
+ {prompt:"___ été, il fait chaud.",speech:"Complétez la phrase. En été, il fait chaud.",instruction:"اختر حرف الجر الصحيح مع فصل الصيف.",choices:["En","Au","Aux"],correctIndex:0,explanation:"نقول en été."},
+ {prompt:"Je ___ un manteau noir.",speech:"Complétez la phrase. Je porte un manteau noir.",instruction:"اختر الفعل المناسب لوصف الملابس التي ترتديها.",choices:["pleut","porte","fait"],correctIndex:1,explanation:"porter يستخدم لوصف الملابس التي يرتديها الشخص."},
+ {prompt:"Mets ton manteau, ___ il fait froid.",speech:"Complétez la phrase. Mets ton manteau, parce qu’il fait froid.",instruction:"اختر الرابط الذي يوضح السبب.",choices:["mais","puis","parce qu’"],correctIndex:2,explanation:"parce que يقدّم سبب ارتداء المعطف."},
+ {prompt:"une veste ___.",speech:"Choisissez l’accord correct. Une veste noire.",instruction:"اختر صيغة اللون الموافقة للاسم المؤنث.",choices:["noire","noir","noirs"],correctIndex:0,explanation:"veste مؤنث مفرد، ولذلك تصبح noir إلى noire."},
+ {prompt:"Elle prend son parapluie.",speech:"Elle prend son parapluie.",instruction:"اختر المعنى العربي الصحيح.",choices:["ترتدي حذاءها.","تأخذ مظلتها.","تغلق نافذتها."],correctIndex:1,explanation:"prendre son parapluie تعني أخذ المظلة."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -2104,7 +2169,7 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والإشارة والأفعال في الحاضر.",moduleIds:["nouns","core-verbs","structures","present"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والاتجاهات والعدد والزمن والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","description","adjectives","daily-life","situations"]}
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والتسوق والمدينة والاتجاهات والعدد والزمن والطقس والملابس والعائلة والصفات والحياة والمواقف.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","description","adjectives","daily-life","situations"]}
  ],
  A2:[
   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
@@ -3301,6 +3366,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -3319,6 +3385,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="city-directions")return A1_CITY_DIRECTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="food-shopping")return A1_FOOD_SHOPPING_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="weather-clothes")return A1_WEATHER_CLOTHES_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

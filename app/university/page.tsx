@@ -4355,14 +4355,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${activeModule.id==="revision"?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA2Revision||isA2PasseCompose?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
     <nav aria-label="مراحل الدرس">
-     <button className={lessonStage==="learn"?"active":""} onClick={()=>setLessonStage("learn")}><BookOpen/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
-     <button className={lessonStage==="practice"?"active":""} onClick={()=>setLessonStage("practice")}><Headphones/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
-     <button className={lessonStage==="test"?"active":""} onClick={()=>setLessonStage("test")}><ListChecks/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{quizQuestions.length} أسئلة ونتيجة</small></span></button>
+     <button className={`stage-learn ${lessonStage==="learn"?"active":""}`} onClick={()=>setLessonStage("learn")}><GraduationCap/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
+     <button className={`stage-practice ${lessonStage==="practice"?"active":""}`} onClick={()=>setLessonStage("practice")}><Repeat2/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
+     <button className={`stage-final ${lessonStage==="test"?"active":""}`} onClick={()=>setLessonStage("test")}><ClipboardPenLine/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{quizQuestions.length} أسئلة ونتيجة</small></span></button>
     </nav>
    </aside>
 
@@ -4775,11 +4775,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
       <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
-     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ListChecks/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
+     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ListChecks/><div><span>Exercice final</span><h3>{isEnhancedA2Lesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     <div className="university-stage-heading"><ClipboardPenLine/><div><span>Exercice final</span><h3>{isEnhancedA2Lesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
      {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
       const question=quizQuestions[quizQuestionIndex];
       const selected=quizAnswers[quizQuestionIndex];

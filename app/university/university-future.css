@@ -783,7 +783,10 @@
  color:#edcd80;
  box-shadow:inset 0 1px rgba(255,255,255,.15),0 7px 14px rgba(0,0,0,.2);
 }
-.university-level-world .university-course-revision .university-lesson-guide nav button.active>svg{background:linear-gradient(145deg,#efd078,#ab7923);color:#09284e}
+.university-level-world .university-course-revision .university-lesson-guide nav button.stage-learn>svg{background:linear-gradient(145deg,#efd078,#ad7921);color:#08294f}
+.university-level-world .university-course-revision .university-lesson-guide nav button.stage-practice>svg{background:linear-gradient(145deg,#347bb5,#0b3768);color:#ffe09a}
+.university-level-world .university-course-revision .university-lesson-guide nav button.stage-final>svg{background:linear-gradient(145deg,#e4c26e,#8f641d);color:#08294f}
+.university-level-world .university-course-revision .university-lesson-guide nav button.active>svg{border-color:#ffe5a5;box-shadow:inset 0 1px rgba(255,255,255,.35),0 9px 19px rgba(0,0,0,.3),0 0 0 3px rgba(239,204,120,.12)}
 .university-level-world .university-course-revision .university-lesson-guide nav button small{color:#9fb5cb}
 .university-level-world .university-course-revision .university-lesson-guide nav button.active small{color:#d8e5f1}
 

@@ -1666,6 +1666,49 @@ const A1_QUESTIONS_DIALOGUES=[
  {context:"Vous demandez le nom d’une formation : « … formation choisissez-vous ? »",prompt:"اختر الصيغة الصحيحة.",choices:["Quel","Quelle","Quels"],correctIndex:1,feedback:"formation مؤنث مفرد، لذلك نستخدم quelle."}
 ];
 
+const A1_PRESENT_READING={
+ title:"La journée de Karim",
+ arTitle:"يوم كريم",
+ text:"Karim travaille dans une librairie. Il commence à neuf heures et finit à dix-sept heures. À midi, il prend son déjeuner avec ses collègues. Il ne rentre pas en voiture : il prend le métro. Le soir, ses amis viennent parfois chez lui.",
+ translation:"يعمل كريم في مكتبة لبيع الكتب. يبدأ عمله الساعة التاسعة وينتهي الساعة الخامسة مساءً. عند الظهر يتناول الغداء مع زملائه. لا يعود بالسيارة، بل يستقل المترو. وفي المساء يأتي أصدقاؤه أحيانًا إلى منزله.",
+ questions:[
+  {question:"Où travaille Karim ?",answer:"Karim travaille dans une librairie.",ar:"يعمل كريم في مكتبة لبيع الكتب."},
+  {question:"Comment rentre-t-il chez lui ?",answer:"Il rentre chez lui en métro.",ar:"يعود إلى منزله بالمترو."},
+  {question:"Qui vient parfois chez lui ?",answer:"Ses amis viennent parfois chez lui.",ar:"يأتي أصدقاؤه أحيانًا إلى منزله."}
+ ]
+};
+
+const A1_PRESENT_LISTENING={
+ title:"Une matinée habituelle",
+ arTitle:"صباح معتاد",
+ text:"Chaque matin, je me lève à sept heures. Je prépare un café, puis je vais au travail à pied. Je ne prends jamais le bus. Mes collègues arrivent à huit heures et nous commençons ensemble.",
+ questions:[
+  {prompt:"À quelle heure la personne se lève-t-elle ?",choices:["À six heures","À sept heures","À huit heures"],correctIndex:1},
+  {prompt:"Comment va-t-elle au travail ?",choices:["À pied","En bus","En voiture"],correctIndex:0},
+  {prompt:"Que font les collègues à huit heures ?",choices:["Ils déjeunent","Ils arrivent","Ils rentrent"],correctIndex:1}
+ ]
+};
+
+const A1_PRESENT_WRITING_MODEL="Le matin, je commence le travail à huit heures. Je parle avec mes collègues et nous prenons un café. Je ne déjeune pas au bureau. Le soir, je rentre en métro, puis je fais du sport.";
+
+const A1_PRESENT_DICTATION=[
+ {speech:"Je travaille à l’université.",ar:"أعمل في الجامعة."},
+ {speech:"Nous finissons le cours à midi.",ar:"ننهي الدرس عند الظهر."},
+ {speech:"Elle ne prend pas le bus.",ar:"هي لا تستقل الحافلة."}
+];
+
+const A1_PRESENT_BUILDERS=[
+ {tokens:["français.","parlons","Nous"],answer:["Nous","parlons","français."],ar:"نحن نتحدث الفرنسية."},
+ {tokens:["pas","ne","ici.","travaille","Il"],answer:["Il","ne","travaille","pas","ici."],ar:"هو لا يعمل هنا."},
+ {tokens:["métro","prend","le","Elle","matin.","chaque"],answer:["Elle","prend","le","métro","chaque","matin."],ar:"تستقل المترو كل صباح."}
+];
+
+const A1_PRESENT_DIALOGUES=[
+ {context:"Votre ami demande : « Vous travaillez le samedi ? »",prompt:"اختر إجابة منفية صحيحة.",choices:["Non, je ne travaille pas le samedi.","Non, je travaille ne pas le samedi.","Non, je ne pas travaille le samedi."],correctIndex:0,feedback:"في النفي يحيط ne وpas بالفعل المصرف."},
+ {context:"Complétez : « Nous … le cours à midi. »",prompt:"اختر تصريف finir مع nous.",choices:["finissons","finissez","finissent"],correctIndex:0,feedback:"تصريف finir مع nous هو finissons."},
+ {context:"Complétez : « Mes amis … ce soir. »",prompt:"اختر تصريف venir مع ils.",choices:["vient","venez","viennent"],correctIndex:2,feedback:"تصريف venir مع ils هو viennent."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1701,6 +1744,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_QUESTIONS_READING,listening:A1_QUESTIONS_LISTENING,dictation:A1_QUESTIONS_DICTATION,builders:A1_QUESTIONS_BUILDERS,dialogues:A1_QUESTIONS_DIALOGUES,
   writingModel:A1_QUESTIONS_WRITING_MODEL,writingTitle:"اكتب أسئلة تعارف قصيرة",writingInstructions:"اكتب من 25 إلى 40 كلمة تتضمن خمسة أسئلة مختلفة للتعارف. استخدم Est-ce que، وأداتين مختلفتين من comment وoù وquand وpourquoi، وصيغة quel المناسبة.",writingPlaceholder:"Bonjour ! Comment vous appelez-vous ?…",writingMinimum:25,writingMaximum:40,
   speakingPrompt:"Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Est-ce que vous aimez voyager ?",speakingDuration:"تحدث لمدة 25 إلى 40 ثانية",speakingTips:["استخدم نبرة السؤال بوضوح.","نوّع بين Est-ce que وأدوات الاستفهام.","اترك وقفة قصيرة بعد كل سؤال."],dictationUnit:"sentence"
+ },
+ present:{
+  reading:A1_PRESENT_READING,listening:A1_PRESENT_LISTENING,dictation:A1_PRESENT_DICTATION,builders:A1_PRESENT_BUILDERS,dialogues:A1_PRESENT_DIALOGUES,
+  writingModel:A1_PRESENT_WRITING_MODEL,writingTitle:"صِف روتينك في الحاضر",writingInstructions:"اكتب من 30 إلى 45 كلمة عن يومك المعتاد. استخدم خمسة أفعال في المضارع مع ضميرين مختلفين، وجملة منفية واحدة، ورابطًا مثل puis أو mais.",writingPlaceholder:"Le matin, je…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Le matin, je commence le travail à huit heures. Je parle avec mes collègues. Je ne déjeune pas au bureau. Le soir, je rentre en métro.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["رتّب يومك من الصباح إلى المساء.","صرّف الفعل وفق ضمير الفاعل.","أضف جملة منفية باستعمال ne… pas."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4321,9 +4369,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  ]:isA1Questions?[
   {label:"من 25 إلى 40 كلمة",passed:revisionWordCount>=25&&revisionWordCount<=40},
   {label:"خمسة أسئلة مختلفة",passed:(revisionWritingText.match(/\?/g)??[]).length>=5},
-  {label:"سؤال باستعمال Est-ce que",passed:/\best-ce\s+que\b/i.test(revisionWritingText)},
-  {label:"أداتا استفهام مختلفتان على الأقل",passed:["comment","où","quand","pourquoi"].filter(word=>revisionWritingTokens.includes(word)).length>=2},
-  {label:"صيغة صحيحة من quel",passed:/\b(?:quel|quelle|quels|quelles)\b/i.test(revisionWritingText)}
+ {label:"سؤال باستعمال Est-ce que",passed:/\best-ce\s+que\b/i.test(revisionWritingText)},
+ {label:"أداتا استفهام مختلفتان على الأقل",passed:["comment","où","quand","pourquoi"].filter(word=>revisionWritingTokens.includes(word)).length>=2},
+ {label:"صيغة صحيحة من quel",passed:/\b(?:quel|quelle|quels|quelles)\b/i.test(revisionWritingText)}
+ ]:isA1Present?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"خمسة أفعال في المضارع على الأقل",passed:revisionWritingTokens.filter(word=>["travaille","travailles","travaillons","travaillez","travaillent","parle","parles","parlons","parlez","parlent","finis","finit","finissons","finissez","finissent","attends","attend","attendons","attendez","attendent","vais","vas","va","allons","allez","vont","fais","fait","faisons","faites","font","prends","prend","prenons","prenez","prennent","viens","vient","venons","venez","viennent","commence","commences","commençons","commencez","commencent","rentre","rentres","rentrons","rentrez","rentrent","prépare","prépares","préparons","préparez","préparent"].includes(word)).length>=5},
+  {label:"ضميران مختلفان على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["je","tu","il","elle","on","nous","vous","ils","elles"].includes(word))).size>=2},
+  {label:"جملة منفية باستعمال ne… pas",passed:/\bn[’']?e?\s*[a-zà-ÿ’']+\s+pas\b/i.test(revisionWritingText)},
+  {label:"رابط واحد على الأقل",passed:revisionWritingTokens.some(word=>["puis","mais","ensuite","enfin"].includes(word))}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

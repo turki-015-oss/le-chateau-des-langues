@@ -1795,6 +1795,49 @@ const A1_FUTURE_IMPERATIVE_DIALOGUES=[
  {context:"Vous interdisez de fermer la porte.",prompt:"اختر الأمر المنفي الصحيح.",choices:["Ne fermez pas la porte.","Fermez ne pas la porte.","Ne pas fermez la porte."],correctIndex:0,feedback:"في الأمر المنفي نضع ne قبل الفعل وpas بعده."}
 ];
 
+const A1_FOOD_SHOPPING_READING={
+ title:"Au marché du quartier",
+ arTitle:"في سوق الحي",
+ text:"Samira prépare le dîner. Au marché, elle achète du pain, de la soupe, des tomates et une bouteille d’huile. Elle ne prend pas de viande aujourd’hui. À la caisse, elle demande : « Combien coûte le fromage ? Est-ce que je peux payer par carte ? »",
+ translation:"تحضّر سميرة العشاء. تشتري من السوق خبزًا وحساءً وطماطم وزجاجة زيت. لا تشتري اللحم اليوم. وعند صندوق المحاسبة تسأل: «كم سعر الجبن؟ وهل يمكنني الدفع بالبطاقة؟»",
+ questions:[
+  {question:"Qu’est-ce que Samira achète ?",answer:"Elle achète du pain, de la soupe, des tomates et une bouteille d’huile.",ar:"تشتري خبزًا وحساءً وطماطم وزجاجة زيت."},
+  {question:"Qu’est-ce qu’elle ne prend pas ?",answer:"Elle ne prend pas de viande.",ar:"لا تشتري اللحم."},
+  {question:"Comment veut-elle payer ?",answer:"Elle veut payer par carte.",ar:"تريد الدفع بالبطاقة."}
+ ]
+};
+
+const A1_FOOD_SHOPPING_LISTENING={
+ title:"À la boulangerie",
+ arTitle:"في المخبز",
+ text:"Bonjour, je voudrais deux baguettes et trois croissants, s’il vous plaît. Je prends aussi un litre de lait. Combien ça coûte ? — Cela fait neuf euros cinquante. — Je paie en espèces.",
+ questions:[
+  {prompt:"Combien de baguettes le client demande-t-il ?",choices:["Une","Deux","Trois"],correctIndex:1},
+  {prompt:"Combien coûte la commande ?",choices:["Huit euros cinquante","Neuf euros","Neuf euros cinquante"],correctIndex:2},
+  {prompt:"Comment le client paie-t-il ?",choices:["Par carte","En espèces","Par téléphone"],correctIndex:1}
+ ]
+};
+
+const A1_FOOD_SHOPPING_WRITING_MODEL="Pour le dîner, je voudrais du pain, de la soupe et des tomates. Il me faut aussi une bouteille d’eau et un kilo de pommes. Je ne prends pas de viande. Je vais payer par carte.";
+
+const A1_FOOD_SHOPPING_DICTATION=[
+ {speech:"Je voudrais un kilo de pommes.",ar:"أرغب في كيلوغرام من التفاح."},
+ {speech:"Nous achetons du pain et des tomates.",ar:"نشتري خبزًا وطماطم."},
+ {speech:"Je ne prends pas de sucre.",ar:"لا أتناول السكر."}
+];
+
+const A1_FOOD_SHOPPING_BUILDERS=[
+ {tokens:["pain.","du","J’achète"],answer:["J’achète","du","pain."],ar:"أشتري خبزًا."},
+ {tokens:["pommes,","kilo","voudrais","de","Je","un","s’il vous plaît."],answer:["Je","voudrais","un","kilo","de","pommes,","s’il vous plaît."],ar:"أرغب في كيلوغرام من التفاح، من فضلك."},
+ {tokens:["pas","café.","ne","de","prends","Je"],answer:["Je","ne","prends","pas","de","café."],ar:"لا أتناول القهوة."}
+];
+
+const A1_FOOD_SHOPPING_DIALOGUES=[
+ {context:"Vous commandez poliment une boisson.",prompt:"اختر العبارة المناسبة.",choices:["Je voudrais de l’eau, s’il vous plaît.","Je veux de eau.","Je voudrais du eau."],correctIndex:0,feedback:"قبل eau نستخدم de l’، وJe voudrais تجعل الطلب مهذبًا."},
+ {context:"Le vendeur demande : « Vous prenez du sucre ? »",prompt:"اختر جواب النفي الصحيح.",choices:["Non, je ne prends pas de sucre.","Non, je ne prends pas du sucre.","Non, je prends ne pas sucre."],correctIndex:0,feedback:"بعد النفي تتحول أداة التجزئة إلى de."},
+ {context:"Vous voulez connaître le prix.",prompt:"اختر السؤال الطبيعي.",choices:["Combien ça coûte ?","Quel ça mange ?","Où ça paie ?"],correctIndex:0,feedback:"Combien ça coûte ? هو السؤال الشائع عن السعر."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1845,6 +1888,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_FUTURE_IMPERATIVE_READING,listening:A1_FUTURE_IMPERATIVE_LISTENING,dictation:A1_FUTURE_IMPERATIVE_DICTATION,builders:A1_FUTURE_IMPERATIVE_BUILDERS,dialogues:A1_FUTURE_IMPERATIVE_DIALOGUES,
   writingModel:A1_FUTURE_IMPERATIVE_WRITING_MODEL,writingTitle:"اكتب خطة وتعليمات قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن نشاط قريب. استخدم جملتين في المستقبل القريب، ثم أضف أمرين أحدهما منفي.",writingPlaceholder:"Demain, nous allons…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Demain, nous allons visiter Lyon. Nous allons partir tôt. Prenez vos billets, arrivez à huit heures et n’oubliez pas votre passeport !",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["حدّد الوقت ثم اذكر الخطة بـ aller والمصدر.","أعطِ تعليمتين من دون ضمير فاعل.","اجعل إحدى التعليمات منفية بـ ne… pas."],dictationUnit:"sentence"
+ },
+ "food-shopping":{
+  reading:A1_FOOD_SHOPPING_READING,listening:A1_FOOD_SHOPPING_LISTENING,dictation:A1_FOOD_SHOPPING_DICTATION,builders:A1_FOOD_SHOPPING_BUILDERS,dialogues:A1_FOOD_SHOPPING_DIALOGUES,
+  writingModel:A1_FOOD_SHOPPING_WRITING_MODEL,writingTitle:"اكتب قائمة مشتريات وطلبًا قصيرًا",writingInstructions:"اكتب من 30 إلى 45 كلمة لشراء طعام. استخدم أداتَي تجزئة مختلفتين، وتعبير كمية، وطلبًا مهذبًا، وجملة منفية.",writingPlaceholder:"Pour le dîner, je voudrais…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Bonjour, je voudrais du pain, de la soupe et un kilo de pommes, s’il vous plaît. Je ne prends pas de viande. Combien ça coûte ?",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بطلب مهذب باستعمال Je voudrais.","اذكر المنتجات وكمياتها بوضوح.","اختم بالسؤال عن السعر أو طريقة الدفع."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4485,6 +4533,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"جملتان في المستقبل القريب",passed:(revisionWritingText.match(/\b(?:vais|vas|va|allons|allez|vont)\s+[a-zà-ÿ]+(?:er|ir|re)\b/gi)??[]).length>=2},
   {label:"أمران على الأقل",passed:revisionWritingTokens.filter(word=>["prépare","préparez","prends","prenez","arrive","arrivez","regarde","regardez","attends","attendez","tourne","tournez","ferme","fermez","finis","finissez","oublie","oubliez","pars","partez"].includes(word)).length>=2},
   {label:"أمر منفي باستعمال ne… pas",passed:/\bn[’']?e?\s*(?:oublie|oubliez|pars|partez|ferme|fermez|attends|attendez|prends|prenez|tourne|tournez)\s+pas\b/i.test(revisionWritingText)}
+ ]:isA1FoodShopping?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"أداتا تجزئة مختلفتان على الأقل",passed:[/\bdu\b/i,/\bde\s+la\b/i,/\bde\s+l[’']/i,/\bdes\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=2},
+  {label:"تعبير كمية واضح",passed:/\b(?:un|une|deux|trois)\s+(?:kilo(?:gramme)?s?|litres?|bouteilles?|verres?|paquets?)\s+de\b/i.test(revisionWritingText)},
+  {label:"طلب مهذب",passed:/\bje\s+voudrais\b/i.test(revisionWritingText)||/s[’']il\s+vous\s+plaît/i.test(revisionWritingText)},
+  {label:"جملة منفية مع de أو d’",passed:/\bn[’']?e?\s*[a-zà-ÿ]+\s+pas\s+d(?:e|[’'])/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

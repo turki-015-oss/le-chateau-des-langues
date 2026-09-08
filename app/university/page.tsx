@@ -3880,6 +3880,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
+ const isA1Present=level.id==="A1"&&activeModule.id==="present";
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
@@ -4361,7 +4362,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Sounds||isA1Greetings||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Sounds||isA1Greetings||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>

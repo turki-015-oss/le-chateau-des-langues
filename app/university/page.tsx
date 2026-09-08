@@ -4355,7 +4355,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>

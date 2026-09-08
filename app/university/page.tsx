@@ -2225,6 +2225,49 @@ const A1_SITUATIONS_DIALOGUES=[
  {context:"Votre ami dit : « À mon avis, ce film est drôle. »",prompt:"اختر رد الموافقة.",choices:["Je suis d’accord avec toi.","Je vais à huit heures.","Je ne peux pas le mardi."],correctIndex:0,feedback:"Je suis d’accord تُستخدم للتعبير عن الموافقة."}
 ];
 
+const A1_MESSAGES_FORMS_READING={
+ title:"Une inscription à la médiathèque",
+ arTitle:"التسجيل في المكتبة العامة",
+ text:"Formulaire d’inscription — Prénom : Nora. Nom de famille : Alami. Date de naissance : 15 mars 2000. Nationalité : saoudienne. Adresse : 20, rue Victor-Hugo, 69002 Lyon. Téléphone : 06 24 18 35 70. Adresse électronique : nora@example.com. La médiathèque est ouverte du mardi au samedi, de neuf heures à dix-huit heures.",
+ translation:"نموذج تسجيل — الاسم الأول: نورة. اسم العائلة: العلمي. تاريخ الميلاد: 15 مارس 2000. الجنسية: سعودية. العنوان: 20 شارع فيكتور هوغو، 69002 ليون. الهاتف: 06 24 18 35 70. البريد الإلكتروني: nora@example.com. تفتح المكتبة العامة من الثلاثاء إلى السبت، من التاسعة صباحًا حتى السادسة مساءً.",
+ questions:[
+  {question:"Quel est le nom de famille de Nora ?",answer:"Son nom de famille est Alami.",ar:"اسم عائلتها العلمي."},
+  {question:"Quelle est son adresse ?",answer:"Elle habite au 20, rue Victor-Hugo, à Lyon.",ar:"تسكن في 20 شارع فيكتور هوغو بمدينة ليون."},
+  {question:"Quels jours la médiathèque est-elle ouverte ?",answer:"Elle est ouverte du mardi au samedi.",ar:"تفتح من الثلاثاء إلى السبت."}
+ ]
+};
+
+const A1_MESSAGES_FORMS_LISTENING={
+ title:"Un message vocal",
+ arTitle:"رسالة صوتية",
+ text:"Bonjour Sami, je vous appelle pour confirmer votre rendez-vous de demain à dix heures. Le cabinet se trouve au 8, avenue de la Gare. Si vous êtes en retard, appelez le 04 70 22 15 10. Merci et à demain.",
+ questions:[
+  {prompt:"Pourquoi la personne appelle-t-elle ?",choices:["Pour annuler une réservation","Pour confirmer un rendez-vous","Pour demander une adresse"],correctIndex:1},
+  {prompt:"À quelle heure est le rendez-vous ?",choices:["À huit heures","À neuf heures","À dix heures"],correctIndex:2},
+  {prompt:"Où se trouve le cabinet ?",choices:["8, avenue de la Gare","20, rue Victor-Hugo","4, place du Marché"],correctIndex:0}
+ ]
+};
+
+const A1_MESSAGES_FORMS_WRITING_MODEL="Bonjour Madame, je vous écris pour confirmer mon rendez-vous du mardi 12 mai à dix heures. Je vais arriver au cabinet à neuf heures cinquante. Pouvez-vous me répondre par courriel pour confirmer l’adresse, s’il vous plaît ? Merci. Cordialement, Sami Alami.";
+
+const A1_MESSAGES_FORMS_DICTATION=[
+ {speech:"Mon nom de famille est Alami.",ar:"اسم عائلتي العلمي."},
+ {speech:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
+ {speech:"La bibliothèque est fermée le lundi.",ar:"المكتبة مغلقة يوم الاثنين."}
+];
+
+const A1_MESSAGES_FORMS_BUILDERS=[
+ {tokens:["famille","Mon","Alami.","nom","est","de"],answer:["Mon","nom","de","famille","est","Alami."],ar:"اسم عائلتي العلمي."},
+ {tokens:["rendez-vous","Je","demain.","confirme","notre","de"],answer:["Je","confirme","notre","rendez-vous","de","demain."],ar:"أؤكد موعدنا غدًا."},
+ {tokens:["lundi.","musée","fermé","Le","est","le"],answer:["Le","musée","est","fermé","le","lundi."],ar:"المتحف مغلق يوم الاثنين."}
+];
+
+const A1_MESSAGES_FORMS_DIALOGUES=[
+ {context:"Un formulaire demande « prénom » puis « nom de famille ».",prompt:"ما الذي تكتبه في خانة prénom؟",choices:["Votre prénom personnel","Votre nom de famille","Votre adresse complète"],correctIndex:0,feedback:"prénom هو الاسم الأول، وnom de famille هو اسم العائلة."},
+ {context:"Vous écrivez pour confirmer une rencontre.",prompt:"اختر الرسالة الواضحة.",choices:["Bonjour, je confirme notre rendez-vous de demain à dix heures.","Rendez-vous bonjour peut-être.","Je suis dix heures adresse."],correctIndex:0,feedback:"الرسالة الواضحة تجمع التحية وسبب الرسالة والموعد."},
+ {context:"Une affiche indique : « Ascenseur en panne ».",prompt:"ما معنى المعلومة؟",choices:["L’ascenseur est gratuit.","L’ascenseur ne fonctionne pas.","L’ascenseur est ouvert."],correctIndex:1,feedback:"en panne تعني أن الجهاز معطل ولا يعمل."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2325,6 +2368,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_SITUATIONS_READING,listening:A1_SITUATIONS_LISTENING,dictation:A1_SITUATIONS_DICTATION,builders:A1_SITUATIONS_BUILDERS,dialogues:A1_SITUATIONS_DIALOGUES,
   writingModel:A1_SITUATIONS_WRITING_MODEL,writingTitle:"اكتب دعوة وردًا مناسبًا",writingInstructions:"اكتب حوارًا من 35 إلى 50 كلمة: وجّه دعوة مع اليوم والوقت، ثم اقبلها أو اعتذر مع سبب، واقترح بديلًا واتفق على مكان اللقاء.",writingPlaceholder:"Salut ! Ça te dit de…",writingMinimum:35,writingMaximum:50,
   speakingPrompt:"Salut ! Ça te dit de prendre un café samedi ? Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt se voir dimanche ? Avec plaisir !",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["اجعل الدعوة واضحة وحدد النشاط.","اقبل أو اعتذر بلطف مع سبب.","اقترح موعدًا بديلًا وحدد مكان اللقاء."],dictationUnit:"sentence"
+ },
+ "messages-forms":{
+  reading:A1_MESSAGES_FORMS_READING,listening:A1_MESSAGES_FORMS_LISTENING,dictation:A1_MESSAGES_FORMS_DICTATION,builders:A1_MESSAGES_FORMS_BUILDERS,dialogues:A1_MESSAGES_FORMS_DIALOGUES,
+  writingModel:A1_MESSAGES_FORMS_WRITING_MODEL,writingTitle:"اكتب رسالة عملية قصيرة",writingInstructions:"اكتب من 35 إلى 50 كلمة لتأكيد موعد أو الاعتذار عنه. ابدأ بتحية، واذكر سبب الرسالة واليوم والوقت والمكان، ثم اختم بعبارة مناسبة واسمك.",writingPlaceholder:"Bonjour, je vous écris pour…",writingMinimum:35,writingMaximum:50,
+  speakingPrompt:"Bonjour, je vous appelle pour confirmer mon rendez-vous de demain à dix heures. Le cabinet se trouve au 8, avenue de la Gare. Merci et à demain.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["ابدأ بتحية واذكر سبب الاتصال.","انطق اليوم والوقت والعنوان بوضوح.","اختم بالشكر وعبارة وداع."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -5026,6 +5074,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"قبول أو اعتذار مهذب",passed:/\b(?:avec\s+plaisir|bonne\s+idée|désolé|désolée)\b/i.test(revisionWritingText)},
   {label:"سبب أو اقتراح بديل",passed:/\bparce\s+que\b/i.test(revisionWritingText)&&/\b(?:plutôt|on\s+peut|et\s+(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche))\b/i.test(revisionWritingText)},
   {label:"مكان اللقاء",passed:/\bon\s+se\s+retrouve\b/i.test(revisionWritingText)&&/\b(?:devant|au|à\s+la|à\s+l[’'])\b/i.test(revisionWritingText)}
+ ]:isA1MessagesForms?[
+  {label:"من 35 إلى 50 كلمة",passed:revisionWordCount>=35&&revisionWordCount<=50},
+  {label:"تحية مناسبة",passed:/^(?:\s*)(?:bonjour|salut|bonsoir)\b/i.test(revisionWritingText)},
+  {label:"سبب الرسالة واضح",passed:/\b(?:je\s+vous\s+écris\s+pour|je\s+vous\s+appelle\s+pour|je\s+confirme|je\s+suis\s+désolé|je\s+suis\s+désolée)\b/i.test(revisionWritingText)},
+  {label:"اليوم والوقت",passed:revisionWritingTokens.some(word=>["lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche","aujourd’hui","demain"].includes(word))&&/\bà\s+(?:midi|minuit|\d{1,2}(?::\d{2}|\s*h(?:\d{2})?|\s+heures?)|(?:une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt)\s+heures?)\b/i.test(revisionWritingText)},
+  {label:"مكان أو عنوان",passed:/\b(?:cabinet|bureau|gare|bibliothèque|restaurant|café|école|université|rue|avenue|boulevard|place)\b/i.test(revisionWritingText)},
+  {label:"خاتمة واسم",passed:/\b(?:cordialement|merci|à\s+bientôt|à\s+demain)[,!.]?\s+[A-ZÀ-ÖØ-Ý][a-zà-ÿ-]+/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

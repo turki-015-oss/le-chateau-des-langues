@@ -2139,6 +2139,49 @@ const A1_ADJECTIVES_DIALOGUES=[
  {context:"Vous décrivez les cheveux d’une personne.",prompt:"اختر التركيب الطبيعي.",choices:["Elle a les cheveux longs.","Elle est les cheveux longs.","Elle a cheveux longue."],correctIndex:0,feedback:"لوصف الشعر نستخدم avoir: avoir les cheveux longs."}
 ];
 
+const A1_DAILY_LIFE_READING={
+ title:"La journée de Mehdi",
+ arTitle:"يوم مهدي",
+ text:"En général, Mehdi se lève à six heures trente. D’abord, il se prépare et prend son petit-déjeuner. Ensuite, il va au travail en métro. Il déjeune souvent avec ses collègues. Le soir, il fait parfois du sport, puis il rentre chez lui. Il ne se couche jamais après minuit.",
+ translation:"يستيقظ مهدي عادةً عند السادسة والنصف. يستعد أولًا ويتناول فطوره، ثم يذهب إلى العمل بالمترو. غالبًا ما يتناول الغداء مع زملائه. وفي المساء يمارس الرياضة أحيانًا، ثم يعود إلى منزله. ولا ينام بعد منتصف الليل أبدًا.",
+ questions:[
+  {question:"À quelle heure Mehdi se lève-t-il ?",answer:"Il se lève à six heures trente.",ar:"يستيقظ عند السادسة والنصف."},
+  {question:"Comment va-t-il au travail ?",answer:"Il va au travail en métro.",ar:"يذهب إلى العمل بالمترو."},
+  {question:"Quand fait-il parfois du sport ?",answer:"Il fait parfois du sport le soir.",ar:"يمارس الرياضة أحيانًا في المساء."}
+ ]
+};
+
+const A1_DAILY_LIFE_LISTENING={
+ title:"Une matinée à la maison",
+ arTitle:"صباح في المنزل",
+ text:"Le samedi, nous nous levons à huit heures. D’abord, nous préparons le petit-déjeuner. Puis, les enfants s’habillent et rangent leur chambre. Nous faisons souvent les courses ensemble, mais nous ne déjeunons jamais avant midi.",
+ questions:[
+  {prompt:"À quelle heure la famille se lève-t-elle ?",choices:["À sept heures","À huit heures","À neuf heures"],correctIndex:1},
+  {prompt:"Que font les enfants après le petit-déjeuner ?",choices:["Ils s’habillent et rangent leur chambre","Ils vont à l’école","Ils se couchent"],correctIndex:0},
+  {prompt:"Quand la famille déjeune-t-elle ?",choices:["Toujours avant midi","Jamais avant midi","À huit heures"],correctIndex:1}
+ ]
+};
+
+const A1_DAILY_LIFE_WRITING_MODEL="En général, je me lève à sept heures. D’abord, je me prépare et je prends mon petit-déjeuner. Ensuite, je vais au travail. Je déjeune souvent à midi. Le soir, je me repose, puis je lis. Je ne me couche jamais tard.";
+
+const A1_DAILY_LIFE_DICTATION=[
+ {speech:"Je me lève à sept heures.",ar:"أستيقظ الساعة السابعة."},
+ {speech:"Nous faisons souvent du sport le soir.",ar:"نمارس الرياضة غالبًا في المساء."},
+ {speech:"Elle ne se couche jamais tard.",ar:"هي لا تنام متأخرة أبدًا."}
+];
+
+const A1_DAILY_LIFE_BUILDERS=[
+ {tokens:["sept","Je","à","lève","heures.","me"],answer:["Je","me","lève","à","sept","heures."],ar:"أستيقظ الساعة السابعة."},
+ {tokens:["souvent","Nous","sport.","du","faisons"],answer:["Nous","faisons","souvent","du","sport."],ar:"نمارس الرياضة غالبًا."},
+ {tokens:["jamais","ne","tard.","couche","Elle","se"],answer:["Elle","ne","se","couche","jamais","tard."],ar:"هي لا تنام متأخرة أبدًا."}
+];
+
+const A1_DAILY_LIFE_DIALOGUES=[
+ {context:"On vous demande : « À quelle heure vous levez-vous ? »",prompt:"اختر الإجابة الصحيحة.",choices:["Je me lève à sept heures.","Je se lève à sept heures.","Je lève me à sept heures."],correctIndex:0,feedback:"مع je يكون الضمير المنعكس me قبل الفعل."},
+ {context:"Vous dites que vous ne regardez la télévision à aucun moment.",prompt:"اختر الجملة الصحيحة.",choices:["Je ne regarde jamais la télévision.","Je jamais ne regarde la télévision.","Je ne regarde pas jamais la télévision."],correctIndex:0,feedback:"مع jamais نضع ne قبل الفعل وjamais بعده."},
+ {context:"Vous organisez trois actions dans l’ordre.",prompt:"اختر مجموعة الروابط المناسبة.",choices:["D’abord, puis, enfin","Souvent, jamais, très","Parce que, mais, avec"],correctIndex:0,feedback:"D’abord وpuis وenfin ترتب أحداث اليوم."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2229,6 +2272,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_ADJECTIVES_READING,listening:A1_ADJECTIVES_LISTENING,dictation:A1_ADJECTIVES_DICTATION,builders:A1_ADJECTIVES_BUILDERS,dialogues:A1_ADJECTIVES_DIALOGUES,
   writingModel:A1_ADJECTIVES_WRITING_MODEL,writingTitle:"صِف شخصين وصفًا واضحًا",writingInstructions:"اكتب من 35 إلى 50 كلمة تصف رجلًا وامرأة. اذكر المظهر والشعر، ثم استخدم صفتين للشخصية لكل شخص مع مراعاة المذكر والمؤنث.",writingPlaceholder:"Mon frère est… Ma sœur est…",writingMinimum:35,writingMaximum:50,
   speakingPrompt:"Mon ami est grand et sportif. Il a les cheveux courts. Il est calme et patient. Ma cousine est petite et sportive. Elle est sérieuse, gentille et sociable.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["ابدأ بالمظهر باستخدام être.","صف الشعر أو العينين باستخدام avoir.","غيّر نهاية الصفة عند الانتقال إلى المؤنث."],dictationUnit:"sentence"
+ },
+ "daily-life":{
+  reading:A1_DAILY_LIFE_READING,listening:A1_DAILY_LIFE_LISTENING,dictation:A1_DAILY_LIFE_DICTATION,builders:A1_DAILY_LIFE_BUILDERS,dialogues:A1_DAILY_LIFE_DIALOGUES,
+  writingModel:A1_DAILY_LIFE_WRITING_MODEL,writingTitle:"رتّب أحداث يومك المعتاد",writingInstructions:"اكتب من 35 إلى 50 كلمة عن يومك. استخدم ثلاثة أفعال ضميرية، وظرفَي تكرار، وثلاثة روابط زمنية، وجملة منفية واحدة.",writingPlaceholder:"En général, je me lève…",writingMinimum:35,writingMaximum:50,
+  speakingPrompt:"En général, je me lève à sept heures. D’abord, je me prépare. Ensuite, je vais au travail. Le soir, je me repose, puis je lis. Je ne me couche jamais tard.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["استخدم الضمير المنعكس المناسب قبل الفعل.","أضف ظروفًا توضّح تكرار النشاط.","رتّب يومك بروابط زمنية واضحة."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4917,6 +4965,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"صفتان للمظهر على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["grand","grande","petit","petite","mince","sportif","sportive","beau","belle"].includes(word))).size>=2},
   {label:"وصف الشعر أو العينين باستعمال avoir",passed:/\b(?:il|elle)\s+a\s+les\s+(?:cheveux|yeux)\b/i.test(revisionWritingText)},
   {label:"أربع صفات شخصية على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["calme","gentil","gentille","sérieux","sérieuse","organisé","organisée","sociable","patient","patiente","courageux","courageuse","curieux","curieuse"].includes(word))).size>=4}
+ ]:isA1DailyLife?[
+  {label:"من 35 إلى 50 كلمة",passed:revisionWordCount>=35&&revisionWordCount<=50},
+  {label:"ثلاثة أفعال ضميرية على الأقل",passed:(revisionWritingText.match(/\b(?:me|te|se|nous|vous)\s+[a-zà-ÿ]+/gi)??[]).length>=3},
+  {label:"ظرفا تكرار مختلفان",passed:new Set(revisionWritingTokens.filter(word=>["toujours","souvent","parfois","rarement","jamais"].includes(word))).size>=2},
+  {label:"ثلاثة روابط زمنية مختلفة",passed:[/\bd[’']abord\b/i,/\bpuis\b/i,/\bensuite\b/i,/\benfin\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=3},
+  {label:"جملة منفية واحدة",passed:/\bn[’']?e?\s*(?:me|te|se|nous|vous)?\s*[a-zà-ÿ]+\s+(?:pas|jamais)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

@@ -4240,6 +4240,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    });
   },willOpen?90:0);
  };
+ const toggleLessonSection=(sectionIndex:number)=>{
+  const willOpen=openSectionIndex!==sectionIndex;
+  setOpenSectionIndex(willOpen?sectionIndex:-1);
+  window.setTimeout(()=>{
+   document.getElementById(`university-lesson-section-${sectionIndex}`)?.scrollIntoView({
+    behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+    block:"start"
+   });
+  },willOpen?90:0);
+ };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
   <header className="university-topbar">
@@ -4672,16 +4682,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
 
     <div className="university-sections">
-     {activeModule.sections.map((item,index)=>{const SectionIcon=activeModule.id==="revision"?REVISION_SECTION_ICONS[index]:undefined;return <section key={item.title} className={`university-explanation ${openSectionIndex===index?"open":""}`}>
+     {activeModule.sections.map((item,index)=>{const SectionIcon=activeModule.id==="revision"?REVISION_SECTION_ICONS[index]:undefined;const isOpen=openSectionIndex===index;return <section id={`university-lesson-section-${index}`} key={item.title} className={`university-explanation ${isOpen?"open":""}`}>
       <div className="university-explanation-title">
-       <button className="university-section-toggle" onClick={()=>setOpenSectionIndex(current=>current===index?-1:index)} aria-expanded={openSectionIndex===index}>
+       <button className="university-section-toggle" onClick={()=>toggleLessonSection(index)} aria-expanded={isOpen} aria-controls={`university-lesson-section-body-${index}`}>
         <span>{SectionIcon?<SectionIcon/>:String(index+1).padStart(2,"0")}{SectionIcon&&<b>{String(index+1).padStart(2,"0")}</b>}</span>
         <div><h3>{item.title}</h3><small>{item.subtitle}</small></div>
         <ChevronDown/>
        </button>
        <button onClick={()=>void speakFrench(item.title)} aria-label={`استمع إلى ${item.title}`}><Volume2/><b>نطق العنوان</b></button>
       </div>
-      {openSectionIndex===index&&<div className="university-explanation-body">
+      <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
+      <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
        <p className="university-explanation-text">{item.explanation}</p>
        <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
        <div className="university-example-list">
@@ -4691,7 +4702,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
          <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
         </article>)}
        </div>
-      </div>}
+      </div>
+      </div>
      </section>})}
     </div>
     {isEnhancedA2Lesson&&<section className="a2-reading-workshop">

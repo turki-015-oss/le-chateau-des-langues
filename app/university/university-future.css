@@ -671,6 +671,25 @@
 }
 @media(prefers-reduced-motion:reduce){.university-level-world .university-phase-workspace-shell{transition:none}}
 
+/* Smooth lesson-section disclosure shared by every lesson. */
+.university-level-world .university-explanation{scroll-margin-top:94px}
+.university-level-world .university-explanation-body-shell{
+ display:grid;
+ grid-template-rows:0fr;
+ opacity:0;
+ transform:translateY(-8px);
+ visibility:hidden;
+ transition:grid-template-rows .48s cubic-bezier(.22,.78,.2,1),opacity .25s ease,transform .48s cubic-bezier(.22,.78,.2,1),visibility 0s linear .48s;
+}
+.university-level-world .university-explanation-body-shell.open{
+ grid-template-rows:1fr;
+ opacity:1;
+ transform:none;
+ visibility:visible;
+ transition:grid-template-rows .52s cubic-bezier(.2,.82,.2,1),opacity .28s ease .05s,transform .52s cubic-bezier(.2,.82,.2,1),visibility 0s;
+}
+.university-level-world .university-explanation-body-shell>.university-explanation-body{min-height:0;overflow:hidden}
+
 /* Lesson interior pilot — A2 revision. */
 .university-level-world .university-course-revision{
  --ur-navy:#061b38;
@@ -839,7 +858,8 @@
  background:#edf4fa;
  color:#154879;
 }
-.university-level-world .university-course-revision .university-explanation-body{padding:0 20px 20px}
+.university-level-world .university-course-revision .university-explanation-body{padding:0 20px;transition:padding-bottom .48s cubic-bezier(.22,.78,.2,1)}
+.university-level-world .university-course-revision .university-explanation-body-shell.open>.university-explanation-body{padding-bottom:20px}
 .university-level-world .university-course-revision .university-explanation-text{border-right-color:#d4aa54;border-radius:14px;background:linear-gradient(135deg,#fffaf0,#f6f9fc);color:#3f5168}
 .university-level-world .university-course-revision .university-rule-list p{border-color:#d9e2eb;border-radius:14px;background:rgba(255,255,255,.82);box-shadow:inset 0 1px #fff}
 .university-level-world .university-course-revision .university-example-list article{margin-top:8px;padding:12px;border:1px solid #dce4ed;border-radius:14px;background:#fff;box-shadow:0 7px 16px rgba(12,49,86,.055)}
@@ -935,6 +955,8 @@
 }
 
 @media(prefers-reduced-motion:reduce){
+ .university-level-world .university-explanation-body-shell,
+ .university-level-world .university-course-revision .university-explanation-body,
  .university-level-world .university-course-revision .university-explanation,
  .university-level-world .university-course-revision .university-lesson-guide nav button{transition:none}
 }

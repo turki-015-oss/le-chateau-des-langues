@@ -1752,6 +1752,49 @@ const A1_MODAL_VERBS_DIALOGUES=[
  {context:"Une règle concerne tout le monde.",prompt:"أكمل الجملة: « … respecter le silence. »",choices:["Il faut","Je veux","Tu peux"],correctIndex:0,feedback:"Il faut تعبّر عن ضرورة عامة غير مرتبطة بشخص محدد."}
 ];
 
+const A1_FUTURE_IMPERATIVE_READING={
+ title:"Le programme de demain",
+ arTitle:"برنامج الغد",
+ text:"Demain, nous allons visiter le château. Nous allons partir à neuf heures, mais Lina ne va pas prendre le bus avec nous. Le professeur écrit : « Prenez une bouteille d’eau, arrivez à l’heure et n’oubliez pas votre billet ! »",
+ translation:"سنزور القلعة غدًا. سنغادر الساعة التاسعة، لكن لينا لن تستقل الحافلة معنا. يكتب المعلم: «خذوا زجاجة ماء، واحضروا في الموعد، ولا تنسوا تذكرتكم!»",
+ questions:[
+  {question:"Qu’est-ce que le groupe va visiter ?",answer:"Le groupe va visiter le château.",ar:"ستزور المجموعة القلعة."},
+  {question:"Comment Lina ne va-t-elle pas voyager ?",answer:"Lina ne va pas prendre le bus.",ar:"لن تستقل لينا الحافلة."},
+  {question:"Que faut-il apporter ?",answer:"Il faut apporter une bouteille d’eau et le billet.",ar:"يجب إحضار زجاجة ماء والتذكرة."}
+ ]
+};
+
+const A1_FUTURE_IMPERATIVE_LISTENING={
+ title:"Avant de sortir",
+ arTitle:"قبل الخروج",
+ text:"Ce soir, tu vas dîner chez tes amis. Prépare ton sac, prends ton téléphone et ferme la fenêtre. Ne pars pas sans tes clés. Demain matin, vous allez prendre le train ensemble.",
+ questions:[
+  {prompt:"Où la personne va-t-elle dîner ?",choices:["Au restaurant","Chez ses amis","À la gare"],correctIndex:1},
+  {prompt:"Que doit-elle fermer ?",choices:["La porte","Le sac","La fenêtre"],correctIndex:2},
+  {prompt:"Quel transport vont-ils prendre demain ?",choices:["Le train","Le bus","Le métro"],correctIndex:0}
+ ]
+};
+
+const A1_FUTURE_IMPERATIVE_WRITING_MODEL="Demain, nous allons visiter Lyon. Nous allons partir tôt et je ne vais pas prendre la voiture. Prenez vos billets, arrivez à huit heures et n’oubliez pas votre passeport !";
+
+const A1_FUTURE_IMPERATIVE_DICTATION=[
+ {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
+ {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
+ {speech:"N’oubliez pas votre billet !",ar:"لا تنسوا تذكرتكم!"}
+];
+
+const A1_FUTURE_IMPERATIVE_BUILDERS=[
+ {tokens:["visiter","allons","Nous","château.","le"],answer:["Nous","allons","visiter","le","château."],ar:"سنزور القلعة."},
+ {tokens:["pas","vais","Je","sortir.","ne"],answer:["Je","ne","vais","pas","sortir."],ar:"لن أخرج."},
+ {tokens:["droite","Tournez","à","!"],answer:["Tournez","à","droite","!"],ar:"انعطفوا يمينًا!"}
+];
+
+const A1_FUTURE_IMPERATIVE_DIALOGUES=[
+ {context:"Vous parlez d’un projet pour ce soir.",prompt:"اختر صيغة المستقبل القريب الصحيحة.",choices:["Je vais regarder un film.","Je va regarder un film.","Je vais regardé un film."],correctIndex:0,feedback:"مع je نستخدم vais ثم الفعل في المصدر regarder."},
+ {context:"Vous donnez une instruction polie à plusieurs personnes.",prompt:"أكمل: « … ici, s’il vous plaît. »",choices:["Attendez","Attends","Attendons"],correctIndex:0,feedback:"مع vous تكون صيغة الأمر من attendre هي Attendez."},
+ {context:"Vous interdisez de fermer la porte.",prompt:"اختر الأمر المنفي الصحيح.",choices:["Ne fermez pas la porte.","Fermez ne pas la porte.","Ne pas fermez la porte."],correctIndex:0,feedback:"في الأمر المنفي نضع ne قبل الفعل وpas بعده."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1797,6 +1840,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_MODAL_VERBS_READING,listening:A1_MODAL_VERBS_LISTENING,dictation:A1_MODAL_VERBS_DICTATION,builders:A1_MODAL_VERBS_BUILDERS,dialogues:A1_MODAL_VERBS_DIALOGUES,
   writingModel:A1_MODAL_VERBS_WRITING_MODEL,writingTitle:"اكتب خطة تعلم قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن هدف تريد تحقيقه. استخدم pouvoir وvouloir، ثم عبّر عن واجب شخصي بـ devoir أو ضرورة عامة بـ il faut.",writingPlaceholder:"Je veux… Je peux…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Je veux apprendre le français. Je peux étudier chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر ما تريد فعله باستعمال vouloir.","وضّح ما تستطيع فعله باستعمال pouvoir.","اختم بواجب أو ضرورة باستعمال devoir أو il faut."],dictationUnit:"sentence"
+ },
+ "future-imperative":{
+  reading:A1_FUTURE_IMPERATIVE_READING,listening:A1_FUTURE_IMPERATIVE_LISTENING,dictation:A1_FUTURE_IMPERATIVE_DICTATION,builders:A1_FUTURE_IMPERATIVE_BUILDERS,dialogues:A1_FUTURE_IMPERATIVE_DIALOGUES,
+  writingModel:A1_FUTURE_IMPERATIVE_WRITING_MODEL,writingTitle:"اكتب خطة وتعليمات قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن نشاط قريب. استخدم جملتين في المستقبل القريب، ثم أضف أمرين أحدهما منفي.",writingPlaceholder:"Demain, nous allons…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Demain, nous allons visiter Lyon. Nous allons partir tôt. Prenez vos billets, arrivez à huit heures et n’oubliez pas votre passeport !",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["حدّد الوقت ثم اذكر الخطة بـ aller والمصدر.","أعطِ تعليمتين من دون ضمير فاعل.","اجعل إحدى التعليمات منفية بـ ne… pas."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4432,6 +4480,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"التعبير عن الرغبة باستعمال vouloir",passed:/\b(?:veux|veut|voulons|voulez|veulent|voudrais)\b/i.test(revisionWritingText)},
   {label:"واجب أو ضرورة باستعمال devoir أو il faut",passed:/\b(?:dois|doit|devons|devez|doivent)\b/i.test(revisionWritingText)||/\bil\s+faut\b/i.test(revisionWritingText)},
   {label:"فعل في المصدر بعد الفعل المصرف",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent|veux|veut|voulons|voulez|veulent|voudrais|dois|doit|devons|devez|doivent|faut)\s+[a-zà-ÿ]+(?:er|ir|re)\b/i.test(revisionWritingText)}
+ ]:isA1FutureImperative?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"جملتان في المستقبل القريب",passed:(revisionWritingText.match(/\b(?:vais|vas|va|allons|allez|vont)\s+[a-zà-ÿ]+(?:er|ir|re)\b/gi)??[]).length>=2},
+  {label:"أمران على الأقل",passed:revisionWritingTokens.filter(word=>["prépare","préparez","prends","prenez","arrive","arrivez","regarde","regardez","attends","attendez","tourne","tournez","ferme","fermez","finis","finissez","oublie","oubliez","pars","partez"].includes(word)).length>=2},
+  {label:"أمر منفي باستعمال ne… pas",passed:/\bn[’']?e?\s*(?:oublie|oubliez|pars|partez|ferme|fermez|attends|attendez|prends|prenez|tourne|tournez)\s+pas\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

@@ -1365,6 +1365,49 @@ const A2_REVISION_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"D’abord, je termine mon travail, ___ je rentre chez moi.",speech:"Complétez la suite logique de la phrase.",instruction:"اختر الرابط الذي يكمل ترتيب الأحداث.",choices:["parce que","puis","pourtant"],correctIndex:1,explanation:"بعد d’abord نستخدم puis لترتيب الحدث التالي: أولًا… ثم…"}
 ];
 
+const A1_ALPHABET_READING={
+ title:"Les premières lettres",
+ arTitle:"الحروف الأولى",
+ text:"Amine a un ami. Lina lit un livre. Zoé voit un vélo. Les mots ami, livre et vélo commencent par des lettres différentes.",
+ translation:"لدى أمين صديق. تقرأ لينا كتابًا. ترى زوي دراجة. تبدأ كلمات ami وlivre وvélo بحروف مختلفة.",
+ questions:[
+  {question:"Quelle est la première lettre du mot « ami » ?",answer:"La première lettre est A.",ar:"الحرف الأول هو A."},
+  {question:"Quel mot commence par la lettre L ?",answer:"Le mot « livre » commence par la lettre L.",ar:"تبدأ كلمة livre بحرف L."},
+  {question:"Le mot « vélo » commence-t-il par V ou Z ?",answer:"Il commence par la lettre V.",ar:"تبدأ الكلمة بحرف V."}
+ ]
+};
+
+const A1_ALPHABET_LISTENING={
+ title:"Les lettres et les mots",
+ arTitle:"الحروف والكلمات",
+ text:"A comme ami. B comme bateau. C comme café. D comme dimanche. E comme école.",
+ questions:[
+  {prompt:"Quel mot accompagne la lettre B ?",choices:["Ami","Bateau","Café"],correctIndex:1},
+  {prompt:"Quelle lettre accompagne le mot café ?",choices:["A","C","E"],correctIndex:1},
+  {prompt:"Quel est le dernier mot entendu ?",choices:["Dimanche","École","Ami"],correctIndex:1}
+ ]
+};
+
+const A1_ALPHABET_WRITING_MODEL="ami, bateau, café, dimanche, école, famille, garçon, hôtel";
+
+const A1_ALPHABET_DICTATION=[
+ {speech:"Ami",ar:"صديق — تبدأ الكلمة بحرف A."},
+ {speech:"Café",ar:"مقهى — تبدأ الكلمة بحرف C."},
+ {speech:"Vélo",ar:"دراجة — تبدأ الكلمة بحرف V."}
+];
+
+const A1_ALPHABET_BUILDERS=[
+ {tokens:["comme","A","ami."],answer:["A","comme","ami."],ar:"A مثل ami."},
+ {tokens:["bateau.","comme","B"],answer:["B","comme","bateau."],ar:"B مثل bateau."},
+ {tokens:["C","café.","comme"],answer:["C","comme","café."],ar:"C مثل café."}
+];
+
+const A1_ALPHABET_DIALOGUES=[
+ {context:"Le professeur demande : « Quelle est la première lettre du mot ami ? »",prompt:"اختر الإجابة الصحيحة.",choices:["C’est A.","C’est B.","C’est M."],correctIndex:0,feedback:"تبدأ كلمة ami بالحرف A."},
+ {context:"Votre camarade demande : « Quel mot commence par B ? »",prompt:"اختر الكلمة المناسبة.",choices:["Café.","Bateau.","École."],correctIndex:1,feedback:"تبدأ كلمة bateau بالحرف B."},
+ {context:"On vous demande : « Comment s’appelle cette lettre : Z ? »",prompt:"اختر اسم الحرف الصحيح بالفرنسية.",choices:["Zède.","Vé.","I grec."],correctIndex:0,feedback:"اسم الحرف Z بالفرنسية هو zède."}
+];
+
 const A2_REVISION_READING={
  title:"La semaine de Nadia",
  arTitle:"أسبوع ناديا",
@@ -3906,16 +3949,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";
  const isA2Expression=level.id==="A2"&&activeModule.id==="expression";
  const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife||isA2Expression;
- const activeA2Reading=isA2Expression?A2_EXPRESSION_READING:isA2RealLife?A2_REAL_LIFE_READING:isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
- const activeA2Listening=isA2Expression?A2_EXPRESSION_LISTENING:isA2RealLife?A2_REAL_LIFE_LISTENING:isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
- const activeA2Dictation=isA2Expression?A2_EXPRESSION_DICTATION:isA2RealLife?A2_REAL_LIFE_DICTATION:isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
- const activeA2Builders=isA2Expression?A2_EXPRESSION_BUILDERS:isA2RealLife?A2_REAL_LIFE_BUILDERS:isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
- const activeA2Dialogues=isA2Expression?A2_EXPRESSION_DIALOGUES:isA2RealLife?A2_REAL_LIFE_DIALOGUES:isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
- const activeA2WritingModel=isA2Expression?A2_EXPRESSION_WRITING_MODEL:isA2RealLife?A2_REAL_LIFE_WRITING_MODEL:isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
- const activeA2WritingTitle=isA2Expression?"اكتب رأيًا منظمًا":isA2RealLife?"اكتب رسالة لحل مشكلة واقعية":isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
- const activeA2WritingInstructions=isA2Expression?"اكتب من 60 إلى 80 كلمة لإبداء رأيك في تغيير داخل مكتبة أو حي أو مركز تعليمي. اذكر رأيك وسببًا ومثالًا، أضف مخالفة أو تحفظًا مهذبًا، ثم اختم بموقف واضح وطلب مناسب.":isA2RealLife?"اكتب من 60 إلى 80 كلمة إلى فندق أو وكالة أو جهة خدمة. اذكر مرجعًا أو تاريخًا، واشرح المشكلة وأثرها، واطلب حلًا مهذبًا، وحدد طريقة أو وقت التواصل.":isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
- const activeA2WritingPlaceholder=isA2Expression?"Bonjour, je vous écris pour donner mon avis sur…":isA2RealLife?"Bonjour, je vous écris au sujet de…":isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
- const activeA2SpeakingPrompt=isA2Expression?"Donnez votre avis sur une nouvelle activité dans votre quartier. Présentez le sujet, expliquez votre position avec une raison et un exemple, réagissez poliment à une opinion différente, puis concluez.":isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
+ const isEnhancedLesson=isEnhancedA2Lesson||isA1Alphabet;
+ const activeA2Reading=isA1Alphabet?A1_ALPHABET_READING:isA2Expression?A2_EXPRESSION_READING:isA2RealLife?A2_REAL_LIFE_READING:isA2Connectors?A2_CONNECTORS_READING:isA2Politeness?A2_POLITENESS_READING:isA2Comparison?A2_COMPARISON_READING:isA2Quantity?A2_QUANTITY_READING:isA2Pronouns?A2_PRONOUNS_READING:isA2Future?A2_FUTURE_READING:isA2Imparfait?A2_IMPARFAIT_READING:isA2PasseCompose?A2_PASSE_COMPOSE_READING:A2_REVISION_READING;
+ const activeA2Listening=isA1Alphabet?A1_ALPHABET_LISTENING:isA2Expression?A2_EXPRESSION_LISTENING:isA2RealLife?A2_REAL_LIFE_LISTENING:isA2Connectors?A2_CONNECTORS_LISTENING:isA2Politeness?A2_POLITENESS_LISTENING:isA2Comparison?A2_COMPARISON_LISTENING:isA2Quantity?A2_QUANTITY_LISTENING:isA2Pronouns?A2_PRONOUNS_LISTENING:isA2Future?A2_FUTURE_LISTENING:isA2Imparfait?A2_IMPARFAIT_LISTENING:isA2PasseCompose?A2_PASSE_COMPOSE_LISTENING:A2_REVISION_LISTENING;
+ const activeA2Dictation=isA1Alphabet?A1_ALPHABET_DICTATION:isA2Expression?A2_EXPRESSION_DICTATION:isA2RealLife?A2_REAL_LIFE_DICTATION:isA2Connectors?A2_CONNECTORS_DICTATION:isA2Politeness?A2_POLITENESS_DICTATION:isA2Comparison?A2_COMPARISON_DICTATION:isA2Quantity?A2_QUANTITY_DICTATION:isA2Pronouns?A2_PRONOUNS_DICTATION:isA2Future?A2_FUTURE_DICTATION:isA2Imparfait?A2_IMPARFAIT_DICTATION:isA2PasseCompose?A2_PASSE_COMPOSE_DICTATION:A2_REVISION_DICTATION;
+ const activeA2Builders=isA1Alphabet?A1_ALPHABET_BUILDERS:isA2Expression?A2_EXPRESSION_BUILDERS:isA2RealLife?A2_REAL_LIFE_BUILDERS:isA2Connectors?A2_CONNECTORS_BUILDERS:isA2Politeness?A2_POLITENESS_BUILDERS:isA2Comparison?A2_COMPARISON_BUILDERS:isA2Quantity?A2_QUANTITY_BUILDERS:isA2Pronouns?A2_PRONOUNS_BUILDERS:isA2Future?A2_FUTURE_BUILDERS:isA2Imparfait?A2_IMPARFAIT_BUILDERS:isA2PasseCompose?A2_PASSE_COMPOSE_BUILDERS:A2_REVISION_BUILDERS;
+ const activeA2Dialogues=isA1Alphabet?A1_ALPHABET_DIALOGUES:isA2Expression?A2_EXPRESSION_DIALOGUES:isA2RealLife?A2_REAL_LIFE_DIALOGUES:isA2Connectors?A2_CONNECTORS_DIALOGUES:isA2Politeness?A2_POLITENESS_DIALOGUES:isA2Comparison?A2_COMPARISON_DIALOGUES:isA2Quantity?A2_QUANTITY_DIALOGUES:isA2Pronouns?A2_PRONOUNS_DIALOGUES:isA2Future?A2_FUTURE_DIALOGUES:isA2Imparfait?A2_IMPARFAIT_DIALOGUES:isA2PasseCompose?A2_PASSE_COMPOSE_DIALOGUES:A2_REVISION_DIALOGUES;
+ const activeA2WritingModel=isA1Alphabet?A1_ALPHABET_WRITING_MODEL:isA2Expression?A2_EXPRESSION_WRITING_MODEL:isA2RealLife?A2_REAL_LIFE_WRITING_MODEL:isA2Connectors?A2_CONNECTORS_WRITING_MODEL:isA2Politeness?A2_POLITENESS_WRITING_MODEL:isA2Comparison?A2_COMPARISON_WRITING_MODEL:isA2Quantity?A2_QUANTITY_WRITING_MODEL:isA2Pronouns?A2_PRONOUNS_WRITING_MODEL:isA2Future?A2_FUTURE_WRITING_MODEL:isA2Imparfait?A2_IMPARFAIT_WRITING_MODEL:isA2PasseCompose?A2_PASSE_COMPOSE_WRITING_MODEL:A2_REVISION_WRITING_MODEL;
+ const activeA2WritingTitle=isA1Alphabet?"اكتب كلماتك الأولى":isA2Expression?"اكتب رأيًا منظمًا":isA2RealLife?"اكتب رسالة لحل مشكلة واقعية":isA2Connectors?"اكتب فقرة مترابطة":isA2Politeness?"اكتب رسالة طلب ونصيحة":isA2Comparison?"قارن بين خيارين واتخذ قرارًا":isA2Quantity?"اكتب قائمة مشتريات وخطة إعداد":isA2Pronouns?"اكتب رسالة تتجنب فيها التكرار":isA2Future?"اكتب عن خططك القادمة":isA2Imparfait?"اكتب ذكرى من الماضي":isA2PasseCompose?"اكتب عن يوم مضى":"اكتب عن روتينك اليومي";
+ const activeA2WritingInstructions=isA1Alphabet?"اكتب من 8 إلى 12 كلمة فرنسية بسيطة، وحاول أن تبدأ كل كلمة بحرف مختلف.":isA2Expression?"اكتب من 60 إلى 80 كلمة لإبداء رأيك في تغيير داخل مكتبة أو حي أو مركز تعليمي. اذكر رأيك وسببًا ومثالًا، أضف مخالفة أو تحفظًا مهذبًا، ثم اختم بموقف واضح وطلب مناسب.":isA2RealLife?"اكتب من 60 إلى 80 كلمة إلى فندق أو وكالة أو جهة خدمة. اذكر مرجعًا أو تاريخًا، واشرح المشكلة وأثرها، واطلب حلًا مهذبًا، وحدد طريقة أو وقت التواصل.":isA2Connectors?"اكتب من 60 إلى 80 كلمة عن نشاط أو موقف مررت به. استخدم ضميرين نسبيين، ورابط سبب، ورابط نتيجة، ورابط تعارض، وثلاثة روابط لترتيب الأحداث.":isA2Politeness?"اكتب من 60 إلى 80 كلمة تنصح فيها صديقًا وتطلب منه معلومة أو مساعدة. استخدم طلبيْن مهذبين، وصيغتي نصيحة، وضرورة أو منعًا، واقتراحًا واحدًا.":isA2Comparison?"اكتب من 60 إلى 80 كلمة تقارن فيها بين مكانين أو خدمتين. استخدم plus وmoins وaussi، ومقارنة كمية أو فعل، وصيغة تفضيل، وظرفًا يحدد الدرجة.":isA2Quantity?"اكتب من 60 إلى 80 كلمة عن مشتريات وجبة أو مناسبة. استخدم أداتَي تجزئة، وتعبيرَي كمية، وصيغة نفي، والضميرين y وen في سياق واضح.":isA2Pronouns?"اكتب من 60 إلى 80 كلمة عن خدمة طلبها منك شخص أو معلومات أرسلتها إليه. استخدم خمسة ضمائر مفعول على الأقل، ومنها ضمير مباشر وغير مباشر، وضميرين معًا، وصيغة نفي.":isA2Future?"اكتب من 60 إلى 80 كلمة عن خططك القادمة. استخدم خمس صيغ مستقبلية على الأقل، واجمع بين المستقبل القريب والبسيط، وأضف نفيًا ومؤشرين زمنيين أو رابطين.":isA2Imparfait?"اكتب من 60 إلى 80 كلمة عن طفولتك أو مكان كنت تعرفه. استخدم خمسة أفعال في الماضي الناقص، ووصفًا، وعادة متكررة، وصيغة نفي.":isA2PasseCompose?"اكتب من 60 إلى 80 كلمة عن يوم أو نزهة انتهت. استخدم خمسة أفعال في الماضي المركب، وفعلًا مع être، وصيغة نفي، ورابطين على الأقل.":"اكتب من 60 إلى 80 كلمة. استخدم خمسة أفعال في الحاضر، وفعلًا ضميريًا، وصيغة نفي، ورابطين على الأقل.";
+ const activeA2WritingPlaceholder=isA1Alphabet?"ami, bateau, café…":isA2Expression?"Bonjour, je vous écris pour donner mon avis sur…":isA2RealLife?"Bonjour, je vous écris au sujet de…":isA2Connectors?"Samedi, j’ai participé à…":isA2Politeness?"Bonjour, tu devrais…":isA2Comparison?"J’ai comparé deux…":isA2Quantity?"Demain, je vais au marché…":isA2Pronouns?"Mon ami m’a demandé…":isA2Future?"Le mois prochain, je vais…":isA2Imparfait?"Quand j’étais enfant, j’habitais…":isA2PasseCompose?"Samedi dernier, je me suis levé…":"En général, je me lève…";
+ const activeA2SpeakingPrompt=isA1Alphabet?"Prononcez les lettres A, B, C et D, puis dites : A comme ami, B comme bateau.":isA2Expression?"Donnez votre avis sur une nouvelle activité dans votre quartier. Présentez le sujet, expliquez votre position avec une raison et un exemple, réagissez poliment à une opinion différente, puis concluez.":isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.";
  const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
@@ -3932,13 +3976,21 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderItem=activeA2Builders[revisionBuilderIndex];
  const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
- const revisionWordCount=(revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[]).length;
+ const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
+ const revisionWordCount=revisionWritingWords.length;
+ const alphabetInitialCount=new Set(revisionWritingWords.map(word=>word[0].toLocaleLowerCase("fr"))).size;
+ const writingMinimum=isA1Alphabet?8:60;
+ const writingMaximum=isA1Alphabet?12:80;
  const passeComposeVerbCount=(revisionWritingText.match(/\b(?:j['’]ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont|je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const imparfaitVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:ais|ait|ions|iez|aient)\b/gi)??[]).filter(word=>!["mais","jamais","français"].includes(word.toLocaleLowerCase("fr"))).length;
  const futureSimpleVerbCount=(revisionWritingText.match(/\b[a-zà-ÿ]+(?:rai|ras|ra|rons|rez|ront)\b/gi)??[]).length;
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
- const revisionWritingChecks=isA2Expression?[
+ const revisionWritingChecks=isA1Alphabet?[
+  {label:"من 8 إلى 12 كلمة",passed:revisionWordCount>=8&&revisionWordCount<=12},
+  {label:"ثماني كلمات فرنسية على الأقل",passed:revisionWordCount>=8},
+  {label:"خمسة أحرف أولى مختلفة على الأقل",passed:alphabetInitialCount>=5}
+ ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},
   {label:"مثال يوضّح الفكرة",passed:/\b(?:par exemple|comme exemple|notamment)\b/i.test(revisionWritingText)},
@@ -4383,7 +4435,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     <nav aria-label="مراحل الدرس">
      <button className={`stage-learn ${lessonStage==="learn"?"active":""}`} onClick={()=>setLessonStage("learn")}><GraduationCap/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>
      <button className={`stage-practice ${lessonStage==="practice"?"active":""}`} onClick={()=>setLessonStage("practice")}><Repeat2/><span><b>تدرّب</b><small>استمع وكرّر</small></span></button>
-     <button className={`stage-final ${lessonStage==="test"?"active":""}`} onClick={()=>setLessonStage("test")}><ClipboardPenLine/><span><b>{isEnhancedA2Lesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{quizQuestions.length} أسئلة ونتيجة</small></span></button>
+     <button className={`stage-final ${lessonStage==="test"?"active":""}`} onClick={()=>setLessonStage("test")}><ClipboardPenLine/><span><b>{isEnhancedLesson?"التمرين النهائي":"اختبر نفسك"}</b><small>{quizQuestions.length} أسئلة ونتيجة</small></span></button>
     </nav>
    </aside>
 
@@ -4727,10 +4779,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
      </section>})}
     </div>
-    {isEnhancedA2Lesson&&<section className="a2-reading-workshop">
+    {isEnhancedLesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
      <article className="a2-reading-text">
-      <header><div><small>Texte A2</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void speakFrench(activeA2Reading.text,{rate:.76})}><Volume2/> استمع إلى النص</button></header>
+      <header><div><small>Texte {level.id}</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void speakFrench(activeA2Reading.text,{rate:isA1Alphabet?.68:.76})}><Volume2/> استمع إلى النص</button></header>
       <p dir="ltr">{activeA2Reading.text}</p>
       <details><summary>عرض الترجمة بعد المحاولة</summary><p>{activeA2Reading.translation}</p></details>
      </article>
@@ -4742,8 +4794,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
      <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
-     {isEnhancedA2Lesson&&<section className="a2-listening-lab">
-      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(activeA2Listening.text,{rate:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
+     {isEnhancedLesson&&<section className="a2-listening-lab">
+      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(activeA2Listening.text,{rate:isA1Alphabet?.66:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
       <div className="a2-listening-questions">
        {activeA2Listening.questions.map((question,index)=>{
         const selected=revisionListeningAnswers[index];
@@ -4756,7 +4808,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>
      </section>}
-     {isEnhancedA2Lesson&&<section className="a2-interactive-workshop">
+     {isEnhancedLesson&&<section className="a2-interactive-workshop">
       <header><span>Exercice pratique</span><h3>تمرين تطبيقي</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
       <nav aria-label="أنشطة التمرين التطبيقي">
        <button className={revisionWorkshopPanel==="dictation"?"active":""} onClick={()=>setRevisionWorkshopPanel("dictation")}><Headphones/><span><strong>إملاء صوتي</strong><small>Écouter et écrire</small></span></button>
@@ -4764,11 +4816,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button className={revisionWorkshopPanel==="dialogue"?"active":""} onClick={()=>setRevisionWorkshopPanel("dialogue")}><MessageCircle/><span><strong>حوار تفاعلي</strong><small>Réagir</small></span></button>
       </nav>
       {revisionWorkshopPanel==="dictation"&&<article className="a2-dictation-panel">
-       <div className="a2-workshop-progress"><span>الجملة {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
-       <h4>استمع ثم اكتب الجملة الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الجملة المكتوبة إلا بعد التحقق.</p>
-       <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:.7})}><Volume2/> استمع إلى الجملة</button>
-       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder="Écrivez la phrase ici…" aria-label="اكتب الجملة الفرنسية التي سمعتها"/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-progress"><span>{isA1Alphabet?"الكلمة":"الجملة"} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
+       <h4>استمع ثم اكتب {isA1Alphabet?"الكلمة":"الجملة"} الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
+       <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isA1Alphabet?.64:.7})}><Volume2/> استمع إلى {isA1Alphabet?"الكلمة":"الجملة"}</button>
+       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isA1Alphabet?"Écrivez le mot ici…":"Écrivez la phrase ici…"} aria-label={`اكتب ${isA1Alphabet?"الكلمة":"الجملة"} الفرنسية التي سمعتها`}/>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>{isA1Alphabet?"الكلمة":"الجملة"} التالية <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
       </article>}
       {revisionWorkshopPanel==="builder"&&<article className="a2-builder-panel">
@@ -4792,15 +4844,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
      </article>)}
      </div>
-     {isEnhancedA2Lesson&&<div className="a2-production-grid">
-      <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=60&&revisionWordCount<=80?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من 60–80</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>تحدث لمدة 45 إلى 60 ثانية</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+     {isEnhancedLesson&&<div className="a2-production-grid">
+      <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من {writingMinimum}–{writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
+      <article className="a2-speaking-task"><span>Production orale</span><h4>{isA1Alphabet?"تحدث لمدة 15 إلى 30 ثانية":"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isA1Alphabet?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{isA1Alphabet?<><li>انطق كل حرف بوضوح.</li><li>توقف قليلًا بين الحرف والكلمة.</li><li>أعد المحاولة وقارن نطقك بالنموذج.</li></>:isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
      </div>}
-     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedA2Lesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
+     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ClipboardPenLine/><div><span>Exercice final</span><h3>{isEnhancedA2Lesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     <div className="university-stage-heading"><ClipboardPenLine/><div><span>Exercice final</span><h3>{isEnhancedLesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
      {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
       const question=quizQuestions[quizQuestionIndex];
       const selected=quizAnswers[quizQuestionIndex];
@@ -4825,12 +4877,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      })()}
      {quizFinished&&<div className="university-quiz-result">
       <Trophy/>
-      <span>{isEnhancedA2Lesson?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
+      <span>{isEnhancedLesson?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
       <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
-      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isEnhancedA2Lesson?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
+      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isEnhancedLesson?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
-      {isEnhancedA2Lesson&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
-      <button onClick={resetQuiz}><RotateCcw/> {isEnhancedA2Lesson?"أعد التمرين":"أعد الاختبار"}</button>
+      {isEnhancedLesson&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
+      <button onClick={resetQuiz}><RotateCcw/> {isEnhancedLesson?"أعد التمرين":"أعد الاختبار"}</button>
      </div>}
     </section>}
 

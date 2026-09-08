@@ -1924,6 +1924,49 @@ const A1_NUMBERS_TIME_DIALOGUES=[
  {context:"Le vendeur dit : « Cela fait trente-deux euros. »",prompt:"ما السعر المذكور؟",choices:["22 €","32 €","42 €"],correctIndex:1,feedback:"trente-deux تعني اثنين وثلاثين."}
 ];
 
+const A1_WEATHER_CLOTHES_READING={
+ title:"Un week-end à Annecy",
+ arTitle:"عطلة نهاية الأسبوع في آنسي",
+ text:"Ce week-end, Lina va à Annecy. Samedi matin, il fait frais et il y a des nuages. L’après-midi, il pleut et la température est de douze degrés. Lina porte un pantalon noir, un pull chaud et une veste imperméable. Elle prend aussi son parapluie.",
+ translation:"تذهب لينا إلى آنسي في عطلة نهاية هذا الأسبوع. يكون الجو منعشًا صباح السبت وتوجد غيوم. وفي فترة بعد الظهر تمطر وتبلغ الحرارة اثنتي عشرة درجة. ترتدي لينا بنطالًا أسود وكنزة دافئة وسترة مقاومة للمطر، وتأخذ مظلتها أيضًا.",
+ questions:[
+  {question:"Quel temps fait-il samedi matin ?",answer:"Il fait frais et il y a des nuages.",ar:"الجو منعش وتوجد غيوم."},
+  {question:"Quelle est la température l’après-midi ?",answer:"La température est de douze degrés.",ar:"درجة الحرارة اثنتا عشرة درجة."},
+  {question:"Pourquoi Lina prend-elle un parapluie ?",answer:"Elle prend un parapluie parce qu’il pleut.",ar:"تأخذ مظلة لأن الجو ممطر."}
+ ]
+};
+
+const A1_WEATHER_CLOTHES_LISTENING={
+ title:"La météo de demain",
+ arTitle:"طقس الغد",
+ text:"Demain matin, il va faire froid à Paris : huit degrés et beaucoup de vent. À midi, il va y avoir du soleil, mais le soir, il va pleuvoir. Prenez un manteau et un parapluie.",
+ questions:[
+  {prompt:"Quelle température est annoncée le matin ?",choices:["Huit degrés","Douze degrés","Dix-huit degrés"],correctIndex:0},
+  {prompt:"Quel temps va-t-il faire à midi ?",choices:["Il va neiger","Il va y avoir du soleil","Il va pleuvoir"],correctIndex:1},
+  {prompt:"Quels objets faut-il prendre ?",choices:["Un pull et des lunettes","Un manteau et un parapluie","Une chemise et un chapeau"],correctIndex:1}
+ ]
+};
+
+const A1_WEATHER_CLOTHES_WRITING_MODEL="En hiver, il fait froid et il y a souvent du vent. Aujourd’hui, il pleut et il fait neuf degrés. Je porte un pantalon noir, un pull chaud et une veste imperméable. Je prends mon parapluie.";
+
+const A1_WEATHER_CLOTHES_DICTATION=[
+ {speech:"Aujourd’hui, il fait beau et chaud.",ar:"الطقس اليوم جميل وحار."},
+ {speech:"En automne, il y a souvent du vent.",ar:"تهب الرياح كثيرًا في الخريف."},
+ {speech:"Je porte un manteau et des chaussures noires.",ar:"أرتدي معطفًا وأحذية سوداء."}
+];
+
+const A1_WEATHER_CLOTHES_BUILDERS=[
+ {tokens:["beau","Il","aujourd’hui.","fait"],answer:["Il","fait","beau","aujourd’hui."],ar:"الطقس جميل اليوم."},
+ {tokens:["hiver,","neige.","En","il"],answer:["En","hiver,","il","neige."],ar:"تتساقط الثلوج في الشتاء."},
+ {tokens:["veste","porte","bleue.","une","Elle"],answer:["Elle","porte","une","veste","bleue."],ar:"ترتدي سترة زرقاء."}
+];
+
+const A1_WEATHER_CLOTHES_DIALOGUES=[
+ {context:"On vous demande : « Quel temps fait-il ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Il fait froid et il y a du vent.","Je suis le froid.","Le vent porte un manteau."],correctIndex:0,feedback:"نصف الطقس بتراكيب ثابتة مثل il fait وil y a."},
+ {context:"Il pleut avant de sortir.",prompt:"اختر النصيحة المناسبة.",choices:["Prends ton parapluie.","Mets tes lunettes de soleil.","Porte un maillot de bain."],correctIndex:0,feedback:"عند المطر نأخذ المظلة: un parapluie."},
+ {context:"Complétez : « Elle porte une chemise … »",prompt:"اختر اتفاق اللون الصحيح.",choices:["blanc","blanche","blancs"],correctIndex:1,feedback:"chemise مؤنث مفرد، لذلك تصبح blanc: blanche."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1989,6 +2032,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_NUMBERS_TIME_READING,listening:A1_NUMBERS_TIME_LISTENING,dictation:A1_NUMBERS_TIME_DICTATION,builders:A1_NUMBERS_TIME_BUILDERS,dialogues:A1_NUMBERS_TIME_DIALOGUES,
   writingModel:A1_NUMBERS_TIME_WRITING_MODEL,writingTitle:"اكتب برنامج يوم بالمواعيد",writingInstructions:"اكتب من 30 إلى 45 كلمة عن برنامج يوم واحد. اذكر اليوم والتاريخ، وموعدين مختلفين على الأقل، وسعرًا أو رقم هاتف.",writingPlaceholder:"Lundi 8 avril, je…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Lundi 8 avril, je commence à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر اليوم والتاريخ أولًا.","انطق كل موعد بوضوح وبسرعة هادئة.","أضف سعرًا أو رقم هاتف في النهاية."],dictationUnit:"sentence"
+ },
+ "weather-clothes":{
+  reading:A1_WEATHER_CLOTHES_READING,listening:A1_WEATHER_CLOTHES_LISTENING,dictation:A1_WEATHER_CLOTHES_DICTATION,builders:A1_WEATHER_CLOTHES_BUILDERS,dialogues:A1_WEATHER_CLOTHES_DIALOGUES,
+  writingModel:A1_WEATHER_CLOTHES_WRITING_MODEL,writingTitle:"صِف الطقس وملابسك المناسبة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن طقس يوم في فصل تختاره. اذكر حالة الطقس والحرارة، ثم اذكر ثلاث قطع ملابس أو أشياء مناسبة للجو.",writingPlaceholder:"En hiver, il fait…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Aujourd’hui, il fait froid et il y a du vent. Il fait neuf degrés. Je porte un pantalon, un pull chaud et une veste. Je prends aussi mon parapluie.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بوصف الطقس ودرجة الحرارة.","اذكر الفصل إذا كان ذلك مناسبًا.","اربط الملابس بحالة الجو."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4647,6 +4695,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"تاريخ يتضمن اسم شهر",passed:revisionWritingTokens.some(word=>["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"].includes(word))},
   {label:"موعدان مختلفان على الأقل",passed:(revisionWritingText.match(/\bà\s+(?:midi|minuit|\d{1,2}(?::\d{2}|\s*h(?:\d{2})?|\s+heures?)|(?:une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt)\s+heures?)\b/gi)??[]).length>=2},
   {label:"سعر أو رقم هاتف",passed:/\b(?:euros?|numéro|téléphone)\b/i.test(revisionWritingText)||/\b0\d(?:[ .-]?\d{2}){4}\b/.test(revisionWritingText)}
+ ]:isA1WeatherClothes?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"ذكر فصل من فصول السنة",passed:revisionWritingTokens.some(word=>["printemps","été","automne","hiver"].includes(word))},
+  {label:"وصف واضح لحالة الطقس",passed:/\bil\s+(?:fait|pleut|neige|y\s+a)\b/i.test(revisionWritingText)},
+  {label:"ذكر درجة الحرارة",passed:/\b(?:degré|degrés)\b/i.test(revisionWritingText)},
+  {label:"ثلاث قطع ملابس أو أشياء مناسبة",passed:new Set(revisionWritingTokens.filter(word=>["pantalon","robe","pull","veste","manteau","chemise","chaussures","chapeau","écharpe","parapluie","lunettes"].includes(word))).size>=3}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

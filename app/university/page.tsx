@@ -1881,6 +1881,49 @@ const A1_CITY_DIRECTIONS_DIALOGUES=[
  {context:"Complétez : « Le bus part … centre-ville. »",prompt:"اختر حرف الجر الصحيح.",choices:["au","du","aux"],correctIndex:1,feedback:"de + le تصبح du للتعبير عن نقطة الانطلاق."}
 ];
 
+const A1_NUMBERS_TIME_READING={
+ title:"Une journée bien organisée",
+ arTitle:"يوم منظّم",
+ text:"Aujourd’hui, nous sommes le mardi 12 mars. Lina commence son cours à huit heures et demie. À midi, elle achète un déjeuner à quinze euros. Son rendez-vous est à quatorze heures vingt. Le soir, elle appelle sa mère au zéro six, vingt et un, trente, quarante-deux, cinquante.",
+ translation:"اليوم هو الثلاثاء 12 مارس. تبدأ لينا درسها عند الثامنة والنصف. وعند الظهر تشتري وجبة غداء بسعر خمسة عشر يورو. موعدها عند الثانية وعشرين دقيقة بعد الظهر. وفي المساء تتصل بوالدتها على الرقم: صفر ستة، واحد وعشرون، ثلاثون، اثنان وأربعون، خمسون.",
+ questions:[
+  {question:"Quel jour sommes-nous ?",answer:"Nous sommes le mardi 12 mars.",ar:"اليوم هو الثلاثاء 12 مارس."},
+  {question:"À quelle heure commence le cours ?",answer:"Le cours commence à huit heures et demie.",ar:"يبدأ الدرس عند الثامنة والنصف."},
+  {question:"Combien coûte le déjeuner ?",answer:"Le déjeuner coûte quinze euros.",ar:"سعر وجبة الغداء خمسة عشر يورو."}
+ ]
+};
+
+const A1_NUMBERS_TIME_LISTENING={
+ title:"Les horaires du samedi",
+ arTitle:"مواعيد يوم السبت",
+ text:"Samedi 20 avril, le musée ouvre à neuf heures quinze et ferme à dix-huit heures. La visite guidée commence à onze heures. Le billet adulte coûte douze euros et le billet enfant coûte sept euros.",
+ questions:[
+  {prompt:"À quelle heure ouvre le musée ?",choices:["À neuf heures","À neuf heures quinze","À dix heures quinze"],correctIndex:1},
+  {prompt:"Quand commence la visite guidée ?",choices:["À onze heures","À midi","À dix-huit heures"],correctIndex:0},
+  {prompt:"Combien coûte le billet enfant ?",choices:["Sept euros","Douze euros","Vingt euros"],correctIndex:0}
+ ]
+};
+
+const A1_NUMBERS_TIME_WRITING_MODEL="Lundi 8 avril, je commence le travail à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros. Le soir, mon cours finit à dix-neuf heures.";
+
+const A1_NUMBERS_TIME_DICTATION=[
+ {speech:"Il est huit heures et demie.",ar:"الساعة الثامنة والنصف."},
+ {speech:"Nous sommes le quinze mai.",ar:"اليوم هو الخامس عشر من مايو."},
+ {speech:"Le billet coûte vingt et un euros.",ar:"سعر التذكرة واحد وعشرون يورو."}
+];
+
+const A1_NUMBERS_TIME_BUILDERS=[
+ {tokens:["heures","Il","et","est","demie.","huit"],answer:["Il","est","huit","heures","et","demie."],ar:"الساعة الثامنة والنصف."},
+ {tokens:["le","avril.","sommes","Nous","douze"],answer:["Nous","sommes","le","douze","avril."],ar:"اليوم هو الثاني عشر من أبريل."},
+ {tokens:["euros.","coûte","livre","vingt","Le"],answer:["Le","livre","coûte","vingt","euros."],ar:"سعر الكتاب عشرون يورو."}
+];
+
+const A1_NUMBERS_TIME_DIALOGUES=[
+ {context:"On vous demande : « Quelle heure est-il ? »",prompt:"اختر الإجابة الصحيحة للساعة 8:30.",choices:["Il est huit heures et demie.","Nous sommes huit heures.","Il a huit et demie."],correctIndex:0,feedback:"لذكر الوقت نبدأ بـ Il est ثم الساعة."},
+ {context:"Vous annoncez la date du 1er juin.",prompt:"اختر الصيغة الصحيحة.",choices:["Nous sommes le premier juin.","Nous sommes le un juin.","Il est premier juin."],correctIndex:0,feedback:"اليوم الأول من الشهر يُقال le premier."},
+ {context:"Le vendeur dit : « Cela fait trente-deux euros. »",prompt:"ما السعر المذكور؟",choices:["22 €","32 €","42 €"],correctIndex:1,feedback:"trente-deux تعني اثنين وثلاثين."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1941,6 +1984,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_CITY_DIRECTIONS_READING,listening:A1_CITY_DIRECTIONS_LISTENING,dictation:A1_CITY_DIRECTIONS_DICTATION,builders:A1_CITY_DIRECTIONS_BUILDERS,dialogues:A1_CITY_DIRECTIONS_DIALOGUES,
   writingModel:A1_CITY_DIRECTIONS_WRITING_MODEL,writingTitle:"اكتب مسارًا داخل المدينة",writingInstructions:"اكتب من 30 إلى 45 كلمة توضّح الطريق من مكان إلى آخر. اذكر نقطة الانطلاق والوجهة، وأعطِ تعليمتين، واستخدم تعبيرًا واحدًا لتحديد موقع المكان.",writingPlaceholder:"Je pars de… et je vais à…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Excusez-moi, pour aller à la gare ? Allez tout droit jusqu’au feu, puis tournez à gauche. La gare est en face du parc.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بسؤال مهذب عن الطريق.","رتّب التعليمات خطوةً خطوة.","اختم بتحديد موقع الوجهة."],dictationUnit:"sentence"
+ },
+ "numbers-time":{
+  reading:A1_NUMBERS_TIME_READING,listening:A1_NUMBERS_TIME_LISTENING,dictation:A1_NUMBERS_TIME_DICTATION,builders:A1_NUMBERS_TIME_BUILDERS,dialogues:A1_NUMBERS_TIME_DIALOGUES,
+  writingModel:A1_NUMBERS_TIME_WRITING_MODEL,writingTitle:"اكتب برنامج يوم بالمواعيد",writingInstructions:"اكتب من 30 إلى 45 كلمة عن برنامج يوم واحد. اذكر اليوم والتاريخ، وموعدين مختلفين على الأقل، وسعرًا أو رقم هاتف.",writingPlaceholder:"Lundi 8 avril, je…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Lundi 8 avril, je commence à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر اليوم والتاريخ أولًا.","انطق كل موعد بوضوح وبسرعة هادئة.","أضف سعرًا أو رقم هاتف في النهاية."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4593,6 +4641,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"وجهة باستعمال à",passed:/\b(?:vais|vas|va|allons|allez|vont)\s+(?:au|à\s+la|à\s+l[’']|aux)\b/i.test(revisionWritingText)},
   {label:"تعليمتان للاتجاه على الأقل",passed:revisionWritingTokens.filter(word=>["allez","tournez","traversez","prenez","continuez","marchez"].includes(word)).length>=2},
   {label:"تعبير لتحديد الموقع",passed:/\b(?:en\s+face\s+de|à\s+côté\s+de|devant|derrière|entre)\b/i.test(revisionWritingText)}
+ ]:isA1NumbersTime?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"يوم من أيام الأسبوع",passed:revisionWritingTokens.some(word=>["lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"].includes(word))},
+  {label:"تاريخ يتضمن اسم شهر",passed:revisionWritingTokens.some(word=>["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"].includes(word))},
+  {label:"موعدان مختلفان على الأقل",passed:(revisionWritingText.match(/\bà\s+(?:midi|minuit|\d{1,2}(?::\d{2}|\s*h(?:\d{2})?|\s+heures?)|(?:une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt)\s+heures?)\b/gi)??[]).length>=2},
+  {label:"سعر أو رقم هاتف",passed:/\b(?:euros?|numéro|téléphone)\b/i.test(revisionWritingText)||/\b0\d(?:[ .-]?\d{2}){4}\b/.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

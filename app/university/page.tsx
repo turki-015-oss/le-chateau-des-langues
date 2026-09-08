@@ -43,6 +43,7 @@ type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
+const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -4901,6 +4902,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
  const [revisionDialogueAnswers,setRevisionDialogueAnswers]=useState<Record<number,number>>({});
  const [revisionWritingText,setRevisionWritingText]=useState("");
+ const [alphabetPracticeStep,setAlphabetPracticeStep]=useState(0);
+ const practiceStageRef=useRef<HTMLElement>(null);
  const [usefulSentencesOpen,setUsefulSentencesOpen]=useState(false);
  const usefulSentencesRef=useRef<HTMLElement>(null);
  const [isRecording,setIsRecording]=useState(false);
@@ -5335,6 +5338,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setRevisionBuilderChecked(false);
   setRevisionDialogueAnswers({});
   setRevisionWritingText("");
+  setAlphabetPracticeStep(0);
+  setUsefulSentencesOpen(false);
  },[initialModuleId,level]);
 
  useEffect(()=>()=>{
@@ -5447,6 +5452,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
    block:"start"
   }),100);
+ };
+ const selectAlphabetPracticeStep=(step:number)=>{
+  const nextStep=Math.max(0,Math.min(ALPHABET_PRACTICE_STEPS.length-1,step));
+  setAlphabetPracticeStep(nextStep);
+  if(nextStep===1)setRevisionWorkshopPanel("dictation");
+  if(nextStep===2)setRevisionWorkshopPanel("builder");
+  if(nextStep===3)setRevisionWorkshopPanel("dialogue");
+  window.setTimeout(()=>practiceStageRef.current?.scrollIntoView({
+   behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+   block:"start"
+  }),60);
  };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
@@ -5917,9 +5933,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
     </>}
 
-    {lessonStage==="practice"&&<section className="university-practice-stage">
+    {lessonStage==="practice"&&<section ref={practiceStageRef} className="university-practice-stage">
      <div className="university-stage-heading"><Headphones/><div><span>{isA1Alphabet?"Écoutez":"Écouter et répéter"}</span><h3>{isA1Alphabet?"استمع":"استمع ثم كرّر"}</h3><p>{isA1Alphabet?"استمع، ثم كرّر بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.":"استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة."}</p></div></div>
-     {isEnhancedLesson&&<section className="a2-listening-lab">
+     {isA1Alphabet&&<nav className="a1-practice-stepper" aria-label="خطوات التدريب">
+      <div><span>الخطوة {alphabetPracticeStep+1} من {ALPHABET_PRACTICE_STEPS.length}</span><strong>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</strong></div>
+      <i><b style={{width:`${(alphabetPracticeStep+1)/ALPHABET_PRACTICE_STEPS.length*100}%`}}/></i>
+      <ol>{ALPHABET_PRACTICE_STEPS.map((step,index)=><li key={step}><button type="button" className={alphabetPracticeStep===index?"active":alphabetPracticeStep>index?"done":""} onClick={()=>selectAlphabetPracticeStep(index)} aria-current={alphabetPracticeStep===index?"step":undefined}><span>{alphabetPracticeStep>index?"✓":index+1}</span><small>{step}</small></button></li>)}</ol>
+     </nav>}
+     {isEnhancedLesson&&(!isA1Alphabet||alphabetPracticeStep===0)&&<section className="a2-listening-lab a1-practice-step-panel">
       <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void (isA1Alphabet?speakFrenchSequence(["A","comme","ami","B","comme","bateau","C","comme","café","D","comme","dimanche","E","comme","école"],460,{rate:.62}):speakFrench(activeA2Listening.text,{rate:isEnhancedA1Lesson?.66:.72}))}><Headphones/> {isA1Alphabet?"تشغيل المقطع الصوتي":"تشغيل المقطع الفرنسي"}</button></header>
       {isA1Alphabet&&<details className="a2-listening-transcript"><summary>إظهار النص</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>}
       <div className="a2-listening-questions">
@@ -5934,14 +5955,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       {!isA1Alphabet&&<details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>}
      </section>}
-     {isEnhancedLesson&&<section className="a2-interactive-workshop">
-      <header><span>Exercice pratique</span><h3>تمرين تطبيقي</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
-      <nav aria-label="أنشطة التمرين التطبيقي">
+     {isEnhancedLesson&&(!isA1Alphabet||(alphabetPracticeStep>=1&&alphabetPracticeStep<=3))&&<section className="a2-interactive-workshop a1-practice-step-panel">
+      <header><span>{isA1Alphabet?["Dictée","Construire","Réagir"][alphabetPracticeStep-1]:"Exercice pratique"}</span><h3>{isA1Alphabet?ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]:"تمرين تطبيقي"}</h3><p>{isA1Alphabet?"أكمل النشاط الحالي، ثم انتقل إلى الخطوة التالية.":"ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام."}</p></header>
+      {!isA1Alphabet&&<nav aria-label="أنشطة التمرين التطبيقي">
        <button className={revisionWorkshopPanel==="dictation"?"active":""} onClick={()=>setRevisionWorkshopPanel("dictation")}><Headphones/><span><strong>إملاء صوتي</strong><small>Écouter et écrire</small></span></button>
        <button className={revisionWorkshopPanel==="builder"?"active":""} onClick={()=>setRevisionWorkshopPanel("builder")}><NotebookTabs/><span><strong>بناء الجملة</strong><small>Construire</small></span></button>
        <button className={revisionWorkshopPanel==="dialogue"?"active":""} onClick={()=>setRevisionWorkshopPanel("dialogue")}><MessageCircle/><span><strong>حوار تفاعلي</strong><small>Réagir</small></span></button>
-      </nav>
-      {revisionWorkshopPanel==="dictation"&&<article className="a2-dictation-panel">
+      </nav>}
+      {(!isA1Alphabet?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
        <div className="a2-workshop-progress"><span>{isA1WordDictation?"الكلمة":"الجملة"} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
        <h4>استمع ثم اكتب {isA1WordDictation?"الكلمة":"الجملة"} الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
        <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {isA1WordDictation?"الكلمة":"الجملة"}</button>
@@ -5949,7 +5970,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>{isA1WordDictation?"الكلمة":"الجملة"} التالية <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
       </article>}
-      {revisionWorkshopPanel==="builder"&&<article className="a2-builder-panel">
+      {(!isA1Alphabet?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">
        <div className="a2-workshop-progress"><span>الجملة {revisionBuilderIndex+1} من {activeA2Builders.length}</span><i><b style={{width:`${(revisionBuilderIndex+1)/activeA2Builders.length*100}%`}}/></i></div>
        <h4>رتّب الكلمات لتكوين جملة صحيحة</h4><p>{revisionBuilderItem.ar}</p>
        <div className="a2-built-sentence" dir="ltr">{revisionBuilderWords.length?revisionBuilderSelection.map((tokenIndex,position)=><button key={`${tokenIndex}-${position}`} onClick={()=>{setRevisionBuilderSelection(current=>current.filter((_,itemIndex)=>itemIndex!==position));setRevisionBuilderChecked(false)}}>{revisionBuilderItem.tokens[tokenIndex]}</button>):<span>اضغط على الكلمات بالترتيب…</span>}</div>
@@ -5957,11 +5978,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<activeA2Builders.length-1&&<button className="secondary" onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
        {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
       </article>}
-      {revisionWorkshopPanel==="dialogue"&&<div className="a2-dialogue-panel">
+      {(!isA1Alphabet?revisionWorkshopPanel==="dialogue":alphabetPracticeStep===3)&&<div className="a2-dialogue-panel">
        {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
-     {isA1Alphabet&&<section ref={usefulSentencesRef} className={`a1-useful-sentences ${usefulSentencesOpen?"open":""}`}>
+     {isA1Alphabet&&alphabetPracticeStep===4&&<section ref={usefulSentencesRef} className={`a1-useful-sentences a1-practice-step-panel ${usefulSentencesOpen?"open":""}`}>
       <button type="button" className="a1-useful-sentences-toggle" onClick={toggleUsefulSentences} aria-expanded={usefulSentencesOpen} aria-controls="a1-useful-sentences-list">
        <span><MessageCircle/></span><div><small>Phrases utiles</small><h3>جمل مفيدة</h3></div><ChevronDown/>
       </button>
@@ -5986,11 +6007,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
       </article>)}
      </div>}
-     {isEnhancedLesson&&<div className="a2-production-grid">
+     {isEnhancedLesson&&(!isA1Alphabet||alphabetPracticeStep===5)&&<div className="a2-production-grid a1-practice-step-panel">
       <article className="a2-writing-task"><span>{isA1Alphabet?"Écrivez":"Production écrite"}</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>{isA1Alphabet?"من 8 كلمات":"كلمة من "+writingMinimum+"–"+writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>{isA1Alphabet?"عرض الترجمة":"عرض نموذج بعد إنهاء كتابتك"}</summary>{isA1Alphabet?<div className="a1-writing-translation-list">{A1_ALPHABET_WRITING_TRANSLATIONS.map(item=><div key={item.fr}><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span></div>)}</div>:<p dir="ltr">{activeA2WritingModel}</p>}</details></article>
       {!isA1Alphabet&&<article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>}
      </div>}
-     <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
+     {isA1Alphabet?<div className="a1-practice-navigation">
+      <button type="button" onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep-1)} disabled={alphabetPracticeStep===0}><ChevronRight/> السابق</button>
+      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep+1)}>التالي <ChevronLeft/></button>:<button type="button" className="primary" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> الانتقال إلى التمرين النهائي <ChevronLeft/></button>}
+     </div>:<button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>}
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">

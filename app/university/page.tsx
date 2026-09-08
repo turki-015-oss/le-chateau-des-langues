@@ -1838,6 +1838,49 @@ const A1_FOOD_SHOPPING_DIALOGUES=[
  {context:"Vous voulez connaître le prix.",prompt:"اختر السؤال الطبيعي.",choices:["Combien ça coûte ?","Quel ça mange ?","Où ça paie ?"],correctIndex:0,feedback:"Combien ça coûte ? هو السؤال الشائع عن السعر."}
 ];
 
+const A1_CITY_DIRECTIONS_READING={
+ title:"De l’hôtel à la gare",
+ arTitle:"من الفندق إلى محطة القطار",
+ text:"Nora sort de l’hôtel et va à la gare à pied. Elle marche tout droit jusqu’au feu, puis elle tourne à gauche après la banque. La gare est en face du parc, à côté d’un café. Le train part à dix heures.",
+ translation:"تخرج نورا من الفندق وتتجه إلى محطة القطار مشيًا. تسير مباشرة حتى إشارة المرور، ثم تنعطف يسارًا بعد البنك. تقع المحطة مقابل الحديقة وبجوار مقهى. ينطلق القطار الساعة العاشرة.",
+ questions:[
+  {question:"D’où part Nora ?",answer:"Nora part de l’hôtel.",ar:"تنطلق نورا من الفندق."},
+  {question:"Où tourne-t-elle à gauche ?",answer:"Elle tourne à gauche après la banque.",ar:"تنعطف يسارًا بعد البنك."},
+  {question:"Où se trouve la gare ?",answer:"La gare est en face du parc, à côté d’un café.",ar:"تقع المحطة مقابل الحديقة وبجوار مقهى."}
+ ]
+};
+
+const A1_CITY_DIRECTIONS_LISTENING={
+ title:"Pour aller à la pharmacie",
+ arTitle:"للوصول إلى الصيدلية",
+ text:"Excusez-moi, pour aller à la pharmacie ? — Allez tout droit, traversez la place et tournez à droite. La pharmacie est entre la boulangerie et la banque, juste devant l’arrêt de bus.",
+ questions:[
+  {prompt:"Que faut-il traverser ?",choices:["Le parc","La place","La rue"],correctIndex:1},
+  {prompt:"De quel côté faut-il tourner ?",choices:["À droite","À gauche","Derrière"],correctIndex:0},
+  {prompt:"Où est la pharmacie ?",choices:["Derrière la banque","Entre la boulangerie et la banque","À côté du parc"],correctIndex:1}
+ ]
+};
+
+const A1_CITY_DIRECTIONS_WRITING_MODEL="Je pars de l’hôtel et je vais à la gare. Allez tout droit jusqu’au feu, puis tournez à gauche. La gare est en face du parc, à côté de la banque.";
+
+const A1_CITY_DIRECTIONS_DICTATION=[
+ {speech:"Je vais au centre-ville en bus.",ar:"أذهب إلى وسط المدينة بالحافلة."},
+ {speech:"Tournez à gauche après la banque.",ar:"انعطفوا يسارًا بعد البنك."},
+ {speech:"Le musée est en face du parc.",ar:"يقع المتحف مقابل الحديقة."}
+];
+
+const A1_CITY_DIRECTIONS_BUILDERS=[
+ {tokens:["à","vais","gare.","la","Je"],answer:["Je","vais","à","la","gare."],ar:"أذهب إلى محطة القطار."},
+ {tokens:["tout","feu.","Allez","droit","jusqu’au"],answer:["Allez","tout","droit","jusqu’au","feu."],ar:"اذهبوا مباشرة حتى إشارة المرور."},
+ {tokens:["parc.","du","face","musée","en","Le","est"],answer:["Le","musée","est","en","face","du","parc."],ar:"يقع المتحف مقابل الحديقة."}
+];
+
+const A1_CITY_DIRECTIONS_DIALOGUES=[
+ {context:"Vous cherchez la gare.",prompt:"اختر السؤال المهذب المناسب.",choices:["Excusez-moi, où se trouve la gare ?","La gare combien ?","Pourquoi la gare est ?"],correctIndex:0,feedback:"Où se trouve… ? صيغة واضحة ومهذبة للسؤال عن المكان."},
+ {context:"Vous indiquez de continuer sans tourner.",prompt:"اختر التعليمة الصحيحة.",choices:["Allez tout droit.","Tournez derrière.","Venez du parc."],correctIndex:0,feedback:"Allez tout droit تعني: اذهب مباشرة."},
+ {context:"Complétez : « Le bus part … centre-ville. »",prompt:"اختر حرف الجر الصحيح.",choices:["au","du","aux"],correctIndex:1,feedback:"de + le تصبح du للتعبير عن نقطة الانطلاق."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1893,6 +1936,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_FOOD_SHOPPING_READING,listening:A1_FOOD_SHOPPING_LISTENING,dictation:A1_FOOD_SHOPPING_DICTATION,builders:A1_FOOD_SHOPPING_BUILDERS,dialogues:A1_FOOD_SHOPPING_DIALOGUES,
   writingModel:A1_FOOD_SHOPPING_WRITING_MODEL,writingTitle:"اكتب قائمة مشتريات وطلبًا قصيرًا",writingInstructions:"اكتب من 30 إلى 45 كلمة لشراء طعام. استخدم أداتَي تجزئة مختلفتين، وتعبير كمية، وطلبًا مهذبًا، وجملة منفية.",writingPlaceholder:"Pour le dîner, je voudrais…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Bonjour, je voudrais du pain, de la soupe et un kilo de pommes, s’il vous plaît. Je ne prends pas de viande. Combien ça coûte ?",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بطلب مهذب باستعمال Je voudrais.","اذكر المنتجات وكمياتها بوضوح.","اختم بالسؤال عن السعر أو طريقة الدفع."],dictationUnit:"sentence"
+ },
+ "city-directions":{
+  reading:A1_CITY_DIRECTIONS_READING,listening:A1_CITY_DIRECTIONS_LISTENING,dictation:A1_CITY_DIRECTIONS_DICTATION,builders:A1_CITY_DIRECTIONS_BUILDERS,dialogues:A1_CITY_DIRECTIONS_DIALOGUES,
+  writingModel:A1_CITY_DIRECTIONS_WRITING_MODEL,writingTitle:"اكتب مسارًا داخل المدينة",writingInstructions:"اكتب من 30 إلى 45 كلمة توضّح الطريق من مكان إلى آخر. اذكر نقطة الانطلاق والوجهة، وأعطِ تعليمتين، واستخدم تعبيرًا واحدًا لتحديد موقع المكان.",writingPlaceholder:"Je pars de… et je vais à…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Excusez-moi, pour aller à la gare ? Allez tout droit jusqu’au feu, puis tournez à gauche. La gare est en face du parc.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بسؤال مهذب عن الطريق.","رتّب التعليمات خطوةً خطوة.","اختم بتحديد موقع الوجهة."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4539,6 +4587,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"تعبير كمية واضح",passed:/\b(?:un|une|deux|trois)\s+(?:kilo(?:gramme)?s?|litres?|bouteilles?|verres?|paquets?)\s+de\b/i.test(revisionWritingText)},
   {label:"طلب مهذب",passed:/\bje\s+voudrais\b/i.test(revisionWritingText)||/s[’']il\s+vous\s+plaît/i.test(revisionWritingText)},
   {label:"جملة منفية مع de أو d’",passed:/\bn[’']?e?\s*[a-zà-ÿ]+\s+pas\s+d(?:e|[’'])/i.test(revisionWritingText)}
+ ]:isA1CityDirections?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"نقطة انطلاق باستعمال de",passed:/\b(?:pars?|sors?|viens|partons|sortons|venons|partez|sortez|venez)\s+(?:du|de\s+la|de\s+l[’']|des)\b/i.test(revisionWritingText)},
+  {label:"وجهة باستعمال à",passed:/\b(?:vais|vas|va|allons|allez|vont)\s+(?:au|à\s+la|à\s+l[’']|aux)\b/i.test(revisionWritingText)},
+  {label:"تعليمتان للاتجاه على الأقل",passed:revisionWritingTokens.filter(word=>["allez","tournez","traversez","prenez","continuez","marchez"].includes(word)).length>=2},
+  {label:"تعبير لتحديد الموقع",passed:/\b(?:en\s+face\s+de|à\s+côté\s+de|devant|derrière|entre)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

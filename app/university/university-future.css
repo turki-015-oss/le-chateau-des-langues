@@ -1,4 +1,10 @@
 /* University visual layer — interface-only, no course behavior changes. */
+.university-world{
+ font-family:"Noto Sans Arabic","Geeza Pro","Segoe UI",Tahoma,Arial,sans-serif;
+ font-optical-sizing:auto;
+ text-rendering:optimizeLegibility;
+ -webkit-font-smoothing:antialiased;
+}
 .university-level-world{
  --u30-navy:#061a35;
  --u30-blue:#103d72;

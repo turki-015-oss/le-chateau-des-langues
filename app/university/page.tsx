@@ -1580,6 +1580,49 @@ const A1_CORE_VERBS_DIALOGUES=[
  {context:"Votre ami demande : « Vous avez un cours aujourd’hui ? »",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes un cours.","Oui, nous avez un cours."],correctIndex:0,feedback:"مع nous يكون تصريف avoir هو avons."}
 ];
 
+const A1_STRUCTURES_READING={
+ title:"Dans le nouvel appartement",
+ arTitle:"داخل الشقة الجديدة",
+ text:"C’est mon nouvel appartement. Il y a un salon et deux chambres. Cette pièce est la cuisine et ce petit espace est le balcon. Ces fenêtres donnent sur le jardin. Ce ne sont pas mes meubles : ce sont les meubles du propriétaire.",
+ translation:"هذه شقتي الجديدة. فيها غرفة جلوس وغرفتا نوم. هذه الغرفة هي المطبخ، وهذا المكان الصغير هو الشرفة. تطل هذه النوافذ على الحديقة. هذا الأثاث ليس لي؛ بل يعود إلى المالك.",
+ questions:[
+  {question:"Combien de chambres y a-t-il ?",answer:"Il y a deux chambres.",ar:"توجد غرفتا نوم."},
+  {question:"Quelle pièce est la cuisine ?",answer:"Cette pièce est la cuisine.",ar:"هذه الغرفة هي المطبخ."},
+  {question:"À qui sont les meubles ?",answer:"Les meubles sont au propriétaire.",ar:"الأثاث يعود إلى المالك."}
+ ]
+};
+
+const A1_STRUCTURES_LISTENING={
+ title:"Près de l’université",
+ arTitle:"بالقرب من الجامعة",
+ text:"Voici mon quartier. Il y a une boulangerie près de l’université. Ce bâtiment blanc est la bibliothèque et cette grande porte est l’entrée. Il n’y a pas de pharmacie ici.",
+ questions:[
+  {prompt:"Qu’est-ce qu’il y a près de l’université ?",choices:["Une boulangerie","Une pharmacie","Un hôtel"],correctIndex:0},
+  {prompt:"Quel bâtiment est la bibliothèque ?",choices:["Le bâtiment rouge","Le bâtiment blanc","Le petit bâtiment"],correctIndex:1},
+  {prompt:"Qu’est-ce qu’il n’y a pas dans le quartier ?",choices:["Une entrée","Une université","Une pharmacie"],correctIndex:2}
+ ]
+};
+
+const A1_STRUCTURES_WRITING_MODEL="C’est mon quartier. Il y a un café et une petite bibliothèque. Cette rue est calme. Ces bâtiments sont modernes, mais il n’y a pas de pharmacie près d’ici.";
+
+const A1_STRUCTURES_DICTATION=[
+ {speech:"C’est mon nouveau quartier.",ar:"هذا حيي الجديد."},
+ {speech:"Il y a une bibliothèque près d’ici.",ar:"توجد مكتبة بالقرب من هنا."},
+ {speech:"Ces maisons sont très anciennes.",ar:"هذه المنازل قديمة جدًا."}
+];
+
+const A1_STRUCTURES_BUILDERS=[
+ {tokens:["mon","C’est","professeur."],answer:["C’est","mon","professeur."],ar:"هذا معلمي."},
+ {tokens:["une","a","ici.","Il y","pharmacie"],answer:["Il y","a","une","pharmacie","ici."],ar:"توجد صيدلية هنا."},
+ {tokens:["sont","Ces","modernes.","bâtiments"],answer:["Ces","bâtiments","sont","modernes."],ar:"هذه المباني حديثة."}
+];
+
+const A1_STRUCTURES_DIALOGUES=[
+ {context:"Votre ami montre plusieurs personnes et demande : « Qui sont-ils ? »",prompt:"اختر جواب الجمع الصحيح.",choices:["C’est mes voisins.","Ce sont mes voisins.","Il y a mon voisin."],correctIndex:1,feedback:"لتقديم أشخاص أو أشياء في الجمع نستخدم Ce sont."},
+ {context:"On demande : « Est-ce qu’il y a un ascenseur ? »",prompt:"اختر جواب النفي الصحيح.",choices:["Non, il n’y a pas d’ascenseur.","Non, ce n’est ascenseur.","Non, il y a pas un ascenseur."],correctIndex:0,feedback:"بعد il n’y a pas نستخدم de أو d’ قبل الاسم."},
+ {context:"Vous montrez une maison féminine singulière.",prompt:"اختر أداة الإشارة الصحيحة.",choices:["Ce maison","Cet maison","Cette maison"],correctIndex:2,feedback:"maison مؤنث مفرد، لذلك نقول cette maison."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1605,6 +1648,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_CORE_VERBS_READING,listening:A1_CORE_VERBS_LISTENING,dictation:A1_CORE_VERBS_DICTATION,builders:A1_CORE_VERBS_BUILDERS,dialogues:A1_CORE_VERBS_DIALOGUES,
   writingModel:A1_CORE_VERBS_WRITING_MODEL,writingTitle:"عرّف بنفسك وبأسرتك",writingInstructions:"اكتب من 20 إلى 35 كلمة عنك وعن شخص من أسرتك. استخدم ضميرين مختلفين على الأقل، وفعلَي être وavoir استعمالًا صحيحًا.",writingPlaceholder:"Je suis… et j’ai…",writingMinimum:20,writingMaximum:35,
   speakingPrompt:"Je suis étudiant et j’ai vingt-deux ans. Ma sœur est professeure. Nous sommes à Riyad et nous avons un cours de français.",speakingDuration:"تحدث لمدة 25 إلى 35 ثانية",speakingTips:["ابدأ بجملة مع je suis.","أضف العمر أو الملكية باستعمال avoir.","استخدم ضميرًا آخر مثل il أو elle أو nous."],dictationUnit:"sentence"
+ },
+ structures:{
+  reading:A1_STRUCTURES_READING,listening:A1_STRUCTURES_LISTENING,dictation:A1_STRUCTURES_DICTATION,builders:A1_STRUCTURES_BUILDERS,dialogues:A1_STRUCTURES_DIALOGUES,
+  writingModel:A1_STRUCTURES_WRITING_MODEL,writingTitle:"قدّم مكانًا وأشر إلى ما فيه",writingInstructions:"اكتب من 25 إلى 40 كلمة عن منزلك أو حيّك. استخدم C’est أو Ce sont، وجملة مع Il y a، وأداة إشارة واحدة على الأقل.",writingPlaceholder:"C’est mon quartier. Il y a…",writingMinimum:25,writingMaximum:40,
+  speakingPrompt:"C’est mon quartier. Il y a un café et une bibliothèque. Cette rue est calme et ces bâtiments sont modernes.",speakingDuration:"تحدث لمدة 25 إلى 40 ثانية",speakingTips:["قدّم المكان باستعمال C’est.","اذكر ما يوجد فيه باستعمال Il y a.","أشر إلى شيء باستعمال ce أو cet أو cette أو ces."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4213,9 +4261,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  {label:"جملة وجود باستعمال il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)}
  ]:isA1CoreVerbs?[
   {label:"من 20 إلى 35 كلمة",passed:revisionWordCount>=20&&revisionWordCount<=35},
-  {label:"استخدام صحيح لفعل être",passed:/\b(?:je\s+suis|tu\s+es|(?:il|elle|on)\s+est|nous\s+sommes|vous\s+êtes|(?:ils|elles)\s+sont)\b/i.test(revisionWritingText)},
-  {label:"استخدام صحيح لفعل avoir",passed:/\b(?:j[’']ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont)\b/i.test(revisionWritingText)},
-  {label:"ضميران مختلفان على الأقل",passed:new Set((revisionWritingText.match(/\b(?:je|tu|il|elle|on|nous|vous|ils|elles)\b/gi)??[]).map(item=>item.toLocaleLowerCase("fr"))).size>=2}
+ {label:"استخدام صحيح لفعل être",passed:/\b(?:je\s+suis|tu\s+es|(?:il|elle|on)\s+est|nous\s+sommes|vous\s+êtes|(?:ils|elles)\s+sont)\b/i.test(revisionWritingText)},
+ {label:"استخدام صحيح لفعل avoir",passed:/\b(?:j[’']ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont)\b/i.test(revisionWritingText)},
+ {label:"ضميران مختلفان على الأقل",passed:new Set((revisionWritingText.match(/\b(?:je|tu|il|elle|on|nous|vous|ils|elles)\b/gi)??[]).map(item=>item.toLocaleLowerCase("fr"))).size>=2}
+ ]:isA1Structures?[
+  {label:"من 25 إلى 40 كلمة",passed:revisionWordCount>=25&&revisionWordCount<=40},
+  {label:"التقديم باستعمال C’est أو Ce sont",passed:/\b(?:c[’']est|ce\s+sont)\b/i.test(revisionWritingText)},
+  {label:"ذكر وجود شيء باستعمال Il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)},
+  {label:"أداة إشارة واحدة على الأقل",passed:/\b(?:ce|cet|cette|ces)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

@@ -2096,6 +2096,49 @@ const A1_HEALTH_NEEDS_DIALOGUES=[
  {context:"Vous voulez fixer une consultation.",prompt:"اختر الطلب المهذب.",choices:["Je voudrais prendre rendez-vous.","Je prends médecin maintenant.","Je veux rendez-vous prend."],correctIndex:0,feedback:"Je voudrais prendre rendez-vous صيغة مهذبة وطبيعية."}
 ];
 
+const A1_ADJECTIVES_READING={
+ title:"Deux personnes différentes",
+ arTitle:"شخصان مختلفان",
+ text:"Mon ami Nabil est grand et mince. Il a les cheveux courts et les yeux noirs. Il est calme, gentil et très patient. Ma cousine Leïla est petite et sportive. Elle a les cheveux longs. Elle est sérieuse, organisée et sociable.",
+ translation:"صديقي نبيل طويل ونحيف، وشعره قصير وعيناه سوداوان. وهو هادئ ولطيف وصبور جدًا. أما ابنة عمي ليلى فهي قصيرة ورياضية وشعرها طويل، وهي جادة ومنظمة واجتماعية.",
+ questions:[
+  {question:"Comment est Nabil physiquement ?",answer:"Nabil est grand et mince, avec les cheveux courts et les yeux noirs.",ar:"نبيل طويل ونحيف، وشعره قصير وعيناه سوداوان."},
+  {question:"Quel est son caractère ?",answer:"Il est calme, gentil et patient.",ar:"هو هادئ ولطيف وصبور."},
+  {question:"Comment est Leïla ?",answer:"Elle est petite, sportive, sérieuse, organisée et sociable.",ar:"هي قصيرة ورياضية وجادة ومنظمة واجتماعية."}
+ ]
+};
+
+const A1_ADJECTIVES_LISTENING={
+ title:"Deviner la personne",
+ arTitle:"تعرّف على الشخص",
+ text:"Cette personne est grande et sportive. Elle a les cheveux courts et bruns. Elle est très sociable, mais aussi sérieuse et organisée. Elle porte une veste bleue.",
+ questions:[
+  {prompt:"Comment est cette personne physiquement ?",choices:["Grande et sportive","Petite et mince","Grande et fatiguée"],correctIndex:0},
+  {prompt:"Comment sont ses cheveux ?",choices:["Longs et noirs","Courts et bruns","Courts et blonds"],correctIndex:1},
+  {prompt:"De quelle couleur est sa veste ?",choices:["Blanche","Noire","Bleue"],correctIndex:2}
+ ]
+};
+
+const A1_ADJECTIVES_WRITING_MODEL="Mon frère est grand et sportif. Il a les cheveux courts et il est calme et patient. Ma sœur est petite et sportive. Elle a les cheveux longs et elle est sérieuse, gentille et sociable.";
+
+const A1_ADJECTIVES_DICTATION=[
+ {speech:"Il est grand, calme et patient.",ar:"هو طويل وهادئ وصبور."},
+ {speech:"Elle est petite, sérieuse et organisée.",ar:"هي قصيرة وجادة ومنظمة."},
+ {speech:"Elles ont les cheveux longs et noirs.",ar:"شعرهن طويل وأسود."}
+];
+
+const A1_ADJECTIVES_BUILDERS=[
+ {tokens:["et","grand","Il","mince.","est"],answer:["Il","est","grand","et","mince."],ar:"هو طويل ونحيف."},
+ {tokens:["organisée.","est","sérieuse","Elle","et"],answer:["Elle","est","sérieuse","et","organisée."],ar:"هي جادة ومنظمة."},
+ {tokens:["intelligentes.","filles","sont","Ces"],answer:["Ces","filles","sont","intelligentes."],ar:"هؤلاء الفتيات ذكيات."}
+];
+
+const A1_ADJECTIVES_DIALOGUES=[
+ {context:"Vous décrivez une femme de petite taille.",prompt:"اختر الصفة المتوافقة.",choices:["Elle est petit.","Elle est petite.","Elle est petits."],correctIndex:1,feedback:"نضيف e غالبًا إلى الصفة مع المؤنث المفرد: petite."},
+ {context:"Vous parlez de plusieurs garçons intelligents.",prompt:"اختر المجموعة الصحيحة.",choices:["des garçons intelligent","des garçons intelligents","des garçon intelligentes"],correctIndex:1,feedback:"الصفة مع جمع المذكر تأخذ غالبًا s: intelligents."},
+ {context:"Vous décrivez les cheveux d’une personne.",prompt:"اختر التركيب الطبيعي.",choices:["Elle a les cheveux longs.","Elle est les cheveux longs.","Elle a cheveux longue."],correctIndex:0,feedback:"لوصف الشعر نستخدم avoir: avoir les cheveux longs."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2181,6 +2224,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_HEALTH_NEEDS_READING,listening:A1_HEALTH_NEEDS_LISTENING,dictation:A1_HEALTH_NEEDS_DICTATION,builders:A1_HEALTH_NEEDS_BUILDERS,dialogues:A1_HEALTH_NEEDS_DIALOGUES,
   writingModel:A1_HEALTH_NEEDS_WRITING_MODEL,writingTitle:"اكتب رسالة قصيرة لحجز موعد",writingInstructions:"اكتب من 30 إلى 45 كلمة إلى عيادة أو صيدلية. اذكر عرضًا صحيًا وموضع ألم والمدة، ثم اطلب موعدًا أو مساعدة بأدب.",writingPlaceholder:"Bonjour, je voudrais…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Bonjour, je suis malade. J’ai de la fièvre et mal à la tête depuis hier. Je voudrais prendre rendez-vous avec un médecin, s’il vous plaît.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بالحالة أو العرض الرئيسي.","حدّد موضع الألم والمدة.","اختم بطلب موعد أو مساعدة بوضوح."],dictationUnit:"sentence"
+ },
+ adjectives:{
+  reading:A1_ADJECTIVES_READING,listening:A1_ADJECTIVES_LISTENING,dictation:A1_ADJECTIVES_DICTATION,builders:A1_ADJECTIVES_BUILDERS,dialogues:A1_ADJECTIVES_DIALOGUES,
+  writingModel:A1_ADJECTIVES_WRITING_MODEL,writingTitle:"صِف شخصين وصفًا واضحًا",writingInstructions:"اكتب من 35 إلى 50 كلمة تصف رجلًا وامرأة. اذكر المظهر والشعر، ثم استخدم صفتين للشخصية لكل شخص مع مراعاة المذكر والمؤنث.",writingPlaceholder:"Mon frère est… Ma sœur est…",writingMinimum:35,writingMaximum:50,
+  speakingPrompt:"Mon ami est grand et sportif. Il a les cheveux courts. Il est calme et patient. Ma cousine est petite et sportive. Elle est sérieuse, gentille et sociable.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["ابدأ بالمظهر باستخدام être.","صف الشعر أو العينين باستخدام avoir.","غيّر نهاية الصفة عند الانتقال إلى المؤنث."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4863,6 +4911,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"تحديد موضع الألم",passed:/\bmal\s+(?:à\s+la|à\s+l[’']|au|aux)\s+[a-zà-ÿ]+/i.test(revisionWritingText)},
   {label:"ذكر مدة العرض",passed:/\bdepuis\s+(?:hier|ce\s+matin|\d+|un|une|deux|trois|quatre|cinq)\b/i.test(revisionWritingText)},
   {label:"طلب موعد أو مساعدة بأدب",passed:/\bje\s+voudrais\s+(?:prendre\s+rendez-vous|parler|voir)\b/i.test(revisionWritingText)||/\bj[’']ai\s+besoin\s+d[’']aide\b/i.test(revisionWritingText)}
+ ]:isA1Adjectives?[
+  {label:"من 35 إلى 50 كلمة",passed:revisionWordCount>=35&&revisionWordCount<=50},
+  {label:"وصف شخصين باستعمال il وelle",passed:/\bil\s+est\b/i.test(revisionWritingText)&&/\belle\s+est\b/i.test(revisionWritingText)},
+  {label:"صفتان للمظهر على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["grand","grande","petit","petite","mince","sportif","sportive","beau","belle"].includes(word))).size>=2},
+  {label:"وصف الشعر أو العينين باستعمال avoir",passed:/\b(?:il|elle)\s+a\s+les\s+(?:cheveux|yeux)\b/i.test(revisionWritingText)},
+  {label:"أربع صفات شخصية على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["calme","gentil","gentille","sérieux","sérieuse","organisé","organisée","sociable","patient","patiente","courageux","courageuse","curieux","curieuse"].includes(word))).size>=4}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

@@ -1967,6 +1967,49 @@ const A1_WEATHER_CLOTHES_DIALOGUES=[
  {context:"Complétez : « Elle porte une chemise … »",prompt:"اختر اتفاق اللون الصحيح.",choices:["blanc","blanche","blancs"],correctIndex:1,feedback:"chemise مؤنث مفرد، لذلك تصبح blanc: blanche."}
 ];
 
+const A1_HOME_HOUSING_READING={
+ title:"Le nouvel appartement de Youssef",
+ arTitle:"شقة يوسف الجديدة",
+ text:"Youssef habite au 24, rue des Fleurs, à Nantes. Son appartement est au troisième étage. Il y a un salon, une cuisine, deux chambres et un petit balcon. Dans le salon, le canapé est devant la fenêtre et la lampe est à côté de la bibliothèque.",
+ translation:"يسكن يوسف في 24 شارع دي فلور بمدينة نانت. تقع شقته في الطابق الثالث. فيها غرفة جلوس ومطبخ وغرفتا نوم وشرفة صغيرة. في غرفة الجلوس تقع الأريكة أمام النافذة، والمصباح بجوار خزانة الكتب.",
+ questions:[
+  {question:"Quelle est l’adresse de Youssef ?",answer:"Il habite au 24, rue des Fleurs, à Nantes.",ar:"يسكن في 24 شارع دي فلور بمدينة نانت."},
+  {question:"Combien de chambres y a-t-il ?",answer:"Il y a deux chambres.",ar:"توجد غرفتا نوم."},
+  {question:"Où est la lampe ?",answer:"La lampe est à côté de la bibliothèque.",ar:"المصباح بجوار خزانة الكتب."}
+ ]
+};
+
+const A1_HOME_HOUSING_LISTENING={
+ title:"Un studio à louer",
+ arTitle:"استوديو للإيجار",
+ text:"Ce studio est au deuxième étage, près du centre-ville. Il y a une grande pièce, une petite cuisine et une salle de bains. Le lit est près de la fenêtre et la table est entre le lit et la porte. Le loyer est de six cents euros par mois.",
+ questions:[
+  {prompt:"À quel étage est le studio ?",choices:["Au premier étage","Au deuxième étage","Au troisième étage"],correctIndex:1},
+  {prompt:"Où est la table ?",choices:["Sous le lit","Entre le lit et la porte","Derrière la cuisine"],correctIndex:1},
+  {prompt:"Quel est le loyer mensuel ?",choices:["500 euros","600 euros","700 euros"],correctIndex:1}
+ ]
+};
+
+const A1_HOME_HOUSING_WRITING_MODEL="J’habite dans un appartement au 15, rue Victor-Hugo. Il y a un salon, une chambre et une cuisine. Dans le salon, le canapé est devant la fenêtre et la table est à côté de la porte.";
+
+const A1_HOME_HOUSING_DICTATION=[
+ {speech:"J’habite dans un appartement calme.",ar:"أسكن في شقة هادئة."},
+ {speech:"Il y a deux chambres et un balcon.",ar:"توجد غرفتا نوم وشرفة."},
+ {speech:"La table est à côté de la fenêtre.",ar:"الطاولة بجوار النافذة."}
+];
+
+const A1_HOME_HOUSING_BUILDERS=[
+ {tokens:["une","dans","maison.","J’habite"],answer:["J’habite","dans","une","maison."],ar:"أسكن في منزل."},
+ {tokens:["petit","a","balcon.","un","Il y"],answer:["Il y","a","un","petit","balcon."],ar:"توجد شرفة صغيرة."},
+ {tokens:["sous","chaise","La","table.","la","est"],answer:["La","chaise","est","sous","la","table."],ar:"الكرسي تحت الطاولة."}
+];
+
+const A1_HOME_HOUSING_DIALOGUES=[
+ {context:"On vous demande : « Vous habitez où ? »",prompt:"اختر إجابة كاملة.",choices:["J’habite dans un appartement à Lyon.","Je suis un appartement Lyon.","J’habite au troisième chambre."],correctIndex:0,feedback:"نستخدم habiter dans مع نوع المسكن، ثم à مع المدينة."},
+ {context:"Vous décrivez une pièce avec un canapé.",prompt:"اختر الجملة الصحيحة.",choices:["Il y a un canapé dans le salon.","Le salon a il canapé.","Il est canapé au salon."],correctIndex:0,feedback:"Il y a تقدّم شيئًا موجودًا داخل المكان."},
+ {context:"La lampe se trouve près du lit.",prompt:"اختر التعبير المناسب.",choices:["La lampe est à côté du lit.","La lampe est entre le lit.","La lampe est sous à lit."],correctIndex:0,feedback:"à côté de تعني بجوار، وتصبح du قبل الاسم المذكر المعرف."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2037,6 +2080,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_WEATHER_CLOTHES_READING,listening:A1_WEATHER_CLOTHES_LISTENING,dictation:A1_WEATHER_CLOTHES_DICTATION,builders:A1_WEATHER_CLOTHES_BUILDERS,dialogues:A1_WEATHER_CLOTHES_DIALOGUES,
   writingModel:A1_WEATHER_CLOTHES_WRITING_MODEL,writingTitle:"صِف الطقس وملابسك المناسبة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن طقس يوم في فصل تختاره. اذكر حالة الطقس والحرارة، ثم اذكر ثلاث قطع ملابس أو أشياء مناسبة للجو.",writingPlaceholder:"En hiver, il fait…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Aujourd’hui, il fait froid et il y a du vent. Il fait neuf degrés. Je porte un pantalon, un pull chaud et une veste. Je prends aussi mon parapluie.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بوصف الطقس ودرجة الحرارة.","اذكر الفصل إذا كان ذلك مناسبًا.","اربط الملابس بحالة الجو."],dictationUnit:"sentence"
+ },
+ "home-housing":{
+  reading:A1_HOME_HOUSING_READING,listening:A1_HOME_HOUSING_LISTENING,dictation:A1_HOME_HOUSING_DICTATION,builders:A1_HOME_HOUSING_BUILDERS,dialogues:A1_HOME_HOUSING_DIALOGUES,
+  writingModel:A1_HOME_HOUSING_WRITING_MODEL,writingTitle:"صِف مسكنك وموقع الأثاث",writingInstructions:"اكتب من 30 إلى 45 كلمة عن مسكن حقيقي أو متخيّل. اذكر نوع المسكن والعنوان، وغرفتين أو أكثر، وقطعتَي أثاث مع تحديد موقعهما.",writingPlaceholder:"J’habite dans…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"J’habite dans un appartement à Nantes. Il y a un salon, une chambre et une cuisine. Le canapé est devant la fenêtre et la table est à côté de la porte.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بنوع المسكن والمدينة.","اذكر الغرف باستعمال Il y a.","حدّد موقع قطعتين من الأثاث."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4701,6 +4749,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"وصف واضح لحالة الطقس",passed:/\bil\s+(?:fait|pleut|neige|y\s+a)\b/i.test(revisionWritingText)},
   {label:"ذكر درجة الحرارة",passed:/\b(?:degré|degrés)\b/i.test(revisionWritingText)},
   {label:"ثلاث قطع ملابس أو أشياء مناسبة",passed:new Set(revisionWritingTokens.filter(word=>["pantalon","robe","pull","veste","manteau","chemise","chaussures","chapeau","écharpe","parapluie","lunettes"].includes(word))).size>=3}
+ ]:isA1HomeHousing?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"ذكر نوع المسكن",passed:revisionWritingTokens.some(word=>["maison","appartement","studio"].includes(word))},
+  {label:"عنوان أو مدينة",passed:/\b\d+\s*,?\s*(?:rue|avenue|boulevard)\b/i.test(revisionWritingText)||/\bà\s+[A-ZÀ-ÖØ-Ý][a-zà-ÿ-]+/.test(revisionWritingText)},
+  {label:"غرفتان مختلفتان على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["salon","chambre","cuisine","balcon","jardin","bureau"].includes(word))).size>=2},
+  {label:"قطعتا أثاث مع تحديد الموقع",passed:new Set(revisionWritingTokens.filter(word=>["lit","armoire","table","canapé","chaise","lampe","bibliothèque"].includes(word))).size>=2&&/\b(?:sur|sous|dans|devant|derrière|entre|près\s+de|à\s+côté\s+de|en\s+face\s+de)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

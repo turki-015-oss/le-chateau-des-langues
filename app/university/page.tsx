@@ -1623,6 +1623,49 @@ const A1_STRUCTURES_DIALOGUES=[
  {context:"Vous montrez une maison féminine singulière.",prompt:"اختر أداة الإشارة الصحيحة.",choices:["Ce maison","Cet maison","Cette maison"],correctIndex:2,feedback:"maison مؤنث مفرد، لذلك نقول cette maison."}
 ];
 
+const A1_QUESTIONS_READING={
+ title:"À l’accueil de l’université",
+ arTitle:"في استقبال الجامعة",
+ text:"— Bonjour, comment vous appelez-vous ? — Je m’appelle Nour. — D’où venez-vous ? — Je viens de Djeddah. — Quelle langue parlez-vous ? — Je parle arabe et un peu français. — Pourquoi apprenez-vous le français ? — Parce que j’aime voyager.",
+ translation:"— مرحبًا، ما اسمك؟ — اسمي نور. — من أين أتيتِ؟ — أتيت من جدة. — ما اللغة التي تتحدثينها؟ — أتحدث العربية وقليلًا من الفرنسية. — لماذا تتعلمين الفرنسية؟ — لأنني أحب السفر.",
+ questions:[
+  {question:"D’où vient Nour ?",answer:"Nour vient de Djeddah.",ar:"نور من جدة."},
+  {question:"Quelles langues parle-t-elle ?",answer:"Elle parle arabe et un peu français.",ar:"تتحدث العربية وقليلًا من الفرنسية."},
+  {question:"Pourquoi apprend-elle le français ?",answer:"Parce qu’elle aime voyager.",ar:"لأنها تحب السفر."}
+ ]
+};
+
+const A1_QUESTIONS_LISTENING={
+ title:"Une inscription au club",
+ arTitle:"التسجيل في النادي",
+ text:"Bonjour. Quel est votre nom ? Vous habitez où ? Est-ce que vous êtes étudiant ? Quand êtes-vous libre ? Très bien, le cours commence mardi à dix-huit heures.",
+ questions:[
+  {prompt:"Pourquoi pose-t-on ces questions ?",choices:["Pour une inscription","Pour commander un repas","Pour acheter un billet"],correctIndex:0},
+  {prompt:"Quel jour commence le cours ?",choices:["Lundi","Mardi","Jeudi"],correctIndex:1},
+  {prompt:"À quelle heure commence-t-il ?",choices:["À seize heures","À dix-sept heures","À dix-huit heures"],correctIndex:2}
+ ]
+};
+
+const A1_QUESTIONS_WRITING_MODEL="Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Pourquoi apprenez-vous le français ? Est-ce que vous aimez voyager ?";
+
+const A1_QUESTIONS_DICTATION=[
+ {speech:"Comment vous appelez-vous ?",ar:"ما اسمك؟"},
+ {speech:"Où habitez-vous ?",ar:"أين تسكن؟"},
+ {speech:"Est-ce que vous parlez français ?",ar:"هل تتحدث الفرنسية؟"}
+];
+
+const A1_QUESTIONS_BUILDERS=[
+ {tokens:["vous","Comment","appelez-vous","?"],answer:["Comment","vous","appelez-vous","?"],ar:"ما اسمك؟"},
+ {tokens:["habitez","Où","vous","?"],answer:["Où","habitez","vous","?"],ar:"أين تسكن؟"},
+ {tokens:["français","Est-ce que","parlez","vous","?"],answer:["Est-ce que","vous","parlez","français","?"],ar:"هل تتحدث الفرنسية؟"}
+];
+
+const A1_QUESTIONS_DIALOGUES=[
+ {context:"Vous voulez connaître le lieu de résidence d’une personne.",prompt:"اختر السؤال المناسب.",choices:["Où habitez-vous ?","Quand partez-vous ?","Pourquoi travaillez-vous ?"],correctIndex:0,feedback:"Où تُستخدم للسؤال عن المكان."},
+ {context:"Votre professeur demande : « Est-ce que vous comprenez ? »",prompt:"اختر إجابة واضحة.",choices:["Oui, je comprends.","À Paris.","Parce que lundi."],correctIndex:0,feedback:"السؤال المغلق بـ Est-ce que يُجاب عنه بـ oui أو non مع توضيح قصير."},
+ {context:"Vous demandez le nom d’une formation : « … formation choisissez-vous ? »",prompt:"اختر الصيغة الصحيحة.",choices:["Quel","Quelle","Quels"],correctIndex:1,feedback:"formation مؤنث مفرد، لذلك نستخدم quelle."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1653,6 +1696,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_STRUCTURES_READING,listening:A1_STRUCTURES_LISTENING,dictation:A1_STRUCTURES_DICTATION,builders:A1_STRUCTURES_BUILDERS,dialogues:A1_STRUCTURES_DIALOGUES,
   writingModel:A1_STRUCTURES_WRITING_MODEL,writingTitle:"قدّم مكانًا وأشر إلى ما فيه",writingInstructions:"اكتب من 25 إلى 40 كلمة عن منزلك أو حيّك. استخدم C’est أو Ce sont، وجملة مع Il y a، وأداة إشارة واحدة على الأقل.",writingPlaceholder:"C’est mon quartier. Il y a…",writingMinimum:25,writingMaximum:40,
   speakingPrompt:"C’est mon quartier. Il y a un café et une bibliothèque. Cette rue est calme et ces bâtiments sont modernes.",speakingDuration:"تحدث لمدة 25 إلى 40 ثانية",speakingTips:["قدّم المكان باستعمال C’est.","اذكر ما يوجد فيه باستعمال Il y a.","أشر إلى شيء باستعمال ce أو cet أو cette أو ces."],dictationUnit:"sentence"
+ },
+ questions:{
+  reading:A1_QUESTIONS_READING,listening:A1_QUESTIONS_LISTENING,dictation:A1_QUESTIONS_DICTATION,builders:A1_QUESTIONS_BUILDERS,dialogues:A1_QUESTIONS_DIALOGUES,
+  writingModel:A1_QUESTIONS_WRITING_MODEL,writingTitle:"اكتب أسئلة تعارف قصيرة",writingInstructions:"اكتب من 25 إلى 40 كلمة تتضمن خمسة أسئلة مختلفة للتعارف. استخدم Est-ce que، وأداتين مختلفتين من comment وoù وquand وpourquoi، وصيغة quel المناسبة.",writingPlaceholder:"Bonjour ! Comment vous appelez-vous ?…",writingMinimum:25,writingMaximum:40,
+  speakingPrompt:"Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Est-ce que vous aimez voyager ?",speakingDuration:"تحدث لمدة 25 إلى 40 ثانية",speakingTips:["استخدم نبرة السؤال بوضوح.","نوّع بين Est-ce que وأدوات الاستفهام.","اترك وقفة قصيرة بعد كل سؤال."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4230,6 +4278,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
  const revisionWordCount=revisionWritingWords.length;
+ const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
  const alphabetInitialCount=new Set(revisionWritingWords.map(word=>word[0].toLocaleLowerCase("fr"))).size;
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
@@ -4266,9 +4315,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  {label:"ضميران مختلفان على الأقل",passed:new Set((revisionWritingText.match(/\b(?:je|tu|il|elle|on|nous|vous|ils|elles)\b/gi)??[]).map(item=>item.toLocaleLowerCase("fr"))).size>=2}
  ]:isA1Structures?[
   {label:"من 25 إلى 40 كلمة",passed:revisionWordCount>=25&&revisionWordCount<=40},
-  {label:"التقديم باستعمال C’est أو Ce sont",passed:/\b(?:c[’']est|ce\s+sont)\b/i.test(revisionWritingText)},
-  {label:"ذكر وجود شيء باستعمال Il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)},
-  {label:"أداة إشارة واحدة على الأقل",passed:/\b(?:ce|cet|cette|ces)\b/i.test(revisionWritingText)}
+ {label:"التقديم باستعمال C’est أو Ce sont",passed:/\b(?:c[’']est|ce\s+sont)\b/i.test(revisionWritingText)},
+ {label:"ذكر وجود شيء باستعمال Il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)},
+ {label:"أداة إشارة واحدة على الأقل",passed:/\b(?:ce|cet|cette|ces)\b/i.test(revisionWritingText)}
+ ]:isA1Questions?[
+  {label:"من 25 إلى 40 كلمة",passed:revisionWordCount>=25&&revisionWordCount<=40},
+  {label:"خمسة أسئلة مختلفة",passed:(revisionWritingText.match(/\?/g)??[]).length>=5},
+  {label:"سؤال باستعمال Est-ce que",passed:/\best-ce\s+que\b/i.test(revisionWritingText)},
+  {label:"أداتا استفهام مختلفتان على الأقل",passed:["comment","où","quand","pourquoi"].filter(word=>revisionWritingTokens.includes(word)).length>=2},
+  {label:"صيغة صحيحة من quel",passed:/\b(?:quel|quelle|quels|quelles)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

@@ -161,3 +161,48 @@ export async function speakFrenchWithPause(
   }
  });
 }
+
+export async function speakFrenchSequence(
+ segments:string[],
+ pauseMs=500,
+ options:FrenchSpeechOptions={}
+){
+ const cleanSegments=segments.map(segment=>segment.trim()).filter(Boolean);
+ if(!cleanSegments.length||!prepareFrenchSpeech())return null;
+ const synth=window.speechSynthesis;
+ const request=++speechRequest;
+ const voices=frenchVoices.length?frenchVoices:await waitForFrenchVoices(synth);
+ if(request!==speechRequest)return null;
+
+ const speakSegment=(index:number):SpeechSynthesisUtterance|null=>{
+  if(request!==speechRequest||index>=cleanSegments.length)return null;
+  const utterance=new SpeechSynthesisUtterance(cleanSegments[index]);
+  utterance.lang="fr-FR";
+  utterance.rate=options.rate??.72;
+  utterance.pitch=options.pitch??1;
+  utterance.volume=options.volume??1;
+  utterance.voice=preferredFrenchVoice(voices);
+  if(options.onBoundary)utterance.onboundary=options.onBoundary;
+  utterance.onerror=event=>options.onError?.(event);
+  utterance.onend=event=>{
+   if(request!==speechRequest)return;
+   if(index===cleanSegments.length-1){
+    options.onEnd?.(event);
+    return;
+   }
+   window.setTimeout(()=>{
+    if(request!==speechRequest)return;
+    synth.resume();
+    speakSegment(index+1);
+   },pauseMs);
+  };
+  synth.speak(utterance);
+  return utterance;
+ };
+
+ synth.cancel();
+ await new Promise<void>(resolve=>window.setTimeout(resolve,50));
+ if(request!==speechRequest)return null;
+ synth.resume();
+ return speakSegment(0);
+}

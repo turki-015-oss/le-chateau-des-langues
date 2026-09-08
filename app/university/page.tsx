@@ -12,7 +12,7 @@ import {
  Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
  Tags,Telescope,Trash2,Trophy,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
 } from "lucide-react";
-import {speakFrench,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import {speakFrench,speakFrenchSequence,speakFrenchWithPause} from "@/lib/frenchSpeech";
 import {
  DESCRIPTION_PRACTICE_ITEMS,DESCRIPTION_QUIZ_ITEMS,EMOTION_VOCABULARY,FAMILY_VOCABULARY,
  PHYSICAL_STATE_VOCABULARY,type VisualVocabularyItem
@@ -54,6 +54,20 @@ function playVocabularySpeech(speech:string[]){
   return;
  }
  void speakFrench(speech[0],{rate:.72});
+}
+
+function alphabetSpeechSegments(text:string){
+ const cleanText=text.replace(/[.!?]+$/g,"").trim();
+ const alphabetExample=cleanText.match(/^([A-ZÀ-Ÿ])\s+comme\s+(.+)$/i);
+ if(alphabetExample)return [alphabetExample[1],"comme",alphabetExample[2]];
+ const words=cleanText.split(/\s+/).filter(Boolean);
+ const segments:string[]=[];
+ for(let index=0;index<words.length;index+=3)segments.push(words.slice(index,index+3).join(" "));
+ return segments;
+}
+
+function playAlphabetLearningText(text:string,pauseMs=360){
+ return speakFrenchSequence(alphabetSpeechSegments(text),pauseMs,{rate:.62});
 }
 
 function normalizeExerciseText(value:string){
@@ -1388,7 +1402,7 @@ const A1_ALPHABET_LISTENING={
  ]
 };
 
-const A1_ALPHABET_WRITING_MODEL="ami, bateau, café, dimanche, école, famille, garçon, hôtel";
+const A1_ALPHABET_WRITING_MODEL="ami: صديق، bateau: قارب، café: مقهى، dimanche: الأحد، école: مدرسة، famille: عائلة، garçon: فتى، hôtel: فندق";
 
 const A1_ALPHABET_DICTATION=[
  {speech:"Ami",ar:"صديق — تبدأ الكلمة بحرف A."},
@@ -2271,7 +2285,7 @@ const A1_MESSAGES_FORMS_DIALOGUES=[
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
-  writingModel:A1_ALPHABET_WRITING_MODEL,writingTitle:"اكتب كلماتك الأولى",writingInstructions:"اكتب من 8 إلى 12 كلمة فرنسية بسيطة، وحاول أن تبدأ كل كلمة بحرف مختلف.",writingPlaceholder:"ami, bateau, café…",writingMinimum:8,writingMaximum:12,
+  writingModel:A1_ALPHABET_WRITING_MODEL,writingTitle:"اكتب",writingInstructions:"اكتب الكلمات الآتية بالفرنسية: ami، bateau، café، dimanche، école، famille، garçon، hôtel.",writingPlaceholder:"اكتب الكلمات الثماني هنا…",writingMinimum:8,writingMaximum:8,
   speakingPrompt:"Prononcez les lettres A, B, C et D, puis dites : A comme ami, B comme bateau.",speakingDuration:"تحدث لمدة 15 إلى 30 ثانية",speakingTips:["انطق كل حرف بوضوح.","توقف قليلًا بين الحرف والكلمة.","أعد المحاولة وقارن نطقك بالنموذج."],dictationUnit:"word"
  },
  sounds:{
@@ -4962,9 +4976,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const futureProcheVerbCount=(revisionWritingText.match(/\b(?:je vais|tu vas|(?:il|elle|on) va|nous allons|vous allez|(?:ils|elles) vont)\s+[a-zà-ÿ]+/gi)??[]).length;
  const objectPronounCount=(revisionWritingText.match(/(?:\b(?:me|te|le|la|les|lui|leur|nous|vous)\b|\b[mtl][’'][a-zà-ÿ]+)/gi)??[]).length;
  const revisionWritingChecks=isA1Alphabet?[
-  {label:"من 8 إلى 12 كلمة",passed:revisionWordCount>=8&&revisionWordCount<=12},
-  {label:"ثماني كلمات فرنسية على الأقل",passed:revisionWordCount>=8},
-  {label:"خمسة أحرف أولى مختلفة على الأقل",passed:alphabetInitialCount>=5}
+  {label:"كتابة الكلمات الثماني المطلوبة",passed:revisionWordCount===8},
+  {label:"ثمانية أحرف أولى مختلفة",passed:alphabetInitialCount===8},
+  {label:"الاحتفاظ بالعلامات الفرنسية في café وécole وhôtel",passed:["café","école","hôtel"].every(word=>revisionWritingTokens.includes(word))}
  ]:isA1Sounds?[
   {label:"من 8 إلى 12 كلمة",passed:revisionWordCount>=8&&revisionWordCount<=12},
   {label:"ثماني كلمات فرنسية على الأقل",passed:revisionWordCount>=8},
@@ -5548,14 +5562,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
-      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchWithPause(LETTER_SPEECH_OVERRIDES[letter]??pronunciation,word,800,{rate:LETTER_SPEECH_RATES[letter]??.72})}}>
+      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[letter]??pronunciation,"comme",word],520,{rate:LETTER_SPEECH_RATES[letter]??.66})}}>
        <b>{letter}</b><span>{pronunciation}</span><small>{word}</small><em>{meaning}</em>
       </button>)}
      </div>
      <div className="university-letter-focus">
       <div><span>الحرف المحدد</span><b>{activeLetter}</b></div>
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
-      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchWithPause(LETTER_SPEECH_OVERRIDES[item[0]]??item[1],item[2],800,{rate:LETTER_SPEECH_RATES[item[0]]??.72})}}><Play/> نطق الحرف ثم الكلمة</button>
+      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[item[0]]??item[1],"comme",item[2]],520,{rate:LETTER_SPEECH_RATES[item[0]]??.66})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
     </section>}
 
@@ -5862,7 +5876,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="university-example-list">
         <h4><MessageCircle/> Exemples expliqués</h4>
         {item.examples.map(example=><article key={example.fr}>
-         <button onClick={()=>void speakFrench(example.fr)} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
+         <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.fr):speakFrench(example.fr))} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
          <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
         </article>)}
        </div>
@@ -5873,7 +5887,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {isEnhancedLesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
      <article className="a2-reading-text">
-      <header><div><small>Texte {level.id}</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void speakFrench(activeA2Reading.text,{rate:isEnhancedA1Lesson?.68:.76})}><Volume2/> استمع إلى النص</button></header>
+      <header><div><small>Texte {level.id}</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(activeA2Reading.text,300):speakFrench(activeA2Reading.text,{rate:isEnhancedA1Lesson?.68:.76}))}><Volume2/> استمع إلى النص</button></header>
       <p dir="ltr">{activeA2Reading.text}</p>
       <details><summary>عرض الترجمة بعد المحاولة</summary><p>{activeA2Reading.translation}</p></details>
      </article>
@@ -5884,9 +5898,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </>}
 
     {lessonStage==="practice"&&<section className="university-practice-stage">
-     <div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>
+     <div className="university-stage-heading"><Headphones/><div><span>{isA1Alphabet?"Écoutez":"Écouter et répéter"}</span><h3>{isA1Alphabet?"استمع":"استمع ثم كرّر"}</h3><p>{isA1Alphabet?"استمع، ثم كرّر بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.":"استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة."}</p></div></div>
      {isEnhancedLesson&&<section className="a2-listening-lab">
-      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void speakFrench(activeA2Listening.text,{rate:isEnhancedA1Lesson?.66:.72})}><Headphones/> تشغيل المقطع الفرنسي</button></header>
+      <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void (isA1Alphabet?speakFrenchSequence(["A","comme","ami","B","comme","bateau","C","comme","café","D","comme","dimanche","E","comme","école"],460,{rate:.62}):speakFrench(activeA2Listening.text,{rate:isEnhancedA1Lesson?.66:.72}))}><Headphones/> {isA1Alphabet?"تشغيل المقطع الصوتي":"تشغيل المقطع الفرنسي"}</button></header>
+      {isA1Alphabet&&<details className="a2-listening-transcript"><summary>إظهار النص</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>}
       <div className="a2-listening-questions">
        {activeA2Listening.questions.map((question,index)=>{
         const selected=revisionListeningAnswers[index];
@@ -5897,7 +5912,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </article>;
        })}
       </div>
-      <details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>
+      {!isA1Alphabet&&<details className="a2-listening-transcript"><summary>إظهار النص الفرنسي بعد المحاولة</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>}
      </section>}
      {isEnhancedLesson&&<section className="a2-interactive-workshop">
       <header><span>Exercice pratique</span><h3>تمرين تطبيقي</h3><p>ثلاثة أنشطة قصيرة تنقل القاعدة من الفهم إلى الاستخدام.</p></header>
@@ -5931,13 +5946,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
-        <button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
+        <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.speech.join(" ")):playVocabularySpeech(example.speech))} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
        </div>
      </article>)}
      </div>
      {isEnhancedLesson&&<div className="a2-production-grid">
-      <article className="a2-writing-task"><span>Production écrite</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>كلمة من {writingMinimum}–{writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>عرض نموذج بعد إنهاء كتابتك</summary><p dir="ltr">{activeA2WritingModel}</p></details></article>
-      <article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>
+      <article className="a2-writing-task"><span>{isA1Alphabet?"Écrivez":"Production écrite"}</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>{isA1Alphabet?"من 8 كلمات":"كلمة من "+writingMinimum+"–"+writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>{isA1Alphabet?"عرض الترجمة":"عرض نموذج بعد إنهاء كتابتك"}</summary><p dir={isA1Alphabet?"rtl":"ltr"}>{activeA2WritingModel}</p></details></article>
+      {!isA1Alphabet&&<article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>}
      </div>}
      <button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>
     </section>}

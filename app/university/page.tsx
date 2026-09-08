@@ -1537,6 +1537,49 @@ const A1_NOUNS_DIALOGUES=[
  {context:"On vous demande : « Il y a une lampe ? »",prompt:"اختر إجابة صحيحة ومختصرة.",choices:["Oui, il y a une lampe.","Oui, il y a un lampe.","Oui, les lampe."],correctIndex:0,feedback:"lampe مؤنث، لذلك نستخدم une."}
 ];
 
+const A1_CORE_VERBS_READING={
+ title:"Une famille à Lyon",
+ arTitle:"عائلة في ليون",
+ text:"Je suis Lina et j’ai vingt ans. Mon frère est étudiant. Il a un cours de français aujourd’hui. Nous sommes à Lyon et nous avons un petit appartement. Nos parents sont à Marseille.",
+ translation:"أنا لينا وعمري عشرون عامًا. أخي طالب، ولديه درس في اللغة الفرنسية اليوم. نحن في ليون ولدينا شقة صغيرة، أما والدانا فهما في مرسيليا.",
+ questions:[
+  {question:"Quel âge a Lina ?",answer:"Lina a vingt ans.",ar:"عمر لينا عشرون عامًا."},
+  {question:"Qui est étudiant ?",answer:"Son frère est étudiant.",ar:"أخوها هو الطالب."},
+  {question:"Où sont les parents ?",answer:"Les parents sont à Marseille.",ar:"الوالدان في مرسيليا."}
+ ]
+};
+
+const A1_CORE_VERBS_LISTENING={
+ title:"Dans la classe",
+ arTitle:"داخل الفصل",
+ text:"Bonjour, je suis Adam. Nous sommes dans la classe numéro trois. J’ai un livre et Sara a deux cahiers. Nous avons un cours à neuf heures.",
+ questions:[
+  {prompt:"Comment s’appelle le garçon ?",choices:["Adam","Sami","Nabil"],correctIndex:0},
+  {prompt:"Combien de cahiers Sara a-t-elle ?",choices:["Un cahier","Deux cahiers","Trois cahiers"],correctIndex:1},
+  {prompt:"À quelle heure est le cours ?",choices:["À huit heures","À neuf heures","À dix heures"],correctIndex:1}
+ ]
+};
+
+const A1_CORE_VERBS_WRITING_MODEL="Je suis étudiant et j’ai vingt-deux ans. Ma sœur est professeure. Nous sommes à Riyad et nous avons un cours de français le lundi.";
+
+const A1_CORE_VERBS_DICTATION=[
+ {speech:"Je suis étudiant.",ar:"أنا طالب."},
+ {speech:"Elle a vingt ans.",ar:"عمرها عشرون عامًا."},
+ {speech:"Nous avons un cours de français.",ar:"لدينا درس في اللغة الفرنسية."}
+];
+
+const A1_CORE_VERBS_BUILDERS=[
+ {tokens:["suis","Je","étudiant."],answer:["Je","suis","étudiant."],ar:"أنا طالب."},
+ {tokens:["un","Elle","livre.","a"],answer:["Elle","a","un","livre."],ar:"لديها كتاب."},
+ {tokens:["à","sommes","Nous","Lyon."],answer:["Nous","sommes","à","Lyon."],ar:"نحن في ليون."}
+];
+
+const A1_CORE_VERBS_DIALOGUES=[
+ {context:"Votre professeur demande : « Vous êtes étudiant ? »",prompt:"اختر الرد الصحيح.",choices:["Oui, je suis étudiant.","Oui, j’ai étudiant.","Oui, je sommes étudiant."],correctIndex:0,feedback:"لوصف الهوية مع je نستخدم je suis."},
+ {context:"On vous demande : « Quel âge avez-vous ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Je suis vingt ans.","J’ai vingt ans.","Je vingt ans."],correctIndex:1,feedback:"العمر في الفرنسية يُعبّر عنه بالفعل avoir: J’ai vingt ans."},
+ {context:"Votre ami demande : « Vous avez un cours aujourd’hui ? »",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes un cours.","Oui, nous avez un cours."],correctIndex:0,feedback:"مع nous يكون تصريف avoir هو avons."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1557,6 +1600,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
   writingModel:A1_NOUNS_WRITING_MODEL,writingTitle:"صِف أشياء مكان قريب منك",writingInstructions:"اكتب من 18 إلى 30 كلمة عن أشياء في غرفتك أو فصلك. استخدم un وune وdes، ثم استخدم اسمًا واحدًا على الأقل في صيغة الجمع.",writingPlaceholder:"Dans ma chambre, il y a…",writingMinimum:18,writingMaximum:30,
   speakingPrompt:"Dans ma chambre, il y a un lit, une table et des livres. Les livres sont sur la table.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر ثلاثة أشياء على الأقل.","استخدم أداة مناسبة قبل كل اسم.","أضف اسمًا واحدًا في صيغة الجمع."],dictationUnit:"sentence"
+ },
+ "core-verbs":{
+  reading:A1_CORE_VERBS_READING,listening:A1_CORE_VERBS_LISTENING,dictation:A1_CORE_VERBS_DICTATION,builders:A1_CORE_VERBS_BUILDERS,dialogues:A1_CORE_VERBS_DIALOGUES,
+  writingModel:A1_CORE_VERBS_WRITING_MODEL,writingTitle:"عرّف بنفسك وبأسرتك",writingInstructions:"اكتب من 20 إلى 35 كلمة عنك وعن شخص من أسرتك. استخدم ضميرين مختلفين على الأقل، وفعلَي être وavoir استعمالًا صحيحًا.",writingPlaceholder:"Je suis… et j’ai…",writingMinimum:20,writingMaximum:35,
+  speakingPrompt:"Je suis étudiant et j’ai vingt-deux ans. Ma sœur est professeure. Nous sommes à Riyad et nous avons un cours de français.",speakingDuration:"تحدث لمدة 25 إلى 35 ثانية",speakingTips:["ابدأ بجملة مع je suis.","أضف العمر أو الملكية باستعمال avoir.","استخدم ضميرًا آخر مثل il أو elle أو nous."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4160,9 +4208,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  {label:"خاتمة لطيفة",passed:/\b(?:enchanté|enchantée|au revoir|à bientôt)\b/i.test(revisionWritingText)}
  ]:isA1Nouns?[
   {label:"من 18 إلى 30 كلمة",passed:revisionWordCount>=18&&revisionWordCount<=30},
-  {label:"استخدام un وune وdes",passed:/\bun\b/i.test(revisionWritingText)&&/\bune\b/i.test(revisionWritingText)&&/\bdes\b/i.test(revisionWritingText)},
-  {label:"اسم جمع واحد على الأقل",passed:/\b(?:livres|chaises|cahiers|images|objets|fenêtres|tables)\b/i.test(revisionWritingText)},
-  {label:"جملة وجود باستعمال il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)}
+ {label:"استخدام un وune وdes",passed:/\bun\b/i.test(revisionWritingText)&&/\bune\b/i.test(revisionWritingText)&&/\bdes\b/i.test(revisionWritingText)},
+ {label:"اسم جمع واحد على الأقل",passed:/\b(?:livres|chaises|cahiers|images|objets|fenêtres|tables)\b/i.test(revisionWritingText)},
+ {label:"جملة وجود باستعمال il y a",passed:/\bil\s+y\s+a\b/i.test(revisionWritingText)}
+ ]:isA1CoreVerbs?[
+  {label:"من 20 إلى 35 كلمة",passed:revisionWordCount>=20&&revisionWordCount<=35},
+  {label:"استخدام صحيح لفعل être",passed:/\b(?:je\s+suis|tu\s+es|(?:il|elle|on)\s+est|nous\s+sommes|vous\s+êtes|(?:ils|elles)\s+sont)\b/i.test(revisionWritingText)},
+  {label:"استخدام صحيح لفعل avoir",passed:/\b(?:j[’']ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont)\b/i.test(revisionWritingText)},
+  {label:"ضميران مختلفان على الأقل",passed:new Set((revisionWritingText.match(/\b(?:je|tu|il|elle|on|nous|vous|ils|elles)\b/gi)??[]).map(item=>item.toLocaleLowerCase("fr"))).size>=2}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

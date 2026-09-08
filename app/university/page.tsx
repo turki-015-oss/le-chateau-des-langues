@@ -4901,6 +4901,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
  const [revisionDialogueAnswers,setRevisionDialogueAnswers]=useState<Record<number,number>>({});
  const [revisionWritingText,setRevisionWritingText]=useState("");
+ const [usefulSentencesOpen,setUsefulSentencesOpen]=useState(false);
+ const usefulSentencesRef=useRef<HTMLElement>(null);
  const [isRecording,setIsRecording]=useState(false);
  const [recordingUrl,setRecordingUrl]=useState("");
  const [recordingError,setRecordingError]=useState("");
@@ -5438,6 +5440,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    });
   },willOpen?90:0);
  };
+ const toggleUsefulSentences=()=>{
+  const willOpen=!usefulSentencesOpen;
+  setUsefulSentencesOpen(willOpen);
+  if(willOpen)window.setTimeout(()=>usefulSentencesRef.current?.scrollIntoView({
+   behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+   block:"start"
+  }),100);
+ };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
   <header className="university-topbar">
@@ -5951,6 +5961,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
+     {isA1Alphabet&&<section ref={usefulSentencesRef} className={`a1-useful-sentences ${usefulSentencesOpen?"open":""}`}>
+      <button type="button" className="a1-useful-sentences-toggle" onClick={toggleUsefulSentences} aria-expanded={usefulSentencesOpen} aria-controls="a1-useful-sentences-list">
+       <span><MessageCircle/></span><div><small>Phrases utiles</small><h3>جمل مفيدة</h3></div><ChevronDown/>
+      </button>
+      <div id="a1-useful-sentences-list" className="a1-useful-sentences-reveal"><div>
      <div className="university-practice-list">
       {practiceExamples.map((example,index)=><article key={`${example.fr}-${index}`}>
        <i>{String(index+1).padStart(2,"0")}</i>
@@ -5960,6 +5975,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
      </article>)}
      </div>
+      </div></div>
+     </section>}
+     {!isA1Alphabet&&<div className="university-practice-list">
+      {practiceExamples.map((example,index)=><article key={`${example.fr}-${index}`}>
+       <i>{String(index+1).padStart(2,"0")}</i>
+       <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
+       <div className="university-dual-audio">
+        <button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
+       </div>
+      </article>)}
+     </div>}
      {isEnhancedLesson&&<div className="a2-production-grid">
       <article className="a2-writing-task"><span>{isA1Alphabet?"Écrivez":"Production écrite"}</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>{isA1Alphabet?"من 8 كلمات":"كلمة من "+writingMinimum+"–"+writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>{isA1Alphabet?"عرض الترجمة":"عرض نموذج بعد إنهاء كتابتك"}</summary>{isA1Alphabet?<div className="a1-writing-translation-list">{A1_ALPHABET_WRITING_TRANSLATIONS.map(item=><div key={item.fr}><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span></div>)}</div>:<p dir="ltr">{activeA2WritingModel}</p>}</details></article>
       {!isA1Alphabet&&<article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>}

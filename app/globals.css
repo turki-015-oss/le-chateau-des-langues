@@ -4017,3 +4017,10 @@
 .a1-writing-translation-list strong{color:#153f6c;font:700 17px/1.4 Georgia,serif;text-align:left}
 .a1-writing-translation-list span{color:#40536b;font-weight:800;text-align:right}
 @media(max-width:520px){.a1-writing-translation-list>div{grid-template-columns:1fr;gap:2px}.a1-writing-translation-list span{text-align:right}}
+
+.a1-useful-sentences{margin-top:22px;scroll-margin-top:92px;border:1px solid #d2bd83;border-radius:20px;background:linear-gradient(145deg,#fffdf7,#f4edde);box-shadow:0 12px 30px rgba(65,48,16,.08);overflow:hidden}
+.a1-useful-sentences-toggle{width:100%;display:grid;grid-template-columns:48px minmax(0,1fr) 24px;align-items:center;gap:13px;padding:16px 18px;border:0;background:transparent;color:#173e68;text-align:right;cursor:pointer}
+.a1-useful-sentences-toggle>span{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#153e70;color:#efd084}.a1-useful-sentences-toggle>span svg{width:22px}
+.a1-useful-sentences-toggle>div{min-width:0}.a1-useful-sentences-toggle small{display:block;color:#9a712b;font:17px/1.35 Georgia,serif}.a1-useful-sentences-toggle h3{margin:2px 0 0;color:#173e68;font-size:16px}.a1-useful-sentences-toggle>svg{color:#9a742f;transition:transform .28s ease}.a1-useful-sentences.open .a1-useful-sentences-toggle>svg{transform:rotate(180deg)}
+.a1-useful-sentences-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .34s ease,opacity .25s ease}.a1-useful-sentences.open .a1-useful-sentences-reveal{grid-template-rows:1fr;opacity:1}.a1-useful-sentences-reveal>div{min-height:0;overflow:hidden}.a1-useful-sentences .university-practice-list{margin:0;padding:0 16px 16px}
+@media(prefers-reduced-motion:reduce){.a1-useful-sentences-reveal,.a1-useful-sentences-toggle>svg{transition:none}}

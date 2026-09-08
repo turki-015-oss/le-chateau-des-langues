@@ -2010,6 +2010,49 @@ const A1_HOME_HOUSING_DIALOGUES=[
  {context:"La lampe se trouve près du lit.",prompt:"اختر التعبير المناسب.",choices:["La lampe est à côté du lit.","La lampe est entre le lit.","La lampe est sous à lit."],correctIndex:0,feedback:"à côté de تعني بجوار، وتصبح du قبل الاسم المذكر المعرف."}
 ];
 
+const A1_DESCRIPTION_READING={
+ title:"Un dimanche en famille",
+ arTitle:"يوم أحد مع العائلة",
+ text:"Aujourd’hui, Sami déjeune avec sa famille. Son père est calme et sa mère est contente. Sa sœur a faim parce qu’elle arrive tard. Son petit frère est fatigué, mais il est heureux de voir ses grands-parents. Toute la famille est réunie.",
+ translation:"يتناول سامي الغداء اليوم مع عائلته. والده هادئ ووالدته سعيدة. أخته جائعة لأنها وصلت متأخرة. أخوه الصغير متعب، لكنه سعيد برؤية جدّيه. اجتمعت العائلة كلها.",
+ questions:[
+  {question:"Comment est le père de Sami ?",answer:"Son père est calme.",ar:"والد سامي هادئ."},
+  {question:"Pourquoi sa sœur a-t-elle faim ?",answer:"Elle a faim parce qu’elle arrive tard.",ar:"هي جائعة لأنها وصلت متأخرة."},
+  {question:"Qui est fatigué ?",answer:"Son petit frère est fatigué.",ar:"أخوه الصغير متعب."}
+ ]
+};
+
+const A1_DESCRIPTION_LISTENING={
+ title:"Des nouvelles de la famille",
+ arTitle:"أخبار العائلة",
+ text:"Mon frère est très content aujourd’hui : il a un nouveau travail. Mes parents sont fiers de lui. Ma grand-mère est un peu fatiguée et elle a froid, alors nous lui préparons une boisson chaude.",
+ questions:[
+  {prompt:"Pourquoi le frère est-il content ?",choices:["Il a un nouveau travail","Il part en voyage","Il achète une maison"],correctIndex:0},
+  {prompt:"Comment sont les parents ?",choices:["Tristes","Fiers","Malades"],correctIndex:1},
+  {prompt:"Que prépare la famille pour la grand-mère ?",choices:["Un repas froid","Une boisson chaude","Un médicament"],correctIndex:1}
+ ]
+};
+
+const A1_DESCRIPTION_WRITING_MODEL="Dans ma famille, mon père est calme et ma mère est très gentille. Mon frère est content aujourd’hui, mais il est fatigué. Ma sœur a faim et mes grands-parents sont heureux de nous voir.";
+
+const A1_DESCRIPTION_DICTATION=[
+ {speech:"Voici ma sœur et mon frère.",ar:"هذه أختي وهذا أخي."},
+ {speech:"Je suis fatigué, mais je suis content.",ar:"أنا متعب، لكنني سعيد."},
+ {speech:"Mon grand-père a faim et ma grand-mère a soif.",ar:"جدي جائع وجدتي عطشى."}
+];
+
+const A1_DESCRIPTION_BUILDERS=[
+ {tokens:["frère.","mon","Voici"],answer:["Voici","mon","frère."],ar:"هذا أخي."},
+ {tokens:["très","mère","contente.","Ma","est"],answer:["Ma","mère","est","très","contente."],ar:"والدتي سعيدة جدًا."},
+ {tokens:["faim.","parents","ont","Mes"],answer:["Mes","parents","ont","faim."],ar:"والداي جائعان."}
+];
+
+const A1_DESCRIPTION_DIALOGUES=[
+ {context:"On vous montre une femme de la famille et demande : « Qui est-ce ? »",prompt:"اختر الإجابة الصحيحة.",choices:["C’est ma sœur.","C’est mon sœur.","Ce sont ma sœur."],correctIndex:0,feedback:"sœur مؤنث، لذلك نستخدم ma sœur."},
+ {context:"Votre ami demande : « Comment vas-tu ? »",prompt:"اختر جوابًا يصف حالة جسدية.",choices:["Je suis fatigué.","Je suis mon frère.","J’ai le dimanche."],correctIndex:0,feedback:"être + fatigué يصف حالة جسدية عامة."},
+ {context:"Une personne veut dire qu’elle a peur.",prompt:"اختر التعبير الفرنسي الصحيح.",choices:["J’ai peur.","Je suis peur.","Je fais peur de moi."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2085,6 +2128,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_HOME_HOUSING_READING,listening:A1_HOME_HOUSING_LISTENING,dictation:A1_HOME_HOUSING_DICTATION,builders:A1_HOME_HOUSING_BUILDERS,dialogues:A1_HOME_HOUSING_DIALOGUES,
   writingModel:A1_HOME_HOUSING_WRITING_MODEL,writingTitle:"صِف مسكنك وموقع الأثاث",writingInstructions:"اكتب من 30 إلى 45 كلمة عن مسكن حقيقي أو متخيّل. اذكر نوع المسكن والعنوان، وغرفتين أو أكثر، وقطعتَي أثاث مع تحديد موقعهما.",writingPlaceholder:"J’habite dans…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"J’habite dans un appartement à Nantes. Il y a un salon, une chambre et une cuisine. Le canapé est devant la fenêtre et la table est à côté de la porte.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بنوع المسكن والمدينة.","اذكر الغرف باستعمال Il y a.","حدّد موقع قطعتين من الأثاث."],dictationUnit:"sentence"
+ },
+ description:{
+  reading:A1_DESCRIPTION_READING,listening:A1_DESCRIPTION_LISTENING,dictation:A1_DESCRIPTION_DICTATION,builders:A1_DESCRIPTION_BUILDERS,dialogues:A1_DESCRIPTION_DIALOGUES,
+  writingModel:A1_DESCRIPTION_WRITING_MODEL,writingTitle:"صِف أفرادًا من عائلتك وحالاتهم",writingInstructions:"اكتب من 30 إلى 45 كلمة عن ثلاثة أفراد من عائلتك. استخدم صفات ملكية، وحالة جسدية واحدة، وشعورين مختلفين على الأقل.",writingPlaceholder:"Dans ma famille, mon père…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Dans ma famille, mon père est calme et ma mère est contente. Mon frère est fatigué aujourd’hui, mais ma sœur est heureuse. Mes grands-parents ont faim.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["قدّم كل شخص بصفة ملكية مناسبة.","فرّق بين être مع الصفة وavoir مع التعبير الثابت.","اذكر حالة جسدية وشعورًا بوضوح."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4755,6 +4803,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"عنوان أو مدينة",passed:/\b\d+\s*,?\s*(?:rue|avenue|boulevard)\b/i.test(revisionWritingText)||/\bà\s+[A-ZÀ-ÖØ-Ý][a-zà-ÿ-]+/.test(revisionWritingText)},
   {label:"غرفتان مختلفتان على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["salon","chambre","cuisine","balcon","jardin","bureau"].includes(word))).size>=2},
   {label:"قطعتا أثاث مع تحديد الموقع",passed:new Set(revisionWritingTokens.filter(word=>["lit","armoire","table","canapé","chaise","lampe","bibliothèque"].includes(word))).size>=2&&/\b(?:sur|sous|dans|devant|derrière|entre|près\s+de|à\s+côté\s+de|en\s+face\s+de)\b/i.test(revisionWritingText)}
+ ]:isA1Description?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"ثلاثة أفراد من العائلة على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["père","mère","frère","sœur","parents","fils","fille","grand-père","grand-mère","grands-parents","oncle","tante","cousin","cousine"].includes(word))).size>=3},
+  {label:"صفة ملكية واحدة على الأقل",passed:revisionWritingTokens.some(word=>["mon","ma","mes","ton","ta","tes","son","sa","ses","notre","nos","votre","vos","leur","leurs"].includes(word))},
+  {label:"حالة جسدية واحدة",passed:/\b(?:suis|es|est|sommes|êtes|sont)\s+(?:fatigué|fatiguée|malade|prêt|prête)\b/i.test(revisionWritingText)||/\b(?:ai|as|a|avons|avez|ont)\s+(?:faim|soif|froid|chaud|mal)\b/i.test(revisionWritingText)},
+  {label:"شعوران مختلفان على الأقل",passed:[/\bcontent(?:e)?\b/i,/\bheureu(?:x|se)\b/i,/\btriste\b/i,/\bcalme\b/i,/\b(?:fier|fière)\b/i,/\bpeur\b/i,/\bsurpris(?:e)?\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=2}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

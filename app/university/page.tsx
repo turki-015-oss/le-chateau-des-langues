@@ -1709,6 +1709,49 @@ const A1_PRESENT_DIALOGUES=[
  {context:"Complétez : « Mes amis … ce soir. »",prompt:"اختر تصريف venir مع ils.",choices:["vient","venez","viennent"],correctIndex:2,feedback:"تصريف venir مع ils هو viennent."}
 ];
 
+const A1_MODAL_VERBS_READING={
+ title:"Avant le voyage",
+ arTitle:"قبل الرحلة",
+ text:"Demain, Sami veut partir à Lyon. Il doit préparer sa valise et il faut arriver à la gare avant huit heures. Il peut acheter son billet sur Internet. Sa sœur ne peut pas venir, mais elle veut l’aider ce soir.",
+ translation:"يريد سامي السفر إلى ليون غدًا. عليه تجهيز حقيبته، ويجب الوصول إلى المحطة قبل الساعة الثامنة. يمكنه شراء تذكرته عبر الإنترنت. لا تستطيع أخته الحضور، لكنها تريد مساعدته هذا المساء.",
+ questions:[
+  {question:"Où Sami veut-il aller ?",answer:"Sami veut aller à Lyon.",ar:"يريد سامي الذهاب إلى ليون."},
+  {question:"Que doit-il préparer ?",answer:"Il doit préparer sa valise.",ar:"عليه تجهيز حقيبته."},
+  {question:"Comment peut-il acheter son billet ?",answer:"Il peut acheter son billet sur Internet.",ar:"يمكنه شراء التذكرة عبر الإنترنت."}
+ ]
+};
+
+const A1_MODAL_VERBS_LISTENING={
+ title:"À la bibliothèque",
+ arTitle:"في المكتبة",
+ text:"Vous pouvez travailler ici, mais vous devez parler doucement. Si vous voulez utiliser un ordinateur, il faut présenter votre carte. Vous ne pouvez pas manger dans la salle.",
+ questions:[
+  {prompt:"Que doit-on faire doucement ?",choices:["Parler","Manger","Marcher"],correctIndex:0},
+  {prompt:"Que faut-il présenter pour utiliser un ordinateur ?",choices:["Un billet","Une carte","Un livre"],correctIndex:1},
+  {prompt:"Qu’est-ce qui est interdit dans la salle ?",choices:["Travailler","Utiliser un ordinateur","Manger"],correctIndex:2}
+ ]
+};
+
+const A1_MODAL_VERBS_WRITING_MODEL="Je veux apprendre le français. Je peux étudier trente minutes chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement. Le week-end, je veux parler avec un ami.";
+
+const A1_MODAL_VERBS_DICTATION=[
+ {speech:"Je peux parler un peu français.",ar:"أستطيع التحدث بالفرنسية قليلًا."},
+ {speech:"Nous voulons visiter le musée.",ar:"نريد زيارة المتحف."},
+ {speech:"Il faut arriver à l’heure.",ar:"يجب الوصول في الموعد."}
+];
+
+const A1_MODAL_VERBS_BUILDERS=[
+ {tokens:["vous","Je","aider.","peux"],answer:["Je","peux","vous","aider."],ar:"أستطيع مساعدتك."},
+ {tokens:["apprendre","voulons","Nous","français.","le"],answer:["Nous","voulons","apprendre","le","français."],ar:"نريد تعلم الفرنسية."},
+ {tokens:["attendre.","devez","Vous"],answer:["Vous","devez","attendre."],ar:"يجب عليكم الانتظار."}
+];
+
+const A1_MODAL_VERBS_DIALOGUES=[
+ {context:"Vous demandez la permission d’entrer.",prompt:"اختر السؤال المناسب.",choices:["Est-ce que je peux entrer ?","Est-ce que je dois entrée ?","Je veux entré ?"],correctIndex:0,feedback:"لطلب الإذن نستخدم pouvoir متبوعًا بالفعل في المصدر."},
+ {context:"Au café, vous commandez poliment.",prompt:"اختر الطلب الأكثر تهذيبًا.",choices:["Je voudrais un café, s’il vous plaît.","Je dois un café.","Je peux café."],correctIndex:0,feedback:"Je voudrais صيغة شائعة ومهذبة عند الطلب."},
+ {context:"Une règle concerne tout le monde.",prompt:"أكمل الجملة: « … respecter le silence. »",choices:["Il faut","Je veux","Tu peux"],correctIndex:0,feedback:"Il faut تعبّر عن ضرورة عامة غير مرتبطة بشخص محدد."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -1749,6 +1792,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_PRESENT_READING,listening:A1_PRESENT_LISTENING,dictation:A1_PRESENT_DICTATION,builders:A1_PRESENT_BUILDERS,dialogues:A1_PRESENT_DIALOGUES,
   writingModel:A1_PRESENT_WRITING_MODEL,writingTitle:"صِف روتينك في الحاضر",writingInstructions:"اكتب من 30 إلى 45 كلمة عن يومك المعتاد. استخدم خمسة أفعال في المضارع مع ضميرين مختلفين، وجملة منفية واحدة، ورابطًا مثل puis أو mais.",writingPlaceholder:"Le matin, je…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Le matin, je commence le travail à huit heures. Je parle avec mes collègues. Je ne déjeune pas au bureau. Le soir, je rentre en métro.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["رتّب يومك من الصباح إلى المساء.","صرّف الفعل وفق ضمير الفاعل.","أضف جملة منفية باستعمال ne… pas."],dictationUnit:"sentence"
+ },
+ "modal-verbs":{
+  reading:A1_MODAL_VERBS_READING,listening:A1_MODAL_VERBS_LISTENING,dictation:A1_MODAL_VERBS_DICTATION,builders:A1_MODAL_VERBS_BUILDERS,dialogues:A1_MODAL_VERBS_DIALOGUES,
+  writingModel:A1_MODAL_VERBS_WRITING_MODEL,writingTitle:"اكتب خطة تعلم قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن هدف تريد تحقيقه. استخدم pouvoir وvouloir، ثم عبّر عن واجب شخصي بـ devoir أو ضرورة عامة بـ il faut.",writingPlaceholder:"Je veux… Je peux…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Je veux apprendre le français. Je peux étudier chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر ما تريد فعله باستعمال vouloir.","وضّح ما تستطيع فعله باستعمال pouvoir.","اختم بواجب أو ضرورة باستعمال devoir أو il faut."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4378,6 +4426,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"ضميران مختلفان على الأقل",passed:new Set(revisionWritingTokens.filter(word=>["je","tu","il","elle","on","nous","vous","ils","elles"].includes(word))).size>=2},
   {label:"جملة منفية باستعمال ne… pas",passed:/\bn[’']?e?\s*[a-zà-ÿ’']+\s+pas\b/i.test(revisionWritingText)},
   {label:"رابط واحد على الأقل",passed:revisionWritingTokens.some(word=>["puis","mais","ensuite","enfin"].includes(word))}
+ ]:isA1ModalVerbs?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"التعبير عن القدرة باستعمال pouvoir",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent)\b/i.test(revisionWritingText)},
+  {label:"التعبير عن الرغبة باستعمال vouloir",passed:/\b(?:veux|veut|voulons|voulez|veulent|voudrais)\b/i.test(revisionWritingText)},
+  {label:"واجب أو ضرورة باستعمال devoir أو il faut",passed:/\b(?:dois|doit|devons|devez|doivent)\b/i.test(revisionWritingText)||/\bil\s+faut\b/i.test(revisionWritingText)},
+  {label:"فعل في المصدر بعد الفعل المصرف",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent|veux|veut|voulons|voulez|veulent|voudrais|dois|doit|devons|devez|doivent|faut)\s+[a-zà-ÿ]+(?:er|ir|re)\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

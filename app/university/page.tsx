@@ -2053,6 +2053,49 @@ const A1_DESCRIPTION_DIALOGUES=[
  {context:"Une personne veut dire qu’elle a peur.",prompt:"اختر التعبير الفرنسي الصحيح.",choices:["J’ai peur.","Je suis peur.","Je fais peur de moi."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur."}
 ];
 
+const A1_HEALTH_NEEDS_READING={
+ title:"Chez le médecin",
+ arTitle:"عند الطبيب",
+ text:"Le médecin demande : « Qu’est-ce que vous avez ? » Adam répond : « J’ai de la fièvre et j’ai mal à la gorge depuis hier. Je suis aussi très fatigué. » Le médecin examine Adam et lui conseille de se reposer et de boire de l’eau.",
+ translation:"يسأل الطبيب: «ما المشكلة؟» يجيب آدم: «لدي حمى وأشعر بألم في الحلق منذ أمس، كما أنني متعب جدًا». يفحص الطبيب آدم وينصحه بالراحة وشرب الماء.",
+ questions:[
+  {question:"Quels symptômes Adam a-t-il ?",answer:"Il a de la fièvre, mal à la gorge et il est fatigué.",ar:"لديه حمى وألم في الحلق ويشعر بالتعب."},
+  {question:"Depuis quand a-t-il mal à la gorge ?",answer:"Il a mal à la gorge depuis hier.",ar:"يشعر بألم في الحلق منذ أمس."},
+  {question:"Que lui conseille le médecin ?",answer:"Le médecin lui conseille de se reposer et de boire de l’eau.",ar:"ينصحه الطبيب بالراحة وشرب الماء."}
+ ]
+};
+
+const A1_HEALTH_NEEDS_LISTENING={
+ title:"À la pharmacie",
+ arTitle:"في الصيدلية",
+ text:"Bonjour, je suis malade. J’ai de la toux et mal à la tête depuis deux jours. Je voudrais parler au pharmacien, s’il vous plaît. — Bien sûr. Est-ce que vous prenez déjà un médicament ?",
+ questions:[
+  {prompt:"Quels problèmes la personne décrit-elle ?",choices:["De la toux et mal à la tête","De la fièvre et mal au dos","Mal aux dents"],correctIndex:0},
+  {prompt:"Depuis combien de temps ?",choices:["Depuis hier","Depuis deux jours","Depuis une semaine"],correctIndex:1},
+  {prompt:"À qui veut-elle parler ?",choices:["Au médecin","À l’infirmier","Au pharmacien"],correctIndex:2}
+ ]
+};
+
+const A1_HEALTH_NEEDS_WRITING_MODEL="Bonjour, je voudrais prendre rendez-vous avec un médecin. J’ai de la fièvre et mal à la tête depuis hier. Je suis très fatigué. Est-ce que vous avez une place demain matin, s’il vous plaît ?";
+
+const A1_HEALTH_NEEDS_DICTATION=[
+ {speech:"J’ai mal à la tête depuis hier.",ar:"أشعر بألم في الرأس منذ أمس."},
+ {speech:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
+ {speech:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."}
+];
+
+const A1_HEALTH_NEEDS_BUILDERS=[
+ {tokens:["tête.","la","à","mal","J’ai"],answer:["J’ai","mal","à","la","tête."],ar:"أشعر بألم في الرأس."},
+ {tokens:["deux","toux","la","jours.","depuis","J’ai","de"],answer:["J’ai","de","la","toux","depuis","deux","jours."],ar:"لدي سعال منذ يومين."},
+ {tokens:["besoin","J’ai","d’aide."],answer:["J’ai","besoin","d’aide."],ar:"أحتاج إلى مساعدة."}
+];
+
+const A1_HEALTH_NEEDS_DIALOGUES=[
+ {context:"Le médecin demande : « Qu’est-ce que vous avez ? »",prompt:"اختر الإجابة الواضحة.",choices:["J’ai de la fièvre et mal à la gorge.","Je suis la fièvre.","J’ai depuis médecin."],correctIndex:0,feedback:"نذكر العرض بـ avoir، ونحدد الألم بـ avoir mal à."},
+ {context:"Vous avez mal aux dents.",prompt:"اختر الأداة الصحيحة.",choices:["J’ai mal à les dents.","J’ai mal aux dents.","J’ai mal au dents."],correctIndex:1,feedback:"à + les تصبح aux: avoir mal aux dents."},
+ {context:"Vous voulez fixer une consultation.",prompt:"اختر الطلب المهذب.",choices:["Je voudrais prendre rendez-vous.","Je prends médecin maintenant.","Je veux rendez-vous prend."],correctIndex:0,feedback:"Je voudrais prendre rendez-vous صيغة مهذبة وطبيعية."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2133,6 +2176,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_DESCRIPTION_READING,listening:A1_DESCRIPTION_LISTENING,dictation:A1_DESCRIPTION_DICTATION,builders:A1_DESCRIPTION_BUILDERS,dialogues:A1_DESCRIPTION_DIALOGUES,
   writingModel:A1_DESCRIPTION_WRITING_MODEL,writingTitle:"صِف أفرادًا من عائلتك وحالاتهم",writingInstructions:"اكتب من 30 إلى 45 كلمة عن ثلاثة أفراد من عائلتك. استخدم صفات ملكية، وحالة جسدية واحدة، وشعورين مختلفين على الأقل.",writingPlaceholder:"Dans ma famille, mon père…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Dans ma famille, mon père est calme et ma mère est contente. Mon frère est fatigué aujourd’hui, mais ma sœur est heureuse. Mes grands-parents ont faim.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["قدّم كل شخص بصفة ملكية مناسبة.","فرّق بين être مع الصفة وavoir مع التعبير الثابت.","اذكر حالة جسدية وشعورًا بوضوح."],dictationUnit:"sentence"
+ },
+ "health-needs":{
+  reading:A1_HEALTH_NEEDS_READING,listening:A1_HEALTH_NEEDS_LISTENING,dictation:A1_HEALTH_NEEDS_DICTATION,builders:A1_HEALTH_NEEDS_BUILDERS,dialogues:A1_HEALTH_NEEDS_DIALOGUES,
+  writingModel:A1_HEALTH_NEEDS_WRITING_MODEL,writingTitle:"اكتب رسالة قصيرة لحجز موعد",writingInstructions:"اكتب من 30 إلى 45 كلمة إلى عيادة أو صيدلية. اذكر عرضًا صحيًا وموضع ألم والمدة، ثم اطلب موعدًا أو مساعدة بأدب.",writingPlaceholder:"Bonjour, je voudrais…",writingMinimum:30,writingMaximum:45,
+  speakingPrompt:"Bonjour, je suis malade. J’ai de la fièvre et mal à la tête depuis hier. Je voudrais prendre rendez-vous avec un médecin, s’il vous plaît.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بالحالة أو العرض الرئيسي.","حدّد موضع الألم والمدة.","اختم بطلب موعد أو مساعدة بوضوح."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4809,6 +4857,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"صفة ملكية واحدة على الأقل",passed:revisionWritingTokens.some(word=>["mon","ma","mes","ton","ta","tes","son","sa","ses","notre","nos","votre","vos","leur","leurs"].includes(word))},
   {label:"حالة جسدية واحدة",passed:/\b(?:suis|es|est|sommes|êtes|sont)\s+(?:fatigué|fatiguée|malade|prêt|prête)\b/i.test(revisionWritingText)||/\b(?:ai|as|a|avons|avez|ont)\s+(?:faim|soif|froid|chaud|mal)\b/i.test(revisionWritingText)},
   {label:"شعوران مختلفان على الأقل",passed:[/\bcontent(?:e)?\b/i,/\bheureu(?:x|se)\b/i,/\btriste\b/i,/\bcalme\b/i,/\b(?:fier|fière)\b/i,/\bpeur\b/i,/\bsurpris(?:e)?\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=2}
+ ]:isA1HealthNeeds?[
+  {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"ذكر عرض صحي",passed:/\b(?:fièvre|toux|rhume|allergie|malade|fatigué|fatiguée)\b/i.test(revisionWritingText)},
+  {label:"تحديد موضع الألم",passed:/\bmal\s+(?:à\s+la|à\s+l[’']|au|aux)\s+[a-zà-ÿ]+/i.test(revisionWritingText)},
+  {label:"ذكر مدة العرض",passed:/\bdepuis\s+(?:hier|ce\s+matin|\d+|un|une|deux|trois|quatre|cinq)\b/i.test(revisionWritingText)},
+  {label:"طلب موعد أو مساعدة بأدب",passed:/\bje\s+voudrais\s+(?:prendre\s+rendez-vous|parler|voir)\b/i.test(revisionWritingText)||/\bj[’']ai\s+besoin\s+d[’']aide\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

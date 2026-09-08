@@ -4010,3 +4010,10 @@
 .university-world .a2-interactive-workshop>nav small{font-size:clamp(13px,1.3vw,15px);line-height:1.35}.university-world .a2-interactive-workshop>nav strong{font-size:clamp(10px,1.1vw,12px)}
 .university-world .a2-production-grid>article>span{font-size:clamp(20px,2.2vw,26px);line-height:1.35}.university-world .a2-production-grid>article>h4{font-size:clamp(15px,1.7vw,19px)}
 .university-world .a2-quiz-review>header span{font-size:clamp(18px,2vw,23px);line-height:1.35}.university-world .a2-quiz-review>header h4{font-size:clamp(14px,1.5vw,17px)}
+
+/* Word translations stay vertically scannable for beginner writing tasks. */
+.a1-writing-translation-list{display:grid;gap:8px;margin-top:12px}
+.a1-writing-translation-list>div{display:grid;grid-template-columns:minmax(90px,.65fr) 1fr;align-items:center;gap:14px;padding:10px 12px;border:1px solid #d8e3ed;border-radius:10px;background:#fff}
+.a1-writing-translation-list strong{color:#153f6c;font:700 17px/1.4 Georgia,serif;text-align:left}
+.a1-writing-translation-list span{color:#40536b;font-weight:800;text-align:right}
+@media(max-width:520px){.a1-writing-translation-list>div{grid-template-columns:1fr;gap:2px}.a1-writing-translation-list span{text-align:right}}

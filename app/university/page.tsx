@@ -2182,6 +2182,49 @@ const A1_DAILY_LIFE_DIALOGUES=[
  {context:"Vous organisez trois actions dans l’ordre.",prompt:"اختر مجموعة الروابط المناسبة.",choices:["D’abord, puis, enfin","Souvent, jamais, très","Parce que, mais, avec"],correctIndex:0,feedback:"D’abord وpuis وenfin ترتب أحداث اليوم."}
 ];
 
+const A1_SITUATIONS_READING={
+ title:"Une invitation entre amis",
+ arTitle:"دعوة بين صديقين",
+ text:"Lina écrit à Rami : « Salut ! Ça te dit d’aller au cinéma samedi soir ? Le film commence à dix-neuf heures. » Rami répond : « Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt y aller dimanche après-midi ? » Lina accepte : « Bonne idée ! On se retrouve devant le cinéma à quinze heures. »",
+ translation:"تكتب لينا إلى رامي: «مرحبًا! ما رأيك أن نذهب إلى السينما مساء السبت؟ يبدأ الفيلم الساعة السابعة». يجيب رامي: «آسف، لا أستطيع يوم السبت لأنني أعمل. هل يمكن أن نذهب بدلًا من ذلك بعد ظهر الأحد؟» فتوافق لينا: «فكرة جيدة! نلتقي أمام السينما الساعة الثالثة».",
+ questions:[
+  {question:"Quelle activité Lina propose-t-elle ?",answer:"Elle propose d’aller au cinéma.",ar:"تقترح الذهاب إلى السينما."},
+  {question:"Pourquoi Rami refuse-t-il samedi ?",answer:"Il refuse parce qu’il travaille.",ar:"يعتذر لأنه يعمل."},
+  {question:"Quand et où vont-ils se retrouver ?",answer:"Ils vont se retrouver dimanche à quinze heures devant le cinéma.",ar:"سيلتقيان يوم الأحد الساعة الثالثة أمام السينما."}
+ ]
+};
+
+const A1_SITUATIONS_LISTENING={
+ title:"Changer l’heure du rendez-vous",
+ arTitle:"تغيير موعد اللقاء",
+ text:"Salut Nour, je suis désolé, je vais arriver en retard. Notre bus est à la gare. On peut se retrouver au café à cinq heures au lieu de quatre heures ? Appelle-moi, s’il te plaît. À tout à l’heure !",
+ questions:[
+  {prompt:"Pourquoi la personne appelle-t-elle ?",choices:["Pour annuler un voyage","Pour changer l’heure","Pour choisir un film"],correctIndex:1},
+  {prompt:"Où propose-t-elle de se retrouver ?",choices:["À la gare","Au cinéma","Au café"],correctIndex:2},
+  {prompt:"Quelle est la nouvelle heure ?",choices:["Quatre heures","Cinq heures","Six heures"],correctIndex:1}
+ ]
+};
+
+const A1_SITUATIONS_WRITING_MODEL="Salut Sami ! Ça te dit de prendre un café samedi à quatre heures ? — Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt se voir dimanche ? — Avec plaisir ! On se retrouve devant le café à cinq heures.";
+
+const A1_SITUATIONS_DICTATION=[
+ {speech:"Tu veux sortir avec nous samedi ?",ar:"هل تريد الخروج معنا يوم السبت؟"},
+ {speech:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء."},
+ {speech:"On se retrouve devant le café à cinq heures.",ar:"نلتقي أمام المقهى الساعة الخامسة."}
+];
+
+const A1_SITUATIONS_BUILDERS=[
+ {tokens:["samedi","sortir","Tu","veux","?"],answer:["Tu","veux","sortir","samedi","?"],ar:"هل تريد الخروج يوم السبت؟"},
+ {tokens:["venir","peux","ne","Je","pas","soir.","ce"],answer:["Je","ne","peux","pas","venir","ce","soir."],ar:"لا أستطيع الحضور هذا المساء."},
+ {tokens:["retrouve","heures.","On","quatre","à","se"],answer:["On","se","retrouve","à","quatre","heures."],ar:"نلتقي الساعة الرابعة."}
+];
+
+const A1_SITUATIONS_DIALOGUES=[
+ {context:"Un ami vous invite au restaurant et vous acceptez.",prompt:"اختر الإجابة الطبيعية.",choices:["Avec plaisir ! À quelle heure ?","Je ne restaurant jamais.","Parce que je suis heure."],correctIndex:0,feedback:"Avec plaisir تقبل الدعوة، ثم يمكن السؤال عن الوقت."},
+ {context:"Vous ne pouvez pas venir samedi.",prompt:"اختر الاعتذار مع اقتراح بديل.",choices:["Désolé, je ne peux pas samedi. Et dimanche ?","Non, jamais, au revoir.","Je suis samedi mais dimanche."],correctIndex:0,feedback:"الاعتذار القصير مع موعد بديل يحافظ على حوار طبيعي."},
+ {context:"Votre ami dit : « À mon avis, ce film est drôle. »",prompt:"اختر رد الموافقة.",choices:["Je suis d’accord avec toi.","Je vais à huit heures.","Je ne peux pas le mardi."],correctIndex:0,feedback:"Je suis d’accord تُستخدم للتعبير عن الموافقة."}
+];
+
 const A1_ENHANCED_CONTENT={
  alphabet:{
   reading:A1_ALPHABET_READING,listening:A1_ALPHABET_LISTENING,dictation:A1_ALPHABET_DICTATION,builders:A1_ALPHABET_BUILDERS,dialogues:A1_ALPHABET_DIALOGUES,
@@ -2277,6 +2320,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_DAILY_LIFE_READING,listening:A1_DAILY_LIFE_LISTENING,dictation:A1_DAILY_LIFE_DICTATION,builders:A1_DAILY_LIFE_BUILDERS,dialogues:A1_DAILY_LIFE_DIALOGUES,
   writingModel:A1_DAILY_LIFE_WRITING_MODEL,writingTitle:"رتّب أحداث يومك المعتاد",writingInstructions:"اكتب من 35 إلى 50 كلمة عن يومك. استخدم ثلاثة أفعال ضميرية، وظرفَي تكرار، وثلاثة روابط زمنية، وجملة منفية واحدة.",writingPlaceholder:"En général, je me lève…",writingMinimum:35,writingMaximum:50,
   speakingPrompt:"En général, je me lève à sept heures. D’abord, je me prépare. Ensuite, je vais au travail. Le soir, je me repose, puis je lis. Je ne me couche jamais tard.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["استخدم الضمير المنعكس المناسب قبل الفعل.","أضف ظروفًا توضّح تكرار النشاط.","رتّب يومك بروابط زمنية واضحة."],dictationUnit:"sentence"
+ },
+ situations:{
+  reading:A1_SITUATIONS_READING,listening:A1_SITUATIONS_LISTENING,dictation:A1_SITUATIONS_DICTATION,builders:A1_SITUATIONS_BUILDERS,dialogues:A1_SITUATIONS_DIALOGUES,
+  writingModel:A1_SITUATIONS_WRITING_MODEL,writingTitle:"اكتب دعوة وردًا مناسبًا",writingInstructions:"اكتب حوارًا من 35 إلى 50 كلمة: وجّه دعوة مع اليوم والوقت، ثم اقبلها أو اعتذر مع سبب، واقترح بديلًا واتفق على مكان اللقاء.",writingPlaceholder:"Salut ! Ça te dit de…",writingMinimum:35,writingMaximum:50,
+  speakingPrompt:"Salut ! Ça te dit de prendre un café samedi ? Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt se voir dimanche ? Avec plaisir !",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["اجعل الدعوة واضحة وحدد النشاط.","اقبل أو اعتذر بلطف مع سبب.","اقترح موعدًا بديلًا وحدد مكان اللقاء."],dictationUnit:"sentence"
  }
 } as const;
 
@@ -4971,6 +5019,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"ظرفا تكرار مختلفان",passed:new Set(revisionWritingTokens.filter(word=>["toujours","souvent","parfois","rarement","jamais"].includes(word))).size>=2},
   {label:"ثلاثة روابط زمنية مختلفة",passed:[/\bd[’']abord\b/i,/\bpuis\b/i,/\bensuite\b/i,/\benfin\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=3},
   {label:"جملة منفية واحدة",passed:/\bn[’']?e?\s*(?:me|te|se|nous|vous)?\s*[a-zà-ÿ]+\s+(?:pas|jamais)\b/i.test(revisionWritingText)}
+ ]:isA1Situations?[
+  {label:"من 35 إلى 50 كلمة",passed:revisionWordCount>=35&&revisionWordCount<=50},
+  {label:"صيغة دعوة واضحة",passed:/\btu\s+veux\b/i.test(revisionWritingText)||/\bça\s+te\s+dit\s+de\b/i.test(revisionWritingText)},
+  {label:"يوم ووقت للقاء",passed:revisionWritingTokens.some(word=>["lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"].includes(word))&&/\bà\s+(?:midi|minuit|\d{1,2}(?::\d{2}|\s*h(?:\d{2})?|\s+heures?)|(?:une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt)\s+heures?)\b/i.test(revisionWritingText)},
+  {label:"قبول أو اعتذار مهذب",passed:/\b(?:avec\s+plaisir|bonne\s+idée|désolé|désolée)\b/i.test(revisionWritingText)},
+  {label:"سبب أو اقتراح بديل",passed:/\bparce\s+que\b/i.test(revisionWritingText)&&/\b(?:plutôt|on\s+peut|et\s+(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche))\b/i.test(revisionWritingText)},
+  {label:"مكان اللقاء",passed:/\bon\s+se\s+retrouve\b/i.test(revisionWritingText)&&/\b(?:devant|au|à\s+la|à\s+l[’'])\b/i.test(revisionWritingText)}
  ]:isA2Expression?[
   {label:"من 60 إلى 80 كلمة",passed:revisionWordCount>=60&&revisionWordCount<=80},
   {label:"رأي واضح مع تعليل",passed:/\b(?:à mon avis|pour moi|je pense que|je trouve que|je crois que)\b/i.test(revisionWritingText)&&/\b(?:parce que|car|comme|grâce à|à cause de)\b/i.test(revisionWritingText)},

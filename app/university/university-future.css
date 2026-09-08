@@ -5,6 +5,23 @@
  text-rendering:optimizeLegibility;
  -webkit-font-smoothing:antialiased;
 }
+.university-level-world .a2-reading-text>header{
+ position:static;
+ inset:auto;
+ z-index:auto;
+ width:auto;
+ padding:2px 2px 16px;
+ border:0;
+ border-bottom:1px solid #d8e2ec;
+ background:linear-gradient(135deg,#fffdf7 0%,#eef5fb 100%);
+ box-shadow:none;
+ color:#123b68;
+ backdrop-filter:none;
+ -webkit-backdrop-filter:none;
+}
+.university-level-world .a2-reading-text>header h4{color:#0d3764}
+.university-level-world .a2-reading-text>header small,
+.university-level-world .a2-reading-text>header span{color:#896426}
 .university-level-world{
  --u30-navy:#061a35;
  --u30-blue:#103d72;

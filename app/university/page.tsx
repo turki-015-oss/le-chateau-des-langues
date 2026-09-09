@@ -80,6 +80,13 @@ function playAlphabetLearningText(text:string,pauseMs=360){
  return speakFrenchSequence(alphabetSpeechSegments(text),pauseMs,{rate:.62});
 }
 
+function alphabetNaturalSpeechText(text:string){
+ return text.replace(/\b[A-Z]\b/g,letter=>{
+  const alphabetItem=ALPHABET.find(item=>item[0]===letter);
+  return LETTER_SPEECH_OVERRIDES[letter]??alphabetItem?.[1]??letter.toLocaleLowerCase("fr");
+ });
+}
+
 function normalizeExerciseText(value:string){
  return value.normalize("NFC").toLocaleLowerCase("fr").replace(/[’]/g,"'").replace(/[.,!?;:]/g,"").replace(/\s+/g," ").trim();
 }
@@ -5722,14 +5729,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {activeModule.id==="alphabet"&&<section className="university-alphabet">
      <div className="university-subheading"><div><span>Alphabet interactif</span><h3>اضغط على الحرف لسماع نطقه</h3></div><Volume2/></div>
      <div className="university-letter-grid">
-      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[letter]??pronunciation,"comme",word],520,{rate:LETTER_SPEECH_RATES[letter]??.66})}}>
+      {ALPHABET.map(([letter,pronunciation,word,meaning])=><button key={letter} className={activeLetter===letter?"active":""} aria-label={`استمع إلى الحرف ${letter} ثم كلمة ${word}`} onClick={()=>{setActiveLetter(letter);void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[letter]??pronunciation,word],460,{rate:LETTER_SPEECH_RATES[letter]??.66})}}>
        <b>{letter}</b><span>{pronunciation}</span><small>{word}</small><em>{meaning}</em>
       </button>)}
      </div>
      <div className="university-letter-focus">
       <div><span>الحرف المحدد</span><b>{activeLetter}</b></div>
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
-      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[item[0]]??item[1],"comme",item[2]],520,{rate:LETTER_SPEECH_RATES[item[0]]??.66})}}><Play/> نطق الحرف ثم الكلمة</button>
+      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[item[0]]??item[1],item[2]],460,{rate:LETTER_SPEECH_RATES[item[0]]??.66})}}><Play/> نطق الحرف ثم الكلمة</button>
      </div>
     </section>}
 
@@ -6141,7 +6148,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
-        <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.speech.join(" ")):playVocabularySpeech(example.speech))} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
+        <button onClick={()=>void (isA1Alphabet?speakFrench(alphabetNaturalSpeechText(example.speech.join(" ")),{rate:.78}):playVocabularySpeech(example.speech))} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
        </div>
      </article>)}
      </div>

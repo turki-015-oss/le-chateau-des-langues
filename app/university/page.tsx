@@ -5547,6 +5547,31 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    });
   },300);
  };
+ const resetAlphabetPractice=()=>{
+  cancelFrenchSpeech();
+  setRevisionListeningAnswers({});
+  setRevisionWorkshopPanel("dictation");
+  setRevisionDictationIndex(0);
+  setRevisionDictationText("");
+  setRevisionDictationChecked(false);
+  setRevisionBuilderIndex(0);
+  setRevisionBuilderSelection([]);
+  setRevisionBuilderChecked(false);
+  setRevisionDialogueAnswers({});
+  setRevisionWritingText("");
+  setAlphabetWritingIndex(0);
+  setAlphabetWritingInput("");
+  setAlphabetWritingState("idle");
+  setAlphabetListeningClipIndex(0);
+  setAlphabetListeningQuestionIndex(0);
+  setAlphabetListeningPlaying(false);
+  setAlphabetListeningSegment(-1);
+  setAlphabetPracticeStep(0);
+  setAlphabetHighestPracticeStep(0);
+  setAlphabetPracticeOpen(false);
+  setAlphabetPracticeClosing(false);
+  setUsefulSentencesOpen(false);
+ };
  const playAlphabetOrbitClip=(rate:"slow"|"normal")=>{
   const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];
   setAlphabetListeningPlaying(true);
@@ -6029,7 +6054,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {lessonStage==="practice"&&<section ref={practiceStageRef} className={`university-practice-stage ${alphabetPracticeClosing?"a1-orbit-panel-closing":""}`} style={isA1Alphabet?{"--practice-origin-x":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][0],"--practice-origin-y":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][1]} as CSSProperties:undefined}>
      {!isA1Alphabet&&<div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>}
      {isA1Alphabet&&<section className={`a1-orbit-map ${alphabetPracticeOpen?"activity-open":""} ${alphabetPracticeOpen&&alphabetPracticeStep===0?"listening-open":""}`} aria-label="خريطة مراحل التدريب">
-      <header><span>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</span><strong>{alphabetPracticeStep+1} / {ALPHABET_PRACTICE_STEPS.length}</strong></header>
+      <header><button type="button" className="a1-orbit-reset" onClick={resetAlphabetPractice} aria-label="إعادة جميع تمارين الخريطة من البداية" title="إعادة التمارين"><RotateCcw/></button><span>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</span><strong>{alphabetPracticeStep+1} / {ALPHABET_PRACTICE_STEPS.length}</strong></header>
       <div className="a1-orbit-stage">
        <i className="orbit-ring ring-one"/><i className="orbit-ring ring-two"/><i className="orbit-ring ring-three"/>
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>

@@ -4877,6 +4877,40 @@ const FRIENDS_SITUATIONS_PAGES=[
  }
 ];
 
+function playPracticeChoiceFeedback(correct:boolean){
+ if(typeof window==="undefined")return;
+ if(!correct&&"vibrate" in navigator)navigator.vibrate(85);
+ try{
+  const AudioContextConstructor=window.AudioContext||(window as typeof window&{webkitAudioContext?:typeof AudioContext}).webkitAudioContext;
+  if(!AudioContextConstructor)return;
+  const context=new AudioContextConstructor();
+  const master=context.createGain();
+  master.gain.setValueAtTime(.0001,context.currentTime);
+  master.gain.exponentialRampToValueAtTime(correct?.16:.12,context.currentTime+.018);
+  master.gain.exponentialRampToValueAtTime(.0001,context.currentTime+(correct?.62:.38));
+  master.connect(context.destination);
+  const notes=correct?[392,523.25,659.25]:[196,146.83];
+  notes.forEach((frequency,index)=>{
+   const oscillator=context.createOscillator();
+   const noteGain=context.createGain();
+   const startsAt=context.currentTime+index*(correct?.105:.075);
+   const duration=correct?.34:.22;
+   oscillator.type=correct?(index===0?"sine":"triangle"):"sawtooth";
+   oscillator.frequency.setValueAtTime(frequency,startsAt);
+   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.82,startsAt+duration);
+   noteGain.gain.setValueAtTime(.0001,startsAt);
+   noteGain.gain.exponentialRampToValueAtTime(correct?.7:.45,startsAt+.018);
+   noteGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration);
+   oscillator.connect(noteGain).connect(master);
+   oscillator.start(startsAt);
+   oscillator.stop(startsAt+duration+.02);
+  });
+  window.setTimeout(()=>void context.close(),850);
+ }catch{
+  // Some embedded browsers block Web Audio; visual feedback still remains available.
+ }
+}
+
 export default function UniversityPage({initialLevelId,initialModuleId,levelPage=false,lessonPage=false}:UniversityPageProps={}){
  const router=useRouter();
  const level=LEVELS.find(item=>item.id.toLocaleLowerCase("fr")===initialLevelId?.toLocaleLowerCase("fr"))??LEVELS[0];
@@ -5342,6 +5376,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const nextModule=activeModuleIndex<level.modules.length-1?level.modules[activeModuleIndex+1]:null;
  const quizScore=quizQuestions.reduce((score,question,index)=>score+(quizAnswers[index]===question.correctIndex?1:0),0);
  const quizPassed=quizFinished&&quizScore>=7;
+
+ const selectPracticeChoice=(button:HTMLButtonElement,correct:boolean,select:()=>void)=>{
+  select();
+  playPracticeChoiceFeedback(correct);
+  const feedbackClass=correct?"practice-choice-correct":"practice-choice-wrong";
+  button.classList.remove("practice-choice-correct","practice-choice-wrong");
+  void button.offsetWidth;
+  button.classList.add(feedbackClass);
+  window.setTimeout(()=>button.classList.remove(feedbackClass),520);
+ };
 
  useEffect(()=>{
   const nextModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
@@ -6086,7 +6130,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <article className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(answeredCount/activeA2Listening.questions.length*100)}%</b></div>
         <strong dir="ltr">{question.prompt}</strong>
-        <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
+        <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
         {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}
         {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={typeof selected!=="number"} onClick={()=>setAlphabetListeningQuestionIndex(index=>index+1)}>السؤال التالي <ChevronLeft/></button>}
        </article>
@@ -6104,7 +6148,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         const selected=revisionListeningAnswers[index];
         return <article key={question.prompt}>
          <div><i>{index+1}</i><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
-         <div className="a2-listening-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionListeningAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
+         <div className="a2-listening-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
          {typeof selected==="number"&&<small className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"حاول مرة أخرى واستمع إلى المقطع"}</small>}
         </article>;
        })}
@@ -6135,7 +6179,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
       </article>}
       {(!isA1Alphabet?revisionWorkshopPanel==="dialogue":alphabetPracticeStep===3)&&<div className="a2-dialogue-panel">
-       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
+       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===dialogue.correctIndex,()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
      {isA1Alphabet&&alphabetPracticeStep===4&&<section ref={usefulSentencesRef} className={`a1-useful-sentences a1-practice-step-panel ${usefulSentencesOpen?"open":""}`}>

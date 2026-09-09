@@ -4215,3 +4215,41 @@
  .a1-orbit-activity-header h3,
  .a1-orbit-listening-overlay>header h3{font-size:22px}
 }
+
+/* Reusable sensory feedback for choices inside practice activities (not final tests). */
+.a1-smart-choices button.practice-choice-wrong,
+.a2-listening-choices button.practice-choice-wrong,
+.a2-dialogue-choices button.practice-choice-wrong{
+ border-color:#d83f45!important;
+ background:#fff0f0!important;
+ color:#922b31!important;
+ animation:practiceChoiceWrong .48s ease-out both;
+}
+.a1-smart-choices button.practice-choice-correct,
+.a2-listening-choices button.practice-choice-correct,
+.a2-dialogue-choices button.practice-choice-correct{
+ border-color:#35a064!important;
+ background:#e9f8ef!important;
+ color:#17683d!important;
+ animation:practiceChoiceCorrect .5s ease-out both;
+}
+@keyframes practiceChoiceWrong{
+ 0%{box-shadow:0 0 0 0 rgba(216,63,69,0);transform:translateX(0)}
+ 18%{box-shadow:0 0 0 5px rgba(216,63,69,.2),0 0 22px rgba(216,63,69,.32);transform:translateX(-3px)}
+ 38%{transform:translateX(3px)}
+ 58%{box-shadow:0 0 0 3px rgba(216,63,69,.14),0 0 13px rgba(216,63,69,.2);transform:translateX(-1px)}
+ 100%{box-shadow:0 0 0 0 rgba(216,63,69,0);transform:translateX(0)}
+}
+@keyframes practiceChoiceCorrect{
+ 0%{box-shadow:0 0 0 0 rgba(53,160,100,0);transform:scale(1)}
+ 35%{box-shadow:0 0 0 6px rgba(53,160,100,.18),0 0 24px rgba(53,160,100,.27);transform:scale(1.018)}
+ 100%{box-shadow:0 0 0 0 rgba(53,160,100,0);transform:scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ .a1-smart-choices button.practice-choice-wrong,
+ .a2-listening-choices button.practice-choice-wrong,
+ .a2-dialogue-choices button.practice-choice-wrong,
+ .a1-smart-choices button.practice-choice-correct,
+ .a2-listening-choices button.practice-choice-correct,
+ .a2-dialogue-choices button.practice-choice-correct{animation:none}
+}

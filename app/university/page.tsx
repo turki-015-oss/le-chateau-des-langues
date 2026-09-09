@@ -5617,7 +5617,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </aside>
 
    <article className="university-lesson" id="university-lesson">
-    <header>
+    {(!isA1Alphabet||lessonStage==="learn")&&<header>
      <div className="university-lesson-icon"><ActiveModuleIcon/></div>
      <div>
       <span>{level.id} · Cours {level.modules.findIndex(item=>item.id===activeModule.id)+1}</span>
@@ -5628,7 +5628,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <p>{activeModule.description}</p>
      </div>
-    </header>
+    </header>}
 
     {lessonStage==="learn"&&<>
     {activeModule.id==="alphabet"&&<section className="university-alphabet">

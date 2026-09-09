@@ -45,6 +45,7 @@ const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
 const ALPHABET_PRACTICE_ICONS=[Headphones,AudioLines,Blocks,MessagesSquare,ScrollText,ClipboardPenLine];
+const ALPHABET_PRACTICE_ORIGINS=[["50%","0%"],["100%","20%"],["100%","80%"],["50%","100%"],["0%","80%"],["0%","20%"]];
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -4906,6 +4907,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [alphabetPracticeStep,setAlphabetPracticeStep]=useState(0);
  const [alphabetHighestPracticeStep,setAlphabetHighestPracticeStep]=useState(0);
  const [alphabetPracticeOpen,setAlphabetPracticeOpen]=useState(false);
+ const [alphabetPracticeClosing,setAlphabetPracticeClosing]=useState(false);
  const practiceStageRef=useRef<HTMLElement>(null);
  const alphabetProgressLoadedRef=useRef(false);
  const [usefulSentencesOpen,setUsefulSentencesOpen]=useState(false);
@@ -5345,6 +5347,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeStep(0);
   setAlphabetHighestPracticeStep(0);
   setAlphabetPracticeOpen(false);
+  setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  },[initialModuleId,level]);
 
@@ -5476,6 +5479,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   }),100);
  };
  const selectAlphabetPracticeStep=(step:number)=>{
+  if(alphabetPracticeClosing)return;
   const nextStep=Math.max(0,Math.min(ALPHABET_PRACTICE_STEPS.length-1,step));
   if(nextStep>alphabetHighestPracticeStep)return;
   setAlphabetPracticeStep(nextStep);
@@ -5489,16 +5493,34 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   }),60);
  };
  const advanceAlphabetPractice=()=>{
+  if(alphabetPracticeClosing)return;
   const nextStep=Math.min(ALPHABET_PRACTICE_STEPS.length-1,alphabetPracticeStep+1);
-  setAlphabetHighestPracticeStep(current=>Math.max(current,nextStep));
-  setAlphabetPracticeStep(nextStep);
-  if(nextStep===1)setRevisionWorkshopPanel("dictation");
-  if(nextStep===2)setRevisionWorkshopPanel("builder");
-  if(nextStep===3)setRevisionWorkshopPanel("dialogue");
-  window.setTimeout(()=>practiceStageRef.current?.scrollIntoView({
-   behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
-   block:"start"
-  }),60);
+  setAlphabetPracticeClosing(true);
+  window.setTimeout(()=>{
+   setAlphabetHighestPracticeStep(current=>Math.max(current,nextStep));
+   setAlphabetPracticeStep(nextStep);
+   setAlphabetPracticeOpen(false);
+   setAlphabetPracticeClosing(false);
+   if(nextStep===1)setRevisionWorkshopPanel("dictation");
+   if(nextStep===2)setRevisionWorkshopPanel("builder");
+   if(nextStep===3)setRevisionWorkshopPanel("dialogue");
+   practiceStageRef.current?.scrollIntoView({
+    behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+    block:"start"
+   });
+  },300);
+ };
+ const closeAlphabetPractice=()=>{
+  if(alphabetPracticeClosing)return;
+  setAlphabetPracticeClosing(true);
+  window.setTimeout(()=>{
+   setAlphabetPracticeOpen(false);
+   setAlphabetPracticeClosing(false);
+   practiceStageRef.current?.scrollIntoView({
+    behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+    block:"start"
+   });
+  },300);
  };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
@@ -5969,14 +5991,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
     </>}
 
-    {lessonStage==="practice"&&<section ref={practiceStageRef} className="university-practice-stage">
-     <div className="university-stage-heading"><Headphones/><div><span>{isA1Alphabet?"Écoutez":"Écouter et répéter"}</span><h3>{isA1Alphabet?"استمع":"استمع ثم كرّر"}</h3><p>{isA1Alphabet?"استمع، ثم كرّر بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.":"استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة."}</p></div></div>
+    {lessonStage==="practice"&&<section ref={practiceStageRef} className={`university-practice-stage ${alphabetPracticeClosing?"a1-orbit-panel-closing":""}`} style={isA1Alphabet?{"--practice-origin-x":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][0],"--practice-origin-y":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][1]} as CSSProperties:undefined}>
+     {!isA1Alphabet&&<div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>}
      {isA1Alphabet&&<section className="a1-orbit-map" aria-label="خريطة مراحل التدريب">
-      <header><span>Parcours interactif</span><strong>{alphabetHighestPracticeStep+1} / {ALPHABET_PRACTICE_STEPS.length}</strong></header>
+      <header><span>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</span><strong>{alphabetPracticeStep+1} / {ALPHABET_PRACTICE_STEPS.length}</strong></header>
       <div className="a1-orbit-stage">
        <i className="orbit-ring ring-one"/><i className="orbit-ring ring-two"/><i className="orbit-ring ring-three"/>
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
-       {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetPracticeStep||index<alphabetHighestPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
+       {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
       <p>{alphabetPracticeOpen?"النشاط الحالي مفتوح أسفل الخريطة.":"اضغط على المرحلة المضيئة أو على مركز الدائرة لبدء التدريب."}</p>
      </section>}
@@ -6053,9 +6075,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       {!isA1Alphabet&&<article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>}
      </div>}
      {isA1Alphabet?<div className="a1-practice-navigation">
-      <button type="button" className="map" onClick={()=>{setAlphabetPracticeOpen(false);window.setTimeout(()=>practiceStageRef.current?.scrollIntoView({behavior:"smooth",block:"start"}),40)}}><Orbit/> خريطة التدريب</button>
+      <button type="button" className="map" onClick={closeAlphabetPractice}><Orbit/> خريطة التدريب</button>
       <button type="button" onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep-1)} disabled={alphabetPracticeStep===0}><ChevronRight/> السابق</button>
-      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" onClick={advanceAlphabetPractice}>إنهاء وفتح التالي <ChevronLeft/></button>:<button type="button" className="primary" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> الانتقال إلى التمرين النهائي <ChevronLeft/></button>}
+      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" onClick={advanceAlphabetPractice}>إنهاء والعودة للخريطة <Orbit/></button>:<button type="button" className="primary" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> إنهاء والانتقال للتمرين النهائي <ChevronLeft/></button>}
      </div>:<button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>}
      </>}
     </section>}

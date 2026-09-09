@@ -65,7 +65,11 @@ function playVocabularySpeech(speech:string[]){
 function alphabetSpeechSegments(text:string){
  const cleanText=text.replace(/[.!?]+$/g,"").trim();
  const alphabetExample=cleanText.match(/^([A-ZÀ-Ÿ])\s+comme\s+(.+)$/i);
- if(alphabetExample)return [alphabetExample[1],"comme",alphabetExample[2]];
+ if(alphabetExample){
+  const letter=alphabetExample[1].toLocaleUpperCase("fr");
+  const alphabetItem=ALPHABET.find(item=>item[0]===letter);
+  return [LETTER_SPEECH_OVERRIDES[letter]??alphabetItem?.[1]??letter.toLocaleLowerCase("fr"),"comme",alphabetExample[2]];
+ }
  const words=cleanText.split(/\s+/).filter(Boolean);
  const segments:string[]=[];
  for(let index=0;index<words.length;index+=3)segments.push(words.slice(index,index+3).join(" "));
@@ -5574,9 +5578,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  };
  const playAlphabetOrbitClip=(rate:"slow"|"normal")=>{
   const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];
+  const alphabetItem=ALPHABET.find(item=>item[0]===clip.letter);
+  const letterSpeech=LETTER_SPEECH_OVERRIDES[clip.letter]??alphabetItem?.[1]??clip.letter.toLocaleLowerCase("fr");
   setAlphabetListeningPlaying(true);
   setAlphabetListeningSegment(0);
-  void speakFrenchSequence([clip.letter,"comme",clip.word],rate==="slow"?520:280,{
+  void speakFrenchSequence([letterSpeech,"comme",clip.word],rate==="slow"?520:280,{
    rate:rate==="slow"?.62:.82,
    onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
    onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
@@ -6041,8 +6047,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     {isEnhancedLesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
      <article className="a2-reading-text">
-      <header><div><small>Texte {level.id}</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(activeA2Reading.text,300):speakFrench(activeA2Reading.text,{rate:isEnhancedA1Lesson?.68:.76}))}><Volume2/> استمع إلى النص</button></header>
-      <p dir="ltr">{activeA2Reading.text}</p>
+      <header><div><small>Texte {level.id}</small><h4>{activeA2Reading.title}</h4><span>{activeA2Reading.arTitle}</span></div><button onClick={()=>void speakFrench(activeA2Reading.text,{rate:isA1Alphabet?.78:isEnhancedA1Lesson?.68:.76})}><Volume2/> استمع إلى النص</button></header>
+      {isA1Alphabet?<div className="a1-reading-sentence-icons" dir="ltr">{(activeA2Reading.text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)??[activeA2Reading.text]).map((sentence,index)=><button type="button" key={`${sentence}-${index}`} onClick={()=>void speakFrench(sentence.trim(),{rate:.78})} aria-label={`استمع إلى الجملة ${index+1}`}><i>{index+1}</i><span>{sentence.trim()}</span><Volume2/></button>)}</div>:<p dir="ltr">{activeA2Reading.text}</p>}
       <details><summary>عرض الترجمة بعد المحاولة</summary><p>{activeA2Reading.translation}</p></details>
      </article>
      <div className="a2-reading-questions">

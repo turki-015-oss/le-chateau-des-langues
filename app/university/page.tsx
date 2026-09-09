@@ -12,7 +12,7 @@ import {
  Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
  Tags,Telescope,Trash2,Trophy,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
 } from "lucide-react";
-import {speakFrench,speakFrenchSequence,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import {cancelFrenchSpeech,speakFrench,speakFrenchSequence,speakFrenchWithPause} from "@/lib/frenchSpeech";
 import {
  DESCRIPTION_PRACTICE_ITEMS,DESCRIPTION_QUIZ_ITEMS,EMOTION_VOCABULARY,FAMILY_VOCABULARY,
  PHYSICAL_STATE_VOCABULARY,type VisualVocabularyItem
@@ -46,6 +46,9 @@ const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
 const ALPHABET_PRACTICE_ICONS=[Headphones,AudioLines,Blocks,MessagesSquare,ScrollText,ClipboardPenLine];
 const ALPHABET_PRACTICE_ORIGINS=[["50%","0%"],["100%","20%"],["100%","80%"],["50%","100%"],["0%","80%"],["0%","20%"]];
+const ALPHABET_LISTENING_CLIPS=[
+ {letter:"A",word:"ami",ar:"صديق"},{letter:"B",word:"bateau",ar:"قارب"},{letter:"C",word:"café",ar:"مقهى"},{letter:"D",word:"dimanche",ar:"الأحد"},{letter:"E",word:"école",ar:"مدرسة"}
+];
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
  title,subtitle,explanation,points,examples
@@ -4908,6 +4911,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [alphabetHighestPracticeStep,setAlphabetHighestPracticeStep]=useState(0);
  const [alphabetPracticeOpen,setAlphabetPracticeOpen]=useState(false);
  const [alphabetPracticeClosing,setAlphabetPracticeClosing]=useState(false);
+ const [alphabetListeningClipIndex,setAlphabetListeningClipIndex]=useState(0);
+ const [alphabetListeningQuestionIndex,setAlphabetListeningQuestionIndex]=useState(0);
+ const [alphabetListeningPlaying,setAlphabetListeningPlaying]=useState(false);
+ const [alphabetListeningSegment,setAlphabetListeningSegment]=useState(-1);
  const practiceStageRef=useRef<HTMLElement>(null);
  const alphabetProgressLoadedRef=useRef(false);
  const [usefulSentencesOpen,setUsefulSentencesOpen]=useState(false);
@@ -5348,6 +5355,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetHighestPracticeStep(0);
   setAlphabetPracticeOpen(false);
   setAlphabetPracticeClosing(false);
+  setAlphabetListeningClipIndex(0);
+  setAlphabetListeningQuestionIndex(0);
+  setAlphabetListeningPlaying(false);
+  setAlphabetListeningSegment(-1);
   setUsefulSentencesOpen(false);
  },[initialModuleId,level]);
 
@@ -5494,6 +5505,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  };
  const advanceAlphabetPractice=()=>{
   if(alphabetPracticeClosing)return;
+  cancelFrenchSpeech();
+  setAlphabetListeningPlaying(false);
+  setAlphabetListeningSegment(-1);
   const nextStep=Math.min(ALPHABET_PRACTICE_STEPS.length-1,alphabetPracticeStep+1);
   setAlphabetPracticeClosing(true);
   window.setTimeout(()=>{
@@ -5512,6 +5526,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  };
  const closeAlphabetPractice=()=>{
   if(alphabetPracticeClosing)return;
+  cancelFrenchSpeech();
+  setAlphabetListeningPlaying(false);
+  setAlphabetListeningSegment(-1);
   setAlphabetPracticeClosing(true);
   window.setTimeout(()=>{
    setAlphabetPracticeOpen(false);
@@ -5521,6 +5538,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     block:"start"
    });
   },300);
+ };
+ const playAlphabetOrbitClip=(rate:"slow"|"normal")=>{
+  const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];
+  setAlphabetListeningPlaying(true);
+  setAlphabetListeningSegment(0);
+  void speakFrenchSequence([clip.letter,"comme",clip.word],rate==="slow"?520:280,{
+   rate:rate==="slow"?.62:.82,
+   onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
+   onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
+  },setAlphabetListeningSegment);
  };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
@@ -5993,16 +6020,35 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
     {lessonStage==="practice"&&<section ref={practiceStageRef} className={`university-practice-stage ${alphabetPracticeClosing?"a1-orbit-panel-closing":""}`} style={isA1Alphabet?{"--practice-origin-x":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][0],"--practice-origin-y":ALPHABET_PRACTICE_ORIGINS[alphabetPracticeStep][1]} as CSSProperties:undefined}>
      {!isA1Alphabet&&<div className="university-stage-heading"><Headphones/><div><span>Écouter et répéter</span><h3>استمع ثم كرّر</h3><p>استمع إلى الفرنسية، كرّرها بصوت مرتفع، واقرأ المعنى العربي عند الحاجة.</p></div></div>}
-     {isA1Alphabet&&<section className="a1-orbit-map" aria-label="خريطة مراحل التدريب">
+     {isA1Alphabet&&<section className={`a1-orbit-map ${alphabetPracticeOpen&&alphabetPracticeStep===0?"listening-open":""}`} aria-label="خريطة مراحل التدريب">
       <header><span>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</span><strong>{alphabetPracticeStep+1} / {ALPHABET_PRACTICE_STEPS.length}</strong></header>
       <div className="a1-orbit-stage">
        <i className="orbit-ring ring-one"/><i className="orbit-ring ring-two"/><i className="orbit-ring ring-three"/>
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
        {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
-      <p>{alphabetPracticeOpen?"النشاط الحالي مفتوح أسفل الخريطة.":"اضغط على المرحلة المضيئة أو على مركز الدائرة لبدء التدريب."}</p>
+      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCount=Object.keys(revisionListeningAnswers).length;return <section className="a1-orbit-listening-overlay" aria-label="تدريب الاستماع الذكي">
+       <header><div><span>Écoute intelligente</span><h3>استمع</h3></div><button type="button" onClick={closeAlphabetPractice} aria-label="إغلاق النشاط والعودة إلى الخريطة"><Orbit/></button></header>
+       <div className="a1-smart-audio-card">
+        <div className="a1-smart-audio-segments" dir="ltr"><strong className={alphabetListeningSegment===0?"speaking":""}>{clip.letter}</strong><strong className={alphabetListeningSegment===1?"speaking":""}>comme</strong><strong className={alphabetListeningSegment===2?"speaking":""}>{clip.word}</strong></div>
+        <small>{clip.ar}</small>
+        <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
+        <div className="a1-smart-audio-actions"><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><Volume2/> بطيء</button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><Play/> طبيعي</button></div>
+        <nav aria-label="المقاطع الصوتية">{ALPHABET_LISTENING_CLIPS.map((item,index)=><button type="button" key={item.letter} className={alphabetListeningClipIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}}>{item.letter}</button>)}</nav>
+       </div>
+       <details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{activeA2Listening.text}</p></details>
+       <article className="a1-smart-question">
+        <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(answeredCount/activeA2Listening.questions.length*100)}%</b></div>
+        <strong dir="ltr">{question.prompt}</strong>
+        <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex}))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
+        {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}
+        {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={typeof selected!=="number"} onClick={()=>setAlphabetListeningQuestionIndex(index=>index+1)}>السؤال التالي <ChevronLeft/></button>}
+       </article>
+       <footer><button type="button" onClick={advanceAlphabetPractice} disabled={answeredCount<activeA2Listening.questions.length}><CheckCircle2/> إنهاء الاستماع والعودة إلى الخريطة</button></footer>
+      </section>})()}
+      <p>{alphabetPracticeOpen&&alphabetPracticeStep===0?"نشاط الاستماع مفتوح داخل الخريطة.":alphabetPracticeOpen?"النشاط الحالي مفتوح.":"اضغط على المرحلة المضيئة أو على مركز الدائرة لبدء التدريب."}</p>
      </section>}
-     {(!isA1Alphabet||alphabetPracticeOpen)&&<>
+     {(!isA1Alphabet||(alphabetPracticeOpen&&alphabetPracticeStep!==0))&&<>
      {isEnhancedLesson&&(!isA1Alphabet||alphabetPracticeStep===0)&&<section className="a2-listening-lab a1-practice-step-panel">
       <header><div><span>Compréhension orale</span><h3>اختبار استماع بنص مخفي</h3><p>استمع مرتين، ثم أجب دون قراءة النص. يمكنك كشف النص بعد إنهاء المحاولة.</p></div><button onClick={()=>void (isA1Alphabet?speakFrenchSequence(["A","comme","ami","B","comme","bateau","C","comme","café","D","comme","dimanche","E","comme","école"],460,{rate:.62}):speakFrench(activeA2Listening.text,{rate:isEnhancedA1Lesson?.66:.72}))}><Headphones/> {isA1Alphabet?"تشغيل المقطع الصوتي":"تشغيل المقطع الفرنسي"}</button></header>
       {isA1Alphabet&&<details className="a2-listening-transcript"><summary>إظهار النص</summary><h4>{activeA2Listening.title}</h4><p dir="ltr">{activeA2Listening.text}</p></details>}

@@ -165,7 +165,8 @@ export async function speakFrenchWithPause(
 export async function speakFrenchSequence(
  segments:string[],
  pauseMs=500,
- options:FrenchSpeechOptions={}
+ options:FrenchSpeechOptions={},
+ onSegmentStart?:(index:number)=>void
 ){
  const cleanSegments=segments.map(segment=>segment.trim()).filter(Boolean);
  if(!cleanSegments.length||!prepareFrenchSpeech())return null;
@@ -176,6 +177,7 @@ export async function speakFrenchSequence(
 
  const speakSegment=(index:number):SpeechSynthesisUtterance|null=>{
   if(request!==speechRequest||index>=cleanSegments.length)return null;
+  onSegmentStart?.(index);
   const utterance=new SpeechSynthesisUtterance(cleanSegments[index]);
   utterance.lang="fr-FR";
   utterance.rate=options.rate??.72;

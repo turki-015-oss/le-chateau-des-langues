@@ -4178,3 +4178,40 @@
  .university-world .university-quiz-result>.a2-quiz-review>article p b{font-size:14px}
  .university-world .university-quiz-result>.a2-quiz-review>article>button{width:36px;height:36px}
 }
+
+/* Full-width exercise title bar: shared by listening and every orbit activity. */
+.a1-orbit-activity-header,
+.a1-orbit-listening-overlay>header{
+ flex:none;
+ margin:-20px -20px 2px;
+ padding:16px 20px;
+ border-bottom:1px solid #d8b75e;
+ border-radius:26px 26px 0 0;
+ background:linear-gradient(135deg,#174d80 0%,#0d315c 62%,#071f40 100%);
+ box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 20px rgba(7,35,68,.16);
+}
+.a1-orbit-activity-header span,
+.a1-orbit-listening-overlay>header span{color:#f1cf77;font-size:16px}
+.a1-orbit-activity-header h3,
+.a1-orbit-listening-overlay>header h3{color:#fff;font-size:26px;text-shadow:0 2px 9px rgba(0,0,0,.22)}
+.a1-orbit-activity-header>button,
+.a1-orbit-listening-overlay>header>button{
+ border-color:rgba(241,207,119,.7);
+ background:#fffdf5;
+ color:#153f6c;
+ box-shadow:0 5px 13px rgba(0,0,0,.16);
+}
+.a1-orbit-activity-header>strong{
+ border-color:rgba(241,207,119,.65);
+ background:#f3d47f;
+ color:#123a65;
+ box-shadow:inset 0 1px rgba(255,255,255,.7);
+}
+@media(max-width:680px){
+ .a1-orbit-activity-header,
+ .a1-orbit-listening-overlay>header{margin:-14px -14px 1px;padding:13px 14px;border-radius:21px 21px 0 0}
+ .a1-orbit-activity-header span,
+ .a1-orbit-listening-overlay>header span{font-size:13px}
+ .a1-orbit-activity-header h3,
+ .a1-orbit-listening-overlay>header h3{font-size:22px}
+}

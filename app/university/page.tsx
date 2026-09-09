@@ -4907,6 +4907,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
  const [revisionDialogueAnswers,setRevisionDialogueAnswers]=useState<Record<number,number>>({});
  const [revisionWritingText,setRevisionWritingText]=useState("");
+ const [alphabetWritingIndex,setAlphabetWritingIndex]=useState(0);
+ const [alphabetWritingInput,setAlphabetWritingInput]=useState("");
+ const [alphabetWritingState,setAlphabetWritingState]=useState<"idle"|"correct"|"wrong">("idle");
  const [alphabetPracticeStep,setAlphabetPracticeStep]=useState(0);
  const [alphabetHighestPracticeStep,setAlphabetHighestPracticeStep]=useState(0);
  const [alphabetPracticeOpen,setAlphabetPracticeOpen]=useState(false);
@@ -4991,6 +4994,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
+ const alphabetWritingItem=A1_ALPHABET_WRITING_TRANSLATIONS[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
  const alphabetInitialCount=new Set(revisionWritingWords.map(word=>word[0].toLocaleLowerCase("fr"))).size;
@@ -5351,6 +5355,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setRevisionBuilderChecked(false);
   setRevisionDialogueAnswers({});
   setRevisionWritingText("");
+  setAlphabetWritingIndex(0);
+  setAlphabetWritingInput("");
+  setAlphabetWritingState("idle");
   setAlphabetPracticeStep(0);
   setAlphabetHighestPracticeStep(0);
   setAlphabetPracticeOpen(false);
@@ -6118,7 +6125,20 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
       </article>)}
      </div>}
-     {isEnhancedLesson&&(!isA1Alphabet||alphabetPracticeStep===5)&&<div className="a2-production-grid a1-practice-step-panel">
+     {isEnhancedLesson&&isA1Alphabet&&alphabetPracticeStep===5&&<section className="a1-smart-writing a1-practice-step-panel">
+      <div className="a1-smart-writing-progress"><div><span>الكلمة {alphabetWritingIndex+1} من {A1_ALPHABET_WRITING_TRANSLATIONS.length}</span><strong>{Math.round((alphabetWritingIndex+1)/A1_ALPHABET_WRITING_TRANSLATIONS.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/A1_ALPHABET_WRITING_TRANSLATIONS.length*100}%`}}/></i></div>
+      <div className="a1-smart-writing-prompt"><small>Écrivez le mot</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى كلمة ${alphabetWritingItem.fr}`}><Volume2/></button></div>
+      <form onSubmit={event=>{event.preventDefault();setAlphabetWritingState(normalizeExerciseText(alphabetWritingInput)===normalizeExerciseText(alphabetWritingItem.fr)?"correct":"wrong")}}>
+       <label htmlFor="alphabet-smart-writing">اكتب الكلمة بالفرنسية</label>
+       <input id="alphabet-smart-writing" dir="ltr" lang="fr" autoComplete="off" autoCorrect="off" spellCheck={false} value={alphabetWritingInput} className={alphabetWritingState} onChange={event=>{setAlphabetWritingInput(event.target.value);setAlphabetWritingState("idle")}} placeholder="Écrivez ici…" autoFocus/>
+       <button type="submit" disabled={!alphabetWritingInput.trim()}><CheckCircle2/> تحقق</button>
+      </form>
+      <div className={`a1-smart-writing-feedback ${alphabetWritingState}`} aria-live="polite">{alphabetWritingState==="correct"?<><CheckCircle2/><div><strong>ممتاز، الكلمة صحيحة</strong><span dir="ltr">{alphabetWritingItem.fr}</span></div></>:alphabetWritingState==="wrong"?<><CircleMinus/><div><strong>الكلمة غير صحيحة</strong><span>راجع الحروف والعلامات ثم حاول مجددًا.</span></div></>:<><NotebookTabs/><div><strong>اكتبها بدقة</strong><span>تحقق من ترتيب الحروف والعلامات الفرنسية.</span></div></>}</div>
+      <div className="a1-smart-writing-actions">
+       {alphabetWritingIndex<A1_ALPHABET_WRITING_TRANSLATIONS.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>الكلمة التالية <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> أعد الكلمات</button>}
+      </div>
+     </section>}
+     {isEnhancedLesson&&!isA1Alphabet&&<div className="a2-production-grid a1-practice-step-panel">
       <article className="a2-writing-task"><span>{isA1Alphabet?"Écrivez":"Production écrite"}</span><h4>{activeA2WritingTitle}</h4><p>{activeA2WritingInstructions}</p><textarea dir="ltr" value={revisionWritingText} onChange={event=>setRevisionWritingText(event.target.value)} aria-label="مساحة الكتابة الفرنسية" placeholder={activeA2WritingPlaceholder} rows={7}/><div className={`a2-word-count ${revisionWordCount>=writingMinimum&&revisionWordCount<=writingMaximum?"ready":""}`}><strong>{revisionWordCount}</strong><span>{isA1Alphabet?"من 8 كلمات":"كلمة من "+writingMinimum+"–"+writingMaximum}</span></div><ul className="a2-writing-checks">{revisionWritingChecks.map(item=><li key={item.label} className={item.passed?"passed":""}><CheckCircle2/>{item.label}</li>)}</ul><details className="a2-model-answer"><summary>{isA1Alphabet?"عرض الترجمة":"عرض نموذج بعد إنهاء كتابتك"}</summary>{isA1Alphabet?<div className="a1-writing-translation-list">{A1_ALPHABET_WRITING_TRANSLATIONS.map(item=><div key={item.fr}><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span></div>)}</div>:<p dir="ltr">{activeA2WritingModel}</p>}</details></article>
       {!isA1Alphabet&&<article className="a2-speaking-task"><span>Production orale</span><h4>{activeA1SpeakingDuration??"تحدث لمدة 45 إلى 60 ثانية"}</h4><p dir="ltr">{activeA2SpeakingPrompt}</p><button onClick={()=>void speakFrench(activeA2SpeakingPrompt,{rate:isEnhancedA1Lesson?.66:.74})}><Volume2/> استمع إلى المهمة</button><ul>{activeA1SpeakingTips?activeA1SpeakingTips.map(tip=><li key={tip}>{tip}</li>):isA2Expression?<><li>قدّم الموضوع ثم عبّر عن رأيك.</li><li>أضف سببًا ومثالًا واضحًا.</li><li>ناقش رأيًا مختلفًا بأدب ثم اختم.</li></>:isA2RealLife?<><li>ابدأ بالمرجع والوقت والمكان.</li><li>اشرح المشكلة وأثرها الحالي.</li><li>اطلب حلًا وتأكد من الخطوة التالية.</li></>:isA2Connectors?<><li>رتّب البداية والوسط والنهاية.</li><li>اربط السبب بالنتيجة بوضوح.</li><li>اذكر صعوبة ثم نتيجة مخالفة لها.</li></>:isA2Politeness?<><li>ابدأ بفهم المشكلة أو الحاجة.</li><li>قدّم نصيحتين واقتراحًا عمليًا.</li><li>اختم بطلب مهذب واضح.</li></>:isA2Comparison?<><li>حدّد الخيارين ومعايير المقارنة.</li><li>استخدم الزيادة والنقصان والتساوي.</li><li>اختم بالأفضل وسبب اختيارك.</li></>:isA2Quantity?<><li>اذكر المنتجات ومقاديرها بوضوح.</li><li>استعمل en مع اسم سبق ذكره.</li><li>استعمل y للإشارة إلى المكان.</li></>:isA2Pronouns?<><li>اذكر الاسم أولًا ثم استبدله بضمير.</li><li>استخدم ضميرًا مباشرًا وآخر غير مباشر.</li><li>أدخل جملة فيها ضميران معًا.</li></>:isA2Future?<><li>حدّد موعد خططك القادمة.</li><li>استخدم المستقبل القريب والبسيط.</li><li>اذكر توقعًا أو شرطًا ممكنًا.</li></>:isA2Imparfait?<><li>ابدأ بوصف المكان والوقت.</li><li>اذكر عادة قديمة بالماضي الناقص.</li><li>اختم بحدث محدد في الماضي المركب.</li></>:isA2PasseCompose?<><li>حدد متى وأين وقع الحدث.</li><li>استخدم d’abord، puis، enfin.</li><li>اذكر النتيجة أو انطباعك في النهاية.</li></>:<><li>ابدأ بـ En général.</li><li>استخدم d’abord، puis، enfin.</li><li>اختم برأيك أو السبب.</li></>}</ul><div className="a2-recorder"><div>{!isRecording?<button onClick={()=>void startRevisionRecording()}><Mic2/> ابدأ التسجيل</button>:<button className="recording" onClick={stopRevisionRecording}><Square/> أوقف التسجيل</button>}{recordingUrl&&<button className="delete" onClick={deleteRevisionRecording}><Trash2/> احذف التسجيل</button>}</div>{isRecording&&<p><i/> التسجيل جارٍ الآن… تحدث بالفرنسية.</p>}{recordingUrl&&<audio src={recordingUrl} controls aria-label="تشغيل تسجيلك الفرنسي"/>}{recordingError&&<small className="error">{recordingError}</small>}</div></article>}
      </div>}

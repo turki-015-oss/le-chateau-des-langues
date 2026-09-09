@@ -4066,3 +4066,115 @@
 @keyframes a1OrbitListeningOpen{from{opacity:0;filter:blur(5px);transform:translateY(-40px) scale(.18);border-radius:50%}to{opacity:1;filter:none;transform:none}}@keyframes a1OrbitListeningClose{from{opacity:1;filter:none;transform:none}to{opacity:0;filter:blur(5px);transform:translateY(-45px) scale(.15);border-radius:50%}}@keyframes a1SmartWave{to{height:34px}}
 @media(max-width:680px){.a1-orbit-map.listening-open{min-height:780px}.a1-orbit-listening-overlay{inset:0;padding:14px;border-radius:22px}.a1-orbit-activity-overlay{margin:0;padding:14px;border-radius:22px}.a1-orbit-activity-header{grid-template-columns:40px minmax(0,1fr) auto;gap:9px}.a1-orbit-activity-header>button{width:39px;height:39px}.a1-orbit-activity-header span{font-size:12px}.a1-orbit-activity-header h3{font-size:21px}.a1-orbit-activity-header>strong{padding:5px 8px;font-size:10px}.a1-orbit-activity-overlay:has(>.a1-smart-writing){min-height:calc(100svh - 105px)}.a1-smart-writing{gap:14px;padding:3px 0}.a1-smart-writing-prompt{min-height:155px;padding:20px 58px}.a1-smart-writing-prompt h4{font-size:38px}.a1-smart-writing-prompt>button{right:12px;top:12px;width:42px;height:42px}.a1-smart-writing form{grid-template-columns:1fr}.a1-smart-writing form label{grid-column:auto}.a1-smart-writing form input{font-size:20px}.a1-smart-writing form>button{width:100%}.a1-smart-writing-actions .next{width:100%}.a1-smart-audio-segments strong{min-height:62px}.a1-smart-question>strong{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.a1-orbit-listening-overlay,.a1-orbit-panel-closing .a1-orbit-listening-overlay,.a1-smart-wave.playing i{animation:none}}
+
+/* Clear, reusable answer review for every current and future lesson quiz. */
+.university-world .university-quiz-result>.a2-quiz-review{
+ width:min(760px,100%);
+ margin:24px auto;
+ padding:0;
+ overflow:hidden;
+ border:1px solid #c9ad63;
+ border-radius:20px;
+ background:#fff;
+ box-shadow:0 15px 34px rgba(12,46,82,.14);
+ color:#183c64;
+ text-align:right;
+}
+.university-world .university-quiz-result>.a2-quiz-review>header{
+ gap:12px;
+ margin:0;
+ padding:17px 19px;
+ border-bottom:1px solid #d9c584;
+ background:linear-gradient(135deg,#123f6d,#08294f);
+}
+.university-world .university-quiz-result>.a2-quiz-review>header>svg{
+ width:45px;
+ height:45px;
+ padding:10px;
+ border:1px solid rgba(245,214,139,.55);
+ background:#fffdf3;
+ color:#153f6c;
+}
+.university-world .university-quiz-result>.a2-quiz-review>header span{
+ color:#f0cf7d;
+ font-size:18px;
+ line-height:1.25;
+}
+.university-world .university-quiz-result>.a2-quiz-review>header h4{
+ margin:3px 0 0;
+ color:#fff;
+ font-size:17px;
+ line-height:1.5;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article{
+ grid-template-columns:34px minmax(0,1fr) 42px;
+ gap:12px;
+ margin:12px;
+ padding:15px;
+ border:1px solid #dce4ec;
+ border-radius:15px;
+ background:#f8fbfe;
+ box-shadow:0 5px 13px rgba(14,49,84,.06);
+}
+.university-world .university-quiz-result>.a2-quiz-review>article>i{
+ width:32px;
+ height:32px;
+ background:#153f6c;
+ color:#f3d586;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article>div>strong{
+ color:#0c315d;
+ font-size:18px;
+ line-height:1.65;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article p{
+ grid-template-columns:120px minmax(0,1fr);
+ gap:10px;
+ margin-top:10px!important;
+ padding:11px 13px;
+ border:1px solid transparent;
+ border-radius:10px;
+ font-size:14px!important;
+ line-height:1.6;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article p.chosen{
+ border-color:#e6b7b1;
+ background:#fff1ef;
+ color:#7f2f29;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article p.correct{
+ border-color:#9bc9a9;
+ background:#eaf7ee;
+ color:#185c38;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article p span{font-weight:900}
+.university-world .university-quiz-result>.a2-quiz-review>article p b{color:inherit;font-size:15px;font-weight:800}
+.university-world .university-quiz-result>.a2-quiz-review>article small{
+ margin-top:11px;
+ padding:9px 11px;
+ border-right:3px solid #c59c45;
+ border-radius:7px;
+ background:#fffaf0;
+ color:#3f5065;
+ font-size:13px;
+ line-height:1.8;
+}
+.university-world .university-quiz-result>.a2-quiz-review>article>button{
+ width:40px;
+ height:40px;
+ border-color:#b9cadb;
+ background:#153f6c;
+ color:#f3d586;
+}
+@media(max-width:680px){
+ .university-world .university-quiz-result>.a2-quiz-review{margin:20px auto;border-radius:16px}
+ .university-world .university-quiz-result>.a2-quiz-review>header{padding:14px}
+ .university-world .university-quiz-result>.a2-quiz-review>header span{font-size:17px}
+ .university-world .university-quiz-result>.a2-quiz-review>header h4{font-size:15px}
+ .university-world .university-quiz-result>.a2-quiz-review>article{grid-template-columns:29px minmax(0,1fr) 37px;gap:8px;margin:9px;padding:11px}
+ .university-world .university-quiz-result>.a2-quiz-review>article>i{width:28px;height:28px}
+ .university-world .university-quiz-result>.a2-quiz-review>article>div>strong{font-size:16px}
+ .university-world .university-quiz-result>.a2-quiz-review>article p{grid-template-columns:1fr;gap:3px;padding:9px 10px;font-size:13px!important}
+ .university-world .university-quiz-result>.a2-quiz-review>article p b{font-size:14px}
+ .university-world .university-quiz-result>.a2-quiz-review>article>button{width:36px;height:36px}
+}

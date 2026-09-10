@@ -12,11 +12,14 @@ export class BookCanvasRenderer {
   private frame = 0;
   private callback: ((time: number) => void) | null = null;
   private samples = new WeakMap<object,ImageData>();
+  private output:ImageData|null = null;
+  private depth:Float32Array|null = null;
   constructor(private depthBuffered = false) { if (!this.ctx) throw new Error("Canvas unavailable"); }
   setPixelRatio(value: number) { this.ratio = Math.min(value, 1.5); }
   setSize(width: number, height: number, _updateStyle = false) {
     this.width = width; this.height = height;
     this.domElement.width = Math.round(width*this.ratio); this.domElement.height = Math.round(height*this.ratio);
+    this.output=null;this.depth=null;
   }
   setAnimationLoop(callback: ((time: number) => void) | null) {
     cancelAnimationFrame(this.frame); this.callback = callback;
@@ -24,7 +27,7 @@ export class BookCanvasRenderer {
     const tick = (time: number) => {
       if (!this.callback) return;
       this.frame = requestAnimationFrame(tick);
-      if (time-last < 30) return;
+      if (time-last < 18) return;
       last = time; this.callback(time);
     };
     if (callback) this.frame = requestAnimationFrame(tick);
@@ -79,8 +82,12 @@ export class BookCanvasRenderer {
   // pages, gold borders or lettering when the CPU-rendered book turns.
   private renderDepthBuffered(faces:Face[]){
     const width=this.domElement.width,height=this.domElement.height;
-    const output=this.ctx.createImageData(width,height),pixels=output.data;
-    const depth=new Float32Array(width*height);depth.fill(Infinity);
+    if(!this.output||!this.depth||this.output.width!==width||this.output.height!==height){
+      this.output=this.ctx.createImageData(width,height);
+      this.depth=new Float32Array(width*height);
+    }
+    const output=this.output,pixels=output.data,depth=this.depth;
+    pixels.fill(0);depth.fill(Infinity);
     for(const face of faces){
       const [a,b,c]=face.p.map(v=>({x:v.x*this.ratio,y:v.y*this.ratio,z:v.z}));
       const area=(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);

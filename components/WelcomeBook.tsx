@@ -18,14 +18,14 @@ export default function WelcomeBook() {
     ]).then(([T, { RoundedBoxGeometry }, { RoomEnvironment }, { BookCanvasRenderer }]) => {
       if (disposed || !host.current) return;
       const container = host.current;
+      const desktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
       let renderer: InstanceType<typeof T.WebGLRenderer> | InstanceType<typeof BookCanvasRenderer>;
       try {
         if (software) throw new Error("Use CPU renderer");
-        renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "default" });
-      } catch { renderer = new BookCanvasRenderer(window.matchMedia("(hover: hover) and (pointer: fine)").matches); }
+        renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: desktop ? "high-performance" : "default" });
+      } catch { renderer = new BookCanvasRenderer(desktop); }
       const gpu = renderer instanceof T.WebGLRenderer;
-      const desktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
+      renderer.setPixelRatio(gpu ? Math.min(window.devicePixelRatio,1.4) : desktop ? 1 : Math.min(window.devicePixelRatio,1.25));
       if (renderer instanceof T.WebGLRenderer) {
         renderer.setClearColor(0, 0);
         renderer.outputColorSpace = T.SRGBColorSpace;

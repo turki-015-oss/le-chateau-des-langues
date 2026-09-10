@@ -87,6 +87,16 @@ function alphabetNaturalSpeechText(text:string){
  });
 }
 
+function playPedagogicalFrench(text:string,slow=false){
+ const cleanText=alphabetNaturalSpeechText(text).replace(/\s+/g," ").trim();
+ const isQuestion=cleanText.endsWith("?");
+ return speakFrench(cleanText,{
+  rate:slow?(isQuestion ? .53 : .56):(isQuestion ? .72 : .76),
+  pitch:isQuestion?1.04:.98,
+  volume:1
+ });
+}
+
 function normalizeExerciseText(value:string){
  return value.normalize("NFC").toLocaleLowerCase("fr").replace(/[’]/g,"'").replace(/[.,!?;:]/g,"").replace(/\s+/g," ").trim();
 }
@@ -6230,7 +6240,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
-        <button onClick={()=>void (isA1Alphabet?speakFrench(alphabetNaturalSpeechText(example.speech.join(" ")),{rate:.78}):playVocabularySpeech(example.speech))} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>
+        {isA1Alphabet?<>
+         <button onClick={()=>void playPedagogicalFrench(example.speech.join(" "))} aria-label={`استمع إلى الجملة الفرنسية بنطق طبيعي: ${example.fr}`} title="نطق طبيعي"><Volume2/><b>عادي</b></button>
+         <button onClick={()=>void playPedagogicalFrench(example.speech.join(" "),true)} aria-label={`استمع إلى الجملة الفرنسية بنطق بطيء: ${example.fr}`} title="نطق بطيء"><Gauge/><b>بطيء</b></button>
+        </>:<button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>}
        </div>
      </article>)}
      </div>

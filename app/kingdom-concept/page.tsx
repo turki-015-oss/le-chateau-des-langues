@@ -131,6 +131,7 @@ export default function KingdomConceptPage() {
   const arrivalTimerRef = useRef<number | null>(null);
   const arrivalAudioTimersRef = useRef<number[]>([]);
   const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
+  const arrivalTimelineStartedRef = useRef(false);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
   const [arrivalPlaying, setArrivalPlaying] = useState(false);
 
@@ -142,31 +143,11 @@ export default function KingdomConceptPage() {
       sessionStorage.removeItem("castle-kingdom-arrival");
     } catch { /* Direct visits remain available when storage is restricted. */ }
     if (arrivalRequested) {
+      arrivalTimelineStartedRef.current = false;
       setArrivalPlaying(true);
-      document.documentElement.classList.add("kingdom-arrival-pending");
       const primedAudio = (window as ArrivalAudioWindow).__castleArrivalAudio ?? [];
       arrivalAudioRef.current = arrivalSoundCues.map((cue, index) => primedAudio[index] ?? new Audio(cue.source));
-      arrivalSoundCues.forEach((cue, index) => {
-        const timer = window.setTimeout(() => {
-          const audio = arrivalAudioRef.current[index];
-          if (!audio) return;
-          audio.pause();
-          audio.currentTime = 0;
-          audio.volume = cue.volume;
-          audio.playbackRate = cue.playbackRate;
-          void audio.play().catch(() => { /* Never block the visual entrance. */ });
-        }, cue.delay);
-        arrivalAudioTimersRef.current.push(timer);
-      });
-      arrivalTimerRef.current = window.setTimeout(() => {
-        setArrivalPlaying(false);
-        document.documentElement.classList.remove("kingdom-arrival-pending");
-        arrivalAudioRef.current.forEach((audio) => {
-          audio.pause();
-          audio.currentTime = 0;
-        });
-        delete (window as ArrivalAudioWindow).__castleArrivalAudio;
-      }, 3900);
+      document.documentElement.classList.add("kingdom-arrival-pending");
     } else {
       document.documentElement.classList.remove("kingdom-arrival-pending");
     }
@@ -179,6 +160,32 @@ export default function KingdomConceptPage() {
       document.documentElement.classList.remove("kingdom-arrival-pending");
     };
   }, [router]);
+
+  const startArrivalTimeline = () => {
+    if (arrivalTimelineStartedRef.current) return;
+    arrivalTimelineStartedRef.current = true;
+    arrivalSoundCues.forEach((cue, index) => {
+      const timer = window.setTimeout(() => {
+        const audio = arrivalAudioRef.current[index];
+        if (!audio) return;
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = cue.volume;
+        audio.playbackRate = cue.playbackRate;
+        void audio.play().catch(() => { /* Never block the visual entrance. */ });
+      }, cue.delay);
+      arrivalAudioTimersRef.current.push(timer);
+    });
+    arrivalTimerRef.current = window.setTimeout(() => {
+      setArrivalPlaying(false);
+      document.documentElement.classList.remove("kingdom-arrival-pending");
+      arrivalAudioRef.current.forEach((audio) => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      delete (window as ArrivalAudioWindow).__castleArrivalAudio;
+    }, 3900);
+  };
 
   const beginMagicalEntry = (item: Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path">, element: HTMLElement) => {
     if (magicalEntry) return;
@@ -224,7 +231,14 @@ export default function KingdomConceptPage() {
       </header>
 
       <section className="concept-hero">
-        <img src="/kingdom-portal-assets/castle-facade.png" alt="واجهة القلعة" className="concept-hero-image" />
+        <img
+          src="/kingdom-portal-assets/castle-facade.png"
+          alt="واجهة القلعة"
+          className="concept-hero-image"
+          onAnimationStart={(event) => {
+            if (event.animationName === "conceptCastleArrival") startArrivalTimeline();
+          }}
+        />
         <div className="concept-hero-shade" />
         <div className="concept-castle-title">
           <h1 dir="ltr">LE CHÂTEAU</h1>

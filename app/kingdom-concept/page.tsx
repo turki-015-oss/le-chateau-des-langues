@@ -42,9 +42,9 @@ const arrivalSoundCues = [
   // These cues mirror the 3.35s CSS arrival timeline: descent begins at 43%,
   // impact lands at 58%, then the garden and book react to the collision.
   { source: "/audio/cinematic-entry/descending-whoosh.mp3", delay: 1400, volume: 0.42, playbackRate: 1.08 },
-  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1930, volume: 0.92, playbackRate: 1 },
-  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1980, volume: 0.38, playbackRate: 1.05 },
-  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 2050, volume: 0.72, playbackRate: 0.94 },
+  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1940, volume: 0.92, playbackRate: 1 },
+  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1960, volume: 0.38, playbackRate: 1.05 },
+  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 1940, volume: 0.72, playbackRate: 0.94 },
 ];
 
 function CastleAppIcon() {

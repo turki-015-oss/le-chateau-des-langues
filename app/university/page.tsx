@@ -4879,21 +4879,7 @@ const FRIENDS_SITUATIONS_PAGES=[
 
 function playPracticeChoiceFeedback(correct:boolean){
  if(typeof window==="undefined")return;
- if(!correct&&"vibrate" in navigator)navigator.vibrate(65);
- if(!correct&&"speechSynthesis" in window){
-  const rejection=new SpeechSynthesisUtterance("Nooo");
-  rejection.lang="en-US";
-  rejection.rate=.68;
-  rejection.pitch=.72;
-  rejection.volume=1;
-  const voices=window.speechSynthesis.getVoices();
-  rejection.voice=voices.find(voice=>/en[-_]US/i.test(voice.lang)&&/male|guy|davis|daniel/i.test(voice.name))
-   ??voices.find(voice=>/en[-_]US/i.test(voice.lang))
-   ??null;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(rejection);
-  return;
- }
+ if(!correct&&"vibrate" in navigator)navigator.vibrate(55);
  try{
   const AudioContextConstructor=window.AudioContext||(window as typeof window&{webkitAudioContext?:typeof AudioContext}).webkitAudioContext;
   if(!AudioContextConstructor)return;
@@ -4901,28 +4887,32 @@ function playPracticeChoiceFeedback(correct:boolean){
   void context.resume();
   const now=context.currentTime;
   const master=context.createGain();
+  const toneFilter=context.createBiquadFilter();
   const compressor=context.createDynamicsCompressor();
+  toneFilter.type="lowpass";
+  toneFilter.frequency.setValueAtTime(correct?5600:4200,now);
+  toneFilter.Q.setValueAtTime(.7,now);
   compressor.threshold.setValueAtTime(-24,now);
   compressor.knee.setValueAtTime(20,now);
   compressor.ratio.setValueAtTime(4,now);
   compressor.attack.setValueAtTime(.003,now);
   compressor.release.setValueAtTime(.18,now);
-  master.connect(compressor).connect(context.destination);
+  master.connect(toneFilter).connect(compressor).connect(context.destination);
   master.gain.setValueAtTime(.0001,now);
-  master.gain.exponentialRampToValueAtTime(correct?.15:.135,now+.008);
-  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.3:.42));
+  master.gain.exponentialRampToValueAtTime(correct?.17:.18,now+.006);
+  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.34:.38));
   const notes=correct
-   ?[{frequency:659.25,delay:0,duration:.17},{frequency:987.77,delay:.052,duration:.19}]
-   :[{frequency:349.23,delay:0,duration:.18},{frequency:261.63,delay:.105,duration:.23}];
-  notes.forEach(({frequency,delay,duration})=>{
+   ?[{frequency:783.99,endFrequency:880,delay:0,duration:.115},{frequency:1046.5,endFrequency:1174.66,delay:.065,duration:.18}]
+   :[{frequency:523.25,endFrequency:392,delay:0,duration:.15},{frequency:392,endFrequency:293.66,delay:.085,duration:.2}];
+  notes.forEach(({frequency,endFrequency,delay,duration})=>{
    const oscillator=context.createOscillator();
    const noteGain=context.createGain();
    const startsAt=now+delay;
    oscillator.type=correct?"sine":"triangle";
    oscillator.frequency.setValueAtTime(frequency,startsAt);
-   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.82,startsAt+duration);
+   oscillator.frequency.exponentialRampToValueAtTime(endFrequency,startsAt+duration);
    noteGain.gain.setValueAtTime(.0001,startsAt);
-   noteGain.gain.exponentialRampToValueAtTime(correct?.82:.68,startsAt+.012);
+   noteGain.gain.exponentialRampToValueAtTime(correct?.78:.72,startsAt+.006);
    noteGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration);
    oscillator.connect(noteGain).connect(master);
    oscillator.start(startsAt);
@@ -4933,14 +4923,24 @@ function playPracticeChoiceFeedback(correct:boolean){
     shimmer.type="sine";
     shimmer.frequency.setValueAtTime(frequency*2,startsAt);
     shimmerGain.gain.setValueAtTime(.0001,startsAt);
-    shimmerGain.gain.exponentialRampToValueAtTime(.1,startsAt+.01);
-    shimmerGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration*.72);
+    shimmerGain.gain.exponentialRampToValueAtTime(.075,startsAt+.006);
+    shimmerGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration*.68);
     shimmer.connect(shimmerGain).connect(master);
     shimmer.start(startsAt);
     shimmer.stop(startsAt+duration*.72+.02);
+   }else{
+    const accent=context.createOscillator();
+    const accentGain=context.createGain();
+    accent.type="sine";
+    accent.frequency.setValueAtTime(frequency*2.05,startsAt);
+    accentGain.gain.setValueAtTime(.12,startsAt);
+    accentGain.gain.exponentialRampToValueAtTime(.0001,startsAt+.055);
+    accent.connect(accentGain).connect(master);
+    accent.start(startsAt);
+    accent.stop(startsAt+.07);
    }
   });
-  window.setTimeout(()=>void context.close(),600);
+  window.setTimeout(()=>void context.close(),650);
  }catch{
   // Some embedded browsers block Web Audio; visual feedback still remains available.
  }

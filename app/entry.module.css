@@ -85,6 +85,6 @@
 .slideEntry[data-dragging=true] .slideLabel,.slideEntry[data-unlocked=true] .slideLabel{opacity:.25;}
 .slideEntry[data-unlocked=true] .slideWave{animation:none;opacity:0;}
 @keyframes unlockWave{0%{transform:translateX(195%);opacity:0;}18%{opacity:1;}82%{opacity:1;}100%{transform:translateX(-110%);opacity:0;}}
-@media(max-width:760px){.slideEntry{height:64px;border-radius:21px;transform:none}.slideThumb{right:6px;top:6px;bottom:6px;width:52px;border-radius:16px}.slideThumb svg{width:27px;height:27px}.slideLabel{font-size:20px;gap:1px}.slideLabel small{font-size:9px}}
+@media(max-width:760px){.slideEntry{display:block;height:64px;margin-inline:auto;border-radius:21px;transform:none}.slideThumb{right:6px;top:6px;bottom:6px;width:52px;border-radius:16px}.slideThumb svg{width:27px;height:27px}.slideLabel{font-size:20px;gap:1px}.slideLabel small{font-size:9px}}
 @media(max-height:650px) and (max-width:760px){.slideEntry{height:57px}.transcript{min-height:32px}}
 @media(prefers-reduced-motion:reduce){.slideWave{animation:none;transform:translateX(110%);opacity:.5;}.slideThumb{transition:none;}}

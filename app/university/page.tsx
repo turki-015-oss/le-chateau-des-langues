@@ -6148,7 +6148,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        {typeof selected==="number"?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{clip.letter} — {clip.word}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة</div>}
        <article className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(answeredCount/activeA2Listening.questions.length*100)}%</b></div>
-        <strong dir="ltr">{question.prompt}</strong>
+        <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench(alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>
         {"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}
         <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
         {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}

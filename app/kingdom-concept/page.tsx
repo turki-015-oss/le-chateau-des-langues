@@ -36,15 +36,16 @@ type ConceptDestination = {
 };
 
 type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path"> & { originX: number; originY: number };
-type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };
+type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[] };
+type ArrivalAudioWindow = Window & { __castleArrivalAudioRuntime?: ArrivalAudioRuntime };
 
 const arrivalSoundCues = [
   // These cues mirror the 3.35s CSS arrival timeline: descent begins at 43%,
   // impact lands at 58%, then the garden and book react to the collision.
-  { source: "/audio/cinematic-entry/descending-whoosh.mp3", delay: 1400, volume: 0.42, playbackRate: 1.08 },
-  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1940, volume: 0.92, playbackRate: 1 },
-  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1960, volume: 0.38, playbackRate: 1.05 },
-  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 1940, volume: 0.72, playbackRate: 0.94 },
+  { source: "/audio/cinematic-entry/descending-whoosh.wav", delay: 1400, volume: 0.42, playbackRate: 1.08, offset: 1.25, duration: 0.52 },
+  { source: "/audio/cinematic-entry/heavy-boulder-thud.wav", delay: 1940, volume: 0.92, playbackRate: 1, offset: 0.28, duration: 0.55 },
+  { source: "/audio/cinematic-entry/leaves-rustle.wav", delay: 1960, volume: 0.38, playbackRate: 1.05, offset: 0.85, duration: 0.8 },
+  { source: "/audio/cinematic-entry/page-turn.wav", delay: 1940, volume: 0.72, playbackRate: 0.94, offset: 0.04, duration: 0.27 },
 ];
 
 function CastleAppIcon() {
@@ -130,7 +131,8 @@ export default function KingdomConceptPage() {
   const entryTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
   const arrivalAnimationFrameRef = useRef<number | null>(null);
-  const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
+  const arrivalAudioRuntimeRef = useRef<ArrivalAudioRuntime | null>(null);
+  const arrivalAudioSourcesRef = useRef<AudioBufferSourceNode[]>([]);
   const arrivalTimelineStartedRef = useRef(false);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
   const [arrivalPlaying, setArrivalPlaying] = useState(false);
@@ -145,8 +147,7 @@ export default function KingdomConceptPage() {
     if (arrivalRequested) {
       arrivalTimelineStartedRef.current = false;
       setArrivalPlaying(true);
-      const primedAudio = (window as ArrivalAudioWindow).__castleArrivalAudio ?? [];
-      arrivalAudioRef.current = arrivalSoundCues.map((cue, index) => primedAudio[index] ?? new Audio(cue.source));
+      arrivalAudioRuntimeRef.current = (window as ArrivalAudioWindow).__castleArrivalAudioRuntime ?? null;
       document.documentElement.classList.add("kingdom-arrival-pending");
     } else {
       document.documentElement.classList.remove("kingdom-arrival-pending");
@@ -155,7 +156,13 @@ export default function KingdomConceptPage() {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
       if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
       if (arrivalAnimationFrameRef.current !== null) window.cancelAnimationFrame(arrivalAnimationFrameRef.current);
-      arrivalAudioRef.current.forEach((audio) => audio.pause());
+      arrivalAudioSourcesRef.current.forEach((source) => {
+        try { source.stop(); } catch { /* A finished source is already stopped. */ }
+      });
+      const runtime = arrivalAudioRuntimeRef.current;
+      if (runtime && runtime.context.state !== "closed") {
+        void runtime.context.close().catch(() => { /* The context may already be closed. */ });
+      }
       document.documentElement.classList.remove("kingdom-arrival-pending");
     };
   }, [router]);
@@ -167,11 +174,13 @@ export default function KingdomConceptPage() {
     const finishArrival = () => {
       setArrivalPlaying(false);
       document.documentElement.classList.remove("kingdom-arrival-pending");
-      arrivalAudioRef.current.forEach((audio) => {
-        audio.pause();
-        audio.currentTime = 0;
+      arrivalAudioSourcesRef.current.forEach((source) => {
+        try { source.stop(); } catch { /* A finished source is already stopped. */ }
       });
-      delete (window as ArrivalAudioWindow).__castleArrivalAudio;
+      arrivalAudioSourcesRef.current = [];
+      const runtime = arrivalAudioRuntimeRef.current;
+      if (runtime) void runtime.context.close().catch(() => { /* The context may already be closed. */ });
+      delete (window as ArrivalAudioWindow).__castleArrivalAudioRuntime;
     };
 
     const animationDuration = Number(castleAnimation.effect?.getComputedTiming().duration ?? 0);
@@ -185,14 +194,25 @@ export default function KingdomConceptPage() {
       arrivalSoundCues.forEach((cue, index) => {
         if (playedCues.has(index) || animationTime < cue.delay) return;
         playedCues.add(index);
-        const audio = arrivalAudioRef.current[index];
-        if (!audio) return;
-        audio.pause();
-        audio.currentTime = 0;
-        audio.muted = false;
-        audio.volume = cue.volume;
-        audio.playbackRate = cue.playbackRate;
-        void audio.play().catch(() => { /* Never block the visual entrance. */ });
+        const runtime = arrivalAudioRuntimeRef.current;
+        const buffer = runtime?.buffers[index];
+        if (!runtime || !buffer || runtime.context.state === "closed") return;
+        const playCue = () => {
+          if (runtime.context.state !== "running") return;
+          const source = runtime.context.createBufferSource();
+          const gain = runtime.context.createGain();
+          source.buffer = buffer;
+          source.playbackRate.value = cue.playbackRate;
+          const now = runtime.context.currentTime;
+          gain.gain.setValueAtTime(cue.volume, now);
+          gain.gain.setValueAtTime(cue.volume, now + Math.max(0, cue.duration - 0.08));
+          gain.gain.linearRampToValueAtTime(0, now + cue.duration);
+          source.connect(gain).connect(runtime.context.destination);
+          source.start(now, cue.offset, cue.duration);
+          arrivalAudioSourcesRef.current.push(source);
+        };
+        if (runtime.context.state === "running") playCue();
+        else void runtime.context.resume().then(playCue).catch(() => { /* The visual entrance continues. */ });
       });
 
       if (castleAnimation.playState === "finished" || animationTime >= animationDuration) {

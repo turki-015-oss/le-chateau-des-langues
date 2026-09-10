@@ -19,3 +19,14 @@ License references:
 - Freesound license FAQ: https://freesound.org/help/faq/#licenses
 
 The source pages recorded the Freesound assets as CC0 and the Pixabay asset as free for use under the Pixabay Content License on the review date above. This register is evidence of the reviewed state, not a replacement for the linked legal terms.
+
+## Mobile runtime derivatives
+
+On **2026-09-11**, the four sounds used by the entrance were converted without synthesized content to mono 32 kHz PCM WAV. These derivatives avoid first-launch decoding and scheduling differences between mobile media-element implementations. Their exact hashes are:
+
+| Runtime file | SHA-256 |
+| --- | --- |
+| `descending-whoosh.wav` | `3d3e99ae47db1547a0f5f86ff6e7b29dacbeb8313780b06d0a37dc6f80a0f409` |
+| `heavy-boulder-thud.wav` | `6bce757827e03df938576b4c1dbae36b6663fac69fd8c7ad0db7704955ac3fad` |
+| `leaves-rustle.wav` | `89ce8dbf9db8e0c999d3a18ae0a8a99c130d36956c0269f418cb7a6960b34ac9` |
+| `page-turn.wav` | `25d86746afc2ee733dede2d1f7d9321c4508ffa84fcca478b300a666878e6890` |

@@ -22,33 +22,42 @@ const features = [
 const welcomePhrase = "Bienvenue au Château des Langues";
 
 const arrivalSoundSources = [
-  "/audio/cinematic-entry/descending-whoosh.mp3",
-  "/audio/cinematic-entry/heavy-boulder-thud.mp3",
-  "/audio/cinematic-entry/leaves-rustle.mp3",
-  "/audio/cinematic-entry/page-turn.mp3",
+  "/audio/cinematic-entry/descending-whoosh.wav",
+  "/audio/cinematic-entry/heavy-boulder-thud.wav",
+  "/audio/cinematic-entry/leaves-rustle.wav",
+  "/audio/cinematic-entry/page-turn.wav",
 ];
 
-type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };
+type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[] };
+type ArrivalAudioWindow = Window & {
+  webkitAudioContext?: typeof AudioContext;
+  __castleArrivalAudioRuntime?: ArrivalAudioRuntime;
+};
 
 export default function EntryPage() {
   const router = useRouter();
-  const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
+  const arrivalAudioRuntimeRef = useRef<ArrivalAudioRuntime | null>(null);
+  const arrivalAudioLoadingRef = useRef<Promise<void> | null>(null);
   const isEnteringRef = useRef(false);
 
   useEffect(() => {
-    // Begin fetching on the welcome screen so a first-time mobile visitor has
-    // the same synchronized entrance as a visitor whose files are cached.
-    const arrivalAudio = arrivalSoundSources.map((source) => {
-      const audio = new Audio(source);
-      audio.preload = "auto";
-      audio.load();
-      return audio;
+    const AudioContextConstructor = window.AudioContext ?? (window as ArrivalAudioWindow).webkitAudioContext;
+    if (!AudioContextConstructor) return;
+    const runtime: ArrivalAudioRuntime = { context: new AudioContextConstructor(), buffers: [] };
+    arrivalAudioRuntimeRef.current = runtime;
+    arrivalAudioLoadingRef.current = Promise.all(arrivalSoundSources.map(async (source) => {
+      const response = await fetch(source);
+      if (!response.ok) throw new Error(`Unable to preload arrival sound: ${source}`);
+      return runtime.context.decodeAudioData(await response.arrayBuffer());
+    })).then((buffers) => {
+      runtime.buffers = buffers;
+    }).catch(() => {
+      runtime.buffers = [];
     });
-    arrivalAudioRef.current = arrivalAudio;
 
     return () => {
       if (isEnteringRef.current) return;
-      arrivalAudio.forEach((audio) => audio.pause());
+      void runtime.context.close().catch(() => { /* The context may already be closed. */ });
     };
   }, []);
 
@@ -56,22 +65,21 @@ export default function EntryPage() {
     if (isEnteringRef.current) return;
     isEnteringRef.current = true;
 
-    // Start the already-preloaded tracks silently inside the user's gesture.
-    // Waiting briefly for playback to begin preserves the permission across the
-    // client-side route transition, including on the first launch in iOS/Safari.
-    const arrivalAudio = arrivalAudioRef.current;
-    const unlockAttempts = arrivalAudio.map(async (audio) => {
-      // iOS may ignore programmatic volume changes. The muted flag is required
-      // here so the permission-priming playback never leaks an audible cue.
-      audio.muted = true;
-      audio.volume = 0;
-      try { await audio.play(); } catch { /* Visual arrival still works when audio is blocked. */ }
-    });
-    (window as ArrivalAudioWindow).__castleArrivalAudio = arrivalAudio;
-    await Promise.race([
-      Promise.allSettled(unlockAttempts),
-      new Promise<void>((resolve) => window.setTimeout(resolve, 700)),
-    ]);
+    // Resume Web Audio inside the swipe gesture. Unlike media-element priming,
+    // this is silent on iOS and still permits precise audible cues after routing.
+    const runtime = arrivalAudioRuntimeRef.current;
+    if (runtime) {
+      const resumeAttempt = runtime.context.resume().catch(() => { /* Visual arrival remains available. */ });
+      await Promise.race([
+        Promise.all([resumeAttempt, arrivalAudioLoadingRef.current ?? Promise.resolve()]),
+        new Promise<void>((resolve) => window.setTimeout(resolve, 4000)),
+      ]);
+      if (runtime.context.state !== "closed" && runtime.buffers.length === arrivalSoundSources.length) {
+        (window as ArrivalAudioWindow).__castleArrivalAudioRuntime = runtime;
+      } else {
+        void runtime.context.close().catch(() => { /* The context may already be closed. */ });
+      }
+    }
     try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }
     document.documentElement.classList.add("kingdom-arrival-pending");
     router.push("/kingdom");

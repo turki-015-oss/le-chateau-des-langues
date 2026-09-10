@@ -4888,22 +4888,24 @@ function playPracticeChoiceFeedback(correct:boolean){
   const now=context.currentTime;
   const master=context.createGain();
   const toneFilter=context.createBiquadFilter();
+  const loudness=context.createGain();
   const compressor=context.createDynamicsCompressor();
   toneFilter.type="lowpass";
   toneFilter.frequency.setValueAtTime(correct?5600:4200,now);
   toneFilter.Q.setValueAtTime(.7,now);
-  compressor.threshold.setValueAtTime(-18,now);
-  compressor.knee.setValueAtTime(18,now);
-  compressor.ratio.setValueAtTime(3,now);
-  compressor.attack.setValueAtTime(.003,now);
-  compressor.release.setValueAtTime(.18,now);
-  master.connect(toneFilter).connect(compressor).connect(context.destination);
+  loudness.gain.setValueAtTime(correct?1.9:2.45,now);
+  compressor.threshold.setValueAtTime(-3,now);
+  compressor.knee.setValueAtTime(1,now);
+  compressor.ratio.setValueAtTime(20,now);
+  compressor.attack.setValueAtTime(.001,now);
+  compressor.release.setValueAtTime(.075,now);
+  master.connect(toneFilter).connect(loudness).connect(compressor).connect(context.destination);
   master.gain.setValueAtTime(.0001,now);
   master.gain.exponentialRampToValueAtTime(correct?.48:.52,now+.006);
   master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.34:.38));
   const notes=correct
    ?[{frequency:783.99,endFrequency:880,delay:0,duration:.115},{frequency:1046.5,endFrequency:1174.66,delay:.065,duration:.18}]
-   :[{frequency:523.25,endFrequency:392,delay:0,duration:.15},{frequency:392,endFrequency:293.66,delay:.085,duration:.2}];
+   :[{frequency:659.25,endFrequency:493.88,delay:0,duration:.15},{frequency:493.88,endFrequency:369.99,delay:.085,duration:.2}];
   notes.forEach(({frequency,endFrequency,delay,duration})=>{
    const oscillator=context.createOscillator();
    const noteGain=context.createGain();

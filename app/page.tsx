@@ -2,6 +2,7 @@
 
 import { BookOpen, MapPin, MessageCircle, Sparkles } from "lucide-react";
 import type { CSSProperties } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./entry.module.css";
 import WelcomeBook from "@/components/WelcomeBook";
@@ -31,18 +32,43 @@ type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] }
 
 export default function EntryPage() {
   const router = useRouter();
+  const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
+  const isEnteringRef = useRef(false);
 
-  const enterKingdom = () => {
-    // Start every track silently inside the user's gesture. This unlocks delayed
-    // cinematic cues on iOS/Safari after the client-side route transition.
+  useEffect(() => {
+    // Begin fetching on the welcome screen so a first-time mobile visitor has
+    // the same synchronized entrance as a visitor whose files are cached.
     const arrivalAudio = arrivalSoundSources.map((source) => {
       const audio = new Audio(source);
       audio.preload = "auto";
-      audio.volume = 0;
-      void audio.play().catch(() => { /* Visual arrival still works when audio is blocked. */ });
+      audio.load();
       return audio;
     });
+    arrivalAudioRef.current = arrivalAudio;
+
+    return () => {
+      if (isEnteringRef.current) return;
+      arrivalAudio.forEach((audio) => audio.pause());
+    };
+  }, []);
+
+  const enterKingdom = async () => {
+    if (isEnteringRef.current) return;
+    isEnteringRef.current = true;
+
+    // Start the already-preloaded tracks silently inside the user's gesture.
+    // Waiting briefly for playback to begin preserves the permission across the
+    // client-side route transition, including on the first launch in iOS/Safari.
+    const arrivalAudio = arrivalAudioRef.current;
+    const unlockAttempts = arrivalAudio.map(async (audio) => {
+      audio.volume = 0;
+      try { await audio.play(); } catch { /* Visual arrival still works when audio is blocked. */ }
+    });
     (window as ArrivalAudioWindow).__castleArrivalAudio = arrivalAudio;
+    await Promise.race([
+      Promise.allSettled(unlockAttempts),
+      new Promise<void>((resolve) => window.setTimeout(resolve, 700)),
+    ]);
     try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }
     document.documentElement.classList.add("kingdom-arrival-pending");
     router.push("/kingdom");

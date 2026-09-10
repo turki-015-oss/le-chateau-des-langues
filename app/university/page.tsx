@@ -81,7 +81,7 @@ function playAlphabetLearningText(text:string,pauseMs=360){
 }
 
 function alphabetNaturalSpeechText(text:string){
- return text.replace(/\b[A-Z]\b/g,letter=>{
+ return text.replace(/(?<!\p{L})[A-Z](?!\p{L})/gu,letter=>{
   const alphabetItem=ALPHABET.find(item=>item[0]===letter);
   return LETTER_SPEECH_OVERRIDES[letter]??alphabetItem?.[1]??letter.toLocaleLowerCase("fr");
  });
@@ -877,17 +877,18 @@ const A1_MODULES:CourseModule[]=[
 ];
 
 const A1_ALPHABET_PRACTICE_ITEMS:Example[]=[
- {fr:"Comment ça s’écrit ?",ar:"كيف تُكتب هذه الكلمة؟"},
+ {fr:"Comment s’écrit ce mot ?",ar:"كيف تُكتب هذه الكلمة؟"},
  {fr:"Pouvez-vous épeler ce mot, s’il vous plaît ?",ar:"هل يمكنك تهجئة هذه الكلمة، من فضلك؟"},
+ {fr:"Tu peux épeler ce mot, s’il te plaît ?",ar:"هل يمكنك تهجئة هذه الكلمة، من فضلك؟"},
  {fr:"Je vais épeler mon prénom.",ar:"سأتهجّى اسمي الأول."},
  {fr:"Mon prénom commence par la lettre N.",ar:"يبدأ اسمي الأول بحرف N."},
- {fr:"Quelle est la première lettre ?",ar:"ما الحرف الأول؟"},
+ {fr:"Quelle est la première lettre de ce mot ?",ar:"ما الحرف الأول في هذه الكلمة؟"},
  {fr:"La première lettre est A.",ar:"الحرف الأول هو A."},
- {fr:"Quelle lettre vient après B ?",ar:"ما الحرف الذي يأتي بعد B؟"},
- {fr:"Quelle lettre vient avant D ?",ar:"ما الحرف الذي يأتي قبل D؟"},
- {fr:"Écrivez ce mot en majuscules.",ar:"اكتب هذه الكلمة بالأحرف الكبيرة."},
- {fr:"Écrivez ce mot en minuscules.",ar:"اكتب هذه الكلمة بالأحرف الصغيرة."},
- {fr:"Répétez la lettre, s’il vous plaît.",ar:"كرّر الحرف، من فضلك."},
+ {fr:"Quelle lettre vient après le B ?",ar:"ما الحرف الذي يأتي بعد الحرف B؟"},
+ {fr:"Quelle lettre vient avant le D ?",ar:"ما الحرف الذي يأتي قبل الحرف D؟"},
+ {fr:"Écris ce mot en lettres majuscules.",ar:"اكتب هذه الكلمة بأحرف كبيرة."},
+ {fr:"Écris ce mot en lettres minuscules.",ar:"اكتب هذه الكلمة بأحرف صغيرة."},
+ {fr:"Répète cette lettre, s’il te plaît.",ar:"كرّر هذا الحرف، من فضلك."},
  {fr:"Il y a vingt-six lettres dans l’alphabet français.",ar:"توجد ستة وعشرون حرفًا في الأبجدية الفرنسية."}
 ];
 

@@ -4256,3 +4256,15 @@
  .a2-listening-choices button.practice-choice-correct,
  .a2-dialogue-choices button.practice-choice-correct{animation:none}
 }
+
+/* Compact listening workspace: keeps the full activity visible without changing its visual language. */
+.a1-orbit-map.listening-open{height:clamp(620px,calc(100svh - 24px),670px);min-height:620px}
+.a1-orbit-listening-overlay{gap:7px;padding:14px;overflow:hidden}
+.a1-orbit-listening-overlay>header{min-height:58px;margin:-14px -14px 0;padding:8px 14px;border-radius:26px 26px 0 0}
+.a1-listening-title>i{width:42px;height:42px;border-radius:13px}.a1-listening-title>i svg{width:22px!important}.a1-orbit-listening-overlay>header h3{font-size:22px}.a1-orbit-listening-overlay>header span{font-size:13px}
+.a1-smart-audio-card{padding:10px 12px;border-radius:17px}.a1-smart-audio-segments strong{min-height:50px;border-radius:12px}.a1-smart-audio-segments.concealed strong svg{width:20px;height:20px}.a1-smart-audio-segments.concealed strong small{font-size:9px}.a1-smart-audio-card>small{min-height:16px;margin-top:4px;font-size:10px}
+.a1-smart-wave{height:24px;margin:3px 0}.a1-smart-wave.playing i{max-height:22px}.a1-smart-audio-actions button{min-height:40px;padding:5px 9px}.a1-smart-audio-actions button>span{width:31px;height:31px;border-radius:9px}.a1-smart-audio-actions button b{font-size:12px}.a1-smart-audio-actions button small{font-size:8px}.a1-smart-audio-card>nav{gap:5px;margin-top:6px}.a1-smart-audio-card>nav button{width:29px;height:29px;border-radius:8px;font-size:12px}
+.a1-smart-transcript,.a1-smart-transcript-locked{min-height:42px;padding:7px 10px;border-radius:10px;font-size:11px}.a1-smart-transcript p{margin:4px 0 0;font-size:13px;line-height:1.3}
+.a1-smart-question{padding:10px 12px;border-radius:14px}.a1-smart-question-prompt{gap:7px;margin:5px 0}.a1-smart-question-prompt>strong{font-size:14px;line-height:1.35}.a1-smart-question-prompt>button{padding:6px 8px}.a1-smart-question>.university-question-translation{margin:0 0 6px!important;padding:5px 8px;font-size:11px!important;line-height:1.45!important}.a1-smart-choices{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.a1-smart-choices button{min-width:0;gap:5px;padding:6px 7px;border-radius:9px;font-size:12px}.a1-smart-choices button>span{width:22px;height:23px;border-radius:6px;font-size:9px}.a1-smart-question>p{margin:5px 0 0;padding:5px 8px;font-size:11px}.a1-smart-next-question{margin-top:6px;padding:7px 10px;font-size:11px}
+.a1-orbit-listening-overlay>footer{padding:0}.a1-orbit-listening-overlay>footer button{padding:9px 11px;border-radius:11px;font-size:12px}
+@media(max-width:680px){.a1-orbit-map.listening-open{height:clamp(620px,calc(100svh - 16px),660px);min-height:620px}.a1-orbit-listening-overlay{padding:10px}.a1-orbit-listening-overlay>header{margin:-10px -10px 0;padding:7px 10px;border-radius:21px 21px 0 0}.a1-smart-audio-actions button{padding:5px}.a1-smart-question-prompt>button{width:34px;height:34px}.a1-smart-choices button{justify-content:flex-start;padding:6px 4px}.a1-orbit-listening-overlay>footer button{padding:8px}}

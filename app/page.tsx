@@ -69,11 +69,16 @@ export default function EntryPage() {
     // this is silent on iOS and still permits precise audible cues after routing.
     const runtime = arrivalAudioRuntimeRef.current;
     if (runtime) {
+      // A one-sample silent Web Audio source unlocks the context during the
+      // user's gesture without leaking any of the real cinematic sounds.
+      const unlockSource = runtime.context.createBufferSource();
+      unlockSource.buffer = runtime.context.createBuffer(1, 1, 22050);
+      unlockSource.connect(runtime.context.destination);
+      unlockSource.start();
       const resumeAttempt = runtime.context.resume().catch(() => { /* Visual arrival remains available. */ });
-      await Promise.race([
-        Promise.all([resumeAttempt, arrivalAudioLoadingRef.current ?? Promise.resolve()]),
-        new Promise<void>((resolve) => window.setTimeout(resolve, 4000)),
-      ]);
+      // Do not route until first-launch downloads and decoding are actually
+      // complete. A failed fetch resolves through the loader's catch handler.
+      await Promise.all([resumeAttempt, arrivalAudioLoadingRef.current ?? Promise.resolve()]);
       if (runtime.context.state !== "closed" && runtime.buffers.length === arrivalSoundSources.length) {
         (window as ArrivalAudioWindow).__castleArrivalAudioRuntime = runtime;
       } else {

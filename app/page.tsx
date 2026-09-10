@@ -75,14 +75,15 @@ export default function EntryPage() {
       unlockSource.buffer = runtime.context.createBuffer(1, 1, 22050);
       unlockSource.connect(runtime.context.destination);
       unlockSource.start();
-      const resumeAttempt = runtime.context.resume().catch(() => { /* Visual arrival remains available. */ });
-      // Do not route until first-launch downloads and decoding are actually
-      // complete. A failed fetch resolves through the loader's catch handler.
-      await Promise.all([resumeAttempt, arrivalAudioLoadingRef.current ?? Promise.resolve()]);
-      if (runtime.context.state !== "closed" && runtime.buffers.length === arrivalSoundSources.length) {
+      // Safari can leave resume() pending even though the gesture was accepted.
+      // Never let that browser promise block navigation.
+      void runtime.context.resume().catch(() => { /* The kingdom retries the primed context. */ });
+      await Promise.race([
+        arrivalAudioLoadingRef.current ?? Promise.resolve(),
+        new Promise<void>((resolve) => window.setTimeout(resolve, 800)),
+      ]);
+      if (runtime.context.state !== "closed") {
         (window as ArrivalAudioWindow).__castleArrivalAudioRuntime = runtime;
-      } else {
-        void runtime.context.close().catch(() => { /* The context may already be closed. */ });
       }
     }
     try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }

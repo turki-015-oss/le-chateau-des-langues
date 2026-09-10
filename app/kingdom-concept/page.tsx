@@ -193,10 +193,10 @@ export default function KingdomConceptPage() {
       const animationTime = typeof castleAnimation.currentTime === "number" ? castleAnimation.currentTime : 0;
       arrivalSoundCues.forEach((cue, index) => {
         if (playedCues.has(index) || animationTime < cue.delay) return;
-        playedCues.add(index);
         const runtime = arrivalAudioRuntimeRef.current;
         const buffer = runtime?.buffers[index];
         if (!runtime || !buffer || runtime.context.state === "closed") return;
+        playedCues.add(index);
         const playCue = () => {
           if (runtime.context.state !== "running") return;
           const source = runtime.context.createBufferSource();

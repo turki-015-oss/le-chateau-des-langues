@@ -4879,33 +4879,54 @@ const FRIENDS_SITUATIONS_PAGES=[
 
 function playPracticeChoiceFeedback(correct:boolean){
  if(typeof window==="undefined")return;
- if(!correct&&"vibrate" in navigator)navigator.vibrate(85);
+ if(!correct&&"vibrate" in navigator)navigator.vibrate(65);
  try{
   const AudioContextConstructor=window.AudioContext||(window as typeof window&{webkitAudioContext?:typeof AudioContext}).webkitAudioContext;
   if(!AudioContextConstructor)return;
   const context=new AudioContextConstructor();
+  void context.resume();
+  const now=context.currentTime;
   const master=context.createGain();
-  master.gain.setValueAtTime(.0001,context.currentTime);
-  master.gain.exponentialRampToValueAtTime(correct?.16:.12,context.currentTime+.018);
-  master.gain.exponentialRampToValueAtTime(.0001,context.currentTime+(correct?.62:.38));
-  master.connect(context.destination);
-  const notes=correct?[392,523.25,659.25]:[196,146.83];
-  notes.forEach((frequency,index)=>{
+  const compressor=context.createDynamicsCompressor();
+  compressor.threshold.setValueAtTime(-24,now);
+  compressor.knee.setValueAtTime(20,now);
+  compressor.ratio.setValueAtTime(4,now);
+  compressor.attack.setValueAtTime(.003,now);
+  compressor.release.setValueAtTime(.18,now);
+  master.connect(compressor).connect(context.destination);
+  master.gain.setValueAtTime(.0001,now);
+  master.gain.exponentialRampToValueAtTime(correct?.085:.07,now+.012);
+  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.68:.34));
+  const notes=correct
+   ?[{frequency:523.25,delay:0,duration:.46},{frequency:783.99,delay:.105,duration:.5}]
+   :[{frequency:220,delay:0,duration:.14},{frequency:174.61,delay:.085,duration:.18}];
+  notes.forEach(({frequency,delay,duration})=>{
    const oscillator=context.createOscillator();
    const noteGain=context.createGain();
-   const startsAt=context.currentTime+index*(correct?.105:.075);
-   const duration=correct?.34:.22;
-   oscillator.type=correct?(index===0?"sine":"triangle"):"sawtooth";
+   const startsAt=now+delay;
+   oscillator.type="sine";
    oscillator.frequency.setValueAtTime(frequency,startsAt);
-   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.82,startsAt+duration);
+   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.9,startsAt+duration);
    noteGain.gain.setValueAtTime(.0001,startsAt);
-   noteGain.gain.exponentialRampToValueAtTime(correct?.7:.45,startsAt+.018);
+   noteGain.gain.exponentialRampToValueAtTime(correct?.72:.5,startsAt+.012);
    noteGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration);
    oscillator.connect(noteGain).connect(master);
    oscillator.start(startsAt);
    oscillator.stop(startsAt+duration+.02);
+   if(correct){
+    const shimmer=context.createOscillator();
+    const shimmerGain=context.createGain();
+    shimmer.type="sine";
+    shimmer.frequency.setValueAtTime(frequency*2,startsAt);
+    shimmerGain.gain.setValueAtTime(.0001,startsAt);
+    shimmerGain.gain.exponentialRampToValueAtTime(.1,startsAt+.01);
+    shimmerGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration*.72);
+    shimmer.connect(shimmerGain).connect(master);
+    shimmer.start(startsAt);
+    shimmer.stop(startsAt+duration*.72+.02);
+   }
   });
-  window.setTimeout(()=>void context.close(),850);
+  window.setTimeout(()=>void context.close(),950);
  }catch{
   // Some embedded browsers block Web Audio; visual feedback still remains available.
  }

@@ -4877,75 +4877,35 @@ const FRIENDS_SITUATIONS_PAGES=[
  }
 ];
 
+let practiceCorrectAudio:HTMLAudioElement|null=null;
+let practiceErrorAudio:HTMLAudioElement|null=null;
+
+function preparePracticeFeedbackAudio(){
+ if(typeof window==="undefined")return;
+ if(!practiceCorrectAudio){
+  practiceCorrectAudio=new Audio("/audio/practice-correct.mp3");
+  practiceCorrectAudio.preload="auto";
+  practiceCorrectAudio.volume=1;
+  practiceCorrectAudio.load();
+ }
+ if(!practiceErrorAudio){
+  practiceErrorAudio=new Audio("/audio/practice-error.mp3");
+  practiceErrorAudio.preload="auto";
+  practiceErrorAudio.volume=1;
+  practiceErrorAudio.load();
+ }
+}
+
 function playPracticeChoiceFeedback(correct:boolean){
  if(typeof window==="undefined")return;
  if(!correct&&"vibrate" in navigator)navigator.vibrate(55);
- try{
-  const AudioContextConstructor=window.AudioContext||(window as typeof window&{webkitAudioContext?:typeof AudioContext}).webkitAudioContext;
-  if(!AudioContextConstructor)return;
-  const context=new AudioContextConstructor();
-  void context.resume();
-  const now=context.currentTime;
-  const master=context.createGain();
-  const toneFilter=context.createBiquadFilter();
-  const loudness=context.createGain();
-  const compressor=context.createDynamicsCompressor();
-  toneFilter.type="lowpass";
-  toneFilter.frequency.setValueAtTime(correct?5600:4200,now);
-  toneFilter.Q.setValueAtTime(.7,now);
-  loudness.gain.setValueAtTime(correct?1.9:2.45,now);
-  compressor.threshold.setValueAtTime(-3,now);
-  compressor.knee.setValueAtTime(1,now);
-  compressor.ratio.setValueAtTime(20,now);
-  compressor.attack.setValueAtTime(.001,now);
-  compressor.release.setValueAtTime(.075,now);
-  master.connect(toneFilter).connect(loudness).connect(compressor).connect(context.destination);
-  master.gain.setValueAtTime(.0001,now);
-  master.gain.exponentialRampToValueAtTime(correct?.48:.52,now+.006);
-  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.34:.38));
-  const notes=correct
-   ?[{frequency:783.99,endFrequency:880,delay:0,duration:.115},{frequency:1046.5,endFrequency:1174.66,delay:.065,duration:.18}]
-   :[{frequency:659.25,endFrequency:493.88,delay:0,duration:.15},{frequency:493.88,endFrequency:369.99,delay:.085,duration:.2}];
-  notes.forEach(({frequency,endFrequency,delay,duration})=>{
-   const oscillator=context.createOscillator();
-   const noteGain=context.createGain();
-   const startsAt=now+delay;
-   oscillator.type=correct?"sine":"triangle";
-   oscillator.frequency.setValueAtTime(frequency,startsAt);
-   oscillator.frequency.exponentialRampToValueAtTime(endFrequency,startsAt+duration);
-   noteGain.gain.setValueAtTime(.0001,startsAt);
-   noteGain.gain.exponentialRampToValueAtTime(correct?.78:.72,startsAt+.006);
-   noteGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration);
-   oscillator.connect(noteGain).connect(master);
-   oscillator.start(startsAt);
-   oscillator.stop(startsAt+duration+.02);
-   if(correct){
-    const shimmer=context.createOscillator();
-    const shimmerGain=context.createGain();
-    shimmer.type="sine";
-    shimmer.frequency.setValueAtTime(frequency*2,startsAt);
-    shimmerGain.gain.setValueAtTime(.0001,startsAt);
-    shimmerGain.gain.exponentialRampToValueAtTime(.075,startsAt+.006);
-    shimmerGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration*.68);
-    shimmer.connect(shimmerGain).connect(master);
-    shimmer.start(startsAt);
-    shimmer.stop(startsAt+duration*.72+.02);
-   }else{
-    const accent=context.createOscillator();
-    const accentGain=context.createGain();
-    accent.type="sine";
-    accent.frequency.setValueAtTime(frequency*2.05,startsAt);
-    accentGain.gain.setValueAtTime(.12,startsAt);
-    accentGain.gain.exponentialRampToValueAtTime(.0001,startsAt+.055);
-    accent.connect(accentGain).connect(master);
-    accent.start(startsAt);
-    accent.stop(startsAt+.07);
-   }
-  });
-  window.setTimeout(()=>void context.close(),650);
- }catch{
-  // Some embedded browsers block Web Audio; visual feedback still remains available.
- }
+ preparePracticeFeedbackAudio();
+ const audio=correct?practiceCorrectAudio:practiceErrorAudio;
+ if(!audio)return;
+ audio.pause();
+ audio.currentTime=0;
+ audio.volume=1;
+ void audio.play().catch(()=>undefined);
 }
 
 export default function UniversityPage({initialLevelId,initialModuleId,levelPage=false,lessonPage=false}:UniversityPageProps={}){
@@ -5413,6 +5373,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const nextModule=activeModuleIndex<level.modules.length-1?level.modules[activeModuleIndex+1]:null;
  const quizScore=quizQuestions.reduce((score,question,index)=>score+(quizAnswers[index]===question.correctIndex?1:0),0);
  const quizPassed=quizFinished&&quizScore>=7;
+
+ useEffect(()=>{
+  preparePracticeFeedbackAudio();
+ },[]);
 
  const selectPracticeChoice=(button:HTMLButtonElement,correct:boolean,select:()=>void)=>{
   select();

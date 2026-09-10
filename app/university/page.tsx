@@ -4880,6 +4880,20 @@ const FRIENDS_SITUATIONS_PAGES=[
 function playPracticeChoiceFeedback(correct:boolean){
  if(typeof window==="undefined")return;
  if(!correct&&"vibrate" in navigator)navigator.vibrate(65);
+ if(!correct&&"speechSynthesis" in window){
+  const rejection=new SpeechSynthesisUtterance("Nooo");
+  rejection.lang="en-US";
+  rejection.rate=.68;
+  rejection.pitch=.72;
+  rejection.volume=1;
+  const voices=window.speechSynthesis.getVoices();
+  rejection.voice=voices.find(voice=>/en[-_]US/i.test(voice.lang)&&/male|guy|davis|daniel/i.test(voice.name))
+   ??voices.find(voice=>/en[-_]US/i.test(voice.lang))
+   ??null;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(rejection);
+  return;
+ }
  try{
   const AudioContextConstructor=window.AudioContext||(window as typeof window&{webkitAudioContext?:typeof AudioContext}).webkitAudioContext;
   if(!AudioContextConstructor)return;
@@ -4895,10 +4909,10 @@ function playPracticeChoiceFeedback(correct:boolean){
   compressor.release.setValueAtTime(.18,now);
   master.connect(compressor).connect(context.destination);
   master.gain.setValueAtTime(.0001,now);
-  master.gain.exponentialRampToValueAtTime(correct?.14:.135,now+.012);
-  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.72:.42));
+  master.gain.exponentialRampToValueAtTime(correct?.15:.135,now+.008);
+  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.3:.42));
   const notes=correct
-   ?[{frequency:523.25,delay:0,duration:.46},{frequency:783.99,delay:.105,duration:.5}]
+   ?[{frequency:659.25,delay:0,duration:.17},{frequency:987.77,delay:.052,duration:.19}]
    :[{frequency:349.23,delay:0,duration:.18},{frequency:261.63,delay:.105,duration:.23}];
   notes.forEach(({frequency,delay,duration})=>{
    const oscillator=context.createOscillator();
@@ -4926,7 +4940,7 @@ function playPracticeChoiceFeedback(correct:boolean){
     shimmer.stop(startsAt+duration*.72+.02);
    }
   });
-  window.setTimeout(()=>void context.close(),950);
+  window.setTimeout(()=>void context.close(),600);
  }catch{
   // Some embedded browsers block Web Audio; visual feedback still remains available.
  }

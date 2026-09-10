@@ -118,12 +118,31 @@ export default function KingdomConceptPage() {
   const router = useRouter();
   const destinationRailRef = useRef<HTMLDivElement>(null);
   const entryTimerRef = useRef<number | null>(null);
+  const arrivalTimerRef = useRef<number | null>(null);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
+  const [arrivalPlaying, setArrivalPlaying] = useState(false);
 
   useEffect(() => {
     ["/castle", "/university", "/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
+    let arrivalRequested = false;
+    try {
+      arrivalRequested = sessionStorage.getItem("castle-kingdom-arrival") === "1";
+      sessionStorage.removeItem("castle-kingdom-arrival");
+    } catch { /* Direct visits remain available when storage is restricted. */ }
+    if (arrivalRequested) {
+      setArrivalPlaying(true);
+      document.documentElement.classList.add("kingdom-arrival-pending");
+      arrivalTimerRef.current = window.setTimeout(() => {
+        setArrivalPlaying(false);
+        document.documentElement.classList.remove("kingdom-arrival-pending");
+      }, 3900);
+    } else {
+      document.documentElement.classList.remove("kingdom-arrival-pending");
+    }
     return () => {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
+      if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
+      document.documentElement.classList.remove("kingdom-arrival-pending");
     };
   }, [router]);
 
@@ -161,7 +180,7 @@ export default function KingdomConceptPage() {
   };
 
   return (
-    <main className="kingdom-concept" dir="rtl">
+    <main className={`kingdom-concept${arrivalPlaying ? " concept-arrival-active" : ""}`} dir="rtl">
       <header className="concept-topbar">
         <SmartCompass />
         <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
@@ -180,6 +199,10 @@ export default function KingdomConceptPage() {
         <div className="concept-castle-ground" aria-hidden="true"><span /><i /></div>
         <div className="concept-castle-garden concept-castle-garden-left" aria-hidden="true" />
         <div className="concept-castle-garden concept-castle-garden-right" aria-hidden="true" />
+        {arrivalPlaying && <div className="concept-arrival-impact" aria-hidden="true">
+          <span className="concept-arrival-impact-ring" />
+          {Array.from({ length: 12 }).map((_, index) => <i key={index} style={{ "--impact-particle": index } as React.CSSProperties} />)}
+        </div>}
         <Link href="/castle" className="concept-castle-entry" aria-label="دخول قاعات القلعة" onClick={(event) => {
           event.preventDefault();
           beginMagicalEntry({ id: "castle", fr: "LE CHÂTEAU", ar: "قاعات القلعة", image: "/kingdom-portal-assets/castle-facade.png", path: "/castle" }, event.currentTarget);
@@ -189,6 +212,7 @@ export default function KingdomConceptPage() {
           <span className="concept-entry-app concept-entry-arrow" aria-hidden="true"><ArrowLeft /></span>
         </Link>
         <div className="concept-scene-book">
+          {arrivalPlaying && <div className="concept-arrival-page-fan" aria-hidden="true"><i /><i /><i /><i /></div>}
           <div className="concept-open-book concept-integrated-book" dir="ltr">
             <img className="concept-book-base" src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="كتاب مفتوح تخرج من صفحتيه الجامعة والمكتبة، وعناوينهما مطبوعة على الورق" />
             <div className="concept-book-pages">

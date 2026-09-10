@@ -23,6 +23,12 @@ const welcomePhrase = "Bienvenue au Château des Langues";
 export default function EntryPage() {
   const router = useRouter();
 
+  const enterKingdom = () => {
+    try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }
+    document.documentElement.classList.add("kingdom-arrival-pending");
+    router.push("/kingdom");
+  };
+
   return (
     <main className={styles.entry} aria-label="المدخل الرئيسي لتطبيق القلعة" onCopy={event => event.preventDefault()} onContextMenu={event => event.preventDefault()}>
       <header className={styles.topbar}>
@@ -50,7 +56,7 @@ export default function EntryPage() {
           <div className={styles.welcomeWave} lang="fr" dir="ltr" aria-label={welcomePhrase}>
             {Array.from(welcomePhrase).map((letter,index)=><span key={`${letter}-${index}`} aria-hidden="true" style={{"--letter-index":index} as CSSProperties}>{letter===" "?"\u00a0":letter}</span>)}
           </div>
-          <SlideToEnter onEnter={() => router.push("/kingdom")} />
+          <SlideToEnter onEnter={enterKingdom} />
         </section>
       </div>
     </main>

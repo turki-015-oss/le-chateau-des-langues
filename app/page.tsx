@@ -20,10 +20,30 @@ const features = [
 
 const welcomePhrase = "Bienvenue au Château des Langues";
 
+const arrivalSoundSources = [
+  "/audio/cinematic-entry/descending-whoosh.mp3",
+  "/audio/cinematic-entry/heavy-boulder-thud.mp3",
+  "/audio/cinematic-entry/leaves-rustle.mp3",
+  "/audio/cinematic-entry/page-turn.mp3",
+  "/audio/cinematic-entry/antique-hand-bell.mp3",
+];
+
+type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };
+
 export default function EntryPage() {
   const router = useRouter();
 
   const enterKingdom = () => {
+    // Start every track silently inside the user's gesture. This unlocks delayed
+    // cinematic cues on iOS/Safari after the client-side route transition.
+    const arrivalAudio = arrivalSoundSources.map((source) => {
+      const audio = new Audio(source);
+      audio.preload = "auto";
+      audio.volume = 0;
+      void audio.play().catch(() => { /* Visual arrival still works when audio is blocked. */ });
+      return audio;
+    });
+    (window as ArrivalAudioWindow).__castleArrivalAudio = arrivalAudio;
     try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }
     document.documentElement.classList.add("kingdom-arrival-pending");
     router.push("/kingdom");

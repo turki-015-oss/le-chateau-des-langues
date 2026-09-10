@@ -36,6 +36,15 @@ type ConceptDestination = {
 };
 
 type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path"> & { originX: number; originY: number };
+type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };
+
+const arrivalSoundCues = [
+  { source: "/audio/cinematic-entry/descending-whoosh.mp3", delay: 80, volume: 0.42, playbackRate: 1.08 },
+  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1810, volume: 0.92, playbackRate: 1 },
+  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1890, volume: 0.38, playbackRate: 1.05 },
+  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 2180, volume: 0.72, playbackRate: 0.94 },
+  { source: "/audio/cinematic-entry/antique-hand-bell.mp3", delay: 2860, volume: 0.24, playbackRate: 1 },
+];
 
 function CastleAppIcon() {
   return (
@@ -119,6 +128,8 @@ export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
   const entryTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
+  const arrivalAudioTimersRef = useRef<number[]>([]);
+  const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
   const [arrivalPlaying, setArrivalPlaying] = useState(false);
 
@@ -132,9 +143,28 @@ export default function KingdomConceptPage() {
     if (arrivalRequested) {
       setArrivalPlaying(true);
       document.documentElement.classList.add("kingdom-arrival-pending");
+      const primedAudio = (window as ArrivalAudioWindow).__castleArrivalAudio ?? [];
+      arrivalAudioRef.current = arrivalSoundCues.map((cue, index) => primedAudio[index] ?? new Audio(cue.source));
+      arrivalSoundCues.forEach((cue, index) => {
+        const timer = window.setTimeout(() => {
+          const audio = arrivalAudioRef.current[index];
+          if (!audio) return;
+          audio.pause();
+          audio.currentTime = 0;
+          audio.volume = cue.volume;
+          audio.playbackRate = cue.playbackRate;
+          void audio.play().catch(() => { /* Never block the visual entrance. */ });
+        }, cue.delay);
+        arrivalAudioTimersRef.current.push(timer);
+      });
       arrivalTimerRef.current = window.setTimeout(() => {
         setArrivalPlaying(false);
         document.documentElement.classList.remove("kingdom-arrival-pending");
+        arrivalAudioRef.current.forEach((audio) => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+        delete (window as ArrivalAudioWindow).__castleArrivalAudio;
       }, 3900);
     } else {
       document.documentElement.classList.remove("kingdom-arrival-pending");
@@ -142,6 +172,9 @@ export default function KingdomConceptPage() {
     return () => {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
       if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
+      arrivalAudioTimersRef.current.forEach((timer) => window.clearTimeout(timer));
+      arrivalAudioTimersRef.current = [];
+      arrivalAudioRef.current.forEach((audio) => audio.pause());
       document.documentElement.classList.remove("kingdom-arrival-pending");
     };
   }, [router]);

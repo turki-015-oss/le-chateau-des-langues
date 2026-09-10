@@ -6287,11 +6287,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      </div>}
     </section>}
 
-    <footer className="university-lesson-footer university-lesson-navigation">
+    {!(isA1Alphabet&&lessonStage==="practice"&&alphabetPracticeOpen)&&<footer className="university-lesson-footer university-lesson-navigation">
      {previousModule?<button onClick={()=>selectModule(previousModule.id)}><ChevronRight/><span><small>الدرس السابق</small><strong>{previousModule.ar}</strong></span></button>:<span/>}
      <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><LibraryBig/><span><small>العودة إلى</small><strong>مسار {level.id}</strong></span></Link>
      {nextModule?<button onClick={()=>selectModule(nextModule.id)}><span><small>الدرس التالي</small><strong>{nextModule.ar}</strong></span><ChevronLeft/></button>:<span/>}
-    </footer>
+    </footer>}
    </article>
   </section>}
  </main>;

@@ -213,7 +213,6 @@ export default function KingdomConceptPage() {
         </Link>
         <div className="concept-scene-book">
           {arrivalPlaying && <div className="concept-arrival-page-stack" aria-hidden="true">
-            <i /><i />
             <img src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="" />
           </div>}
           <div className="concept-open-book concept-integrated-book" dir="ltr">

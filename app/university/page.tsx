@@ -4892,14 +4892,14 @@ function playPracticeChoiceFeedback(correct:boolean){
   toneFilter.type="lowpass";
   toneFilter.frequency.setValueAtTime(correct?5600:4200,now);
   toneFilter.Q.setValueAtTime(.7,now);
-  compressor.threshold.setValueAtTime(-24,now);
-  compressor.knee.setValueAtTime(20,now);
-  compressor.ratio.setValueAtTime(4,now);
+  compressor.threshold.setValueAtTime(-18,now);
+  compressor.knee.setValueAtTime(18,now);
+  compressor.ratio.setValueAtTime(3,now);
   compressor.attack.setValueAtTime(.003,now);
   compressor.release.setValueAtTime(.18,now);
   master.connect(toneFilter).connect(compressor).connect(context.destination);
   master.gain.setValueAtTime(.0001,now);
-  master.gain.exponentialRampToValueAtTime(correct?.17:.18,now+.006);
+  master.gain.exponentialRampToValueAtTime(correct?.48:.52,now+.006);
   master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.34:.38));
   const notes=correct
    ?[{frequency:783.99,endFrequency:880,delay:0,duration:.115},{frequency:1046.5,endFrequency:1174.66,delay:.065,duration:.18}]

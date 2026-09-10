@@ -1446,9 +1446,20 @@ const A1_ALPHABET_WRITING_TRANSLATIONS=[
 ];
 
 const A1_ALPHABET_DICTATION=[
- {speech:"Ami",ar:"صديق — تبدأ الكلمة بحرف A."},
- {speech:"Café",ar:"مقهى — تبدأ الكلمة بحرف C."},
- {speech:"Vélo",ar:"دراجة — تبدأ الكلمة بحرف V."}
+ {kind:"letter",speech:"E",ar:"الحرف E."},
+ {kind:"letter",speech:"C",ar:"الحرف C."},
+ {kind:"letter",speech:"G",ar:"الحرف G."},
+ {kind:"letter",speech:"H",ar:"الحرف H."},
+ {kind:"letter",speech:"I",ar:"الحرف I."},
+ {kind:"letter",speech:"J",ar:"الحرف J."},
+ {kind:"letter",speech:"K",ar:"الحرف K."},
+ {kind:"letter",speech:"O",ar:"الحرف O."},
+ {kind:"letter",speech:"R",ar:"الحرف R."},
+ {kind:"letter",speech:"W",ar:"الحرف W."},
+ {kind:"letter",speech:"Y",ar:"الحرف Y."},
+ {kind:"word",speech:"Ami",ar:"صديق — تبدأ الكلمة بحرف A."},
+ {kind:"word",speech:"Café",ar:"مقهى — تبدأ الكلمة بحرف C."},
+ {kind:"word",speech:"Vélo",ar:"دراجة — تبدأ الكلمة بحرف V."}
 ];
 
 const A1_ALPHABET_BUILDERS=[
@@ -1458,9 +1469,9 @@ const A1_ALPHABET_BUILDERS=[
 ];
 
 const A1_ALPHABET_DIALOGUES=[
- {context:"Le professeur demande : « Quelle est la première lettre du mot ami ? »",translation:"يسأل المعلّم: «ما الحرف الأول في كلمة ami؟»",prompt:"اختر الإجابة الصحيحة.",choices:["C’est A.","C’est B.","C’est M."],correctIndex:0,feedback:"تبدأ كلمة ami بالحرف A."},
- {context:"Votre camarade demande : « Quel mot commence par la lettre B ? »",translation:"يسأل زميلك: «ما الكلمة التي تبدأ بالحرف B؟»",prompt:"اختر الإجابة الصحيحة.",choices:["Café.","Bateau.","École."],correctIndex:1,feedback:"تبدأ كلمة bateau بالحرف B."},
- {context:"On vous demande : « Comment s’appelle la lettre Z ? »",translation:"يُطرح عليك السؤال: «ما اسم الحرف Z؟»",prompt:"اختر الإجابة الصحيحة.",choices:["Zède.","Vé.","I grec."],correctIndex:0,feedback:"اسم الحرف Z بالفرنسية هو zède."}
+ {context:"Quelle est la première lettre du mot « ami » ?",translation:"ما الحرف الأول في كلمة «ami»؟",prompt:"اختر الإجابة الصحيحة.",choices:["C’est A.","C’est B.","C’est M."],correctIndex:0,feedback:"تبدأ كلمة «ami» بالحرف A."},
+ {context:"Quel mot commence par la lettre B ?",translation:"أي كلمة تبدأ بالحرف B؟",prompt:"اختر الإجابة الصحيحة.",choices:["Café.","Bateau.","École."],correctIndex:1,feedback:"تبدأ كلمة «bateau» بالحرف B."},
+ {context:"Comment s’épelle le mot « Paris » ?",translation:"كيف تُهجّى كلمة «Paris»؟",prompt:"اختر الإجابة الصحيحة.",choices:["P – A – R – I – S","B – A – R – I – S","P – E – R – I – S"],correctIndex:0,feedback:"تُهجّى كلمة «Paris» هكذا: P، A، R، I، S."}
 ];
 
 const A1_SOUNDS_READING={
@@ -5056,6 +5067,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const alphabetInitialCount=new Set(revisionWritingWords.map(word=>word[0].toLocaleLowerCase("fr"))).size;
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
+ const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const alphabetDictationPronunciation=isAlphabetLetterDictation
+  ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
+  :"";
  const writingMinimum=activeA1EnhancedContent?.writingMinimum??60;
  const writingMaximum=activeA1EnhancedContent?.writingMaximum??80;
  const passeComposeVerbCount=(revisionWritingText.match(/\b(?:j['’]ai|tu\s+as|(?:il|elle|on)\s+a|nous\s+avons|vous\s+avez|(?:ils|elles)\s+ont|je\s+(?:me\s+)?suis|tu\s+(?:t['’])?es|(?:il|elle|on)\s+(?:s['’])?est|nous\s+(?:nous\s+)?sommes|vous\s+(?:vous\s+)?êtes|(?:ils|elles)\s+(?:se\s+)?sont)\s+[a-zà-ÿ]+/gi)??[]).length;
@@ -6183,11 +6200,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button className={revisionWorkshopPanel==="dialogue"?"active":""} onClick={()=>setRevisionWorkshopPanel("dialogue")}><MessageCircle/><span><strong>حوار تفاعلي</strong><small>Réagir</small></span></button>
       </nav>}
       {(!isA1Alphabet?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
-       <div className="a2-workshop-progress"><span>{isA1WordDictation?"الكلمة":"الجملة"} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
-       <h4>استمع ثم اكتب {isA1WordDictation?"الكلمة":"الجملة"} الفرنسية</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
-       <button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {isA1WordDictation?"الكلمة":"الجملة"}</button>
-       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…"} aria-label={`اكتب ${isA1WordDictation?"الكلمة":"الجملة"} الفرنسية التي سمعتها`}/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>{isA1WordDictation?"الكلمة":"الجملة"} التالية <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-progress"><span>{dictationUnit} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
+       <h4>استمع ثم اكتب {dictationUnit}</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
+       <button className="a2-workshop-audio" onClick={()=>void (isAlphabetLetterDictation?speakFrenchSequence(["Lettre",alphabetDictationPronunciation],620,{rate:.62}):speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7}))}><Volume2/> استمع إلى {dictationUnit}</button>
+       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
       </article>}
       {(!isA1Alphabet?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">

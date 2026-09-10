@@ -25,7 +25,6 @@ const arrivalSoundSources = [
   "/audio/cinematic-entry/heavy-boulder-thud.mp3",
   "/audio/cinematic-entry/leaves-rustle.mp3",
   "/audio/cinematic-entry/page-turn.mp3",
-  "/audio/cinematic-entry/antique-hand-bell.mp3",
 ];
 
 type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };

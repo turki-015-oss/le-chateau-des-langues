@@ -39,11 +39,12 @@ type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "pat
 type ArrivalAudioWindow = Window & { __castleArrivalAudio?: HTMLAudioElement[] };
 
 const arrivalSoundCues = [
-  { source: "/audio/cinematic-entry/descending-whoosh.mp3", delay: 80, volume: 0.42, playbackRate: 1.08 },
-  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1810, volume: 0.92, playbackRate: 1 },
-  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1890, volume: 0.38, playbackRate: 1.05 },
-  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 2180, volume: 0.72, playbackRate: 0.94 },
-  { source: "/audio/cinematic-entry/antique-hand-bell.mp3", delay: 2860, volume: 0.24, playbackRate: 1 },
+  // These cues mirror the 3.35s CSS arrival timeline: descent begins at 43%,
+  // impact lands at 58%, then the garden and book react to the collision.
+  { source: "/audio/cinematic-entry/descending-whoosh.mp3", delay: 1400, volume: 0.42, playbackRate: 1.08 },
+  { source: "/audio/cinematic-entry/heavy-boulder-thud.mp3", delay: 1930, volume: 0.92, playbackRate: 1 },
+  { source: "/audio/cinematic-entry/leaves-rustle.mp3", delay: 1980, volume: 0.38, playbackRate: 1.05 },
+  { source: "/audio/cinematic-entry/page-turn.mp3", delay: 2050, volume: 0.72, playbackRate: 0.94 },
 ];
 
 function CastleAppIcon() {

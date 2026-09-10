@@ -189,6 +189,7 @@ export default function KingdomConceptPage() {
         if (!audio) return;
         audio.pause();
         audio.currentTime = 0;
+        audio.muted = false;
         audio.volume = cue.volume;
         audio.playbackRate = cue.playbackRate;
         void audio.play().catch(() => { /* Never block the visual entrance. */ });

@@ -61,6 +61,9 @@ export default function EntryPage() {
     // client-side route transition, including on the first launch in iOS/Safari.
     const arrivalAudio = arrivalAudioRef.current;
     const unlockAttempts = arrivalAudio.map(async (audio) => {
+      // iOS may ignore programmatic volume changes. The muted flag is required
+      // here so the permission-priming playback never leaks an audible cue.
+      audio.muted = true;
       audio.volume = 0;
       try { await audio.play(); } catch { /* Visual arrival still works when audio is blocked. */ }
     });

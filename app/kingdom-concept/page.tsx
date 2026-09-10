@@ -212,7 +212,10 @@ export default function KingdomConceptPage() {
           <span className="concept-entry-app concept-entry-arrow" aria-hidden="true"><ArrowLeft /></span>
         </Link>
         <div className="concept-scene-book">
-          {arrivalPlaying && <div className="concept-arrival-page-fan" aria-hidden="true"><i /><i /><i /><i /></div>}
+          {arrivalPlaying && <div className="concept-arrival-page-stack" aria-hidden="true">
+            <i /><i />
+            <img src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="" />
+          </div>}
           <div className="concept-open-book concept-integrated-book" dir="ltr">
             <img className="concept-book-base" src="/kingdom-portal-assets/integrated-academy-book-v1.webp" alt="كتاب مفتوح تخرج من صفحتيه الجامعة والمكتبة، وعناوينهما مطبوعة على الورق" />
             <div className="concept-book-pages">

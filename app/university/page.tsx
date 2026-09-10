@@ -4889,7 +4889,7 @@ function preparePracticeFeedbackAudio(){
   practiceCorrectAudio.load();
  }
  if(!practiceErrorAudio){
-  practiceErrorAudio=new Audio("/audio/practice-error.mp3");
+  practiceErrorAudio=new Audio("/audio/practice-error-reject.mp3");
   practiceErrorAudio.preload="auto";
   practiceErrorAudio.volume=1;
   practiceErrorAudio.load();

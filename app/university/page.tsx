@@ -6,7 +6,7 @@ import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties} fr
 import type {LucideIcon} from "lucide-react";
 import {
  Activity,ArrowRight,AudioLines,BadgeCheck,Blocks,BookOpen,Building2,CalendarClock,CalendarDays,CaseUpper,CheckCircle2,
- ChevronDown,ChevronLeft,ChevronRight,CircleHelp,CircleMinus,ClipboardPenLine,Clock3,CloudSun,Coffee,Earth,FastForward,Gauge,
+ ChevronDown,ChevronLeft,ChevronRight,CircleHelp,CircleMinus,ClipboardPenLine,Clock3,CloudSun,Coffee,Earth,EyeOff,FastForward,Gauge,
  GraduationCap,Hand,HandHeart,Headphones,History,House,Languages,Layers3,LibraryBig,Link2,ListChecks,MapPin,MapPinned,
  MessageCircle,MessagesSquare,Mic2,Navigation,NotebookTabs,Orbit,Play,RefreshCw,Repeat2,Replace,Rocket,RotateCcw,
  Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
@@ -1423,13 +1423,13 @@ const A1_ALPHABET_READING={
 const A1_ALPHABET_LISTENING={
  title:"Les lettres et les mots",
  arTitle:"الحروف والكلمات",
- text:"A comme ami. B comme bateau. C comme café. D comme dimanche. E comme école.",
+ text:"A, ami. B, bateau. C, café. D, dimanche. E, école.",
  questions:[
-  {prompt:"Quel mot entendez-vous après la lettre B ?",translation:"ما الكلمة التي تسمعها بعد الحرف B؟",choices:["ami","bateau","café"],correctIndex:1},
-  {prompt:"Quelle lettre entendez-vous avant le mot « café » ?",translation:"ما الحرف الذي تسمعه قبل كلمة «café»؟",choices:["A","C","E"],correctIndex:1},
-  {prompt:"Quel mot entendez-vous après la lettre D ?",translation:"ما الكلمة التي تسمعها بعد الحرف D؟",choices:["dimanche","école","ami"],correctIndex:0},
-  {prompt:"Quelle lettre entendez-vous avant le mot « école » ?",translation:"ما الحرف الذي تسمعه قبل كلمة «école»؟",choices:["B","D","E"],correctIndex:2},
-  {prompt:"Quel est le dernier mot que vous entendez ?",translation:"ما آخر كلمة تسمعها؟",choices:["café","dimanche","école"],correctIndex:2}
+  {prompt:"Par quelle lettre commence le mot « ami » ?",translation:"بأي حرف تبدأ كلمة «ami»؟",choices:["A","E","M"],correctIndex:0},
+  {prompt:"Quel mot entendez-vous ?",translation:"ما الكلمة التي تسمعها؟",choices:["café","bateau","ami"],correctIndex:1},
+  {prompt:"Quelle est la première lettre du mot entendu ?",translation:"ما الحرف الأول في الكلمة التي سمعتها؟",choices:["G","K","C"],correctIndex:2},
+  {prompt:"Quel mot commence par la lettre D ?",translation:"أي كلمة تبدأ بالحرف D؟",choices:["dimanche","bateau","école"],correctIndex:0},
+  {prompt:"Quelle lettre et quel mot entendez-vous ?",translation:"ما الحرف والكلمة اللذان تسمعهما؟",choices:["A — ami","D — dimanche","E — école"],correctIndex:2}
  ]
 };
 
@@ -5643,13 +5643,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const playAlphabetOrbitClip=(rate:"slow"|"normal")=>{
-  const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];
+ const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
+  const clip=ALPHABET_LISTENING_CLIPS[clipIndex];
   const alphabetItem=ALPHABET.find(item=>item[0]===clip.letter);
   const letterSpeech=LETTER_SPEECH_OVERRIDES[clip.letter]??alphabetItem?.[1]??clip.letter.toLocaleLowerCase("fr");
   setAlphabetListeningPlaying(true);
   setAlphabetListeningSegment(0);
-  void speakFrenchSequence([letterSpeech,"comme",clip.word],rate==="slow"?520:280,{
+  void speakFrenchSequence([letterSpeech,clip.word],rate==="slow"?650:390,{
    rate:rate==="slow"?.62:.82,
    onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
    onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
@@ -6136,20 +6136,19 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=ALPHABET_LISTENING_CLIPS[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCount=Object.keys(revisionListeningAnswers).length;return <section className="a1-orbit-listening-overlay" aria-label="تدريب الاستماع الذكي">
        <header><div><span>Écoute intelligente</span><h3>استمع</h3></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
-        <div className="a1-smart-audio-segments" dir="ltr"><strong className={alphabetListeningSegment===0?"speaking":""}>{clip.letter}</strong><strong className={alphabetListeningSegment===1?"speaking":""}>comme</strong><strong className={alphabetListeningSegment===2?"speaking":""}>{clip.word}</strong></div>
-        <small>{clip.ar}</small>
+        {typeof selected==="number"?<><div className="a1-smart-audio-segments" dir="ltr"><strong className={alphabetListeningSegment===0?"speaking":""}>{clip.letter}</strong><strong className={alphabetListeningSegment===1?"speaking":""}>{clip.word}</strong></div><small>{clip.ar}</small></>:<div className="a1-smart-audio-concealed"><Headphones/><strong>استمع دون قراءة</strong><span>سيظهر الحرف والكلمة بعد اختيار الإجابة.</span></div>}
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
         <div className="a1-smart-audio-actions"><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><Volume2/> بطيء</button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><Play/> طبيعي</button></div>
-        <nav aria-label="المقاطع الصوتية">{ALPHABET_LISTENING_CLIPS.map((item,index)=><button type="button" key={item.letter} className={alphabetListeningClipIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}}>{item.letter}</button>)}</nav>
+        <nav aria-label="المقاطع الصوتية">{ALPHABET_LISTENING_CLIPS.map((item,index)=><button type="button" key={item.letter} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       <details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{activeA2Listening.text}</p></details>
+       {typeof selected==="number"?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{clip.letter} — {clip.word}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة</div>}
        <article className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(answeredCount/activeA2Listening.questions.length*100)}%</b></div>
         <strong dir="ltr">{question.prompt}</strong>
         {"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}
         <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
         {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}
-        {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={typeof selected!=="number"} onClick={()=>setAlphabetListeningQuestionIndex(index=>index+1)}>السؤال التالي <ChevronLeft/></button>}
+        {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={typeof selected!=="number"} onClick={()=>{const nextIndex=alphabetListeningQuestionIndex+1;cancelFrenchSpeech();setAlphabetListeningQuestionIndex(nextIndex);setAlphabetListeningClipIndex(nextIndex);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1);playAlphabetOrbitClip("normal",nextIndex)}}>السؤال التالي <ChevronLeft/></button>}
        </article>
        <footer><button type="button" onClick={advanceAlphabetPractice} disabled={answeredCount<activeA2Listening.questions.length}><CheckCircle2/> إنهاء الاستماع والعودة إلى الخريطة</button></footer>
       </section>})()}

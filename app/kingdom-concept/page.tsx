@@ -129,7 +129,7 @@ export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
   const entryTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
-  const arrivalAudioTimersRef = useRef<number[]>([]);
+  const arrivalAnimationFrameRef = useRef<number | null>(null);
   const arrivalAudioRef = useRef<HTMLAudioElement[]>([]);
   const arrivalTimelineStartedRef = useRef(false);
   const [magicalEntry, setMagicalEntry] = useState<MagicalEntry | null>(null);
@@ -154,29 +154,17 @@ export default function KingdomConceptPage() {
     return () => {
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
       if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
-      arrivalAudioTimersRef.current.forEach((timer) => window.clearTimeout(timer));
-      arrivalAudioTimersRef.current = [];
+      if (arrivalAnimationFrameRef.current !== null) window.cancelAnimationFrame(arrivalAnimationFrameRef.current);
       arrivalAudioRef.current.forEach((audio) => audio.pause());
       document.documentElement.classList.remove("kingdom-arrival-pending");
     };
   }, [router]);
 
-  const startArrivalTimeline = () => {
+  const startArrivalTimeline = (castleAnimation: Animation) => {
     if (arrivalTimelineStartedRef.current) return;
     arrivalTimelineStartedRef.current = true;
-    arrivalSoundCues.forEach((cue, index) => {
-      const timer = window.setTimeout(() => {
-        const audio = arrivalAudioRef.current[index];
-        if (!audio) return;
-        audio.pause();
-        audio.currentTime = 0;
-        audio.volume = cue.volume;
-        audio.playbackRate = cue.playbackRate;
-        void audio.play().catch(() => { /* Never block the visual entrance. */ });
-      }, cue.delay);
-      arrivalAudioTimersRef.current.push(timer);
-    });
-    arrivalTimerRef.current = window.setTimeout(() => {
+    const playedCues = new Set<number>();
+    const finishArrival = () => {
       setArrivalPlaying(false);
       document.documentElement.classList.remove("kingdom-arrival-pending");
       arrivalAudioRef.current.forEach((audio) => {
@@ -184,7 +172,35 @@ export default function KingdomConceptPage() {
         audio.currentTime = 0;
       });
       delete (window as ArrivalAudioWindow).__castleArrivalAudio;
-    }, 3900);
+    };
+
+    const animationDuration = Number(castleAnimation.effect?.getComputedTiming().duration ?? 0);
+    if (animationDuration < 100) {
+      finishArrival();
+      return;
+    }
+
+    const synchronizeAudio = () => {
+      const animationTime = typeof castleAnimation.currentTime === "number" ? castleAnimation.currentTime : 0;
+      arrivalSoundCues.forEach((cue, index) => {
+        if (playedCues.has(index) || animationTime < cue.delay) return;
+        playedCues.add(index);
+        const audio = arrivalAudioRef.current[index];
+        if (!audio) return;
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = cue.volume;
+        audio.playbackRate = cue.playbackRate;
+        void audio.play().catch(() => { /* Never block the visual entrance. */ });
+      });
+
+      if (castleAnimation.playState === "finished" || animationTime >= animationDuration) {
+        arrivalTimerRef.current = window.setTimeout(finishArrival, 550);
+        return;
+      }
+      arrivalAnimationFrameRef.current = window.requestAnimationFrame(synchronizeAudio);
+    };
+    arrivalAnimationFrameRef.current = window.requestAnimationFrame(synchronizeAudio);
   };
 
   const beginMagicalEntry = (item: Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path">, element: HTMLElement) => {
@@ -236,7 +252,11 @@ export default function KingdomConceptPage() {
           alt="واجهة القلعة"
           className="concept-hero-image"
           onAnimationStart={(event) => {
-            if (event.animationName === "conceptCastleArrival") startArrivalTimeline();
+            if (event.animationName !== "conceptCastleArrival") return;
+            const castleAnimation = event.currentTarget.getAnimations().find((animation) =>
+              animation instanceof CSSAnimation && animation.animationName === "conceptCastleArrival"
+            );
+            if (castleAnimation) startArrivalTimeline(castleAnimation);
           }}
         />
         <div className="concept-hero-shade" />

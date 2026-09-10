@@ -36,7 +36,7 @@ type CourseModule={
 type Level={id:string;label:string;ar:string;description:string;modules:CourseModule[]};
 type JourneyPhase={title:string;fr:string;description:string;moduleIds:string[]};
 type LessonStage="learn"|"practice"|"test";
-type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instruction?:string;speech?:string;explanation?:string};
+type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instruction?:string;translation?:string;speech?:string;explanation?:string};
 type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
@@ -877,29 +877,41 @@ const A1_MODULES:CourseModule[]=[
 ];
 
 const A1_ALPHABET_PRACTICE_ITEMS:Example[]=[
- {fr:"Mon prénom commence par la lettre N.",ar:"يبدأ اسمي بحرف N."},
- {fr:"Paris s’écrit P, A, R, I, S.",ar:"تُكتب باريس بالأحرف P، A، R، I، S."},
- {fr:"Quelle est la première lettre du mot bonjour ?",ar:"ما الحرف الأول في كلمة bonjour؟"},
- {fr:"La lettre qui suit C est D.",ar:"الحرف الذي يأتي بعد C هو D."},
- {fr:"La lettre qui précède M est L.",ar:"الحرف الذي يأتي قبل M هو L."},
- {fr:"Dans le mot école, la lettre E porte un accent aigu.",ar:"في كلمة école يحمل حرف E علامة النبرة الحادة."},
- {fr:"La cédille se place sous la lettre C.",ar:"توضع علامة السيدي تحت حرف C."},
- {fr:"Le W se prononce double vé.",ar:"يُنطق اسم حرف W «دوبل ڤي»."},
- {fr:"Le Y se prononce i grec.",ar:"يُنطق اسم حرف Y «إي غريك»."},
+ {fr:"Comment ça s’écrit ?",ar:"كيف تُكتب هذه الكلمة؟"},
+ {fr:"Pouvez-vous épeler ce mot, s’il vous plaît ?",ar:"هل يمكنك تهجئة هذه الكلمة، من فضلك؟"},
+ {fr:"Je vais épeler mon prénom.",ar:"سأتهجّى اسمي الأول."},
+ {fr:"Mon prénom commence par la lettre N.",ar:"يبدأ اسمي الأول بحرف N."},
+ {fr:"Quelle est la première lettre ?",ar:"ما الحرف الأول؟"},
+ {fr:"La première lettre est A.",ar:"الحرف الأول هو A."},
+ {fr:"Quelle lettre vient après B ?",ar:"ما الحرف الذي يأتي بعد B؟"},
+ {fr:"Quelle lettre vient avant D ?",ar:"ما الحرف الذي يأتي قبل D؟"},
+ {fr:"Écrivez ce mot en majuscules.",ar:"اكتب هذه الكلمة بالأحرف الكبيرة."},
+ {fr:"Écrivez ce mot en minuscules.",ar:"اكتب هذه الكلمة بالأحرف الصغيرة."},
+ {fr:"Répétez la lettre, s’il vous plaît.",ar:"كرّر الحرف، من فضلك."},
  {fr:"Il y a vingt-six lettres dans l’alphabet français.",ar:"توجد ستة وعشرون حرفًا في الأبجدية الفرنسية."}
 ];
 
 const A1_ALPHABET_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Le mot « famille » commence par la lettre ___.",speech:"Quelle est la première lettre du mot famille ?",instruction:"اختر الحرف الأول في كلمة famille.",choices:["V","F","P"],correctIndex:1,explanation:"famille تبدأ بحرف F."},
- {prompt:"Le mot « hôtel » commence par la lettre ___.",speech:"Quelle est la première lettre du mot hôtel ?",instruction:"اختر الحرف الأول في كلمة hôtel.",choices:["H","O","A"],correctIndex:0,explanation:"hôtel تبدأ بحرف H."},
- {prompt:"Quelle lettre vient après A ?",speech:"Quelle lettre vient après A ?",instruction:"اختر الحرف الذي يأتي بعد A.",choices:["C","D","B"],correctIndex:2,explanation:"ترتيب البداية هو A ثم B."},
- {prompt:"Quelle lettre vient avant Z ?",speech:"Quelle lettre vient avant Z ?",instruction:"اختر الحرف الذي يأتي قبل Z.",choices:["Y","X","W"],correctIndex:0,explanation:"ينتهي ترتيب الأبجدية بـ X ثم Y ثم Z."},
- {prompt:"L’alphabet français compte ___ lettres.",speech:"Combien de lettres compte l’alphabet français ?",instruction:"اختر عدد حروف الأبجدية الفرنسية.",choices:["24","26","28"],correctIndex:1,explanation:"تتكون الأبجدية الفرنسية من 26 حرفًا."},
- {prompt:"Comment s’appelle la lettre W ?",speech:"Comment s’appelle la lettre W ?",instruction:"اختر الاسم الفرنسي الصحيح لحرف W.",choices:["double vé","i grec","zède"],correctIndex:0,explanation:"اسم W بالفرنسية هو double vé."},
- {prompt:"Comment s’appelle la lettre Y ?",speech:"Comment s’appelle la lettre Y ?",instruction:"اختر الاسم الفرنسي الصحيح لحرف Y.",choices:["ixe","ku","i grec"],correctIndex:2,explanation:"اسم Y بالفرنسية هو i grec."},
- {prompt:"Dans « école », quel signe porte la lettre E ?",speech:"Dans le mot école, quel signe porte la lettre E ?",instruction:"اختر العلامة الموجودة فوق E في كلمة école.",choices:["un accent grave","un accent aigu","une cédille"],correctIndex:1,explanation:"é يحمل accent aigu."},
- {prompt:"La cédille se place sous quelle lettre ?",speech:"La cédille se place sous quelle lettre ?",instruction:"اختر الحرف الذي توضع تحته السيدي.",choices:["C","S","E"],correctIndex:0,explanation:"السيدي توضع تحت C لتكوين ç."},
- {prompt:"A comme ami.",speech:"A comme ami.",instruction:"اختر المعنى العربي الصحيح للكلمة المصاحبة للحرف.",choices:["مدينة","مدرسة","صديق"],correctIndex:2,explanation:"ami تعني صديق."}
+ {prompt:"Quelle est la première lettre du mot « ami » ?",translation:"ما الحرف الأول في كلمة «ami»؟",instruction:"اختر الإجابة الصحيحة.",choices:["A","E","M"],correctIndex:0,explanation:"تبدأ كلمة ami بالحرف A."},
+ {prompt:"Quelle est la première lettre du mot « bateau » ?",translation:"ما الحرف الأول في كلمة «bateau»؟",instruction:"اختر الإجابة الصحيحة.",choices:["D","B","P"],correctIndex:1,explanation:"تبدأ كلمة bateau بالحرف B."},
+ {prompt:"Quelle est la première lettre du mot « café » ?",translation:"ما الحرف الأول في كلمة «café»؟",instruction:"اختر الإجابة الصحيحة.",choices:["S","K","C"],correctIndex:2,explanation:"تبدأ كلمة café بالحرف C."},
+ {prompt:"Quelle est la première lettre du mot « dimanche » ?",translation:"ما الحرف الأول في كلمة «dimanche»؟",instruction:"اختر الإجابة الصحيحة.",choices:["D","B","T"],correctIndex:0,explanation:"تبدأ كلمة dimanche بالحرف D."},
+ {prompt:"Quelle est la première lettre du mot « école » ?",translation:"ما الحرف الأول في كلمة «école»؟",instruction:"اختر الإجابة الصحيحة.",choices:["A","E","L"],correctIndex:1,explanation:"تبدأ كلمة école بالحرف E."},
+ {prompt:"Quelle est la première lettre du mot « famille » ?",translation:"ما الحرف الأول في كلمة «famille»؟",instruction:"اختر الإجابة الصحيحة.",choices:["V","P","F"],correctIndex:2,explanation:"تبدأ كلمة famille بالحرف F."},
+ {prompt:"Quelle est la première lettre du mot « garçon » ?",translation:"ما الحرف الأول في كلمة «garçon»؟",instruction:"اختر الإجابة الصحيحة.",choices:["G","J","C"],correctIndex:0,explanation:"تبدأ كلمة garçon بالحرف G."},
+ {prompt:"Quelle est la première lettre du mot « hôtel » ?",translation:"ما الحرف الأول في كلمة «hôtel»؟",instruction:"اختر الإجابة الصحيحة.",choices:["O","H","A"],correctIndex:1,explanation:"تبدأ كلمة hôtel بالحرف H."},
+ {prompt:"Quelle est la première lettre du mot « image » ?",translation:"ما الحرف الأول في كلمة «image»؟",instruction:"اختر الإجابة الصحيحة.",choices:["J","E","I"],correctIndex:2,explanation:"تبدأ كلمة image بالحرف I."},
+ {prompt:"Quelle est la première lettre du mot « jardin » ?",translation:"ما الحرف الأول في كلمة «jardin»؟",instruction:"اختر الإجابة الصحيحة.",choices:["J","G","I"],correctIndex:0,explanation:"تبدأ كلمة jardin بالحرف J."},
+ {prompt:"Quelle est la première lettre du mot « kilo » ?",translation:"ما الحرف الأول في كلمة «kilo»؟",instruction:"اختر الإجابة الصحيحة.",choices:["Q","K","C"],correctIndex:1,explanation:"تبدأ كلمة kilo بالحرف K."},
+ {prompt:"Quelle est la première lettre du mot « livre » ?",translation:"ما الحرف الأول في كلمة «livre»؟",instruction:"اختر الإجابة الصحيحة.",choices:["R","V","L"],correctIndex:2,explanation:"تبدأ كلمة livre بالحرف L."},
+ {prompt:"Quelle est la première lettre du mot « maison » ?",translation:"ما الحرف الأول في كلمة «maison»؟",instruction:"اختر الإجابة الصحيحة.",choices:["M","N","L"],correctIndex:0,explanation:"تبدأ كلمة maison بالحرف M."},
+ {prompt:"Quelle est la première lettre du mot « nature » ?",translation:"ما الحرف الأول في كلمة «nature»؟",instruction:"اختر الإجابة الصحيحة.",choices:["M","N","R"],correctIndex:1,explanation:"تبدأ كلمة nature بالحرف N."},
+ {prompt:"Quel mot commence par la lettre O ?",translation:"أي كلمة تبدأ بالحرف O؟",instruction:"اختر الإجابة الصحيحة.",choices:["ami","école","orange"],correctIndex:2,explanation:"تبدأ كلمة orange بالحرف O."},
+ {prompt:"Quel mot commence par la lettre V ?",translation:"أي كلمة تبدأ بالحرف V؟",instruction:"اختر الإجابة الصحيحة.",choices:["vélo","livre","bateau"],correctIndex:0,explanation:"تبدأ كلمة vélo بالحرف V."},
+ {prompt:"Quelle lettre vient juste avant X ?",translation:"ما الحرف الذي يأتي مباشرة قبل X؟",instruction:"اختر الإجابة الصحيحة.",choices:["V","W","Y"],correctIndex:1,explanation:"ترتيب هذه الحروف هو V ثم W ثم X."},
+ {prompt:"Quelle lettre vient juste après X ?",translation:"ما الحرف الذي يأتي مباشرة بعد X؟",instruction:"اختر الإجابة الصحيحة.",choices:["W","Z","Y"],correctIndex:2,explanation:"ترتيب نهاية الأبجدية هو W ثم X ثم Y ثم Z."},
+ {prompt:"Comment s’appelle la lettre Z en français ?",translation:"ما اسم الحرف Z بالفرنسية؟",instruction:"اختر الإجابة الصحيحة.",choices:["zède","i grec","double vé"],correctIndex:0,explanation:"اسم الحرف Z بالفرنسية هو zède."},
+ {prompt:"Combien de lettres compte l’alphabet français ?",translation:"كم حرفًا تتكوّن منه الأبجدية الفرنسية؟",instruction:"اختر الإجابة الصحيحة.",choices:["24","26","28"],correctIndex:1,explanation:"تتكوّن الأبجدية الفرنسية من 26 حرفًا."}
 ];
 
 const A1_SOUNDS_PRACTICE_ITEMS:Example[]=[
@@ -1399,12 +1411,12 @@ const A2_REVISION_QUIZ_ITEMS:QuizQuestion[]=[
 const A1_ALPHABET_READING={
  title:"Les premières lettres",
  arTitle:"الحروف الأولى",
- text:"Amine a un ami. Lina lit un livre. Zoé voit un vélo. Les mots ami, livre et vélo commencent par des lettres différentes.",
- translation:"لدى أمين صديق. تقرأ لينا كتابًا. ترى زوي دراجة. تبدأ كلمات ami وlivre وvélo بحروف مختلفة.",
+ text:"Amine a un ami. Lina lit un livre. Zoé a un vélo. Les mots « ami », « livre » et « vélo » commencent par des lettres différentes.",
+ translation:"لدى أمين صديق. تقرأ لينا كتابًا. لدى زوي دراجة. تبدأ كلمات «ami» و«livre» و«vélo» بحروف مختلفة.",
  questions:[
-  {question:"Quelle est la première lettre du mot « ami » ?",answer:"La première lettre est A.",ar:"الحرف الأول هو A."},
-  {question:"Quel mot commence par la lettre L ?",answer:"Le mot « livre » commence par la lettre L.",ar:"تبدأ كلمة livre بحرف L."},
-  {question:"Le mot « vélo » commence-t-il par V ou Z ?",answer:"Il commence par la lettre V.",ar:"تبدأ الكلمة بحرف V."}
+  {question:"Quelle est la première lettre du mot « ami » ?",translation:"ما الحرف الأول في كلمة «ami»؟",answer:"La première lettre est A.",ar:"الحرف الأول هو A."},
+  {question:"Quel mot commence par la lettre L ?",translation:"ما الكلمة التي تبدأ بالحرف L؟",answer:"Le mot « livre » commence par la lettre L.",ar:"تبدأ كلمة «livre» بالحرف L."},
+  {question:"Le mot « vélo » commence-t-il par V ou par Z ?",translation:"هل تبدأ كلمة «vélo» بالحرف V أم بالحرف Z؟",answer:"Il commence par la lettre V.",ar:"تبدأ الكلمة بالحرف V."}
  ]
 };
 
@@ -1413,9 +1425,11 @@ const A1_ALPHABET_LISTENING={
  arTitle:"الحروف والكلمات",
  text:"A comme ami. B comme bateau. C comme café. D comme dimanche. E comme école.",
  questions:[
-  {prompt:"Quel mot accompagne la lettre B ?",choices:["Ami","Bateau","Café"],correctIndex:1},
-  {prompt:"Quelle lettre accompagne le mot café ?",choices:["A","C","E"],correctIndex:1},
-  {prompt:"Quel est le dernier mot entendu ?",choices:["Dimanche","École","Ami"],correctIndex:1}
+  {prompt:"Quel mot entendez-vous après la lettre B ?",translation:"ما الكلمة التي تسمعها بعد الحرف B؟",choices:["ami","bateau","café"],correctIndex:1},
+  {prompt:"Quelle lettre entendez-vous avant le mot « café » ?",translation:"ما الحرف الذي تسمعه قبل كلمة «café»؟",choices:["A","C","E"],correctIndex:1},
+  {prompt:"Quel mot entendez-vous après la lettre D ?",translation:"ما الكلمة التي تسمعها بعد الحرف D؟",choices:["dimanche","école","ami"],correctIndex:0},
+  {prompt:"Quelle lettre entendez-vous avant le mot « école » ?",translation:"ما الحرف الذي تسمعه قبل كلمة «école»؟",choices:["B","D","E"],correctIndex:2},
+  {prompt:"Quel est le dernier mot que vous entendez ?",translation:"ما آخر كلمة تسمعها؟",choices:["café","dimanche","école"],correctIndex:2}
  ]
 };
 
@@ -1444,9 +1458,9 @@ const A1_ALPHABET_BUILDERS=[
 ];
 
 const A1_ALPHABET_DIALOGUES=[
- {context:"Le professeur demande : « Quelle est la première lettre du mot ami ? »",prompt:"اختر الإجابة الصحيحة.",choices:["C’est A.","C’est B.","C’est M."],correctIndex:0,feedback:"تبدأ كلمة ami بالحرف A."},
- {context:"Votre camarade demande : « Quel mot commence par B ? »",prompt:"اختر الكلمة المناسبة.",choices:["Café.","Bateau.","École."],correctIndex:1,feedback:"تبدأ كلمة bateau بالحرف B."},
- {context:"On vous demande : « Comment s’appelle cette lettre : Z ? »",prompt:"اختر اسم الحرف الصحيح بالفرنسية.",choices:["Zède.","Vé.","I grec."],correctIndex:0,feedback:"اسم الحرف Z بالفرنسية هو zède."}
+ {context:"Le professeur demande : « Quelle est la première lettre du mot ami ? »",translation:"يسأل المعلّم: «ما الحرف الأول في كلمة ami؟»",prompt:"اختر الإجابة الصحيحة.",choices:["C’est A.","C’est B.","C’est M."],correctIndex:0,feedback:"تبدأ كلمة ami بالحرف A."},
+ {context:"Votre camarade demande : « Quel mot commence par la lettre B ? »",translation:"يسأل زميلك: «ما الكلمة التي تبدأ بالحرف B؟»",prompt:"اختر الإجابة الصحيحة.",choices:["Café.","Bateau.","École."],correctIndex:1,feedback:"تبدأ كلمة bateau بالحرف B."},
+ {context:"On vous demande : « Comment s’appelle la lettre Z ? »",translation:"يُطرح عليك السؤال: «ما اسم الحرف Z؟»",prompt:"اختر الإجابة الصحيحة.",choices:["Zède.","Vé.","I grec."],correctIndex:0,feedback:"اسم الحرف Z بالفرنسية هو zède."}
 ];
 
 const A1_SOUNDS_READING={
@@ -5372,7 +5386,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const previousModule=activeModuleIndex>0?level.modules[activeModuleIndex-1]:null;
  const nextModule=activeModuleIndex<level.modules.length-1?level.modules[activeModuleIndex+1]:null;
  const quizScore=quizQuestions.reduce((score,question,index)=>score+(quizAnswers[index]===question.correctIndex?1:0),0);
- const quizPassed=quizFinished&&quizScore>=7;
+ const quizPassScore=Math.ceil(quizQuestions.length*.7);
+ const quizPassed=quizFinished&&quizScore>=quizPassScore;
 
  useEffect(()=>{
   preparePracticeFeedbackAudio();
@@ -6104,7 +6119,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <details><summary>عرض الترجمة بعد المحاولة</summary><p>{activeA2Reading.translation}</p></details>
      </article>
      <div className="a2-reading-questions">
-      {activeA2Reading.questions.map((item,index)=><article key={item.question}><span>{index+1}</span><div><strong dir="ltr">{item.question}</strong><details><summary>تحقق من إجابتك</summary><p dir="ltr">{item.answer}</p><small>{item.ar}</small></details></div><button onClick={()=>void speakFrench(item.question,{rate:.76})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>)}
+      {activeA2Reading.questions.map((item,index)=><article key={item.question}><span>{index+1}</span><div><strong dir="ltr">{item.question}</strong>{"translation" in item&&typeof item.translation==="string"&&<p className="university-question-translation">{item.translation}</p>}<details><summary>تحقق من إجابتك</summary><p dir="ltr">{item.answer}</p><small>{item.ar}</small></details></div><button onClick={()=>void speakFrench(item.question,{rate:.76})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>)}
      </div>
     </section>}
     </>}
@@ -6131,6 +6146,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <article className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(answeredCount/activeA2Listening.questions.length*100)}%</b></div>
         <strong dir="ltr">{question.prompt}</strong>
+        {"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}
         <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
         {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}
         {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={typeof selected!=="number"} onClick={()=>setAlphabetListeningQuestionIndex(index=>index+1)}>السؤال التالي <ChevronLeft/></button>}
@@ -6148,7 +6164,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        {activeA2Listening.questions.map((question,index)=>{
         const selected=revisionListeningAnswers[index];
         return <article key={question.prompt}>
-         <div><i>{index+1}</i><strong dir="ltr">{question.prompt}</strong><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
+         <div><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong>{"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}</div><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
          <div className="a2-listening-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
          {typeof selected==="number"&&<small className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"حاول مرة أخرى واستمع إلى المقطع"}</small>}
         </article>;
@@ -6180,7 +6196,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
       </article>}
       {(!isA1Alphabet?revisionWorkshopPanel==="dialogue":alphabetPracticeStep===3)&&<div className="a2-dialogue-panel">
-       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong><span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===dialogue.correctIndex,()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
+       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong>{"translation" in dialogue&&typeof dialogue.translation==="string"&&<small className="university-question-translation">{dialogue.translation}</small>}<span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===dialogue.correctIndex,()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
      {isA1Alphabet&&alphabetPracticeStep===4&&<section ref={usefulSentencesRef} className={`a1-useful-sentences a1-practice-step-panel ${usefulSentencesOpen?"open":""}`}>
@@ -6234,7 +6250,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
 
     {lessonStage==="test"&&<section className="university-test-stage">
-     <div className="university-stage-heading"><ClipboardPenLine/><div><span>Exercice final</span><h3>{isEnhancedLesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>عشرة أسئلة مختلفة من هذا الدرس. تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
+     <div className="university-stage-heading"><ClipboardPenLine/><div><span>Exercice final</span><h3>{isEnhancedLesson?"التمرين النهائي":"اختبار الدرس"}</h3><p>{quizQuestions.length===20?"عشرون سؤالًا مختلفًا من هذا الدرس.":`${quizQuestions.length} أسئلة مختلفة من هذا الدرس.`} تظهر النتيجة بعد إجابة السؤال الأخير.</p></div></div>
      {!quizFinished&&quizQuestions[quizQuestionIndex]&&(()=>{
       const question=quizQuestions[quizQuestionIndex];
       const selected=quizAnswers[quizQuestionIndex];
@@ -6242,7 +6258,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="university-quiz-progress"><div><span>السؤال {quizQuestionIndex+1} من {quizQuestions.length}</span><strong>{Math.round((quizQuestionIndex+1)/quizQuestions.length*100)}%</strong></div><i><b style={{width:`${(quizQuestionIndex+1)/quizQuestions.length*100}%`}}/></i></div>
        <article className="university-current-question">
         <header>
-         <div><span>{question.instruction??"استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح."}</span><strong dir="ltr">{question.prompt}</strong></div>
+         <div><span>{question.instruction??"استمع إلى العبارة الفرنسية، ثم اختر معناها الصحيح."}</span><strong dir="ltr">{question.prompt}</strong>{question.translation&&<p className="university-question-translation">{question.translation}</p>}</div>
          <button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`نطق السؤال ${quizQuestionIndex+1}`}><Volume2/><b>نطق السؤال</b></button>
         </header>
         <div className="university-answer-list">
@@ -6261,9 +6277,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       <Trophy/>
       <span>{isEnhancedLesson?"نتيجة التمرين النهائي":"نتيجة الاختبار"}</span>
       <strong dir="ltr">{quizScore} <small>/ {quizQuestions.length}</small></strong>
-      <h3>{quizScore===10?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=7?(isEnhancedLesson?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
+      <h3>{quizScore===quizQuestions.length?"ممتاز، جميع إجاباتك صحيحة!":quizScore>=quizPassScore?(isEnhancedLesson?"أحسنت، اجتزت التمرين النهائي.":"أحسنت، اجتزت اختبار الدرس."):"راجع الدرس ثم أعد المحاولة."}</h3>
       <p>أجبت عن {quizScore} أسئلة صحيحة، و{quizQuestions.length-quizScore} أسئلة غير صحيحة.</p>
-      {isEnhancedLesson&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong><p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
+      {isEnhancedLesson&&quizScore<quizQuestions.length&&<section className="a2-quiz-review"><header><ListChecks/><div><span>Révision ciblée</span><h4>راجع إجاباتك غير الصحيحة</h4></div></header>{quizQuestions.map((question,index)=>quizAnswers[index]!==question.correctIndex?<article key={question.prompt}><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong>{question.translation&&<p className="university-question-translation">{question.translation}</p>}<p className="chosen"><span>إجابتك</span><b>{question.choices[quizAnswers[index]]}</b></p><p className="correct"><span>الإجابة الصحيحة</span><b>{question.choices[question.correctIndex]}</b></p><small>{question.explanation}</small></div><button onClick={()=>void speakFrench(question.speech??question.prompt,{rate:.74})} aria-label={`استمع إلى السؤال ${index+1}`}><Volume2/></button></article>:null)}</section>}
       <button onClick={resetQuiz}><RotateCcw/> {isEnhancedLesson?"أعد التمرين":"أعد الاختبار"}</button>
      </div>}
     </section>}

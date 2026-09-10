@@ -4895,20 +4895,20 @@ function playPracticeChoiceFeedback(correct:boolean){
   compressor.release.setValueAtTime(.18,now);
   master.connect(compressor).connect(context.destination);
   master.gain.setValueAtTime(.0001,now);
-  master.gain.exponentialRampToValueAtTime(correct?.085:.07,now+.012);
-  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.68:.34));
+  master.gain.exponentialRampToValueAtTime(correct?.14:.135,now+.012);
+  master.gain.exponentialRampToValueAtTime(.0001,now+(correct?.72:.42));
   const notes=correct
    ?[{frequency:523.25,delay:0,duration:.46},{frequency:783.99,delay:.105,duration:.5}]
-   :[{frequency:220,delay:0,duration:.14},{frequency:174.61,delay:.085,duration:.18}];
+   :[{frequency:349.23,delay:0,duration:.18},{frequency:261.63,delay:.105,duration:.23}];
   notes.forEach(({frequency,delay,duration})=>{
    const oscillator=context.createOscillator();
    const noteGain=context.createGain();
    const startsAt=now+delay;
-   oscillator.type="sine";
+   oscillator.type=correct?"sine":"triangle";
    oscillator.frequency.setValueAtTime(frequency,startsAt);
-   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.9,startsAt+duration);
+   if(!correct)oscillator.frequency.exponentialRampToValueAtTime(frequency*.82,startsAt+duration);
    noteGain.gain.setValueAtTime(.0001,startsAt);
-   noteGain.gain.exponentialRampToValueAtTime(correct?.72:.5,startsAt+.012);
+   noteGain.gain.exponentialRampToValueAtTime(correct?.82:.68,startsAt+.012);
    noteGain.gain.exponentialRampToValueAtTime(.0001,startsAt+duration);
    oscillator.connect(noteGain).connect(master);
    oscillator.start(startsAt);

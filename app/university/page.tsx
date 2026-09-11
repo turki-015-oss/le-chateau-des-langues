@@ -44,7 +44,9 @@ type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPa
 type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
-type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string};
+type VowelTableKind="oral"|"nasal";
+type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
+type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
@@ -69,8 +71,8 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
   explanation:"تُصنَّف من حيث مخرج الهواء أثناء النطق: فموي أو أنفي.",
   frExplanation:"Elles se distinguent selon le passage de l’air pendant la prononciation : par la bouche ou par la bouche et le nez.",
   branches:[
-   {fr:"Voyelles orales",ar:"الأصوات الفموية",explanation:"يخرج الهواء أثناء النطق من الفم فقط.",frExplanation:"Pendant la prononciation, l’air sort uniquement par la bouche."},
-   {fr:"Voyelles nasales",ar:"الأصوات الأنفية",explanation:"يمر الهواء أثناء النطق من الفم والأنف معًا.",frExplanation:"Pendant la prononciation, l’air passe à la fois par la bouche et par le nez."}
+   {fr:"Voyelles orales",ar:"الأصوات الفموية",explanation:"يخرج الهواء أثناء النطق من الفم فقط.",frExplanation:"Pendant la prononciation, l’air sort uniquement par la bouche.",table:"oral"},
+   {fr:"Voyelles nasales",ar:"الأصوات الأنفية",explanation:"يمر الهواء أثناء النطق من الفم والأنف معًا.",frExplanation:"Pendant la prononciation, l’air passe à la fois par la bouche et par le nez.",table:"nasal"}
   ]
  },
  {
@@ -103,6 +105,32 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
   ]
  }
 ];
+
+const A1_ORAL_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {word:"lit",ar:"سرير",ipa:"/li/",phoneme:"/i/",focus:"i",parts:["l","i","t"],image:"/images/university/a1-sounds/lit.webp",explanation:"الحرف i يعطي الصوت الفموي الصافي /i/، ولا يُنطق الحرف t في آخر الكلمة."},
+ {word:"lune",ar:"قمر",ipa:"/lyn/",phoneme:"/y/",focus:"u",parts:["l","u","ne"],image:"/images/university/a1-sounds/lune.webp",explanation:"الحرف u يعطي /y/: اللسان في وضع /i/ تقريبًا مع تدوير الشفتين."},
+ {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",phoneme:"/u/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",explanation:"المجموعة ou تعطي صوتًا واحدًا /u/ مع تدوير الشفتين إلى الأمام."},
+ {word:"été",ar:"صيف",ipa:"/e.te/",phoneme:"/e/",focus:"é",parts:["","é","té"],image:"/images/university/a1-sounds/ete.webp",explanation:"الحرف é يُنطق /e/ بصوت مغلق وواضح، ويظهر الصوت نفسه في مقطعي الكلمة."},
+ {word:"père",ar:"أب",ipa:"/pɛʁ/",phoneme:"/ɛ/",focus:"è",parts:["p","è","re"],image:"/images/university/a1-sounds/pere.webp",explanation:"الحرف è يعطي الصوت /ɛ/، وهو أكثر انفتاحًا من /e/."},
+ {word:"feu",ar:"نار",ipa:"/fø/",phoneme:"/ø/",focus:"eu",parts:["f","eu",""],image:"/images/university/a1-sounds/feu.webp",explanation:"المجموعة eu في هذه الكلمة تعطي /ø/؛ صوت مدوّر مع فتحة فم ضيقة نسبيًا."},
+ {word:"cœur",ar:"قلب",ipa:"/kœʁ/",phoneme:"/œ/",focus:"œu",parts:["c","œu","r"],image:"/images/university/a1-sounds/coeur.webp",explanation:"المجموعة œu تعطي /œ/؛ صوت مدوّر وأكثر انفتاحًا من /ø/."},
+ {word:"bateau",ar:"قارب",ipa:"/ba.to/",phoneme:"/o/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",explanation:"المجموعة eau تعطي صوتًا واحدًا /o/، ولا تُنطق حروفها منفصلة."},
+ {word:"pomme",ar:"تفاحة",ipa:"/pɔm/",phoneme:"/ɔ/",focus:"o",parts:["p","o","mme"],image:"/images/university/a1-sounds/pomme.webp",explanation:"الحرف o هنا يعطي /ɔ/، وهو صوت مدوّر وأكثر انفتاحًا من /o/."},
+ {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"/a/",focus:"a",parts:["ch","a","t"],image:"/images/university/a1-sounds/chat.webp",explanation:"الحرف a يعطي الصوت المفتوح /a/، بينما لا يُنطق الحرف t في النهاية."}
+];
+
+const A1_NASAL_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {word:"enfant",ar:"طفل",ipa:"/ɑ̃.fɑ̃/",phoneme:"/ɑ̃/",focus:"en · an",parts:["","en","fant"],image:"/images/university/a1-sounds/enfant.webp",explanation:"المجموعتان en وan تعطيان /ɑ̃/ في هذه الكلمة؛ يمر الهواء من الفم والأنف معًا."},
+ {word:"gant",ar:"قفاز",ipa:"/ɡɑ̃/",phoneme:"/ɑ̃/",focus:"an",parts:["g","an","t"],image:"/images/university/a1-sounds/gant.webp",explanation:"المجموعة an تعطي /ɑ̃/، ولا يُنطق الحرف t في نهاية الكلمة."},
+ {word:"pain",ar:"خبز",ipa:"/pɛ̃/",phoneme:"/ɛ̃/",focus:"ain",parts:["p","ain",""],image:"/images/university/a1-sounds/pain.webp",explanation:"المجموعة ain تعطي الصوت الأنفي /ɛ̃/ كوحدة صوتية واحدة."},
+ {word:"lapin",ar:"أرنب",ipa:"/la.pɛ̃/",phoneme:"/ɛ̃/",focus:"in",parts:["lap","in",""],image:"/images/university/a1-sounds/lapin.webp",explanation:"المجموعة in في آخر الكلمة تعطي الصوت الأنفي /ɛ̃/."},
+ {word:"pont",ar:"جسر",ipa:"/pɔ̃/",phoneme:"/ɔ̃/",focus:"on",parts:["p","on","t"],image:"/images/university/a1-sounds/pont.webp",explanation:"المجموعة on تعطي /ɔ̃/، ولا يُنطق الحرف t في نهاية الكلمة."},
+ {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",phoneme:"/ɔ̃/",focus:"on",parts:["mais","on",""],image:"/images/university/a1-sounds/maison.webp",explanation:"المجموعة on في المقطع الأخير تعطي الصوت الأنفي /ɔ̃/."},
+ {word:"parfum",ar:"عطر",ipa:"/paʁ.fœ̃/",phoneme:"/œ̃/",focus:"um",parts:["parf","um",""],image:"/images/university/a1-sounds/parfum.webp",explanation:"المجموعة um تعطي /œ̃/ في النطق المعياري؛ وقد يقترب هذا الصوت من /ɛ̃/ في نطق فرنسي حديث شائع."},
+ {word:"brun",ar:"بني",ipa:"/bʁœ̃/",phoneme:"/œ̃/",focus:"un",parts:["br","un",""],image:"/images/university/a1-sounds/brun.webp",explanation:"المجموعة un تعطي /œ̃/ في النطق المعياري؛ وقد تُنطق قريبة من /ɛ̃/ عند بعض المتحدثين."}
+];
+
+const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES};
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
@@ -5989,7 +6017,35 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <div className="a1-vowel-branch-content">
               <div><p>{branch.explanation}</p><small dir="ltr">{branch.frExplanation}</small></div>
               <button type="button" onClick={()=>void speakFrench(`${branch.fr}. ${branch.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${branch.fr}`}><Volume2/><span>نطق الشرح</span></button>
-              <p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الأصوات والأمثلة المصوّرة هنا.</p>
+              {branch.table?<div className={`a1-vowel-example-table ${branch.table}`} role="table" aria-label={`جدول ${branch.ar}`}>
+               <div className="a1-vowel-example-table-title">
+                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong><small>{A1_VOWEL_TABLES[branch.table].length} أمثلة مصوّرة مع النطق والشرح</small></div>
+                <Layers3/>
+               </div>
+               <div className="a1-vowel-example-table-head" role="row">
+                <span role="columnheader">الصورة والنطق</span><span role="columnheader">الكلمة والصوت</span><span role="columnheader">شرح المثال</span><span role="columnheader">استمع</span>
+               </div>
+               <div className="a1-vowel-example-table-body">
+                {A1_VOWEL_TABLES[branch.table].map(example=><article key={`${branch.table}-${example.word}`} className="a1-vowel-example-row" role="row">
+                 <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`} role="cell">
+                  <img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/>
+                  <span><Volume2/> اضغط للنطق</span>
+                 </button>
+                 <div className="a1-vowel-example-identity" role="cell">
+                  <span className="a1-vowel-phoneme" dir="ltr">{example.phoneme}</span>
+                  <strong dir="ltr">{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong>
+                  <span dir="ltr">{example.ipa}</span>
+                  <b>{example.ar}</b>
+                  <em dir="ltr">{example.focus}</em>
+                 </div>
+                 <p role="cell">{example.explanation}</p>
+                 <div className="a1-vowel-example-audio" role="cell">
+                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.76})}><Volume2/><span><b>طبيعي</b><small>Normal</small></span></button>
+                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.5})}><AudioLines/><span><b>بطيء</b><small>Lent</small></span></button>
+                 </div>
+                </article>)}
+               </div>
+              </div>:<p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الأصوات والأمثلة المصوّرة هنا.</p>}
              </div>
             </details>)}
            </div>

@@ -41,6 +41,9 @@ type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
+type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
+type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
+type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -56,6 +59,40 @@ const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"on",word:"bonjour",ar:"مرحبًا"},
  {letter:"ch",word:"chat",ar:"قط"},
  {letter:"ç → s",word:"garçon",ar:"صبي"}
+];
+
+const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
+ {
+  fr:"Les sons du français",ar:"أصوات اللغة الفرنسية",
+  intro:"ابدأ بالصوت الذي تسمعه، ثم لاحظ الحروف التي كتبته. زر النطق الطبيعي يقدّم الكلمة كما يقولها الفرنسي، والبطيء يفصلها بوضوح للتعلّم.",
+  groups:[
+   {fr:"Le son /u/",ar:"الصوت /u/",note:"صوت شفوي مستدير وقصير؛ يُكتب هنا بالحرفين ou.",examples:[
+    {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",rule:"ضمّ الشفتين وانطق /u/ من دون إطالة زائدة."}
+   ]},
+   {fr:"Le son /wa/",ar:"الصوت /wa/",note:"يتحرك النطق سريعًا من /w/ إلى /a/، وغالبًا تكتبه المجموعة oi.",examples:[
+    {word:"voiture",ar:"سيارة",ipa:"/vwa.tyʁ/",focus:"oi",parts:["v","oi","ture"],image:"/images/university/a1-sounds/voiture.webp",rule:"انطق oi مقطعًا واحدًا /wa/، وليس حرفين منفصلين."}
+   ]},
+   {fr:"Les sons nasaux",ar:"الأصوات الأنفية",note:"لا ننطق n منفصلة؛ يمر جزء من الهواء عبر الأنف ويتغير شكل الصوت.",examples:[
+    {word:"pain",ar:"خبز",ipa:"/pɛ̃/",focus:"ain",parts:["p","ain",""],image:"/images/university/a1-sounds/pain.webp",rule:"المجموعة ain تصنع الصوت الأنفي /ɛ̃/، ولا نسمع n مستقلة."},
+    {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",focus:"on",parts:["mais","on",""],image:"/images/university/a1-sounds/maison.webp",rule:"في نهاية maison تصنع on الصوت الأنفي /ɔ̃/."}
+   ]}
+  ]
+ },
+ {
+  fr:"Les groupes de lettres",ar:"تركيبات الحروف",
+  intro:"قد تجتمع حروف متعددة لتنتج صوتًا واحدًا. احفظ المجموعة داخل كلمة وصورة، لا كحروف منفصلة.",
+  groups:[
+   {fr:"Voyelles combinées",ar:"حروف علة مجتمعة",note:"المجموعة eau تُنطق عادة مثل /o/ في هذا الموضع.",examples:[
+    {word:"bateau",ar:"قارب",ipa:"/ba.to/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",rule:"الحروف الثلاثة eau تعطي صوتًا واحدًا /o/."}
+   ]},
+   {fr:"Consonnes combinées",ar:"حروف ساكنة مجتمعة",note:"عندما تجتمع c وh نحصل غالبًا على الصوت /ʃ/ المشابه لصوت «ش».",examples:[
+    {word:"chat",ar:"قط",ipa:"/ʃa/",focus:"ch",parts:["","ch","at"],image:"/images/university/a1-sounds/chat.webp",rule:"انطق ch صوتًا واحدًا /ʃ/، ولا تنطق c ثم h."}
+   ]},
+   {fr:"La cédille",ar:"حرف c مع العلامة السفلية",note:"تجعل العلامة ¸ الحرف ç يُنطق /s/ قبل a وo وu.",examples:[
+    {word:"garçon",ar:"صبي",ipa:"/ɡaʁ.sɔ̃/",focus:"ç",parts:["gar","ç","on"],image:"/images/university/a1-sounds/garcon.webp",rule:"في garçon يُنطق ç مثل /s/، ثم تُنطق on صوتًا أنفيًا."}
+   ]}
+  ]
+ }
 ];
 
 const section=(title:string,subtitle:string,explanation:string,points:string[],examples:Example[]):LessonSection=>({
@@ -5893,7 +5930,49 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      <div className="university-letter-focus">
       <div><span>الحرف المحدد</span><b>{activeLetter}</b></div>
       <p>اضغط مرة أخرى وكرّر اسم الحرف بصوت مرتفع، ثم استمع إلى الكلمة المرتبطة به.</p>
-      <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[item[0]]??item[1],item[2]],460,{rate:LETTER_SPEECH_RATES[item[0]]??.66})}}><Play/> نطق الحرف ثم الكلمة</button>
+     <button onClick={()=>{const item=ALPHABET.find(value=>value[0]===activeLetter)!;void speakFrenchSequence([LETTER_SPEECH_OVERRIDES[item[0]]??item[1],item[2]],460,{rate:LETTER_SPEECH_RATES[item[0]]??.66})}}><Play/> نطق الحرف ثم الكلمة</button>
+     </div>
+    </section>}
+
+    {activeModule.id==="sounds"&&<section className="a1-sounds-learning-studio">
+     <div className="university-subheading a1-sounds-learning-heading">
+      <div><span>Studio phonétique interactif</span><h3>الصوت أولًا، ثم الحروف التي تكتبه</h3><p>افتح القسم، ثم اختر المجموعة وشاهد الكلمة واسمعها بالنطق الطبيعي أو البطيء.</p></div>
+      <AudioLines/>
+     </div>
+     <div className="a1-sounds-learning-sections">
+      {A1_SOUNDS_LEARNING_SECTIONS.map((sectionItem,sectionIndex)=><details key={sectionItem.fr} className="a1-sounds-learning-section" open={sectionIndex===0}>
+       <summary>
+        <span><i>{String(sectionIndex+1).padStart(2,"0")}</i><AudioLines/></span>
+        <div><strong dir="ltr">{sectionItem.fr}</strong><b>{sectionItem.ar}</b><small>{sectionItem.groups.length} فروع تعليمية</small></div>
+        <ChevronDown/>
+       </summary>
+       <div className="a1-sounds-learning-section-body">
+        <p>{sectionItem.intro}</p>
+        <div className="a1-sounds-learning-groups">
+         {sectionItem.groups.map((group,groupIndex)=><details key={group.fr} className="a1-sounds-learning-group" open={sectionIndex===0&&groupIndex===0}>
+          <summary><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-sounds-learning-group-body">
+           <p>{group.note}</p>
+           <div className="a1-sounds-example-grid">
+            {group.examples.map(example=><article key={example.word} className="a1-sounds-example-card">
+             <figure><img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/></figure>
+             <div className="a1-sounds-example-copy">
+              <div className="a1-sounds-example-word" dir="ltr"><strong>{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong><span>{example.ipa}</span></div>
+              <b>{example.ar}</b>
+              <p>{example.rule}</p>
+              <div className="a1-sounds-example-actions">
+               <button type="button" className="primary" onClick={()=>void speakFrench(example.word,{rate:.76})}><Volume2/><span><b>طبيعي</b><small>Prononciation</small></span></button>
+               <button type="button" onClick={()=>void speakFrench(example.word,{rate:.5})}><AudioLines/><span><b>بطيء</b><small>Lentement</small></span></button>
+              </div>
+             </div>
+             <span className="a1-sounds-focus-badge" dir="ltr">{example.focus}</span>
+            </article>)}
+           </div>
+          </div>
+         </details>)}
+        </div>
+       </div>
+      </details>)}
      </div>
     </section>}
 
@@ -6183,7 +6262,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      <p className="university-phrase-note">{friendsPage.description} جميع الأمثلة اجتماعية مع الأصدقاء ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
-    <div className="university-sections">
+    {activeModule.id!=="sounds"&&<div className="university-sections">
      {activeModule.sections.map((item,index)=>{const SectionIcon=activeModule.id==="revision"?REVISION_SECTION_ICONS[index]:undefined;const isOpen=openSectionIndex===index;return <section id={`university-lesson-section-${index}`} key={item.title} className={`university-explanation ${isOpen?"open":""}`}>
       <div className="university-explanation-title">
        <button className="university-section-toggle" onClick={()=>toggleLessonSection(index)} aria-expanded={isOpen} aria-controls={`university-lesson-section-body-${index}`}>
@@ -6207,7 +6286,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       </div>
      </section>})}
-    </div>
+    </div>}
     {isEnhancedLesson&&<section className="a2-reading-workshop">
      <div className="university-stage-heading"><BookOpen/><div><span>Lire et comprendre</span><h3>قراءة موجهة</h3><p>اقرأ النص أولًا دون ترجمة، ثم أجب عن الأسئلة واكشف الحل بعد المحاولة.</p></div></div>
      <article className="a2-reading-text">

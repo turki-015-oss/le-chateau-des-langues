@@ -116,7 +116,6 @@ function TiltCard({ item, index, onEnter }: { item: ConceptDestination; index: n
           <img src={item.image} alt="" className="concept-card-image" />
         </span>
         <span className="concept-card-copy">
-          <small>DESTINATION</small>
           <strong dir="ltr">{item.fr}</strong>
           <b>{item.ar}</b>
           <em>{item.description}</em>

@@ -63,7 +63,7 @@ const A1_SOUNDS_LISTENING_CLIPS=[
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
-  fr:"Les sons du français",ar:"أصوات اللغة الفرنسية",
+  fr:"Les voyelles et les sons vocaliques",ar:"حروف العلة والأصوات المتحركة",
   intro:"ابدأ بالصوت الذي تسمعه، ثم لاحظ الحروف التي كتبته. زر النطق الطبيعي يقدّم الكلمة كما يقولها الفرنسي، والبطيء يفصلها بوضوح للتعلّم.",
   groups:[
    {fr:"Le son /u/",ar:"الصوت /u/",note:"صوت شفوي مستدير وقصير؛ يُكتب هنا بالحرفين ou.",examples:[

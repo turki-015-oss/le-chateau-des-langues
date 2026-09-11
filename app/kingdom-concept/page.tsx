@@ -36,7 +36,7 @@ type ConceptDestination = {
 };
 
 type MagicalEntry = Pick<ConceptDestination, "id" | "fr" | "ar" | "image" | "path"> & { originX: number; originY: number };
-type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[] };
+type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[]; ready: Promise<void> };
 type ArrivalAudioWindow = Window & { __castleArrivalAudioRuntime?: ArrivalAudioRuntime };
 
 const arrivalSoundCues = [
@@ -130,6 +130,7 @@ export default function KingdomConceptPage() {
   const destinationRailRef = useRef<HTMLDivElement>(null);
   const entryTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
+  const arrivalPreparationTimerRef = useRef<number | null>(null);
   const arrivalAnimationFrameRef = useRef<number | null>(null);
   const arrivalAudioRuntimeRef = useRef<ArrivalAudioRuntime | null>(null);
   const arrivalAudioSourcesRef = useRef<AudioBufferSourceNode[]>([]);
@@ -139,6 +140,7 @@ export default function KingdomConceptPage() {
 
   useEffect(() => {
     ["/castle", "/university", "/library", ...destinations.map(({ path }) => path)].forEach((path) => router.prefetch(path));
+    let disposed = false;
     let arrivalRequested = false;
     try {
       arrivalRequested = sessionStorage.getItem("castle-kingdom-arrival") === "1";
@@ -146,15 +148,32 @@ export default function KingdomConceptPage() {
     } catch { /* Direct visits remain available when storage is restricted. */ }
     if (arrivalRequested) {
       arrivalTimelineStartedRef.current = false;
-      setArrivalPlaying(true);
-      arrivalAudioRuntimeRef.current = (window as ArrivalAudioWindow).__castleArrivalAudioRuntime ?? null;
-      document.documentElement.classList.add("kingdom-arrival-pending");
+      const runtime = (window as ArrivalAudioWindow).__castleArrivalAudioRuntime ?? null;
+      arrivalAudioRuntimeRef.current = runtime;
+      let arrivalStarted = false;
+      const beginArrival = () => {
+        if (arrivalStarted || disposed) return;
+        arrivalStarted = true;
+        if (arrivalPreparationTimerRef.current !== null) window.clearTimeout(arrivalPreparationTimerRef.current);
+        document.documentElement.classList.remove("kingdom-arrival-loading");
+        setArrivalPlaying(true);
+        document.documentElement.classList.add("kingdom-arrival-pending");
+      };
+      if (runtime && runtime.buffers.length < arrivalSoundCues.length) {
+        void runtime.ready.then(beginArrival);
+        arrivalPreparationTimerRef.current = window.setTimeout(beginArrival, 5000);
+      } else {
+        beginArrival();
+      }
     } else {
+      document.documentElement.classList.remove("kingdom-arrival-loading");
       document.documentElement.classList.remove("kingdom-arrival-pending");
     }
     return () => {
+      disposed = true;
       if (entryTimerRef.current !== null) window.clearTimeout(entryTimerRef.current);
       if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
+      if (arrivalPreparationTimerRef.current !== null) window.clearTimeout(arrivalPreparationTimerRef.current);
       if (arrivalAnimationFrameRef.current !== null) window.cancelAnimationFrame(arrivalAnimationFrameRef.current);
       arrivalAudioSourcesRef.current.forEach((source) => {
         try { source.stop(); } catch { /* A finished source is already stopped. */ }
@@ -164,6 +183,7 @@ export default function KingdomConceptPage() {
         void runtime.context.close().catch(() => { /* The context may already be closed. */ });
       }
       document.documentElement.classList.remove("kingdom-arrival-pending");
+      document.documentElement.classList.remove("kingdom-arrival-loading");
     };
   }, [router]);
 

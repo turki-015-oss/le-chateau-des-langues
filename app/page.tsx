@@ -28,7 +28,7 @@ const arrivalSoundSources = [
   "/audio/cinematic-entry/page-turn.wav",
 ];
 
-type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[] };
+type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[]; ready: Promise<void> };
 type ArrivalAudioWindow = Window & {
   webkitAudioContext?: typeof AudioContext;
   __castleArrivalAudioRuntime?: ArrivalAudioRuntime;
@@ -37,15 +37,19 @@ type ArrivalAudioWindow = Window & {
 export default function EntryPage() {
   const router = useRouter();
   const arrivalAudioRuntimeRef = useRef<ArrivalAudioRuntime | null>(null);
-  const arrivalAudioLoadingRef = useRef<Promise<void> | null>(null);
   const isEnteringRef = useRef(false);
 
-  useEffect(() => {
+  const prepareArrivalAudio = () => {
+    if (arrivalAudioRuntimeRef.current) return arrivalAudioRuntimeRef.current;
     const AudioContextConstructor = window.AudioContext ?? (window as ArrivalAudioWindow).webkitAudioContext;
-    if (!AudioContextConstructor) return;
-    const runtime: ArrivalAudioRuntime = { context: new AudioContextConstructor(), buffers: [] };
+    if (!AudioContextConstructor) return null;
+    const runtime: ArrivalAudioRuntime = {
+      context: new AudioContextConstructor(),
+      buffers: [],
+      ready: Promise.resolve(),
+    };
     arrivalAudioRuntimeRef.current = runtime;
-    arrivalAudioLoadingRef.current = Promise.all(arrivalSoundSources.map(async (source) => {
+    runtime.ready = Promise.all(arrivalSoundSources.map(async (source) => {
       const response = await fetch(source);
       if (!response.ok) throw new Error(`Unable to preload arrival sound: ${source}`);
       return runtime.context.decodeAudioData(await response.arrayBuffer());
@@ -54,6 +58,12 @@ export default function EntryPage() {
     }).catch(() => {
       runtime.buffers = [];
     });
+    return runtime;
+  };
+
+  useEffect(() => {
+    const runtime = prepareArrivalAudio();
+    if (!runtime) return;
 
     return () => {
       if (isEnteringRef.current) return;
@@ -61,13 +71,13 @@ export default function EntryPage() {
     };
   }, []);
 
-  const enterKingdom = async () => {
+  const enterKingdom = () => {
     if (isEnteringRef.current) return;
     isEnteringRef.current = true;
 
     // Resume Web Audio inside the swipe gesture. Unlike media-element priming,
     // this is silent on iOS and still permits precise audible cues after routing.
-    const runtime = arrivalAudioRuntimeRef.current;
+    const runtime = arrivalAudioRuntimeRef.current ?? prepareArrivalAudio();
     if (runtime) {
       // A one-sample silent Web Audio source unlocks the context during the
       // user's gesture without leaking any of the real cinematic sounds.
@@ -78,16 +88,12 @@ export default function EntryPage() {
       // Safari can leave resume() pending even though the gesture was accepted.
       // Never let that browser promise block navigation.
       void runtime.context.resume().catch(() => { /* The kingdom retries the primed context. */ });
-      await Promise.race([
-        arrivalAudioLoadingRef.current ?? Promise.resolve(),
-        new Promise<void>((resolve) => window.setTimeout(resolve, 800)),
-      ]);
       if (runtime.context.state !== "closed") {
         (window as ArrivalAudioWindow).__castleArrivalAudioRuntime = runtime;
       }
     }
     try { sessionStorage.setItem("castle-kingdom-arrival", "1"); } catch { /* Navigation still works when storage is restricted. */ }
-    document.documentElement.classList.add("kingdom-arrival-pending");
+    document.documentElement.classList.add("kingdom-arrival-loading");
     router.push("/kingdom");
   };
 

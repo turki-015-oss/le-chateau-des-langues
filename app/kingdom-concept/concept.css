@@ -314,6 +314,9 @@
 @media(prefers-reduced-motion:reduce){.concept-magic-entry,.concept-magic-ring,.concept-magic-building{animation-duration:.01ms}.concept-magic-entry:before,.concept-magic-particles{display:none}}
 
 /* Seamless kingdom arrival: the live scene assembles itself after the entrance slider. */
+.kingdom-arrival-loading,
+.kingdom-arrival-loading body{height:100dvh;overflow:hidden;background:#8bb177}
+.kingdom-arrival-loading .kingdom-concept{height:100dvh;overflow:hidden;opacity:0}
 .kingdom-arrival-pending,
 .kingdom-arrival-pending body,
 .kingdom-arrival-pending .kingdom-concept,

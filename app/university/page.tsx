@@ -192,7 +192,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"sounds",title:"Les sons essentiels",ar:"الأصوات الأساسية",icon:AudioLines,
+  id:"sounds",title:"Les sons et les groupes de lettres",ar:"الأصوات ومجموعات الحروف",icon:AudioLines,
   description:"قواعد النطق الأولى: الحروف المركبة، الحروف الصامتة، والربط بين الكلمات.",
   sections:[
    section("Voyelles et groupes de lettres","الحركات ومجموعات الحروف","في الفرنسية قد تصنع عدة حروف صوتًا واحدًا. معرفة المجموعات المتكررة تجعل قراءة الكلمات الجديدة أسهل بكثير.",[

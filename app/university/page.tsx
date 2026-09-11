@@ -1543,15 +1543,20 @@ const A1_SOUNDS_DICTATION=[
 ];
 
 const A1_SOUNDS_BUILDERS=[
- {tokens:["jour.","dans","ou","le son","entend","On"],answer:["On","entend","le son","ou","dans","jour."],ar:"نسمع صوت ou في كلمة jour."},
- {tokens:["bonjour.","dans","on","le son","entend","On"],answer:["On","entend","le son","on","dans","bonjour."],ar:"نسمع صوت on في كلمة bonjour."},
- {tokens:["trois.","dans","oi","le son","entend","On"],answer:["On","entend","le son","oi","dans","trois."],ar:"نسمع صوت oi في كلمة trois."}
+ {tokens:["« rouge ».","dans","« ou »","le groupe","entend","On"],answer:["On","entend","le groupe","« ou »","dans","« rouge »."],ar:"نسمع مجموعة الحروف ou في كلمة rouge."},
+ {tokens:["« voiture ».","dans","/wa/","se prononce","« oi »","Le groupe"],answer:["Le groupe","« oi »","se prononce","/wa/","dans","« voiture »."],ar:"تُنطق مجموعة الحروف oi بالصوت ‎/wa/‎ في كلمة voiture."},
+ {tokens:["« bateau ».","dans","/o/","se prononce","« eau »","Le groupe"],answer:["Le groupe","« eau »","se prononce","/o/","dans","« bateau »."],ar:"تُنطق مجموعة الحروف eau بالصوت ‎/o/‎ في كلمة bateau."},
+ {tokens:["« bonjour ».","dans","« on »","nasal","est","Le son"],answer:["Le son","nasal","est","« on »","dans","« bonjour »."],ar:"الصوت الأنفي في كلمة bonjour مكتوب on."},
+ {tokens:["« chat ».","dans","/ʃ/","se prononce","« ch »","Le groupe"],answer:["Le groupe","« ch »","se prononce","/ʃ/","dans","« chat »."],ar:"تُنطق مجموعة الحروف ch بالصوت ‎/ʃ/‎ في كلمة chat."},
+ {tokens:["« garçon ».","dans","/s/","se prononce","« ç »","La lettre"],answer:["La lettre","« ç »","se prononce","/s/","dans","« garçon »."],ar:"يُنطق الحرف ç بالصوت ‎/s/‎ في كلمة garçon."}
 ];
 
 const A1_SOUNDS_DIALOGUES=[
- {context:"Le professeur demande : « Quel son entendez-vous dans rouge ? »",prompt:"اختر الصوت الصحيح.",choices:["Le son ou.","Le son oi.","Le son in."],correctIndex:0,feedback:"تحتوي rouge على صوت ou."},
- {context:"Votre camarade demande : « Quel mot contient le son oi ? »",prompt:"اختر الكلمة المناسبة.",choices:["Voiture.","Bonjour.","Pain."],correctIndex:0,feedback:"تحتوي voiture على صوت oi."},
- {context:"On vous demande : « Quel son entendez-vous dans pain ? »",prompt:"اختر الصوت الصحيح.",choices:["Le son ch.","Le son in.","Le son ou."],correctIndex:1,feedback:"يُسمع في pain الصوت الأنفي المكتوب in."}
+ {context:"Quel groupe de lettres entendez-vous dans « rouge » ?",translation:"ما مجموعة الحروف التي تسمعها في كلمة «rouge»؟",prompt:"اختر الإجابة المناسبة.",choices:["J’entends le groupe « ou ».","J’entends le groupe « oi ».","J’entends le groupe « on »."],correctIndex:0,feedback:"تحتوي كلمة rouge على المجموعة ou."},
+ {context:"Comment se prononce le groupe « oi » dans « voiture » ?",translation:"كيف تُنطق مجموعة الحروف «oi» في كلمة «voiture»؟",prompt:"اختر الإجابة المناسبة.",choices:["Elle se prononce /u/.","Elle se prononce /wa/.","Elle se prononce /o/."],correctIndex:1,feedback:"تُنطق oi بالصوت ‎/wa/‎ في كلمة voiture."},
+ {context:"Quelle graphie représente le son nasal /ɛ̃/ dans « pain » ?",translation:"ما الكتابة التي تمثل الصوت الأنفي في كلمة «pain»؟",prompt:"اختر الإجابة المناسبة.",choices:["La graphie « on ».","La graphie « an ».","La graphie « ain »."],correctIndex:2,feedback:"يُمثَّل الصوت الأنفي ‎/ɛ̃/‎ بالمجموعة ain في كلمة pain."},
+ {context:"Quelle lettre finale est muette dans « petit » ?",translation:"ما الحرف الأخير الصامت في كلمة «petit»؟",prompt:"اختر الإجابة المناسبة.",choices:["La lettre t.","La lettre i.","La lettre p."],correctIndex:0,feedback:"لا يُنطق الحرف t الأخير عادةً في كلمة petit."},
+ {context:"Quel son entendez-vous pendant la liaison dans « les amis » ?",translation:"ما الصوت الذي تسمعه عند الربط في عبارة «les amis»؟",prompt:"اختر الإجابة المناسبة.",choices:["Le son /s/.","Le son /z/.","Le son /t/."],correctIndex:1,feedback:"تُنطق s في les بالصوت ‎/z/‎ عند الربط مع amis."}
 ];
 
 const A1_GREETINGS_READING={
@@ -5098,6 +5103,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderItem=activeA2Builders[revisionBuilderIndex];
  const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
+ const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
+ const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
  const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
@@ -5477,6 +5484,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setRevisionDictationIndex(0);
   setRevisionDictationText("");
   setRevisionDictationChecked(false);
+  setRevisionBuilderIndex(0);
+  setRevisionBuilderSelection([]);
+  setRevisionBuilderChecked(false);
+  setRevisionDialogueAnswers({});
+  setUsefulSentencesOpen(false);
   setRevisionBuilderIndex(0);
   setRevisionBuilderSelection([]);
   setRevisionBuilderChecked(false);
@@ -6270,14 +6282,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <h4>رتّب الكلمات لتكوين جملة صحيحة</h4><p>{revisionBuilderItem.ar}</p>
        <div className="a2-built-sentence" dir="ltr">{revisionBuilderWords.length?revisionBuilderSelection.map((tokenIndex,position)=><button key={`${tokenIndex}-${position}`} onClick={()=>{setRevisionBuilderSelection(current=>current.filter((_,itemIndex)=>itemIndex!==position));setRevisionBuilderChecked(false)}}>{revisionBuilderItem.tokens[tokenIndex]}</button>):<span>اضغط على الكلمات بالترتيب…</span>}</div>
        <div className="a2-word-bank" dir="ltr">{revisionBuilderItem.tokens.map((token,index)=><button key={`${token}-${index}`} disabled={revisionBuilderSelection.includes(index)} onClick={()=>{setRevisionBuilderSelection(current=>[...current,index]);setRevisionBuilderChecked(false)}}>{token}</button>)}</div>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<activeA2Builders.length-1&&<button className="secondary" onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionBuilderChecked(true)} disabled={revisionBuilderSelection.length!==revisionBuilderItem.tokens.length}><CheckCircle2/> تحقق</button><button className="secondary" onClick={()=>{setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}><RotateCcw/> ابدأ من جديد</button>{revisionBuilderIndex<activeA2Builders.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionBuilderCorrect} onClick={()=>{setRevisionBuilderIndex(index=>index+1);setRevisionBuilderSelection([]);setRevisionBuilderChecked(false)}}>الجملة التالية <ChevronLeft/></button>}</div>
        {revisionBuilderChecked&&<div className={`a2-workshop-feedback ${revisionBuilderCorrect?"correct":"wrong"}`}><strong>{revisionBuilderCorrect?"ترتيب صحيح.":"الترتيب يحتاج إلى مراجعة."}</strong>{!revisionBuilderCorrect&&<p dir="ltr">{revisionBuilderItem.answer.join(" ")}</p>}</div>}
       </article>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="dialogue":alphabetPracticeStep===3)&&<div className="a2-dialogue-panel">
-       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong>{"translation" in dialogue&&typeof dialogue.translation==="string"&&<small className="university-question-translation">{dialogue.translation}</small>}<span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===dialogue.correctIndex,()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
+       {activeA2Dialogues.map((dialogue,index)=>{const selected=revisionDialogueAnswers[index];return <article key={dialogue.context}><div className="a2-dialogue-context"><i>{index+1}</i><div><strong dir="ltr">{dialogue.context}</strong>{"translation" in dialogue&&typeof dialogue.translation==="string"&&<small className="university-question-translation">{dialogue.translation}</small>}<span>{dialogue.prompt}</span></div><button onClick={()=>void speakFrench(isA1OrbitLesson?dialogue.context:dialogue.context.replace(/^.*?«|»$/g,""),{rate:.72})} aria-label={`استمع إلى الموقف ${index+1}`}><Volume2/></button></div><div className="a2-dialogue-choices" dir="ltr">{dialogue.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===dialogue.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===dialogue.correctIndex,()=>setRevisionDialogueAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>{typeof selected==="number"&&<p className={selected===dialogue.correctIndex?"correct":"wrong"}><strong>{selected===dialogue.correctIndex?"اختيار مناسب.":"هذا الرد لا يناسب الموقف."}</strong> {dialogue.feedback}</p>}</article>})}
       </div>}
      </section>}
-     {isA1Alphabet&&alphabetPracticeStep===4&&<section ref={usefulSentencesRef} className={`a1-useful-sentences a1-practice-step-panel ${usefulSentencesOpen?"open":""}`}>
+     {isA1OrbitLesson&&alphabetPracticeStep===4&&<section ref={usefulSentencesRef} className={`a1-useful-sentences a1-practice-step-panel ${usefulSentencesOpen?"open":""}`}>
       <button type="button" className="a1-useful-sentences-toggle" onClick={toggleUsefulSentences} aria-expanded={usefulSentencesOpen} aria-controls="a1-useful-sentences-list">
        <span><MessageCircle/></span><div><small>Phrases utiles</small><h3>جمل مفيدة</h3></div><ChevronDown/>
       </button>
@@ -6287,7 +6299,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <i>{String(index+1).padStart(2,"0")}</i>
        <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
        <div className="university-dual-audio">
-        {isA1Alphabet?<>
+        {isA1OrbitLesson?<>
          <button onClick={()=>void playPedagogicalFrench(example.speech.join(" "))} aria-label={`استمع إلى الجملة الفرنسية بنطق طبيعي: ${example.fr}`} title="نطق طبيعي"><Volume2/><b>عادي</b></button>
          <button onClick={()=>void playPedagogicalFrench(example.speech.join(" "),true)} aria-label={`استمع إلى الجملة الفرنسية بنطق بطيء: ${example.fr}`} title="نطق بطيء"><Gauge/><b>بطيء</b></button>
         </>:<button onClick={()=>playVocabularySpeech(example.speech)} aria-label={`استمع إلى الجملة الفرنسية ${example.speech.join(" ثم ")}`}><Volume2/><b>FR</b></button>}
@@ -6325,7 +6337,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      {isA1OrbitLesson?<div className="a1-practice-navigation">
       <button type="button" className="map" onClick={closeAlphabetPractice}><Orbit/> خريطة التدريب</button>
       <button type="button" onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep-1)} disabled={alphabetPracticeStep===0}><ChevronRight/> السابق</button>
-      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" disabled={alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect)} onClick={advanceAlphabetPractice}>إنهاء والعودة للخريطة <Orbit/></button>:<button type="button" className="primary" disabled={alphabetWritingIndex<orbitWritingTranslations.length-1||alphabetWritingState!=="correct"} onClick={()=>setLessonStage("test")}><ClipboardPenLine/> إنهاء والانتقال للتمرين النهائي <ChevronLeft/></button>}
+      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" disabled={orbitStepIncomplete} onClick={advanceAlphabetPractice}>إنهاء والعودة للخريطة <Orbit/></button>:<button type="button" className="primary" disabled={alphabetWritingIndex<orbitWritingTranslations.length-1||alphabetWritingState!=="correct"} onClick={()=>setLessonStage("test")}><ClipboardPenLine/> إنهاء والانتقال للتمرين النهائي <ChevronLeft/></button>}
      </div>:<button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>}
      </div>}
     </section>}

@@ -5097,6 +5097,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
+ const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);
@@ -6017,35 +6018,45 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <div className="a1-vowel-branch-content">
               <div><p>{branch.explanation}</p><small dir="ltr">{branch.frExplanation}</small></div>
               <button type="button" onClick={()=>void speakFrench(`${branch.fr}. ${branch.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${branch.fr}`}><Volume2/><span>نطق الشرح</span></button>
-              {branch.table?<div className={`a1-vowel-example-table ${branch.table}`} role="table" aria-label={`جدول ${branch.ar}`}>
+              {branch.table&&(()=>{
+               const tableKind=branch.table;
+               const examples=A1_VOWEL_TABLES[tableKind];
+               const currentIndex=vowelCardIndex[tableKind];
+               const example=examples[currentIndex];
+               const moveCard=(direction:-1|1)=>setVowelCardIndex(current=>({...current,[tableKind]:(current[tableKind]+direction+examples.length)%examples.length}));
+               return <div className={`a1-vowel-example-table ${tableKind}`} role="region" aria-label={`بطاقات ${branch.ar}`}>
                <div className="a1-vowel-example-table-title">
-                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong><small>{A1_VOWEL_TABLES[branch.table].length} أمثلة مصوّرة مع النطق والشرح</small></div>
+                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong><small>{examples.length} أمثلة مصوّرة مع النطق والشرح</small></div>
                 <Layers3/>
                </div>
-               <div className="a1-vowel-example-table-head" role="row">
-                <span role="columnheader">الصورة والنطق</span><span role="columnheader">الكلمة والصوت</span><span role="columnheader">شرح المثال</span><span role="columnheader">استمع</span>
-               </div>
-               <div className="a1-vowel-example-table-body">
-                {A1_VOWEL_TABLES[branch.table].map(example=><article key={`${branch.table}-${example.word}`} className="a1-vowel-example-row" role="row">
-                 <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`} role="cell">
+               <div className="a1-vowel-carousel-stage">
+                <article key={`${tableKind}-${example.word}`} className="a1-vowel-example-row">
+                 <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>
                   <img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/>
                   <span><Volume2/> اضغط للنطق</span>
                  </button>
-                 <div className="a1-vowel-example-identity" role="cell">
+                 <div className="a1-vowel-example-identity">
                   <span className="a1-vowel-phoneme" dir="ltr">{example.phoneme}</span>
                   <strong dir="ltr">{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong>
                   <span dir="ltr">{example.ipa}</span>
                   <b>{example.ar}</b>
                   <em dir="ltr">{example.focus}</em>
                  </div>
-                 <p role="cell">{example.explanation}</p>
-                 <div className="a1-vowel-example-audio" role="cell">
-                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.76})}><Volume2/><span><b>طبيعي</b><small>Normal</small></span></button>
-                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.5})}><AudioLines/><span><b>بطيء</b><small>Lent</small></span></button>
+                 <p>{example.explanation}</p>
+                 <div className="a1-vowel-example-audio">
+                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء جدًا</b><small>Très lentement</small></span></button>
                  </div>
-                </article>)}
+                </article>
                </div>
-              </div>:<p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الأصوات والأمثلة المصوّرة هنا.</p>}
+               <div className="a1-vowel-carousel-navigation" dir="ltr">
+                <button type="button" onClick={()=>moveCard(-1)} aria-label="المثال السابق"><ChevronLeft/></button>
+                <div className="a1-vowel-carousel-progress" aria-label={`المثال ${currentIndex+1} من ${examples.length}`}>
+                 <strong>{currentIndex+1}</strong><span>/</span><b>{examples.length}</b>
+                 <div>{examples.map((item,index)=><button key={item.word} type="button" className={index===currentIndex?"active":""} onClick={()=>setVowelCardIndex(current=>({...current,[tableKind]:index}))} aria-label={`افتح مثال ${item.word}`}/>)}</div>
+                </div>
+                <button type="button" onClick={()=>moveCard(1)} aria-label="المثال التالي"><ChevronRight/></button>
+               </div>
+              </div>})()}
              </div>
             </details>)}
            </div>

@@ -44,6 +44,8 @@ type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPa
 type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
+type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string};
+type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -61,23 +63,48 @@ const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"ç → s",word:"garçon",ar:"صبي"}
 ];
 
-const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
+const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
-  fr:"Les voyelles et les sons vocaliques",ar:"حروف العلة والأصوات المتحركة",
-  intro:"ابدأ بالصوت الذي تسمعه، ثم لاحظ الحروف التي كتبته. زر النطق الطبيعي يقدّم الكلمة كما يقولها الفرنسي، والبطيء يفصلها بوضوح للتعلّم.",
-  groups:[
-   {fr:"Le son /u/",ar:"الصوت /u/",note:"صوت شفوي مستدير وقصير؛ يُكتب هنا بالحرفين ou.",examples:[
-    {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",rule:"ضمّ الشفتين وانطق /u/ من دون إطالة زائدة."}
-   ]},
-   {fr:"Le son /wa/",ar:"الصوت /wa/",note:"يتحرك النطق سريعًا من /w/ إلى /a/، وغالبًا تكتبه المجموعة oi.",examples:[
-    {word:"voiture",ar:"سيارة",ipa:"/vwa.tyʁ/",focus:"oi",parts:["v","oi","ture"],image:"/images/university/a1-sounds/voiture.webp",rule:"انطق oi مقطعًا واحدًا /wa/، وليس حرفين منفصلين."}
-   ]},
-   {fr:"Les sons nasaux",ar:"الأصوات الأنفية",note:"لا ننطق n منفصلة؛ يمر جزء من الهواء عبر الأنف ويتغير شكل الصوت.",examples:[
-    {word:"pain",ar:"خبز",ipa:"/pɛ̃/",focus:"ain",parts:["p","ain",""],image:"/images/university/a1-sounds/pain.webp",rule:"المجموعة ain تصنع الصوت الأنفي /ɛ̃/، ولا نسمع n مستقلة."},
-    {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",focus:"on",parts:["mais","on",""],image:"/images/university/a1-sounds/maison.webp",rule:"في نهاية maison تصنع on الصوت الأنفي /ɔ̃/."}
-   ]}
+  fr:"Voyelles orales et nasales",ar:"الأصوات الفموية والأنفية",
+  explanation:"تُصنَّف من حيث مخرج الهواء أثناء النطق: فموي أو أنفي.",
+  frExplanation:"Elles se distinguent selon le passage de l’air pendant la prononciation : par la bouche ou par la bouche et le nez.",
+  branches:[
+   {fr:"Voyelles orales",ar:"الأصوات الفموية",explanation:"يخرج الهواء أثناء النطق من الفم فقط.",frExplanation:"Pendant la prononciation, l’air sort uniquement par la bouche."},
+   {fr:"Voyelles nasales",ar:"الأصوات الأنفية",explanation:"يمر الهواء أثناء النطق من الفم والأنف معًا.",frExplanation:"Pendant la prononciation, l’air passe à la fois par la bouche et par le nez."}
   ]
  },
+ {
+  fr:"Voyelles arrondies et non arrondies",ar:"الأصوات المتحركة المدورة والمبسوطة",
+  explanation:"تُصنَّف بحسب وضع الشفتين وحركتهما عند النطق.",
+  frExplanation:"Elles se distinguent selon la position et le mouvement des lèvres pendant la prononciation.",
+  branches:[
+   {fr:"Voyelles arrondies",ar:"الأصوات المدورة",explanation:"تُنطق بضم الشفتين وتدويرهما إلى الأمام.",frExplanation:"Elles se prononcent avec les lèvres arrondies et projetées vers l’avant."},
+   {fr:"Voyelles non arrondies",ar:"الأصوات غير المدورة — المبسوطة",explanation:"تُنطق مع بسط الشفتين في وضع قريب من الابتسامة.",frExplanation:"Elles se prononcent avec les lèvres étirées, dans une position proche du sourire."}
+  ]
+ },
+ {
+  fr:"Selon le degré d’ouverture de la bouche",ar:"من حيث درجة فتح الفم",
+  explanation:"تُصنَّف الأصوات بحسب ارتفاع اللسان ودرجة انفتاح الفم أثناء النطق.",
+  frExplanation:"Les voyelles se classent selon la hauteur de la langue et le degré d’ouverture de la bouche.",
+  branches:[
+   {fr:"Voyelles fermées",ar:"أصوات مغلقة",explanation:"يكون اللسان قريبًا من سقف الفم، ويكون الفم شبه مغلق.",frExplanation:"La langue est proche du palais et la bouche est presque fermée."},
+   {fr:"Voyelles moyennes",ar:"أصوات متوسطة",explanation:"يكون الفم مفتوحًا بدرجة متوسطة، وتنقسم إلى متوسطة مغلقة ومتوسطة مفتوحة.",frExplanation:"La bouche est moyennement ouverte ; ces voyelles se divisent en mi-fermées et mi-ouvertes."},
+   {fr:"Voyelles ouvertes",ar:"أصوات مفتوحة",explanation:"ينخفض اللسان إلى الأسفل، ويكون الفم مفتوحًا بدرجة كبيرة.",frExplanation:"La langue s’abaisse et la bouche est largement ouverte."}
+  ]
+ },
+ {
+  fr:"Les semi-voyelles",ar:"أشباه حروف العلة",
+  explanation:"تقع بين حروف العلة والحروف الساكنة؛ وأصلها أصوات عِلّة تُنطق بسرعة فتتحول إلى صوت قريب من الياء أو الواو.",
+  frExplanation:"Elles se situent entre les voyelles et les consonnes : ce sont à l’origine des voyelles prononcées rapidement, proches du son de y ou de w.",
+  branches:[
+   {fr:"Le son /j/ — Y",ar:"صوت الياء /j/",explanation:"صوت قريب من الياء، كما في كلمة yeux.",frExplanation:"Un son proche du y, comme dans le mot « yeux »."},
+   {fr:"Le son /w/ — W",ar:"صوت الواو /w/",explanation:"صوت قريب من الواو، كما في كلمة oui.",frExplanation:"Un son proche du w, comme dans le mot « oui »."},
+   {fr:"Le son /ɥ/ — U",ar:"صوت الواو الأمامية الخفيفة /ɥ/",explanation:"صوت فرنسي بين الياء والواو المدورة، كما في كلمة huit.",frExplanation:"Un son français produit avec les lèvres arrondies, comme dans le mot « huit »."}
+  ]
+ }
+];
+
+const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
   fr:"Les groupes de lettres",ar:"تركيبات الحروف",
   intro:"قد تجتمع حروف متعددة لتنتج صوتًا واحدًا. احفظ المجموعة داخل كلمة وصورة، لا كحروف منفصلة.",
@@ -5936,20 +5963,51 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
     {activeModule.id==="sounds"&&<section className="a1-sounds-learning-studio">
      <div className="university-subheading a1-sounds-learning-heading">
-      <div><span>Studio phonétique interactif</span><h3>الصوت أولًا، ثم الحروف التي تكتبه</h3><p>افتح القسم، ثم اختر المجموعة وشاهد الكلمة واسمعها بالنطق الطبيعي أو البطيء.</p></div>
+      <div><span>Studio phonétique interactif</span><h3>الصوت أولًا، ثم الحروف التي تكتبه</h3><p>افتح التصنيف المطلوب، واقرأ شرحه بالعربية والفرنسية، ثم استمع إلى النطق.</p></div>
       <AudioLines/>
      </div>
      <div className="a1-sounds-learning-sections">
-      {A1_SOUNDS_LEARNING_SECTIONS.map((sectionItem,sectionIndex)=><details key={sectionItem.fr} className="a1-sounds-learning-section" open={sectionIndex===0}>
+      <details className="a1-sounds-learning-section" open>
        <summary>
-        <span><i>{String(sectionIndex+1).padStart(2,"0")}</i><AudioLines/></span>
+        <span><i>01</i><AudioLines/></span>
+        <div><strong dir="ltr">Les voyelles et les sons vocaliques</strong><b>حروف العلة والأصوات المتحركة</b><small>{A1_VOWEL_CLASSIFICATIONS.length} تصنيفات رئيسية</small></div>
+        <ChevronDown/>
+       </summary>
+       <div className="a1-sounds-learning-section-body a1-vowel-classification-body">
+        <div className="a1-vowel-section-intro">
+         <div><strong dir="ltr">Les voyelles se classent selon la prononciation, le passage de l’air, la position des lèvres et le degré d’ouverture de la bouche.</strong><p>تُصنَّف حروف العلة بحسب طريقة النطق ومخرج الهواء ووضع الشفتين ودرجة فتح الفم.</p></div>
+         <button type="button" onClick={()=>void speakFrench("Les voyelles se classent selon la prononciation, le passage de l’air, la position des lèvres et le degré d’ouverture de la bouche.",{rate:.7})}><Volume2/><span><b>استمع</b><small>Écouter</small></span></button>
+        </div>
+        <div className="a1-vowel-classifications">
+         {A1_VOWEL_CLASSIFICATIONS.map((classification,classificationIndex)=><details key={classification.fr} className="a1-vowel-classification" open={classificationIndex===0}>
+          <summary><span><i>{String(classificationIndex+1).padStart(2,"0")}</i><strong dir="ltr">{classification.fr}</strong><b>{classification.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-vowel-classification-content">
+           <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small></div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation}`,{rate:.68})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
+           <div className="a1-vowel-branches">
+            {classification.branches.map(branch=><details key={branch.fr} className="a1-vowel-branch">
+             <summary><span><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary>
+             <div className="a1-vowel-branch-content">
+              <div><p>{branch.explanation}</p><small dir="ltr">{branch.frExplanation}</small></div>
+              <button type="button" onClick={()=>void speakFrench(`${branch.fr}. ${branch.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${branch.fr}`}><Volume2/><span>نطق الشرح</span></button>
+              <p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الأصوات والأمثلة المصوّرة هنا.</p>
+             </div>
+            </details>)}
+           </div>
+          </div>
+         </details>)}
+        </div>
+       </div>
+      </details>
+      {A1_SOUNDS_LEARNING_SECTIONS.map((sectionItem,sectionIndex)=><details key={sectionItem.fr} className="a1-sounds-learning-section">
+       <summary>
+        <span><i>{String(sectionIndex+2).padStart(2,"0")}</i><AudioLines/></span>
         <div><strong dir="ltr">{sectionItem.fr}</strong><b>{sectionItem.ar}</b><small>{sectionItem.groups.length} فروع تعليمية</small></div>
         <ChevronDown/>
        </summary>
        <div className="a1-sounds-learning-section-body">
         <p>{sectionItem.intro}</p>
         <div className="a1-sounds-learning-groups">
-         {sectionItem.groups.map((group,groupIndex)=><details key={group.fr} className="a1-sounds-learning-group" open={sectionIndex===0&&groupIndex===0}>
+         {sectionItem.groups.map(group=><details key={group.fr} className="a1-sounds-learning-group">
           <summary><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
           <div className="a1-sounds-learning-group-body">
            <p>{group.note}</p>

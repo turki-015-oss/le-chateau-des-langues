@@ -1520,11 +1520,26 @@ const A1_SOUNDS_LISTENING={
 };
 
 const A1_SOUNDS_WRITING_MODEL="bonjour, rouge, voiture, pain, chat, jour, maison, français";
+const A1_SOUNDS_WRITING_TRANSLATIONS=[
+ {fr:"rouge",ar:"أحمر"},
+ {fr:"voiture",ar:"سيارة"},
+ {fr:"bateau",ar:"قارب"},
+ {fr:"bonjour",ar:"مرحبًا"},
+ {fr:"enfant",ar:"طفل"},
+ {fr:"matin",ar:"صباح"},
+ {fr:"chat",ar:"قط"},
+ {fr:"garçon",ar:"صبي"}
+];
 
 const A1_SOUNDS_DICTATION=[
- {speech:"Bonjour",ar:"مرحبًا — استمع إلى صوت on."},
- {speech:"Voiture",ar:"سيارة — استمع إلى صوت oi."},
- {speech:"Pain",ar:"خبز — استمع إلى الصوت الأنفي in."}
+ {speech:"Rouge",ar:"أحمر — تحتوي الكلمة على ou."},
+ {speech:"Voiture",ar:"سيارة — تحتوي الكلمة على oi."},
+ {speech:"Bateau",ar:"قارب — تحتوي الكلمة على eau."},
+ {speech:"Bonjour",ar:"مرحبًا — تحتوي الكلمة على on."},
+ {speech:"Enfant",ar:"طفل — تحتوي الكلمة على en وan."},
+ {speech:"Matin",ar:"صباح — تحتوي الكلمة على in."},
+ {speech:"Chat",ar:"قط — تحتوي الكلمة على ch."},
+ {speech:"Garçon",ar:"صبي — تجعل ç الحرف يُنطق مثل s."}
 ];
 
 const A1_SOUNDS_BUILDERS=[
@@ -5084,7 +5099,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionBuilderWords=revisionBuilderSelection.map(index=>revisionBuilderItem.tokens[index]);
  const revisionBuilderCorrect=revisionBuilderChecked&&revisionBuilderWords.join(" ")===revisionBuilderItem.answer.join(" ");
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const alphabetWritingItem=A1_ALPHABET_WRITING_TRANSLATIONS[alphabetWritingIndex];
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
  const alphabetInitialCount=new Set(revisionWritingWords.map(word=>word[0].toLocaleLowerCase("fr"))).size;
@@ -5475,6 +5491,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setAlphabetListeningClipIndex(0);
   setAlphabetListeningQuestionIndex(0);
+  setRevisionDictationIndex(0);
+  setRevisionDictationText("");
+  setRevisionDictationChecked(false);
+  setAlphabetWritingIndex(0);
+  setAlphabetWritingInput("");
+  setAlphabetWritingState("idle");
   setAlphabetListeningPlaying(false);
   setAlphabetListeningSegment(-1);
   setUsefulSentencesOpen(false);
@@ -5700,7 +5722,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    rate:rate==="slow"?.58:.8,
    onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
    onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
-  },setAlphabetListeningSegment);
+   },setAlphabetListeningSegment);
+ };
+ const playOrbitDictation=(slow=false)=>{
+  if(isAlphabetLetterDictation){
+   return speakFrenchSequence(["Lettre",alphabetDictationPronunciation],slow?760:620,{rate:slow?.54:.62});
+  }
+  return speakFrench(revisionDictationItem.speech,{rate:slow?.55:.74});
  };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
@@ -6232,10 +6260,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       {(!isA1OrbitLesson?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
        <div className="a2-workshop-progress"><span>{dictationUnit} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
        <h4>استمع ثم اكتب {dictationUnit}</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
-       <button className="a2-workshop-audio" onClick={()=>void (isAlphabetLetterDictation?speakFrenchSequence(["Lettre",alphabetDictationPronunciation],620,{rate:.62}):speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7}))}><Volume2/> استمع إلى {dictationUnit}</button>
+       {isA1OrbitLesson?<div className="a1-dictation-audio-actions"><button type="button" onClick={()=>void playOrbitDictation(false)}><Headphones/><span><b>استمع</b><small>نطق طبيعي</small></span></button><button type="button" onClick={()=>void playOrbitDictation(true)}><Gauge/><span><b>بطيء</b><small>نطق تعليمي</small></span></button></div>:<button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {dictationUnit}</button>}
        <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
-       {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":"راجع كتابتك وقارنها بالنموذج."}</strong><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></div>}
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
+       {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":isA1OrbitLesson?"الكتابة غير صحيحة؛ أعد الاستماع ثم حاول مرة أخرى.":"راجع كتابتك وقارنها بالنموذج."}</strong>{(!isA1OrbitLesson||revisionDictationCorrect)&&<><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></>}</div>}
       </article>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">
        <div className="a2-workshop-progress"><span>الجملة {revisionBuilderIndex+1} من {activeA2Builders.length}</span><i><b style={{width:`${(revisionBuilderIndex+1)/activeA2Builders.length*100}%`}}/></i></div>
@@ -6277,8 +6305,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </div>
       </article>)}
      </div>}
-     {isEnhancedLesson&&isA1Alphabet&&alphabetPracticeStep===5&&<section className="a1-smart-writing a1-practice-step-panel">
-      <div className="a1-smart-writing-progress"><div><span>الكلمة {alphabetWritingIndex+1} من {A1_ALPHABET_WRITING_TRANSLATIONS.length}</span><strong>{Math.round((alphabetWritingIndex+1)/A1_ALPHABET_WRITING_TRANSLATIONS.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/A1_ALPHABET_WRITING_TRANSLATIONS.length*100}%`}}/></i></div>
+     {isEnhancedLesson&&isA1OrbitLesson&&alphabetPracticeStep===5&&<section className="a1-smart-writing a1-practice-step-panel">
+      <div className="a1-smart-writing-progress"><div><span>الكلمة {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
       <div className="a1-smart-writing-prompt"><small>Écrivez le mot</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى كلمة ${alphabetWritingItem.fr}`}><Volume2/></button></div>
       <form onSubmit={event=>{event.preventDefault();setAlphabetWritingState(normalizeExerciseText(alphabetWritingInput)===normalizeExerciseText(alphabetWritingItem.fr)?"correct":"wrong")}}>
        <label htmlFor="alphabet-smart-writing">اكتب الكلمة بالفرنسية</label>
@@ -6287,7 +6315,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </form>
       <div className={`a1-smart-writing-feedback ${alphabetWritingState}`} aria-live="polite">{alphabetWritingState==="correct"?<><CheckCircle2/><div><strong>ممتاز، الكلمة صحيحة</strong><span dir="ltr">{alphabetWritingItem.fr}</span></div></>:alphabetWritingState==="wrong"?<><CircleMinus/><div><strong>الكلمة غير صحيحة</strong><span>راجع الحروف والعلامات ثم حاول مجددًا.</span></div></>:<><NotebookTabs/><div><strong>اكتبها بدقة</strong><span>تحقق من ترتيب الحروف والعلامات الفرنسية.</span></div></>}</div>
       <div className="a1-smart-writing-actions">
-       {alphabetWritingIndex<A1_ALPHABET_WRITING_TRANSLATIONS.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>الكلمة التالية <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> أعد الكلمات</button>}
+       {alphabetWritingIndex<orbitWritingTranslations.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>الكلمة التالية <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> أعد الكلمات</button>}
       </div>
      </section>}
      {isEnhancedLesson&&!isA1OrbitLesson&&<div className="a2-production-grid a1-practice-step-panel">
@@ -6297,7 +6325,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      {isA1OrbitLesson?<div className="a1-practice-navigation">
       <button type="button" className="map" onClick={closeAlphabetPractice}><Orbit/> خريطة التدريب</button>
       <button type="button" onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep-1)} disabled={alphabetPracticeStep===0}><ChevronRight/> السابق</button>
-      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" onClick={advanceAlphabetPractice}>إنهاء والعودة للخريطة <Orbit/></button>:<button type="button" className="primary" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> إنهاء والانتقال للتمرين النهائي <ChevronLeft/></button>}
+      {alphabetPracticeStep<ALPHABET_PRACTICE_STEPS.length-1?<button type="button" className="primary" disabled={alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect)} onClick={advanceAlphabetPractice}>إنهاء والعودة للخريطة <Orbit/></button>:<button type="button" className="primary" disabled={alphabetWritingIndex<orbitWritingTranslations.length-1||alphabetWritingState!=="correct"} onClick={()=>setLessonStage("test")}><ClipboardPenLine/> إنهاء والانتقال للتمرين النهائي <ChevronLeft/></button>}
      </div>:<button className="university-stage-next" onClick={()=>setLessonStage("test")}><ClipboardPenLine/> {isEnhancedLesson?"الانتقال إلى التمرين النهائي":"الانتقال إلى الاختبار"} <ChevronLeft/></button>}
      </div>}
     </section>}

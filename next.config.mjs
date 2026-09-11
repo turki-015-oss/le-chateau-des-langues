@@ -41,10 +41,6 @@ const nextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
-      {
-        source: "/unity-map/Build/:asset*.unityweb",
-        headers: [{ key: "Content-Encoding", value: "br" }],
-      },
     ];
   },
 };

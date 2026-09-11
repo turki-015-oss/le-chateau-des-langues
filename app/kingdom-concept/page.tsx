@@ -237,7 +237,7 @@ export default function KingdomConceptPage() {
       });
 
       if (castleAnimation.playState === "finished" || animationTime >= animationDuration) {
-        arrivalTimerRef.current = window.setTimeout(finishArrival, 550);
+        arrivalTimerRef.current = window.setTimeout(finishArrival, 1550);
         return;
       }
       arrivalAnimationFrameRef.current = window.requestAnimationFrame(synchronizeAudio);
@@ -320,12 +320,13 @@ export default function KingdomConceptPage() {
               key={index}
               className={direction < 0 ? "concept-bird concept-bird-left" : "concept-bird concept-bird-right"}
               style={{
-                "--bird-top": `${29 + (index % 7) * 3.4}%`,
-                "--bird-delay": `${(index % 14) * 13}ms`,
+                "--bird-top": `${46 + (index % 6) * 3.5}%`,
+                "--bird-edge": `${2 + (index % 7) * 2.15}%`,
+                "--bird-delay": `${(index % 14) * 18}ms`,
                 "--bird-depth": 0.58 + (index % 5) * 0.13,
-                "--bird-exit-x": `${direction * 78}vw`,
-                "--bird-exit-y": `${-(18 + (index % 7) * 2.7)}vh`,
-                "--bird-tilt": `${direction * -12}deg`,
+                "--bird-exit-x": `${direction * (82 + (index % 4) * 3)}vw`,
+                "--bird-exit-y": `${-(13 + (index % 7) * 2.15)}vh`,
+                "--bird-tilt": `${direction * -8}deg`,
               } as React.CSSProperties}
             ><i /></span>;
           })}

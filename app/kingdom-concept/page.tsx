@@ -284,7 +284,6 @@ export default function KingdomConceptPage() {
         <SmartCompass />
         <nav className="concept-main-nav" dir="ltr" aria-label="التنقل الرئيسي">
           <Link href="/">ACCUEIL</Link>
-          <Link href="/welcome">À PROPOS</Link>
         </nav>
       </header>
 

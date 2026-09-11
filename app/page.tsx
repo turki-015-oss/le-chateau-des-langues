@@ -26,6 +26,7 @@ const arrivalSoundSources = [
   "/audio/cinematic-entry/heavy-boulder-thud.wav",
   "/audio/cinematic-entry/leaves-rustle.wav",
   "/audio/cinematic-entry/page-turn.wav",
+  "/audio/cinematic-entry/birds-taking-off.mp3",
 ];
 
 type ArrivalAudioRuntime = { context: AudioContext; buffers: AudioBuffer[]; ready: Promise<void> };

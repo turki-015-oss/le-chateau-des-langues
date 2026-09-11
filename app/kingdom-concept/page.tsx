@@ -46,6 +46,7 @@ const arrivalSoundCues = [
   { source: "/audio/cinematic-entry/heavy-boulder-thud.wav", delay: 1940, volume: 0.92, playbackRate: 1, offset: 0.28, duration: 0.55 },
   { source: "/audio/cinematic-entry/leaves-rustle.wav", delay: 1960, volume: 0.38, playbackRate: 1.05, offset: 0.85, duration: 0.8 },
   { source: "/audio/cinematic-entry/page-turn.wav", delay: 1940, volume: 0.72, playbackRate: 0.94, offset: 0.04, duration: 0.27 },
+  { source: "/audio/cinematic-entry/birds-taking-off.mp3", delay: 1945, volume: 0.82, playbackRate: 1, offset: 0, duration: 2.2 },
 ];
 
 function CastleAppIcon() {
@@ -311,6 +312,23 @@ export default function KingdomConceptPage() {
         {arrivalPlaying && <div className="concept-arrival-impact" aria-hidden="true">
           <span className="concept-arrival-impact-ring" />
           {Array.from({ length: 12 }).map((_, index) => <i key={index} style={{ "--impact-particle": index } as React.CSSProperties} />)}
+        </div>}
+        {arrivalPlaying && <div className="concept-arrival-birds" aria-hidden="true">
+          {Array.from({ length: 28 }).map((_, index) => {
+            const direction = index % 2 === 0 ? -1 : 1;
+            return <span
+              key={index}
+              className={direction < 0 ? "concept-bird concept-bird-left" : "concept-bird concept-bird-right"}
+              style={{
+                "--bird-top": `${29 + (index % 7) * 3.4}%`,
+                "--bird-delay": `${(index % 14) * 13}ms`,
+                "--bird-depth": 0.58 + (index % 5) * 0.13,
+                "--bird-exit-x": `${direction * 78}vw`,
+                "--bird-exit-y": `${-(18 + (index % 7) * 2.7)}vh`,
+                "--bird-tilt": `${direction * -12}deg`,
+              } as React.CSSProperties}
+            ><i /></span>;
+          })}
         </div>}
         <Link href="/castle" className="concept-castle-entry" aria-label="دخول قاعات القلعة" onClick={(event) => {
           event.preventDefault();

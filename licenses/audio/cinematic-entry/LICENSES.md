@@ -11,6 +11,7 @@ These source recordings are embedded only as timed layers in the castle-arrival 
 | `page-turn.mp3` | Page Turn / sokworks | https://freesound.org/people/sokworks/sounds/860360/ | Creative Commons CC0 1.0 | https://cdn.freesound.org/previews/860/860360_19004943-hq.mp3 | `c7d0de63f8dda95102e54212696d083813f63ae266a19194f605a4a8588382df` |
 | `leaves-rustle.mp3` | Leaves Rustling / GautamSujith | https://freesound.org/people/GautamSujith/sounds/847378/ | Creative Commons CC0 1.0 | https://cdn.freesound.org/previews/847/847378_18513069-hq.mp3 | `87275e33abdadf9e9340cf36bb95ea91b5d5ba7c4ce2eef2844a67dd4f774a09` |
 | `antique-hand-bell.mp3` | BELLHand_Ringing Small Hand Bell_HvD_OwSFX / Hano_van_Dalen | https://freesound.org/people/Hano_van_Dalen/sounds/767307/ | Creative Commons CC0 1.0 | https://cdn.freesound.org/previews/767/767307_15758192-hq.mp3 | `7c30fd51b60c7b05b2616de1e4790af66baf2249f8f6eea40dd6294c6be81e1f` |
+| `birds-taking-off.mp3` | Birds taking off fly / Hope-Sounds | https://freesound.org/people/Hope-Sounds/sounds/499679/ | Creative Commons CC0 1.0 | https://cdn.freesound.org/previews/499/499679_10779689-hq.mp3 | `24aa5c0b3d6aa907cf906bee9545ef5efd0ab683b0bc8fedd7e54886555274c7` |
 
 License references:
 

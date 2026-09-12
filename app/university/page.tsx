@@ -41,7 +41,7 @@ type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
-type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
+type SoundLearningExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
 type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"semij"|"semiw"|"semiu";
@@ -195,17 +195,31 @@ const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_V
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
-  fr:"Les groupes de lettres",ar:"تركيبات الحروف",
-  intro:"قد تجتمع حروف متعددة لتنتج صوتًا واحدًا. احفظ المجموعة داخل كلمة وصورة، لا كحروف منفصلة.",
+  fr:"Les groupes de lettres",ar:"تركيبات الحروف الخاصة",
+  intro:"قد تجتمع حروف متعددة لتنتج صوتًا واحدًا، وقد تختفي بعض الحروف في نهاية الكلمة. تعلّم كل تركيب داخل كلمة وصورة.",
   groups:[
-   {fr:"Voyelles combinées",ar:"حروف علة مجتمعة",note:"المجموعة eau تُنطق عادة مثل /o/ في هذا الموضع.",examples:[
-    {word:"bateau",ar:"قارب",ipa:"/ba.to/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",rule:"الحروف الثلاثة eau تعطي صوتًا واحدًا /o/."}
+   {fr:"Combinaisons vocaliques",ar:"تركيبات حروف العلة",note:"تجتمع حروف العلة لتكتب صوتًا واحدًا؛ لا تنطق حروف التركيب منفصلة.",examples:[
+    {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",phoneme:"/ɛ/",focus:"ai",parts:["m","ai","son"],image:"/images/university/a1-sounds/maison.webp",rule:"في maison تعطي المجموعة ai الصوت /ɛ/، ثم تعطي on صوتًا أنفيًا في نهاية الكلمة."},
+    {word:"bateau",ar:"قارب",ipa:"/ba.to/",phoneme:"/o/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",rule:"في bateau تعطي الحروف eau صوتًا واحدًا /o/، ولا تُنطق الحروف الثلاثة منفصلة."},
+    {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",phoneme:"/u/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",rule:"في rouge تعطي المجموعة ou الصوت /u/ مع تدوير الشفتين إلى الأمام."},
+    {word:"feu",ar:"نار",ipa:"/fø/",phoneme:"/ø/",focus:"eu",parts:["f","eu",""],image:"/images/university/a1-sounds/feu.webp",rule:"في feu تعطي المجموعة eu الصوت المدوّر /ø/، وتُنطق الكلمة مقطعًا واحدًا."}
    ]},
-   {fr:"Consonnes combinées",ar:"حروف ساكنة مجتمعة",note:"عندما تجتمع c وh نحصل غالبًا على الصوت /ʃ/ المشابه لصوت «ش».",examples:[
-    {word:"chat",ar:"قط",ipa:"/ʃa/",focus:"ch",parts:["","ch","at"],image:"/images/university/a1-sounds/chat.webp",rule:"انطق ch صوتًا واحدًا /ʃ/، ولا تنطق c ثم h."}
+   {fr:"Combinaisons consonantiques",ar:"تركيبات الحروف الساكنة",note:"قد يكتب حرفان ساكنان صوتًا واحدًا مختلفًا عن نطق كل حرف منفردًا.",examples:[
+    {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"/ʃ/",focus:"ch",parts:["","ch","at"],image:"/images/university/a1-sounds/chat.webp",rule:"في chat تعطي المجموعة ch الصوت /ʃ/ المشابه لصوت «ش»، ولا يُنطق الحرف t الأخير."},
+    {word:"téléphone",ar:"هاتف",ipa:"/te.le.fɔn/",phoneme:"/f/",focus:"ph",parts:["télé","ph","one"],image:"/police-v39/vocab-phone.webp",rule:"في téléphone تعطي المجموعة ph الصوت /f/، ولا تُنطق p وh كصوتين منفصلين."},
+    {word:"agneau",ar:"خروف صغير",ipa:"/a.ɲo/",phoneme:"/ɲ/",focus:"gn",parts:["a","gn","eau"],image:"/zoo/animals/sheep.webp",rule:"في agneau تعطي المجموعة gn الصوت /ɲ/ القريب من «ني»، ثم تعطي eau الصوت /o/."}
    ]},
-   {fr:"La cédille",ar:"حرف c مع العلامة السفلية",note:"تجعل العلامة ¸ الحرف ç يُنطق /s/ قبل a وo وu.",examples:[
-    {word:"garçon",ar:"صبي",ipa:"/ɡaʁ.sɔ̃/",focus:"ç",parts:["gar","ç","on"],image:"/images/university/a1-sounds/garcon.webp",rule:"في garçon يُنطق ç مثل /s/، ثم تُنطق on صوتًا أنفيًا."}
+   {fr:"Terminaisons fréquentes",ar:"النهايات الصوتية الشائعة",note:"تتكرر هذه النهايات كثيرًا، لكن كتابتها لا تطابق دائمًا عدد الأصوات التي نسمعها.",examples:[
+    {word:"parler",ar:"يتحدث",ipa:"/paʁ.le/",phoneme:"/e/",focus:"er",parts:["parl","er",""],image:"/images/university/a1-sounds/fille.webp",rule:"في مصدر الفعل parler تُنطق النهاية er بالصوت /e/."},
+    {word:"parlez",ar:"تحدثوا",ipa:"/paʁ.le/",phoneme:"/e/",focus:"ez",parts:["parl","ez",""],image:"/images/university/a1-sounds/garcon.webp",rule:"في parlez تُنطق النهاية ez بالصوت /e/، ولا يُنطق الحرف z منفصلًا."},
+    {word:"billet",ar:"تذكرة",ipa:"/bi.jɛ/",phoneme:"/ɛ/",focus:"et",parts:["bill","et",""],image:"/station-assets/ticket.webp",rule:"في billet تُنطق النهاية et بالصوت /ɛ/، ولا يُنطق الحرف t الأخير."},
+    {word:"station",ar:"محطة",ipa:"/sta.sjɔ̃/",phoneme:"/sjɔ̃/",focus:"tion",parts:["sta","tion",""],image:"/kingdom-portal-assets/destination-station.png",rule:"في station تُنطق النهاية tion عادة /sjɔ̃/، وتنتهي بصوت أنفي."}
+   ]},
+   {fr:"Lettres finales muettes",ar:"الحروف الأخيرة التي لا تُنطق",note:"تُكتب بعض الحروف في نهاية الكلمات الفرنسية لكنها لا تُنطق غالبًا في هذه الأمثلة.",examples:[
+    {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"∅",focus:"t",parts:["cha","t",""],image:"/images/university/a1-sounds/chat.webp",rule:"في chat يُكتب الحرف t في النهاية لكنه لا يُنطق."},
+    {word:"grand",ar:"كبير",ipa:"/ɡʁɑ̃/",phoneme:"∅",focus:"d",parts:["gran","d",""],image:"/castle-hall-icons/grand-hall.webp",rule:"في grand بصيغة المذكر المفرد لا يُنطق الحرف d الأخير."},
+    {word:"nez",ar:"أنف",ipa:"/ne/",phoneme:"∅",focus:"z",parts:["ne","z",""],image:"/images/university/a1-sounds/garcon.webp",rule:"في nez لا يُنطق الحرف z الأخير، وتُنطق الكلمة /ne/."},
+    {word:"petit",ar:"صغير",ipa:"/pə.ti/",phoneme:"∅",focus:"t",parts:["peti","t",""],image:"/images/university/a1-sounds/garcon.webp",rule:"في petit بصيغة المذكر المفرد لا يُنطق الحرف t الأخير."}
    ]}
   ]
  }
@@ -5159,6 +5173,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0,semij:0,semiw:0,semiu:0});
+ const [soundGroupCardIndex,setSoundGroupCardIndex]=useState<Record<string,number>>({});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);
@@ -6139,21 +6154,44 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           <summary><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
           <div className="a1-sounds-learning-group-body">
            <p>{group.note}</p>
-           <div className="a1-sounds-example-grid">
-            {group.examples.map(example=><article key={example.word} className="a1-sounds-example-card">
-             <figure><img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/></figure>
-             <div className="a1-sounds-example-copy">
-              <div className="a1-sounds-example-word" dir="ltr"><strong>{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong><span>{example.ipa}</span></div>
-              <b>{example.ar}</b>
-              <p>{example.rule}</p>
-              <div className="a1-sounds-example-actions">
-               <button type="button" className="primary" onClick={()=>void speakFrench(example.word,{rate:.76})}><Volume2/><span><b>طبيعي</b><small>Prononciation</small></span></button>
-               <button type="button" onClick={()=>void speakFrench(example.word,{rate:.5})}><AudioLines/><span><b>بطيء</b><small>Lentement</small></span></button>
-              </div>
+           {(()=>{
+            const currentIndex=soundGroupCardIndex[group.fr]??0;
+            const example=group.examples[currentIndex];
+            const moveCard=(direction:-1|1)=>setSoundGroupCardIndex(current=>({...current,[group.fr]:(currentIndex+direction+group.examples.length)%group.examples.length}));
+            return <div className="a1-vowel-example-table sound-combination" role="region" aria-label={`بطاقات ${group.ar}`}>
+             <div className="a1-vowel-example-table-title">
+              <div><span dir="ltr">Cartes phonétiques illustrées</span><strong>التركيب داخل كلمة واضحة</strong></div>
+              <Layers3/>
              </div>
-             <span className="a1-sounds-focus-badge" dir="ltr">{example.focus}</span>
-            </article>)}
-           </div>
+             <div className="a1-vowel-carousel-stage">
+              <article key={`${group.fr}-${example.word}`} className="a1-vowel-example-row">
+               <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>
+                <img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/>
+                <span><Volume2/> اضغط للنطق</span>
+               </button>
+               <div className="a1-vowel-example-identity">
+                <span className="a1-vowel-phoneme" dir="ltr">{example.phoneme}</span>
+                <strong dir="ltr">{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong>
+                <span dir="ltr">{example.ipa}</span>
+                <b>{example.ar}</b>
+                <em dir="ltr">{example.focus}</em>
+               </div>
+               <p>{example.rule}</p>
+               <div className="a1-vowel-example-audio">
+                <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء</b><small>Lentement</small></span></button>
+               </div>
+              </article>
+             </div>
+             <div className="a1-vowel-carousel-navigation" dir="ltr">
+              <button type="button" onClick={()=>moveCard(-1)} aria-label="المثال السابق"><ChevronLeft/></button>
+              <div className="a1-vowel-carousel-progress" aria-label={`المثال ${currentIndex+1} من ${group.examples.length}`}>
+               <strong>{currentIndex+1}</strong><span>/</span><b>{group.examples.length}</b>
+               <div>{group.examples.map((item,index)=><button key={item.word} type="button" className={index===currentIndex?"active":""} onClick={()=>setSoundGroupCardIndex(current=>({...current,[group.fr]:index}))} aria-label={`افتح مثال ${item.word}`}/>)}</div>
+              </div>
+              <button type="button" onClick={()=>moveCard(1)} aria-label="المثال التالي"><ChevronRight/></button>
+             </div>
+            </div>;
+           })()}
           </div>
          </details>)}
         </div>

@@ -4142,9 +4142,109 @@ const A2_MODULES:CourseModule[]=[
   }
 ];
 
+const B1_MODULES:CourseModule[]=[
+ {
+  id:"past-tenses",title:"Maîtriser les temps du passé",ar:"إتقان أزمنة الماضي",icon:History,
+  description:"ميّز بين الماضي المركب والناقص وما قبل الماضي لتروي أحداثًا واضحة ومترابطة.",
+  sections:[
+   section("Passé composé et imparfait","الماضي المركب والناقص","استخدم الماضي الناقص للوصف والعادات والخلفية، والماضي المركب للأحداث المنتهية التي تدفع القصة إلى الأمام.",["حدّد الخلفية أولًا ثم الحدث الرئيس.","استعمل pendant que لحدثين متزامنين."],[{fr:"Il pleuvait quand nous sommes sortis.",ar:"كانت السماء تمطر عندما خرجنا."},{fr:"Pendant que je travaillais, le téléphone a sonné.",ar:"بينما كنت أعمل، رن الهاتف."}]),
+   section("Plus-que-parfait","ما قبل الماضي","استعمل ما قبل الماضي لحدث وقع قبل حدث آخر في الماضي: فعل مساعد في الناقص ثم اسم المفعول.",["اختر avoir أو être وفق الفعل.","رتّب الحدثين بوضوح باستخدام déjà وavant."],[{fr:"Le train était déjà parti quand nous sommes arrivés.",ar:"كان القطار قد غادر عندما وصلنا."},{fr:"Elle avait réservé la chambre avant son voyage.",ar:"كانت قد حجزت الغرفة قبل سفرها."}])
+  ]
+ },
+ {
+  id:"narration",title:"Raconter et structurer",ar:"السرد وتنظيم الأحداث",icon:ScrollText,
+  description:"ابنِ قصة لها بداية وتطور ونهاية باستخدام روابط زمنية ووصف دقيق.",
+  sections:[
+   section("Organiser un récit","تنظيم قصة","رتّب القصة إلى وضع أولي وحدث مفاجئ وتتابع للأحداث ثم نتيجة.",["ابدأ بتحديد الزمان والمكان.","استخدم soudain وensuite وfinalement."],[{fr:"Tout à coup, nous avons entendu un bruit étrange.",ar:"فجأة سمعنا صوتًا غريبًا."},{fr:"Finalement, tout s’est bien terminé.",ar:"وفي النهاية انتهى كل شيء على ما يرام."}]),
+   section("Décrire avec précision","الوصف بدقة","أضف أوصافًا تخدم القصة، وتجنب تراكم الصفات من دون وظيفة.",["صف المكان والشعور والحركة.","استخدم qui وoù لإضافة معلومات مفيدة."],[{fr:"La rue où nous marchions était complètement vide.",ar:"كان الشارع الذي كنا نسير فيه خاليًا تمامًا."},{fr:"J’étais inquiet, mais je suis resté calme.",ar:"كنت قلقًا، لكنني بقيت هادئًا."}])
+  ]
+ },
+ {
+  id:"future-hypothesis",title:"Parler de l’avenir et faire des hypothèses",ar:"المستقبل والافتراض",icon:Telescope,
+  description:"تحدث عن الخطط والتوقعات والاحتمالات باستعمال المستقبل وصيغ الشرط الأساسية.",
+  sections:[
+   section("Futur simple et futur proche","المستقبل البسيط والقريب","اختر المستقبل القريب لخطة قريبة أو مؤكدة، والمستقبل البسيط لتوقع أو حدث أبعد.",["اربط الخطة بوقت واضح.","تدرّب على جذور الأفعال غير المنتظمة."],[{fr:"Je vais commencer une formation lundi.",ar:"سأبدأ دورة تدريبية يوم الاثنين."},{fr:"Dans dix ans, les villes seront différentes.",ar:"بعد عشر سنوات ستكون المدن مختلفة."}]),
+   section("Si + présent","الشرط الواقعي","للاحتمال الواقعي استعمل si مع الحاضر، ثم المستقبل أو الأمر في الجملة الثانية.",["لا تضع المستقبل مباشرة بعد si.","اجعل النتيجة منطقية ومحددة."],[{fr:"Si j’ai le temps, je viendrai avec vous.",ar:"إذا كان لدي وقت فسآتي معكم."},{fr:"Si tu arrives tôt, appelle-moi.",ar:"إذا وصلت مبكرًا فاتصل بي."}])
+  ]
+ },
+ {
+  id:"conditional",title:"Utiliser le conditionnel",ar:"استخدام صيغة الشرط",icon:WandSparkles,
+  description:"عبّر عن الرغبة والاقتراح والطلب المهذب والنتيجة الافتراضية.",
+  sections:[
+   section("Demandes et souhaits","الطلبات والرغبات","استخدم الشرط الحاضر لتلطيف الطلب أو التعبير عن رغبة.",["ابدأ بـ je voudrais أو pourriez-vous.","حافظ على نبرة مهذبة في المواقف الرسمية."],[{fr:"Je voudrais modifier ma réservation.",ar:"أود تعديل حجزي."},{fr:"Pourriez-vous m’envoyer les informations ?",ar:"هل يمكنكم إرسال المعلومات إليّ؟"}]),
+   section("Si + imparfait","الافتراض غير المؤكد","استعمل si مع الماضي الناقص، ثم الشرط الحاضر للحديث عن حالة افتراضية.",["لا تستخدم الشرط بعد si.","ميّز بين الشرط الواقعي والافتراضي."],[{fr:"Si j’avais plus de temps, je voyagerais davantage.",ar:"لو كان لدي وقت أكثر لسافرت أكثر."},{fr:"Nous sortirions s’il faisait beau.",ar:"سنخرج لو كان الطقس جميلًا."}])
+  ]
+ },
+ {
+  id:"relative-pronouns",title:"Relier avec les pronoms relatifs",ar:"الربط بالضمائر النسبية",icon:Link2,
+  description:"اربط الجمل باستخدام qui وque وoù وdont وتجنب تكرار الأسماء.",
+  sections:[
+   section("Qui, que et où","الضمائر qui وque وoù","اختر qui للفاعل وque للمفعول المباشر وoù للمكان أو الزمان.",["ابحث عن وظيفة الاسم داخل الجملة الثانية.","انتبه إلى حذف حرف العلة في qu’."],[{fr:"C’est un livre qui explique l’histoire de la ville.",ar:"هذا كتاب يشرح تاريخ المدينة."},{fr:"Voici le quartier où j’ai grandi.",ar:"هذا هو الحي الذي نشأت فيه."}]),
+   section("Le pronom dont","الضمير dont","استخدم dont عندما يرتبط الفعل أو التعبير بحرف الجر de.",["استبدل de + اسم بـ dont.","استعمله أيضًا للتعبير عن الملكية."],[{fr:"C’est le projet dont je t’ai parlé.",ar:"هذا هو المشروع الذي حدثتك عنه."},{fr:"Elle connaît une famille dont le fils travaille ici.",ar:"تعرف عائلة يعمل ابنها هنا."}])
+  ]
+ },
+ {
+  id:"subjunctive",title:"Découvrir le subjonctif",ar:"مدخل إلى صيغة التمني والشك",icon:Sparkles,
+  description:"استخدم الصيغة المناسبة بعد الضرورة والرغبة والمشاعر والشك في أكثر التراكيب شيوعًا.",
+  sections:[
+   section("Nécessité et volonté","الضرورة والإرادة","يأتي المضارع المنصوب غالبًا بعد que عندما يختلف فاعلا الجملتين.",["تعلّم صيغ être وavoir وfaire وaller.","ابدأ بتراكيب il faut que وje veux que."],[{fr:"Il faut que vous soyez à l’heure.",ar:"يجب أن تكونوا في الموعد."},{fr:"Je veux que tu viennes avec nous.",ar:"أريدك أن تأتي معنا."}]),
+   section("Émotions et doute","المشاعر والشك","استخدم الصيغة بعد تعبيرات الفرح والخوف والشك وعدم اليقين.",["اربط السبب العاطفي بجملة تبدأ بـ que.","بعد اليقين المثبت يُستخدم الإخباري غالبًا."],[{fr:"Je suis content que tu sois ici.",ar:"أنا سعيد لأنك هنا."},{fr:"Je ne pense pas qu’il puisse venir.",ar:"لا أظن أنه يستطيع الحضور."}])
+  ]
+ },
+ {
+  id:"logical-links",title:"Construire un discours logique",ar:"بناء خطاب مترابط",icon:Layers3,
+  description:"نظّم السبب والنتيجة والهدف والتعارض والتنازل بروابط مناسبة.",
+  sections:[
+   section("Cause, conséquence et but","السبب والنتيجة والهدف","اختر الرابط بحسب العلاقة التي تريد توضيحها بين فكرتين.",["للسبب: parce que، puisque، grâce à، à cause de.","للنتيجة والهدف: donc، c’est pourquoi، pour، afin de."],[{fr:"Le vol est retardé à cause du brouillard.",ar:"تأخرت الرحلة بسبب الضباب."},{fr:"Je prends des notes afin de mieux mémoriser.",ar:"أدوّن ملاحظات لكي أتذكر بصورة أفضل."}]),
+   section("Opposition et concession","التعارض والتنازل","استخدم mais وpourtant للتعارض، وmême si وbien que للتنازل.",["ميّز بين مقارنة فكرتين ونتيجة غير متوقعة.","يأتي bien que مع صيغة التمني والشك."],[{fr:"Le trajet est long ; pourtant, il est agréable.",ar:"الطريق طويل، ومع ذلك فهو ممتع."},{fr:"Même s’il pleut, nous sortirons.",ar:"حتى لو أمطرت فسنخرج."}])
+  ]
+ },
+ {
+  id:"argumentation",title:"Exprimer et défendre une opinion",ar:"التعبير عن الرأي والدفاع عنه",icon:Speech,
+  description:"قدّم موقفًا واضحًا وادعمه بسبب ومثال، ثم ناقش رأيًا مختلفًا بأدب.",
+  sections:[
+   section("Présenter son point de vue","عرض وجهة النظر","ابدأ بموقف واضح ثم دعمه بحجة ومثال واقعي.",["استخدم à mon avis وselon moi.","تجنب تكرار je pense que في كل جملة."],[{fr:"À mon avis, les transports publics devraient être moins chers.",ar:"في رأيي ينبغي أن تكون المواصلات العامة أقل تكلفة."},{fr:"Par exemple, cela aiderait les étudiants.",ar:"فمثلًا سيساعد ذلك الطلاب."}]),
+   section("Nuancer et répondre","التلطيف والرد","اعترف بجزء من رأي الطرف الآخر قبل تقديم اعتراضك.",["استخدم je comprends, mais…", "اختم باقتراح أو حل مشترك."],[{fr:"Je comprends cet argument, mais il faut considérer le coût.",ar:"أتفهم هذه الحجة، لكن يجب مراعاة التكلفة."},{fr:"Nous pourrions chercher une solution plus équilibrée.",ar:"يمكننا البحث عن حل أكثر توازنًا."}])
+  ]
+ },
+ {
+  id:"formal-communication",title:"Communiquer dans un cadre formel",ar:"التواصل في السياق الرسمي",icon:NotebookTabs,
+  description:"اكتب رسائل منظمة وشارك في محادثات رسمية تتعلق بالعمل والخدمات والدراسة.",
+  sections:[
+   section("Courriels et réclamations","البريد والشكاوى","رتّب الرسالة إلى موضوع وسبب وتفاصيل وطلب وختام مناسب.",["استخدم التحية والختام الرسميين.","اجعل طلبك محددًا وقابلًا للتنفيذ."],[{fr:"Je vous écris au sujet de ma commande.",ar:"أكتب إليكم بخصوص طلبي."},{fr:"Je vous remercie de bien vouloir vérifier mon dossier.",ar:"أشكركم على التكرم بمراجعة ملفي."}]),
+   section("Entretiens et rendez-vous","المقابلات والمواعيد","قدّم خبرتك وهدفك واطلب التوضيح عند الحاجة.",["حضّر تعريفًا موجزًا بنفسك.","استخدم أسئلة رسمية واضحة."],[{fr:"J’ai travaillé deux ans dans le secteur du tourisme.",ar:"عملت سنتين في قطاع السياحة."},{fr:"Pourriez-vous préciser les horaires du poste ?",ar:"هل يمكنكم توضيح ساعات العمل؟"}])
+  ]
+ },
+ {
+  id:"social-life",title:"Agir dans la vie quotidienne",ar:"التصرف باستقلالية في الحياة اليومية",icon:UsersRound,
+  description:"حل المشكلات واشرح احتياجاتك وتفاوض في مواقف السفر والسكن والصحة والخدمات.",
+  sections:[
+   section("Expliquer un problème","شرح مشكلة","قدّم السياق ثم المشكلة وأثرها والحل الذي تنتظره.",["اذكر الأرقام والتواريخ والمراجع بدقة.","اطلب تأكيد الخطوة التالية."],[{fr:"Mon appartement n’a plus de chauffage depuis hier.",ar:"لم تعد التدفئة تعمل في شقتي منذ أمس."},{fr:"Quand un technicien pourra-t-il intervenir ?",ar:"متى يستطيع الفني الحضور؟"}]),
+   section("Négocier une solution","التفاوض على حل","اقترح بديلًا وقارن الخيارات وتوصل إلى اتفاق واضح.",["استخدم si possible وsinon.","أعد صياغة الاتفاق في النهاية."],[{fr:"Si cette chambre n’est pas disponible, je peux changer de date.",ar:"إذا لم تكن هذه الغرفة متاحة فيمكنني تغيير التاريخ."},{fr:"D’accord, je confirme donc la deuxième option.",ar:"حسنًا، أؤكد إذن الخيار الثاني."}])
+  ]
+ },
+ {
+  id:"media-culture",title:"Comprendre les médias et la culture",ar:"فهم الإعلام والثقافة",icon:Earth,
+  description:"افهم الأخبار والمقابلات والآراء الأساسية وتحدث عن كتاب أو فيلم أو حدث ثقافي.",
+  sections:[
+   section("Repérer l’information","استخراج المعلومات","ميّز بين الحدث والفاعل والمكان والوقت والسبب في نص أو تسجيل.",["ابدأ بالفكرة العامة قبل التفاصيل.","تحقق من مصدر الرأي ومن يتحدث."],[{fr:"Selon le reportage, le festival accueillera vingt artistes.",ar:"بحسب التقرير سيستضيف المهرجان عشرين فنانًا."},{fr:"L’interview explique pourquoi le projet a changé.",ar:"توضح المقابلة سبب تغير المشروع."}]),
+   section("Présenter une œuvre","عرض عمل ثقافي","لخّص الموضوع وعبّر عن انطباعك وقدّم توصية معللة.",["لا تكشف النهاية عند تلخيص قصة.","ادعم رأيك بمشهد أو عنصر محدد."],[{fr:"Ce film raconte l’histoire d’une famille qui quitte son village.",ar:"يروي هذا الفيلم قصة عائلة تغادر قريتها."},{fr:"Je le recommande parce que les personnages sont convaincants.",ar:"أوصي به لأن الشخصيات مقنعة."}])
+  ]
+ },
+ {
+  id:"b1-synthesis",title:"Projet final B1",ar:"المشروع الختامي B1",icon:Trophy,
+  description:"ادمج الفهم والسرد والرأي والتفاعل والكتابة في مهام متكاملة بمستوى B1.",
+  sections:[
+   section("Comprendre et reformuler","الفهم وإعادة الصياغة","التقط الفكرة الأساسية والمعلومات المهمة، ثم عبّر عنها بكلماتك من دون نسخ النص.",["دوّن الكلمات المفتاحية فقط.","حافظ على المعنى عند إعادة الصياغة."],[{fr:"Le document présente plusieurs solutions au même problème.",ar:"يعرض المستند عدة حلول للمشكلة نفسها."},{fr:"En résumé, les habitants demandent un meilleur service.",ar:"باختصار، يطالب السكان بخدمة أفضل."}]),
+   section("Produire et interagir","الإنتاج والتفاعل","قدّم موضوعًا منظمًا، أجب عن الأسئلة، واكتب نصًا واضحًا مترابطًا.",["خطط للمقدمة والفكرتين والخاتمة.","راجع الأزمنة والروابط والاتفاق قبل الإنهاء."],[{fr:"Je vais présenter mon expérience, puis expliquer ce que j’ai appris.",ar:"سأعرض تجربتي ثم أوضح ما تعلمته."},{fr:"Pour conclure, ce projet m’a permis de devenir plus autonome.",ar:"وفي الختام أتاح لي هذا المشروع أن أصبح أكثر استقلالية."}])
+  ]
+ }
+];
+
 const LEVELS:Level[]=[
  {id:"A1",label:"Débutant",ar:"المستوى المبتدئ",description:"من الأبجدية والنطق إلى التواصل في المواقف اليومية الأساسية.",modules:A1_MODULES},
- {id:"A2",label:"Élémentaire",ar:"المستوى الأساسي المتقدم",description:"بناء سرد أوضح، استخدام الأزمنة، والتعامل باستقلالية أكبر.",modules:A2_MODULES}
+ {id:"A2",label:"Élémentaire",ar:"المستوى الأساسي المتقدم",description:"بناء سرد أوضح، استخدام الأزمنة، والتعامل باستقلالية أكبر.",modules:A2_MODULES},
+ {id:"B1",label:"Intermédiaire",ar:"المستوى المتوسط",description:"السرد المتماسك، التعبير عن الرأي، والتصرف باستقلالية في المواقف المتنوعة.",modules:B1_MODULES}
 ];
 
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
@@ -4153,16 +4253,22 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
   {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والأسئلة وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","questions","present","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والمدينة والسكن والصحة والزمن والطقس والعائلة والحياة والرسائل والمعلومات اليومية.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations","messages-forms"]}
  ],
- A2:[
-  {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
-  {title:"دقة التعبير",fr:"Préciser son expression",description:"الضمائر والكميات والمقارنة والطلب المهذب.",moduleIds:["pronouns","quantity","comparison","politeness"]},
-  {title:"التواصل المستقل",fr:"Communiquer avec autonomie",description:"ربط الأفكار والتصرف في المواقف والتعبير بثقة.",moduleIds:["connectors","themes","expression"]}
- ]
+  A2:[
+   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
+   {title:"دقة التعبير",fr:"Préciser son expression",description:"الضمائر والكميات والمقارنة والطلب المهذب.",moduleIds:["pronouns","quantity","comparison","politeness"]},
+   {title:"التواصل المستقل",fr:"Communiquer avec autonomie",description:"ربط الأفكار والتصرف في المواقف والتعبير بثقة.",moduleIds:["connectors","themes","expression"]}
+  ],
+  B1:[
+   {title:"إتقان السرد",fr:"Maîtriser le récit",description:"أزمنة الماضي وتنظيم القصة والمستقبل والافتراض.",moduleIds:["past-tenses","narration","future-hypothesis","conditional"]},
+   {title:"تطوير اللغة",fr:"Développer la langue",description:"الضمائر النسبية والصيغة المنصوبة والروابط والحجاج.",moduleIds:["relative-pronouns","subjunctive","logical-links","argumentation"]},
+   {title:"الاستقلال المتقدم",fr:"Gagner en autonomie",description:"التواصل الرسمي والحياة اليومية والإعلام والمشروع الختامي.",moduleIds:["formal-communication","social-life","media-culture","b1-synthesis"]}
+  ]
 };
 
 const COURSE_PHASE_ICONS:Record<string,LucideIcon[]>={
  A1:[Rocket,Blocks,MessagesSquare],
- A2:[BadgeCheck,Layers3,Orbit]
+ A2:[BadgeCheck,Layers3,Orbit],
+ B1:[History,Link2,Trophy]
 };
 
 const REVISION_SECTION_ICONS:LucideIcon[]=[Activity,Repeat2,CircleMinus,CircleHelp,CalendarClock,Link2];
@@ -6016,7 +6122,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   <section className="university-intro">
    <article><Building2/><div><strong>بيئة جامعية داخلية</strong><span>قاعات، وحدات، وشروح منظمة</span></div></article>
-   <article><LibraryBig/><div><strong>منهج كامل</strong><span>من A1 إلى نهاية A2</span></div></article>
+   <article><LibraryBig/><div><strong>منهج كامل</strong><span>من A1 إلى B1</span></div></article>
    <article><Volume2/><div><strong>نطق تفاعلي</strong><span>الحروف والأمثلة بصوت فرنسي</span></div></article>
   </section>
 
@@ -6026,7 +6132,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      <h2>اختر مستواك</h2>
    </div>
    <div className="university-level-grid">
-    {LEVELS.map(item=><button key={item.id} onClick={()=>router.push(`/university/${item.id.toLocaleLowerCase("fr")}`)}>
+    {LEVELS.map(item=><button key={item.id} data-level={item.id} onClick={()=>router.push(`/university/${item.id.toLocaleLowerCase("fr")}`)}>
      <div className="university-level-code">{item.id}</div>
      <div><span>{item.label}</span><h3>{item.ar}</h3><p>{item.description}</p><small>{item.modules.length} وحدات · شرح وأمثلة ونطق</small></div>
      <ChevronLeft/>

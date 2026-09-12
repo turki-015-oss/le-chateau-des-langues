@@ -166,6 +166,13 @@ const A1_FUTURE_IMPERATIVE_LISTENING_CLIPS=[
  {letter:"ferme",word:"la fenêtre",ar:"أغلق النافذة",hiddenSpeech:"Ferme la fenêtre"},
  {letter:"ne traversez pas",word:"ici",ar:"لا تعبروا من هنا",hiddenSpeech:"Ne traversez pas ici"}
 ];
+const A1_FOOD_SHOPPING_LISTENING_CLIPS=[
+ {letter:"du",word:"pain",ar:"خبز",hiddenSpeech:"du pain"},
+ {letter:"de la",word:"soupe",ar:"حساء",hiddenSpeech:"de la soupe"},
+ {letter:"des",word:"tomates",ar:"طماطم",hiddenSpeech:"des tomates"},
+ {letter:"un kilo de",word:"pommes",ar:"كيلوغرام من التفاح",hiddenSpeech:"un kilo de pommes"},
+ {letter:"je voudrais",word:"un café",ar:"أرغب في قهوة",hiddenSpeech:"Je voudrais un café"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1923,16 +1930,26 @@ const A1_FOOD_SHOPPING_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_FOOD_SHOPPING_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je mange ___ pain.",speech:"Complétez la phrase. Je mange du pain.",instruction:"اختر أداة التجزئة المناسبة للاسم المذكر.",choices:["de la","du","des"],correctIndex:1,explanation:"pain اسم مذكر؛ لذلك نستخدم du."},
- {prompt:"Elle prépare ___ soupe.",speech:"Complétez la phrase. Elle prépare de la soupe.",instruction:"اختر أداة التجزئة المناسبة للاسم المؤنث.",choices:["de la","du","de l’"],correctIndex:0,explanation:"soupe اسم مؤنث؛ لذلك نستخدم de la."},
- {prompt:"Nous buvons ___ eau.",speech:"Complétez la phrase. Nous buvons de l’eau.",instruction:"اختر الأداة المناسبة قبل الاسم الذي يبدأ بصوت متحرك.",choices:["des","du","de l’"],correctIndex:2,explanation:"نستخدم de l’ قبل الاسم الذي يبدأ بصوت متحرك."},
- {prompt:"Ils achètent ___ fraises.",speech:"Complétez la phrase. Ils achètent des fraises.",instruction:"اختر الأداة المناسبة لاسم الجمع.",choices:["des","de la","du"],correctIndex:0,explanation:"fraises اسم جمع؛ لذلك نستخدم des."},
- {prompt:"Je ne prends pas ___ sucre.",speech:"Complétez la négation. Je ne prends pas de sucre.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["du","de","le"],correctIndex:1,explanation:"بعد النفي تتحول أداة التجزئة إلى de."},
- {prompt:"Une bouteille ___ jus de pomme.",speech:"Complétez l’expression de quantité. Une bouteille de jus de pomme.",instruction:"اختر حرف الربط الصحيح بعد المقدار.",choices:["du","de la","de"],correctIndex:2,explanation:"بعد تعبير الكمية une bouteille نستخدم de."},
- {prompt:"J’aime ___ fromage.",speech:"Complétez la phrase. J’aime le fromage.",instruction:"اختر الأداة الصحيحة بعد فعل الإعجاب للتحدث عن الطعام عمومًا.",choices:["le","du","de"],correctIndex:0,explanation:"بعد aimer نستخدم أداة المعرفة عند الحديث عن الشيء بصفة عامة."},
- {prompt:"___ un café, s’il vous plaît.",speech:"Formulez une demande polie. Je voudrais un café, s’il vous plaît.",instruction:"اختر العبارة المهذبة المناسبة للطلب.",choices:["Je vais","Je voudrais","Je suis"],correctIndex:1,explanation:"Je voudrais صيغة بسيطة ومهذبة لطلب شيء."},
- {prompt:"___ coûte ce fromage ?",speech:"Posez la question du prix. Combien coûte ce fromage ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Comment","Pourquoi","Combien"],correctIndex:2,explanation:"Combien coûte… ؟ تعني كم سعر…؟"},
- {prompt:"Je paie par carte.",speech:"Je paie par carte.",instruction:"اختر المعنى العربي الصحيح.",choices:["سأدفع بالبطاقة.","أحتاج إلى بطاقة.","سعر البطاقة مرتفع."],correctIndex:0,explanation:"payer par carte تعني الدفع بالبطاقة."}
+ {prompt:"Je mange ___ pain.",translation:"أتناول الخبز.",speech:"Je mange du pain.",instruction:"اختر أداة التجزئة المناسبة.",choices:["de la","du","des"],correctIndex:1,explanation:"pain اسم مذكر؛ لذلك نستخدم du."},
+ {prompt:"Elle prépare ___ soupe.",translation:"تحضّر الحساء.",speech:"Elle prépare de la soupe.",instruction:"اختر أداة التجزئة المناسبة.",choices:["de la","du","de l’"],correctIndex:0,explanation:"soupe اسم مؤنث؛ لذلك نستخدم de la."},
+ {prompt:"Nous buvons ___ eau.",translation:"نشرب الماء.",speech:"Nous buvons de l’eau.",instruction:"اختر الأداة المناسبة.",choices:["des","du","de l’"],correctIndex:2,explanation:"نستخدم de l’ قبل الاسم المبدوء بصوت متحرك."},
+ {prompt:"Ils achètent ___ fraises.",translation:"يشترون الفراولة.",speech:"Ils achètent des fraises.",instruction:"اختر الأداة المناسبة للجمع.",choices:["des","de la","du"],correctIndex:0,explanation:"fraises اسم جمع؛ لذلك نستخدم des."},
+ {prompt:"Je ne prends pas ___ sucre.",translation:"لا أتناول السكر.",speech:"Je ne prends pas de sucre.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["du","de","le"],correctIndex:1,explanation:"بعد النفي تتحول أداة التجزئة إلى de."},
+ {prompt:"Une bouteille ___ jus de pomme.",translation:"زجاجة من عصير التفاح.",speech:"Une bouteille de jus de pomme.",instruction:"أكمل تعبير الكمية.",choices:["du","de la","de"],correctIndex:2,explanation:"بعد تعبير الكمية نستخدم de."},
+ {prompt:"J’aime ___ fromage.",translation:"أحب الجبن.",speech:"J’aime le fromage.",instruction:"اختر الأداة المناسبة للحديث عن الطعام عمومًا.",choices:["le","du","de"],correctIndex:0,explanation:"بعد aimer نستخدم أداة المعرفة عند الحديث عن الشيء عمومًا."},
+ {prompt:"___ un café, s’il vous plaît.",translation:"أرغب في قهوة، من فضلك.",speech:"Je voudrais un café, s’il vous plaît.",instruction:"اختر العبارة المهذبة المناسبة.",choices:["Je vais","Je voudrais","Je suis"],correctIndex:1,explanation:"Je voudrais صيغة مهذبة للطلب."},
+ {prompt:"___ coûte ce fromage ?",translation:"كم سعر هذا الجبن؟",speech:"Combien coûte ce fromage ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Comment","Pourquoi","Combien"],correctIndex:2,explanation:"Combien coûte… ؟ تعني: كم سعر…؟"},
+ {prompt:"Je paie par carte.",translation:"أدفع بالبطاقة.",speech:"Je paie par carte.",instruction:"اختر المعنى العربي الصحيح.",choices:["أدفع بالبطاقة.","أحتاج إلى بطاقة.","سعر البطاقة مرتفع."],correctIndex:0,explanation:"payer par carte تعني الدفع بالبطاقة."},
+ {prompt:"Je voudrais ___ lait.",translation:"أرغب في بعض الحليب.",speech:"Je voudrais du lait.",instruction:"اختر أداة التجزئة المناسبة.",choices:["du","de la","des"],correctIndex:0,explanation:"lait اسم مذكر؛ لذلك نستخدم du."},
+ {prompt:"Elle achète ___ confiture.",translation:"تشتري بعض المربى.",speech:"Elle achète de la confiture.",instruction:"اختر أداة التجزئة المناسبة.",choices:["de l’","des","de la"],correctIndex:2,explanation:"confiture اسم مؤنث؛ لذلك نستخدم de la."},
+ {prompt:"Il boit ___ orangeade.",translation:"يشرب بعض شراب البرتقال.",speech:"Il boit de l’orangeade.",instruction:"اختر الأداة المناسبة قبل صوت متحرك.",choices:["du","de l’","de la"],correctIndex:1,explanation:"نستخدم de l’ قبل orangeade لأنها تبدأ بصوت متحرك."},
+ {prompt:"Nous prenons trois kilos ___ oranges.",translation:"نأخذ ثلاثة كيلوغرامات من البرتقال.",speech:"Nous prenons trois kilos d’oranges.",instruction:"أكمل تعبير الكمية.",choices:["d’","des","du"],correctIndex:0,explanation:"بعد مقدار الكمية نستخدم de، وتصبح d’ قبل صوت متحرك."},
+ {prompt:"Vous ne mangez pas ___ viande.",translation:"أنتم لا تأكلون اللحم.",speech:"Vous ne mangez pas de viande.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["de la","de","la"],correctIndex:1,explanation:"بعد النفي نستخدم de بدل أداة التجزئة."},
+ {prompt:"Combien ___ ces bananes ?",translation:"كم سعر هذه الموزات؟",speech:"Combien coûtent ces bananes ?",instruction:"اختر الفعل المصرف المناسب للجمع.",choices:["coûte","coûtes","coûtent"],correctIndex:2,explanation:"bananes جمع؛ لذلك نصرف coûter بصيغة coûtent."},
+ {prompt:"Une tranche ___ fromage.",translation:"شريحة من الجبن.",speech:"Une tranche de fromage.",instruction:"أكمل تعبير الكمية.",choices:["de","du","des"],correctIndex:0,explanation:"بعد une tranche نستخدم de."},
+ {prompt:"Vous avez du pain complet ?",translation:"هل لديكم خبز كامل الحبوب؟",speech:"Vous avez du pain complet ? Oui, bien sûr.",instruction:"اختر الرد الطبيعي المناسب.",choices:["Non, je suis pain.","Oui, bien sûr.","Il coûte demain."],correctIndex:1,explanation:"Oui, bien sûr رد طبيعي ومهذب لتأكيد توفر المنتج."},
+ {prompt:"Je voudrais payer ___ espèces.",translation:"أرغب في الدفع نقدًا.",speech:"Je voudrais payer en espèces.",instruction:"اختر حرف الجر الصحيح.",choices:["par","à","en"],correctIndex:2,explanation:"التعبير الصحيح هو payer en espèces."},
+ {prompt:"La caisse est au fond du magasin.",translation:"يقع صندوق المحاسبة في آخر المتجر.",speech:"La caisse est au fond du magasin.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع صندوق المحاسبة في آخر المتجر.","المتجر مغلق اليوم.","أبحث عن سلة التسوق."],correctIndex:0,explanation:"au fond du magasin تعني في آخر المتجر."}
 ];
 
 const A1_CITY_DIRECTIONS_PRACTICE_ITEMS:Example[]=[
@@ -3086,6 +3103,17 @@ const A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS=[
  {fr:"n’oublie pas tes clés",ar:"لا تنس مفاتيحك"}
 ];
 
+const A1_FOOD_SHOPPING_WRITING_TRANSLATIONS=[
+ {fr:"du pain",ar:"خبز"},
+ {fr:"de la soupe",ar:"حساء"},
+ {fr:"de l’eau",ar:"ماء"},
+ {fr:"des tomates",ar:"طماطم"},
+ {fr:"un kilo de pommes",ar:"كيلوغرام من التفاح"},
+ {fr:"une bouteille d’huile",ar:"زجاجة زيت"},
+ {fr:"je voudrais un café",ar:"أرغب في قهوة"},
+ {fr:"je paie par carte",ar:"أدفع بالبطاقة"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3116,20 +3144,22 @@ const A1_FOOD_SHOPPING_READING={
  text:"Samira prépare le dîner. Au marché, elle achète du pain, de la soupe, des tomates et une bouteille d’huile. Elle ne prend pas de viande aujourd’hui. À la caisse, elle demande : « Combien coûte le fromage ? Est-ce que je peux payer par carte ? »",
  translation:"تحضّر سميرة العشاء. تشتري من السوق خبزًا وحساءً وطماطم وزجاجة زيت. لا تشتري اللحم اليوم. وعند صندوق المحاسبة تسأل: «كم سعر الجبن؟ وهل يمكنني الدفع بالبطاقة؟»",
  questions:[
-  {question:"Qu’est-ce que Samira achète ?",answer:"Elle achète du pain, de la soupe, des tomates et une bouteille d’huile.",ar:"تشتري خبزًا وحساءً وطماطم وزجاجة زيت."},
-  {question:"Qu’est-ce qu’elle ne prend pas ?",answer:"Elle ne prend pas de viande.",ar:"لا تشتري اللحم."},
-  {question:"Comment veut-elle payer ?",answer:"Elle veut payer par carte.",ar:"تريد الدفع بالبطاقة."}
+  {question:"Qu’est-ce que Samira achète ?",translation:"ماذا تشتري سميرة؟",answer:"Elle achète du pain, de la soupe, des tomates et une bouteille d’huile.",ar:"تشتري خبزًا وحساءً وطماطم وزجاجة زيت."},
+  {question:"Qu’est-ce qu’elle ne prend pas ?",translation:"ما الذي لا تشتريه؟",answer:"Elle ne prend pas de viande.",ar:"لا تشتري اللحم."},
+  {question:"Comment veut-elle payer ?",translation:"كيف تريد أن تدفع؟",answer:"Elle veut payer par carte.",ar:"تريد الدفع بالبطاقة."}
  ]
 };
 
 const A1_FOOD_SHOPPING_LISTENING={
  title:"À la boulangerie",
  arTitle:"في المخبز",
- text:"Bonjour, je voudrais deux baguettes et trois croissants, s’il vous plaît. Je prends aussi un litre de lait. Combien ça coûte ? — Cela fait neuf euros cinquante. — Je paie en espèces.",
+ text:"Du pain. De la soupe. Des tomates. Un kilo de pommes. Je voudrais un café.",
  questions:[
-  {prompt:"Combien de baguettes le client demande-t-il ?",choices:["Une","Deux","Trois"],correctIndex:1},
-  {prompt:"Combien coûte la commande ?",choices:["Huit euros cinquante","Neuf euros","Neuf euros cinquante"],correctIndex:2},
-  {prompt:"Comment le client paie-t-il ?",choices:["Par carte","En espèces","Par téléphone"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Du pain","Du lait","Du riz"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["De la salade","De la soupe","De la viande"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Des pommes","Des fraises","Des tomates"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un kilo de pommes","Un litre de lait","Une tranche de fromage"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je paie par carte","Je voudrais un café","Je prends du thé"],correctIndex:1}
  ]
 };
 
@@ -3138,19 +3168,25 @@ const A1_FOOD_SHOPPING_WRITING_MODEL="Pour le dîner, je voudrais du pain, de la
 const A1_FOOD_SHOPPING_DICTATION=[
  {speech:"Je voudrais un kilo de pommes.",ar:"أرغب في كيلوغرام من التفاح."},
  {speech:"Nous achetons du pain et des tomates.",ar:"نشتري خبزًا وطماطم."},
- {speech:"Je ne prends pas de sucre.",ar:"لا أتناول السكر."}
+ {speech:"Je ne prends pas de sucre.",ar:"لا أتناول السكر."},
+ {speech:"Elle prépare de la salade fraîche.",ar:"تحضّر سلطة طازجة."},
+ {speech:"Cette bouteille d’huile coûte six euros.",ar:"سعر زجاجة الزيت هذه ستة يوروهات."}
 ];
 
 const A1_FOOD_SHOPPING_BUILDERS=[
  {tokens:["pain.","du","J’achète"],answer:["J’achète","du","pain."],ar:"أشتري خبزًا."},
  {tokens:["pommes,","kilo","voudrais","de","Je","un","s’il vous plaît."],answer:["Je","voudrais","un","kilo","de","pommes,","s’il vous plaît."],ar:"أرغب في كيلوغرام من التفاح، من فضلك."},
- {tokens:["pas","café.","ne","de","prends","Je"],answer:["Je","ne","prends","pas","de","café."],ar:"لا أتناول القهوة."}
+ {tokens:["pas","café.","ne","de","prends","Je"],answer:["Je","ne","prends","pas","de","café."],ar:"لا أتناول القهوة."},
+ {tokens:["coûtent","Combien","oranges","?","ces"],answer:["Combien","coûtent","ces","oranges","?"],ar:"كم سعر هذه البرتقالات؟"},
+ {tokens:["carte.","par","payons","Nous"],answer:["Nous","payons","par","carte."],ar:"ندفع بالبطاقة."}
 ];
 
 const A1_FOOD_SHOPPING_DIALOGUES=[
- {context:"Vous commandez poliment une boisson.",prompt:"اختر العبارة المناسبة.",choices:["Je voudrais de l’eau, s’il vous plaît.","Je veux de eau.","Je voudrais du eau."],correctIndex:0,feedback:"قبل eau نستخدم de l’، وJe voudrais تجعل الطلب مهذبًا."},
- {context:"Le vendeur demande : « Vous prenez du sucre ? »",prompt:"اختر جواب النفي الصحيح.",choices:["Non, je ne prends pas de sucre.","Non, je ne prends pas du sucre.","Non, je prends ne pas sucre."],correctIndex:0,feedback:"بعد النفي تتحول أداة التجزئة إلى de."},
- {context:"Vous voulez connaître le prix.",prompt:"اختر السؤال الطبيعي.",choices:["Combien ça coûte ?","Quel ça mange ?","Où ça paie ?"],correctIndex:0,feedback:"Combien ça coûte ? هو السؤال الشائع عن السعر."}
+ {context:"Qu’est-ce que vous désirez ?",translation:"ماذا ترغب؟",prompt:"اختر طلبًا مهذبًا.",choices:["Je voudrais de l’eau, s’il vous plaît.","Je veux de eau.","Je voudrais du eau."],correctIndex:0,feedback:"قبل eau نستخدم de l’، وJe voudrais تجعل الطلب مهذبًا."},
+ {context:"Vous prenez du sucre ?",translation:"هل تتناول السكر؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, je ne prends pas de sucre.","Non, je ne prends pas du sucre.","Non, je prends ne pas sucre."],correctIndex:0,feedback:"بعد النفي تتحول أداة التجزئة إلى de."},
+ {context:"Quel est le prix de ce gâteau ?",translation:"ما سعر هذه الكعكة؟",prompt:"اختر السؤال الطبيعي المكافئ.",choices:["Combien ça coûte ?","Quel ça mange ?","Où ça paie ?"],correctIndex:0,feedback:"Combien ça coûte ? هو السؤال الشائع عن السعر."},
+ {context:"Comment souhaitez-vous payer ?",translation:"كيف ترغب في الدفع؟",prompt:"اختر الرد المناسب.",choices:["Je paie à huit heures.","Je paie par carte.","Je paie deux pommes."],correctIndex:1,feedback:"payer par carte هو التعبير الصحيح للدفع بالبطاقة."},
+ {context:"Vous voulez autre chose ?",translation:"هل ترغب في شيء آخر؟",prompt:"اختر الرد المهذب المناسب.",choices:["Non, merci, c’est tout.","Non, je suis tout.","Merci, je coûte."],correctIndex:0,feedback:"Non, merci, c’est tout رد طبيعي لإنهاء الطلب."}
 ];
 
 const A1_CITY_DIRECTIONS_READING={
@@ -6397,8 +6433,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative;
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping;
  const isA1CityDirections=level.id==="A1"&&activeModule.id==="city-directions";
  const isA1NumbersTime=level.id==="A1"&&activeModule.id==="numbers-time";
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
@@ -6454,7 +6490,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7121,7 +7157,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

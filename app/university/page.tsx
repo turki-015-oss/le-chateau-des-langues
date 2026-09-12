@@ -44,7 +44,7 @@ type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPa
 type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
-type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded";
+type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open";
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
@@ -89,9 +89,9 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
   explanation:"تُصنَّف الأصوات بحسب ارتفاع اللسان ودرجة انفتاح الفم أثناء النطق.",
   frExplanation:"Les voyelles se classent selon la hauteur de la langue et le degré d’ouverture de la bouche.",
   branches:[
-   {fr:"Voyelles fermées",ar:"أصوات مغلقة",explanation:"يكون اللسان قريبًا من سقف الفم، ويكون الفم شبه مغلق.",frExplanation:"La langue est proche du palais et la bouche est presque fermée."},
-   {fr:"Voyelles moyennes",ar:"أصوات متوسطة",explanation:"يكون الفم مفتوحًا بدرجة متوسطة، وتنقسم إلى متوسطة مغلقة ومتوسطة مفتوحة.",frExplanation:"La bouche est moyennement ouverte ; ces voyelles se divisent en mi-fermées et mi-ouvertes."},
-   {fr:"Voyelles ouvertes",ar:"أصوات مفتوحة",explanation:"ينخفض اللسان إلى الأسفل، ويكون الفم مفتوحًا بدرجة كبيرة.",frExplanation:"La langue s’abaisse et la bouche est largement ouverte."}
+   {fr:"Voyelles fermées",ar:"أصوات مغلقة",explanation:"يكون اللسان قريبًا من سقف الفم، ويكون الفم شبه مغلق.",frExplanation:"La langue est proche du palais et la bouche est presque fermée.",table:"closed"},
+   {fr:"Voyelles moyennes",ar:"أصوات متوسطة",explanation:"يكون الفم مفتوحًا بدرجة متوسطة، وتنقسم إلى متوسطة مغلقة ومتوسطة مفتوحة.",frExplanation:"La bouche est moyennement ouverte ; ces voyelles se divisent en mi-fermées et mi-ouvertes.",table:"mid"},
+   {fr:"Voyelles ouvertes",ar:"أصوات مفتوحة",explanation:"ينخفض اللسان إلى الأسفل، ويكون الفم مفتوحًا بدرجة كبيرة.",frExplanation:"La langue s’abaisse et la bouche est largement ouverte.",table:"open"}
   ]
  },
  {
@@ -150,7 +150,31 @@ const A1_UNROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain تُبسط الشفتان لإنتاج /ɛ̃/ الأنفي، ولا تُنطق حروف ain منفصلة."}
 ];
 
-const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES};
+const A1_CLOSED_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {...A1_ORAL_VOWEL_EXAMPLES[0],explanation:"في lit يرتفع مقدّم اللسان قريبًا من سقف الفم، وتبقى فتحة الفم ضيقة لإنتاج /i/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[1],explanation:"في lune يرتفع مقدّم اللسان ويكاد الفم ينغلق، مع تدوير الشفتين لإنتاج /y/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[2],explanation:"في rouge يرتفع مؤخر اللسان قريبًا من الحنك، وتُضم الشفتان لإنتاج /u/."}
+];
+
+const A1_MID_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {...A1_ORAL_VOWEL_EXAMPLES[3],explanation:"في été يكون /e/ متوسطًا مغلقًا: يرتفع اللسان نسبيًا وتبقى الشفتان غير مدوّرتين."},
+ {...A1_ORAL_VOWEL_EXAMPLES[5],explanation:"في feu يكون /ø/ متوسطًا مغلقًا، مع تدوير الشفتين وفتحة فم معتدلة تميل إلى الضيق."},
+ {...A1_ORAL_VOWEL_EXAMPLES[7],explanation:"في bateau يكون /o/ متوسطًا مغلقًا خلفيًا، مع تدوير الشفتين."},
+ {...A1_ORAL_VOWEL_EXAMPLES[4],explanation:"في père يكون /ɛ/ متوسطًا مفتوحًا: ينخفض اللسان قليلًا ويتسع الفم أكثر من /e/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[6],explanation:"في cœur يكون /œ/ متوسطًا مفتوحًا، مع تدوير الشفتين واتساع أكبر من /ø/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[8],explanation:"في pomme يكون /ɔ/ متوسطًا مفتوحًا خلفيًا، مع تدوير الشفتين واتساع أكبر من /o/."},
+ {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain يكون /ɛ̃/ صوتًا أنفيًا متوسطًا مفتوحًا؛ يمر الهواء من الفم والأنف."},
+ {...A1_NASAL_VOWEL_EXAMPLES[5],explanation:"في maison يكون /ɔ̃/ صوتًا أنفيًا متوسطًا مفتوحًا ومدوّرًا."},
+ {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun يمثل /œ̃/ صوتًا أنفيًا متوسطًا مفتوحًا ومدوّرًا في النطق المعياري."}
+];
+
+const A1_OPEN_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {...A1_ORAL_VOWEL_EXAMPLES[9],explanation:"في chat ينخفض اللسان ويتسع الفم بوضوح لإنتاج الصوت المفتوح /a/."},
+ {...A1_NASAL_VOWEL_EXAMPLES[0],explanation:"في enfant ينخفض اللسان ويكون الفم مفتوحًا لإنتاج /ɑ̃/، مع مرور الهواء من الفم والأنف."},
+ {...A1_NASAL_VOWEL_EXAMPLES[1],explanation:"في gant تعطي المجموعة an الصوت المفتوح الأنفي /ɑ̃/، ولا يُنطق الحرف t الأخير."}
+];
+
+const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES,closed:A1_CLOSED_VOWEL_EXAMPLES,mid:A1_MID_VOWEL_EXAMPLES,open:A1_OPEN_VOWEL_EXAMPLES};
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
@@ -5117,7 +5141,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
- const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0});
+ const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);

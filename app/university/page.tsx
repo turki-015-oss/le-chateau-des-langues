@@ -1688,12 +1688,12 @@ const A1_SOUNDS_LISTENING={
  arTitle:"تمييز الأصوات الأساسية",
  text:"Rouge. Voiture. Pain. Bonjour. Chat. Garçon.",
  questions:[
-  {prompt:"Quel groupe de lettres entendez-vous dans « rouge » ?",speech:"Écoutez le mot rouge. Quel groupe de lettres entendez-vous ?",translation:"ما مجموعة الحروف التي تسمعها في كلمة «rouge»؟",choices:["ou","oi","on"],correctIndex:0},
-  {prompt:"Quel groupe de lettres entendez-vous dans « voiture » ?",speech:"Écoutez le mot voiture. Quel groupe de lettres entendez-vous ?",translation:"ما مجموعة الحروف التي تسمعها في كلمة «voiture»؟",choices:["ain","ou","oi"],correctIndex:2},
-  {prompt:"Quelle graphie représente le son nasal /ɛ̃/ dans « pain » ?",speech:"Écoutez le mot pain. Quelle graphie représente le son nasal entendu ?",translation:"ما الكتابة التي تمثل الصوت الأنفي في كلمة «pain»؟",choices:["on","ain","an"],correctIndex:1},
-  {prompt:"Quel groupe nasal entendez-vous dans « bonjour » ?",speech:"Écoutez le mot bonjour. Quel groupe nasal entendez-vous ?",translation:"ما مجموعة الحروف الأنفية التي تسمعها في كلمة «bonjour»؟",choices:["on","an","in"],correctIndex:0},
-  {prompt:"Quel groupe de lettres produit le son /ʃ/ dans « chat » ?",speech:"Écoutez le mot chat. Quel groupe de lettres produit le son entendu ?",translation:"ما مجموعة الحروف التي تنتج صوت «ش» في كلمة «chat»؟",choices:["ph","gn","ch"],correctIndex:2},
-  {prompt:"Quel son produit la lettre « ç » dans « garçon » ?",speech:"Écoutez le mot garçon. Quel son produit la lettre c cédille ?",translation:"ما الصوت الذي ينتجه الحرف «ç» في كلمة «garçon»؟",choices:["Le son k","Le son s","Le son g"],correctIndex:1}
+  {prompt:"Dans « rouge », quel son le groupe de lettres « ou » représente-t-il ?",speech:"Écoutez le mot rouge. Quel son entendez-vous pour le groupe de lettres ou ?",translation:"في كلمة «rouge»، أي صوت تمثله مجموعة الحروف «ou»؟",choices:["/u/ — comme dans « roue »","/wa/ — comme dans « moi »","/ɔ̃/ — comme dans « pont »"],correctIndex:0},
+  {prompt:"Dans « voiture », quel son le groupe de lettres « oi » représente-t-il ?",speech:"Écoutez le mot voiture. Quel son entendez-vous pour le groupe de lettres oi ?",translation:"في كلمة «voiture»، أي صوت تمثله مجموعة الحروف «oi»؟",choices:["/u/ — comme dans « rouge »","/o/ — comme dans « bateau »","/wa/ — comme dans « moi »"],correctIndex:2},
+  {prompt:"Dans « pain », quel son nasal le groupe de lettres « ain » représente-t-il ?",speech:"Écoutez le mot pain. Quel son nasal entendez-vous ?",translation:"في كلمة «pain»، أي صوت أنفي تمثله مجموعة الحروف «ain»؟",choices:["/ɑ̃/ — comme dans « enfant »","/ɛ̃/ — comme dans « matin »","/ɔ̃/ — comme dans « pont »"],correctIndex:1},
+  {prompt:"Dans « bonjour », quel son nasal le groupe de lettres « on » représente-t-il ?",speech:"Écoutez le mot bonjour. Quel son nasal entendez-vous ?",translation:"في كلمة «bonjour»، أي صوت أنفي تمثله مجموعة الحروف «on»؟",choices:["/ɔ̃/ — comme dans « pont »","/ɑ̃/ — comme dans « enfant »","/ɛ̃/ — comme dans « matin »"],correctIndex:0},
+  {prompt:"Dans « chat », quel son le groupe de lettres « ch » représente-t-il ?",speech:"Écoutez le mot chat. Quel son entendez-vous au début du mot ?",translation:"في كلمة «chat»، أي صوت تمثله مجموعة الحروف «ch»؟",choices:["/f/ — comme dans « photo »","/ɲ/ — comme dans « ligne »","/ʃ/ — comme dans « bouche »"],correctIndex:2},
+  {prompt:"Dans « garçon », quel son la lettre « ç » représente-t-elle ?",speech:"Écoutez le mot garçon. Quel son entendez-vous pour la lettre c cédille ?",translation:"في كلمة «garçon»، أي صوت يمثله الحرف «ç»؟",choices:["/k/ — comme dans « café »","/s/ — comme dans « soleil »","/ʒ/ — comme dans « jour »"],correctIndex:1}
  ]
 };
 

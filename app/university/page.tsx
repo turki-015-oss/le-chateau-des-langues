@@ -145,6 +145,13 @@ const A1_QUESTIONS_LISTENING_CLIPS=[
  {letter:"combien",word:"coûte ce billet ?",ar:"كم سعر هذه التذكرة؟",hiddenSpeech:"Combien coûte ce billet ?"},
  {letter:"pourquoi",word:"apprenez-vous le français ?",ar:"لماذا تتعلم الفرنسية؟",hiddenSpeech:"Pourquoi apprenez-vous le français ?"}
 ];
+const A1_PRESENT_LISTENING_CLIPS=[
+ {letter:"je travaille",word:"à la bibliothèque",ar:"أعمل في المكتبة",hiddenSpeech:"Je travaille à la bibliothèque"},
+ {letter:"tu finis",word:"à cinq heures",ar:"تنتهي عند الخامسة",hiddenSpeech:"Tu finis à cinq heures"},
+ {letter:"elle prend",word:"le métro",ar:"تستقل المترو",hiddenSpeech:"Elle prend le métro"},
+ {letter:"nous faisons",word:"du sport",ar:"نمارس الرياضة",hiddenSpeech:"Nous faisons du sport"},
+ {letter:"ils ne viennent pas",word:"ce soir",ar:"لن يأتوا هذا المساء",hiddenSpeech:"Ils ne viennent pas ce soir"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1752,16 +1759,26 @@ const A1_PRESENT_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_PRESENT_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je ___ français avec mes collègues.",speech:"Complétez la phrase. Je parle français avec mes collègues.",instruction:"اختر تصريف parler الصحيح مع je.",choices:["parle","parles","parlons"],correctIndex:0,explanation:"مع je يأخذ الفعل parler النهاية -e: je parle."},
- {prompt:"Nous ___ le cours à midi.",speech:"Complétez la phrase. Nous finissons le cours à midi.",instruction:"اختر تصريف finir الصحيح مع nous.",choices:["finissez","finissons","finissent"],correctIndex:1,explanation:"مع nous يُصرّف finir هكذا: nous finissons."},
- {prompt:"Ils ___ devant le cinéma.",speech:"Complétez la phrase. Ils attendent devant le cinéma.",instruction:"اختر تصريف attendre الصحيح مع ils.",choices:["attend","attendez","attendent"],correctIndex:2,explanation:"مع ils يأخذ attendre النهاية -ent: ils attendent."},
- {prompt:"Tu ___ le bus numéro dix.",speech:"Complétez la phrase. Tu prends le bus numéro dix.",instruction:"اختر تصريف prendre الصحيح مع tu.",choices:["prends","prend","prenez"],correctIndex:0,explanation:"مع tu يُصرّف prendre هكذا: tu prends."},
- {prompt:"Vous ___ vos devoirs le soir.",speech:"Complétez la phrase. Vous faites vos devoirs le soir.",instruction:"اختر تصريف faire الصحيح مع vous.",choices:["faisons","faites","font"],correctIndex:1,explanation:"مع vous يُصرّف faire هكذا: vous faites."},
- {prompt:"Elle ___ au marché à pied.",speech:"Complétez la phrase. Elle va au marché à pied.",instruction:"اختر تصريف aller الصحيح مع elle.",choices:["vas","vont","va"],correctIndex:2,explanation:"مع elle يُصرّف aller هكذا: elle va."},
- {prompt:"Je ___ comprends ___ cette phrase.",speech:"Complétez la phrase négative. Je ne comprends pas cette phrase.",instruction:"اختر أداتي النفي المناسبتين.",choices:["ne … pas","pas … ne","n’ … jamais"],correctIndex:0,explanation:"في النفي البسيط نضع ne قبل الفعل وpas بعده: je ne comprends pas."},
- {prompt:"Il ___ habite pas ici.",speech:"Complétez la phrase. Il n’habite pas ici.",instruction:"اختر الصيغة الصحيحة قبل الفعل المبدوء بحرف متحرك.",choices:["ne","n’","pas"],correctIndex:1,explanation:"تتحول ne إلى n’ قبل حرف متحرك: il n’habite pas."},
- {prompt:"___ vous travaillez aujourd’hui ?",speech:"Complétez la question. Est-ce que vous travaillez aujourd’hui ?",instruction:"اختر بداية السؤال الصحيحة.",choices:["Qu’est-ce","Est-ce qui","Est-ce que"],correctIndex:2,explanation:"Est-ce que تسبق الجملة المثبتة لتكوين سؤال واضح."},
- {prompt:"Nous ne prenons pas la voiture aujourd’hui.",speech:"Nous ne prenons pas la voiture aujourd’hui.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["لن نذهب بالسيارة اليوم.","نبحث عن السيارة اليوم.","نغسل السيارة اليوم."],correctIndex:0,explanation:"prendre la voiture يعني الذهاب بالسيارة، والجملة هنا تنفي ذلك اليوم."}
+ {prompt:"Je ___ français avec mes collègues.",translation:"أتحدث الفرنسية مع زملائي.",speech:"Je parle français avec mes collègues.",instruction:"اختر تصريف parler الصحيح مع je.",choices:["parle","parles","parlons"],correctIndex:0,explanation:"مع je يأخذ الفعل parler النهاية -e: je parle."},
+ {prompt:"Nous ___ le cours à midi.",translation:"ننهي الدرس عند الظهر.",speech:"Nous finissons le cours à midi.",instruction:"اختر تصريف finir الصحيح مع nous.",choices:["finissez","finissons","finissent"],correctIndex:1,explanation:"مع nous يُصرّف finir هكذا: nous finissons."},
+ {prompt:"Ils ___ devant le cinéma.",translation:"ينتظرون أمام السينما.",speech:"Ils attendent devant le cinéma.",instruction:"اختر تصريف attendre الصحيح مع ils.",choices:["attend","attendez","attendent"],correctIndex:2,explanation:"مع ils يأخذ attendre النهاية -ent: ils attendent."},
+ {prompt:"Tu ___ le bus numéro dix.",translation:"تستقل الحافلة رقم عشرة.",speech:"Tu prends le bus numéro dix.",instruction:"اختر تصريف prendre الصحيح مع tu.",choices:["prends","prend","prenez"],correctIndex:0,explanation:"مع tu يُصرّف prendre هكذا: tu prends."},
+ {prompt:"Vous ___ vos devoirs le soir.",translation:"تنجزون واجباتكم مساءً.",speech:"Vous faites vos devoirs le soir.",instruction:"اختر تصريف faire الصحيح مع vous.",choices:["faisons","faites","font"],correctIndex:1,explanation:"مع vous يُصرّف faire هكذا: vous faites."},
+ {prompt:"Elle ___ au marché à pied.",translation:"تذهب إلى السوق مشيًا.",speech:"Elle va au marché à pied.",instruction:"اختر تصريف aller الصحيح مع elle.",choices:["vas","vont","va"],correctIndex:2,explanation:"مع elle يُصرّف aller هكذا: elle va."},
+ {prompt:"Je ___ comprends ___ cette phrase.",translation:"أنا لا أفهم هذه الجملة.",speech:"Je ne comprends pas cette phrase.",instruction:"اختر أداتي النفي المناسبتين.",choices:["ne … pas","pas … ne","n’ … jamais"],correctIndex:0,explanation:"في النفي البسيط نضع ne قبل الفعل وpas بعده."},
+ {prompt:"Il ___ habite pas ici.",translation:"هو لا يسكن هنا.",speech:"Il n’habite pas ici.",instruction:"اختر الصيغة الصحيحة قبل الفعل المبدوء بحرف متحرك.",choices:["ne","n’","pas"],correctIndex:1,explanation:"تتحول ne إلى n’ قبل حرف متحرك."},
+ {prompt:"___ vous travaillez aujourd’hui ?",translation:"هل تعملون اليوم؟",speech:"Est-ce que vous travaillez aujourd’hui ?",instruction:"اختر بداية السؤال الصحيحة.",choices:["Qu’est-ce","Est-ce qui","Est-ce que"],correctIndex:2,explanation:"Est-ce que تسبق الجملة المثبتة لتكوين سؤال."},
+ {prompt:"Nous ne prenons pas la voiture aujourd’hui.",translation:"لن نذهب بالسيارة اليوم.",speech:"Nous ne prenons pas la voiture aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["لن نذهب بالسيارة اليوم.","نبحث عن السيارة اليوم.","نغسل السيارة اليوم."],correctIndex:0,explanation:"prendre la voiture يعني الذهاب بالسيارة، والجملة تنفي ذلك."},
+ {prompt:"Tu ___ la porte doucement.",translation:"تغلق الباب بهدوء.",speech:"Tu fermes la porte doucement.",instruction:"اختر تصريف fermer مع tu.",choices:["fermes","ferme","fermez"],correctIndex:0,explanation:"مع tu ينتهي فعل المجموعة الأولى بـ -es."},
+ {prompt:"On ___ le déjeuner ensemble.",translation:"نحضّر الغداء معًا.",speech:"On prépare le déjeuner ensemble.",instruction:"اختر تصريف préparer مع on.",choices:["prépares","prépare","préparons"],correctIndex:1,explanation:"on يعامل نحويًا معاملة il أو elle؛ لذلك نقول prépare."},
+ {prompt:"Elles ___ dans un hôtel.",translation:"يسكنّ في فندق.",speech:"Elles habitent dans un hôtel.",instruction:"اختر تصريف habiter مع elles.",choices:["habitez","habite","habitent"],correctIndex:2,explanation:"مع elles نكتب النهاية -ent."},
+ {prompt:"Nous ___ à huit heures.",translation:"نبدأ الساعة الثامنة.",speech:"Nous commençons à huit heures.",instruction:"اختر التصريف الصحيح لـ commencer مع nous.",choices:["commençons","commenceons","commencez"],correctIndex:0,explanation:"نكتب ç في nous commençons للحفاظ على صوت السين."},
+ {prompt:"Vous ___ au restaurant.",translation:"تتناولون الطعام في المطعم.",speech:"Vous mangez au restaurant.",instruction:"اختر تصريف manger مع vous.",choices:["mangeons","mangez","mangent"],correctIndex:1,explanation:"مع vous تكون النهاية -ez: vous mangez."},
+ {prompt:"Mes amis ___ demain.",translation:"يأتي أصدقائي غدًا.",speech:"Mes amis viennent demain.",instruction:"اختر تصريف venir مع ils.",choices:["venez","vient","viennent"],correctIndex:2,explanation:"Mes amis يعادل ils، وتصريف venir هو viennent."},
+ {prompt:"Je ___ mes courses le samedi.",translation:"أتسوّق يوم السبت.",speech:"Je fais mes courses le samedi.",instruction:"اختر تصريف faire مع je.",choices:["fais","fait","font"],correctIndex:0,explanation:"تصريف faire مع je هو fais."},
+ {prompt:"Nous ___ à la gare en taxi.",translation:"نذهب إلى المحطة بسيارة أجرة.",speech:"Nous allons à la gare en taxi.",instruction:"اختر تصريف aller مع nous.",choices:["allez","allons","vont"],correctIndex:1,explanation:"تصريف aller مع nous هو allons."},
+ {prompt:"Elle ne ___ pas de café.",translation:"هي لا تشرب القهوة.",speech:"Elle ne boit pas de café.",instruction:"اختر تصريف boire الصحيح داخل النفي.",choices:["bois","buvez","boit"],correctIndex:2,explanation:"مع elle نقول boit، وتحيط به ne وpas."},
+ {prompt:"Vous écoutez la radio chaque matin.",translation:"تستمعون إلى الراديو كل صباح.",speech:"Vous écoutez la radio chaque matin.",instruction:"اختر الاستخدام الذي تعبّر عنه الجملة.",choices:["عادة متكررة","فعل انتهى أمس","خطة بعيدة"],correctIndex:0,explanation:"chaque matin يدل على عادة، والمضارع يعبّر عنها."}
 ];
 
 const A1_NUMBERS_TIME_PRACTICE_ITEMS:Example[]=[
@@ -2879,41 +2896,60 @@ const A1_PRESENT_READING={
  text:"Karim travaille dans une librairie. Il commence à neuf heures et finit à dix-sept heures. À midi, il prend son déjeuner avec ses collègues. Il ne rentre pas en voiture : il prend le métro. Le soir, ses amis viennent parfois chez lui.",
  translation:"يعمل كريم في مكتبة لبيع الكتب. يبدأ عمله الساعة التاسعة وينتهي الساعة الخامسة مساءً. عند الظهر يتناول الغداء مع زملائه. لا يعود بالسيارة، بل يستقل المترو. وفي المساء يأتي أصدقاؤه أحيانًا إلى منزله.",
  questions:[
-  {question:"Où travaille Karim ?",answer:"Karim travaille dans une librairie.",ar:"يعمل كريم في مكتبة لبيع الكتب."},
-  {question:"Comment rentre-t-il chez lui ?",answer:"Il rentre chez lui en métro.",ar:"يعود إلى منزله بالمترو."},
-  {question:"Qui vient parfois chez lui ?",answer:"Ses amis viennent parfois chez lui.",ar:"يأتي أصدقاؤه أحيانًا إلى منزله."}
+  {question:"Où travaille Karim ?",translation:"أين يعمل كريم؟",answer:"Karim travaille dans une librairie.",ar:"يعمل كريم في مكتبة لبيع الكتب."},
+  {question:"Comment rentre-t-il chez lui ?",translation:"كيف يعود إلى منزله؟",answer:"Il rentre chez lui en métro.",ar:"يعود إلى منزله بالمترو."},
+  {question:"Qui vient parfois chez lui ?",translation:"من يأتي أحيانًا إلى منزله؟",answer:"Ses amis viennent parfois chez lui.",ar:"يأتي أصدقاؤه أحيانًا إلى منزله."}
  ]
 };
 
 const A1_PRESENT_LISTENING={
  title:"Une matinée habituelle",
  arTitle:"صباح معتاد",
- text:"Chaque matin, je me lève à sept heures. Je prépare un café, puis je vais au travail à pied. Je ne prends jamais le bus. Mes collègues arrivent à huit heures et nous commençons ensemble.",
+ text:"Je travaille à la bibliothèque. Tu finis à cinq heures. Elle prend le métro. Nous faisons du sport. Ils ne viennent pas ce soir.",
  questions:[
-  {prompt:"À quelle heure la personne se lève-t-elle ?",choices:["À six heures","À sept heures","À huit heures"],correctIndex:1},
-  {prompt:"Comment va-t-elle au travail ?",choices:["À pied","En bus","En voiture"],correctIndex:0},
-  {prompt:"Que font les collègues à huit heures ?",choices:["Ils déjeunent","Ils arrivent","Ils rentrent"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je travaille à la bibliothèque","Je visite la bibliothèque","Il travaille à la librairie"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Tu commences à cinq heures","Tu finis à cinq heures","Vous finissez à six heures"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Elle va à pied","Elles prennent le bus","Elle prend le métro"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Nous faisons du sport","Nous allons au stade","Ils font du sport"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ils viennent demain","Ils ne viennent pas ce soir","Elles ne travaillent pas demain"],correctIndex:1}
  ]
 };
 
 const A1_PRESENT_WRITING_MODEL="Le matin, je commence le travail à huit heures. Je parle avec mes collègues et nous prenons un café. Je ne déjeune pas au bureau. Le soir, je rentre en métro, puis je fais du sport.";
 
+const A1_PRESENT_WRITING_TRANSLATIONS=[
+ {fr:"je travaille aujourd’hui",ar:"أنا أعمل اليوم"},
+ {fr:"tu finis à cinq heures",ar:"تنتهي عند الخامسة"},
+ {fr:"elle prend le métro",ar:"تستقل المترو"},
+ {fr:"nous parlons français",ar:"نتحدث الفرنسية"},
+ {fr:"vous faites du sport",ar:"تمارسون الرياضة"},
+ {fr:"ils viennent ce soir",ar:"يأتون هذا المساء"},
+ {fr:"je ne travaille pas demain",ar:"لن أعمل غدًا"},
+ {fr:"il n’habite pas ici",ar:"هو لا يسكن هنا"}
+];
+
 const A1_PRESENT_DICTATION=[
  {speech:"Je travaille à l’université.",ar:"أعمل في الجامعة."},
  {speech:"Nous finissons le cours à midi.",ar:"ننهي الدرس عند الظهر."},
- {speech:"Elle ne prend pas le bus.",ar:"هي لا تستقل الحافلة."}
+ {speech:"Elle ne prend pas le bus.",ar:"هي لا تستقل الحافلة."},
+ {speech:"Vous commencez le travail à neuf heures.",ar:"تبدؤون العمل الساعة التاسعة."},
+ {speech:"Mes amis viennent à la maison.",ar:"يأتي أصدقائي إلى المنزل."}
 ];
 
 const A1_PRESENT_BUILDERS=[
  {tokens:["français.","parlons","Nous"],answer:["Nous","parlons","français."],ar:"نحن نتحدث الفرنسية."},
  {tokens:["pas","ne","ici.","travaille","Il"],answer:["Il","ne","travaille","pas","ici."],ar:"هو لا يعمل هنا."},
- {tokens:["métro","prend","le","Elle","matin.","chaque"],answer:["Elle","prend","le","métro","chaque","matin."],ar:"تستقل المترو كل صباح."}
+ {tokens:["métro","prend","le","Elle","matin.","chaque"],answer:["Elle","prend","le","métro","chaque","matin."],ar:"تستقل المترو كل صباح."},
+ {tokens:["à","allons","Nous","pied.","travail","au"],answer:["Nous","allons","au","travail","à","pied."],ar:"نذهب إلى العمل مشيًا."},
+ {tokens:["leurs","font","Les","devoirs.","enfants"],answer:["Les","enfants","font","leurs","devoirs."],ar:"ينجز الأطفال واجباتهم."}
 ];
 
 const A1_PRESENT_DIALOGUES=[
- {context:"Votre ami demande : « Vous travaillez le samedi ? »",prompt:"اختر إجابة منفية صحيحة.",choices:["Non, je ne travaille pas le samedi.","Non, je travaille ne pas le samedi.","Non, je ne pas travaille le samedi."],correctIndex:0,feedback:"في النفي يحيط ne وpas بالفعل المصرف."},
- {context:"Complétez : « Nous … le cours à midi. »",prompt:"اختر تصريف finir مع nous.",choices:["finissons","finissez","finissent"],correctIndex:0,feedback:"تصريف finir مع nous هو finissons."},
- {context:"Complétez : « Mes amis … ce soir. »",prompt:"اختر تصريف venir مع ils.",choices:["vient","venez","viennent"],correctIndex:2,feedback:"تصريف venir مع ils هو viennent."}
+ {context:"Vous travaillez le samedi ?",translation:"هل تعمل يوم السبت؟",prompt:"اختر إجابة منفية صحيحة.",choices:["Non, je ne travaille pas le samedi.","Non, je travaille ne pas le samedi.","Non, je ne pas travaille le samedi."],correctIndex:0,feedback:"في النفي يحيط ne وpas بالفعل المصرف."},
+ {context:"À quelle heure finissez-vous le cours ?",translation:"في أي ساعة تنهون الدرس؟",prompt:"اختر الإجابة المناسبة.",choices:["Nous finissez à midi.","Nous finissons à midi.","Nous finissent à midi."],correctIndex:1,feedback:"تصريف finir مع nous هو finissons."},
+ {context:"Vos amis viennent ce soir ?",translation:"هل يأتي أصدقاؤكم هذا المساء؟",prompt:"اختر الرد الصحيح.",choices:["Oui, ils vient ce soir.","Oui, vous venez ce soir.","Oui, ils viennent ce soir."],correctIndex:2,feedback:"تصريف venir مع ils هو viennent."},
+ {context:"Comment allez-vous au travail ?",translation:"كيف تذهبون إلى العمل؟",prompt:"اختر الإجابة الطبيعية.",choices:["Je vais au travail en bus.","Je fais au travail en bus.","Je va au travail en bus."],correctIndex:0,feedback:"مع je يكون تصريف aller هو vais."},
+ {context:"Que fait Lina après le cours ?",translation:"ماذا تفعل لينا بعد الدرس؟",prompt:"اختر الإجابة الصحيحة.",choices:["Elle fais les courses.","Elle fait les courses.","Elle font les courses."],correctIndex:1,feedback:"مع elle يكون تصريف faire هو fait."}
 ];
 
 const A1_MODAL_VERBS_READING={
@@ -6286,8 +6322,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions;
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present;
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
@@ -6346,7 +6382,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7013,7 +7049,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

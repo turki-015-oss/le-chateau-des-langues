@@ -4362,3 +4362,6 @@
  .university-main-world .university-intro article div{min-width:0;gap:2px;align-items:center}.university-main-world .university-intro strong{color:#153e6b;font-size:11px;line-height:1.25}.university-main-world .university-intro span{color:#6b7786;font-size:8px;line-height:1.35}
 }
 @media(max-width:680px) and (prefers-reduced-motion:reduce){.university-main-world .university-intro article:after{animation:none;display:none}}
+
+/* Keep the successful sentence-builder result legible over the lesson-two panel. */
+.a2-workshop-feedback.correct.a1-sounds-builder-feedback>strong{display:inline-flex;align-items:center;padding:7px 13px;border:1px solid #78b894;border-radius:999px;background:#e6f6ec;color:#155c3a!important;box-shadow:0 5px 14px rgba(36,112,70,.12);font-weight:900}

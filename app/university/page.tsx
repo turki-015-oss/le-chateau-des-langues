@@ -208,6 +208,13 @@ const A1_DESCRIPTION_LISTENING_CLIPS=[
  {letter:"mes parents",word:"ont faim",ar:"والداي جائعان",hiddenSpeech:"Mes parents ont faim"},
  {letter:"ma grand-mère",word:"a froid",ar:"جدتي تشعر بالبرد",hiddenSpeech:"Ma grand-mère a froid"}
 ];
+const A1_HEALTH_NEEDS_LISTENING_CLIPS=[
+ {letter:"j’ai",word:"de la fièvre",ar:"لدي حمى",hiddenSpeech:"J’ai de la fièvre"},
+ {letter:"j’ai mal",word:"à la tête",ar:"أشعر بألم في الرأس",hiddenSpeech:"J’ai mal à la tête"},
+ {letter:"j’ai",word:"de la toux",ar:"لدي سعال",hiddenSpeech:"J’ai de la toux"},
+ {letter:"prendre",word:"rendez-vous",ar:"حجز موعد",hiddenSpeech:"Prendre rendez-vous"},
+ {letter:"j’ai besoin",word:"d’aide",ar:"أحتاج إلى مساعدة",hiddenSpeech:"J’ai besoin d’aide"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -2191,16 +2198,26 @@ const A1_HEALTH_NEEDS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_HEALTH_NEEDS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"J’___ de la fièvre.",speech:"Complétez la phrase. J’ai de la fièvre.",instruction:"اختر الفعل الصحيح مع الحمى.",choices:["ai","suis","fais"],correctIndex:0,explanation:"نقول avoir de la fièvre: j’ai de la fièvre."},
- {prompt:"Je ___ malade.",speech:"Complétez la phrase. Je suis malade.",instruction:"اختر الفعل الصحيح لوصف الحالة العامة.",choices:["fais","ai","suis"],correctIndex:2,explanation:"نستخدم être مع malade: je suis malade."},
- {prompt:"Elle a mal ___ tête.",speech:"Complétez la phrase. Elle a mal à la tête.",instruction:"اختر حرف الجر والأداة المناسبين مع الرأس.",choices:["au","à la","aux"],correctIndex:1,explanation:"tête مؤنث؛ لذلك نقول à la tête."},
- {prompt:"Il a mal ___ ventre.",speech:"Complétez la phrase. Il a mal au ventre.",instruction:"اختر الشكل الصحيح مع اسم مذكر معرف.",choices:["au","à la","aux"],correctIndex:0,explanation:"à مع le تندمج وتصبح au."},
- {prompt:"J’ai mal ___ dents.",speech:"Complétez la phrase. J’ai mal aux dents.",instruction:"اختر الشكل الصحيح مع اسم جمع معرف.",choices:["des","aux","à la"],correctIndex:1,explanation:"à مع les تندمج وتصبح aux."},
- {prompt:"___ quand avez-vous mal ?",speech:"Posez la question. Depuis quand avez-vous mal ?",instruction:"اختر الكلمة التي تسأل عن بداية الألم.",choices:["Depuis","Comment","Combien"],correctIndex:0,explanation:"Depuis quand ؟ تعني منذ متى؟"},
- {prompt:"Je voudrais ___ rendez-vous.",speech:"Complétez la phrase. Je voudrais prendre rendez-vous.",instruction:"اختر الفعل المستخدم مع حجز الموعد.",choices:["faire un","prendre","avoir à"],correctIndex:1,explanation:"التعبير الصحيح هو prendre rendez-vous."},
- {prompt:"Prenez ce médicament ___ le repas.",speech:"Complétez l’instruction. Prenez ce médicament après le repas.",instruction:"اختر الكلمة المناسبة لتوقيت تناول الدواء.",choices:["entre","sous","après"],correctIndex:2,explanation:"après le repas تعني بعد الوجبة."},
- {prompt:"J’ai besoin ___ aide.",speech:"Complétez la phrase. J’ai besoin d’aide.",instruction:"اختر الصيغة الصحيحة بعد avoir besoin.",choices:["d’","à l’","de l’"],correctIndex:0,explanation:"نقول avoir besoin de، وتصبح d’ قبل صوت متحرك."},
- {prompt:"Je suis allergique à ce médicament.",speech:"Je suis allergique à ce médicament.",instruction:"اختر المعنى العربي الصحيح.",choices:["نسيت تناول هذا الدواء.","أحتاج إلى وصفة لهذا الدواء.","لدي حساسية تجاه هذا الدواء."],correctIndex:2,explanation:"être allergique à تعني أن لدى الشخص حساسية تجاه شيء."}
+ {prompt:"J’___ de la fièvre.",translation:"لدي حمى.",speech:"J’ai de la fièvre.",instruction:"اختر الفعل الصحيح.",choices:["ai","suis","fais"],correctIndex:0,explanation:"نقول avoir de la fièvre."},
+ {prompt:"Je ___ malade.",translation:"أنا مريض.",speech:"Je suis malade.",instruction:"اختر الفعل الصحيح.",choices:["fais","ai","suis"],correctIndex:2,explanation:"نستخدم être مع malade."},
+ {prompt:"Elle a mal ___ tête.",translation:"تشعر بألم في الرأس.",speech:"Elle a mal à la tête.",instruction:"اختر الصيغة الصحيحة.",choices:["au","à la","aux"],correctIndex:1,explanation:"tête مؤنث؛ فنقول à la tête."},
+ {prompt:"Il a mal ___ ventre.",translation:"يشعر بألم في البطن.",speech:"Il a mal au ventre.",instruction:"اختر الصيغة الصحيحة.",choices:["au","à la","aux"],correctIndex:0,explanation:"à + le تصبح au."},
+ {prompt:"J’ai mal ___ dents.",translation:"أشعر بألم في الأسنان.",speech:"J’ai mal aux dents.",instruction:"اختر الصيغة الصحيحة للجمع.",choices:["des","aux","à la"],correctIndex:1,explanation:"à + les تصبح aux."},
+ {prompt:"___ quand avez-vous mal ?",translation:"منذ متى تشعر بالألم؟",speech:"Depuis quand avez-vous mal ?",instruction:"اختر أداة السؤال المناسبة.",choices:["Depuis","Comment","Combien"],correctIndex:0,explanation:"Depuis quand تعني منذ متى."},
+ {prompt:"Je voudrais ___ rendez-vous.",translation:"أود حجز موعد.",speech:"Je voudrais prendre rendez-vous.",instruction:"اختر الفعل الصحيح.",choices:["faire un","prendre","avoir à"],correctIndex:1,explanation:"التعبير هو prendre rendez-vous."},
+ {prompt:"Prenez ce médicament ___ le repas.",translation:"تناولوا هذا الدواء بعد الوجبة.",speech:"Prenez ce médicament après le repas.",instruction:"اختر كلمة التوقيت المناسبة.",choices:["entre","sous","après"],correctIndex:2,explanation:"après le repas تعني بعد الوجبة."},
+ {prompt:"J’ai besoin ___ aide.",translation:"أحتاج إلى مساعدة.",speech:"J’ai besoin d’aide.",instruction:"اختر الصيغة الصحيحة.",choices:["d’","à l’","de l’"],correctIndex:0,explanation:"avoir besoin de تصبح d’ قبل صوت متحرك."},
+ {prompt:"Je suis allergique à ce médicament.",translation:"لدي حساسية تجاه هذا الدواء.",speech:"Je suis allergique à ce médicament.",instruction:"اختر المعنى العربي الصحيح.",choices:["نسيت تناول هذا الدواء.","أحتاج إلى وصفة لهذا الدواء.","لدي حساسية تجاه هذا الدواء."],correctIndex:2,explanation:"être allergique à تعني الحساسية تجاه شيء."},
+ {prompt:"Il ___ beaucoup.",translation:"إنه يسعل كثيرًا.",speech:"Il tousse beaucoup.",instruction:"اختر فعل السعال.",choices:["tousse","marche","écoute"],correctIndex:0,explanation:"tousser يعني يسعل."},
+ {prompt:"J’ai un ___.",translation:"لدي زكام.",speech:"J’ai un rhume.",instruction:"اختر اسم الحالة المناسبة.",choices:["sirop","rhume","repos"],correctIndex:1,explanation:"rhume يعني زكامًا."},
+ {prompt:"Elle a mal à l’___.",translation:"تشعر بألم في الأذن.",speech:"Elle a mal à l’oreille.",instruction:"اختر عضو الجسم المناسب.",choices:["dos","yeux","oreille"],correctIndex:2,explanation:"oreille تعني أذنًا."},
+ {prompt:"Vous devez vous ___.",translation:"يجب أن ترتاحوا.",speech:"Vous devez vous reposer.",instruction:"اختر الفعل المناسب لنصيحة المريض.",choices:["reposer","lever","presser"],correctIndex:0,explanation:"se reposer يعني يستريح."},
+ {prompt:"Buvez beaucoup ___ eau.",translation:"اشربوا الكثير من الماء.",speech:"Buvez beaucoup d’eau.",instruction:"اختر الصيغة الصحيحة بعد beaucoup.",choices:["de la","d’","du"],correctIndex:1,explanation:"بعد beaucoup نستخدم de، وتصبح d’ قبل eau."},
+ {prompt:"Ce sirop se prend trois fois ___ jour.",translation:"يؤخذ هذا الشراب ثلاث مرات يوميًا.",speech:"Ce sirop se prend trois fois par jour.",instruction:"اختر حرف الجر الصحيح.",choices:["au","de","par"],correctIndex:2,explanation:"par jour تعني يوميًا."},
+ {prompt:"Appelez une ___ !",translation:"اتصلوا بسيارة إسعاف!",speech:"Appelez une ambulance !",instruction:"اختر خدمة الطوارئ المناسبة.",choices:["ambulance","ordonnance","pharmacie"],correctIndex:0,explanation:"ambulance تعني سيارة إسعاف."},
+ {prompt:"Le médecin me donne une ___.",translation:"يعطيني الطبيب وصفة طبية.",speech:"Le médecin me donne une ordonnance.",instruction:"اختر الكلمة المناسبة.",choices:["fièvre","ordonnance","allergie"],correctIndex:1,explanation:"ordonnance هي الوصفة الطبية."},
+ {prompt:"Est-ce que vous prenez déjà un médicament ?",translation:"هل تتناول دواءً بالفعل؟",speech:"Est-ce que vous prenez déjà un médicament ?",instruction:"اختر الرد المناسب.",choices:["Depuis deux jours.","À la pharmacie.","Oui, je prends ce sirop."],correctIndex:2,explanation:"الرد يجيب مباشرة عن تناول الدواء."},
+ {prompt:"Je ne me sens pas bien.",translation:"لا أشعر أنني بخير.",speech:"Je ne me sens pas bien.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أشعر أنني بخير.","لا أحتاج إلى طبيب.","موعدي صباح الغد."],correctIndex:0,explanation:"se sentir bien تعني الشعور بأنك بخير."}
 ];
 
 const A1_QUESTIONS_PRACTICE_ITEMS:Example[]=[
@@ -3244,6 +3261,17 @@ const A1_DESCRIPTION_WRITING_TRANSLATIONS=[
  {fr:"voici mes grands-parents",ar:"هذان جدّي وجدتي"}
 ];
 
+const A1_HEALTH_NEEDS_WRITING_TRANSLATIONS=[
+ {fr:"j’ai de la fièvre",ar:"لدي حمى"},
+ {fr:"j’ai mal à la tête",ar:"أشعر بألم في الرأس"},
+ {fr:"j’ai de la toux",ar:"لدي سعال"},
+ {fr:"je suis très fatigué",ar:"أنا متعب جدًا"},
+ {fr:"depuis deux jours",ar:"منذ يومين"},
+ {fr:"prendre rendez-vous",ar:"حجز موعد"},
+ {fr:"un médicament",ar:"دواء"},
+ {fr:"j’ai besoin d’aide",ar:"أحتاج إلى مساعدة"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3603,20 +3631,22 @@ const A1_HEALTH_NEEDS_READING={
  text:"Le médecin demande : « Qu’est-ce que vous avez ? » Adam répond : « J’ai de la fièvre et j’ai mal à la gorge depuis hier. Je suis aussi très fatigué. » Le médecin examine Adam et lui conseille de se reposer et de boire de l’eau.",
  translation:"يسأل الطبيب: «ما المشكلة؟» يجيب آدم: «لدي حمى وأشعر بألم في الحلق منذ أمس، كما أنني متعب جدًا». يفحص الطبيب آدم وينصحه بالراحة وشرب الماء.",
  questions:[
-  {question:"Quels symptômes Adam a-t-il ?",answer:"Il a de la fièvre, mal à la gorge et il est fatigué.",ar:"لديه حمى وألم في الحلق ويشعر بالتعب."},
-  {question:"Depuis quand a-t-il mal à la gorge ?",answer:"Il a mal à la gorge depuis hier.",ar:"يشعر بألم في الحلق منذ أمس."},
-  {question:"Que lui conseille le médecin ?",answer:"Le médecin lui conseille de se reposer et de boire de l’eau.",ar:"ينصحه الطبيب بالراحة وشرب الماء."}
+  {question:"Quels symptômes Adam a-t-il ?",translation:"ما الأعراض التي يعاني منها آدم؟",answer:"Il a de la fièvre, mal à la gorge et il est fatigué.",ar:"لديه حمى وألم في الحلق ويشعر بالتعب."},
+  {question:"Depuis quand a-t-il mal à la gorge ?",translation:"منذ متى يشعر بألم في الحلق؟",answer:"Il a mal à la gorge depuis hier.",ar:"يشعر بألم في الحلق منذ أمس."},
+  {question:"Que lui conseille le médecin ?",translation:"بماذا ينصحه الطبيب؟",answer:"Le médecin lui conseille de se reposer et de boire de l’eau.",ar:"ينصحه الطبيب بالراحة وشرب الماء."}
  ]
 };
 
 const A1_HEALTH_NEEDS_LISTENING={
  title:"À la pharmacie",
  arTitle:"في الصيدلية",
- text:"Bonjour, je suis malade. J’ai de la toux et mal à la tête depuis deux jours. Je voudrais parler au pharmacien, s’il vous plaît. — Bien sûr. Est-ce que vous prenez déjà un médicament ?",
+ text:"J’ai de la fièvre. J’ai mal à la tête. J’ai de la toux. Prendre rendez-vous. J’ai besoin d’aide.",
  questions:[
-  {prompt:"Quels problèmes la personne décrit-elle ?",choices:["De la toux et mal à la tête","De la fièvre et mal au dos","Mal aux dents"],correctIndex:0},
-  {prompt:"Depuis combien de temps ?",choices:["Depuis hier","Depuis deux jours","Depuis une semaine"],correctIndex:1},
-  {prompt:"À qui veut-elle parler ?",choices:["Au médecin","À l’infirmier","Au pharmacien"],correctIndex:2}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai de la fièvre","J’ai un rendez-vous","J’ai froid"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai mal au dos","J’ai mal à la tête","J’ai mal aux dents"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai un rhume","Je suis fatigué","J’ai de la toux"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Prendre rendez-vous","Prendre un sirop","Voir le pharmacien"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai besoin d’un médecin","J’ai besoin d’aide","J’ai besoin de repos"],correctIndex:1}
  ]
 };
 
@@ -3625,19 +3655,25 @@ const A1_HEALTH_NEEDS_WRITING_MODEL="Bonjour, je voudrais prendre rendez-vous av
 const A1_HEALTH_NEEDS_DICTATION=[
  {speech:"J’ai mal à la tête depuis hier.",ar:"أشعر بألم في الرأس منذ أمس."},
  {speech:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
- {speech:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."}
+ {speech:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."},
+ {speech:"Prenez ce sirop trois fois par jour.",ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."},
+ {speech:"Je suis allergique aux noix.",ar:"لدي حساسية تجاه المكسرات."}
 ];
 
 const A1_HEALTH_NEEDS_BUILDERS=[
  {tokens:["tête.","la","à","mal","J’ai"],answer:["J’ai","mal","à","la","tête."],ar:"أشعر بألم في الرأس."},
  {tokens:["deux","toux","la","jours.","depuis","J’ai","de"],answer:["J’ai","de","la","toux","depuis","deux","jours."],ar:"لدي سعال منذ يومين."},
- {tokens:["besoin","J’ai","d’aide."],answer:["J’ai","besoin","d’aide."],ar:"أحتاج إلى مساعدة."}
+ {tokens:["besoin","J’ai","d’aide."],answer:["J’ai","besoin","d’aide."],ar:"أحتاج إلى مساعدة."},
+ {tokens:["rendez-vous.","prendre","voudrais","Je"],answer:["Je","voudrais","prendre","rendez-vous."],ar:"أود حجز موعد."},
+ {tokens:["jour.","fois","ce","Prenez","trois","sirop","par"],answer:["Prenez","ce","sirop","trois","fois","par","jour."],ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."}
 ];
 
 const A1_HEALTH_NEEDS_DIALOGUES=[
- {context:"Le médecin demande : « Qu’est-ce que vous avez ? »",prompt:"اختر الإجابة الواضحة.",choices:["J’ai de la fièvre et mal à la gorge.","Je suis la fièvre.","J’ai depuis médecin."],correctIndex:0,feedback:"نذكر العرض بـ avoir، ونحدد الألم بـ avoir mal à."},
- {context:"Vous avez mal aux dents.",prompt:"اختر الأداة الصحيحة.",choices:["J’ai mal à les dents.","J’ai mal aux dents.","J’ai mal au dents."],correctIndex:1,feedback:"à + les تصبح aux: avoir mal aux dents."},
- {context:"Vous voulez fixer une consultation.",prompt:"اختر الطلب المهذب.",choices:["Je voudrais prendre rendez-vous.","Je prends médecin maintenant.","Je veux rendez-vous prend."],correctIndex:0,feedback:"Je voudrais prendre rendez-vous صيغة مهذبة وطبيعية."}
+ {context:"Qu’est-ce que vous avez ?",translation:"ما المشكلة التي تعاني منها؟",prompt:"اختر الإجابة الواضحة.",choices:["J’ai de la fièvre et mal à la gorge.","Je suis la fièvre.","J’ai depuis médecin."],correctIndex:0,feedback:"نذكر العرض بـ avoir، ونحدد الألم بـ avoir mal à."},
+ {context:"Où avez-vous mal ?",translation:"أين تشعر بالألم؟",prompt:"اختر الجملة الصحيحة للأسنان.",choices:["J’ai mal à les dents.","J’ai mal aux dents.","J’ai mal au dents."],correctIndex:1,feedback:"à + les تصبح aux."},
+ {context:"Quand souhaitez-vous voir le médecin ?",translation:"متى ترغب في مقابلة الطبيب؟",prompt:"اختر الطلب المهذب.",choices:["Je voudrais prendre rendez-vous demain.","Je prends médecin maintenant.","Je veux rendez-vous prend."],correctIndex:0,feedback:"Je voudrais prendre rendez-vous صيغة مهذبة وطبيعية."},
+ {context:"Depuis quand avez-vous de la toux ?",translation:"منذ متى لديك سعال؟",prompt:"اختر الرد المناسب.",choices:["À la pharmacie.","Depuis deux jours.","Avec un médecin."],correctIndex:1,feedback:"Depuis يحدد بداية الحالة ومدتها."},
+ {context:"Avez-vous des allergies ?",translation:"هل لديك أي حساسية؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis allergique aux noix.","Oui, je prends demain.","Oui, j’ai mal à quinze heures."],correctIndex:0,feedback:"être allergique à هو التعبير الصحيح عن الحساسية."}
 ];
 
 const A1_ADJECTIVES_READING={
@@ -6632,8 +6668,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description;
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds;
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
@@ -6683,7 +6719,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7351,7 +7387,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

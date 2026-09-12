@@ -117,6 +117,13 @@ const A1_POSSESSIVES_LISTENING_CLIPS=[
  {letter:"nos",word:"voisins",ar:"جيراننا",hiddenSpeech:"nos voisins"},
  {letter:"leurs",word:"vélos",ar:"دراجاتهم",hiddenSpeech:"leurs vélos"}
 ];
+const A1_NOUNS_LISTENING_CLIPS=[
+ {letter:"un",word:"bureau",ar:"مكتب",hiddenSpeech:"un bureau"},
+ {letter:"une",word:"lampe",ar:"مصباح",hiddenSpeech:"une lampe"},
+ {letter:"des",word:"cahiers",ar:"دفاتر",hiddenSpeech:"des cahiers"},
+ {letter:"les",word:"fenêtres",ar:"النوافذ",hiddenSpeech:"les fenêtres"},
+ {letter:"l’",word:"école",ar:"المدرسة",hiddenSpeech:"l’école"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -505,7 +512,7 @@ const A1_MODULES:CourseModule[]=[
  },
  {
   id:"nouns",title:"Noms, articles et pluriel",ar:"الأسماء وأدوات التعريف والجمع",icon:Tags,
-  description:"تمييز المذكر والمؤنث، أدوات التعريف والنكرة، تكوين الجمع، واستعمال صفات الملكية.",
+  description:"تمييز المذكر والمؤنث، اختيار أدوات التعريف والنكرة، وتكوين جمع الأسماء بصورة صحيحة.",
   sections:[
    section("Le genre et les articles","الجنس وأدوات الاسم","كل اسم فرنسي مذكر أو مؤنث. احفظ الاسم مع أداته دائمًا، لأن شكل الاسم وحده لا يكفي لمعرفة جنسه.",[
     "un للمذكر وune للمؤنث في النكرة.",
@@ -513,9 +520,9 @@ const A1_MODULES:CourseModule[]=[
     "l’ قبل الحركة للمذكر والمؤنث.",
     "les للجمع المعرف وdes للجمع غير المعرف."
    ],[
-    {fr:"C’est un livre.",ar:"هذا كتاب."},
-    {fr:"C’est une table.",ar:"هذه طاولة."},
-    {fr:"L’université est grande.",ar:"الجامعة كبيرة."}
+    {fr:"C’est un livre.",ar:"هذا كتاب.",image:"/kingdom-portal-assets/open-book-realistic-v1.webp"},
+    {fr:"C’est une table.",ar:"هذه طاولة.",image:"/restaurant-v1/tableware.webp"},
+    {fr:"L’université est grande.",ar:"الجامعة كبيرة.",image:"/worlds/university.png"}
    ]),
    section("Former le pluriel","تكوين الجمع","القاعدة العامة إضافة s إلى الاسم، وغالبًا لا تُنطق هذه الـs. توجد نهايات لها قواعد خاصة تُكتسب تدريجيًا.",[
     "un étudiant → des étudiants.",
@@ -523,20 +530,9 @@ const A1_MODULES:CourseModule[]=[
     "بعض كلمات -al تصبح -aux مثل journal → journaux.",
     "الأداة هي أوضح علامة للجمع في الكلام."
    ],[
-    {fr:"Les étudiants sont dans la classe.",ar:"الطلاب داخل الفصل."},
-    {fr:"J’ai des livres français.",ar:"لدي كتب فرنسية."},
-    {fr:"Voici deux journaux.",ar:"إليك صحيفتين."}
-   ]),
-   section("Les déterminants possessifs","صفات الملكية","تأتي صفة الملكية قبل الاسم وتتوافق مع الشيء المملوك في الجنس والعدد، لا مع جنس صاحبه. ويستعمل mon وton وson قبل الاسم المؤنث الذي يبدأ بصوت متحرك أو h صامت لتسهيل النطق.",[
-    "mon، ma، mes للمتكلم المفرد؛ ton، ta، tes للمخاطب المفرد.",
-    "son، sa، ses تعني ملكيته أو ملكيتها، ويحدد الاسم المملوك الصيغة المناسبة.",
-    "notre / nos، votre / vos، leur / leurs مع بقية الأشخاص.",
-    "نقول mon amie وton école وson adresse رغم أن الأسماء مؤنثة."
-   ],[
-    {fr:"Voici mon livre et ma trousse.",ar:"هذا كتابي وهذه مقلمتي."},
-    {fr:"Nora cherche ses clés.",ar:"تبحث نورة عن مفاتيحها."},
-    {fr:"Nous visitons notre université.",ar:"نزور جامعتنا."},
-    {fr:"Elle parle avec son amie.",ar:"تتحدث مع صديقتها."}
+    {fr:"Les étudiants sont dans la classe.",ar:"الطلاب داخل الفصل.",image:"/university/vocabulary/family-sprite.png"},
+    {fr:"J’ai des livres français.",ar:"لدي كتب فرنسية.",image:"/castle-hall-icons/grammar.webp"},
+    {fr:"Voici deux journaux.",ar:"إليك صحيفتين.",image:"/cinema-v1/critique.webp"}
    ])
   ]
  },
@@ -1663,16 +1659,26 @@ const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_NOUNS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"C’est ___ livre.",speech:"Complétez la phrase. C’est un livre.",instruction:"اختر أداة النكرة المناسبة لاسم مذكر مفرد.",choices:["une","un","des"],correctIndex:1,explanation:"livre اسم مذكر مفرد؛ لذلك نستخدم un."},
- {prompt:"Voilà ___ chaise.",speech:"Complétez la phrase. Voilà une chaise.",instruction:"اختر أداة النكرة المناسبة لاسم مؤنث مفرد.",choices:["une","un","le"],correctIndex:0,explanation:"chaise اسم مؤنث مفرد؛ لذلك نستخدم une."},
- {prompt:"___ école est près d’ici.",speech:"Complétez la phrase. L’école est près d’ici.",instruction:"اختر أداة المعرفة قبل اسم يبدأ بصوت متحرك.",choices:["La","Le","L’"],correctIndex:2,explanation:"نستخدم l’ قبل الاسم الذي يبدأ بصوت متحرك."},
- {prompt:"J’achète ___ pommes.",speech:"Complétez la phrase. J’achète des pommes.",instruction:"اختر أداة الجمع غير المعرف عند ذكر الأشياء أول مرة.",choices:["des","les","une"],correctIndex:0,explanation:"des أداة جمع غير معرف."},
- {prompt:"J’ai des pommes. ___ pommes sont rouges.",speech:"Complétez la deuxième phrase. Les pommes sont rouges.",instruction:"اختر أداة الجمع المعرف بعد أن أصبحت الثمار معروفة.",choices:["Des","Les","Le"],correctIndex:1,explanation:"نستخدم les لأن pommes ذُكرت وأصبحت معروفة."},
- {prompt:"Un étudiant, deux ___.",speech:"Mettez le nom au pluriel. Un étudiant, deux étudiants.",instruction:"اختر جمع étudiant الصحيح.",choices:["étudiantes","étudiants","étudiant"],correctIndex:1,explanation:"الجمع المذكر العادي يضاف إليه s: étudiants."},
- {prompt:"Un journal, des ___.",speech:"Mettez le nom au pluriel. Un journal, des journaux.",instruction:"اختر جمع journal الصحيح.",choices:["journals","journales","journaux"],correctIndex:2,explanation:"journal من الكلمات التي تتحول فيها -al إلى -aux."},
- {prompt:"Un bateau, des ___.",speech:"Mettez le nom au pluriel. Un bateau, des bateaux.",instruction:"اختر جمع bateau الصحيح.",choices:["bateaux","bateaus","bataux"],correctIndex:0,explanation:"الأسماء المنتهية بـ -eau تأخذ x غالبًا في الجمع."},
- {prompt:"Un prix, plusieurs ___.",speech:"Mettez le nom au pluriel. Un prix, plusieurs prix.",instruction:"اختر جمع prix الصحيح.",choices:["prises","prixs","prix"],correctIndex:2,explanation:"prix ينتهي أصلًا بـ x ولا تتغير كتابته في الجمع."},
- {prompt:"Les enfants jouent dans les jardins.",speech:"Les enfants jouent dans les jardins.",instruction:"اختر المعنى العربي الصحيح.",choices:["يلعب الأطفال في الحدائق.","يقرأ الطلاب في المكتبة.","ينتظر الآباء أمام المدرسة."],correctIndex:0,explanation:"les enfants تعني الأطفال وles jardins تعني الحدائق."}
+ {prompt:"C’est ___ livre.",translation:"هذا كتاب.",speech:"Complétez la phrase. C’est un livre.",instruction:"اختر أداة النكرة المناسبة لاسم مذكر مفرد.",choices:["une","un","des"],correctIndex:1,explanation:"livre اسم مذكر مفرد؛ لذلك نستخدم un."},
+ {prompt:"Voilà ___ chaise.",translation:"ذلك كرسي.",speech:"Complétez la phrase. Voilà une chaise.",instruction:"اختر أداة النكرة المناسبة لاسم مؤنث مفرد.",choices:["une","un","le"],correctIndex:0,explanation:"chaise اسم مؤنث مفرد؛ لذلك نستخدم une."},
+ {prompt:"___ école est près d’ici.",translation:"المدرسة قريبة من هنا.",speech:"Complétez la phrase. L’école est près d’ici.",instruction:"اختر أداة المعرفة قبل اسم يبدأ بصوت متحرك.",choices:["La","Le","L’"],correctIndex:2,explanation:"نستخدم l’ قبل الاسم الذي يبدأ بصوت متحرك."},
+ {prompt:"J’achète ___ pommes.",translation:"أشتري تفاحًا.",speech:"Complétez la phrase. J’achète des pommes.",instruction:"اختر أداة الجمع غير المعرّف عند ذكر الأشياء أول مرة.",choices:["des","les","une"],correctIndex:0,explanation:"des أداة جمع غير معرّف."},
+ {prompt:"J’ai des crayons. ___ crayons sont neufs.",translation:"لدي أقلام رصاص. الأقلام جديدة.",speech:"Complétez la deuxième phrase. Les crayons sont neufs.",instruction:"اختر أداة الجمع المعرّف بعد أن أصبحت الأقلام معروفة.",choices:["Des","Les","Le"],correctIndex:1,explanation:"نستخدم les لأن crayons ذُكرت وأصبحت معروفة."},
+ {prompt:"Un étudiant, deux ___.",translation:"طالب واحد، طالبان.",speech:"Mettez le nom au pluriel. Un étudiant, deux étudiants.",instruction:"اختر جمع étudiant الصحيح.",choices:["étudiantes","étudiants","étudiant"],correctIndex:1,explanation:"الجمع المذكر العادي يضاف إليه s: étudiants."},
+ {prompt:"Un journal, des ___.",translation:"صحيفة واحدة، صحف.",speech:"Mettez le nom au pluriel. Un journal, des journaux.",instruction:"اختر جمع journal الصحيح.",choices:["journals","journales","journaux"],correctIndex:2,explanation:"journal من الكلمات التي تتحول فيها -al إلى -aux."},
+ {prompt:"Un château, des ___.",translation:"قلعة واحدة، قلاع.",speech:"Mettez le nom au pluriel. Un château, des châteaux.",instruction:"اختر جمع château الصحيح.",choices:["châteaux","châteaus","châtals"],correctIndex:0,explanation:"الأسماء المنتهية بـ -eau تأخذ x غالبًا في الجمع."},
+ {prompt:"Un prix, plusieurs ___.",translation:"سعر واحد، عدة أسعار.",speech:"Mettez le nom au pluriel. Un prix, plusieurs prix.",instruction:"اختر جمع prix الصحيح.",choices:["prises","prixs","prix"],correctIndex:2,explanation:"prix ينتهي أصلًا بـ x ولا تتغير كتابته في الجمع."},
+ {prompt:"Les enfants jouent dans les jardins.",translation:"يلعب الأطفال في الحدائق.",speech:"Les enfants jouent dans les jardins.",instruction:"اختر المعنى العربي الصحيح.",choices:["يلعب الأطفال في الحدائق.","يقرأ الطلاب في المكتبة.","ينتظر الآباء أمام المدرسة."],correctIndex:0,explanation:"les enfants تعني الأطفال وles jardins تعني الحدائق."},
+ {prompt:"___ musée ferme à dix-huit heures.",translation:"يغلق المتحف الساعة السادسة مساءً.",speech:"Complétez la phrase. Le musée ferme à dix-huit heures.",instruction:"اختر أداة المعرفة المناسبة للاسم المذكر.",choices:["Le","La","Une"],correctIndex:0,explanation:"musée اسم مذكر مفرد؛ لذلك نقول le musée."},
+ {prompt:"___ porte est ouverte.",translation:"الباب مفتوح.",speech:"Complétez la phrase. La porte est ouverte.",instruction:"اختر أداة المعرفة المناسبة للاسم المؤنث.",choices:["Un","La","Les"],correctIndex:1,explanation:"porte اسم مؤنث مفرد؛ لذلك نقول la porte."},
+ {prompt:"Nous visitons ___ appartement lumineux.",translation:"نزور شقة مضيئة.",speech:"Complétez la phrase. Nous visitons un appartement lumineux.",instruction:"اختر أداة النكرة المناسبة.",choices:["une","des","un"],correctIndex:2,explanation:"appartement اسم مذكر مفرد؛ لذلك نستعمل un."},
+ {prompt:"Elle prépare ___ salade verte.",translation:"تحضّر سلطة خضراء.",speech:"Complétez la phrase. Elle prépare une salade verte.",instruction:"اختر أداة النكرة المناسبة.",choices:["une","un","les"],correctIndex:0,explanation:"salade اسم مؤنث مفرد؛ لذلك نستعمل une."},
+ {prompt:"___ hôtel est complet.",translation:"الفندق مكتمل الحجز.",speech:"Complétez la phrase. L’hôtel est complet.",instruction:"اختر الأداة الصحيحة قبل h صامتة.",choices:["Le","L’","La"],correctIndex:1,explanation:"h في hôtel صامتة؛ لذلك نحذف صوت الأداة ونكتب l’hôtel."},
+ {prompt:"Un animal, des ___.",translation:"حيوان واحد، حيوانات.",speech:"Mettez le nom au pluriel. Un animal, des animaux.",instruction:"اختر الجمع الصحيح لكلمة animal.",choices:["animals","animales","animaux"],correctIndex:2,explanation:"يتحوّل غالبًا الاسم المنتهي بـ -al إلى -aux في الجمع."},
+ {prompt:"Une photo, trois ___.",translation:"صورة واحدة، ثلاث صور.",speech:"Mettez le nom au pluriel. Une photo, trois photos.",instruction:"اختر الجمع الصحيح لكلمة photo.",choices:["photos","photoes","photox"],correctIndex:0,explanation:"الجمع العادي لكلمة photo يأخذ s: photos."},
+ {prompt:"Un nez, deux ___.",translation:"أنف واحد، أنفان.",speech:"Mettez le nom au pluriel. Un nez, deux nez.",instruction:"اختر الجمع الصحيح لكلمة nez.",choices:["nezs","nez","nés"],correctIndex:1,explanation:"الاسم المنتهي أصلًا بـ z لا تتغير كتابته في الجمع."},
+ {prompt:"Il y a ___ fleurs devant la maison.",translation:"توجد زهور أمام المنزل.",speech:"Complétez la phrase. Il y a des fleurs devant la maison.",instruction:"اختر أداة الجمع غير المعرّف.",choices:["les","une","des"],correctIndex:2,explanation:"عند تقديم جمع غير محدد لأول مرة نستعمل des."},
+ {prompt:"Une voisine arrive. ___ voisine porte un manteau rouge.",translation:"تصل جارة. الجارة ترتدي معطفًا أحمر.",speech:"Complétez la deuxième phrase. La voisine porte un manteau rouge.",instruction:"اختر الأداة المناسبة عند تكرار الاسم المعروف.",choices:["La","Une","Des"],correctIndex:0,explanation:"أصبحت voisine معروفة بعد ذكرها؛ لذلك نستعمل la."}
 ];
 
 const A1_CORE_VERBS_PRACTICE_ITEMS:Example[]=[
@@ -2574,41 +2580,60 @@ const A1_NOUNS_READING={
  text:"Dans la classe, il y a un livre, une table et des chaises. Le professeur montre le livre. Les élèves regardent les images et ouvrent leurs cahiers.",
  translation:"يوجد داخل الفصل كتاب وطاولة وكراسٍ. يعرض المعلم الكتاب. ينظر الطلاب إلى الصور ويفتحون دفاترهم.",
  questions:[
-  {question:"Quel article accompagne le mot « livre » la première fois ?",answer:"L’article « un » accompagne le mot « livre ».",ar:"تسبق كلمة livre أداة التنكير un."},
-  {question:"Quel nom féminin trouve-t-on dans le texte ?",answer:"Le nom « table » est féminin.",ar:"كلمة table اسم مؤنث."},
-  {question:"Quels noms sont au pluriel ?",answer:"Les noms « chaises », « élèves », « images » et « cahiers » sont au pluriel.",ar:"الأسماء chaises وélèves وimages وcahiers في صيغة الجمع."}
+  {question:"Quel article accompagne le mot « livre » la première fois ?",translation:"ما الأداة التي تسبق كلمة «كتاب» عند ذكرها أول مرة؟",answer:"L’article « un » accompagne le mot « livre ».",ar:"تسبق كلمة livre أداة التنكير un."},
+  {question:"Quel nom féminin trouve-t-on dans le texte ?",translation:"ما الاسم المؤنث الموجود في النص؟",answer:"Le nom « table » est féminin.",ar:"كلمة table اسم مؤنث."},
+  {question:"Quels noms sont au pluriel ?",translation:"ما الأسماء الواردة بصيغة الجمع؟",answer:"Les noms « chaises », « élèves », « images » et « cahiers » sont au pluriel.",ar:"الأسماء chaises وélèves وimages وcahiers في صيغة الجمع."}
  ]
 };
 
 const A1_NOUNS_LISTENING={
  title:"Les objets du bureau",
  arTitle:"أغراض المكتب",
- text:"Sur le bureau, il y a un stylo bleu, une lampe blanche et deux petits livres. Les cahiers sont dans le sac.",
+ text:"Un bureau. Une lampe. Des cahiers. Les fenêtres. L’école.",
  questions:[
-  {prompt:"Quel objet est bleu ?",choices:["La lampe","Le stylo","Le sac"],correctIndex:1},
-  {prompt:"Quel article accompagne « lampe » ?",choices:["Un","Une","Des"],correctIndex:1},
-  {prompt:"Où sont les cahiers ?",choices:["Dans le sac","Sur la chaise","Sous la lampe"],correctIndex:0}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un bureau","Une porte","Des bureaux"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un livre","Une lampe","La lampe"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le cahier","Les cahiers","Des cahiers"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Les fenêtres","Une fenêtre","Des portes"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Une école","L’école","Les écoles"],correctIndex:1}
  ]
 };
 
 const A1_NOUNS_WRITING_MODEL="Dans ma chambre, il y a un lit, une table et des livres. Le lit est près de la fenêtre. Les livres sont sur la table.";
 
+const A1_NOUNS_WRITING_TRANSLATIONS=[
+ {fr:"un bureau",ar:"مكتب"},
+ {fr:"une lampe",ar:"مصباح"},
+ {fr:"des cahiers",ar:"دفاتر"},
+ {fr:"les fenêtres",ar:"النوافذ"},
+ {fr:"l’école",ar:"المدرسة"},
+ {fr:"un château",ar:"قلعة"},
+ {fr:"des journaux",ar:"صحف"},
+ {fr:"les animaux",ar:"الحيوانات"}
+];
+
 const A1_NOUNS_DICTATION=[
  {speech:"Il y a un livre sur la table.",ar:"يوجد كتاب على الطاولة."},
  {speech:"La chaise est près de la fenêtre.",ar:"الكرسي قريب من النافذة."},
- {speech:"Les cahiers sont dans le sac.",ar:"الدفاتر داخل الحقيبة."}
+ {speech:"Les cahiers sont dans le sac.",ar:"الدفاتر داخل الحقيبة."},
+ {speech:"Une horloge est au mur.",ar:"توجد ساعة على الحائط."},
+ {speech:"Des élèves entrent dans la bibliothèque.",ar:"يدخل طلاب إلى المكتبة."}
 ];
 
 const A1_NOUNS_BUILDERS=[
  {tokens:["livre","un","C’est","français."],answer:["C’est","un","livre","français."],ar:"هذا كتاب فرنسي."},
  {tokens:["table","La","petite.","est"],answer:["La","table","est","petite."],ar:"الطاولة صغيرة."},
- {tokens:["dans","sont","Les","sac.","cahiers","le"],answer:["Les","cahiers","sont","dans","le","sac."],ar:"الدفاتر داخل الحقيبة."}
+ {tokens:["dans","sont","Les","sac.","cahiers","le"],answer:["Les","cahiers","sont","dans","le","sac."],ar:"الدفاتر داخل الحقيبة."},
+ {tokens:["ouverte.","porte","Une","est"],answer:["Une","porte","est","ouverte."],ar:"بابٌ مفتوح."},
+ {tokens:["visitons","Nous","musées.","les"],answer:["Nous","visitons","les","musées."],ar:"نزور المتاحف."}
 ];
 
 const A1_NOUNS_DIALOGUES=[
- {context:"On vous montre un livre et demande : « Qu’est-ce que c’est ? »",prompt:"اختر الإجابة الصحيحة.",choices:["C’est un livre.","C’est une livre.","Ce sont livre."],correctIndex:0,feedback:"livre مذكر، لذلك نقول un livre."},
- {context:"Votre professeur montre plusieurs chaises.",prompt:"اختر المجموعة الاسمية الصحيحة.",choices:["La chaise.","Une chaises.","Les chaises."],correctIndex:2,feedback:"في الجمع نستخدم les مع chaises."},
- {context:"On vous demande : « Il y a une lampe ? »",prompt:"اختر إجابة صحيحة ومختصرة.",choices:["Oui, il y a une lampe.","Oui, il y a un lampe.","Oui, les lampe."],correctIndex:0,feedback:"lampe مؤنث، لذلك نستخدم une."}
+ {context:"Qu’est-ce que c’est ?",translation:"ما هذا؟",prompt:"اختر الإجابة الصحيحة.",choices:["C’est un livre.","C’est une livre.","Ce sont livre."],correctIndex:0,feedback:"livre مذكر، لذلك نقول un livre."},
+ {context:"Qu’est-ce qu’il y a dans la salle ?",translation:"ماذا يوجد في القاعة؟",prompt:"اختر الإجابة الصحيحة.",choices:["Il y a le tables.","Il y a des chaises.","Il y a une bureaux."],correctIndex:1,feedback:"chaises جمع غير محدد؛ لذلك نقول des chaises."},
+ {context:"Il y a une lampe ?",translation:"هل يوجد مصباح؟",prompt:"اختر إجابة صحيحة ومختصرة.",choices:["Oui, il y a une lampe.","Oui, il y a un lampe.","Oui, les lampe."],correctIndex:0,feedback:"lampe مؤنث، لذلك نستخدم une."},
+ {context:"Où sont les journaux ?",translation:"أين الصحف؟",prompt:"اختر الإجابة المناسبة.",choices:["Le journal est ici.","Les journales sont là.","Les journaux sont sur la table."],correctIndex:2,feedback:"جمع journal هو journaux وتسبقه أداة الجمع les."},
+ {context:"Vous avez un animal ?",translation:"هل لديك حيوان؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, j’ai des animals.","Oui, j’ai un chat.","Oui, j’ai une chien."],correctIndex:1,feedback:"chat اسم مذكر مفرد؛ لذلك نقول un chat."}
 ];
 
 const A1_CORE_VERBS_READING={
@@ -6149,8 +6174,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Tastes=level.id==="A1"&&activeModule.id==="tastes-preferences";
  const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns;
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
@@ -6213,7 +6238,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6880,7 +6905,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

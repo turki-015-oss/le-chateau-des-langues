@@ -44,7 +44,7 @@ type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPa
 type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
-type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open";
+type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"semij"|"semiw"|"semiu";
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
@@ -99,9 +99,9 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
   explanation:"تقع بين حروف العلة والحروف الساكنة؛ وأصلها أصوات عِلّة تُنطق بسرعة فتتحول إلى صوت قريب من الياء أو الواو.",
   frExplanation:"Elles se situent entre les voyelles et les consonnes : ce sont à l’origine des voyelles prononcées rapidement, proches du son de y ou de w.",
   branches:[
-   {fr:"Le son /j/ — Y",ar:"صوت الياء /j/",explanation:"صوت قريب من الياء، كما في كلمة yeux.",frExplanation:"Un son proche du y, comme dans le mot « yeux »."},
-   {fr:"Le son /w/ — W",ar:"صوت الواو /w/",explanation:"صوت قريب من الواو، كما في كلمة oui.",frExplanation:"Un son proche du w, comme dans le mot « oui »."},
-   {fr:"Le son /ɥ/ — U",ar:"صوت الواو الأمامية الخفيفة /ɥ/",explanation:"صوت فرنسي بين الياء والواو المدورة، كما في كلمة huit.",frExplanation:"Un son français produit avec les lèvres arrondies, comme dans le mot « huit »."}
+   {fr:"Le son /j/ — Y",ar:"صوت الياء /j/",explanation:"صوت قريب من الياء، كما في كلمة yeux.",frExplanation:"Un son proche du y, comme dans le mot « yeux ».",table:"semij"},
+   {fr:"Le son /w/ — W",ar:"صوت الواو /w/",explanation:"صوت قريب من الواو، كما في كلمة oui.",frExplanation:"Un son proche du w, comme dans le mot « oui ».",table:"semiw"},
+   {fr:"Le son /ɥ/ — U",ar:"صوت الواو الأمامية الخفيفة /ɥ/",explanation:"صوت فرنسي بين الياء والواو المدورة، كما في كلمة huit.",frExplanation:"Un son français produit avec les lèvres arrondies, comme dans le mot « huit ».",table:"semiu"}
   ]
  }
 ];
@@ -174,7 +174,24 @@ const A1_OPEN_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_NASAL_VOWEL_EXAMPLES[1],explanation:"في gant تعطي المجموعة an الصوت المفتوح الأنفي /ɑ̃/، ولا يُنطق الحرف t الأخير."}
 ];
 
-const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES,closed:A1_CLOSED_VOWEL_EXAMPLES,mid:A1_MID_VOWEL_EXAMPLES,open:A1_OPEN_VOWEL_EXAMPLES};
+const A1_SEMIVOWEL_J_EXAMPLES:VowelTableExample[]=[
+ {word:"pied",ar:"قدم",ipa:"/pje/",phoneme:"/j/",focus:"i",parts:["p","i","ed"],image:"/images/university/a1-sounds/pied.webp",explanation:"في pied ينزلق الصوت /i/ سريعًا نحو /e/ فيتحول إلى شبه حرف العلة /j/، وتُنطق الكلمة مقطعًا واحدًا."},
+ {word:"fille",ar:"فتاة",ipa:"/fij/",phoneme:"/j/",focus:"ill",parts:["f","ill","e"],image:"/images/university/a1-sounds/fille.webp",explanation:"في fille تعطي المجموعة ill صوت /j/ بعد /i/؛ لا تُنطق الحروف الثلاثة منفصلة."}
+];
+
+const A1_SEMIVOWEL_W_EXAMPLES:VowelTableExample[]=[
+ {word:"oiseau",ar:"طائر",ipa:"/wa.zo/",phoneme:"/w/",focus:"oi",parts:["","oi","seau"],image:"/images/university/a1-sounds/oiseau.webp",explanation:"في oiseau تبدأ المجموعة oi بانزلاق /w/ ثم /a/، فتُسمع البداية /wa/."},
+ {word:"oui",ar:"نعم",ipa:"/wi/",phoneme:"/w/",focus:"ou",parts:["","ou","i"],image:"/images/university/a1-sounds/oui.webp",explanation:"في oui يتحول /u/ إلى الانزلاق /w/ لأنه يسبق الصوت /i/، وتُنطق الكلمة مقطعًا واحدًا."},
+ {word:"voiture",ar:"سيارة",ipa:"/vwa.tyʁ/",phoneme:"/w/",focus:"oi",parts:["v","oi","ture"],image:"/images/university/a1-sounds/voiture.webp",explanation:"في voiture تعطي المجموعة oi البداية /wa/؛ ينتقل النطق سريعًا من /w/ إلى /a/."}
+];
+
+const A1_SEMIVOWEL_U_EXAMPLES:VowelTableExample[]=[
+ {word:"huit",ar:"ثمانية",ipa:"/ɥit/",phoneme:"/ɥ/",focus:"u",parts:["h","u","it"],image:"/images/university/a1-sounds/huit.webp",explanation:"في huit تُدوَّر الشفتان كما في /y/ ثم ينتقل الصوت سريعًا إلى /i/، فينتج شبه حرف العلة /ɥ/."},
+ {word:"pluie",ar:"مطر",ipa:"/plɥi/",phoneme:"/ɥ/",focus:"u",parts:["pl","u","ie"],image:"/images/university/a1-sounds/pluie.webp",explanation:"في pluie يأتي /ɥ/ بين /l/ و/i/؛ حافظ على تدوير الشفتين وانتقل مباشرة إلى /i/."},
+ {word:"nuit",ar:"ليل",ipa:"/nɥi/",phoneme:"/ɥ/",focus:"u",parts:["n","u","it"],image:"/images/university/a1-sounds/lune.webp",explanation:"في nuit يتحول /y/ إلى انزلاق قصير /ɥ/ قبل /i/، وتُنطق الكلمة في مقطع واحد."}
+];
+
+const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES,closed:A1_CLOSED_VOWEL_EXAMPLES,mid:A1_MID_VOWEL_EXAMPLES,open:A1_OPEN_VOWEL_EXAMPLES,semij:A1_SEMIVOWEL_J_EXAMPLES,semiw:A1_SEMIVOWEL_W_EXAMPLES,semiu:A1_SEMIVOWEL_U_EXAMPLES};
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
@@ -5141,7 +5158,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
- const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0});
+ const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0,semij:0,semiw:0,semiu:0});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);

@@ -222,6 +222,13 @@ const A1_ADJECTIVES_LISTENING_CLIPS=[
  {letter:"calme",word:"et patient",ar:"هادئ وصبور",hiddenSpeech:"Calme et patient"},
  {letter:"sérieuse",word:"et organisée",ar:"جادة ومنظمة",hiddenSpeech:"Sérieuse et organisée"}
 ];
+const A1_DAILY_LIFE_LISTENING_CLIPS=[
+ {letter:"je me lève",word:"à sept heures",ar:"أستيقظ الساعة السابعة",hiddenSpeech:"Je me lève à sept heures"},
+ {letter:"je prends",word:"mon petit-déjeuner",ar:"أتناول فطوري",hiddenSpeech:"Je prends mon petit-déjeuner"},
+ {letter:"je vais",word:"au travail",ar:"أذهب إلى العمل",hiddenSpeech:"Je vais au travail"},
+ {letter:"je fais",word:"les courses",ar:"أتسوق",hiddenSpeech:"Je fais les courses"},
+ {letter:"je me couche",word:"à onze heures",ar:"أنام الساعة الحادية عشرة",hiddenSpeech:"Je me couche à onze heures"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1901,16 +1908,26 @@ const A1_DAILY_LIFE_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_DAILY_LIFE_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je ___ lève à sept heures.",speech:"Complétez la phrase. Je me lève à sept heures.",instruction:"اختر الضمير الانعكاسي الصحيح مع je.",choices:["me","te","se"],correctIndex:0,explanation:"مع je نستخدم الضمير الانعكاسي me: je me lève."},
- {prompt:"Nous ___ préparons pour sortir.",speech:"Complétez la phrase. Nous nous préparons pour sortir.",instruction:"اختر الضمير الانعكاسي الصحيح مع nous.",choices:["vous","nous","se"],correctIndex:1,explanation:"مع nous يأتي الضمير الانعكاسي nous: nous nous préparons."},
- {prompt:"Elles ___ couchent tôt.",speech:"Complétez la phrase. Elles se couchent tôt.",instruction:"اختر الضمير الانعكاسي الصحيح مع elles.",choices:["me","nous","se"],correctIndex:2,explanation:"مع elles نستخدم se: elles se couchent."},
- {prompt:"Je ___ prends ___ le bus le dimanche.",speech:"Complétez la phrase. Je ne prends jamais le bus le dimanche.",instruction:"اختر صيغة «أبدًا» الصحيحة.",choices:["ne … jamais","jamais … ne","ne … souvent"],correctIndex:0,explanation:"نحيط الفعل بـ ne وjamais: je ne prends jamais."},
- {prompt:"Je vais ___ à la bibliothèque.",speech:"Complétez la phrase. Je vais souvent à la bibliothèque.",instruction:"اختر ظرف التكرار الذي يعني «غالبًا».",choices:["enfin","souvent","demain"],correctIndex:1,explanation:"souvent تعني غالبًا وتأتي هنا بعد الفعل المصرف."},
- {prompt:"___, je me brosse les dents et je me couche.",speech:"Complétez la phrase. Enfin, je me brosse les dents et je me couche.",instruction:"اختر الرابط المناسب لنهاية تسلسل الأحداث.",choices:["D’abord","Ensuite","Enfin"],correctIndex:2,explanation:"Enfin تعني «وأخيرًا» وتقدم آخر حدث في التسلسل."},
- {prompt:"Je rentre à la maison après le travail.",speech:"Je rentre à la maison après le travail.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعود إلى المنزل بعد العمل.","أغادر المنزل قبل العمل.","أعمل من المنزل اليوم."],correctIndex:0,explanation:"rentrer à la maison يعني العودة إلى المنزل، وaprès تعني بعد."},
- {prompt:"قبل العشاء",speech:"Avant le dîner.",instruction:"اختر التعبير الفرنسي الصحيح.",choices:["après le dîner","avant le dîner","pendant le dîner"],correctIndex:1,explanation:"avant le dîner تعني قبل العشاء."},
- {prompt:"Elle fait les courses le samedi.",speech:"Elle fait les courses le samedi.",instruction:"ماذا تفعل يوم السبت؟",choices:["تستريح في المنزل.","تعد الغداء.","تتسوق."],correctIndex:2,explanation:"faire les courses تعني التسوق وشراء الاحتياجات."},
- {prompt:"D’abord, je consulte mes messages, puis je commence mon travail.",speech:"D’abord, je consulte mes messages, puis je commence mon travail.",instruction:"اختر الترجمة العربية الطبيعية في السياق.",choices:["أولًا، أتفقد رسائلي، ثم أبدأ عملي.","أبدأ عملي قبل قراءة الرسائل.","أنهي عملي ثم أرسل رسالة."],correctIndex:0,explanation:"D’abord تعني أولًا أو في البداية، وpuis تعني ثم."}
+ {prompt:"Je ___ lève à sept heures.",translation:"أستيقظ الساعة السابعة.",speech:"Je me lève à sept heures.",instruction:"اختر الضمير الانعكاسي الصحيح.",choices:["me","te","se"],correctIndex:0,explanation:"مع je نستخدم me."},
+ {prompt:"Nous ___ préparons pour sortir.",translation:"نستعد للخروج.",speech:"Nous nous préparons pour sortir.",instruction:"اختر الضمير الانعكاسي الصحيح.",choices:["vous","nous","se"],correctIndex:1,explanation:"مع nous نستخدم nous."},
+ {prompt:"Elles ___ couchent tôt.",translation:"ينمن مبكرًا.",speech:"Elles se couchent tôt.",instruction:"اختر الضمير الانعكاسي الصحيح.",choices:["me","nous","se"],correctIndex:2,explanation:"مع elles نستخدم se."},
+ {prompt:"Je ___ prends ___ le bus le dimanche.",translation:"لا أستقل الحافلة أبدًا يوم الأحد.",speech:"Je ne prends jamais le bus le dimanche.",instruction:"اختر صيغة النفي الصحيحة.",choices:["ne … jamais","jamais … ne","ne … souvent"],correctIndex:0,explanation:"نحيط الفعل بـ ne وjamais."},
+ {prompt:"Je vais ___ à la bibliothèque.",translation:"أذهب غالبًا إلى المكتبة.",speech:"Je vais souvent à la bibliothèque.",instruction:"اختر ظرف التكرار المناسب.",choices:["enfin","souvent","demain"],correctIndex:1,explanation:"souvent تعني غالبًا."},
+ {prompt:"___, je me brosse les dents et je me couche.",translation:"وأخيرًا، أنظف أسناني وأنام.",speech:"Enfin, je me brosse les dents et je me couche.",instruction:"اختر رابط نهاية التسلسل.",choices:["D’abord","Ensuite","Enfin"],correctIndex:2,explanation:"Enfin تعني وأخيرًا."},
+ {prompt:"Je rentre à la maison après le travail.",translation:"أعود إلى المنزل بعد العمل.",speech:"Je rentre à la maison après le travail.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعود إلى المنزل بعد العمل.","أغادر المنزل قبل العمل.","أعمل من المنزل اليوم."],correctIndex:0,explanation:"rentrer à la maison يعني العودة إلى المنزل."},
+ {prompt:"___ le dîner",translation:"قبل العشاء",speech:"Avant le dîner.",instruction:"اختر الكلمة الصحيحة.",choices:["Après","Avant","Pendant"],correctIndex:1,explanation:"avant le dîner تعني قبل العشاء."},
+ {prompt:"Elle fait les courses le samedi.",translation:"تتسوق يوم السبت.",speech:"Elle fait les courses le samedi.",instruction:"اختر المعنى الصحيح.",choices:["تستريح في المنزل.","تعد الغداء.","تتسوق."],correctIndex:2,explanation:"faire les courses تعني التسوق."},
+ {prompt:"D’abord, je consulte mes messages, puis je commence mon travail.",translation:"أولًا، أتفقد رسائلي، ثم أبدأ عملي.",speech:"D’abord, je consulte mes messages, puis je commence mon travail.",instruction:"اختر الترجمة الصحيحة.",choices:["أولًا، أتفقد رسائلي، ثم أبدأ عملي.","أبدأ عملي قبل قراءة الرسائل.","أنهي عملي ثم أرسل رسالة."],correctIndex:0,explanation:"D’abord تعني أولًا وpuis تعني ثم."},
+ {prompt:"Tu ___ habilles rapidement.",translation:"ترتدي ملابسك بسرعة.",speech:"Tu t’habilles rapidement.",instruction:"اختر الضمير الانعكاسي المناسب.",choices:["te","me","se"],correctIndex:0,explanation:"مع tu نستخدم te، وتصبح t’ قبل صوت متحرك."},
+ {prompt:"Il ___ repose après le déjeuner.",translation:"يستريح بعد الغداء.",speech:"Il se repose après le déjeuner.",instruction:"اختر الضمير الانعكاسي المناسب.",choices:["me","se","nous"],correctIndex:1,explanation:"مع il نستخدم se."},
+ {prompt:"Vous ___ le petit-déjeuner à huit heures.",translation:"تتناولون الفطور الساعة الثامنة.",speech:"Vous prenez le petit-déjeuner à huit heures.",instruction:"اختر الفعل الصحيح.",choices:["faites","allez","prenez"],correctIndex:2,explanation:"نقول prendre le petit-déjeuner."},
+ {prompt:"Après le travail, je ___ chez moi.",translation:"بعد العمل أعود إلى منزلي.",speech:"Après le travail, je rentre chez moi.",instruction:"اختر الفعل المناسب.",choices:["rentre","déjeune","réveille"],correctIndex:0,explanation:"rentrer تعني العودة."},
+ {prompt:"Nous faisons nos devoirs ___ le dîner.",translation:"ننجز واجباتنا قبل العشاء.",speech:"Nous faisons nos devoirs avant le dîner.",instruction:"اختر كلمة التوقيت المناسبة.",choices:["après","avant","jamais"],correctIndex:1,explanation:"avant تعني قبل."},
+ {prompt:"Elle ___ parfois du sport le soir.",translation:"تمارس الرياضة أحيانًا مساءً.",speech:"Elle fait parfois du sport le soir.",instruction:"اختر الفعل الصحيح.",choices:["va","prend","fait"],correctIndex:2,explanation:"نقول faire du sport."},
+ {prompt:"___, je me douche. Ensuite, je m’habille.",translation:"أولًا أستحم، ثم أرتدي ملابسي.",speech:"D’abord, je me douche. Ensuite, je m’habille.",instruction:"اختر رابط البداية.",choices:["D’abord","Enfin","Jamais"],correctIndex:0,explanation:"D’abord يقدّم أول خطوة."},
+ {prompt:"À quelle heure te couches-tu ?",translation:"في أي ساعة تنام؟",speech:"À quelle heure te couches-tu ?",instruction:"اختر الرد المناسب.",choices:["Je travaille en bus.","Je me couche à onze heures.","Je déjeune le matin."],correctIndex:1,explanation:"الرد المناسب يذكر وقت النوم."},
+ {prompt:"Je me brosse les ___.",translation:"أنظف أسناني.",speech:"Je me brosse les dents.",instruction:"اختر الكلمة المناسبة.",choices:["cheveux","mains","dents"],correctIndex:2,explanation:"se brosser les dents تعني تنظيف الأسنان."},
+ {prompt:"Le soir, nous nous reposons dans le salon.",translation:"في المساء نستريح في غرفة الجلوس.",speech:"Le soir, nous nous reposons dans le salon.",instruction:"اختر المعنى العربي الصحيح.",choices:["في المساء نستريح في غرفة الجلوس.","صباحًا نغادر إلى العمل.","ظهرًا نتناول الغداء في المطعم."],correctIndex:0,explanation:"se reposer تعني الاستراحة."}
 ];
 
 const A1_FRIENDS_PRACTICE_ITEMS:Example[]=[
@@ -3290,6 +3307,17 @@ const A1_ADJECTIVES_WRITING_TRANSLATIONS=[
  {fr:"gentille et sociable",ar:"لطيفة واجتماعية"}
 ];
 
+const A1_DAILY_LIFE_WRITING_TRANSLATIONS=[
+ {fr:"je me lève à sept heures",ar:"أستيقظ الساعة السابعة"},
+ {fr:"je prends mon petit-déjeuner",ar:"أتناول فطوري"},
+ {fr:"je vais au travail",ar:"أذهب إلى العمل"},
+ {fr:"je déjeune à midi",ar:"أتناول الغداء ظهرًا"},
+ {fr:"je fais les courses",ar:"أتسوق"},
+ {fr:"je rentre à la maison",ar:"أعود إلى المنزل"},
+ {fr:"je me repose le soir",ar:"أستريح مساءً"},
+ {fr:"je me couche à onze heures",ar:"أنام الساعة الحادية عشرة"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3774,20 +3802,22 @@ const A1_DAILY_LIFE_READING={
  text:"En général, Mehdi se lève à six heures trente. D’abord, il se prépare et prend son petit-déjeuner. Ensuite, il va au travail en métro. Il déjeune souvent avec ses collègues. Le soir, il fait parfois du sport, puis il rentre chez lui. Il ne se couche jamais après minuit.",
  translation:"يستيقظ مهدي عادةً عند السادسة والنصف. يستعد أولًا ويتناول فطوره، ثم يذهب إلى العمل بالمترو. غالبًا ما يتناول الغداء مع زملائه. وفي المساء يمارس الرياضة أحيانًا، ثم يعود إلى منزله. ولا ينام بعد منتصف الليل أبدًا.",
  questions:[
-  {question:"À quelle heure Mehdi se lève-t-il ?",answer:"Il se lève à six heures trente.",ar:"يستيقظ عند السادسة والنصف."},
-  {question:"Comment va-t-il au travail ?",answer:"Il va au travail en métro.",ar:"يذهب إلى العمل بالمترو."},
-  {question:"Quand fait-il parfois du sport ?",answer:"Il fait parfois du sport le soir.",ar:"يمارس الرياضة أحيانًا في المساء."}
+  {question:"À quelle heure Mehdi se lève-t-il ?",translation:"في أي ساعة يستيقظ مهدي؟",answer:"Il se lève à six heures trente.",ar:"يستيقظ عند السادسة والنصف."},
+  {question:"Comment va-t-il au travail ?",translation:"كيف يذهب إلى العمل؟",answer:"Il va au travail en métro.",ar:"يذهب إلى العمل بالمترو."},
+  {question:"Quand fait-il parfois du sport ?",translation:"متى يمارس الرياضة أحيانًا؟",answer:"Il fait parfois du sport le soir.",ar:"يمارس الرياضة أحيانًا في المساء."}
  ]
 };
 
 const A1_DAILY_LIFE_LISTENING={
  title:"Une matinée à la maison",
  arTitle:"صباح في المنزل",
- text:"Le samedi, nous nous levons à huit heures. D’abord, nous préparons le petit-déjeuner. Puis, les enfants s’habillent et rangent leur chambre. Nous faisons souvent les courses ensemble, mais nous ne déjeunons jamais avant midi.",
+ text:"Je me lève à sept heures. Je prends mon petit-déjeuner. Je vais au travail. Je fais les courses. Je me couche à onze heures.",
  questions:[
-  {prompt:"À quelle heure la famille se lève-t-elle ?",choices:["À sept heures","À huit heures","À neuf heures"],correctIndex:1},
-  {prompt:"Que font les enfants après le petit-déjeuner ?",choices:["Ils s’habillent et rangent leur chambre","Ils vont à l’école","Ils se couchent"],correctIndex:0},
-  {prompt:"Quand la famille déjeune-t-elle ?",choices:["Toujours avant midi","Jamais avant midi","À huit heures"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je me lève à sept heures","Je pars à six heures","Je me couche à huit heures"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je prépare le dîner","Je prends mon petit-déjeuner","Je déjeune au restaurant"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je rentre chez moi","Je vais à l’école","Je vais au travail"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je fais les courses","Je fais du sport","Je fais mes devoirs"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je me repose le soir","Je me couche à onze heures","Je me réveille à midi"],correctIndex:1}
  ]
 };
 
@@ -3796,19 +3826,25 @@ const A1_DAILY_LIFE_WRITING_MODEL="En général, je me lève à sept heures. D�
 const A1_DAILY_LIFE_DICTATION=[
  {speech:"Je me lève à sept heures.",ar:"أستيقظ الساعة السابعة."},
  {speech:"Nous faisons souvent du sport le soir.",ar:"نمارس الرياضة غالبًا في المساء."},
- {speech:"Elle ne se couche jamais tard.",ar:"هي لا تنام متأخرة أبدًا."}
+ {speech:"Elle ne se couche jamais tard.",ar:"هي لا تنام متأخرة أبدًا."},
+ {speech:"Après le travail, je fais les courses.",ar:"بعد العمل أتسوق."},
+ {speech:"D’abord, il se douche, puis il s’habille.",ar:"يستحم أولًا، ثم يرتدي ملابسه."}
 ];
 
 const A1_DAILY_LIFE_BUILDERS=[
  {tokens:["sept","Je","à","lève","heures.","me"],answer:["Je","me","lève","à","sept","heures."],ar:"أستيقظ الساعة السابعة."},
  {tokens:["souvent","Nous","sport.","du","faisons"],answer:["Nous","faisons","souvent","du","sport."],ar:"نمارس الرياضة غالبًا."},
- {tokens:["jamais","ne","tard.","couche","Elle","se"],answer:["Elle","ne","se","couche","jamais","tard."],ar:"هي لا تنام متأخرة أبدًا."}
+ {tokens:["jamais","ne","tard.","couche","Elle","se"],answer:["Elle","ne","se","couche","jamais","tard."],ar:"هي لا تنام متأخرة أبدًا."},
+ {tokens:["travail","au","métro.","en","vais","Je"],answer:["Je","vais","au","travail","en","métro."],ar:"أذهب إلى العمل بالمترو."},
+ {tokens:["puis","D’abord,","déjeune.","travaille,","je","je"],answer:["D’abord,","je","travaille,","puis","je","déjeune."],ar:"أعمل أولًا، ثم أتناول الغداء."}
 ];
 
 const A1_DAILY_LIFE_DIALOGUES=[
- {context:"On vous demande : « À quelle heure vous levez-vous ? »",prompt:"اختر الإجابة الصحيحة.",choices:["Je me lève à sept heures.","Je se lève à sept heures.","Je lève me à sept heures."],correctIndex:0,feedback:"مع je يكون الضمير المنعكس me قبل الفعل."},
- {context:"Vous dites que vous ne regardez la télévision à aucun moment.",prompt:"اختر الجملة الصحيحة.",choices:["Je ne regarde jamais la télévision.","Je jamais ne regarde la télévision.","Je ne regarde pas jamais la télévision."],correctIndex:0,feedback:"مع jamais نضع ne قبل الفعل وjamais بعده."},
- {context:"Vous organisez trois actions dans l’ordre.",prompt:"اختر مجموعة الروابط المناسبة.",choices:["D’abord, puis, enfin","Souvent, jamais, très","Parce que, mais, avec"],correctIndex:0,feedback:"D’abord وpuis وenfin ترتب أحداث اليوم."}
+ {context:"À quelle heure vous levez-vous ?",translation:"في أي ساعة تستيقظون؟",prompt:"اختر الإجابة الصحيحة.",choices:["Je me lève à sept heures.","Je se lève à sept heures.","Je lève me à sept heures."],correctIndex:0,feedback:"مع je يكون الضمير المنعكس me قبل الفعل."},
+ {context:"Regardez-vous parfois la télévision ?",translation:"هل تشاهد التلفاز أحيانًا؟",prompt:"اختر جواب النفي المطلق.",choices:["Je ne regarde jamais la télévision.","Je jamais ne regarde la télévision.","Je ne regarde pas jamais la télévision."],correctIndex:0,feedback:"مع jamais نضع ne قبل الفعل وjamais بعده."},
+ {context:"Dans quel ordre faites-vous ces actions ?",translation:"بأي ترتيب تقوم بهذه الأعمال؟",prompt:"اختر روابط الترتيب المناسبة.",choices:["D’abord, puis, enfin","Souvent, jamais, très","Parce que, mais, avec"],correctIndex:0,feedback:"D’abord وpuis وenfin ترتب أحداث اليوم."},
+ {context:"Que faites-vous après le travail ?",translation:"ماذا تفعل بعد العمل؟",prompt:"اختر الرد المناسب.",choices:["Je fais les courses.","Je suis le travail.","Je me lève hier."],correctIndex:0,feedback:"faire les courses نشاط يومي طبيعي بعد العمل."},
+ {context:"À quelle heure vous couchez-vous ?",translation:"في أي ساعة تنامون؟",prompt:"اختر الإجابة الصحيحة.",choices:["Je me couche à onze heures.","Je couche me onze heures.","Je suis à onze heures."],correctIndex:0,feedback:"مع je نقول je me couche ثم نذكر الوقت."}
 ];
 
 const A1_SITUATIONS_READING={
@@ -6719,8 +6755,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives;
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife;
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
@@ -6768,7 +6804,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7437,7 +7473,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

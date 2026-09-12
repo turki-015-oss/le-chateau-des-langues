@@ -6026,7 +6026,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
                const moveCard=(direction:-1|1)=>setVowelCardIndex(current=>({...current,[tableKind]:(current[tableKind]+direction+examples.length)%examples.length}));
                return <div className={`a1-vowel-example-table ${tableKind}`} role="region" aria-label={`بطاقات ${branch.ar}`}>
                <div className="a1-vowel-example-table-title">
-                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong><small>{examples.length} أمثلة مصوّرة مع النطق والشرح</small></div>
+                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong></div>
                 <Layers3/>
                </div>
                <div className="a1-vowel-carousel-stage">
@@ -6044,7 +6044,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
                  </div>
                  <p>{example.explanation}</p>
                  <div className="a1-vowel-example-audio">
-                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء جدًا</b><small>Très lentement</small></span></button>
+                  <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء</b><small>Lentement</small></span></button>
                  </div>
                 </article>
                </div>

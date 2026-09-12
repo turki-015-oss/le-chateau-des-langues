@@ -82,6 +82,13 @@ const A1_COUNTRIES_LISTENING_CLIPS=[
  {letter:"Arabie saoudite",word:"saoudienne",ar:"السعودية — سعودية",hiddenSpeech:"Arabie saoudite"},
  {letter:"États-Unis",word:"américain",ar:"الولايات المتحدة — أمريكي",hiddenSpeech:"États-Unis"}
 ];
+const A1_STUDIES_LISTENING_CLIPS=[
+ {letter:"professeur",word:"école",ar:"معلّم — مدرسة",hiddenSpeech:"professeur"},
+ {letter:"médecin",word:"hôpital",ar:"طبيب — مستشفى",hiddenSpeech:"médecin"},
+ {letter:"cuisinier",word:"restaurant",ar:"طاهٍ — مطعم",hiddenSpeech:"cuisinier"},
+ {letter:"vendeuse",word:"magasin",ar:"بائعة — متجر",hiddenSpeech:"vendeuse"},
+ {letter:"étudiante",word:"université",ar:"طالبة — جامعة",hiddenSpeech:"étudiante"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -658,6 +665,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"studies-professions",title:"Les études et les professions",ar:"الدراسة والمهن",icon:School,
+  description:"التحدث عن الدراسة والتخصص والمهنة ومكان العمل بعبارات فرنسية بسيطة وصحيحة.",
+  sections:[
+   section("Les études","الدراسة والتخصص","نستخدم étudier للحديث عن الدراسة، وêtre étudiant أو étudiante للتعريف بالصفة الدراسية. ويمكن ذكر المؤسسة أو المادة أو التخصص بعبارة قصيرة.",[
+    "Je suis étudiant / étudiante: أنا طالب / طالبة.",
+    "J’étudie à l’université: أدرس في الجامعة.",
+    "J’étudie le français: أدرس اللغة الفرنسية.",
+    "faire des études de + مجال: دراسة تخصص معين."
+   ],[
+    {fr:"Je suis étudiante à l’université.",ar:"أنا طالبة في الجامعة."},
+    {fr:"Nous étudions le français.",ar:"نحن ندرس اللغة الفرنسية."},
+    {fr:"Il fait des études de médecine.",ar:"هو يدرس الطب."},
+    {fr:"Mon cours commence à neuf heures.",ar:"يبدأ درسي الساعة التاسعة."}
+   ]),
+   section("Les professions","المهن وصيغها","بعد فعل être تُذكر المهنة عادة من دون أداة: Je suis médecin. وتتغير بعض أسماء المهن بين المذكر والمؤنث، بينما تبقى أسماء أخرى بالشكل نفسه.",[
+    "un étudiant → une étudiante، un infirmier → une infirmière.",
+    "un vendeur → une vendeuse، un cuisinier → une cuisinière.",
+    "professeur / professeure صيغتان مستعملتان بحسب الشخص.",
+    "نقول Il est médecin، ولا نقول عادة Il est un médecin عند ذكر المهنة وحدها."
+   ],[
+    {fr:"Elle est professeure.",ar:"هي معلّمة."},
+    {fr:"Omar est ingénieur.",ar:"عمر مهندس."},
+    {fr:"Lina est infirmière.",ar:"لينا ممرضة."},
+    {fr:"Mon frère est cuisinier.",ar:"أخي طاهٍ."}
+   ]),
+   section("Le lieu de travail","مكان العمل والنشاط","نستخدم travailler à مع مؤسسة محددة، وdans مع نوع المكان، وcomme قبل المهنة عندما نوضح طبيعة العمل.",[
+    "travailler à l’hôpital / à l’école: العمل في مؤسسة محددة.",
+    "travailler dans un magasin / un restaurant: العمل داخل نوع من الأماكن.",
+    "travailler comme + مهنة: العمل بصفة أو مهنة معينة.",
+    "Où travaillez-vous ? وما مهنتكم؟ Quel est votre métier ?"
+   ],[
+    {fr:"Je travaille dans un hôtel.",ar:"أعمل في فندق."},
+    {fr:"Elle travaille comme vendeuse.",ar:"تعمل بائعة."},
+    {fr:"Il travaille à l’hôpital.",ar:"هو يعمل في المستشفى."},
+    {fr:"Quel est votre métier ?",ar:"ما مهنتكم؟"}
+   ])
+  ]
+ },
+ {
   id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
@@ -1145,7 +1191,7 @@ const A1_MODULES:CourseModule[]=[
 // New A1 modules will be inserted into their reserved pedagogical positions in later batches.
 const A1_MODULE_ORDER=[
  "alphabet","sounds","greetings","countries-languages","nouns","core-verbs",
- "present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
+ "present","studies-professions","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
  "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
  "health-needs","situations","messages-forms"
 ] as const;
@@ -1288,6 +1334,42 @@ const A1_COUNTRIES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Nous habitons ___ Canada.",speech:"Nous habitons au Canada.",instruction:"اختر حرف الجر الصحيح.",translation:"نسكن في كندا.",choices:["aux","au","en"],correctIndex:1,explanation:"Canada بلد مذكر؛ لذلك نقول au Canada."},
  {prompt:"Ils viennent ___ Japon.",speech:"Ils viennent du Japon.",instruction:"اختر الصيغة الصحيحة لذكر الأصل.",translation:"هم من اليابان.",choices:["de","des","du"],correctIndex:2,explanation:"Japon بلد مذكر؛ لذلك نقول du Japon."},
  {prompt:"Je suis marocaine et je parle arabe.",speech:"Je suis marocaine et je parle arabe.",instruction:"اختر المعنى العربي الصحيح.",choices:["أنا مغربية وأتحدث العربية.","أنا مصرية وأتعلم الفرنسية.","أنا فرنسية وأسكن في المغرب."],correctIndex:0,explanation:"marocaine تعني مغربية وje parle arabe تعني أتحدث العربية."}
+];
+
+const A1_STUDIES_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je suis étudiant à l’université.",ar:"أنا طالب في الجامعة."},
+ {fr:"Nora étudie le français.",ar:"تدرس نورا اللغة الفرنسية."},
+ {fr:"Nous avons un cours à dix heures.",ar:"لدينا درس الساعة العاشرة."},
+ {fr:"Elle est professeure dans une école.",ar:"هي معلّمة في مدرسة."},
+ {fr:"Mon frère est ingénieur.",ar:"أخي مهندس."},
+ {fr:"Il travaille à l’hôpital.",ar:"هو يعمل في المستشفى."},
+ {fr:"Maya travaille comme vendeuse.",ar:"تعمل مايا بائعة."},
+ {fr:"Je travaille dans un restaurant.",ar:"أعمل في مطعم."},
+ {fr:"Qu’est-ce que vous étudiez ?",ar:"ماذا تدرسون؟"},
+ {fr:"Quel est votre métier ?",ar:"ما مهنتكم؟"}
+];
+
+const A1_STUDIES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ le français.",speech:"Complétez la phrase. J’étudie le français.",instruction:"اختر الفعل المناسب للحديث عن الدراسة.",translation:"أدرس اللغة الفرنسية.",choices:["travaille","étudie","habite"],correctIndex:1,explanation:"étudier يعني يدرس."},
+ {prompt:"Nous ___ à l’université.",speech:"Complétez la phrase. Nous étudions à l’université.",instruction:"اختر تصريف étudier الصحيح مع nous.",translation:"نحن ندرس في الجامعة.",choices:["étudions","étudiez","étudient"],correctIndex:0,explanation:"مع nous نقول nous étudions."},
+ {prompt:"Elle est ___.",speech:"Elle est étudiante.",instruction:"اختر الصيغة المؤنثة الصحيحة.",translation:"هي طالبة.",choices:["étudiant","études","étudiante"],correctIndex:2,explanation:"الصيغة المؤنثة هي étudiante."},
+ {prompt:"Il fait des études de ___.",speech:"Il fait des études de médecine.",instruction:"اختر الكلمة المناسبة لتخصص الطب.",translation:"هو يدرس الطب.",choices:["médecine","médecin","hôpital"],correctIndex:0,explanation:"médecine اسم مجال الدراسة، أما médecin فهو الطبيب."},
+ {prompt:"Mon cours ___ à neuf heures.",speech:"Mon cours commence à neuf heures.",instruction:"اختر الفعل المناسب.",translation:"يبدأ درسي الساعة التاسعة.",choices:["parle","commence","vient"],correctIndex:1,explanation:"commencer يعني يبدأ."},
+ {prompt:"Elle est ___. Elle enseigne le français.",speech:"Elle est professeure. Elle enseigne le français.",instruction:"اختر المهنة المناسبة.",translation:"هي تعلّم الفرنسية.",choices:["vendeuse","infirmière","professeure"],correctIndex:2,explanation:"الشخص الذي يدرّس هو professeur أو professeure."},
+ {prompt:"Lina soigne les malades. Elle est ___.",speech:"Lina soigne les malades. Elle est infirmière.",instruction:"اختر المهنة المناسبة.",translation:"تعالج لينا المرضى.",choices:["infirmière","cuisinière","étudiante"],correctIndex:0,explanation:"infirmière تعني ممرضة."},
+ {prompt:"Il prépare les repas. Il est ___.",speech:"Il prépare les repas. Il est cuisinier.",instruction:"اختر المهنة المناسبة.",translation:"هو يحضّر الوجبات.",choices:["ingénieur","cuisinier","vendeur"],correctIndex:1,explanation:"cuisinier هو الطاهي."},
+ {prompt:"Elle travaille dans un magasin. Elle est ___.",speech:"Elle travaille dans un magasin. Elle est vendeuse.",instruction:"اختر المهنة المناسبة.",translation:"هي تعمل في متجر.",choices:["médecin","professeure","vendeuse"],correctIndex:2,explanation:"vendeuse هي بائعة تعمل في متجر."},
+ {prompt:"Je suis ___ ingénieur.",speech:"Je suis ingénieur.",instruction:"اختر الصياغة الصحيحة بعد être عند ذكر المهنة.",translation:"أنا مهندس.",choices:["ingénieur","un ingénieur","de ingénieur"],correctIndex:0,explanation:"تُذكر المهنة عادة من دون أداة بعد être."},
+ {prompt:"Il travaille ___ l’hôpital.",speech:"Il travaille à l’hôpital.",instruction:"اختر حرف الجر الصحيح مع المؤسسة المحددة.",translation:"هو يعمل في المستشفى.",choices:["dans","à","comme"],correctIndex:1,explanation:"نقول travailler à l’hôpital."},
+ {prompt:"Elle travaille ___ un restaurant.",speech:"Elle travaille dans un restaurant.",instruction:"اختر حرف الجر الصحيح مع نوع المكان.",translation:"هي تعمل في مطعم.",choices:["à la","comme","dans"],correctIndex:2,explanation:"نستعمل dans قبل مكان غير محدد مسبوق بأداة."},
+ {prompt:"Je travaille ___ professeur.",speech:"Je travaille comme professeur.",instruction:"اختر الكلمة التي تسبق المهنة.",translation:"أعمل معلّمًا.",choices:["comme","dans","au"],correctIndex:0,explanation:"نستعمل comme قبل المهنة عند وصف طبيعة العمل."},
+ {prompt:"Où ___-vous ?",speech:"Où travaillez-vous ?",instruction:"أكمل السؤال عن مكان العمل.",translation:"أين تعملون؟",choices:["étudie","travaillez","travaille"],correctIndex:1,explanation:"مع vous نقول travaillez-vous."},
+ {prompt:"Quel est votre ___ ?",speech:"Quel est votre métier ?",instruction:"أكمل السؤال عن المهنة.",translation:"ما مهنتكم؟",choices:["cours","école","métier"],correctIndex:2,explanation:"métier تعني مهنة."},
+ {prompt:"Qu’est-ce que vous ___ ?",speech:"Qu’est-ce que vous étudiez ?",instruction:"أكمل السؤال عن مجال الدراسة.",translation:"ماذا تدرسون؟",choices:["étudiez","étudions","étudient"],correctIndex:0,explanation:"مع vous نقول vous étudiez."},
+ {prompt:"Je suis médecin.",speech:"Je suis médecin.",instruction:"اختر المعنى العربي الصحيح.",choices:["أنا معلّم.","أنا طبيب.","أنا طالب."],correctIndex:1,explanation:"médecin تعني طبيبًا أو طبيبة بحسب الشخص."},
+ {prompt:"Elle travaille dans une école.",speech:"Elle travaille dans une école.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي تدرس في المستشفى.","هي تسكن قرب المدرسة.","هي تعمل في مدرسة."],correctIndex:2,explanation:"travailler dans une école تعني العمل في مدرسة."},
+ {prompt:"Nous avons un cours de français.",speech:"Nous avons un cours de français.",instruction:"اختر المعنى العربي الصحيح.",choices:["لدينا درس في اللغة الفرنسية.","نعمل معلّمين للفرنسية.","نبحث عن جامعة فرنسية."],correctIndex:0,explanation:"avoir un cours تعني أن لدينا درسًا."},
+ {prompt:"Je ne travaille pas aujourd’hui.",speech:"Je ne travaille pas aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["أبدأ العمل اليوم.","لا أعمل اليوم.","أدرس بعد العمل."],correctIndex:1,explanation:"ne travaille pas تنفي العمل في هذا اليوم."}
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
@@ -1975,6 +2057,61 @@ const A1_COUNTRIES_DIALOGUES=[
  {context:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens de France.","Je suis étudiant.","Je parle arabe et français."],correctIndex:2,feedback:"بعد parler نذكر اللغة عادة من دون أداة."},
  {context:"Vous habitez dans quel pays ?",translation:"في أي بلد تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite au Canada.","Je suis canadien.","J’apprends l’anglais."],correctIndex:0,feedback:"habiter مع حرف الجر واسم البلد يجيب عن مكان السكن."},
  {context:"Vous apprenez quelle langue ?",translation:"ما اللغة التي تتعلمونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens d’Italie.","J’apprends le français.","Je suis italienne."],correctIndex:1,feedback:"نقول apprendre le français عند الحديث عن تعلم اللغة."}
+];
+
+const A1_STUDIES_READING={
+ title:"À l’université et au travail",
+ arTitle:"في الجامعة والعمل",
+ text:"Nora est étudiante à l’université. Elle étudie le français le matin. Son frère Sami est infirmier et travaille à l’hôpital. Leur amie Lina est cuisinière dans un restaurant. Elle commence son travail à onze heures.",
+ translation:"نورا طالبة في الجامعة وتدرس الفرنسية صباحًا. أخوها سامي ممرض ويعمل في المستشفى. صديقتهما لينا طاهية في مطعم، وتبدأ عملها الساعة الحادية عشرة.",
+ questions:[
+  {question:"Qu’est-ce que Nora étudie ?",translation:"ماذا تدرس نورا؟",answer:"Nora étudie le français.",ar:"تدرس نورا اللغة الفرنسية."},
+  {question:"Où travaille Sami ?",translation:"أين يعمل سامي؟",answer:"Sami travaille à l’hôpital.",ar:"يعمل سامي في المستشفى."},
+  {question:"Quel est le métier de Lina ?",translation:"ما مهنة لينا؟",answer:"Lina est cuisinière.",ar:"لينا طاهية."}
+ ]
+};
+
+const A1_STUDIES_LISTENING={
+ title:"Métiers et lieux",
+ arTitle:"المهن وأماكنها",
+ text:"Professeur. Médecin. Cuisinier. Vendeuse. Étudiante.",
+ questions:[
+  {prompt:"Quel métier entendez-vous ?",choices:["Professeur","Médecin","Cuisinier"],correctIndex:0},
+  {prompt:"Quel métier entendez-vous ?",choices:["Vendeur","Médecin","Professeur"],correctIndex:1},
+  {prompt:"Quel métier entendez-vous ?",choices:["Infirmier","Ingénieur","Cuisinier"],correctIndex:2},
+  {prompt:"Quel métier entendez-vous ?",choices:["Vendeuse","Étudiante","Professeure"],correctIndex:0},
+  {prompt:"Quel statut entendez-vous ?",choices:["Cuisinière","Étudiante","Médecin"],correctIndex:1}
+ ]
+};
+
+const A1_STUDIES_WRITING_MODEL="Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.";
+const A1_STUDIES_WRITING_TRANSLATIONS=[
+ {fr:"étudiant",ar:"طالب"},{fr:"étudiante",ar:"طالبة"},{fr:"professeur",ar:"معلّم"},{fr:"médecin",ar:"طبيب"},
+ {fr:"infirmière",ar:"ممرضة"},{fr:"ingénieur",ar:"مهندس"},{fr:"cuisinier",ar:"طاهٍ"},{fr:"vendeuse",ar:"بائعة"}
+];
+
+const A1_STUDIES_DICTATION=[
+ {speech:"étudiant",ar:"طالب"},
+ {speech:"professeur",ar:"معلّم"},
+ {speech:"médecin",ar:"طبيب"},
+ {speech:"infirmière",ar:"ممرضة"},
+ {speech:"cuisinier",ar:"طاهٍ"}
+];
+
+const A1_STUDIES_BUILDERS=[
+ {tokens:["étudiante","Je","suis","à","l’université."],answer:["Je","suis","étudiante","à","l’université."],ar:"أنا طالبة في الجامعة."},
+ {tokens:["français.","le","étudions","Nous"],answer:["Nous","étudions","le","français."],ar:"نحن ندرس اللغة الفرنسية."},
+ {tokens:["médecin.","frère","Mon","est"],answer:["Mon","frère","est","médecin."],ar:"أخي طبيب."},
+ {tokens:["travaille","Elle","un","dans","magasin."],answer:["Elle","travaille","dans","un","magasin."],ar:"هي تعمل في متجر."},
+ {tokens:["votre","Quel","métier ?","est"],answer:["Quel","est","votre","métier ?"],ar:"ما مهنتكم؟"}
+];
+
+const A1_STUDIES_DIALOGUES=[
+ {context:"Qu’est-ce que vous étudiez ?",translation:"ماذا تدرسون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le français.","Je suis à Lyon.","Je viens du Maroc."],correctIndex:0,feedback:"نجيب عن مجال الدراسة باستعمال étudier."},
+ {context:"Quel est votre métier ?",translation:"ما مهنتكم؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le soir.","Je suis ingénieur.","J’habite en France."],correctIndex:1,feedback:"نستعمل être ثم اسم المهنة من دون أداة."},
+ {context:"Où travaillez-vous ?",translation:"أين تعملون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle français.","Je suis infirmière.","Je travaille à l’hôpital."],correctIndex:2,feedback:"السؤال يطلب مكان العمل."},
+ {context:"À quelle heure commence votre cours ?",translation:"في أي ساعة يبدأ درسكم؟",prompt:"اختر الإجابة المناسبة.",choices:["Il commence à neuf heures.","Je suis professeur.","C’est une université."],correctIndex:0,feedback:"نستخدم commencer à ثم الساعة."},
+ {context:"Vous travaillez comme professeur ?",translation:"هل تعملون معلّمين؟",prompt:"اختر الإجابة المناسبة.",choices:["À l’université.","Oui, je suis professeur de français.","J’étudie à dix heures."],correctIndex:1,feedback:"الإجابة تؤكد المهنة وتحدد المادة."}
 ];
 
 const A1_NOUNS_READING={
@@ -2771,6 +2908,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_COUNTRIES_READING,listening:A1_COUNTRIES_LISTENING,dictation:A1_COUNTRIES_DICTATION,builders:A1_COUNTRIES_BUILDERS,dialogues:A1_COUNTRIES_DIALOGUES,
   writingModel:A1_COUNTRIES_WRITING_MODEL,writingTitle:"اكتب عن بلدك ولغتك",writingInstructions:"اكتب من 15 إلى 25 كلمة: اذكر بلدك وجنسيتك ومكان سكنك واللغة التي تتحدثها أو تتعلمها.",writingPlaceholder:"Je viens de… Je suis…",writingMinimum:15,writingMaximum:25,
   speakingPrompt:"Je viens d’Arabie saoudite. Je suis saoudien. J’habite à Riyad. Je parle arabe et j’apprends le français.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["استخدم venir de لذكر الأصل.","طابق الجنسية مع المتحدث.","اذكر اللغة بعد parler من دون أداة."],dictationUnit:"word"
+ },
+ "studies-professions":{
+  reading:A1_STUDIES_READING,listening:A1_STUDIES_LISTENING,dictation:A1_STUDIES_DICTATION,builders:A1_STUDIES_BUILDERS,dialogues:A1_STUDIES_DIALOGUES,
+  writingModel:A1_STUDIES_WRITING_MODEL,writingTitle:"اكتب عن دراستك أو مهنتك",writingInstructions:"اكتب من 15 إلى 25 كلمة: اذكر ما تدرسه أو مهنتك ومكان الدراسة أو العمل ووقت البداية.",writingPlaceholder:"Je suis… J’étudie…",writingMinimum:15,writingMaximum:25,
+  speakingPrompt:"Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر صفتك الدراسية أو مهنتك.","استخدم étudier أو travailler بصورة صحيحة.","أضف مكان الدراسة أو العمل."],dictationUnit:"word"
  },
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
@@ -4426,7 +4568,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم البلد واللغة والأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","countries-languages","nouns","core-verbs"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
@@ -5534,7 +5676,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Sounds=level.id==="A1"&&activeModule.id==="sounds";
  const isA1Greetings=level.id==="A1"&&activeModule.id==="greetings";
  const isA1Countries=level.id==="A1"&&activeModule.id==="countries-languages";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries;
+ const isA1Studies=level.id==="A1"&&activeModule.id==="studies-professions";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -5598,7 +5741,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -5853,6 +5996,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -5890,6 +6034,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
@@ -6230,7 +6375,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){
@@ -6384,7 +6529,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>

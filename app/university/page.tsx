@@ -89,6 +89,13 @@ const A1_STUDIES_LISTENING_CLIPS=[
  {letter:"vendeuse",word:"magasin",ar:"بائعة — متجر",hiddenSpeech:"vendeuse"},
  {letter:"étudiante",word:"université",ar:"طالبة — جامعة",hiddenSpeech:"étudiante"}
 ];
+const A1_TASTES_LISTENING_CLIPS=[
+ {letter:"J’aime",word:"lire",ar:"أحب القراءة",hiddenSpeech:"J’aime lire"},
+ {letter:"J’adore",word:"voyager",ar:"أعشق السفر",hiddenSpeech:"J’adore voyager"},
+ {letter:"Je préfère",word:"le thé",ar:"أفضل الشاي",hiddenSpeech:"Je préfère le thé"},
+ {letter:"Je n’aime pas",word:"courir",ar:"لا أحب الجري",hiddenSpeech:"Je n’aime pas courir"},
+ {letter:"Je déteste",word:"le bruit",ar:"أكره الضوضاء",hiddenSpeech:"Je déteste le bruit"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -704,6 +711,45 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"tastes-preferences",title:"Exprimer ses goûts et ses préférences",ar:"التعبير عن الأذواق والميول",icon:HandHeart,
+  description:"التعبير عن الأشياء والأنشطة التي نحبها أو نفضلها أو لا نحبها، وشرح الاختيار بجملة بسيطة.",
+  sections:[
+   section("Aimer, adorer et détester","الحب والإعجاب وعدم الإعجاب","نستعمل aimer وadorer وdétester للتعبير عن درجة الميل. يأتي بعدها اسم مع أداته أو فعل في المصدر، ويتغير الفعل بحسب ضمير الفاعل.",[
+    "aimer: يحب، adorer: يعشق، détester: يكره.",
+    "مع الاسم: J’aime la musique.",
+    "مع الفعل في المصدر: J’aime lire.",
+    "في النفي نضع ne… pas حول الفعل: Je n’aime pas courir."
+   ],[
+    {fr:"J’aime la musique française.",ar:"أحب الموسيقى الفرنسية."},
+    {fr:"Elle adore voyager.",ar:"هي تعشق السفر."},
+    {fr:"Nous n’aimons pas le bruit.",ar:"نحن لا نحب الضوضاء."},
+    {fr:"Ils détestent attendre.",ar:"هم يكرهون الانتظار."}
+   ]),
+   section("Préférer et choisir","التفضيل والاختيار","نستعمل préférer عندما نقارن بين خيارين أو نحدد الخيار الأقرب إلينا. ويمكن استعمال préféré أو préférée قبل الاسم أو بعده حسب التركيب.",[
+    "Je préfère le thé au café: أفضل الشاي على القهوة.",
+    "Tu préfères lire ou regarder un film ? للسؤال عن خيارين.",
+    "Mon sport préféré est le football: رياضتي المفضلة كرة القدم.",
+    "préférer يتغير مع الضمير: je préfère، nous préférons، ils préfèrent."
+   ],[
+    {fr:"Je préfère le thé au café.",ar:"أفضل الشاي على القهوة."},
+    {fr:"Tu préfères lire ou regarder un film ?",ar:"هل تفضل القراءة أم مشاهدة فيلم؟"},
+    {fr:"Son activité préférée est la natation.",ar:"نشاطها المفضل هو السباحة."},
+    {fr:"Nous préférons rester à la maison.",ar:"نحن نفضل البقاء في المنزل."}
+   ]),
+   section("Donner une raison simple","ذكر سبب بسيط","بعد التعبير عن الذوق يمكن إضافة سبب باستعمال parce que. نستخدم c’est مع اسم أو وصف عام، ونستخدم الفعل المناسب عندما نتحدث عن نشاط.",[
+    "parce que تعني لأن وتربط الذوق بالسبب.",
+    "J’aime ce livre parce qu’il est intéressant.",
+    "Je préfère marcher parce que c’est calme.",
+    "للسؤال نقول: Pourquoi est-ce que tu aimes… ?"
+   ],[
+    {fr:"J’aime ce film parce qu’il est drôle.",ar:"أحب هذا الفيلم لأنه مضحك."},
+    {fr:"Elle adore cuisiner parce que c’est créatif.",ar:"هي تعشق الطبخ لأنه نشاط إبداعي."},
+    {fr:"Pourquoi est-ce que tu aimes le français ?",ar:"لماذا تحب اللغة الفرنسية؟"},
+    {fr:"Je préfère le train parce qu’il est confortable.",ar:"أفضل القطار لأنه مريح."}
+   ])
+  ]
+ },
+ {
   id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
@@ -1191,7 +1237,7 @@ const A1_MODULES:CourseModule[]=[
 // New A1 modules will be inserted into their reserved pedagogical positions in later batches.
 const A1_MODULE_ORDER=[
  "alphabet","sounds","greetings","countries-languages","nouns","core-verbs",
- "present","studies-professions","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
+ "present","studies-professions","tastes-preferences","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
  "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
  "health-needs","situations","messages-forms"
 ] as const;
@@ -1370,6 +1416,42 @@ const A1_STUDIES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Elle travaille dans une école.",speech:"Elle travaille dans une école.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي تدرس في المستشفى.","هي تسكن قرب المدرسة.","هي تعمل في مدرسة."],correctIndex:2,explanation:"travailler dans une école تعني العمل في مدرسة."},
  {prompt:"Nous avons un cours de français.",speech:"Nous avons un cours de français.",instruction:"اختر المعنى العربي الصحيح.",choices:["لدينا درس في اللغة الفرنسية.","نعمل معلّمين للفرنسية.","نبحث عن جامعة فرنسية."],correctIndex:0,explanation:"avoir un cours تعني أن لدينا درسًا."},
  {prompt:"Je ne travaille pas aujourd’hui.",speech:"Je ne travaille pas aujourd’hui.",instruction:"اختر المعنى العربي الصحيح.",choices:["أبدأ العمل اليوم.","لا أعمل اليوم.","أدرس بعد العمل."],correctIndex:1,explanation:"ne travaille pas تنفي العمل في هذا اليوم."}
+];
+
+const A1_TASTES_PRACTICE_ITEMS:Example[]=[
+ {fr:"J’aime écouter de la musique.",ar:"أحب الاستماع إلى الموسيقى."},
+ {fr:"Elle adore voyager en train.",ar:"هي تعشق السفر بالقطار."},
+ {fr:"Nous aimons le cinéma français.",ar:"نحن نحب السينما الفرنسية."},
+ {fr:"Je n’aime pas courir le matin.",ar:"لا أحب الجري صباحًا."},
+ {fr:"Ils détestent attendre longtemps.",ar:"هم يكرهون الانتظار طويلًا."},
+ {fr:"Je préfère le thé au café.",ar:"أفضل الشاي على القهوة."},
+ {fr:"Tu préfères lire ou regarder un film ?",ar:"هل تفضل القراءة أم مشاهدة فيلم؟"},
+ {fr:"Mon activité préférée est la natation.",ar:"نشاطي المفضل هو السباحة."},
+ {fr:"J’aime ce livre parce qu’il est intéressant.",ar:"أحب هذا الكتاب لأنه ممتع."},
+ {fr:"Pourquoi est-ce que vous aimez le français ?",ar:"لماذا تحبون اللغة الفرنسية؟"}
+];
+
+const A1_TASTES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"J’___ la musique.",speech:"Complétez la phrase. J’aime la musique.",instruction:"اختر الفعل المناسب للتعبير عن الإعجاب.",translation:"أحب الموسيقى.",choices:["aime","aimes","aimons"],correctIndex:0,explanation:"مع je نقول j’aime."},
+ {prompt:"Elle ___ voyager.",speech:"Complétez la phrase. Elle adore voyager.",instruction:"اختر التصريف الصحيح.",translation:"هي تعشق السفر.",choices:["adores","adorons","adore"],correctIndex:2,explanation:"مع elle نقول elle adore."},
+ {prompt:"Nous ___ le bruit.",speech:"Complétez la phrase. Nous détestons le bruit.",instruction:"اختر التصريف الصحيح مع nous.",translation:"نحن نكره الضوضاء.",choices:["détestent","détestons","déteste"],correctIndex:1,explanation:"مع nous تكون الصيغة détestons."},
+ {prompt:"Je n’___ pas courir.",speech:"Complétez la phrase. Je n’aime pas courir.",instruction:"أكمل جملة النفي الصحيحة.",translation:"لا أحب الجري.",choices:["aime","adore","préfères"],correctIndex:0,explanation:"نضع n’ قبل aime وpas بعده."},
+ {prompt:"Tu aimes ___ ?",speech:"Tu aimes lire ?",instruction:"اختر الفعل في صيغة المصدر.",translation:"هل تحب القراءة؟",choices:["lis","lire","lisez"],correctIndex:1,explanation:"بعد aimer يأتي الفعل الثاني في المصدر: lire."},
+ {prompt:"J’aime ___ cinéma.",speech:"J’aime le cinéma.",instruction:"اختر الأداة الصحيحة قبل الاسم.",translation:"أحب السينما.",choices:["la","un","le"],correctIndex:2,explanation:"cinéma اسم مذكر؛ لذلك نقول le cinéma."},
+ {prompt:"Elle aime ___ natation.",speech:"Elle aime la natation.",instruction:"اختر الأداة الصحيحة.",translation:"هي تحب السباحة.",choices:["la","le","les"],correctIndex:0,explanation:"natation اسم مؤنث؛ لذلك نقول la natation."},
+ {prompt:"Je ___ le thé au café.",speech:"Je préfère le thé au café.",instruction:"اختر فعل التفضيل المناسب.",translation:"أفضل الشاي على القهوة.",choices:["déteste","préfère","adore"],correctIndex:1,explanation:"préférer يعبّر عن تفضيل خيار على آخر."},
+ {prompt:"Nous ___ rester ici.",speech:"Nous préférons rester ici.",instruction:"اختر تصريف préférer مع nous.",translation:"نحن نفضل البقاء هنا.",choices:["préférez","préfèrent","préférons"],correctIndex:2,explanation:"مع nous نقول préférons."},
+ {prompt:"Tu préfères lire ___ regarder un film ?",speech:"Tu préfères lire ou regarder un film ?",instruction:"اختر أداة الربط بين الخيارين.",translation:"هل تفضل القراءة أم مشاهدة فيلم؟",choices:["ou","et","parce que"],correctIndex:0,explanation:"ou تعني أم أو أو بين خيارين."},
+ {prompt:"Mon sport ___ est le football.",speech:"Mon sport préféré est le football.",instruction:"اختر الصفة المناسبة.",translation:"رياضتي المفضلة هي كرة القدم.",choices:["préférée","préféré","préférer"],correctIndex:1,explanation:"sport مذكر؛ لذلك نقول préféré."},
+ {prompt:"Mon activité ___ est la lecture.",speech:"Mon activité préférée est la lecture.",instruction:"اختر صيغة الصفة الموافقة.",translation:"نشاطي المفضل هو القراءة.",choices:["préféré","préférer","préférée"],correctIndex:2,explanation:"activité مؤنث؛ لذلك نقول préférée."},
+ {prompt:"J’aime ce film ___ il est drôle.",speech:"J’aime ce film parce qu’il est drôle.",instruction:"اختر الرابط الذي يقدم السبب.",translation:"أحب هذا الفيلم لأنه مضحك.",choices:["parce qu’","mais","ou"],correctIndex:0,explanation:"parce que تصبح parce qu’ قبل صوت متحرك."},
+ {prompt:"Pourquoi aimes-tu ce livre ?",speech:"Pourquoi aimes-tu ce livre ?",instruction:"اختر الإجابة التي تقدم سببًا.",translation:"لماذا تحب هذا الكتاب؟",choices:["À la bibliothèque.","Parce qu’il est intéressant.","Avec mon ami."],correctIndex:1,explanation:"السؤال بـ pourquoi يُجاب عنه بسبب يبدأ غالبًا بـ parce que."},
+ {prompt:"Je déteste attendre.",speech:"Je déteste attendre.",instruction:"اختر المعنى العربي الصحيح.",choices:["أفضل الانتظار.","أحب الانتظار.","أكره الانتظار."],correctIndex:2,explanation:"détester يعني يكره."},
+ {prompt:"Elle adore cuisiner.",speech:"Elle adore cuisiner.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي تعشق الطبخ.","هي لا تحب الطعام.","هي تفضل المطعم."],correctIndex:0,explanation:"adorer أقوى من aimer وتعني يعشق."},
+ {prompt:"Nous n’aimons pas le café.",speech:"Nous n’aimons pas le café.",instruction:"اختر المعنى العربي الصحيح.",choices:["نحن نفضل القهوة.","نحن لا نحب القهوة.","نحن نشرب القهوة."],correctIndex:1,explanation:"ne… pas تنفي فعل aimer."},
+ {prompt:"Quel est votre loisir préféré ?",speech:"Quel est votre loisir préféré ?",instruction:"اختر الإجابة المناسبة للسؤال.",translation:"ما هوايتكم المفضلة؟",choices:["J’habite à Paris.","Il est neuf heures.","Mon loisir préféré est la lecture."],correctIndex:2,explanation:"الإجابة تحدد الهواية المفضلة مباشرة."},
+ {prompt:"Vous aimez faire du sport ?",speech:"Vous aimez faire du sport ?",instruction:"اختر الإجابة الطبيعية.",translation:"هل تحبون ممارسة الرياضة؟",choices:["Oui, j’aime beaucoup nager.","Je suis un sport.","À cinq heures hier."],correctIndex:0,explanation:"يمكن تأكيد الذوق ثم ذكر النشاط في المصدر."},
+ {prompt:"Je préfère marcher parce que c’est calme.",speech:"Je préfère marcher parce que c’est calme.",instruction:"اختر المعنى العربي الصحيح.",choices:["أكره المشي لأنه متعب.","أفضل المشي لأنه هادئ.","أحب القطار لأنه سريع."],correctIndex:1,explanation:"الجملة تعبّر عن التفضيل ثم تذكر السبب."}
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
@@ -2112,6 +2194,61 @@ const A1_STUDIES_DIALOGUES=[
  {context:"Où travaillez-vous ?",translation:"أين تعملون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle français.","Je suis infirmière.","Je travaille à l’hôpital."],correctIndex:2,feedback:"السؤال يطلب مكان العمل."},
  {context:"À quelle heure commence votre cours ?",translation:"في أي ساعة يبدأ درسكم؟",prompt:"اختر الإجابة المناسبة.",choices:["Il commence à neuf heures.","Je suis professeur.","C’est une université."],correctIndex:0,feedback:"نستخدم commencer à ثم الساعة."},
  {context:"Vous travaillez comme professeur ?",translation:"هل تعملون معلّمين؟",prompt:"اختر الإجابة المناسبة.",choices:["À l’université.","Oui, je suis professeur de français.","J’étudie à dix heures."],correctIndex:1,feedback:"الإجابة تؤكد المهنة وتحدد المادة."}
+];
+
+const A1_TASTES_READING={
+ title:"Les goûts de Lina et Sami",
+ arTitle:"أذواق لينا وسامي",
+ text:"Lina aime lire et elle adore la musique. Elle préfère le thé au café parce que le thé est léger. Sami aime le cinéma, mais il n’aime pas les films tristes. Son activité préférée est la natation.",
+ translation:"تحب لينا القراءة وتعشق الموسيقى. وهي تفضل الشاي على القهوة لأن الشاي خفيف. يحب سامي السينما، لكنه لا يحب الأفلام الحزينة. ونشاطه المفضل هو السباحة.",
+ questions:[
+  {question:"Qu’est-ce que Lina aime faire ?",translation:"ماذا تحب لينا أن تفعل؟",answer:"Lina aime lire.",ar:"تحب لينا القراءة."},
+  {question:"Pourquoi préfère-t-elle le thé ?",translation:"لماذا تفضل الشاي؟",answer:"Parce que le thé est léger.",ar:"لأن الشاي خفيف."},
+  {question:"Quelle est l’activité préférée de Sami ?",translation:"ما نشاط سامي المفضل؟",answer:"Son activité préférée est la natation.",ar:"نشاطه المفضل هو السباحة."}
+ ]
+};
+
+const A1_TASTES_LISTENING={
+ title:"Goûts et préférences",
+ arTitle:"الأذواق والتفضيلات",
+ text:"J’aime lire. J’adore voyager. Je préfère le thé. Je n’aime pas courir. Je déteste le bruit.",
+ questions:[
+  {prompt:"Quelle activité la personne aime-t-elle ?",choices:["Lire","Nager","Cuisiner"],correctIndex:0},
+  {prompt:"Qu’est-ce que la personne adore faire ?",choices:["Attendre","Voyager","Courir"],correctIndex:1},
+  {prompt:"Quelle boisson préfère-t-elle ?",choices:["Le café","L’eau","Le thé"],correctIndex:2},
+  {prompt:"Quelle activité n’aime-t-elle pas ?",choices:["Courir","Lire","Voyager"],correctIndex:0},
+  {prompt:"Qu’est-ce que la personne déteste ?",choices:["Le thé","Le bruit","La musique"],correctIndex:1}
+ ]
+};
+
+const A1_TASTES_WRITING_MODEL="J’aime lire et écouter de la musique. Je préfère le thé au café. Je n’aime pas courir parce que c’est fatigant. Mon activité préférée est la natation.";
+const A1_TASTES_WRITING_TRANSLATIONS=[
+ {fr:"lire",ar:"القراءة"},{fr:"voyager",ar:"السفر"},{fr:"la musique",ar:"الموسيقى"},{fr:"le cinéma",ar:"السينما"},
+ {fr:"le thé",ar:"الشاي"},{fr:"le café",ar:"القهوة"},{fr:"la natation",ar:"السباحة"},{fr:"courir",ar:"الجري"}
+];
+
+const A1_TASTES_DICTATION=[
+ {speech:"musique",ar:"موسيقى"},
+ {speech:"voyager",ar:"يسافر"},
+ {speech:"thé",ar:"شاي"},
+ {speech:"courir",ar:"يجري"},
+ {speech:"bruit",ar:"ضوضاء"}
+];
+
+const A1_TASTES_BUILDERS=[
+ {tokens:["lire.","J’aime","soir","le"],answer:["J’aime","lire","le","soir."],ar:"أحب القراءة مساءً."},
+ {tokens:["voyager.","adore","Elle"],answer:["Elle","adore","voyager."],ar:"هي تعشق السفر."},
+ {tokens:["café.","au","thé","le","préfère","Je"],answer:["Je","préfère","le","thé","au","café."],ar:"أفضل الشاي على القهوة."},
+ {tokens:["pas","Nous","bruit.","n’aimons","le"],answer:["Nous","n’aimons","pas","le","bruit."],ar:"نحن لا نحب الضوضاء."},
+ {tokens:["aimes-tu","Pourquoi","français ?","le"],answer:["Pourquoi","aimes-tu","le","français ?"],ar:"لماذا تحب اللغة الفرنسية؟"}
+];
+
+const A1_TASTES_DIALOGUES=[
+ {context:"Qu’est-ce que tu aimes faire ?",translation:"ماذا تحب أن تفعل؟",prompt:"اختر الإجابة المناسبة.",choices:["J’aime écouter de la musique.","Je suis à la maison.","Il est huit heures."],correctIndex:0,feedback:"بعد aimer يمكن ذكر نشاط في صيغة المصدر."},
+ {context:"Tu préfères le thé ou le café ?",translation:"هل تفضل الشاي أم القهوة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je déteste voyager.","Je préfère le thé.","La tasse est petite."],correctIndex:1,feedback:"السؤال يقدم خيارين، والإجابة تحدد الخيار المفضل."},
+ {context:"Pourquoi aimes-tu ce film ?",translation:"لماذا تحب هذا الفيلم؟",prompt:"اختر الإجابة المناسبة.",choices:["Au cinéma.","Avec ma sœur.","Parce qu’il est drôle."],correctIndex:2,feedback:"نجيب عن pourquoi بسبب يبدأ بـ parce que."},
+ {context:"Vous aimez faire du sport ?",translation:"هل تحبون ممارسة الرياضة؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, j’adore nager.","Je suis une piscine.","Le lundi est demain."],correctIndex:0,feedback:"الإجابة تؤكد الميل وتذكر النشاط."},
+ {context:"Quel est votre loisir préféré ?",translation:"ما هوايتكم المفضلة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je n’aime pas le café.","Mon loisir préféré est la lecture.","J’habite près du parc."],correctIndex:1,feedback:"نستعمل loisir préféré لتحديد الهواية المفضلة."}
 ];
 
 const A1_NOUNS_READING={
@@ -2913,6 +3050,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_STUDIES_READING,listening:A1_STUDIES_LISTENING,dictation:A1_STUDIES_DICTATION,builders:A1_STUDIES_BUILDERS,dialogues:A1_STUDIES_DIALOGUES,
   writingModel:A1_STUDIES_WRITING_MODEL,writingTitle:"اكتب عن دراستك أو مهنتك",writingInstructions:"اكتب من 15 إلى 25 كلمة: اذكر ما تدرسه أو مهنتك ومكان الدراسة أو العمل ووقت البداية.",writingPlaceholder:"Je suis… J’étudie…",writingMinimum:15,writingMaximum:25,
   speakingPrompt:"Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر صفتك الدراسية أو مهنتك.","استخدم étudier أو travailler بصورة صحيحة.","أضف مكان الدراسة أو العمل."],dictationUnit:"word"
+ },
+ "tastes-preferences":{
+  reading:A1_TASTES_READING,listening:A1_TASTES_LISTENING,dictation:A1_TASTES_DICTATION,builders:A1_TASTES_BUILDERS,dialogues:A1_TASTES_DIALOGUES,
+  writingModel:A1_TASTES_WRITING_MODEL,writingTitle:"اكتب عن أذواقك وتفضيلاتك",writingInstructions:"اكتب من 20 إلى 30 كلمة: اذكر نشاطين تحبهما، شيئًا لا تحبه، وخيارًا تفضله مع سبب بسيط.",writingPlaceholder:"J’aime… Je préfère…",writingMinimum:20,writingMaximum:30,
+  speakingPrompt:"J’aime lire et écouter de la musique. Je préfère le thé au café. Je n’aime pas courir parce que c’est fatigant.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر ما تحبه وما لا تحبه.","استعمل préférer للمقارنة بين خيارين.","أضف سببًا بسيطًا باستعمال parce que."],dictationUnit:"word"
  },
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
@@ -4568,7 +4710,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم البلد واللغة والأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","countries-languages","nouns","core-verbs"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والأذواق والتفضيلات والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","tastes-preferences","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
@@ -5677,7 +5819,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Greetings=level.id==="A1"&&activeModule.id==="greetings";
  const isA1Countries=level.id==="A1"&&activeModule.id==="countries-languages";
  const isA1Studies=level.id==="A1"&&activeModule.id==="studies-professions";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies;
+ const isA1Tastes=level.id==="A1"&&activeModule.id==="tastes-preferences";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -5741,7 +5884,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -5776,6 +5919,22 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"ذكر الاسم",passed:/\bje\s+m[’']appelle\b/i.test(revisionWritingText)},
  {label:"معلومة شخصية بسيطة",passed:/\b(?:j[’']habite|je\s+suis|je\s+parle)\b/i.test(revisionWritingText)},
  {label:"خاتمة لطيفة",passed:/\b(?:enchanté|enchantée|au revoir|à bientôt)\b/i.test(revisionWritingText)}
+ ]:isA1Countries?[
+  {label:"من 15 إلى 25 كلمة",passed:revisionWordCount>=15&&revisionWordCount<=25},
+  {label:"ذكر البلد أو الأصل",passed:/\b(?:viens|habite)\s+(?:de|du|des|d[’']|en|au|aux|à)\b/i.test(revisionWritingText)},
+  {label:"ذكر الجنسية",passed:/\bje\s+suis\s+[a-zà-ÿ]+\b/i.test(revisionWritingText)},
+  {label:"ذكر لغة",passed:/\b(?:parle|apprends)\s+(?:le\s+)?[a-zà-ÿ]+\b/i.test(revisionWritingText)}
+ ]:isA1Studies?[
+  {label:"من 15 إلى 25 كلمة",passed:revisionWordCount>=15&&revisionWordCount<=25},
+  {label:"ذكر الدراسة أو المهنة",passed:/\b(?:étudie|étudiant|étudiante|professeur|professeure|médecin|infirmier|infirmière|ingénieur|cuisinier|cuisinière|vendeur|vendeuse)\b/i.test(revisionWritingText)},
+  {label:"ذكر مكان الدراسة أو العمل",passed:/\b(?:université|école|hôpital|magasin|restaurant|hôtel)\b/i.test(revisionWritingText)},
+  {label:"استعمال étudier أو travailler",passed:/\b(?:étudie|étudies|étudions|étudiez|étudient|travaille|travailles|travaillons|travaillez|travaillent)\b/i.test(revisionWritingText)}
+ ]:isA1Tastes?[
+  {label:"من 20 إلى 30 كلمة",passed:revisionWordCount>=20&&revisionWordCount<=30},
+  {label:"ذكر نشاطين محبوبين",passed:(revisionWritingText.match(/\b(?:aime|adore)\s+[a-zà-ÿ]+/gi)??[]).length>=2},
+  {label:"ذكر شيء لا تحبه",passed:/\bn[’']aime\s+pas\b/i.test(revisionWritingText)},
+  {label:"ذكر تفضيل",passed:/\b(?:préfère|préférons|préférez|préfèrent)\b/i.test(revisionWritingText)},
+  {label:"إضافة سبب بسيط",passed:/\bparce\s+qu(?:e|[’'])\b/i.test(revisionWritingText)}
  ]:isA1Nouns?[
   {label:"من 18 إلى 30 كلمة",passed:revisionWordCount>=18&&revisionWordCount<=30},
  {label:"استخدام un وune وdes",passed:/\bun\b/i.test(revisionWritingText)&&/\bune\b/i.test(revisionWritingText)&&/\bdes\b/i.test(revisionWritingText)},
@@ -5997,6 +6156,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -6035,6 +6195,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
@@ -6375,7 +6536,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){
@@ -6529,7 +6690,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>

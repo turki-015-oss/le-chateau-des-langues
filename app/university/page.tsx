@@ -138,6 +138,13 @@ const A1_STRUCTURES_LISTENING_CLIPS=[
  {letter:"ce",word:"bâtiment",ar:"هذا المبنى",hiddenSpeech:"Ce bâtiment"},
  {letter:"cette",word:"rue",ar:"هذا الشارع",hiddenSpeech:"Cette rue"}
 ];
+const A1_QUESTIONS_LISTENING_CLIPS=[
+ {letter:"comment",word:"vous appelez-vous ?",ar:"ما اسمك؟",hiddenSpeech:"Comment vous appelez-vous ?"},
+ {letter:"où",word:"habitez-vous ?",ar:"أين تسكن؟",hiddenSpeech:"Où habitez-vous ?"},
+ {letter:"quand",word:"commence le cours ?",ar:"متى يبدأ الدرس؟",hiddenSpeech:"Quand commence le cours ?"},
+ {letter:"combien",word:"coûte ce billet ?",ar:"كم سعر هذه التذكرة؟",hiddenSpeech:"Combien coûte ce billet ?"},
+ {letter:"pourquoi",word:"apprenez-vous le français ?",ar:"لماذا تتعلم الفرنسية؟",hiddenSpeech:"Pourquoi apprenez-vous le français ?"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -2067,16 +2074,26 @@ const A1_QUESTIONS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_QUESTIONS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"___ vous habitez ici ?",speech:"Complétez la question. Est-ce que vous habitez ici ?",instruction:"اختر بداية سؤال نعم أو لا.",choices:["Est-ce que","Qu’est-ce que","Pourquoi est-ce que"],correctIndex:0,explanation:"Est-ce que توضع قبل جملة لتكوين سؤال نعم أو لا."},
- {prompt:"Tu parles français ? — ___, un peu.",speech:"Complétez la réponse affirmative. Oui, un peu.",instruction:"اختر إجابة الإثبات المناسبة.",choices:["Non","Oui","Pourquoi"],correctIndex:1,explanation:"Oui تستخدم للإجابة المثبتة."},
- {prompt:"___ est votre professeur ?",speech:"Complétez la question. Qui est votre professeur ?",instruction:"اختر أداة السؤال عن شخص.",choices:["Où","Quand","Qui"],correctIndex:2,explanation:"Qui تعني مَن."},
- {prompt:"___ habitez-vous ?",speech:"Complétez la question. Où habitez-vous ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Où","Comment","Combien"],correctIndex:0,explanation:"Où تعني أين."},
- {prompt:"___ commence le film ?",speech:"Complétez la question. Quand commence le film ?",instruction:"اختر أداة السؤال عن الوقت.",choices:["Qui","Quand","Que"],correctIndex:1,explanation:"Quand تعني متى."},
- {prompt:"___ allez-vous au travail ? — En métro.",speech:"Complétez la question. Comment allez-vous au travail ?",instruction:"اختر أداة السؤال عن الكيفية.",choices:["Pourquoi","Où","Comment"],correctIndex:2,explanation:"Comment تعني كيف، والإجابة هنا وسيلة النقل."},
- {prompt:"___ coûte cette veste ?",speech:"Complétez la question. Combien coûte cette veste ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Combien","Quelle","Quand"],correctIndex:0,explanation:"Combien تستخدم للسؤال عن السعر أو العدد."},
- {prompt:"___ jour sommes-nous ?",speech:"Complétez la question. Quel jour sommes-nous ?",instruction:"اختر صيغة quel الموافقة لاسم مذكر مفرد.",choices:["Quelle","Quel","Quels"],correctIndex:1,explanation:"jour مذكر مفرد؛ لذلك نستخدم quel."},
- {prompt:"___ heure est-il ?",speech:"Complétez la question. Quelle heure est-il ?",instruction:"اختر صيغة quel الموافقة لاسم مؤنث مفرد.",choices:["Quelles","Quel","Quelle"],correctIndex:2,explanation:"heure مؤنث مفرد؛ لذلك نستخدم quelle."},
- {prompt:"Quelles langues parlez-vous ?",speech:"Quelles langues parlez-vous ?",instruction:"اختر المعنى العربي الصحيح.",choices:["ما اللغات التي تتحدثونها؟","كم ساعة تدرسون؟","أين تتعلمون اللغة؟"],correctIndex:0,explanation:"quelles langues تعني ما اللغات."}
+ {prompt:"___ vous habitez ici ?",translation:"هل تسكنون هنا؟",speech:"Est-ce que vous habitez ici ?",instruction:"اختر بداية سؤال نعم أو لا.",choices:["Est-ce que","Qu’est-ce que","Pourquoi est-ce que"],correctIndex:0,explanation:"Est-ce que توضع قبل جملة لتكوين سؤال نعم أو لا."},
+ {prompt:"Tu parles français ? — ___, un peu.",translation:"هل تتحدث الفرنسية؟ — نعم، قليلًا.",speech:"Oui, un peu.",instruction:"اختر إجابة الإثبات المناسبة.",choices:["Non","Oui","Pourquoi"],correctIndex:1,explanation:"Oui تستخدم للإجابة المثبتة."},
+ {prompt:"___ est votre professeur ?",translation:"من معلمكم؟",speech:"Qui est votre professeur ?",instruction:"اختر أداة السؤال عن شخص.",choices:["Où","Quand","Qui"],correctIndex:2,explanation:"Qui تعني مَن."},
+ {prompt:"___ habitez-vous ?",translation:"أين تسكنون؟",speech:"Où habitez-vous ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Où","Comment","Combien"],correctIndex:0,explanation:"Où تعني أين."},
+ {prompt:"___ commence le film ?",translation:"متى يبدأ الفيلم؟",speech:"Quand commence le film ?",instruction:"اختر أداة السؤال عن الوقت.",choices:["Qui","Quand","Que"],correctIndex:1,explanation:"Quand تعني متى."},
+ {prompt:"___ allez-vous au travail ? — En métro.",translation:"كيف تذهبون إلى العمل؟ — بالمترو.",speech:"Comment allez-vous au travail ?",instruction:"اختر أداة السؤال عن الكيفية.",choices:["Pourquoi","Où","Comment"],correctIndex:2,explanation:"Comment تعني كيف، والإجابة هنا وسيلة النقل."},
+ {prompt:"___ coûte cette veste ?",translation:"كم سعر هذه السترة؟",speech:"Combien coûte cette veste ?",instruction:"اختر أداة السؤال عن السعر.",choices:["Combien","Quelle","Quand"],correctIndex:0,explanation:"Combien تستخدم للسؤال عن السعر أو العدد."},
+ {prompt:"___ jour sommes-nous ?",translation:"ما اليوم؟",speech:"Quel jour sommes-nous ?",instruction:"اختر صيغة quel الموافقة لاسم مذكر مفرد.",choices:["Quelle","Quel","Quels"],correctIndex:1,explanation:"jour مذكر مفرد؛ لذلك نستخدم quel."},
+ {prompt:"___ heure est-il ?",translation:"كم الساعة؟",speech:"Quelle heure est-il ?",instruction:"اختر صيغة quel الموافقة لاسم مؤنث مفرد.",choices:["Quelles","Quel","Quelle"],correctIndex:2,explanation:"heure مؤنث مفرد؛ لذلك نستخدم quelle."},
+ {prompt:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثونها؟",speech:"Quelles langues parlez-vous ?",instruction:"اختر المعنى العربي الصحيح.",choices:["ما اللغات التي تتحدثونها؟","كم ساعة تدرسون؟","أين تتعلمون اللغة؟"],correctIndex:0,explanation:"quelles langues تعني ما اللغات."},
+ {prompt:"___ apprenez-vous le français ? — Pour voyager.",translation:"لماذا تتعلمون الفرنسية؟ — من أجل السفر.",speech:"Pourquoi apprenez-vous le français ?",instruction:"اختر أداة السؤال عن السبب.",choices:["Pourquoi","Combien","Qui"],correctIndex:0,explanation:"Pourquoi تعني لماذا وتطلب سببًا."},
+ {prompt:"___ faites-vous le dimanche ?",translation:"ماذا تفعلون يوم الأحد؟",speech:"Que faites-vous le dimanche ?",instruction:"اختر أداة السؤال عن الشيء أو الفعل.",choices:["Où","Que","Quand"],correctIndex:1,explanation:"Que تعني ماذا وتأتي هنا قبل الفعل."},
+ {prompt:"___ est-ce que vous cherchez ?",translation:"ما الذي تبحثون عنه؟",speech:"Qu’est-ce que vous cherchez ?",instruction:"اختر بداية السؤال الصحيحة.",choices:["Qui est-ce que","Où est-ce que","Qu’est-ce que"],correctIndex:2,explanation:"Qu’est-ce que تستخدم للسؤال عن شيء يقع عليه الفعل."},
+ {prompt:"___ personnes viennent ce soir ?",translation:"كم شخصًا سيأتي هذا المساء؟",speech:"Combien de personnes viennent ce soir ?",instruction:"اختر صيغة السؤال عن العدد.",choices:["Combien de","Quelle","Comment"],correctIndex:0,explanation:"نستخدم Combien de قبل الاسم للسؤال عن العدد."},
+ {prompt:"___ livres préférez-vous ?",translation:"أي كتب تفضلون؟",speech:"Quels livres préférez-vous ?",instruction:"اختر صيغة quel مع جمع مذكر.",choices:["Quel","Quels","Quelles"],correctIndex:1,explanation:"livres جمع مذكر؛ لذلك نستخدم quels."},
+ {prompt:"___ chaussures choisissez-vous ?",translation:"أي أحذية تختارون؟",speech:"Quelles chaussures choisissez-vous ?",instruction:"اختر صيغة quel مع جمع مؤنث.",choices:["Quels","Quelle","Quelles"],correctIndex:2,explanation:"chaussures جمع مؤنث؛ لذلك نستخدم quelles."},
+ {prompt:"Vous êtes libre demain ? — ___, je travaille.",translation:"هل أنت متفرغ غدًا؟ — لا، أنا أعمل.",speech:"Non, je travaille.",instruction:"اختر إجابة النفي المناسبة.",choices:["Non","Oui","Si"],correctIndex:0,explanation:"Non تنفي سؤالًا مثبتًا."},
+ {prompt:"Vous n’aimez pas le café ? — ___, j’adore le café.",translation:"ألا تحب القهوة؟ — بلى، أحب القهوة جدًا.",speech:"Si, j’adore le café.",instruction:"اختر الرد الذي يخالف السؤال المنفي.",choices:["Non","Si","Pourquoi"],correctIndex:1,explanation:"Si تُستعمل لإثبات العكس عند الرد على سؤال منفي."},
+ {prompt:"D’où venez-vous ?",translation:"من أين أتيتم؟",speech:"D’où venez-vous ?",instruction:"اختر الإجابة المناسبة.",choices:["À huit heures.","Avec mon frère.","Je viens de Riyad."],correctIndex:2,explanation:"D’où تسأل عن الأصل أو نقطة الانطلاق؛ لذا يناسبها Je viens de…"},
+ {prompt:"Comment vous appelez-vous ?",translation:"ما اسمكم؟",speech:"Comment vous appelez-vous ?",instruction:"اختر الإجابة الطبيعية.",choices:["Je m’appelle Lina.","J’habite à Lyon.","J’ai vingt ans."],correctIndex:0,explanation:"السؤال عن الاسم يُجاب عنه بـ Je m’appelle…"}
 ];
 
 const A1_MESSAGES_FORMS_PRACTICE_ITEMS:Example[]=[
@@ -2800,41 +2817,60 @@ const A1_QUESTIONS_READING={
  text:"— Bonjour, comment vous appelez-vous ? — Je m’appelle Nour. — D’où venez-vous ? — Je viens de Djeddah. — Quelle langue parlez-vous ? — Je parle arabe et un peu français. — Pourquoi apprenez-vous le français ? — Parce que j’aime voyager.",
  translation:"— مرحبًا، ما اسمك؟ — اسمي نور. — من أين أتيتِ؟ — أتيت من جدة. — ما اللغة التي تتحدثينها؟ — أتحدث العربية وقليلًا من الفرنسية. — لماذا تتعلمين الفرنسية؟ — لأنني أحب السفر.",
  questions:[
-  {question:"D’où vient Nour ?",answer:"Nour vient de Djeddah.",ar:"نور من جدة."},
-  {question:"Quelles langues parle-t-elle ?",answer:"Elle parle arabe et un peu français.",ar:"تتحدث العربية وقليلًا من الفرنسية."},
-  {question:"Pourquoi apprend-elle le français ?",answer:"Parce qu’elle aime voyager.",ar:"لأنها تحب السفر."}
+  {question:"D’où vient Nour ?",translation:"من أين جاءت نور؟",answer:"Nour vient de Djeddah.",ar:"نور من جدة."},
+  {question:"Quelles langues parle-t-elle ?",translation:"ما اللغات التي تتحدثها؟",answer:"Elle parle arabe et un peu français.",ar:"تتحدث العربية وقليلًا من الفرنسية."},
+  {question:"Pourquoi apprend-elle le français ?",translation:"لماذا تتعلم الفرنسية؟",answer:"Parce qu’elle aime voyager.",ar:"لأنها تحب السفر."}
  ]
 };
 
 const A1_QUESTIONS_LISTENING={
  title:"Une inscription au club",
  arTitle:"التسجيل في النادي",
- text:"Bonjour. Quel est votre nom ? Vous habitez où ? Est-ce que vous êtes étudiant ? Quand êtes-vous libre ? Très bien, le cours commence mardi à dix-huit heures.",
+ text:"Comment vous appelez-vous ? Où habitez-vous ? Quand commence le cours ? Combien coûte ce billet ? Pourquoi apprenez-vous le français ?",
  questions:[
-  {prompt:"Pourquoi pose-t-on ces questions ?",choices:["Pour une inscription","Pour commander un repas","Pour acheter un billet"],correctIndex:0},
-  {prompt:"Quel jour commence le cours ?",choices:["Lundi","Mardi","Jeudi"],correctIndex:1},
-  {prompt:"À quelle heure commence-t-il ?",choices:["À seize heures","À dix-sept heures","À dix-huit heures"],correctIndex:2}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Comment vous appelez-vous ?","Où travaillez-vous ?","Quel âge avez-vous ?"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["D’où venez-vous ?","Où habitez-vous ?","Quand partez-vous ?"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Comment finit le cours ?","Où commence le cours ?","Quand commence le cours ?"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Combien coûte ce billet ?","Quel bus prenez-vous ?","Comment achetez-vous ce billet ?"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quand apprenez-vous le français ?","Pourquoi apprenez-vous le français ?","Où parlez-vous français ?"],correctIndex:1}
  ]
 };
 
 const A1_QUESTIONS_WRITING_MODEL="Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Pourquoi apprenez-vous le français ? Est-ce que vous aimez voyager ?";
 
+const A1_QUESTIONS_WRITING_TRANSLATIONS=[
+ {fr:"comment vous appelez-vous ?",ar:"ما اسمكم؟"},
+ {fr:"où habitez-vous ?",ar:"أين تسكنون؟"},
+ {fr:"d’où venez-vous ?",ar:"من أين أتيتم؟"},
+ {fr:"quand commence le cours ?",ar:"متى يبدأ الدرس؟"},
+ {fr:"combien coûte ce billet ?",ar:"كم سعر هذه التذكرة؟"},
+ {fr:"pourquoi apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
+ {fr:"quelle langue parlez-vous ?",ar:"ما اللغة التي تتحدثونها؟"},
+ {fr:"est-ce que vous aimez voyager ?",ar:"هل تحبون السفر؟"}
+];
+
 const A1_QUESTIONS_DICTATION=[
  {speech:"Comment vous appelez-vous ?",ar:"ما اسمك؟"},
  {speech:"Où habitez-vous ?",ar:"أين تسكن؟"},
- {speech:"Est-ce que vous parlez français ?",ar:"هل تتحدث الفرنسية؟"}
+ {speech:"Est-ce que vous parlez français ?",ar:"هل تتحدث الفرنسية؟"},
+ {speech:"Pourquoi prenez-vous le métro ?",ar:"لماذا تستقل المترو؟"},
+ {speech:"Combien coûte cette chambre ?",ar:"كم سعر هذه الغرفة؟"}
 ];
 
 const A1_QUESTIONS_BUILDERS=[
  {tokens:["vous","Comment","appelez-vous","?"],answer:["Comment","vous","appelez-vous","?"],ar:"ما اسمك؟"},
  {tokens:["habitez","Où","vous","?"],answer:["Où","habitez","vous","?"],ar:"أين تسكن؟"},
- {tokens:["français","Est-ce que","parlez","vous","?"],answer:["Est-ce que","vous","parlez","français","?"],ar:"هل تتحدث الفرنسية؟"}
+ {tokens:["français","Est-ce que","parlez","vous","?"],answer:["Est-ce que","vous","parlez","français","?"],ar:"هل تتحدث الفرنسية؟"},
+ {tokens:["le","Quand","train","arrive","?"],answer:["Quand","arrive","le","train","?"],ar:"متى يصل القطار؟"},
+ {tokens:["coûtent","Combien","pommes","ces","?"],answer:["Combien","coûtent","ces","pommes","?"],ar:"كم سعر هذا التفاح؟"}
 ];
 
 const A1_QUESTIONS_DIALOGUES=[
- {context:"Vous voulez connaître le lieu de résidence d’une personne.",prompt:"اختر السؤال المناسب.",choices:["Où habitez-vous ?","Quand partez-vous ?","Pourquoi travaillez-vous ?"],correctIndex:0,feedback:"Où تُستخدم للسؤال عن المكان."},
- {context:"Votre professeur demande : « Est-ce que vous comprenez ? »",prompt:"اختر إجابة واضحة.",choices:["Oui, je comprends.","À Paris.","Parce que lundi."],correctIndex:0,feedback:"السؤال المغلق بـ Est-ce que يُجاب عنه بـ oui أو non مع توضيح قصير."},
- {context:"Vous demandez le nom d’une formation : « … formation choisissez-vous ? »",prompt:"اختر الصيغة الصحيحة.",choices:["Quel","Quelle","Quels"],correctIndex:1,feedback:"formation مؤنث مفرد، لذلك نستخدم quelle."}
+ {context:"Où habitez-vous ?",translation:"أين تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite à Djeddah.","Je pars vendredi.","J’apprends le français."],correctIndex:0,feedback:"Où تُستخدم للسؤال عن المكان."},
+ {context:"Est-ce que vous comprenez ?",translation:"هل تفهمون؟",prompt:"اختر إجابة واضحة.",choices:["Oui, je comprends.","À Paris.","Parce que lundi."],correctIndex:0,feedback:"السؤال المغلق بـ Est-ce que يُجاب عنه بـ oui أو non مع توضيح قصير."},
+ {context:"Quelle formation choisissez-vous ?",translation:"أي دورة تختارون؟",prompt:"اختر الإجابة المناسبة.",choices:["À neuf heures.","Je choisis le cours débutant.","Avec ma sœur."],correctIndex:1,feedback:"السؤال بـ quelle formation يطلب تحديد الدورة."},
+ {context:"Pourquoi êtes-vous en retard ?",translation:"لماذا أنتم متأخرون؟",prompt:"اختر الإجابة المناسبة.",choices:["Dans la classe.","À dix heures.","Parce que le bus est en retard."],correctIndex:2,feedback:"السؤال بـ pourquoi يطلب سببًا، ونجيب عادةً بـ parce que."},
+ {context:"Combien de billets voulez-vous ?",translation:"كم تذكرة تريدون؟",prompt:"اختر الإجابة المناسبة.",choices:["Deux billets, s’il vous plaît.","À la gare centrale.","Le billet est bleu."],correctIndex:0,feedback:"Combien de يطلب عددًا محددًا."}
 ];
 
 const A1_PRESENT_READING={
@@ -6249,8 +6285,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures;
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions;
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
@@ -6310,7 +6346,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6977,7 +7013,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

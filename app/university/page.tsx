@@ -124,6 +124,13 @@ const A1_NOUNS_LISTENING_CLIPS=[
  {letter:"les",word:"fenêtres",ar:"النوافذ",hiddenSpeech:"les fenêtres"},
  {letter:"l’",word:"école",ar:"المدرسة",hiddenSpeech:"l’école"}
 ];
+const A1_CORE_VERBS_LISTENING_CLIPS=[
+ {letter:"je suis",word:"prêt",ar:"أنا مستعد",hiddenSpeech:"Je suis prêt"},
+ {letter:"tu es",word:"ici",ar:"أنت هنا",hiddenSpeech:"Tu es ici"},
+ {letter:"elle a",word:"un billet",ar:"لديها تذكرة",hiddenSpeech:"Elle a un billet"},
+ {letter:"nous sommes",word:"voisins",ar:"نحن جيران",hiddenSpeech:"Nous sommes voisins"},
+ {letter:"ils ont",word:"soif",ar:"هم عطشى",hiddenSpeech:"Ils ont soif"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -546,9 +553,9 @@ const A1_MODULES:CourseModule[]=[
     "nous نحن، ils هم، elles هن.",
     "on شائع جدًا بمعنى نحن في الحديث اليومي."
    ],[
-    {fr:"Je suis étudiant.",ar:"أنا طالب."},
-    {fr:"Nous parlons français.",ar:"نحن نتحدث الفرنسية."},
-    {fr:"On va à la bibliothèque.",ar:"نحن ذاهبون إلى المكتبة."}
+    {fr:"Je suis étudiant.",ar:"أنا طالب.",image:"/university/vocabulary/family-sprite-frameless.png"},
+    {fr:"Nous parlons français.",ar:"نحن نتحدث الفرنسية.",image:"/worlds/university.png"},
+    {fr:"On va à la bibliothèque.",ar:"نحن ذاهبون إلى المكتبة.",image:"/castle-hall-icons/library.webp"}
    ]),
    section("Être et avoir","يكون ويمتلك","être يصف الهوية والحالة والمكان، وavoir يعبّر عن الملكية ويستخدم في تعبيرات العمر والجوع والعطش.",[
     "être: suis, es, est, sommes, êtes, sont.",
@@ -556,9 +563,9 @@ const A1_MODULES:CourseModule[]=[
     "العمر بالفرنسية مع avoir: J’ai vingt ans.",
     "الجوع والعطش أيضًا مع avoir: J’ai faim، J’ai soif."
    ],[
-    {fr:"Elle est professeur.",ar:"هي معلمة."},
-    {fr:"Nous avons un cours.",ar:"لدينا درس."},
-    {fr:"J’ai vingt ans et j’ai faim.",ar:"عمري عشرون عامًا وأنا جائع."}
+    {fr:"Elle est professeur.",ar:"هي معلمة.",image:"/university/vocabulary/adjectives-personality-sprite.png"},
+    {fr:"Nous avons un cours.",ar:"لدينا درس.",image:"/kingdom-portal-assets/open-book-realistic-v1.webp"},
+    {fr:"J’ai vingt ans et j’ai faim.",ar:"عمري عشرون عامًا وأنا جائع.",image:"/images/university/a1-sounds/pain.webp"}
    ])
   ]
  },
@@ -1695,16 +1702,26 @@ const A1_CORE_VERBS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_CORE_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je ___ à la gare.",speech:"Complétez la phrase. Je suis à la gare.",instruction:"اختر تصريف être الصحيح مع je.",choices:["suis","es","ai"],correctIndex:0,explanation:"مع je يُصرّف être هكذا: je suis."},
- {prompt:"Tu ___ très calme.",speech:"Complétez la phrase. Tu es très calme.",instruction:"اختر تصريف être الصحيح مع tu.",choices:["est","es","as"],correctIndex:1,explanation:"مع tu يُصرّف être هكذا: tu es."},
- {prompt:"Elle ___ professeure.",speech:"Complétez la phrase. Elle est professeure.",instruction:"اختر تصريف être الصحيح مع elle.",choices:["a","êtes","est"],correctIndex:2,explanation:"مع elle يُصرّف être هكذا: elle est."},
- {prompt:"Nous ___ en retard.",speech:"Complétez la phrase. Nous sommes en retard.",instruction:"اختر تصريف être الصحيح مع nous.",choices:["sommes","avons","sont"],correctIndex:0,explanation:"مع nous يُصرّف être هكذا: nous sommes."},
- {prompt:"Vous ___ au premier étage.",speech:"Complétez la phrase. Vous êtes au premier étage.",instruction:"اختر تصريف être الصحيح مع vous.",choices:["avez","êtes","sont"],correctIndex:1,explanation:"مع vous يُصرّف être هكذا: vous êtes."},
- {prompt:"Ils ___ dans le jardin.",speech:"Complétez la phrase. Ils sont dans le jardin.",instruction:"اختر تصريف être الصحيح مع ils.",choices:["ont","est","sont"],correctIndex:2,explanation:"مع ils يُصرّف être هكذا: ils sont."},
- {prompt:"J’___ vingt-cinq ans.",speech:"Complétez la phrase. J’ai vingt-cinq ans.",instruction:"اختر تصريف avoir الصحيح لذكر العمر.",choices:["ai","suis","as"],correctIndex:0,explanation:"مع je يُصرّف avoir هكذا: j’ai، ونستخدمه لذكر العمر."},
- {prompt:"On ___ une réservation.",speech:"Complétez la phrase. On a une réservation.",instruction:"اختر تصريف avoir الصحيح مع on.",choices:["est","a","avons"],correctIndex:1,explanation:"مع on يُصرّف avoir هكذا: on a."},
- {prompt:"Nous ___ deux enfants.",speech:"Complétez la phrase. Nous avons deux enfants.",instruction:"اختر تصريف avoir الصحيح مع nous.",choices:["sommes","ont","avons"],correctIndex:2,explanation:"مع nous يُصرّف avoir هكذا: nous avons."},
- {prompt:"Elles ont froid.",speech:"Elles ont froid.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["يشعرن بالبرد.","هن في الخارج.","لديهن معاطف."],correctIndex:0,explanation:"avoir froid تعبير ثابت يعني الشعور بالبرد."}
+ {prompt:"Je ___ à la gare.",translation:"أنا في المحطة.",speech:"Complétez la phrase. Je suis à la gare.",instruction:"اختر تصريف être الصحيح مع je.",choices:["suis","es","ai"],correctIndex:0,explanation:"مع je يُصرّف être هكذا: je suis."},
+ {prompt:"Tu ___ très calme.",translation:"أنت هادئ جدًا.",speech:"Complétez la phrase. Tu es très calme.",instruction:"اختر تصريف être الصحيح مع tu.",choices:["est","es","as"],correctIndex:1,explanation:"مع tu يُصرّف être هكذا: tu es."},
+ {prompt:"Elle ___ professeure.",translation:"هي معلمة.",speech:"Complétez la phrase. Elle est professeure.",instruction:"اختر تصريف être الصحيح مع elle.",choices:["a","êtes","est"],correctIndex:2,explanation:"مع elle يُصرّف être هكذا: elle est."},
+ {prompt:"Nous ___ en retard.",translation:"نحن متأخرون.",speech:"Complétez la phrase. Nous sommes en retard.",instruction:"اختر تصريف être الصحيح مع nous.",choices:["sommes","avons","sont"],correctIndex:0,explanation:"مع nous يُصرّف être هكذا: nous sommes."},
+ {prompt:"Vous ___ au premier étage.",translation:"أنتم في الطابق الأول.",speech:"Complétez la phrase. Vous êtes au premier étage.",instruction:"اختر تصريف être الصحيح مع vous.",choices:["avez","êtes","sont"],correctIndex:1,explanation:"مع vous يُصرّف être هكذا: vous êtes."},
+ {prompt:"Ils ___ dans le jardin.",translation:"هم في الحديقة.",speech:"Complétez la phrase. Ils sont dans le jardin.",instruction:"اختر تصريف être الصحيح مع ils.",choices:["ont","est","sont"],correctIndex:2,explanation:"مع ils يُصرّف être هكذا: ils sont."},
+ {prompt:"J’___ vingt-cinq ans.",translation:"عمري خمسة وعشرون عامًا.",speech:"Complétez la phrase. J’ai vingt-cinq ans.",instruction:"اختر تصريف avoir الصحيح لذكر العمر.",choices:["ai","suis","as"],correctIndex:0,explanation:"مع je يُصرّف avoir هكذا: j’ai، ونستخدمه لذكر العمر."},
+ {prompt:"On ___ une réservation.",translation:"لدينا حجز.",speech:"Complétez la phrase. On a une réservation.",instruction:"اختر تصريف avoir الصحيح مع on.",choices:["est","a","avons"],correctIndex:1,explanation:"مع on يُصرّف avoir هكذا: on a."},
+ {prompt:"Nous ___ deux enfants.",translation:"لدينا طفلان.",speech:"Complétez la phrase. Nous avons deux enfants.",instruction:"اختر تصريف avoir الصحيح مع nous.",choices:["sommes","ont","avons"],correctIndex:2,explanation:"مع nous يُصرّف avoir هكذا: nous avons."},
+ {prompt:"Elles ont froid.",translation:"يشعرن بالبرد.",speech:"Elles ont froid.",instruction:"اختر المعنى العربي الصحيح في هذا السياق.",choices:["يشعرن بالبرد.","هن في الخارج.","لديهن معاطف."],correctIndex:0,explanation:"avoir froid تعبير ثابت يعني الشعور بالبرد."},
+ {prompt:"___ est mon frère.",translation:"هو أخي.",speech:"Complétez la phrase. Il est mon frère.",instruction:"اختر ضمير الفاعل المذكر المفرد.",choices:["Il","Elle","Ils"],correctIndex:0,explanation:"نستخدم il للإشارة إلى مذكر مفرد."},
+ {prompt:"___ sommes dans la même classe.",translation:"نحن في الفصل نفسه.",speech:"Complétez la phrase. Nous sommes dans la même classe.",instruction:"اختر ضمير الفاعل المناسب.",choices:["Vous","Nous","On"],correctIndex:1,explanation:"sommes هو تصريف être مع nous."},
+ {prompt:"___ sont médecins.",translation:"هن طبيبات.",speech:"Complétez la phrase. Elles sont médecins.",instruction:"اختر ضمير الجمع المؤنث.",choices:["Ils","Elle","Elles"],correctIndex:2,explanation:"نستخدم elles لجماعة مؤنثة."},
+ {prompt:"Marc et Paul ___ prêts.",translation:"مارك وبول مستعدان.",speech:"Complétez la phrase. Marc et Paul sont prêts.",instruction:"اختر تصريف être مع فاعل جمع.",choices:["sont","êtes","est"],correctIndex:0,explanation:"Marc et Paul يعادلهما ils؛ لذلك نستخدم sont."},
+ {prompt:"Ma sœur et moi ___ à Paris.",translation:"أختي وأنا في باريس.",speech:"Complétez la phrase. Ma sœur et moi sommes à Paris.",instruction:"اختر تصريف être مع معنى nous.",choices:["êtes","sommes","suis"],correctIndex:1,explanation:"Ma sœur et moi تعني nous؛ لذلك نستخدم sommes."},
+ {prompt:"Tu ___ un passeport.",translation:"لديك جواز سفر.",speech:"Complétez la phrase. Tu as un passeport.",instruction:"اختر تصريف avoir مع tu.",choices:["a","ai","as"],correctIndex:2,explanation:"تصريف avoir مع tu هو as."},
+ {prompt:"Vous ___ une question ?",translation:"هل لديكم سؤال؟",speech:"Complétez la phrase. Vous avez une question ?",instruction:"اختر تصريف avoir مع vous.",choices:["avez","avons","ont"],correctIndex:0,explanation:"تصريف avoir مع vous هو avez."},
+ {prompt:"Les voyageurs ___ leurs billets.",translation:"لدى المسافرين تذاكرهم.",speech:"Complétez la phrase. Les voyageurs ont leurs billets.",instruction:"اختر تصريف avoir مع جمع مذكر.",choices:["a","ont","sont"],correctIndex:1,explanation:"Les voyageurs يعادل ils؛ وتصريف avoir معه هو ont."},
+ {prompt:"J’ai soif.",translation:"أنا عطشان.",speech:"J’ai soif.",instruction:"اختر المعنى العربي الصحيح.",choices:["أنا متعب.","أنا جائع.","أنا عطشان."],correctIndex:2,explanation:"avoir soif تعبير ثابت يعني الشعور بالعطش."},
+ {prompt:"On est devant le cinéma.",translation:"نحن أمام السينما.",speech:"On est devant le cinéma.",instruction:"اختر المعنى الصحيح للضمير on هنا.",choices:["نحن أمام السينما.","هم داخل السينما.","أنت قرب السينما."],correctIndex:0,explanation:"يُستعمل on كثيرًا في الحديث اليومي بمعنى nous."}
 ];
 
 const A1_PRESENT_PRACTICE_ITEMS:Example[]=[
@@ -2642,41 +2659,60 @@ const A1_CORE_VERBS_READING={
  text:"Je suis Lina et j’ai vingt ans. Mon frère est étudiant. Il a un cours de français aujourd’hui. Nous sommes à Lyon et nous avons un petit appartement. Nos parents sont à Marseille.",
  translation:"أنا لينا وعمري عشرون عامًا. أخي طالب، ولديه درس في اللغة الفرنسية اليوم. نحن في ليون ولدينا شقة صغيرة، أما والدانا فهما في مرسيليا.",
  questions:[
-  {question:"Quel âge a Lina ?",answer:"Lina a vingt ans.",ar:"عمر لينا عشرون عامًا."},
-  {question:"Qui est étudiant ?",answer:"Son frère est étudiant.",ar:"أخوها هو الطالب."},
-  {question:"Où sont les parents ?",answer:"Les parents sont à Marseille.",ar:"الوالدان في مرسيليا."}
+  {question:"Quel âge a Lina ?",translation:"كم عمر لينا؟",answer:"Lina a vingt ans.",ar:"عمر لينا عشرون عامًا."},
+  {question:"Qui est étudiant ?",translation:"من الطالب؟",answer:"Son frère est étudiant.",ar:"أخوها هو الطالب."},
+  {question:"Où sont les parents ?",translation:"أين الوالدان؟",answer:"Les parents sont à Marseille.",ar:"الوالدان في مرسيليا."}
  ]
 };
 
 const A1_CORE_VERBS_LISTENING={
  title:"Dans la classe",
  arTitle:"داخل الفصل",
- text:"Bonjour, je suis Adam. Nous sommes dans la classe numéro trois. J’ai un livre et Sara a deux cahiers. Nous avons un cours à neuf heures.",
+ text:"Je suis prêt. Tu es ici. Elle a un billet. Nous sommes voisins. Ils ont soif.",
  questions:[
-  {prompt:"Comment s’appelle le garçon ?",choices:["Adam","Sami","Nabil"],correctIndex:0},
-  {prompt:"Combien de cahiers Sara a-t-elle ?",choices:["Un cahier","Deux cahiers","Trois cahiers"],correctIndex:1},
-  {prompt:"À quelle heure est le cours ?",choices:["À huit heures","À neuf heures","À dix heures"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je suis prêt","J’ai un prêt","Il est prêt"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Tu as ici","Tu es ici","Vous êtes ici"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Elle est un billet","Elles ont un billet","Elle a un billet"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Nous sommes voisins","Nous avons des voisins","Ils sont voisins"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ils sont seuls","Ils ont soif","Elles ont froid"],correctIndex:1}
  ]
 };
 
 const A1_CORE_VERBS_WRITING_MODEL="Je suis étudiant et j’ai vingt-deux ans. Ma sœur est professeure. Nous sommes à Riyad et nous avons un cours de français le lundi.";
 
+const A1_CORE_VERBS_WRITING_TRANSLATIONS=[
+ {fr:"je suis prêt",ar:"أنا مستعد"},
+ {fr:"tu es ici",ar:"أنت هنا"},
+ {fr:"elle est professeure",ar:"هي معلمة"},
+ {fr:"nous sommes voisins",ar:"نحن جيران"},
+ {fr:"j’ai un billet",ar:"لدي تذكرة"},
+ {fr:"tu as faim",ar:"أنت جائع"},
+ {fr:"vous avez raison",ar:"أنتم على حق"},
+ {fr:"ils ont soif",ar:"هم عطشى"}
+];
+
 const A1_CORE_VERBS_DICTATION=[
  {speech:"Je suis étudiant.",ar:"أنا طالب."},
  {speech:"Elle a vingt ans.",ar:"عمرها عشرون عامًا."},
- {speech:"Nous avons un cours de français.",ar:"لدينا درس في اللغة الفرنسية."}
+ {speech:"Nous avons un cours de français.",ar:"لدينا درس في اللغة الفرنسية."},
+ {speech:"Vous êtes devant la gare.",ar:"أنتم أمام المحطة."},
+ {speech:"Ils ont besoin d’aide.",ar:"هم بحاجة إلى مساعدة."}
 ];
 
 const A1_CORE_VERBS_BUILDERS=[
  {tokens:["suis","Je","étudiant."],answer:["Je","suis","étudiant."],ar:"أنا طالب."},
  {tokens:["un","Elle","livre.","a"],answer:["Elle","a","un","livre."],ar:"لديها كتاب."},
- {tokens:["à","sommes","Nous","Lyon."],answer:["Nous","sommes","à","Lyon."],ar:"نحن في ليون."}
+ {tokens:["à","sommes","Nous","Lyon."],answer:["Nous","sommes","à","Lyon."],ar:"نحن في ليون."},
+ {tokens:["êtes","Vous","retard.","en"],answer:["Vous","êtes","en","retard."],ar:"أنتم متأخرون."},
+ {tokens:["soif.","ont","voyageurs","Les"],answer:["Les","voyageurs","ont","soif."],ar:"المسافرون عطشى."}
 ];
 
 const A1_CORE_VERBS_DIALOGUES=[
- {context:"Votre professeur demande : « Vous êtes étudiant ? »",prompt:"اختر الرد الصحيح.",choices:["Oui, je suis étudiant.","Oui, j’ai étudiant.","Oui, je sommes étudiant."],correctIndex:0,feedback:"لوصف الهوية مع je نستخدم je suis."},
- {context:"On vous demande : « Quel âge avez-vous ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Je suis vingt ans.","J’ai vingt ans.","Je vingt ans."],correctIndex:1,feedback:"العمر في الفرنسية يُعبّر عنه بالفعل avoir: J’ai vingt ans."},
- {context:"Votre ami demande : « Vous avez un cours aujourd’hui ? »",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes un cours.","Oui, nous avez un cours."],correctIndex:0,feedback:"مع nous يكون تصريف avoir هو avons."}
+ {context:"Vous êtes étudiant ?",translation:"هل أنت طالب؟",prompt:"اختر الرد الصحيح.",choices:["Oui, je suis étudiant.","Oui, j’ai étudiant.","Oui, je sommes étudiant."],correctIndex:0,feedback:"لوصف الهوية مع je نستخدم je suis."},
+ {context:"Quel âge avez-vous ?",translation:"كم عمرك؟",prompt:"اختر الإجابة الطبيعية.",choices:["Je suis vingt ans.","J’ai vingt ans.","Je vingt ans."],correctIndex:1,feedback:"العمر في الفرنسية يُعبّر عنه بالفعل avoir: J’ai vingt ans."},
+ {context:"Vous avez un cours aujourd’hui ?",translation:"هل لديكم درس اليوم؟",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes un cours.","Oui, nous avez un cours."],correctIndex:0,feedback:"مع nous يكون تصريف avoir هو avons."},
+ {context:"Où sont vos amis ?",translation:"أين أصدقاؤكم؟",prompt:"اختر الرد المناسب.",choices:["Ils ont au café.","Elles est au café.","Ils sont au café."],correctIndex:2,feedback:"لوصف مكان جماعة مذكّرة أو مختلطة نقول ils sont."},
+ {context:"Tu as faim ?",translation:"هل أنت جائع؟",prompt:"اختر الرد الطبيعي.",choices:["Oui, je suis faim.","Oui, j’ai faim.","Oui, tu as faim."],correctIndex:1,feedback:"الشعور بالجوع يُعبّر عنه بـ avoir faim."}
 ];
 
 const A1_STRUCTURES_READING={
@@ -6175,8 +6211,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns;
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs;
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
@@ -6238,7 +6274,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6905,7 +6941,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

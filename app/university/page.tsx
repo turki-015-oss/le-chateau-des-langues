@@ -215,6 +215,13 @@ const A1_HEALTH_NEEDS_LISTENING_CLIPS=[
  {letter:"prendre",word:"rendez-vous",ar:"حجز موعد",hiddenSpeech:"Prendre rendez-vous"},
  {letter:"j’ai besoin",word:"d’aide",ar:"أحتاج إلى مساعدة",hiddenSpeech:"J’ai besoin d’aide"}
 ];
+const A1_ADJECTIVES_LISTENING_CLIPS=[
+ {letter:"grand",word:"et mince",ar:"طويل ونحيف",hiddenSpeech:"Grand et mince"},
+ {letter:"petite",word:"et sportive",ar:"قصيرة ورياضية",hiddenSpeech:"Petite et sportive"},
+ {letter:"les cheveux",word:"courts",ar:"الشعر قصير",hiddenSpeech:"Les cheveux courts"},
+ {letter:"calme",word:"et patient",ar:"هادئ وصبور",hiddenSpeech:"Calme et patient"},
+ {letter:"sérieuse",word:"et organisée",ar:"جادة ومنظمة",hiddenSpeech:"Sérieuse et organisée"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -3272,6 +3279,17 @@ const A1_HEALTH_NEEDS_WRITING_TRANSLATIONS=[
  {fr:"j’ai besoin d’aide",ar:"أحتاج إلى مساعدة"}
 ];
 
+const A1_ADJECTIVES_WRITING_TRANSLATIONS=[
+ {fr:"grand et mince",ar:"طويل ونحيف"},
+ {fr:"petite et sportive",ar:"قصيرة ورياضية"},
+ {fr:"les cheveux courts",ar:"الشعر قصير"},
+ {fr:"les cheveux longs",ar:"الشعر طويل"},
+ {fr:"les yeux noirs",ar:"العينان سوداوان"},
+ {fr:"calme et patient",ar:"هادئ وصبور"},
+ {fr:"sérieuse et organisée",ar:"جادة ومنظمة"},
+ {fr:"gentille et sociable",ar:"لطيفة واجتماعية"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3676,26 +3694,51 @@ const A1_HEALTH_NEEDS_DIALOGUES=[
  {context:"Avez-vous des allergies ?",translation:"هل لديك أي حساسية؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis allergique aux noix.","Oui, je prends demain.","Oui, j’ai mal à quinze heures."],correctIndex:0,feedback:"être allergique à هو التعبير الصحيح عن الحساسية."}
 ];
 
+const A1_ADJECTIVES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Il est ___.",translation:"هو طويل.",speech:"Il est grand.",instruction:"اختر الصفة المناسبة للمذكر.",choices:["grand","grande","grands"],correctIndex:0,explanation:"مع il نستخدم grand."},
+ {prompt:"Elle est ___.",translation:"هي قصيرة.",speech:"Elle est petite.",instruction:"اختر الصفة المناسبة للمؤنث.",choices:["petit","petite","petits"],correctIndex:1,explanation:"مع elle نستخدم petite."},
+ {prompt:"Ils sont ___.",translation:"هم رياضيون.",speech:"Ils sont sportifs.",instruction:"اختر الصفة المناسبة للجمع المذكر.",choices:["sportive","sportives","sportifs"],correctIndex:2,explanation:"جمع المذكر من sportif هو sportifs."},
+ {prompt:"Elles sont ___.",translation:"هن منظّمات.",speech:"Elles sont organisées.",instruction:"اختر الصفة المناسبة للجمع المؤنث.",choices:["organisées","organisés","organisée"],correctIndex:0,explanation:"جمع المؤنث يأخذ es."},
+ {prompt:"Il a les cheveux ___.",translation:"شعره قصير.",speech:"Il a les cheveux courts.",instruction:"اختر اتفاق الصفة مع cheveux.",choices:["courte","courts","court"],correctIndex:1,explanation:"cheveux جمع مذكر؛ لذلك نقول courts."},
+ {prompt:"Elle a les yeux ___.",translation:"عيناها زرقاوان.",speech:"Elle a les yeux bleus.",instruction:"اختر اتفاق اللون الصحيح.",choices:["bleue","bleu","bleus"],correctIndex:2,explanation:"yeux جمع مذكر؛ لذلك نقول bleus."},
+ {prompt:"Ma sœur est très ___. Elle parle avec tout le monde.",translation:"أختي اجتماعية جدًا؛ تتحدث مع الجميع.",speech:"Ma sœur est très sociable.",instruction:"اختر صفة الشخصية المناسبة.",choices:["sociable","timide","paresseuse"],correctIndex:0,explanation:"من يتحدث مع الجميع يوصف بأنه sociable."},
+ {prompt:"Nabil attend calmement. Il est ___.",translation:"نبيل ينتظر بهدوء؛ إنه صبور.",speech:"Nabil est patient.",instruction:"اختر الصفة المناسبة.",choices:["sportif","patient","brun"],correctIndex:1,explanation:"patient تعني صبورًا."},
+ {prompt:"Leïla travaille beaucoup. Elle est ___.",translation:"ليلى تعمل كثيرًا؛ إنها مجتهدة.",speech:"Leïla est travailleuse.",instruction:"اختر صيغة المؤنث الصحيحة.",choices:["travailleur","travailleurs","travailleuse"],correctIndex:2,explanation:"مؤنث travailleur هو travailleuse."},
+ {prompt:"Il a les cheveux longs.",translation:"شعره طويل.",speech:"Il a les cheveux longs.",instruction:"اختر المعنى العربي الصحيح.",choices:["شعره طويل.","عيناه خضراوان.","هو طويل القامة."],correctIndex:0,explanation:"cheveux longs تعني شعرًا طويلًا."},
+ {prompt:"Une fille ___.",translation:"فتاة ذكية.",speech:"Une fille intelligente.",instruction:"اختر الصفة الموافقة.",choices:["intelligent","intelligente","intelligents"],correctIndex:1,explanation:"fille مؤنث مفرد؛ فنقول intelligente."},
+ {prompt:"Des garçons ___.",translation:"أولاد لطفاء.",speech:"Des garçons gentils.",instruction:"اختر الصفة الموافقة للجمع.",choices:["gentille","gentilles","gentils"],correctIndex:2,explanation:"جمع المذكر من gentil هو gentils."},
+ {prompt:"Ma cousine est ___. Elle fait beaucoup de sport.",translation:"ابنة عمي رياضية؛ تمارس الرياضة كثيرًا.",speech:"Ma cousine est sportive.",instruction:"اختر الصفة المناسبة.",choices:["sportive","triste","blonde"],correctIndex:0,explanation:"من تمارس الرياضة توصف بأنها sportive."},
+ {prompt:"Il ne parle pas beaucoup. Il est ___.",translation:"لا يتحدث كثيرًا؛ إنه خجول.",speech:"Il est timide.",instruction:"اختر صفة الشخصية المناسبة.",choices:["sociable","timide","organisé"],correctIndex:1,explanation:"timide تعني خجولًا."},
+ {prompt:"Elle prépare tout à l’avance. Elle est ___.",translation:"تحضّر كل شيء مسبقًا؛ إنها منظّمة.",speech:"Elle est organisée.",instruction:"اختر الصفة المناسبة.",choices:["fatiguée","grande","organisée"],correctIndex:2,explanation:"préparer à l’avance يدل على التنظيم."},
+ {prompt:"Mon ami est ___. Il aide tout le monde.",translation:"صديقي لطيف؛ يساعد الجميع.",speech:"Mon ami est gentil.",instruction:"اختر الصفة المناسبة.",choices:["gentil","petite","noirs"],correctIndex:0,explanation:"gentil تعني لطيفًا."},
+ {prompt:"Elle est grande, ___ sa sœur est petite.",translation:"هي طويلة لكن أختها قصيرة.",speech:"Elle est grande, mais sa sœur est petite.",instruction:"اختر رابط المقابلة.",choices:["et","mais","parce que"],correctIndex:1,explanation:"mais تربط صفتين متقابلتين."},
+ {prompt:"Comment est-il ?",translation:"كيف هي صفاته؟",speech:"Comment est-il ?",instruction:"اختر جوابًا يصف الشخصية.",choices:["Il a vingt ans.","Il habite à Paris.","Il est calme et sérieux."],correctIndex:2,explanation:"être + صفات يجيب عن Comment est-il ؟"},
+ {prompt:"De quelle couleur sont ses yeux ?",translation:"ما لون عينيه؟",speech:"Ses yeux sont noirs.",instruction:"اختر الإجابة المناسبة.",choices:["Ses yeux sont noirs.","Il est grand.","Ses cheveux sont courts."],correctIndex:0,explanation:"السؤال عن لون العينين يحتاج لونًا للعينين."},
+ {prompt:"Elle est sérieuse et organisée.",translation:"هي جادة ومنظّمة.",speech:"Elle est sérieuse et organisée.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي قصيرة ورياضية.","هي جادة ومنظّمة.","هي لطيفة وخجولة."],correctIndex:1,explanation:"sérieuse تعني جادة وorganisée تعني منظّمة."}
+];
+
 const A1_ADJECTIVES_READING={
  title:"Deux personnes différentes",
  arTitle:"شخصان مختلفان",
  text:"Mon ami Nabil est grand et mince. Il a les cheveux courts et les yeux noirs. Il est calme, gentil et très patient. Ma cousine Leïla est petite et sportive. Elle a les cheveux longs. Elle est sérieuse, organisée et sociable.",
  translation:"صديقي نبيل طويل ونحيف، وشعره قصير وعيناه سوداوان. وهو هادئ ولطيف وصبور جدًا. أما ابنة عمي ليلى فهي قصيرة ورياضية وشعرها طويل، وهي جادة ومنظمة واجتماعية.",
  questions:[
-  {question:"Comment est Nabil physiquement ?",answer:"Nabil est grand et mince, avec les cheveux courts et les yeux noirs.",ar:"نبيل طويل ونحيف، وشعره قصير وعيناه سوداوان."},
-  {question:"Quel est son caractère ?",answer:"Il est calme, gentil et patient.",ar:"هو هادئ ولطيف وصبور."},
-  {question:"Comment est Leïla ?",answer:"Elle est petite, sportive, sérieuse, organisée et sociable.",ar:"هي قصيرة ورياضية وجادة ومنظمة واجتماعية."}
+  {question:"Comment est Nabil physiquement ?",translation:"كيف يبدو نبيل جسديًا؟",answer:"Nabil est grand et mince, avec les cheveux courts et les yeux noirs.",ar:"نبيل طويل ونحيف، وشعره قصير وعيناه سوداوان."},
+  {question:"Quel est son caractère ?",translation:"ما صفاته الشخصية؟",answer:"Il est calme, gentil et patient.",ar:"هو هادئ ولطيف وصبور."},
+  {question:"Comment est Leïla ?",translation:"كيف تبدو ليلى وما صفاتها؟",answer:"Elle est petite, sportive, sérieuse, organisée et sociable.",ar:"هي قصيرة ورياضية وجادة ومنظمة واجتماعية."}
  ]
 };
 
 const A1_ADJECTIVES_LISTENING={
  title:"Deviner la personne",
  arTitle:"تعرّف على الشخص",
- text:"Cette personne est grande et sportive. Elle a les cheveux courts et bruns. Elle est très sociable, mais aussi sérieuse et organisée. Elle porte une veste bleue.",
+ text:"Grand et mince. Petite et sportive. Les cheveux courts. Calme et patient. Sérieuse et organisée.",
  questions:[
-  {prompt:"Comment est cette personne physiquement ?",choices:["Grande et sportive","Petite et mince","Grande et fatiguée"],correctIndex:0},
-  {prompt:"Comment sont ses cheveux ?",choices:["Longs et noirs","Courts et bruns","Courts et blonds"],correctIndex:1},
-  {prompt:"De quelle couleur est sa veste ?",choices:["Blanche","Noire","Bleue"],correctIndex:2}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Grand et mince","Petit et sportif","Grand et fort"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Grande et calme","Petite et sportive","Petite et timide"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Les yeux noirs","Les cheveux longs","Les cheveux courts"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Calme et patient","Gentil et sociable","Sérieux et organisé"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Sportive et gentille","Sérieuse et organisée","Grande et intelligente"],correctIndex:1}
  ]
 };
 
@@ -3704,19 +3747,25 @@ const A1_ADJECTIVES_WRITING_MODEL="Mon frère est grand et sportif. Il a les che
 const A1_ADJECTIVES_DICTATION=[
  {speech:"Il est grand, calme et patient.",ar:"هو طويل وهادئ وصبور."},
  {speech:"Elle est petite, sérieuse et organisée.",ar:"هي قصيرة وجادة ومنظمة."},
- {speech:"Elles ont les cheveux longs et noirs.",ar:"شعرهن طويل وأسود."}
+ {speech:"Elles ont les cheveux longs et noirs.",ar:"شعرهن طويل وأسود."},
+ {speech:"Mon ami est gentil et très sociable.",ar:"صديقي لطيف واجتماعي جدًا."},
+ {speech:"Ses yeux sont verts et ses cheveux sont courts.",ar:"عيناه خضراوان وشعره قصير."}
 ];
 
 const A1_ADJECTIVES_BUILDERS=[
  {tokens:["et","grand","Il","mince.","est"],answer:["Il","est","grand","et","mince."],ar:"هو طويل ونحيف."},
  {tokens:["organisée.","est","sérieuse","Elle","et"],answer:["Elle","est","sérieuse","et","organisée."],ar:"هي جادة ومنظمة."},
- {tokens:["intelligentes.","filles","sont","Ces"],answer:["Ces","filles","sont","intelligentes."],ar:"هؤلاء الفتيات ذكيات."}
+ {tokens:["intelligentes.","filles","sont","Ces"],answer:["Ces","filles","sont","intelligentes."],ar:"هؤلاء الفتيات ذكيات."},
+ {tokens:["courts.","cheveux","les","a","Il"],answer:["Il","a","les","cheveux","courts."],ar:"شعره قصير."},
+ {tokens:["et","sociable.","gentille","est","Elle"],answer:["Elle","est","gentille","et","sociable."],ar:"هي لطيفة واجتماعية."}
 ];
 
 const A1_ADJECTIVES_DIALOGUES=[
- {context:"Vous décrivez une femme de petite taille.",prompt:"اختر الصفة المتوافقة.",choices:["Elle est petit.","Elle est petite.","Elle est petits."],correctIndex:1,feedback:"نضيف e غالبًا إلى الصفة مع المؤنث المفرد: petite."},
- {context:"Vous parlez de plusieurs garçons intelligents.",prompt:"اختر المجموعة الصحيحة.",choices:["des garçons intelligent","des garçons intelligents","des garçon intelligentes"],correctIndex:1,feedback:"الصفة مع جمع المذكر تأخذ غالبًا s: intelligents."},
- {context:"Vous décrivez les cheveux d’une personne.",prompt:"اختر التركيب الطبيعي.",choices:["Elle a les cheveux longs.","Elle est les cheveux longs.","Elle a cheveux longue."],correctIndex:0,feedback:"لوصف الشعر نستخدم avoir: avoir les cheveux longs."}
+ {context:"Comment est cette femme ?",translation:"كيف تبدو هذه المرأة؟",prompt:"اختر الصفة المتوافقة لقصر القامة.",choices:["Elle est petit.","Elle est petite.","Elle est petits."],correctIndex:1,feedback:"نضيف e غالبًا إلى الصفة مع المؤنث المفرد."},
+ {context:"Comment sont ces garçons ?",translation:"كيف تبدو صفات هؤلاء الأولاد؟",prompt:"اختر المجموعة الصحيحة.",choices:["des garçons intelligent","des garçons intelligents","des garçon intelligentes"],correctIndex:1,feedback:"الصفة مع جمع المذكر تأخذ غالبًا s."},
+ {context:"Comment sont ses cheveux ?",translation:"كيف يبدو شعرها؟",prompt:"اختر التركيب الطبيعي.",choices:["Elle a les cheveux longs.","Elle est les cheveux longs.","Elle a cheveux longue."],correctIndex:0,feedback:"لوصف الشعر نستخدم avoir."},
+ {context:"Quel est son caractère ?",translation:"ما صفاته الشخصية؟",prompt:"اختر وصفًا للشخصية.",choices:["Il est calme et patient.","Il a les yeux bleus.","Il est un mètre quatre-vingts."],correctIndex:0,feedback:"calme وpatient صفتان للشخصية."},
+ {context:"De quelle couleur sont ses yeux ?",translation:"ما لون عينيها؟",prompt:"اختر الجواب الموافق نحويًا.",choices:["Ses yeux est verte.","Ses yeux sont verts.","Elle a yeux vertes."],correctIndex:1,feedback:"yeux جمع مذكر؛ لذلك نقول sont verts."}
 ];
 
 const A1_DAILY_LIFE_READING={
@@ -6669,8 +6718,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds;
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives;
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
@@ -6719,7 +6768,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7051,6 +7100,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="description")return A1_DESCRIPTION_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="adjectives")return A1_ADJECTIVES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="situations")return A1_FRIENDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
@@ -7387,7 +7437,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

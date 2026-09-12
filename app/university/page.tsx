@@ -44,7 +44,7 @@ type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPa
 type SoundLearningExample={word:string;ar:string;ipa:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
-type VowelTableKind="oral"|"nasal";
+type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded";
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
@@ -80,8 +80,8 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
   explanation:"تُصنَّف بحسب وضع الشفتين وحركتهما عند النطق.",
   frExplanation:"Elles se distinguent selon la position et le mouvement des lèvres pendant la prononciation.",
   branches:[
-   {fr:"Voyelles arrondies",ar:"الأصوات المدورة",explanation:"تُنطق بضم الشفتين وتدويرهما إلى الأمام.",frExplanation:"Elles se prononcent avec les lèvres arrondies et projetées vers l’avant."},
-   {fr:"Voyelles non arrondies",ar:"الأصوات غير المدورة — المبسوطة",explanation:"تُنطق مع بسط الشفتين في وضع قريب من الابتسامة.",frExplanation:"Elles se prononcent avec les lèvres étirées, dans une position proche du sourire."}
+   {fr:"Voyelles arrondies",ar:"الأصوات المدورة",explanation:"تُنطق بضم الشفتين وتدويرهما إلى الأمام.",frExplanation:"Elles se prononcent avec les lèvres arrondies et projetées vers l’avant.",table:"rounded"},
+   {fr:"Voyelles non arrondies",ar:"الأصوات غير المدورة — المبسوطة",explanation:"تُنطق مع بسط الشفتين في وضع قريب من الابتسامة.",frExplanation:"Elles se prononcent avec les lèvres étirées, dans une position proche du sourire.",table:"unrounded"}
   ]
  },
  {
@@ -130,7 +130,27 @@ const A1_NASAL_VOWEL_EXAMPLES:VowelTableExample[]=[
  {word:"brun",ar:"بني",ipa:"/bʁœ̃/",phoneme:"/œ̃/",focus:"un",parts:["br","un",""],image:"/images/university/a1-sounds/brun.webp",explanation:"المجموعة un تعطي /œ̃/ في النطق المعياري؛ وقد تُنطق قريبة من /ɛ̃/ عند بعض المتحدثين."}
 ];
 
-const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES};
+const A1_ROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {...A1_ORAL_VOWEL_EXAMPLES[1],explanation:"في lune تُضم الشفتان وتُدفعان قليلًا إلى الأمام لإنتاج /y/، مع بقاء اللسان في مقدمة الفم."},
+ {...A1_ORAL_VOWEL_EXAMPLES[2],explanation:"في rouge تُدوَّر الشفتان بوضوح لإنتاج /u/، بينما يرتفع الجزء الخلفي من اللسان."},
+ {...A1_ORAL_VOWEL_EXAMPLES[5],explanation:"في feu تُدوَّر الشفتان لإنتاج /ø/ مع فتحة فم ضيقة نسبيًا."},
+ {...A1_ORAL_VOWEL_EXAMPLES[6],explanation:"في cœur تبقى الشفتان مدوّرتين لإنتاج /œ/، لكن الفم يكون أكثر انفتاحًا من /ø/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[7],explanation:"في bateau تُدوَّر الشفتان ويكون الصوت /o/ مغلقًا وواضحًا."},
+ {...A1_ORAL_VOWEL_EXAMPLES[8],explanation:"في pomme تُدوَّر الشفتان لإنتاج /ɔ/ مع فتحة فم أوسع من /o/."},
+ {...A1_NASAL_VOWEL_EXAMPLES[5],explanation:"في maison تُدوَّر الشفتان لإنتاج /ɔ̃/، ويمر الهواء من الفم والأنف معًا."},
+ {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun تُدوَّر الشفتان لإنتاج /œ̃/ الأنفي؛ وقد يقترب من /ɛ̃/ في نطق فرنسي حديث شائع."}
+];
+
+const A1_UNROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
+ {...A1_ORAL_VOWEL_EXAMPLES[0],explanation:"في lit لا تُضم الشفتان؛ تُبسطان قليلًا لإنتاج الصوت الأمامي /i/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[3],explanation:"في été تبقى الشفتان غير مدوّرتين، ويُنتج الحرف é الصوت الأمامي المغلق /e/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[4],explanation:"في père تُبسط الشفتان دون تدوير لإنتاج /ɛ/، مع فتحة أوسع من /e/."},
+ {...A1_ORAL_VOWEL_EXAMPLES[9],explanation:"في chat لا تُدوَّر الشفتان؛ ينفتح الفم بوضوح لإنتاج /a/."},
+ {...A1_NASAL_VOWEL_EXAMPLES[0],explanation:"في enfant تبقى الشفتان غير مدوّرتين لإنتاج /ɑ̃/، مع مرور الهواء من الفم والأنف."},
+ {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain تُبسط الشفتان لإنتاج /ɛ̃/ الأنفي، ولا تُنطق حروف ain منفصلة."}
+];
+
+const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES};
 
 const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
@@ -5097,7 +5117,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
- const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0});
+ const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
  const [descriptionVisualPageIndex,setDescriptionVisualPageIndex]=useState(0);
  const descriptionPaginationRef=useRef<HTMLDivElement>(null);

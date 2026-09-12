@@ -5213,6 +5213,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [revisionDictationIndex,setRevisionDictationIndex]=useState(0);
  const [revisionDictationText,setRevisionDictationText]=useState("");
  const [revisionDictationChecked,setRevisionDictationChecked]=useState(false);
+ const [soundsDictationWordVisible,setSoundsDictationWordVisible]=useState(false);
+ const [soundsDictationWritingEnabled,setSoundsDictationWritingEnabled]=useState(false);
+ const soundsDictationRevealTimerRef=useRef<number|null>(null);
  const [revisionBuilderIndex,setRevisionBuilderIndex]=useState(0);
  const [revisionBuilderSelection,setRevisionBuilderSelection]=useState<number[]>([]);
  const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
@@ -5759,6 +5762,19 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule.id,alphabetHighestPracticeStep,isA1OrbitLesson]);
 
  useEffect(()=>{
+  if(soundsDictationRevealTimerRef.current!==null){
+   window.clearTimeout(soundsDictationRevealTimerRef.current);
+   soundsDictationRevealTimerRef.current=null;
+  }
+  setSoundsDictationWordVisible(false);
+  setSoundsDictationWritingEnabled(false);
+ },[activeModule.id,revisionDictationIndex,alphabetPracticeOpen,alphabetPracticeStep]);
+
+ useEffect(()=>()=>{
+  if(soundsDictationRevealTimerRef.current!==null)window.clearTimeout(soundsDictationRevealTimerRef.current);
+ },[]);
+
+ useEffect(()=>{
   if(!lessonPage||!quizPassed||completedModuleIds.includes(activeModule.id))return;
   const next=[...completedModuleIds,activeModule.id];
   setCompletedModuleIds(next);
@@ -5960,6 +5976,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   });
  };
  const playOrbitDictation=(slow=false)=>{
+  if(isA1Sounds&&!soundsDictationWritingEnabled&&!soundsDictationWordVisible){
+   setSoundsDictationWordVisible(true);
+   soundsDictationRevealTimerRef.current=window.setTimeout(()=>{
+    setSoundsDictationWordVisible(false);
+    setSoundsDictationWritingEnabled(true);
+    soundsDictationRevealTimerRef.current=null;
+   },10000);
+  }
   if(isAlphabetLetterDictation){
    return speakFrenchSequence(["Lettre",alphabetDictationPronunciation],slow?760:620,{rate:slow?.54:.62});
   }
@@ -6629,10 +6653,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </nav>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
        <div className="a2-workshop-progress"><span>{dictationUnit} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
-       <h4>استمع ثم اكتب {dictationUnit}</h4><p>يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق.</p>
+       <h4>استمع ثم اكتب {dictationUnit}</h4><p className={isA1Sounds?"a1-sounds-dictation-instruction":undefined}>{isA1Sounds?"اضغط على استمع لسماع النطق ثم اكتب دون ظهور الكلمة":"يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق."}</p>
        {isA1OrbitLesson?<div className="a1-dictation-audio-actions"><button type="button" onClick={()=>void playOrbitDictation(false)}><Headphones/><span><b>استمع</b><small>نطق طبيعي</small></span></button><button type="button" onClick={()=>void playOrbitDictation(true)}><Gauge/><span><b>بطيء</b><small>نطق تعليمي</small></span></button></div>:<button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {dictationUnit}</button>}
-       <input dir="ltr" value={revisionDictationText} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
+       {isA1Sounds&&soundsDictationWordVisible&&<strong className="a1-sounds-dictation-preview" dir="ltr">{revisionDictationItem.speech}</strong>}
+       <input dir="ltr" value={revisionDictationText} disabled={isA1Sounds&&!soundsDictationWritingEnabled} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isA1Sounds&&!soundsDictationWritingEnabled?"استمع أولًا…":dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()||(isA1Sounds&&!soundsDictationWritingEnabled)}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":isA1OrbitLesson?"الكتابة غير صحيحة؛ أعد الاستماع ثم حاول مرة أخرى.":"راجع كتابتك وقارنها بالنموذج."}</strong>{(!isA1OrbitLesson||revisionDictationCorrect)&&<><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></>}</div>}
       </article>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">

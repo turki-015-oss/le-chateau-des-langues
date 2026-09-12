@@ -180,6 +180,13 @@ const A1_CITY_DIRECTIONS_LISTENING_CLIPS=[
  {letter:"en face",word:"du parc",ar:"مقابل الحديقة",hiddenSpeech:"En face du parc"},
  {letter:"à côté",word:"de la banque",ar:"بجوار البنك",hiddenSpeech:"À côté de la banque"}
 ];
+const A1_NUMBERS_TIME_LISTENING_CLIPS=[
+ {letter:"huit heures",word:"et demie",ar:"الثامنة والنصف",hiddenSpeech:"Huit heures et demie"},
+ {letter:"midi",word:"moins dix",ar:"الثانية عشرة إلا عشر دقائق",hiddenSpeech:"Midi moins dix"},
+ {letter:"le premier",word:"avril",ar:"الأول من أبريل",hiddenSpeech:"Le premier avril"},
+ {letter:"jeudi",word:"douze octobre",ar:"الخميس الثاني عشر من أكتوبر",hiddenSpeech:"Jeudi douze octobre"},
+ {letter:"quarante-deux",word:"euros",ar:"اثنان وأربعون يورو",hiddenSpeech:"Quarante-deux euros"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1823,16 +1830,26 @@ const A1_NUMBERS_TIME_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_NUMBERS_TIME_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"72",speech:"Soixante-douze.",instruction:"اختر كتابة العدد 72 بالفرنسية.",choices:["soixante-douze","soixante-deux","quatre-vingt-douze"],correctIndex:0,explanation:"72 يُبنى من soixante + douze: soixante-douze."},
- {prompt:"81",speech:"Quatre-vingt-un.",instruction:"اختر كتابة العدد 81 بالفرنسية.",choices:["quatre-vingts-un","quatre-vingt-un","quatre et vingt-un"],correctIndex:1,explanation:"في 81 لا نكتب s في vingt ولا نضيف et: quatre-vingt-un."},
- {prompt:"Il est 9 h 30.",speech:"Il est neuf heures et demie.",instruction:"اختر التعبير الفرنسي المطابق للوقت.",choices:["Il est neuf heures moins le quart.","Il est dix heures et demie.","Il est neuf heures et demie."],correctIndex:2,explanation:"9 h 30 تعني neuf heures et demie."},
- {prompt:"Il est midi moins cinq.",speech:"Il est midi moins cinq.",instruction:"اختر الوقت الرقمي الصحيح.",choices:["11 h 55","12 h 05","12 h 50"],correctIndex:0,explanation:"midi moins cinq يعني خمس دقائق قبل الظهر: 11 h 55."},
- {prompt:"Le cours commence ___ huit heures.",speech:"Le cours commence à huit heures.",instruction:"اختر حرف الجر المستخدم مع الساعة.",choices:["en","à","le"],correctIndex:1,explanation:"نستخدم à قبل الساعة: à huit heures."},
- {prompt:"اليوم هو الأول من مايو.",speech:"Nous sommes le premier mai.",instruction:"اختر الترجمة الفرنسية الصحيحة.",choices:["Nous sommes le un mai.","Nous avons premier mai.","Nous sommes le premier mai."],correctIndex:2,explanation:"مع اليوم الأول من الشهر نستخدم premier: le premier mai."},
- {prompt:"Je travaille du lundi au vendredi.",speech:"Je travaille du lundi au vendredi.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعمل من الاثنين إلى الجمعة.","أعمل يومي الاثنين والجمعة فقط.","لا أعمل من الاثنين إلى الجمعة."],correctIndex:0,explanation:"du … au … تعني من … إلى … ضمن مدة متصلة."},
- {prompt:"Quel jour vient après mercredi ?",speech:"Quel jour vient après mercredi ? Jeudi.",instruction:"أي يوم يأتي بعد mercredi؟",choices:["mardi","jeudi","vendredi"],correctIndex:1,explanation:"اليوم الذي يلي الأربعاء mercredi هو الخميس jeudi."},
- {prompt:"Quel mois vient avant décembre ?",speech:"Quel mois vient avant décembre ? Novembre.",instruction:"أي شهر يأتي قبل décembre؟",choices:["octobre","janvier","novembre"],correctIndex:2,explanation:"الشهر الذي يسبق ديسمبر décembre هو نوفمبر novembre."},
- {prompt:"Le musée ouvre à quatorze heures.",speech:"Le musée ouvre à quatorze heures.",instruction:"اختر الوقت المقابل بنظام 12 ساعة.",choices:["الثانية بعد الظهر.","الرابعة بعد الظهر.","الثانية صباحًا."],correctIndex:0,explanation:"14 h تساوي الثانية بعد الظهر في نظام 12 ساعة."}
+ {prompt:"72",translation:"اثنان وسبعون",speech:"Soixante-douze.",instruction:"اختر كتابة العدد بالفرنسية.",choices:["soixante-douze","soixante-deux","quatre-vingt-douze"],correctIndex:0,explanation:"72 يُبنى من soixante + douze."},
+ {prompt:"81",translation:"واحد وثمانون",speech:"Quatre-vingt-un.",instruction:"اختر كتابة العدد بالفرنسية.",choices:["quatre-vingts-un","quatre-vingt-un","quatre et vingt-un"],correctIndex:1,explanation:"في 81 لا نكتب s في vingt ولا نضيف et."},
+ {prompt:"Il est 9 h 30.",translation:"الساعة التاسعة والنصف.",speech:"Il est neuf heures et demie.",instruction:"اختر التعبير الفرنسي المطابق.",choices:["Il est neuf heures moins le quart.","Il est dix heures et demie.","Il est neuf heures et demie."],correctIndex:2,explanation:"9 h 30 تعني neuf heures et demie."},
+ {prompt:"Il est midi moins cinq.",translation:"الساعة الثانية عشرة إلا خمس دقائق.",speech:"Il est midi moins cinq.",instruction:"اختر الوقت الرقمي الصحيح.",choices:["11 h 55","12 h 05","12 h 50"],correctIndex:0,explanation:"midi moins cinq يعني خمس دقائق قبل الظهر."},
+ {prompt:"Le cours commence ___ huit heures.",translation:"يبدأ الدرس الساعة الثامنة.",speech:"Le cours commence à huit heures.",instruction:"اختر حرف الجر المناسب.",choices:["en","à","le"],correctIndex:1,explanation:"نستخدم à قبل الساعة."},
+ {prompt:"Nous sommes ___ premier mai.",translation:"اليوم هو الأول من مايو.",speech:"Nous sommes le premier mai.",instruction:"أكمل التاريخ الصحيح.",choices:["au","en","le"],correctIndex:2,explanation:"مع التاريخ نستخدم le، واليوم الأول يُقال premier."},
+ {prompt:"Je travaille du lundi au vendredi.",translation:"أعمل من الاثنين إلى الجمعة.",speech:"Je travaille du lundi au vendredi.",instruction:"اختر المعنى العربي الصحيح.",choices:["أعمل من الاثنين إلى الجمعة.","أعمل يومي الاثنين والجمعة فقط.","لا أعمل من الاثنين إلى الجمعة."],correctIndex:0,explanation:"du … au … تعني من … إلى … ضمن مدة متصلة."},
+ {prompt:"Quel jour vient après mercredi ?",translation:"أي يوم يأتي بعد الأربعاء؟",speech:"Jeudi vient après mercredi.",instruction:"اختر اليوم الصحيح.",choices:["mardi","jeudi","vendredi"],correctIndex:1,explanation:"اليوم الذي يلي mercredi هو jeudi."},
+ {prompt:"Quel mois vient avant décembre ?",translation:"أي شهر يأتي قبل ديسمبر؟",speech:"Novembre vient avant décembre.",instruction:"اختر الشهر الصحيح.",choices:["octobre","janvier","novembre"],correctIndex:2,explanation:"الشهر الذي يسبق décembre هو novembre."},
+ {prompt:"Le musée ouvre à quatorze heures.",translation:"يفتح المتحف الساعة الثانية بعد الظهر.",speech:"Le musée ouvre à quatorze heures.",instruction:"اختر الوقت المقابل بنظام 12 ساعة.",choices:["الثانية بعد الظهر.","الرابعة بعد الظهر.","الثانية صباحًا."],correctIndex:0,explanation:"14 h تساوي الثانية بعد الظهر."},
+ {prompt:"96",translation:"ستة وتسعون",speech:"Quatre-vingt-seize.",instruction:"اختر كتابة العدد الصحيحة.",choices:["quatre-vingt-seize","quatre-vingts-seize","soixante-seize"],correctIndex:0,explanation:"96 تكتب quatre-vingt-seize من دون s في vingt."},
+ {prompt:"Il est 7 h 15.",translation:"الساعة السابعة والربع.",speech:"Il est sept heures et quart.",instruction:"اختر التعبير المطابق.",choices:["Il est sept heures et demie.","Il est sept heures et quart.","Il est huit heures moins le quart."],correctIndex:1,explanation:"15 دقيقة بعد الساعة تُقال et quart."},
+ {prompt:"Il est 16 h 45.",translation:"الساعة الخامسة إلا ربعًا.",speech:"Il est cinq heures moins le quart.",instruction:"اختر التعبير المطابق بنظام 12 ساعة.",choices:["Il est quatre heures et quart.","Il est cinq heures et demie.","Il est cinq heures moins le quart."],correctIndex:2,explanation:"16 h 45 تساوي الخامسة إلا ربعًا."},
+ {prompt:"Mon rendez-vous est ___ lundi.",translation:"موعدي يوم الاثنين.",speech:"Mon rendez-vous est lundi.",instruction:"اختر الصيغة الطبيعية ليوم محدد قادم.",choices:["—","à","en"],correctIndex:0,explanation:"لا نضع أداة قبل اسم اليوم عند تحديد موعد واحد."},
+ {prompt:"Nous sommes le 14 juillet.",translation:"اليوم هو الرابع عشر من يوليو.",speech:"Nous sommes le quatorze juillet.",instruction:"اختر كتابة التاريخ بالحروف.",choices:["le quarante juillet","le quatre juillet","le quatorze juillet"],correctIndex:2,explanation:"14 يكتب quatorze."},
+ {prompt:"Le train part à 6 h 05.",translation:"ينطلق القطار الساعة السادسة وخمس دقائق.",speech:"Le train part à six heures cinq.",instruction:"اختر النطق الصحيح للوقت.",choices:["à six heures cinq","à cinq heures six","à six heures cinquante"],correctIndex:0,explanation:"6 h 05 تقرأ six heures cinq."},
+ {prompt:"Le billet coûte 31 euros.",translation:"سعر التذكرة واحد وثلاثون يورو.",speech:"Le billet coûte trente et un euros.",instruction:"اختر كتابة السعر الصحيحة.",choices:["trente-un euros","trente et un euros","treize et un euros"],correctIndex:1,explanation:"31 يكتب trente et un."},
+ {prompt:"Quel jour vient avant dimanche ?",translation:"أي يوم يأتي قبل الأحد؟",speech:"Samedi vient avant dimanche.",instruction:"اختر اليوم الصحيح.",choices:["lundi","vendredi","samedi"],correctIndex:2,explanation:"samedi يسبق dimanche."},
+ {prompt:"Mon anniversaire est ___ novembre.",translation:"عيد ميلادي في شهر نوفمبر.",speech:"Mon anniversaire est en novembre.",instruction:"اختر حرف الجر الصحيح مع الشهر.",choices:["en","à","le"],correctIndex:0,explanation:"نستخدم en مع أسماء الشهور عند عدم ذكر اليوم."},
+ {prompt:"La bibliothèque ferme à vingt heures.",translation:"تغلق المكتبة الساعة الثامنة مساءً.",speech:"La bibliothèque ferme à vingt heures.",instruction:"اختر الوقت المقابل بنظام 12 ساعة.",choices:["العاشرة مساءً.","الثامنة مساءً.","الثامنة صباحًا."],correctIndex:1,explanation:"20 h تساوي الثامنة مساءً."}
 ];
 
 const A1_DAILY_LIFE_PRACTICE_ITEMS:Example[]=[
@@ -3142,6 +3159,17 @@ const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
  {fr:"où se trouve la gare",ar:"أين تقع محطة القطار؟"}
 ];
 
+const A1_NUMBERS_TIME_WRITING_TRANSLATIONS=[
+ {fr:"huit heures et quart",ar:"الثامنة والربع"},
+ {fr:"neuf heures et demie",ar:"التاسعة والنصف"},
+ {fr:"midi moins dix",ar:"الثانية عشرة إلا عشر دقائق"},
+ {fr:"le premier avril",ar:"الأول من أبريل"},
+ {fr:"jeudi douze octobre",ar:"الخميس الثاني عشر من أكتوبر"},
+ {fr:"au mois d’août",ar:"في شهر أغسطس"},
+ {fr:"quarante-deux euros",ar:"اثنان وأربعون يورو"},
+ {fr:"du lundi au samedi",ar:"من الاثنين إلى السبت"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3274,20 +3302,22 @@ const A1_NUMBERS_TIME_READING={
  text:"Aujourd’hui, nous sommes le mardi 12 mars. Lina commence son cours à huit heures et demie. À midi, elle achète un déjeuner à quinze euros. Son rendez-vous est à quatorze heures vingt. Le soir, elle appelle sa mère au zéro six, vingt et un, trente, quarante-deux, cinquante.",
  translation:"اليوم هو الثلاثاء 12 مارس. تبدأ لينا درسها عند الثامنة والنصف. وعند الظهر تشتري وجبة غداء بسعر خمسة عشر يورو. موعدها عند الثانية وعشرين دقيقة بعد الظهر. وفي المساء تتصل بوالدتها على الرقم: صفر ستة، واحد وعشرون، ثلاثون، اثنان وأربعون، خمسون.",
  questions:[
-  {question:"Quel jour sommes-nous ?",answer:"Nous sommes le mardi 12 mars.",ar:"اليوم هو الثلاثاء 12 مارس."},
-  {question:"À quelle heure commence le cours ?",answer:"Le cours commence à huit heures et demie.",ar:"يبدأ الدرس عند الثامنة والنصف."},
-  {question:"Combien coûte le déjeuner ?",answer:"Le déjeuner coûte quinze euros.",ar:"سعر وجبة الغداء خمسة عشر يورو."}
+  {question:"Quel jour sommes-nous ?",translation:"ما اليوم والتاريخ؟",answer:"Nous sommes le mardi 12 mars.",ar:"اليوم هو الثلاثاء 12 مارس."},
+  {question:"À quelle heure commence le cours ?",translation:"في أي ساعة يبدأ الدرس؟",answer:"Le cours commence à huit heures et demie.",ar:"يبدأ الدرس عند الثامنة والنصف."},
+  {question:"Combien coûte le déjeuner ?",translation:"كم سعر وجبة الغداء؟",answer:"Le déjeuner coûte quinze euros.",ar:"سعر وجبة الغداء خمسة عشر يورو."}
  ]
 };
 
 const A1_NUMBERS_TIME_LISTENING={
  title:"Les horaires du samedi",
  arTitle:"مواعيد يوم السبت",
- text:"Samedi 20 avril, le musée ouvre à neuf heures quinze et ferme à dix-huit heures. La visite guidée commence à onze heures. Le billet adulte coûte douze euros et le billet enfant coûte sept euros.",
+ text:"Huit heures et demie. Midi moins dix. Le premier avril. Jeudi douze octobre. Quarante-deux euros.",
  questions:[
-  {prompt:"À quelle heure ouvre le musée ?",choices:["À neuf heures","À neuf heures quinze","À dix heures quinze"],correctIndex:1},
-  {prompt:"Quand commence la visite guidée ?",choices:["À onze heures","À midi","À dix-huit heures"],correctIndex:0},
-  {prompt:"Combien coûte le billet enfant ?",choices:["Sept euros","Douze euros","Vingt euros"],correctIndex:0}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Huit heures et demie","Huit heures et quart","Neuf heures et demie"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Midi et dix","Midi moins dix","Minuit moins dix"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le premier mai","Le deux avril","Le premier avril"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Jeudi douze octobre","Mardi douze octobre","Jeudi vingt octobre"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Trente-deux euros","Quarante-deux euros","Quatre-vingt-deux euros"],correctIndex:1}
  ]
 };
 
@@ -3296,19 +3326,25 @@ const A1_NUMBERS_TIME_WRITING_MODEL="Lundi 8 avril, je commence le travail à hu
 const A1_NUMBERS_TIME_DICTATION=[
  {speech:"Il est huit heures et demie.",ar:"الساعة الثامنة والنصف."},
  {speech:"Nous sommes le quinze mai.",ar:"اليوم هو الخامس عشر من مايو."},
- {speech:"Le billet coûte vingt et un euros.",ar:"سعر التذكرة واحد وعشرون يورو."}
+ {speech:"Le billet coûte vingt et un euros.",ar:"سعر التذكرة واحد وعشرون يورو."},
+ {speech:"Le train arrive à midi moins dix.",ar:"يصل القطار قبل الظهر بعشر دقائق."},
+ {speech:"Mon rendez-vous est le jeudi douze octobre.",ar:"موعدي يوم الخميس الثاني عشر من أكتوبر."}
 ];
 
 const A1_NUMBERS_TIME_BUILDERS=[
  {tokens:["heures","Il","et","est","demie.","huit"],answer:["Il","est","huit","heures","et","demie."],ar:"الساعة الثامنة والنصف."},
  {tokens:["le","avril.","sommes","Nous","douze"],answer:["Nous","sommes","le","douze","avril."],ar:"اليوم هو الثاني عشر من أبريل."},
- {tokens:["euros.","coûte","livre","vingt","Le"],answer:["Le","livre","coûte","vingt","euros."],ar:"سعر الكتاب عشرون يورو."}
+ {tokens:["euros.","coûte","livre","vingt","Le"],answer:["Le","livre","coûte","vingt","euros."],ar:"سعر الكتاب عشرون يورو."},
+ {tokens:["quinze.","heures","Il","sept","est"],answer:["Il","est","sept","heures","quinze."],ar:"الساعة السابعة وخمس عشرة دقيقة."},
+ {tokens:["samedi.","au","ouverte","est","La","bibliothèque","du","lundi"],answer:["La","bibliothèque","est","ouverte","du","lundi","au","samedi."],ar:"المكتبة مفتوحة من الاثنين إلى السبت."}
 ];
 
 const A1_NUMBERS_TIME_DIALOGUES=[
- {context:"On vous demande : « Quelle heure est-il ? »",prompt:"اختر الإجابة الصحيحة للساعة 8:30.",choices:["Il est huit heures et demie.","Nous sommes huit heures.","Il a huit et demie."],correctIndex:0,feedback:"لذكر الوقت نبدأ بـ Il est ثم الساعة."},
- {context:"Vous annoncez la date du 1er juin.",prompt:"اختر الصيغة الصحيحة.",choices:["Nous sommes le premier juin.","Nous sommes le un juin.","Il est premier juin."],correctIndex:0,feedback:"اليوم الأول من الشهر يُقال le premier."},
- {context:"Le vendeur dit : « Cela fait trente-deux euros. »",prompt:"ما السعر المذكور؟",choices:["22 €","32 €","42 €"],correctIndex:1,feedback:"trente-deux تعني اثنين وثلاثين."}
+ {context:"Quelle heure est-il ?",translation:"كم الساعة؟",prompt:"اختر الإجابة الصحيحة للساعة 8:30.",choices:["Il est huit heures et demie.","Nous sommes huit heures.","Il a huit et demie."],correctIndex:0,feedback:"لذكر الوقت نبدأ بـ Il est ثم الساعة."},
+ {context:"Quelle est la date aujourd’hui ?",translation:"ما تاريخ اليوم؟",prompt:"اختر صيغة الأول من يونيو.",choices:["Nous sommes le premier juin.","Nous sommes le un juin.","Il est premier juin."],correctIndex:0,feedback:"اليوم الأول من الشهر يُقال le premier."},
+ {context:"Cela fait trente-deux euros.",translation:"المجموع اثنان وثلاثون يورو.",prompt:"اختر السعر المذكور.",choices:["22 €","32 €","42 €"],correctIndex:1,feedback:"trente-deux تعني اثنين وثلاثين."},
+ {context:"À quelle heure commence la réunion ?",translation:"في أي ساعة يبدأ الاجتماع؟",prompt:"اختر الرد الذي يذكر وقتًا.",choices:["Elle commence mardi.","Elle commence à dix heures.","Elle coûte dix euros."],correctIndex:1,feedback:"نستخدم à قبل الساعة."},
+ {context:"Quel jour sommes-nous ?",translation:"ما اليوم؟",prompt:"اختر الرد المناسب.",choices:["Nous sommes lundi.","Il est neuf heures.","Nous sommes en été."],correctIndex:0,feedback:"للإجابة عن اليوم نستخدم Nous sommes ثم اسم اليوم."}
 ];
 
 const A1_WEATHER_CLOTHES_READING={
@@ -6471,8 +6507,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
  const isA1CityDirections=level.id==="A1"&&activeModule.id==="city-directions";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections;
  const isA1NumbersTime=level.id==="A1"&&activeModule.id==="numbers-time";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime;
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
@@ -6526,7 +6562,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7193,7 +7229,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

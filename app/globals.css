@@ -4268,6 +4268,7 @@
 /* Compact listening workspace: keeps the full activity visible without changing its visual language. */
 .a1-orbit-map.listening-open{height:clamp(620px,calc(100svh - 24px),670px);min-height:620px}
 .a1-orbit-listening-overlay{gap:7px;padding:14px;overflow:hidden}
+.a1-orbit-listening-overlay>.a1-smart-question{min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}.a1-orbit-listening-overlay .a1-smart-next-question{position:sticky;right:0;bottom:0;z-index:2;box-shadow:0 -8px 18px rgba(255,255,255,.92),0 7px 15px rgba(21,62,107,.2)}
 .a1-orbit-listening-overlay>header{min-height:58px;margin:-14px -14px 0;padding:8px 14px;border-radius:26px 26px 0 0}
 .a1-listening-title>i{width:42px;height:42px;border-radius:13px}.a1-listening-title>i svg{width:22px!important}.a1-orbit-listening-overlay>header h3{font-size:22px}.a1-orbit-listening-overlay>header span{font-size:13px}
 .a1-smart-audio-card{padding:10px 12px;border-radius:17px}.a1-smart-audio-segments strong{min-height:50px;border-radius:12px}.a1-smart-audio-segments.concealed strong svg{width:20px;height:20px}.a1-smart-audio-segments.concealed strong small{font-size:9px}.a1-smart-audio-card>small{min-height:16px;margin-top:4px;font-size:10px}

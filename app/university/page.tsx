@@ -6068,10 +6068,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
     </section>}
 
     {activeModule.id==="sounds"&&<section className="a1-sounds-learning-studio">
-     <div className="university-subheading a1-sounds-learning-heading">
-      <div><span>Studio phonétique interactif</span><h3>الصوت أولًا، ثم الحروف التي تكتبه</h3><p>افتح التصنيف المطلوب، واقرأ شرحه بالعربية والفرنسية، ثم استمع إلى النطق.</p></div>
-      <AudioLines/>
-     </div>
      <div className="a1-sounds-learning-sections">
       <details className="a1-sounds-learning-section" open>
        <summary>

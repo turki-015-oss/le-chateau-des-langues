@@ -187,6 +187,13 @@ const A1_NUMBERS_TIME_LISTENING_CLIPS=[
  {letter:"jeudi",word:"douze octobre",ar:"الخميس الثاني عشر من أكتوبر",hiddenSpeech:"Jeudi douze octobre"},
  {letter:"quarante-deux",word:"euros",ar:"اثنان وأربعون يورو",hiddenSpeech:"Quarante-deux euros"}
 ];
+const A1_WEATHER_CLOTHES_LISTENING_CLIPS=[
+ {letter:"il fait",word:"froid",ar:"الجو بارد",hiddenSpeech:"Il fait froid"},
+ {letter:"il y a",word:"du vent",ar:"الجو عاصف",hiddenSpeech:"Il y a du vent"},
+ {letter:"il",word:"pleut",ar:"إنها تمطر",hiddenSpeech:"Il pleut"},
+ {letter:"un manteau",word:"chaud",ar:"معطف دافئ",hiddenSpeech:"Un manteau chaud"},
+ {letter:"prends",word:"ton parapluie",ar:"خذ مظلتك",hiddenSpeech:"Prends ton parapluie"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -2026,16 +2033,26 @@ const A1_WEATHER_CLOTHES_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_WEATHER_CLOTHES_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Quel temps ___-il ?",speech:"Complétez la question. Quel temps fait-il ?",instruction:"أكمل السؤال الشائع عن الطقس.",choices:["est","fait","a"],correctIndex:1,explanation:"السؤال الثابت هو Quel temps fait-il ؟"},
- {prompt:"Il ___ froid aujourd’hui.",speech:"Complétez la phrase. Il fait froid aujourd’hui.",instruction:"اختر الفعل الصحيح لوصف برودة الجو.",choices:["fait","est","a"],correctIndex:0,explanation:"نستخدم il fait مع chaud وfroid."},
- {prompt:"Il y a ___ vent.",speech:"Complétez la phrase. Il y a du vent.",instruction:"اختر الأداة الصحيحة في التعبير عن وجود الرياح.",choices:["de la","des","du"],correctIndex:2,explanation:"التعبير الثابت هو Il y a du vent."},
- {prompt:"Il ___ depuis ce matin.",speech:"Complétez la phrase. Il pleut depuis ce matin.",instruction:"اختر الفعل الذي يعني أن المطر يهطل.",choices:["pleut","neige","porte"],correctIndex:0,explanation:"Il pleut تعني تمطر."},
- {prompt:"___ printemps, les fleurs apparaissent.",speech:"Complétez la phrase. Au printemps, les fleurs apparaissent.",instruction:"اختر حرف الجر الصحيح مع فصل الربيع.",choices:["En","À la","Au"],correctIndex:2,explanation:"نقول au printemps."},
- {prompt:"___ été, il fait chaud.",speech:"Complétez la phrase. En été, il fait chaud.",instruction:"اختر حرف الجر الصحيح مع فصل الصيف.",choices:["En","Au","Aux"],correctIndex:0,explanation:"نقول en été."},
- {prompt:"Je ___ un manteau noir.",speech:"Complétez la phrase. Je porte un manteau noir.",instruction:"اختر الفعل المناسب لوصف الملابس التي ترتديها.",choices:["pleut","porte","fait"],correctIndex:1,explanation:"porter يستخدم لوصف الملابس التي يرتديها الشخص."},
- {prompt:"Mets ton manteau, ___ il fait froid.",speech:"Complétez la phrase. Mets ton manteau, parce qu’il fait froid.",instruction:"اختر الرابط الذي يوضح السبب.",choices:["mais","puis","parce qu’"],correctIndex:2,explanation:"parce que يقدّم سبب ارتداء المعطف."},
- {prompt:"une veste ___.",speech:"Choisissez l’accord correct. Une veste noire.",instruction:"اختر صيغة اللون الموافقة للاسم المؤنث.",choices:["noire","noir","noirs"],correctIndex:0,explanation:"veste مؤنث مفرد، ولذلك تصبح noir إلى noire."},
- {prompt:"Elle prend son parapluie.",speech:"Elle prend son parapluie.",instruction:"اختر المعنى العربي الصحيح.",choices:["ترتدي حذاءها.","تأخذ مظلتها.","تغلق نافذتها."],correctIndex:1,explanation:"prendre son parapluie تعني أخذ المظلة."}
+ {prompt:"Quel temps ___-il ?",translation:"كيف حال الطقس؟",speech:"Quel temps fait-il ?",instruction:"أكمل السؤال الشائع عن الطقس.",choices:["est","fait","a"],correctIndex:1,explanation:"السؤال الثابت هو Quel temps fait-il ؟"},
+ {prompt:"Il ___ froid aujourd’hui.",translation:"الجو بارد اليوم.",speech:"Il fait froid aujourd’hui.",instruction:"اختر الفعل الصحيح.",choices:["fait","est","a"],correctIndex:0,explanation:"نستخدم il fait مع chaud وfroid."},
+ {prompt:"Il y a ___ vent.",translation:"الجو عاصف.",speech:"Il y a du vent.",instruction:"اختر الأداة الصحيحة.",choices:["de la","des","du"],correctIndex:2,explanation:"التعبير الثابت هو Il y a du vent."},
+ {prompt:"Il ___ depuis ce matin.",translation:"إنها تمطر منذ الصباح.",speech:"Il pleut depuis ce matin.",instruction:"اختر فعل المطر.",choices:["pleut","neige","porte"],correctIndex:0,explanation:"Il pleut تعني تمطر."},
+ {prompt:"___ printemps, les fleurs apparaissent.",translation:"في الربيع تظهر الأزهار.",speech:"Au printemps, les fleurs apparaissent.",instruction:"اختر حرف الجر الصحيح.",choices:["En","À la","Au"],correctIndex:2,explanation:"نقول au printemps."},
+ {prompt:"___ été, il fait chaud.",translation:"في الصيف يكون الجو حارًا.",speech:"En été, il fait chaud.",instruction:"اختر حرف الجر الصحيح.",choices:["En","Au","Aux"],correctIndex:0,explanation:"نقول en été."},
+ {prompt:"Je ___ un manteau noir.",translation:"أرتدي معطفًا أسود.",speech:"Je porte un manteau noir.",instruction:"اختر الفعل المناسب.",choices:["pleut","porte","fait"],correctIndex:1,explanation:"porter يستخدم لوصف الملابس."},
+ {prompt:"Mets ton manteau, ___ il fait froid.",translation:"ارتدِ معطفك لأن الجو بارد.",speech:"Mets ton manteau, parce qu’il fait froid.",instruction:"اختر رابط السبب.",choices:["mais","puis","parce qu’"],correctIndex:2,explanation:"parce que يقدّم السبب."},
+ {prompt:"Une veste ___.",translation:"سترة سوداء.",speech:"Une veste noire.",instruction:"اختر صيغة اللون الموافقة.",choices:["noire","noir","noirs"],correctIndex:0,explanation:"veste مؤنث مفرد؛ لذلك نقول noire."},
+ {prompt:"Elle prend son parapluie.",translation:"تأخذ مظلتها.",speech:"Elle prend son parapluie.",instruction:"اختر المعنى العربي الصحيح.",choices:["ترتدي حذاءها.","تأخذ مظلتها.","تغلق نافذتها."],correctIndex:1,explanation:"prendre son parapluie تعني أخذ المظلة."},
+ {prompt:"Il fait vingt-cinq ___.",translation:"درجة الحرارة خمس وعشرون درجة.",speech:"Il fait vingt-cinq degrés.",instruction:"أكمل درجة الحرارة.",choices:["saisons","degrés","nuages"],correctIndex:1,explanation:"نستخدم degrés لقياس درجة الحرارة."},
+ {prompt:"Le ciel est gris et il y a des ___.",translation:"السماء رمادية وتوجد غيوم.",speech:"Le ciel est gris et il y a des nuages.",instruction:"اختر كلمة الطقس المناسبة.",choices:["nuages","bottes","écharpes"],correctIndex:0,explanation:"nuages تعني غيوم."},
+ {prompt:"Il ___ en montagne.",translation:"تتساقط الثلوج في الجبال.",speech:"Il neige en montagne.",instruction:"اختر فعل تساقط الثلج.",choices:["porte","fait","neige"],correctIndex:2,explanation:"Il neige تعني تتساقط الثلوج."},
+ {prompt:"___ automne, les feuilles tombent.",translation:"في الخريف تتساقط الأوراق.",speech:"En automne, les feuilles tombent.",instruction:"اختر حرف الجر الصحيح.",choices:["En","Au","À"],correctIndex:0,explanation:"نقول en automne."},
+ {prompt:"Il y a du soleil : mets tes ___.",translation:"الجو مشمس؛ ارتدِ نظارتك الشمسية.",speech:"Il y a du soleil : mets tes lunettes de soleil.",instruction:"اختر الشيء المناسب.",choices:["gants","lunettes de soleil","bottes"],correctIndex:1,explanation:"النظارات الشمسية تناسب الجو المشمس."},
+ {prompt:"Des chaussures ___.",translation:"أحذية بيضاء.",speech:"Des chaussures blanches.",instruction:"اختر اتفاق اللون الصحيح.",choices:["blanc","blanche","blanches"],correctIndex:2,explanation:"chaussures مؤنث جمع؛ لذلك نقول blanches."},
+ {prompt:"Un pull ___.",translation:"كنزة خضراء.",speech:"Un pull vert.",instruction:"اختر صيغة اللون المناسبة.",choices:["vert","verte","verts"],correctIndex:0,explanation:"pull مذكر مفرد؛ لذلك نقول vert."},
+ {prompt:"Quand il neige, je porte des ___.",translation:"عندما تثلج أرتدي أحذية طويلة.",speech:"Quand il neige, je porte des bottes.",instruction:"اختر قطعة الملابس المناسبة.",choices:["sandales","bottes","lunettes"],correctIndex:1,explanation:"bottes مناسبة للثلج والبرد."},
+ {prompt:"Quelle est la température ?",translation:"ما درجة الحرارة؟",speech:"Quelle est la température ?",instruction:"اختر الإجابة المناسبة.",choices:["Il est lundi.","Je porte une veste.","Il fait douze degrés."],correctIndex:2,explanation:"الإجابة عن الحرارة تذكر عدد الدرجات."},
+ {prompt:"N’oublie pas ton écharpe.",translation:"لا تنسَ وشاحك.",speech:"N’oublie pas ton écharpe.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا تنسَ وشاحك.","خذ مظلتك.","ارتدِ قميصك."],correctIndex:0,explanation:"écharpe تعني وشاحًا."}
 ];
 
 const A1_HOME_HOUSING_PRACTICE_ITEMS:Example[]=[
@@ -3170,6 +3187,17 @@ const A1_NUMBERS_TIME_WRITING_TRANSLATIONS=[
  {fr:"du lundi au samedi",ar:"من الاثنين إلى السبت"}
 ];
 
+const A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS=[
+ {fr:"il fait froid",ar:"الجو بارد"},
+ {fr:"il fait chaud",ar:"الجو حار"},
+ {fr:"il y a du vent",ar:"الجو عاصف"},
+ {fr:"il pleut",ar:"إنها تمطر"},
+ {fr:"un manteau chaud",ar:"معطف دافئ"},
+ {fr:"une veste imperméable",ar:"سترة مقاومة للمطر"},
+ {fr:"des chaussures noires",ar:"أحذية سوداء"},
+ {fr:"prends ton parapluie",ar:"خذ مظلتك"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3353,20 +3381,22 @@ const A1_WEATHER_CLOTHES_READING={
  text:"Ce week-end, Lina va à Annecy. Samedi matin, il fait frais et il y a des nuages. L’après-midi, il pleut et la température est de douze degrés. Lina porte un pantalon noir, un pull chaud et une veste imperméable. Elle prend aussi son parapluie.",
  translation:"تذهب لينا إلى آنسي في عطلة نهاية هذا الأسبوع. يكون الجو منعشًا صباح السبت وتوجد غيوم. وفي فترة بعد الظهر تمطر وتبلغ الحرارة اثنتي عشرة درجة. ترتدي لينا بنطالًا أسود وكنزة دافئة وسترة مقاومة للمطر، وتأخذ مظلتها أيضًا.",
  questions:[
-  {question:"Quel temps fait-il samedi matin ?",answer:"Il fait frais et il y a des nuages.",ar:"الجو منعش وتوجد غيوم."},
-  {question:"Quelle est la température l’après-midi ?",answer:"La température est de douze degrés.",ar:"درجة الحرارة اثنتا عشرة درجة."},
-  {question:"Pourquoi Lina prend-elle un parapluie ?",answer:"Elle prend un parapluie parce qu’il pleut.",ar:"تأخذ مظلة لأن الجو ممطر."}
+  {question:"Quel temps fait-il samedi matin ?",translation:"كيف يكون الطقس صباح السبت؟",answer:"Il fait frais et il y a des nuages.",ar:"الجو منعش وتوجد غيوم."},
+  {question:"Quelle est la température l’après-midi ?",translation:"ما درجة الحرارة بعد الظهر؟",answer:"La température est de douze degrés.",ar:"درجة الحرارة اثنتا عشرة درجة."},
+  {question:"Pourquoi Lina prend-elle un parapluie ?",translation:"لماذا تأخذ لينا مظلة؟",answer:"Elle prend un parapluie parce qu’il pleut.",ar:"تأخذ مظلة لأن الجو ممطر."}
  ]
 };
 
 const A1_WEATHER_CLOTHES_LISTENING={
  title:"La météo de demain",
  arTitle:"طقس الغد",
- text:"Demain matin, il va faire froid à Paris : huit degrés et beaucoup de vent. À midi, il va y avoir du soleil, mais le soir, il va pleuvoir. Prenez un manteau et un parapluie.",
+ text:"Il fait froid. Il y a du vent. Il pleut. Un manteau chaud. Prends ton parapluie.",
  questions:[
-  {prompt:"Quelle température est annoncée le matin ?",choices:["Huit degrés","Douze degrés","Dix-huit degrés"],correctIndex:0},
-  {prompt:"Quel temps va-t-il faire à midi ?",choices:["Il va neiger","Il va y avoir du soleil","Il va pleuvoir"],correctIndex:1},
-  {prompt:"Quels objets faut-il prendre ?",choices:["Un pull et des lunettes","Un manteau et un parapluie","Une chemise et un chapeau"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il fait froid","Il fait chaud","Il fait beau"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il y a du soleil","Il y a du vent","Il y a du brouillard"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il neige","Il fait frais","Il pleut"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un manteau chaud","Une chemise blanche","Des chaussures noires"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mets ton pull","Prends ton parapluie","Porte tes bottes"],correctIndex:1}
  ]
 };
 
@@ -3375,19 +3405,25 @@ const A1_WEATHER_CLOTHES_WRITING_MODEL="En hiver, il fait froid et il y a souven
 const A1_WEATHER_CLOTHES_DICTATION=[
  {speech:"Aujourd’hui, il fait beau et chaud.",ar:"الطقس اليوم جميل وحار."},
  {speech:"En automne, il y a souvent du vent.",ar:"تهب الرياح كثيرًا في الخريف."},
- {speech:"Je porte un manteau et des chaussures noires.",ar:"أرتدي معطفًا وأحذية سوداء."}
+ {speech:"Je porte un manteau et des chaussures noires.",ar:"أرتدي معطفًا وأحذية سوداء."},
+ {speech:"Au printemps, la température est douce.",ar:"في الربيع تكون درجة الحرارة معتدلة."},
+ {speech:"Prends ton parapluie avant de sortir.",ar:"خذ مظلتك قبل الخروج."}
 ];
 
 const A1_WEATHER_CLOTHES_BUILDERS=[
  {tokens:["beau","Il","aujourd’hui.","fait"],answer:["Il","fait","beau","aujourd’hui."],ar:"الطقس جميل اليوم."},
  {tokens:["hiver,","neige.","En","il"],answer:["En","hiver,","il","neige."],ar:"تتساقط الثلوج في الشتاء."},
- {tokens:["veste","porte","bleue.","une","Elle"],answer:["Elle","porte","une","veste","bleue."],ar:"ترتدي سترة زرقاء."}
+ {tokens:["veste","porte","bleue.","une","Elle"],answer:["Elle","porte","une","veste","bleue."],ar:"ترتدي سترة زرقاء."},
+ {tokens:["degrés.","douze","température","La","est","de"],answer:["La","température","est","de","douze","degrés."],ar:"درجة الحرارة اثنتا عشرة درجة."},
+ {tokens:["ton","pas","N’oublie","parapluie","!"],answer:["N’oublie","pas","ton","parapluie","!"],ar:"لا تنسَ مظلتك!"}
 ];
 
 const A1_WEATHER_CLOTHES_DIALOGUES=[
- {context:"On vous demande : « Quel temps fait-il ? »",prompt:"اختر الإجابة الطبيعية.",choices:["Il fait froid et il y a du vent.","Je suis le froid.","Le vent porte un manteau."],correctIndex:0,feedback:"نصف الطقس بتراكيب ثابتة مثل il fait وil y a."},
- {context:"Il pleut avant de sortir.",prompt:"اختر النصيحة المناسبة.",choices:["Prends ton parapluie.","Mets tes lunettes de soleil.","Porte un maillot de bain."],correctIndex:0,feedback:"عند المطر نأخذ المظلة: un parapluie."},
- {context:"Complétez : « Elle porte une chemise … »",prompt:"اختر اتفاق اللون الصحيح.",choices:["blanc","blanche","blancs"],correctIndex:1,feedback:"chemise مؤنث مفرد، لذلك تصبح blanc: blanche."}
+ {context:"Quel temps fait-il ?",translation:"كيف حال الطقس؟",prompt:"اختر الإجابة الطبيعية.",choices:["Il fait froid et il y a du vent.","Je suis le froid.","Le vent porte un manteau."],correctIndex:0,feedback:"نصف الطقس بتراكيب ثابتة مثل il fait وil y a."},
+ {context:"Il pleut avant de sortir.",translation:"إنها تمطر قبل الخروج.",prompt:"اختر النصيحة المناسبة.",choices:["Prends ton parapluie.","Mets tes lunettes de soleil.","Porte un maillot de bain."],correctIndex:0,feedback:"عند المطر نأخذ المظلة."},
+ {context:"De quelle couleur est sa chemise ?",translation:"ما لون قميصها؟",prompt:"اختر الإجابة الموافقة نحويًا.",choices:["Elle est blanc.","Elle est blanche.","Elle est blancs."],correctIndex:1,feedback:"chemise مؤنث مفرد، لذلك نقول blanche."},
+ {context:"Il neige et il fait très froid.",translation:"إنها تثلج والجو شديد البرودة.",prompt:"اختر الملابس المناسبة.",choices:["Un manteau et des bottes.","Un short et des sandales.","Un maillot de bain."],correctIndex:0,feedback:"المعطف والأحذية الطويلة مناسبان للثلج."},
+ {context:"Quelle est la température aujourd’hui ?",translation:"ما درجة الحرارة اليوم؟",prompt:"اختر الرد المناسب.",choices:["Nous sommes mardi.","Il fait neuf degrés.","Je porte du bleu."],correctIndex:1,feedback:"الإجابة عن الحرارة تذكر عدد الدرجات."}
 ];
 
 const A1_HOME_HOUSING_READING={
@@ -6508,8 +6544,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
  const isA1CityDirections=level.id==="A1"&&activeModule.id==="city-directions";
  const isA1NumbersTime=level.id==="A1"&&activeModule.id==="numbers-time";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime;
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes;
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
@@ -6562,7 +6598,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7229,7 +7265,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

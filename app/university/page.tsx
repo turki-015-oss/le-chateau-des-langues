@@ -6078,7 +6078,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="a1-sounds-learning-section-body a1-vowel-classification-body">
         <div className="a1-vowel-section-intro">
          <div><strong dir="ltr">Les voyelles se classent selon la prononciation, le passage de l’air, la position des lèvres et le degré d’ouverture de la bouche.</strong><p>تُصنَّف حروف العلة بحسب طريقة النطق ومخرج الهواء ووضع الشفتين ودرجة فتح الفم.</p></div>
-         <button type="button" onClick={()=>void speakFrench("Les voyelles se classent selon la prononciation, le passage de l’air, la position des lèvres et le degré d’ouverture de la bouche.",{rate:.7})}><Volume2/><span><b>استمع</b><small>Écouter</small></span></button>
         </div>
         <div className="a1-vowel-classifications">
          {A1_VOWEL_CLASSIFICATIONS.map((classification,classificationIndex)=><details key={classification.fr} className="a1-vowel-classification" open={classificationIndex===0}>

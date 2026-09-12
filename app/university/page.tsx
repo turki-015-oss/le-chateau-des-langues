@@ -5997,7 +5997,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
   <header className="university-topbar">
    <Link href={backHref} aria-label={lessonPage?`العودة إلى منهج ${level.id}`:levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
-   <div><span>جامعة القلعة</span><strong>L’Université Royale</strong></div>
+   <div><span>الجامعة</span><strong>L’Université</strong></div>
    <div className="university-seal"><GraduationCap/></div>
   </header>
 
@@ -6007,8 +6007,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    <div className="university-hero-shade"/>
    <div className="university-hero-copy">
     <span><School/> Campus académique</span>
-    <h1>L’Université Royale</h1>
-    <h2>جامعة القلعة</h2>
+    <h1>L’Université</h1>
+    <h2>الجامعة</h2>
     <p>تعلّم الفرنسية داخل قاعات الجامعة خطوة بخطوة.</p>
     <a href="#university-levels"><BookOpen/> دخول قاعات الدراسة</a>
    </div>

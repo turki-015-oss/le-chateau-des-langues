@@ -326,7 +326,13 @@ export default function KingdomConceptPage() {
                 "--bird-exit-y": `${-(13 + (index % 7) * 2.15)}vh`,
                 "--bird-tilt": `${direction * -8}deg`,
               } as React.CSSProperties}
-            ><i /></span>;
+            ><svg viewBox="0 0 64 36" focusable="false" aria-hidden="true">
+              <path className="concept-bird-tail" d="M20 20 3 13l9 10-9 9 20-7Z" />
+              <path className="concept-bird-body" d="M14 23c7-8 18-11 29-7 4-4 9-4 12 0 4 0 7 1 9 3-3 2-6 3-10 2-5 7-16 9-27 5Z" />
+              <path className="concept-bird-wing concept-bird-wing-upper" d="M27 19C23 12 23 5 28 1c8 5 14 11 16 18-5-3-10-3-17 0Z" />
+              <path className="concept-bird-wing concept-bird-wing-lower" d="M29 22c5 1 10 0 15-3-2 7-7 13-14 16-4-4-4-9-1-13Z" />
+              <circle cx="53" cy="15.5" r="1.15" className="concept-bird-eye" />
+            </svg></span>;
           })}
         </div>}
         <Link href="/castle" className="concept-castle-entry" aria-label="دخول قاعات القلعة" onClick={(event) => {

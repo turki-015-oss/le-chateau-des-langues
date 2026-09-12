@@ -424,7 +424,7 @@ const A1_MODULES:CourseModule[]=[
  },
  {
   id:"nouns",title:"Noms, articles et pluriel",ar:"الأسماء وأدوات التعريف والجمع",icon:Tags,
-  description:"تمييز المذكر والمؤنث، أدوات التعريف والنكرة، وصناعة الجمع.",
+  description:"تمييز المذكر والمؤنث، أدوات التعريف والنكرة، تكوين الجمع، واستعمال صفات الملكية.",
   sections:[
    section("Le genre et les articles","الجنس وأدوات الاسم","كل اسم فرنسي مذكر أو مؤنث. احفظ الاسم مع أداته دائمًا، لأن شكل الاسم وحده لا يكفي لمعرفة جنسه.",[
     "un للمذكر وune للمؤنث في النكرة.",
@@ -445,6 +445,17 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Les étudiants sont dans la classe.",ar:"الطلاب داخل الفصل."},
     {fr:"J’ai des livres français.",ar:"لدي كتب فرنسية."},
     {fr:"Voici deux journaux.",ar:"إليك صحيفتين."}
+   ]),
+   section("Les déterminants possessifs","صفات الملكية","تأتي صفة الملكية قبل الاسم وتتوافق مع الشيء المملوك في الجنس والعدد، لا مع جنس صاحبه. ويستعمل mon وton وson قبل الاسم المؤنث الذي يبدأ بصوت متحرك أو h صامت لتسهيل النطق.",[
+    "mon، ma، mes للمتكلم المفرد؛ ton، ta، tes للمخاطب المفرد.",
+    "son، sa، ses تعني ملكيته أو ملكيتها، ويحدد الاسم المملوك الصيغة المناسبة.",
+    "notre / nos، votre / vos، leur / leurs مع بقية الأشخاص.",
+    "نقول mon amie وton école وson adresse رغم أن الأسماء مؤنثة."
+   ],[
+    {fr:"Voici mon livre et ma trousse.",ar:"هذا كتابي وهذه مقلمتي."},
+    {fr:"Nora cherche ses clés.",ar:"تبحث نورة عن مفاتيحها."},
+    {fr:"Nous visitons notre université.",ar:"نزور جامعتنا."},
+    {fr:"Elle parle avec son amie.",ar:"تتحدث مع صديقتها."}
    ])
   ]
  },
@@ -500,7 +511,7 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Il n’y a pas de gare dans ce village.",ar:"لا توجد محطة قطار في هذه القرية."},
     {fr:"Est-ce qu’il y a un ascenseur dans l’hôtel ?",ar:"هل يوجد مصعد في الفندق؟"}
    ]),
-   section("Ce, cet, cette et ces","أدوات الإشارة","تأتي أداة الإشارة قبل الاسم وتتوافق معه في الجنس والعدد. نستخدم cet مع الاسم المذكر الذي يبدأ بحرف متحرك أو h صامت.",[
+   section("Les déterminants démonstratifs","صفات الإشارة","تأتي صفة الإشارة قبل الاسم وتتوافق معه في الجنس والعدد. نستخدم cet مع الاسم المذكر الذي يبدأ بصوت متحرك أو h صامت.",[
     "ce مع المذكر المفرد: ce livre.",
     "cet مع المذكر قبل صوت متحرك: cet hôtel.",
     "cette مع المؤنث المفرد: cette maison.",
@@ -554,17 +565,28 @@ const A1_MODULES:CourseModule[]=[
  },
  {
  id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:Activity,
-  description:"تصريف أفعال الحاضر المنتظمة والشائعة، ثم بناء الجملة المثبتة والمنفية والسؤال البسيط.",
+  description:"فهم المضارع الفرنسي، تصريف أفعال المجموعة الأولى والأفعال الشائعة، ثم بناء الجملة المثبتة والمنفية.",
   sections:[
-   section("Verbes réguliers","الأفعال المنتظمة","لأفعال -er نحذف er ونضيف النهايات المناسبة. أفعال -ir و-re لها أنماط أخرى، ويجب تعلّم المجموعة مع أمثلة.",[
-    "parler: parle, parles, parle, parlons, parlez, parlent.",
-    "finir: finis, finis, finit, finissons, finissez, finissent.",
-    "attendre: attends, attends, attend, attendons, attendez, attendent.",
-    "النهايات المكتوبة لا تُنطق كلها؛ استمع إلى الجملة كاملة."
+   section("Introduction au présent","مقدمة المضارع","نستخدم المضارع الفرنسي للحديث عما يحدث الآن، وما يتكرر، والحقائق والحالات المستمرة. يتغير شكل الفعل بحسب ضمير الفاعل، لذلك نتعلم الفعل مع تصريفه داخل جملة كاملة.",[
+    "الترتيب الأساسي هو: ضمير الفاعل + فعل مصرّف + مكمّل.",
+    "قد يعبّر المضارع عن فعل يقع الآن أو عادة تتكرر كل يوم.",
+    "يجب إظهار ضمير الفاعل في الجملة الفرنسية.",
+    "بعض النهايات تكتب ولا تنطق؛ لذلك نربط التصريف بالنطق منذ البداية."
    ],[
-    {fr:"Je travaille à l’université.",ar:"أعمل في الجامعة."},
-    {fr:"Nous finissons le cours.",ar:"ننهي الدرس."},
-    {fr:"Ils attendent le professeur.",ar:"هم ينتظرون المعلم."}
+    {fr:"Je travaille aujourd’hui.",ar:"أنا أعمل اليوم."},
+    {fr:"Nous parlons français en classe.",ar:"نتحدث الفرنسية في الفصل."},
+    {fr:"Elle habite à Lyon.",ar:"هي تسكن في ليون."}
+   ]),
+   section("Les verbes du premier groupe","أفعال المجموعة الأولى","تنتهي أفعال المجموعة الأولى في المصدر بـ -er، باستثناء aller. نحذف -er لنحصل على الجذر، ثم نضيف النهاية المناسبة لكل ضمير.",[
+    "النهايات هي: -e، -es، -e، -ons، -ez، -ent.",
+    "parler: je parle، tu parles، il parle، nous parlons، vous parlez، ils parlent.",
+    "النهايات -e و-es و-ent لا تُنطق غالبًا، فتتشابه صيغ كثيرة في السماع.",
+    "في manger نكتب nous mangeons، وفي commencer نكتب nous commençons للمحافظة على النطق."
+   ],[
+    {fr:"J’aime apprendre le français.",ar:"أحب تعلم الفرنسية."},
+    {fr:"Tu écoutes le professeur.",ar:"أنت تستمع إلى المعلم."},
+    {fr:"Nous mangeons à midi.",ar:"نتناول الطعام عند الظهر."},
+    {fr:"Vous commencez le cours.",ar:"تبدؤون الدرس."}
    ]),
    section("Verbes fréquents","أفعال شائعة","بعض الأفعال كثيرة الاستخدام لا تتبع نهايات الأفعال المنتظمة؛ نتعلم تصريفها داخل جمل قصيرة.",[
     "aller: vais, vas, va, allons, allez, vont.",
@@ -577,15 +599,15 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Elle prend le métro chaque matin.",ar:"تستقل المترو كل صباح."},
     {fr:"Mes amis viennent ce soir.",ar:"سيأتي أصدقائي هذا المساء."}
    ]),
-   section("Négation et questions","النفي والسؤال","نضع ne قبل الفعل وpas بعده. وفي الكلام قد تسقط ne، لكن الأفضل كتابتها في المستوى الأول.",[
+   section("La négation au présent","النفي في المضارع","نضع ne قبل الفعل المصرف وpas بعده. تتحول ne إلى n’ قبل صوت متحرك، وتبقى صيغة الفعل متوافقة مع الفاعل.",[
     "Je parle → Je ne parle pas.",
     "قبل الحركة تصبح ne إلى n’: Je n’habite pas ici.",
-    "السؤال البسيط بالنبرة: Vous parlez français ?",
-    "الصيغة الواضحة: Est-ce que vous parlez français ?"
+    "مع الفعل الضميري يأتي الضمير داخل النفي: Je ne me lève pas tôt.",
+    "في الكتابة التعليمية نحتفظ بـ ne حتى لو حُذفت أحيانًا في الكلام اليومي."
    ],[
     {fr:"Je ne comprends pas.",ar:"أنا لا أفهم."},
-    {fr:"Est-ce que tu étudies aujourd’hui ?",ar:"هل تدرس اليوم؟"},
-    {fr:"Où habitez-vous ?",ar:"أين تسكنون؟"}
+    {fr:"Elle n’habite pas ici.",ar:"هي لا تسكن هنا."},
+    {fr:"Nous ne travaillons pas le vendredi.",ar:"نحن لا نعمل يوم الجمعة."}
    ])
   ]
  },
@@ -853,11 +875,11 @@ const A1_MODULES:CourseModule[]=[
   id:"description",title:"Famille, états et émotions",ar:"العائلة والحالة والمشاعر",icon:UsersRound,
   description:"مفردات العائلة، الحالات الجسدية اليومية، والمشاعر في أقسام مستقلة.",
   sections:[
-   section("La famille et la possession","العائلة والملكية","تعلّم أسماء أفراد العائلة أولًا، ثم استخدم صفات الملكية معها. تتفق صفة الملكية مع الشيء المملوك لا مع صاحب الشيء؛ لذلك نقول mon père وma mère.",[
-    "mon, ma, mes: لي.",
-    "ton, ta, tes: لك.",
-    "son, sa, ses: له أو لها.",
-    "notre, votre, leur للمفرد وnos, vos, leurs للجمع."
+   section("La famille en contexte","العائلة في سياق","طبّق صفات الملكية التي تعلمتها سابقًا لتقديم أفراد العائلة وذكر صلة القرابة ومكان السكن. الهدف هنا استعمال المفردات داخل جمل قصيرة، لا إعادة شرح قاعدة الملكية.",[
+    "قدّم شخصًا بعبارة Voici mon père / ma mère.",
+    "اذكر صلة القرابة بوضوح: C’est la sœur de Sami.",
+    "استعمل être للوصف وhabiter لمكان السكن.",
+    "اربط فردين أو أكثر باستعمال et."
    ],[
     {fr:"Voici ma sœur et mon frère.",ar:"هذه أختي وهذا أخي."},
     {fr:"Nos parents habitent à Djeddah.",ar:"والدانا يسكنان في جدة."},
@@ -1072,6 +1094,18 @@ const A1_MODULES:CourseModule[]=[
   ]
  }
 ];
+
+// This order is shared by the journey cards and previous/next lesson navigation.
+// New A1 modules will be inserted into their reserved pedagogical positions in later batches.
+const A1_MODULE_ORDER=[
+ "alphabet","sounds","greetings","nouns","core-verbs",
+ "present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
+ "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
+ "health-needs","situations","messages-forms"
+] as const;
+const A1_ORDERED_MODULES=A1_MODULE_ORDER
+ .map(moduleId=>A1_MODULES.find(module=>module.id===moduleId))
+ .filter((module):module is CourseModule=>Boolean(module));
 
 const A1_ALPHABET_PRACTICE_ITEMS:Example[]=[
  {fr:"Comment s’écrit ce mot ?",ar:"كيف تُكتب هذه الكلمة؟"},
@@ -4242,16 +4276,16 @@ const B1_MODULES:CourseModule[]=[
 ];
 
 const LEVELS:Level[]=[
- {id:"A1",label:"Débutant",ar:"المستوى المبتدئ",description:"من الأبجدية والنطق إلى التواصل في المواقف اليومية الأساسية.",modules:A1_MODULES},
+ {id:"A1",label:"Débutant",ar:"المستوى المبتدئ",description:"من الأبجدية والنطق إلى التواصل في المواقف اليومية الأساسية.",modules:A1_ORDERED_MODULES},
  {id:"A2",label:"Élémentaire",ar:"المستوى الأساسي المتقدم",description:"بناء سرد أوضح، استخدام الأزمنة، والتعامل باستقلالية أكبر.",modules:A2_MODULES},
  {id:"B1",label:"Intermédiaire",ar:"المستوى المتوسط",description:"السرد المتماسك، التعبير عن الرأي، والتصرف باستقلالية في المواقف المتنوعة.",modules:B1_MODULES}
 ];
 
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
-  {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية الأولى.",moduleIds:["alphabet","sounds","greetings"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"الأسماء والضمائر والتقديم والأسئلة وأفعال الحاضر والقدرة والرغبة والمستقبل القريب وصيغة الأمر.",moduleIds:["nouns","core-verbs","structures","questions","present","modal-verbs","future-imperative"]},
-  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"الطعام والمدينة والسكن والصحة والزمن والطقس والعائلة والحياة والرسائل والمعلومات اليومية.",moduleIds:["food-shopping","city-directions","numbers-time","weather-clothes","home-housing","description","health-needs","adjectives","daily-life","situations","messages-forms"]}
+  {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم الأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","nouns","core-verbs"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
+  {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
    {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},

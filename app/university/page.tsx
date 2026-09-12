@@ -103,6 +103,13 @@ const A1_DEMONSTRATIVES_LISTENING_CLIPS=[
  {letter:"ces",word:"clés",ar:"هذه المفاتيح",hiddenSpeech:"ces clés"},
  {letter:"cet",word:"arbre",ar:"هذه الشجرة",hiddenSpeech:"cet arbre"}
 ];
+const A1_POSSESSIVES_LISTENING_CLIPS=[
+ {letter:"mon",word:"cahier",ar:"دفتري",hiddenSpeech:"mon cahier"},
+ {letter:"ta",word:"montre",ar:"ساعتك",hiddenSpeech:"ta montre"},
+ {letter:"son",word:"adresse",ar:"عنوانه أو عنوانها",hiddenSpeech:"son adresse"},
+ {letter:"nos",word:"voisins",ar:"جيراننا",hiddenSpeech:"nos voisins"},
+ {letter:"leurs",word:"vélos",ar:"دراجاتهم",hiddenSpeech:"leurs vélos"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -803,6 +810,52 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"possessives",title:"Les déterminants possessifs",ar:"صفات الملكية",icon:Users,
+  description:"اختيار صفة الملكية وفق صاحب الشيء، ثم مطابقتها مع جنس الشيء المملوك وعدده داخل جملة صحيحة.",
+  sections:[
+   section("Mon, ma et mes","ملكية المتكلم المفرد","نستعمل mon وma وmes عندما يكون المالك هو المتكلم. نختار الصيغة بحسب جنس الشيء المملوك وعدده، لا بحسب جنس المتكلم.",[
+    "mon قبل اسم مذكر مفرد: mon sac.",
+    "ma قبل اسم مؤنث مفرد: ma clé.",
+    "mes قبل كل اسم جمع: mes amis.",
+    "نستعمل mon قبل مؤنث يبدأ بصوت متحرك: mon amie."
+   ],[
+    {fr:"Mon sac est sous la table.",ar:"حقيبتي تحت الطاولة.",image:"/police-v39/vocab-bag.webp"},
+    {fr:"Ma clé ouvre cette porte.",ar:"مفتاحي يفتح هذا الباب.",image:"/police-v39/vocab-keys.webp"},
+    {fr:"Mes amis préparent un jeu.",ar:"أصدقائي يحضرون لعبة.",image:"/cafe-v31/customer-game.png"}
+   ]),
+   section("Ton, ta et tes","ملكية المخاطب المفرد","نستعمل ton وta وtes مع شخص واحد نخاطبه بصيغة tu. ويتبع الاختيار جنس الشيء الذي يملكه وعدده.",[
+    "ton قبل اسم مذكر مفرد: ton passeport.",
+    "ta قبل اسم مؤنث مفرد: ta chambre.",
+    "tes قبل الجمع: tes billets.",
+    "نقول ton école وton histoire لتسهيل النطق."
+   ],[
+    {fr:"Ton passeport est dans la poche.",ar:"جواز سفرك في الجيب.",image:"/police-v39/vocab-passport.webp"},
+    {fr:"Ta chambre donne sur le jardin.",ar:"غرفتك تطل على الحديقة.",image:"/hotel-v1/room.webp"},
+    {fr:"Tes billets sont prêts.",ar:"تذاكرك جاهزة.",image:"/station-assets/ticket.webp"}
+   ]),
+   section("Son, sa et ses","ملكية الغائب المفرد","نستعمل son وsa وses عندما يكون المالك il أو elle. الصيغة تدل على جنس المملوك وعدده، ولذلك قد تعني ملكه أو ملكها.",[
+    "son قبل اسم مذكر مفرد: son téléphone.",
+    "sa قبل اسم مؤنث مفرد: sa voiture.",
+    "ses قبل جمع المذكر والمؤنث: ses livres.",
+    "نقول son adresse لأن adresse مؤنث يبدأ بصوت متحرك."
+   ],[
+    {fr:"Son téléphone sonne dans le bureau.",ar:"هاتفه أو هاتفها يرن في المكتب.",image:"/police-v39/vocab-phone.webp"},
+    {fr:"Sa voiture est devant la banque.",ar:"سيارته أو سيارتها أمام البنك.",image:"/airport/assets/car.svg"},
+    {fr:"Ses livres sont bien rangés.",ar:"كتبه أو كتبها مرتبة جيدًا.",image:"/library/library-interior-v1.webp"}
+   ]),
+   section("Notre, votre et leur","ملكية أصحاب متعددين","مع nous وvous وils أو elles نختار بين صيغة للمملوك المفرد وصيغة للمملوك الجمع، ولا نفرق بين المذكر والمؤنث في الصيغة نفسها.",[
+    "notre / nos: ملكنا، votre / vos: ملككم.",
+    "leur قبل مملوك مفرد: leur maison.",
+    "leurs قبل مملوك جمع: leurs enfants.",
+    "نقول notre école وnos classes؛ العدد هو الذي يغير الصيغة."
+   ],[
+    {fr:"Notre université accueille de nouveaux étudiants.",ar:"جامعتنا تستقبل طلابًا جددًا.",image:"/worlds/university-entrance-v2.png"},
+    {fr:"Vos valises arrivent sur le tapis.",ar:"حقائبكم تصل على السير.",image:"/airport/assets/baggage-claim.svg"},
+    {fr:"Leurs enfants visitent le zoo.",ar:"أطفالهم يزورون حديقة الحيوان.",image:"/university/vocabulary/family-sprite-frameless.png"}
+   ])
+  ]
+ },
+ {
   id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
@@ -1290,7 +1343,7 @@ const A1_MODULES:CourseModule[]=[
 // New A1 modules will be inserted into their reserved pedagogical positions in later batches.
 const A1_MODULE_ORDER=[
  "alphabet","sounds","greetings","countries-languages","nouns","core-verbs",
- "present","studies-professions","tastes-preferences","demonstratives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
+ "present","studies-professions","tastes-preferences","demonstratives","possessives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
  "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
  "health-needs","situations","messages-forms"
 ] as const;
@@ -1541,6 +1594,42 @@ const A1_DEMONSTRATIVES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Cette boulangerie est nouvelle.",speech:"Cette boulangerie est nouvelle.",instruction:"اختر المعنى العربي الصحيح.",choices:["هذا السوق قديم.","هذا المطعم كبير.","هذا المخبز جديد."],correctIndex:2,explanation:"boulangerie مؤنث، وcette boulangerie تعني هذا المخبز."},
  {prompt:"Ces touristes cherchent leur hôtel.",speech:"Ces touristes cherchent leur hôtel.",instruction:"اختر المعنى العربي الصحيح.",choices:["هؤلاء السياح يبحثون عن فندقهم.","هذا السائح يعمل في الفندق.","هؤلاء الطلاب ينتظرون الحافلة."],correctIndex:0,explanation:"ces touristes تعني هؤلاء السياح."},
  {prompt:"___ héros protège la ville.",speech:"Complétez la phrase. Ce héros protège la ville.",instruction:"اختر الصيغة الصحيحة مع h المنطوق.",translation:"هذا البطل يحمي المدينة.",choices:["Cet","Ce","Cette"],correctIndex:1,explanation:"في héros يكون h منطوقًا أو مانعًا للوصل؛ لذلك نقول ce héros."}
+];
+
+const A1_POSSESSIVES_PRACTICE_ITEMS:Example[]=[
+ {fr:"Mon frère travaille à Marseille.",ar:"أخي يعمل في مرسيليا."},
+ {fr:"Ma sœur étudie la médecine.",ar:"أختي تدرس الطب."},
+ {fr:"Mes lunettes sont dans la voiture.",ar:"نظارتي في السيارة."},
+ {fr:"Ton rendez-vous commence à neuf heures.",ar:"موعدك يبدأ الساعة التاسعة."},
+ {fr:"Ta veste bleue est très élégante.",ar:"سترتك الزرقاء أنيقة جدًا."},
+ {fr:"Tes parents habitent près d’ici.",ar:"والداك يسكنان بالقرب من هنا."},
+ {fr:"Son travail finit à dix-sept heures.",ar:"عمله أو عملها ينتهي الساعة الخامسة."},
+ {fr:"Sa famille parle trois langues.",ar:"عائلته أو عائلتها تتحدث ثلاث لغات."},
+ {fr:"Nos cours ont lieu le mardi.",ar:"دروسنا تقام يوم الثلاثاء."},
+ {fr:"Leurs chambres se trouvent au deuxième étage.",ar:"غرفهم تقع في الطابق الثاني."}
+];
+
+const A1_POSSESSIVES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"C’est ___ stylo.",speech:"Complétez la phrase. C’est mon stylo.",instruction:"اختر صفة الملكية المناسبة للمتكلم.",translation:"هذا قلمي.",choices:["mon","ma","mes"],correctIndex:0,explanation:"stylo مذكر مفرد؛ لذلك نقول mon stylo."},
+ {prompt:"Voici ___ carte d’identité.",speech:"Complétez la phrase. Voici ma carte d’identité.",instruction:"اختر الصيغة الموافقة للاسم المؤنث.",translation:"هذه بطاقة هويتي.",choices:["mes","ma","mon"],correctIndex:1,explanation:"carte مؤنث مفرد؛ لذلك نقول ma carte."},
+ {prompt:"Je cherche ___ chaussures.",speech:"Complétez la phrase. Je cherche mes chaussures.",instruction:"اختر صيغة الجمع.",translation:"أبحث عن حذائي.",choices:["ma","mon","mes"],correctIndex:2,explanation:"chaussures جمع؛ لذلك نستعمل mes."},
+ {prompt:"Comment s’appelle ___ professeur ?",speech:"Comment s’appelle ton professeur ?",instruction:"اختر الصيغة المناسبة مع tu واسم مذكر.",translation:"ما اسم معلمك؟",choices:["ton","ta","tes"],correctIndex:0,explanation:"professeur مذكر مفرد؛ لذلك نقول ton professeur."},
+ {prompt:"Où est ___ trousse ?",speech:"Où est ta trousse ?",instruction:"اختر الصيغة المناسبة مع اسم مؤنث.",translation:"أين مقلمتك؟",choices:["ton","ta","tes"],correctIndex:1,explanation:"trousse مؤنث مفرد؛ لذلك نقول ta trousse."},
+ {prompt:"Tu invites ___ collègues ?",speech:"Tu invites tes collègues ?",instruction:"اختر صفة الملكية المناسبة للجمع.",translation:"هل تدعو زملاءك؟",choices:["ta","ton","tes"],correctIndex:2,explanation:"collègues جمع؛ لذلك نستعمل tes."},
+ {prompt:"Paul prend ___ manteau.",speech:"Paul prend son manteau.",instruction:"اختر الصيغة المناسبة للمملوك المذكر.",translation:"يأخذ بول معطفه.",choices:["son","sa","ses"],correctIndex:0,explanation:"manteau مذكر مفرد؛ لذلك نقول son manteau."},
+ {prompt:"Lina ferme ___ fenêtre.",speech:"Lina ferme sa fenêtre.",instruction:"اختر الصيغة الموافقة للاسم المؤنث.",translation:"تغلق لينا نافذتها.",choices:["ses","sa","son"],correctIndex:1,explanation:"fenêtre مؤنث مفرد؛ لذلك نقول sa fenêtre."},
+ {prompt:"Le médecin reçoit ___ patients.",speech:"Le médecin reçoit ses patients.",instruction:"اختر صيغة الجمع.",translation:"يستقبل الطبيب مرضاه.",choices:["sa","son","ses"],correctIndex:2,explanation:"patients جمع؛ لذلك نستعمل ses."},
+ {prompt:"Nous préparons ___ repas.",speech:"Nous préparons notre repas.",instruction:"اختر الصيغة المناسبة مع nous ومملوك مفرد.",translation:"نحضّر وجبتنا.",choices:["notre","nos","leur"],correctIndex:0,explanation:"repas هنا مفرد؛ لذلك نقول notre repas."},
+ {prompt:"Nous rangeons ___ affaires.",speech:"Nous rangeons nos affaires.",instruction:"اختر الصيغة المناسبة مع nous والجمع.",translation:"نرتب أغراضنا.",choices:["notre","nos","vos"],correctIndex:1,explanation:"affaires جمع؛ لذلك نستعمل nos."},
+ {prompt:"Vous confirmez ___ réservation.",speech:"Vous confirmez votre réservation.",instruction:"اختر الصيغة المناسبة مع vous ومملوك مفرد.",translation:"تؤكدون حجزكم.",choices:["vos","leur","votre"],correctIndex:2,explanation:"réservation مفرد؛ لذلك نقول votre réservation."},
+ {prompt:"Vous ouvrez ___ cahiers.",speech:"Vous ouvrez vos cahiers.",instruction:"اختر الصيغة المناسبة مع vous والجمع.",translation:"تفتحون دفاتركم.",choices:["vos","votre","nos"],correctIndex:0,explanation:"cahiers جمع؛ لذلك نستعمل vos."},
+ {prompt:"Ils vendent ___ maison.",speech:"Ils vendent leur maison.",instruction:"اختر الصيغة المناسبة لملكية جماعة ومملوك واحد.",translation:"يبيعون منزلهم.",choices:["leurs","leur","ses"],correctIndex:1,explanation:"المالكون جمع لكن maison مملوك مفرد؛ لذلك نقول leur maison."},
+ {prompt:"Elles présentent ___ projets.",speech:"Elles présentent leurs projets.",instruction:"اختر الصيغة المناسبة لملكية جماعة ومملوك جمع.",translation:"يعرضن مشروعاتهن.",choices:["leur","nos","leurs"],correctIndex:2,explanation:"projets جمع؛ لذلك نستعمل leurs."},
+ {prompt:"Nora téléphone à ___ amie.",speech:"Nora téléphone à son amie.",instruction:"اختر الصيغة الصحيحة قبل مؤنث يبدأ بصوت متحرك.",translation:"تتصل نورا بصديقتها.",choices:["son","sa","ses"],correctIndex:0,explanation:"نستعمل son قبل amie لتجنب التقاء صوتين متحركين."},
+ {prompt:"Tu arrives à ___ école.",speech:"Tu arrives à ton école.",instruction:"اختر الصيغة الصحيحة قبل مؤنث يبدأ بصوت متحرك.",translation:"تصل إلى مدرستك.",choices:["ta","ton","tes"],correctIndex:1,explanation:"نقول ton école رغم أن école مؤنث لأنها تبدأ بصوت متحرك."},
+ {prompt:"Mon adresse est correcte.",speech:"Mon adresse est correcte.",instruction:"اختر المعنى العربي الصحيح.",choices:["عنوانك صحيح.","عنوانهم جديد.","عنواني صحيح."],correctIndex:2,explanation:"mon adresse تعني عنواني."},
+ {prompt:"Votre table est réservée.",speech:"Votre table est réservée.",instruction:"اختر المعنى العربي الصحيح.",choices:["طاولتكم محجوزة.","طاولتنا كبيرة.","طاولتهم فارغة."],correctIndex:0,explanation:"votre table تعني طاولتكم أو طاولتك بصيغة الاحترام."},
+ {prompt:"Leur fille apprend le français.",speech:"Leur fille apprend le français.",instruction:"اختر المعنى العربي الصحيح.",choices:["ابنتنا تعلّم الفرنسية.","ابنتهم تتعلم الفرنسية.","بناتهم يتحدثن الفرنسية."],correctIndex:1,explanation:"leur fille تعني ابنتهم، والمملوك مفرد."}
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
@@ -2395,6 +2484,61 @@ const A1_DEMONSTRATIVES_DIALOGUES=[
  {context:"Vous indiquez un endroit précis.",translation:"أنتم تشيرون إلى مكان محدد.",prompt:"اختر الجملة الطبيعية.",choices:["Cette endroit est tranquille.","Cet endroit est tranquille.","Ce endroit est tranquille."],correctIndex:1,feedback:"endroit مذكر يبدأ بصوت متحرك؛ لذلك نستعمل cet."}
 ];
 
+const A1_POSSESSIVES_READING={
+ title:"Une famille bien organisée",
+ arTitle:"عائلة منظمة",
+ text:"Amine prépare son voyage avec sa famille. Sa mère vérifie les réservations et son père range les passeports. Amine ferme sa valise. Sa sœur cherche ses écouteurs. Leurs billets sont déjà sur la table et leur taxi arrive à sept heures.",
+ translation:"يستعد أمين للسفر مع عائلته. تتحقق والدته من الحجوزات، ويرتب والده جوازات السفر. يغلق أمين حقيبته، وتبحث أخته عن سماعاتها. تذاكرهم موجودة على الطاولة، وسيارة الأجرة الخاصة بهم تصل الساعة السابعة.",
+ questions:[
+  {question:"Qui vérifie les réservations ?",translation:"من يتحقق من الحجوزات؟",answer:"Sa mère vérifie les réservations.",ar:"والدته تتحقق من الحجوزات."},
+  {question:"Que cherche la sœur d’Amine ?",translation:"عمّ تبحث أخت أمين؟",answer:"Elle cherche ses écouteurs.",ar:"تبحث عن سماعاتها."},
+  {question:"À quelle heure arrive leur taxi ?",translation:"في أي ساعة تصل سيارة الأجرة الخاصة بهم؟",answer:"Leur taxi arrive à sept heures.",ar:"تصل سيارة الأجرة الخاصة بهم الساعة السابعة."}
+ ]
+};
+
+const A1_POSSESSIVES_LISTENING={
+ title:"À qui est-ce ?",
+ arTitle:"لمن هذا؟",
+ text:"Mon cahier. Ta montre. Son adresse. Nos voisins. Leurs vélos.",
+ questions:[
+  {prompt:"Quel groupe entendez-vous ?",choices:["Mon cahier","Ma cahier","Mes cahier"],correctIndex:0},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Ton montre","Ta montre","Tes montre"],correctIndex:1},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Sa adresse","Ses adresse","Son adresse"],correctIndex:2},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Nos voisins","Notre voisins","Leur voisins"],correctIndex:0},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Leur vélos","Leurs vélos","Ses vélo"],correctIndex:1}
+ ]
+};
+
+const A1_POSSESSIVES_WRITING_MODEL="Mon appartement est petit. Ma cuisine est lumineuse et mes fenêtres donnent sur le parc. Notre quartier est calme et nos voisins sont gentils.";
+const A1_POSSESSIVES_WRITING_TRANSLATIONS=[
+ {fr:"mon appartement",ar:"شقتي"},{fr:"ma cuisine",ar:"مطبخي"},{fr:"mes fenêtres",ar:"نوافذي"},{fr:"notre quartier",ar:"حينا"},
+ {fr:"nos voisins",ar:"جيراننا"},{fr:"votre maison",ar:"منزلكم"},{fr:"leur balcon",ar:"شرفتهم"},{fr:"leurs plantes",ar:"نباتاتهم"}
+];
+
+const A1_POSSESSIVES_DICTATION=[
+ {speech:"cahier",ar:"دفتر"},
+ {speech:"montre",ar:"ساعة"},
+ {speech:"adresse",ar:"عنوان"},
+ {speech:"voisins",ar:"جيران"},
+ {speech:"vélos",ar:"دراجات"}
+];
+
+const A1_POSSESSIVES_BUILDERS=[
+ {tokens:["rouge.","Mon","parapluie","est"],answer:["Mon","parapluie","est","rouge."],ar:"مظلتي حمراء."},
+ {tokens:["Ta","près","est","chaise","fenêtre.","de","la"],answer:["Ta","chaise","est","près","de","la","fenêtre."],ar:"كرسيك قريب من النافذة."},
+ {tokens:["Ses","au","arrivent","amis","restaurant."],answer:["Ses","amis","arrivent","au","restaurant."],ar:"أصدقاؤه أو أصدقاؤها يصلون إلى المطعم."},
+ {tokens:["demain.","commence","Notre","formation"],answer:["Notre","formation","commence","demain."],ar:"دورتنا تبدأ غدًا."},
+ {tokens:["dans","jouets","sont","Leurs","salon.","le"],answer:["Leurs","jouets","sont","dans","le","salon."],ar:"ألعابهم في غرفة الجلوس."}
+];
+
+const A1_POSSESSIVES_DIALOGUES=[
+ {context:"À qui est ce vélo ?",translation:"لمن هذه الدراجة؟",prompt:"اختر الإجابة المناسبة.",choices:["C’est mon vélo.","Ce sont ma vélo.","C’est mes vélo."],correctIndex:0,feedback:"vélo مذكر مفرد؛ لذلك نستعمل mon."},
+ {context:"Où habite ta grand-mère ?",translation:"أين تسكن جدتك؟",prompt:"اختر الإجابة المناسبة.",choices:["Mon grand-mère habite ici.","Ma grand-mère habite à Nice.","Mes grand-mère habite loin."],correctIndex:1,feedback:"grand-mère مؤنث مفرد؛ لذلك نستعمل ma."},
+ {context:"Vous cherchez les enfants de Paul.",translation:"أنتم تبحثون عن أطفال بول.",prompt:"اختر الجملة الصحيحة.",choices:["Je cherche son enfants.","Je cherche sa enfants.","Je cherche ses enfants."],correctIndex:2,feedback:"enfants جمع؛ لذلك نستعمل ses."},
+ {context:"Vous parlez de la salle de votre groupe.",translation:"أنتم تتحدثون عن قاعة مجموعتكم.",prompt:"اختر العبارة الصحيحة.",choices:["Notre salle est au premier étage.","Nos salle est au premier étage.","Leur salle sommes ici."],correctIndex:0,feedback:"salle مملوك مفرد مع nous؛ لذلك نستعمل notre."},
+ {context:"Les élèves ouvrent plusieurs livres.",translation:"الطلاب يفتحون عدة كتب.",prompt:"اختر الجملة التي تعبر عن ملكيتهم.",choices:["Les élèves ouvrent leur livres.","Les élèves ouvrent leurs livres.","Les élèves ouvrent ses livre."],correctIndex:1,feedback:"المالكون جمع والكتب مملوك جمع؛ لذلك نستعمل leurs."}
+];
+
 const A1_NOUNS_READING={
  title:"Dans la salle de classe",
  arTitle:"داخل قاعة الدراسة",
@@ -3204,6 +3348,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_DEMONSTRATIVES_READING,listening:A1_DEMONSTRATIVES_LISTENING,dictation:A1_DEMONSTRATIVES_DICTATION,builders:A1_DEMONSTRATIVES_BUILDERS,dialogues:A1_DEMONSTRATIVES_DIALOGUES,
   writingModel:A1_DEMONSTRATIVES_WRITING_MODEL,writingTitle:"اكتب وصفًا لمكان قريب",writingInstructions:"اكتب من 20 إلى 35 كلمة تصف مكانًا قريبًا منك، واستعمل ce وcet وcette وces مرة واحدة على الأقل.",writingPlaceholder:"Ce parc… Cet immeuble…",writingMinimum:20,writingMaximum:35,
   speakingPrompt:"Ce parc est calme. Cet immeuble est moderne. Cette place est grande et ces boutiques sont ouvertes.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["طابق صفة الإشارة مع جنس الاسم وعدده.","انتبه إلى cet قبل الصوت المتحرك.","انطق الاسم مع صفة الإشارة كوحدة واحدة."],dictationUnit:"word"
+ },
+ possessives:{
+  reading:A1_POSSESSIVES_READING,listening:A1_POSSESSIVES_LISTENING,dictation:A1_POSSESSIVES_DICTATION,builders:A1_POSSESSIVES_BUILDERS,dialogues:A1_POSSESSIVES_DIALOGUES,
+  writingModel:A1_POSSESSIVES_WRITING_MODEL,writingTitle:"اكتب عن منزلك ومن حولك",writingInstructions:"اكتب من 25 إلى 40 كلمة عن منزلك أو أسرتك، واستعمل أربع صفات ملكية مختلفة على الأقل.",writingPlaceholder:"Mon appartement… Ma famille…",writingMinimum:25,writingMaximum:40,
+  speakingPrompt:"Mon appartement est petit. Ma cuisine est lumineuse. Notre quartier est calme et nos voisins sont gentils.",speakingDuration:"تحدث لمدة 25 إلى 35 ثانية",speakingTips:["اختر الصيغة بحسب المملوك.","ميّز بين المملوك المفرد والجمع.","انطق صفة الملكية مع الاسم كوحدة واحدة."],dictationUnit:"word"
  },
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
@@ -4859,7 +5008,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم البلد واللغة والأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","countries-languages","nouns","core-verbs"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والأذواق وصفات الإشارة والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","tastes-preferences","demonstratives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والأذواق وصفات الإشارة والملكية والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","tastes-preferences","demonstratives","possessives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
@@ -5970,7 +6119,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Studies=level.id==="A1"&&activeModule.id==="studies-professions";
  const isA1Tastes=level.id==="A1"&&activeModule.id==="tastes-preferences";
  const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives;
+ const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -6034,7 +6184,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6091,6 +6241,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"استعمال cet قبل صوت متحرك أو h صامت",passed:/\bcet\s+[aeiouyhàâäéèêëîïôöùûüœ][a-zà-ÿ-]*\b/i.test(revisionWritingText)},
   {label:"استعمال cette مع اسم مؤنث",passed:/\bcette\s+[a-zà-ÿ]+\b/i.test(revisionWritingText)},
   {label:"استعمال ces مع اسم جمع",passed:/\bces\s+[a-zà-ÿ]+s\b/i.test(revisionWritingText)}
+ ]:isA1Possessives?[
+  {label:"من 25 إلى 40 كلمة",passed:revisionWordCount>=25&&revisionWordCount<=40},
+  {label:"أربع صفات ملكية مختلفة",passed:new Set(revisionWritingTokens.filter(word=>["mon","ma","mes","ton","ta","tes","son","sa","ses","notre","nos","votre","vos","leur","leurs"].includes(word))).size>=4},
+  {label:"ملكية مفردة",passed:revisionWritingTokens.some(word=>["mon","ma","ton","ta","son","sa","notre","votre","leur"].includes(word))},
+  {label:"ملكية جمع",passed:revisionWritingTokens.some(word=>["mes","tes","ses","nos","vos","leurs"].includes(word))}
  ]:isA1Nouns?[
   {label:"من 18 إلى 30 كلمة",passed:revisionWordCount>=18&&revisionWordCount<=30},
  {label:"استخدام un وune وdes",passed:/\bun\b/i.test(revisionWritingText)&&/\bune\b/i.test(revisionWritingText)&&/\bdes\b/i.test(revisionWritingText)},
@@ -6314,6 +6469,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="demonstratives")return A1_DEMONSTRATIVES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="possessives")return A1_POSSESSIVES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -6354,6 +6510,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="demonstratives")return A1_DEMONSTRATIVES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="possessives")return A1_POSSESSIVES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
@@ -6694,7 +6851,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){
@@ -6848,7 +7005,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>

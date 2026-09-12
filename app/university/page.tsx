@@ -131,6 +131,13 @@ const A1_CORE_VERBS_LISTENING_CLIPS=[
  {letter:"nous sommes",word:"voisins",ar:"نحن جيران",hiddenSpeech:"Nous sommes voisins"},
  {letter:"ils ont",word:"soif",ar:"هم عطشى",hiddenSpeech:"Ils ont soif"}
 ];
+const A1_STRUCTURES_LISTENING_CLIPS=[
+ {letter:"c’est",word:"mon voisin",ar:"هذا جاري",hiddenSpeech:"C’est mon voisin"},
+ {letter:"ce sont",word:"mes clés",ar:"هذه مفاتيحي",hiddenSpeech:"Ce sont mes clés"},
+ {letter:"il y a",word:"un parc",ar:"توجد حديقة",hiddenSpeech:"Il y a un parc"},
+ {letter:"ce",word:"bâtiment",ar:"هذا المبنى",hiddenSpeech:"Ce bâtiment"},
+ {letter:"cette",word:"rue",ar:"هذا الشارع",hiddenSpeech:"Cette rue"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -579,10 +586,10 @@ const A1_MODULES:CourseModule[]=[
     "Ce n’est pas + اسم مفرد: Ce n’est pas mon sac.",
     "Ce ne sont pas + اسم جمع: Ce ne sont pas mes clés."
    ],[
-    {fr:"C’est mon professeur de français.",ar:"هذا معلّم اللغة الفرنسية لديّ."},
-    {fr:"Ce sont mes nouveaux voisins.",ar:"هؤلاء جيراني الجدد."},
-    {fr:"Ce n’est pas notre salle.",ar:"هذه ليست قاعتنا."},
-    {fr:"Ce ne sont pas mes lunettes.",ar:"هذه ليست نظارتي."}
+    {fr:"C’est mon professeur de français.",ar:"هذا معلّم اللغة الفرنسية لديّ.",image:"/worlds/university.png"},
+    {fr:"Ce sont mes nouveaux voisins.",ar:"هؤلاء جيراني الجدد.",image:"/images/university/a1-sounds/maison.webp"},
+    {fr:"Ce n’est pas notre salle.",ar:"هذه ليست قاعتنا.",image:"/kingdom-portal-assets/university-campus-front-v3.webp"},
+    {fr:"Ce ne sont pas mes lunettes.",ar:"هذه ليست نظارتي.",image:"/hospital/tools/eye-chart.webp"}
    ]),
    section("Il y a et il n’y a pas","التعبير عن وجود شيء","نستخدم Il y a بمعنى يوجد أو توجد، وهي صيغة ثابتة لا تتغير مع المفرد أو الجمع. بعد النفي نستعمل غالبًا de أو d’ بدل أداة النكرة.",[
     "Il y a + مفرد: Il y a un café ici.",
@@ -590,10 +597,10 @@ const A1_MODULES:CourseModule[]=[
     "Il n’y a pas de… للنفي: Il n’y a pas de bus.",
     "Est-ce qu’il y a… ? للسؤال عن وجود شيء."
    ],[
-    {fr:"Il y a une pharmacie près d’ici.",ar:"توجد صيدلية بالقرب من هنا."},
-    {fr:"Il y a trois livres sur la table.",ar:"توجد ثلاثة كتب على الطاولة."},
-    {fr:"Il n’y a pas de gare dans ce village.",ar:"لا توجد محطة قطار في هذه القرية."},
-    {fr:"Est-ce qu’il y a un ascenseur dans l’hôtel ?",ar:"هل يوجد مصعد في الفندق؟"}
+    {fr:"Il y a une pharmacie près d’ici.",ar:"توجد صيدلية بالقرب من هنا.",image:"/kingdom-portal-assets/destination-hospital.png"},
+    {fr:"Il y a trois livres sur la table.",ar:"توجد ثلاثة كتب على الطاولة.",image:"/kingdom-portal-assets/open-book-realistic-v1.webp"},
+    {fr:"Il n’y a pas de gare dans ce village.",ar:"لا توجد محطة قطار في هذه القرية.",image:"/worlds/station.png"},
+    {fr:"Est-ce qu’il y a un ascenseur dans l’hôtel ?",ar:"هل يوجد مصعد في الفندق؟",image:"/worlds/hotel.png"}
    ]),
    section("Les déterminants démonstratifs","صفات الإشارة","تأتي صفة الإشارة قبل الاسم وتتوافق معه في الجنس والعدد. نستخدم cet مع الاسم المذكر الذي يبدأ بصوت متحرك أو h صامت.",[
     "ce مع المذكر المفرد: ce livre.",
@@ -601,10 +608,10 @@ const A1_MODULES:CourseModule[]=[
     "cette مع المؤنث المفرد: cette maison.",
     "ces مع جمع المذكر والمؤنث: ces étudiants، ces voitures."
    ],[
-    {fr:"Ce livre est facile.",ar:"هذا الكتاب سهل."},
-    {fr:"Cet appartement est lumineux.",ar:"هذه الشقة مضيئة."},
-    {fr:"Cette rue est très calme.",ar:"هذا الشارع هادئ جدًا."},
-    {fr:"Ces chaussures sont confortables.",ar:"هذه الأحذية مريحة."}
+    {fr:"Ce livre est facile.",ar:"هذا الكتاب سهل.",image:"/castle-hall-icons/library.webp"},
+    {fr:"Cet appartement est lumineux.",ar:"هذه الشقة مضيئة.",image:"/worlds/castle.png"},
+    {fr:"Cette rue est très calme.",ar:"هذا الشارع هادئ جدًا.",image:"/kingdom-portal-assets/primary-destinations.png"},
+    {fr:"Ces chaussures sont confortables.",ar:"هذه الأحذية مريحة.",image:"/worlds/market.png"}
    ])
   ]
  },
@@ -1842,16 +1849,26 @@ const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_STRUCTURES_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"___ une étudiante française.",speech:"Choisissez entre C’est et Ce sont. C’est une étudiante française.",instruction:"اختر صيغة التقديم الصحيحة للمفرد.",choices:["C’est","Ce sont","Il y a"],correctIndex:0,explanation:"نستخدم C’est قبل الاسم المفرد."},
- {prompt:"___ mes deux frères.",speech:"Choisissez entre C’est et Ce sont. Ce sont mes deux frères.",instruction:"اختر صيغة التقديم الصحيحة للجمع.",choices:["C’est","Ce sont","Cette"],correctIndex:1,explanation:"نستخدم Ce sont لتقديم اسم جمع."},
- {prompt:"Ce ___ pas mon passeport.",speech:"Complétez la négation. Ce n’est pas mon passeport.",instruction:"أكمل نفي C’est بصورة صحيحة.",choices:["ne sont","n’est","n’y a"],correctIndex:1,explanation:"نفي C’est هو Ce n’est pas."},
- {prompt:"___ une banque près de la gare.",speech:"Complétez avec Il y a. Il y a une banque près de la gare.",instruction:"اختر التعبير الذي يعني «توجد».",choices:["Il est","C’est","Il y a"],correctIndex:2,explanation:"Il y a تعني يوجد أو توجد."},
- {prompt:"Il n’y a pas ___ métro ici.",speech:"Complétez la phrase négative. Il n’y a pas de métro ici.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["de","un","du"],correctIndex:0,explanation:"بعد Il n’y a pas نستخدم de قبل الاسم."},
- {prompt:"___ livre est intéressant.",speech:"Choisissez l’adjectif démonstratif. Ce livre est intéressant.",instruction:"اختر أداة الإشارة المناسبة لاسم مذكر مفرد يبدأ بصامت.",choices:["Cette","Ces","Ce"],correctIndex:2,explanation:"livre مذكر مفرد يبدأ بصامت؛ لذلك نستخدم ce."},
- {prompt:"___ hôtel est moderne.",speech:"Choisissez l’adjectif démonstratif. Cet hôtel est moderne.",instruction:"اختر أداة الإشارة المناسبة لاسم مذكر يبدأ بـ h صامت.",choices:["Cet","Ce","Cette"],correctIndex:0,explanation:"نستخدم cet قبل الاسم المذكر الذي يبدأ بصوت متحرك."},
- {prompt:"___ maison est grande.",speech:"Choisissez l’adjectif démonstratif. Cette maison est grande.",instruction:"اختر أداة الإشارة المناسبة لاسم مؤنث مفرد.",choices:["Ce","Cette","Ces"],correctIndex:1,explanation:"maison مؤنث مفرد؛ لذلك نستخدم cette."},
- {prompt:"___ enfants jouent dans le jardin.",speech:"Choisissez l’adjectif démonstratif. Ces enfants jouent dans le jardin.",instruction:"اختر أداة الإشارة المناسبة للجمع.",choices:["Cet","Cette","Ces"],correctIndex:2,explanation:"نستخدم ces مع جميع أسماء الجمع."},
- {prompt:"Est-ce qu’___ un ascenseur ?",speech:"Complétez la question. Est-ce qu’il y a un ascenseur ?",instruction:"أكمل السؤال عن وجود المصعد.",choices:["il est","il y a","c’est"],correctIndex:1,explanation:"صيغة السؤال هي Est-ce qu’il y a… ?"}
+ {prompt:"___ une étudiante française.",translation:"هذه طالبة فرنسية.",speech:"C’est une étudiante française.",instruction:"اختر صيغة التقديم الصحيحة للمفرد.",choices:["C’est","Ce sont","Il y a"],correctIndex:0,explanation:"نستخدم C’est قبل الاسم المفرد."},
+ {prompt:"___ mes deux frères.",translation:"هذان أخواي.",speech:"Ce sont mes deux frères.",instruction:"اختر صيغة التقديم الصحيحة للجمع.",choices:["C’est","Ce sont","Cette"],correctIndex:1,explanation:"نستخدم Ce sont لتقديم اسم جمع."},
+ {prompt:"Ce ___ pas mon passeport.",translation:"هذا ليس جواز سفري.",speech:"Ce n’est pas mon passeport.",instruction:"أكمل نفي C’est بصورة صحيحة.",choices:["ne sont","n’est","n’y a"],correctIndex:1,explanation:"نفي C’est هو Ce n’est pas."},
+ {prompt:"___ une banque près de la gare.",translation:"يوجد مصرف قرب المحطة.",speech:"Il y a une banque près de la gare.",instruction:"اختر التعبير الذي يعني «يوجد».",choices:["Il est","C’est","Il y a"],correctIndex:2,explanation:"Il y a تعني يوجد أو توجد."},
+ {prompt:"Il n’y a pas ___ métro ici.",translation:"لا يوجد مترو هنا.",speech:"Il n’y a pas de métro ici.",instruction:"اختر الأداة الصحيحة بعد النفي.",choices:["de","un","du"],correctIndex:0,explanation:"بعد Il n’y a pas نستخدم de قبل الاسم."},
+ {prompt:"___ livre est intéressant.",translation:"هذا الكتاب ممتع.",speech:"Ce livre est intéressant.",instruction:"اختر صفة الإشارة المناسبة لاسم مذكر يبدأ بصامت.",choices:["Cette","Ces","Ce"],correctIndex:2,explanation:"livre مذكر مفرد يبدأ بصامت؛ لذلك نستخدم ce."},
+ {prompt:"___ hôtel est moderne.",translation:"هذا الفندق حديث.",speech:"Cet hôtel est moderne.",instruction:"اختر صفة الإشارة المناسبة لاسم مذكر يبدأ بـ h صامت.",choices:["Cet","Ce","Cette"],correctIndex:0,explanation:"نستخدم cet قبل الاسم المذكر الذي يبدأ بصوت متحرك أو h صامت."},
+ {prompt:"___ maison est grande.",translation:"هذا المنزل كبير.",speech:"Cette maison est grande.",instruction:"اختر صفة الإشارة المناسبة لاسم مؤنث مفرد.",choices:["Ce","Cette","Ces"],correctIndex:1,explanation:"maison مؤنث مفرد؛ لذلك نستخدم cette."},
+ {prompt:"___ enfants jouent dans le jardin.",translation:"هؤلاء الأطفال يلعبون في الحديقة.",speech:"Ces enfants jouent dans le jardin.",instruction:"اختر صفة الإشارة المناسبة للجمع.",choices:["Cet","Cette","Ces"],correctIndex:2,explanation:"نستخدم ces مع جميع أسماء الجمع."},
+ {prompt:"Est-ce qu’___ un ascenseur ?",translation:"هل يوجد مصعد؟",speech:"Est-ce qu’il y a un ascenseur ?",instruction:"أكمل السؤال عن وجود المصعد.",choices:["il est","il y a","c’est"],correctIndex:1,explanation:"صيغة السؤال هي Est-ce qu’il y a… ?"},
+ {prompt:"___ notre nouvelle professeure.",translation:"هذه معلمتنا الجديدة.",speech:"C’est notre nouvelle professeure.",instruction:"اختر صيغة تقديم شخص واحد.",choices:["C’est","Ce sont","Ces"],correctIndex:0,explanation:"professeure مفرد؛ لذلك نستخدم C’est."},
+ {prompt:"___ les photos du voyage.",translation:"هذه صور الرحلة.",speech:"Ce sont les photos du voyage.",instruction:"اختر صيغة تقديم أشياء متعددة.",choices:["Il y a","Ce sont","C’est"],correctIndex:1,explanation:"photos جمع؛ لذلك نستخدم Ce sont."},
+ {prompt:"Ce ne ___ pas mes lunettes.",translation:"هذه ليست نظارتي.",speech:"Ce ne sont pas mes lunettes.",instruction:"أكمل نفي Ce sont.",choices:["sont","est","suis"],correctIndex:0,explanation:"نفي صيغة الجمع هو Ce ne sont pas."},
+ {prompt:"___ deux cafés dans cette rue.",translation:"يوجد مقهيان في هذا الشارع.",speech:"Il y a deux cafés dans cette rue.",instruction:"اختر التعبير عن وجود أكثر من شيء.",choices:["Ce sont","C’est","Il y a"],correctIndex:2,explanation:"Il y a صيغة ثابتة مع المفرد والجمع."},
+ {prompt:"Il n’y a pas ___ école dans le village.",translation:"لا توجد مدرسة في القرية.",speech:"Il n’y a pas d’école dans le village.",instruction:"اختر الصيغة الصحيحة قبل صوت متحرك بعد النفي.",choices:["une","d’","de la"],correctIndex:1,explanation:"نستخدم d’ قبل الاسم المبدوء بصوت متحرك بعد النفي."},
+ {prompt:"___ ordinateur fonctionne bien.",translation:"هذا الحاسوب يعمل جيدًا.",speech:"Cet ordinateur fonctionne bien.",instruction:"اختر صفة الإشارة المناسبة.",choices:["Cet","Ce","Cette"],correctIndex:0,explanation:"ordinateur مذكر يبدأ بصوت متحرك؛ لذلك نقول cet ordinateur."},
+ {prompt:"___ valise est légère.",translation:"هذه الحقيبة خفيفة.",speech:"Cette valise est légère.",instruction:"اختر صفة الإشارة المناسبة.",choices:["Ce","Ces","Cette"],correctIndex:2,explanation:"valise اسم مؤنث مفرد؛ لذلك نقول cette valise."},
+ {prompt:"___ arbres sont très hauts.",translation:"هذه الأشجار طويلة جدًا.",speech:"Ces arbres sont très hauts.",instruction:"اختر صفة الإشارة المناسبة للجمع.",choices:["Ces","Cet","Cette"],correctIndex:0,explanation:"نستخدم ces مع الاسم الجمع حتى لو بدأ بصوت متحرك."},
+ {prompt:"Qu’est-ce que c’est ? — ___ un plan de la ville.",translation:"ما هذا؟ — إنها خريطة للمدينة.",speech:"C’est un plan de la ville.",instruction:"اختر الجواب الطبيعي لتقديم شيء واحد.",choices:["Ce sont","C’est","Il y a"],correctIndex:1,explanation:"نجيب عن شيء مفرد باستعمال C’est."},
+ {prompt:"Il y a une boulangerie en face de la poste.",translation:"يوجد مخبز مقابل مكتب البريد.",speech:"Il y a une boulangerie en face de la poste.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع المخبز خلف المحطة.","لا يوجد مخبز هنا.","يوجد مخبز مقابل مكتب البريد."],correctIndex:2,explanation:"en face de تعني مقابل، وIl y a تعني يوجد."}
 ];
 
 const A1_FOOD_SHOPPING_PRACTICE_ITEMS:Example[]=[
@@ -2721,41 +2738,60 @@ const A1_STRUCTURES_READING={
  text:"C’est mon nouvel appartement. Il y a un salon et deux chambres. Cette pièce est la cuisine et ce petit espace est le balcon. Ces fenêtres donnent sur le jardin. Ce ne sont pas mes meubles : ce sont les meubles du propriétaire.",
  translation:"هذه شقتي الجديدة. فيها غرفة جلوس وغرفتا نوم. هذه الغرفة هي المطبخ، وهذا المكان الصغير هو الشرفة. تطل هذه النوافذ على الحديقة. هذا الأثاث ليس لي؛ بل يعود إلى المالك.",
  questions:[
-  {question:"Combien de chambres y a-t-il ?",answer:"Il y a deux chambres.",ar:"توجد غرفتا نوم."},
-  {question:"Quelle pièce est la cuisine ?",answer:"Cette pièce est la cuisine.",ar:"هذه الغرفة هي المطبخ."},
-  {question:"À qui sont les meubles ?",answer:"Les meubles sont au propriétaire.",ar:"الأثاث يعود إلى المالك."}
+  {question:"Combien de chambres y a-t-il ?",translation:"كم غرفة نوم توجد؟",answer:"Il y a deux chambres.",ar:"توجد غرفتا نوم."},
+  {question:"Quelle pièce est la cuisine ?",translation:"أي غرفة هي المطبخ؟",answer:"Cette pièce est la cuisine.",ar:"هذه الغرفة هي المطبخ."},
+  {question:"À qui sont les meubles ?",translation:"لمن يعود الأثاث؟",answer:"Les meubles sont au propriétaire.",ar:"الأثاث يعود إلى المالك."}
  ]
 };
 
 const A1_STRUCTURES_LISTENING={
  title:"Près de l’université",
  arTitle:"بالقرب من الجامعة",
- text:"Voici mon quartier. Il y a une boulangerie près de l’université. Ce bâtiment blanc est la bibliothèque et cette grande porte est l’entrée. Il n’y a pas de pharmacie ici.",
+ text:"C’est mon voisin. Ce sont mes clés. Il y a un parc. Ce bâtiment. Cette rue.",
  questions:[
-  {prompt:"Qu’est-ce qu’il y a près de l’université ?",choices:["Une boulangerie","Une pharmacie","Un hôtel"],correctIndex:0},
-  {prompt:"Quel bâtiment est la bibliothèque ?",choices:["Le bâtiment rouge","Le bâtiment blanc","Le petit bâtiment"],correctIndex:1},
-  {prompt:"Qu’est-ce qu’il n’y a pas dans le quartier ?",choices:["Une entrée","Une université","Une pharmacie"],correctIndex:2}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est mon voisin","Ce sont mes voisins","Il y a un voisin"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est ma clé","Ce sont mes clés","Ces clés sont ici"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est un parc","Ce parc","Il y a un parc"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ce bâtiment","Cet appartement","Ces bâtiments"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ces rues","Cette rue","Ce quartier"],correctIndex:1}
  ]
 };
 
 const A1_STRUCTURES_WRITING_MODEL="C’est mon quartier. Il y a un café et une petite bibliothèque. Cette rue est calme. Ces bâtiments sont modernes, mais il n’y a pas de pharmacie près d’ici.";
 
+const A1_STRUCTURES_WRITING_TRANSLATIONS=[
+ {fr:"c’est mon voisin",ar:"هذا جاري"},
+ {fr:"ce sont mes clés",ar:"هذه مفاتيحي"},
+ {fr:"il y a un parc",ar:"توجد حديقة"},
+ {fr:"il n’y a pas de bus",ar:"لا توجد حافلة"},
+ {fr:"ce bâtiment",ar:"هذا المبنى"},
+ {fr:"cet appartement",ar:"هذه الشقة"},
+ {fr:"cette rue",ar:"هذا الشارع"},
+ {fr:"ces magasins",ar:"هذه المتاجر"}
+];
+
 const A1_STRUCTURES_DICTATION=[
  {speech:"C’est mon nouveau quartier.",ar:"هذا حيي الجديد."},
  {speech:"Il y a une bibliothèque près d’ici.",ar:"توجد مكتبة بالقرب من هنا."},
- {speech:"Ces maisons sont très anciennes.",ar:"هذه المنازل قديمة جدًا."}
+ {speech:"Ces maisons sont très anciennes.",ar:"هذه المنازل قديمة جدًا."},
+ {speech:"Ce ne sont pas nos valises.",ar:"هذه ليست حقائبنا."},
+ {speech:"Il n’y a pas d’ascenseur.",ar:"لا يوجد مصعد."}
 ];
 
 const A1_STRUCTURES_BUILDERS=[
  {tokens:["mon","C’est","professeur."],answer:["C’est","mon","professeur."],ar:"هذا معلمي."},
  {tokens:["une","a","ici.","Il y","pharmacie"],answer:["Il y","a","une","pharmacie","ici."],ar:"توجد صيدلية هنا."},
- {tokens:["sont","Ces","modernes.","bâtiments"],answer:["Ces","bâtiments","sont","modernes."],ar:"هذه المباني حديثة."}
+ {tokens:["sont","Ces","modernes.","bâtiments"],answer:["Ces","bâtiments","sont","modernes."],ar:"هذه المباني حديثة."},
+ {tokens:["pas","Ce","notre","n’est","chambre."],answer:["Ce","n’est","pas","notre","chambre."],ar:"هذه ليست غرفتنا."},
+ {tokens:["devant","Il y","un","l’école.","arrêt","a"],answer:["Il y","a","un","arrêt","devant","l’école."],ar:"توجد محطة أمام المدرسة."}
 ];
 
 const A1_STRUCTURES_DIALOGUES=[
- {context:"Votre ami montre plusieurs personnes et demande : « Qui sont-ils ? »",prompt:"اختر جواب الجمع الصحيح.",choices:["C’est mes voisins.","Ce sont mes voisins.","Il y a mon voisin."],correctIndex:1,feedback:"لتقديم أشخاص أو أشياء في الجمع نستخدم Ce sont."},
- {context:"On demande : « Est-ce qu’il y a un ascenseur ? »",prompt:"اختر جواب النفي الصحيح.",choices:["Non, il n’y a pas d’ascenseur.","Non, ce n’est ascenseur.","Non, il y a pas un ascenseur."],correctIndex:0,feedback:"بعد il n’y a pas نستخدم de أو d’ قبل الاسم."},
- {context:"Vous montrez une maison féminine singulière.",prompt:"اختر أداة الإشارة الصحيحة.",choices:["Ce maison","Cet maison","Cette maison"],correctIndex:2,feedback:"maison مؤنث مفرد، لذلك نقول cette maison."}
+ {context:"Qui sont-ils ?",translation:"من هؤلاء؟",prompt:"اختر جواب الجمع الصحيح.",choices:["C’est mes voisins.","Ce sont mes voisins.","Il y a mon voisin."],correctIndex:1,feedback:"لتقديم أشخاص أو أشياء في الجمع نستخدم Ce sont."},
+ {context:"Est-ce qu’il y a un ascenseur ?",translation:"هل يوجد مصعد؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, il n’y a pas d’ascenseur.","Non, ce n’est ascenseur.","Non, il y a pas un ascenseur."],correctIndex:0,feedback:"بعد il n’y a pas نستخدم de أو d’ قبل الاسم."},
+ {context:"Quelle maison préférez-vous ?",translation:"أي منزل تفضّلون؟",prompt:"اختر الرد الصحيح.",choices:["Ce maison blanche.","Cet maison blanche.","Cette maison blanche."],correctIndex:2,feedback:"maison مؤنث مفرد، لذلك نقول cette maison."},
+ {context:"Qu’est-ce que c’est ?",translation:"ما هذا؟",prompt:"اختر الرد المناسب.",choices:["Ce sont un ticket.","C’est un ticket de métro.","Il y a le ticket."],correctIndex:1,feedback:"لتقديم شيء مفرد نستخدم C’est."},
+ {context:"Qu’est-ce qu’il y a près de l’hôtel ?",translation:"ماذا يوجد قرب الفندق؟",prompt:"اختر الرد المناسب.",choices:["Il y a un restaurant.","C’est des restaurants.","Ce sont une gare."],correctIndex:0,feedback:"للتعبير عن وجود شيء نستخدم Il y a."}
 ];
 
 const A1_QUESTIONS_READING={
@@ -6212,8 +6248,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs;
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures;
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
@@ -6274,7 +6310,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6941,7 +6977,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

@@ -75,6 +75,13 @@ const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"/e/",word:"parlez",ar:"تحدّثوا",hiddenSpeech:"é"},
  {letter:"/ɑ̃/",word:"grand",ar:"كبير",hiddenSpeech:"an"}
 ];
+const A1_COUNTRIES_LISTENING_CLIPS=[
+ {letter:"France",word:"français",ar:"فرنسا — فرنسي",hiddenSpeech:"France"},
+ {letter:"Maroc",word:"marocaine",ar:"المغرب — مغربية",hiddenSpeech:"Maroc"},
+ {letter:"Japon",word:"japonais",ar:"اليابان — ياباني",hiddenSpeech:"Japon"},
+ {letter:"Arabie saoudite",word:"saoudienne",ar:"السعودية — سعودية",hiddenSpeech:"Arabie saoudite"},
+ {letter:"États-Unis",word:"américain",ar:"الولايات المتحدة — أمريكي",hiddenSpeech:"États-Unis"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -419,6 +426,45 @@ const A1_MODULES:CourseModule[]=[
     {fr:"Je m’appelle Nora et je suis saoudienne.",ar:"اسمي نورة وأنا سعودية."},
     {fr:"J’habite à Riyad.",ar:"أسكن في الرياض."},
     {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية."}
+   ])
+  ]
+ },
+ {
+  id:"countries-languages",title:"Les pays, les nationalités et les langues",ar:"البلدان والجنسيات واللغات",icon:Earth,
+  description:"ذكر البلد والأصل والجنسية واللغة، مع اختيار حرف الجر والصيغة المذكرة أو المؤنثة بصورة صحيحة.",
+  sections:[
+   section("Les pays et les prépositions","البلدان وحروف الجر","لكل اسم بلد جنس أو عدد نحوي يؤثر في حرف الجر. نستخدم en غالبًا مع البلد المؤنث أو الذي يبدأ بصوت متحرك، وau مع البلد المذكر، وaux مع البلد الجمع.",[
+    "en France، en Arabie saoudite، en Égypte، en Italie.",
+    "au Maroc، au Canada، au Japon، au Royaume-Uni.",
+    "aux États-Unis، aux Émirats arabes unis.",
+    "للتعبير عن الأصل نستعمل de / d’، du أو des: de France، du Maroc، des États-Unis."
+   ],[
+    {fr:"J’habite en Arabie saoudite.",ar:"أسكن في المملكة العربية السعودية."},
+    {fr:"Il travaille au Canada.",ar:"هو يعمل في كندا."},
+    {fr:"Nous voyageons aux États-Unis.",ar:"نحن نسافر إلى الولايات المتحدة."},
+    {fr:"Elle vient du Maroc.",ar:"هي من المغرب."}
+   ]),
+   section("Les nationalités","الجنسيات","تُكتب الجنسية بحرف صغير عندما تكون صفة، وتتوافق مع الشخص في التذكير والتأنيث. كثير من الصيغ المؤنثة تُبنى بإضافة e، وقد يتغير شكل الكلمة أو نطقها.",[
+    "saoudien → saoudienne، français → française.",
+    "marocain → marocaine، égyptien → égyptienne.",
+    "japonais → japonaise، espagnol → espagnole.",
+    "نستعمل être قبل الجنسية: Je suis saoudien. Elle est française."
+   ],[
+    {fr:"Je suis saoudienne.",ar:"أنا سعودية."},
+    {fr:"Omar est égyptien.",ar:"عمر مصري."},
+    {fr:"Lina est marocaine.",ar:"لينا مغربية."},
+    {fr:"Kenji est japonais.",ar:"كينجي ياباني."}
+   ]),
+   section("Parler des langues","التحدث عن اللغات","بعد فعل parler نذكر اللغة عادة من دون أداة، بينما نستعمل أداة التعريف عند الحديث عن تعلم اللغة أو دراستها بوصفها مادة.",[
+    "Je parle arabe et français: أتحدث العربية والفرنسية.",
+    "Tu parles anglais ? هل تتحدث الإنجليزية؟",
+    "J’apprends le français: أتعلم اللغة الفرنسية.",
+    "Quelle langue parlez-vous ? ما اللغة التي تتحدثونها؟"
+   ],[
+    {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية."},
+    {fr:"Elle apprend le français.",ar:"هي تتعلم اللغة الفرنسية."},
+    {fr:"Nous parlons anglais au travail.",ar:"نتحدث الإنجليزية في العمل."},
+    {fr:"Quelles langues parlez-vous ?",ar:"ما اللغات التي تتحدثونها؟"}
    ])
   ]
  },
@@ -1098,7 +1144,7 @@ const A1_MODULES:CourseModule[]=[
 // This order is shared by the journey cards and previous/next lesson navigation.
 // New A1 modules will be inserted into their reserved pedagogical positions in later batches.
 const A1_MODULE_ORDER=[
- "alphabet","sounds","greetings","nouns","core-verbs",
+ "alphabet","sounds","greetings","countries-languages","nouns","core-verbs",
  "present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
  "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
  "health-needs","situations","messages-forms"
@@ -1206,6 +1252,42 @@ const A1_GREETINGS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Je suis ___.",speech:"Je travaille dans une école. Je suis professeur.",instruction:"اختر المهنة المناسبة لشخص يعمل في مدرسة.",choices:["pharmacien","serveur","professeur"],correctIndex:2,explanation:"الشخص الذي يدرّس في المدرسة هو professeur."},
  {prompt:"Je parle arabe et ___ français.",speech:"Complétez la phrase. Je parle arabe et un peu français.",instruction:"اختر العبارة التي تعني «قليلًا من».",choices:["un peu","beaucoup de","jamais"],correctIndex:0,explanation:"un peu تعني قليلًا."},
  {prompt:"Au revoir et à bientôt.",speech:"Au revoir et à bientôt.",instruction:"اختر المعنى العربي الصحيح.",choices:["مرحبًا وتشرفت بمعرفتك.","إلى اللقاء وأراك قريبًا.","مساء الخير وكيف حالك؟"],correctIndex:1,explanation:"Au revoir et à bientôt عبارة وداع تعني إلى اللقاء وأراك قريبًا."}
+];
+
+const A1_COUNTRIES_PRACTICE_ITEMS:Example[]=[
+ {fr:"Je viens d’Arabie saoudite.",ar:"أنا من المملكة العربية السعودية."},
+ {fr:"J’habite en France.",ar:"أسكن في فرنسا."},
+ {fr:"Elle vient du Maroc.",ar:"هي من المغرب."},
+ {fr:"Nous voyageons au Japon.",ar:"نحن نسافر إلى اليابان."},
+ {fr:"Ils habitent aux États-Unis.",ar:"هم يسكنون في الولايات المتحدة."},
+ {fr:"Je suis saoudienne et je parle arabe.",ar:"أنا سعودية وأتحدث العربية."},
+ {fr:"Mon ami est français.",ar:"صديقي فرنسي."},
+ {fr:"Maya est japonaise.",ar:"مايا يابانية."},
+ {fr:"Quelle est votre nationalité ?",ar:"ما جنسيتكم؟"},
+ {fr:"Quelles langues parlez-vous ?",ar:"ما اللغات التي تتحدثونها؟"}
+];
+
+const A1_COUNTRIES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"J’habite ___ France.",speech:"Complétez la phrase. J’habite en France.",instruction:"اختر حرف الجر الصحيح مع France.",translation:"أسكن في فرنسا.",choices:["au","en","aux"],correctIndex:1,explanation:"France بلد مؤنث؛ لذلك نقول en France."},
+ {prompt:"Nous voyageons ___ Maroc.",speech:"Complétez la phrase. Nous voyageons au Maroc.",instruction:"اختر حرف الجر الصحيح مع Maroc.",translation:"نسافر إلى المغرب.",choices:["au","en","aux"],correctIndex:0,explanation:"Maroc بلد مذكر؛ لذلك نقول au Maroc."},
+ {prompt:"Elle travaille ___ États-Unis.",speech:"Complétez la phrase. Elle travaille aux États-Unis.",instruction:"اختر حرف الجر الصحيح مع États-Unis.",translation:"هي تعمل في الولايات المتحدة.",choices:["en","au","aux"],correctIndex:2,explanation:"États-Unis اسم جمع؛ لذلك نقول aux États-Unis."},
+ {prompt:"Je viens ___ France.",speech:"Complétez la phrase. Je viens de France.",instruction:"اختر الصيغة الصحيحة لذكر الأصل.",translation:"أنا من فرنسا.",choices:["de","du","des"],correctIndex:0,explanation:"نقول de France عند ذكر الأصل من بلد مؤنث."},
+ {prompt:"Il vient ___ Maroc.",speech:"Complétez la phrase. Il vient du Maroc.",instruction:"اختر الصيغة الصحيحة مع بلد مذكر.",translation:"هو من المغرب.",choices:["de la","des","du"],correctIndex:2,explanation:"de + le تصبح du: du Maroc."},
+ {prompt:"Ils viennent ___ États-Unis.",speech:"Complétez la phrase. Ils viennent des États-Unis.",instruction:"اختر الصيغة الصحيحة مع بلد جمع.",translation:"هم من الولايات المتحدة.",choices:["des","du","d’"],correctIndex:0,explanation:"de + les تصبح des: des États-Unis."},
+ {prompt:"Nora est ___.",speech:"Nora est française.",instruction:"اختر صيغة الجنسية المؤنثة الصحيحة.",translation:"نورة فرنسية.",choices:["français","française","France"],correctIndex:1,explanation:"مع امرأة نقول française."},
+ {prompt:"Sami est ___.",speech:"Sami est saoudien.",instruction:"اختر صيغة الجنسية المذكرة الصحيحة.",translation:"سامي سعودي.",choices:["saoudien","saoudienne","Arabie saoudite"],correctIndex:0,explanation:"مع رجل نقول saoudien."},
+ {prompt:"Yuki est ___.",speech:"Yuki est japonaise.",instruction:"اختر صيغة الجنسية المؤنثة الصحيحة.",translation:"يوكي يابانية.",choices:["Japon","japonais","japonaise"],correctIndex:2,explanation:"الصيغة المؤنثة من japonais هي japonaise."},
+ {prompt:"Je parle ___.",speech:"Je parle français.",instruction:"اختر الصياغة الصحيحة بعد parler.",translation:"أتحدث الفرنسية.",choices:["le français","français","au français"],correctIndex:1,explanation:"بعد parler نذكر اللغة عادة من دون أداة: parler français."},
+ {prompt:"J’apprends ___.",speech:"J’apprends le français.",instruction:"اختر الصياغة الصحيحة مع apprendre.",translation:"أتعلم اللغة الفرنسية.",choices:["le français","français à","du français langue"],correctIndex:0,explanation:"نقول apprendre le français عند تعلم اللغة."},
+ {prompt:"Elle vient d’Égypte. Elle est ___.",speech:"Elle vient d’Égypte. Elle est égyptienne.",instruction:"اختر الجنسية المناسبة.",translation:"هي من مصر، وهي مصرية.",choices:["égyptien","Égypte","égyptienne"],correctIndex:2,explanation:"الصيغة المؤنثة الصحيحة هي égyptienne."},
+ {prompt:"En Espagne, on parle ___.",speech:"En Espagne, on parle espagnol.",instruction:"اختر اسم اللغة الصحيح.",translation:"في إسبانيا يتحدثون الإسبانية.",choices:["espagnole","espagnol","Espagne"],correctIndex:1,explanation:"اسم اللغة هو espagnol ويكتب بحرف صغير."},
+ {prompt:"Il vient d’Allemagne. Il est ___.",speech:"Il vient d’Allemagne. Il est allemand.",instruction:"اختر الجنسية المناسبة.",translation:"هو من ألمانيا، وهو ألماني.",choices:["allemand","allemande","Allemagne"],correctIndex:0,explanation:"الصيغة المذكرة الصحيحة هي allemand."},
+ {prompt:"___ venez-vous ?",speech:"D’où venez-vous ?",instruction:"أكمل السؤال عن البلد أو الأصل.",translation:"من أين أنتم؟",choices:["Quelle","D’où","Comment"],correctIndex:1,explanation:"D’où venez-vous ؟ سؤال مباشر عن الأصل."},
+ {prompt:"___ langue parlez-vous ?",speech:"Quelle langue parlez-vous ?",instruction:"اختر أداة السؤال الموافقة لكلمة langue.",translation:"ما اللغة التي تتحدثونها؟",choices:["Quel","Quels","Quelle"],correctIndex:2,explanation:"langue مؤنث مفرد؛ لذلك نقول quelle langue."},
+ {prompt:"Elle habite ___ Italie.",speech:"Elle habite en Italie.",instruction:"اختر حرف الجر الصحيح.",translation:"هي تسكن في إيطاليا.",choices:["en","au","aux"],correctIndex:0,explanation:"Italie بلد مؤنث يبدأ بصوت متحرك؛ لذلك نقول en Italie."},
+ {prompt:"Nous habitons ___ Canada.",speech:"Nous habitons au Canada.",instruction:"اختر حرف الجر الصحيح.",translation:"نسكن في كندا.",choices:["aux","au","en"],correctIndex:1,explanation:"Canada بلد مذكر؛ لذلك نقول au Canada."},
+ {prompt:"Ils viennent ___ Japon.",speech:"Ils viennent du Japon.",instruction:"اختر الصيغة الصحيحة لذكر الأصل.",translation:"هم من اليابان.",choices:["de","des","du"],correctIndex:2,explanation:"Japon بلد مذكر؛ لذلك نقول du Japon."},
+ {prompt:"Je suis marocaine et je parle arabe.",speech:"Je suis marocaine et je parle arabe.",instruction:"اختر المعنى العربي الصحيح.",choices:["أنا مغربية وأتحدث العربية.","أنا مصرية وأتعلم الفرنسية.","أنا فرنسية وأسكن في المغرب."],correctIndex:0,explanation:"marocaine تعني مغربية وje parle arabe تعني أتحدث العربية."}
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
@@ -1838,6 +1920,61 @@ const A1_GREETINGS_DIALOGUES=[
  {context:"Une personne vous dit : « Bonjour ! »",prompt:"اختر الرد الطبيعي.",choices:["Bonjour !","Au revoir !","Je ne sais pas."],correctIndex:0,feedback:"نرد على Bonjour بالتحية نفسها."},
  {context:"On vous demande : « Comment vous appelez-vous ? »",prompt:"كيف تعرّف باسمك؟",choices:["J’habite à Lille.","Je m’appelle Lina.","Très bien, merci."],correctIndex:1,feedback:"Je m’appelle… هي الصيغة الأساسية لذكر الاسم."},
  {context:"Votre professeur dit : « Enchanté de vous rencontrer. »",prompt:"اختر الرد المهذب.",choices:["Enchanté également.","Je suis à Paris.","À demain matin ?"],correctIndex:0,feedback:"Enchanté également تعني: وأنا سعيد بلقائك أيضًا."}
+];
+
+const A1_COUNTRIES_READING={
+ title:"Une classe internationale",
+ arTitle:"فصل دولي",
+ text:"Dans la classe de français, Nora vient d’Arabie saoudite et parle arabe. Adam vient du Maroc. Il parle arabe et français. Yuki vient du Japon et apprend le français. Les trois étudiants habitent à Lyon.",
+ translation:"في فصل اللغة الفرنسية، نورا من المملكة العربية السعودية وتتحدث العربية. آدم من المغرب، ويتحدث العربية والفرنسية. يوكي من اليابان وتتعلم الفرنسية. ويسكن الطلاب الثلاثة في ليون.",
+ questions:[
+  {question:"D’où vient Nora ?",translation:"من أين نورا؟",answer:"Nora vient d’Arabie saoudite.",ar:"نورا من المملكة العربية السعودية."},
+  {question:"Quelles langues parle Adam ?",translation:"ما اللغات التي يتحدثها آدم؟",answer:"Il parle arabe et français.",ar:"يتحدث العربية والفرنسية."},
+  {question:"Quelle langue apprend Yuki ?",translation:"ما اللغة التي تتعلمها يوكي؟",answer:"Yuki apprend le français.",ar:"تتعلم يوكي الفرنسية."}
+ ]
+};
+
+const A1_COUNTRIES_LISTENING={
+ title:"Pays et nationalités",
+ arTitle:"البلدان والجنسيات",
+ text:"France. Maroc. Japon. Arabie saoudite. États-Unis.",
+ questions:[
+  {prompt:"Quel pays entendez-vous ?",choices:["La France","Le Maroc","Le Japon"],correctIndex:0},
+  {prompt:"Quel pays entendez-vous ?",choices:["Le Canada","Le Maroc","L’Italie"],correctIndex:1},
+  {prompt:"Quel pays entendez-vous ?",choices:["L’Espagne","L’Égypte","Le Japon"],correctIndex:2},
+  {prompt:"Quel pays entendez-vous ?",choices:["L’Arabie saoudite","La France","L’Allemagne"],correctIndex:0},
+  {prompt:"Quel pays entendez-vous ?",choices:["Les Émirats arabes unis","Les États-Unis","Le Royaume-Uni"],correctIndex:1}
+ ]
+};
+
+const A1_COUNTRIES_WRITING_MODEL="Je viens d’Arabie saoudite. Je suis saoudien. J’habite à Riyad. Je parle arabe et j’apprends le français.";
+const A1_COUNTRIES_WRITING_TRANSLATIONS=[
+ {fr:"France",ar:"فرنسا"},{fr:"Maroc",ar:"المغرب"},{fr:"Japon",ar:"اليابان"},{fr:"Arabie saoudite",ar:"المملكة العربية السعودية"},
+ {fr:"français",ar:"الفرنسية"},{fr:"arabe",ar:"العربية"},{fr:"anglais",ar:"الإنجليزية"},{fr:"espagnol",ar:"الإسبانية"}
+];
+
+const A1_COUNTRIES_DICTATION=[
+ {speech:"France",ar:"فرنسا"},
+ {speech:"Maroc",ar:"المغرب"},
+ {speech:"Japon",ar:"اليابان"},
+ {speech:"saoudienne",ar:"سعودية"},
+ {speech:"français",ar:"الفرنسية"}
+];
+
+const A1_COUNTRIES_BUILDERS=[
+ {tokens:["viens","Je","saoudite.","d’Arabie"],answer:["Je","viens","d’Arabie","saoudite."],ar:"أنا من المملكة العربية السعودية."},
+ {tokens:["France.","habite","en","Elle"],answer:["Elle","habite","en","France."],ar:"هي تسكن في فرنسا."},
+ {tokens:["est","Mon","marocain.","ami"],answer:["Mon","ami","est","marocain."],ar:"صديقي مغربي."},
+ {tokens:["parlons","Nous","français.","arabe","et"],answer:["Nous","parlons","arabe","et","français."],ar:"نتحدث العربية والفرنسية."},
+ {tokens:["langue","Quelle","parlez-vous ?"],answer:["Quelle","langue","parlez-vous ?"],ar:"ما اللغة التي تتحدثونها؟"}
+];
+
+const A1_COUNTRIES_DIALOGUES=[
+ {context:"D’où venez-vous ?",translation:"من أين أنتم؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens du Maroc.","Je parle français.","Je m’appelle Lina."],correctIndex:0,feedback:"للإجابة عن الأصل نستعمل venir de مع اسم البلد."},
+ {context:"Quelle est votre nationalité ?",translation:"ما جنسيتكم؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite à Paris.","Je suis saoudienne.","Je parle arabe."],correctIndex:1,feedback:"نستعمل être مع صفة الجنسية."},
+ {context:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens de France.","Je suis étudiant.","Je parle arabe et français."],correctIndex:2,feedback:"بعد parler نذكر اللغة عادة من دون أداة."},
+ {context:"Vous habitez dans quel pays ?",translation:"في أي بلد تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite au Canada.","Je suis canadien.","J’apprends l’anglais."],correctIndex:0,feedback:"habiter مع حرف الجر واسم البلد يجيب عن مكان السكن."},
+ {context:"Vous apprenez quelle langue ?",translation:"ما اللغة التي تتعلمونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens d’Italie.","J’apprends le français.","Je suis italienne."],correctIndex:1,feedback:"نقول apprendre le français عند الحديث عن تعلم اللغة."}
 ];
 
 const A1_NOUNS_READING={
@@ -2629,6 +2766,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_GREETINGS_READING,listening:A1_GREETINGS_LISTENING,dictation:A1_GREETINGS_DICTATION,builders:A1_GREETINGS_BUILDERS,dialogues:A1_GREETINGS_DIALOGUES,
   writingModel:A1_GREETINGS_WRITING_MODEL,writingTitle:"اكتب تعريفًا قصيرًا بنفسك",writingInstructions:"اكتب من 15 إلى 25 كلمة: ابدأ بتحية، اذكر اسمك ومكان سكنك أو لغتك، ثم اختم بعبارة لطيفة.",writingPlaceholder:"Bonjour, je m’appelle…",writingMinimum:15,writingMaximum:25,
   speakingPrompt:"Bonjour, je m’appelle Sami. J’habite à Lyon et je parle arabe. Enchanté de vous rencontrer.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["ابدأ بتحية واضحة.","اذكر اسمك ومعلومة بسيطة عنك.","اختم بعبارة مهذبة."],dictationUnit:"sentence"
+ },
+ "countries-languages":{
+  reading:A1_COUNTRIES_READING,listening:A1_COUNTRIES_LISTENING,dictation:A1_COUNTRIES_DICTATION,builders:A1_COUNTRIES_BUILDERS,dialogues:A1_COUNTRIES_DIALOGUES,
+  writingModel:A1_COUNTRIES_WRITING_MODEL,writingTitle:"اكتب عن بلدك ولغتك",writingInstructions:"اكتب من 15 إلى 25 كلمة: اذكر بلدك وجنسيتك ومكان سكنك واللغة التي تتحدثها أو تتعلمها.",writingPlaceholder:"Je viens de… Je suis…",writingMinimum:15,writingMaximum:25,
+  speakingPrompt:"Je viens d’Arabie saoudite. Je suis saoudien. J’habite à Riyad. Je parle arabe et j’apprends le français.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["استخدم venir de لذكر الأصل.","طابق الجنسية مع المتحدث.","اذكر اللغة بعد parler من دون أداة."],dictationUnit:"word"
  },
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
@@ -4283,7 +4425,7 @@ const LEVELS:Level[]=[
 
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
-  {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم الأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","nouns","core-verbs"]},
+  {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم البلد واللغة والأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","countries-languages","nouns","core-verbs"]},
   {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
@@ -5390,8 +5532,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA2Revision=level.id==="A2"&&activeModule.id==="revision";
  const isA1Alphabet=level.id==="A1"&&activeModule.id==="alphabet";
  const isA1Sounds=level.id==="A1"&&activeModule.id==="sounds";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds;
  const isA1Greetings=level.id==="A1"&&activeModule.id==="greetings";
+ const isA1Countries=level.id==="A1"&&activeModule.id==="countries-languages";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -5455,7 +5598,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -5463,6 +5606,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&isA1WordDictation;
  const dictationUnit=isAlphabetLetterDictation?"الحرف":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
@@ -5708,6 +5852,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -5744,6 +5889,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="alphabet")return A1_ALPHABET_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="sounds")return A1_SOUNDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="greetings")return A1_GREETINGS_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
@@ -6084,7 +6230,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){
@@ -6120,7 +6266,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   });
  };
  const playOrbitDictation=(slow=false)=>{
-  if(isA1Sounds&&!soundsDictationWritingEnabled&&!soundsDictationWordVisible){
+  if(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled&&!soundsDictationWordVisible){
    setSoundsDictationWordVisible(true);
    soundsDictationRevealTimerRef.current=window.setTimeout(()=>{
     setSoundsDictationWordVisible(false);
@@ -6238,7 +6384,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
@@ -6797,11 +6943,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </nav>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
        <div className="a2-workshop-progress"><span>{dictationUnit} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
-       <h4>استمع ثم اكتب {dictationUnit}</h4><p className={isA1Sounds?"a1-sounds-dictation-instruction":undefined}>{isA1Sounds?"اضغط على استمع لسماع النطق ثم اكتب دون ظهور الكلمة":"يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق."}</p>
+       <h4>استمع ثم اكتب {dictationUnit}</h4><p className={isTimedOrbitWordDictation?"a1-sounds-dictation-instruction":undefined}>{isTimedOrbitWordDictation?"اضغط على استمع لسماع النطق ثم اكتب دون ظهور الكلمة":"يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق."}</p>
        {isA1OrbitLesson?<div className="a1-dictation-audio-actions"><button type="button" onClick={()=>void playOrbitDictation(false)}><Headphones/><span><b>استمع</b><small>نطق طبيعي</small></span></button><button type="button" onClick={()=>void playOrbitDictation(true)}><Gauge/><span><b>بطيء</b><small>نطق تعليمي</small></span></button></div>:<button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {dictationUnit}</button>}
-       {isA1Sounds&&soundsDictationWordVisible&&<strong className="a1-sounds-dictation-preview" dir="ltr">{revisionDictationItem.speech}</strong>}
-       <input dir="ltr" value={revisionDictationText} disabled={isA1Sounds&&!soundsDictationWritingEnabled} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isA1Sounds&&!soundsDictationWritingEnabled?"استمع أولًا…":dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()||(isA1Sounds&&!soundsDictationWritingEnabled)}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
+       {isTimedOrbitWordDictation&&soundsDictationWordVisible&&<strong className="a1-sounds-dictation-preview" dir="ltr">{revisionDictationItem.speech}</strong>}
+       <input dir="ltr" value={revisionDictationText} disabled={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled?"استمع أولًا…":dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()||(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled)}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":isA1OrbitLesson?"الكتابة غير صحيحة؛ أعد الاستماع ثم حاول مرة أخرى.":"راجع كتابتك وقارنها بالنموذج."}</strong>{(!isA1OrbitLesson||revisionDictationCorrect)&&<><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></>}</div>}
       </article>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">

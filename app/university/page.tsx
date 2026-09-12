@@ -152,6 +152,13 @@ const A1_PRESENT_LISTENING_CLIPS=[
  {letter:"nous faisons",word:"du sport",ar:"نمارس الرياضة",hiddenSpeech:"Nous faisons du sport"},
  {letter:"ils ne viennent pas",word:"ce soir",ar:"لن يأتوا هذا المساء",hiddenSpeech:"Ils ne viennent pas ce soir"}
 ];
+const A1_MODAL_VERBS_LISTENING_CLIPS=[
+ {letter:"je peux",word:"vous aider",ar:"أستطيع مساعدتكم",hiddenSpeech:"Je peux vous aider"},
+ {letter:"tu veux",word:"un café",ar:"تريد قهوة",hiddenSpeech:"Tu veux un café"},
+ {letter:"elle doit",word:"partir",ar:"يجب عليها المغادرة",hiddenSpeech:"Elle doit partir"},
+ {letter:"nous pouvons",word:"entrer",ar:"يمكننا الدخول",hiddenSpeech:"Nous pouvons entrer"},
+ {letter:"il faut",word:"attendre",ar:"يجب الانتظار",hiddenSpeech:"Il faut attendre"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -2013,16 +2020,26 @@ const A1_MODAL_VERBS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_MODAL_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je ___ parler français.",speech:"Complétez la phrase. Je peux parler français.",instruction:"اختر تصريف pouvoir الصحيح مع je.",choices:["peut","peux","pouvons"],correctIndex:1,explanation:"مع je نقول je peux."},
- {prompt:"Nous ___ vous aider.",speech:"Complétez la phrase. Nous pouvons vous aider.",instruction:"اختر تصريف pouvoir الصحيح مع nous.",choices:["pouvons","pouvez","peuvent"],correctIndex:0,explanation:"مع nous نقول nous pouvons."},
- {prompt:"Ils ne ___ pas venir.",speech:"Complétez la phrase. Ils ne peuvent pas venir.",instruction:"اختر تصريف pouvoir الصحيح مع ils.",choices:["pouvez","peut","peuvent"],correctIndex:2,explanation:"مع ils نقول ils peuvent."},
- {prompt:"Tu ___ prendre un café ?",speech:"Complétez la phrase. Tu veux prendre un café ?",instruction:"اختر تصريف vouloir الصحيح مع tu.",choices:["veux","veut","voulez"],correctIndex:0,explanation:"مع tu نقول tu veux."},
- {prompt:"Elles ___ visiter Paris.",speech:"Complétez la phrase. Elles veulent visiter Paris.",instruction:"اختر تصريف vouloir الصحيح مع elles.",choices:["voulons","veulent","voulez"],correctIndex:1,explanation:"مع elles نقول elles veulent."},
- {prompt:"___ un verre d’eau, s’il vous plaît.",speech:"Formulez une demande polie. Je voudrais un verre d’eau, s’il vous plaît.",instruction:"اختر الصيغة الأكثر تهذيبًا للطلب.",choices:["Je suis","Je dois","Je voudrais"],correctIndex:2,explanation:"Je voudrais صيغة مهذبة للطلب."},
- {prompt:"Je ___ partir maintenant.",speech:"Complétez la phrase. Je dois partir maintenant.",instruction:"اختر تصريف devoir الصحيح مع je.",choices:["dois","doit","devons"],correctIndex:0,explanation:"مع je نقول je dois."},
- {prompt:"Vous ___ attendre ici.",speech:"Complétez la phrase. Vous devez attendre ici.",instruction:"اختر تصريف devoir الصحيح مع vous.",choices:["doivent","devez","dois"],correctIndex:1,explanation:"مع vous نقول vous devez."},
- {prompt:"Il ___ respecter les règles.",speech:"Complétez la nécessité générale. Il faut respecter les règles.",instruction:"اختر التعبير عن ضرورة عامة.",choices:["peut","veut","faut"],correctIndex:2,explanation:"Il faut + مصدر يعبّر عن ضرورة عامة."},
- {prompt:"Il ne faut pas fumer ici.",speech:"Il ne faut pas fumer ici.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا يمكنني الانتظار هنا.","يُمنع التدخين هنا.","أريد الخروج من هنا."],correctIndex:1,explanation:"Il ne faut pas fumer تعني أن التدخين ممنوع."}
+ {prompt:"Je ___ parler français.",translation:"أستطيع التحدث بالفرنسية.",speech:"Je peux parler français.",instruction:"اختر تصريف pouvoir الصحيح مع je.",choices:["peut","peux","pouvons"],correctIndex:1,explanation:"مع je نقول je peux."},
+ {prompt:"Nous ___ vous aider.",translation:"يمكننا مساعدتكم.",speech:"Nous pouvons vous aider.",instruction:"اختر تصريف pouvoir الصحيح مع nous.",choices:["pouvons","pouvez","peuvent"],correctIndex:0,explanation:"مع nous نقول nous pouvons."},
+ {prompt:"Ils ne ___ pas venir.",translation:"لا يستطيعون الحضور.",speech:"Ils ne peuvent pas venir.",instruction:"اختر تصريف pouvoir الصحيح مع ils.",choices:["pouvez","peut","peuvent"],correctIndex:2,explanation:"مع ils نقول ils peuvent."},
+ {prompt:"Tu ___ prendre un café ?",translation:"هل تريد تناول القهوة؟",speech:"Tu veux prendre un café ?",instruction:"اختر تصريف vouloir الصحيح مع tu.",choices:["veux","veut","voulez"],correctIndex:0,explanation:"مع tu نقول tu veux."},
+ {prompt:"Elles ___ visiter Paris.",translation:"يردن زيارة باريس.",speech:"Elles veulent visiter Paris.",instruction:"اختر تصريف vouloir الصحيح مع elles.",choices:["voulons","veulent","voulez"],correctIndex:1,explanation:"مع elles نقول elles veulent."},
+ {prompt:"___ un verre d’eau, s’il vous plaît.",translation:"أرغب في كأس ماء، من فضلك.",speech:"Je voudrais un verre d’eau, s’il vous plaît.",instruction:"اختر الصيغة الأكثر تهذيبًا للطلب.",choices:["Je suis","Je dois","Je voudrais"],correctIndex:2,explanation:"Je voudrais صيغة مهذبة للطلب."},
+ {prompt:"Je ___ partir maintenant.",translation:"يجب أن أغادر الآن.",speech:"Je dois partir maintenant.",instruction:"اختر تصريف devoir الصحيح مع je.",choices:["dois","doit","devons"],correctIndex:0,explanation:"مع je نقول je dois."},
+ {prompt:"Vous ___ attendre ici.",translation:"يجب عليكم الانتظار هنا.",speech:"Vous devez attendre ici.",instruction:"اختر تصريف devoir الصحيح مع vous.",choices:["doivent","devez","dois"],correctIndex:1,explanation:"مع vous نقول vous devez."},
+ {prompt:"Il ___ respecter les règles.",translation:"يجب احترام القواعد.",speech:"Il faut respecter les règles.",instruction:"اختر التعبير عن ضرورة عامة.",choices:["peut","veut","faut"],correctIndex:2,explanation:"Il faut + مصدر يعبّر عن ضرورة عامة."},
+ {prompt:"Il ne faut pas fumer ici.",translation:"يُمنع التدخين هنا.",speech:"Il ne faut pas fumer ici.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا يمكنني الانتظار هنا.","يُمنع التدخين هنا.","أريد الخروج من هنا."],correctIndex:1,explanation:"Il ne faut pas fumer تعني أن التدخين ممنوع."},
+ {prompt:"Tu ___ utiliser mon téléphone.",translation:"يمكنك استخدام هاتفي.",speech:"Tu peux utiliser mon téléphone.",instruction:"اختر تصريف pouvoir مع tu.",choices:["peux","peut","pouvez"],correctIndex:0,explanation:"تصريف pouvoir مع tu هو peux."},
+ {prompt:"Elle ___ conduire cette voiture.",translation:"تستطيع قيادة هذه السيارة.",speech:"Elle peut conduire cette voiture.",instruction:"اختر تصريف pouvoir مع elle.",choices:["peux","peut","peuvent"],correctIndex:1,explanation:"تصريف pouvoir مع elle هو peut."},
+ {prompt:"Vous ___ entrer maintenant.",translation:"يمكنكم الدخول الآن.",speech:"Vous pouvez entrer maintenant.",instruction:"اختر تصريف pouvoir مع vous.",choices:["pouvons","peuvent","pouvez"],correctIndex:2,explanation:"تصريف pouvoir مع vous هو pouvez."},
+ {prompt:"Nous ___ réserver une table.",translation:"نريد حجز طاولة.",speech:"Nous voulons réserver une table.",instruction:"اختر تصريف vouloir مع nous.",choices:["voulons","voulez","veulent"],correctIndex:0,explanation:"تصريف vouloir مع nous هو voulons."},
+ {prompt:"Il ___ apprendre à cuisiner.",translation:"يريد أن يتعلم الطبخ.",speech:"Il veut apprendre à cuisiner.",instruction:"اختر تصريف vouloir مع il.",choices:["veux","veut","voulons"],correctIndex:1,explanation:"تصريف vouloir مع il هو veut."},
+ {prompt:"Vous ___ quelle chambre ?",translation:"أي غرفة تريدون؟",speech:"Vous voulez quelle chambre ?",instruction:"اختر تصريف vouloir مع vous.",choices:["veulent","voulons","voulez"],correctIndex:2,explanation:"تصريف vouloir مع vous هو voulez."},
+ {prompt:"Nous ___ arriver avant midi.",translation:"يجب أن نصل قبل الظهر.",speech:"Nous devons arriver avant midi.",instruction:"اختر تصريف devoir مع nous.",choices:["devons","devez","doivent"],correctIndex:0,explanation:"تصريف devoir مع nous هو devons."},
+ {prompt:"Elle ___ appeler le médecin.",translation:"يجب عليها الاتصال بالطبيب.",speech:"Elle doit appeler le médecin.",instruction:"اختر تصريف devoir مع elle.",choices:["dois","doit","devez"],correctIndex:1,explanation:"تصريف devoir مع elle هو doit."},
+ {prompt:"Après pouvoir, vouloir ou devoir, le verbe reste ___.",translation:"بعد pouvoir أو vouloir أو devoir يبقى الفعل ماذا؟",speech:"Le verbe reste à l’infinitif.",instruction:"اختر صيغة الفعل الثاني الصحيحة.",choices:["conjugué","au passé","à l’infinitif"],correctIndex:2,explanation:"يأتي الفعل الثاني في المصدر: peux venir، veux partir، dois travailler."},
+ {prompt:"On peut prendre le métro jusqu’au centre.",translation:"يمكننا استقلال المترو حتى وسط المدينة.",speech:"On peut prendre le métro jusqu’au centre.",instruction:"اختر المعنى العربي الصحيح.",choices:["يمكننا استقلال المترو حتى وسط المدينة.","يجب أن نغادر وسط المدينة.","نريد شراء تذكرة قطار."],correctIndex:0,explanation:"on peut تعبّر هنا عن الإمكانية بمعنى يمكننا."}
 ];
 
 const A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS:Example[]=[
@@ -2958,41 +2975,60 @@ const A1_MODAL_VERBS_READING={
  text:"Demain, Sami veut partir à Lyon. Il doit préparer sa valise et il faut arriver à la gare avant huit heures. Il peut acheter son billet sur Internet. Sa sœur ne peut pas venir, mais elle veut l’aider ce soir.",
  translation:"يريد سامي السفر إلى ليون غدًا. عليه تجهيز حقيبته، ويجب الوصول إلى المحطة قبل الساعة الثامنة. يمكنه شراء تذكرته عبر الإنترنت. لا تستطيع أخته الحضور، لكنها تريد مساعدته هذا المساء.",
  questions:[
-  {question:"Où Sami veut-il aller ?",answer:"Sami veut aller à Lyon.",ar:"يريد سامي الذهاب إلى ليون."},
-  {question:"Que doit-il préparer ?",answer:"Il doit préparer sa valise.",ar:"عليه تجهيز حقيبته."},
-  {question:"Comment peut-il acheter son billet ?",answer:"Il peut acheter son billet sur Internet.",ar:"يمكنه شراء التذكرة عبر الإنترنت."}
+  {question:"Où Sami veut-il aller ?",translation:"إلى أين يريد سامي الذهاب؟",answer:"Sami veut aller à Lyon.",ar:"يريد سامي الذهاب إلى ليون."},
+  {question:"Que doit-il préparer ?",translation:"ماذا يجب عليه أن يجهز؟",answer:"Il doit préparer sa valise.",ar:"عليه تجهيز حقيبته."},
+  {question:"Comment peut-il acheter son billet ?",translation:"كيف يمكنه شراء تذكرته؟",answer:"Il peut acheter son billet sur Internet.",ar:"يمكنه شراء التذكرة عبر الإنترنت."}
  ]
 };
 
 const A1_MODAL_VERBS_LISTENING={
  title:"À la bibliothèque",
  arTitle:"في المكتبة",
- text:"Vous pouvez travailler ici, mais vous devez parler doucement. Si vous voulez utiliser un ordinateur, il faut présenter votre carte. Vous ne pouvez pas manger dans la salle.",
+ text:"Je peux vous aider. Tu veux un café. Elle doit partir. Nous pouvons entrer. Il faut attendre.",
  questions:[
-  {prompt:"Que doit-on faire doucement ?",choices:["Parler","Manger","Marcher"],correctIndex:0},
-  {prompt:"Que faut-il présenter pour utiliser un ordinateur ?",choices:["Un billet","Une carte","Un livre"],correctIndex:1},
-  {prompt:"Qu’est-ce qui est interdit dans la salle ?",choices:["Travailler","Utiliser un ordinateur","Manger"],correctIndex:2}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je peux vous aider","Je veux vous parler","Je dois vous attendre"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Tu peux entrer","Tu veux un café","Tu dois partir"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Elle peut venir","Elles veulent partir","Elle doit partir"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Nous pouvons entrer","Nous voulons attendre","Vous pouvez entrer"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il peut attendre","Il faut attendre","Il veut partir"],correctIndex:1}
  ]
 };
 
 const A1_MODAL_VERBS_WRITING_MODEL="Je veux apprendre le français. Je peux étudier trente minutes chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement. Le week-end, je veux parler avec un ami.";
 
+const A1_MODAL_VERBS_WRITING_TRANSLATIONS=[
+ {fr:"je peux vous aider",ar:"أستطيع مساعدتكم"},
+ {fr:"tu peux entrer",ar:"يمكنك الدخول"},
+ {fr:"elle veut voyager",ar:"تريد السفر"},
+ {fr:"nous voulons apprendre",ar:"نريد أن نتعلم"},
+ {fr:"je dois partir",ar:"يجب أن أغادر"},
+ {fr:"vous devez attendre",ar:"يجب عليكم الانتظار"},
+ {fr:"il faut réserver",ar:"يجب الحجز"},
+ {fr:"je voudrais un café",ar:"أرغب في قهوة"}
+];
+
 const A1_MODAL_VERBS_DICTATION=[
  {speech:"Je peux parler un peu français.",ar:"أستطيع التحدث بالفرنسية قليلًا."},
  {speech:"Nous voulons visiter le musée.",ar:"نريد زيارة المتحف."},
- {speech:"Il faut arriver à l’heure.",ar:"يجب الوصول في الموعد."}
+ {speech:"Il faut arriver à l’heure.",ar:"يجب الوصول في الموعد."},
+ {speech:"Vous devez présenter votre billet.",ar:"يجب عليكم إبراز تذكرتكم."},
+ {speech:"Elle ne peut pas venir demain.",ar:"لا تستطيع الحضور غدًا."}
 ];
 
 const A1_MODAL_VERBS_BUILDERS=[
  {tokens:["vous","Je","aider.","peux"],answer:["Je","peux","vous","aider."],ar:"أستطيع مساعدتك."},
  {tokens:["apprendre","voulons","Nous","français.","le"],answer:["Nous","voulons","apprendre","le","français."],ar:"نريد تعلم الفرنسية."},
- {tokens:["attendre.","devez","Vous"],answer:["Vous","devez","attendre."],ar:"يجب عليكم الانتظار."}
+ {tokens:["attendre.","devez","Vous"],answer:["Vous","devez","attendre."],ar:"يجب عليكم الانتظار."},
+ {tokens:["un","voudrais","Je","billet."],answer:["Je","voudrais","un","billet."],ar:"أرغب في تذكرة."},
+ {tokens:["pas","ne","Il","fumer","faut","ici."],answer:["Il","ne","faut","pas","fumer","ici."],ar:"يُمنع التدخين هنا."}
 ];
 
 const A1_MODAL_VERBS_DIALOGUES=[
- {context:"Vous demandez la permission d’entrer.",prompt:"اختر السؤال المناسب.",choices:["Est-ce que je peux entrer ?","Est-ce que je dois entrée ?","Je veux entré ?"],correctIndex:0,feedback:"لطلب الإذن نستخدم pouvoir متبوعًا بالفعل في المصدر."},
- {context:"Au café, vous commandez poliment.",prompt:"اختر الطلب الأكثر تهذيبًا.",choices:["Je voudrais un café, s’il vous plaît.","Je dois un café.","Je peux café."],correctIndex:0,feedback:"Je voudrais صيغة شائعة ومهذبة عند الطلب."},
- {context:"Une règle concerne tout le monde.",prompt:"أكمل الجملة: « … respecter le silence. »",choices:["Il faut","Je veux","Tu peux"],correctIndex:0,feedback:"Il faut تعبّر عن ضرورة عامة غير مرتبطة بشخص محدد."}
+ {context:"Est-ce que je peux entrer ?",translation:"هل يمكنني الدخول؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, vous pouvez entrer.","Oui, vous voulez entrer.","Oui, vous devez entrée."],correctIndex:0,feedback:"pouvoir يُستخدم لطلب الإذن ومنحه."},
+ {context:"Qu’est-ce que vous voulez boire ?",translation:"ماذا تريدون أن تشربوا؟",prompt:"اختر الطلب الأكثر تهذيبًا.",choices:["Je voudrais un café, s’il vous plaît.","Je dois un café.","Je peux café."],correctIndex:0,feedback:"Je voudrais صيغة شائعة ومهذبة عند الطلب."},
+ {context:"Que faut-il faire dans la bibliothèque ?",translation:"ماذا يجب فعله في المكتبة؟",prompt:"اختر الإجابة الصحيحة.",choices:["Il faut parler doucement.","Je veux parler fort.","Tu peux manger."],correctIndex:0,feedback:"Il faut تعبّر عن ضرورة عامة."},
+ {context:"Pourquoi partez-vous maintenant ?",translation:"لماذا تغادرون الآن؟",prompt:"اختر الإجابة المناسبة.",choices:["Je peux un train.","Je dois prendre le train.","Je veux à la gare."],correctIndex:1,feedback:"devoir + مصدر يعبّر عن التزام شخصي."},
+ {context:"Pouvez-vous répéter plus lentement ?",translation:"هل يمكنكم التكرار ببطء أكثر؟",prompt:"اختر الرد المناسب.",choices:["Non, je voudrais lentement.","Il faut une répétition.","Oui, bien sûr."],correctIndex:2,feedback:"Oui, bien sûr رد طبيعي ومهذب على طلب القدرة."}
 ];
 
 const A1_FUTURE_IMPERATIVE_READING={
@@ -6323,8 +6359,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present;
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs;
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
  const isA1CityDirections=level.id==="A1"&&activeModule.id==="city-directions";
@@ -6382,7 +6418,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7049,7 +7085,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

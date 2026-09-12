@@ -201,6 +201,13 @@ const A1_HOME_HOUSING_LISTENING_CLIPS=[
  {letter:"à côté",word:"de la fenêtre",ar:"بجوار النافذة",hiddenSpeech:"À côté de la fenêtre"},
  {letter:"sous",word:"la table",ar:"تحت الطاولة",hiddenSpeech:"Sous la table"}
 ];
+const A1_DESCRIPTION_LISTENING_CLIPS=[
+ {letter:"mon père",word:"est calme",ar:"والدي هادئ",hiddenSpeech:"Mon père est calme"},
+ {letter:"ma sœur",word:"est contente",ar:"أختي سعيدة",hiddenSpeech:"Ma sœur est contente"},
+ {letter:"mon frère",word:"est fatigué",ar:"أخي متعب",hiddenSpeech:"Mon frère est fatigué"},
+ {letter:"mes parents",word:"ont faim",ar:"والداي جائعان",hiddenSpeech:"Mes parents ont faim"},
+ {letter:"ma grand-mère",word:"a froid",ar:"جدتي تشعر بالبرد",hiddenSpeech:"Ma grand-mère a froid"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -3226,6 +3233,17 @@ const A1_HOME_HOUSING_WRITING_TRANSLATIONS=[
  {fr:"sous la table",ar:"تحت الطاولة"}
 ];
 
+const A1_DESCRIPTION_WRITING_TRANSLATIONS=[
+ {fr:"mon père est calme",ar:"والدي هادئ"},
+ {fr:"ma mère est gentille",ar:"والدتي لطيفة"},
+ {fr:"mon frère est content",ar:"أخي سعيد"},
+ {fr:"ma sœur est fatiguée",ar:"أختي متعبة"},
+ {fr:"mes parents ont faim",ar:"والداي جائعان"},
+ {fr:"mon grand-père a soif",ar:"جدي عطشان"},
+ {fr:"ma grand-mère a froid",ar:"جدتي تشعر بالبرد"},
+ {fr:"voici mes grands-parents",ar:"هذان جدّي وجدتي"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3505,26 +3523,51 @@ const A1_HOME_HOUSING_DIALOGUES=[
  {context:"Votre appartement a-t-il un balcon ?",translation:"هل في شقتك شرفة؟",prompt:"اختر الرد الطبيعي.",choices:["Oui, il y a un petit balcon.","Oui, je suis un balcon.","Oui, le balcon habite."],correctIndex:0,feedback:"Il y a هو التعبير الطبيعي لذكر ما يوجد في المسكن."}
 ];
 
+const A1_DESCRIPTION_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"C’est ___ père.",translation:"هذا والدي.",speech:"C’est mon père.",instruction:"اختر صفة الملكية المناسبة.",choices:["ma","mon","mes"],correctIndex:1,explanation:"père مذكر مفرد؛ لذلك نستخدم mon."},
+ {prompt:"Voici ___ sœur.",translation:"هذه أختي.",speech:"Voici ma sœur.",instruction:"اختر صفة الملكية المناسبة.",choices:["ma","mon","mes"],correctIndex:0,explanation:"sœur مؤنث مفرد؛ لذلك نستخدم ma."},
+ {prompt:"Ce sont ___ parents.",translation:"هذان والداي.",speech:"Ce sont mes parents.",instruction:"اختر صفة الملكية المناسبة للجمع.",choices:["mon","ma","mes"],correctIndex:2,explanation:"parents جمع؛ لذلك نستخدم mes."},
+ {prompt:"Mon frère ___ content.",translation:"أخي سعيد.",speech:"Mon frère est content.",instruction:"اختر الفعل المناسب لوصف الحالة.",choices:["est","a","fait"],correctIndex:0,explanation:"نستخدم être مع الصفة content."},
+ {prompt:"Ma sœur ___ faim.",translation:"أختي جائعة.",speech:"Ma sœur a faim.",instruction:"اختر الفعل المناسب للتعبير الثابت.",choices:["est","a","va"],correctIndex:1,explanation:"نقول avoir faim."},
+ {prompt:"Nous ___ soif.",translation:"نحن عطشى.",speech:"Nous avons soif.",instruction:"اختر تصريف avoir الصحيح.",choices:["sommes","avez","avons"],correctIndex:2,explanation:"مع nous نقول nous avons."},
+ {prompt:"Elle est ___.",translation:"هي متعبة.",speech:"Elle est fatiguée.",instruction:"اختر اتفاق الصفة مع المؤنث.",choices:["fatiguée","fatigué","fatigués"],correctIndex:0,explanation:"مع elle نستخدم fatiguée."},
+ {prompt:"Mes grands-parents sont ___.",translation:"جداي سعيدان.",speech:"Mes grands-parents sont heureux.",instruction:"اختر الصفة المناسبة للجمع.",choices:["heureuse","heureux","heureuses"],correctIndex:1,explanation:"للجمع المختلط نستخدم heureux."},
+ {prompt:"Qui est-ce ? — ___ ma tante.",translation:"من هذه؟ — هذه عمتي أو خالتي.",speech:"C’est ma tante.",instruction:"اختر صيغة التقديم المناسبة.",choices:["Il y a","Ce sont","C’est"],correctIndex:2,explanation:"نستخدم C’est مع شخص واحد."},
+ {prompt:"J’ai peur.",translation:"أنا خائف.",speech:"J’ai peur.",instruction:"اختر المعنى العربي الصحيح.",choices:["أنا خائف.","أنا جائع.","أنا سعيد."],correctIndex:0,explanation:"avoir peur تعني الشعور بالخوف."},
+ {prompt:"Le fils de mes parents est mon ___.",translation:"ابن والديّ هو أخي.",speech:"Le fils de mes parents est mon frère.",instruction:"اختر صلة القرابة الصحيحة.",choices:["oncle","frère","cousin"],correctIndex:1,explanation:"ابن الوالدين هو frère."},
+ {prompt:"La mère de ma mère est ma ___.",translation:"والدة أمي هي جدتي.",speech:"La mère de ma mère est ma grand-mère.",instruction:"اختر صلة القرابة الصحيحة.",choices:["sœur","tante","grand-mère"],correctIndex:2,explanation:"والدة الأم هي grand-mère."},
+ {prompt:"Ils ___ froid.",translation:"هم يشعرون بالبرد.",speech:"Ils ont froid.",instruction:"اختر تصريف avoir الصحيح.",choices:["ont","sont","font"],correctIndex:0,explanation:"التعبير هو avoir froid."},
+ {prompt:"Comment vas-tu ? — Je vais très ___.",translation:"كيف حالك؟ — أنا بخير جدًا.",speech:"Je vais très bien.",instruction:"اختر الكلمة المناسبة.",choices:["faim","bien","soif"],correctIndex:1,explanation:"Je vais bien تعني أنا بخير."},
+ {prompt:"Ma mère est ___. Elle sourit.",translation:"والدتي سعيدة؛ إنها تبتسم.",speech:"Ma mère est contente. Elle sourit.",instruction:"اختر الصفة المناسبة للسياق.",choices:["malade","triste","contente"],correctIndex:2,explanation:"الابتسام يدل هنا على أنها contente."},
+ {prompt:"Mon petit frère est ___. Il veut dormir.",translation:"أخي الصغير متعب؛ يريد النوم.",speech:"Mon petit frère est fatigué.",instruction:"اختر الصفة المناسبة.",choices:["fatigué","fier","calme"],correctIndex:0,explanation:"الرغبة في النوم تدل على التعب."},
+ {prompt:"___ sont mes cousins.",translation:"هؤلاء أبناء عمي أو خالي.",speech:"Ce sont mes cousins.",instruction:"اختر صيغة التقديم للجمع.",choices:["C’est","Ce sont","Voici est"],correctIndex:1,explanation:"نستخدم Ce sont مع الجمع."},
+ {prompt:"Elle ___ malade aujourd’hui.",translation:"هي مريضة اليوم.",speech:"Elle est malade aujourd’hui.",instruction:"اختر الفعل المناسب.",choices:["a","fait","est"],correctIndex:2,explanation:"نستخدم être مع malade."},
+ {prompt:"Mon oncle est le frère de ma mère.",translation:"خالي هو أخو أمي.",speech:"Mon oncle est le frère de ma mère.",instruction:"اختر المعنى العربي الصحيح.",choices:["خالي هو أخو أمي.","جدي هو والد أمي.","ابن عمي هو أخي."],correctIndex:0,explanation:"oncle تعني العم أو الخال بحسب السياق."},
+ {prompt:"Toute la famille est réunie.",translation:"العائلة كلها مجتمعة.",speech:"Toute la famille est réunie.",instruction:"اختر المعنى العربي الصحيح.",choices:["العائلة تسافر غدًا.","العائلة كلها مجتمعة.","العائلة تشعر بالتعب."],correctIndex:1,explanation:"réunie تعني مجتمعة."}
+];
+
 const A1_DESCRIPTION_READING={
  title:"Un dimanche en famille",
  arTitle:"يوم أحد مع العائلة",
  text:"Aujourd’hui, Sami déjeune avec sa famille. Son père est calme et sa mère est contente. Sa sœur a faim parce qu’elle arrive tard. Son petit frère est fatigué, mais il est heureux de voir ses grands-parents. Toute la famille est réunie.",
  translation:"يتناول سامي الغداء اليوم مع عائلته. والده هادئ ووالدته سعيدة. أخته جائعة لأنها وصلت متأخرة. أخوه الصغير متعب، لكنه سعيد برؤية جدّيه. اجتمعت العائلة كلها.",
  questions:[
-  {question:"Comment est le père de Sami ?",answer:"Son père est calme.",ar:"والد سامي هادئ."},
-  {question:"Pourquoi sa sœur a-t-elle faim ?",answer:"Elle a faim parce qu’elle arrive tard.",ar:"هي جائعة لأنها وصلت متأخرة."},
-  {question:"Qui est fatigué ?",answer:"Son petit frère est fatigué.",ar:"أخوه الصغير متعب."}
+  {question:"Comment est le père de Sami ?",translation:"كيف هي حالة والد سامي؟",answer:"Son père est calme.",ar:"والد سامي هادئ."},
+  {question:"Pourquoi sa sœur a-t-elle faim ?",translation:"لماذا أخته جائعة؟",answer:"Elle a faim parce qu’elle arrive tard.",ar:"هي جائعة لأنها وصلت متأخرة."},
+  {question:"Qui est fatigué ?",translation:"من المتعب؟",answer:"Son petit frère est fatigué.",ar:"أخوه الصغير متعب."}
  ]
 };
 
 const A1_DESCRIPTION_LISTENING={
  title:"Des nouvelles de la famille",
  arTitle:"أخبار العائلة",
- text:"Mon frère est très content aujourd’hui : il a un nouveau travail. Mes parents sont fiers de lui. Ma grand-mère est un peu fatiguée et elle a froid, alors nous lui préparons une boisson chaude.",
+ text:"Mon père est calme. Ma sœur est contente. Mon frère est fatigué. Mes parents ont faim. Ma grand-mère a froid.",
  questions:[
-  {prompt:"Pourquoi le frère est-il content ?",choices:["Il a un nouveau travail","Il part en voyage","Il achète une maison"],correctIndex:0},
-  {prompt:"Comment sont les parents ?",choices:["Tristes","Fiers","Malades"],correctIndex:1},
-  {prompt:"Que prépare la famille pour la grand-mère ?",choices:["Un repas froid","Une boisson chaude","Un médicament"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon père est calme","Mon père est malade","Mon frère est calme"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ma mère est triste","Ma sœur est contente","Ma tante est fatiguée"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon cousin est heureux","Mon frère a faim","Mon frère est fatigué"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mes parents ont faim","Mes amis ont soif","Mes grands-parents ont froid"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ma grand-mère a peur","Ma grand-mère a froid","Ma mère a chaud"],correctIndex:1}
  ]
 };
 
@@ -3533,19 +3576,25 @@ const A1_DESCRIPTION_WRITING_MODEL="Dans ma famille, mon père est calme et ma m
 const A1_DESCRIPTION_DICTATION=[
  {speech:"Voici ma sœur et mon frère.",ar:"هذه أختي وهذا أخي."},
  {speech:"Je suis fatigué, mais je suis content.",ar:"أنا متعب، لكنني سعيد."},
- {speech:"Mon grand-père a faim et ma grand-mère a soif.",ar:"جدي جائع وجدتي عطشى."}
+ {speech:"Mon grand-père a faim et ma grand-mère a soif.",ar:"جدي جائع وجدتي عطشى."},
+ {speech:"Mes parents sont fiers de mon frère.",ar:"والداي فخوران بأخي."},
+ {speech:"Toute la famille est réunie aujourd’hui.",ar:"العائلة كلها مجتمعة اليوم."}
 ];
 
 const A1_DESCRIPTION_BUILDERS=[
  {tokens:["frère.","mon","Voici"],answer:["Voici","mon","frère."],ar:"هذا أخي."},
  {tokens:["très","mère","contente.","Ma","est"],answer:["Ma","mère","est","très","contente."],ar:"والدتي سعيدة جدًا."},
- {tokens:["faim.","parents","ont","Mes"],answer:["Mes","parents","ont","faim."],ar:"والداي جائعان."}
+ {tokens:["faim.","parents","ont","Mes"],answer:["Mes","parents","ont","faim."],ar:"والداي جائعان."},
+ {tokens:["fatiguée.","sœur","Ma","est"],answer:["Ma","sœur","est","fatiguée."],ar:"أختي متعبة."},
+ {tokens:["grands-parents.","mes","Voici"],answer:["Voici","mes","grands-parents."],ar:"هذان جدّي وجدتي."}
 ];
 
 const A1_DESCRIPTION_DIALOGUES=[
- {context:"On vous montre une femme de la famille et demande : « Qui est-ce ? »",prompt:"اختر الإجابة الصحيحة.",choices:["C’est ma sœur.","C’est mon sœur.","Ce sont ma sœur."],correctIndex:0,feedback:"sœur مؤنث، لذلك نستخدم ma sœur."},
- {context:"Votre ami demande : « Comment vas-tu ? »",prompt:"اختر جوابًا يصف حالة جسدية.",choices:["Je suis fatigué.","Je suis mon frère.","J’ai le dimanche."],correctIndex:0,feedback:"être + fatigué يصف حالة جسدية عامة."},
- {context:"Une personne veut dire qu’elle a peur.",prompt:"اختر التعبير الفرنسي الصحيح.",choices:["J’ai peur.","Je suis peur.","Je fais peur de moi."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur."}
+ {context:"Qui est-ce ?",translation:"من هذه؟",prompt:"اختر الإجابة الصحيحة عن امرأة من العائلة.",choices:["C’est ma sœur.","C’est mon sœur.","Ce sont ma sœur."],correctIndex:0,feedback:"sœur مؤنث، لذلك نستخدم ma sœur."},
+ {context:"Comment vas-tu ?",translation:"كيف حالك؟",prompt:"اختر جوابًا يصف حالة جسدية.",choices:["Je suis fatigué.","Je suis mon frère.","J’ai le dimanche."],correctIndex:0,feedback:"être + fatigué يصف حالة جسدية."},
+ {context:"Qu’est-ce que tu as ?",translation:"ما بك؟",prompt:"اختر جوابًا يعبّر عن الخوف.",choices:["J’ai peur.","Je suis peur.","Je fais peur de moi."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur."},
+ {context:"Comment est ta mère aujourd’hui ?",translation:"كيف حال والدتك اليوم؟",prompt:"اختر الرد المناسب.",choices:["Elle est très contente.","Elle a ma mère.","Elle sont contente."],correctIndex:0,feedback:"نستخدم elle est ثم الصفة المؤنثة contente."},
+ {context:"Qui sont ces personnes ?",translation:"من هؤلاء الأشخاص؟",prompt:"اختر صيغة الجمع الصحيحة.",choices:["C’est mes parents.","Ce sont mes parents.","Ils est mes parents."],correctIndex:1,feedback:"نستخدم Ce sont لتقديم أكثر من شخص."}
 ];
 
 const A1_HEALTH_NEEDS_READING={
@@ -6582,8 +6631,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1NumbersTime=level.id==="A1"&&activeModule.id==="numbers-time";
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing;
  const isA1Description=level.id==="A1"&&activeModule.id==="description";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description;
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
@@ -6634,7 +6683,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6965,6 +7014,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="numbers-time")return A1_NUMBERS_TIME_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="description")return A1_DESCRIPTION_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="daily-life")return A1_DAILY_LIFE_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="situations")return A1_FRIENDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="structures")return A1_STRUCTURES_QUIZ_ITEMS;
@@ -7301,7 +7351,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

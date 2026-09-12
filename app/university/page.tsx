@@ -56,6 +56,13 @@ const ALPHABET_PRACTICE_ORIGINS=[["50%","0%"],["100%","20%"],["100%","80%"],["50
 const ALPHABET_LISTENING_CLIPS=[
  {letter:"A",word:"ami",ar:"صديق"},{letter:"B",word:"bateau",ar:"قارب"},{letter:"C",word:"café",ar:"مقهى"},{letter:"D",word:"dimanche",ar:"الأحد"},{letter:"E",word:"école",ar:"مدرسة"}
 ];
+const A1_GREETINGS_LISTENING_CLIPS=[
+ {letter:"Bonjour",word:"madame",ar:"مرحبًا سيدتي",hiddenSpeech:"Bonjour madame"},
+ {letter:"Salut",word:"Nora",ar:"مرحبًا نورا",hiddenSpeech:"Salut Nora"},
+ {letter:"Je m’appelle",word:"Amine",ar:"اسمي أمين",hiddenSpeech:"Je m’appelle Amine"},
+ {letter:"Comment",word:"allez-vous ?",ar:"كيف حالكم؟",hiddenSpeech:"Comment allez-vous ?"},
+ {letter:"À bientôt",word:"Sami",ar:"أراك قريبًا يا سامي",hiddenSpeech:"À bientôt Sami"}
+];
 const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"/œ̃/",word:"un",ar:"واحد",hiddenSpeech:"un"},
  {letter:"/i/",word:"lit",ar:"سرير",hiddenSpeech:"i"},
@@ -441,9 +448,9 @@ const A1_MODULES:CourseModule[]=[
     "Salut غير رسمية وقد تعني مرحبًا أو إلى اللقاء.",
     "Au revoir للوداع، وÀ bientôt تعني أراك قريبًا."
    ],[
-    {fr:"Bonjour madame, comment allez-vous ?",ar:"مرحبًا سيدتي، كيف حالك؟"},
-    {fr:"Salut Sami, ça va ?",ar:"مرحبًا سامي، هل أنت بخير؟"},
-    {fr:"Au revoir et à bientôt.",ar:"إلى اللقاء وأراك قريبًا."}
+    {fr:"Bonjour madame, comment allez-vous ?",ar:"مرحبًا سيدتي، كيف حالك؟",image:"/cafe-v31/customer-1.png"},
+    {fr:"Salut Sami, ça va ?",ar:"مرحبًا سامي، هل أنت بخير؟",image:"/cafe-v31/customer-2.png"},
+    {fr:"Au revoir et à bientôt.",ar:"إلى اللقاء وأراك قريبًا.",image:"/worlds/cafe.png"}
    ]),
    section("Parler de soi","التعريف بالنفس","استخدم Je m’appelle للاسم، Je suis للجنسية أو المهنة، وJ’habite à لمكان السكن. السؤال الرسمي يستخدم vous وغير الرسمي يستخدم tu.",[
     "Comment vous appelez-vous ? للسؤال الرسمي عن الاسم.",
@@ -451,9 +458,9 @@ const A1_MODULES:CourseModule[]=[
     "Quelle langue parlez-vous ? للسؤال عن اللغة.",
     "Quel est votre métier ? للسؤال عن المهنة."
    ],[
-    {fr:"Je m’appelle Nora et je suis saoudienne.",ar:"اسمي نورة وأنا سعودية."},
-    {fr:"J’habite à Riyad.",ar:"أسكن في الرياض."},
-    {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية."}
+    {fr:"Je m’appelle Nora et je suis saoudienne.",ar:"اسمي نورة وأنا سعودية.",image:"/cafe-v31/assets/portrait-3.webp"},
+    {fr:"J’habite à Riyad.",ar:"أسكن في الرياض.",image:"/kingdom-portal-assets/destination-airport.png"},
+    {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية.",image:"/cafe-v31/menu-bilingual.png"}
    ])
   ]
  },
@@ -1440,16 +1447,26 @@ const A1_GREETINGS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_GREETINGS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Il est neuf heures du matin. Je dis : ___.",speech:"Il est neuf heures du matin. Quelle formule de salutation choisissez-vous ?",instruction:"اختر التحية المناسبة في الصباح.",choices:["Bonsoir","Bonjour","Bonne nuit"],correctIndex:1,explanation:"Bonjour هي التحية المناسبة نهارًا."},
- {prompt:"Je parle à un ami. Je dis : ___.",speech:"Je parle à un ami. Quelle formule familière choisissez-vous ?",instruction:"اختر التحية الودية المناسبة لصديق.",choices:["Salut","Bonjour madame","Au revoir monsieur"],correctIndex:0,explanation:"Salut تحية غير رسمية تستخدم مع الأصدقاء."},
- {prompt:"Comment vous ___-vous ?",speech:"Complétez la question. Comment vous appelez-vous ?",instruction:"أكمل السؤال الرسمي عن الاسم.",choices:["habitez","appelez","parlez"],correctIndex:1,explanation:"Comment vous appelez-vous ؟ تعني ما اسمكم؟"},
- {prompt:"Je ___ Lina.",speech:"Complétez la phrase. Je m’appelle Lina.",instruction:"اختر الصيغة الصحيحة لذكر الاسم.",choices:["m’appelle","s’appelle","t’appelles"],correctIndex:0,explanation:"مع je نقول je m’appelle."},
- {prompt:"J’___ vingt-deux ans.",speech:"Complétez la phrase. J’ai vingt-deux ans.",instruction:"اختر الفعل الصحيح لذكر العمر.",choices:["est","suis","ai"],correctIndex:2,explanation:"العمر في الفرنسية يستخدم فعل avoir: j’ai."},
- {prompt:"Je ___ de Djeddah.",speech:"Complétez la phrase. Je viens de Djeddah.",instruction:"اختر الفعل المناسب لذكر المكان الذي أتيت منه.",choices:["viens","habite","parle"],correctIndex:0,explanation:"venir de يستخدم لذكر الأصل أو المكان الذي يأتي منه الشخص."},
- {prompt:"J’___ à Toulouse.",speech:"Complétez la phrase. J’habite à Toulouse.",instruction:"اختر الفعل المناسب لذكر مكان السكن.",choices:["aime","habite","étudie de"],correctIndex:1,explanation:"habiter à يستخدم مع اسم المدينة."},
- {prompt:"Je suis ___.",speech:"Je travaille dans une école. Je suis professeur.",instruction:"اختر المهنة المناسبة لشخص يعمل في مدرسة.",choices:["pharmacien","serveur","professeur"],correctIndex:2,explanation:"الشخص الذي يدرّس في المدرسة هو professeur."},
- {prompt:"Je parle arabe et ___ français.",speech:"Complétez la phrase. Je parle arabe et un peu français.",instruction:"اختر العبارة التي تعني «قليلًا من».",choices:["un peu","beaucoup de","jamais"],correctIndex:0,explanation:"un peu تعني قليلًا."},
- {prompt:"Au revoir et à bientôt.",speech:"Au revoir et à bientôt.",instruction:"اختر المعنى العربي الصحيح.",choices:["مرحبًا وتشرفت بمعرفتك.","إلى اللقاء وأراك قريبًا.","مساء الخير وكيف حالك؟"],correctIndex:1,explanation:"Au revoir et à bientôt عبارة وداع تعني إلى اللقاء وأراك قريبًا."}
+ {prompt:"Il est neuf heures du matin. Je dis : ___.",speech:"Il est neuf heures du matin. Quelle formule de salutation choisissez-vous ?",translation:"الساعة التاسعة صباحًا. ماذا أقول؟",instruction:"اختر التحية المناسبة في الصباح.",choices:["Bonsoir","Bonjour","Bonne nuit"],correctIndex:1,explanation:"Bonjour هي التحية المناسبة نهارًا."},
+ {prompt:"Je parle à un ami. Je dis : ___.",speech:"Je parle à un ami. Quelle formule familière choisissez-vous ?",translation:"أتحدث إلى صديق. ماذا أقول؟",instruction:"اختر التحية الودية المناسبة لصديق.",choices:["Salut","Bonjour madame","Au revoir monsieur"],correctIndex:0,explanation:"Salut تحية غير رسمية تستخدم مع الأصدقاء."},
+ {prompt:"Comment vous ___-vous ?",speech:"Complétez la question. Comment vous appelez-vous ?",translation:"ما اسمكم؟",instruction:"أكمل السؤال الرسمي عن الاسم.",choices:["habitez","appelez","parlez"],correctIndex:1,explanation:"Comment vous appelez-vous ؟ تعني ما اسمكم؟"},
+ {prompt:"Je ___ Lina.",speech:"Complétez la phrase. Je m’appelle Lina.",translation:"اسمي لينا.",instruction:"اختر الصيغة الصحيحة لذكر الاسم.",choices:["m’appelle","s’appelle","t’appelles"],correctIndex:0,explanation:"مع je نقول je m’appelle."},
+ {prompt:"J’___ vingt-deux ans.",speech:"Complétez la phrase. J’ai vingt-deux ans.",translation:"عمري اثنان وعشرون عامًا.",instruction:"اختر الفعل الصحيح لذكر العمر.",choices:["est","suis","ai"],correctIndex:2,explanation:"العمر في الفرنسية يستخدم فعل avoir: j’ai."},
+ {prompt:"Je ___ de Djeddah.",speech:"Complétez la phrase. Je viens de Djeddah.",translation:"أنا من جدة.",instruction:"اختر الفعل المناسب لذكر المكان الذي أتيت منه.",choices:["viens","habite","parle"],correctIndex:0,explanation:"venir de يستخدم لذكر الأصل أو المكان الذي يأتي منه الشخص."},
+ {prompt:"J’___ à Toulouse.",speech:"Complétez la phrase. J’habite à Toulouse.",translation:"أسكن في تولوز.",instruction:"اختر الفعل المناسب لذكر مكان السكن.",choices:["aime","habite","étudie de"],correctIndex:1,explanation:"habiter à يستخدم مع اسم المدينة."},
+ {prompt:"Je suis ___.",speech:"Je travaille dans une école. Je suis professeur.",translation:"أعمل في مدرسة. أنا معلّم.",instruction:"اختر المهنة المناسبة لشخص يعمل في مدرسة.",choices:["pharmacien","serveur","professeur"],correctIndex:2,explanation:"الشخص الذي يدرّس في المدرسة هو professeur."},
+ {prompt:"Je parle arabe et ___ français.",speech:"Complétez la phrase. Je parle arabe et un peu français.",translation:"أتحدث العربية وقليلًا من الفرنسية.",instruction:"اختر العبارة التي تعني «قليلًا من».",choices:["un peu","beaucoup de","jamais"],correctIndex:0,explanation:"un peu تعني قليلًا."},
+ {prompt:"Au revoir, à la semaine prochaine.",speech:"Au revoir, à la semaine prochaine.",translation:"إلى اللقاء، أراك الأسبوع القادم.",instruction:"اختر المعنى العربي الصحيح.",choices:["مرحبًا وتشرفت بمعرفتك.","إلى اللقاء، أراك الأسبوع القادم.","مساء الخير وكيف حالك؟"],correctIndex:1,explanation:"Au revoir وà la semaine prochaine عبارتا وداع وتحديد للقاء القادم."},
+ {prompt:"Il est vingt heures. Je dis : ___.",speech:"Il est vingt heures. Quelle salutation choisissez-vous ?",translation:"الساعة الثامنة مساءً. ماذا أقول؟",instruction:"اختر التحية المناسبة في المساء.",choices:["Bonjour","Bonne nuit","Bonsoir"],correctIndex:2,explanation:"Bonsoir هي التحية المناسبة عند اللقاء مساءً."},
+ {prompt:"Comment ___-tu ?",speech:"Complétez la question. Comment t’appelles-tu ?",translation:"ما اسمك؟ بصيغة ودية.",instruction:"أكمل السؤال الموجه إلى صديق.",choices:["t’appelles","vous appelez","s’appelle"],correctIndex:0,explanation:"مع tu نقول Comment t’appelles-tu ؟"},
+ {prompt:"Il ___ Adam.",speech:"Complétez la phrase. Il s’appelle Adam.",translation:"اسمه آدم.",instruction:"اختر الصيغة الصحيحة مع il.",choices:["m’appelle","s’appelle","t’appelles"],correctIndex:1,explanation:"مع il نستعمل الضمير الانعكاسي se: il s’appelle."},
+ {prompt:"Comment allez-vous ? — ___.",speech:"Comment allez-vous ? Très bien, merci.",translation:"كيف حالكم؟ — بخير جدًا، شكرًا.",instruction:"اختر الرد المهذب المناسب.",choices:["Je m’appelle Nora.","À demain.","Très bien, merci."],correctIndex:2,explanation:"Très bien, merci رد طبيعي عن سؤال الحال."},
+ {prompt:"Ravi de faire votre connaissance. — ___.",speech:"Ravi de faire votre connaissance. Moi de même.",translation:"سعيد بمعرفتكم. — وأنا كذلك.",instruction:"اختر الرد المناسب عند التعارف.",choices:["Moi de même.","Bonne nuit.","Je viens demain."],correctIndex:0,explanation:"Moi de même تعني وأنا كذلك."},
+ {prompt:"Je vous présente ___.",speech:"Je vous présente mon collègue Karim.",translation:"أقدم لكم زميلي كريم.",instruction:"اختر التكملة المناسبة لتقديم شخص.",choices:["à bientôt","mon collègue Karim","très bien merci"],correctIndex:1,explanation:"Je vous présente تستخدم لتقديم شخص إلى آخر."},
+ {prompt:"Bienvenue dans notre équipe !",speech:"Bienvenue dans notre équipe !",translation:"أهلًا بك في فريقنا!",instruction:"اختر الرد الأنسب.",choices:["Je suis vingt ans.","Bonsoir hier.","Merci beaucoup !"],correctIndex:2,explanation:"Merci beaucoup رد مناسب على الترحيب."},
+ {prompt:"À demain, bonne soirée !",speech:"À demain, bonne soirée !",translation:"أراك غدًا، أمسية سعيدة!",instruction:"حدد نوع العبارة.",choices:["عبارة وداع","سؤال عن الاسم","تعريف بالمهنة"],correctIndex:0,explanation:"À demain وbonne soirée تستعملان عند الوداع."},
+ {prompt:"Quelle langue parlez-vous ?",speech:"Quelle langue parlez-vous ?",translation:"ما اللغة التي تتحدثونها؟",instruction:"اختر الإجابة المناسبة.",choices:["J’habite à Lille.","Je parle espagnol.","Je suis architecte."],correctIndex:1,explanation:"السؤال عن اللغة يُجاب عنه بفعل parler واسم اللغة."},
+ {prompt:"Vous êtes d’où ?",speech:"Vous êtes d’où ?",translation:"من أين أنتم؟",instruction:"اختر الإجابة المناسبة عن الأصل.",choices:["Je vais très bien.","Je travaille le matin.","Je suis de Riyad."],correctIndex:2,explanation:"Je suis de… تجيب عن سؤال الأصل في حوار بسيط."}
 ];
 
 const A1_COUNTRIES_PRACTICE_ITEMS:Example[]=[
@@ -2227,41 +2244,53 @@ const A1_GREETINGS_READING={
  text:"Nora entre dans une boulangerie. Elle dit : « Bonjour madame. Je m’appelle Nora. Comment allez-vous ? » La vendeuse répond : « Très bien, merci. Enchantée, Nora. »",
  translation:"تدخل نورا إلى مخبز. تقول: «مرحبًا سيدتي. اسمي نورا. كيف حالك؟» فتجيب البائعة: «بخير جدًا، شكرًا. سعيدة بلقائك يا نورا.»",
  questions:[
-  {question:"Où entre Nora ?",answer:"Elle entre dans une boulangerie.",ar:"تدخل إلى مخبز."},
-  {question:"Comment Nora se présente-t-elle ?",answer:"Elle dit : « Je m’appelle Nora. »",ar:"تقول: اسمي نورا."},
-  {question:"Comment va la vendeuse ?",answer:"Elle va très bien.",ar:"إنها بخير جدًا."}
+  {question:"Où entre Nora ?",translation:"إلى أين تدخل نورا؟",answer:"Elle entre dans une boulangerie.",ar:"تدخل إلى مخبز."},
+  {question:"Comment Nora se présente-t-elle ?",translation:"كيف تعرّف نورا بنفسها؟",answer:"Elle dit : « Je m’appelle Nora. »",ar:"تقول: اسمي نورا."},
+  {question:"Comment va la vendeuse ?",translation:"كيف حال البائعة؟",answer:"Elle va très bien.",ar:"إنها بخير جدًا."}
  ]
 };
 
 const A1_GREETINGS_LISTENING={
  title:"Je me présente",
  arTitle:"أعرّف بنفسي",
- text:"Bonjour, je m’appelle Sami. Je suis étudiant et j’habite à Lyon. Je parle arabe et un peu français. Enchanté de vous rencontrer.",
+ text:"Bonjour madame. Salut Nora. Je m’appelle Amine. Comment allez-vous ? À bientôt Sami.",
  questions:[
-  {prompt:"Comment s’appelle la personne ?",choices:["Sami","Amine","Lucas"],correctIndex:0},
-  {prompt:"Où habite Sami ?",choices:["À Paris","À Lyon","À Nantes"],correctIndex:1},
-  {prompt:"Quelles langues parle-t-il ?",choices:["Arabe et un peu français","Seulement français","Anglais et espagnol"],correctIndex:0}
+  {prompt:"Quelle formule entendez-vous ?",choices:["Bonjour madame","Bonsoir monsieur","Bonne nuit madame"],correctIndex:0},
+  {prompt:"Quelle salutation familière entendez-vous ?",choices:["Au revoir Nora","Salut Nora","Bienvenue Nora"],correctIndex:1},
+  {prompt:"Quel prénom entendez-vous ?",choices:["Sami","Nora","Amine"],correctIndex:2},
+  {prompt:"Quelle question entendez-vous ?",choices:["Comment allez-vous ?","Comment vous appelez-vous ?","Où habitez-vous ?"],correctIndex:0},
+  {prompt:"Quelle formule de départ entendez-vous ?",choices:["Bonjour Sami","À bientôt Sami","Merci Sami"],correctIndex:1}
  ]
 };
 
 const A1_GREETINGS_WRITING_MODEL="Bonjour, je m’appelle Sami. Je suis étudiant. J’habite à Lyon et je parle arabe. Enchanté de vous rencontrer.";
+const A1_GREETINGS_WRITING_TRANSLATIONS=[
+ {fr:"bonjour",ar:"مرحبًا"},{fr:"je m’appelle",ar:"اسمي"},{fr:"j’habite",ar:"أسكن"},{fr:"je parle",ar:"أتحدث"},
+ {fr:"enchanté",ar:"سعيد بلقائك"},{fr:"merci",ar:"شكرًا"},{fr:"au revoir",ar:"إلى اللقاء"},{fr:"à bientôt",ar:"أراك قريبًا"}
+];
 
 const A1_GREETINGS_DICTATION=[
  {speech:"Bonjour, je m’appelle Sami.",ar:"مرحبًا، اسمي سامي."},
  {speech:"Comment allez-vous ?",ar:"كيف حالك؟ بصيغة رسمية."},
- {speech:"Enchanté de vous rencontrer.",ar:"سعيد بلقائك."}
+ {speech:"Enchanté de vous rencontrer.",ar:"سعيد بلقائك."},
+ {speech:"Je vais très bien, merci.",ar:"أنا بخير جدًا، شكرًا."},
+ {speech:"Au revoir et à demain.",ar:"إلى اللقاء وأراك غدًا."}
 ];
 
 const A1_GREETINGS_BUILDERS=[
  {tokens:["m’appelle","Bonjour,","Nora.","je"],answer:["Bonjour,","je","m’appelle","Nora."],ar:"مرحبًا، اسمي نورا."},
  {tokens:["allez-vous","Comment","aujourd’hui ?"],answer:["Comment","allez-vous","aujourd’hui ?"],ar:"كيف حالك اليوم؟"},
- {tokens:["vous","de","Enchanté","rencontrer."],answer:["Enchanté","de","vous","rencontrer."],ar:"سعيد بلقائك."}
+ {tokens:["vous","de","Enchanté","rencontrer."],answer:["Enchanté","de","vous","rencontrer."],ar:"سعيد بلقائك."},
+ {tokens:["Bordeaux.","J’habite","à"],answer:["J’habite","à","Bordeaux."],ar:"أسكن في بوردو."},
+ {tokens:["bientôt !","Au","revoir","à","et"],answer:["Au","revoir","et","à","bientôt !"],ar:"إلى اللقاء وأراك قريبًا!"}
 ];
 
 const A1_GREETINGS_DIALOGUES=[
- {context:"Une personne vous dit : « Bonjour ! »",prompt:"اختر الرد الطبيعي.",choices:["Bonjour !","Au revoir !","Je ne sais pas."],correctIndex:0,feedback:"نرد على Bonjour بالتحية نفسها."},
- {context:"On vous demande : « Comment vous appelez-vous ? »",prompt:"كيف تعرّف باسمك؟",choices:["J’habite à Lille.","Je m’appelle Lina.","Très bien, merci."],correctIndex:1,feedback:"Je m’appelle… هي الصيغة الأساسية لذكر الاسم."},
- {context:"Votre professeur dit : « Enchanté de vous rencontrer. »",prompt:"اختر الرد المهذب.",choices:["Enchanté également.","Je suis à Paris.","À demain matin ?"],correctIndex:0,feedback:"Enchanté également تعني: وأنا سعيد بلقائك أيضًا."}
+ {context:"Une personne vous dit : « Bonjour ! »",translation:"يقول لك شخص: مرحبًا!",prompt:"اختر الرد الطبيعي.",choices:["Bonjour !","Au revoir !","Je ne sais pas."],correctIndex:0,feedback:"نرد على Bonjour بالتحية نفسها."},
+ {context:"On vous demande : « Comment vous appelez-vous ? »",translation:"يسألك شخص: ما اسمك؟",prompt:"كيف تعرّف باسمك؟",choices:["J’habite à Lille.","Je m’appelle Lina.","Très bien, merci."],correctIndex:1,feedback:"Je m’appelle… هي الصيغة الأساسية لذكر الاسم."},
+ {context:"Votre professeur dit : « Enchanté de vous rencontrer. »",translation:"يقول معلمك: سعيد بلقائك.",prompt:"اختر الرد المهذب.",choices:["Enchanté également.","Je suis à Paris.","À demain matin ?"],correctIndex:0,feedback:"Enchanté également تعني: وأنا سعيد بلقائك أيضًا."},
+ {context:"Votre collègue demande : « Comment allez-vous ? »",translation:"يسألك زميلك: كيف حالكم؟",prompt:"اختر الرد المناسب.",choices:["Je viens de Lyon.","Bien, merci. Et vous ?","Je m’appelle Karim."],correctIndex:1,feedback:"نجيب عن الحال ثم نعيد السؤال بأدب."},
+ {context:"Vous quittez la classe jusqu’à demain.",translation:"تغادر الفصل حتى الغد.",prompt:"اختر عبارة الوداع المناسبة.",choices:["Bienvenue !","Bonsoir pour hier.","Au revoir, à demain !"],correctIndex:2,feedback:"Au revoir, à demain مناسبة عند المغادرة مع لقاء في اليوم التالي."}
 ];
 
 const A1_COUNTRIES_READING={
@@ -6120,7 +6149,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Tastes=level.id==="A1"&&activeModule.id==="tastes-preferences";
  const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives;
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -6184,7 +6213,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -6851,7 +6880,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

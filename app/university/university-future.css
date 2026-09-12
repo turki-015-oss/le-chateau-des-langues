@@ -891,6 +891,31 @@
 .university-level-world .university-course-revision .university-example-list article{margin-top:8px;padding:12px;border:1px solid #dce4ed;border-radius:14px;background:#fff;box-shadow:0 7px 16px rgba(12,49,86,.055)}
 .university-level-world .university-course-revision .university-example-list article:last-child{border-bottom:1px solid #dce4ed}
 .university-level-world .university-course-revision .university-example-list button{border-color:rgba(225,188,98,.65);background:linear-gradient(145deg,#1d558b,#08274d);color:#f2d38a}
+.university-level-world .university-example-list article.university-example-visual{
+ grid-template-columns:82px 76px minmax(0,1fr);
+ align-items:center;
+ overflow:hidden;
+ background:linear-gradient(135deg,#fffdf8 0%,#f5f8fc 100%);
+}
+.university-level-world .university-example-list article.university-example-visual>img{
+ width:82px;
+ height:68px;
+ object-fit:cover;
+ border-radius:12px;
+ border:1px solid rgba(197,153,62,.34);
+ box-shadow:0 8px 18px rgba(8,42,77,.12);
+}
+@media(max-width:680px){
+ .university-level-world .university-example-list article.university-example-visual{
+  grid-template-columns:62px 58px minmax(0,1fr);
+  gap:8px;
+ }
+ .university-level-world .university-example-list article.university-example-visual>img{
+  width:62px;
+  height:58px;
+  border-radius:10px;
+ }
+}
 
 .university-level-world .university-course-revision .a2-reading-workshop,
 .university-level-world .university-course-revision .university-practice-stage,

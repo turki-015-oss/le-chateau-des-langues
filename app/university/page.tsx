@@ -23,7 +23,7 @@ import {
 } from "./adjectives-data";
 import "./university-future.css";
 
-type Example={fr:string;ar:string};
+type Example={fr:string;ar:string;image?:string};
 type LessonSection={title:string;subtitle:string;explanation:string;points:string[];examples:Example[]};
 type CourseModule={
  id:string;
@@ -95,6 +95,13 @@ const A1_TASTES_LISTENING_CLIPS=[
  {letter:"Je préfère",word:"le thé",ar:"أفضل الشاي",hiddenSpeech:"Je préfère le thé"},
  {letter:"Je n’aime pas",word:"courir",ar:"لا أحب الجري",hiddenSpeech:"Je n’aime pas courir"},
  {letter:"Je déteste",word:"le bruit",ar:"أكره الضوضاء",hiddenSpeech:"Je déteste le bruit"}
+];
+const A1_DEMONSTRATIVES_LISTENING_CLIPS=[
+ {letter:"ce",word:"café",ar:"هذا المقهى",hiddenSpeech:"ce café"},
+ {letter:"cet",word:"ordinateur",ar:"هذا الحاسوب",hiddenSpeech:"cet ordinateur"},
+ {letter:"cette",word:"chambre",ar:"هذه الغرفة",hiddenSpeech:"cette chambre"},
+ {letter:"ces",word:"clés",ar:"هذه المفاتيح",hiddenSpeech:"ces clés"},
+ {letter:"cet",word:"arbre",ar:"هذه الشجرة",hiddenSpeech:"cet arbre"}
 ];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
@@ -750,6 +757,52 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
+  id:"demonstratives",title:"Les déterminants démonstratifs",ar:"صفات الإشارة",icon:Hand,
+  description:"اختيار ce وcet وcette وces للإشارة إلى شخص أو مكان أو شيء بحسب الجنس والعدد وبداية الاسم.",
+  sections:[
+   section("Ce","المذكر المفرد","نستعمل ce قبل الاسم المذكر المفرد الذي يبدأ بصوت ساكن. تأتي صفة الإشارة قبل الاسم مباشرة، ويمكن أن تتبعها صفة تصف الاسم.",[
+    "ce + اسم مذكر مفرد يبدأ بصوت ساكن.",
+    "نقول ce livre وce restaurant وce professeur.",
+    "لا تتغير ce بحسب قرب الشيء أو بعده.",
+    "يمكن إضافة -ci أو -là بعد الاسم للتحديد: ce livre-ci."
+   ],[
+    {fr:"Ce livre est facile à lire.",ar:"هذا الكتاب سهل القراءة.",image:"/castle-hall-icons/library.webp"},
+    {fr:"Ce restaurant ouvre à midi.",ar:"هذا المطعم يفتح عند الظهر.",image:"/restaurant-v1/hero.webp"},
+    {fr:"Ce train part dans cinq minutes.",ar:"هذا القطار يغادر خلال خمس دقائق.",image:"/station-assets/hero.webp"}
+   ]),
+   section("Cet","المذكر قبل صوت متحرك","نستعمل cet قبل الاسم المذكر المفرد الذي يبدأ بصوت متحرك أو بحرف h صامت، لأن نطقه أسهل من ce في هذا الموضع.",[
+    "cet + اسم مذكر يبدأ بصوت متحرك: cet avion.",
+    "نستعمل cet مع h الصامت: cet hôtel.",
+    "يبقى الاسم مذكرًا رغم استعمال cet.",
+    "قبل h المنطوق نستعمل ce، مثل ce héros."
+   ],[
+    {fr:"Cet hôtel possède un grand jardin.",ar:"هذا الفندق لديه حديقة كبيرة.",image:"/hotel-v1/hero.webp"},
+    {fr:"Cet avion arrive de Marseille.",ar:"هذه الطائرة قادمة من مرسيليا.",image:"/airport/terminal-main.png"},
+    {fr:"Cet enfant dessine un château.",ar:"هذا الطفل يرسم قلعة.",image:"/images/university/a1-sounds/enfant.webp"}
+   ]),
+   section("Cette","المؤنث المفرد","نستعمل cette قبل كل اسم مؤنث مفرد، سواء بدأ بصوت ساكن أو متحرك. معرفة جنس الاسم هي المفتاح لاختيارها.",[
+    "cette + اسم مؤنث مفرد: cette maison.",
+    "نقول cette école رغم أن الاسم يبدأ بصوت متحرك.",
+    "تستعمل الصيغة نفسها مع h الصامت: cette histoire.",
+    "توافق الصفة الاسم المؤنث: cette petite voiture."
+   ],[
+    {fr:"Cette maison donne sur la mer.",ar:"هذا المنزل يطل على البحر.",image:"/images/university/a1-sounds/maison.webp"},
+    {fr:"Cette voiture appartient à Nora.",ar:"هذه السيارة تخص نورا.",image:"/images/university/a1-sounds/voiture.webp"},
+    {fr:"Cette école organise une exposition.",ar:"هذه المدرسة تنظم معرضًا.",image:"/worlds/university.png"}
+   ]),
+   section("Ces","الجمع للمذكر والمؤنث","نستعمل ces قبل جميع الأسماء في صيغة الجمع، سواء كانت مذكرة أو مؤنثة. ويظهر الجمع عادة في الأداة والاسم معًا في الكتابة.",[
+    "ces + جمع مذكر: ces garçons.",
+    "ces + جمع مؤنث: ces filles.",
+    "لا نستعمل ce أو cette قبل اسم جمع.",
+    "يمكن التمييز بـ -ci و-là: ces billets-ci، ces billets-là."
+   ],[
+    {fr:"Ces billets sont pour le concert.",ar:"هذه التذاكر للحفل.",image:"/cinema-v1/tickets.webp"},
+    {fr:"Ces valises sont très lourdes.",ar:"هذه الحقائب ثقيلة جدًا.",image:"/airport/assets/checked-baggage.svg"},
+    {fr:"Ces animaux vivent dans la savane.",ar:"هذه الحيوانات تعيش في السافانا.",image:"/zoo/animals/giraffe.webp"}
+   ])
+  ]
+ },
+ {
   id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
@@ -1237,7 +1290,7 @@ const A1_MODULES:CourseModule[]=[
 // New A1 modules will be inserted into their reserved pedagogical positions in later batches.
 const A1_MODULE_ORDER=[
  "alphabet","sounds","greetings","countries-languages","nouns","core-verbs",
- "present","studies-professions","tastes-preferences","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
+ "present","studies-professions","tastes-preferences","demonstratives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative",
  "description","home-housing","daily-life","food-shopping","city-directions","weather-clothes",
  "health-needs","situations","messages-forms"
 ] as const;
@@ -1452,6 +1505,42 @@ const A1_TASTES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Quel est votre loisir préféré ?",speech:"Quel est votre loisir préféré ?",instruction:"اختر الإجابة المناسبة للسؤال.",translation:"ما هوايتكم المفضلة؟",choices:["J’habite à Paris.","Il est neuf heures.","Mon loisir préféré est la lecture."],correctIndex:2,explanation:"الإجابة تحدد الهواية المفضلة مباشرة."},
  {prompt:"Vous aimez faire du sport ?",speech:"Vous aimez faire du sport ?",instruction:"اختر الإجابة الطبيعية.",translation:"هل تحبون ممارسة الرياضة؟",choices:["Oui, j’aime beaucoup nager.","Je suis un sport.","À cinq heures hier."],correctIndex:0,explanation:"يمكن تأكيد الذوق ثم ذكر النشاط في المصدر."},
  {prompt:"Je préfère marcher parce que c’est calme.",speech:"Je préfère marcher parce que c’est calme.",instruction:"اختر المعنى العربي الصحيح.",choices:["أكره المشي لأنه متعب.","أفضل المشي لأنه هادئ.","أحب القطار لأنه سريع."],correctIndex:1,explanation:"الجملة تعبّر عن التفضيل ثم تذكر السبب."}
+];
+
+const A1_DEMONSTRATIVES_PRACTICE_ITEMS:Example[]=[
+ {fr:"Ce téléphone est à mon frère.",ar:"هذا الهاتف لأخي."},
+ {fr:"Cet appartement se trouve au troisième étage.",ar:"هذه الشقة تقع في الطابق الثالث."},
+ {fr:"Cette rue mène à la gare.",ar:"هذا الشارع يؤدي إلى المحطة."},
+ {fr:"Ces fleurs sentent très bon.",ar:"هذه الزهور رائحتها جميلة جدًا."},
+ {fr:"Je voudrais essayer ce pantalon.",ar:"أود تجربة هذا البنطال."},
+ {fr:"Regardez cet écran, s’il vous plaît.",ar:"انظروا إلى هذه الشاشة، من فضلكم."},
+ {fr:"Cette question est importante.",ar:"هذا السؤال مهم."},
+ {fr:"Ces enfants jouent dans le parc.",ar:"هؤلاء الأطفال يلعبون في الحديقة."},
+ {fr:"Vous prenez ce bus ou cet autobus ?",ar:"هل تستقلون هذه الحافلة أم هذا الباص؟"},
+ {fr:"Ces chaussures-ci sont plus confortables.",ar:"هذه الأحذية هنا أكثر راحة."}
+];
+
+const A1_DEMONSTRATIVES_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"___ musée ferme à dix-huit heures.",speech:"Complétez la phrase. Ce musée ferme à dix-huit heures.",instruction:"اختر صفة الإشارة المناسبة.",translation:"هذا المتحف يغلق الساعة السادسة مساءً.",choices:["Ce","Cet","Cette"],correctIndex:0,explanation:"musée مذكر مفرد ويبدأ بصوت ساكن؛ لذلك نستخدم ce."},
+ {prompt:"___ hôpital est moderne.",speech:"Complétez la phrase. Cet hôpital est moderne.",instruction:"اختر صفة الإشارة المناسبة.",translation:"هذا المستشفى حديث.",choices:["Cette","Ces","Cet"],correctIndex:2,explanation:"hôpital مذكر ويبدأ بـ h صامت؛ لذلك نستخدم cet."},
+ {prompt:"___ porte est fermée.",speech:"Complétez la phrase. Cette porte est fermée.",instruction:"اختر صفة الإشارة المناسبة.",translation:"هذا الباب مغلق.",choices:["Cet","Cette","Ce"],correctIndex:1,explanation:"porte مؤنث مفرد؛ لذلك نستخدم cette."},
+ {prompt:"___ vélos sont disponibles.",speech:"Complétez la phrase. Ces vélos sont disponibles.",instruction:"اختر صفة الإشارة المناسبة.",translation:"هذه الدراجات متاحة.",choices:["Ces","Ce","Cette"],correctIndex:0,explanation:"vélos جمع؛ لذلك نستخدم ces."},
+ {prompt:"___ acteur joue très bien.",speech:"Complétez la phrase. Cet acteur joue très bien.",instruction:"اختر الصيغة المناسبة قبل صوت متحرك.",translation:"هذا الممثل يؤدي دوره جيدًا.",choices:["Ce","Cet","Ces"],correctIndex:1,explanation:"acteur مذكر يبدأ بصوت متحرك؛ لذلك نستخدم cet."},
+ {prompt:"___ université accueille beaucoup d’étudiants.",speech:"Complétez la phrase. Cette université accueille beaucoup d’étudiants.",instruction:"اختر الصيغة المناسبة للاسم المؤنث.",translation:"هذه الجامعة تستقبل طلابًا كثيرين.",choices:["Ce","Cet","Cette"],correctIndex:2,explanation:"université مؤنث؛ لذلك تبقى الصيغة cette."},
+ {prompt:"___ voisin habite au numéro douze.",speech:"Complétez la phrase. Ce voisin habite au numéro douze.",instruction:"اختر صفة الإشارة الصحيحة.",translation:"هذا الجار يسكن في المنزل رقم اثني عشر.",choices:["Ce","Ces","Cette"],correctIndex:0,explanation:"voisin مذكر مفرد ويبدأ بصوت ساكن."},
+ {prompt:"___ amie parle italien.",speech:"Complétez la phrase. Cette amie parle italien.",instruction:"اختر الصيغة الموافقة لجنس الاسم.",translation:"هذه الصديقة تتحدث الإيطالية.",choices:["Cet","Cette","Ce"],correctIndex:1,explanation:"amie مؤنث؛ لذلك نستخدم cette رغم بدايته بصوت متحرك."},
+ {prompt:"___ exercice est facile.",speech:"Complétez la phrase. Cet exercice est facile.",instruction:"اختر الصيغة المناسبة.",translation:"هذا التمرين سهل.",choices:["Cette","Ce","Cet"],correctIndex:2,explanation:"exercice مذكر يبدأ بصوت متحرك؛ لذلك نستخدم cet."},
+ {prompt:"___ photos viennent de Lyon.",speech:"Complétez la phrase. Ces photos viennent de Lyon.",instruction:"اختر الصيغة المناسبة للجمع.",translation:"هذه الصور من ليون.",choices:["Ces","Cette","Cet"],correctIndex:0,explanation:"photos جمع مؤنث، وصيغة الجمع للمذكر والمؤنث هي ces."},
+ {prompt:"Je connais ___ quartier.",speech:"Je connais ce quartier.",instruction:"أكمل الجملة بصفة الإشارة المناسبة.",translation:"أعرف هذا الحي.",choices:["cette","ce","cet"],correctIndex:1,explanation:"quartier اسم مذكر يبدأ بصوت ساكن."},
+ {prompt:"Elle achète ___ orange.",speech:"Elle achète cette orange.",instruction:"اختر الصيغة الموافقة للاسم.",translation:"هي تشتري هذه البرتقالة.",choices:["cet","ce","cette"],correctIndex:2,explanation:"orange هنا اسم مؤنث؛ لذلك نستخدم cette."},
+ {prompt:"Nous visitons ___ ancien château.",speech:"Nous visitons cet ancien château.",instruction:"اختر الصيغة المناسبة قبل الصفة.",translation:"نزور هذه القلعة القديمة.",choices:["cet","ce","ces"],correctIndex:0,explanation:"ancien مذكر يبدأ بصوت متحرك؛ لذلك نستخدم cet."},
+ {prompt:"Tu vois ___ grande tour ?",speech:"Tu vois cette grande tour ?",instruction:"اختر الصيغة المناسبة.",translation:"هل ترى هذا البرج الكبير؟",choices:["ce","cette","cet"],correctIndex:1,explanation:"tour مؤنث، والصفة لا تغير اختيار cette."},
+ {prompt:"___ messages sont pour vous.",speech:"Ces messages sont pour vous.",instruction:"اختر صفة الإشارة الصحيحة.",translation:"هذه الرسائل لكم.",choices:["Ce","Cette","Ces"],correctIndex:2,explanation:"messages جمع؛ لذلك نستخدم ces."},
+ {prompt:"Ce bureau est libre.",speech:"Ce bureau est libre.",instruction:"اختر المعنى العربي الصحيح.",choices:["هذا المكتب متاح.","هذه المكاتب مغلقة.","هذه الغرفة واسعة."],correctIndex:0,explanation:"ce bureau تعني هذا المكتب."},
+ {prompt:"Cet ascenseur ne fonctionne pas.",speech:"Cet ascenseur ne fonctionne pas.",instruction:"اختر المعنى العربي الصحيح.",choices:["هذا السلم طويل.","هذا المصعد لا يعمل.","هذه النافذة لا تفتح."],correctIndex:1,explanation:"cet ascenseur تعني هذا المصعد."},
+ {prompt:"Cette boulangerie est nouvelle.",speech:"Cette boulangerie est nouvelle.",instruction:"اختر المعنى العربي الصحيح.",choices:["هذا السوق قديم.","هذا المطعم كبير.","هذا المخبز جديد."],correctIndex:2,explanation:"boulangerie مؤنث، وcette boulangerie تعني هذا المخبز."},
+ {prompt:"Ces touristes cherchent leur hôtel.",speech:"Ces touristes cherchent leur hôtel.",instruction:"اختر المعنى العربي الصحيح.",choices:["هؤلاء السياح يبحثون عن فندقهم.","هذا السائح يعمل في الفندق.","هؤلاء الطلاب ينتظرون الحافلة."],correctIndex:0,explanation:"ces touristes تعني هؤلاء السياح."},
+ {prompt:"___ héros protège la ville.",speech:"Complétez la phrase. Ce héros protège la ville.",instruction:"اختر الصيغة الصحيحة مع h المنطوق.",translation:"هذا البطل يحمي المدينة.",choices:["Cet","Ce","Cette"],correctIndex:1,explanation:"في héros يكون h منطوقًا أو مانعًا للوصل؛ لذلك نقول ce héros."}
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
@@ -2249,6 +2338,61 @@ const A1_TASTES_DIALOGUES=[
  {context:"Pourquoi aimes-tu ce film ?",translation:"لماذا تحب هذا الفيلم؟",prompt:"اختر الإجابة المناسبة.",choices:["Au cinéma.","Avec ma sœur.","Parce qu’il est drôle."],correctIndex:2,feedback:"نجيب عن pourquoi بسبب يبدأ بـ parce que."},
  {context:"Vous aimez faire du sport ?",translation:"هل تحبون ممارسة الرياضة؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, j’adore nager.","Je suis une piscine.","Le lundi est demain."],correctIndex:0,feedback:"الإجابة تؤكد الميل وتذكر النشاط."},
  {context:"Quel est votre loisir préféré ?",translation:"ما هوايتكم المفضلة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je n’aime pas le café.","Mon loisir préféré est la lecture.","J’habite près du parc."],correctIndex:1,feedback:"نستعمل loisir préféré لتحديد الهواية المفضلة."}
+];
+
+const A1_DEMONSTRATIVES_READING={
+ title:"Au marché du quartier",
+ arTitle:"في سوق الحي",
+ text:"Nora montre plusieurs produits à son ami. Elle dit : « Ce fromage vient de Lyon. Cette confiture est artisanale. Cet ananas est très mûr et ces fraises sont fraîches. » Son ami choisit les fraises et la confiture.",
+ translation:"تعرض نورا عدة منتجات على صديقها وتقول: «هذا الجبن من ليون. هذا المربى مصنوع يدويًا. هذه الأناناس ناضجة جدًا، وهذه الفراولة طازجة». يختار صديقها الفراولة والمربى.",
+ questions:[
+  {question:"D’où vient le fromage ?",translation:"من أين يأتي الجبن؟",answer:"Ce fromage vient de Lyon.",ar:"هذا الجبن من ليون."},
+  {question:"Comment est l’ananas ?",translation:"كيف حال الأناناس؟",answer:"Cet ananas est très mûr.",ar:"هذه الأناناس ناضجة جدًا."},
+  {question:"Quels produits choisit l’ami de Nora ?",translation:"ما المنتجات التي يختارها صديق نورا؟",answer:"Il choisit les fraises et la confiture.",ar:"يختار الفراولة والمربى."}
+ ]
+};
+
+const A1_DEMONSTRATIVES_LISTENING={
+ title:"Écouter le bon déterminant",
+ arTitle:"استمع إلى صفة الإشارة الصحيحة",
+ text:"Ce café. Cet ordinateur. Cette chambre. Ces clés. Cet arbre.",
+ questions:[
+  {prompt:"Quel groupe entendez-vous ?",choices:["Ce café","Cet café","Cette café"],correctIndex:0},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Ce ordinateur","Cet ordinateur","Cette ordinateur"],correctIndex:1},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Ce chambre","Cet chambre","Cette chambre"],correctIndex:2},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Ces clés","Cette clés","Ce clés"],correctIndex:0},
+  {prompt:"Quel groupe entendez-vous ?",choices:["Cette arbre","Cet arbre","Ce arbre"],correctIndex:1}
+ ]
+};
+
+const A1_DEMONSTRATIVES_WRITING_MODEL="Ce parc est calme. Cet immeuble est moderne. Cette place est grande et ces boutiques sont ouvertes. J’aime beaucoup ce quartier.";
+const A1_DEMONSTRATIVES_WRITING_TRANSLATIONS=[
+ {fr:"ce parc",ar:"هذه الحديقة"},{fr:"cet immeuble",ar:"هذا المبنى"},{fr:"cette place",ar:"هذه الساحة"},{fr:"ces boutiques",ar:"هذه المتاجر"},
+ {fr:"ce quartier",ar:"هذا الحي"},{fr:"cet arrêt",ar:"هذه المحطة"},{fr:"cette pharmacie",ar:"هذه الصيدلية"},{fr:"ces bâtiments",ar:"هذه المباني"}
+];
+
+const A1_DEMONSTRATIVES_DICTATION=[
+ {speech:"café",ar:"مقهى"},
+ {speech:"ordinateur",ar:"حاسوب"},
+ {speech:"chambre",ar:"غرفة"},
+ {speech:"clés",ar:"مفاتيح"},
+ {speech:"arbre",ar:"شجرة"}
+];
+
+const A1_DEMONSTRATIVES_BUILDERS=[
+ {tokens:["journal","Ce","à","appartient","Paul."],answer:["Ce","journal","appartient","à","Paul."],ar:"هذه الصحيفة تخص بول."},
+ {tokens:["est","Cet","occupé.","ascenseur"],answer:["Cet","ascenseur","est","occupé."],ar:"هذا المصعد مشغول."},
+ {tokens:["arrive","Cette","demain.","lettre"],answer:["Cette","lettre","arrive","demain."],ar:"هذه الرسالة تصل غدًا."},
+ {tokens:["très","Ces","chers.","cadeaux","sont"],answer:["Ces","cadeaux","sont","très","chers."],ar:"هذه الهدايا غالية جدًا."},
+ {tokens:["préférez-vous ?","robe","Quelle"],answer:["Quelle","robe","préférez-vous ?"],ar:"أي فستان تفضلون؟"}
+];
+
+const A1_DEMONSTRATIVES_DIALOGUES=[
+ {context:"Quel gâteau voulez-vous ?",translation:"أي كعكة تريدون؟",prompt:"اختر الإجابة التي تشير إلى كعكة واحدة.",choices:["Je voudrais ce gâteau au chocolat.","Je voudrais ces chocolat.","Je voudrais cet tarte."],correctIndex:0,feedback:"gâteau مذكر مفرد يبدأ بصوت ساكن؛ لذلك نستعمل ce."},
+ {context:"Vous parlez d’un homme devant vous.",translation:"أنتم تتحدثون عن رجل أمامكم.",prompt:"اختر العبارة الصحيحة.",choices:["Cette homme est mon voisin.","Cet homme est mon voisin.","Ces homme est mon voisin."],correctIndex:1,feedback:"homme مذكر يبدأ بـ h صامت؛ لذلك نستعمل cet."},
+ {context:"Quelle veste essayez-vous ?",translation:"أي سترة تجربون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’essaie ce veste verte.","J’essaie ces veste verte.","J’essaie cette veste verte."],correctIndex:2,feedback:"veste مؤنث مفرد؛ لذلك نستعمل cette."},
+ {context:"Quels documents devez-vous signer ?",translation:"أي وثائق يجب أن توقعوا؟",prompt:"اختر الإجابة المناسبة.",choices:["Je dois signer ces documents.","Je dois signer cet documents.","Je dois signer cette documents."],correctIndex:0,feedback:"documents جمع؛ لذلك نستعمل ces."},
+ {context:"Vous indiquez un endroit précis.",translation:"أنتم تشيرون إلى مكان محدد.",prompt:"اختر الجملة الطبيعية.",choices:["Cette endroit est tranquille.","Cet endroit est tranquille.","Ce endroit est tranquille."],correctIndex:1,feedback:"endroit مذكر يبدأ بصوت متحرك؛ لذلك نستعمل cet."}
 ];
 
 const A1_NOUNS_READING={
@@ -3055,6 +3199,11 @@ const A1_ENHANCED_CONTENT={
   reading:A1_TASTES_READING,listening:A1_TASTES_LISTENING,dictation:A1_TASTES_DICTATION,builders:A1_TASTES_BUILDERS,dialogues:A1_TASTES_DIALOGUES,
   writingModel:A1_TASTES_WRITING_MODEL,writingTitle:"اكتب عن أذواقك وتفضيلاتك",writingInstructions:"اكتب من 20 إلى 30 كلمة: اذكر نشاطين تحبهما، شيئًا لا تحبه، وخيارًا تفضله مع سبب بسيط.",writingPlaceholder:"J’aime… Je préfère…",writingMinimum:20,writingMaximum:30,
   speakingPrompt:"J’aime lire et écouter de la musique. Je préfère le thé au café. Je n’aime pas courir parce que c’est fatigant.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر ما تحبه وما لا تحبه.","استعمل préférer للمقارنة بين خيارين.","أضف سببًا بسيطًا باستعمال parce que."],dictationUnit:"word"
+ },
+ demonstratives:{
+  reading:A1_DEMONSTRATIVES_READING,listening:A1_DEMONSTRATIVES_LISTENING,dictation:A1_DEMONSTRATIVES_DICTATION,builders:A1_DEMONSTRATIVES_BUILDERS,dialogues:A1_DEMONSTRATIVES_DIALOGUES,
+  writingModel:A1_DEMONSTRATIVES_WRITING_MODEL,writingTitle:"اكتب وصفًا لمكان قريب",writingInstructions:"اكتب من 20 إلى 35 كلمة تصف مكانًا قريبًا منك، واستعمل ce وcet وcette وces مرة واحدة على الأقل.",writingPlaceholder:"Ce parc… Cet immeuble…",writingMinimum:20,writingMaximum:35,
+  speakingPrompt:"Ce parc est calme. Cet immeuble est moderne. Cette place est grande et ces boutiques sont ouvertes.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["طابق صفة الإشارة مع جنس الاسم وعدده.","انتبه إلى cet قبل الصوت المتحرك.","انطق الاسم مع صفة الإشارة كوحدة واحدة."],dictationUnit:"word"
  },
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
@@ -4710,7 +4859,7 @@ const LEVELS:Level[]=[
 const COURSE_PHASES:Record<string,JourneyPhase[]>={
  A1:[
   {title:"البداية الصحيحة",fr:"Premiers pas",description:"الحروف والأصوات والتحية، ثم البلد واللغة والأسماء والضمائر الأساسية.",moduleIds:["alphabet","sounds","greetings","countries-languages","nouns","core-verbs"]},
-  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والأذواق والتفضيلات والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","tastes-preferences","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
+  {title:"بناء الجملة",fr:"Construire la langue",description:"المضارع والدراسة والمهن والأذواق وصفات الإشارة والتقديم والأسئلة والزمن والصفات والقدرة والرغبة والمستقبل القريب.",moduleIds:["present","studies-professions","tastes-preferences","demonstratives","structures","questions","numbers-time","adjectives","modal-verbs","future-imperative"]},
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
@@ -5820,7 +5969,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Countries=level.id==="A1"&&activeModule.id==="countries-languages";
  const isA1Studies=level.id==="A1"&&activeModule.id==="studies-professions";
  const isA1Tastes=level.id==="A1"&&activeModule.id==="tastes-preferences";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes;
+ const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives;
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
@@ -5884,7 +6034,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -5935,6 +6085,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   {label:"ذكر شيء لا تحبه",passed:/\bn[’']aime\s+pas\b/i.test(revisionWritingText)},
   {label:"ذكر تفضيل",passed:/\b(?:préfère|préférons|préférez|préfèrent)\b/i.test(revisionWritingText)},
   {label:"إضافة سبب بسيط",passed:/\bparce\s+qu(?:e|[’'])\b/i.test(revisionWritingText)}
+ ]:isA1Demonstratives?[
+  {label:"من 20 إلى 35 كلمة",passed:revisionWordCount>=20&&revisionWordCount<=35},
+  {label:"استعمال ce مع اسم مذكر",passed:/\bce\s+[a-zà-ÿ]+\b/i.test(revisionWritingText)},
+  {label:"استعمال cet قبل صوت متحرك أو h صامت",passed:/\bcet\s+[aeiouyhàâäéèêëîïôöùûüœ][a-zà-ÿ-]*\b/i.test(revisionWritingText)},
+  {label:"استعمال cette مع اسم مؤنث",passed:/\bcette\s+[a-zà-ÿ]+\b/i.test(revisionWritingText)},
+  {label:"استعمال ces مع اسم جمع",passed:/\bces\s+[a-zà-ÿ]+s\b/i.test(revisionWritingText)}
  ]:isA1Nouns?[
   {label:"من 18 إلى 30 كلمة",passed:revisionWordCount>=18&&revisionWordCount<=30},
  {label:"استخدام un وune وdes",passed:/\bun\b/i.test(revisionWritingText)&&/\bune\b/i.test(revisionWritingText)&&/\bdes\b/i.test(revisionWritingText)},
@@ -6157,6 +6313,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+  if(level.id==="A1"&&activeModule.id==="demonstratives")return A1_DEMONSTRATIVES_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
@@ -6196,6 +6353,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   if(level.id==="A1"&&activeModule.id==="countries-languages")return A1_COUNTRIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="studies-professions")return A1_STUDIES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="tastes-preferences")return A1_TASTES_QUIZ_ITEMS;
+  if(level.id==="A1"&&activeModule.id==="demonstratives")return A1_DEMONSTRATIVES_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="nouns")return A1_NOUNS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="core-verbs")return A1_CORE_VERBS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="present")return A1_PRESENT_QUIZ_ITEMS;
@@ -6536,7 +6694,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){
@@ -6690,7 +6848,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
@@ -7166,7 +7324,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
        <div className="university-example-list">
         <h4><MessageCircle/> Exemples expliqués</h4>
-        {item.examples.map(example=><article key={example.fr}>
+        {item.examples.map(example=><article key={example.fr} className={example.image?"university-example-visual":""}>
+         {example.image&&<img src={example.image} alt="" loading="lazy"/>}
          <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.fr):speakFrench(example.fr))} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
          <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
         </article>)}

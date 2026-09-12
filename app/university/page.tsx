@@ -173,6 +173,13 @@ const A1_FOOD_SHOPPING_LISTENING_CLIPS=[
  {letter:"un kilo de",word:"pommes",ar:"كيلوغرام من التفاح",hiddenSpeech:"un kilo de pommes"},
  {letter:"je voudrais",word:"un café",ar:"أرغب في قهوة",hiddenSpeech:"Je voudrais un café"}
 ];
+const A1_CITY_DIRECTIONS_LISTENING_CLIPS=[
+ {letter:"allez",word:"tout droit",ar:"اذهب مباشرة",hiddenSpeech:"Allez tout droit"},
+ {letter:"tournez",word:"à gauche",ar:"انعطف يسارًا",hiddenSpeech:"Tournez à gauche"},
+ {letter:"traversez",word:"la place",ar:"اعبر الساحة",hiddenSpeech:"Traversez la place"},
+ {letter:"en face",word:"du parc",ar:"مقابل الحديقة",hiddenSpeech:"En face du parc"},
+ {letter:"à côté",word:"de la banque",ar:"بجوار البنك",hiddenSpeech:"À côté de la banque"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1966,16 +1973,26 @@ const A1_CITY_DIRECTIONS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_CITY_DIRECTIONS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Je vais ___ marché.",speech:"Complétez la phrase. Je vais au marché.",instruction:"اختر الشكل الصحيح لـ à مع اسم مذكر معرف.",choices:["à le","au","du"],correctIndex:1,explanation:"تندمج à مع le وتصبح au."},
- {prompt:"Elle va ___ banque.",speech:"Complétez la phrase. Elle va à la banque.",instruction:"اختر حرف الجر والأداة المناسبين للاسم المؤنث.",choices:["à la","au","de la"],correctIndex:0,explanation:"مع الاسم المؤنث نقول à la."},
- {prompt:"Nous allons ___ aéroport.",speech:"Complétez la phrase. Nous allons à l’aéroport.",instruction:"اختر الشكل المناسب قبل الاسم الذي يبدأ بصوت متحرك.",choices:["au","à l’","aux"],correctIndex:1,explanation:"نستخدم à l’ قبل الاسم الذي يبدأ بصوت متحرك."},
- {prompt:"Ils vont ___ magasins.",speech:"Complétez la phrase. Ils vont aux magasins.",instruction:"اختر الشكل الصحيح لـ à مع اسم جمع معرف.",choices:["aux","à les","des"],correctIndex:0,explanation:"تندمج à مع les وتصبح aux."},
- {prompt:"Le bus part ___ centre-ville.",speech:"Complétez la phrase. Le bus part du centre-ville.",instruction:"اختر الشكل الصحيح لـ de مع اسم مذكر معرف.",choices:["de le","au","du"],correctIndex:2,explanation:"تندمج de مع le وتصبح du."},
- {prompt:"Nous revenons ___ magasins.",speech:"Complétez la phrase. Nous revenons des magasins.",instruction:"اختر الشكل الصحيح لـ de مع اسم جمع معرف.",choices:["aux","des","de les"],correctIndex:1,explanation:"تندمج de مع les وتصبح des."},
- {prompt:"___ se trouve la gare ?",speech:"Posez la question. Où se trouve la gare ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Quand","Où","Combien"],correctIndex:1,explanation:"Où تستخدم للسؤال عن المكان."},
- {prompt:"Allez tout ___.",speech:"Complétez l’instruction. Allez tout droit.",instruction:"أكمل تعليمات السير مباشرة.",choices:["droit","droite","devant"],correctIndex:0,explanation:"التعبير الثابت هو aller tout droit."},
- {prompt:"Tournez ___ gauche après le café.",speech:"Complétez l’instruction. Tournez à gauche après le café.",instruction:"اختر حرف الجر الصحيح مع الاتجاه.",choices:["de","en","à"],correctIndex:2,explanation:"نقول à gauche وà droite."},
- {prompt:"Le musée est en face du parc.",speech:"Le musée est en face du parc.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع المتحف خلف الحديقة.","يقع المتحف مقابل الحديقة.","يقع المتحف داخل الحديقة."],correctIndex:1,explanation:"en face de تعني مقابل."}
+ {prompt:"Je vais ___ marché.",translation:"أذهب إلى السوق.",speech:"Je vais au marché.",instruction:"اختر الشكل الصحيح لـ à.",choices:["à le","au","du"],correctIndex:1,explanation:"تندمج à مع le وتصبح au."},
+ {prompt:"Elle va ___ banque.",translation:"تذهب إلى البنك.",speech:"Elle va à la banque.",instruction:"اختر حرف الجر والأداة المناسبين.",choices:["à la","au","de la"],correctIndex:0,explanation:"مع الاسم المؤنث نقول à la."},
+ {prompt:"Nous allons ___ aéroport.",translation:"نذهب إلى المطار.",speech:"Nous allons à l’aéroport.",instruction:"اختر الشكل المناسب قبل صوت متحرك.",choices:["au","à l’","aux"],correctIndex:1,explanation:"نستخدم à l’ قبل الاسم المبدوء بصوت متحرك."},
+ {prompt:"Ils vont ___ magasins.",translation:"يذهبون إلى المتاجر.",speech:"Ils vont aux magasins.",instruction:"اختر الشكل الصحيح للجمع.",choices:["aux","à les","des"],correctIndex:0,explanation:"تندمج à مع les وتصبح aux."},
+ {prompt:"Le bus part ___ centre-ville.",translation:"تنطلق الحافلة من وسط المدينة.",speech:"Le bus part du centre-ville.",instruction:"اختر الشكل الصحيح لـ de.",choices:["de le","au","du"],correctIndex:2,explanation:"تندمج de مع le وتصبح du."},
+ {prompt:"Nous revenons ___ magasins.",translation:"نعود من المتاجر.",speech:"Nous revenons des magasins.",instruction:"اختر الشكل الصحيح للجمع.",choices:["aux","des","de les"],correctIndex:1,explanation:"تندمج de مع les وتصبح des."},
+ {prompt:"___ se trouve la gare ?",translation:"أين تقع محطة القطار؟",speech:"Où se trouve la gare ?",instruction:"اختر أداة السؤال عن المكان.",choices:["Quand","Où","Combien"],correctIndex:1,explanation:"Où تستخدم للسؤال عن المكان."},
+ {prompt:"Allez tout ___.",translation:"اذهب مباشرة.",speech:"Allez tout droit.",instruction:"أكمل تعليمة الاتجاه.",choices:["droit","droite","devant"],correctIndex:0,explanation:"التعبير الثابت هو aller tout droit."},
+ {prompt:"Tournez ___ gauche après le café.",translation:"انعطف يسارًا بعد المقهى.",speech:"Tournez à gauche après le café.",instruction:"اختر حرف الجر الصحيح.",choices:["de","en","à"],correctIndex:2,explanation:"نقول à gauche وà droite."},
+ {prompt:"Le musée est en face du parc.",translation:"يقع المتحف مقابل الحديقة.",speech:"Le musée est en face du parc.",instruction:"اختر المعنى العربي الصحيح.",choices:["يقع المتحف خلف الحديقة.","يقع المتحف مقابل الحديقة.","يقع المتحف داخل الحديقة."],correctIndex:1,explanation:"en face de تعني مقابل."},
+ {prompt:"Prenez la première rue ___ droite.",translation:"اسلك أول شارع على اليمين.",speech:"Prenez la première rue à droite.",instruction:"أكمل تعليمة الاتجاه.",choices:["à","de","en"],correctIndex:0,explanation:"نقول à droite للتعبير عن جهة اليمين."},
+ {prompt:"La pharmacie est ___ la banque et la boulangerie.",translation:"تقع الصيدلية بين البنك والمخبز.",speech:"La pharmacie est entre la banque et la boulangerie.",instruction:"اختر تعبير تحديد الموقع المناسب.",choices:["derrière","entre","jusqu’à"],correctIndex:1,explanation:"entre تستخدم لتحديد مكان شيء بين مكانين."},
+ {prompt:"L’arrêt est ___ côté de l’école.",translation:"تقع المحطة بجوار المدرسة.",speech:"L’arrêt est à côté de l’école.",instruction:"أكمل تعبير تحديد الموقع.",choices:["au","du","à"],correctIndex:2,explanation:"التعبير الصحيح هو à côté de."},
+ {prompt:"Traversez la place, ___ tournez à droite.",translation:"اعبر الساحة، ثم انعطف يمينًا.",speech:"Traversez la place, puis tournez à droite.",instruction:"اختر رابط ترتيب الخطوات.",choices:["puis","parce que","mais"],correctIndex:0,explanation:"puis تعني ثم وتربط خطوتين متتاليتين."},
+ {prompt:"Continuez jusqu’___ feu.",translation:"تابع حتى إشارة المرور.",speech:"Continuez jusqu’au feu.",instruction:"اختر الصيغة الصحيحة بعد jusque.",choices:["à le","au","du"],correctIndex:1,explanation:"jusque + à + le تصبح jusqu’au."},
+ {prompt:"La bibliothèque est ___ la mairie.",translation:"تقع المكتبة خلف مبنى البلدية.",speech:"La bibliothèque est derrière la mairie.",instruction:"اختر كلمة المكان المناسبة.",choices:["devant","entre","derrière"],correctIndex:2,explanation:"derrière تعني خلف."},
+ {prompt:"Le café est juste ___ la poste.",translation:"يقع المقهى أمام مكتب البريد مباشرة.",speech:"Le café est juste devant la poste.",instruction:"اختر كلمة المكان المناسبة.",choices:["devant","loin","après"],correctIndex:0,explanation:"devant تعني أمام."},
+ {prompt:"Excusez-moi, ___ aller au musée ?",translation:"عذرًا، كيف أصل إلى المتحف؟",speech:"Excusez-moi, pour aller au musée ?",instruction:"أكمل السؤال المهذب عن الطريق.",choices:["combien","pour","quand"],correctIndex:1,explanation:"Pour aller à… صيغة طبيعية للسؤال عن الطريق."},
+ {prompt:"La gare est loin d’ici ? — Non, elle est tout ___.",translation:"هل المحطة بعيدة؟ — لا، إنها قريبة جدًا.",speech:"Non, elle est tout près.",instruction:"اختر التعبير المناسب للقرب.",choices:["droit","près","gauche"],correctIndex:1,explanation:"tout près تعني قريبة جدًا."},
+ {prompt:"Descendez à la prochaine station.",translation:"انزل في المحطة القادمة.",speech:"Descendez à la prochaine station.",instruction:"اختر المعنى العربي الصحيح.",choices:["انزل في المحطة القادمة.","انتظر أمام المحطة.","اصعد إلى الطابق التالي."],correctIndex:0,explanation:"descendre à une station تعني النزول في محطة."}
 ];
 
 const A1_WEATHER_CLOTHES_PRACTICE_ITEMS:Example[]=[
@@ -3114,6 +3131,17 @@ const A1_FOOD_SHOPPING_WRITING_TRANSLATIONS=[
  {fr:"je paie par carte",ar:"أدفع بالبطاقة"}
 ];
 
+const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
+ {fr:"allez tout droit",ar:"اذهب مباشرة"},
+ {fr:"tournez à gauche",ar:"انعطف يسارًا"},
+ {fr:"prenez la première rue",ar:"اسلك أول شارع"},
+ {fr:"traversez la place",ar:"اعبر الساحة"},
+ {fr:"en face du parc",ar:"مقابل الحديقة"},
+ {fr:"à côté de la banque",ar:"بجوار البنك"},
+ {fr:"entre le café et la poste",ar:"بين المقهى ومكتب البريد"},
+ {fr:"où se trouve la gare",ar:"أين تقع محطة القطار؟"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3195,20 +3223,22 @@ const A1_CITY_DIRECTIONS_READING={
  text:"Nora sort de l’hôtel et va à la gare à pied. Elle marche tout droit jusqu’au feu, puis elle tourne à gauche après la banque. La gare est en face du parc, à côté d’un café. Le train part à dix heures.",
  translation:"تخرج نورا من الفندق وتتجه إلى محطة القطار مشيًا. تسير مباشرة حتى إشارة المرور، ثم تنعطف يسارًا بعد البنك. تقع المحطة مقابل الحديقة وبجوار مقهى. ينطلق القطار الساعة العاشرة.",
  questions:[
-  {question:"D’où part Nora ?",answer:"Nora part de l’hôtel.",ar:"تنطلق نورا من الفندق."},
-  {question:"Où tourne-t-elle à gauche ?",answer:"Elle tourne à gauche après la banque.",ar:"تنعطف يسارًا بعد البنك."},
-  {question:"Où se trouve la gare ?",answer:"La gare est en face du parc, à côté d’un café.",ar:"تقع المحطة مقابل الحديقة وبجوار مقهى."}
+  {question:"D’où part Nora ?",translation:"من أين تنطلق نورا؟",answer:"Nora part de l’hôtel.",ar:"تنطلق نورا من الفندق."},
+  {question:"Où tourne-t-elle à gauche ?",translation:"أين تنعطف يسارًا؟",answer:"Elle tourne à gauche après la banque.",ar:"تنعطف يسارًا بعد البنك."},
+  {question:"Où se trouve la gare ?",translation:"أين تقع محطة القطار؟",answer:"La gare est en face du parc, à côté d’un café.",ar:"تقع المحطة مقابل الحديقة وبجوار مقهى."}
  ]
 };
 
 const A1_CITY_DIRECTIONS_LISTENING={
  title:"Pour aller à la pharmacie",
  arTitle:"للوصول إلى الصيدلية",
- text:"Excusez-moi, pour aller à la pharmacie ? — Allez tout droit, traversez la place et tournez à droite. La pharmacie est entre la boulangerie et la banque, juste devant l’arrêt de bus.",
+ text:"Allez tout droit. Tournez à gauche. Traversez la place. En face du parc. À côté de la banque.",
  questions:[
-  {prompt:"Que faut-il traverser ?",choices:["Le parc","La place","La rue"],correctIndex:1},
-  {prompt:"De quel côté faut-il tourner ?",choices:["À droite","À gauche","Derrière"],correctIndex:0},
-  {prompt:"Où est la pharmacie ?",choices:["Derrière la banque","Entre la boulangerie et la banque","À côté du parc"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Allez tout droit","Tournez à droite","Traversez le pont"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Prenez le métro","Tournez à gauche","Allez jusqu’au feu"],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Traversez la rue","Continuez tout droit","Traversez la place"],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["En face du parc","Derrière le musée","Entre les magasins"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Près de la gare","À côté de la banque","Au fond de la rue"],correctIndex:1}
  ]
 };
 
@@ -3217,19 +3247,25 @@ const A1_CITY_DIRECTIONS_WRITING_MODEL="Je pars de l’hôtel et je vais à la g
 const A1_CITY_DIRECTIONS_DICTATION=[
  {speech:"Je vais au centre-ville en bus.",ar:"أذهب إلى وسط المدينة بالحافلة."},
  {speech:"Tournez à gauche après la banque.",ar:"انعطفوا يسارًا بعد البنك."},
- {speech:"Le musée est en face du parc.",ar:"يقع المتحف مقابل الحديقة."}
+ {speech:"Le musée est en face du parc.",ar:"يقع المتحف مقابل الحديقة."},
+ {speech:"Traversez la place devant la mairie.",ar:"اعبروا الساحة أمام مبنى البلدية."},
+ {speech:"L’arrêt de bus est à côté de l’école.",ar:"تقع محطة الحافلات بجوار المدرسة."}
 ];
 
 const A1_CITY_DIRECTIONS_BUILDERS=[
  {tokens:["à","vais","gare.","la","Je"],answer:["Je","vais","à","la","gare."],ar:"أذهب إلى محطة القطار."},
  {tokens:["tout","feu.","Allez","droit","jusqu’au"],answer:["Allez","tout","droit","jusqu’au","feu."],ar:"اذهبوا مباشرة حتى إشارة المرور."},
- {tokens:["parc.","du","face","musée","en","Le","est"],answer:["Le","musée","est","en","face","du","parc."],ar:"يقع المتحف مقابل الحديقة."}
+ {tokens:["parc.","du","face","musée","en","Le","est"],answer:["Le","musée","est","en","face","du","parc."],ar:"يقع المتحف مقابل الحديقة."},
+ {tokens:["la","Traversez","mairie.","devant","place","la"],answer:["Traversez","la","place","devant","la","mairie."],ar:"اعبروا الساحة أمام مبنى البلدية."},
+ {tokens:["banque.","la","côté","de","à","est","L’arrêt"],answer:["L’arrêt","est","à","côté","de","la","banque."],ar:"تقع المحطة بجوار البنك."}
 ];
 
 const A1_CITY_DIRECTIONS_DIALOGUES=[
- {context:"Vous cherchez la gare.",prompt:"اختر السؤال المهذب المناسب.",choices:["Excusez-moi, où se trouve la gare ?","La gare combien ?","Pourquoi la gare est ?"],correctIndex:0,feedback:"Où se trouve… ? صيغة واضحة ومهذبة للسؤال عن المكان."},
- {context:"Vous indiquez de continuer sans tourner.",prompt:"اختر التعليمة الصحيحة.",choices:["Allez tout droit.","Tournez derrière.","Venez du parc."],correctIndex:0,feedback:"Allez tout droit تعني: اذهب مباشرة."},
- {context:"Complétez : « Le bus part … centre-ville. »",prompt:"اختر حرف الجر الصحيح.",choices:["au","du","aux"],correctIndex:1,feedback:"de + le تصبح du للتعبير عن نقطة الانطلاق."}
+ {context:"Où se trouve la gare, s’il vous plaît ?",translation:"أين تقع محطة القطار، من فضلك؟",prompt:"اختر الرد المناسب.",choices:["Elle est à côté de la poste.","Elle coûte dix euros.","Elle part demain."],correctIndex:0,feedback:"à côté de يحدد مكان المحطة بجوار مكتب البريد."},
+ {context:"Faut-il tourner ici ?",translation:"هل يجب الانعطاف هنا؟",prompt:"اختر التعليمة الصحيحة للمتابعة دون انعطاف.",choices:["Allez tout droit.","Tournez derrière.","Venez du parc."],correctIndex:0,feedback:"Allez tout droit تعني: اذهب مباشرة."},
+ {context:"D’où part le bus ?",translation:"من أين تنطلق الحافلة؟",prompt:"اختر الإجابة الصحيحة.",choices:["Il va au centre-ville.","Il part du centre-ville.","Il est aux centre-ville."],correctIndex:1,feedback:"de + le تصبح du للتعبير عن نقطة الانطلاق."},
+ {context:"Comment aller à la pharmacie ?",translation:"كيف أصل إلى الصيدلية؟",prompt:"اختر توجيهًا واضحًا.",choices:["Traversez la place, puis tournez à droite.","La pharmacie est vingt euros.","Je prends une pharmacie."],correctIndex:0,feedback:"الرد يقدّم خطوتين واضحتين للوصول إلى المكان."},
+ {context:"Le musée est loin d’ici ?",translation:"هل المتحف بعيد من هنا؟",prompt:"اختر الرد الطبيعي المناسب.",choices:["Non, il est tout près.","Non, il est à huit heures.","Oui, il mange ici."],correctIndex:0,feedback:"tout près تعني قريب جدًا."}
 ];
 
 const A1_NUMBERS_TIME_READING={
@@ -6434,8 +6470,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1ModalVerbs=level.id==="A1"&&activeModule.id==="modal-verbs";
  const isA1FutureImperative=level.id==="A1"&&activeModule.id==="future-imperative";
  const isA1FoodShopping=level.id==="A1"&&activeModule.id==="food-shopping";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping;
  const isA1CityDirections=level.id==="A1"&&activeModule.id==="city-directions";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections;
  const isA1NumbersTime=level.id==="A1"&&activeModule.id==="numbers-time";
  const isA1WeatherClothes=level.id==="A1"&&activeModule.id==="weather-clothes";
  const isA1HomeHousing=level.id==="A1"&&activeModule.id==="home-housing";
@@ -6490,7 +6526,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7157,7 +7193,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

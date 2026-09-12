@@ -42,8 +42,8 @@ type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
 type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 type SoundLearningExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;rule:string};
-type SoundLearningGroup={fr:string;ar:string;note:string;examples:SoundLearningExample[]};
-type SoundLearningSection={fr:string;ar:string;intro:string;groups:SoundLearningGroup[]};
+type SoundLearningGroup={fr:string;ar:string;note:string;frNote:string;examples:SoundLearningExample[]};
+type SoundLearningSection={fr:string;ar:string;intro:string;frIntro:string;groups:SoundLearningGroup[]};
 type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"semij"|"semiw"|"semiu";
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
@@ -197,25 +197,26 @@ const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
  {
   fr:"Les groupes de lettres",ar:"تركيبات الحروف الخاصة",
   intro:"قد تجتمع حروف متعددة لتنتج صوتًا واحدًا، وقد تختفي بعض الحروف في نهاية الكلمة. تعلّم كل تركيب داخل كلمة وصورة.",
+  frIntro:"Plusieurs lettres peuvent former un seul son, et certaines lettres finales peuvent rester muettes.",
   groups:[
-   {fr:"Combinaisons vocaliques",ar:"تركيبات حروف العلة",note:"تجتمع حروف العلة لتكتب صوتًا واحدًا؛ لا تنطق حروف التركيب منفصلة.",examples:[
+   {fr:"Combinaisons vocaliques",ar:"تركيبات حروف العلة",note:"تجتمع حروف العلة لتكتب صوتًا واحدًا؛ لا تنطق حروف التركيب منفصلة.",frNote:"Plusieurs voyelles peuvent écrire un seul son : prononcez le groupe comme une unité.",examples:[
     {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",phoneme:"/ɛ/",focus:"ai",parts:["m","ai","son"],image:"/images/university/a1-sounds/maison.webp",rule:"في maison تعطي المجموعة ai الصوت /ɛ/، ثم تعطي on صوتًا أنفيًا في نهاية الكلمة."},
     {word:"bateau",ar:"قارب",ipa:"/ba.to/",phoneme:"/o/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",rule:"في bateau تعطي الحروف eau صوتًا واحدًا /o/، ولا تُنطق الحروف الثلاثة منفصلة."},
     {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",phoneme:"/u/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",rule:"في rouge تعطي المجموعة ou الصوت /u/ مع تدوير الشفتين إلى الأمام."},
     {word:"feu",ar:"نار",ipa:"/fø/",phoneme:"/ø/",focus:"eu",parts:["f","eu",""],image:"/images/university/a1-sounds/feu.webp",rule:"في feu تعطي المجموعة eu الصوت المدوّر /ø/، وتُنطق الكلمة مقطعًا واحدًا."}
    ]},
-   {fr:"Combinaisons consonantiques",ar:"تركيبات الحروف الساكنة",note:"قد يكتب حرفان ساكنان صوتًا واحدًا مختلفًا عن نطق كل حرف منفردًا.",examples:[
+   {fr:"Combinaisons consonantiques",ar:"تركيبات الحروف الساكنة",note:"قد يكتب حرفان ساكنان صوتًا واحدًا مختلفًا عن نطق كل حرف منفردًا.",frNote:"Deux consonnes peuvent représenter un seul son différent de leur prononciation isolée.",examples:[
     {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"/ʃ/",focus:"ch",parts:["","ch","at"],image:"/images/university/a1-sounds/chat.webp",rule:"في chat تعطي المجموعة ch الصوت /ʃ/ المشابه لصوت «ش»، ولا يُنطق الحرف t الأخير."},
     {word:"téléphone",ar:"هاتف",ipa:"/te.le.fɔn/",phoneme:"/f/",focus:"ph",parts:["télé","ph","one"],image:"/police-v39/vocab-phone.webp",rule:"في téléphone تعطي المجموعة ph الصوت /f/، ولا تُنطق p وh كصوتين منفصلين."},
     {word:"agneau",ar:"خروف صغير",ipa:"/a.ɲo/",phoneme:"/ɲ/",focus:"gn",parts:["a","gn","eau"],image:"/zoo/animals/sheep.webp",rule:"في agneau تعطي المجموعة gn الصوت /ɲ/ القريب من «ني»، ثم تعطي eau الصوت /o/."}
    ]},
-   {fr:"Terminaisons fréquentes",ar:"النهايات الصوتية الشائعة",note:"تتكرر هذه النهايات كثيرًا، لكن كتابتها لا تطابق دائمًا عدد الأصوات التي نسمعها.",examples:[
+   {fr:"Terminaisons fréquentes",ar:"النهايات الصوتية الشائعة",note:"تتكرر هذه النهايات كثيرًا، لكن كتابتها لا تطابق دائمًا عدد الأصوات التي نسمعها.",frNote:"Ces terminaisons sont fréquentes, mais leur écriture ne correspond pas toujours aux sons entendus.",examples:[
     {word:"parler",ar:"يتحدث",ipa:"/paʁ.le/",phoneme:"/e/",focus:"er",parts:["parl","er",""],image:"/images/university/a1-sounds/fille.webp",rule:"في مصدر الفعل parler تُنطق النهاية er بالصوت /e/."},
     {word:"parlez",ar:"تحدثوا",ipa:"/paʁ.le/",phoneme:"/e/",focus:"ez",parts:["parl","ez",""],image:"/images/university/a1-sounds/garcon.webp",rule:"في parlez تُنطق النهاية ez بالصوت /e/، ولا يُنطق الحرف z منفصلًا."},
     {word:"billet",ar:"تذكرة",ipa:"/bi.jɛ/",phoneme:"/ɛ/",focus:"et",parts:["bill","et",""],image:"/station-assets/ticket.webp",rule:"في billet تُنطق النهاية et بالصوت /ɛ/، ولا يُنطق الحرف t الأخير."},
     {word:"station",ar:"محطة",ipa:"/sta.sjɔ̃/",phoneme:"/sjɔ̃/",focus:"tion",parts:["sta","tion",""],image:"/kingdom-portal-assets/destination-station.png",rule:"في station تُنطق النهاية tion عادة /sjɔ̃/، وتنتهي بصوت أنفي."}
    ]},
-   {fr:"Lettres finales muettes",ar:"الحروف الأخيرة التي لا تُنطق",note:"تُكتب بعض الحروف في نهاية الكلمات الفرنسية لكنها لا تُنطق غالبًا في هذه الأمثلة.",examples:[
+   {fr:"Lettres finales muettes",ar:"الحروف الأخيرة التي لا تُنطق",note:"تُكتب بعض الحروف في نهاية الكلمات الفرنسية لكنها لا تُنطق غالبًا في هذه الأمثلة.",frNote:"Certaines lettres finales s’écrivent, mais ne se prononcent pas dans ces mots.",examples:[
     {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"∅",focus:"t",parts:["cha","t",""],image:"/images/university/a1-sounds/chat.webp",rule:"في chat يُكتب الحرف t في النهاية لكنه لا يُنطق."},
     {word:"grand",ar:"كبير",ipa:"/ɡʁɑ̃/",phoneme:"∅",focus:"d",parts:["gran","d",""],image:"/castle-hall-icons/grand-hall.webp",rule:"في grand بصيغة المذكر المفرد لا يُنطق الحرف d الأخير."},
     {word:"nez",ar:"أنف",ipa:"/ne/",phoneme:"∅",focus:"z",parts:["ne","z",""],image:"/images/university/a1-sounds/garcon.webp",rule:"في nez لا يُنطق الحرف z الأخير، وتُنطق الكلمة /ne/."},
@@ -6147,20 +6148,25 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         <div><strong dir="ltr">{sectionItem.fr}</strong><b>{sectionItem.ar}</b><small>{sectionItem.groups.length} فروع تعليمية</small></div>
         <ChevronDown/>
        </summary>
-       <div className="a1-sounds-learning-section-body">
-        <p>{sectionItem.intro}</p>
-        <div className="a1-sounds-learning-groups">
-         {sectionItem.groups.map(group=><details key={group.fr} className="a1-sounds-learning-group">
-          <summary><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
-          <div className="a1-sounds-learning-group-body">
-           <p>{group.note}</p>
+       <div className="a1-sounds-learning-section-body a1-vowel-classification-body">
+        <div className="a1-vowel-section-intro">
+         <div><strong dir="ltr">{sectionItem.frIntro}</strong><p>{sectionItem.intro}</p></div>
+        </div>
+        <div className="a1-vowel-classifications">
+         {sectionItem.groups.map((group,groupIndex)=><details key={group.fr} className="a1-vowel-classification" open={groupIndex===0}>
+          <summary><span><i>{String(groupIndex+1).padStart(2,"0")}</i><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-vowel-classification-content">
+           <div className="a1-vowel-bilingual-explanation">
+            <div><p>{group.note}</p><small dir="ltr">{group.frNote}</small></div>
+            <button type="button" onClick={()=>void speakFrench(`${group.fr}. ${group.frNote}`,{rate:.66})} aria-label={`استمع إلى ${group.fr}`}><Volume2/></button>
+           </div>
            {(()=>{
             const currentIndex=soundGroupCardIndex[group.fr]??0;
             const example=group.examples[currentIndex];
             const moveCard=(direction:-1|1)=>setSoundGroupCardIndex(current=>({...current,[group.fr]:(currentIndex+direction+group.examples.length)%group.examples.length}));
             return <div className="a1-vowel-example-table sound-combination" role="region" aria-label={`بطاقات ${group.ar}`}>
              <div className="a1-vowel-example-table-title">
-              <div><span dir="ltr">Cartes phonétiques illustrées</span><strong>التركيب داخل كلمة واضحة</strong></div>
+              <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong></div>
               <Layers3/>
              </div>
              <div className="a1-vowel-carousel-stage">

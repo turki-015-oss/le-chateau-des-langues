@@ -57,12 +57,23 @@ const ALPHABET_LISTENING_CLIPS=[
  {letter:"A",word:"ami",ar:"صديق"},{letter:"B",word:"bateau",ar:"قارب"},{letter:"C",word:"café",ar:"مقهى"},{letter:"D",word:"dimanche",ar:"الأحد"},{letter:"E",word:"école",ar:"مدرسة"}
 ];
 const A1_SOUNDS_LISTENING_CLIPS=[
- {letter:"ou",word:"rouge",ar:"أحمر"},
- {letter:"oi",word:"voiture",ar:"سيارة"},
- {letter:"ain",word:"pain",ar:"خبز"},
- {letter:"on",word:"bonjour",ar:"مرحبًا"},
- {letter:"ch",word:"chat",ar:"قط"},
- {letter:"ç → s",word:"garçon",ar:"صبي"}
+ {letter:"/œ̃/",word:"un",ar:"واحد",hiddenSpeech:"un"},
+ {letter:"/i/",word:"lit",ar:"سرير",hiddenSpeech:"i"},
+ {letter:"/y/",word:"lune",ar:"قمر",hiddenSpeech:"u"},
+ {letter:"/ɛ̃/",word:"pain",ar:"خبز",hiddenSpeech:"ain"},
+ {letter:"/ø/",word:"feu",ar:"نار",hiddenSpeech:"eu"},
+ {letter:"/u/",word:"rouge",ar:"أحمر",hiddenSpeech:"ou"},
+ {letter:"/ɥ/",word:"huit",ar:"ثمانية",hiddenSpeech:"hui"},
+ {letter:"/o/",word:"zéro",ar:"صفر",hiddenSpeech:"o"},
+ {letter:"/u/",word:"tout",ar:"كلّ",hiddenSpeech:"ou"},
+ {letter:"/ɛ/",word:"père",ar:"أب",hiddenSpeech:"è"},
+ {letter:"/a/",word:"chat",ar:"قط",hiddenSpeech:"a"},
+ {letter:"/j/",word:"pied",ar:"قدم",hiddenSpeech:"yé"},
+ {letter:"/w/",word:"oui",ar:"نعم",hiddenSpeech:"oua"},
+ {letter:"/o/",word:"bateau",ar:"قارب",hiddenSpeech:"eau"},
+ {letter:"/ɲ/",word:"agneau",ar:"خروف صغير",hiddenSpeech:"gne"},
+ {letter:"/e/",word:"parlez",ar:"تحدّثوا",hiddenSpeech:"é"},
+ {letter:"/ɑ̃/",word:"grand",ar:"كبير",hiddenSpeech:"an"}
 ];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
@@ -1686,14 +1697,25 @@ const A1_SOUNDS_READING={
 const A1_SOUNDS_LISTENING={
  title:"Reconnaître les sons essentiels",
  arTitle:"تمييز الأصوات الأساسية",
- text:"Rouge. Voiture. Pain. Bonjour. Chat. Garçon.",
+ text:"Un. Lit. Lune. Pain. Feu. Rouge. Huit. Zéro. Tout. Père. Chat. Pied. Oui. Bateau. Agneau. Parlez. Grand.",
  questions:[
-  {prompt:"Dans « rouge », quel son le groupe de lettres « ou » représente-t-il ?",speech:"Écoutez le mot rouge. Quel son entendez-vous pour le groupe de lettres ou ?",translation:"في كلمة «rouge»، أي صوت تمثله مجموعة الحروف «ou»؟",choices:["/u/ — comme dans « roue »","/wa/ — comme dans « moi »","/ɔ̃/ — comme dans « pont »"],correctIndex:0},
-  {prompt:"Dans « voiture », quel son le groupe de lettres « oi » représente-t-il ?",speech:"Écoutez le mot voiture. Quel son entendez-vous pour le groupe de lettres oi ?",translation:"في كلمة «voiture»، أي صوت تمثله مجموعة الحروف «oi»؟",choices:["/u/ — comme dans « rouge »","/o/ — comme dans « bateau »","/wa/ — comme dans « moi »"],correctIndex:2},
-  {prompt:"Dans « pain », quel son nasal le groupe de lettres « ain » représente-t-il ?",speech:"Écoutez le mot pain. Quel son nasal entendez-vous ?",translation:"في كلمة «pain»، أي صوت أنفي تمثله مجموعة الحروف «ain»؟",choices:["/ɑ̃/ — comme dans « enfant »","/ɛ̃/ — comme dans « matin »","/ɔ̃/ — comme dans « pont »"],correctIndex:1},
-  {prompt:"Dans « bonjour », quel son nasal le groupe de lettres « on » représente-t-il ?",speech:"Écoutez le mot bonjour. Quel son nasal entendez-vous ?",translation:"في كلمة «bonjour»، أي صوت أنفي تمثله مجموعة الحروف «on»؟",choices:["/ɔ̃/ — comme dans « pont »","/ɑ̃/ — comme dans « enfant »","/ɛ̃/ — comme dans « matin »"],correctIndex:0},
-  {prompt:"Dans « chat », quel son le groupe de lettres « ch » représente-t-il ?",speech:"Écoutez le mot chat. Quel son entendez-vous au début du mot ?",translation:"في كلمة «chat»، أي صوت تمثله مجموعة الحروف «ch»؟",choices:["/f/ — comme dans « photo »","/ɲ/ — comme dans « ligne »","/ʃ/ — comme dans « bouche »"],correctIndex:2},
-  {prompt:"Dans « garçon », quel son la lettre « ç » représente-t-elle ?",speech:"Écoutez le mot garçon. Quel son entendez-vous pour la lettre c cédille ?",translation:"في كلمة «garçon»، أي صوت يمثله الحرف «ç»؟",choices:["/k/ — comme dans « café »","/s/ — comme dans « soleil »","/ʒ/ — comme dans « jour »"],correctIndex:1}
+  {prompt:"Dans le mot « un », comment classe-t-on la voyelle /œ̃/ ?",speech:"Dans le mot un, comment classe-t-on la voyelle ?",translation:"كيف يُصنَّف الصوت المتحرك /œ̃/ في كلمة «un»؟",choices:["Orale et non arrondie — فمي وغير مدوّر","Nasale et arrondie — أنفي ومدوّر","Orale et arrondie — فمي ومدوّر","Nasale et non arrondie — أنفي وغير مدوّر"],correctIndex:1,explanationAr:"الصوت /œ̃/ أنفي لأن الهواء يمر من الفم والأنف، ومدوّر لأن الشفتين تضمان إلى الأمام.",explanationFr:"Le son /œ̃/ est nasal, car l’air passe par la bouche et le nez, et arrondi, car les lèvres se projettent vers l’avant."},
+  {prompt:"Dans le mot « lit », comment classe-t-on la voyelle /i/ ?",speech:"Dans le mot lit, comment classe-t-on la voyelle ?",translation:"كيف يُصنَّف الصوت المتحرك /i/ في كلمة «lit»؟",choices:["Orale et non arrondie — فمي وغير مدوّر (مبسوط)","Nasale et arrondie — أنفي ومدوّر","Orale et arrondie — فمي ومدوّر","Nasale et non arrondie — أنفي وغير مدوّر"],correctIndex:0,explanationAr:"الصوت /i/ فمي لأن الهواء يمر من الفم، وغير مدوّر لأن الشفتين تكونان مبسوطتين.",explanationFr:"Le son /i/ est oral, car l’air passe par la bouche, et non arrondi, car les lèvres sont étirées."},
+  {prompt:"Dans le mot « lune », comment classe-t-on la voyelle /y/ ?",speech:"Dans le mot lune, comment classe-t-on la voyelle ?",translation:"كيف يُصنَّف الصوت المتحرك /y/ في كلمة «lune»؟",choices:["Nasale et non arrondie — أنفي وغير مدوّر","Orale et non arrondie — فمي وغير مدوّر","Orale et arrondie — فمي ومدوّر","Nasale et arrondie — أنفي ومدوّر"],correctIndex:2,explanationAr:"الصوت /y/ فمي لأن الهواء يمر من الفم، ومدوّر لأن الشفتين تضمان إلى الأمام.",explanationFr:"Le son /y/ est oral, car l’air passe par la bouche, et arrondi, car les lèvres se projettent vers l’avant."},
+  {prompt:"Lequel des sons suivants est à la fois nasal et non arrondi ?",speech:"Lequel des sons suivants est à la fois nasal et non arrondi ?",translation:"أيّ الأصوات التالية أنفي وغير مدوّر (مبسوط)؟",choices:["Le son /ɛ̃/ dans « pain » — الصوت في «pain» (خبز)","Le son /ɔ̃/ dans « bon » — الصوت في «bon» (جيد)","Le son /o/ dans « moto » — الصوت في «moto» (دراجة نارية)","Le son /a/ dans « chat » — الصوت في «chat» (قط)"],correctIndex:0,explanationAr:"الصوت /ɛ̃/ أنفي لأن الهواء يمر من الفم والأنف، ومبسوط لأن الشفتين لا تضمان إلى الأمام.",explanationFr:"Le son /ɛ̃/ est nasal, car l’air passe par la bouche et le nez, et non arrondi, car les lèvres ne s’arrondissent pas."},
+  {prompt:"Lequel des sons suivants est à la fois oral et arrondi ?",speech:"Lequel des sons suivants est à la fois oral et arrondi ?",translation:"أيّ الأصوات التالية فمي ومدوّر في الوقت نفسه؟",choices:["Le son /ɛ̃/ dans « pain » — الصوت في «pain»","Le son /i/ dans « lit » — الصوت في «lit»","Le son /ø/ dans « feu » — الصوت في «feu»","Le son /a/ dans « chat » — الصوت في «chat»"],correctIndex:2,explanationAr:"الصوت /ø/ فمي لأن الهواء يمر من الفم، ومدوّر لأن الشفتين تضمان إلى الأمام.",explanationFr:"Le son /ø/ est oral, car l’air passe par la bouche, et arrondi, car les lèvres se projettent vers l’avant."},
+  {prompt:"Dans lequel de ces mots entend-on une voyelle fermée ?",speech:"Dans lequel de ces mots entend-on une voyelle fermée ?",translation:"في أيّ كلمة من الكلمات التالية نسمع صوتًا متحركًا مغلقًا؟",choices:["Le son /a/ dans « chat »","Le son /ɛ/ dans « père »","Le son /u/ dans « rouge »","Le son /ɔ/ dans « pomme »"],correctIndex:2,explanationAr:"الصوت /u/ مغلق لأن اللسان يكون مرتفعًا والفم شبه مغلق.",explanationFr:"Le son /u/ est fermé, car la langue est haute et la bouche est presque fermée."},
+  {prompt:"Lequel des mots suivants contient la semi-voyelle antérieure et arrondie /ɥ/ ?",speech:"Lequel des mots suivants contient la semi-voyelle antérieure et arrondie ?",translation:"أيّ الكلمات التالية تحتوي على شبه حرف العلة الأمامي المدوّر /ɥ/، المعروف بصوت الواو الفرنسية الخفيفة؟",choices:["« pied » — قدم","« oui » — نعم","« huit » — ثمانية","« lit » — سرير"],correctIndex:2,explanationAr:"في كلمة «huit»، تتحول /y/ إلى انزلاق سريع /ɥ/ قبل الصوت /i/، مع تدوير الشفتين.",explanationFr:"Dans « huit », le son /y/ devient la semi-voyelle /ɥ/ devant /i/, avec les lèvres arrondies."},
+  {prompt:"Lequel des sons suivants est une voyelle arrondie, prononcée avec les lèvres projetées vers l’avant ?",speech:"Lequel des sons suivants est une voyelle arrondie ?",translation:"أيّ الأصوات التالية يُعدّ صوتًا مدوّرًا، تتحرك فيه الشفتان بشكل دائري إلى الأمام؟",choices:["Le son /i/ dans « lit »","Le son /a/ dans « chat »","Le son /o/ dans « zéro »","Le son /ɛ/ dans « père »"],correctIndex:2,explanationAr:"الصوت /o/ في كلمة «zéro» مدوّر لأن الشفتين تضمان وتتحركان إلى الأمام عند نطقه.",explanationFr:"Dans « zéro », le son /o/ est arrondi, car les lèvres s’arrondissent et se projettent vers l’avant."},
+  {prompt:"Lequel des mots suivants contient une voyelle arrondie, prononcée avec les lèvres projetées vers l’avant ?",speech:"Lequel des mots suivants contient une voyelle arrondie ?",translation:"أيّ الكلمات التالية تحتوي على صوت متحرك مدوّر، تتحرك فيه الشفتان بشكل دائري إلى الأمام؟",choices:["« lit » — سرير","« père » — أب","« tout » — كلّ","« chat » — قط"],correctIndex:2,explanationAr:"الصوت /u/ في كلمة «tout» مدوّر لأن الشفتين تضمان وتتجهان إلى الأمام.",explanationFr:"Dans « tout », le son /u/ est arrondi, car les lèvres s’arrondissent et se projettent vers l’avant."},
+  {prompt:"Dans lequel de ces mots entend-on une voyelle moyenne ouverte ?",speech:"Dans lequel de ces mots entend-on une voyelle moyenne ouverte ?",translation:"في أيّ كلمة نسمع صوتًا متحركًا متوسطًا مفتوحًا؟",choices:["Le son /i/ dans « lit »","Le son /e/ dans « été »","Le son /ɛ/ dans « père »","Le son /a/ dans « chat »"],correctIndex:2,explanationAr:"الصوت /ɛ/ متوسط مفتوح؛ يكون اللسان في ارتفاع متوسط والفم مفتوحًا نسبيًا.",explanationFr:"Le son /ɛ/ est une voyelle moyenne ouverte : la langue est à mi-hauteur et la bouche est relativement ouverte."},
+  {prompt:"Dans lequel de ces mots entend-on une voyelle ouverte ?",speech:"Dans lequel de ces mots entend-on une voyelle ouverte ?",translation:"في أيّ كلمة نسمع صوتًا متحركًا مفتوحًا؟",choices:["Le son /i/ dans « lit »","Le son /ø/ dans « feu »","Le son /ɛ/ dans « père »","Le son /a/ dans « chat »"],correctIndex:3,explanationAr:"الصوت /a/ مفتوح لأن اللسان ينخفض ويُفتح الفم بدرجة كبيرة.",explanationFr:"Le son /a/ est ouvert, car la langue s’abaisse et la bouche s’ouvre largement."},
+  {prompt:"Lequel des mots suivants contient la semi-voyelle /j/, comme dans « yeux » ?",speech:"Lequel des mots suivants contient la semi-voyelle comme dans yeux ?",translation:"أيّ الكلمات التالية تحتوي على شبه حرف العلة /j/ القريب من صوت الياء، كما في كلمة «yeux»؟",choices:["« oui » — نعم","« pied » — قدم","« huit » — ثمانية","« lit » — سرير"],correctIndex:1,explanationAr:"في كلمة «pied»، يتحول الصوت /i/ إلى انزلاق سريع /j/ قبل الصوت /e/.",explanationFr:"Dans « pied », le son /i/ devient la semi-voyelle /j/ devant /e/."},
+  {prompt:"Lequel des mots suivants contient la semi-voyelle /w/ ?",speech:"Lequel des mots suivants contient la semi-voyelle ou ?",translation:"أيّ الكلمات التالية تحتوي على شبه حرف العلة /w/ القريب من صوت الواو؟",choices:["« pied » — قدم","« huit » — ثمانية","« oui » — نعم","« lit » — سرير"],correctIndex:2,explanationAr:"في كلمة «oui»، يتحول الصوت /u/ إلى انزلاق سريع /w/ قبل الصوت /i/.",explanationFr:"Dans « oui », le son /u/ devient la semi-voyelle /w/ devant /i/."},
+  {prompt:"Dans « bateau », quel groupe de lettres représente le son /o/ ?",speech:"Dans bateau, quel groupe de lettres représente le son o ?",translation:"في كلمة «bateau»، أيّ مجموعة حروف تمثل الصوت /o/؟",choices:["« ou »","« eu »","« au »","« eau »"],correctIndex:3,explanationAr:"في كلمة «bateau»، تجتمع الحروف «eau» لتمثل صوتًا واحدًا هو /o/.",explanationFr:"Dans « bateau », les lettres « eau » forment un seul son : /o/."},
+  {prompt:"Dans « agneau », quel groupe de lettres représente le son /ɲ/ ?",speech:"Dans agneau, quel groupe de lettres représente le son entendu ?",translation:"في كلمة «agneau»، أيّ مجموعة حروف تمثل الصوت /ɲ/ القريب من «ني»؟",choices:["« ch »","« ph »","« gn »","« th »"],correctIndex:2,explanationAr:"في كلمة «agneau»، تجتمع «g» و«n» لتمثلا صوتًا واحدًا هو /ɲ/.",explanationFr:"Dans « agneau », les lettres « gn » forment un seul son : /ɲ/."},
+  {prompt:"Dans « parlez », quelle terminaison représente le son /e/ ?",speech:"Dans parlez, quelle terminaison représente le son é ?",translation:"في كلمة «parlez»، أيّ نهاية تمثل الصوت /e/؟",choices:["« et »","« tion »","« ez »","« er »"],correctIndex:2,explanationAr:"في كلمة «parlez»، تُنطق النهاية «ez» صوتًا واحدًا هو /e/، ولا يُنطق حرف «z» منفصلًا.",explanationFr:"Dans « parlez », la terminaison « ez » se prononce /e/ ; la lettre « z » ne se prononce pas séparément."},
+  {prompt:"Dans le mot « grand », quelle lettre finale s’écrit mais ne se prononce pas ?",speech:"Dans le mot grand, quelle lettre finale s’écrit mais ne se prononce pas ?",translation:"في كلمة «grand»، ما الحرف الأخير الذي يُكتب ولا يُنطق؟",choices:["« t »","« d »","« z »","« s »"],correctIndex:1,explanationAr:"في كلمة «grand» بصيغة المذكر المفرد، يُكتب الحرف «d» في النهاية لكنه لا يُنطق.",explanationFr:"Dans « grand » au masculin singulier, la lettre finale « d » s’écrit, mais ne se prononce pas."}
  ]
 };
 
@@ -5905,9 +5927,19 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
+  if(isA1Sounds){
+   setAlphabetListeningPlaying(true);
+   setAlphabetListeningSegment(1);
+   void speakFrench(clip.word,{
+    rate:rate==="slow"?.5:.72,
+    onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
+    onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
+   });
+   return;
+  }
   const alphabetItem=isA1Alphabet?ALPHABET.find(item=>item[0]===clip.letter):undefined;
   const letterSpeech=LETTER_SPEECH_OVERRIDES[clip.letter]??alphabetItem?.[1]??clip.letter.toLocaleLowerCase("fr");
-  const speechSegments=isA1Sounds?[clip.word,clip.word]:[letterSpeech,clip.word];
+  const speechSegments=[letterSpeech,clip.word];
   setAlphabetListeningPlaying(true);
   setAlphabetListeningSegment(0);
   void speakFrenchSequence(speechSegments,rate==="slow"?720:420,{
@@ -5915,6 +5947,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
    onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
    },setAlphabetListeningSegment);
+ };
+ const playOrbitHiddenSound=(clipIndex=alphabetListeningClipIndex)=>{
+  const clip=activeOrbitListeningClips[clipIndex];
+  const hiddenSpeech="hiddenSpeech" in clip&&typeof clip.hiddenSpeech==="string"?clip.hiddenSpeech:(LETTER_SPEECH_OVERRIDES[clip.letter]??clip.letter.toLocaleLowerCase("fr"));
+  setAlphabetListeningPlaying(true);
+  setAlphabetListeningSegment(0);
+  void speakFrench(hiddenSpeech,{
+   rate:.48,
+   onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
+   onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
+  });
  };
  const playOrbitDictation=(slow=false)=>{
   if(isAlphabetLetterDictation){
@@ -6534,26 +6577,27 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
        {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
-      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className="a1-orbit-listening-overlay" aria-label="تدريب الاستماع الذكي">
+      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
-        <div className={`a1-smart-audio-segments ${typeof selected==="number"?"revealed":"concealed"}`} dir="ltr">
-         <strong className={alphabetListeningSegment===0?"speaking":""}>{typeof selected==="number"?clip.letter:<span><Headphones/><small>{isA1Sounds?"الصوت مخفي":"الحرف مخفي"}</small></span>}</strong>
-         <strong className={alphabetListeningSegment===1?"speaking":""}>{typeof selected==="number"?clip.word:<span><AudioLines/><small>الكلمة مخفية</small></span>}</strong>
+        <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"}`} dir="ltr">
+         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":"الحرف مخفي"}</small></span>}</strong>
+         <strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>الكلمة مخفية</small></span>}</strong>
         </div>
-        <small>{typeof selected==="number"?clip.ar:"استمع أولًا، ثم اختر الإجابة ليظهر المقطع."}</small>
+        <small>{answeredCorrectly?clip.ar:"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
-        <div className="a1-smart-audio-actions"><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></div>
-        <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
+        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>استمع إلى الصوت</b><small>الصوت المستهدف فقط</small></div></button>}</div>
+        <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}-${index}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       {typeof selected==="number"?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{clip.letter} — {clip.word}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة</div>}
+       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{clip.letter} — {clip.word}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
        <article className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(correctCount/activeA2Listening.questions.length*100)}%</b></div>
         <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>
         {"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}
-        <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button type="button" key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
+        <div className="a1-smart-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=>{const correct=choiceIndex===question.correctIndex;return <button type="button" key={choice} disabled={answeredCorrectly} className={selected===choiceIndex?(correct?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,correct,()=>{setRevisionListeningAnswers(current=>({...current,[alphabetListeningQuestionIndex]:choiceIndex}));if(correct)window.setTimeout(()=>playAlphabetOrbitClip("slow",alphabetListeningQuestionIndex),620)})}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>})}</div>
         {typeof selected==="number"&&<p className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"استمع مرة أخرى ثم حاول."}</p>}
-        {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={selected!==question.correctIndex} onClick={()=>{const nextIndex=alphabetListeningQuestionIndex+1;cancelFrenchSpeech();setAlphabetListeningQuestionIndex(nextIndex);setAlphabetListeningClipIndex(nextIndex);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1);playAlphabetOrbitClip("normal",nextIndex)}}>السؤال التالي <ChevronLeft/></button>}
+        {answeredCorrectly&&"explanationAr" in question&&typeof question.explanationAr==="string"&&<div className="a1-smart-answer-explanation"><p>{question.explanationAr}</p>{"explanationFr" in question&&typeof question.explanationFr==="string"&&<small dir="ltr">{question.explanationFr}</small>}</div>}
+        {alphabetListeningQuestionIndex<activeA2Listening.questions.length-1&&<button type="button" className="a1-smart-next-question" disabled={!answeredCorrectly} onClick={()=>{const nextIndex=alphabetListeningQuestionIndex+1;cancelFrenchSpeech();setAlphabetListeningQuestionIndex(nextIndex);setAlphabetListeningClipIndex(nextIndex);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}}>السؤال التالي <ChevronLeft/></button>}
        </article>
        <footer><button type="button" onClick={advanceAlphabetPractice} disabled={correctCount<activeA2Listening.questions.length}><CheckCircle2/> إنهاء الاستماع والعودة إلى الخريطة</button></footer>
       </section>})()}

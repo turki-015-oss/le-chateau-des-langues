@@ -565,7 +565,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"greetings",title:"Saluer et se présenter",ar:"التحية والتعريف بالنفس",icon:Hand,
+  id:"greetings",title:"Les salutations et la présentation",ar:"التحيات والتعريف بالنفس",icon:Hand,
   description:"التحية، الاسم، البلد، اللغة، المهنة، وطرح الأسئلة الشخصية البسيطة.",
   sections:[
    section("Les salutations","عبارات التحية","تختلف التحية حسب الوقت ودرجة الرسمية. Bonjour مناسبة في أغلب المواقف، بينما Salut تستخدم مع الأصدقاء.",[

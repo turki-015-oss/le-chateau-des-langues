@@ -7440,6 +7440,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  };
 
  const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
+ const returnToUniversityOrigin=(fallbackHref:string)=>{
+  cancelFrenchSpeech();
+  if(window.history.length>1)router.back();
+  else router.push(fallbackHref);
+ };
  const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
  const toggleJourneyPhase=(phaseIndex:number)=>{
   const willOpen=openPhaseIndex!==phaseIndex;
@@ -7596,17 +7601,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  };
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
-  <header className="university-topbar">
+  {!lessonPage&&<header className="university-topbar">
    <Link href={backHref} onClick={event=>{
     if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
     event.preventDefault();
-    cancelFrenchSpeech();
-    if(window.history.length>1)router.back();
-    else router.push(backHref);
+    returnToUniversityOrigin(backHref);
    }} aria-label={lessonPage?`العودة إلى موضع الدخول في منهج ${level.id}`:levelPage?"العودة إلى موضع الدخول في مستويات الجامعة":"العودة إلى موضع الدخول في واجهة القلعة"}><ArrowRight/></Link>
    <div><span>الجامعة</span><strong>L’Université</strong></div>
    <div className="university-seal"><GraduationCap/></div>
-  </header>
+  </header>}
 
   {!levelPage&&<>
   <section className="university-hero">
@@ -7644,7 +7647,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   {levelPage&&!lessonPage&&<section className="university-level-entry">
    <div>
-    <Link className="university-levels-visual-link" href="/university"><ArrowRight/><span>جميع المستويات</span></Link>
+    <Link className="university-levels-visual-link" href="/university" onClick={event=>{
+     if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+     event.preventDefault();
+     returnToUniversityOrigin("/university");
+    }}><ArrowRight/><span>جميع المستويات</span></Link>
     <span>Programme {level.id}</span>
     <h1>{level.ar}</h1>
     <h2>{level.label}</h2>
@@ -7707,7 +7714,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
-    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><ArrowRight/> منهج {level.id}</Link>
+    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`} onClick={event=>{
+     if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+     event.preventDefault();
+     returnToUniversityOrigin(`/university/${level.id.toLocaleLowerCase("fr")}`);
+    }}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
     <nav aria-label="مراحل الدرس">
      <button className={`stage-learn ${lessonStage==="learn"?"active":""}`} onClick={()=>setLessonStage("learn")}><GraduationCap/><span><b>تعلّم</b><small>الشرح والأمثلة</small></span></button>

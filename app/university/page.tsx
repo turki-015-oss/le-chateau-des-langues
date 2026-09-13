@@ -48,7 +48,7 @@ type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
-type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;image?:string};
+type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;image?:string;examples?:VowelTableExample[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -286,11 +286,29 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  }
 ];
 
+const A1_REGULAR_CONSONANT_EXAMPLES:VowelTableExample[]=[
+ {word:"ballon",ar:"كرة",ipa:"/ba.lɔ̃/",phoneme:"/b/",focus:"b",parts:["","b","allon"],image:"/images/university/a1-sounds/regular-consonants/ballon.webp",explanation:"في ballon يُنطق الحرف b بالصوت /b/ بوضوح، ويحافظ على قيمته الساكنة المعتادة."},
+ {word:"dauphin",ar:"دلفين",ipa:"/do.fɛ̃/",phoneme:"/d/",focus:"d",parts:["","d","auphin"],image:"/images/university/a1-sounds/regular-consonants/dauphin.webp",explanation:"في dauphin يُنطق الحرف d بالصوت /d/، بينما تعطي au الصوت /o/ وph الصوت /f/."},
+ {word:"fraise",ar:"فراولة",ipa:"/fʁɛz/",phoneme:"/f/",focus:"f",parts:["","f","raise"],image:"/images/university/a1-sounds/regular-consonants/fraise.webp",explanation:"في fraise يُنطق الحرف f بالصوت الهوائي /f/ من دون تغيير."},
+ {word:"jardin",ar:"حديقة",ipa:"/ʒaʁ.dɛ̃/",phoneme:"/ʒ/",focus:"j",parts:["","j","ardin"],image:"/images/university/a1-sounds/regular-consonants/jardin.webp",explanation:"في jardin يُنطق الحرف j بالصوت /ʒ/، مثل صوت الجيم الفرنسية اللينة."},
+ {word:"kangourou",ar:"كنغر",ipa:"/kɑ̃.ɡu.ʁu/",phoneme:"/k/",focus:"k",parts:["","k","angourou"],image:"/images/university/a1-sounds/regular-consonants/kangourou.webp",explanation:"في kangourou يُنطق الحرف k بالصوت الصريح /k/."},
+ {word:"lampe",ar:"مصباح",ipa:"/lɑ̃p/",phoneme:"/l/",focus:"l",parts:["","l","ampe"],image:"/images/university/a1-sounds/regular-consonants/lampe.webp",explanation:"في lampe يُنطق الحرف l بالصوت /l/، ويلامس طرف اللسان المنطقة خلف الأسنان العليا."},
+ {word:"mouton",ar:"خروف",ipa:"/mu.tɔ̃/",phoneme:"/m/",focus:"m",parts:["","m","outon"],image:"/images/university/a1-sounds/regular-consonants/mouton.webp",explanation:"في mouton يُنطق الحرف m بالصوت الأنفي الساكن /m/ مع انطباق الشفتين."},
+ {word:"nuage",ar:"سحابة",ipa:"/nɥaʒ/",phoneme:"/n/",focus:"n",parts:["","n","uage"],image:"/images/university/a1-sounds/regular-consonants/nuage.webp",explanation:"في nuage يُنطق الحرف n بالصوت الأنفي الساكن /n/."},
+ {word:"piano",ar:"بيانو",ipa:"/pja.no/",phoneme:"/p/",focus:"p",parts:["","p","iano"],image:"/images/university/a1-sounds/regular-consonants/piano.webp",explanation:"في piano يُنطق الحرف p بالصوت /p/ مع انغلاق الشفتين ثم انفتاحهما."},
+ {word:"quatre",ar:"أربعة",ipa:"/katʁ/",phoneme:"/k/",focus:"qu",parts:["","qu","atre"],image:"/images/university/a1-sounds/regular-consonants/quatre.webp",explanation:"في quatre تمثل المجموعة qu الصوت /k/، ولا يُنطق الحرف u فيها منفصلًا."},
+ {word:"robot",ar:"روبوت",ipa:"/ʁɔ.bo/",phoneme:"/ʁ/",focus:"r",parts:["","r","obot"],image:"/images/university/a1-sounds/regular-consonants/robot.webp",explanation:"في robot يُنطق الحرف r بالصوت الفرنسي /ʁ/ من مؤخرة الفم."},
+ {word:"tomate",ar:"طماطم",ipa:"/tɔ.mat/",phoneme:"/t/",focus:"t",parts:["","t","omate"],image:"/images/university/a1-sounds/regular-consonants/tomate.webp",explanation:"في tomate يُنطق الحرف t بالصوت /t/ في موضعيه داخل الكلمة."},
+ {word:"vélo",ar:"دراجة",ipa:"/ve.lo/",phoneme:"/v/",focus:"v",parts:["","v","élo"],image:"/images/university/a1-sounds/regular-consonants/velo.webp",explanation:"في vélo يُنطق الحرف v بالصوت /v/ مع ملامسة الأسنان العليا للشفة السفلى."},
+ {word:"zèbre",ar:"حمار وحشي",ipa:"/zɛbʁ/",phoneme:"/z/",focus:"z",parts:["","z","èbre"],image:"/images/university/a1-sounds/regular-consonants/zebre.webp",explanation:"في zèbre يُنطق الحرف z بالصوت المجهور /z/ بوضوح."}
+];
+
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
-  explanation:"هي الحروف التي تُنطق غالبًا بالطريقة نفسها ولا يتغير صوتها بتغيّر مكانها في الكلمة. وتضم الأبجدية الفرنسية 20 حرفًا ساكنًا من أصل 26؛ أما الأحرف الستة المتبقية فهي حروف العلة.",
-  frExplanation:"Ce sont les consonnes dont la prononciation reste généralement stable, quelle que soit leur place dans le mot. L’alphabet français compte vingt consonnes sur vingt-six lettres ; les six autres sont des voyelles."
+  explanation:"هي الحروف التي تُنطق غالبًا بالطريقة نفسها ولا يتغير صوتها بتغيّر مكانها في الكلمة. يعرض هذا القسم أربعة عشر حرفًا ذا نطق مستقر للمبتدئ.",
+  frExplanation:"Ce sont les consonnes dont la prononciation reste généralement stable, quelle que soit leur place dans le mot. Cette section présente quatorze consonnes à prononciation stable pour le débutant.",
+  examples:A1_REGULAR_CONSONANT_EXAMPLES
  },
  {
   fr:"Les consonnes à prononciation variable",ar:"الحروف الساكنة متغيرة النطق",
@@ -7878,7 +7896,41 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           </summary>
           <div className="a1-vowel-classification-content">
            <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small></div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
-           <p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الحروف والأمثلة هنا.</p>
+           {classification.examples?(()=>{
+            const cardKey=classification.fr;
+            const currentIndex=soundGroupCardIndex[cardKey]??0;
+            const example=classification.examples[currentIndex];
+            const moveCard=(direction:-1|1)=>setSoundGroupCardIndex(current=>({...current,[cardKey]:(currentIndex+direction+classification.examples!.length)%classification.examples!.length}));
+            return <div className="a1-vowel-example-table regular-consonants" role="region" aria-label={`بطاقات ${classification.ar}`}>
+             <div className="a1-vowel-carousel-stage">
+              <article key={`${cardKey}-${example.word}`} className="a1-vowel-example-row">
+               <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>
+                <img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/>
+                <span><Volume2/> اضغط للنطق</span>
+               </button>
+               <div className="a1-vowel-example-identity">
+                <span className="a1-vowel-phoneme" dir="ltr">{example.phoneme}</span>
+                <strong dir="ltr">{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong>
+                <span dir="ltr">{example.ipa}</span>
+                <b>{example.ar}</b>
+                <em dir="ltr">{example.focus}</em>
+               </div>
+               <p>{example.explanation}</p>
+               <div className="a1-vowel-example-audio">
+                <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء</b><small>Lentement</small></span></button>
+               </div>
+              </article>
+             </div>
+             <div className="a1-vowel-carousel-navigation" dir="ltr">
+              <button type="button" onClick={()=>moveCard(-1)} aria-label="المثال السابق"><ChevronLeft/></button>
+              <div className="a1-vowel-carousel-progress" aria-label={`المثال ${currentIndex+1} من ${classification.examples.length}`}>
+               <strong>{currentIndex+1}</strong><span>/</span><b>{classification.examples.length}</b>
+               <div>{classification.examples.map((item,index)=><button key={item.word} type="button" className={index===currentIndex?"active":""} onClick={()=>setSoundGroupCardIndex(current=>({...current,[cardKey]:index}))} aria-label={`افتح مثال ${item.word}`}/>)}</div>
+              </div>
+              <button type="button" onClick={()=>moveCard(1)} aria-label="المثال التالي"><ChevronRight/></button>
+             </div>
+            </div>;
+           })():<p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الحروف والأمثلة هنا.</p>}
           </div>
          </details>)}
         </div>

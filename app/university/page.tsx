@@ -346,7 +346,7 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  },
  {
   fr:"Les consonnes finales muettes",ar:"الحروف الساكنة الصامتة النهائية",
-  explanation:"هي حروف تُكتب في آخر الكلمة ولا تُنطق في الحالات العادية، وغالبًا ما تكون من غير الأحرف C وR وF وL.",
+  explanation:"هي حروف تُكتب في آخر الكلمة ولا تُنطق في الحالات العادية، وغالبًا ما تكون غير أحرف C وR وF وL.",
   frExplanation:"Ce sont des consonnes écrites à la fin du mot qui restent généralement muettes ; les lettres C, R, F et L se prononcent souvent, avec des exceptions."
  }
 ];

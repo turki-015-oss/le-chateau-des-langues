@@ -7597,7 +7597,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
  return <main className={`university-world ${levelPage?"university-level-world":"university-main-world"}`} dir="rtl">
   <header className="university-topbar">
-   <Link href={backHref} aria-label={lessonPage?`العودة إلى منهج ${level.id}`:levelPage?"العودة إلى مستويات الجامعة":"العودة إلى واجهة القلعة"}><ArrowRight/></Link>
+   <Link href={backHref} onClick={event=>{
+    if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();
+    cancelFrenchSpeech();
+    if(window.history.length>1)router.back();
+    else router.push(backHref);
+   }} aria-label={lessonPage?`العودة إلى موضع الدخول في منهج ${level.id}`:levelPage?"العودة إلى موضع الدخول في مستويات الجامعة":"العودة إلى موضع الدخول في واجهة القلعة"}><ArrowRight/></Link>
    <div><span>الجامعة</span><strong>L’Université</strong></div>
    <div className="university-seal"><GraduationCap/></div>
   </header>

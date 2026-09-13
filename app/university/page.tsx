@@ -48,6 +48,7 @@ type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
+type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;image?:string};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -282,6 +283,25 @@ const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
    {fr:"Le son /w/ — W",ar:"صوت الواو /w/",explanation:"صوت قريب من الواو، كما في كلمة oui.",frExplanation:"Un son proche du w, comme dans le mot « oui ».",table:"semiw"},
    {fr:"Le son /ɥ/ — U",ar:"صوت الواو الأمامية الخفيفة /ɥ/",explanation:"صوت فرنسي بين الياء والواو المدورة، كما في كلمة huit.",frExplanation:"Un son français produit avec les lèvres arrondies, comme dans le mot « huit ».",table:"semiu"}
   ]
+ }
+];
+
+const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
+ {
+  fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
+  explanation:"هي الحروف التي تُنطق غالبًا بالطريقة نفسها ولا يتغير صوتها بتغيّر مكانها في الكلمة. وتضم الأبجدية الفرنسية 20 حرفًا ساكنًا من أصل 26؛ أما الأحرف الستة المتبقية فهي حروف العلة.",
+  frExplanation:"Ce sont les consonnes dont la prononciation reste généralement stable, quelle que soit leur place dans le mot. L’alphabet français compte vingt consonnes sur vingt-six lettres ; les six autres sont des voyelles."
+ },
+ {
+  fr:"Les consonnes à prononciation variable",ar:"الحروف الساكنة متغيرة النطق",
+  explanation:"هي حروف يتغيّر نطقها تمامًا بناءً على حرف العلة الذي يأتي بعدها مباشرة.",
+  frExplanation:"Ce sont des consonnes dont la prononciation change selon la voyelle qui les suit immédiatement.",
+  image:"/images/university/a1-sounds/chameleon.webp"
+ },
+ {
+  fr:"Les consonnes finales muettes",ar:"الحروف الساكنة الصامتة النهائية",
+  explanation:"هي حروف تُكتب في آخر الكلمة ولا تُنطق في الحالات العادية، وغالبًا ما تكون من غير الأحرف C وR وF وL.",
+  frExplanation:"Ce sont des consonnes écrites à la fin du mot qui restent généralement muettes ; les lettres C, R, F et L se prononcent souvent, avec des exceptions."
  }
 ];
 
@@ -7840,9 +7860,33 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         </div>
        </div>
       </details>
+      <details className="a1-sounds-learning-section a1-consonants-learning-section">
+       <summary>
+        <span><i>02</i><Languages/></span>
+        <div><strong dir="ltr">Les consonnes</strong><b>الحروف الساكنة</b><small>{A1_CONSONANT_CLASSIFICATIONS.length} أقسام رئيسية</small></div>
+        <ChevronDown/>
+       </summary>
+       <div className="a1-sounds-learning-section-body a1-vowel-classification-body">
+        <div className="a1-vowel-section-intro">
+         <div><strong dir="ltr">Ce sont les lettres que l’on lit et prononce selon leur valeur consonantique. Elles se présentent ici sous trois catégories.</strong><p>هي الحروف التي نقرأها وننطقها بقيمتها الصحيحة، ولها ثلاثة أوضاع.</p></div>
+        </div>
+        <div className="a1-vowel-classifications">
+         {A1_CONSONANT_CLASSIFICATIONS.map((classification,classificationIndex)=><details key={classification.fr} className="a1-vowel-classification a1-consonant-classification">
+          <summary>
+           <span><i>{String(classificationIndex+1).padStart(2,"0")}</i><strong dir="ltr">{classification.fr}</strong><b className={classification.image?"a1-consonant-title-with-image":undefined}>{classification.ar}{classification.image&&<img src={classification.image} alt="حرباء ترمز إلى تغير النطق" loading="lazy"/>}</b></span>
+           <ChevronDown/>
+          </summary>
+          <div className="a1-vowel-classification-content">
+           <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small></div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
+           <p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الحروف والأمثلة هنا.</p>
+          </div>
+         </details>)}
+        </div>
+       </div>
+      </details>
       {A1_SOUNDS_LEARNING_SECTIONS.map((sectionItem,sectionIndex)=><details key={sectionItem.fr} className="a1-sounds-learning-section">
        <summary>
-        <span><i>{String(sectionIndex+2).padStart(2,"0")}</i><AudioLines/></span>
+        <span><i>{String(sectionIndex+3).padStart(2,"0")}</i><AudioLines/></span>
         <div><strong dir="ltr">{sectionItem.fr}</strong><b>{sectionItem.ar}</b><small>{sectionItem.groups.length} فروع تعليمية</small></div>
         <ChevronDown/>
        </summary>

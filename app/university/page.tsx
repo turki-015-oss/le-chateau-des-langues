@@ -7804,10 +7804,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
                const example=examples[currentIndex];
                const moveCard=(direction:-1|1)=>setVowelCardIndex(current=>({...current,[tableKind]:(current[tableKind]+direction+examples.length)%examples.length}));
                return <div className={`a1-vowel-example-table ${tableKind}`} role="region" aria-label={`بطاقات ${branch.ar}`}>
-               <div className="a1-vowel-example-table-title">
-                <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong></div>
-                <Layers3/>
-               </div>
                <div className="a1-vowel-carousel-stage">
                 <article key={`${tableKind}-${example.word}`} className="a1-vowel-example-row">
                  <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>
@@ -7867,10 +7863,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             const example=group.examples[currentIndex];
             const moveCard=(direction:-1|1)=>setSoundGroupCardIndex(current=>({...current,[group.fr]:(currentIndex+direction+group.examples.length)%group.examples.length}));
             return <div className="a1-vowel-example-table sound-combination" role="region" aria-label={`بطاقات ${group.ar}`}>
-             <div className="a1-vowel-example-table-title">
-              <div><span dir="ltr">Tableau phonétique illustré</span><strong>الأصوات داخل كلمات واضحة</strong></div>
-              <Layers3/>
-             </div>
              <div className="a1-vowel-carousel-stage">
               <article key={`${group.fr}-${example.word}`} className="a1-vowel-example-row">
                <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>

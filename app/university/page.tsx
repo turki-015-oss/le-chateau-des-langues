@@ -236,6 +236,13 @@ const A1_SITUATIONS_LISTENING_CLIPS=[
  {letter:"on se retrouve",word:"devant le café",ar:"نلتقي أمام المقهى",hiddenSpeech:"On se retrouve devant le café"},
  {letter:"je suis d’accord",word:"avec toi",ar:"أنا موافق معك",hiddenSpeech:"Je suis d’accord avec toi"}
 ];
+const A1_MESSAGES_FORMS_LISTENING_CLIPS=[
+ {letter:"quel est",word:"votre nom de famille",ar:"ما اسم عائلتكم؟",hiddenSpeech:"Quel est votre nom de famille ?"},
+ {letter:"mon adresse électronique",word:"est nora@example.com",ar:"عنوان بريدي الإلكتروني هو nora@example.com",hiddenSpeech:"Mon adresse électronique est nora@example.com"},
+ {letter:"je confirme",word:"mon rendez-vous de demain",ar:"أؤكد موعدي غدًا",hiddenSpeech:"Je confirme mon rendez-vous de demain à dix heures"},
+ {letter:"le musée",word:"est fermé le lundi",ar:"المتحف مغلق يوم الاثنين",hiddenSpeech:"Le musée est fermé le lundi"},
+ {letter:"l’ascenseur",word:"est en panne",ar:"المصعد معطّل",hiddenSpeech:"L’ascenseur est en panne"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -2311,16 +2318,26 @@ const A1_MESSAGES_FORMS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_MESSAGES_FORMS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"Prénom",speech:"Prénom.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","الاسم الأول","الجنسية"],correctIndex:1,explanation:"prénom يعني الاسم الأول."},
- {prompt:"Nom de famille",speech:"Nom de famille.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","تاريخ الميلاد","رقم الهاتف"],correctIndex:0,explanation:"nom de famille يعني اسم العائلة."},
- {prompt:"Date de naissance",speech:"Date de naissance.",instruction:"اختر المعلومة المطلوبة في هذه الخانة.",choices:["مكان السكن","البريد الإلكتروني","تاريخ الميلاد"],correctIndex:2,explanation:"date de naissance تعني تاريخ الميلاد."},
- {prompt:"Je vous écris ___ confirmer le rendez-vous.",speech:"Complétez la phrase. Je vous écris pour confirmer le rendez-vous.",instruction:"اختر الكلمة التي توضح سبب الرسالة.",choices:["pour","dans","chez"],correctIndex:0,explanation:"pour + مصدر يوضح الغرض من الكتابة."},
- {prompt:"Désolé, je vais arriver en ___.",speech:"Complétez le message. Désolé, je vais arriver en retard.",instruction:"أكمل عبارة الاعتذار عن التأخر.",choices:["panne","avance","retard"],correctIndex:2,explanation:"arriver en retard تعني الوصول متأخرًا."},
- {prompt:"Merci pour votre message. ___.",speech:"Choisissez une formule de fin. Merci pour votre message. Cordialement.",instruction:"اختر خاتمة مناسبة لرسالة مهذبة.",choices:["Quel âge avez-vous","Cordialement","Entrée gratuite"],correctIndex:1,explanation:"Cordialement خاتمة مهذبة شائعة في الرسائل."},
- {prompt:"Ouvert",speech:"Ouvert.",instruction:"اختر معنى الكلمة على لوحة المكان.",choices:["مفتوح","مغلق","مكتمل العدد"],correctIndex:0,explanation:"ouvert تعني مفتوح."},
- {prompt:"Entrée gratuite",speech:"Entrée gratuite.",instruction:"اختر معنى العبارة.",choices:["الدخول ممنوع","الدخول من الجهة الأخرى","الدخول مجاني"],correctIndex:2,explanation:"gratuit تعني مجاني."},
- {prompt:"L’ascenseur est en panne.",speech:"L’ascenseur est en panne.",instruction:"اختر المعنى العربي الصحيح.",choices:["المصعد معطّل.","المصعد في الطابق الأول.","المصعد مخصص للموظفين."],correctIndex:0,explanation:"en panne تعني معطّل."},
- {prompt:"Le musée est fermé le lundi.",speech:"Le musée est fermé le lundi.",instruction:"متى يكون المتحف مغلقًا؟",choices:["يوم الجمعة","يوم الاثنين","كل صباح"],correctIndex:1,explanation:"le lundi تعني يوم الاثنين."}
+ {prompt:"Prénom",translation:"الاسم الأول",speech:"Prénom.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","الاسم الأول","الجنسية"],correctIndex:1,explanation:"prénom يعني الاسم الأول."},
+ {prompt:"Nom de famille",translation:"اسم العائلة",speech:"Nom de famille.",instruction:"اختر معنى هذه الخانة في النموذج.",choices:["اسم العائلة","تاريخ الميلاد","رقم الهاتف"],correctIndex:0,explanation:"nom de famille يعني اسم العائلة."},
+ {prompt:"Date de naissance",translation:"تاريخ الميلاد",speech:"Date de naissance.",instruction:"اختر المعلومة المطلوبة في هذه الخانة.",choices:["مكان السكن","البريد الإلكتروني","تاريخ الميلاد"],correctIndex:2,explanation:"date de naissance تعني تاريخ الميلاد."},
+ {prompt:"Je vous écris ___ confirmer le rendez-vous.",translation:"أكتب إليكم لتأكيد الموعد.",speech:"Je vous écris pour confirmer le rendez-vous.",instruction:"اختر الكلمة التي توضح سبب الرسالة.",choices:["pour","dans","chez"],correctIndex:0,explanation:"pour متبوعة بالمصدر توضّح الغرض."},
+ {prompt:"Désolé, je vais arriver en ___.",translation:"آسف، سأصل متأخرًا.",speech:"Désolé, je vais arriver en retard.",instruction:"أكمل عبارة الاعتذار عن التأخر.",choices:["panne","avance","retard"],correctIndex:2,explanation:"arriver en retard تعني الوصول متأخرًا."},
+ {prompt:"Merci pour votre message. ___.",translation:"شكرًا على رسالتكم. مع خالص التحية.",speech:"Merci pour votre message. Cordialement.",instruction:"اختر خاتمة مناسبة لرسالة مهذبة.",choices:["Quel âge avez-vous ?","Cordialement","Entrée gratuite"],correctIndex:1,explanation:"Cordialement خاتمة مهذبة شائعة في الرسائل."},
+ {prompt:"Ouvert",translation:"مفتوح",speech:"Ouvert.",instruction:"اختر معنى الكلمة على لوحة المكان.",choices:["مفتوح","مغلق","مكتمل العدد"],correctIndex:0,explanation:"ouvert تعني مفتوح."},
+ {prompt:"Entrée gratuite",translation:"الدخول مجاني",speech:"Entrée gratuite.",instruction:"اختر معنى العبارة.",choices:["الدخول ممنوع","الدخول من الجهة الأخرى","الدخول مجاني"],correctIndex:2,explanation:"entrée gratuite تعني أن الدخول بلا مقابل."},
+ {prompt:"L’ascenseur est en panne.",translation:"المصعد معطّل.",speech:"L’ascenseur est en panne.",instruction:"اختر المعنى العربي الصحيح.",choices:["المصعد معطّل.","المصعد في الطابق الأول.","المصعد مخصص للموظفين."],correctIndex:0,explanation:"en panne تعني معطّل."},
+ {prompt:"Le musée est fermé le lundi.",translation:"المتحف مغلق يوم الاثنين.",speech:"Le musée est fermé le lundi.",instruction:"متى يكون المتحف مغلقًا؟",choices:["يوم الجمعة","يوم الاثنين","كل صباح"],correctIndex:1,explanation:"le lundi تعني يوم الاثنين."},
+ {prompt:"Quelle est votre ___ ? — Je suis saoudienne.",translation:"ما جنسيتكم؟ — أنا سعودية.",speech:"Quelle est votre nationalité ? Je suis saoudienne.",instruction:"اختر اسم الخانة المناسب.",choices:["adresse","nationalité","profession"],correctIndex:1,explanation:"nationalité هي المعلومة التي يجيب عنها الشخص بسعودي أو سعودية."},
+ {prompt:"Mon numéro de téléphone ___ le 06 24 18 35 70.",translation:"رقم هاتفي هو 06 24 18 35 70.",speech:"Mon numéro de téléphone est le 06 24 18 35 70.",instruction:"اختر الفعل الصحيح.",choices:["est","sont","avez"],correctIndex:0,explanation:"الفاعل مفرد؛ لذلك نستخدم est."},
+ {prompt:"Adresse électronique",translation:"البريد الإلكتروني",speech:"Adresse électronique.",instruction:"ماذا تكتب في هذه الخانة؟",choices:["عنوان منزلك فقط","عنوان بريدك الإلكتروني","تاريخ ميلادك"],correctIndex:1,explanation:"adresse électronique تعني عنوان البريد الإلكتروني."},
+ {prompt:"Le cabinet se trouve ___ 8, avenue de la Gare.",translation:"تقع العيادة في 8 شارع المحطة.",speech:"Le cabinet se trouve au 8, avenue de la Gare.",instruction:"اختر حرف الجر المناسب قبل رقم العنوان.",choices:["au","du","chez"],correctIndex:0,explanation:"نستخدم au قبل رقم العنوان في هذه الصيغة."},
+ {prompt:"Pouvez-vous me répondre, s’il vous plaît ?",translation:"هل يمكنكم الرد عليّ، من فضلكم؟",speech:"Pouvez-vous me répondre, s’il vous plaît ?",instruction:"حدد وظيفة العبارة.",choices:["طلب مهذب","تحية صباحية","إعلان إغلاق"],correctIndex:0,explanation:"Pouvez-vous… s’il vous plaît صيغة طلب مهذبة."},
+ {prompt:"Le train est complet.",translation:"القطار مكتمل العدد.",speech:"Le train est complet.",instruction:"اختر المعنى الصحيح.",choices:["القطار متأخر.","لا توجد مقاعد متاحة في القطار.","القطار في المحطة."],correctIndex:1,explanation:"complet يعني أن جميع الأماكن محجوزة."},
+ {prompt:"Il est interdit de manger ici.",translation:"يُمنع تناول الطعام هنا.",speech:"Il est interdit de manger ici.",instruction:"اختر المعنى الصحيح.",choices:["يمكن تناول الطعام هنا.","يُباع الطعام هنا.","يُمنع تناول الطعام هنا."],correctIndex:2,explanation:"Il est interdit de تعني يُمنع أن."},
+ {prompt:"La médiathèque est ouverte ___ mardi au samedi.",translation:"المكتبة العامة مفتوحة من الثلاثاء إلى السبت.",speech:"La médiathèque est ouverte du mardi au samedi.",instruction:"اختر الصيغة التي تحدد المدة.",choices:["du","pour","avec"],correctIndex:0,explanation:"نستخدم du… au… للتعبير عن المدة من يوم إلى يوم."},
+ {prompt:"Je voudrais déplacer mon rendez-vous.",translation:"أود تغيير موعدي.",speech:"Je voudrais déplacer mon rendez-vous.",instruction:"ماذا يريد المتحدث؟",choices:["إلغاء بريده الإلكتروني","تغيير موعده","طلب استمارة جديدة"],correctIndex:1,explanation:"déplacer un rendez-vous تعني تغيير موعده إلى وقت آخر."},
+ {prompt:"Bonjour Madame, je confirme notre rendez-vous de demain à dix heures.",translation:"مرحبًا سيدتي، أؤكد موعدنا غدًا الساعة العاشرة.",speech:"Bonjour Madame, je confirme notre rendez-vous de demain à dix heures.",instruction:"اختر نوع الرسالة.",choices:["رسالة دعوة إلى السينما","رسالة وصف منزل","رسالة تأكيد موعد"],correctIndex:2,explanation:"je confirme notre rendez-vous تدل بوضوح على تأكيد الموعد."}
 ];
 
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
@@ -3346,6 +3363,17 @@ const A1_SITUATIONS_WRITING_TRANSLATIONS=[
  {fr:"à bientôt",ar:"أراك قريبًا"}
 ];
 
+const A1_MESSAGES_FORMS_WRITING_TRANSLATIONS=[
+ {fr:"mon prénom est Nora",ar:"اسمي الأول نورة"},
+ {fr:"mon nom de famille est Alami",ar:"اسم عائلتي العلمي"},
+ {fr:"voici mon numéro de téléphone",ar:"هذا رقم هاتفي"},
+ {fr:"mon adresse électronique est",ar:"عنوان بريدي الإلكتروني هو"},
+ {fr:"je confirme mon rendez-vous",ar:"أؤكد موعدي"},
+ {fr:"je vais arriver en retard",ar:"سأصل متأخرًا"},
+ {fr:"le musée est fermé le lundi",ar:"المتحف مغلق يوم الاثنين"},
+ {fr:"cordialement",ar:"مع خالص التحية"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3932,20 +3960,22 @@ const A1_MESSAGES_FORMS_READING={
  text:"Formulaire d’inscription — Prénom : Nora. Nom de famille : Alami. Date de naissance : 15 mars 2000. Nationalité : saoudienne. Adresse : 20, rue Victor-Hugo, 69002 Lyon. Téléphone : 06 24 18 35 70. Adresse électronique : nora@example.com. La médiathèque est ouverte du mardi au samedi, de neuf heures à dix-huit heures.",
  translation:"نموذج تسجيل — الاسم الأول: نورة. اسم العائلة: العلمي. تاريخ الميلاد: 15 مارس 2000. الجنسية: سعودية. العنوان: 20 شارع فيكتور هوغو، 69002 ليون. الهاتف: 06 24 18 35 70. البريد الإلكتروني: nora@example.com. تفتح المكتبة العامة من الثلاثاء إلى السبت، من التاسعة صباحًا حتى السادسة مساءً.",
  questions:[
-  {question:"Quel est le nom de famille de Nora ?",answer:"Son nom de famille est Alami.",ar:"اسم عائلتها العلمي."},
-  {question:"Quelle est son adresse ?",answer:"Elle habite au 20, rue Victor-Hugo, à Lyon.",ar:"تسكن في 20 شارع فيكتور هوغو بمدينة ليون."},
-  {question:"Quels jours la médiathèque est-elle ouverte ?",answer:"Elle est ouverte du mardi au samedi.",ar:"تفتح من الثلاثاء إلى السبت."}
+  {question:"Quel est le nom de famille de Nora ?",translation:"ما اسم عائلة نورة؟",answer:"Son nom de famille est Alami.",ar:"اسم عائلتها العلمي."},
+  {question:"Quelle est son adresse ?",translation:"ما عنوانها؟",answer:"Elle habite au 20, rue Victor-Hugo, à Lyon.",ar:"تسكن في 20 شارع فيكتور هوغو بمدينة ليون."},
+  {question:"Quels jours la médiathèque est-elle ouverte ?",translation:"في أي أيام تكون المكتبة العامة مفتوحة؟",answer:"Elle est ouverte du mardi au samedi.",ar:"تفتح من الثلاثاء إلى السبت."}
  ]
 };
 
 const A1_MESSAGES_FORMS_LISTENING={
- title:"Un message vocal",
- arTitle:"رسالة صوتية",
- text:"Bonjour Sami, je vous appelle pour confirmer votre rendez-vous de demain à dix heures. Le cabinet se trouve au 8, avenue de la Gare. Si vous êtes en retard, appelez le 04 70 22 15 10. Merci et à demain.",
+ title:"Informations et messages pratiques",
+ arTitle:"معلومات ورسائل عملية",
+ text:"Quel est votre nom de famille ? Mon adresse électronique est nora@example.com. Je confirme mon rendez-vous de demain à dix heures. Le musée est fermé le lundi. L’ascenseur est en panne.",
  questions:[
-  {prompt:"Pourquoi la personne appelle-t-elle ?",choices:["Pour annuler une réservation","Pour confirmer un rendez-vous","Pour demander une adresse"],correctIndex:1},
-  {prompt:"À quelle heure est le rendez-vous ?",choices:["À huit heures","À neuf heures","À dix heures"],correctIndex:2},
-  {prompt:"Où se trouve le cabinet ?",choices:["8, avenue de la Gare","20, rue Victor-Hugo","4, place du Marché"],correctIndex:0}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quel est votre nom de famille ?","Quelle est votre adresse ?","Quel est votre prénom ?"],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon numéro de téléphone est ici.","Mon adresse électronique est nora@example.com.","Mon adresse est à Lyon."],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’annule mon rendez-vous.","Je déplace mon rendez-vous.","Je confirme mon rendez-vous de demain à dix heures."],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le musée est fermé le lundi.","Le musée ouvre le lundi.","Le musée est gratuit le lundi."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["L’ascenseur est ouvert.","L’ascenseur est en panne.","L’ascenseur est au premier étage."],correctIndex:1}
  ]
 };
 
@@ -3954,19 +3984,25 @@ const A1_MESSAGES_FORMS_WRITING_MODEL="Bonjour Madame, je vous écris pour confi
 const A1_MESSAGES_FORMS_DICTATION=[
  {speech:"Mon nom de famille est Alami.",ar:"اسم عائلتي العلمي."},
  {speech:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
- {speech:"La bibliothèque est fermée le lundi.",ar:"المكتبة مغلقة يوم الاثنين."}
+ {speech:"La bibliothèque est fermée le lundi.",ar:"المكتبة مغلقة يوم الاثنين."},
+ {speech:"Voici mon numéro de téléphone.",ar:"هذا رقم هاتفي."},
+ {speech:"L’ascenseur est en panne.",ar:"المصعد معطّل."}
 ];
 
 const A1_MESSAGES_FORMS_BUILDERS=[
  {tokens:["famille","Mon","Alami.","nom","est","de"],answer:["Mon","nom","de","famille","est","Alami."],ar:"اسم عائلتي العلمي."},
  {tokens:["rendez-vous","Je","demain.","confirme","notre","de"],answer:["Je","confirme","notre","rendez-vous","de","demain."],ar:"أؤكد موعدنا غدًا."},
- {tokens:["lundi.","musée","fermé","Le","est","le"],answer:["Le","musée","est","fermé","le","lundi."],ar:"المتحف مغلق يوم الاثنين."}
+ {tokens:["lundi.","musée","fermé","Le","est","le"],answer:["Le","musée","est","fermé","le","lundi."],ar:"المتحف مغلق يوم الاثنين."},
+ {tokens:["téléphone.","mon","Voici","de","numéro"],answer:["Voici","mon","numéro","de","téléphone."],ar:"هذا رقم هاتفي."},
+ {tokens:["panne.","est","L’ascenseur","en"],answer:["L’ascenseur","est","en","panne."],ar:"المصعد معطّل."}
 ];
 
 const A1_MESSAGES_FORMS_DIALOGUES=[
- {context:"Un formulaire demande « prénom » puis « nom de famille ».",prompt:"ما الذي تكتبه في خانة prénom؟",choices:["Votre prénom personnel","Votre nom de famille","Votre adresse complète"],correctIndex:0,feedback:"prénom هو الاسم الأول، وnom de famille هو اسم العائلة."},
- {context:"Vous écrivez pour confirmer une rencontre.",prompt:"اختر الرسالة الواضحة.",choices:["Bonjour, je confirme notre rendez-vous de demain à dix heures.","Rendez-vous bonjour peut-être.","Je suis dix heures adresse."],correctIndex:0,feedback:"الرسالة الواضحة تجمع التحية وسبب الرسالة والموعد."},
- {context:"Une affiche indique : « Ascenseur en panne ».",prompt:"ما معنى المعلومة؟",choices:["L’ascenseur est gratuit.","L’ascenseur ne fonctionne pas.","L’ascenseur est ouvert."],correctIndex:1,feedback:"en panne تعني أن الجهاز معطل ولا يعمل."}
+ {context:"Quel est votre prénom ?",translation:"ما اسمكم الأول؟",prompt:"اختر الإجابة المناسبة.",choices:["Mon prénom est Nora.","J’habite rue Victor-Hugo.","Je suis saoudienne."],correctIndex:0,feedback:"السؤال عن prénom يحتاج إلى الاسم الأول."},
+ {context:"Quel est votre numéro de téléphone ?",translation:"ما رقم هاتفكم؟",prompt:"اختر الإجابة المناسبة.",choices:["Je suis née en mai.","Mon numéro est le 06 24 18 35 70.","La gare est ouverte."],correctIndex:1,feedback:"الإجابة تبدأ طبيعيًا بـ Mon numéro est…"},
+ {context:"Pouvez-vous confirmer votre rendez-vous ?",translation:"هل يمكنكم تأكيد موعدكم؟",prompt:"اختر الرسالة الواضحة.",choices:["Bonjour, je confirme mon rendez-vous de demain à dix heures.","Rendez-vous bonjour peut-être.","Je suis dix heures adresse."],correctIndex:0,feedback:"الرد الواضح يذكر التأكيد واليوم والوقت."},
+ {context:"L’ascenseur est en panne.",translation:"المصعد معطّل.",prompt:"اختر المعنى المطابق.",choices:["L’ascenseur est gratuit.","L’ascenseur ne fonctionne pas.","L’ascenseur est ouvert."],correctIndex:1,feedback:"en panne تعني أن الجهاز معطّل ولا يعمل."},
+ {context:"Je vais arriver en retard.",translation:"سأصل متأخرًا.",prompt:"اختر الرسالة المهذبة المناسبة.",choices:["Bonjour, je suis désolé. Je vais arriver en retard.","Retard adresse lundi.","Le formulaire est gratuit."],correctIndex:0,feedback:"التحية والاعتذار وذكر التأخر تكوّن رسالة قصيرة ومهذبة."}
 ];
 
 const A1_ENHANCED_CONTENT={
@@ -6793,8 +6829,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations;
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms;
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
@@ -6840,7 +6876,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:isA1Situations?A1_SITUATIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:isA1Situations?A1_SITUATIONS_WRITING_TRANSLATIONS:isA1MessagesForms?A1_MESSAGES_FORMS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7509,7 +7545,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

@@ -1514,14 +1514,14 @@ const A1_ALPHABET_QUIZ_ITEMS:QuizQuestion[]=[
 
 const A1_SOUNDS_PRACTICE_ITEMS:Example[]=[
  {fr:"La voiture rouge roule doucement.",ar:"تسير السيارة الحمراء بهدوء."},
- {fr:"Moi, je bois trois cafés par jour.",ar:"أنا أشرب ثلاثة أكواب من القهوة يوميًا."},
+ {fr:"Moi, je bois un café le matin.",ar:"أمّا أنا، فأشرب فنجانًا من القهوة صباحًا."},
  {fr:"Le bateau blanc est très beau.",ar:"القارب الأبيض جميل جدًا."},
  {fr:"Mon oncle habite à Lyon.",ar:"يسكن عمي في ليون."},
- {fr:"Un enfant attend devant l’école.",ar:"ينتظر طفل أمام المدرسة."},
- {fr:"Ce matin, le train arrive à cinq heures.",ar:"يصل القطار هذا الصباح الساعة الخامسة."},
- {fr:"Le chat cherche sa chaussure.",ar:"تبحث القطة عن حذائها."},
- {fr:"Le garçon français mange une glace.",ar:"يتناول الصبي الفرنسي مثلجات."},
- {fr:"Le petit chat dort sur le lit.",ar:"تنام القطة الصغيرة على السرير."},
+ {fr:"Un enfant attend devant l’école.",ar:"ينتظر طفلٌ أمام المدرسة."},
+ {fr:"Le train arrive à cinq heures du matin.",ar:"يصل القطار الساعة الخامسة صباحًا."},
+ {fr:"Lina cherche ses chaussures.",ar:"تبحث لينا عن حذائها."},
+ {fr:"Le garçon français mange une glace.",ar:"يتناول الصبي الفرنسي قطعةً من المثلجات."},
+ {fr:"Le petit chat dort sur le lit.",ar:"ينام القط الصغير على السرير."},
  {fr:"Les enfants arrivent à onze heures.",ar:"يصل الأطفال الساعة الحادية عشرة."}
 ];
 

@@ -229,6 +229,13 @@ const A1_DAILY_LIFE_LISTENING_CLIPS=[
  {letter:"je fais",word:"les courses",ar:"أتسوق",hiddenSpeech:"Je fais les courses"},
  {letter:"je me couche",word:"à onze heures",ar:"أنام الساعة الحادية عشرة",hiddenSpeech:"Je me couche à onze heures"}
 ];
+const A1_SITUATIONS_LISTENING_CLIPS=[
+ {letter:"ça te dit",word:"d’aller au cinéma",ar:"ما رأيك أن نذهب إلى السينما؟",hiddenSpeech:"Ça te dit d’aller au cinéma ?"},
+ {letter:"avec plaisir",word:"à quelle heure",ar:"بكل سرور، في أي ساعة؟",hiddenSpeech:"Avec plaisir ! À quelle heure ?"},
+ {letter:"désolé",word:"je ne peux pas",ar:"آسف، لا أستطيع",hiddenSpeech:"Désolé, je ne peux pas"},
+ {letter:"on se retrouve",word:"devant le café",ar:"نلتقي أمام المقهى",hiddenSpeech:"On se retrouve devant le café"},
+ {letter:"je suis d’accord",word:"avec toi",ar:"أنا موافق معك",hiddenSpeech:"Je suis d’accord avec toi"}
+];
 
 const A1_VOWEL_CLASSIFICATIONS:VowelClassification[]=[
  {
@@ -1944,16 +1951,26 @@ const A1_FRIENDS_PRACTICE_ITEMS:Example[]=[
 ];
 
 const A1_FRIENDS_QUIZ_ITEMS:QuizQuestion[]=[
- {prompt:"___ d’aller au parc cet après-midi ?",speech:"Complétez l’invitation. Ça te dit d’aller au parc cet après-midi ?",instruction:"اختر العبارة الطبيعية لدعوة صديق.",choices:["Ça te dit","Est-ce que tu es","À mon avis"],correctIndex:0,explanation:"Ça te dit de + مصدر صيغة شائعة وغير رسمية لاقتراح نشاط على صديق."},
- {prompt:"— Tu veux venir avec nous ? — Oui, ___.",speech:"Tu veux venir avec nous ? Oui, avec plaisir.",instruction:"اختر الرد المناسب لقبول الدعوة.",choices:["je suis désolé","avec plaisir","je ne peux pas"],correctIndex:1,explanation:"Avec plaisir تعبير طبيعي لقبول الدعوة بسرور."},
- {prompt:"Je ne peux pas samedi. On peut ___ se voir dimanche ?",speech:"Je ne peux pas samedi. On peut plutôt se voir dimanche ?",instruction:"اختر الكلمة التي تقدم اقتراحًا بديلًا.",choices:["jamais","aussi","plutôt"],correctIndex:2,explanation:"plutôt تعني هنا «بدلًا من ذلك» وتقدم خيارًا بديلًا."},
- {prompt:"On se retrouve ___ la gare à dix heures.",speech:"On se retrouve devant la gare à dix heures.",instruction:"اختر كلمة المكان الصحيحة: أمام المحطة.",choices:["devant","pendant","avec"],correctIndex:0,explanation:"devant la gare تعني أمام المحطة."},
- {prompt:"À mon avis, ce restaurant est excellent.",speech:"À mon avis, ce restaurant est excellent.",instruction:"اختر المعنى العربي الصحيح.",choices:["لا أعرف هذا المطعم.","في رأيي، هذا المطعم ممتاز.","هذا المطعم مغلق اليوم."],correctIndex:1,explanation:"À mon avis تُستخدم لتقديم الرأي وتعني «في رأيي»."},
- {prompt:"Moi aussi, je suis d’accord.",speech:"Moi aussi, je suis d’accord.",instruction:"ماذا يعبّر المتحدث؟",choices:["عن الاعتذار.","عن رفض الدعوة.","عن الموافقة."],correctIndex:2,explanation:"je suis d’accord تعني أن المتحدث موافق."},
- {prompt:"___, je suis en retard.",speech:"Complétez la phrase. Désolé, je suis en retard.",instruction:"اختر كلمة الاعتذار المناسبة.",choices:["Désolé","Bienvenue","Bravo"],correctIndex:0,explanation:"Désolé تُستخدم للاعتذار، وهنا الاعتذار عن التأخر."},
- {prompt:"À quelle heure ?",speech:"À quelle heure ?",instruction:"اختر السؤال العربي المطابق.",choices:["في أي يوم؟","في أي ساعة؟","في أي مكان؟"],correctIndex:1,explanation:"À quelle heure ? سؤال عن الساعة أو الموعد."},
- {prompt:"Je ne suis pas libre ce soir.",speech:"Je ne suis pas libre ce soir.",instruction:"اختر الرد الأنسب للحفاظ على الحوار.",choices:["Le film est intéressant.","Je prends le métro.","Et demain, tu es libre ?"],correctIndex:2,explanation:"عند تعذر الموعد، من الطبيعي اقتراح وقت آخر بالسؤال عن الغد."},
- {prompt:"Merci pour l’invitation, mais je dois travailler.",speech:"Merci pour l’invitation, mais je dois travailler.",instruction:"اختر الترجمة العربية الطبيعية في السياق.",choices:["شكرًا على الدعوة، لكن يجب أن أعمل.","سأرسل لك دعوة بعد العمل.","أحب العمل مع أصدقائي."],correctIndex:0,explanation:"المتحدث يشكر على الدعوة ثم يعتذر عنها بسبب العمل."}
+ {prompt:"___ d’aller au parc cet après-midi ?",translation:"ما رأيك أن نذهب إلى الحديقة بعد الظهر؟",speech:"Ça te dit d’aller au parc cet après-midi ?",instruction:"اختر عبارة الدعوة الطبيعية.",choices:["Ça te dit","Est-ce que tu es","À mon avis"],correctIndex:0,explanation:"Ça te dit de + مصدر تُستخدم لاقتراح نشاط."},
+ {prompt:"Tu veux venir avec nous ? — Oui, ___.",translation:"هل تريد المجيء معنا؟ — نعم، بكل سرور.",speech:"Oui, avec plaisir.",instruction:"اختر رد القبول.",choices:["je suis désolé","avec plaisir","je ne peux pas"],correctIndex:1,explanation:"Avec plaisir تعبير طبيعي للقبول."},
+ {prompt:"Je ne peux pas samedi. On peut ___ se voir dimanche ?",translation:"لا أستطيع السبت، هل يمكن أن نلتقي الأحد بدلًا منه؟",speech:"On peut plutôt se voir dimanche ?",instruction:"اختر كلمة البديل.",choices:["jamais","aussi","plutôt"],correctIndex:2,explanation:"plutôt تقدم خيارًا بديلًا."},
+ {prompt:"On se retrouve ___ la gare.",translation:"نلتقي أمام المحطة.",speech:"On se retrouve devant la gare.",instruction:"اختر كلمة المكان الصحيحة.",choices:["devant","pendant","avec"],correctIndex:0,explanation:"devant تعني أمام."},
+ {prompt:"À mon avis, ce restaurant est excellent.",translation:"في رأيي، هذا المطعم ممتاز.",speech:"À mon avis, ce restaurant est excellent.",instruction:"اختر المعنى الصحيح.",choices:["لا أعرف هذا المطعم.","في رأيي، هذا المطعم ممتاز.","هذا المطعم مغلق اليوم."],correctIndex:1,explanation:"À mon avis تعني في رأيي."},
+ {prompt:"Moi aussi, je suis d’accord.",translation:"وأنا أيضًا موافق.",speech:"Moi aussi, je suis d’accord.",instruction:"حدد وظيفة العبارة.",choices:["الاعتذار","رفض الدعوة","الموافقة"],correctIndex:2,explanation:"je suis d’accord تعني أن المتحدث موافق."},
+ {prompt:"___, je suis en retard.",translation:"آسف، أنا متأخر.",speech:"Désolé, je suis en retard.",instruction:"اختر كلمة الاعتذار.",choices:["Désolé","Bienvenue","Bravo"],correctIndex:0,explanation:"Désolé تستخدم للاعتذار."},
+ {prompt:"À quelle heure ?",translation:"في أي ساعة؟",speech:"À quelle heure ?",instruction:"اختر المعنى العربي الصحيح.",choices:["في أي يوم؟","في أي ساعة؟","في أي مكان؟"],correctIndex:1,explanation:"À quelle heure سؤال عن الوقت."},
+ {prompt:"Je ne suis pas libre ce soir.",translation:"لست متفرغًا هذا المساء.",speech:"Je ne suis pas libre ce soir.",instruction:"اختر الرد الأنسب.",choices:["Le film est intéressant.","Je prends le métro.","Et demain, tu es libre ?"],correctIndex:2,explanation:"من الطبيعي اقتراح وقت بديل."},
+ {prompt:"Merci pour l’invitation, mais je dois travailler.",translation:"شكرًا على الدعوة، لكن يجب أن أعمل.",speech:"Merci pour l’invitation, mais je dois travailler.",instruction:"اختر الترجمة الصحيحة.",choices:["شكرًا على الدعوة، لكن يجب أن أعمل.","سأرسل لك دعوة بعد العمل.","أحب العمل مع أصدقائي."],correctIndex:0,explanation:"المتحدث يشكر ثم يعتذر بسبب العمل."},
+ {prompt:"On se retrouve ___ cinq heures.",translation:"نلتقي الساعة الخامسة.",speech:"On se retrouve à cinq heures.",instruction:"اختر حرف الجر مع الوقت.",choices:["à","en","de"],correctIndex:0,explanation:"نستخدم à قبل الساعة."},
+ {prompt:"Je suis désolé, je ne ___ pas venir.",translation:"أنا آسف، لا أستطيع الحضور.",speech:"Je suis désolé, je ne peux pas venir.",instruction:"اختر تصريف pouvoir الصحيح.",choices:["peut","peux","pouvons"],correctIndex:1,explanation:"مع je نقول peux."},
+ {prompt:"Bonne idée !",translation:"فكرة جيدة!",speech:"Bonne idée !",instruction:"اختر المعنى الصحيح.",choices:["إلى اللقاء!","أنا آسف!","فكرة جيدة!"],correctIndex:2,explanation:"Bonne idée تعني فكرة جيدة."},
+ {prompt:"Tu es libre ___ soir ?",translation:"هل أنت متفرغ هذا المساء؟",speech:"Tu es libre ce soir ?",instruction:"اختر صفة الإشارة المناسبة.",choices:["ce","cet","cette"],correctIndex:0,explanation:"soir مذكر مفرد؛ لذلك نستخدم ce."},
+ {prompt:"Je préfère ___ un café.",translation:"أفضل تناول قهوة.",speech:"Je préfère prendre un café.",instruction:"اختر الفعل في المصدر.",choices:["prends","prendre","prenez"],correctIndex:1,explanation:"بعد préférer يأتي المصدر هنا."},
+ {prompt:"Ce film est drôle. — Je ne suis pas ___.",translation:"هذا الفيلم مضحك. — أنا غير موافق.",speech:"Je ne suis pas d’accord.",instruction:"أكمل عبارة عدم الموافقة.",choices:["en retard","libre","d’accord"],correctIndex:2,explanation:"ne pas être d’accord تعني عدم الموافقة."},
+ {prompt:"Excuse-moi ___ mon retard.",translation:"اعذرني على تأخري.",speech:"Excuse-moi pour mon retard.",instruction:"اختر حرف الجر الصحيح.",choices:["pour","avec","chez"],correctIndex:0,explanation:"نقول s’excuser pour شيء."},
+ {prompt:"À tout à l’heure !",translation:"أراك بعد قليل!",speech:"À tout à l’heure !",instruction:"اختر المعنى العربي الصحيح.",choices:["أراك غدًا!","أراك بعد قليل!","تصبح على خير!"],correctIndex:1,explanation:"À tout à l’heure تعني أراك بعد قليل."},
+ {prompt:"Tu veux sortir dimanche ?",translation:"هل تريد الخروج يوم الأحد؟",speech:"Tu veux sortir dimanche ?",instruction:"اختر جواب رفض مهذب مع بديل.",choices:["Oui, dimanche est sortir.","Non, jamais.","Désolé, je ne peux pas dimanche. Et lundi ?"],correctIndex:2,explanation:"الاعتذار مع اقتراح بديل يحافظ على الحوار."},
+ {prompt:"Merci pour cette belle soirée, à bientôt !",translation:"شكرًا على هذه الأمسية الجميلة، أراك قريبًا!",speech:"Merci pour cette belle soirée, à bientôt !",instruction:"اختر المعنى الصحيح.",choices:["شكرًا على هذه الأمسية الجميلة، أراك قريبًا!","آسف لأنني تأخرت عن الأمسية.","هل نلتقي قبل الأمسية؟"],correctIndex:0,explanation:"À bientôt تعني أراك قريبًا."}
 ];
 
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
@@ -3318,6 +3335,17 @@ const A1_DAILY_LIFE_WRITING_TRANSLATIONS=[
  {fr:"je me couche à onze heures",ar:"أنام الساعة الحادية عشرة"}
 ];
 
+const A1_SITUATIONS_WRITING_TRANSLATIONS=[
+ {fr:"ça te dit d’aller au cinéma",ar:"ما رأيك أن نذهب إلى السينما؟"},
+ {fr:"avec plaisir",ar:"بكل سرور"},
+ {fr:"à quelle heure",ar:"في أي ساعة؟"},
+ {fr:"désolé je ne peux pas",ar:"آسف، لا أستطيع"},
+ {fr:"et dimanche",ar:"وماذا عن الأحد؟"},
+ {fr:"on se retrouve devant le café",ar:"نلتقي أمام المقهى"},
+ {fr:"je suis d’accord avec toi",ar:"أنا موافق معك"},
+ {fr:"à bientôt",ar:"أراك قريبًا"}
+];
+
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
@@ -3853,20 +3881,22 @@ const A1_SITUATIONS_READING={
  text:"Lina écrit à Rami : « Salut ! Ça te dit d’aller au cinéma samedi soir ? Le film commence à dix-neuf heures. » Rami répond : « Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt y aller dimanche après-midi ? » Lina accepte : « Bonne idée ! On se retrouve devant le cinéma à quinze heures. »",
  translation:"تكتب لينا إلى رامي: «مرحبًا! ما رأيك أن نذهب إلى السينما مساء السبت؟ يبدأ الفيلم الساعة السابعة». يجيب رامي: «آسف، لا أستطيع يوم السبت لأنني أعمل. هل يمكن أن نذهب بدلًا من ذلك بعد ظهر الأحد؟» فتوافق لينا: «فكرة جيدة! نلتقي أمام السينما الساعة الثالثة».",
  questions:[
-  {question:"Quelle activité Lina propose-t-elle ?",answer:"Elle propose d’aller au cinéma.",ar:"تقترح الذهاب إلى السينما."},
-  {question:"Pourquoi Rami refuse-t-il samedi ?",answer:"Il refuse parce qu’il travaille.",ar:"يعتذر لأنه يعمل."},
-  {question:"Quand et où vont-ils se retrouver ?",answer:"Ils vont se retrouver dimanche à quinze heures devant le cinéma.",ar:"سيلتقيان يوم الأحد الساعة الثالثة أمام السينما."}
+  {question:"Quelle activité Lina propose-t-elle ?",translation:"ما النشاط الذي تقترحه لينا؟",answer:"Elle propose d’aller au cinéma.",ar:"تقترح الذهاب إلى السينما."},
+  {question:"Pourquoi Rami refuse-t-il samedi ?",translation:"لماذا يعتذر رامي عن يوم السبت؟",answer:"Il refuse parce qu’il travaille.",ar:"يعتذر لأنه يعمل."},
+  {question:"Quand et où vont-ils se retrouver ?",translation:"متى وأين سيلتقيان؟",answer:"Ils vont se retrouver dimanche à quinze heures devant le cinéma.",ar:"سيلتقيان يوم الأحد الساعة الثالثة أمام السينما."}
  ]
 };
 
 const A1_SITUATIONS_LISTENING={
- title:"Changer l’heure du rendez-vous",
- arTitle:"تغيير موعد اللقاء",
- text:"Salut Nour, je suis désolé, je vais arriver en retard. Notre bus est à la gare. On peut se retrouver au café à cinq heures au lieu de quatre heures ? Appelle-moi, s’il te plaît. À tout à l’heure !",
+ title:"Inviter, répondre et organiser",
+ arTitle:"الدعوة والرد وتنظيم اللقاء",
+ text:"Ça te dit d’aller au cinéma ? Avec plaisir ! À quelle heure ? Désolé, je ne peux pas. On se retrouve devant le café. Je suis d’accord avec toi.",
  questions:[
-  {prompt:"Pourquoi la personne appelle-t-elle ?",choices:["Pour annuler un voyage","Pour changer l’heure","Pour choisir un film"],correctIndex:1},
-  {prompt:"Où propose-t-elle de se retrouver ?",choices:["À la gare","Au cinéma","Au café"],correctIndex:2},
-  {prompt:"Quelle est la nouvelle heure ?",choices:["Quatre heures","Cinq heures","Six heures"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ça te dit d’aller au cinéma ?","Tu vas seul au cinéma.","Le cinéma est fermé."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je ne sais pas.","Avec plaisir ! À quelle heure ?","À demain matin."],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je peux venir.","Je suis déjà là.","Désolé, je ne peux pas."],correctIndex:2},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["On se retrouve devant le café.","Le café est derrière la gare.","Je travaille au café."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je ne comprends pas.","Je suis d’accord avec toi.","Tu n’es pas d’accord."],correctIndex:1}
  ]
 };
 
@@ -3875,19 +3905,25 @@ const A1_SITUATIONS_WRITING_MODEL="Salut Sami ! Ça te dit de prendre un café s
 const A1_SITUATIONS_DICTATION=[
  {speech:"Tu veux sortir avec nous samedi ?",ar:"هل تريد الخروج معنا يوم السبت؟"},
  {speech:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء."},
- {speech:"On se retrouve devant le café à cinq heures.",ar:"نلتقي أمام المقهى الساعة الخامسة."}
+ {speech:"On se retrouve devant le café à cinq heures.",ar:"نلتقي أمام المقهى الساعة الخامسة."},
+ {speech:"Avec plaisir ! À quelle heure ?",ar:"بكل سرور! في أي ساعة؟"},
+ {speech:"Je suis d’accord avec toi.",ar:"أنا موافق معك."}
 ];
 
 const A1_SITUATIONS_BUILDERS=[
  {tokens:["samedi","sortir","Tu","veux","?"],answer:["Tu","veux","sortir","samedi","?"],ar:"هل تريد الخروج يوم السبت؟"},
  {tokens:["venir","peux","ne","Je","pas","soir.","ce"],answer:["Je","ne","peux","pas","venir","ce","soir."],ar:"لا أستطيع الحضور هذا المساء."},
- {tokens:["retrouve","heures.","On","quatre","à","se"],answer:["On","se","retrouve","à","quatre","heures."],ar:"نلتقي الساعة الرابعة."}
+ {tokens:["retrouve","heures.","On","quatre","à","se"],answer:["On","se","retrouve","à","quatre","heures."],ar:"نلتقي الساعة الرابعة."},
+ {tokens:["heure","plaisir","À","!","Avec","quelle","?"],answer:["Avec","plaisir","!","À","quelle","heure","?"],ar:"بكل سرور! في أي ساعة؟"},
+ {tokens:["toi.","suis","avec","Je","d’accord"],answer:["Je","suis","d’accord","avec","toi."],ar:"أنا موافق معك."}
 ];
 
 const A1_SITUATIONS_DIALOGUES=[
- {context:"Un ami vous invite au restaurant et vous acceptez.",prompt:"اختر الإجابة الطبيعية.",choices:["Avec plaisir ! À quelle heure ?","Je ne restaurant jamais.","Parce que je suis heure."],correctIndex:0,feedback:"Avec plaisir تقبل الدعوة، ثم يمكن السؤال عن الوقت."},
- {context:"Vous ne pouvez pas venir samedi.",prompt:"اختر الاعتذار مع اقتراح بديل.",choices:["Désolé, je ne peux pas samedi. Et dimanche ?","Non, jamais, au revoir.","Je suis samedi mais dimanche."],correctIndex:0,feedback:"الاعتذار القصير مع موعد بديل يحافظ على حوار طبيعي."},
- {context:"Votre ami dit : « À mon avis, ce film est drôle. »",prompt:"اختر رد الموافقة.",choices:["Je suis d’accord avec toi.","Je vais à huit heures.","Je ne peux pas le mardi."],correctIndex:0,feedback:"Je suis d’accord تُستخدم للتعبير عن الموافقة."}
+ {context:"Tu veux venir au restaurant avec nous ?",translation:"هل تريد المجيء إلى المطعم معنا؟",prompt:"اختر الإجابة الطبيعية.",choices:["Avec plaisir ! À quelle heure ?","Je ne restaurant jamais.","Parce que je suis heure."],correctIndex:0,feedback:"Avec plaisir تقبل الدعوة، ثم يمكن السؤال عن الوقت."},
+ {context:"Tu peux venir samedi ?",translation:"هل تستطيع الحضور يوم السبت؟",prompt:"اختر الاعتذار مع اقتراح بديل.",choices:["Désolé, je ne peux pas samedi. Et dimanche ?","Non, jamais, au revoir.","Je suis samedi mais dimanche."],correctIndex:0,feedback:"الاعتذار القصير مع موعد بديل يحافظ على حوار طبيعي."},
+ {context:"À mon avis, ce film est drôle.",translation:"في رأيي، هذا الفيلم مضحك.",prompt:"اختر رد الموافقة.",choices:["Je suis d’accord avec toi.","Je vais à huit heures.","Je ne peux pas le mardi."],correctIndex:0,feedback:"Je suis d’accord تُستخدم للتعبير عن الموافقة."},
+ {context:"À quelle heure se retrouve-t-on ?",translation:"في أي ساعة سنلتقي؟",prompt:"اختر الإجابة المناسبة.",choices:["On se retrouve à cinq heures.","Le café est très bon.","Je préfère le dimanche."],correctIndex:0,feedback:"السؤال عن الساعة يحتاج إلى موعد محدد."},
+ {context:"Je vais arriver en retard.",translation:"سأصل متأخرًا.",prompt:"اختر الرد المتفهم.",choices:["Ce n’est pas grave. À tout à l’heure !","Je suis une heure.","Non, le restaurant."],correctIndex:0,feedback:"Ce n’est pas grave رد لطيف ومناسب على الاعتذار عن التأخير."}
 ];
 
 const A1_MESSAGES_FORMS_READING={
@@ -6756,8 +6792,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1HealthNeeds=level.id==="A1"&&activeModule.id==="health-needs";
  const isA1Adjectives=level.id==="A1"&&activeModule.id==="adjectives";
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
- const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife;
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
+ const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations;
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
  const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
@@ -6804,7 +6840,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1HomeHousing?A1_HOME_HOUSING_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:isA1Situations?A1_SITUATIONS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -7473,7 +7509,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setAlphabetPracticeClosing(false);
   setUsefulSentencesOpen(false);
  };
- const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
+ const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
   if(isA1Sounds){

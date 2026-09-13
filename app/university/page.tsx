@@ -48,7 +48,7 @@ type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
-type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;image?:string;examples?:VowelTableExample[]};
+type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -306,8 +306,10 @@ const A1_REGULAR_CONSONANT_EXAMPLES:VowelTableExample[]=[
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
-  explanation:"هي الحروف التي تُنطق غالبًا بالطريقة نفسها ولا يتغير صوتها بتغيّر مكانها في الكلمة. يعرض هذا القسم أربعة عشر حرفًا ذا نطق مستقر للمبتدئ.",
-  frExplanation:"Ce sont les consonnes dont la prononciation reste généralement stable, quelle que soit leur place dans le mot. Cette section présente quatorze consonnes à prononciation stable pour le débutant.",
+  explanation:"هي الحروف التي تُنطق غالبًا بالطريقة نفسها ولا يتغير صوتها بتغيّر مكانها في الكلمة. وتضم الأبجدية الفرنسية 20 حرفًا ساكنًا من أصل 26؛ أما الأحرف الستة المتبقية فهي حروف العلة.",
+  frExplanation:"Ce sont les lettres qui se prononcent généralement de la même manière et dont le son ne change pas selon leur position dans le mot. L’alphabet français comprend vingt consonnes sur vingt-six lettres ; les six lettres restantes sont des voyelles.",
+  highlightedNote:"(يبلغ عدد الحروف الساكنة المنتظمة 14 حرفًا).",
+  frHighlightedNote:"(On considère que quatorze de ces consonnes ont une prononciation régulière.)",
   examples:A1_REGULAR_CONSONANT_EXAMPLES
  },
  {
@@ -7895,7 +7897,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
            <ChevronDown/>
           </summary>
           <div className="a1-vowel-classification-content">
-           <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small></div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
+           <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small>{classification.highlightedNote&&<strong className="a1-consonant-highlighted-note">{classification.highlightedNote}<span dir="ltr">{classification.frHighlightedNote}</span></strong>}</div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation} ${classification.frHighlightedNote??""}`,{rate:.66})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
            {classification.examples?(()=>{
             const cardKey=classification.fr;
             const currentIndex=soundGroupCardIndex[cardKey]??0;

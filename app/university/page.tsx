@@ -303,6 +303,25 @@ const A1_REGULAR_CONSONANT_EXAMPLES:VowelTableExample[]=[
  {word:"zèbre",ar:"حمار وحشي",ipa:"/zɛbʁ/",phoneme:"/z/",focus:"z",parts:["","z","èbre"],image:"/images/university/a1-sounds/regular-consonants/zebre.webp",explanation:"في zèbre يُنطق الحرف z بالصوت المجهور /z/ بوضوح."}
 ];
 
+const A1_VARIABLE_CONSONANT_EXAMPLES:VowelTableExample[]=[
+ {word:"cadeau",ar:"هدية",ipa:"/ka.do/",phoneme:"/k/",focus:"c",parts:["","c","adeau"],image:"/images/university/a1-sounds/variable-consonants/cadeau.webp",explanation:"في cadeau يأتي الحرف c قبل a، لذلك يُنطق /k/."},
+ {word:"cerise",ar:"كرز",ipa:"/sə.ʁiz/",phoneme:"/s/",focus:"c",parts:["","c","erise"],image:"/images/university/a1-sounds/variable-consonants/cerise.webp",explanation:"في cerise يأتي الحرف c قبل e، لذلك يُنطق /s/."},
+ {word:"gomme",ar:"ممحاة",ipa:"/ɡɔm/",phoneme:"/ɡ/",focus:"g",parts:["","g","omme"],image:"/images/university/a1-sounds/variable-consonants/gomme.webp",explanation:"في gomme يأتي الحرف g قبل o، لذلك يُنطق /ɡ/."},
+ {word:"girafe",ar:"زرافة",ipa:"/ʒi.ʁaf/",phoneme:"/ʒ/",focus:"g",parts:["","g","irafe"],image:"/images/university/a1-sounds/variable-consonants/girafe.webp",explanation:"في girafe يأتي الحرف g قبل i، لذلك يُنطق /ʒ/."},
+ {word:"salade",ar:"سلطة",ipa:"/sa.lad/",phoneme:"/s/",focus:"s",parts:["","s","alade"],image:"/images/university/a1-sounds/variable-consonants/salade.webp",explanation:"في بداية salade يُنطق الحرف s بالصوت /s/."},
+ {word:"rose",ar:"وردة",ipa:"/ʁoz/",phoneme:"/z/",focus:"s",parts:["ro","s","e"],image:"/images/university/a1-sounds/variable-consonants/rose.webp",explanation:"في rose يقع الحرف s بين صوتين متحركين، لذلك يُنطق /z/."},
+ {word:"wagon",ar:"عربة قطار",ipa:"/va.ɡɔ̃/",phoneme:"/v/",focus:"w",parts:["","w","agon"],image:"/images/university/a1-sounds/variable-consonants/wagon.webp",explanation:"في wagon يُنطق الحرف w بالصوت /v/."},
+ {word:"week-end",ar:"عطلة نهاية الأسبوع",ipa:"/wi.kɛnd/",phoneme:"/w/",focus:"w",parts:["","w","eek-end"],image:"/images/university/a1-sounds/variable-consonants/week-end.webp",explanation:"في week-end يُنطق الحرف w بالصوت /w/ بسبب أصل الكلمة الإنجليزي."},
+ {word:"taxi",ar:"سيارة أجرة",ipa:"/tak.si/",phoneme:"/ks/",focus:"x",parts:["ta","x","i"],image:"/images/university/a1-sounds/variable-consonants/taxi.webp",explanation:"في taxi تمثل x الصوتين المتتابعين /ks/."},
+ {word:"examen",ar:"اختبار",ipa:"/ɛɡ.za.mɛ̃/",phoneme:"/ɡz/",focus:"x",parts:["e","x","amen"],image:"/images/university/a1-sounds/variable-consonants/examen.webp",explanation:"في examen تمثل x الصوتين المتتابعين /ɡz/."},
+ {word:"deuxième",ar:"الثاني",ipa:"/dø.zjɛm/",phoneme:"/z/",focus:"x",parts:["deu","x","ième"],image:"/images/university/a1-sounds/variable-consonants/deuxieme.webp",explanation:"في deuxième يُنطق الحرف x بالصوت /z/."}
+];
+
+const A1_H_EXAMPLES:VowelTableExample[]=[
+ {word:"homme",ar:"رجل",ipa:"/ɔm/",phoneme:"∅",focus:"h",parts:["","h","omme"],image:"/images/university/a1-sounds/h-types/homme.webp",explanation:"في homme لا يُنطق h، وهو h صامت يسمح بالحذف؛ لذلك نقول l’homme لا le homme."},
+ {word:"héros",ar:"بطل",ipa:"/e.ʁo/",phoneme:"∅",focus:"h",parts:["","h","éros"],image:"/images/university/a1-sounds/h-types/heros.webp",explanation:"في héros لا يُنطق h، لكنه يمنع الحذف والوصل؛ لذلك نقول le héros لا l’héros."}
+];
+
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
@@ -314,9 +333,16 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  },
  {
   fr:"Les consonnes à prononciation variable",ar:"الحروف الساكنة متغيرة النطق",
-  explanation:"هي حروف يتغيّر نطقها تمامًا بناءً على حرف العلة الذي يأتي بعدها مباشرة.",
-  frExplanation:"Ce sont des consonnes dont la prononciation change selon la voyelle qui les suit immédiatement.",
-  image:"/images/university/a1-sounds/chameleon.webp"
+  explanation:"هي حروف قد يتغيّر صوتها بحسب الحروف المحيطة بها أو أصل الكلمة.",
+  frExplanation:"Ce sont des consonnes dont la prononciation peut varier selon les lettres voisines ou l’origine du mot.",
+  image:"/images/university/a1-sounds/chameleon.webp",
+  examples:A1_VARIABLE_CONSONANT_EXAMPLES
+ },
+ {
+  fr:"Les deux types de H",ar:"نوعا الحرف H",
+  explanation:"لا يُنطق الحرف H بنفسه في الفرنسية، لكنه يأتي في نوعين يختلفان في أثرهما على الحذف والوصل.",
+  frExplanation:"La lettre H ne se prononce pas en français, mais elle se présente sous deux types qui se distinguent par leur effet sur l’élision et la liaison.",
+  examples:A1_H_EXAMPLES
  },
  {
   fr:"Les consonnes finales muettes",ar:"الحروف الساكنة الصامتة النهائية",

@@ -306,7 +306,9 @@ const A1_NASAL_VOWEL_EXAMPLES:VowelTableExample[]=[
  {word:"pont",ar:"جسر",ipa:"/pɔ̃/",phoneme:"/ɔ̃/",focus:"on",parts:["p","on","t"],image:"/images/university/a1-sounds/pont.webp",explanation:"المجموعة on تعطي /ɔ̃/، ولا يُنطق الحرف t في نهاية الكلمة."},
  {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",phoneme:"/ɔ̃/",focus:"on",parts:["mais","on",""],image:"/images/university/a1-sounds/maison.webp",explanation:"المجموعة on في المقطع الأخير تعطي الصوت الأنفي /ɔ̃/."},
  {word:"parfum",ar:"عطر",ipa:"/paʁ.fœ̃/",phoneme:"/œ̃/",focus:"um",parts:["parf","um",""],image:"/images/university/a1-sounds/parfum.webp",explanation:"المجموعة um تعطي /œ̃/ في النطق المعياري؛ وقد يقترب هذا الصوت من /ɛ̃/ في نطق فرنسي حديث شائع."},
- {word:"brun",ar:"بني",ipa:"/bʁœ̃/",phoneme:"/œ̃/",focus:"un",parts:["br","un",""],image:"/images/university/a1-sounds/brun.webp",explanation:"المجموعة un تعطي /œ̃/ في النطق المعياري؛ وقد تُنطق قريبة من /ɛ̃/ عند بعض المتحدثين."}
+ {word:"brun",ar:"بني",ipa:"/bʁœ̃/",phoneme:"/œ̃/",focus:"un",parts:["br","un",""],image:"/images/university/a1-sounds/brun.webp",explanation:"المجموعة un تعطي /œ̃/ في النطق المعياري؛ وقد تُنطق قريبة من /ɛ̃/ عند بعض المتحدثين."},
+ {word:"monde",ar:"عالم",ipa:"/mɔ̃d/",phoneme:"/ɔ̃/",focus:"on",parts:["m","on","de"],image:"/images/university/a1-sounds/final-quiz/monde.webp",explanation:"في monde تعطي المجموعة on الصوت الأنفي المدوّر /ɔ̃/، ويُنطق الحرف d بينما يبقى e الأخير صامتًا."},
+ {word:"chambre",ar:"غرفة",ipa:"/ʃɑ̃bʁ/",phoneme:"/ɑ̃/",focus:"am",parts:["ch","am","bre"],image:"/images/university/a1-sounds/final-quiz/chambre.webp",explanation:"في chambre تعطي المجموعة am قبل b الصوت الأنفي /ɑ̃/، ولا تُنطق m كصوت منفصل."}
 ];
 
 const A1_ROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
@@ -317,7 +319,9 @@ const A1_ROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_ORAL_VOWEL_EXAMPLES[7],explanation:"في bateau تُدوَّر الشفتان ويكون الصوت /o/ مغلقًا وواضحًا."},
  {...A1_ORAL_VOWEL_EXAMPLES[8],explanation:"في pomme تُدوَّر الشفتان لإنتاج /ɔ/ مع فتحة فم أوسع من /o/."},
  {...A1_NASAL_VOWEL_EXAMPLES[5],explanation:"في maison تُدوَّر الشفتان لإنتاج /ɔ̃/، ويمر الهواء من الفم والأنف معًا."},
- {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun تُدوَّر الشفتان لإنتاج /œ̃/ الأنفي؛ وقد يقترب من /ɛ̃/ في نطق فرنسي حديث شائع."}
+ {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun تُدوَّر الشفتان لإنتاج /œ̃/ الأنفي؛ وقد يقترب من /ɛ̃/ في نطق فرنسي حديث شائع."},
+ {word:"jupe",ar:"تنورة",ipa:"/ʒyp/",phoneme:"/y/",focus:"u",parts:["j","u","pe"],image:"/images/university/a1-sounds/final-quiz/jupe.webp",explanation:"في jupe يعطي الحرف u الصوت الفموي المدوّر /y/؛ يرتفع اللسان كما في /i/ مع ضم الشفتين."},
+ {word:"soupe",ar:"حساء",ipa:"/sup/",phoneme:"/u/",focus:"ou",parts:["s","ou","pe"],image:"/images/university/a1-sounds/final-quiz/soupe.webp",explanation:"في soupe تعطي المجموعة ou الصوت الفموي المدوّر /u/، ولا يُنطق e الأخير."}
 ];
 
 const A1_UNROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
@@ -326,13 +330,16 @@ const A1_UNROUNDED_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_ORAL_VOWEL_EXAMPLES[4],explanation:"في père تُبسط الشفتان دون تدوير لإنتاج /ɛ/، مع فتحة أوسع من /e/."},
  {...A1_ORAL_VOWEL_EXAMPLES[9],explanation:"في chat لا تُدوَّر الشفتان؛ ينفتح الفم بوضوح لإنتاج /a/."},
  {...A1_NASAL_VOWEL_EXAMPLES[0],explanation:"في enfant تبقى الشفتان غير مدوّرتين لإنتاج /ɑ̃/، مع مرور الهواء من الفم والأنف."},
- {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain تُبسط الشفتان لإنتاج /ɛ̃/ الأنفي، ولا تُنطق حروف ain منفصلة."}
+ {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain تُبسط الشفتان لإنتاج /ɛ̃/ الأنفي، ولا تُنطق حروف ain منفصلة."},
+ {word:"livre",ar:"كتاب",ipa:"/livʁ/",phoneme:"/i/",focus:"i",parts:["l","i","vre"],image:"/images/university/a1-sounds/final-quiz/livre.webp",explanation:"في livre يعطي الحرف i الصوت الفموي غير المدوّر /i/؛ تكون الشفتان مبسوطتين ولا يُنطق e الأخير."},
+ {word:"clé",ar:"مفتاح",ipa:"/kle/",phoneme:"/e/",focus:"é",parts:["cl","é",""],image:"/images/university/a1-sounds/final-quiz/cle.webp",explanation:"في clé يعطي الحرف é الصوت الفموي غير المدوّر /e/؛ تكون الشفتان مبسوطتين مع فتحة فم ضيقة نسبيًا."}
 ];
 
 const A1_CLOSED_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_ORAL_VOWEL_EXAMPLES[0],explanation:"في lit يرتفع مقدّم اللسان قريبًا من سقف الفم، وتبقى فتحة الفم ضيقة لإنتاج /i/."},
  {...A1_ORAL_VOWEL_EXAMPLES[1],explanation:"في lune يرتفع مقدّم اللسان ويكاد الفم ينغلق، مع تدوير الشفتين لإنتاج /y/."},
- {...A1_ORAL_VOWEL_EXAMPLES[2],explanation:"في rouge يرتفع مؤخر اللسان قريبًا من الحنك، وتُضم الشفتان لإنتاج /u/."}
+ {...A1_ORAL_VOWEL_EXAMPLES[2],explanation:"في rouge يرتفع مؤخر اللسان قريبًا من الحنك، وتُضم الشفتان لإنتاج /u/."},
+ {word:"midi",ar:"منتصف النهار",ipa:"/mi.di/",phoneme:"/i/",focus:"i · i",parts:["m","i","di"],image:"/images/university/a1-sounds/final-quiz/midi.webp",explanation:"في midi يُنطق الحرف i في المقطعين بالصوت المغلق /i/؛ يرتفع اللسان ويبقى الفم شبه مغلق."}
 ];
 
 const A1_MID_VOWEL_EXAMPLES:VowelTableExample[]=[
@@ -344,30 +351,35 @@ const A1_MID_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_ORAL_VOWEL_EXAMPLES[8],explanation:"في pomme يكون /ɔ/ متوسطًا مفتوحًا خلفيًا، مع تدوير الشفتين واتساع أكبر من /o/."},
  {...A1_NASAL_VOWEL_EXAMPLES[2],explanation:"في pain يكون /ɛ̃/ صوتًا أنفيًا متوسطًا مفتوحًا؛ يمر الهواء من الفم والأنف."},
  {...A1_NASAL_VOWEL_EXAMPLES[5],explanation:"في maison يكون /ɔ̃/ صوتًا أنفيًا متوسطًا مفتوحًا ومدوّرًا."},
- {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun يمثل /œ̃/ صوتًا أنفيًا متوسطًا مفتوحًا ومدوّرًا في النطق المعياري."}
+ {...A1_NASAL_VOWEL_EXAMPLES[7],explanation:"في brun يمثل /œ̃/ صوتًا أنفيًا متوسطًا مفتوحًا ومدوّرًا في النطق المعياري."},
+ {word:"bébé",ar:"طفل رضيع",ipa:"/be.be/",phoneme:"/e/",focus:"é · é",parts:["b","é","bé"],image:"/images/university/a1-sounds/final-quiz/bebe.webp",explanation:"في bébé يعطي كل حرف é الصوت المتوسط المغلق /e/؛ تبقى فتحة الفم معتدلة وتميل إلى الضيق."},
+ {word:"fête",ar:"حفلة",ipa:"/fɛt/",phoneme:"/ɛ/",focus:"ê",parts:["f","ê","te"],image:"/images/university/a1-sounds/final-quiz/fete.webp",explanation:"في fête يعطي الحرف ê الصوت المتوسط المفتوح /ɛ/؛ يتسع الفم أكثر من /e/ ولا يُنطق e الأخير."}
 ];
 
 const A1_OPEN_VOWEL_EXAMPLES:VowelTableExample[]=[
  {...A1_ORAL_VOWEL_EXAMPLES[9],explanation:"في chat ينخفض اللسان ويتسع الفم بوضوح لإنتاج الصوت المفتوح /a/."},
  {...A1_NASAL_VOWEL_EXAMPLES[0],explanation:"في enfant ينخفض اللسان ويكون الفم مفتوحًا لإنتاج /ɑ̃/، مع مرور الهواء من الفم والأنف."},
- {...A1_NASAL_VOWEL_EXAMPLES[1],explanation:"في gant تعطي المجموعة an الصوت المفتوح الأنفي /ɑ̃/، ولا يُنطق الحرف t الأخير."}
+ {...A1_NASAL_VOWEL_EXAMPLES[1],explanation:"في gant تعطي المجموعة an الصوت المفتوح الأنفي /ɑ̃/، ولا يُنطق الحرف t الأخير."},
+ {word:"table",ar:"طاولة",ipa:"/tabl/",phoneme:"/a/",focus:"a",parts:["t","a","ble"],image:"/images/university/a1-sounds/final-quiz/table.webp",explanation:"في table يعطي الحرف a الصوت المفتوح /a/؛ ينخفض اللسان ويتسع الفم، ولا يُنطق e الأخير."}
 ];
 
 const A1_SEMIVOWEL_J_EXAMPLES:VowelTableExample[]=[
  {word:"pied",ar:"قدم",ipa:"/pje/",phoneme:"/j/",focus:"i",parts:["p","i","ed"],image:"/images/university/a1-sounds/pied.webp",explanation:"في pied ينزلق الصوت /i/ سريعًا نحو /e/ فيتحول إلى شبه حرف العلة /j/، وتُنطق الكلمة مقطعًا واحدًا."},
- {word:"fille",ar:"فتاة",ipa:"/fij/",phoneme:"/j/",focus:"ill",parts:["f","ill","e"],image:"/images/university/a1-sounds/fille.webp",explanation:"في fille تعطي المجموعة ill صوت /j/ بعد /i/؛ لا تُنطق الحروف الثلاثة منفصلة."}
+ {word:"fille",ar:"فتاة",ipa:"/fij/",phoneme:"/j/",focus:"ill",parts:["f","ill","e"],image:"/images/university/a1-sounds/fille.webp",explanation:"في fille تعطي المجموعة ill صوت /j/ بعد /i/؛ لا تُنطق الحروف الثلاثة منفصلة."},
+ {word:"bien",ar:"بخير",ipa:"/bjɛ̃/",phoneme:"/j/",focus:"i",parts:["b","i","en"],image:"/images/university/a1-sounds/final-quiz/bien.webp",explanation:"في bien ينزلق الحرف i سريعًا إلى الصوت الأنفي /ɛ̃/، فينتج شبه حرف العلة /j/ وتُنطق الكلمة مقطعًا واحدًا."}
 ];
 
 const A1_SEMIVOWEL_W_EXAMPLES:VowelTableExample[]=[
  {word:"oiseau",ar:"طائر",ipa:"/wa.zo/",phoneme:"/w/",focus:"oi",parts:["","oi","seau"],image:"/images/university/a1-sounds/oiseau.webp",explanation:"في oiseau تبدأ المجموعة oi بانزلاق /w/ ثم /a/، فتُسمع البداية /wa/."},
  {word:"oui",ar:"نعم",ipa:"/wi/",phoneme:"/w/",focus:"ou",parts:["","ou","i"],image:"/images/university/a1-sounds/oui.webp",explanation:"في oui يتحول /u/ إلى الانزلاق /w/ لأنه يسبق الصوت /i/، وتُنطق الكلمة مقطعًا واحدًا."},
- {word:"voiture",ar:"سيارة",ipa:"/vwa.tyʁ/",phoneme:"/w/",focus:"oi",parts:["v","oi","ture"],image:"/images/university/a1-sounds/voiture.webp",explanation:"في voiture تعطي المجموعة oi البداية /wa/؛ ينتقل النطق سريعًا من /w/ إلى /a/."}
+ {word:"voiture",ar:"سيارة",ipa:"/vwa.tyʁ/",phoneme:"/w/",focus:"oi",parts:["v","oi","ture"],image:"/images/university/a1-sounds/voiture.webp",explanation:"في voiture تعطي المجموعة oi البداية /wa/؛ ينتقل النطق سريعًا من /w/ إلى /a/."},
+ {word:"soir",ar:"مساء",ipa:"/swaʁ/",phoneme:"/w/",focus:"oi",parts:["s","oi","r"],image:"/images/university/a1-sounds/final-quiz/soir.webp",explanation:"في soir تعطي المجموعة oi المقطع /wa/؛ يبدأ بانزلاق /w/ سريع ثم ينتقل إلى /a/."}
 ];
 
 const A1_SEMIVOWEL_U_EXAMPLES:VowelTableExample[]=[
  {word:"huit",ar:"ثمانية",ipa:"/ɥit/",phoneme:"/ɥ/",focus:"u",parts:["h","u","it"],image:"/images/university/a1-sounds/huit.webp",explanation:"في huit تُدوَّر الشفتان كما في /y/ ثم ينتقل الصوت سريعًا إلى /i/، فينتج شبه حرف العلة /ɥ/."},
  {word:"pluie",ar:"مطر",ipa:"/plɥi/",phoneme:"/ɥ/",focus:"u",parts:["pl","u","ie"],image:"/images/university/a1-sounds/pluie.webp",explanation:"في pluie يأتي /ɥ/ بين /l/ و/i/؛ حافظ على تدوير الشفتين وانتقل مباشرة إلى /i/."},
- {word:"nuit",ar:"ليل",ipa:"/nɥi/",phoneme:"/ɥ/",focus:"u",parts:["n","u","it"],image:"/images/university/a1-sounds/lune.webp",explanation:"في nuit يتحول /y/ إلى انزلاق قصير /ɥ/ قبل /i/، وتُنطق الكلمة في مقطع واحد."}
+ {word:"nuit",ar:"ليل",ipa:"/nɥi/",phoneme:"/ɥ/",focus:"u",parts:["n","u","it"],image:"/images/university/a1-sounds/final-quiz/nuit.webp",explanation:"في nuit يتحول /y/ إلى انزلاق قصير /ɥ/ قبل /i/، وتُنطق الكلمة في مقطع واحد."}
 ];
 
 const A1_VOWEL_TABLES:Record<VowelTableKind,VowelTableExample[]>={oral:A1_ORAL_VOWEL_EXAMPLES,nasal:A1_NASAL_VOWEL_EXAMPLES,rounded:A1_ROUNDED_VOWEL_EXAMPLES,unrounded:A1_UNROUNDED_VOWEL_EXAMPLES,closed:A1_CLOSED_VOWEL_EXAMPLES,mid:A1_MID_VOWEL_EXAMPLES,open:A1_OPEN_VOWEL_EXAMPLES,semij:A1_SEMIVOWEL_J_EXAMPLES,semiw:A1_SEMIVOWEL_W_EXAMPLES,semiu:A1_SEMIVOWEL_U_EXAMPLES};
@@ -382,12 +394,18 @@ const A1_SOUNDS_LEARNING_SECTIONS:SoundLearningSection[]=[
     {word:"maison",ar:"منزل",ipa:"/mɛ.zɔ̃/",phoneme:"/ɛ/",focus:"ai",parts:["m","ai","son"],image:"/images/university/a1-sounds/maison.webp",rule:"في maison تعطي المجموعة ai الصوت /ɛ/، ثم تعطي on صوتًا أنفيًا في نهاية الكلمة."},
     {word:"bateau",ar:"قارب",ipa:"/ba.to/",phoneme:"/o/",focus:"eau",parts:["bat","eau",""],image:"/images/university/a1-sounds/bateau.webp",rule:"في bateau تعطي الحروف eau صوتًا واحدًا /o/، ولا تُنطق الحروف الثلاثة منفصلة."},
     {word:"rouge",ar:"أحمر",ipa:"/ʁuʒ/",phoneme:"/u/",focus:"ou",parts:["r","ou","ge"],image:"/images/university/a1-sounds/rouge.webp",rule:"في rouge تعطي المجموعة ou الصوت /u/ مع تدوير الشفتين إلى الأمام."},
-    {word:"feu",ar:"نار",ipa:"/fø/",phoneme:"/ø/",focus:"eu",parts:["f","eu",""],image:"/images/university/a1-sounds/feu.webp",rule:"في feu تعطي المجموعة eu الصوت المدوّر /ø/، وتُنطق الكلمة مقطعًا واحدًا."}
+    {word:"feu",ar:"نار",ipa:"/fø/",phoneme:"/ø/",focus:"eu",parts:["f","eu",""],image:"/images/university/a1-sounds/feu.webp",rule:"في feu تعطي المجموعة eu الصوت المدوّر /ø/، وتُنطق الكلمة مقطعًا واحدًا."},
+    {word:"souris",ar:"فأر",ipa:"/su.ʁi/",phoneme:"/u/",focus:"ou",parts:["s","ou","ris"],image:"/images/university/a1-sounds/final-quiz/souris.webp",rule:"في souris تعطي المجموعة ou الصوت /u/ كوحدة واحدة، ثم يُنطق الحرف i في النهاية /i/."},
+    {word:"poisson",ar:"سمكة",ipa:"/pwa.sɔ̃/",phoneme:"/wa/",focus:"oi",parts:["p","oi","sson"],image:"/images/university/a1-sounds/final-quiz/poisson.webp",rule:"في poisson تعطي المجموعة oi الصوت /wa/، بينما تعطي المجموعة on في النهاية الصوت الأنفي /ɔ̃/."},
+    {word:"château",ar:"قلعة",ipa:"/ʃa.to/",phoneme:"/o/",focus:"eau",parts:["chât","eau",""],image:"/images/university/a1-sounds/final-quiz/chateau.webp",rule:"في château تعطي المجموعة eau الصوت /o/ كوحدة واحدة، ولا تُنطق حروفها منفصلة."}
    ]},
    {fr:"Combinaisons consonantiques",ar:"تركيبات الحروف الساكنة",note:"قد يكتب حرفان ساكنان صوتًا واحدًا مختلفًا عن نطق كل حرف منفردًا.",frNote:"Deux consonnes peuvent représenter un seul son différent de leur prononciation isolée.",examples:[
     {word:"chat",ar:"قط",ipa:"/ʃa/",phoneme:"/ʃ/",focus:"ch",parts:["","ch","at"],image:"/images/university/a1-sounds/chat.webp",rule:"في chat تعطي المجموعة ch الصوت /ʃ/ المشابه لصوت «ش»، ولا يُنطق الحرف t الأخير."},
     {word:"téléphone",ar:"هاتف",ipa:"/te.le.fɔn/",phoneme:"/f/",focus:"ph",parts:["télé","ph","one"],image:"/police-v39/vocab-phone.webp",rule:"في téléphone تعطي المجموعة ph الصوت /f/، ولا تُنطق p وh كصوتين منفصلين."},
-    {word:"agneau",ar:"خروف صغير",ipa:"/a.ɲo/",phoneme:"/ɲ/",focus:"gn",parts:["a","gn","eau"],image:"/zoo/animals/sheep.webp",rule:"في agneau تعطي المجموعة gn الصوت /ɲ/ القريب من «ني»، ثم تعطي eau الصوت /o/."}
+    {word:"agneau",ar:"خروف صغير",ipa:"/a.ɲo/",phoneme:"/ɲ/",focus:"gn",parts:["a","gn","eau"],image:"/zoo/animals/sheep.webp",rule:"في agneau تعطي المجموعة gn الصوت /ɲ/ القريب من «ني»، ثم تعطي eau الصوت /o/."},
+    {word:"montagne",ar:"جبل",ipa:"/mɔ̃.taɲ/",phoneme:"/ɲ/",focus:"gn",parts:["monta","gn","e"],image:"/images/university/a1-sounds/final-quiz/montagne.webp",rule:"في montagne تعطي المجموعة gn الصوت /ɲ/ كوحدة واحدة، ولا تُنطق g وn منفصلتين."},
+    {word:"photo",ar:"صورة",ipa:"/fɔ.to/",phoneme:"/f/",focus:"ph",parts:["","ph","oto"],image:"/images/university/a1-sounds/final-quiz/photo.webp",rule:"في photo تعطي المجموعة ph الصوت /f/، ولا يُنطق الحرفان p وh منفصلين."},
+    {word:"chemise",ar:"قميص",ipa:"/ʃə.miz/",phoneme:"/ʃ/",focus:"ch",parts:["","ch","emise"],image:"/images/university/a1-sounds/final-quiz/chemise.webp",rule:"في chemise تعطي المجموعة ch الصوت /ʃ/ المشابه لصوت «ش» في بداية الكلمة."}
    ]},
    {fr:"Terminaisons fréquentes",ar:"النهايات الصوتية الشائعة",note:"تتكرر هذه النهايات كثيرًا، لكن كتابتها لا تطابق دائمًا عدد الأصوات التي نسمعها.",frNote:"Ces terminaisons sont fréquentes, mais leur écriture ne correspond pas toujours aux sons entendus.",examples:[
     {word:"parler",ar:"يتحدث",ipa:"/paʁ.le/",phoneme:"/e/",focus:"er",parts:["parl","er",""],image:"/images/university/a1-sounds/fille.webp",rule:"في مصدر الفعل parler تُنطق النهاية er بالصوت /e/."},
@@ -1530,7 +1548,7 @@ const A1_SOUNDS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Dans le mot « jupe », comment classe-t-on la voyelle /y/ ?",speech:"Dans le mot jupe, comment classe-t-on la voyelle u ?",translation:"كيف نصنّف الصوت /y/ في كلمة «jupe»؟",instruction:"اختر التصنيف الصحيح.",choices:["Nasale et non arrondie — أنفي وغير مدوّر","Orale et arrondie — فمي ومدوّر","Nasale et arrondie — أنفي ومدوّر"],correctIndex:1,explanation:"الصوت /y/ فموي ومدوّر؛ يخرج الهواء من الفم مع ضم الشفتين."},
  {prompt:"Dans le mot « monde », comment classe-t-on la voyelle /ɔ̃/ ?",speech:"Dans le mot monde, comment classe-t-on la voyelle nasale ?",translation:"كيف نصنّف الصوت /ɔ̃/ في كلمة «monde»؟",instruction:"اختر التصنيف الصحيح.",choices:["Orale et arrondie — فمي ومدوّر","Nasale et non arrondie — أنفي وغير مدوّر","Nasale et arrondie — أنفي ومدوّر"],correctIndex:2,explanation:"الصوت /ɔ̃/ أنفي ومدوّر؛ يمر الهواء من الفم والأنف مع تدوير الشفتين."},
  {prompt:"Dans le mot « lapin », comment classe-t-on la voyelle /ɛ̃/ ?",speech:"Dans le mot lapin, comment classe-t-on la voyelle nasale ?",translation:"كيف نصنّف الصوت /ɛ̃/ في كلمة «lapin»؟",instruction:"اختر التصنيف الصحيح.",choices:["Nasale et non arrondie — أنفي وغير مدوّر","Orale et non arrondie — فمي وغير مدوّر","Nasale et arrondie — أنفي ومدوّر"],correctIndex:0,explanation:"الصوت /ɛ̃/ أنفي وغير مدوّر؛ يمر الهواء من الفم والأنف دون ضم الشفتين."},
- {prompt:"Dans quel mot entend-on la voyelle nasale /ɑ̃/ ?",speech:"Dans quel mot entend-on la voyelle nasale an ? École, chambre ou vélo ?",translation:"في أي كلمة نسمع الصوت الأنفي /ɑ̃/؟",instruction:"اختر الكلمة الصحيحة.",choices:["école","chambre","vélo"],correctIndex:1,explanation:"تحتوي كلمة chambre على الصوت الأنفي /ɑ̃/ المكتوب an."},
+ {prompt:"Dans quel mot entend-on la voyelle nasale /ɑ̃/ ?",speech:"Dans quel mot entend-on la voyelle nasale an ? École, chambre ou vélo ?",translation:"في أي كلمة نسمع الصوت الأنفي /ɑ̃/؟",instruction:"اختر الكلمة الصحيحة.",choices:["école","chambre","vélo"],correctIndex:1,explanation:"تحتوي كلمة chambre على الصوت الأنفي /ɑ̃/ المكتوب am قبل الحرف b."},
  {prompt:"Quel mot contient une voyelle orale et arrondie /u/ ?",speech:"Quel mot contient la voyelle orale et arrondie ou ? Salade, merci ou soupe ?",translation:"أي كلمة تحتوي على صوت فموي ومدوّر /u/؟",instruction:"اختر الكلمة الصحيحة.",choices:["salade","merci","soupe"],correctIndex:2,explanation:"تحتوي كلمة soupe على /u/؛ وهو صوت فموي ومدوّر."},
  {prompt:"Quel mot contient la voyelle orale et non arrondie /e/ ?",speech:"Quel mot contient la voyelle orale et non arrondie é ? Clé, loup ou rond ?",translation:"أي كلمة تحتوي على الصوت الفموي غير المدوّر /e/؟",instruction:"اختر الكلمة الصحيحة.",choices:["clé","loup","rond"],correctIndex:0,explanation:"تحتوي كلمة clé على /e/؛ وهو صوت فموي وغير مدوّر."},
  {prompt:"Dans quel mot entend-on une voyelle fermée /i/ ?",speech:"Dans quel mot entend-on la voyelle fermée i ? Porte, midi ou sac ?",translation:"في أي كلمة نسمع صوتًا متحركًا مغلقًا /i/؟",instruction:"اختر الكلمة الصحيحة.",choices:["porte","midi","sac"],correctIndex:1,explanation:"الصوت /i/ في midi مغلق؛ يكون اللسان مرتفعًا والفم شبه مغلق."},

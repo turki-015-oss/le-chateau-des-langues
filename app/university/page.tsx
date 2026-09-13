@@ -48,7 +48,7 @@ type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
-type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[]};
+type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[];branches?:VowelClassificationBranch[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -347,7 +347,29 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes finales muettes",ar:"الحروف الساكنة الصامتة النهائية",
   explanation:"هي حروف تُكتب في آخر الكلمة ولا تُنطق في الحالات العادية، وغالبًا ما تكون غير أحرف C وR وF وL.",
-  frExplanation:"Ce sont des consonnes écrites à la fin du mot qui restent généralement muettes ; les lettres C, R, F et L se prononcent souvent, avec des exceptions."
+  frExplanation:"Ce sont des consonnes écrites à la fin du mot qui restent généralement muettes ; les lettres C, R, F et L se prononcent souvent, avec des exceptions.",
+  branches:[
+   {
+    fr:"Les consonnes finales généralement muettes",ar:"الحروف النهائية الصامتة الشائعة",
+    explanation:"هي الحروف D وG وP وS وT وX وZ التي لا يُسمع صوتها غالبًا عندما تأتي في نهاية الكلمة، مع وجود استثناءات.",
+    frExplanation:"Ce sont les lettres D, G, P, S, T, X et Z, généralement muettes lorsqu’elles se trouvent à la fin d’un mot, avec quelques exceptions."
+   },
+   {
+    fr:"Les terminaisons grammaticales muettes",ar:"النهايات النحوية الصامتة",
+    explanation:"هي علامات نحوية تُكتب في نهاية الكلمة ولا تُنطق غالبًا، مثل -s و-x في جمع الأسماء والصفات، و-ent في الأفعال المصرفة مع ils وelles.",
+    frExplanation:"Ce sont des marques grammaticales écrites en fin de mot et généralement non prononcées, comme -s et -x au pluriel des noms et des adjectifs, ou -ent dans les verbes conjugués avec ils et elles."
+   },
+   {
+    fr:"Les consonnes prononcées dans la liaison",ar:"الحروف التي تظهر عند الوصل",
+    explanation:"تكون بعض الحروف النهائية صامتة عندما تُنطق الكلمة وحدها، لكنها قد تُنطق عند وصلها بكلمة تبدأ بصوت متحرك أو بحرف h صامت.",
+    frExplanation:"Certaines consonnes finales sont muettes dans un mot isolé, mais peuvent se prononcer lors de la liaison devant un mot commençant par une voyelle ou un h muet."
+   },
+   {
+    fr:"Les consonnes finales souvent prononcées et les exceptions",ar:"الحروف النهائية المنطوقة والاستثناءات",
+    explanation:"يضم هذا القسم كلمات نهاية أحرفها C وR وF وL؛ إذ تُنطق هذه الحروف غالبًا، مع وجود كلمات تخالف القاعدة.",
+    frExplanation:"Cette section présente des mots se terminant par C, R, F ou L. Ces consonnes se prononcent souvent, mais certains mots font exception."
+   }
+  ]
  }
 ];
 
@@ -7914,7 +7936,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        </summary>
        <div className="a1-sounds-learning-section-body a1-vowel-classification-body">
         <div className="a1-vowel-section-intro">
-         <div><strong dir="ltr">Ce sont les lettres que l’on lit et prononce selon leur valeur consonantique. Elles se présentent ici sous trois catégories.</strong><p>هي الحروف التي نقرأها وننطقها بقيمتها الصحيحة، ولها ثلاثة أوضاع.</p></div>
+         <div><strong dir="ltr">Ce sont les lettres que l’on lit et prononce selon leur valeur consonantique. Elles se présentent ici sous quatre catégories.</strong><p>هي الحروف التي نقرأها وننطقها بقيمتها الصحيحة، وتُعرض هنا في أربعة أقسام.</p></div>
         </div>
         <div className="a1-vowel-classifications">
          {A1_CONSONANT_CLASSIFICATIONS.map((classification,classificationIndex)=><details key={classification.fr} className="a1-vowel-classification a1-consonant-classification">
@@ -7924,6 +7946,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           </summary>
           <div className="a1-vowel-classification-content">
            <div className="a1-vowel-bilingual-explanation"><div><p>{classification.explanation}</p><small dir="ltr">{classification.frExplanation}</small>{classification.highlightedNote&&<strong className="a1-consonant-highlighted-note">{classification.highlightedNote}<span dir="ltr">{classification.frHighlightedNote}</span></strong>}</div><button type="button" onClick={()=>void speakFrench(`${classification.fr}. ${classification.frExplanation} ${classification.frHighlightedNote??""}`,{rate:.66})} aria-label={`استمع إلى ${classification.fr}`}><Volume2/></button></div>
+           {classification.branches&&<div className="a1-vowel-branches">
+            {classification.branches.map(branch=><details key={branch.fr} className="a1-vowel-branch">
+             <summary><span><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary>
+             <div className="a1-vowel-branch-content">
+              <div><p>{branch.explanation}</p><small dir="ltr">{branch.frExplanation}</small></div>
+              <button type="button" onClick={()=>void speakFrench(`${branch.fr}. ${branch.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${branch.fr}`}><Volume2/><span>نطق الشرح</span></button>
+             </div>
+            </details>)}
+           </div>}
            {classification.examples?(()=>{
             const cardKey=classification.fr;
             const currentIndex=soundGroupCardIndex[cardKey]??0;
@@ -7958,7 +7989,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
               <button type="button" onClick={()=>moveCard(1)} aria-label="المثال التالي"><ChevronRight/></button>
              </div>
             </div>;
-           })():<p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الحروف والأمثلة هنا.</p>}
+           })():!classification.branches&&<p className="a1-vowel-table-placeholder"><Layers3/> سيُضاف جدول الحروف والأمثلة هنا.</p>}
           </div>
          </details>)}
         </div>

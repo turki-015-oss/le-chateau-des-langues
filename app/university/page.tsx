@@ -45,7 +45,7 @@ type SoundLearningExample={word:string;ar:string;ipa:string;phoneme:string;focus
 type SoundLearningGroup={fr:string;ar:string;note:string;frNote:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;frIntro:string;groups:SoundLearningGroup[]};
 type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"semij"|"semiw"|"semiu";
-type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
+type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string;frExplanation?:string};
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind;examples?:VowelTableExample[]};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
 type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[];branches?:VowelClassificationBranch[]};
@@ -332,6 +332,15 @@ const A1_COMMON_FINAL_SILENT_EXAMPLES:VowelTableExample[]=[
  {word:"riz",ar:"أرز",ipa:"/ʁi/",phoneme:"∅",focus:"z",parts:["ri","z",""],image:"/images/university/a1-sounds/final-silent-consonants/riz.webp",explanation:"في riz لا يُنطق الحرف z الأخير، وتُنطق الكلمة /ʁi/."}
 ];
 
+const A1_LIAISON_CONSONANT_EXAMPLES:VowelTableExample[]=[
+ {word:"des avions",ar:"طائرات",ipa:"/dez‿a.vjɔ̃/",phoneme:"/z/",focus:"s",parts:["de","s"," avions"],image:"/images/university/a1-sounds/liaison-consonants/des-avions.webp",explanation:"يكون s في نهاية des صامتًا أمام كلمة تبدأ بساكن، لكنه يُنطق /z/ عند وصله بكلمة avions التي تبدأ بصوت متحرك.",frExplanation:"Dans « des avions », le s final du déterminant des se prononce /z/ devant avions, qui commence par une voyelle."},
+ {word:"deux hôtels",ar:"فندقان",ipa:"/døz‿o.tɛl/",phoneme:"/z/",focus:"x",parts:["deu","x"," hôtels"],image:"/images/university/a1-sounds/liaison-consonants/deux-hotels.webp",explanation:"يظهر الحرف x في deux بصوت /z/ عند وصله بكلمة hôtels، لأن h فيها صامت.",frExplanation:"Dans « deux hôtels », le x final de deux se prononce /z/ devant hôtels, dont le h est muet."},
+ {word:"chez Alice",ar:"عند أليس",ipa:"/ʃez‿a.lis/",phoneme:"/z/",focus:"z",parts:["che","z"," Alice"],image:"/images/university/a1-sounds/liaison-consonants/chez-alice.webp",explanation:"يُسمع الحرف z في chez بصوت /z/ عند اتصال الكلمة بالاسم Alice الذي يبدأ بصوت متحرك.",frExplanation:"Dans « chez Alice », le z final de chez se prononce /z/ devant Alice."},
+ {word:"petit éléphant",ar:"فيل صغير",ipa:"/pə.tit‿e.le.fɑ̃/",phoneme:"/t/",focus:"t",parts:["peti","t"," éléphant"],image:"/images/university/a1-sounds/liaison-consonants/petit-elephant.webp",explanation:"لا يُنطق t في petit أمام ساكن غالبًا، لكنه يظهر بصوت /t/ عند وصله بكلمة éléphant.",frExplanation:"Dans « petit éléphant », le t final de petit se prononce /t/ devant éléphant."},
+ {word:"grand arbre",ar:"شجرة كبيرة",ipa:"/ɡʁɑ̃t‿aʁbʁ/",phoneme:"/t/",focus:"d",parts:["gran","d"," arbre"],image:"/images/university/a1-sounds/liaison-consonants/grand-arbre.webp",explanation:"يتحوّل الحرف d النهائي في grand إلى الصوت /t/ عند وصله بكلمة arbre.",frExplanation:"Dans « grand arbre », le d final de grand se prononce /t/ devant arbre."},
+ {word:"un élève",ar:"طالب",ipa:"/œ̃n‿e.lɛv/",phoneme:"/n/",focus:"n",parts:["u","n"," élève"],image:"/images/university/a1-sounds/liaison-consonants/un-eleve.webp",explanation:"يُسمع الحرف n في un عند وصله بكلمة élève، فتنتقل /n/ إلى بداية المقطع التالي.",frExplanation:"Dans « un élève », le n final du déterminant un se prononce /n/ devant élève."}
+];
+
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
@@ -371,9 +380,10 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
     frExplanation:"Ce sont des marques grammaticales écrites en fin de mot et généralement non prononcées, comme -s et -x au pluriel des noms et des adjectifs, ou -ent dans les verbes conjugués avec ils et elles."
    },
    {
-    fr:"Les consonnes prononcées dans la liaison",ar:"الحروف التي تظهر عند الوصل",
+   fr:"Les consonnes prononcées dans la liaison",ar:"الحروف التي تظهر عند الوصل",
     explanation:"تكون بعض الحروف النهائية صامتة عندما تُنطق الكلمة وحدها، لكنها قد تُنطق عند وصلها بكلمة تبدأ بصوت متحرك أو بحرف h صامت.",
-    frExplanation:"Certaines consonnes finales sont muettes dans un mot isolé, mais peuvent se prononcer lors de la liaison devant un mot commençant par une voyelle ou un h muet."
+    frExplanation:"Certaines consonnes finales sont muettes dans un mot isolé, mais peuvent se prononcer lors de la liaison devant un mot commençant par une voyelle ou un h muet.",
+    examples:A1_LIAISON_CONSONANT_EXAMPLES
    },
    {
     fr:"Les consonnes finales souvent prononcées et les exceptions",ar:"الحروف النهائية المنطوقة والاستثناءات",
@@ -7983,7 +7993,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
                    <b>{example.ar}</b>
                    <em dir="ltr">{example.focus}</em>
                   </div>
-                  <p>{example.explanation}</p>
+                  <p className={example.frExplanation?"a1-bilingual-card-explanation":undefined}><span>{example.explanation}</span>{example.frExplanation&&<small dir="ltr">{example.frExplanation}</small>}</p>
                   <div className="a1-vowel-example-audio">
                    <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء</b><small>Lentement</small></span></button>
                   </div>

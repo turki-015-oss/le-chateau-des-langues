@@ -46,7 +46,7 @@ type SoundLearningGroup={fr:string;ar:string;note:string;frNote:string;examples:
 type SoundLearningSection={fr:string;ar:string;intro:string;frIntro:string;groups:SoundLearningGroup[]};
 type VowelTableKind="oral"|"nasal"|"rounded"|"unrounded"|"closed"|"mid"|"open"|"semij"|"semiw"|"semiu";
 type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;explanation:string};
-type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind};
+type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind;examples?:VowelTableExample[]};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
 type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[];branches?:VowelClassificationBranch[]};
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
@@ -322,6 +322,16 @@ const A1_H_EXAMPLES:VowelTableExample[]=[
  {word:"héros",ar:"بطل",ipa:"/e.ʁo/",phoneme:"∅",focus:"h",parts:["","h","éros"],image:"/images/university/a1-sounds/h-types/heros.webp",explanation:"في héros لا يُنطق h، لكنه يمنع الحذف والوصل؛ لذلك نقول le héros لا l’héros."}
 ];
 
+const A1_COMMON_FINAL_SILENT_EXAMPLES:VowelTableExample[]=[
+ {word:"nid",ar:"عش",ipa:"/ni/",phoneme:"∅",focus:"d",parts:["ni","d",""],image:"/images/university/a1-sounds/final-silent-consonants/nid.webp",explanation:"في nid يُكتب الحرف d في نهاية الكلمة ولا يُنطق؛ لذلك تُنطق الكلمة /ni/."},
+ {word:"sang",ar:"دم",ipa:"/sɑ̃/",phoneme:"∅",focus:"g",parts:["san","g",""],image:"/images/university/a1-sounds/final-silent-consonants/sang.webp",explanation:"في sang لا يُنطق الحرف g الأخير، وتعطي النهاية an الصوت الأنفي /ɑ̃/."},
+ {word:"sirop",ar:"شراب",ipa:"/si.ʁo/",phoneme:"∅",focus:"p",parts:["siro","p",""],image:"/images/university/a1-sounds/final-silent-consonants/sirop.webp",explanation:"في sirop يُكتب الحرف p في النهاية لكنه لا يُنطق؛ لذلك تنتهي الكلمة بالصوت /o/."},
+ {word:"repas",ar:"وجبة",ipa:"/ʁə.pa/",phoneme:"∅",focus:"s",parts:["repa","s",""],image:"/images/university/a1-sounds/final-silent-consonants/repas.webp",explanation:"في repas لا يُنطق الحرف s الأخير، وتُنطق نهاية الكلمة /pa/."},
+ {word:"biscuit",ar:"بسكويت",ipa:"/bis.kɥi/",phoneme:"∅",focus:"t",parts:["biscui","t",""],image:"/images/university/a1-sounds/final-silent-consonants/biscuit.webp",explanation:"في biscuit لا يُنطق الحرف t الأخير، وتنتهي الكلمة بالصوت /i/."},
+ {word:"choix",ar:"اختيار",ipa:"/ʃwa/",phoneme:"∅",focus:"x",parts:["choi","x",""],image:"/images/university/a1-sounds/final-silent-consonants/choix.webp",explanation:"في choix يُكتب الحرف x في النهاية ولا يُنطق؛ وتُنطق المجموعة oi بالصوت /wa/."},
+ {word:"riz",ar:"أرز",ipa:"/ʁi/",phoneme:"∅",focus:"z",parts:["ri","z",""],image:"/images/university/a1-sounds/final-silent-consonants/riz.webp",explanation:"في riz لا يُنطق الحرف z الأخير، وتُنطق الكلمة /ʁi/."}
+];
+
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
@@ -350,9 +360,10 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
   frExplanation:"Ce sont des consonnes écrites à la fin du mot qui restent généralement muettes ; les lettres C, R, F et L se prononcent souvent, avec des exceptions.",
   branches:[
    {
-    fr:"Les consonnes finales généralement muettes",ar:"الحروف النهائية الصامتة الشائعة",
+   fr:"Les consonnes finales généralement muettes",ar:"الحروف النهائية الصامتة الشائعة",
     explanation:"هي الحروف D وG وP وS وT وX وZ التي لا يُسمع صوتها غالبًا عندما تأتي في نهاية الكلمة، مع وجود استثناءات.",
-    frExplanation:"Ce sont les lettres D, G, P, S, T, X et Z, généralement muettes lorsqu’elles se trouvent à la fin d’un mot, avec quelques exceptions."
+    frExplanation:"Ce sont les lettres D, G, P, S, T, X et Z, généralement muettes lorsqu’elles se trouvent à la fin d’un mot, avec quelques exceptions.",
+    examples:A1_COMMON_FINAL_SILENT_EXAMPLES
    },
    {
     fr:"Les terminaisons grammaticales muettes",ar:"النهايات النحوية الصامتة",
@@ -7952,6 +7963,42 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <div className="a1-vowel-branch-content">
               <div><p>{branch.explanation}</p><small dir="ltr">{branch.frExplanation}</small></div>
               <button type="button" onClick={()=>void speakFrench(`${branch.fr}. ${branch.frExplanation}`,{rate:.66})} aria-label={`استمع إلى ${branch.fr}`}><Volume2/><span>نطق الشرح</span></button>
+              {branch.examples&&(()=>{
+               const examples=branch.examples;
+               const cardKey=`${classification.fr}-${branch.fr}`;
+               const currentIndex=soundGroupCardIndex[cardKey]??0;
+               const example=examples[currentIndex];
+               const moveCard=(direction:-1|1)=>setSoundGroupCardIndex(current=>({...current,[cardKey]:(currentIndex+direction+examples.length)%examples.length}));
+               return <div className="a1-vowel-example-table regular-consonants" role="region" aria-label={`بطاقات ${branch.ar}`}>
+                <div className="a1-vowel-carousel-stage">
+                 <article key={`${cardKey}-${example.word}`} className="a1-vowel-example-row">
+                  <button type="button" className="a1-vowel-example-image" onClick={()=>void speakFrench(example.word,{rate:.74})} aria-label={`استمع إلى نطق ${example.word}`}>
+                   <img src={example.image} alt={`صورة توضيحية لكلمة ${example.word}`} loading="lazy"/>
+                   <span><Volume2/> اضغط للنطق</span>
+                  </button>
+                  <div className="a1-vowel-example-identity">
+                   <span className="a1-vowel-phoneme" dir="ltr">{example.phoneme}</span>
+                   <strong dir="ltr">{example.parts[0]}<mark>{example.parts[1]}</mark>{example.parts[2]}</strong>
+                   <span dir="ltr">{example.ipa}</span>
+                   <b>{example.ar}</b>
+                   <em dir="ltr">{example.focus}</em>
+                  </div>
+                  <p>{example.explanation}</p>
+                  <div className="a1-vowel-example-audio">
+                   <button type="button" onClick={()=>void speakFrench(example.word,{rate:.38})}><AudioLines/><span><b>نطق بطيء</b><small>Lentement</small></span></button>
+                  </div>
+                 </article>
+                </div>
+                <div className="a1-vowel-carousel-navigation" dir="ltr">
+                 <button type="button" onClick={()=>moveCard(-1)} aria-label="المثال السابق"><ChevronLeft/></button>
+                 <div className="a1-vowel-carousel-progress" aria-label={`المثال ${currentIndex+1} من ${examples.length}`}>
+                  <strong>{currentIndex+1}</strong><span>/</span><b>{examples.length}</b>
+                  <div>{examples.map((item,index)=><button key={item.word} type="button" className={index===currentIndex?"active":""} onClick={()=>setSoundGroupCardIndex(current=>({...current,[cardKey]:index}))} aria-label={`افتح مثال ${item.word}`}/>)}</div>
+                 </div>
+                 <button type="button" onClick={()=>moveCard(1)} aria-label="المثال التالي"><ChevronRight/></button>
+                </div>
+               </div>;
+              })()}
              </div>
             </details>)}
            </div>}

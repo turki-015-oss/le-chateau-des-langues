@@ -341,6 +341,17 @@ const A1_LIAISON_CONSONANT_EXAMPLES:VowelTableExample[]=[
  {word:"un élève",ar:"طالب",ipa:"/œ̃n‿e.lɛv/",phoneme:"/n/",focus:"n",parts:["u","n"," élève"],image:"/images/university/a1-sounds/liaison-consonants/un-eleve.webp",explanation:"يُسمع الحرف n في un عند وصله بكلمة élève، فتنتقل /n/ إلى بداية المقطع التالي.",frExplanation:"Dans « un élève », le n final du déterminant un se prononce /n/ devant élève."}
 ];
 
+const A1_PRONOUNCED_FINAL_EXCEPTION_EXAMPLES:VowelTableExample[]=[
+ {word:"sac",ar:"حقيبة",ipa:"/sak/",phoneme:"/k/",focus:"c",parts:["sa","c",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/sac.webp",explanation:"في sac يُنطق الحرف c الأخير بالصوت /k/.",frExplanation:"Dans « sac », le c final se prononce /k/."},
+ {word:"four",ar:"فرن",ipa:"/fuʁ/",phoneme:"/ʁ/",focus:"r",parts:["fou","r",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/four.webp",explanation:"في four يُنطق الحرف r الأخير بالصوت الفرنسي /ʁ/.",frExplanation:"Dans « four », le r final se prononce /ʁ/."},
+ {word:"chef",ar:"طاهٍ",ipa:"/ʃɛf/",phoneme:"/f/",focus:"f",parts:["che","f",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/chef.webp",explanation:"في chef يُنطق الحرف f الأخير بوضوح بالصوت /f/.",frExplanation:"Dans « chef », le f final se prononce clairement /f/."},
+ {word:"sel",ar:"ملح",ipa:"/sɛl/",phoneme:"/l/",focus:"l",parts:["se","l",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/sel.webp",explanation:"في sel يُنطق الحرف l الأخير بالصوت /l/.",frExplanation:"Dans « sel », le l final se prononce /l/."},
+ {word:"estomac",ar:"معدة",ipa:"/ɛs.tɔ.ma/",phoneme:"∅",focus:"c",parts:["estoma","c",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/estomac.webp",explanation:"في estomac لا يُنطق الحرف c الأخير؛ لذلك تنتهي الكلمة بالصوت /a/.",frExplanation:"Dans « estomac », le c final est muet ; le mot se termine donc par le son /a/."},
+ {word:"chanter",ar:"يغني",ipa:"/ʃɑ̃.te/",phoneme:"∅",focus:"r",parts:["chante","r",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/chanter.webp",explanation:"في مصدر الفعل chanter لا يُنطق الحرف r منفصلًا؛ فالنهاية -er تُنطق /e/.",frExplanation:"Dans l’infinitif « chanter », le r final ne se prononce pas séparément : la terminaison -er se prononce /e/."},
+ {word:"cerf",ar:"أيل",ipa:"/sɛʁ/",phoneme:"∅",focus:"f",parts:["cer","f",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/cerf.webp",explanation:"في cerf لا يُنطق الحرف f الأخير؛ وتُنطق الكلمة /sɛʁ/.",frExplanation:"Dans « cerf », le f final est muet ; le mot se prononce /sɛʁ/."},
+ {word:"outil",ar:"أداة",ipa:"/u.ti/",phoneme:"∅",focus:"l",parts:["outi","l",""],image:"/images/university/a1-sounds/pronounced-final-exceptions/outil.webp",explanation:"في outil لا يُنطق الحرف l الأخير؛ وتُنطق الكلمة /u.ti/.",frExplanation:"Dans « outil », le l final est muet ; le mot se prononce /u.ti/."}
+];
+
 const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
  {
   fr:"Les consonnes régulières",ar:"الحروف الساكنة المنتظمة",
@@ -388,7 +399,8 @@ const A1_CONSONANT_CLASSIFICATIONS:ConsonantClassification[]=[
    {
     fr:"Les consonnes finales souvent prononcées et les exceptions",ar:"الحروف النهائية المنطوقة والاستثناءات",
     explanation:"يضم هذا القسم كلمات نهاية أحرفها C وR وF وL؛ إذ تُنطق هذه الحروف غالبًا، مع وجود كلمات تخالف القاعدة.",
-    frExplanation:"Cette section présente des mots se terminant par C, R, F ou L. Ces consonnes se prononcent souvent, mais certains mots font exception."
+    frExplanation:"Cette section présente des mots se terminant par C, R, F ou L. Ces consonnes se prononcent souvent, mais certains mots font exception.",
+    examples:A1_PRONOUNCED_FINAL_EXCEPTION_EXAMPLES
    }
   ]
  }

@@ -2577,9 +2577,9 @@ const A1_SOUNDS_READING={
  text:"Lina écoute et répète. Elle entend le son « ou » dans jour, le son « on » dans bonjour et le son « oi » dans trois. Elle prononce chaque mot lentement.",
  translation:"تستمع لينا وتكرّر. تسمع صوت ou في كلمة jour، وصوت on في bonjour، وصوت oi في trois. وتنطق كل كلمة ببطء.",
  questions:[
-  {question:"Quel son entend-on dans « jour » ?",answer:"On entend le son « ou ».",ar:"نسمع صوت ou."},
-  {question:"Dans quel mot entend-on le son « on » ?",answer:"On l’entend dans « bonjour ».",ar:"نسمعه في كلمة bonjour."},
-  {question:"Lina prononce-t-elle les mots vite ou lentement ?",answer:"Elle les prononce lentement.",ar:"تنطق الكلمات ببطء."}
+  {question:"Quel son entend-on dans « jour » ?",answer:"On entend le son /u/, écrit « ou ».",ar:"نسمع الصوت /u/ المكتوب «ou»."},
+  {question:"Dans quel mot du texte entend-on le son /ɔ̃/, écrit « on » ?",answer:"On l’entend dans « bonjour ».",ar:"نسمعه في كلمة «bonjour»."},
+  {question:"Lina prononce-t-elle chaque mot rapidement ou lentement ?",answer:"Elle prononce chaque mot lentement.",ar:"تنطق كل كلمة ببطء."}
  ]
 };
 

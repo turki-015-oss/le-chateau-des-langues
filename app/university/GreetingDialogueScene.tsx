@@ -4,7 +4,7 @@ import {useEffect,useRef,useState} from "react";
 import {ChevronLeft,ChevronRight,RotateCcw,Volume2} from "lucide-react";
 import {cancelFrenchSpeech,speakFrenchSequence} from "@/lib/frenchSpeech";
 
-const SCENES=[
+const WELLBEING_SCENES=[
  {
   title:"Conversation formelle",ar:"محادثة رسمية",image:"/images/university/a1-greetings/dialogue-scenes/formal-station.webp",
   lines:[
@@ -23,7 +23,26 @@ const SCENES=[
  }
 ] as const;
 
-export default function GreetingDialogueScene(){
+const FAREWELL_SCENES=[
+ {
+  title:"Conversation formelle",ar:"محادثة رسمية",image:"/images/university/a1-greetings/dialogue-scenes/formal-airport.webp",
+  lines:[
+   {fr:"Au revoir, monsieur. Bon voyage !",ar:"إلى اللقاء يا سيدي. رحلة موفقة!",speaker:"left"},
+   {fr:"Merci beaucoup. Au revoir !",ar:"شكرًا جزيلًا. إلى اللقاء!",speaker:"right"},
+   {fr:"À bientôt !",ar:"إلى اللقاء قريبًا!",speaker:"left"}
+  ]
+ },
+ {
+  title:"Conversation informelle",ar:"محادثة غير رسمية",image:"/images/university/a1-greetings/dialogue-scenes/informal-airport.webp",
+  lines:[
+   {fr:"Bon voyage, Khalid !",ar:"رحلة موفقة يا خالد!",speaker:"left"},
+   {fr:"Merci ! À bientôt !",ar:"شكرًا! أراك قريبًا!",speaker:"right"},
+   {fr:"À bientôt !",ar:"أراك قريبًا!",speaker:"left"}
+  ]
+ }
+] as const;
+
+export default function GreetingDialogueScene({variant="wellbeing"}:{variant?:"wellbeing"|"farewell"}){
  const [sceneIndex,setSceneIndex]=useState(0);
  const [activeLine,setActiveLine]=useState(-1);
  const [status,setStatus]=useState<"ready"|"playing"|"done">("ready");
@@ -33,7 +52,8 @@ export default function GreetingDialogueScene(){
  const stepTimer=useRef<number|null>(null);
  const fadeTimer=useRef<number|null>(null);
  const safetyTimer=useRef<number|null>(null);
- const scene=SCENES[sceneIndex];
+ const scenes=variant==="farewell"?FAREWELL_SCENES:WELLBEING_SCENES;
+ const scene=scenes[sceneIndex];
 
  function stopAudio(){
   if(stepTimer.current!==null)window.clearTimeout(stepTimer.current);
@@ -82,11 +102,11 @@ export default function GreetingDialogueScene(){
   setActiveLine(-1);
   setStatus("playing");
 
-  const station=new Audio("/audio/a1-greetings/station-ambience.mp3");
-  station.volume=.085;
-  station.loop=true;
-  ambience.current=station;
-  void station.play().catch(()=>{});
+  const background=new Audio(variant==="farewell"?"/audio/a1-greetings/airport-ambience.mp3":"/audio/a1-greetings/station-ambience.mp3");
+  background.volume=.085;
+  background.loop=true;
+  ambience.current=background;
+  void background.play().catch(()=>{});
 
   const steps=new Audio("/audio/a1-greetings/footsteps-tunnel.mp3");
   steps.volume=.14;
@@ -129,7 +149,7 @@ export default function GreetingDialogueScene(){
  }
 
  function changeScene(nextIndex:number){
-  if(nextIndex<0||nextIndex>=SCENES.length)return;
+  if(nextIndex<0||nextIndex>=scenes.length)return;
   stopConversation();
   setSceneIndex(nextIndex);
   setActiveLine(-1);
@@ -148,8 +168,8 @@ export default function GreetingDialogueScene(){
   </button>
   <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين المحادثات">
    <button type="button" onClick={()=>changeScene(sceneIndex-1)} disabled={sceneIndex===0} aria-label="المحادثة السابقة"><ChevronLeft/></button>
-   <span>{sceneIndex+1} / {SCENES.length}</span>
-   <button type="button" onClick={()=>changeScene(sceneIndex+1)} disabled={sceneIndex===SCENES.length-1} aria-label="المحادثة التالية"><ChevronRight/></button>
+   <span>{sceneIndex+1} / {scenes.length}</span>
+   <button type="button" onClick={()=>changeScene(sceneIndex+1)} disabled={sceneIndex===scenes.length-1} aria-label="المحادثة التالية"><ChevronRight/></button>
   </nav>
  </div>;
 }

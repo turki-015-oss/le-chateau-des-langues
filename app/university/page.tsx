@@ -8486,7 +8486,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <button type="button" onClick={()=>{setSocialGreetingCardIndex(current=>Math.min(A1_SOCIAL_GREETING_CARDS.length-1,current+1));setSocialGreetingRevealed(false)}} disabled={socialGreetingCardIndex===A1_SOCIAL_GREETING_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button>
             </nav>
             <div className="a1-greeting-register-note"><span><b dir="ltr">vous</b> رسمي</span><span><b dir="ltr">tu</b> غير رسمي</span></div>
-           </div>:groupIndex===2?(groupOpen?<GreetingDialogueScene/>:null):<p className="a1-greeting-group-intro">{group.description}</p>}
+           </div>:groupIndex===2?(groupOpen?<GreetingDialogueScene/>:null):groupIndex===3?(groupOpen?<GreetingDialogueScene variant="farewell"/>:null):<p className="a1-greeting-group-intro">{group.description}</p>}
           </div>
          </div>
         </section>})}

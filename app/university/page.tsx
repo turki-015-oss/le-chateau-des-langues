@@ -1757,13 +1757,14 @@ const A1_COUNTRIES_PRACTICE_ITEMS:Example[]=[
  {fr:"Je viens d’Arabie saoudite.",ar:"أنا من المملكة العربية السعودية."},
  {fr:"J’habite en France.",ar:"أسكن في فرنسا."},
  {fr:"Elle vient du Maroc.",ar:"هي من المغرب."},
- {fr:"Nous voyageons au Japon.",ar:"نحن نسافر إلى اليابان."},
+ {fr:"Nous allons au Japon.",ar:"نحن ذاهبون إلى اليابان."},
  {fr:"Ils habitent aux États-Unis.",ar:"هم يسكنون في الولايات المتحدة."},
  {fr:"Je suis saoudienne et je parle arabe.",ar:"أنا سعودية وأتحدث العربية."},
  {fr:"Mon ami est français.",ar:"صديقي فرنسي."},
  {fr:"Maya est japonaise.",ar:"مايا يابانية."},
  {fr:"Quelle est votre nationalité ?",ar:"ما جنسيتكم؟"},
- {fr:"Quelles langues parlez-vous ?",ar:"ما اللغات التي تتحدثونها؟"}
+ {fr:"Quelles langues parlez-vous ?",ar:"ما اللغات التي تتحدثون بها؟"},
+ {fr:"J’apprends le français.",ar:"أتعلم الفرنسية."}
 ];
 
 const A1_COUNTRIES_QUIZ_ITEMS:QuizQuestion[]=[

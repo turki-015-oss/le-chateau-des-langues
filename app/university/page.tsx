@@ -2738,11 +2738,13 @@ const A1_GREETINGS_BUILDERS=[
 ];
 
 const A1_GREETINGS_DIALOGUES=[
- {context:"Une personne vous dit : « Bonjour ! »",translation:"يقول لك شخص: مرحبًا!",prompt:"اختر الرد الطبيعي.",choices:["Bonjour !","Au revoir !","Je ne sais pas."],correctIndex:0,feedback:"نرد على Bonjour بالتحية نفسها."},
- {context:"On vous demande : « Comment vous appelez-vous ? »",translation:"يسألك شخص: ما اسمك؟",prompt:"كيف تعرّف باسمك؟",choices:["J’habite à Lille.","Je m’appelle Lina.","Très bien, merci."],correctIndex:1,feedback:"Je m’appelle… هي الصيغة الأساسية لذكر الاسم."},
- {context:"Votre professeur dit : « Enchanté de vous rencontrer. »",translation:"يقول معلمك: سعيد بلقائك.",prompt:"اختر الرد المهذب.",choices:["Enchanté également.","Je suis à Paris.","À demain matin ?"],correctIndex:0,feedback:"Enchanté également تعني: وأنا سعيد بلقائك أيضًا."},
- {context:"Votre collègue demande : « Comment allez-vous ? »",translation:"يسألك زميلك: كيف حالكم؟",prompt:"اختر الرد المناسب.",choices:["Je viens de Lyon.","Bien, merci. Et vous ?","Je m’appelle Karim."],correctIndex:1,feedback:"نجيب عن الحال ثم نعيد السؤال بأدب."},
- {context:"Vous quittez la classe jusqu’à demain.",translation:"تغادر الفصل حتى الغد.",prompt:"اختر عبارة الوداع المناسبة.",choices:["Bienvenue !","Bonsoir pour hier.","Au revoir, à demain !"],correctIndex:2,feedback:"Au revoir, à demain مناسبة عند المغادرة مع لقاء في اليوم التالي."}
+ {context:"Une personne vous dit : « Bonjour ! »",translation:"يقول لك شخص: مرحبًا!",prompt:"اختر الرد المناسب.",choices:["Bonjour !","Merci !","Au revoir !"],correctIndex:0,feedback:"نرد على التحية بتحية مناسبة."},
+ {context:"Comment vous appelez-vous ?",translation:"ما اسمك؟",prompt:"اختر الرد المناسب.",choices:["J’habite à Lille.","Je m’appelle Karim.","Très bien, merci."],correctIndex:1,feedback:"نستخدم Je m’appelle لذكر الاسم."},
+ {context:"Votre professeur dit : « Enchanté de vous rencontrer. »",translation:"يقول لك معلمك: تشرفت بلقائك.",prompt:"اختر الرد المهذب.",choices:["Enchanté, monsieur.","Je suis à Paris.","À demain !"],correctIndex:0,feedback:"يمكن الرد بعبارة Enchanté, monsieur في هذا الموقف الرسمي."},
+ {context:"Votre collègue demande : « Comment allez-vous ? »",translation:"يسألك زميلك: كيف حالك؟ بصيغة مهذبة.",prompt:"اختر الرد المناسب.",choices:["Je viens de Lyon.","Bien, merci. Et vous ?","Je m’appelle Karim."],correctIndex:1,feedback:"نجيب عن الحال ثم نعيد السؤال بأدب."},
+ {context:"Vous quittez la classe. Vous revenez demain.",translation:"تغادر الفصل وستعود غدًا.",prompt:"اختر عبارة الوداع المناسبة.",choices:["Bonjour !","Bienvenue !","Au revoir, à demain !"],correctIndex:2,feedback:"نقول Au revoir, à demain عند المغادرة مع موعد لقاء في اليوم التالي."},
+ {context:"Salut ! Ça va ?",translation:"مرحبًا! كيف حالك؟",prompt:"اختر الرد المناسب.",choices:["Oui, ça va bien, merci. Et toi ?","J’habite à Lyon.","Au revoir !"],correctIndex:0,feedback:"نرد على السؤال عن الحال ثم يمكننا إعادة السؤال مع toi في الحديث غير الرسمي."},
+ {context:"Tu habites où ?",translation:"أين تسكن؟",prompt:"اختر الرد المناسب.",choices:["Je m’appelle Karim.","J’habite à Marseille.","Je parle arabe."],correctIndex:1,feedback:"نستخدم J’habite à لذكر المدينة التي نسكن فيها."}
 ];
 
 const A1_COUNTRIES_READING={

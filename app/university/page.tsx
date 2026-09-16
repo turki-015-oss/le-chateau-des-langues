@@ -73,11 +73,19 @@ const ALPHABET_LISTENING_CLIPS=[
  {letter:"A",word:"ami",ar:"صديق"},{letter:"B",word:"bateau",ar:"قارب"},{letter:"C",word:"café",ar:"مقهى"},{letter:"D",word:"dimanche",ar:"الأحد"},{letter:"E",word:"école",ar:"مدرسة"}
 ];
 const A1_GREETINGS_LISTENING_CLIPS=[
- {letter:"Bonjour",word:"madame",ar:"مرحبًا سيدتي",hiddenSpeech:"Bonjour madame"},
- {letter:"Salut",word:"Nora",ar:"مرحبًا نورا",hiddenSpeech:"Salut Nora"},
- {letter:"Je m’appelle",word:"Amine",ar:"اسمي أمين",hiddenSpeech:"Je m’appelle Amine"},
- {letter:"Comment",word:"allez-vous ?",ar:"كيف حالكم؟",hiddenSpeech:"Comment allez-vous ?"},
- {letter:"À bientôt",word:"Sami",ar:"أراك قريبًا يا سامي",hiddenSpeech:"À bientôt Sami"}
+ {letter:"Bonjour,",word:"monsieur.",ar:"مرحبًا يا سيدي.",hiddenSpeech:"Bonjour, monsieur."},
+ {letter:"Bonsoir,",word:"monsieur.",ar:"مساء الخير يا سيدي.",hiddenSpeech:"Bonsoir, monsieur."},
+ {letter:"Salut,",word:"Adam !",ar:"مرحبًا يا آدم!",hiddenSpeech:"Salut, Adam !"},
+ {letter:"Comment",word:"allez-vous ?",ar:"كيف حالك؟",hiddenSpeech:"Comment allez-vous ?"},
+ {letter:"Ça",word:"va ?",ar:"كيف الحال؟",hiddenSpeech:"Ça va ?"},
+ {letter:"Je vais bien,",word:"merci.",ar:"أنا بخير، شكرًا.",hiddenSpeech:"Je vais bien, merci."},
+ {letter:"Je m’appelle",word:"Karim.",ar:"اسمي كريم.",hiddenSpeech:"Je m’appelle Karim."},
+ {letter:"Salut ! Je suis",word:"Adam. Et toi ?",ar:"مرحبًا! أنا آدم. وأنت؟",hiddenSpeech:"Salut ! Je suis Adam. Et toi ?"},
+ {letter:"Je viens",word:"du Maroc.",ar:"أنا من المغرب.",hiddenSpeech:"Je viens du Maroc."},
+ {letter:"J’habite",word:"à Lyon.",ar:"أسكن في ليون.",hiddenSpeech:"J’habite à Lyon."},
+ {letter:"Je parle arabe",word:"et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية.",hiddenSpeech:"Je parle arabe et un peu français."},
+ {letter:"Au revoir,",word:"monsieur.",ar:"إلى اللقاء يا سيدي.",hiddenSpeech:"Au revoir, monsieur."},
+ {letter:"À",word:"bientôt !",ar:"أراك قريبًا!",hiddenSpeech:"À bientôt !"}
 ];
 const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"/œ̃/",word:"un",ar:"واحد",hiddenSpeech:"un"},
@@ -2680,15 +2688,23 @@ const A1_GREETINGS_READING={
 };
 
 const A1_GREETINGS_LISTENING={
- title:"Je me présente",
- arTitle:"أعرّف بنفسي",
- text:"Bonjour madame. Salut Nora. Je m’appelle Amine. Comment allez-vous ? À bientôt Sami.",
+ title:"Les salutations et la présentation",
+ arTitle:"التحيات والتعريف بالنفس",
+ text:A1_GREETINGS_LISTENING_CLIPS.map(clip=>clip.hiddenSpeech).join(" "),
  questions:[
-  {prompt:"Quelle formule entendez-vous ?",choices:["Bonjour madame","Bonsoir monsieur","Bonne nuit madame"],correctIndex:0},
-  {prompt:"Quelle salutation familière entendez-vous ?",choices:["Au revoir Nora","Salut Nora","Bienvenue Nora"],correctIndex:1},
-  {prompt:"Quel prénom entendez-vous ?",choices:["Sami","Nora","Amine"],correctIndex:2},
-  {prompt:"Quelle question entendez-vous ?",choices:["Comment allez-vous ?","Comment vous appelez-vous ?","Où habitez-vous ?"],correctIndex:0},
-  {prompt:"Quelle formule de départ entendez-vous ?",choices:["Bonjour Sami","À bientôt Sami","Merci Sami"],correctIndex:1}
+  {prompt:"Quelle salutation entendez-vous ?",translation:"أي تحية تسمع؟",choices:["Bonjour, monsieur.","Bonsoir, monsieur.","Salut, monsieur."],correctIndex:0},
+  {prompt:"Quand est-ce qu’on utilise cette salutation ?",translation:"متى نستخدم هذه التحية؟",choices:["Le matin","Le soir","À midi"],correctIndex:1},
+  {prompt:"À qui dit-on cette salutation ?",translation:"لمن نقول هذه التحية؟",choices:["À un ami","À un inconnu","À un directeur"],correctIndex:0},
+  {prompt:"Quel mot entendez-vous dans cette question ?",translation:"أي كلمة تسمع في هذا السؤال؟",choices:["tu","je","vous"],correctIndex:2},
+  {prompt:"Quelle est la bonne réponse ?",translation:"ما الإجابة المناسبة؟",choices:["Je suis Omar.","Oui, ça va, merci.","Au revoir."],correctIndex:1},
+  {prompt:"Comment va la personne ?",translation:"كيف حال المتحدث؟",choices:["La personne va mal.","La personne va bien.","La personne habite à Lyon."],correctIndex:1},
+  {prompt:"Quelle information donne la personne ?",translation:"ما المعلومة التي يذكرها المتحدث؟",choices:["Son pays","Sa ville","Son prénom"],correctIndex:2},
+  {prompt:"Quel prénom entendez-vous ?",translation:"أي اسم تسمع؟",choices:["Omar","Adam","Karim"],correctIndex:1},
+  {prompt:"De quel pays vient la personne ?",translation:"من أي بلد المتحدث؟",choices:["La France","Le Maroc","L’Italie"],correctIndex:1},
+  {prompt:"Où habite la personne ?",translation:"أين يسكن المتحدث؟",choices:["À Marseille","À Lyon","À Paris"],correctIndex:1},
+  {prompt:"Quelles langues parle la personne ?",translation:"ما اللغات التي يتحدثها؟",choices:["Le français seulement","L’arabe et l’anglais","L’arabe et un peu de français"],correctIndex:2},
+  {prompt:"Quand dit-on cette phrase ?",translation:"متى نقول هذه العبارة؟",choices:["Quand on arrive","Quand on part","Quand on demande un prénom"],correctIndex:1},
+  {prompt:"Que veut dire cette phrase ?",translation:"ماذا تعني هذه العبارة؟",choices:["Bonjour","Merci","On se voit bientôt"],correctIndex:2}
  ]
 };
 
@@ -7717,11 +7733,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
-  if(isA1Sounds){
+  if(isA1Sounds||isA1Greetings){
    setAlphabetListeningPlaying(true);
-   setAlphabetListeningSegment(1);
-   void speakFrench(clip.word,{
-    rate:rate==="slow"?.5:.72,
+   setAlphabetListeningSegment(isA1Sounds?1:0);
+   void speakFrench(isA1Sounds?clip.word:A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
+    rate:rate==="slow"?.5:.76,
     onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
     onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
    });
@@ -8528,19 +8544,19 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
        {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
-      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
+      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds||isA1Greetings?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
         <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"}`} dir="ltr">
-         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":"الحرف مخفي"}</small></span>}</strong>
-         <strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>الكلمة مخفية</small></span>}</strong>
+         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Greetings?"استمع إلى العبارة":"الحرف مخفي"}</small></span>}</strong>
+         <strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings?"العبارة مخفية":"الكلمة مخفية"}</small></span>}</strong>
         </div>
         <small>{answeredCorrectly?clip.ar:"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
-        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>استمع إلى الصوت</b><small>الصوت المستهدف فقط</small></div></button>}</div>
+        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Greetings?"استمع إلى العبارة":"استمع إلى الصوت"}</b><small>{isA1Greetings?"العبارة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
         <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}-${index}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{clip.letter} — {clip.word}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
+       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
         <article key={alphabetListeningQuestionIndex} className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(correctCount/activeA2Listening.questions.length*100)}%</b></div>
         <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>

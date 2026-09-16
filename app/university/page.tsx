@@ -8447,7 +8447,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Greetings&&index===0?<div className="a1-greeting-groups">
+       {isA1Greetings&&index===1?<GreetingDialogueScene variant="introduction"/>:isA1Greetings&&index===0?<div className="a1-greeting-groups">
         {A1_GREETING_GROUPS.map((group,groupIndex)=>{const GroupIcon=group.icon;const groupOpen=openGreetingGroupIndex===groupIndex;const card=A1_TIME_GREETING_CARDS[timeGreetingCardIndex];return <section key={group.fr} className={`a1-greeting-group ${groupOpen?"open":""}`}>
          <button type="button" className="a1-greeting-group-toggle" onClick={()=>setOpenGreetingGroupIndex(groupOpen?-1:groupIndex)} aria-expanded={groupOpen} aria-controls={`a1-greeting-group-content-${groupIndex}`}>
           <i><GroupIcon/></i><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/>

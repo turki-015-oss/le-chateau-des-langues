@@ -2715,11 +2715,18 @@ const A1_GREETINGS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_GREETINGS_DICTATION=[
- {speech:"Bonjour, je m’appelle Sami.",ar:"مرحبًا، اسمي سامي."},
- {speech:"Comment allez-vous ?",ar:"كيف حالك؟ بصيغة رسمية."},
- {speech:"Enchanté de vous rencontrer.",ar:"سعيد بلقائك."},
- {speech:"Je vais très bien, merci.",ar:"أنا بخير جدًا، شكرًا."},
- {speech:"Au revoir et à demain.",ar:"إلى اللقاء وأراك غدًا."}
+ {speech:"bonjour",ar:"صباح الخير / مرحبًا."},
+ {speech:"le matin",ar:"الصباح."},
+ {speech:"bonsoir",ar:"مساء الخير."},
+ {speech:"le soir",ar:"المساء."},
+ {speech:"salut",ar:"مرحبًا / إلى اللقاء، في الحديث غير الرسمي."},
+ {speech:"merci",ar:"شكرًا."},
+ {speech:"prénom",ar:"الاسم الأول."},
+ {speech:"Maroc",ar:"المغرب."},
+ {speech:"français",ar:"اللغة الفرنسية."},
+ {speech:"enchanté",ar:"تشرفنا / سعيد بلقائك."},
+ {speech:"voyage",ar:"رحلة / سفر."},
+ {speech:"bientôt",ar:"قريبًا."}
 ];
 
 const A1_GREETINGS_BUILDERS=[
@@ -4189,7 +4196,7 @@ const A1_ENHANCED_CONTENT={
  greetings:{
   reading:A1_GREETINGS_READING,listening:A1_GREETINGS_LISTENING,dictation:A1_GREETINGS_DICTATION,builders:A1_GREETINGS_BUILDERS,dialogues:A1_GREETINGS_DIALOGUES,
   writingModel:A1_GREETINGS_WRITING_MODEL,writingTitle:"اكتب تعريفًا قصيرًا بنفسك",writingInstructions:"اكتب من 15 إلى 25 كلمة: ابدأ بتحية، اذكر اسمك ومكان سكنك أو لغتك، ثم اختم بعبارة لطيفة.",writingPlaceholder:"Bonjour, je m’appelle…",writingMinimum:15,writingMaximum:25,
-  speakingPrompt:"Bonjour, je m’appelle Sami. J’habite à Lyon et je parle arabe. Enchanté de vous rencontrer.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["ابدأ بتحية واضحة.","اذكر اسمك ومعلومة بسيطة عنك.","اختم بعبارة مهذبة."],dictationUnit:"sentence"
+  speakingPrompt:"Bonjour, je m’appelle Sami. J’habite à Lyon et je parle arabe. Enchanté de vous rencontrer.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["ابدأ بتحية واضحة.","اذكر اسمك ومعلومة بسيطة عنك.","اختم بعبارة مهذبة."],dictationUnit:"word"
  },
  "countries-languages":{
   reading:A1_COUNTRIES_READING,listening:A1_COUNTRIES_LISTENING,dictation:A1_COUNTRIES_DICTATION,builders:A1_COUNTRIES_BUILDERS,dialogues:A1_COUNTRIES_DIALOGUES,
@@ -7060,8 +7067,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
  const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&isA1WordDictation;
- const dictationUnit=isAlphabetLetterDictation?"الحرف":isA1WordDictation?"الكلمة":"الجملة";
- const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":isA1Greetings&&revisionDictationItem.speech.includes(" ")?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":isA1Greetings&&revisionDictationItem.speech.includes(" ")?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
   ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
   :"";
@@ -8596,7 +8603,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </nav>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="dictation":alphabetPracticeStep===1)&&<article className="a2-dictation-panel">
        <div className="a2-workshop-progress"><span>{dictationUnit} {revisionDictationIndex+1} من {activeA2Dictation.length}</span><i><b style={{width:`${(revisionDictationIndex+1)/activeA2Dictation.length*100}%`}}/></i></div>
-       <h4>استمع ثم اكتب {dictationUnit}</h4><p className={isTimedOrbitWordDictation?"a1-sounds-dictation-instruction":undefined}>{isTimedOrbitWordDictation?"اضغط على استمع لسماع النطق ثم اكتب دون ظهور الكلمة":"يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق."}</p>
+       <h4>استمع ثم اكتب {dictationUnit}</h4><p className={isTimedOrbitWordDictation?"a1-sounds-dictation-instruction":undefined}>{isTimedOrbitWordDictation?`اضغط على استمع لسماع النطق ثم اكتب دون ظهور ${dictationUnit}`:"يمكنك إعادة الصوت، ولا تظهر الإجابة المكتوبة إلا بعد التحقق."}</p>
        {isA1OrbitLesson?<div className="a1-dictation-audio-actions"><button type="button" onClick={()=>void playOrbitDictation(false)}><Headphones/><span><b>استمع</b><small>نطق طبيعي</small></span></button><button type="button" onClick={()=>void playOrbitDictation(true)}><Gauge/><span><b>بطيء</b><small>نطق تعليمي</small></span></button></div>:<button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {dictationUnit}</button>}
        {isTimedOrbitWordDictation&&soundsDictationWordVisible&&<strong className="a1-sounds-dictation-preview" dir="ltr">{revisionDictationItem.speech}</strong>}
        <input dir="ltr" value={revisionDictationText} disabled={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled?"استمع أولًا…":dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>

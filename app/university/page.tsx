@@ -2790,11 +2790,14 @@ const A1_COUNTRIES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_COUNTRIES_DICTATION=[
- {speech:"France",ar:"فرنسا"},
- {speech:"Maroc",ar:"المغرب"},
- {speech:"Japon",ar:"اليابان"},
- {speech:"saoudienne",ar:"سعودية"},
- {speech:"français",ar:"الفرنسية"}
+ {speech:"Belgique",ar:"بلجيكا"},
+ {speech:"Brésil",ar:"البرازيل"},
+ {speech:"Italie",ar:"إيطاليا"},
+ {speech:"égyptien",ar:"مصري"},
+ {speech:"canadienne",ar:"كندية"},
+ {speech:"anglais",ar:"الإنجليزية"},
+ {speech:"allemand",ar:"الألمانية"},
+ {speech:"portugais",ar:"البرتغالية"}
 ];
 
 const A1_COUNTRIES_BUILDERS=[
@@ -6971,6 +6974,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [soundsDictationWordVisible,setSoundsDictationWordVisible]=useState(false);
  const [soundsDictationWritingEnabled,setSoundsDictationWritingEnabled]=useState(false);
  const soundsDictationRevealTimerRef=useRef<number|null>(null);
+ const soundsDictationPlaybackRef=useRef(0);
  const [revisionBuilderIndex,setRevisionBuilderIndex]=useState(0);
  const [revisionBuilderSelection,setRevisionBuilderSelection]=useState<number[]>([]);
  const [revisionBuilderChecked,setRevisionBuilderChecked]=useState(false);
@@ -7567,6 +7571,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule.id,alphabetHighestPracticeStep,isA1OrbitLesson]);
 
  useEffect(()=>{
+  soundsDictationPlaybackRef.current+=1;
   if(soundsDictationRevealTimerRef.current!==null){
    window.clearTimeout(soundsDictationRevealTimerRef.current);
    soundsDictationRevealTimerRef.current=null;
@@ -7576,6 +7581,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule.id,revisionDictationIndex,alphabetPracticeOpen,alphabetPracticeStep]);
 
  useEffect(()=>()=>{
+  soundsDictationPlaybackRef.current+=1;
   if(soundsDictationRevealTimerRef.current!==null)window.clearTimeout(soundsDictationRevealTimerRef.current);
  },[]);
 
@@ -7786,16 +7792,31 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   });
  };
  const playOrbitDictation=(slow=false)=>{
-  if(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled&&!soundsDictationWordVisible){
-   setSoundsDictationWordVisible(true);
-   soundsDictationRevealTimerRef.current=window.setTimeout(()=>{
-    setSoundsDictationWordVisible(false);
-    setSoundsDictationWritingEnabled(true);
-    soundsDictationRevealTimerRef.current=null;
-   },10000);
-  }
   if(isAlphabetLetterDictation){
    return speakFrenchSequence(["Lettre",alphabetDictationPronunciation],slow?760:620,{rate:slow?.54:.62});
+  }
+  if(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled){
+   const playback=++soundsDictationPlaybackRef.current;
+   if(soundsDictationRevealTimerRef.current!==null)window.clearTimeout(soundsDictationRevealTimerRef.current);
+   setSoundsDictationWordVisible(true);
+   let revealStarted=false;
+   const startRevealTimer=()=>{
+    if(playback!==soundsDictationPlaybackRef.current||revealStarted)return;
+    revealStarted=true;
+    if(soundsDictationRevealTimerRef.current!==null)window.clearTimeout(soundsDictationRevealTimerRef.current);
+    soundsDictationRevealTimerRef.current=window.setTimeout(()=>{
+     if(playback!==soundsDictationPlaybackRef.current)return;
+     setSoundsDictationWordVisible(false);
+     setSoundsDictationWritingEnabled(true);
+     soundsDictationRevealTimerRef.current=null;
+    },10000);
+   };
+   // If a mobile browser never emits an audio completion event, do not leave writing locked.
+   soundsDictationRevealTimerRef.current=window.setTimeout(startRevealTimer,15000);
+   return speakFrench(revisionDictationItem.speech,{rate:slow?.55:.74,onEnd:startRevealTimer,onError:startRevealTimer}).then(utterance=>{
+    if(!utterance)startRevealTimer();
+    return utterance;
+   });
   }
   return speakFrench(revisionDictationItem.speech,{rate:slow?.55:.74});
  };

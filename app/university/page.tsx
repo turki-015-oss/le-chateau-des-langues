@@ -13,6 +13,7 @@ import {
  Tags,Telescope,Trash2,Trophy,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
 } from "lucide-react";
 import {cancelFrenchSpeech,speakFrench,speakFrenchSequence,speakFrenchWithPause} from "@/lib/frenchSpeech";
+import GreetingDialogueScene from "./GreetingDialogueScene";
 import {
  DESCRIPTION_PRACTICE_ITEMS,DESCRIPTION_QUIZ_ITEMS,EMOTION_VOCABULARY,FAMILY_VOCABULARY,
  PHYSICAL_STATE_VOCABULARY,type VisualVocabularyItem
@@ -8485,7 +8486,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <button type="button" onClick={()=>{setSocialGreetingCardIndex(current=>Math.min(A1_SOCIAL_GREETING_CARDS.length-1,current+1));setSocialGreetingRevealed(false)}} disabled={socialGreetingCardIndex===A1_SOCIAL_GREETING_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button>
             </nav>
             <div className="a1-greeting-register-note"><span><b dir="ltr">vous</b> رسمي</span><span><b dir="ltr">tu</b> غير رسمي</span></div>
-           </div>:<p className="a1-greeting-group-intro">{group.description}</p>}
+           </div>:groupIndex===2?(groupOpen?<GreetingDialogueScene/>:null):<p className="a1-greeting-group-intro">{group.description}</p>}
           </div>
          </div>
         </section>})}

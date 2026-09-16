@@ -2710,8 +2710,8 @@ const A1_GREETINGS_LISTENING={
 
 const A1_GREETINGS_WRITING_MODEL="Bonjour, je m’appelle Sami. Je suis étudiant. J’habite à Lyon et je parle arabe. Enchanté de vous rencontrer.";
 const A1_GREETINGS_WRITING_TRANSLATIONS=[
- {fr:"bonjour",ar:"مرحبًا"},{fr:"je m’appelle",ar:"اسمي"},{fr:"j’habite",ar:"أسكن"},{fr:"je parle",ar:"أتحدث"},
- {fr:"enchanté",ar:"سعيد بلقائك"},{fr:"merci",ar:"شكرًا"},{fr:"au revoir",ar:"إلى اللقاء"},{fr:"à bientôt",ar:"أراك قريبًا"}
+ {fr:"bonjour",ar:"مرحبًا / صباح الخير"},{fr:"bonsoir",ar:"مساء الخير"},{fr:"salut",ar:"أهلًا"},{fr:"je m’appelle",ar:"اسمي"},
+ {fr:"enchanté",ar:"تشرفت"},{fr:"bienvenue",ar:"أهلًا وسهلًا"},{fr:"au revoir",ar:"إلى اللقاء"},{fr:"à bientôt",ar:"إلى لقاء قريب"}
 ];
 
 const A1_GREETINGS_DICTATION=[
@@ -8653,16 +8653,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </article>)}
      </div>}
      {isEnhancedLesson&&isA1OrbitLesson&&alphabetPracticeStep===5&&<section className="a1-smart-writing a1-practice-step-panel">
-      <div className="a1-smart-writing-progress"><div><span>الكلمة {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
-      <div className="a1-smart-writing-prompt"><small>Écrivez le mot</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى كلمة ${alphabetWritingItem.fr}`}><Volume2/></button></div>
+      <div className="a1-smart-writing-progress"><div><span>{isA1Greetings?"العنصر":"الكلمة"} {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
+      <div className="a1-smart-writing-prompt"><small>{isA1Greetings?"Écrivez le mot ou l’expression":"Écrivez le mot"}</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى ${isA1Greetings?"العبارة":"كلمة"} ${alphabetWritingItem.fr}`}><Volume2/></button></div>
       <form onSubmit={event=>{event.preventDefault();setAlphabetWritingState(normalizeExerciseText(alphabetWritingInput)===normalizeExerciseText(alphabetWritingItem.fr)?"correct":"wrong")}}>
-       <label htmlFor="alphabet-smart-writing">اكتب الكلمة بالفرنسية</label>
+       <label htmlFor="alphabet-smart-writing">{isA1Greetings?"اكتب الكلمة أو العبارة بالفرنسية":"اكتب الكلمة بالفرنسية"}</label>
        <input id="alphabet-smart-writing" dir="ltr" lang="fr" autoComplete="off" autoCorrect="off" spellCheck={false} value={alphabetWritingInput} className={alphabetWritingState} onChange={event=>{setAlphabetWritingInput(event.target.value);setAlphabetWritingState("idle")}} placeholder="Écrivez ici…" autoFocus/>
        <button type="submit" disabled={!alphabetWritingInput.trim()}><CheckCircle2/> تحقق</button>
       </form>
-      <div className={`a1-smart-writing-feedback ${alphabetWritingState}`} aria-live="polite">{alphabetWritingState==="correct"?<><CheckCircle2/><div><strong>ممتاز، الكلمة صحيحة</strong><span dir="ltr">{alphabetWritingItem.fr}</span></div></>:alphabetWritingState==="wrong"?<><CircleMinus/><div><strong>الكلمة غير صحيحة</strong><span>راجع الحروف والعلامات ثم حاول مجددًا.</span></div></>:<><NotebookTabs/><div><strong>اكتبها بدقة</strong><span>تحقق من ترتيب الحروف والعلامات الفرنسية.</span></div></>}</div>
+      <div className={`a1-smart-writing-feedback ${alphabetWritingState}`} aria-live="polite">{alphabetWritingState==="correct"?<><CheckCircle2/><div><strong>ممتاز، {isA1Greetings?"الإجابة":"الكلمة"} صحيحة</strong><span dir="ltr">{alphabetWritingItem.fr}</span></div></>:alphabetWritingState==="wrong"?<><CircleMinus/><div><strong>{isA1Greetings?"الإجابة":"الكلمة"} غير صحيحة</strong><span>راجع الحروف والعلامات ثم حاول مجددًا.</span></div></>:<><NotebookTabs/><div><strong>اكتبها بدقة</strong><span>تحقق من ترتيب الحروف والعلامات الفرنسية.</span></div></>}</div>
       <div className="a1-smart-writing-actions">
-       {alphabetWritingIndex<orbitWritingTranslations.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>الكلمة التالية <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> أعد الكلمات</button>}
+       {alphabetWritingIndex<orbitWritingTranslations.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>{isA1Greetings?"التالي":"الكلمة التالية"} <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> {isA1Greetings?"أعد التمرين":"أعد الكلمات"}</button>}
       </div>
      </section>}
      {isEnhancedLesson&&!isA1OrbitLesson&&<div className="a2-production-grid a1-practice-step-panel">

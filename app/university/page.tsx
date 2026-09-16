@@ -110,11 +110,15 @@ const A1_SOUNDS_LISTENING_CLIPS=[
  {letter:"/ɑ̃/",word:"grand",ar:"كبير",hiddenSpeech:"an"}
 ];
 const A1_COUNTRIES_LISTENING_CLIPS=[
- {letter:"France",word:"français",ar:"فرنسا — فرنسي",hiddenSpeech:"France"},
- {letter:"Maroc",word:"marocaine",ar:"المغرب — مغربية",hiddenSpeech:"Maroc"},
- {letter:"Japon",word:"japonais",ar:"اليابان — ياباني",hiddenSpeech:"Japon"},
- {letter:"Arabie saoudite",word:"saoudienne",ar:"السعودية — سعودية",hiddenSpeech:"Arabie saoudite"},
- {letter:"États-Unis",word:"américain",ar:"الولايات المتحدة — أمريكي",hiddenSpeech:"États-Unis"}
+ {letter:"Canada",word:"Canada",ar:"كندا",hiddenSpeech:"Canada"},
+ {letter:"Égypte",word:"Égypte",ar:"مصر",hiddenSpeech:"Égypte"},
+ {letter:"Japon",word:"Japon",ar:"اليابان",hiddenSpeech:"Japon"},
+ {letter:"Je suis saoudienne.",word:"saoudienne",ar:"أنا سعودية.",hiddenSpeech:"Je suis saoudienne."},
+ {letter:"Je suis marocain.",word:"marocain",ar:"أنا مغربي.",hiddenSpeech:"Je suis marocain."},
+ {letter:"Elle est japonaise.",word:"japonaise",ar:"هي يابانية.",hiddenSpeech:"Elle est japonaise."},
+ {letter:"Je parle arabe.",word:"arabe",ar:"أتحدث العربية.",hiddenSpeech:"Je parle arabe."},
+ {letter:"J’apprends le français.",word:"français",ar:"أتعلم الفرنسية.",hiddenSpeech:"J’apprends le français."},
+ {letter:"Je parle espagnol.",word:"espagnol",ar:"أتحدث الإسبانية.",hiddenSpeech:"Je parle espagnol."}
 ];
 const A1_STUDIES_LISTENING_CLIPS=[
  {letter:"professeur",word:"école",ar:"معلّم — مدرسة",hiddenSpeech:"professeur"},
@@ -2763,15 +2767,19 @@ const A1_COUNTRIES_READING={
 };
 
 const A1_COUNTRIES_LISTENING={
- title:"Pays et nationalités",
- arTitle:"البلدان والجنسيات",
- text:"France. Maroc. Japon. Arabie saoudite. États-Unis.",
+ title:"Pays, nationalités et langues",
+ arTitle:"البلدان والجنسيات واللغات",
+ text:"Canada. Égypte. Japon. Je suis saoudienne. Je suis marocain. Elle est japonaise. Je parle arabe. J’apprends le français. Je parle espagnol.",
  questions:[
-  {prompt:"Quel pays entendez-vous ?",choices:["La France","Le Maroc","Le Japon"],correctIndex:0},
-  {prompt:"Quel pays entendez-vous ?",choices:["Le Canada","Le Maroc","L’Italie"],correctIndex:1},
-  {prompt:"Quel pays entendez-vous ?",choices:["L’Espagne","L’Égypte","Le Japon"],correctIndex:2},
-  {prompt:"Quel pays entendez-vous ?",choices:["L’Arabie saoudite","La France","L’Allemagne"],correctIndex:0},
-  {prompt:"Quel pays entendez-vous ?",choices:["Les Émirats arabes unis","Les États-Unis","Le Royaume-Uni"],correctIndex:1}
+  {prompt:"Quel pays entendez-vous ?",translation:"ما البلد الذي تسمعه؟",choices:["Le Canada","Le Maroc","Le Japon"],correctIndex:0,explanationAr:"الصوت ينطق Canada؛ ومع أداة التعريف نقول le Canada.",explanationFr:"On entend Canada. On dit le Canada."},
+  {prompt:"Quel pays entendez-vous ?",translation:"ما البلد الذي تسمعه؟",choices:["L’Italie","L’Égypte","L’Espagne"],correctIndex:1,explanationAr:"الصوت ينطق Égypte؛ ومع أداة التعريف نقول l’Égypte.",explanationFr:"On entend Égypte. On dit l’Égypte."},
+  {prompt:"Quel pays entendez-vous ?",translation:"ما البلد الذي تسمعه؟",choices:["Le Japon","Le Canada","Le Maroc"],correctIndex:0,explanationAr:"الصوت ينطق Japon؛ ومع أداة التعريف نقول le Japon.",explanationFr:"On entend Japon. On dit le Japon."},
+  {prompt:"Quelle nationalité entendez-vous ?",translation:"ما الجنسية التي تسمعها؟",choices:["saoudien","saoudienne","marocaine"],correctIndex:1,explanationAr:"saoudienne هي صيغة المؤنث.",explanationFr:"Saoudienne est la forme féminine."},
+  {prompt:"Quelle nationalité entendez-vous ?",translation:"ما الجنسية التي تسمعها؟",choices:["marocain","marocaine","japonais"],correctIndex:0,explanationAr:"marocain هي صيغة المذكّر.",explanationFr:"Marocain est la forme masculine."},
+  {prompt:"Quelle est sa nationalité ?",translation:"ما جنسيتها؟",choices:["japonais","chinoise","japonaise"],correctIndex:2,explanationAr:"مع elle نستخدم صيغة المؤنث japonaise.",explanationFr:"Avec elle, on dit japonaise."},
+  {prompt:"Quelle langue entendez-vous ?",translation:"ما اللغة التي تسمعها؟",choices:["français","arabe","anglais"],correctIndex:1,explanationAr:"اللغة المذكورة هي العربية، ونقول parle arabe دون أداة.",explanationFr:"La langue est l’arabe. On dit parler arabe, sans article."},
+  {prompt:"Que fait la personne ?",translation:"ماذا يفعل الشخص؟",choices:["Elle parle français.","Elle apprend le français.","Elle apprend l’arabe."],correctIndex:1,explanationAr:"J’apprends تعني «أتعلم»، وليست «أتحدث».",explanationFr:"J’apprends signifie que la personne apprend la langue."},
+  {prompt:"Quelle phrase entendez-vous ?",translation:"ما الجملة التي تسمعها؟",choices:["Je parle espagnol.","J’apprends l’espagnol.","Je parle italien."],correctIndex:0,explanationAr:"المتحدث يقول إنه يتحدث الإسبانية، لا إنه يتعلمها.",explanationFr:"La personne dit qu’elle parle espagnol."}
  ]
 };
 
@@ -7745,10 +7753,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
-  if(isA1Sounds||isA1Greetings){
+  if(isA1Sounds||isA1Greetings||isA1Countries){
    setAlphabetListeningPlaying(true);
    setAlphabetListeningSegment(isA1Sounds?1:0);
-   void speakFrench(isA1Sounds?clip.word:A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
+   void speakFrench(isA1Sounds?clip.word:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech:A1_COUNTRIES_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
     rate:rate==="slow"?.5:.76,
     onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
     onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
@@ -8556,19 +8564,19 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
        {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
-      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds||isA1Greetings?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
+      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds||isA1Greetings||isA1Countries?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
-        <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"}`} dir="ltr">
-         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Greetings?"استمع إلى العبارة":"الحرف مخفي"}</small></span>}</strong>
-         <strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings?"العبارة مخفية":"الكلمة مخفية"}</small></span>}</strong>
+        <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"} ${isA1Countries?"countries-single":""}`} dir="ltr">
+         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Countries?"استمع إلى المقطع":isA1Greetings?"استمع إلى العبارة":"الحرف مخفي"}</small></span>}</strong>
+         {!isA1Countries&&<strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings?"العبارة مخفية":"الكلمة مخفية"}</small></span>}</strong>}
         </div>
-        <small>{answeredCorrectly?clip.ar:"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
+        <small>{answeredCorrectly?clip.ar:isA1Countries?"استمع، ثم اختر الإجابة الصحيحة لتظهر الكلمة أو الجملة.":"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
-        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Greetings?"استمع إلى العبارة":"استمع إلى الصوت"}</b><small>{isA1Greetings?"العبارة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
+        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Countries?"استمع إلى المقطع":isA1Greetings?"استمع إلى العبارة":"استمع إلى الصوت"}</b><small>{isA1Countries?"الكلمة أو الجملة كاملة":isA1Greetings?"العبارة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
         <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}-${index}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
+       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
         <article key={alphabetListeningQuestionIndex} className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(correctCount/activeA2Listening.questions.length*100)}%</b></div>
         <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>

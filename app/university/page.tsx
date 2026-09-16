@@ -2730,11 +2730,11 @@ const A1_GREETINGS_DICTATION=[
 ];
 
 const A1_GREETINGS_BUILDERS=[
- {tokens:["m’appelle","Bonjour,","Nora.","je"],answer:["Bonjour,","je","m’appelle","Nora."],ar:"مرحبًا، اسمي نورا."},
+ {tokens:["m’appelle","Bonjour,","Karim.","je"],answer:["Bonjour,","je","m’appelle","Karim."],ar:"مرحبًا، اسمي كريم."},
  {tokens:["allez-vous","Comment","aujourd’hui ?"],answer:["Comment","allez-vous","aujourd’hui ?"],ar:"كيف حالك اليوم؟"},
- {tokens:["vous","de","Enchanté","rencontrer."],answer:["Enchanté","de","vous","rencontrer."],ar:"سعيد بلقائك."},
- {tokens:["Bordeaux.","J’habite","à"],answer:["J’habite","à","Bordeaux."],ar:"أسكن في بوردو."},
- {tokens:["bientôt !","Au","revoir","à","et"],answer:["Au","revoir","et","à","bientôt !"],ar:"إلى اللقاء وأراك قريبًا!"}
+ {tokens:["vous","de","Enchanté","rencontrer."],answer:["Enchanté","de","vous","rencontrer."],ar:"تشرفت بلقائك."},
+ {tokens:["Lyon.","J’habite","à"],answer:["J’habite","à","Lyon."],ar:"أسكن في ليون."},
+ {tokens:["bientôt !","Au","revoir,","à"],answer:["Au","revoir,","à","bientôt !"],ar:"إلى اللقاء، أراك قريبًا!"}
 ];
 
 const A1_GREETINGS_DIALOGUES=[

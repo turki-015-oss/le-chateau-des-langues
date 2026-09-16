@@ -1711,16 +1711,16 @@ const A1_SOUNDS_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_GREETINGS_PRACTICE_ITEMS:Example[]=[
- {fr:"Bonjour monsieur, comment allez-vous ?",ar:"مرحبًا سيدي، كيف حالكم؟"},
+ {fr:"Bonjour monsieur, comment allez-vous ?",ar:"مرحبًا سيدي، كيف حالك؟"},
  {fr:"Salut Karim, comment vas-tu ?",ar:"مرحبًا كريم، كيف حالك؟"},
  {fr:"Je m’appelle Youssef et j’ai vingt ans.",ar:"اسمي يوسف وعمري عشرون عامًا."},
- {fr:"Je viens du Maroc et j’habite à Nice.",ar:"أنا من المغرب وأسكن في نيس."},
- {fr:"Je suis infirmier dans un hôpital.",ar:"أنا ممرض في مستشفى."},
+ {fr:"Je viens de France et j’habite à Nice.",ar:"أنا من فرنسا وأسكن في نيس."},
+ {fr:"Je suis nouveau dans cette classe.",ar:"أنا جديد في هذا الصف."},
  {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية."},
- {fr:"Pendant mon temps libre, j’aime nager.",ar:"أحب السباحة في وقت فراغي."},
- {fr:"Comment vous appelez-vous ?",ar:"ما اسمكم؟"},
- {fr:"Enchanté, bienvenue dans notre classe.",ar:"تشرفت بمعرفتكم، أهلًا بكم في فصلنا."},
- {fr:"Au revoir madame, à demain !",ar:"إلى اللقاء سيدتي، أراكِ غدًا!"}
+ {fr:"Voici mon ami Karim.",ar:"هذا صديقي كريم."},
+ {fr:"Comment vous appelez-vous ?",ar:"ما اسمك؟ (بصيغة رسمية)"},
+ {fr:"Enchanté. Bienvenue dans notre classe !",ar:"تشرفت بلقائك. أهلًا بك في صفّنا!"},
+ {fr:"Au revoir madame, à demain !",ar:"إلى اللقاء سيدتي، إلى الغد!"}
 ];
 
 const A1_GREETINGS_QUIZ_ITEMS:QuizQuestion[]=[

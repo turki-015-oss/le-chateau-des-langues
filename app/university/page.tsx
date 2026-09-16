@@ -49,6 +49,16 @@ type VowelTableExample={word:string;ar:string;ipa:string;phoneme:string;focus:st
 type VowelClassificationBranch={fr:string;ar:string;explanation:string;frExplanation:string;table?:VowelTableKind;examples?:VowelTableExample[]};
 type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:string;branches:VowelClassificationBranch[]};
 type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[];branches?:VowelClassificationBranch[]};
+const A1_GREETING_GROUPS=[
+ {fr:"Saluer selon le moment",ar:"التحية حسب الوقت",description:"نختار التحية المناسبة لوقت اللقاء: Bonjour نهارًا وBonsoir مساءً.",icon:CloudSun},
+ {fr:"Saluer avec vous ou tu",ar:"التحية الرسمية وغير الرسمية",description:"Bonjour madame أسلوب مهذب، وSalut Sami تحية غير رسمية بين الأصدقاء.",icon:Users},
+ {fr:"Demander et dire comment ça va",ar:"السؤال عن الحال والرد",description:"Comment allez-vous ? وÇa va ? للسؤال، وJe vais bien, merci للرد.",icon:MessageCircle},
+ {fr:"Prendre congé",ar:"الوداع",description:"Au revoir وÀ bientôt وBonne journée وBonne soirée لعبارات الوداع.",icon:HandHeart}
+];
+const A1_TIME_GREETING_CARDS=[
+ {fr:"Bonjour",ar:"مرحبًا / صباح الخير",image:"/images/university/a1-greetings/time-greetings/bonjour.webp",explanation:"تُقال عند لقاء شخص في الصباح أو خلال النهار حتى غروب الشمس.",example:"Bonjour, monsieur !",exampleAr:"مرحبًا يا سيدي."},
+ {fr:"Bonsoir",ar:"مساء الخير",image:"/images/university/a1-greetings/time-greetings/bonsoir.webp",explanation:"تُقال عند لقاء شخص في المساء بعد غروب الشمس.",example:"Bonsoir, monsieur !",exampleAr:"مساء الخير يا سيدي."}
+];
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
 const ALPHABET_PRACTICE_STEPS=["الاستماع","الإملاء الصوتي","بناء الجملة","الحوار التفاعلي","جمل مفيدة","اكتب"];
@@ -6881,6 +6891,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [moduleId,setModuleId]=useState(requestedModule.id);
  const [lessonStage,setLessonStage]=useState<LessonStage>("learn");
  const [openSectionIndex,setOpenSectionIndex]=useState(0);
+ const [openGreetingGroupIndex,setOpenGreetingGroupIndex]=useState(-1);
+ const [timeGreetingCardIndex,setTimeGreetingCardIndex]=useState(0);
+ const [timeGreetingRevealed,setTimeGreetingRevealed]=useState(false);
  const [openPhaseIndex,setOpenPhaseIndex]=useState(0);
  const [quizAnswers,setQuizAnswers]=useState<Record<number,number>>({});
  const [quizQuestionIndex,setQuizQuestionIndex]=useState(0);
@@ -7420,6 +7433,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setModuleId(nextModule.id);
   setLessonStage("learn");
   setOpenSectionIndex(0);
+  setOpenGreetingGroupIndex(-1);
+  setTimeGreetingCardIndex(0);
+  setTimeGreetingRevealed(false);
   setQuizAnswers({});
   setQuizQuestionIndex(0);
   setQuizFinished(false);
@@ -8422,16 +8438,44 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       <p className="university-explanation-text">{item.explanation}</p>
-       <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
-       <div className="university-example-list">
-        <h4><MessageCircle/> Exemples expliqués</h4>
-        {item.examples.map(example=><article key={example.fr} className={example.image?"university-example-visual":""}>
-         {example.image&&<img src={example.image} alt="" loading="lazy"/>}
-         <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.fr):speakFrench(example.fr))} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
-         <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
-        </article>)}
-       </div>
+       {isA1Greetings&&index===0?<div className="a1-greeting-groups">
+        {A1_GREETING_GROUPS.map((group,groupIndex)=>{const GroupIcon=group.icon;const groupOpen=openGreetingGroupIndex===groupIndex;const card=A1_TIME_GREETING_CARDS[timeGreetingCardIndex];return <section key={group.fr} className={`a1-greeting-group ${groupOpen?"open":""}`}>
+         <button type="button" className="a1-greeting-group-toggle" onClick={()=>setOpenGreetingGroupIndex(groupOpen?-1:groupIndex)} aria-expanded={groupOpen} aria-controls={`a1-greeting-group-content-${groupIndex}`}>
+          <i><GroupIcon/></i><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/>
+         </button>
+         <div className={`a1-greeting-group-shell ${groupOpen?"open":""}`} aria-hidden={!groupOpen} inert={!groupOpen}>
+          <div id={`a1-greeting-group-content-${groupIndex}`} className="a1-greeting-group-content">
+           {groupIndex===0?<div className="a1-time-greeting-carousel">
+            <article className="a1-time-greeting-card" key={card.fr}>
+             <button type="button" className="a1-time-greeting-image" onClick={()=>{setTimeGreetingRevealed(true);void speakFrench(card.fr,{rate:.72})}} aria-label={`استمع إلى ${card.fr} وأظهر تفاصيلها`}>
+              <img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span>
+             </button>
+             {timeGreetingRevealed&&<div className="a1-time-greeting-copy">
+              <strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>{card.explanation}</p>
+              <div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div>
+             </div>}
+            </article>
+            <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين بطاقات التحية حسب الوقت">
+             <button type="button" onClick={()=>{setTimeGreetingCardIndex(current=>Math.max(0,current-1));setTimeGreetingRevealed(false)}} disabled={timeGreetingCardIndex===0} aria-label="البطاقة السابقة"><ChevronLeft/></button>
+             <span>{timeGreetingCardIndex+1} / {A1_TIME_GREETING_CARDS.length}</span>
+             <button type="button" onClick={()=>{setTimeGreetingCardIndex(current=>Math.min(A1_TIME_GREETING_CARDS.length-1,current+1));setTimeGreetingRevealed(false)}} disabled={timeGreetingCardIndex===A1_TIME_GREETING_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button>
+            </nav>
+           </div>:<p className="a1-greeting-group-intro">{group.description}</p>}
+          </div>
+         </div>
+        </section>})}
+       </div>:<>
+        <p className="university-explanation-text">{item.explanation}</p>
+        <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
+        <div className="university-example-list">
+         <h4><MessageCircle/> Exemples expliqués</h4>
+         {item.examples.map(example=><article key={example.fr} className={example.image?"university-example-visual":""}>
+          {example.image&&<img src={example.image} alt="" loading="lazy"/>}
+          <button onClick={()=>void (isA1Alphabet?playAlphabetLearningText(example.fr):speakFrench(example.fr))} aria-label={`استمع إلى ${example.fr}`}><Volume2/><b>استمع</b></button>
+          <div><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span></div>
+         </article>)}
+        </div>
+       </>}
       </div>
       </div>
      </section>})}

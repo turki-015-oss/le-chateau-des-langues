@@ -1229,3 +1229,44 @@
  .university-main-world .university-level-grid small{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){.university-main-world .university-intro article,.university-main-world .university-level-grid>button,.university-main-world .university-hero-copy>a:after{transition:none}}
+
+/* A1 greeting branches: visually distinct from the parent lesson section. */
+.a1-greeting-groups{display:grid;gap:12px;padding-top:18px}
+.a1-greeting-group{--greeting-accent:#316c96;--greeting-deep:#123e68;--greeting-soft:#eef5fb;min-width:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--greeting-accent) 31%,#dfe7ee);border-radius:19px;background:linear-gradient(130deg,#fff,var(--greeting-soft));box-shadow:0 9px 25px rgba(22,54,88,.08)}
+.a1-greeting-group:nth-child(4n+2){--greeting-accent:#9c7040;--greeting-deep:#725023;--greeting-soft:#fcf5e9}
+.a1-greeting-group:nth-child(4n+3){--greeting-accent:#387e77;--greeting-deep:#1a5953;--greeting-soft:#edf8f5}
+.a1-greeting-group:nth-child(4n+4){--greeting-accent:#83577e;--greeting-deep:#633c5e;--greeting-soft:#faf1f8}
+.a1-greeting-group-toggle{width:100%;min-height:85px;display:grid;grid-template-columns:56px minmax(0,1fr) 24px;align-items:center;gap:14px;padding:13px 17px;border:0;background:transparent;text-align:right;cursor:pointer}
+.a1-greeting-group-toggle>i{width:54px;height:54px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,var(--greeting-accent),var(--greeting-deep));color:#fff4d1;box-shadow:0 9px 18px color-mix(in srgb,var(--greeting-accent) 28%,transparent)}
+.a1-greeting-group-toggle>i svg{width:27px;height:27px}
+.a1-greeting-group-toggle>span{min-width:0;display:grid;gap:4px}
+.a1-greeting-group-toggle strong{color:var(--greeting-deep);font:700 20px Georgia,serif;overflow-wrap:anywhere}
+.a1-greeting-group-toggle b{color:#42576a;font-size:15px}
+.a1-greeting-group-toggle>svg{color:var(--greeting-accent);transition:transform .28s ease}
+.a1-greeting-group.open .a1-greeting-group-toggle>svg{transform:rotate(180deg)}
+.a1-greeting-group-shell{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .36s ease,opacity .3s ease}
+.a1-greeting-group-shell.open{grid-template-rows:1fr;opacity:1}
+.a1-greeting-group-content{min-height:0;overflow:hidden}
+.a1-greeting-group.open .a1-greeting-group-content{padding:3px 15px 16px}
+.a1-greeting-group-intro{margin:0;padding:14px 16px;border-radius:13px;background:rgba(255,255,255,.84);color:#354d63;line-height:1.8}
+.a1-time-greeting-carousel{width:min(100%,580px);margin:0 auto}
+.a1-time-greeting-card{overflow:hidden;border:1px solid color-mix(in srgb,var(--greeting-accent) 29%,#dbe6ef);border-radius:22px;background:linear-gradient(160deg,#f8fcff,#dbeaf5 75%,#fff2d7);box-shadow:0 16px 32px rgba(20,56,93,.13)}
+.a1-time-greeting-image{position:relative;width:100%;height:clamp(280px,45vw,410px);display:block;overflow:hidden;padding:0;border:0;background:radial-gradient(circle at 50% 42%,#fff9ec 0%,#d8eaf8 65%,#a9c9e2 100%);cursor:pointer}
+.a1-time-greeting-card:has(img[src*="bonsoir"]) .a1-time-greeting-image{background:radial-gradient(circle at 50% 35%,#42638f 0%,#183b68 68%,#102c51 100%)}
+.a1-time-greeting-image img{width:100%;height:100%;display:block;object-fit:contain;object-position:center bottom;transition:transform .3s ease}
+.a1-time-greeting-image:hover img{transform:scale(1.035)}
+.a1-time-greeting-image>span{position:absolute;top:14px;right:14px;width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.75);border-radius:14px;background:rgba(10,39,76,.84);color:#fff4cb;box-shadow:0 8px 17px rgba(8,31,58,.18)}
+.a1-time-greeting-image>span svg{width:22px;height:22px}
+.a1-time-greeting-copy{display:grid;gap:6px;padding:19px 22px 21px;background:#fff;animation:universityReveal .25s ease}
+.a1-time-greeting-copy>strong{color:#143e6b;font:700 29px Georgia,serif}
+.a1-time-greeting-copy>b{color:#79602f;font-size:18px}
+.a1-time-greeting-copy>p{margin:4px 0;color:#354d64;font-size:15px;line-height:1.8}
+.a1-time-greeting-copy>div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:5px 16px;padding-top:11px;border-top:1px solid #e5edf4}
+.a1-time-greeting-copy>div span{color:#174a7b;font:700 16px Georgia,serif}
+.a1-time-greeting-copy>div small{color:#586d80;font-size:14px}
+.a1-time-greeting-navigation{display:flex;align-items:center;justify-content:center;gap:21px;padding:13px 0 0}
+.a1-time-greeting-navigation button{width:48px;height:44px;display:grid;place-items:center;border:1px solid #bdd0e1;border-radius:14px;background:linear-gradient(145deg,#1b5487,#0c315c);color:#fff2c7;cursor:pointer}
+.a1-time-greeting-navigation button:disabled{opacity:.36;cursor:not-allowed}
+.a1-time-greeting-navigation span{color:#355370;font:700 15px Georgia,serif}
+@media(max-width:680px){.a1-greeting-groups{gap:9px;padding-top:9px}.a1-greeting-group-toggle{min-height:72px;grid-template-columns:46px minmax(0,1fr) 20px;gap:10px;padding:10px}.a1-greeting-group-toggle>i{width:46px;height:46px;border-radius:13px}.a1-greeting-group-toggle>i svg{width:23px;height:23px}.a1-greeting-group-toggle strong{font-size:16px}.a1-greeting-group-toggle b{font-size:13px}.a1-greeting-group.open .a1-greeting-group-content{padding:2px 9px 11px}.a1-time-greeting-image{height:clamp(270px,80vw,360px)}.a1-time-greeting-copy{padding:14px}.a1-time-greeting-copy>strong{font-size:24px}.a1-time-greeting-copy>b{font-size:16px}.a1-time-greeting-copy>p{font-size:13px}.a1-time-greeting-copy>div span{font-size:14px}.a1-time-greeting-copy>div small{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.a1-greeting-group-shell,.a1-greeting-group-toggle>svg,.a1-time-greeting-image img{transition:none}}

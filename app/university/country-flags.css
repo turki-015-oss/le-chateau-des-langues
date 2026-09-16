@@ -32,3 +32,15 @@
 @keyframes a1-country-line-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:680px){.a1-country-explorer{gap:10px}.a1-country-explorer-intro{padding:14px}.a1-country-explorer-intro strong{font-size:16px}.a1-country-explorer-intro p{font-size:13px}.a1-country-flag-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-height:310px;padding:8px}.a1-country-dialog-backdrop{padding:10px}.a1-country-dialog{max-height:calc(100dvh - 20px);border-radius:19px}.a1-country-dialog-flag img{height:clamp(175px,52vw,245px)}.a1-country-dialog-content{padding:16px 14px 20px}.a1-country-phrases{margin-top:15px}}
 @media(prefers-reduced-motion:reduce){.a1-country-flag-grid button,.a1-country-dialog,.a1-country-phrase{animation:none;transition:none}}
+.a1-nationality-dialog .a1-country-dialog-flag{cursor:default}
+.a1-nationality-forms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px;text-align:start}
+.a1-nationality-form{min-width:0;padding:16px;border:1px solid #d6e3ed;border-radius:18px;background:#fff;box-shadow:0 7px 18px rgba(19,55,86,.07)}
+.a1-nationality-form-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}
+.a1-nationality-form-head span{padding:5px 9px;border-radius:999px;background:#eef4fa;color:#345c7b;font-size:12px;font-weight:700;white-space:nowrap}
+.a1-nationality-form-head strong{color:#164d7a;font:700 clamp(17px,2.5vw,22px) Georgia,serif;overflow-wrap:anywhere}
+.a1-nationality-form button{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;padding:9px 12px;border:1px solid #cfdfed;border-radius:12px;background:linear-gradient(135deg,#f4f9fd,#edf3f8);color:#194c73;cursor:pointer;font:700 17px Georgia,serif;transition:transform .2s ease,box-shadow .2s ease}
+.a1-nationality-form button:hover,.a1-nationality-form button:focus-visible{transform:translateY(-2px);box-shadow:0 8px 15px rgba(25,76,115,.14);outline:2px solid #b9d5eb}
+.a1-nationality-form button svg{width:18px;height:18px;flex:none}
+.a1-nationality-form p{margin:11px 0 0;color:#526b80;font-size:13px;line-height:1.6}
+.a1-nationality-form p small{display:block;color:#8a6a39}
+@media(max-width:520px){.a1-nationality-forms{grid-template-columns:1fr;gap:9px;margin-top:14px}.a1-nationality-form{padding:12px}.a1-nationality-dialog .a1-country-dialog-flag img{height:clamp(145px,39vw,195px)}}

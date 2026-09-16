@@ -2812,9 +2812,9 @@ const A1_COUNTRIES_BUILDERS=[
 const A1_COUNTRIES_DIALOGUES=[
  {context:"D’où venez-vous ?",translation:"من أين أنتم؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens du Maroc.","Je parle français.","Je m’appelle Lina."],correctIndex:0,feedback:"للإجابة عن الأصل نستعمل venir de مع اسم البلد."},
  {context:"Quelle est votre nationalité ?",translation:"ما جنسيتكم؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite à Paris.","Je suis saoudienne.","Je parle arabe."],correctIndex:1,feedback:"نستعمل être مع صفة الجنسية."},
- {context:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens de France.","Je suis étudiant.","Je parle arabe et français."],correctIndex:2,feedback:"بعد parler نذكر اللغة عادة من دون أداة."},
- {context:"Vous habitez dans quel pays ?",translation:"في أي بلد تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite au Canada.","Je suis canadien.","J’apprends l’anglais."],correctIndex:0,feedback:"habiter مع حرف الجر واسم البلد يجيب عن مكان السكن."},
- {context:"Vous apprenez quelle langue ?",translation:"ما اللغة التي تتعلمونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens d’Italie.","J’apprends le français.","Je suis italienne."],correctIndex:1,feedback:"نقول apprendre le français عند الحديث عن تعلم اللغة."}
+ {context:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثون بها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens de France.","Je suis étudiant.","Je parle arabe et français."],correctIndex:2,feedback:"بعد parler نذكر اللغة عادة من دون أداة."},
+ {context:"Dans quel pays habitez-vous ?",translation:"في أي بلد تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite au Canada.","Je suis canadien.","J’apprends l’anglais."],correctIndex:0,feedback:"habiter مع حرف الجر واسم البلد يجيب عن مكان السكن."},
+ {context:"Quelle langue apprenez-vous ?",translation:"ما اللغة التي تتعلمونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je viens d’Italie.","J’apprends le français.","Je suis italienne."],correctIndex:1,feedback:"نقول apprendre le français عند الحديث عن تعلم اللغة."}
 ];
 
 const A1_STUDIES_READING={

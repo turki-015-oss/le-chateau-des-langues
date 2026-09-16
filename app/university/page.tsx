@@ -713,9 +713,9 @@ const A1_MODULES:CourseModule[]=[
     "Salut غير رسمية وقد تعني مرحبًا أو إلى اللقاء.",
     "Au revoir للوداع، وÀ bientôt تعني أراك قريبًا."
    ],[
-    {fr:"Bonjour madame, comment allez-vous ?",ar:"مرحبًا سيدتي، كيف حالك؟",image:"/cafe-v31/customer-1.png"},
-    {fr:"Salut Sami, ça va ?",ar:"مرحبًا سامي، هل أنت بخير؟",image:"/cafe-v31/customer-2.png"},
-    {fr:"Au revoir et à bientôt.",ar:"إلى اللقاء وأراك قريبًا.",image:"/worlds/cafe.png"}
+    {fr:"Bonjour madame, comment allez-vous ?",ar:"مرحبًا سيدتي، كيف حالك؟",image:"/images/university/a1-greetings/bonjour-madame.webp"},
+    {fr:"Salut Sami, ça va ?",ar:"مرحبًا سامي، هل أنت بخير؟",image:"/images/university/a1-greetings/salut-sami.webp"},
+    {fr:"Au revoir et à bientôt.",ar:"إلى اللقاء وأراك قريبًا.",image:"/images/university/a1-greetings/au-revoir.webp"}
    ]),
    section("Parler de soi","التعريف بالنفس","استخدم Je m’appelle للاسم، Je suis للجنسية أو المهنة، وJ’habite à لمكان السكن. السؤال الرسمي يستخدم vous وغير الرسمي يستخدم tu.",[
     "Comment vous appelez-vous ? للسؤال الرسمي عن الاسم.",
@@ -723,9 +723,9 @@ const A1_MODULES:CourseModule[]=[
     "Quelle langue parlez-vous ? للسؤال عن اللغة.",
     "Quel est votre métier ? للسؤال عن المهنة."
    ],[
-    {fr:"Je m’appelle Nora et je suis saoudienne.",ar:"اسمي نورة وأنا سعودية.",image:"/cafe-v31/assets/portrait-3.webp"},
-    {fr:"J’habite à Riyad.",ar:"أسكن في الرياض.",image:"/kingdom-portal-assets/destination-airport.png"},
-    {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية.",image:"/cafe-v31/menu-bilingual.png"}
+    {fr:"Je m’appelle Nora et je suis saoudienne.",ar:"اسمي نورة وأنا سعودية.",image:"/images/university/a1-greetings/nora.webp"},
+    {fr:"J’habite à Riyad.",ar:"أسكن في الرياض.",image:"/images/university/a1-greetings/riyad.webp"},
+    {fr:"Je parle arabe et un peu français.",ar:"أتحدث العربية وقليلًا من الفرنسية.",image:"/images/university/a1-greetings/parler-langues.webp"}
    ])
   ]
  },

@@ -51,13 +51,17 @@ type VowelClassification={fr:string;ar:string;explanation:string;frExplanation:s
 type ConsonantClassification={fr:string;ar:string;explanation:string;frExplanation:string;highlightedNote?:string;frHighlightedNote?:string;image?:string;examples?:VowelTableExample[];branches?:VowelClassificationBranch[]};
 const A1_GREETING_GROUPS=[
  {fr:"Saluer selon le moment",ar:"التحية حسب الوقت",description:"نختار التحية المناسبة لوقت اللقاء: Bonjour نهارًا وBonsoir مساءً.",icon:CloudSun},
- {fr:"Saluer avec vous ou tu",ar:"التحية الرسمية وغير الرسمية",description:"Bonjour madame أسلوب مهذب، وSalut Sami تحية غير رسمية بين الأصدقاء.",icon:Users},
+ {fr:"Saluer avec vous ou tu",ar:"التحية الرسمية وغير الرسمية",description:"Bonjour, monsieur أسلوب مهذب، وSalut, Khalid تحية غير رسمية بين الأصدقاء.",icon:Users},
  {fr:"Demander et dire comment ça va",ar:"السؤال عن الحال والرد",description:"Comment allez-vous ? وÇa va ? للسؤال، وJe vais bien, merci للرد.",icon:MessageCircle},
  {fr:"Prendre congé",ar:"الوداع",description:"Au revoir وÀ bientôt وBonne journée وBonne soirée لعبارات الوداع.",icon:HandHeart}
 ];
 const A1_TIME_GREETING_CARDS=[
  {fr:"Bonjour",ar:"مرحبًا / صباح الخير",image:"/images/university/a1-greetings/time-greetings/bonjour.webp",explanation:"تُقال عند لقاء شخص في الصباح أو خلال النهار حتى غروب الشمس.",example:"Bonjour, monsieur !",exampleAr:"مرحبًا يا سيدي."},
  {fr:"Bonsoir",ar:"مساء الخير",image:"/images/university/a1-greetings/time-greetings/bonsoir.webp",explanation:"تُقال عند لقاء شخص في المساء بعد غروب الشمس.",example:"Bonsoir, monsieur !",exampleAr:"مساء الخير يا سيدي."}
+];
+const A1_SOCIAL_GREETING_CARDS=[
+ {fr:"Bonjour, monsieur. Comment allez-vous ?",ar:"مرحبًا يا سيدي، كيف حالك؟",image:"/images/university/a1-greetings/social-greetings/formal.webp",explanation:"تحية مهذبة عند مخاطبة شخص لا تعرفه أو تتعامل معه رسميًا. نستخدم vous احترامًا، حتى مع شخص واحد.",register:"vous",registerAr:"رسمي"},
+ {fr:"Salut, Khalid ! Ça va ?",ar:"مرحبًا يا خالد! كيف حالك؟",image:"/images/university/a1-greetings/social-greetings/informal.webp",explanation:"تحية ودية بين الأصدقاء والأشخاص المقربين. نستخدم tu في الحديث غير الرسمي.",register:"tu",registerAr:"غير رسمي"}
 ];
 const DESCRIPTION_VISUAL_PAGE_SIZE=8;
 const ADJECTIVE_VISUAL_PAGE_SIZE=8;
@@ -6894,6 +6898,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [openGreetingGroupIndex,setOpenGreetingGroupIndex]=useState(-1);
  const [timeGreetingCardIndex,setTimeGreetingCardIndex]=useState(0);
  const [timeGreetingRevealed,setTimeGreetingRevealed]=useState(false);
+ const [socialGreetingCardIndex,setSocialGreetingCardIndex]=useState(0);
+ const [socialGreetingRevealed,setSocialGreetingRevealed]=useState(false);
  const [openPhaseIndex,setOpenPhaseIndex]=useState(0);
  const [quizAnswers,setQuizAnswers]=useState<Record<number,number>>({});
  const [quizQuestionIndex,setQuizQuestionIndex]=useState(0);
@@ -7436,6 +7442,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setOpenGreetingGroupIndex(-1);
   setTimeGreetingCardIndex(0);
   setTimeGreetingRevealed(false);
+  setSocialGreetingCardIndex(0);
+  setSocialGreetingRevealed(false);
   setQuizAnswers({});
   setQuizQuestionIndex(0);
   setQuizFinished(false);
@@ -8460,6 +8468,23 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <span>{timeGreetingCardIndex+1} / {A1_TIME_GREETING_CARDS.length}</span>
              <button type="button" onClick={()=>{setTimeGreetingCardIndex(current=>Math.min(A1_TIME_GREETING_CARDS.length-1,current+1));setTimeGreetingRevealed(false)}} disabled={timeGreetingCardIndex===A1_TIME_GREETING_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button>
             </nav>
+           </div>:groupIndex===1?<div className="a1-time-greeting-carousel">
+            <article className="a1-time-greeting-card a1-social-greeting-card" key={A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].fr}>
+             <button type="button" className="a1-time-greeting-image" onClick={()=>{setSocialGreetingRevealed(true);void speakFrench(A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].fr,{rate:.72})}} aria-label={`استمع إلى ${A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].fr} وأظهر تفاصيلها`}>
+              <img src={A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span>
+             </button>
+             {socialGreetingRevealed&&<div className="a1-time-greeting-copy">
+              <strong dir="ltr">{A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].fr}</strong><b>{A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].ar}</b>
+              <p>{A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].explanation}</p>
+              <div><span dir="ltr">{A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].register}</span><small>{A1_SOCIAL_GREETING_CARDS[socialGreetingCardIndex].registerAr}</small></div>
+             </div>}
+            </article>
+            <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين بطاقات التحية الرسمية وغير الرسمية">
+             <button type="button" onClick={()=>{setSocialGreetingCardIndex(current=>Math.max(0,current-1));setSocialGreetingRevealed(false)}} disabled={socialGreetingCardIndex===0} aria-label="البطاقة السابقة"><ChevronLeft/></button>
+             <span>{socialGreetingCardIndex+1} / {A1_SOCIAL_GREETING_CARDS.length}</span>
+             <button type="button" onClick={()=>{setSocialGreetingCardIndex(current=>Math.min(A1_SOCIAL_GREETING_CARDS.length-1,current+1));setSocialGreetingRevealed(false)}} disabled={socialGreetingCardIndex===A1_SOCIAL_GREETING_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button>
+            </nav>
+            <div className="a1-greeting-register-note"><span><b dir="ltr">vous</b> رسمي</span><span><b dir="ltr">tu</b> غير رسمي</span></div>
            </div>:<p className="a1-greeting-group-intro">{group.description}</p>}
           </div>
          </div>

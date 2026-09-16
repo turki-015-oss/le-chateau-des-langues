@@ -1252,6 +1252,8 @@
 .a1-time-greeting-carousel{width:min(100%,580px);margin:0 auto}
 .a1-time-greeting-card{overflow:hidden;border:1px solid color-mix(in srgb,var(--greeting-accent) 29%,#dbe6ef);border-radius:22px;background:linear-gradient(160deg,#f8fcff,#dbeaf5 75%,#fff2d7);box-shadow:0 16px 32px rgba(20,56,93,.13)}
 .a1-time-greeting-image{position:relative;width:100%;height:clamp(280px,45vw,410px);display:block;overflow:hidden;padding:0;border:0;background:radial-gradient(circle at 50% 42%,#fff9ec 0%,#d8eaf8 65%,#a9c9e2 100%);cursor:pointer}
+.a1-social-greeting-card .a1-time-greeting-image{background:radial-gradient(circle at 50% 42%,#fff9ec 0%,#d9e9f7 62%,#b6cbe1 100%)}
+.a1-social-greeting-card:has(img[src*="informal"]) .a1-time-greeting-image{background:radial-gradient(circle at 50% 42%,#fffaf0 0%,#e3eef6 62%,#bed5df 100%)}
 .a1-time-greeting-card:has(img[src*="bonsoir"]) .a1-time-greeting-image{background:radial-gradient(circle at 50% 35%,#42638f 0%,#183b68 68%,#102c51 100%)}
 .a1-time-greeting-image img{width:100%;height:100%;display:block;object-fit:contain;object-position:center bottom;transition:transform .3s ease}
 .a1-time-greeting-image:hover img{transform:scale(1.035)}
@@ -1268,5 +1270,6 @@
 .a1-time-greeting-navigation button{width:48px;height:44px;display:grid;place-items:center;border:1px solid #bdd0e1;border-radius:14px;background:linear-gradient(145deg,#1b5487,#0c315c);color:#fff2c7;cursor:pointer}
 .a1-time-greeting-navigation button:disabled{opacity:.36;cursor:not-allowed}
 .a1-time-greeting-navigation span{color:#355370;font:700 15px Georgia,serif}
+.a1-greeting-register-note{display:flex;justify-content:center;gap:10px;margin-top:13px}.a1-greeting-register-note span{display:flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid #c5d5e4;border-radius:999px;background:rgba(255,255,255,.75);color:#36536f;font-size:13px}.a1-greeting-register-note b{color:#174b7d;font:700 15px Georgia,serif}
 @media(max-width:680px){.a1-greeting-groups{gap:9px;padding-top:9px}.a1-greeting-group-toggle{min-height:72px;grid-template-columns:46px minmax(0,1fr) 20px;gap:10px;padding:10px}.a1-greeting-group-toggle>i{width:46px;height:46px;border-radius:13px}.a1-greeting-group-toggle>i svg{width:23px;height:23px}.a1-greeting-group-toggle strong{font-size:16px}.a1-greeting-group-toggle b{font-size:13px}.a1-greeting-group.open .a1-greeting-group-content{padding:2px 9px 11px}.a1-time-greeting-image{height:clamp(270px,80vw,360px)}.a1-time-greeting-copy{padding:14px}.a1-time-greeting-copy>strong{font-size:24px}.a1-time-greeting-copy>b{font-size:16px}.a1-time-greeting-copy>p{font-size:13px}.a1-time-greeting-copy>div span{font-size:14px}.a1-time-greeting-copy>div small{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.a1-greeting-group-shell,.a1-greeting-group-toggle>svg,.a1-time-greeting-image img{transition:none}}

@@ -2787,6 +2787,7 @@ const A1_COUNTRIES_LISTENING={
 const A1_COUNTRIES_WRITING_MODEL="Je viens d’Arabie saoudite. Je suis saoudien. J’habite à Riyad. Je parle arabe et j’apprends le français.";
 const A1_COUNTRIES_WRITING_TRANSLATIONS=[
  {fr:"France",ar:"فرنسا"},{fr:"Maroc",ar:"المغرب"},{fr:"Japon",ar:"اليابان"},{fr:"Arabie saoudite",ar:"المملكة العربية السعودية"},
+ {fr:"française",ar:"فرنسية"},{fr:"marocain",ar:"مغربي"},{fr:"japonaise",ar:"يابانية"},{fr:"saoudien",ar:"سعودي"},
  {fr:"français",ar:"الفرنسية"},{fr:"arabe",ar:"العربية"},{fr:"anglais",ar:"الإنجليزية"},{fr:"espagnol",ar:"الإسبانية"}
 ];
 

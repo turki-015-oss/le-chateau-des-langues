@@ -3142,7 +3142,17 @@ const A1_INDEFINITE_ARTICLE_CARDS=[
 const A1_PARTITIVE_ARTICLE_CARDS=[
  {article:"du",title:"المفرد المذكر",note:"توضع قبل اسم مذكر يبدأ بصوت ساكن للتعبير عن كمية غير محددة منه.",sentence:"Je bois du lait.",sentenceAr:"أشرب حليبًا.",items:[{fr:"du lait",ar:"حليب",gender:"مذكر"},{fr:"du riz",ar:"أرز",gender:"مذكر"},{fr:"du sucre",ar:"سكر",gender:"مذكر"},{fr:"du beurre",ar:"زبدة",gender:"مذكر"}]},
  {article:"de la",title:"المفرد المؤنث",note:"توضع قبل اسم مؤنث يبدأ بصوت ساكن للتعبير عن كمية غير محددة منه.",sentence:"Je mange de la salade.",sentenceAr:"آكل سلطة.",items:[{fr:"de la confiture",ar:"مربى",gender:"مؤنث"},{fr:"de la farine",ar:"دقيق",gender:"مؤنث"},{fr:"de la salade",ar:"سلطة",gender:"مؤنث"},{fr:"de la limonade",ar:"شراب الليمون",gender:"مؤنث"}]},
- {article:"de l’",title:"المفرد المذكر أو المؤنث",note:"توضع قبل اسم يبدأ بصوت متحرك أو بحرف h صامت، سواء كان مذكرًا أو مؤنثًا؛ لذلك لا تكشف وحدها جنس الاسم.",sentence:"Je bois de l’eau.",sentenceAr:"أشرب ماءً.",items:[{fr:"de l’eau",ar:"ماء",gender:"مؤنث"},{fr:"de l’huile",ar:"زيت",gender:"مؤنث"},{fr:"de l’ail",ar:"ثوم",gender:"مذكر"},{fr:"de l’air",ar:"هواء",gender:"مذكر"}]}
+ {article:"de l’",title:"المفرد المذكر أو المؤنث",note:"توضع قبل اسم يبدأ بصوت متحرك أو بحرف h صامت، سواء كان مذكرًا أو مؤنثًا؛ لذلك لا تكشف وحدها جنس الاسم.",sentence:"Je bois de l’eau.",sentenceAr:"أشرب ماءً.",items:[{fr:"de l’eau",ar:"ماء",gender:"مؤنث"},{fr:"de l’huile",ar:"زيت",gender:"مؤنث"},{fr:"de l’ail",ar:"ثوم",gender:"مذكر"},{fr:"de l’air",ar:"هواء",gender:"مذكر"}]},
+ {article:"de / d’",title:"حالة النفي",note:"في الجملة المنفية مع ne… pas، تُستبدل أداة التجزئة غالبًا بـ de، أو بـ d’ قبل صوت متحرك. بعد être توجد حالات لا يحدث فيها هذا التغيير.",sentence:"",sentenceAr:"",items:[]}
+];
+
+const A1_PARTITIVE_NEGATION_EXAMPLES=[
+ {affirmative:"Je bois du lait.",affirmativeAr:"أشرب حليبًا.",negative:"Je ne bois pas de lait.",negativeAr:"لا أشرب حليبًا."},
+ {affirmative:"Elle mange de la salade.",affirmativeAr:"هي تأكل سلطة.",negative:"Elle ne mange pas de salade.",negativeAr:"هي لا تأكل سلطة."},
+ {affirmative:"Tu bois de l’eau.",affirmativeAr:"أنت تشرب ماءً.",negative:"Tu ne bois pas d’eau.",negativeAr:"أنت لا تشرب ماءً."},
+ {affirmative:"Nous avons du sucre.",affirmativeAr:"لدينا سكر.",negative:"Nous n’avons pas de sucre.",negativeAr:"ليس لدينا سكر."},
+ {affirmative:"Il achète de la farine.",affirmativeAr:"هو يشتري دقيقًا.",negative:"Il n’achète pas de farine.",negativeAr:"هو لا يشتري دقيقًا."},
+ {affirmative:"J’ai de l’huile.",affirmativeAr:"لديّ زيت.",negative:"Je n’ai pas d’huile.",negativeAr:"ليس لديّ زيت."}
 ];
 
 const A1_NOUN_TRANSFORMATION_GROUPS=[
@@ -7066,6 +7076,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [definiteArticleCardIndex,setDefiniteArticleCardIndex]=useState(0);
  const [indefiniteArticleCardIndex,setIndefiniteArticleCardIndex]=useState(0);
  const [partitiveArticleCardIndex,setPartitiveArticleCardIndex]=useState(0);
+ const [partitiveNegationExampleIndex,setPartitiveNegationExampleIndex]=useState(0);
  const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -8676,10 +8687,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
            </div>
           </div>:index===1&&branchIndex===2?<div className="a1-definite-articles a1-partitive-articles">
            <div className="a1-definite-article-tabs" role="group" aria-label="اختر أداة التجزئة">{A1_PARTITIVE_ARTICLE_CARDS.map((card,cardIndex)=><button key={card.article} type="button" className={partitiveArticleCardIndex===cardIndex?"active":""} aria-pressed={partitiveArticleCardIndex===cardIndex} onClick={()=>setPartitiveArticleCardIndex(cardIndex)}><strong dir="ltr">{card.article}</strong><small>{card.title}</small></button>)}</div>
-           <div className="a1-definite-article-card" key={partitiveArticleCardIndex}>
+           <div className={`a1-definite-article-card ${partitiveArticleCardIndex===3?"a1-partitive-negation-card":""}`} key={partitiveArticleCardIndex}>
             <div className="a1-definite-article-card-heading"><span dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].article}</span><div><strong>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].title}</strong><p>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].note}</p></div></div>
-            <div className="a1-definite-article-examples">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
-            <button className="a1-partitive-article-sentence" type="button" onClick={()=>void speakFrench(A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence,{rate:.74})} aria-label={`استمع إلى ${A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}`}><span><small>في جملة</small><strong dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}</strong><em>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentenceAr}</em></span><Volume2 aria-hidden="true"/></button>
+            {partitiveArticleCardIndex===3?<div className="a1-partitive-negation" aria-live="polite">
+             <div className="a1-partitive-negation-pair">{(()=>{const example=A1_PARTITIVE_NEGATION_EXAMPLES[partitiveNegationExampleIndex];return <>
+              <button type="button" onClick={()=>void speakFrench(example.affirmative,{rate:.74})} aria-label={`استمع إلى ${example.affirmative}`}><small>الإثبات</small><strong dir="ltr">{example.affirmative}</strong><span>{example.affirmativeAr}</span><Volume2 aria-hidden="true"/></button>
+              <span className="a1-partitive-negation-arrow" aria-hidden="true">←</span>
+              <button type="button" onClick={()=>void speakFrench(example.negative,{rate:.74})} aria-label={`استمع إلى ${example.negative}`}><small>النفي</small><strong dir="ltr">{example.negative}</strong><span>{example.negativeAr}</span><Volume2 aria-hidden="true"/></button>
+             </>})()}</div>
+             <div className="university-number-pagination a1-partitive-negation-pagination" dir="ltr"><button type="button" onClick={()=>setPartitiveNegationExampleIndex(index=>Math.max(0,index-1))} disabled={partitiveNegationExampleIndex===0} aria-label="مثال النفي السابق"><ChevronLeft/><span>السابق</span></button><div><small>أمثلة النفي</small><strong>{partitiveNegationExampleIndex+1} / {A1_PARTITIVE_NEGATION_EXAMPLES.length}</strong></div><button type="button" onClick={()=>setPartitiveNegationExampleIndex(index=>Math.min(A1_PARTITIVE_NEGATION_EXAMPLES.length-1,index+1))} disabled={partitiveNegationExampleIndex===A1_PARTITIVE_NEGATION_EXAMPLES.length-1} aria-label="مثال النفي التالي"><span>التالي</span><ChevronRight/></button></div>
+            </div>:<><div className="a1-definite-article-examples">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
+            <button className="a1-partitive-article-sentence" type="button" onClick={()=>void speakFrench(A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence,{rate:.74})} aria-label={`استمع إلى ${A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}`}><span><small>في جملة</small><strong dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}</strong><em>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentenceAr}</em></span><Volume2 aria-hidden="true"/></button></>}
            </div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}

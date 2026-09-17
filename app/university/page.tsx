@@ -3122,7 +3122,7 @@ const A1_NOUNS_LEARNING_GROUPS=[
  ]},
  {branches:[
   {fr:"Le pluriel régulier",ar:"الجمع المنتظم",note:"نضيف s إلى آخر أغلب الأسماء عند جمعها، وغالبًا لا ننطق هذه العلامة. في أمثلة التنكير هنا تتحول un أو une إلى des.",examples:[]},
-  {fr:"Les noms en -s, -x ou -z",ar:"أسماء لا تتغير كتابتها",note:"إذا انتهى الاسم في المفرد بـs أو x أو z، تبقى كتابته كما هي في الجمع، وتتغير الأداة قبله.",examples:[{fr:"un pays → des pays",ar:"بلد، ثم بلدان"},{fr:"un prix → des prix",ar:"سعر، ثم أسعار"},{fr:"un nez → des nez",ar:"أنف، ثم أنوف"}]},
+  {fr:"Les noms en -s, -x ou -z",ar:"أسماء لا تتغير كتابتها",note:"إذا انتهى الاسم في المفرد بـ s أو x أو z، فلا نضيف إليه حرفًا في الجمع؛ تبقى كتابته كما هي، وتتغير الأداة من un أو une إلى des.",examples:[]},
   {fr:"Les pluriels fréquents en -aux",ar:"صيغ جمع شائعة بـ -aux",note:"أغلب الأسماء المنتهية بـ-al تصبح -aux في الجمع، لكن توجد استثناءات مثل festival.",examples:[{fr:"un journal → des journaux",ar:"صحيفة، ثم صحف"},{fr:"un cheval → des chevaux",ar:"حصان، ثم خيول"},{fr:"un festival → des festivals",ar:"مهرجان، ثم مهرجانات"}]},
   {fr:"Les articles au pluriel",ar:"الأدوات مع الجمع",note:"في الجمع تصبح أدوات التعريف les وأدوات التنكير des، مع إضافة علامة الجمع إلى الاسم حين تتغير كتابته.",examples:[{fr:"le garçon → les garçons",ar:"الولد، ثم الأولاد"},{fr:"une lampe → des lampes",ar:"مصباح، ثم مصابيح"},{fr:"l’enfant → les enfants",ar:"الطفل، ثم الأطفال"}]}
  ]}
@@ -3177,6 +3177,21 @@ const A1_REGULAR_PLURAL_EXAMPLES=[
  {singular:"une gomme",singularAr:"ممحاة",plural:"des gommes",pluralAr:"مماحٍ"},
  {singular:"un bol",singularAr:"وعاء",plural:"des bols",pluralAr:"أوعية"},
  {singular:"une guitare",singularAr:"غيتار",plural:"des guitares",pluralAr:"غيتارات"}
+];
+
+const A1_INVARIABLE_PLURAL_GROUPS=[
+ {ending:"s",items:[
+  {singular:"un pays",singularAr:"بلد",plural:"des pays",pluralAr:"بلدان"},
+  {singular:"un mois",singularAr:"شهر",plural:"des mois",pluralAr:"أشهر"},
+  {singular:"une souris",singularAr:"فأرة",plural:"des souris",pluralAr:"فئران"}
+ ]},
+ {ending:"x",items:[
+  {singular:"un prix",singularAr:"سعر",plural:"des prix",pluralAr:"أسعار"},
+  {singular:"un choix",singularAr:"خيار",plural:"des choix",pluralAr:"خيارات"}
+ ]},
+ {ending:"z",items:[
+  {singular:"un nez",singularAr:"أنف",plural:"des nez",pluralAr:"أنوف"}
+ ]}
 ];
 
 const A1_NOUN_TRANSFORMATION_GROUPS=[
@@ -7104,6 +7119,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [articleShorteningGroupIndex,setArticleShorteningGroupIndex]=useState(0);
  const [articleShorteningCardIndex,setArticleShorteningCardIndex]=useState(0);
  const [regularPluralExampleIndex,setRegularPluralExampleIndex]=useState(0);
+ const [invariablePluralGroupIndex,setInvariablePluralGroupIndex]=useState(0);
+ const [invariablePluralExampleIndex,setInvariablePluralExampleIndex]=useState(0);
  const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -8741,6 +8758,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             <button type="button" onClick={()=>void speakFrench(example.plural,{rate:.74})} aria-label={`استمع إلى ${example.plural}`}><small>الجمع</small><strong dir="ltr">{example.plural.slice(0,-1)}<mark>s</mark></strong><span>{example.pluralAr}</span><Volume2 aria-hidden="true"/></button>
            </div>})()}</div>
            <div className="university-number-pagination a1-regular-plural-pagination" dir="ltr"><button type="button" onClick={()=>setRegularPluralExampleIndex(index=>Math.max(0,index-1))} disabled={regularPluralExampleIndex===0} aria-label="مثال الجمع السابق"><ChevronLeft/><span>السابق</span></button><div><small>أمثلة الجمع المنتظم</small><strong>{regularPluralExampleIndex+1} / {A1_REGULAR_PLURAL_EXAMPLES.length}</strong></div><button type="button" onClick={()=>setRegularPluralExampleIndex(index=>Math.min(A1_REGULAR_PLURAL_EXAMPLES.length-1,index+1))} disabled={regularPluralExampleIndex===A1_REGULAR_PLURAL_EXAMPLES.length-1} aria-label="مثال الجمع التالي"><span>التالي</span><ChevronRight/></button></div>
+          </div>:index===2&&branchIndex===1?<div className="a1-regular-plural a1-invariable-plural">
+           <div className="a1-invariable-plural-tabs" role="group" aria-label="الحرف الأخير في الاسم">{A1_INVARIABLE_PLURAL_GROUPS.map((group,groupIndex)=><button key={group.ending} type="button" className={invariablePluralGroupIndex===groupIndex?"active":""} aria-pressed={invariablePluralGroupIndex===groupIndex} onClick={()=>{setInvariablePluralGroupIndex(groupIndex);setInvariablePluralExampleIndex(0)}}><span>ينتهي بـ</span><strong dir="ltr">-{group.ending}</strong></button>)}</div>
+           <div className="a1-regular-plural-card" key={`${invariablePluralGroupIndex}-${invariablePluralExampleIndex}`} aria-live="polite">{(()=>{const example=A1_INVARIABLE_PLURAL_GROUPS[invariablePluralGroupIndex].items[invariablePluralExampleIndex];return <div className="a1-regular-plural-pair">
+            <button type="button" onClick={()=>void speakFrench(example.singular,{rate:.74})} aria-label={`استمع إلى ${example.singular}`}><small>المفرد</small><strong dir="ltr">{example.singular.slice(0,-1)}<mark>{example.singular.slice(-1)}</mark></strong><span>{example.singularAr}</span><Volume2 aria-hidden="true"/></button>
+            <span className="a1-regular-plural-arrow" aria-hidden="true"><b dir="ltr">=</b><span>←</span></span>
+            <button type="button" onClick={()=>void speakFrench(example.plural,{rate:.74})} aria-label={`استمع إلى ${example.plural}`}><small>الجمع</small><strong dir="ltr">{example.plural.slice(0,-1)}<mark>{example.plural.slice(-1)}</mark></strong><span>{example.pluralAr}</span><Volume2 aria-hidden="true"/></button>
+           </div>})()}</div>
+           <div className="university-number-pagination a1-regular-plural-pagination" dir="ltr"><button type="button" onClick={()=>setInvariablePluralExampleIndex(index=>Math.max(0,index-1))} disabled={invariablePluralExampleIndex===0} aria-label="مثال سابق"><ChevronLeft/><span>السابق</span></button><div><small>الاسم ثابت الكتابة</small><strong>{invariablePluralExampleIndex+1} / {A1_INVARIABLE_PLURAL_GROUPS[invariablePluralGroupIndex].items.length}</strong></div><button type="button" onClick={()=>setInvariablePluralExampleIndex(index=>Math.min(A1_INVARIABLE_PLURAL_GROUPS[invariablePluralGroupIndex].items.length-1,index+1))} disabled={invariablePluralExampleIndex===A1_INVARIABLE_PLURAL_GROUPS[invariablePluralGroupIndex].items.length-1} aria-label="مثال تالٍ"><span>التالي</span><ChevronRight/></button></div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}
           </div>}</div>

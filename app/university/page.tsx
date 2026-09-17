@@ -3111,7 +3111,7 @@ const A1_NOUNS_LEARNING_GROUPS=[
  {branches:[
   {fr:"Les noms masculins",ar:"الأسماء المذكرة",note:"الاسم المذكر يأتي مع un في التنكير، ومع le في التعريف. احفظ الاسم مع أداته.",examples:[{fr:"un livre",ar:"كتاب"},{fr:"le jardin",ar:"الحديقة"}]},
   {fr:"Les noms féminins",ar:"الأسماء المؤنثة",note:"الاسم المؤنث يأتي مع une في التنكير، ومع la في التعريف. لا تكفي نهاية الاسم دائمًا لمعرفة جنسه.",examples:[{fr:"une table",ar:"طاولة"},{fr:"la maison",ar:"المنزل"}]},
-  {fr:"Mémoriser le genre",ar:"حفظ جنس الاسم",note:"تُستعمل l’ مع المذكر والمؤنث، فلا تكشف الجنس وحدها. تعلّم الاسم أيضًا مع un أو une.",examples:[{fr:"un homme → l’homme",ar:"رجل، ثم الرجل"},{fr:"une école → l’école",ar:"مدرسة، ثم المدرسة"}]}
+  {fr:"Les noms épicènes",ar:"الأسماء المشتركة ذات الجنسين",note:"بعض أسماء الأشخاص لها الشكل نفسه للمذكر والمؤنث؛ وتتغيّر الأداة بحسب الشخص المقصود، مثل un للمذكر وune للمؤنث.",examples:[{fr:"un élève → une élève",ar:"طالب، طالبة"},{fr:"un artiste → une artiste",ar:"فنان، فنانة"}]}
  ]},
  {branches:[
   {fr:"Les articles définis",ar:"أدوات التعريف",note:"نستخدم le للمذكر، وla للمؤنث، وl’ قبل صوت متحرك أو h صامتة، وles للجمع.",examples:[{fr:"le chat",ar:"القط"},{fr:"la porte",ar:"الباب"},{fr:"l’avion",ar:"الطائرة"},{fr:"les chats",ar:"القطط"}]},

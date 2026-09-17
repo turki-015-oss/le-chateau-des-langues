@@ -3116,7 +3116,7 @@ const A1_NOUNS_LEARNING_GROUPS=[
  {branches:[
   {fr:"Les articles définis",ar:"أدوات التعريف",note:"تأتي أداة التعريف قبل اسم محدد في السياق. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
   {fr:"Les articles indéfinis",ar:"أدوات التنكير",note:"نستخدم أدوات التنكير عند ذكر شخص أو شيء غير محدد. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
-  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها لكمية غير محددة من شيء لا نعدّه مباشرة. هنا مقدمة قصيرة، والتطبيق المفصل في درس الطعام والتسوق.",examples:[{fr:"du pain",ar:"خبز"},{fr:"de la soupe",ar:"حساء"},{fr:"de l’eau",ar:"ماء"}]}
+  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها للتعبير عن كمية غير محددة من شيء لا نعدّه مباشرة، مثل الطعام والشراب. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]}
  ]},
  {branches:[
   {fr:"Le pluriel régulier",ar:"الجمع المنتظم",note:"نضيف s إلى أغلب الأسماء عند جمعها، وغالبًا لا تُنطق هذه العلامة.",examples:[{fr:"un cahier → des cahiers",ar:"دفتر، ثم دفاتر"},{fr:"une fleur → des fleurs",ar:"زهرة، ثم زهور"}]},
@@ -3137,6 +3137,12 @@ const A1_INDEFINITE_ARTICLE_CARDS=[
  {article:"un",title:"المفرد المذكر",note:"توضع أمام اسم مذكر مفرد غير محدد، سواء بدأ بصوت ساكن أو متحرك. لا تُختصر قبل الصوت المتحرك.",items:[{fr:"un ballon",ar:"كرة",gender:"مذكر"},{fr:"un gâteau",ar:"كعكة",gender:"مذكر"},{fr:"un bureau",ar:"مكتب",gender:"مذكر"},{fr:"un ordinateur",ar:"حاسوب",gender:"مذكر"}]},
  {article:"une",title:"المفرد المؤنث",note:"توضع أمام اسم مؤنث مفرد غير محدد، سواء بدأ بصوت ساكن أو متحرك. لا تُختصر قبل الصوت المتحرك.",items:[{fr:"une montre",ar:"ساعة يد",gender:"مؤنث"},{fr:"une bouteille",ar:"زجاجة",gender:"مؤنث"},{fr:"une chemise",ar:"قميص",gender:"مؤنث"},{fr:"une école",ar:"مدرسة",gender:"مؤنث"}]},
  {article:"des",title:"الجمع",note:"توضع أمام أسماء جمع غير محددة، مذكّرة كانت أو مؤنّثة.",items:[{fr:"des biscuits",ar:"قطع بسكويت",gender:"جمع مذكر"},{fr:"des cartes",ar:"بطاقات",gender:"جمع مؤنث"},{fr:"des vélos",ar:"دراجات",gender:"جمع مذكر"},{fr:"des étoiles",ar:"نجوم",gender:"جمع مؤنث"}]}
+];
+
+const A1_PARTITIVE_ARTICLE_CARDS=[
+ {article:"du",title:"المفرد المذكر",note:"توضع قبل اسم مذكر يبدأ بصوت ساكن للتعبير عن كمية غير محددة منه.",sentence:"Je bois du lait.",sentenceAr:"أشرب حليبًا.",items:[{fr:"du lait",ar:"حليب",gender:"مذكر"},{fr:"du riz",ar:"أرز",gender:"مذكر"},{fr:"du sucre",ar:"سكر",gender:"مذكر"},{fr:"du beurre",ar:"زبدة",gender:"مذكر"}]},
+ {article:"de la",title:"المفرد المؤنث",note:"توضع قبل اسم مؤنث يبدأ بصوت ساكن للتعبير عن كمية غير محددة منه.",sentence:"Je mange de la salade.",sentenceAr:"آكل سلطة.",items:[{fr:"de la confiture",ar:"مربى",gender:"مؤنث"},{fr:"de la farine",ar:"دقيق",gender:"مؤنث"},{fr:"de la salade",ar:"سلطة",gender:"مؤنث"},{fr:"de la limonade",ar:"شراب الليمون",gender:"مؤنث"}]},
+ {article:"de l’",title:"المفرد المذكر أو المؤنث",note:"توضع قبل اسم يبدأ بصوت متحرك أو بحرف h صامت، سواء كان مذكرًا أو مؤنثًا؛ لذلك لا تكشف وحدها جنس الاسم.",sentence:"Je bois de l’eau.",sentenceAr:"أشرب ماءً.",items:[{fr:"de l’eau",ar:"ماء",gender:"مؤنث"},{fr:"de l’huile",ar:"زيت",gender:"مؤنث"},{fr:"de l’ail",ar:"ثوم",gender:"مذكر"},{fr:"de l’air",ar:"هواء",gender:"مذكر"}]}
 ];
 
 const A1_NOUN_TRANSFORMATION_GROUPS=[
@@ -7059,6 +7065,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [feminineNounPageIndex,setFeminineNounPageIndex]=useState(0);
  const [definiteArticleCardIndex,setDefiniteArticleCardIndex]=useState(0);
  const [indefiniteArticleCardIndex,setIndefiniteArticleCardIndex]=useState(0);
+ const [partitiveArticleCardIndex,setPartitiveArticleCardIndex]=useState(0);
  const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -8666,6 +8673,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
            <div className="a1-definite-article-card" key={indefiniteArticleCardIndex}>
             <div className="a1-definite-article-card-heading"><span dir="ltr">{A1_INDEFINITE_ARTICLE_CARDS[indefiniteArticleCardIndex].article}</span><div><strong>{A1_INDEFINITE_ARTICLE_CARDS[indefiniteArticleCardIndex].title}</strong><p>{A1_INDEFINITE_ARTICLE_CARDS[indefiniteArticleCardIndex].note}</p></div></div>
             <div className="a1-definite-article-examples">{A1_INDEFINITE_ARTICLE_CARDS[indefiniteArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
+           </div>
+          </div>:index===1&&branchIndex===2?<div className="a1-definite-articles a1-partitive-articles">
+           <div className="a1-definite-article-tabs" role="group" aria-label="اختر أداة التجزئة">{A1_PARTITIVE_ARTICLE_CARDS.map((card,cardIndex)=><button key={card.article} type="button" className={partitiveArticleCardIndex===cardIndex?"active":""} aria-pressed={partitiveArticleCardIndex===cardIndex} onClick={()=>setPartitiveArticleCardIndex(cardIndex)}><strong dir="ltr">{card.article}</strong><small>{card.title}</small></button>)}</div>
+           <div className="a1-definite-article-card" key={partitiveArticleCardIndex}>
+            <div className="a1-definite-article-card-heading"><span dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].article}</span><div><strong>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].title}</strong><p>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].note}</p></div></div>
+            <div className="a1-definite-article-examples">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
+            <button className="a1-partitive-article-sentence" type="button" onClick={()=>void speakFrench(A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence,{rate:.74})} aria-label={`استمع إلى ${A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}`}><span><small>في جملة</small><strong dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}</strong><em>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentenceAr}</em></span><Volume2 aria-hidden="true"/></button>
            </div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}

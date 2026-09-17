@@ -799,7 +799,7 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
-  id:"nouns",title:"Noms, articles et pluriel",ar:"الأسماء وأدوات التعريف والجمع",icon:Tags,
+  id:"nouns",title:"Les noms : genre, articles et pluriel",ar:"الأسماء: التذكير والتأنيث والأدوات والجمع",icon:Tags,
   description:"تمييز المذكر والمؤنث، اختيار أدوات التعريف والنكرة، وتكوين جمع الأسماء بصورة صحيحة.",
   sections:[
    section("Le genre et les articles","الجنس وأدوات الاسم","كل اسم فرنسي مذكر أو مؤنث. احفظ الاسم مع أداته دائمًا، لأن شكل الاسم وحده لا يكفي لمعرفة جنسه.",[

@@ -3114,10 +3114,9 @@ const A1_NOUNS_LEARNING_GROUPS=[
   {fr:"La formation du féminin des noms",ar:"الأسماء متغيرة الشكل: المذكر وتأنيثه",note:"يتغيّر شكل بعض الأسماء عند تحويلها من المذكر إلى المؤنث. استخدمنا le وla هنا لتوضيح الجنس؛ أما النكرة فنستخدم معها un وune. اختر طريقة التغيير، ثم تصفّح أمثلتها في البطاقة نفسها.",examples:[]}
  ]},
  {branches:[
-  {fr:"Les articles définis",ar:"أدوات التعريف",note:"نستخدم le للمذكر، وla للمؤنث، وl’ قبل صوت متحرك أو h صامتة، وles للجمع.",examples:[{fr:"le chat",ar:"القط"},{fr:"la porte",ar:"الباب"},{fr:"l’avion",ar:"الطائرة"},{fr:"les chats",ar:"القطط"}]},
+  {fr:"Les articles définis",ar:"أدوات التعريف",note:"تأتي أداة التعريف قبل اسم محدد في السياق. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
   {fr:"Les articles indéfinis",ar:"أدوات التنكير",note:"نستخدم un للمذكر المفرد، وune للمؤنث المفرد، وdes للجمع غير المحدد.",examples:[{fr:"un stylo",ar:"قلم"},{fr:"une chaise",ar:"كرسي"},{fr:"des stylos",ar:"أقلام"}]},
-  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها لكمية غير محددة من شيء لا نعدّه مباشرة. هنا مقدمة قصيرة، والتطبيق المفصل في درس الطعام والتسوق.",examples:[{fr:"du pain",ar:"خبز"},{fr:"de la soupe",ar:"حساء"},{fr:"de l’eau",ar:"ماء"}]},
-  {fr:"L’élision des articles",ar:"اختصار الأدوات",note:"تُختصر le أو la إلى l’، وde la أو du إلى de l’، قبل صوت متحرك أو h صامتة. أما h التي تمنع الاختصار فتبقى معها الأداة كاملة.",examples:[{fr:"l’orange",ar:"البرتقالة"},{fr:"l’hôtel",ar:"الفندق"},{fr:"le héros",ar:"البطل"}]}
+  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها لكمية غير محددة من شيء لا نعدّه مباشرة. هنا مقدمة قصيرة، والتطبيق المفصل في درس الطعام والتسوق.",examples:[{fr:"du pain",ar:"خبز"},{fr:"de la soupe",ar:"حساء"},{fr:"de l’eau",ar:"ماء"}]}
  ]},
  {branches:[
   {fr:"Le pluriel régulier",ar:"الجمع المنتظم",note:"نضيف s إلى أغلب الأسماء عند جمعها، وغالبًا لا تُنطق هذه العلامة.",examples:[{fr:"un cahier → des cahiers",ar:"دفتر، ثم دفاتر"},{fr:"une fleur → des fleurs",ar:"زهرة، ثم زهور"}]},
@@ -3125,6 +3124,13 @@ const A1_NOUNS_LEARNING_GROUPS=[
   {fr:"Les pluriels fréquents en -aux",ar:"صيغ جمع شائعة بـ -aux",note:"أغلب الأسماء المنتهية بـ-al تصبح -aux في الجمع، لكن توجد استثناءات مثل festival.",examples:[{fr:"un journal → des journaux",ar:"صحيفة، ثم صحف"},{fr:"un cheval → des chevaux",ar:"حصان، ثم خيول"},{fr:"un festival → des festivals",ar:"مهرجان، ثم مهرجانات"}]},
   {fr:"Les articles au pluriel",ar:"الأدوات مع الجمع",note:"في الجمع تصبح أدوات التعريف les وأدوات التنكير des، مع إضافة علامة الجمع إلى الاسم حين تتغير كتابته.",examples:[{fr:"le garçon → les garçons",ar:"الولد، ثم الأولاد"},{fr:"une lampe → des lampes",ar:"مصباح، ثم مصابيح"},{fr:"l’enfant → les enfants",ar:"الطفل، ثم الأطفال"}]}
  ]}
+];
+
+const A1_DEFINITE_ARTICLE_CARDS=[
+ {article:"le",title:"المفرد المذكر",note:"توضع أمام الاسم المذكر المفرد الذي يبدأ بصوت ساكن.",items:[{fr:"le sac",ar:"الحقيبة",gender:"مذكر"},{fr:"le bus",ar:"الحافلة",gender:"مذكر"},{fr:"le train",ar:"القطار",gender:"مذكر"},{fr:"le téléphone",ar:"الهاتف",gender:"مذكر"}]},
+ {article:"la",title:"المفرد المؤنث",note:"توضع أمام الاسم المؤنث المفرد الذي يبدأ بصوت ساكن.",items:[{fr:"la clé",ar:"المفتاح",gender:"مؤنث"},{fr:"la rue",ar:"الشارع",gender:"مؤنث"},{fr:"la fenêtre",ar:"النافذة",gender:"مؤنث"},{fr:"la robe",ar:"الفستان",gender:"مؤنث"}]},
+ {article:"l’",title:"المفرد المذكر أو المؤنث",note:"تحل محل le أو la إذا بدأ الاسم بصوت متحرك أو بحرف h صامت؛ لذلك لا تكشف وحدها جنس الاسم.",items:[{fr:"l’arbre",ar:"الشجرة",gender:"مذكر"},{fr:"l’œuf",ar:"البيضة",gender:"مذكر"},{fr:"l’école",ar:"المدرسة",gender:"مؤنث"},{fr:"l’étoile",ar:"النجمة",gender:"مؤنث"}]},
+ {article:"les",title:"الجمع",note:"توضع أمام الاسم الجمع، سواء كان مذكرًا أو مؤنثًا.",items:[{fr:"les crayons",ar:"أقلام الرصاص",gender:"جمع مذكر"},{fr:"les chaussures",ar:"الأحذية",gender:"جمع مؤنث"},{fr:"les oiseaux",ar:"الطيور",gender:"جمع مذكر"},{fr:"les fleurs",ar:"الأزهار",gender:"جمع مؤنث"}]}
 ];
 
 const A1_NOUN_TRANSFORMATION_GROUPS=[
@@ -7045,6 +7051,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [masculineNounPageIndex,setMasculineNounPageIndex]=useState(0);
  const [feminineNounPageIndex,setFeminineNounPageIndex]=useState(0);
+ const [definiteArticleCardIndex,setDefiniteArticleCardIndex]=useState(0);
  const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -8640,6 +8647,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             <button type="button" onClick={()=>setNounTransformationItemIndex(item=>Math.max(0,item-1))} disabled={nounTransformationItemIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
             <div><small>أمثلة {A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].ar}</small><strong>{nounTransformationItemIndex+1} / {A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length}</strong></div>
             <button type="button" onClick={()=>setNounTransformationItemIndex(item=>Math.min(A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length-1,item+1))} disabled={nounTransformationItemIndex===A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
+           </div>
+          </div>:index===1&&branchIndex===0?<div className="a1-definite-articles">
+           <div className="a1-definite-article-tabs" role="group" aria-label="اختر أداة التعريف">{A1_DEFINITE_ARTICLE_CARDS.map((card,cardIndex)=><button key={card.article} type="button" className={definiteArticleCardIndex===cardIndex?"active":""} aria-pressed={definiteArticleCardIndex===cardIndex} onClick={()=>setDefiniteArticleCardIndex(cardIndex)}><strong dir="ltr">{card.article}</strong><small>{card.title}</small></button>)}</div>
+           <div className="a1-definite-article-card" key={definiteArticleCardIndex}>
+            <div className="a1-definite-article-card-heading"><span dir="ltr">{A1_DEFINITE_ARTICLE_CARDS[definiteArticleCardIndex].article}</span><div><strong>{A1_DEFINITE_ARTICLE_CARDS[definiteArticleCardIndex].title}</strong><p>{A1_DEFINITE_ARTICLE_CARDS[definiteArticleCardIndex].note}</p></div></div>
+            <div className="a1-definite-article-examples">{A1_DEFINITE_ARTICLE_CARDS[definiteArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
            </div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}

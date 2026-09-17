@@ -810,11 +810,12 @@ const A1_MODULES:CourseModule[]=[
     {fr:"C’est un livre.",ar:"هذا كتاب."},
     {fr:"C’est une table.",ar:"هذه طاولة."}
    ]),
-   section("Les articles","أدوات التعريف والتنكير والتجزئة","تتغير الأداة بحسب جنس الاسم وعدده ومعناه. نبدأ بالتعريف والتنكير، ثم نتعرف بإيجاز على أدوات التجزئة قبل تطبيقها في درس الطعام.",[
+   section("Les articles","أدوات التعريف والتنكير والتجزئة","تتغير الأداة بحسب جنس الاسم وعدده ومعناه. نبدأ بالتعريف والتنكير والتجزئة، ثم نميّز بين حذف الصوت ودمج حرف الجر مع أداة التعريف.",[
     "le وla وl’ وles أدوات تعريف.",
     "un وune وdes أدوات تنكير.",
     "du وde la وde l’ تُستعمل مع كمية غير محددة من اسم غير معدود.",
-    "تأتي l’ وde l’ قبل صوت متحرك أو h صامتة."
+    "تأتي l’ وde l’ قبل صوت متحرك أو h صامتة.",
+    "يندمج à مع le أو les ليصبح au أو aux، ويندمج de معهما ليصبح du أو des."
    ],[
     {fr:"Le livre est sur la table.",ar:"الكتاب على الطاولة."},
     {fr:"Je bois de l’eau.",ar:"أشرب ماءً."}
@@ -3116,7 +3117,8 @@ const A1_NOUNS_LEARNING_GROUPS=[
  {branches:[
   {fr:"Les articles définis",ar:"أدوات التعريف",note:"تأتي أداة التعريف قبل اسم محدد في السياق. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
   {fr:"Les articles indéfinis",ar:"أدوات التنكير",note:"نستخدم أدوات التنكير عند ذكر شخص أو شيء غير محدد. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
-  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها للتعبير عن كمية غير محددة من شيء لا نعدّه مباشرة، مثل الطعام والشراب. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]}
+  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها للتعبير عن كمية غير محددة من شيء لا نعدّه مباشرة، مثل الطعام والشراب. اختر الأداة لتتعرف إلى استخدامها وأمثلتها.",examples:[]},
+  {fr:"L’élision et les articles contractés",ar:"اختصار الأدوات",note:"نفرّق هنا بين حذف حرف في l’ وde l’، وبين دمج à أو de مع أداة التعريف في au وaux وdu وdes.",examples:[]}
  ]},
  {branches:[
   {fr:"Le pluriel régulier",ar:"الجمع المنتظم",note:"نضيف s إلى أغلب الأسماء عند جمعها، وغالبًا لا تُنطق هذه العلامة.",examples:[{fr:"un cahier → des cahiers",ar:"دفتر، ثم دفاتر"},{fr:"une fleur → des fleurs",ar:"زهرة، ثم زهور"}]},
@@ -3153,6 +3155,19 @@ const A1_PARTITIVE_NEGATION_EXAMPLES=[
  {affirmative:"Nous avons du sucre.",affirmativeAr:"لدينا سكر.",negative:"Nous n’avons pas de sucre.",negativeAr:"ليس لدينا سكر."},
  {affirmative:"Il achète de la farine.",affirmativeAr:"هو يشتري دقيقًا.",negative:"Il n’achète pas de farine.",negativeAr:"هو لا يشتري دقيقًا."},
  {affirmative:"J’ai de l’huile.",affirmativeAr:"لديّ زيت.",negative:"Je n’ai pas d’huile.",negativeAr:"ليس لديّ زيت."}
+];
+
+const A1_ARTICLE_SHORTENING_GROUPS=[
+ {fr:"L’élision",ar:"حذف الصوت",note:"تُحذف نهاية le أو la قبل صوت متحرك أو h صامتة، وكذلك تظهر صيغة de l’. أمّا un وune فلا يُختصران.",cards:[
+  {article:"l’",title:"اختصار le أو la",formula:"le / la → l’",note:"تأتي قبل اسم مفرد يبدأ بصوت متحرك أو h صامتة؛ ولا تكشف وحدها إن كان الاسم مذكرًا أم مؤنثًا.",examples:[{fr:"l’examen",ar:"الامتحان",sentence:"L’examen commence.",sentenceAr:"يبدأ الامتحان."},{fr:"l’image",ar:"الصورة",sentence:"L’image est claire.",sentenceAr:"الصورة واضحة."}]},
+  {article:"de l’",title:"قبل الصوت المتحرك",formula:"de + l’ → de l’",note:"تأتي de l’ قبل اسم يبدأ بصوت متحرك أو h صامتة. قد تدل على كمية غير محددة بحسب سياق الجملة.",examples:[{fr:"de l’énergie",ar:"طاقة",sentence:"J’ai de l’énergie.",sentenceAr:"لديّ طاقة."},{fr:"de l’ombre",ar:"ظل",sentence:"Je cherche de l’ombre.",sentenceAr:"أبحث عن ظل."}]}
+ ]},
+ {fr:"Les articles contractés",ar:"دمج حرف الجر",note:"تُدمج à أو de مع le وles. أمّا à la وà l’ وde la وde l’ فتبقى كلمتين.",cards:[
+  {article:"au",title:"إلى المفرد المذكر",formula:"à + le → au",note:"عند اجتماع حرف الجر à مع أداة التعريف le نكتب au.",examples:[{fr:"au parc",ar:"إلى الحديقة",sentence:"Je vais au parc.",sentenceAr:"أذهب إلى الحديقة."},{fr:"au cinéma",ar:"في السينما",sentence:"Il est au cinéma.",sentenceAr:"هو في السينما."}]},
+  {article:"aux",title:"إلى الجمع",formula:"à + les → aux",note:"عند اجتماع حرف الجر à مع أداة التعريف les نكتب aux.",examples:[{fr:"aux enfants",ar:"للأطفال",sentence:"Je parle aux enfants.",sentenceAr:"أتحدث إلى الأطفال."},{fr:"aux voisins",ar:"للجيران",sentence:"Nous parlons aux voisins.",sentenceAr:"نتحدث إلى الجيران."}]},
+  {article:"du",title:"من المفرد المذكر",formula:"de + le → du",note:"هنا du ناتجة من de + le، كما في du marché؛ وهي غير du التجزئية في Je bois du lait.",examples:[{fr:"du marché",ar:"من السوق",sentence:"Je viens du marché.",sentenceAr:"آتي من السوق."},{fr:"du professeur",ar:"للمعلم",sentence:"Le livre du professeur est ici.",sentenceAr:"كتاب المعلم هنا."}]},
+  {article:"des",title:"من الجمع",formula:"de + les → des",note:"في des élèves هنا تندمج de مع les؛ أما des cahiers وحدها فهي أداة تنكير للجمع.",examples:[{fr:"des élèves",ar:"للتلاميذ",sentence:"Les cahiers des élèves sont ici.",sentenceAr:"دفاتر التلاميذ هنا."},{fr:"des enfants",ar:"للأطفال",sentence:"Les jouets des enfants sont ici.",sentenceAr:"ألعاب الأطفال هنا."}]}
+ ]}
 ];
 
 const A1_NOUN_TRANSFORMATION_GROUPS=[
@@ -7077,6 +7092,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [indefiniteArticleCardIndex,setIndefiniteArticleCardIndex]=useState(0);
  const [partitiveArticleCardIndex,setPartitiveArticleCardIndex]=useState(0);
  const [partitiveNegationExampleIndex,setPartitiveNegationExampleIndex]=useState(0);
+ const [articleShorteningGroupIndex,setArticleShorteningGroupIndex]=useState(0);
+ const [articleShorteningCardIndex,setArticleShorteningCardIndex]=useState(0);
  const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
@@ -8699,6 +8716,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             </div>:<><div className="a1-definite-article-examples">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><span className="a1-definite-article-example-copy"><strong dir="ltr">{item.fr}</strong><small>{item.ar}</small></span><span className="a1-definite-article-example-meta"><em>{item.gender}</em><Volume2 aria-hidden="true"/></span></button>)}</div>
             <button className="a1-partitive-article-sentence" type="button" onClick={()=>void speakFrench(A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence,{rate:.74})} aria-label={`استمع إلى ${A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}`}><span><small>في جملة</small><strong dir="ltr">{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentence}</strong><em>{A1_PARTITIVE_ARTICLE_CARDS[partitiveArticleCardIndex].sentenceAr}</em></span><Volume2 aria-hidden="true"/></button></>}
            </div>
+          </div>:index===1&&branchIndex===3?<div className="a1-article-shortening">
+           <div className="a1-article-shortening-groups" role="group" aria-label="نوع اختصار الأدوات">{A1_ARTICLE_SHORTENING_GROUPS.map((group,groupIndex)=><button key={group.fr} type="button" className={articleShorteningGroupIndex===groupIndex?"active":""} aria-pressed={articleShorteningGroupIndex===groupIndex} onClick={()=>{setArticleShorteningGroupIndex(groupIndex);setArticleShorteningCardIndex(0)}}><strong>{group.ar}</strong><small dir="ltr">{group.fr}</small></button>)}</div>
+           <p className="a1-article-shortening-group-note">{A1_ARTICLE_SHORTENING_GROUPS[articleShorteningGroupIndex].note}</p>
+           <div className="a1-definite-article-tabs a1-article-shortening-tabs" role="group" aria-label="اختر الصيغة">{A1_ARTICLE_SHORTENING_GROUPS[articleShorteningGroupIndex].cards.map((card,cardIndex)=><button key={card.article} type="button" className={articleShorteningCardIndex===cardIndex?"active":""} aria-pressed={articleShorteningCardIndex===cardIndex} onClick={()=>setArticleShorteningCardIndex(cardIndex)}><strong dir="ltr">{card.article}</strong><small>{card.title}</small></button>)}</div>
+           <div className="a1-definite-article-card a1-article-shortening-card" key={`${articleShorteningGroupIndex}-${articleShorteningCardIndex}`} aria-live="polite">{(()=>{const card=A1_ARTICLE_SHORTENING_GROUPS[articleShorteningGroupIndex].cards[articleShorteningCardIndex];return <>
+            <div className="a1-article-shortening-formula" dir="ltr">{card.formula}</div><p className="a1-article-shortening-note">{card.note}</p>
+            <div className="a1-article-shortening-examples">{card.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.sentence,{rate:.74})} aria-label={`استمع إلى ${example.sentence}`}><small dir="ltr">{example.fr}</small><strong dir="ltr">{example.sentence}</strong><span>{example.sentenceAr}</span><Volume2 aria-hidden="true"/></button>)}</div>
+           </>})()}</div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}
           </div>}</div>

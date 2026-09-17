@@ -3127,6 +3127,30 @@ const A1_NOUNS_LEARNING_GROUPS=[
  ]}
 ];
 
+const A1_MASCULINE_NOUN_PAGES=[
+ {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل الصيغة المذكرة عند الحديث عن شخص مذكر. تعلّم كل اسم مع un أو le.",items:[
+  {fr:"un homme",ar:"رجل"},{fr:"un garçon",ar:"ولد"},{fr:"un père",ar:"أب"},{fr:"un frère",ar:"أخ"},{fr:"un fils",ar:"ابن"},{fr:"un ami",ar:"صديق"},{fr:"un mari",ar:"زوج"},{fr:"un grand-père",ar:"جد"}
+ ]},
+ {group:"أسماء الأشخاص والوظائف",label:"الوظائف المذكرة",note:"هذه صيغ مذكرة لأسماء وظائف شائعة؛ لبعضها صيغة مؤنثة مختلفة.",items:[
+  {fr:"un acteur",ar:"ممثل"},{fr:"un serveur",ar:"نادل"},{fr:"un vendeur",ar:"بائع"},{fr:"un boulanger",ar:"خباز"},{fr:"un cuisinier",ar:"طباخ"},{fr:"un policier",ar:"شرطي"},{fr:"un coiffeur",ar:"حلاق"},{fr:"un chanteur",ar:"مغنٍ"}
+ ]},
+ {group:"تصنيفات مذكرة",label:"الفصول وأيام الأسبوع",note:"أسماء الفصول وأيام الأسبوع مذكرة. يُستعمل le مع يوم الأسبوع عند الحديث عن عادة متكررة، مثل le lundi.",items:[
+  {fr:"le printemps",ar:"الربيع"},{fr:"l’été",ar:"الصيف"},{fr:"l’automne",ar:"الخريف"},{fr:"l’hiver",ar:"الشتاء"},{fr:"le lundi",ar:"يوم الاثنين"},{fr:"le mardi",ar:"يوم الثلاثاء"},{fr:"le mercredi",ar:"يوم الأربعاء"},{fr:"le jeudi",ar:"يوم الخميس"},{fr:"le vendredi",ar:"يوم الجمعة"},{fr:"le samedi",ar:"يوم السبت"},{fr:"le dimanche",ar:"يوم الأحد"}
+ ]},
+ {group:"تصنيفات مذكرة",label:"أشهر السنة",note:"أسماء الأشهر مذكرة، لكنها تأتي غالبًا دون أداة تعريف عند ذكر التاريخ: en janvier، en février.",items:[
+  {fr:"janvier",ar:"يناير"},{fr:"février",ar:"فبراير"},{fr:"mars",ar:"مارس"},{fr:"avril",ar:"أبريل"},{fr:"mai",ar:"مايو"},{fr:"juin",ar:"يونيو"},{fr:"juillet",ar:"يوليو"},{fr:"août",ar:"أغسطس"},{fr:"septembre",ar:"سبتمبر"},{fr:"octobre",ar:"أكتوبر"},{fr:"novembre",ar:"نوفمبر"},{fr:"décembre",ar:"ديسمبر"}
+ ]},
+ {group:"تصنيفات مذكرة",label:"اللغات والمعادن",note:"أسماء اللغات والمعادن في هذه الأمثلة مذكرة. الأداة l’ لا تكشف الجنس وحدها، لذا احفظ الاسم مع أداته أو تحقّق منه في المعجم.",items:[
+  {fr:"le français",ar:"اللغة الفرنسية"},{fr:"l’anglais",ar:"اللغة الإنجليزية"},{fr:"l’arabe",ar:"اللغة العربية"},{fr:"l’espagnol",ar:"اللغة الإسبانية"},{fr:"l’italien",ar:"اللغة الإيطالية"},{fr:"le fer",ar:"الحديد"},{fr:"l’or",ar:"الذهب"},{fr:"l’argent",ar:"الفضة"},{fr:"le cuivre",ar:"النحاس"}
+ ]},
+ {group:"نهايات شائعة للمذكر",label:"النهايتان -age و-ment",note:"غالبًا ما تكون الأسماء بهذه النهايات مذكرة، لكن النهاية وحدها لا تكفي: la page وl’image مؤنثتان.",items:[
+  {fr:"le garage",ar:"المرآب"},{fr:"le fromage",ar:"الجبن"},{fr:"le village",ar:"القرية"},{fr:"le voyage",ar:"الرحلة"},{fr:"le message",ar:"الرسالة"},{fr:"le bagage",ar:"حقيبة سفر"},{fr:"le moment",ar:"اللحظة"},{fr:"le logement",ar:"المسكن"},{fr:"le bâtiment",ar:"المبنى"},{fr:"le vêtement",ar:"قطعة ملابس"},{fr:"le document",ar:"الوثيقة"}
+ ]},
+ {group:"نهايات شائعة للمذكر",label:"النهايتان -isme و-al",note:"هما مؤشّران شائعان على التذكير، وليستا بديلًا من تعلّم جنس كل كلمة مع أداتها.",items:[
+  {fr:"le tourisme",ar:"السياحة"},{fr:"le cyclisme",ar:"رياضة ركوب الدراجات"},{fr:"le journalisme",ar:"الصحافة"},{fr:"le journal",ar:"الصحيفة"},{fr:"le cheval",ar:"الحصان"},{fr:"l’animal",ar:"الحيوان"},{fr:"l’hôpital",ar:"المستشفى"},{fr:"le festival",ar:"المهرجان"}
+ ]}
+];
+
 const A1_CORE_VERBS_READING={
  title:"Une famille à Lyon",
  arTitle:"عائلة في ليون",
@@ -6977,6 +7001,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [lastModuleId,setLastModuleId]=useState(level.modules[0].id);
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
+ const [masculineNounPageIndex,setMasculineNounPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
@@ -8538,9 +8563,18 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">
           <summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary>
-          <div className="a1-nouns-branch-content"><p>{branch.note}</p><div className="a1-nouns-example-grid">
+          <div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<div className="a1-masculine-table">
+           <div className="a1-masculine-table-heading"><span>{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].group}</span><strong>{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].label}</strong></div>
+           <p className="a1-masculine-table-note">{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].note}</p>
+           <div className="a1-masculine-table-grid">{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>
+           <div className="university-number-pagination a1-masculine-pagination" dir="ltr">
+            <button type="button" onClick={()=>setMasculineNounPageIndex(page=>Math.max(0,page-1))} disabled={masculineNounPageIndex===0} aria-label="المجموعة السابقة"><ChevronLeft/><span>السابق</span></button>
+            <div><small>جدول الأسماء المذكرة</small><strong>{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].label}</strong><em>{masculineNounPageIndex+1} / {A1_MASCULINE_NOUN_PAGES.length}</em></div>
+            <button type="button" onClick={()=>setMasculineNounPageIndex(page=>Math.min(A1_MASCULINE_NOUN_PAGES.length-1,page+1))} disabled={masculineNounPageIndex===A1_MASCULINE_NOUN_PAGES.length-1} aria-label="المجموعة التالية"><span>التالي</span><ChevronRight/></button>
+           </div>
+          </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}
-          </div></div>
+          </div>}</div>
          </details>)}
         </div>
        </div>:isA1Greetings&&index===1?<GreetingDialogueScene variant="introduction"/>:isA1Greetings&&index===0?<div className="a1-greeting-groups">

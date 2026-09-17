@@ -3111,7 +3111,7 @@ const A1_NOUNS_LEARNING_GROUPS=[
  {branches:[
   {fr:"Les noms masculins",ar:"الأسماء المذكرة",note:"الاسم المذكر يأتي مع un في التنكير، ومع le في التعريف. احفظ الاسم مع أداته.",examples:[{fr:"un livre",ar:"كتاب"},{fr:"le jardin",ar:"الحديقة"}]},
   {fr:"Les noms féminins",ar:"الأسماء المؤنثة",note:"الاسم المؤنث يأتي مع une في التنكير، ومع la في التعريف. لا تكفي نهاية الاسم دائمًا لمعرفة جنسه.",examples:[{fr:"une table",ar:"طاولة"},{fr:"la maison",ar:"المنزل"}]},
-  {fr:"Les noms épicènes",ar:"الأسماء المشتركة ذات الجنسين",note:"بعض أسماء الأشخاص لها الشكل نفسه للمذكر والمؤنث؛ وتتغيّر الأداة بحسب الشخص المقصود، مثل un للمذكر وune للمؤنث.",examples:[{fr:"un élève → une élève",ar:"طالب، طالبة"},{fr:"un artiste → une artiste",ar:"فنان، فنانة"}]}
+  {fr:"La formation du féminin des noms",ar:"الأسماء متغيرة الشكل: المذكر وتأنيثه",note:"يتغيّر شكل بعض الأسماء عند تحويلها من المذكر إلى المؤنث. اختر طريقة التغيير، ثم تصفّح أمثلتها في البطاقة نفسها.",examples:[]}
  ]},
  {branches:[
   {fr:"Les articles définis",ar:"أدوات التعريف",note:"نستخدم le للمذكر، وla للمؤنث، وl’ قبل صوت متحرك أو h صامتة، وles للجمع.",examples:[{fr:"le chat",ar:"القط"},{fr:"la porte",ar:"الباب"},{fr:"l’avion",ar:"الطائرة"},{fr:"les chats",ar:"القطط"}]},
@@ -3124,6 +3124,21 @@ const A1_NOUNS_LEARNING_GROUPS=[
   {fr:"Les noms en -s, -x ou -z",ar:"أسماء لا تتغير كتابتها",note:"إذا انتهى الاسم في المفرد بـs أو x أو z، تبقى كتابته كما هي في الجمع، وتتغير الأداة قبله.",examples:[{fr:"un pays → des pays",ar:"بلد، ثم بلدان"},{fr:"un prix → des prix",ar:"سعر، ثم أسعار"},{fr:"un nez → des nez",ar:"أنف، ثم أنوف"}]},
   {fr:"Les pluriels fréquents en -aux",ar:"صيغ جمع شائعة بـ -aux",note:"أغلب الأسماء المنتهية بـ-al تصبح -aux في الجمع، لكن توجد استثناءات مثل festival.",examples:[{fr:"un journal → des journaux",ar:"صحيفة، ثم صحف"},{fr:"un cheval → des chevaux",ar:"حصان، ثم خيول"},{fr:"un festival → des festivals",ar:"مهرجان، ثم مهرجانات"}]},
   {fr:"Les articles au pluriel",ar:"الأدوات مع الجمع",note:"في الجمع تصبح أدوات التعريف les وأدوات التنكير des، مع إضافة علامة الجمع إلى الاسم حين تتغير كتابته.",examples:[{fr:"le garçon → les garçons",ar:"الولد، ثم الأولاد"},{fr:"une lampe → des lampes",ar:"مصباح، ثم مصابيح"},{fr:"l’enfant → les enfants",ar:"الطفل، ثم الأطفال"}]}
+ ]}
+];
+
+const A1_NOUN_TRANSFORMATION_GROUPS=[
+ {fr:"Ajouter -e",ar:"إضافة e",note:"نضيف الحرف e إلى آخر الاسم المذكر.",items:[
+  {masculine:"un ami",feminine:"une amie",masculineAr:"صديق",feminineAr:"صديقة"},{masculine:"un étudiant",feminine:"une étudiante",masculineAr:"طالب",feminineAr:"طالبة"},{masculine:"un voisin",feminine:"une voisine",masculineAr:"جار",feminineAr:"جارة"},{masculine:"un cousin",feminine:"une cousine",masculineAr:"ابن عم",feminineAr:"ابنة عم"},{masculine:"un client",feminine:"une cliente",masculineAr:"عميل",feminineAr:"عميلة"},{masculine:"un marchand",feminine:"une marchande",masculineAr:"بائع",feminineAr:"بائعة"}
+ ]},
+ {fr:"Doubler la consonne + -e",ar:"مضاعفة الحرف الأخير + e",note:"نضاعف الحرف الساكن الأخير، ثم نضيف e.",items:[
+  {masculine:"un chat",feminine:"une chatte",masculineAr:"قط",feminineAr:"قطة"},{masculine:"un chien",feminine:"une chienne",masculineAr:"كلب",feminineAr:"كلبة"},{masculine:"un lion",feminine:"une lionne",masculineAr:"أسد",feminineAr:"لبؤة"},{masculine:"un musicien",feminine:"une musicienne",masculineAr:"موسيقي",feminineAr:"موسيقية"},{masculine:"un Italien",feminine:"une Italienne",masculineAr:"إيطالي",feminineAr:"إيطالية"}
+ ]},
+ {fr:"Changer la terminaison",ar:"تغيير النهاية",note:"تتغير نهاية الاسم عند تأنيثه، مثل -eur إلى -euse أو -teur إلى -trice.",items:[
+  {masculine:"un boulanger",feminine:"une boulangère",masculineAr:"خباز",feminineAr:"خبازة"},{masculine:"un coiffeur",feminine:"une coiffeuse",masculineAr:"مصفف شعر",feminineAr:"مصففة شعر"},{masculine:"un vendeur",feminine:"une vendeuse",masculineAr:"بائع",feminineAr:"بائعة"},{masculine:"un chanteur",feminine:"une chanteuse",masculineAr:"مغنٍ",feminineAr:"مغنية"},{masculine:"un acteur",feminine:"une actrice",masculineAr:"ممثل",feminineAr:"ممثلة"}
+ ]},
+ {fr:"Changer de mot",ar:"تغيير الكلمة كاملة",note:"بعض أسماء الأشخاص لها كلمة مؤنثة مختلفة تمامًا.",items:[
+  {masculine:"un père",feminine:"une mère",masculineAr:"أب",feminineAr:"أم"},{masculine:"un frère",feminine:"une sœur",masculineAr:"أخ",feminineAr:"أخت"},{masculine:"un homme",feminine:"une femme",masculineAr:"رجل",feminineAr:"امرأة"},{masculine:"un garçon",feminine:"une fille",masculineAr:"ولد",feminineAr:"بنت"},{masculine:"un oncle",feminine:"une tante",masculineAr:"عم أو خال",feminineAr:"عمة أو خالة"}
  ]}
 ];
 
@@ -7030,6 +7045,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [masculineNounPageIndex,setMasculineNounPageIndex]=useState(0);
  const [feminineNounPageIndex,setFeminineNounPageIndex]=useState(0);
+ const [nounTransformationGroupIndex,setNounTransformationGroupIndex]=useState(0);
+ const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
@@ -8608,6 +8625,21 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             <button type="button" onClick={()=>setFeminineNounPageIndex(page=>Math.max(0,page-1))} disabled={feminineNounPageIndex===0} aria-label="المجموعة السابقة"><ChevronLeft/><span>السابق</span></button>
             <div><small>جدول الأسماء المؤنثة</small><strong>{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].label}</strong><em>{feminineNounPageIndex+1} / {A1_FEMININE_NOUN_PAGES.length}</em></div>
             <button type="button" onClick={()=>setFeminineNounPageIndex(page=>Math.min(A1_FEMININE_NOUN_PAGES.length-1,page+1))} disabled={feminineNounPageIndex===A1_FEMININE_NOUN_PAGES.length-1} aria-label="المجموعة التالية"><span>التالي</span><ChevronRight/></button>
+           </div>
+          </div>:index===0&&branchIndex===2?<div className="a1-noun-transformations">
+           <div className="a1-noun-transformation-tabs" role="group" aria-label="طرق تأنيث الأسماء">{A1_NOUN_TRANSFORMATION_GROUPS.map((group,groupIndex)=><button key={group.fr} type="button" className={nounTransformationGroupIndex===groupIndex?"active":""} aria-pressed={nounTransformationGroupIndex===groupIndex} onClick={()=>{setNounTransformationGroupIndex(groupIndex);setNounTransformationItemIndex(0)}}><strong>{group.ar}</strong><small dir="ltr">{group.fr}</small></button>)}</div>
+           <div className="a1-noun-transformation-card" key={`${nounTransformationGroupIndex}-${nounTransformationItemIndex}`}>
+            <p>{A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].note}</p>
+            <div className="a1-noun-transformation-pair">{(()=>{const item=A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items[nounTransformationItemIndex];return <>
+             <button type="button" onClick={()=>void speakFrench(item.masculine,{rate:.74})} aria-label={`استمع إلى ${item.masculine}`}><span>مذكر</span><strong dir="ltr">{item.masculine}</strong><small>{item.masculineAr}</small><Volume2 aria-hidden="true"/></button>
+             <span className="a1-noun-transformation-arrow" aria-hidden="true">←</span>
+             <button type="button" onClick={()=>void speakFrench(item.feminine,{rate:.74})} aria-label={`استمع إلى ${item.feminine}`}><span>مؤنث</span><strong dir="ltr">{item.feminine}</strong><small>{item.feminineAr}</small><Volume2 aria-hidden="true"/></button>
+            </>})()}</div>
+           </div>
+           <div className="university-number-pagination a1-noun-transformation-pagination" dir="ltr">
+            <button type="button" onClick={()=>setNounTransformationItemIndex(item=>Math.max(0,item-1))} disabled={nounTransformationItemIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
+            <div><small>أمثلة {A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].ar}</small><strong>{nounTransformationItemIndex+1} / {A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length}</strong></div>
+            <button type="button" onClick={()=>setNounTransformationItemIndex(item=>Math.min(A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length-1,item+1))} disabled={nounTransformationItemIndex===A1_NOUN_TRANSFORMATION_GROUPS[nounTransformationGroupIndex].items.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
            </div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}

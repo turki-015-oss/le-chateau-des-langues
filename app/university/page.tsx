@@ -153,7 +153,12 @@ const A1_NOUNS_LISTENING_CLIPS=[
  {letter:"une",word:"lampe",ar:"مصباح",hiddenSpeech:"une lampe"},
  {letter:"des",word:"cahiers",ar:"دفاتر",hiddenSpeech:"des cahiers"},
  {letter:"les",word:"fenêtres",ar:"النوافذ",hiddenSpeech:"les fenêtres"},
- {letter:"l’",word:"école",ar:"المدرسة",hiddenSpeech:"l’école"}
+ {letter:"l’",word:"école",ar:"المدرسة",hiddenSpeech:"l’école"},
+ {letter:"du",word:"lait",ar:"حليب",hiddenSpeech:"du lait"},
+ {letter:"de l’",word:"eau",ar:"ماء",hiddenSpeech:"de l’eau"},
+ {letter:"des",word:"chevaux",ar:"خيول",hiddenSpeech:"des chevaux"},
+ {letter:"des",word:"pays",ar:"بلدان",hiddenSpeech:"des pays"},
+ {letter:"des",word:"festivals",ar:"مهرجانات",hiddenSpeech:"des festivals"}
 ];
 const A1_CORE_VERBS_LISTENING_CLIPS=[
  {letter:"je suis",word:"prêt",ar:"أنا مستعد",hiddenSpeech:"Je suis prêt"},
@@ -3059,15 +3064,20 @@ const A1_NOUNS_READING={
 };
 
 const A1_NOUNS_LISTENING={
- title:"Les objets du bureau",
- arTitle:"أغراض المكتب",
- text:"Un bureau. Une lampe. Des cahiers. Les fenêtres. L’école.",
+ title:"Les noms et les articles",
+ arTitle:"الأسماء والأدوات",
+ text:"Un bureau. Une lampe. Des cahiers. Les fenêtres. L’école. Du lait. De l’eau. Des chevaux. Des pays. Des festivals.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un bureau","Une porte","Des bureaux"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un livre","Une lampe","La lampe"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le cahier","Les cahiers","Des cahiers"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Les fenêtres","Une fenêtre","Des portes"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Une école","L’école","Les écoles"],correctIndex:1}
+  {prompt:"Quel article entendez-vous avant « bureau » ?",translation:"ما الأداة التي تسمعها قبل «bureau»؟",choices:["un","une","le"],correctIndex:0,explanationAr:"bureau اسم مذكر غير محدد؛ لذلك نسمع un.",explanationFr:"« Bureau » est un nom masculin indéfini : on entend « un »."},
+  {prompt:"Quel article entendez-vous avant « lampe » ?",translation:"ما الأداة التي تسمعها قبل «lampe»؟",choices:["un","une","la"],correctIndex:1,explanationAr:"lampe اسم مؤنث غير محدد؛ لذلك نسمع une.",explanationFr:"« Lampe » est un nom féminin indéfini : on entend « une »."},
+  {prompt:"Quel groupe de mots entendez-vous ?",translation:"ما مجموعة الكلمات التي تسمعها؟",choices:["un cahier","les cahiers","des cahiers"],correctIndex:2,explanationAr:"des أداة تنكير للجمع، وcahiers صيغة جمع cahier.",explanationFr:"« Des » est l’article indéfini pluriel ; « cahiers » est au pluriel."},
+  {prompt:"Quel article entendez-vous avant « fenêtres » ?",translation:"ما الأداة التي تسمعها قبل «fenêtres»؟",choices:["des","les","la"],correctIndex:1,explanationAr:"les أداة تعريف للجمع، ونسمعها قبل fenêtres.",explanationFr:"« Les » est l’article défini pluriel devant « fenêtres »."},
+  {prompt:"Quel groupe de mots entendez-vous ?",translation:"ما مجموعة الكلمات التي تسمعها؟",choices:["une école","les écoles","l’école"],correctIndex:2,explanationAr:"تُختصر أداة التعريف قبل école إلى l’ لأنها تبدأ بصوت متحرك.",explanationFr:"Devant « école », l’article défini devient « l’ »."},
+  {prompt:"Quel article entendez-vous avant « lait » ?",translation:"ما الأداة التي تسمعها قبل «lait»؟",choices:["de la","du","des"],correctIndex:1,explanationAr:"نستخدم du مع lait للتعبير عن كمية غير محددة من الحليب.",explanationFr:"On emploie « du » devant « lait » pour une quantité indéfinie."},
+  {prompt:"Quel article entendez-vous avant « eau » ?",translation:"ما الأداة التي تسمعها قبل «eau»؟",choices:["du","de la","de l’"],correctIndex:2,explanationAr:"نستخدم de l’ قبل eau لأنها تبدأ بصوت متحرك.",explanationFr:"On emploie « de l’ » devant « eau », qui commence par une voyelle."},
+  {prompt:"Quel pluriel entendez-vous ?",translation:"ما صيغة الجمع التي تسمعها؟",choices:["des chevals","des chevaux","un cheval"],correctIndex:1,explanationAr:"جمع cheval هو chevaux؛ تتحول النهاية -al إلى -aux.",explanationFr:"Le pluriel de « cheval » est « chevaux » : -al devient -aux."},
+  {prompt:"Quel groupe de mots entendez-vous ?",translation:"ما مجموعة الكلمات التي تسمعها؟",choices:["un pays","des pays","des prix"],correctIndex:1,explanationAr:"تبقى كتابة pays كما هي في الجمع؛ تتغير الأداة إلى des.",explanationFr:"« Pays » ne change pas au pluriel ; l’article devient « des »."},
+  {prompt:"Quel pluriel entendez-vous ?",translation:"ما صيغة الجمع التي تسمعها؟",choices:["des festivaux","un festival","des festivals"],correctIndex:2,explanationAr:"festival من استثناءات -al؛ نجمعه بإضافة s: festivals.",explanationFr:"« Festival » est une exception : son pluriel est « festivals »."}
  ]
 };
 
@@ -7968,10 +7978,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
-  if(isA1Sounds||isA1Greetings||isA1Countries){
+  if(isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns){
    setAlphabetListeningPlaying(true);
    setAlphabetListeningSegment(isA1Sounds?1:0);
-   void speakFrench(isA1Sounds?clip.word:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech:A1_COUNTRIES_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
+   void speakFrench(isA1Sounds?clip.word:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[clipIndex].hiddenSpeech:A1_NOUNS_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
     rate:rate==="slow"?.5:.76,
     onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
     onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
@@ -8908,15 +8918,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
         <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"} ${isA1Countries?"countries-single":""}`} dir="ltr">
-         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Countries?"استمع إلى المقطع":isA1Greetings?"استمع إلى العبارة":"الحرف مخفي"}</small></span>}</strong>
-         {!isA1Countries&&<strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings?"العبارة مخفية":"الكلمة مخفية"}</small></span>}</strong>}
+         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":"الحرف مخفي"}</small></span>}</strong>
+         {!isA1Countries&&<strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings||isA1Nouns?"العبارة مخفية":"الكلمة مخفية"}</small></span>}</strong>}
         </div>
-        <small>{answeredCorrectly?clip.ar:isA1Countries?"استمع، ثم اختر الإجابة الصحيحة لتظهر الكلمة أو الجملة.":"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
+        <small>{answeredCorrectly?clip.ar:isA1Countries?"استمع، ثم اختر الإجابة الصحيحة لتظهر الكلمة أو الجملة.":isA1Nouns?"استمع إلى الاسم مع أداته، ثم اختر الإجابة الصحيحة.":"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
-        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Countries?"استمع إلى المقطع":isA1Greetings?"استمع إلى العبارة":"استمع إلى الصوت"}</b><small>{isA1Countries?"الكلمة أو الجملة كاملة":isA1Greetings?"العبارة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
+        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":"استمع إلى الصوت"}</b><small>{isA1Countries?"الكلمة أو الجملة كاملة":isA1Greetings||isA1Nouns?"العبارة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
         <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}-${index}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
+       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Nouns?A1_NOUNS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
         <article key={alphabetListeningQuestionIndex} className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(correctCount/activeA2Listening.questions.length*100)}%</b></div>
         <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>

@@ -3128,17 +3128,17 @@ const A1_NOUNS_LEARNING_GROUPS=[
 ];
 
 const A1_MASCULINE_NOUN_PAGES=[
- {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل الصيغة المذكرة عند الحديث عن شخص مذكر. تعلّم كل اسم مع un أو le.",items:[
-  {fr:"un homme",ar:"رجل"},{fr:"un garçon",ar:"ولد"},{fr:"un père",ar:"أب"},{fr:"un frère",ar:"أخ"},{fr:"un fils",ar:"ابن"},{fr:"un ami",ar:"صديق"},{fr:"un mari",ar:"زوج"},{fr:"un grand-père",ar:"جد"}
+ {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل هنا أداة التعريف le للمذكر، وتصبح l’ قبل صوت متحرك أو h صامتة.",items:[
+  {fr:"l’homme",ar:"الرجل"},{fr:"le garçon",ar:"الولد"},{fr:"le père",ar:"الأب"},{fr:"le frère",ar:"الأخ"},{fr:"le fils",ar:"الابن"},{fr:"l’ami",ar:"الصديق"},{fr:"le mari",ar:"الزوج"},{fr:"le grand-père",ar:"الجد"}
  ]},
  {group:"أسماء الأشخاص والوظائف",label:"الوظائف المذكرة",note:"هذه صيغ مذكرة لأسماء وظائف شائعة؛ لبعضها صيغة مؤنثة مختلفة.",items:[
-  {fr:"un acteur",ar:"ممثل"},{fr:"un serveur",ar:"نادل"},{fr:"un vendeur",ar:"بائع"},{fr:"un boulanger",ar:"خباز"},{fr:"un cuisinier",ar:"طباخ"},{fr:"un policier",ar:"شرطي"},{fr:"un coiffeur",ar:"حلاق"},{fr:"un chanteur",ar:"مغنٍ"}
+  {fr:"l’acteur",ar:"الممثل"},{fr:"le serveur",ar:"النادل"},{fr:"le vendeur",ar:"البائع"},{fr:"le boulanger",ar:"الخباز"},{fr:"le cuisinier",ar:"الطباخ"},{fr:"le policier",ar:"الشرطي"},{fr:"le coiffeur",ar:"الحلاق"},{fr:"le chanteur",ar:"المغني"}
  ]},
  {group:"تصنيفات مذكرة",label:"الفصول وأيام الأسبوع",note:"أسماء الفصول وأيام الأسبوع مذكرة. يُستعمل le مع يوم الأسبوع عند الحديث عن عادة متكررة، مثل le lundi.",items:[
   {fr:"le printemps",ar:"الربيع"},{fr:"l’été",ar:"الصيف"},{fr:"l’automne",ar:"الخريف"},{fr:"l’hiver",ar:"الشتاء"},{fr:"le lundi",ar:"يوم الاثنين"},{fr:"le mardi",ar:"يوم الثلاثاء"},{fr:"le mercredi",ar:"يوم الأربعاء"},{fr:"le jeudi",ar:"يوم الخميس"},{fr:"le vendredi",ar:"يوم الجمعة"},{fr:"le samedi",ar:"يوم السبت"},{fr:"le dimanche",ar:"يوم الأحد"}
  ]},
- {group:"تصنيفات مذكرة",label:"أشهر السنة",note:"أسماء الأشهر مذكرة، لكنها تأتي غالبًا دون أداة تعريف عند ذكر التاريخ: en janvier، en février.",items:[
-  {fr:"janvier",ar:"يناير"},{fr:"février",ar:"فبراير"},{fr:"mars",ar:"مارس"},{fr:"avril",ar:"أبريل"},{fr:"mai",ar:"مايو"},{fr:"juin",ar:"يونيو"},{fr:"juillet",ar:"يوليو"},{fr:"août",ar:"أغسطس"},{fr:"septembre",ar:"سبتمبر"},{fr:"octobre",ar:"أكتوبر"},{fr:"novembre",ar:"نوفمبر"},{fr:"décembre",ar:"ديسمبر"}
+ {group:"تصنيفات مذكرة",label:"أشهر السنة",note:"لإظهار التذكير نضع le مع كلمة mois: le mois de janvier. أمّا عند ذكر التاريخ أو الوقت فنقول عادةً en janvier دون أداة قبل اسم الشهر.",items:[
+  {fr:"le mois de janvier",ar:"شهر يناير"},{fr:"le mois de février",ar:"شهر فبراير"},{fr:"le mois de mars",ar:"شهر مارس"},{fr:"le mois d’avril",ar:"شهر أبريل"},{fr:"le mois de mai",ar:"شهر مايو"},{fr:"le mois de juin",ar:"شهر يونيو"},{fr:"le mois de juillet",ar:"شهر يوليو"},{fr:"le mois d’août",ar:"شهر أغسطس"},{fr:"le mois de septembre",ar:"شهر سبتمبر"},{fr:"le mois d’octobre",ar:"شهر أكتوبر"},{fr:"le mois de novembre",ar:"شهر نوفمبر"},{fr:"le mois de décembre",ar:"شهر ديسمبر"}
  ]},
  {group:"تصنيفات مذكرة",label:"اللغات والمعادن",note:"أسماء اللغات والمعادن في هذه الأمثلة مذكرة. الأداة l’ لا تكشف الجنس وحدها، لذا احفظ الاسم مع أداته أو تحقّق منه في المعجم.",items:[
   {fr:"le français",ar:"اللغة الفرنسية"},{fr:"l’anglais",ar:"اللغة الإنجليزية"},{fr:"l’arabe",ar:"اللغة العربية"},{fr:"l’espagnol",ar:"اللغة الإسبانية"},{fr:"l’italien",ar:"اللغة الإيطالية"},{fr:"le fer",ar:"الحديد"},{fr:"l’or",ar:"الذهب"},{fr:"l’argent",ar:"الفضة"},{fr:"le cuivre",ar:"النحاس"}
@@ -3152,20 +3152,20 @@ const A1_MASCULINE_NOUN_PAGES=[
 ];
 
 const A1_FEMININE_NOUN_PAGES=[
- {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل الصيغة المؤنثة عند الحديث عن شخص مؤنث. تعلّم الاسم مع une أو la.",items:[
-  {fr:"une femme",ar:"امرأة"},{fr:"une fille",ar:"فتاة"},{fr:"une mère",ar:"أم"},{fr:"une sœur",ar:"أخت"},{fr:"une amie",ar:"صديقة"},{fr:"une épouse",ar:"زوجة"},{fr:"une grand-mère",ar:"جدة"},{fr:"une voisine",ar:"جارة"}
+ {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل هنا أداة التعريف la للمؤنث، وتصبح l’ قبل صوت متحرك أو h صامتة.",items:[
+  {fr:"la femme",ar:"المرأة"},{fr:"la fille",ar:"الفتاة"},{fr:"la mère",ar:"الأم"},{fr:"la sœur",ar:"الأخت"},{fr:"l’amie",ar:"الصديقة"},{fr:"l’épouse",ar:"الزوجة"},{fr:"la grand-mère",ar:"الجدة"},{fr:"la voisine",ar:"الجارة"}
  ]},
  {group:"أسماء الأشخاص والوظائف",label:"الوظائف المؤنثة",note:"هذه صيغ مؤنثة لأسماء وظائف شائعة. تتغير نهاية الاسم أحيانًا مع تغيّر الجنس.",items:[
-  {fr:"une actrice",ar:"ممثلة"},{fr:"une serveuse",ar:"نادلة"},{fr:"une vendeuse",ar:"بائعة"},{fr:"une boulangère",ar:"خبازة"},{fr:"une cuisinière",ar:"طباخة"},{fr:"une policière",ar:"شرطية"},{fr:"une coiffeuse",ar:"حلاقة"},{fr:"une chanteuse",ar:"مغنية"}
+  {fr:"l’actrice",ar:"الممثلة"},{fr:"la serveuse",ar:"النادلة"},{fr:"la vendeuse",ar:"البائعة"},{fr:"la boulangère",ar:"الخبازة"},{fr:"la cuisinière",ar:"الطباخة"},{fr:"la policière",ar:"الشرطية"},{fr:"la coiffeuse",ar:"الحلاقة"},{fr:"la chanteuse",ar:"المغنية"}
  ]},
  {group:"تصنيفات شائعة للمؤنث",label:"فواكه مؤنثة",note:"هذه أسماء فواكه مؤنثة شائعة، لكن ليست كل الفواكه مؤنثة؛ فنقول مثلًا le citron للمذكر.",items:[
-  {fr:"une pomme",ar:"تفاحة"},{fr:"une banane",ar:"موزة"},{fr:"une orange",ar:"برتقالة"},{fr:"une poire",ar:"كمثرى"},{fr:"une fraise",ar:"فراولة"},{fr:"une cerise",ar:"كرزة"},{fr:"une pêche",ar:"خوخة"},{fr:"une prune",ar:"برقوقة"},{fr:"une mangue",ar:"مانجو"},{fr:"une mandarine",ar:"يوسفي"}
+  {fr:"la pomme",ar:"التفاحة"},{fr:"la banane",ar:"الموزة"},{fr:"l’orange",ar:"البرتقالة"},{fr:"la poire",ar:"الكمثرى"},{fr:"la fraise",ar:"الفراولة"},{fr:"la cerise",ar:"الكرزة"},{fr:"la pêche",ar:"الخوخة"},{fr:"la prune",ar:"البرقوقة"},{fr:"la mangue",ar:"المانجو"},{fr:"la mandarine",ar:"اليوسفي"}
  ]},
  {group:"تصنيفات شائعة للمؤنث",label:"العلوم والمواد الدراسية",note:"أسماء كثير من العلوم والمواد الدراسية مؤنثة. من الاستثناءات le droit عند الحديث عن مادة القانون.",items:[
   {fr:"la science",ar:"العِلم"},{fr:"la chimie",ar:"الكيمياء"},{fr:"la physique",ar:"الفيزياء"},{fr:"la biologie",ar:"علم الأحياء"},{fr:"la géographie",ar:"الجغرافيا"},{fr:"la médecine",ar:"الطب"},{fr:"l’histoire",ar:"التاريخ"},{fr:"l’astronomie",ar:"علم الفلك"}
  ]},
  {group:"تصنيفات شائعة للمؤنث",label:"السيارات",note:"أسماء السيارات مؤنثة غالبًا حين يُقصد بها voiture أو automobile. قد يتغير الجنس إذا كان المقصود نوعًا آخر من المركبات، مثل camion.",items:[
-  {fr:"une voiture",ar:"سيارة"},{fr:"une auto",ar:"سيارة"},{fr:"une automobile",ar:"سيارة"},{fr:"une berline",ar:"سيارة سيدان"},{fr:"une citadine",ar:"سيارة صغيرة للمدينة"},{fr:"une camionnette",ar:"شاحنة صغيرة"},{fr:"une Peugeot",ar:"سيارة بيجو"},{fr:"une Renault",ar:"سيارة رينو"}
+  {fr:"la voiture",ar:"السيارة"},{fr:"l’auto",ar:"السيارة"},{fr:"l’automobile",ar:"السيارة"},{fr:"la berline",ar:"سيارة السيدان"},{fr:"la citadine",ar:"سيارة المدينة الصغيرة"},{fr:"la camionnette",ar:"الشاحنة الصغيرة"},{fr:"la Peugeot",ar:"سيارة بيجو"},{fr:"la Renault",ar:"سيارة رينو"}
  ]},
  {group:"نهايات شائعة للمؤنث",label:"النهايتان -tion و-sion",note:"أسماء كثيرة تنتهي بـ-tion أو -sion مؤنثة. استمع إلى الكلمة كاملة واحفظها مع أداتها.",items:[
   {fr:"la question",ar:"السؤال"},{fr:"la station",ar:"المحطة"},{fr:"la solution",ar:"الحل"},{fr:"la situation",ar:"الوضع"},{fr:"la direction",ar:"الاتجاه"},{fr:"l’information",ar:"المعلومة"},{fr:"la réservation",ar:"الحجز"},{fr:"la télévision",ar:"التلفاز"},{fr:"la décision",ar:"القرار"},{fr:"la conversation",ar:"المحادثة"}

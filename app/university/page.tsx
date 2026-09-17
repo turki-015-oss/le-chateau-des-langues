@@ -800,27 +800,33 @@ const A1_MODULES:CourseModule[]=[
  },
  {
   id:"nouns",title:"Les noms : genre, articles et pluriel",ar:"الأسماء: التذكير والتأنيث والأدوات والجمع",icon:Tags,
-  description:"تمييز المذكر والمؤنث، اختيار أدوات التعريف والنكرة، وتكوين جمع الأسماء بصورة صحيحة.",
+  description:"تمييز المذكر والمؤنث، استعمال أدوات التعريف والتنكير والتجزئة، وتكوين جمع الأسماء بصورة صحيحة.",
   sections:[
-   section("Le genre et les articles","الجنس وأدوات الاسم","كل اسم فرنسي مذكر أو مؤنث. احفظ الاسم مع أداته دائمًا، لأن شكل الاسم وحده لا يكفي لمعرفة جنسه.",[
-    "un للمذكر وune للمؤنث في النكرة.",
-    "le للمذكر وla للمؤنث في المعرفة.",
-    "l’ قبل الحركة للمذكر والمؤنث.",
-    "les للجمع المعرف وdes للجمع غير المعرف."
+   section("Le genre des noms","تذكير الأسماء وتأنيثها","لكل اسم جنس نحوي: مذكر أو مؤنث. تعلّم الاسم مع أداة تكشف جنسه، ولا تعتمد على نهايته وحدها.",[
+    "un livre وle jardin: اسمان مذكران.",
+    "une table وla maison: اسمان مؤنثان.",
+    "قد تخفي l’ جنس الاسم؛ لذلك احفظه أيضًا مع un أو une."
    ],[
-    {fr:"C’est un livre.",ar:"هذا كتاب.",image:"/kingdom-portal-assets/open-book-realistic-v1.webp"},
-    {fr:"C’est une table.",ar:"هذه طاولة.",image:"/restaurant-v1/tableware.webp"},
-    {fr:"L’université est grande.",ar:"الجامعة كبيرة.",image:"/worlds/university.png"}
+    {fr:"C’est un livre.",ar:"هذا كتاب."},
+    {fr:"C’est une table.",ar:"هذه طاولة."}
    ]),
-   section("Former le pluriel","تكوين الجمع","القاعدة العامة إضافة s إلى الاسم، وغالبًا لا تُنطق هذه الـs. توجد نهايات لها قواعد خاصة تُكتسب تدريجيًا.",[
-    "un étudiant → des étudiants.",
-    "une classe → des classes.",
-    "بعض كلمات -al تصبح -aux مثل journal → journaux.",
-    "الأداة هي أوضح علامة للجمع في الكلام."
+   section("Les articles","أدوات التعريف والتنكير والتجزئة","تتغير الأداة بحسب جنس الاسم وعدده ومعناه. نبدأ بالتعريف والتنكير، ثم نتعرف بإيجاز على أدوات التجزئة قبل تطبيقها في درس الطعام.",[
+    "le وla وl’ وles أدوات تعريف.",
+    "un وune وdes أدوات تنكير.",
+    "du وde la وde l’ تُستعمل مع كمية غير محددة من اسم غير معدود.",
+    "تأتي l’ وde l’ قبل صوت متحرك أو h صامتة."
    ],[
-    {fr:"Les étudiants sont dans la classe.",ar:"الطلاب داخل الفصل.",image:"/university/vocabulary/family-sprite.png"},
-    {fr:"J’ai des livres français.",ar:"لدي كتب فرنسية.",image:"/castle-hall-icons/grammar.webp"},
-    {fr:"Voici deux journaux.",ar:"إليك صحيفتين.",image:"/cinema-v1/critique.webp"}
+    {fr:"Le livre est sur la table.",ar:"الكتاب على الطاولة."},
+    {fr:"Je bois de l’eau.",ar:"أشرب ماءً."}
+   ]),
+   section("Le pluriel des noms","جمع الأسماء","تُضاف s في الجمع المنتظم وغالبًا لا تُنطق، وتوجد أسماء لا يتغير رسمها وأخرى لها صيغ جمع شائعة يجب تعلّمها.",[
+    "un cahier → des cahiers: نضيف s غالبًا.",
+    "un pays → des pays: لا تتغير كتابة الاسم المنتهي بـs أو x أو z.",
+    "un journal → des journaux: أغلب الأسماء المنتهية بـ-al تجمع على -aux، مع استثناءات.",
+    "le وla تصبحان les، وun وune تصبحان des عند الجمع."
+   ],[
+    {fr:"J’ai des cahiers.",ar:"لديّ دفاتر."},
+    {fr:"Voici deux journaux.",ar:"هذه صحيفتان."}
    ])
   ]
  },
@@ -3099,6 +3105,26 @@ const A1_NOUNS_DIALOGUES=[
  {context:"Il y a une lampe ?",translation:"هل يوجد مصباح؟",prompt:"اختر إجابة صحيحة ومختصرة.",choices:["Oui, il y a une lampe.","Oui, il y a un lampe.","Oui, les lampe."],correctIndex:0,feedback:"lampe مؤنث، لذلك نستخدم une."},
  {context:"Où sont les journaux ?",translation:"أين الصحف؟",prompt:"اختر الإجابة المناسبة.",choices:["Le journal est ici.","Les journales sont là.","Les journaux sont sur la table."],correctIndex:2,feedback:"جمع journal هو journaux وتسبقه أداة الجمع les."},
  {context:"Vous avez un animal ?",translation:"هل لديك حيوان؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, j’ai des animals.","Oui, j’ai un chat.","Oui, j’ai une chien."],correctIndex:1,feedback:"chat اسم مذكر مفرد؛ لذلك نقول un chat."}
+];
+
+const A1_NOUNS_LEARNING_GROUPS=[
+ {branches:[
+  {fr:"Les noms masculins",ar:"الأسماء المذكرة",note:"الاسم المذكر يأتي مع un في التنكير، ومع le في التعريف. احفظ الاسم مع أداته.",examples:[{fr:"un livre",ar:"كتاب"},{fr:"le jardin",ar:"الحديقة"}]},
+  {fr:"Les noms féminins",ar:"الأسماء المؤنثة",note:"الاسم المؤنث يأتي مع une في التنكير، ومع la في التعريف. لا تكفي نهاية الاسم دائمًا لمعرفة جنسه.",examples:[{fr:"une table",ar:"طاولة"},{fr:"la maison",ar:"المنزل"}]},
+  {fr:"Mémoriser le genre",ar:"حفظ جنس الاسم",note:"تُستعمل l’ مع المذكر والمؤنث، فلا تكشف الجنس وحدها. تعلّم الاسم أيضًا مع un أو une.",examples:[{fr:"un homme → l’homme",ar:"رجل، ثم الرجل"},{fr:"une école → l’école",ar:"مدرسة، ثم المدرسة"}]}
+ ]},
+ {branches:[
+  {fr:"Les articles définis",ar:"أدوات التعريف",note:"نستخدم le للمذكر، وla للمؤنث، وl’ قبل صوت متحرك أو h صامتة، وles للجمع.",examples:[{fr:"le chat",ar:"القط"},{fr:"la porte",ar:"الباب"},{fr:"l’avion",ar:"الطائرة"},{fr:"les chats",ar:"القطط"}]},
+  {fr:"Les articles indéfinis",ar:"أدوات التنكير",note:"نستخدم un للمذكر المفرد، وune للمؤنث المفرد، وdes للجمع غير المحدد.",examples:[{fr:"un stylo",ar:"قلم"},{fr:"une chaise",ar:"كرسي"},{fr:"des stylos",ar:"أقلام"}]},
+  {fr:"Les articles partitifs",ar:"أدوات التجزئة",note:"نستعملها لكمية غير محددة من شيء لا نعدّه مباشرة. هنا مقدمة قصيرة، والتطبيق المفصل في درس الطعام والتسوق.",examples:[{fr:"du pain",ar:"خبز"},{fr:"de la soupe",ar:"حساء"},{fr:"de l’eau",ar:"ماء"}]},
+  {fr:"L’élision des articles",ar:"اختصار الأدوات",note:"تُختصر le أو la إلى l’، وde la أو du إلى de l’، قبل صوت متحرك أو h صامتة. أما h التي تمنع الاختصار فتبقى معها الأداة كاملة.",examples:[{fr:"l’orange",ar:"البرتقالة"},{fr:"l’hôtel",ar:"الفندق"},{fr:"le héros",ar:"البطل"}]}
+ ]},
+ {branches:[
+  {fr:"Le pluriel régulier",ar:"الجمع المنتظم",note:"نضيف s إلى أغلب الأسماء عند جمعها، وغالبًا لا تُنطق هذه العلامة.",examples:[{fr:"un cahier → des cahiers",ar:"دفتر، ثم دفاتر"},{fr:"une fleur → des fleurs",ar:"زهرة، ثم زهور"}]},
+  {fr:"Les noms en -s, -x ou -z",ar:"أسماء لا تتغير كتابتها",note:"إذا انتهى الاسم في المفرد بـs أو x أو z، تبقى كتابته كما هي في الجمع، وتتغير الأداة قبله.",examples:[{fr:"un pays → des pays",ar:"بلد، ثم بلدان"},{fr:"un prix → des prix",ar:"سعر، ثم أسعار"},{fr:"un nez → des nez",ar:"أنف، ثم أنوف"}]},
+  {fr:"Les pluriels fréquents en -aux",ar:"صيغ جمع شائعة بـ -aux",note:"أغلب الأسماء المنتهية بـ-al تصبح -aux في الجمع، لكن توجد استثناءات مثل festival.",examples:[{fr:"un journal → des journaux",ar:"صحيفة، ثم صحف"},{fr:"un cheval → des chevaux",ar:"حصان، ثم خيول"},{fr:"un festival → des festivals",ar:"مهرجان، ثم مهرجانات"}]},
+  {fr:"Les articles au pluriel",ar:"الأدوات مع الجمع",note:"في الجمع تصبح أدوات التعريف les وأدوات التنكير des، مع إضافة علامة الجمع إلى الاسم حين تتغير كتابته.",examples:[{fr:"le garçon → les garçons",ar:"الولد، ثم الأولاد"},{fr:"une lampe → des lampes",ar:"مصباح، ثم مصابيح"},{fr:"l’enfant → les enfants",ar:"الطفل، ثم الأطفال"}]}
+ ]}
 ];
 
 const A1_CORE_VERBS_READING={
@@ -8507,7 +8533,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Greetings&&index===1?<GreetingDialogueScene variant="introduction"/>:isA1Greetings&&index===0?<div className="a1-greeting-groups">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Nouns?<div className="a1-nouns-learning">
+        <p className="a1-nouns-learning-intro">{item.explanation}</p>
+        <div className="a1-nouns-branches">
+         {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">
+          <summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-nouns-branch-content"><p>{branch.note}</p><div className="a1-nouns-example-grid">
+           {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}
+          </div></div>
+         </details>)}
+        </div>
+       </div>:isA1Greetings&&index===1?<GreetingDialogueScene variant="introduction"/>:isA1Greetings&&index===0?<div className="a1-greeting-groups">
         {A1_GREETING_GROUPS.map((group,groupIndex)=>{const GroupIcon=group.icon;const groupOpen=openGreetingGroupIndex===groupIndex;const card=A1_TIME_GREETING_CARDS[timeGreetingCardIndex];return <section key={group.fr} className={`a1-greeting-group ${groupOpen?"open":""}`}>
          <button type="button" className="a1-greeting-group-toggle" onClick={()=>setOpenGreetingGroupIndex(groupOpen?-1:groupIndex)} aria-expanded={groupOpen} aria-controls={`a1-greeting-group-content-${groupIndex}`}>
           <i><GroupIcon/></i><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/>

@@ -3151,6 +3151,33 @@ const A1_MASCULINE_NOUN_PAGES=[
  ]}
 ];
 
+const A1_FEMININE_NOUN_PAGES=[
+ {group:"أسماء الأشخاص والوظائف",label:"أسماء الأشخاص",note:"نستعمل الصيغة المؤنثة عند الحديث عن شخص مؤنث. تعلّم الاسم مع une أو la.",items:[
+  {fr:"une femme",ar:"امرأة"},{fr:"une fille",ar:"فتاة"},{fr:"une mère",ar:"أم"},{fr:"une sœur",ar:"أخت"},{fr:"une amie",ar:"صديقة"},{fr:"une épouse",ar:"زوجة"},{fr:"une grand-mère",ar:"جدة"},{fr:"une voisine",ar:"جارة"}
+ ]},
+ {group:"أسماء الأشخاص والوظائف",label:"الوظائف المؤنثة",note:"هذه صيغ مؤنثة لأسماء وظائف شائعة. تتغير نهاية الاسم أحيانًا مع تغيّر الجنس.",items:[
+  {fr:"une actrice",ar:"ممثلة"},{fr:"une serveuse",ar:"نادلة"},{fr:"une vendeuse",ar:"بائعة"},{fr:"une boulangère",ar:"خبازة"},{fr:"une cuisinière",ar:"طباخة"},{fr:"une policière",ar:"شرطية"},{fr:"une coiffeuse",ar:"حلاقة"},{fr:"une chanteuse",ar:"مغنية"}
+ ]},
+ {group:"تصنيفات شائعة للمؤنث",label:"فواكه مؤنثة",note:"هذه أسماء فواكه مؤنثة شائعة، لكن ليست كل الفواكه مؤنثة؛ فنقول مثلًا le citron للمذكر.",items:[
+  {fr:"une pomme",ar:"تفاحة"},{fr:"une banane",ar:"موزة"},{fr:"une orange",ar:"برتقالة"},{fr:"une poire",ar:"كمثرى"},{fr:"une fraise",ar:"فراولة"},{fr:"une cerise",ar:"كرزة"},{fr:"une pêche",ar:"خوخة"},{fr:"une prune",ar:"برقوقة"},{fr:"une mangue",ar:"مانجو"},{fr:"une mandarine",ar:"يوسفي"}
+ ]},
+ {group:"تصنيفات شائعة للمؤنث",label:"العلوم والمواد الدراسية",note:"أسماء كثير من العلوم والمواد الدراسية مؤنثة. من الاستثناءات le droit عند الحديث عن مادة القانون.",items:[
+  {fr:"la science",ar:"العِلم"},{fr:"la chimie",ar:"الكيمياء"},{fr:"la physique",ar:"الفيزياء"},{fr:"la biologie",ar:"علم الأحياء"},{fr:"la géographie",ar:"الجغرافيا"},{fr:"la médecine",ar:"الطب"},{fr:"l’histoire",ar:"التاريخ"},{fr:"l’astronomie",ar:"علم الفلك"}
+ ]},
+ {group:"تصنيفات شائعة للمؤنث",label:"السيارات",note:"أسماء السيارات مؤنثة غالبًا حين يُقصد بها voiture أو automobile. قد يتغير الجنس إذا كان المقصود نوعًا آخر من المركبات، مثل camion.",items:[
+  {fr:"une voiture",ar:"سيارة"},{fr:"une auto",ar:"سيارة"},{fr:"une automobile",ar:"سيارة"},{fr:"une berline",ar:"سيارة سيدان"},{fr:"une citadine",ar:"سيارة صغيرة للمدينة"},{fr:"une camionnette",ar:"شاحنة صغيرة"},{fr:"une Peugeot",ar:"سيارة بيجو"},{fr:"une Renault",ar:"سيارة رينو"}
+ ]},
+ {group:"نهايات شائعة للمؤنث",label:"النهايتان -tion و-sion",note:"أسماء كثيرة تنتهي بـ-tion أو -sion مؤنثة. استمع إلى الكلمة كاملة واحفظها مع أداتها.",items:[
+  {fr:"la question",ar:"السؤال"},{fr:"la station",ar:"المحطة"},{fr:"la solution",ar:"الحل"},{fr:"la situation",ar:"الوضع"},{fr:"la direction",ar:"الاتجاه"},{fr:"l’information",ar:"المعلومة"},{fr:"la réservation",ar:"الحجز"},{fr:"la télévision",ar:"التلفاز"},{fr:"la décision",ar:"القرار"},{fr:"la conversation",ar:"المحادثة"}
+ ]},
+ {group:"نهايات شائعة للمؤنث",label:"النهايتان -té و-ette",note:"هاتان نهايتان شائعتان للمؤنث، لكن توجد استثناءات في -té مثل le côté وl’été.",items:[
+  {fr:"la santé",ar:"الصحة"},{fr:"la beauté",ar:"الجمال"},{fr:"la liberté",ar:"الحرية"},{fr:"la vérité",ar:"الحقيقة"},{fr:"la difficulté",ar:"الصعوبة"},{fr:"la baguette",ar:"خبز الباغيت"},{fr:"la serviette",ar:"المنشفة"},{fr:"la fourchette",ar:"الشوكة"},{fr:"la recette",ar:"الوصفة"},{fr:"la bicyclette",ar:"الدراجة"},{fr:"la casquette",ar:"القبعة"}
+ ]},
+ {group:"نهايات شائعة للمؤنث",label:"النهايتان -ance و-ence",note:"تساعد هاتان النهايتان غالبًا على توقّع المؤنث، مع استثناءات مثل le silence.",items:[
+  {fr:"la chance",ar:"الحظ"},{fr:"l’ambulance",ar:"سيارة الإسعاف"},{fr:"la distance",ar:"المسافة"},{fr:"la différence",ar:"الاختلاف"},{fr:"la présence",ar:"الحضور"},{fr:"l’absence",ar:"الغياب"},{fr:"la patience",ar:"الصبر"},{fr:"l’essence",ar:"الوقود"},{fr:"la résidence",ar:"مكان الإقامة"},{fr:"la confiance",ar:"الثقة"}
+ ]}
+];
+
 const A1_CORE_VERBS_READING={
  title:"Une famille à Lyon",
  arTitle:"عائلة في ليون",
@@ -7002,6 +7029,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [activeLetter,setActiveLetter]=useState("A");
  const [numberPageIndex,setNumberPageIndex]=useState(0);
  const [masculineNounPageIndex,setMasculineNounPageIndex]=useState(0);
+ const [feminineNounPageIndex,setFeminineNounPageIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
@@ -8571,6 +8599,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
             <button type="button" onClick={()=>setMasculineNounPageIndex(page=>Math.max(0,page-1))} disabled={masculineNounPageIndex===0} aria-label="المجموعة السابقة"><ChevronLeft/><span>السابق</span></button>
             <div><small>جدول الأسماء المذكرة</small><strong>{A1_MASCULINE_NOUN_PAGES[masculineNounPageIndex].label}</strong><em>{masculineNounPageIndex+1} / {A1_MASCULINE_NOUN_PAGES.length}</em></div>
             <button type="button" onClick={()=>setMasculineNounPageIndex(page=>Math.min(A1_MASCULINE_NOUN_PAGES.length-1,page+1))} disabled={masculineNounPageIndex===A1_MASCULINE_NOUN_PAGES.length-1} aria-label="المجموعة التالية"><span>التالي</span><ChevronRight/></button>
+           </div>
+          </div>:index===0&&branchIndex===1?<div className="a1-masculine-table">
+           <div className="a1-masculine-table-heading"><span>{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].group}</span><strong>{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].label}</strong></div>
+           <p className="a1-masculine-table-note">{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].note}</p>
+           <div className="a1-masculine-table-grid">{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].items.map(item=><button key={item.fr} type="button" onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى ${item.fr}`}><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>
+           <div className="university-number-pagination a1-masculine-pagination" dir="ltr">
+            <button type="button" onClick={()=>setFeminineNounPageIndex(page=>Math.max(0,page-1))} disabled={feminineNounPageIndex===0} aria-label="المجموعة السابقة"><ChevronLeft/><span>السابق</span></button>
+            <div><small>جدول الأسماء المؤنثة</small><strong>{A1_FEMININE_NOUN_PAGES[feminineNounPageIndex].label}</strong><em>{feminineNounPageIndex+1} / {A1_FEMININE_NOUN_PAGES.length}</em></div>
+            <button type="button" onClick={()=>setFeminineNounPageIndex(page=>Math.min(A1_FEMININE_NOUN_PAGES.length-1,page+1))} disabled={feminineNounPageIndex===A1_FEMININE_NOUN_PAGES.length-1} aria-label="المجموعة التالية"><span>التالي</span><ChevronRight/></button>
            </div>
           </div>:<div className="a1-nouns-example-grid">
            {branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr.replace("→",". "),{rate:.72})} aria-label={`استمع إلى ${example.fr}`}><span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small></span><Volume2/></button>)}

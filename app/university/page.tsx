@@ -1947,16 +1947,16 @@ const A1_POSSESSIVES_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_NOUNS_PRACTICE_ITEMS:Example[]=[
- {fr:"C’est un ordinateur portable.",ar:"هذا حاسوب محمول."},
- {fr:"Voilà une fenêtre ouverte.",ar:"تلك نافذة مفتوحة."},
- {fr:"Le directeur est dans son bureau.",ar:"المدير في مكتبه."},
- {fr:"La bibliothèque ferme à dix-huit heures.",ar:"تغلق المكتبة الساعة السادسة مساءً."},
- {fr:"L’étudiante attend devant l’université.",ar:"تنتظر الطالبة أمام الجامعة."},
- {fr:"J’achète des cahiers pour le cours.",ar:"أشتري دفاتر للدرس."},
- {fr:"Les cahiers sont dans mon sac.",ar:"الدفاتر داخل حقيبتي."},
- {fr:"Ce quartier a plusieurs nouveaux bureaux.",ar:"يضم هذا الحي عدة مكاتب جديدة."},
- {fr:"Les travaux commencent lundi matin.",ar:"تبدأ الأعمال صباح الاثنين."},
- {fr:"Deux autobus passent devant la gare.",ar:"تمر حافلتان أمام المحطة."}
+ {fr:"J’ai un frère et une sœur.",ar:"لديّ أخ وأخت."},
+ {fr:"Le livre est sur la table.",ar:"الكتاب على الطاولة."},
+ {fr:"L’école est près de la gare.",ar:"المدرسة قريبة من محطة القطار."},
+ {fr:"Nous achetons du pain et de la confiture.",ar:"نشتري خبزًا ومربّى."},
+ {fr:"Je bois de l’eau.",ar:"أشرب ماءً."},
+ {fr:"Il n’y a pas de lait.",ar:"لا يوجد حليب."},
+ {fr:"Les enfants ont des vélos.",ar:"لدى الأطفال دراجات."},
+ {fr:"Ce sont des journaux.",ar:"هذه صحف."},
+ {fr:"Les prix sont sur les étiquettes.",ar:"الأسعار على الملصقات."},
+ {fr:"Je cherche un appartement.",ar:"أبحث عن شقة."}
 ];
 
 const A1_NOUNS_QUIZ_ITEMS:QuizQuestion[]=[

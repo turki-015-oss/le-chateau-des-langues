@@ -3095,11 +3095,16 @@ const A1_NOUNS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_NOUNS_DICTATION=[
- {speech:"Il y a un livre sur la table.",ar:"يوجد كتاب على الطاولة."},
- {speech:"La chaise est près de la fenêtre.",ar:"الكرسي قريب من النافذة."},
- {speech:"Les cahiers sont dans le sac.",ar:"الدفاتر داخل الحقيبة."},
- {speech:"Une horloge est au mur.",ar:"توجد ساعة على الحائط."},
- {speech:"Des élèves entrent dans la bibliothèque.",ar:"يدخل طلاب إلى المكتبة."}
+ {speech:"un jardin",ar:"حديقة"},
+ {speech:"une bouteille",ar:"زجاجة"},
+ {speech:"la clé",ar:"المفتاح"},
+ {speech:"l’arbre",ar:"الشجرة"},
+ {speech:"les trains",ar:"القطارات"},
+ {speech:"du sucre",ar:"سكر"},
+ {speech:"de la salade",ar:"سلطة"},
+ {speech:"de l’huile",ar:"زيت"},
+ {speech:"des journaux",ar:"صحف"},
+ {speech:"des prix",ar:"أسعار"}
 ];
 
 const A1_NOUNS_BUILDERS=[
@@ -4444,7 +4449,7 @@ const A1_ENHANCED_CONTENT={
  nouns:{
   reading:A1_NOUNS_READING,listening:A1_NOUNS_LISTENING,dictation:A1_NOUNS_DICTATION,builders:A1_NOUNS_BUILDERS,dialogues:A1_NOUNS_DIALOGUES,
   writingModel:A1_NOUNS_WRITING_MODEL,writingTitle:"صِف أشياء مكان قريب منك",writingInstructions:"اكتب من 18 إلى 30 كلمة عن أشياء في غرفتك أو فصلك. استخدم un وune وdes، ثم استخدم اسمًا واحدًا على الأقل في صيغة الجمع.",writingPlaceholder:"Dans ma chambre, il y a…",writingMinimum:18,writingMaximum:30,
-  speakingPrompt:"Dans ma chambre, il y a un lit, une table et des livres. Les livres sont sur la table.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر ثلاثة أشياء على الأقل.","استخدم أداة مناسبة قبل كل اسم.","أضف اسمًا واحدًا في صيغة الجمع."],dictationUnit:"sentence"
+  speakingPrompt:"Dans ma chambre, il y a un lit, une table et des livres. Les livres sont sur la table.",speakingDuration:"تحدث لمدة 20 إلى 30 ثانية",speakingTips:["اذكر ثلاثة أشياء على الأقل.","استخدم أداة مناسبة قبل كل اسم.","أضف اسمًا واحدًا في صيغة الجمع."],dictationUnit:"word"
  },
  "core-verbs":{
   reading:A1_CORE_VERBS_READING,listening:A1_CORE_VERBS_LISTENING,dictation:A1_CORE_VERBS_DICTATION,builders:A1_CORE_VERBS_BUILDERS,dialogues:A1_CORE_VERBS_DIALOGUES,
@@ -7303,8 +7308,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
  const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&isA1WordDictation;
- const dictationUnit=isAlphabetLetterDictation?"الحرف":isA1Greetings&&revisionDictationItem.speech.includes(" ")?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
- const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":isA1Greetings&&revisionDictationItem.speech.includes(" ")?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":(isA1Greetings||isA1Nouns)&&revisionDictationItem.speech.includes(" ")?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":(isA1Greetings||isA1Nouns)&&revisionDictationItem.speech.includes(" ")?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
   ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
   :"";

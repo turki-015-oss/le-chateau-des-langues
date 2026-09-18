@@ -3353,16 +3353,20 @@ const A1_CORE_VERBS_LISTENING={
 const A1_CORE_VERBS_WRITING_MODEL="Je suis étudiant et j’ai vingt-deux ans. Ma sœur est professeure. Nous sommes à Riyad et nous avons un cours de français le lundi.";
 
 const A1_CORE_VERBS_WRITING_TRANSLATIONS=[
- {fr:"je suis prêt",ar:"أنا مستعد"},
- {fr:"tu es ici",ar:"أنت هنا"},
- {fr:"elle est professeure",ar:"هي معلمة"},
- {fr:"nous sommes voisins",ar:"نحن جيران"},
- {fr:"j’ai un billet",ar:"لدي تذكرة"},
+ {fr:"je suis ici",ar:"أنا هنا"},
+ {fr:"j’ai un livre",ar:"لديّ كتاب"},
+ {fr:"tu es à la gare",ar:"أنت في المحطة"},
  {fr:"tu as faim",ar:"أنت جائع"},
+ {fr:"il est médecin",ar:"هو طبيب"},
+ {fr:"elle a un stylo",ar:"لديها قلم"},
+ {fr:"on est en classe",ar:"نحن في الصف"},
+ {fr:"nous sommes voisins",ar:"نحن جيران"},
+ {fr:"nous avons une voiture",ar:"لدينا سيارة"},
+ {fr:"vous êtes en retard",ar:"أنتم متأخرون"},
  {fr:"vous avez raison",ar:"أنتم على حق"},
- {fr:"ils ont soif",ar:"هم عطشى"}
+ {fr:"ils sont au parc",ar:"هم في الحديقة"},
+ {fr:"elles ont soif",ar:"هنّ عطشى"}
 ];
-
 const A1_CORE_VERBS_DICTATION=[
  {speech:"Je suis à la maison.",ar:"أنا في المنزل."},
  {speech:"J’ai un stylo.",ar:"لديّ قلم."},
@@ -7267,8 +7271,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const isA1Demonstratives=level.id==="A1"&&activeModule.id==="demonstratives";
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
- const isA1WritingPhrase=isA1Greetings||isA1Nouns;
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
+ const isA1WritingPhrase=isA1Greetings||isA1Nouns||isA1CoreVerbs;
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
@@ -9030,16 +9034,16 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </article>)}
      </div>}
      {isEnhancedLesson&&isA1OrbitLesson&&alphabetPracticeStep===5&&<section className="a1-smart-writing a1-practice-step-panel">
-      <div className="a1-smart-writing-progress"><div><span>{isA1Greetings?"العنصر":isA1Nouns?"العبارة":"الكلمة"} {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
-      <div className="a1-smart-writing-prompt"><small>{isA1Greetings?"Écrivez le mot ou l’expression":isA1Nouns?"Écrivez le groupe de mots":"Écrivez le mot"}</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى ${isA1WritingPhrase?"العبارة":"كلمة"} ${alphabetWritingItem.fr}`}><Volume2/></button></div>
+      <div className="a1-smart-writing-progress"><div><span>{isA1Greetings?"العنصر":isA1WritingPhrase?"العبارة":"الكلمة"} {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
+      <div className="a1-smart-writing-prompt"><small>{isA1Greetings?"Écrivez le mot ou l’expression":isA1WritingPhrase?"Écrivez le groupe de mots":"Écrivez le mot"}</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى ${isA1WritingPhrase?"العبارة":"كلمة"} ${alphabetWritingItem.fr}`}><Volume2/></button></div>
       <form onSubmit={event=>{event.preventDefault();setAlphabetWritingState(normalizeExerciseText(alphabetWritingInput)===normalizeExerciseText(alphabetWritingItem.fr)?"correct":"wrong")}}>
-       <label htmlFor="alphabet-smart-writing">{isA1Greetings?"اكتب الكلمة أو العبارة بالفرنسية":isA1Nouns?"اكتب العبارة بالفرنسية مع أداتها":"اكتب الكلمة بالفرنسية"}</label>
+       <label htmlFor="alphabet-smart-writing">{isA1Greetings?"اكتب الكلمة أو العبارة بالفرنسية":isA1Nouns?"اكتب العبارة بالفرنسية مع أداتها":isA1CoreVerbs?"اكتب العبارة بالفرنسية":"اكتب الكلمة بالفرنسية"}</label>
        <input id="alphabet-smart-writing" dir="ltr" lang="fr" autoComplete="off" autoCorrect="off" spellCheck={false} value={alphabetWritingInput} className={alphabetWritingState} onChange={event=>{setAlphabetWritingInput(event.target.value);setAlphabetWritingState("idle")}} placeholder="Écrivez ici…" autoFocus/>
        <button type="submit" disabled={!alphabetWritingInput.trim()}><CheckCircle2/> تحقق</button>
       </form>
       <div className={`a1-smart-writing-feedback ${alphabetWritingState}`} aria-live="polite">{alphabetWritingState==="correct"?<><CheckCircle2/><div><strong>ممتاز، {isA1WritingPhrase?"الإجابة":"الكلمة"} صحيحة</strong><span dir="ltr">{alphabetWritingItem.fr}</span></div></>:alphabetWritingState==="wrong"?<><CircleMinus/><div><strong>{isA1WritingPhrase?"الإجابة":"الكلمة"} غير صحيحة</strong><span>راجع الحروف والعلامات ثم حاول مجددًا.</span></div></>:<><NotebookTabs/><div><strong>اكتبها بدقة</strong><span>تحقق من ترتيب الحروف والعلامات الفرنسية.</span></div></>}</div>
       <div className="a1-smart-writing-actions">
-       {alphabetWritingIndex<orbitWritingTranslations.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>{isA1Greetings?"التالي":isA1Nouns?"العبارة التالية":"الكلمة التالية"} <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> {isA1Greetings?"أعد التمرين":isA1Nouns?"أعد العبارات":"أعد الكلمات"}</button>}
+       {alphabetWritingIndex<orbitWritingTranslations.length-1?<button type="button" className="next" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(index=>index+1);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}>{isA1Greetings?"التالي":isA1WritingPhrase?"العبارة التالية":"الكلمة التالية"} <ChevronLeft/></button>:<button type="button" className="next complete" disabled={alphabetWritingState!=="correct"} onClick={()=>{setAlphabetWritingIndex(0);setAlphabetWritingInput("");setAlphabetWritingState("idle")}}><RotateCcw/> {isA1Greetings?"أعد التمرين":isA1WritingPhrase?"أعد العبارات":"أعد الكلمات"}</button>}
       </div>
      </section>}
      {isEnhancedLesson&&!isA1OrbitLesson&&<div className="a2-production-grid a1-practice-step-panel">

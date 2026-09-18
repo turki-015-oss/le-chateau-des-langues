@@ -3386,13 +3386,16 @@ const A1_CORE_VERBS_BUILDERS=[
  {tokens:["ont","des","Elles","fleurs."],answer:["Elles","ont","des","fleurs."],ar:"لديهن زهور.",explanationAr:"مع elles نصرّف avoir إلى ont.",explanationFr:"Avec elles, on dit ont."}
 ];
 const A1_CORE_VERBS_DIALOGUES=[
- {context:"Vous êtes étudiant ?",translation:"هل أنت طالب؟",prompt:"اختر الرد الصحيح.",choices:["Oui, je suis étudiant.","Oui, j’ai étudiant.","Oui, je sommes étudiant."],correctIndex:0,feedback:"لوصف الهوية مع je نستخدم je suis."},
- {context:"Quel âge avez-vous ?",translation:"كم عمرك؟",prompt:"اختر الإجابة الطبيعية.",choices:["Je suis vingt ans.","J’ai vingt ans.","Je vingt ans."],correctIndex:1,feedback:"العمر في الفرنسية يُعبّر عنه بالفعل avoir: J’ai vingt ans."},
- {context:"Vous avez un cours aujourd’hui ?",translation:"هل لديكم درس اليوم؟",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes un cours.","Oui, nous avez un cours."],correctIndex:0,feedback:"مع nous يكون تصريف avoir هو avons."},
- {context:"Où sont vos amis ?",translation:"أين أصدقاؤكم؟",prompt:"اختر الرد المناسب.",choices:["Ils ont au café.","Elles est au café.","Ils sont au café."],correctIndex:2,feedback:"لوصف مكان جماعة مذكّرة أو مختلطة نقول ils sont."},
- {context:"Tu as faim ?",translation:"هل أنت جائع؟",prompt:"اختر الرد الطبيعي.",choices:["Oui, je suis faim.","Oui, j’ai faim.","Oui, tu as faim."],correctIndex:1,feedback:"الشعور بالجوع يُعبّر عنه بـ avoir faim."}
+ {context:"Tu es étudiant ?",translation:"هل أنت طالب؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis étudiant.","J’ai vingt ans.","Nous sommes à Paris."],correctIndex:0,feedback:"مع je نستخدم suis من الفعل être للتعريف بالنفس."},
+ {context:"Quel âge as-tu ?",translation:"كم عمرك؟",prompt:"اختر الرد المناسب.",choices:["Je suis étudiant.","J’ai vingt ans.","J’ai un frère."],correctIndex:1,feedback:"نعبّر عن العمر بالفعل avoir: J’ai vingt ans."},
+ {context:"Où est ta sœur ?",translation:"أين أختك؟",prompt:"اختر الرد المناسب.",choices:["Elle a un vélo.","Elle a vingt ans.","Elle est à la maison."],correctIndex:2,feedback:"لتحديد مكانها نقول elle est."},
+ {context:"Il a un billet ?",translation:"هل لديه تذكرة؟",prompt:"اختر الرد المناسب.",choices:["Oui, il est à la gare.","Oui, il a un billet.","Oui, il a faim."],correctIndex:1,feedback:"مع il نستخدم a من الفعل avoir للدلالة على ما لديه."},
+ {context:"On a un cours aujourd’hui ?",translation:"هل لدينا درس اليوم؟",prompt:"اختر الرد المناسب.",choices:["Oui, on a un cours.","Oui, on est en classe.","Oui, on a faim."],correctIndex:0,feedback:"مع on يُصرّف avoir للمفرد فنقول on a."},
+ {context:"Où sont tes amis ?",translation:"أين أصدقاؤك؟",prompt:"اختر الرد المناسب.",choices:["Ils ont faim.","Ils ont des livres.","Ils sont au café."],correctIndex:2,feedback:"لتحديد مكان جماعة من الذكور أو جماعة مختلطة نقول ils sont."},
+ {context:"Vous êtes à l’école ?",translation:"هل أنتم في المدرسة؟",prompt:"اختر الرد المناسب.",choices:["Oui, nous avons un cours.","Oui, nous sommes à l’école.","Oui, nous avons faim."],correctIndex:1,feedback:"مع nous نستخدم sommes من الفعل être لتحديد المكان."},
+ {context:"Tu as faim ?",translation:"هل أنت جائع؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis prêt.","Oui, j’ai un livre.","Oui, j’ai faim."],correctIndex:2,feedback:"نعبّر عن الجوع بالفعل avoir: J’ai faim."},
+ {context:"Les filles ont des livres ?",translation:"هل لدى الفتيات كتب؟",prompt:"اختر الرد المناسب.",choices:["Oui, elles ont des livres.","Oui, elles sont à l’école.","Oui, elles ont faim."],correctIndex:0,feedback:"نستعمل elles للجمع المؤنث، ومعه يصبح avoir: ont."}
 ];
-
 const A1_STRUCTURES_READING={
  title:"Dans le nouvel appartement",
  arTitle:"داخل الشقة الجديدة",

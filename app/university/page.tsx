@@ -6464,7 +6464,8 @@ function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONO
 const A1_PRESENT_SIMPLE_BRANCHES=[
  {fr:"Les emplois du présent",ar:"استعمالات المضارع",note:"سنضيف هنا حالات استخدام المضارع البسيط مع أمثلة يومية مناسبة للمستوى A1."},
  {fr:"L’ordre de la phrase",ar:"ترتيب الجملة في المضارع",note:"سنضيف هنا بناء الجملة: ضمير الفاعل + فعل مصرّف + مكمّل."},
- {fr:"Les verbes réguliers en -er",ar:"الأفعال المنتظمة بـ -er",note:"سنضيف هنا التصريف والنهايات والأمثلة التفاعلية لأفعال المجموعة الأولى."},
+ {fr:"Les verbes réguliers en -er",ar:"الأفعال المنتظمة المنتهية بـ -er",note:"سنضيف هنا التصريف والنهايات والأمثلة التفاعلية لأفعال المجموعة الأولى."},
+ {fr:"Les verbes réguliers en -ir",ar:"الأفعال المنتظمة المنتهية بـ -ir",note:"سنضيف هنا أفعال نمط finir ونهاياتها: is، is، it، issons، issez، issent."},
  {fr:"Les verbes fréquents",ar:"الأفعال الشائعة في المضارع",note:"سنضيف هنا aller وfaire وvenir وprendre داخل مواقف يومية قصيرة."},
  {fr:"Les changements orthographiques",ar:"التغييرات الإملائية البسيطة",note:"سنضيف هنا صيغًا مثل nous mangeons وnous commençons مع شرح النطق."}
 ] as const;

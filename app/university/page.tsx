@@ -6470,6 +6470,32 @@ const A1_PRESENT_SIMPLE_BRANCHES=[
  {fr:"Les changements orthographiques",ar:"التغييرات الإملائية البسيطة",note:"سنضيف هنا صيغًا مثل nous mangeons وnous commençons مع شرح النطق."}
 ] as const;
 
+const A1_PRESENT_USAGE_CARDS=[
+ {fr:"Action en cours",ar:"ما يحدث الآن",description:"فعل يحدث في هذه اللحظة.",infinitive:"manger",before:"Je ",verb:"mange",after:" maintenant.",sentence:"Je mange maintenant.",translation:"أنا آكل الآن."},
+ {fr:"Habitude et routine",ar:"العادات والروتين",description:"فعل يتكرر في اليوم أو الأسبوع.",infinitive:"travailler",before:"Je ",verb:"travaille",after:" le matin.",sentence:"Je travaille le matin.",translation:"أنا أعمل صباحًا."},
+ {fr:"Vérités générales",ar:"حقائق عامة",description:"حقائق ثابتة أو متكررة في الطبيعة والحياة.",infinitive:"être",before:"Le feu ",verb:"est",after:" chaud.",sentence:"Le feu est chaud.",translation:"النار حارة."},
+ {fr:"Vérités générales",ar:"حقائق عامة",description:"حقيقة متكررة في الطبيعة.",infinitive:"se lever",before:"Le soleil ",verb:"se lève",after:".",sentence:"Le soleil se lève.",translation:"الشمس تشرق."},
+ {fr:"Vérités générales",ar:"حقائق عامة",description:"سلوك معروف للحيوان.",infinitive:"manger",before:"Le lion ",verb:"mange",after:" de la viande.",sentence:"Le lion mange de la viande.",translation:"الأسد يأكل اللحم."},
+ {fr:"Futur planifié",ar:"موعد أو مستقبل قريب",description:"موعد محدد يأتي لاحقًا، ويُفهم من كلمة الزمن.",infinitive:"commencer",before:"Le cours ",verb:"commence",after:" demain.",sentence:"Le cours commence demain.",translation:"يبدأ الدرس غدًا."}
+] as const;
+
+function A1PresentUsageTable(){
+ return <div className="a1-present-usage-table">
+  <div className="a1-present-usage-table-heading"><div><span>Les emplois du présent</span><strong>استعمالات المضارع البسيط</strong></div><small>6 أمثلة تفاعلية</small></div>
+  <div className="a1-present-usage-grid">
+   {A1_PRESENT_USAGE_CARDS.map((card,index)=><article key={card.sentence} className="a1-present-usage-card">
+    <header><i>{String(index+1).padStart(2,"0")}</i><div><strong dir="ltr">{card.fr}</strong><span>{card.ar}</span></div></header>
+    <p>{card.description}</p>
+    <button type="button" onClick={()=>void speakFrench(card.sentence,{rate:.74})} aria-label={`استمع إلى ${card.sentence}`}>
+     <small dir="ltr">({card.infinitive})</small>
+     <strong dir="ltr">{card.before}<mark>{card.verb}</mark>{card.after}</strong>
+     <span>{card.translation}</span>
+     <Volume2 aria-hidden="true"/>
+    </button>
+   </article>)}
+  </div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6480,7 +6506,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content"><p>{branch.note}</p></div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

@@ -6390,77 +6390,35 @@ const A1_SUBJECT_PRONOUN_GROUPS=[
  }
 ];
 
-const CORE_VERB_PAGES=[
+const A1_CORE_VERB_GROUPS=[
  {
-  label:"تصريف فعل être",
-  description:"فعل être يعني يكون، ويُستخدم للهوية والصفة والحالة والمكان.",
+  fr:"Le verbe être",ar:"فعل الكينونة: يكون",
+  note:"نستعمل être للهوية والمهنة والصفة والحالة والمكان. لا نترجمه دائمًا بكلمة «يكون» حرفيًا.",
   items:[
-   {fr:"Je suis",ar:"أنا أكون",note:"être مع je"},
-   {fr:"Tu es",ar:"أنت تكون",note:"être مع tu"},
-   {fr:"Il est",ar:"هو يكون",note:"être مع il"},
-   {fr:"Elle est",ar:"هي تكون",note:"être مع elle"},
-   {fr:"On est",ar:"نحن نكون",note:"être مع on"},
-   {fr:"Nous sommes",ar:"نحن نكون",note:"être مع nous"},
-   {fr:"Vous êtes",ar:"أنتم تكونون",note:"être مع vous"},
-   {fr:"Ils sont",ar:"هم يكونون",note:"être مع ils"},
-   {fr:"Elles sont",ar:"هنّ يكنّ",note:"être مع elles"}
+   {fr:"je suis",ar:"أنا",explanation:"للتعريف بنفسك أو وصف حالتك أو تحديد مكانك.",examples:[{fr:"Je suis étudiant.",ar:"أنا طالب.",kind:"هوية"},{fr:"Je suis à la gare.",ar:"أنا في محطة القطار.",kind:"مكان"}]},
+   {fr:"tu es",ar:"أنتَ أو أنتِ",explanation:"مع شخص واحد تخاطبه بصورة غير رسمية.",examples:[{fr:"Tu es prêt.",ar:"أنت مستعد.",kind:"حالة"},{fr:"Tu es à la maison.",ar:"أنت في المنزل.",kind:"مكان"}]},
+   {fr:"il est",ar:"هو",explanation:"لشخص أو اسم مذكر مفرد، وقد يأتي بلا مرجع شخصي للدلالة على الوقت.",examples:[{fr:"Il est médecin.",ar:"هو طبيب.",kind:"مهنة"},{fr:"Il est tard.",ar:"الوقت متأخر.",kind:"وقت"}]},
+   {fr:"elle est",ar:"هي",explanation:"لشخص أو اسم مؤنث مفرد في الفرنسية.",examples:[{fr:"Elle est française.",ar:"هي فرنسية.",kind:"جنسية"},{fr:"La chambre est petite. Elle est propre.",ar:"الغرفة صغيرة. إنها نظيفة.",kind:"شيء"}]},
+   {fr:"on est",ar:"نحن غالبًا",explanation:"مع on في الكلام اليومي؛ الفعل معه مفرد ولو كان المعنى «نحن».",examples:[{fr:"On est en classe.",ar:"نحن في الصف.",kind:"مكان"},{fr:"On est prêts pour le cours.",ar:"نحن مستعدون للدرس.",kind:"حالة"}]},
+   {fr:"nous sommes",ar:"نحن",explanation:"للمتكلم مع شخص آخر أو أكثر.",examples:[{fr:"Nous sommes voisins.",ar:"نحن جيران.",kind:"علاقة"},{fr:"Nous sommes à Paris.",ar:"نحن في باريس.",kind:"مكان"}]},
+   {fr:"vous êtes",ar:"أنتم أو حضرتك",explanation:"لمخاطبة جماعة أو شخص واحد باحترام.",examples:[{fr:"Vous êtes à la gare.",ar:"أنتم في محطة القطار.",kind:"جماعة"},{fr:"Monsieur, vous êtes à l’heure.",ar:"سيدي، أنت في الموعد.",kind:"احترام"}]},
+   {fr:"ils sont",ar:"هم",explanation:"لجماعة الذكور أو الجماعة المختلطة، وكذلك أسماء الأشياء المذكرة الجمع.",examples:[{fr:"Ils sont dans le jardin.",ar:"هم في الحديقة.",kind:"أشخاص"},{fr:"Les livres sont ici. Ils sont neufs.",ar:"الكتب هنا. إنها جديدة.",kind:"أشياء"}]},
+   {fr:"elles sont",ar:"هنّ",explanation:"لجماعة الإناث أو أسماء الأشياء المؤنثة الجمع.",examples:[{fr:"Elles sont étudiantes.",ar:"هن طالبات.",kind:"أشخاص"},{fr:"Les fenêtres sont ouvertes. Elles sont grandes.",ar:"النوافذ مفتوحة. إنها كبيرة.",kind:"أشياء"}]}
   ]
  },
  {
-  label:"تصريف فعل avoir",
-  description:"فعل avoir يعني يملك، ويُستخدم كذلك مع العمر وتعبيرات جسدية كثيرة.",
+  fr:"Le verbe avoir",ar:"فعل الملكية: يمتلك",
+  note:"نستعمل avoir للملكية، وكذلك للعمر والجوع والعطش وبعض الأحاسيس؛ ومع هذه التعبيرات نترجم المعنى لا الفعل حرفيًا.",
   items:[
-   {fr:"J’ai",ar:"لديّ",note:"avoir مع je"},
-   {fr:"Tu as",ar:"لديك",note:"avoir مع tu"},
-   {fr:"Il a",ar:"لديه",note:"avoir مع il"},
-   {fr:"Elle a",ar:"لديها",note:"avoir مع elle"},
-   {fr:"On a",ar:"لدينا",note:"avoir مع on"},
-   {fr:"Nous avons",ar:"لدينا",note:"avoir مع nous"},
-   {fr:"Vous avez",ar:"لديكم",note:"avoir مع vous"},
-   {fr:"Ils ont",ar:"لديهم",note:"avoir مع ils"},
-   {fr:"Elles ont",ar:"لديهنّ",note:"avoir مع elles"}
-  ]
- },
- {
-  label:"être داخل جمل",
-  description:"استخدم être لوصف الشخص أو حالته أو مهنته أو مكانه.",
-  items:[
-   {fr:"Je suis à l’université.",ar:"أنا في الجامعة.",note:"المكان"},
-   {fr:"Tu es en classe.",ar:"أنت في الفصل.",note:"المكان"},
-   {fr:"Il est médecin.",ar:"هو طبيب.",note:"المهنة"},
-   {fr:"Elle est française.",ar:"هي فرنسية.",note:"الجنسية"},
-   {fr:"On est ensemble.",ar:"نحن معًا.",note:"الحالة"},
-   {fr:"Nous sommes prêts.",ar:"نحن مستعدون.",note:"الصفة"},
-   {fr:"Vous êtes très calme.",ar:"أنتم هادئون جدًا.",note:"الصفة"},
-   {fr:"Ils sont dans la bibliothèque.",ar:"هم في المكتبة.",note:"المكان"}
-  ]
- },
- {
-  label:"avoir في التعبيرات اليومية",
-  description:"لا تُترجم avoir دائمًا بكلمة يملك؛ فهو يُستخدم مع العمر والجوع والعطش والحاجة.",
-  items:[
-   {fr:"J’ai vingt ans.",ar:"عمري عشرون عامًا.",note:"العمر"},
-   {fr:"Tu as faim.",ar:"أنت جائع.",note:"الجوع"},
-   {fr:"Il a soif.",ar:"هو عطشان.",note:"العطش"},
-   {fr:"Elle a peur.",ar:"هي خائفة.",note:"الخوف"},
-   {fr:"On a besoin d’aide.",ar:"نحن بحاجة إلى مساعدة.",note:"الحاجة"},
-   {fr:"Nous avons cours aujourd’hui.",ar:"لدينا درس اليوم.",note:"الامتلاك"},
-   {fr:"Vous avez raison.",ar:"أنتم على حق.",note:"تعبير ثابت"},
-   {fr:"Ils ont chaud.",ar:"هم يشعرون بالحر.",note:"الإحساس"}
-  ]
- },
- {
-  label:"الفرق بين être و avoir",
-  description:"اختر être للهوية والحالة، واختر avoir للملكية والعمر والتعبيرات الثابتة.",
-  items:[
-   {fr:"Je suis étudiant et j’ai un livre.",ar:"أنا طالب ولدي كتاب.",note:"هوية + ملكية"},
-   {fr:"Tu es fatigué et tu as besoin de repos.",ar:"أنت متعب وتحتاج إلى الراحة.",note:"حالة + حاجة"},
-   {fr:"Il est jeune et il a dix-huit ans.",ar:"هو شاب وعمره ثمانية عشر عامًا.",note:"صفة + عمر"},
-   {fr:"Elle est professeure et elle a une classe.",ar:"هي معلمة ولديها فصل.",note:"مهنة + ملكية"},
-   {fr:"On est à la maison et on a faim.",ar:"نحن في المنزل ونحن جائعون.",note:"مكان + جوع"},
-   {fr:"Nous sommes amis et nous avons un projet.",ar:"نحن أصدقاء ولدينا مشروع.",note:"هوية + ملكية"},
-   {fr:"Vous êtes en retard, mais vous avez une excuse.",ar:"أنتم متأخرون، لكن لديكم عذر.",note:"حالة + ملكية"},
-   {fr:"Ils sont heureux parce qu’ils ont des vacances.",ar:"هم سعداء لأن لديهم إجازة.",note:"حالة + امتلاك"}
+   {fr:"j’ai",ar:"لديّ",explanation:"مع المتكلم المفرد؛ تُختصر je إلى j’ قبل avoir.",examples:[{fr:"J’ai un billet.",ar:"لديّ تذكرة.",kind:"ملكية"},{fr:"J’ai vingt ans.",ar:"عمري عشرون عامًا.",kind:"عمر"}]},
+   {fr:"tu as",ar:"لديك",explanation:"مع شخص واحد تخاطبه بصورة غير رسمية.",examples:[{fr:"Tu as un vélo.",ar:"لديك دراجة.",kind:"ملكية"},{fr:"Tu as faim.",ar:"أنت جائع.",kind:"جوع"}]},
+   {fr:"il a",ar:"لديه",explanation:"مع شخص أو اسم مذكر مفرد.",examples:[{fr:"Il a une sœur.",ar:"لديه أخت.",kind:"أسرة"},{fr:"Il a soif.",ar:"هو عطشان.",kind:"عطش"}]},
+   {fr:"elle a",ar:"لديها",explanation:"مع شخص أو اسم مؤنث مفرد.",examples:[{fr:"Elle a un chien.",ar:"لديها كلب.",kind:"ملكية"},{fr:"Elle a peur.",ar:"هي خائفة.",kind:"شعور"}]},
+   {fr:"on a",ar:"لدينا غالبًا",explanation:"مع on في الحديث اليومي؛ الفعل معه مفرد ولو كان المعنى «نحن».",examples:[{fr:"On a une question.",ar:"لدينا سؤال.",kind:"سؤال"},{fr:"On a besoin d’aide.",ar:"نحتاج إلى مساعدة.",kind:"حاجة"}]},
+   {fr:"nous avons",ar:"لدينا",explanation:"للمتكلم مع شخص آخر أو أكثر.",examples:[{fr:"Nous avons deux cours aujourd’hui.",ar:"لدينا درسان اليوم.",kind:"دراسة"},{fr:"Nous avons froid.",ar:"نشعر بالبرد.",kind:"إحساس"}]},
+   {fr:"vous avez",ar:"لديكم أو لديك باحترام",explanation:"لمخاطبة جماعة أو شخص واحد باحترام.",examples:[{fr:"Vous avez un rendez-vous.",ar:"لديكم موعد.",kind:"موعد"},{fr:"Vous avez raison.",ar:"أنتم على حق.",kind:"تعبير"}]},
+   {fr:"ils ont",ar:"لديهم",explanation:"لجماعة الذكور أو الجماعة المختلطة.",examples:[{fr:"Ils ont des livres.",ar:"لديهم كتب.",kind:"ملكية"},{fr:"Ils ont chaud.",ar:"يشعرون بالحر.",kind:"إحساس"}]},
+   {fr:"elles ont",ar:"لديهنّ",explanation:"لجماعة الإناث أو أسماء الأشياء المؤنثة الجمع.",examples:[{fr:"Elles ont des fleurs.",ar:"لديهن أزهار.",kind:"ملكية"},{fr:"Elles ont seize ans.",ar:"أعمارهن ستة عشر عامًا.",kind:"عمر"}]}
   ]
  }
 ];
@@ -7195,7 +7153,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [nounTransformationItemIndex,setNounTransformationItemIndex]=useState(0);
  const [introductionPageIndex,setIntroductionPageIndex]=useState(0);
  const [nounPageIndex,setNounPageIndex]=useState(0);
- const [coreVerbPageIndex,setCoreVerbPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
  const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0,semij:0,semiw:0,semiu:0});
@@ -7307,7 +7264,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
- const coreVerbPage=CORE_VERB_PAGES[coreVerbPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_APPLICATION_PAGES[timeDatePageIndex];
  const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
@@ -8492,26 +8448,6 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
      <p className="university-phrase-note">{nounPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
-    {activeModule.id==="core-verbs"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Conjugaison interactive</span><h3>اضغط على الضمير أو التصريف أو الجملة لسماع النطق</h3></div>
-      <Users/>
-     </div>
-     <div className="university-phrase-grid">
-      {coreVerbPage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.75})} aria-label={`استمع إلى: ${item.fr}`}>
-       <i>{String(index+1).padStart(2,"0")}</i>
-       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
-       <Volume2/>
-      </button>)}
-     </div>
-     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
-      <button onClick={()=>setCoreVerbPageIndex(index=>Math.max(0,index-1))} disabled={coreVerbPageIndex===0} aria-label="أمثلة الضمائر السابقة"><ChevronLeft/><span>السابق</span></button>
-      <div><small>قسم التصريف</small><strong>{coreVerbPage.label}</strong><em>{coreVerbPageIndex+1} / {CORE_VERB_PAGES.length}</em></div>
-      <button onClick={()=>setCoreVerbPageIndex(index=>Math.min(CORE_VERB_PAGES.length-1,index+1))} disabled={coreVerbPageIndex===CORE_VERB_PAGES.length-1} aria-label="أمثلة الضمائر التالية"><span>التالي</span><ChevronRight/></button>
-     </div>
-     <p className="university-phrase-note">{coreVerbPage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
-    </section>}
-
     {activeModule.id==="present"&&<section className="university-introduction-board university-grammar-board">
      <div className="university-subheading">
       <div><span>Présent interactif</span><h3>اضغط على التصريف أو الجملة لسماع النطق</h3></div>
@@ -8762,6 +8698,23 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
              <div className="a1-pronoun-identity" role="cell"><button type="button" onClick={()=>void speakFrench(pronoun.audio,{rate:.74})} aria-label={"استمع إلى " + pronoun.fr}><strong dir="ltr">{pronoun.fr}</strong><Volume2 aria-hidden="true"/></button><span>{pronoun.ar}</span></div>
              <p role="cell">{pronoun.explanation}</p>
              <div className="a1-pronoun-examples" role="cell">{pronoun.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span className="a1-pronoun-example-kind">{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
+            </div>)}
+           </div>
+          </div>
+         </details>)}
+        </div>
+       </div>:isA1CoreVerbs&&index===1?<div className="a1-pronoun-learning a1-core-verbs-learning">
+        <p className="a1-pronoun-intro">{item.explanation} اضغط على التصريف أو الجملة لسماع النطق.</p>
+        <div className="a1-pronoun-groups">
+         {A1_CORE_VERB_GROUPS.map((group,groupIndex)=><details key={group.fr} className="a1-pronoun-group a1-verb-group">
+          <summary><span className="a1-pronoun-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-pronoun-group-body"><p>{group.note}</p>
+           <div className="a1-pronoun-table" role="table" aria-label={group.ar}>
+            <div className="a1-pronoun-row a1-pronoun-head" role="row"><span role="columnheader">التصريف</span><span role="columnheader">المعنى والاستعمال</span><span role="columnheader">أمثلة بالنطق</span></div>
+            {group.items.map(verb=><div className="a1-pronoun-row" role="row" key={verb.fr}>
+             <div className="a1-pronoun-identity" role="cell"><button type="button" onClick={()=>void speakFrench(verb.fr,{rate:.74})} aria-label={"استمع إلى " + verb.fr}><strong dir="ltr">{verb.fr}</strong><Volume2 aria-hidden="true"/></button><span>{verb.ar}</span></div>
+             <p role="cell">{verb.explanation}</p>
+             <div className="a1-pronoun-examples" role="cell">{verb.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span className="a1-pronoun-example-kind">{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
             </div>)}
            </div>
           </div>

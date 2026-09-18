@@ -3363,13 +3363,17 @@ const A1_CORE_VERBS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_CORE_VERBS_DICTATION=[
- {speech:"Je suis étudiant.",ar:"أنا طالب."},
- {speech:"Elle a vingt ans.",ar:"عمرها عشرون عامًا."},
- {speech:"Nous avons un cours de français.",ar:"لدينا درس في اللغة الفرنسية."},
- {speech:"Vous êtes devant la gare.",ar:"أنتم أمام المحطة."},
- {speech:"Ils ont besoin d’aide.",ar:"هم بحاجة إلى مساعدة."}
+ {speech:"Je suis à la maison.",ar:"أنا في المنزل."},
+ {speech:"J’ai un stylo.",ar:"لديّ قلم."},
+ {speech:"Tu as un cahier.",ar:"لديك دفتر."},
+ {speech:"Il est médecin.",ar:"هو طبيب."},
+ {speech:"Elle a un vélo.",ar:"لديها دراجة."},
+ {speech:"On est au café.",ar:"نحن في المقهى."},
+ {speech:"Nous avons deux livres.",ar:"لدينا كتابان."},
+ {speech:"Vous êtes à Paris.",ar:"أنتم في باريس."},
+ {speech:"Ils ont faim.",ar:"هم جائعون."},
+ {speech:"Elles sont à l’école.",ar:"هنّ في المدرسة."}
 ];
-
 const A1_CORE_VERBS_BUILDERS=[
  {tokens:["suis","Je","étudiant."],answer:["Je","suis","étudiant."],ar:"أنا طالب."},
  {tokens:["un","Elle","livre.","a"],answer:["Elle","a","un","livre."],ar:"لديها كتاب."},

@@ -6371,7 +6371,7 @@ const A1_SUBJECT_PRONOUN_GROUPS=[
   fr:"Les pronoms sujets au singulier",ar:"ضمائر المفرد",
   note:"الضمير يسبق الفعل عادةً. ويتبع on تصريف المفرد حتى عندما يعني «نحن».",
   items:[
-   {fr:"je / j’",audio:"Je. J’ai.",ar:"أنا",explanation:"للمتكلم المفرد. تصبح je اختصارًا إلى j’ قبل صوت متحرك أو h غير منطوقة.",examples:[{fr:"Je suis Adam.",ar:"أنا آدم.",kind:"شخص"},{fr:"J’ai un livre.",ar:"لديّ كتاب.",kind:"شيء"}]},
+   {fr:"je / j’",audio:"Je suis là.",ar:"أنا",explanation:"للمتكلم المفرد. تُنطق je قبل الحرف الساكن، وتصبح j’ قبل صوت متحرك أو h غير منطوقة؛ مثل j’ai.",examples:[{fr:"Je suis Adam.",ar:"أنا آدم.",kind:"شخص"},{fr:"J’ai un livre.",ar:"لديّ كتاب.",kind:"شيء"}]},
    {fr:"tu",audio:"Tu",ar:"أنتَ أو أنتِ",explanation:"لمخاطبة شخص واحد تعرفه بصورة غير رسمية.",examples:[{fr:"Tu es mon ami.",ar:"أنت صديقي.",kind:"شخص"},{fr:"Tu as une voiture.",ar:"لديك سيارة.",kind:"شيء"}]},
    {fr:"il",audio:"Il",ar:"هو",explanation:"للمفرد المذكر، سواء كان شخصًا أو اسم شيء مذكرًا. ويأتي أيضًا بلا مرجع شخصي عند الحديث عن الطقس أو الوقت.",examples:[{fr:"Adam est ici. Il est étudiant.",ar:"آدم هنا. إنه طالب.",kind:"شخص"},{fr:"Le livre est rouge. Il est sur la table.",ar:"الكتاب أحمر. إنه على الطاولة.",kind:"شيء"},{fr:"Il pleut.",ar:"تمطر.",kind:"طقس"},{fr:"Il est huit heures.",ar:"الساعة الثامنة.",kind:"وقت"}]},
    {fr:"elle",audio:"Elle",ar:"هي",explanation:"للمفرد المؤنث، سواء كان شخصًا أو اسم شيء مؤنثًا في الفرنسية.",examples:[{fr:"Lina est ici. Elle est étudiante.",ar:"لينا هنا. إنها طالبة.",kind:"شخص"},{fr:"La voiture est neuve. Elle est devant la maison.",ar:"السيارة جديدة. إنها أمام المنزل.",kind:"شيء"}]},

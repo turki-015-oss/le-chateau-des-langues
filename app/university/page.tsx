@@ -6366,22 +6366,31 @@ const NOUN_ARTICLE_PAGES=[
  }
 ];
 
-const CORE_VERB_PAGES=[
+const A1_SUBJECT_PRONOUN_GROUPS=[
  {
-  label:"ضمائر الفاعل",
-  description:"يأتي ضمير الفاعل قبل الفعل، ويحدد الشخص الذي يتكلم أو يقوم بالفعل.",
+  fr:"Les pronoms sujets au singulier",ar:"ضمائر المفرد",
+  note:"الضمير يسبق الفعل عادةً. ويتبع on تصريف المفرد حتى عندما يعني «نحن».",
   items:[
-   {fr:"Je",ar:"أنا",note:"المتكلم المفرد"},
-   {fr:"Tu",ar:"أنت",note:"مفرد غير رسمي"},
-   {fr:"Il",ar:"هو",note:"مذكر مفرد"},
-   {fr:"Elle",ar:"هي",note:"مؤنث مفرد"},
-   {fr:"On",ar:"نحن أو المرء",note:"شائع في الحديث"},
-   {fr:"Nous",ar:"نحن",note:"جمع المتكلم"},
-   {fr:"Vous",ar:"أنتم أو حضرتك",note:"جمع أو رسمي"},
-   {fr:"Ils",ar:"هم",note:"مذكر أو مختلط"},
-   {fr:"Elles",ar:"هنّ",note:"مؤنث جمع"}
+   {fr:"je / j’",audio:"Je. J’ai.",ar:"أنا",explanation:"للمتكلم المفرد. تصبح je اختصارًا إلى j’ قبل صوت متحرك أو h غير منطوقة.",examples:[{fr:"Je suis Adam.",ar:"أنا آدم.",kind:"شخص"},{fr:"J’ai un livre.",ar:"لديّ كتاب.",kind:"شيء"}]},
+   {fr:"tu",audio:"Tu",ar:"أنتَ أو أنتِ",explanation:"لمخاطبة شخص واحد تعرفه بصورة غير رسمية.",examples:[{fr:"Tu es mon ami.",ar:"أنت صديقي.",kind:"شخص"},{fr:"Tu as une voiture.",ar:"لديك سيارة.",kind:"شيء"}]},
+   {fr:"il",audio:"Il",ar:"هو",explanation:"للمفرد المذكر، سواء كان شخصًا أو اسم شيء مذكرًا. ويأتي أيضًا بلا مرجع شخصي عند الحديث عن الطقس أو الوقت.",examples:[{fr:"Adam est ici. Il est étudiant.",ar:"آدم هنا. إنه طالب.",kind:"شخص"},{fr:"Le livre est rouge. Il est sur la table.",ar:"الكتاب أحمر. إنه على الطاولة.",kind:"شيء"},{fr:"Il pleut.",ar:"تمطر.",kind:"طقس"},{fr:"Il est huit heures.",ar:"الساعة الثامنة.",kind:"وقت"}]},
+   {fr:"elle",audio:"Elle",ar:"هي",explanation:"للمفرد المؤنث، سواء كان شخصًا أو اسم شيء مؤنثًا في الفرنسية.",examples:[{fr:"Lina est ici. Elle est étudiante.",ar:"لينا هنا. إنها طالبة.",kind:"شخص"},{fr:"La voiture est neuve. Elle est devant la maison.",ar:"السيارة جديدة. إنها أمام المنزل.",kind:"شيء"}]},
+   {fr:"on",audio:"On",ar:"نحن أو الناس عمومًا",explanation:"ضمير يُصرَّف مع المفرد؛ يعني «نحن» كثيرًا في الحديث اليومي، وقد يعني الناس بوجه عام.",examples:[{fr:"On va à la gare.",ar:"نذهب إلى محطة القطار.",kind:"حديث يومي"},{fr:"Ici, on parle français.",ar:"هنا يتحدث الناس الفرنسية.",kind:"معنى عام"}]}
   ]
  },
+ {
+  fr:"Les pronoms sujets au pluriel",ar:"ضمائر الجمع",
+  note:"vous قد يخاطب شخصًا واحدًا باحترام؛ أما ils فيشمل جماعة الذكور أو جماعة مختلطة.",
+  items:[
+   {fr:"nous",audio:"Nous",ar:"نحن",explanation:"للمتكلم مع شخص آخر أو أكثر.",examples:[{fr:"Nous sommes prêts.",ar:"نحن مستعدون.",kind:"أشخاص"},{fr:"Nous avons deux billets.",ar:"لدينا تذكرتان.",kind:"أشياء"}]},
+   {fr:"vous",audio:"Vous",ar:"أنتم أو حضرتك",explanation:"لمخاطبة جماعة، أو شخص واحد بصيغة الاحترام؛ ويأخذ الفعل معه تصريف الجمع في الحالتين.",examples:[{fr:"Vous êtes mes amis.",ar:"أنتم أصدقائي.",kind:"جماعة"},{fr:"Monsieur, vous avez un rendez-vous.",ar:"سيدي، لديك موعد.",kind:"احترام"}]},
+   {fr:"ils",audio:"Ils",ar:"هم",explanation:"لجماعة من الذكور، أو جماعة تضم ذكورًا وإناثًا، ويستعمل أيضًا لأسماء أشياء مذكرة أو مختلطة.",examples:[{fr:"Les garçons sont ici. Ils jouent.",ar:"الأولاد هنا. إنهم يلعبون.",kind:"ذكور"},{fr:"Les garçons et les filles sont là. Ils parlent.",ar:"الأولاد والبنات هناك. إنهم يتحدثون.",kind:"جماعة مختلطة"}]},
+   {fr:"elles",audio:"Elles",ar:"هنّ",explanation:"لجماعة من الإناث فقط، أو لأسماء أشياء مؤنثة في الفرنسية.",examples:[{fr:"Les filles sont ici. Elles étudient.",ar:"الفتيات هنا. إنهن يدرسن.",kind:"إناث"},{fr:"Les fleurs sont rouges. Elles sont belles.",ar:"الأزهار حمراء. إنها جميلة.",kind:"أشياء"}]}
+  ]
+ }
+];
+
+const CORE_VERB_PAGES=[
  {
   label:"تصريف فعل être",
   description:"فعل être يعني يكون، ويُستخدم للهوية والصفة والحالة والمكان.",
@@ -8741,7 +8750,24 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1CoreVerbs&&index===0?<div className="a1-pronoun-learning">
+        <p className="a1-pronoun-intro">{item.explanation} اضغط على الضمير أو الجملة لسماع النطق.</p>
+        <div className="a1-pronoun-groups">
+         {A1_SUBJECT_PRONOUN_GROUPS.map((group,groupIndex)=><details key={group.fr} className="a1-pronoun-group">
+          <summary><span className="a1-pronoun-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
+          <div className="a1-pronoun-group-body"><p>{group.note}</p>
+           <div className="a1-pronoun-table" role="table" aria-label={group.ar}>
+            <div className="a1-pronoun-row a1-pronoun-head" role="row"><span role="columnheader">الضمير</span><span role="columnheader">المعنى والاستعمال</span><span role="columnheader">أمثلة بالنطق</span></div>
+            {group.items.map(pronoun=><div className="a1-pronoun-row" role="row" key={pronoun.fr}>
+             <div className="a1-pronoun-identity" role="cell"><button type="button" onClick={()=>void speakFrench(pronoun.audio,{rate:.74})} aria-label={"استمع إلى " + pronoun.fr}><strong dir="ltr">{pronoun.fr}</strong><Volume2 aria-hidden="true"/></button><span>{pronoun.ar}</span></div>
+             <p role="cell">{pronoun.explanation}</p>
+             <div className="a1-pronoun-examples" role="cell">{pronoun.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span className="a1-pronoun-example-kind">{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
+            </div>)}
+           </div>
+          </div>
+         </details>)}
+        </div>
+       </div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

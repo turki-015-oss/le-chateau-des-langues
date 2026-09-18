@@ -945,50 +945,32 @@ const A1_MODULES:CourseModule[]=[
   ]
  },
  {
- id:"present",title:"Le présent et la négation",ar:"المضارع والنفي",icon:Activity,
-  description:"فهم المضارع الفرنسي، تصريف أفعال المجموعة الأولى والأفعال الشائعة، ثم بناء الجملة المثبتة والمنفية.",
+ id:"present",title:"Le présent simple et la négation",ar:"المضارع البسيط والنفي",icon:Activity,
+  description:"استخدم المضارع البسيط في الجمل اليومية، ثم حوّل الجملة المثبتة إلى صيغة النفي بطريقة واضحة.",
   sections:[
-   section("Introduction au présent","مقدمة المضارع","نستخدم المضارع الفرنسي للحديث عما يحدث الآن، وما يتكرر، والحقائق والحالات المستمرة. يتغير شكل الفعل بحسب ضمير الفاعل، لذلك نتعلم الفعل مع تصريفه داخل جملة كاملة.",[
-    "الترتيب الأساسي هو: ضمير الفاعل + فعل مصرّف + مكمّل.",
-    "قد يعبّر المضارع عن فعل يقع الآن أو عادة تتكرر كل يوم.",
-    "يجب إظهار ضمير الفاعل في الجملة الفرنسية.",
-    "بعض النهايات تكتب ولا تنطق؛ لذلك نربط التصريف بالنطق منذ البداية."
+   section("Le présent simple","زمن المضارع البسيط","نستخدم المضارع البسيط للحديث عمّا يحدث الآن، والعادات، والحقائق العامة. نبدأ بجملة قصيرة: ضمير فاعل + فعل مصرّف + مكمّل.",[
+    "استعمالات المضارع: فعل يحدث الآن، أو عادة تتكرر، أو حقيقة عامة وحالة مستمرة.",
+    "ترتيب الجملة: ضمير الفاعل + فعل مصرّف + مكمّل. نستخدم الضمائر التي تعلّمناها سابقًا داخل الأمثلة فقط.",
+    "الأفعال المنتظمة بـ -er: نحذف -er ثم نضيف e، es، e، ons، ez، ent.",
+    "الأفعال الشائعة: aller وfaire وvenir وprendre تُتعلَّم داخل جمل يومية؛ لأنها لا تتبع النموذج المنتظم نفسه.",
+    "تغييرات بسيطة تحفظ النطق: nous mangeons وnous commençons."
    ],[
     {fr:"Je travaille aujourd’hui.",ar:"أنا أعمل اليوم."},
     {fr:"Nous parlons français en classe.",ar:"نتحدث الفرنسية في الفصل."},
-    {fr:"Elle habite à Lyon.",ar:"هي تسكن في ليون."}
-   ]),
-   section("Les verbes du premier groupe","أفعال المجموعة الأولى","تنتهي أفعال المجموعة الأولى في المصدر بـ -er، باستثناء aller. نحذف -er لنحصل على الجذر، ثم نضيف النهاية المناسبة لكل ضمير.",[
-    "النهايات هي: -e، -es، -e، -ons، -ez، -ent.",
-    "parler: je parle، tu parles، il parle، nous parlons، vous parlez، ils parlent.",
-    "النهايات -e و-es و-ent لا تُنطق غالبًا، فتتشابه صيغ كثيرة في السماع.",
-    "في manger نكتب nous mangeons، وفي commencer نكتب nous commençons للمحافظة على النطق."
-   ],[
-    {fr:"J’aime apprendre le français.",ar:"أحب تعلم الفرنسية."},
-    {fr:"Tu écoutes le professeur.",ar:"أنت تستمع إلى المعلم."},
-    {fr:"Nous mangeons à midi.",ar:"نتناول الطعام عند الظهر."},
-    {fr:"Vous commencez le cours.",ar:"تبدؤون الدرس."}
-   ]),
-   section("Verbes fréquents","أفعال شائعة","بعض الأفعال كثيرة الاستخدام لا تتبع نهايات الأفعال المنتظمة؛ نتعلم تصريفها داخل جمل قصيرة.",[
-    "aller: vais, vas, va, allons, allez, vont.",
-    "faire: fais, fais, fait, faisons, faites, font.",
-    "prendre: prends, prends, prend, prenons, prenez, prennent.",
-    "venir: viens, viens, vient, venons, venez, viennent."
-   ],[
-    {fr:"Je vais au travail en bus.",ar:"أذهب إلى العمل بالحافلة."},
-    {fr:"Vous faites du sport le samedi.",ar:"تمارسون الرياضة يوم السبت."},
-    {fr:"Elle prend le métro chaque matin.",ar:"تستقل المترو كل صباح."},
+    {fr:"Elle va au marché le matin.",ar:"هي تذهب إلى السوق صباحًا."},
     {fr:"Mes amis viennent ce soir.",ar:"سيأتي أصدقائي هذا المساء."}
    ]),
-   section("La négation au présent","النفي في المضارع","نضع ne قبل الفعل المصرف وpas بعده. تتحول ne إلى n’ قبل صوت متحرك، وتبقى صيغة الفعل متوافقة مع الفاعل.",[
-    "Je parle → Je ne parle pas.",
-    "قبل الحركة تصبح ne إلى n’: Je n’habite pas ici.",
-    "مع الفعل الضميري يأتي الضمير داخل النفي: Je ne me lève pas tôt.",
-    "في الكتابة التعليمية نحتفظ بـ ne حتى لو حُذفت أحيانًا في الكلام اليومي."
+   section("La forme négative","صيغة النفي","في النفي الأساسي نحيط الفعل المصرف بـ ne…pas. لا يتغير تصريف الفعل؛ الذي يتغير هو إضافة جزأي النفي في موضعهما الصحيح.",[
+    "النفي الأساسي: Je parle → Je ne parle pas.",
+    "موضع النفي: ne قبل الفعل المصرف وpas بعده، حتى مع الأفعال الشائعة التي عرفناها في القسم الأول.",
+    "قبل حرف متحرك أو h صامتة تتحول ne إلى n’: Elle habite → Elle n’habite pas.",
+    "نحافظ على ne في الكتابة التعليمية الصحيحة، ولو حُذفت أحيانًا في الكلام اليومي السريع.",
+    "نتدرب أخيرًا على تحويل جملة مثبتة إلى جملة منفية بالمعنى الصحيح."
    ],[
     {fr:"Je ne comprends pas.",ar:"أنا لا أفهم."},
     {fr:"Elle n’habite pas ici.",ar:"هي لا تسكن هنا."},
-    {fr:"Nous ne travaillons pas le vendredi.",ar:"نحن لا نعمل يوم الجمعة."}
+    {fr:"Nous ne travaillons pas le vendredi.",ar:"نحن لا نعمل يوم الجمعة."},
+    {fr:"Vous ne prenez pas le métro.",ar:"أنتم لا تستقلون المترو."}
    ])
   ]
  },

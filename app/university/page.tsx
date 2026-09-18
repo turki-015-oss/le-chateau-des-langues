@@ -8207,7 +8207,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    </aside>
 
    <article className="university-lesson" id="university-lesson">
-    {(!isA1Alphabet||lessonStage==="learn")&&<header>
+    {lessonStage==="learn"&&<header>
      <div className="university-lesson-icon"><ActiveModuleIcon/></div>
      <div>
       <span>{level.id} · Cours {level.modules.findIndex(item=>item.id===activeModule.id)+1}</span>

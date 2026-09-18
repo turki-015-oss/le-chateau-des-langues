@@ -6392,7 +6392,7 @@ const A1_SUBJECT_PRONOUN_GROUPS=[
 
 const A1_CORE_VERB_GROUPS=[
  {
-  fr:"Le verbe être",ar:"فعل الكينونة: يكون",
+  fr:"Le verbe être",ar:"فعل الكينونة: يكون",infinitive:"être",
   note:"نستعمل être للهوية والمهنة والصفة والحالة والمكان. لا نترجمه دائمًا بكلمة «يكون» حرفيًا.",
   items:[
    {fr:"je suis",ar:"أنا",explanation:"للتعريف بنفسك أو وصف حالتك أو تحديد مكانك.",examples:[{fr:"Je suis étudiant.",ar:"أنا طالب.",kind:"هوية"},{fr:"Je suis à la gare.",ar:"أنا في محطة القطار.",kind:"مكان"}]},
@@ -6407,7 +6407,7 @@ const A1_CORE_VERB_GROUPS=[
   ]
  },
  {
-  fr:"Le verbe avoir",ar:"فعل الملكية: يمتلك",
+  fr:"Le verbe avoir",ar:"فعل الملكية: يمتلك",infinitive:"avoir",
   note:"نستعمل avoir للملكية، وكذلك للعمر والجوع والعطش وبعض الأحاسيس؛ ومع هذه التعبيرات نترجم المعنى لا الفعل حرفيًا.",
   items:[
    {fr:"j’ai",ar:"لديّ",explanation:"مع المتكلم المفرد؛ تُختصر je إلى j’ قبل avoir.",examples:[{fr:"J’ai un billet.",ar:"لديّ تذكرة.",kind:"ملكية"},{fr:"J’ai vingt ans.",ar:"عمري عشرون عامًا.",kind:"عمر"}]},
@@ -6436,6 +6436,7 @@ function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONO
      <summary><span className="a1-grammar-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span className="a1-grammar-group-name"><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><small>{group.items.length}</small><ChevronDown/></summary>
      <div className="a1-grammar-group-body">
       <p className="a1-grammar-group-note">{group.note}</p>
+      {"infinitive" in group&&<button type="button" className="a1-grammar-infinitive" onClick={()=>void speakFrench(group.infinitive,{rate:.72})} aria-label={"استمع إلى الفعل " + group.infinitive}><span><small>الفعل الأساسي · Infinitif</small><strong dir="ltr">{group.infinitive}</strong></span><Volume2 aria-hidden="true"/></button>}
       <nav className="a1-grammar-quick-nav" aria-label={"التنقل بين " + group.ar}>{group.items.map((option,optionIndex)=><button type="button" key={option.fr} className={optionIndex===activeIndex?"active":""} aria-current={optionIndex===activeIndex?"step":undefined} onClick={()=>setActiveItems(current=>({...current,[groupIndex]:optionIndex}))} dir="ltr">{option.fr}</button>)}</nav>
       <article className="a1-grammar-focus-card" key={entry.fr}>
        <div className="a1-grammar-focus-header">

@@ -1987,18 +1987,19 @@ const A1_NOUNS_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_CORE_VERBS_PRACTICE_ITEMS:Example[]=[
- {fr:"Je suis disponible cet après-midi.",ar:"أنا متاح بعد ظهر اليوم."},
- {fr:"Tu es dans la bonne salle.",ar:"أنت في القاعة الصحيحة."},
- {fr:"On est prêts pour le cours.",ar:"نحن مستعدون للدرس."},
- {fr:"Nous sommes voisins depuis peu.",ar:"نحن جيران منذ وقت قريب."},
- {fr:"Elles sont étudiantes en médecine.",ar:"هن طالبات في كلية الطب."},
- {fr:"J’ai un vélo rouge.",ar:"لدي دراجة حمراء."},
- {fr:"Il a trente ans aujourd’hui.",ar:"بلغ اليوم ثلاثين عامًا."},
- {fr:"Nous avons rendez-vous à dix heures.",ar:"لدينا موعد الساعة العاشرة."},
- {fr:"Vous avez faim après le voyage ?",ar:"هل تشعرون بالجوع بعد الرحلة؟"},
- {fr:"Ils ont besoin d’un taxi.",ar:"يحتاجون إلى سيارة أجرة."}
+ {fr:"Je suis à l’hôtel.",ar:"أنا في الفندق."},
+ {fr:"Tu es en classe ?",ar:"هل أنت في الصف؟"},
+ {fr:"Elle est au travail.",ar:"هي في العمل."},
+ {fr:"On est dans le train.",ar:"نحن في القطار."},
+ {fr:"Nous sommes à la bibliothèque.",ar:"نحن في المكتبة."},
+ {fr:"Vous êtes à l’heure.",ar:"أنتم في الموعد."},
+ {fr:"J’ai une question.",ar:"لديّ سؤال."},
+ {fr:"Tu as le temps ?",ar:"هل لديك وقت؟"},
+ {fr:"Il a trente ans.",ar:"عمره ثلاثون عامًا."},
+ {fr:"Nous avons un cours demain.",ar:"لدينا درس غدًا."},
+ {fr:"Vous avez des questions ?",ar:"هل لديكم أسئلة؟"},
+ {fr:"Elles ont soif.",ar:"هنّ عطشى."}
 ];
-
 const A1_CORE_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Je ___ à la gare.",translation:"أنا في المحطة.",speech:"Complétez la phrase. Je suis à la gare.",instruction:"اختر تصريف être الصحيح مع je.",choices:["suis","es","ai"],correctIndex:0,explanation:"مع je يُصرّف être هكذا: je suis."},
  {prompt:"Tu ___ très calme.",translation:"أنت هادئ جدًا.",speech:"Complétez la phrase. Tu es très calme.",instruction:"اختر تصريف être الصحيح مع tu.",choices:["est","es","as"],correctIndex:1,explanation:"مع tu يُصرّف être هكذا: tu es."},

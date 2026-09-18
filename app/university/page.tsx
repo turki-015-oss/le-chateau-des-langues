@@ -6423,6 +6423,40 @@ const A1_CORE_VERB_GROUPS=[
  }
 ];
 
+function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
+ const [activeItems,setActiveItems]=useState<Record<number,number>>({});
+ return <div className={"a1-grammar-carousel"+(isVerb?" is-verb":"")}>
+  <p className="a1-grammar-intro">{intro}</p>
+  <div className="a1-grammar-groups">
+   {groups.map((group,groupIndex)=>{
+    const activeIndex=Math.min(activeItems[groupIndex]??0,group.items.length-1);
+    const entry=group.items[activeIndex];
+    const pronunciation="audio" in entry&&typeof entry.audio==="string"?entry.audio:entry.fr;
+    return <details key={group.fr} className="a1-grammar-group">
+     <summary><span className="a1-grammar-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span className="a1-grammar-group-name"><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><small>{group.items.length}</small><ChevronDown/></summary>
+     <div className="a1-grammar-group-body">
+      <p className="a1-grammar-group-note">{group.note}</p>
+      <nav className="a1-grammar-quick-nav" aria-label={"التنقل بين " + group.ar}>{group.items.map((option,optionIndex)=><button type="button" key={option.fr} className={optionIndex===activeIndex?"active":""} aria-current={optionIndex===activeIndex?"step":undefined} onClick={()=>setActiveItems(current=>({...current,[groupIndex]:optionIndex}))} dir="ltr">{option.fr}</button>)}</nav>
+      <article className="a1-grammar-focus-card" key={entry.fr}>
+       <div className="a1-grammar-focus-header">
+        <div><small>{isVerb?"التصريف":"الضمير"} {activeIndex+1} / {group.items.length}</small><strong dir="ltr">{entry.fr}</strong><span>{entry.ar}</span></div>
+        <button type="button" onClick={()=>void speakFrench(pronunciation,{rate:.74})} aria-label={"استمع إلى " + entry.fr}><Volume2 aria-hidden="true"/></button>
+       </div>
+       <p className="a1-grammar-focus-explanation">{entry.explanation}</p>
+       <div className="a1-grammar-focus-examples">{entry.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span>{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
+       <div className="a1-grammar-focus-navigation">
+        <button type="button" onClick={()=>setActiveItems(current=>({...current,[groupIndex]:Math.max(0,activeIndex-1)}))} disabled={activeIndex===0} aria-label="السابق"><ChevronRight/><span>السابق</span></button>
+        <span>{activeIndex+1} / {group.items.length}</span>
+        <button type="button" onClick={()=>setActiveItems(current=>({...current,[groupIndex]:Math.min(group.items.length-1,activeIndex+1)}))} disabled={activeIndex===group.items.length-1} aria-label="التالي"><span>التالي</span><ChevronLeft/></button>
+       </div>
+      </article>
+     </div>
+    </details>
+   })}
+  </div>
+ </div>
+}
+
 const PRESENT_NEGATION_PAGES=[
  {
   label:"أفعال -er: parler",
@@ -8686,41 +8720,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1CoreVerbs&&index===0?<div className="a1-pronoun-learning">
-        <p className="a1-pronoun-intro">{item.explanation} اضغط على الضمير أو الجملة لسماع النطق.</p>
-        <div className="a1-pronoun-groups">
-         {A1_SUBJECT_PRONOUN_GROUPS.map((group,groupIndex)=><details key={group.fr} className="a1-pronoun-group">
-          <summary><span className="a1-pronoun-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
-          <div className="a1-pronoun-group-body"><p>{group.note}</p>
-           <div className="a1-pronoun-table" role="table" aria-label={group.ar}>
-            <div className="a1-pronoun-row a1-pronoun-head" role="row"><span role="columnheader">الضمير</span><span role="columnheader">المعنى والاستعمال</span><span role="columnheader">أمثلة بالنطق</span></div>
-            {group.items.map(pronoun=><div className="a1-pronoun-row" role="row" key={pronoun.fr}>
-             <div className="a1-pronoun-identity" role="cell"><button type="button" onClick={()=>void speakFrench(pronoun.audio,{rate:.74})} aria-label={"استمع إلى " + pronoun.fr}><strong dir="ltr">{pronoun.fr}</strong><Volume2 aria-hidden="true"/></button><span>{pronoun.ar}</span></div>
-             <p role="cell">{pronoun.explanation}</p>
-             <div className="a1-pronoun-examples" role="cell">{pronoun.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span className="a1-pronoun-example-kind">{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
-            </div>)}
-           </div>
-          </div>
-         </details>)}
-        </div>
-       </div>:isA1CoreVerbs&&index===1?<div className="a1-pronoun-learning a1-core-verbs-learning">
-        <p className="a1-pronoun-intro">{item.explanation} اضغط على التصريف أو الجملة لسماع النطق.</p>
-        <div className="a1-pronoun-groups">
-         {A1_CORE_VERB_GROUPS.map((group,groupIndex)=><details key={group.fr} className="a1-pronoun-group a1-verb-group">
-          <summary><span className="a1-pronoun-group-number">{String(groupIndex+1).padStart(2,"0")}</span><span><strong dir="ltr">{group.fr}</strong><b>{group.ar}</b></span><ChevronDown/></summary>
-          <div className="a1-pronoun-group-body"><p>{group.note}</p>
-           <div className="a1-pronoun-table" role="table" aria-label={group.ar}>
-            <div className="a1-pronoun-row a1-pronoun-head" role="row"><span role="columnheader">التصريف</span><span role="columnheader">المعنى والاستعمال</span><span role="columnheader">أمثلة بالنطق</span></div>
-            {group.items.map(verb=><div className="a1-pronoun-row" role="row" key={verb.fr}>
-             <div className="a1-pronoun-identity" role="cell"><button type="button" onClick={()=>void speakFrench(verb.fr,{rate:.74})} aria-label={"استمع إلى " + verb.fr}><strong dir="ltr">{verb.fr}</strong><Volume2 aria-hidden="true"/></button><span>{verb.ar}</span></div>
-             <p role="cell">{verb.explanation}</p>
-             <div className="a1-pronoun-examples" role="cell">{verb.examples.map(example=><button type="button" key={example.fr} onClick={()=>void speakFrench(example.fr,{rate:.72})} aria-label={"استمع إلى " + example.fr}><span className="a1-pronoun-example-kind">{example.kind}</span><strong dir="ltr">{example.fr}</strong><small>{example.ar}</small><Volume2 aria-hidden="true"/></button>)}</div>
-            </div>)}
-           </div>
-          </div>
-         </details>)}
-        </div>
-       </div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

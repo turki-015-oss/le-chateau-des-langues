@@ -6461,6 +6461,29 @@ function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONO
  </div>
 }
 
+const A1_PRESENT_SIMPLE_BRANCHES=[
+ {fr:"Les emplois du présent",ar:"استعمالات المضارع",note:"سنضيف هنا حالات استخدام المضارع البسيط مع أمثلة يومية مناسبة للمستوى A1."},
+ {fr:"L’ordre de la phrase",ar:"ترتيب الجملة في المضارع",note:"سنضيف هنا بناء الجملة: ضمير الفاعل + فعل مصرّف + مكمّل."},
+ {fr:"Les verbes réguliers en -er",ar:"الأفعال المنتظمة بـ -er",note:"سنضيف هنا التصريف والنهايات والأمثلة التفاعلية لأفعال المجموعة الأولى."},
+ {fr:"Les verbes fréquents",ar:"الأفعال الشائعة في المضارع",note:"سنضيف هنا aller وfaire وvenir وprendre داخل مواقف يومية قصيرة."},
+ {fr:"Les changements orthographiques",ar:"التغييرات الإملائية البسيطة",note:"سنضيف هنا صيغًا مثل nous mangeons وnous commençons مع شرح النطق."}
+] as const;
+
+function A1PresentSimpleBranches({intro}:{intro:string}){
+ return <div className="a1-present-simple-branches">
+  <p className="a1-present-simple-intro">{intro}</p>
+  <div className="a1-present-simple-branch-list">
+   {A1_PRESENT_SIMPLE_BRANCHES.map((branch,index)=><details key={branch.fr} className="a1-present-simple-branch">
+    <summary>
+     <span className="a1-present-simple-branch-number">{String(index+1).padStart(2,"0")}</span>
+     <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
+     <ChevronDown aria-hidden="true"/>
+    </summary>
+    <div className="a1-present-simple-branch-content"><p>{branch.note}</p></div>
+   </details>)}
+  </div>
+ </div>
+}
 const PRESENT_NEGATION_PAGES=[
  {
   label:"أفعال -er: parler",
@@ -8724,7 +8747,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

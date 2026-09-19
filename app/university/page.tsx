@@ -6429,18 +6429,18 @@ const A1_CORE_VERB_GROUPS=[
 ];
 
 const A1_STUDY_PLACE_CARDS=[
- {fr:"l’école",ar:"المدرسة",image:"/images/university/a1-studies/places/ecole.png",example:"J’étudie à l’école.",exampleAr:"أدرس في المدرسة."},
- {fr:"le collège",ar:"المدرسة المتوسطة",image:"/images/university/a1-studies/places/college.png",example:"Mon frère étudie au collège.",exampleAr:"أخي يدرس في المدرسة المتوسطة."},
- {fr:"le lycée",ar:"المدرسة الثانوية",image:"/images/university/a1-studies/places/lycee.png",example:"Elle étudie au lycée.",exampleAr:"هي تدرس في المدرسة الثانوية."},
- {fr:"l’université",ar:"الجامعة",image:"/images/university/a1-studies/places/universite.png",example:"J’étudie à l’université.",exampleAr:"أدرس في الجامعة."},
- {fr:"la salle de classe",ar:"قاعة الدراسة",image:"/images/university/a1-studies/places/salle-de-classe.png",example:"Le cours est dans la salle de classe.",exampleAr:"الدرس في قاعة الدراسة."},
- {fr:"la bibliothèque",ar:"المكتبة",image:"/images/university/a1-studies/places/bibliotheque.png",example:"Je travaille à la bibliothèque.",exampleAr:"أدرس في المكتبة."},
- {fr:"l’amphithéâtre",ar:"المدرّج",image:"/images/university/a1-studies/places/amphitheatre.png",example:"Le cours est dans l’amphithéâtre.",exampleAr:"الدرس في المدرّج."},
- {fr:"le laboratoire",ar:"المختبر",image:"/images/university/a1-studies/places/laboratoire.png",example:"Nous travaillons au laboratoire.",exampleAr:"نعمل في المختبر."},
- {fr:"la salle informatique",ar:"قاعة الحاسب",image:"/images/university/a1-studies/places/salle-informatique.png",example:"Je travaille dans la salle informatique.",exampleAr:"أعمل في قاعة الحاسب."},
- {fr:"la cantine",ar:"المقصف",image:"/images/university/a1-studies/places/cantine.png",example:"Nous mangeons à la cantine.",exampleAr:"نتناول الطعام في المقصف."},
- {fr:"la cour",ar:"ساحة المدرسة",image:"/images/university/a1-studies/places/cour.png",example:"Les élèves sont dans la cour.",exampleAr:"الطلاب في ساحة المدرسة."},
- {fr:"le campus",ar:"الحرم الجامعي",image:"/images/university/a1-studies/places/campus.png",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
+ {fr:"l’école",ar:"المدرسة",image:"/images/university/a1-studies/places/ecole.webp",example:"J’étudie à l’école.",exampleAr:"أدرس في المدرسة."},
+ {fr:"le collège",ar:"المدرسة المتوسطة",image:"/images/university/a1-studies/places/college.webp",example:"Mon frère étudie au collège.",exampleAr:"أخي يدرس في المدرسة المتوسطة."},
+ {fr:"le lycée",ar:"المدرسة الثانوية",image:"/images/university/a1-studies/places/lycee.webp",example:"Elle étudie au lycée.",exampleAr:"هي تدرس في المدرسة الثانوية."},
+ {fr:"l’université",ar:"الجامعة",image:"/images/university/a1-studies/places/universite.webp",example:"J’étudie à l’université.",exampleAr:"أدرس في الجامعة."},
+ {fr:"la salle de classe",ar:"قاعة الدراسة",image:"/images/university/a1-studies/places/salle-de-classe.webp",example:"Le cours est dans la salle de classe.",exampleAr:"الدرس في قاعة الدراسة."},
+ {fr:"la bibliothèque",ar:"المكتبة",image:"/images/university/a1-studies/places/bibliotheque.webp",example:"Je travaille à la bibliothèque.",exampleAr:"أدرس في المكتبة."},
+ {fr:"l’amphithéâtre",ar:"المدرّج",image:"/images/university/a1-studies/places/amphitheatre.webp",example:"Le cours est dans l’amphithéâtre.",exampleAr:"الدرس في المدرّج."},
+ {fr:"le laboratoire",ar:"المختبر",image:"/images/university/a1-studies/places/laboratoire.webp",example:"Nous travaillons au laboratoire.",exampleAr:"نعمل في المختبر."},
+ {fr:"la salle informatique",ar:"قاعة الحاسب",image:"/images/university/a1-studies/places/salle-informatique.webp",example:"Je travaille dans la salle informatique.",exampleAr:"أعمل في قاعة الحاسب."},
+ {fr:"la cantine",ar:"المقصف",image:"/images/university/a1-studies/places/cantine.webp",example:"Nous mangeons à la cantine.",exampleAr:"نتناول الطعام في المقصف."},
+ {fr:"la cour",ar:"ساحة المدرسة",image:"/images/university/a1-studies/places/cour.webp",example:"Les élèves sont dans la cour.",exampleAr:"الطلاب في ساحة المدرسة."},
+ {fr:"le campus",ar:"الحرم الجامعي",image:"/images/university/a1-studies/places/campus.webp",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
 ];
 
 function A1StudyPlacesCarousel(){

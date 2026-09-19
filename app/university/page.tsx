@@ -2005,16 +2005,16 @@ const A1_CORE_VERBS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Quelle phrase parle de l’âge ?",translation:"أي جملة تتحدث عن العمر؟",speech:"Quelle phrase parle de l’âge ?",instruction:"اختر الجملة المناسبة.",choices:["Elle a un livre.","Elle est ici.","Elle a vingt ans."],correctIndex:2,explanation:"نستعمل avoir مع العمر: elle a vingt ans."}
 ];
 const A1_PRESENT_PRACTICE_ITEMS:Example[]=[
- {fr:"Je prépare le dîner à la maison.",ar:"أُحضّر العشاء في المنزل."},
- {fr:"Tu finis ton travail à cinq heures.",ar:"تنهي عملك الساعة الخامسة."},
- {fr:"Le bus arrive devant la gare.",ar:"تصل الحافلة أمام المحطة."},
- {fr:"Nous choisissons une table près de la fenêtre.",ar:"نختار طاولة قرب النافذة."},
- {fr:"Vous attendez votre tour.",ar:"تنتظرون دوركم."},
- {fr:"Elles prennent le train chaque matin.",ar:"يستقللن القطار كل صباح."},
+ {fr:"Je parle français avec mes amis.",ar:"أتحدث الفرنسية مع أصدقائي."},
+ {fr:"Tu finis le cours à midi.",ar:"تنهي الدرس عند الظهر."},
+ {fr:"Nous allons au marché le matin.",ar:"نذهب إلى السوق في الصباح."},
+ {fr:"Vous faites vos devoirs le soir.",ar:"تنجزون واجباتكم في المساء."},
+ {fr:"Ils viennent ce soir.",ar:"يأتون هذا المساء."},
+ {fr:"La bibliothèque ferme à dix-huit heures.",ar:"تغلق المكتبة عند الساعة السادسة مساءً."},
  {fr:"Je ne travaille pas le dimanche.",ar:"لا أعمل يوم الأحد."},
- {fr:"Il n’habite pas dans ce quartier.",ar:"هو لا يسكن في هذا الحي."},
- {fr:"Est-ce que vous parlez français ?",ar:"هل تتحدثون الفرنسية؟"},
- {fr:"Pourquoi est-ce qu’elle rentre tôt ?",ar:"لماذا تعود مبكرًا؟"}
+ {fr:"Elle n’habite pas ici.",ar:"هي لا تسكن هنا."},
+ {fr:"Je n’achète pas de pain.",ar:"لا أشتري خبزًا."},
+ {fr:"Ce n’est pas un livre.",ar:"هذا ليس كتابًا."}
 ];
 
 const A1_PRESENT_QUIZ_ITEMS:QuizQuestion[]=[

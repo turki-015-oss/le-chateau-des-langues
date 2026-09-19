@@ -3566,11 +3566,14 @@ const A1_PRESENT_BUILDERS=[
 ];
 
 const A1_PRESENT_DIALOGUES=[
- {context:"Vous travaillez le samedi ?",translation:"هل تعمل يوم السبت؟",prompt:"اختر إجابة منفية صحيحة.",choices:["Non, je ne travaille pas le samedi.","Non, je travaille ne pas le samedi.","Non, je ne pas travaille le samedi."],correctIndex:0,feedback:"في النفي يحيط ne وpas بالفعل المصرف."},
+ {context:"Vous travaillez le samedi ?",translation:"هل تعملون يوم السبت؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, je ne travaille pas le samedi.","Non, je ne pas travaille le samedi.","Non, je travaille ne pas le samedi."],correctIndex:0,feedback:"في النفي نضع ne قبل travaille وpas بعده."},
  {context:"À quelle heure finissez-vous le cours ?",translation:"في أي ساعة تنهون الدرس؟",prompt:"اختر الإجابة المناسبة.",choices:["Nous finissez à midi.","Nous finissons à midi.","Nous finissent à midi."],correctIndex:1,feedback:"تصريف finir مع nous هو finissons."},
- {context:"Vos amis viennent ce soir ?",translation:"هل يأتي أصدقاؤكم هذا المساء؟",prompt:"اختر الرد الصحيح.",choices:["Oui, ils vient ce soir.","Oui, vous venez ce soir.","Oui, ils viennent ce soir."],correctIndex:2,feedback:"تصريف venir مع ils هو viennent."},
- {context:"Comment allez-vous au travail ?",translation:"كيف تذهبون إلى العمل؟",prompt:"اختر الإجابة الطبيعية.",choices:["Je vais au travail en bus.","Je fais au travail en bus.","Je va au travail en bus."],correctIndex:0,feedback:"مع je يكون تصريف aller هو vais."},
- {context:"Que fait Lina après le cours ?",translation:"ماذا تفعل لينا بعد الدرس؟",prompt:"اختر الإجابة الصحيحة.",choices:["Elle fais les courses.","Elle fait les courses.","Elle font les courses."],correctIndex:1,feedback:"مع elle يكون تصريف faire هو fait."}
+ {context:"Est-ce que Lina prend le bus ?",translation:"هل تستقل لينا الحافلة؟",prompt:"اختر الرد الصحيح.",choices:["Non, elle ne prend pas le bus.","Non, elle ne prend le bus pas.","Non, elle n’prend pas le bus."],correctIndex:0,feedback:"ne وpas يحيطان بالفعل prend."},
+ {context:"Qu’est-ce que tu achètes ?",translation:"ماذا تشتري؟",prompt:"اختر رد النفي الصحيح.",choices:["Je n’achète pas du pain.","Je n’achète pas de pain.","Je ne achète pas de pain."],correctIndex:1,feedback:"قبل achète نكتب n’، وبعد النفي نقول de pain."},
+ {context:"C’est un livre ?",translation:"هل هذا كتاب؟",prompt:"اختر الرد الصحيح.",choices:["Non, ce n’est pas un livre.","Non, ce n’est pas de livre.","Non, ce ne pas est un livre."],correctIndex:0,feedback:"مع être تبقى أداة الاسم: un livre."},
+ {context:"Comment allez-vous au travail ?",translation:"كيف تذهبون إلى العمل؟",prompt:"اختر الإجابة الطبيعية.",choices:["Je vais au travail en bus.","Je va au travail en bus.","Je aller au travail en bus."],correctIndex:0,feedback:"مع je يكون تصريف aller هو vais."},
+ {context:"Vos amis viennent ce soir ?",translation:"هل يأتي أصدقاؤكم هذا المساء؟",prompt:"اختر الرد الصحيح.",choices:["Oui, ils vient ce soir.","Oui, ils viennent ce soir.","Oui, ils venons ce soir."],correctIndex:1,feedback:"تصريف venir مع ils هو viennent."},
+ {context:"Que fait Lina après le cours ?",translation:"ماذا تفعل لينا بعد الدرس؟",prompt:"اختر الإجابة الصحيحة.",choices:["Elle fais les courses.","Elle font les courses.","Elle fait les courses."],correctIndex:2,feedback:"مع elle يكون تصريف faire هو fait."}
 ];
 
 const A1_MODAL_VERBS_READING={

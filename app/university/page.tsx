@@ -976,41 +976,12 @@ const A1_MODULES:CourseModule[]=[
  },
  {
   id:"studies-professions",title:"Les études et les professions",ar:"الدراسة والمهن",icon:School,
-  description:"التحدث عن الدراسة والتخصص والمهنة ومكان العمل بعبارات فرنسية بسيطة وصحيحة.",
+  description:"تعلّم مفردات الدراسة والمهن، ثم اسأل عنها وقدّم نفسك بعبارات فرنسية قصيرة وطبيعية تناسب مستوى A1.",
   sections:[
-   section("Les études","الدراسة والتخصص","نستخدم étudier للحديث عن الدراسة، وêtre étudiant أو étudiante للتعريف بالصفة الدراسية. ويمكن ذكر المؤسسة أو المادة أو التخصص بعبارة قصيرة.",[
-    "Je suis étudiant / étudiante: أنا طالب / طالبة.",
-    "J’étudie à l’université: أدرس في الجامعة.",
-    "J’étudie le français: أدرس اللغة الفرنسية.",
-    "faire des études de + مجال: دراسة تخصص معين."
-   ],[
-    {fr:"Je suis étudiante à l’université.",ar:"أنا طالبة في الجامعة."},
-    {fr:"Nous étudions le français.",ar:"نحن ندرس اللغة الفرنسية."},
-    {fr:"Il fait des études de médecine.",ar:"هو يدرس الطب."},
-    {fr:"Mon cours commence à neuf heures.",ar:"يبدأ درسي الساعة التاسعة."}
-   ]),
-   section("Les professions","المهن وصيغها","بعد فعل être تُذكر المهنة عادة من دون أداة: Je suis médecin. وتتغير بعض أسماء المهن بين المذكر والمؤنث، بينما تبقى أسماء أخرى بالشكل نفسه.",[
-    "un étudiant → une étudiante، un infirmier → une infirmière.",
-    "un vendeur → une vendeuse، un cuisinier → une cuisinière.",
-    "professeur / professeure صيغتان مستعملتان بحسب الشخص.",
-    "نقول Il est médecin، ولا نقول عادة Il est un médecin عند ذكر المهنة وحدها."
-   ],[
-    {fr:"Elle est professeure.",ar:"هي معلّمة."},
-    {fr:"Omar est ingénieur.",ar:"عمر مهندس."},
-    {fr:"Lina est infirmière.",ar:"لينا ممرضة."},
-    {fr:"Mon frère est cuisinier.",ar:"أخي طاهٍ."}
-   ]),
-   section("Le lieu de travail","مكان العمل والنشاط","نستخدم travailler à مع مؤسسة محددة، وdans مع نوع المكان، وcomme قبل المهنة عندما نوضح طبيعة العمل.",[
-    "travailler à l’hôpital / à l’école: العمل في مؤسسة محددة.",
-    "travailler dans un magasin / un restaurant: العمل داخل نوع من الأماكن.",
-    "travailler comme + مهنة: العمل بصفة أو مهنة معينة.",
-    "Où travaillez-vous ? وما مهنتكم؟ Quel est votre métier ?"
-   ],[
-    {fr:"Je travaille dans un hôtel.",ar:"أعمل في فندق."},
-    {fr:"Elle travaille comme vendeuse.",ar:"تعمل بائعة."},
-    {fr:"Il travaille à l’hôpital.",ar:"هو يعمل في المستشفى."},
-    {fr:"Quel est votre métier ?",ar:"ما مهنتكم؟"}
-   ])
+   section("Les études","الدراسة","مفردات الدراسة الأساسية: المكان، المادة أو التخصص، والأفعال التي نستعملها للحديث عن الدراسة.",[],[]),
+   section("Les métiers","المهن","أسماء المهن الشائعة، صيغ المذكر والمؤنث، وأماكن العمل المناسبة لكل مهنة.",[],[]),
+   section("Parler des études et du métier","السؤال عن الدراسة والمهنة","نتعلّم السؤال عن الدراسة أو المهنة والرد عليه بصيغتين: غير رسمية مع tu، ورسمية مع vous.",[],[]),
+   section("Se présenter","التعريف بالنفس","نجمع الاسم أو الصفة الدراسية أو المهنة مع مكان الدراسة أو العمل في تقديم قصير وواضح.",[],[])
   ]
  },
  {
@@ -3121,6 +3092,27 @@ const A1_NOUNS_DIALOGUES=[
  {context:"Tu vois des chevaux ?",translation:"هل ترى خيولًا؟",prompt:"اختر الرد المناسب.",choices:["Je suis à Paris.","Il y a des journaux.","Oui, je vois des chevaux."],correctIndex:2,feedback:"الرد يؤكد رؤية الخيول؛ جمع cheval هو chevaux وتسبقه des هنا."}
 ];
 
+const A1_STUDIES_LEARNING_GROUPS=[
+ {branches:[
+  {fr:"Les lieux d’études",ar:"أماكن الدراسة",note:"نتعرّف إلى الأماكن التي يدرس فيها المتعلم: المدرسة والجامعة والصف والمكتبة. سنضيف لاحقًا بطاقات مصوّرة لكل مكان.",examples:[]},
+  {fr:"Les matières et les spécialités",ar:"المواد والتخصصات",note:"نفرّق بين المادة التي ندرسها، مثل le français، والتخصص، مثل la médecine. ستُضاف الجداول والأمثلة في الخطوة التالية.",examples:[]},
+  {fr:"Les verbes d’étude",ar:"أفعال الدراسة",note:"نستعمل خصوصًا étudier وapprendre وsuivre un cours للتحدث عن الدراسة، مع أمثلة مناسبة لمستوى A1 لاحقًا.",examples:[]}
+ ]},
+ {branches:[
+  {fr:"Les noms de métiers",ar:"أسماء المهن",note:"سنضيف أسماء مهن شائعة وواضحة للمبتدئ مع نطقها وصورها، مثل médecin وprofesseur وcuisinier.",examples:[]},
+  {fr:"Le masculin et le féminin",ar:"المذكر والمؤنث في المهنة",note:"بعض المهن تتغير صيغتها بين المذكر والمؤنث، مثل étudiant / étudiante. سنعرضها في بطاقات مقارنة.",examples:[]},
+  {fr:"Les lieux de travail",ar:"أماكن العمل",note:"نربط كل مهنة بمكانها الطبيعي: à l’hôpital، dans un restaurant، à l’école، وغيرها.",examples:[]}
+ ]},
+ {branches:[
+  {fr:"La forme informelle",ar:"الصيغة غير الرسمية",note:"نستخدم tu مع الصديق أو الشخص القريب: Qu’est-ce que tu étudies ? و Quel est ton métier ?",examples:[]},
+  {fr:"La forme formelle",ar:"الصيغة الرسمية",note:"نستخدم vous مع شخص لا نعرفه أو في موقف رسمي: Qu’est-ce que vous étudiez ? و Quel est votre métier ?",examples:[]}
+ ]},
+ {branches:[
+  {fr:"Présenter ses études",ar:"تقديم الدراسة",note:"نقدّم أنفسنا بجملة قصيرة، مثل Je suis étudiant. J’étudie le français à l’université.",examples:[]},
+  {fr:"Présenter son métier",ar:"تقديم المهنة",note:"نذكر المهنة غالبًا بعد être من دون أداة: Je suis médecin. Elle est professeure.",examples:[]},
+  {fr:"Présenter le lieu",ar:"تقديم المكان",note:"نضيف مكان الدراسة أو العمل لتصبح الجملة كاملة: Je travaille à l’hôpital. J’étudie à l’université.",examples:[]}
+ ]}
+];
 const A1_NOUNS_LEARNING_GROUPS=[
  {branches:[
   {fr:"Les noms masculins",ar:"الأسماء المذكرة",note:"الاسم المذكر يأتي مع un في التنكير، ومع le في التعريف. احفظ الاسم مع أداته.",examples:[{fr:"un livre",ar:"كتاب"},{fr:"le jardin",ar:"الحديقة"}]},
@@ -8950,7 +8942,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart("2","0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

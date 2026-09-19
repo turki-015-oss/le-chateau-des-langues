@@ -6428,6 +6428,34 @@ const A1_CORE_VERB_GROUPS=[
  }
 ];
 
+const A1_STUDY_PLACE_CARDS=[
+ {fr:"l’école",ar:"المدرسة",image:"/worlds/university-entrance-v2.png",example:"J’étudie à l’école.",exampleAr:"أدرس في المدرسة."},
+ {fr:"le collège",ar:"المدرسة المتوسطة",image:"/kingdom-portal-assets/university-campus-front-v3.webp",example:"Mon frère étudie au collège.",exampleAr:"أخي يدرس في المدرسة المتوسطة."},
+ {fr:"le lycée",ar:"المدرسة الثانوية",image:"/kingdom-portal-assets/university-campus-v2.webp",example:"Elle étudie au lycée.",exampleAr:"هي تدرس في المدرسة الثانوية."},
+ {fr:"l’université",ar:"الجامعة",image:"/worlds/university.png",example:"J’étudie à l’université.",exampleAr:"أدرس في الجامعة."},
+ {fr:"la salle de classe",ar:"قاعة الدراسة",image:"/university/interior-campus.jpg",example:"Le cours est dans la salle de classe.",exampleAr:"الدرس في قاعة الدراسة."},
+ {fr:"la bibliothèque",ar:"المكتبة",image:"/library/library-interior-v1.webp",example:"Je travaille à la bibliothèque.",exampleAr:"أدرس في المكتبة."},
+ {fr:"l’amphithéâtre",ar:"المدرّج",image:"/castle-hall-icons/grand-hall.webp",example:"Le cours est dans l’amphithéâtre.",exampleAr:"الدرس في المدرّج."},
+ {fr:"le laboratoire",ar:"المختبر",image:"/castle-hall-icons/tests.webp",example:"Nous travaillons au laboratoire.",exampleAr:"نعمل في المختبر."},
+ {fr:"la salle informatique",ar:"قاعة الحاسب",image:"/castle-hall-icons/grammar.webp",example:"Je travaille dans la salle informatique.",exampleAr:"أعمل في قاعة الحاسب."},
+ {fr:"la cantine",ar:"المقصف",image:"/restaurant-v1/hero.webp",example:"Nous mangeons à la cantine.",exampleAr:"نتناول الطعام في المقصف."},
+ {fr:"la cour",ar:"ساحة المدرسة",image:"/kingdom-portal-assets/university-campus.png",example:"Les élèves sont dans la cour.",exampleAr:"الطلاب في ساحة المدرسة."},
+ {fr:"le campus",ar:"الحرم الجامعي",image:"/university/interior-campus.jpg",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
+];
+
+function A1StudyPlacesCarousel(){
+ const [placeIndex,setPlaceIndex]=useState(0);
+ const [revealed,setRevealed]=useState(false);
+ const card=A1_STUDY_PLACE_CARDS[placeIndex];
+ const play=()=>{setRevealed(true);void speakFrenchWithPause(card.fr,card.example,650,{rate:.72});};
+ return <div className="a1-time-greeting-carousel a1-study-places-carousel">
+  <article className="a1-time-greeting-card a1-study-place-card" key={card.fr}>
+   <button type="button" className="a1-time-greeting-image" onClick={play} aria-label={`استمع إلى ${card.fr} وأظهر تفاصيلها`}><img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span></button>
+   {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على الصورة للاستماع إلى اسم المكان ثم إلى الجملة.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
+  </article>
+  <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أماكن الدراسة"><button type="button" onClick={()=>{setPlaceIndex(current=>Math.max(0,current-1));setRevealed(false)}} disabled={placeIndex===0} aria-label="المكان السابق"><ChevronLeft/></button><span>{placeIndex+1} / {A1_STUDY_PLACE_CARDS.length}</span><button type="button" onClick={()=>{setPlaceIndex(current=>Math.min(A1_STUDY_PLACE_CARDS.length-1,current+1));setRevealed(false)}} disabled={placeIndex===A1_STUDY_PLACE_CARDS.length-1} aria-label="المكان التالي"><ChevronRight/></button></nav>
+ </div>;
+}
 function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
  const [activeItems,setActiveItems]=useState<Record<number,number>>({});
  return <div className={"a1-grammar-carousel"+(isVerb?" is-verb":"")}>
@@ -8942,7 +8970,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

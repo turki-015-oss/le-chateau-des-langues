@@ -6583,6 +6583,39 @@ function A1PresentIrStudio(){
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>في هذا النموذج تظهر مجموعة <b dir="ltr">-iss-</b> مع <b dir="ltr">nous</b> و<b dir="ltr">vous</b> و<b dir="ltr">ils / elles</b>. وتبقى <b dir="ltr">-ent</b> النهائية غير منطوقة غالبًا.</p></div></div>
  </div>
 }
+const A1_PRESENT_COMMON_VERBS=[
+ {infinitive:"être",ar:"يكون",forms:[
+  {pronoun:"je",form:"suis",example:"Je suis à la maison.",ar:"أنا في المنزل."},{pronoun:"tu",form:"es",example:"Tu es prêt.",ar:"أنت مستعد."},{pronoun:"il / elle / on",form:"est",example:"Il est à Paris.",ar:"هو في باريس."},{pronoun:"nous",form:"sommes",example:"Nous sommes amis.",ar:"نحن أصدقاء."},{pronoun:"vous",form:"êtes",example:"Vous êtes ici.",ar:"أنتم هنا."},{pronoun:"ils / elles",form:"sont",example:"Ils sont contents.",ar:"هم سعداء."}]},
+ {infinitive:"avoir",ar:"يمتلك",forms:[
+  {pronoun:"j’",form:"ai",example:"J’ai un livre.",ar:"لدي كتاب."},{pronoun:"tu",form:"as",example:"Tu as un frère.",ar:"لديك أخ."},{pronoun:"il / elle / on",form:"a",example:"Elle a une voiture.",ar:"لديها سيارة."},{pronoun:"nous",form:"avons",example:"Nous avons du temps.",ar:"لدينا وقت."},{pronoun:"vous",form:"avez",example:"Vous avez une question.",ar:"لديكم سؤال."},{pronoun:"ils / elles",form:"ont",example:"Elles ont un chat.",ar:"لديهن قطة."}]},
+ {infinitive:"aller",ar:"يذهب",forms:[
+  {pronoun:"je",form:"vais",example:"Je vais à l’école.",ar:"أنا أذهب إلى المدرسة."},{pronoun:"tu",form:"vas",example:"Tu vas au café.",ar:"أنت تذهب إلى المقهى."},{pronoun:"il / elle / on",form:"va",example:"On va au parc.",ar:"نحن نذهب إلى الحديقة."},{pronoun:"nous",form:"allons",example:"Nous allons en ville.",ar:"نحن نذهب إلى المدينة."},{pronoun:"vous",form:"allez",example:"Vous allez au marché.",ar:"أنتم تذهبون إلى السوق."},{pronoun:"ils / elles",form:"vont",example:"Ils vont au cinéma.",ar:"هم يذهبون إلى السينما."}]},
+ {infinitive:"faire",ar:"يفعل / يقوم بـ",forms:[
+  {pronoun:"je",form:"fais",example:"Je fais mes devoirs.",ar:"أنا أؤدي واجباتي."},{pronoun:"tu",form:"fais",example:"Tu fais du sport.",ar:"أنت تمارس الرياضة."},{pronoun:"il / elle / on",form:"fait",example:"Elle fait un gâteau.",ar:"هي تصنع كعكة."},{pronoun:"nous",form:"faisons",example:"Nous faisons un exercice.",ar:"نحن نؤدي تمرينًا."},{pronoun:"vous",form:"faites",example:"Vous faites la cuisine.",ar:"أنتم تطبخون."},{pronoun:"ils / elles",form:"font",example:"Ils font un projet.",ar:"هم يقومون بمشروع."}]},
+ {infinitive:"venir",ar:"يأتي",forms:[
+  {pronoun:"je",form:"viens",example:"Je viens de France.",ar:"أنا من فرنسا."},{pronoun:"tu",form:"viens",example:"Tu viens avec moi.",ar:"أنت تأتي معي."},{pronoun:"il / elle / on",form:"vient",example:"Il vient ce soir.",ar:"هو يأتي هذا المساء."},{pronoun:"nous",form:"venons",example:"Nous venons en bus.",ar:"نحن نأتي بالحافلة."},{pronoun:"vous",form:"venez",example:"Vous venez demain.",ar:"أنتم تأتون غدًا."},{pronoun:"ils / elles",form:"viennent",example:"Elles viennent ici.",ar:"هن يأتين إلى هنا."}]},
+ {infinitive:"prendre",ar:"يأخذ",forms:[
+  {pronoun:"je",form:"prends",example:"Je prends le bus.",ar:"أنا أستقل الحافلة."},{pronoun:"tu",form:"prends",example:"Tu prends un café.",ar:"أنت تأخذ قهوة."},{pronoun:"il / elle / on",form:"prend",example:"On prend le train.",ar:"نحن نأخذ القطار."},{pronoun:"nous",form:"prenons",example:"Nous prenons le petit déjeuner.",ar:"نحن نتناول الفطور."},{pronoun:"vous",form:"prenez",example:"Vous prenez une photo.",ar:"أنتم تلتقطون صورة."},{pronoun:"ils / elles",form:"prennent",example:"Ils prennent la route.",ar:"هم يسلكون الطريق."}]},
+ {infinitive:"pouvoir",ar:"يستطيع",forms:[
+  {pronoun:"je",form:"peux",example:"Je peux parler français.",ar:"أستطيع التحدث بالفرنسية."},{pronoun:"tu",form:"peux",example:"Tu peux entrer.",ar:"تستطيع الدخول."},{pronoun:"il / elle / on",form:"peut",example:"Elle peut aider.",ar:"هي تستطيع المساعدة."},{pronoun:"nous",form:"pouvons",example:"Nous pouvons commencer.",ar:"نستطيع البدء."},{pronoun:"vous",form:"pouvez",example:"Vous pouvez attendre.",ar:"تستطيعون الانتظار."},{pronoun:"ils / elles",form:"peuvent",example:"Ils peuvent venir.",ar:"هم يستطيعون المجيء."}]},
+ {infinitive:"vouloir",ar:"يريد",forms:[
+  {pronoun:"je",form:"veux",example:"Je veux un café.",ar:"أريد قهوة."},{pronoun:"tu",form:"veux",example:"Tu veux manger.",ar:"أنت تريد الأكل."},{pronoun:"il / elle / on",form:"veut",example:"Il veut apprendre.",ar:"هو يريد أن يتعلم."},{pronoun:"nous",form:"voulons",example:"Nous voulons partir.",ar:"نحن نريد المغادرة."},{pronoun:"vous",form:"voulez",example:"Vous voulez essayer.",ar:"أنتم تريدون التجربة."},{pronoun:"ils / elles",form:"veulent",example:"Elles veulent jouer.",ar:"هن يردن اللعب."}]}
+] as const;
+
+function A1PresentCommonStudio(){
+ const [verbIndex,setVerbIndex]=useState(0);
+ const [formIndex,setFormIndex]=useState(0);
+ const verb=A1_PRESENT_COMMON_VERBS[verbIndex];
+ const item=verb.forms[formIndex];
+ return <div className="a1-present-er-studio a1-present-common-studio">
+  <div className="a1-present-er-intro"><div><span>Les verbes fréquents au présent</span><strong>الأفعال الشائعة في المضارع</strong><p>هذه أفعال كثيرة الاستعمال، لكنها لا تتبع نموذجًا واحدًا؛ لذا نحفظ تصريف كل فعل مع ضمائره.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">{verb.infinitive}</span><i>→</i><strong>تصريف خاص</strong><b>في المضارع</b><small>{verb.ar}</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا شائعًا">{A1_PRESENT_COMMON_VERBS.map((entry,index)=><button key={entry.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>{setVerbIndex(index);setFormIndex(0)}} dir="ltr">{entry.infinitive}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>الفعل</span><span>التصريف</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(formIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{verb.infinitive}</strong><span>المصدر</span></div><button type="button" className="a1-present-er-form" onClick={()=>void playPresentConjugation(item.pronoun,item.form)} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>التصريف مع الضمير</small><strong dir="ltr">{item.pronoun} <mark>{item.form}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination" aria-label="التنقل بين بطاقات الضمائر"><button type="button" onClick={()=>setFormIndex(current=>Math.max(0,current-1))} disabled={formIndex===0} aria-label="بطاقة الضمير السابقة"><ChevronRight aria-hidden="true"/><span>السابق</span></button><b>بطاقة {formIndex+1} من {verb.forms.length}</b><button type="button" onClick={()=>setFormIndex(current=>Math.min(verb.forms.length-1,current+1))} disabled={formIndex===verb.forms.length-1} aria-label="بطاقة الضمير التالية"><span>التالي</span><ChevronLeft aria-hidden="true"/></button></div>
+  <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>استمع إلى التصريف كاملًا مع الضمير. وفي بطاقات <b dir="ltr">il / elle / on</b> و<b dir="ltr">ils / elles</b> يُنطق كل ضمير منفصلًا مع الفعل.</p></div></div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6593,7 +6626,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:index===3?<A1PresentIrStudio/>:<p>{branch.note}</p>}</div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:index===3?<A1PresentIrStudio/>:index===4?<A1PresentCommonStudio/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

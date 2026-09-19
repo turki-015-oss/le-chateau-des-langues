@@ -6445,15 +6445,14 @@ const A1_STUDY_PLACE_CARDS=[
 
 function A1StudyPlacesCarousel(){
  const [placeIndex,setPlaceIndex]=useState(0);
- const [revealed,setRevealed]=useState(false);
  const card=A1_STUDY_PLACE_CARDS[placeIndex];
- const play=()=>{setRevealed(true);void speakFrenchWithPause(card.fr,card.example,650,{rate:.72});};
+ const play=()=>{void speakFrenchWithPause(card.fr,card.example,650,{rate:.72});};
  return <div className="a1-time-greeting-carousel a1-study-places-carousel">
   <article className="a1-time-greeting-card a1-study-place-card" key={card.fr}>
-   <button type="button" className="a1-time-greeting-image" onClick={play} aria-label={`استمع إلى ${card.fr} وأظهر تفاصيلها`}><img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span></button>
-   {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على الصورة للاستماع إلى اسم المكان ثم إلى الجملة.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
+   <button type="button" className="a1-time-greeting-image" onClick={play} aria-label={`استمع إلى ${card.fr}`}><img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span></button>
+   <div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على الصورة للاستماع إلى النطق.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>
   </article>
-  <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أماكن الدراسة"><button type="button" onClick={()=>{setPlaceIndex(current=>Math.max(0,current-1));setRevealed(false)}} disabled={placeIndex===0} aria-label="المكان السابق"><ChevronLeft/></button><span>{placeIndex+1} / {A1_STUDY_PLACE_CARDS.length}</span><button type="button" onClick={()=>{setPlaceIndex(current=>Math.min(A1_STUDY_PLACE_CARDS.length-1,current+1));setRevealed(false)}} disabled={placeIndex===A1_STUDY_PLACE_CARDS.length-1} aria-label="المكان التالي"><ChevronRight/></button></nav>
+  <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أماكن الدراسة"><button type="button" onClick={()=>setPlaceIndex(current=>Math.max(0,current-1))} disabled={placeIndex===0} aria-label="المكان السابق"><ChevronLeft/></button><span>{placeIndex+1} / {A1_STUDY_PLACE_CARDS.length}</span><button type="button" onClick={()=>setPlaceIndex(current=>Math.min(A1_STUDY_PLACE_CARDS.length-1,current+1))} disabled={placeIndex===A1_STUDY_PLACE_CARDS.length-1} aria-label="المكان التالي"><ChevronRight/></button></nav>
  </div>;
 }
 function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
@@ -9089,7 +9088,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           <div id={`a1-greeting-group-content-${groupIndex}`} className="a1-greeting-group-content">
            {groupIndex===0?<div className="a1-time-greeting-carousel">
             <article className="a1-time-greeting-card" key={card.fr}>
-             <button type="button" className="a1-time-greeting-image" onClick={()=>{setTimeGreetingRevealed(true);void speakFrench(card.fr,{rate:.72})}} aria-label={`استمع إلى ${card.fr} وأظهر تفاصيلها`}>
+             <button type="button" className="a1-time-greeting-image" onClick={()=>{setTimeGreetingRevealed(true);void speakFrench(card.fr,{rate:.72})}} aria-label={`استمع إلى ${card.fr}`}>
               <img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span>
              </button>
              {timeGreetingRevealed&&<div className="a1-time-greeting-copy">

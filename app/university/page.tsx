@@ -6533,17 +6533,19 @@ const A1_PRESENT_ER_VERBS=[
 
 function A1PresentErStudio(){
  const [verbIndex,setVerbIndex]=useState(0);
+ const [formIndex,setFormIndex]=useState(0);
  const verb=A1_PRESENT_ER_VERBS[verbIndex];
  return <div className="a1-present-er-studio">
   <div className="a1-present-er-intro"><div><span>Les verbes réguliers en -er</span><strong>الأفعال المنتظمة المنتهية بـ -er</strong><p>نحذف <b dir="ltr">-er</b> من المصدر، ثم نضيف النهاية الموافقة للضمير. ويستثنى الفعل <b dir="ltr">aller</b>.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
   <div className="a1-present-er-formula"><span dir="ltr">({verb.infinitive})</span><i>→</i><strong dir="ltr">{verb.root}</strong><b>+ النهاية</b><small>{verb.ar}</small></div>
-  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ er">{A1_PRESENT_ER_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>setVerbIndex(index)} dir="ltr">{item.infinitive}</button>)}</nav>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ er">{A1_PRESENT_ER_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>{setVerbIndex(index);setFormIndex(0)}} dir="ltr">{item.infinitive}</button>)}</nav>
   <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}>
    <div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>النهاية</span><span>التصريف</span><span>المثال والنطق</span></div>
-   {verb.examples.map((item,index)=><article key={item.pronoun} className="a1-present-er-row" role="row">
+   {(()=>{const item=verb.examples[formIndex];const index=formIndex;return <article key={item.pronoun} className="a1-present-er-row" role="row">
     <i>{String(index+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{item.ending}</strong><span>{item.ending==="-ons"||item.ending==="-ez"?"تُسمع بوضوح":"لا تُنطق غالبًا"}</span></div><button type="button" className="a1-present-er-form" onClick={()=>void speakFrench(`${item.pronoun} ${item.form}`,{rate:.72})} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>الجذر + النهاية</small><strong dir="ltr"><b>{verb.root}</b><mark>{item.form.slice(verb.root.length)}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button>
-   </article>)}
+   </article>})()}
   </div>
+  <div className="a1-present-er-pagination" aria-label="التنقل بين بطاقات الضمائر"><button type="button" onClick={()=>setFormIndex(current=>Math.max(0,current-1))} disabled={formIndex===0} aria-label="بطاقة الضمير السابقة"><ChevronRight aria-hidden="true"/><span>السابق</span></button><b>بطاقة {formIndex+1} من {verb.examples.length}</b><button type="button" onClick={()=>setFormIndex(current=>Math.min(verb.examples.length-1,current+1))} disabled={formIndex===verb.examples.length-1} aria-label="بطاقة الضمير التالية"><span>التالي</span><ChevronLeft aria-hidden="true"/></button></div>
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>النهايات <b dir="ltr">-e</b> و<b dir="ltr">-es</b> و<b dir="ltr">-ent</b> لا تُنطق غالبًا؛ أما <b dir="ltr">-ons</b> و<b dir="ltr">-ez</b> فتُسمع بوضوح.</p></div></div>
  </div>
 }
@@ -6560,17 +6562,19 @@ const A1_PRESENT_IR_VERBS=[
 
 function A1PresentIrStudio(){
  const [verbIndex,setVerbIndex]=useState(0);
+ const [formIndex,setFormIndex]=useState(0);
  const verb=A1_PRESENT_IR_VERBS[verbIndex];
  return <div className="a1-present-er-studio a1-present-ir-studio">
   <div className="a1-present-er-intro"><div><span>Les verbes réguliers en -ir</span><strong>الأفعال المنتظمة المنتهية بـ -ir</strong><p>هذا هو نموذج <b dir="ltr">finir</b>: نحذف <b dir="ltr">-ir</b> ثم نضيف النهاية المناسبة. ليست كل أفعال <b dir="ltr">-ir</b> من هذا النوع.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
   <div className="a1-present-er-formula"><span dir="ltr">({verb.infinitive})</span><i>→</i><strong dir="ltr">{verb.root}</strong><b>+ النهاية</b><small>{verb.ar}</small></div>
-  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ ir">{A1_PRESENT_IR_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>setVerbIndex(index)} dir="ltr">{item.infinitive}</button>)}</nav>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ ir">{A1_PRESENT_IR_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>{setVerbIndex(index);setFormIndex(0)}} dir="ltr">{item.infinitive}</button>)}</nav>
   <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}>
    <div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>النهاية</span><span>التصريف</span><span>المثال والنطق</span></div>
-   {verb.examples.map((item,index)=><article key={item.pronoun} className="a1-present-er-row" role="row">
+   {(()=>{const item=verb.examples[formIndex];const index=formIndex;return <article key={item.pronoun} className="a1-present-er-row" role="row">
     <i>{String(index+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{item.ending}</strong><span>{item.ending==="-issons"||item.ending==="-issez"?"تُسمع بوضوح":"لا تُنطق غالبًا"}</span></div><button type="button" className="a1-present-er-form" onClick={()=>void speakFrench(`${item.pronoun} ${item.form}`,{rate:.72})} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>الجذر + النهاية</small><strong dir="ltr"><b>{verb.root}</b><mark>{item.form.slice(verb.root.length)}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button>
-   </article>)}
+   </article>})()}
   </div>
+  <div className="a1-present-er-pagination" aria-label="التنقل بين بطاقات الضمائر"><button type="button" onClick={()=>setFormIndex(current=>Math.max(0,current-1))} disabled={formIndex===0} aria-label="بطاقة الضمير السابقة"><ChevronRight aria-hidden="true"/><span>السابق</span></button><b>بطاقة {formIndex+1} من {verb.examples.length}</b><button type="button" onClick={()=>setFormIndex(current=>Math.min(verb.examples.length-1,current+1))} disabled={formIndex===verb.examples.length-1} aria-label="بطاقة الضمير التالية"><span>التالي</span><ChevronLeft aria-hidden="true"/></button></div>
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>في هذا النموذج تظهر مجموعة <b dir="ltr">-iss-</b> مع <b dir="ltr">nous</b> و<b dir="ltr">vous</b> و<b dir="ltr">ils / elles</b>. وتبقى <b dir="ltr">-ent</b> النهائية غير منطوقة غالبًا.</p></div></div>
  </div>
 }

@@ -6429,18 +6429,18 @@ const A1_CORE_VERB_GROUPS=[
 ];
 
 const A1_STUDY_PLACE_CARDS=[
- {fr:"l’école",ar:"المدرسة",image:"/worlds/university-entrance-v2.png",example:"J’étudie à l’école.",exampleAr:"أدرس في المدرسة."},
- {fr:"le collège",ar:"المدرسة المتوسطة",image:"/kingdom-portal-assets/university-campus-front-v3.webp",example:"Mon frère étudie au collège.",exampleAr:"أخي يدرس في المدرسة المتوسطة."},
- {fr:"le lycée",ar:"المدرسة الثانوية",image:"/kingdom-portal-assets/university-campus-v2.webp",example:"Elle étudie au lycée.",exampleAr:"هي تدرس في المدرسة الثانوية."},
- {fr:"l’université",ar:"الجامعة",image:"/worlds/university.png",example:"J’étudie à l’université.",exampleAr:"أدرس في الجامعة."},
- {fr:"la salle de classe",ar:"قاعة الدراسة",image:"/university/interior-campus.jpg",example:"Le cours est dans la salle de classe.",exampleAr:"الدرس في قاعة الدراسة."},
- {fr:"la bibliothèque",ar:"المكتبة",image:"/library/library-interior-v1.webp",example:"Je travaille à la bibliothèque.",exampleAr:"أدرس في المكتبة."},
- {fr:"l’amphithéâtre",ar:"المدرّج",image:"/castle-hall-icons/grand-hall.webp",example:"Le cours est dans l’amphithéâtre.",exampleAr:"الدرس في المدرّج."},
- {fr:"le laboratoire",ar:"المختبر",image:"/castle-hall-icons/tests.webp",example:"Nous travaillons au laboratoire.",exampleAr:"نعمل في المختبر."},
- {fr:"la salle informatique",ar:"قاعة الحاسب",image:"/castle-hall-icons/grammar.webp",example:"Je travaille dans la salle informatique.",exampleAr:"أعمل في قاعة الحاسب."},
- {fr:"la cantine",ar:"المقصف",image:"/restaurant-v1/hero.webp",example:"Nous mangeons à la cantine.",exampleAr:"نتناول الطعام في المقصف."},
- {fr:"la cour",ar:"ساحة المدرسة",image:"/kingdom-portal-assets/university-campus.png",example:"Les élèves sont dans la cour.",exampleAr:"الطلاب في ساحة المدرسة."},
- {fr:"le campus",ar:"الحرم الجامعي",image:"/university/interior-campus.jpg",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
+ {fr:"l’école",ar:"المدرسة",image:"/images/university/a1-studies/places/ecole.png",example:"J’étudie à l’école.",exampleAr:"أدرس في المدرسة."},
+ {fr:"le collège",ar:"المدرسة المتوسطة",image:"/images/university/a1-studies/places/college.png",example:"Mon frère étudie au collège.",exampleAr:"أخي يدرس في المدرسة المتوسطة."},
+ {fr:"le lycée",ar:"المدرسة الثانوية",image:"/images/university/a1-studies/places/lycee.png",example:"Elle étudie au lycée.",exampleAr:"هي تدرس في المدرسة الثانوية."},
+ {fr:"l’université",ar:"الجامعة",image:"/images/university/a1-studies/places/universite.png",example:"J’étudie à l’université.",exampleAr:"أدرس في الجامعة."},
+ {fr:"la salle de classe",ar:"قاعة الدراسة",image:"/images/university/a1-studies/places/salle-de-classe.png",example:"Le cours est dans la salle de classe.",exampleAr:"الدرس في قاعة الدراسة."},
+ {fr:"la bibliothèque",ar:"المكتبة",image:"/images/university/a1-studies/places/bibliotheque.png",example:"Je travaille à la bibliothèque.",exampleAr:"أدرس في المكتبة."},
+ {fr:"l’amphithéâtre",ar:"المدرّج",image:"/images/university/a1-studies/places/amphitheatre.png",example:"Le cours est dans l’amphithéâtre.",exampleAr:"الدرس في المدرّج."},
+ {fr:"le laboratoire",ar:"المختبر",image:"/images/university/a1-studies/places/laboratoire.png",example:"Nous travaillons au laboratoire.",exampleAr:"نعمل في المختبر."},
+ {fr:"la salle informatique",ar:"قاعة الحاسب",image:"/images/university/a1-studies/places/salle-informatique.png",example:"Je travaille dans la salle informatique.",exampleAr:"أعمل في قاعة الحاسب."},
+ {fr:"la cantine",ar:"المقصف",image:"/images/university/a1-studies/places/cantine.png",example:"Nous mangeons à la cantine.",exampleAr:"نتناول الطعام في المقصف."},
+ {fr:"la cour",ar:"ساحة المدرسة",image:"/images/university/a1-studies/places/cour.png",example:"Les élèves sont dans la cour.",exampleAr:"الطلاب في ساحة المدرسة."},
+ {fr:"le campus",ar:"الحرم الجامعي",image:"/images/university/a1-studies/places/campus.png",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
 ];
 
 function A1StudyPlacesCarousel(){

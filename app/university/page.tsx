@@ -3095,7 +3095,7 @@ const A1_NOUNS_DIALOGUES=[
 const A1_STUDIES_LEARNING_GROUPS:{branches:{fr:string;ar:string;note:string;examples:Example[]}[]}[]=[
  {branches:[
   {fr:"Les lieux d’études",ar:"أماكن الدراسة",note:"نتعرّف إلى الأماكن التي يدرس فيها المتعلم: المدرسة والجامعة والصف والمكتبة. سنضيف لاحقًا بطاقات مصوّرة لكل مكان.",examples:[]},
-  {fr:"Les matières et les spécialités",ar:"المواد والتخصصات",note:"نفرّق بين المادة التي ندرسها، مثل le français، والتخصص، مثل la médecine. ستُضاف الجداول والأمثلة في الخطوة التالية.",examples:[]},
+  {fr:"Les matières et les spécialités",ar:"المواد والتخصصات",note:"نتعرّف إلى المواد مثل le français وles mathématiques، وإلى تخصصات مثل la médecine وl’ingénierie عبر بطاقات مصوّرة تفاعلية.",examples:[]},
   {fr:"Les verbes d’étude",ar:"أفعال الدراسة",note:"نستعمل خصوصًا étudier وapprendre وsuivre un cours للتحدث عن الدراسة، مع أمثلة مناسبة لمستوى A1 لاحقًا.",examples:[]}
  ]},
  {branches:[
@@ -6443,6 +6443,18 @@ const A1_STUDY_PLACE_CARDS=[
  {fr:"le campus",ar:"الحرم الجامعي",image:"/images/university/a1-studies/places/campus.webp",example:"Le campus est grand.",exampleAr:"الحرم الجامعي كبير."}
 ];
 
+const A1_STUDY_SUBJECT_CARDS=[
+ {fr:"le français",ar:"اللغة الفرنسية",image:"/images/university/a1-studies/subjects/francais.webp",example:"J’étudie le français.",exampleAr:"أدرس اللغة الفرنسية."},
+ {fr:"les mathématiques",ar:"الرياضيات",image:"/images/university/a1-studies/subjects/mathematiques.webp",example:"J’étudie les mathématiques.",exampleAr:"أدرس الرياضيات."},
+ {fr:"les sciences",ar:"العلوم",image:"/images/university/a1-studies/subjects/sciences.webp",example:"J’étudie les sciences.",exampleAr:"أدرس العلوم."},
+ {fr:"l’histoire et la géographie",ar:"التاريخ والجغرافيا",image:"/images/university/a1-studies/subjects/histoire-geographie.webp",example:"J’étudie l’histoire et la géographie.",exampleAr:"أدرس التاريخ والجغرافيا."},
+ {fr:"l’informatique",ar:"علوم الحاسب",image:"/images/university/a1-studies/subjects/informatique.webp",example:"J’étudie l’informatique.",exampleAr:"أدرس علوم الحاسب."},
+ {fr:"l’art et la musique",ar:"الفن والموسيقى",image:"/images/university/a1-studies/subjects/art-musique.webp",example:"J’étudie l’art et la musique.",exampleAr:"أدرس الفن والموسيقى."},
+ {fr:"le sport",ar:"الرياضة",image:"/images/university/a1-studies/subjects/sport.webp",example:"J’aime le sport.",exampleAr:"أحب الرياضة."},
+ {fr:"la médecine",ar:"الطب",image:"/images/university/a1-studies/subjects/medecine.webp",example:"J’étudie la médecine.",exampleAr:"أدرس الطب."},
+ {fr:"l’ingénierie",ar:"الهندسة",image:"/images/university/a1-studies/subjects/ingenierie.webp",example:"J’étudie l’ingénierie.",exampleAr:"أدرس الهندسة."},
+ {fr:"le droit et l’économie",ar:"القانون والاقتصاد",image:"/images/university/a1-studies/subjects/droit-economie.webp",example:"J’étudie le droit et l’économie.",exampleAr:"أدرس القانون والاقتصاد."}
+];
 function A1StudyPlacesCarousel(){
  const [placeIndex,setPlaceIndex]=useState(0);
  const [revealed,setRevealed]=useState(false);
@@ -6456,7 +6468,22 @@ function A1StudyPlacesCarousel(){
   </article>
   <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أماكن الدراسة"><button type="button" onClick={()=>selectPlace(placeIndex-1)} disabled={placeIndex===0} aria-label="المكان السابق"><ChevronLeft/></button><span>{placeIndex+1} / {A1_STUDY_PLACE_CARDS.length}</span><button type="button" onClick={()=>selectPlace(placeIndex+1)} disabled={placeIndex===A1_STUDY_PLACE_CARDS.length-1} aria-label="المكان التالي"><ChevronRight/></button></nav>
  </div>;
-}function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
+}
+function A1StudySubjectsCarousel(){
+ const [subjectIndex,setSubjectIndex]=useState(0);
+ const [revealed,setRevealed]=useState(false);
+ const card=A1_STUDY_SUBJECT_CARDS[subjectIndex];
+ const play=()=>{setRevealed(true);void speakFrenchWithPause(card.fr,card.example,650,{rate:.72});};
+ const selectSubject=(nextIndex:number)=>{const nextCard=A1_STUDY_SUBJECT_CARDS[nextIndex];if(!nextCard||nextIndex===subjectIndex)return;setSubjectIndex(nextIndex);setRevealed(true);void speakFrenchWithPause(nextCard.fr,nextCard.example,650,{rate:.72});};
+ return <div className="a1-time-greeting-carousel a1-study-subjects-carousel">
+  <article className="a1-time-greeting-card a1-study-place-card" key={card.fr}>
+   <button type="button" className="a1-time-greeting-image" onClick={play} aria-label={`استمع إلى ${card.fr}`}><img src={card.image} alt="" loading="lazy"/><span aria-hidden="true"><Volume2/></span></button>
+   {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على الصورة لإعادة الاستماع إلى النطق.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
+  </article>
+  <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين المواد والتخصصات"><button type="button" onClick={()=>selectSubject(subjectIndex-1)} disabled={subjectIndex===0} aria-label="المادة السابقة"><ChevronLeft/></button><span>{subjectIndex+1} / {A1_STUDY_SUBJECT_CARDS.length}</span><button type="button" onClick={()=>selectSubject(subjectIndex+1)} disabled={subjectIndex===A1_STUDY_SUBJECT_CARDS.length-1} aria-label="المادة التالية"><ChevronRight/></button></nav>
+ </div>;
+}
+function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
  const [activeItems,setActiveItems]=useState<Record<number,number>>({});
  return <div className={"a1-grammar-carousel"+(isVerb?" is-verb":"")}>
   <p className="a1-grammar-intro">{intro}</p>
@@ -8970,7 +8997,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

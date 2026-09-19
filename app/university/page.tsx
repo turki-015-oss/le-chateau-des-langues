@@ -6547,6 +6547,33 @@ function A1PresentErStudio(){
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>النهايات <b dir="ltr">-e</b> و<b dir="ltr">-es</b> و<b dir="ltr">-ent</b> لا تُنطق غالبًا؛ أما <b dir="ltr">-ons</b> و<b dir="ltr">-ez</b> فتُسمع بوضوح.</p></div></div>
  </div>
 }
+const A1_PRESENT_IR_VERBS=[
+ {infinitive:"finir",root:"fin",ar:"ينهي",examples:[
+  {pronoun:"je",ending:"-is",form:"finis",example:"Je finis mes devoirs.",ar:"أنا أنهي واجباتي."},{pronoun:"tu",ending:"-is",form:"finis",example:"Tu finis le livre.",ar:"أنت تنهي الكتاب."},{pronoun:"il / elle / on",ending:"-it",form:"finit",example:"Elle finit le cours.",ar:"هي تنهي الدرس."},{pronoun:"nous",ending:"-issons",form:"finissons",example:"Nous finissons à midi.",ar:"نحن ننهي عند الظهر."},{pronoun:"vous",ending:"-issez",form:"finissez",example:"Vous finissez le travail.",ar:"أنتم تنهُون العمل."},{pronoun:"ils / elles",ending:"-issent",form:"finissent",example:"Ils finissent le projet.",ar:"هم ينهون المشروع."}]},
+ {infinitive:"choisir",root:"chois",ar:"يختار",examples:[
+  {pronoun:"je",ending:"-is",form:"choisis",example:"Je choisis un livre.",ar:"أنا أختار كتابًا."},{pronoun:"tu",ending:"-is",form:"choisis",example:"Tu choisis le train.",ar:"أنت تختار القطار."},{pronoun:"il / elle / on",ending:"-it",form:"choisit",example:"On choisit une table.",ar:"نحن نختار طاولة."},{pronoun:"nous",ending:"-issons",form:"choisissons",example:"Nous choisissons le menu.",ar:"نحن نختار القائمة."},{pronoun:"vous",ending:"-issez",form:"choisissez",example:"Vous choisissez la couleur.",ar:"أنتم تختارون اللون."},{pronoun:"ils / elles",ending:"-issent",form:"choisissent",example:"Elles choisissent un film.",ar:"هن يخترن فيلمًا."}]},
+ {infinitive:"grandir",root:"grand",ar:"يكبر",examples:[
+  {pronoun:"je",ending:"-is",form:"grandis",example:"Je grandis vite.",ar:"أنا أكبر بسرعة."},{pronoun:"tu",ending:"-is",form:"grandis",example:"Tu grandis chaque année.",ar:"أنت تكبر كل سنة."},{pronoun:"il / elle / on",ending:"-it",form:"grandit",example:"Le bébé grandit.",ar:"الطفل يكبر."},{pronoun:"nous",ending:"-issons",form:"grandissons",example:"Nous grandissons ensemble.",ar:"نحن نكبر معًا."},{pronoun:"vous",ending:"-issez",form:"grandissez",example:"Vous grandissez vite.",ar:"أنتم تكبرون بسرعة."},{pronoun:"ils / elles",ending:"-issent",form:"grandissent",example:"Les enfants grandissent.",ar:"الأطفال يكبرون."}]},
+ {infinitive:"remplir",root:"rempl",ar:"يملأ",examples:[
+  {pronoun:"je",ending:"-is",form:"remplis",example:"Je remplis le formulaire.",ar:"أنا أملأ الاستمارة."},{pronoun:"tu",ending:"-is",form:"remplis",example:"Tu remplis le verre.",ar:"أنت تملأ الكأس."},{pronoun:"il / elle / on",ending:"-it",form:"remplit",example:"Elle remplit la bouteille.",ar:"هي تملأ الزجاجة."},{pronoun:"nous",ending:"-issons",form:"remplissons",example:"Nous remplissons le sac.",ar:"نحن نملأ الحقيبة."},{pronoun:"vous",ending:"-issez",form:"remplissez",example:"Vous remplissez la fiche.",ar:"أنتم تملؤون البطاقة."},{pronoun:"ils / elles",ending:"-issent",form:"remplissent",example:"Ils remplissent les verres.",ar:"هم يملؤون الكؤوس."}]}
+] as const;
+
+function A1PresentIrStudio(){
+ const [verbIndex,setVerbIndex]=useState(0);
+ const verb=A1_PRESENT_IR_VERBS[verbIndex];
+ return <div className="a1-present-er-studio a1-present-ir-studio">
+  <div className="a1-present-er-intro"><div><span>Les verbes réguliers en -ir</span><strong>الأفعال المنتظمة المنتهية بـ -ir</strong><p>هذا هو نموذج <b dir="ltr">finir</b>: نحذف <b dir="ltr">-ir</b> ثم نضيف النهاية المناسبة. ليست كل أفعال <b dir="ltr">-ir</b> من هذا النوع.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">({verb.infinitive})</span><i>→</i><strong dir="ltr">{verb.root}</strong><b>+ النهاية</b><small>{verb.ar}</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ ir">{A1_PRESENT_IR_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>setVerbIndex(index)} dir="ltr">{item.infinitive}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}>
+   <div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>النهاية</span><span>التصريف</span><span>المثال والنطق</span></div>
+   {verb.examples.map((item,index)=><article key={item.pronoun} className="a1-present-er-row" role="row">
+    <i>{String(index+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{item.ending}</strong><span>{item.ending==="-issons"||item.ending==="-issez"?"تُسمع بوضوح":"لا تُنطق غالبًا"}</span></div><button type="button" className="a1-present-er-form" onClick={()=>void speakFrench(`${item.pronoun} ${item.form}`,{rate:.72})} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>الجذر + النهاية</small><strong dir="ltr"><b>{verb.root}</b><mark>{item.form.slice(verb.root.length)}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button>
+   </article>)}
+  </div>
+  <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>في هذا النموذج تظهر مجموعة <b dir="ltr">-iss-</b> مع <b dir="ltr">nous</b> و<b dir="ltr">vous</b> و<b dir="ltr">ils / elles</b>. وتبقى <b dir="ltr">-ent</b> النهائية غير منطوقة غالبًا.</p></div></div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6557,7 +6584,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:<p>{branch.note}</p>}</div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:index===3?<A1PresentIrStudio/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

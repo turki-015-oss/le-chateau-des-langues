@@ -3533,14 +3533,16 @@ const A1_PRESENT_LISTENING={
 const A1_PRESENT_WRITING_MODEL="Le matin, je commence le travail à huit heures. Je parle avec mes collègues et nous prenons un café. Je ne déjeune pas au bureau. Le soir, je rentre en métro, puis je fais du sport.";
 
 const A1_PRESENT_WRITING_TRANSLATIONS=[
- {fr:"je travaille aujourd’hui",ar:"أنا أعمل اليوم"},
- {fr:"tu finis à cinq heures",ar:"تنتهي عند الخامسة"},
- {fr:"elle prend le métro",ar:"تستقل المترو"},
- {fr:"nous parlons français",ar:"نتحدث الفرنسية"},
- {fr:"vous faites du sport",ar:"تمارسون الرياضة"},
- {fr:"ils viennent ce soir",ar:"يأتون هذا المساء"},
- {fr:"je ne travaille pas demain",ar:"لن أعمل غدًا"},
- {fr:"il n’habite pas ici",ar:"هو لا يسكن هنا"}
+ {fr:"je parle français",ar:"أنا أتحدث الفرنسية"},
+ {fr:"tu finis à midi",ar:"أنت تنهي عند الظهر"},
+ {fr:"elle va au marché",ar:"هي تذهب إلى السوق"},
+ {fr:"nous faisons un exercice",ar:"نحن نؤدي تمرينًا"},
+ {fr:"vous venez ce soir",ar:"أنتم تأتون هذا المساء"},
+ {fr:"ils prennent le bus",ar:"هم يستقلون الحافلة"},
+ {fr:"je ne travaille pas le dimanche",ar:"أنا لا أعمل يوم الأحد"},
+ {fr:"elle n’habite pas ici",ar:"هي لا تسكن هنا"},
+ {fr:"je n’achète pas de pain",ar:"أنا لا أشتري خبزًا"},
+ {fr:"ce n’est pas un livre",ar:"هذا ليس كتابًا"}
 ];
 
 const A1_PRESENT_DICTATION=[

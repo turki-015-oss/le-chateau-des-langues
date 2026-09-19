@@ -6520,6 +6520,33 @@ function A1PresentOrderTable(){
   </div>
  </div>
 }
+const A1_PRESENT_ER_VERBS=[
+ {infinitive:"parler",root:"parl",ar:"يتحدث",examples:[
+  {pronoun:"je",ending:"-e",form:"parle",example:"Je parle français.",ar:"أنا أتحدث الفرنسية."},{pronoun:"tu",ending:"-es",form:"parles",example:"Tu parles vite.",ar:"أنت تتحدث بسرعة."},{pronoun:"il / elle / on",ending:"-e",form:"parle",example:"Elle parle avec son ami.",ar:"هي تتحدث مع صديقها."},{pronoun:"nous",ending:"-ons",form:"parlons",example:"Nous parlons en classe.",ar:"نحن نتحدث في الصف."},{pronoun:"vous",ending:"-ez",form:"parlez",example:"Vous parlez bien français.",ar:"أنتم تتحدثون الفرنسية جيدًا."},{pronoun:"ils / elles",ending:"-ent",form:"parlent",example:"Ils parlent à la maison.",ar:"هم يتحدثون في المنزل."}]},
+ {infinitive:"aimer",root:"aim",ar:"يحب",examples:[
+  {pronoun:"j’",ending:"-e",form:"aime",example:"J’aime le français.",ar:"أنا أحب الفرنسية."},{pronoun:"tu",ending:"-es",form:"aimes",example:"Tu aimes le café.",ar:"أنت تحب القهوة."},{pronoun:"il / elle / on",ending:"-e",form:"aime",example:"On aime la musique.",ar:"نحن نحب الموسيقى."},{pronoun:"nous",ending:"-ons",form:"aimons",example:"Nous aimons voyager.",ar:"نحن نحب السفر."},{pronoun:"vous",ending:"-ez",form:"aimez",example:"Vous aimez le cinéma.",ar:"أنتم تحبون السينما."},{pronoun:"ils / elles",ending:"-ent",form:"aiment",example:"Elles aiment les livres.",ar:"هن يحببن الكتب."}]},
+ {infinitive:"travailler",root:"travaill",ar:"يعمل",examples:[
+  {pronoun:"je",ending:"-e",form:"travaille",example:"Je travaille le matin.",ar:"أنا أعمل صباحًا."},{pronoun:"tu",ending:"-es",form:"travailles",example:"Tu travailles ici.",ar:"أنت تعمل هنا."},{pronoun:"il / elle / on",ending:"-e",form:"travaille",example:"Il travaille en ville.",ar:"هو يعمل في المدينة."},{pronoun:"nous",ending:"-ons",form:"travaillons",example:"Nous travaillons ensemble.",ar:"نحن نعمل معًا."},{pronoun:"vous",ending:"-ez",form:"travaillez",example:"Vous travaillez demain.",ar:"أنتم تعملون غدًا."},{pronoun:"ils / elles",ending:"-ent",form:"travaillent",example:"Ils travaillent le samedi.",ar:"هم يعملون يوم السبت."}]},
+ {infinitive:"regarder",root:"regard",ar:"يشاهد",examples:[
+  {pronoun:"je",ending:"-e",form:"regarde",example:"Je regarde un film.",ar:"أنا أشاهد فيلمًا."},{pronoun:"tu",ending:"-es",form:"regardes",example:"Tu regardes la télévision.",ar:"أنت تشاهد التلفاز."},{pronoun:"il / elle / on",ending:"-e",form:"regarde",example:"Elle regarde le tableau.",ar:"هي تنظر إلى السبورة."},{pronoun:"nous",ending:"-ons",form:"regardons",example:"Nous regardons le match.",ar:"نحن نشاهد المباراة."},{pronoun:"vous",ending:"-ez",form:"regardez",example:"Vous regardez la carte.",ar:"أنتم تنظرون إلى الخريطة."},{pronoun:"ils / elles",ending:"-ent",form:"regardent",example:"Ils regardent les photos.",ar:"هم يشاهدون الصور."}]}
+] as const;
+
+function A1PresentErStudio(){
+ const [verbIndex,setVerbIndex]=useState(0);
+ const verb=A1_PRESENT_ER_VERBS[verbIndex];
+ return <div className="a1-present-er-studio">
+  <div className="a1-present-er-intro"><div><span>Les verbes réguliers en -er</span><strong>الأفعال المنتظمة المنتهية بـ -er</strong><p>نحذف <b dir="ltr">-er</b> من المصدر، ثم نضيف النهاية الموافقة للضمير. ويستثنى الفعل <b dir="ltr">aller</b>.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">({verb.infinitive})</span><i>→</i><strong dir="ltr">{verb.root}</strong><b>+ النهاية</b><small>{verb.ar}</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا منتظمًا منتهيًا بـ er">{A1_PRESENT_ER_VERBS.map((item,index)=><button key={item.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>setVerbIndex(index)} dir="ltr">{item.infinitive}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}>
+   <div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>النهاية</span><span>التصريف</span><span>المثال والنطق</span></div>
+   {verb.examples.map((item,index)=><article key={item.pronoun} className="a1-present-er-row" role="row">
+    <i>{String(index+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{item.ending}</strong><span>{item.ending==="-ons"||item.ending==="-ez"?"تُسمع بوضوح":"لا تُنطق غالبًا"}</span></div><button type="button" className="a1-present-er-form" onClick={()=>void speakFrench(`${item.pronoun} ${item.form}`,{rate:.72})} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>الجذر + النهاية</small><strong dir="ltr"><b>{verb.root}</b><mark>{item.form.slice(verb.root.length)}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button>
+   </article>)}
+  </div>
+  <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>النهايات <b dir="ltr">-e</b> و<b dir="ltr">-es</b> و<b dir="ltr">-ent</b> لا تُنطق غالبًا؛ أما <b dir="ltr">-ons</b> و<b dir="ltr">-ez</b> فتُسمع بوضوح.</p></div></div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6530,7 +6557,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:<p>{branch.note}</p>}</div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

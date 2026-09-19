@@ -6616,6 +6616,35 @@ function A1PresentCommonStudio(){
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>استمع إلى التصريف كاملًا مع الضمير. وفي بطاقات <b dir="ltr">il / elle / on</b> و<b dir="ltr">ils / elles</b> يُنطق كل ضمير منفصلًا مع الفعل.</p></div></div>
  </div>
 }
+const A1_PRESENT_SPELLING_VERBS=[
+ {infinitive:"manger",ar:"يأكل",tag:"-ger",rule:"نُبقي حرف e قبل nous حتى يبقى نطق g ناعمًا.",forms:[
+  {pronoun:"je",form:"mange",example:"Je mange une pomme.",ar:"أنا آكل تفاحة."},{pronoun:"tu",form:"manges",example:"Tu manges du pain.",ar:"أنت تأكل خبزًا."},{pronoun:"il / elle / on",form:"mange",example:"On mange ici.",ar:"نحن نأكل هنا."},{pronoun:"nous",form:"mangeons",example:"Nous mangeons au restaurant.",ar:"نحن نأكل في المطعم."},{pronoun:"vous",form:"mangez",example:"Vous mangez bien.",ar:"أنتم تأكلون جيدًا."},{pronoun:"ils / elles",form:"mangent",example:"Ils mangent ensemble.",ar:"هم يأكلون معًا."}]},
+ {infinitive:"commencer",ar:"يبدأ",tag:"-cer",rule:"يتحول c إلى ç قبل nous حتى يبقى نطقه /s/.",forms:[
+  {pronoun:"je",form:"commence",example:"Je commence maintenant.",ar:"أنا أبدأ الآن."},{pronoun:"tu",form:"commences",example:"Tu commences le cours.",ar:"أنت تبدأ الدرس."},{pronoun:"il / elle / on",form:"commence",example:"Elle commence à huit heures.",ar:"هي تبدأ عند الثامنة."},{pronoun:"nous",form:"commençons",example:"Nous commençons ensemble.",ar:"نحن نبدأ معًا."},{pronoun:"vous",form:"commencez",example:"Vous commencez demain.",ar:"أنتم تبدأون غدًا."},{pronoun:"ils / elles",form:"commencent",example:"Ils commencent le travail.",ar:"هم يبدأون العمل."}]},
+ {infinitive:"acheter",ar:"يشتري",tag:"e…er",rule:"يتحول e إلى è في بعض التصريفات، لكنه يبقى e مع nous و vous.",forms:[
+  {pronoun:"j’",form:"achète",example:"J’achète un livre.",ar:"أنا أشتري كتابًا."},{pronoun:"tu",form:"achètes",example:"Tu achètes du lait.",ar:"أنت تشتري حليبًا."},{pronoun:"il / elle / on",form:"achète",example:"Il achète le billet.",ar:"هو يشتري التذكرة."},{pronoun:"nous",form:"achetons",example:"Nous achetons des fruits.",ar:"نحن نشتري فواكه."},{pronoun:"vous",form:"achetez",example:"Vous achetez une table.",ar:"أنتم تشترون طاولة."},{pronoun:"ils / elles",form:"achètent",example:"Elles achètent des fleurs.",ar:"هن يشترين زهورًا."}]},
+ {infinitive:"préférer",ar:"يفضّل",tag:"é…er",rule:"يتحول é إلى è في بعض التصريفات، ويبقى é مع nous و vous.",forms:[
+  {pronoun:"je",form:"préfère",example:"Je préfère le thé.",ar:"أنا أفضل الشاي."},{pronoun:"tu",form:"préfères",example:"Tu préfères le train.",ar:"أنت تفضل القطار."},{pronoun:"il / elle / on",form:"préfère",example:"Elle préfère le rouge.",ar:"هي تفضل الأحمر."},{pronoun:"nous",form:"préférons",example:"Nous préférons marcher.",ar:"نحن نفضل المشي."},{pronoun:"vous",form:"préférez",example:"Vous préférez ce livre.",ar:"أنتم تفضلون هذا الكتاب."},{pronoun:"ils / elles",form:"préfèrent",example:"Ils préfèrent le café.",ar:"هم يفضلون القهوة."}]},
+ {infinitive:"appeler",ar:"يتصل / ينادي",tag:"ll + e",rule:"يتضاعف الحرف l قبل e الصامتة في بعض التصريفات.",forms:[
+  {pronoun:"j’",form:"appelle",example:"J’appelle mon ami.",ar:"أنا أتصل بصديقي."},{pronoun:"tu",form:"appelles",example:"Tu appelles ta mère.",ar:"أنت تتصل بوالدتك."},{pronoun:"il / elle / on",form:"appelle",example:"On appelle le professeur.",ar:"نحن ننادي المعلم."},{pronoun:"nous",form:"appelons",example:"Nous appelons un taxi.",ar:"نحن نطلب سيارة أجرة."},{pronoun:"vous",form:"appelez",example:"Vous appelez ce soir.",ar:"أنتم تتصلون هذا المساء."},{pronoun:"ils / elles",form:"appellent",example:"Ils appellent leurs amis.",ar:"هم يتصلون بأصدقائهم."}]},
+ {infinitive:"jeter",ar:"يرمي",tag:"tt + e",rule:"يتضاعف الحرف t قبل e الصامتة في بعض التصريفات.",forms:[
+  {pronoun:"je",form:"jette",example:"Je jette le papier.",ar:"أنا أرمي الورقة."},{pronoun:"tu",form:"jettes",example:"Tu jettes la balle.",ar:"أنت ترمي الكرة."},{pronoun:"il / elle / on",form:"jette",example:"Elle jette la feuille.",ar:"هي ترمي الورقة."},{pronoun:"nous",form:"jetons",example:"Nous jetons les déchets.",ar:"نحن نرمي النفايات."},{pronoun:"vous",form:"jetez",example:"Vous jetez le carton.",ar:"أنتم ترمون الكرتون."},{pronoun:"ils / elles",form:"jettent",example:"Ils jettent les papiers.",ar:"هم يرمون الأوراق."}]}
+] as const;
+
+function A1PresentSpellingStudio(){
+ const [verbIndex,setVerbIndex]=useState(0);
+ const [formIndex,setFormIndex]=useState(0);
+ const verb=A1_PRESENT_SPELLING_VERBS[verbIndex];
+ const item=verb.forms[formIndex];
+ return <div className="a1-present-er-studio a1-present-spelling-studio">
+  <div className="a1-present-er-intro"><div><span>Les changements orthographiques</span><strong>التغييرات الإملائية البسيطة</strong><p>{verb.rule}</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">{verb.tag}</span><i>→</i><strong>تغيير للكتابة</strong><b>مع بعض الضمائر</b><small>{verb.ar}</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر تغييرًا إملائيًا">{A1_PRESENT_SPELLING_VERBS.map((entry,index)=><button key={entry.infinitive} type="button" className={index===verbIndex?"active":""} aria-pressed={index===verbIndex} onClick={()=>{setVerbIndex(index);setFormIndex(0)}} dir="ltr">{entry.infinitive}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>القاعدة</span><span>التصريف</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(formIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{verb.tag}</strong><span>التغيير</span></div><button type="button" className="a1-present-er-form" onClick={()=>void playPresentConjugation(item.pronoun,item.form)} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>التصريف مع الضمير</small><strong dir="ltr">{item.pronoun} <mark>{item.form}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination" aria-label="التنقل بين بطاقات الضمائر"><button type="button" onClick={()=>setFormIndex(current=>Math.max(0,current-1))} disabled={formIndex===0} aria-label="بطاقة الضمير السابقة"><ChevronRight aria-hidden="true"/><span>السابق</span></button><b>بطاقة {formIndex+1} من {verb.forms.length}</b><button type="button" onClick={()=>setFormIndex(current=>Math.min(verb.forms.length-1,current+1))} disabled={formIndex===verb.forms.length-1} aria-label="بطاقة الضمير التالية"><span>التالي</span><ChevronLeft aria-hidden="true"/></button></div>
+  <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة للكتابة والنطق</strong><p>يتغير شكل الكتابة لحماية النطق أو لتمييزه، بينما يبقى ترتيب الضمير والفعل كما تعرفته في المضارع.</p></div></div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6626,7 +6655,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:index===3?<A1PresentIrStudio/>:index===4?<A1PresentCommonStudio/>:<p>{branch.note}</p>}</div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:index===2?<A1PresentErStudio/>:index===3?<A1PresentIrStudio/>:index===4?<A1PresentCommonStudio/>:index===5?<A1PresentSpellingStudio/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

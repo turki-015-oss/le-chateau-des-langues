@@ -6496,6 +6496,30 @@ function A1PresentUsageTable(){
   </div>
  </div>
 }
+const A1_PRESENT_ORDER_CARDS=[
+ {fr:"Sujet + verbe",ar:"فاعل + فعل مصرّف",explanation:"أقصر جملة كاملة: من يقوم بالفعل ثم الفعل المصرف.",infinitive:"parler",before:"Je ",verb:"parle",after:".",sentence:"Je parle.",translation:"أنا أتحدث."},
+ {fr:"Sujet + verbe + complément",ar:"فاعل + فعل + مفعول به",explanation:"نضيف الشيء الذي يقع عليه الفعل بعد الفعل.",infinitive:"lire",before:"Je ",verb:"lis",after:" un livre.",sentence:"Je lis un livre.",translation:"أنا أقرأ كتابًا."},
+ {fr:"Sujet + verbe + lieu",ar:"فاعل + فعل + مكان",explanation:"يمكن أن نذكر مكان الفعل بعد الفعل.",infinitive:"étudier",before:"Nous ",verb:"étudions",after:" à l’université.",sentence:"Nous étudions à l’université.",translation:"نحن ندرس في الجامعة."},
+ {fr:"Temps + sujet + verbe",ar:"زمن + فاعل + فعل",explanation:"يمكن أن يبدأ الوقت الجملة، ثم يأتي الفاعل والفعل.",infinitive:"travailler",before:"Le matin, je ",verb:"travaille",after:".",sentence:"Le matin, je travaille.",translation:"صباحًا، أعمل."},
+ {fr:"Phrase complète",ar:"جملة يومية كاملة",explanation:"نجمع الوقت والفاعل والفعل والمكمّل والمكان في جملة طبيعية.",infinitive:"faire",before:"Le samedi, nous ",verb:"faisons",after:" du sport au parc.",sentence:"Le samedi, nous faisons du sport au parc.",translation:"يوم السبت، نمارس الرياضة في الحديقة."}
+] as const;
+
+function A1PresentOrderTable(){
+ return <div className="a1-present-order-table">
+  <div className="a1-present-order-formula"><span>ترتيب الجملة المثبتة</span><strong dir="ltr">(Temps) + sujet + verbe conjugué + complément / lieu</strong><small>يمكن أن يأتي ظرف الزمن في بداية الجملة أو نهايتها.</small></div>
+  <div className="a1-present-order-grid">
+   {A1_PRESENT_ORDER_CARDS.map((card,index)=><article key={card.sentence} className="a1-present-order-card">
+    <header><i>{String(index+1).padStart(2,"0")}</i><div><strong dir="ltr">{card.fr}</strong><span>{card.ar}</span></div></header>
+    <p>{card.explanation}</p>
+    <button type="button" onClick={()=>void speakFrench(card.sentence,{rate:.74})} aria-label={`استمع إلى ${card.sentence}`}>
+     <small dir="ltr">({card.infinitive})</small>
+     <strong dir="ltr">{card.before}<mark>{card.verb}</mark>{card.after}</strong>
+     <span>{card.translation}</span><Volume2 aria-hidden="true"/>
+    </button>
+   </article>)}
+  </div>
+ </div>
+}
 function A1PresentSimpleBranches({intro}:{intro:string}){
  return <div className="a1-present-simple-branches">
   <p className="a1-present-simple-intro">{intro}</p>
@@ -6506,7 +6530,7 @@ function A1PresentSimpleBranches({intro}:{intro:string}){
      <span className="a1-present-simple-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span>
      <ChevronDown aria-hidden="true"/>
     </summary>
-    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:<p>{branch.note}</p>}</div>
+    <div className="a1-present-simple-branch-content">{index===0?<A1PresentUsageTable/>:index===1?<A1PresentOrderTable/>:<p>{branch.note}</p>}</div>
    </details>)}
   </div>
  </div>

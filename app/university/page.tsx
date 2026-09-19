@@ -3544,11 +3544,14 @@ const A1_PRESENT_WRITING_TRANSLATIONS=[
 ];
 
 const A1_PRESENT_DICTATION=[
- {speech:"Je travaille à l’université.",ar:"أعمل في الجامعة."},
- {speech:"Nous finissons le cours à midi.",ar:"ننهي الدرس عند الظهر."},
- {speech:"Elle ne prend pas le bus.",ar:"هي لا تستقل الحافلة."},
- {speech:"Vous commencez le travail à neuf heures.",ar:"تبدؤون العمل الساعة التاسعة."},
- {speech:"Mes amis viennent à la maison.",ar:"يأتي أصدقائي إلى المنزل."}
+ {speech:"Je parle français avec mes amis.",ar:"أنا أتحدث الفرنسية مع أصدقائي."},
+ {speech:"Nous finissons le cours à midi.",ar:"نحن ننهي الدرس عند الظهر."},
+ {speech:"Elle va au marché le matin.",ar:"هي تذهب إلى السوق صباحًا."},
+ {speech:"Vous faites un exercice.",ar:"أنتم تؤدون تمرينًا."},
+ {speech:"Il ne travaille pas aujourd’hui.",ar:"هو لا يعمل اليوم."},
+ {speech:"Elle n’habite pas ici.",ar:"هي لا تسكن هنا."},
+ {speech:"Je n’achète pas de pain.",ar:"أنا لا أشتري خبزًا."},
+ {speech:"Ce n’est pas un livre.",ar:"هذا ليس كتابًا."}
 ];
 
 const A1_PRESENT_BUILDERS=[

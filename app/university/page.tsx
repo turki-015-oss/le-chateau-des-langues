@@ -2809,12 +2809,11 @@ const A1_STUDIES_LISTENING={
   {prompt:"Où travaille sa sœur ?",translation:"أين تعمل أخته؟",choices:["À l’école","Dans un restaurant","Dans un magasin"],correctIndex:2},
   {prompt:"Où travaille le père de Yassine ?",translation:"أين يعمل والد ياسين؟",choices:["À l’université","À l’aéroport","À l’hôpital"],correctIndex:2}
  ]
-};const A1_STUDIES_WRITING_MODEL="Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.";
+};const A1_STUDIES_WRITING_MODEL="Je m’appelle Adam. Je suis étudiant. J’étudie le français à l’université. Mon cours commence à neuf heures.";
 const A1_STUDIES_WRITING_TRANSLATIONS=[
- {fr:"étudiant",ar:"طالب"},{fr:"étudiante",ar:"طالبة"},{fr:"professeur",ar:"معلّم"},{fr:"médecin",ar:"طبيب"},
- {fr:"infirmière",ar:"ممرضة"},{fr:"ingénieur",ar:"مهندس"},{fr:"cuisinier",ar:"طاهٍ"},{fr:"vendeuse",ar:"بائعة"}
+ {fr:"je m’appelle",ar:"اسمي"},{fr:"étudiant",ar:"طالب"},{fr:"université",ar:"جامعة"},{fr:"j’étudie",ar:"أدرس"},
+ {fr:"français",ar:"اللغة الفرنسية"},{fr:"mon cours",ar:"درسي"},{fr:"commence",ar:"يبدأ"},{fr:"neuf heures",ar:"الساعة التاسعة"}
 ];
-
 const A1_STUDIES_DICTATION=[
  {speech:"université",ar:"جامعة"},
  {speech:"bibliothèque",ar:"مكتبة"},

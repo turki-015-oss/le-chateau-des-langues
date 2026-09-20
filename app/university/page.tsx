@@ -2801,19 +2801,17 @@ const A1_STUDIES_READING={
 };
 
 const A1_STUDIES_LISTENING={
- title:"Métiers et lieux",
- arTitle:"المهن وأماكنها",
- text:"Professeur. Médecin. Cuisinier. Vendeuse. Étudiante.",
+ title:"À l’université et au travail",
+ arTitle:"في الجامعة والعمل",
+ text:"Bonjour, je m’appelle Yassine. J’étudie le français à l’université. Ma sœur est vendeuse et elle travaille dans un magasin. Mon père est médecin. Il travaille à l’hôpital.",
  questions:[
-  {prompt:"Quel métier entendez-vous ?",choices:["Professeur","Médecin","Cuisinier"],correctIndex:0},
-  {prompt:"Quel métier entendez-vous ?",choices:["Vendeur","Médecin","Professeur"],correctIndex:1},
-  {prompt:"Quel métier entendez-vous ?",choices:["Infirmier","Ingénieur","Cuisinier"],correctIndex:2},
-  {prompt:"Quel métier entendez-vous ?",choices:["Vendeuse","Étudiante","Professeure"],correctIndex:0},
-  {prompt:"Quel statut entendez-vous ?",choices:["Cuisinière","Étudiante","Médecin"],correctIndex:1}
+  {prompt:"Qu’est-ce que Yassine étudie ?",translation:"ماذا يدرس ياسين؟",choices:["Le français","La médecine","Les mathématiques"],correctIndex:0},
+  {prompt:"Où étudie Yassine ?",translation:"أين يدرس ياسين؟",choices:["À l’hôpital","À l’université","Au magasin"],correctIndex:1},
+  {prompt:"Quel est le métier de sa sœur ?",translation:"ما مهنة أخته؟",choices:["Médecin","Professeure","Vendeuse"],correctIndex:2},
+  {prompt:"Où travaille sa sœur ?",translation:"أين تعمل أخته؟",choices:["À l’école","Dans un restaurant","Dans un magasin"],correctIndex:2},
+  {prompt:"Où travaille le père de Yassine ?",translation:"أين يعمل والد ياسين؟",choices:["À l’université","À l’aéroport","À l’hôpital"],correctIndex:2}
  ]
-};
-
-const A1_STUDIES_WRITING_MODEL="Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.";
+};const A1_STUDIES_WRITING_MODEL="Je suis étudiant à l’université. J’étudie le français. Mon frère est médecin et travaille à l’hôpital.";
 const A1_STUDIES_WRITING_TRANSLATIONS=[
  {fr:"étudiant",ar:"طالب"},{fr:"étudiante",ar:"طالبة"},{fr:"professeur",ar:"معلّم"},{fr:"médecin",ar:"طبيب"},
  {fr:"infirmière",ar:"ممرضة"},{fr:"ingénieur",ar:"مهندس"},{fr:"cuisinier",ar:"طاهٍ"},{fr:"vendeuse",ar:"بائعة"}

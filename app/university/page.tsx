@@ -3100,7 +3100,7 @@ const A1_STUDIES_LEARNING_GROUPS:{branches:{fr:string;ar:string;note:string;exam
  ]},
  {branches:[
   {fr:"Les noms de métiers",ar:"أسماء المهن",note:"نتعرّف إلى أسماء مهن شائعة للمبتدئ، مثل médecin وprofesseur وcuisinier، من خلال بطاقات تفاعلية مع أمثلة ونطق.",examples:[]},
-  {fr:"Le masculin et le féminin",ar:"المذكر والمؤنث في المهنة",note:"بعض المهن تتغير صيغتها بين المذكر والمؤنث، مثل étudiant / étudiante. سنعرضها في بطاقات مقارنة.",examples:[]},
+  {fr:"Le masculin et le féminin",ar:"المذكر والمؤنث في المهنة",note:"نتعرّف إلى الطرق الشائعة لتحويل المهنة بين المذكر والمؤنث، عبر بطاقات مقارنة متتابعة مع أمثلة ونطق.",examples:[]},
   {fr:"Les lieux de travail",ar:"أماكن العمل",note:"نربط كل مهنة بمكانها الطبيعي: à l’hôpital، dans un restaurant، à l’école، وغيرها.",examples:[]}
  ]},
  {branches:[
@@ -6473,6 +6473,18 @@ const A1_STUDY_PROFESSION_CARDS:{fr:string;ar:string;example:string;exampleAr:st
  {fr:"l’artiste",ar:"الفنّان",example:"Il est artiste.",exampleAr:"هو فنّان.",icon:Sparkles,visual:"artist"},
  {fr:"le boulanger",ar:"الخبّاز",example:"Le boulanger fait du pain.",exampleAr:"الخبّاز يصنع الخبز.",icon:ShoppingBasket,visual:"baker"}
 ];
+const A1_PROFESSION_GENDER_CARDS=[
+ {rule:"إضافة -e",formula:"+ e",masculine:"un employé",masculineAr:"موظف",feminine:"une employée",feminineAr:"موظفة",example:"L’employée travaille ici.",exampleAr:"الموظفة تعمل هنا."},
+ {rule:"نهاية -er",formula:"-er → -ère",masculine:"un boulanger",masculineAr:"خبّاز",feminine:"une boulangère",feminineAr:"خبّازة",example:"La boulangère fait du pain.",exampleAr:"الخبّازة تصنع الخبز."},
+ {rule:"نهاية -ier",formula:"-ier → -ière",masculine:"un infirmier",masculineAr:"ممرّض",feminine:"une infirmière",feminineAr:"ممرّضة",example:"L’infirmière travaille à l’hôpital.",exampleAr:"الممرضة تعمل في المستشفى."},
+ {rule:"نهاية -ien",formula:"-ien → -ienne",masculine:"un musicien",masculineAr:"موسيقي",feminine:"une musicienne",feminineAr:"موسيقية",example:"La musicienne joue de la musique.",exampleAr:"الموسيقية تعزف الموسيقى."},
+ {rule:"نهاية -eur",formula:"-eur → -euse",masculine:"un vendeur",masculineAr:"بائع",feminine:"une vendeuse",feminineAr:"بائعة",example:"La vendeuse travaille au magasin.",exampleAr:"البائعة تعمل في المتجر."},
+ {rule:"نهاية -eur",formula:"-eur → -euse",masculine:"un coiffeur",masculineAr:"مصفف شعر",feminine:"une coiffeuse",feminineAr:"مصففة شعر",example:"La coiffeuse travaille au salon.",exampleAr:"مصففة الشعر تعمل في الصالون."},
+ {rule:"صيغة خاصة",formula:"-eur → -rice",masculine:"un acteur",masculineAr:"ممثل",feminine:"une actrice",feminineAr:"ممثلة",example:"L’actrice est au cinéma.",exampleAr:"الممثلة في السينما."},
+ {rule:"الشكل نفسه",formula:"الأداة تتغير",masculine:"un artiste",masculineAr:"فنّان",feminine:"une artiste",feminineAr:"فنّانة",example:"L’artiste travaille dans son atelier.",exampleAr:"الفنّانة تعمل في مرسمها."},
+ {rule:"الشكل نفسه",formula:"الأداة تتغير",masculine:"un médecin",masculineAr:"طبيب",feminine:"une médecin",feminineAr:"طبيبة",example:"La médecin travaille à l’hôpital.",exampleAr:"الطبيبة تعمل في المستشفى."},
+ {rule:"نهاية -eur",formula:"-eur → -eure",masculine:"un ingénieur",masculineAr:"مهندس",feminine:"une ingénieure",feminineAr:"مهندسة",example:"L’ingénieure travaille en ville.",exampleAr:"المهندسة تعمل في المدينة."}
+];
 function A1StudyPlacesCarousel(){
  const [placeIndex,setPlaceIndex]=useState(0);
  const [revealed,setRevealed]=useState(false);
@@ -6528,6 +6540,24 @@ function A1StudyProfessionsCarousel(){
    {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على البطاقة لإعادة الاستماع إلى النطق.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
   </article>
   <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أسماء المهن"><button type="button" onClick={()=>selectProfession(professionIndex-1)} disabled={professionIndex===0} aria-label="المهنة السابقة"><ChevronLeft/></button><span>{professionIndex+1} / {A1_STUDY_PROFESSION_CARDS.length}</span><button type="button" onClick={()=>selectProfession(professionIndex+1)} disabled={professionIndex===A1_STUDY_PROFESSION_CARDS.length-1} aria-label="المهنة التالية"><ChevronRight/></button></nav>
+ </div>;
+}
+function A1ProfessionGenderCarousel(){
+ const [cardIndex,setCardIndex]=useState(0);
+ const card=A1_PROFESSION_GENDER_CARDS[cardIndex];
+ const play=()=>void speakFrenchSequence([card.masculine,card.feminine,card.example],560,{rate:.72});
+ const selectCard=(nextIndex:number)=>{const nextCard=A1_PROFESSION_GENDER_CARDS[nextIndex];if(!nextCard||nextIndex===cardIndex)return;setCardIndex(nextIndex);void speakFrenchSequence([nextCard.masculine,nextCard.feminine,nextCard.example],560,{rate:.72});};
+ return <div className="a1-profession-gender-carousel">
+  <article className="a1-profession-gender-card" key={card.masculine}>
+   <header><span>{card.rule}</span><b dir="ltr">{card.formula}</b></header>
+   <div className="a1-profession-gender-pair">
+    <button type="button" onClick={()=>void speakFrench(card.masculine,{rate:.72})} aria-label={`استمع إلى ${card.masculine}`}><small>مذكر</small><strong dir="ltr">{card.masculine}</strong><em>{card.masculineAr}</em><Volume2 aria-hidden="true"/></button>
+    <i aria-hidden="true">←</i>
+    <button type="button" onClick={()=>void speakFrench(card.feminine,{rate:.72})} aria-label={`استمع إلى ${card.feminine}`}><small>مؤنث</small><strong dir="ltr">{card.feminine}</strong><em>{card.feminineAr}</em><Volume2 aria-hidden="true"/></button>
+   </div>
+   <button type="button" className="a1-profession-gender-example" onClick={()=>void speakFrench(card.example,{rate:.72})} aria-label={`استمع إلى ${card.example}`}><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small><Volume2 aria-hidden="true"/></button>
+  </article>
+  <nav className="a1-time-greeting-navigation a1-profession-gender-navigation" dir="ltr" aria-label="التنقل بين المذكر والمؤنث في المهن"><button type="button" onClick={()=>selectCard(cardIndex-1)} disabled={cardIndex===0} aria-label="البطاقة السابقة"><ChevronLeft/></button><span>{cardIndex+1} / {A1_PROFESSION_GENDER_CARDS.length}</span><button type="button" onClick={()=>selectCard(cardIndex+1)} disabled={cardIndex===A1_PROFESSION_GENDER_CARDS.length-1} aria-label="البطاقة التالية"><ChevronRight/></button></nav>
  </div>;
 }
 function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){

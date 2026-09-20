@@ -3099,7 +3099,7 @@ const A1_STUDIES_LEARNING_GROUPS:{branches:{fr:string;ar:string;note:string;exam
   {fr:"Les verbes d’étude",ar:"أفعال الدراسة",note:"نتعلّم أفعال الدراسة الأساسية مثل étudier وapprendre وlire وécrire مع أمثلة قصيرة مناسبة لمستوى A1.",examples:[]}
  ]},
  {branches:[
-  {fr:"Les noms de métiers",ar:"أسماء المهن",note:"سنضيف أسماء مهن شائعة وواضحة للمبتدئ مع نطقها وصورها، مثل médecin وprofesseur وcuisinier.",examples:[]},
+  {fr:"Les noms de métiers",ar:"أسماء المهن",note:"نتعرّف إلى أسماء مهن شائعة للمبتدئ، مثل médecin وprofesseur وcuisinier، من خلال بطاقات تفاعلية مع أمثلة ونطق.",examples:[]},
   {fr:"Le masculin et le féminin",ar:"المذكر والمؤنث في المهنة",note:"بعض المهن تتغير صيغتها بين المذكر والمؤنث، مثل étudiant / étudiante. سنعرضها في بطاقات مقارنة.",examples:[]},
   {fr:"Les lieux de travail",ar:"أماكن العمل",note:"نربط كل مهنة بمكانها الطبيعي: à l’hôpital، dans un restaurant، à l’école، وغيرها.",examples:[]}
  ]},
@@ -6463,6 +6463,16 @@ const A1_STUDY_VERB_CARDS=[
  {fr:"écouter",ar:"يستمع",image:"/images/university/a1-studies/verbs/ecouter.webp",example:"J’écoute le professeur.",exampleAr:"أستمع إلى المعلّم."},
  {fr:"réviser",ar:"يراجع",image:"/images/university/a1-studies/verbs/reviser.webp",example:"Je révise pour l’examen.",exampleAr:"أراجع للامتحان."}
 ];
+const A1_STUDY_PROFESSION_CARDS:[{fr:string;ar:string;example:string;exampleAr:string;icon:LucideIcon;visual:string},...{fr:string;ar:string;example:string;exampleAr:string;icon:LucideIcon;visual:string}]=[
+ {fr:"le médecin",ar:"الطبيب",example:"Je suis médecin.",exampleAr:"أنا طبيب.",icon:Stethoscope,visual:"medical"},
+ {fr:"le professeur",ar:"المعلّم",example:"Il est professeur.",exampleAr:"هو معلّم.",icon:GraduationCap,visual:"teacher"},
+ {fr:"le cuisinier",ar:"الطاهي",example:"Mon père est cuisinier.",exampleAr:"والدي طاهٍ.",icon:Coffee,visual:"chef"},
+ {fr:"le policier",ar:"الشرطي",example:"Il est policier.",exampleAr:"هو شرطي.",icon:BadgeCheck,visual:"police"},
+ {fr:"le pilote",ar:"الطيار",example:"Le pilote est dans l’avion.",exampleAr:"الطيار في الطائرة.",icon:Navigation,visual:"pilot"},
+ {fr:"l’ingénieur",ar:"المهندس",example:"Mon frère est ingénieur.",exampleAr:"أخي مهندس.",icon:Blocks,visual:"engineer"},
+ {fr:"l’artiste",ar:"الفنّان",example:"Il est artiste.",exampleAr:"هو فنّان.",icon:Sparkles,visual:"artist"},
+ {fr:"le boulanger",ar:"الخبّاز",example:"Le boulanger fait du pain.",exampleAr:"الخبّاز يصنع الخبز.",icon:ShoppingBasket,visual:"baker"}
+];
 function A1StudyPlacesCarousel(){
  const [placeIndex,setPlaceIndex]=useState(0);
  const [revealed,setRevealed]=useState(false);
@@ -6503,6 +6513,21 @@ function A1StudyVerbsCarousel(){
    {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على الصورة لإعادة الاستماع إلى النطق.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
   </article>
   <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أفعال الدراسة"><button type="button" onClick={()=>selectVerb(verbIndex-1)} disabled={verbIndex===0} aria-label="الفعل السابق"><ChevronLeft/></button><span>{verbIndex+1} / {A1_STUDY_VERB_CARDS.length}</span><button type="button" onClick={()=>selectVerb(verbIndex+1)} disabled={verbIndex===A1_STUDY_VERB_CARDS.length-1} aria-label="الفعل التالي"><ChevronRight/></button></nav>
+ </div>;
+}
+function A1StudyProfessionsCarousel(){
+ const [professionIndex,setProfessionIndex]=useState(0);
+ const [revealed,setRevealed]=useState(false);
+ const card=A1_STUDY_PROFESSION_CARDS[professionIndex];
+ const ProfessionIcon=card.icon;
+ const play=()=>{setRevealed(true);void speakFrenchWithPause(card.fr,card.example,650,{rate:.72});};
+ const selectProfession=(nextIndex:number)=>{const nextCard=A1_STUDY_PROFESSION_CARDS[nextIndex];if(!nextCard||nextIndex===professionIndex)return;setProfessionIndex(nextIndex);setRevealed(true);void speakFrenchWithPause(nextCard.fr,nextCard.example,650,{rate:.72});};
+ return <div className="a1-time-greeting-carousel a1-study-professions-carousel">
+  <article className={`a1-time-greeting-card a1-study-profession-card ${card.visual}`} key={card.fr}>
+   <button type="button" className="a1-time-greeting-image" onClick={play} aria-label={`استمع إلى ${card.fr}`}><span className="a1-study-profession-visual" aria-hidden="true"><ProfessionIcon/></span><span aria-hidden="true"><Volume2/></span></button>
+   {revealed&&<div className="a1-time-greeting-copy"><strong dir="ltr">{card.fr}</strong><b>{card.ar}</b><p>اضغط على البطاقة لإعادة الاستماع إلى النطق.</p><div><span dir="ltr">{card.example}</span><small>{card.exampleAr}</small></div></div>}
+  </article>
+  <nav className="a1-time-greeting-navigation" dir="ltr" aria-label="التنقل بين أسماء المهن"><button type="button" onClick={()=>selectProfession(professionIndex-1)} disabled={professionIndex===0} aria-label="المهنة السابقة"><ChevronLeft/></button><span>{professionIndex+1} / {A1_STUDY_PROFESSION_CARDS.length}</span><button type="button" onClick={()=>selectProfession(professionIndex+1)} disabled={professionIndex===A1_STUDY_PROFESSION_CARDS.length-1} aria-label="المهنة التالية"><ChevronRight/></button></nav>
  </div>;
 }
 function A1GrammarCarousel({groups,intro,isVerb}:{groups:typeof A1_SUBJECT_PRONOUN_GROUPS|typeof A1_CORE_VERB_GROUPS;intro:string;isVerb:boolean}){
@@ -9019,7 +9044,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

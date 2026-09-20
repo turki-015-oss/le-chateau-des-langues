@@ -6463,7 +6463,7 @@ const A1_STUDY_VERB_CARDS=[
  {fr:"écouter",ar:"يستمع",image:"/images/university/a1-studies/verbs/ecouter.webp",example:"J’écoute le professeur.",exampleAr:"أستمع إلى المعلّم."},
  {fr:"réviser",ar:"يراجع",image:"/images/university/a1-studies/verbs/reviser.webp",example:"Je révise pour l’examen.",exampleAr:"أراجع للامتحان."}
 ];
-const A1_STUDY_PROFESSION_CARDS:[{fr:string;ar:string;example:string;exampleAr:string;icon:LucideIcon;visual:string},...{fr:string;ar:string;example:string;exampleAr:string;icon:LucideIcon;visual:string}]=[
+const A1_STUDY_PROFESSION_CARDS:{fr:string;ar:string;example:string;exampleAr:string;icon:LucideIcon;visual:string}[]=[
  {fr:"le médecin",ar:"الطبيب",example:"Je suis médecin.",exampleAr:"أنا طبيب.",icon:Stethoscope,visual:"medical"},
  {fr:"le professeur",ar:"المعلّم",example:"Il est professeur.",exampleAr:"هو معلّم.",icon:GraduationCap,visual:"teacher"},
  {fr:"le cuisinier",ar:"الطاهي",example:"Mon père est cuisinier.",exampleAr:"والدي طاهٍ.",icon:Coffee,visual:"chef"},

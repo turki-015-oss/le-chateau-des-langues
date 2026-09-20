@@ -1760,19 +1760,17 @@ const A1_COUNTRIES_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_STUDIES_PRACTICE_ITEMS:Example[]=[
- {fr:"Je suis étudiant à l’université.",ar:"أنا طالب في الجامعة."},
- {fr:"Nora étudie le français.",ar:"تدرس نورا اللغة الفرنسية."},
- {fr:"Nous avons un cours à dix heures.",ar:"لدينا درس الساعة العاشرة."},
- {fr:"Elle est professeure dans une école.",ar:"هي معلّمة في مدرسة."},
- {fr:"Mon frère est ingénieur.",ar:"أخي مهندس."},
- {fr:"Il travaille à l’hôpital.",ar:"هو يعمل في المستشفى."},
- {fr:"Maya travaille comme vendeuse.",ar:"تعمل مايا بائعة."},
- {fr:"Je travaille dans un restaurant.",ar:"أعمل في مطعم."},
- {fr:"Qu’est-ce que vous étudiez ?",ar:"ماذا تدرسون؟"},
+ {fr:"Je suis étudiant au collège.",ar:"أنا طالب في المدرسة المتوسطة."},
+ {fr:"Ma sœur est étudiante à l’université.",ar:"أختي طالبة في الجامعة."},
+ {fr:"J’étudie le français à la bibliothèque.",ar:"أدرس اللغة الفرنسية في المكتبة."},
+ {fr:"Nous étudions les sciences.",ar:"نحن ندرس العلوم."},
+ {fr:"Le professeur commence le cours à neuf heures.",ar:"يبدأ المعلّم الدرس الساعة التاسعة."},
+ {fr:"Mon frère est chauffeur.",ar:"أخي سائق."},
+ {fr:"Ma sœur est vendeuse dans un magasin.",ar:"أختي بائعة في متجر."},
+ {fr:"Le médecin travaille à l’hôpital.",ar:"الطبيب يعمل في المستشفى."},
+ {fr:"Le cuisinier travaille dans un restaurant.",ar:"الطاهي يعمل في مطعم."},
  {fr:"Quel est votre métier ?",ar:"ما مهنتكم؟"}
-];
-
-const A1_STUDIES_QUIZ_ITEMS:QuizQuestion[]=[
+];const A1_STUDIES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Je ___ le français.",speech:"Complétez la phrase. J’étudie le français.",instruction:"اختر الفعل المناسب للحديث عن الدراسة.",translation:"أدرس اللغة الفرنسية.",choices:["travaille","étudie","habite"],correctIndex:1,explanation:"étudier يعني يدرس."},
  {prompt:"Nous ___ à l’université.",speech:"Complétez la phrase. Nous étudions à l’université.",instruction:"اختر تصريف étudier الصحيح مع nous.",translation:"نحن ندرس في الجامعة.",choices:["étudions","étudiez","étudient"],correctIndex:0,explanation:"مع nous نقول nous étudions."},
  {prompt:"Elle est ___.",speech:"Elle est étudiante.",instruction:"اختر الصيغة المؤنثة الصحيحة.",translation:"هي طالبة.",choices:["étudiant","études","étudiante"],correctIndex:2,explanation:"الصيغة المؤنثة هي étudiante."},

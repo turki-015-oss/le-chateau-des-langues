@@ -2827,14 +2827,13 @@ const A1_STUDIES_DICTATION=[
  {speech:"restaurant",ar:"مطعم"},
  {speech:"aéroport",ar:"مطار"}
 ];const A1_STUDIES_BUILDERS=[
- {tokens:["étudiante","Je","suis","à","l’université."],answer:["Je","suis","étudiante","à","l’université."],ar:"أنا طالبة في الجامعة."},
- {tokens:["français.","le","étudions","Nous"],answer:["Nous","étudions","le","français."],ar:"نحن ندرس اللغة الفرنسية."},
- {tokens:["médecin.","frère","Mon","est"],answer:["Mon","frère","est","médecin."],ar:"أخي طبيب."},
- {tokens:["travaille","Elle","un","dans","magasin."],answer:["Elle","travaille","dans","un","magasin."],ar:"هي تعمل في متجر."},
- {tokens:["votre","Quel","métier ?","est"],answer:["Quel","est","votre","métier ?"],ar:"ما مهنتكم؟"}
-];
-
-const A1_STUDIES_DIALOGUES=[
+ {tokens:["français","J’étudie","au","collège.","le"],answer:["J’étudie","le","français","au","collège."],ar:"أدرس اللغة الفرنسية في المدرسة المتوسطة."},
+ {tokens:["chauffeur.","père","est","Mon"],answer:["Mon","père","est","chauffeur."],ar:"والدي سائق."},
+ {tokens:["à","travaille","boulangerie.","sœur","Ma","la"],answer:["Ma","sœur","travaille","à","la","boulangerie."],ar:"أختي تعمل في المخبز."},
+ {tokens:["bibliothèque.","Nous","à","étudions","la"],answer:["Nous","étudions","à","la","bibliothèque."],ar:"نحن ندرس في المكتبة."},
+ {tokens:["votre","Quel","métier","est","?"],answer:["Quel","est","votre","métier","?"],ar:"ما مهنتكم؟"},
+ {tokens:["restaurant.","dans","Je","serveur.","un","suis","travaille","Je"],answer:["Je","suis","serveur.","Je","travaille","dans","un","restaurant."],ar:"أنا نادل. أعمل في مطعم."}
+];const A1_STUDIES_DIALOGUES=[
  {context:"Qu’est-ce que vous étudiez ?",translation:"ماذا تدرسون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le français.","Je suis à Lyon.","Je viens du Maroc."],correctIndex:0,feedback:"نجيب عن مجال الدراسة باستعمال étudier."},
  {context:"Quel est votre métier ?",translation:"ما مهنتكم؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le soir.","Je suis ingénieur.","J’habite en France."],correctIndex:1,feedback:"نستعمل être ثم اسم المهنة من دون أداة."},
  {context:"Où travaillez-vous ?",translation:"أين تعملون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle français.","Je suis infirmière.","Je travaille à l’hôpital."],correctIndex:2,feedback:"السؤال يطلب مكان العمل."},

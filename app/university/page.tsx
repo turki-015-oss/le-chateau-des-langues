@@ -2818,14 +2818,15 @@ const A1_STUDIES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_STUDIES_DICTATION=[
- {speech:"étudiant",ar:"طالب"},
+ {speech:"université",ar:"جامعة"},
+ {speech:"bibliothèque",ar:"مكتبة"},
+ {speech:"étudiante",ar:"طالبة"},
  {speech:"professeur",ar:"معلّم"},
  {speech:"médecin",ar:"طبيب"},
  {speech:"infirmière",ar:"ممرضة"},
- {speech:"cuisinier",ar:"طاهٍ"}
-];
-
-const A1_STUDIES_BUILDERS=[
+ {speech:"restaurant",ar:"مطعم"},
+ {speech:"aéroport",ar:"مطار"}
+];const A1_STUDIES_BUILDERS=[
  {tokens:["étudiante","Je","suis","à","l’université."],answer:["Je","suis","étudiante","à","l’université."],ar:"أنا طالبة في الجامعة."},
  {tokens:["français.","le","étudions","Nous"],answer:["Nous","étudions","le","français."],ar:"نحن ندرس اللغة الفرنسية."},
  {tokens:["médecin.","frère","Mon","est"],answer:["Mon","frère","est","médecin."],ar:"أخي طبيب."},

@@ -2834,14 +2834,13 @@ const A1_STUDIES_DICTATION=[
  {tokens:["votre","Quel","métier","est","?"],answer:["Quel","est","votre","métier","?"],ar:"ما مهنتكم؟"},
  {tokens:["restaurant.","dans","Je","serveur.","un","suis","travaille","Je"],answer:["Je","suis","serveur.","Je","travaille","dans","un","restaurant."],ar:"أنا نادل. أعمل في مطعم."}
 ];const A1_STUDIES_DIALOGUES=[
- {context:"Qu’est-ce que vous étudiez ?",translation:"ماذا تدرسون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le français.","Je suis à Lyon.","Je viens du Maroc."],correctIndex:0,feedback:"نجيب عن مجال الدراسة باستعمال étudier."},
- {context:"Quel est votre métier ?",translation:"ما مهنتكم؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le soir.","Je suis ingénieur.","J’habite en France."],correctIndex:1,feedback:"نستعمل être ثم اسم المهنة من دون أداة."},
- {context:"Où travaillez-vous ?",translation:"أين تعملون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle français.","Je suis infirmière.","Je travaille à l’hôpital."],correctIndex:2,feedback:"السؤال يطلب مكان العمل."},
- {context:"À quelle heure commence votre cours ?",translation:"في أي ساعة يبدأ درسكم؟",prompt:"اختر الإجابة المناسبة.",choices:["Il commence à neuf heures.","Je suis professeur.","C’est une université."],correctIndex:0,feedback:"نستخدم commencer à ثم الساعة."},
- {context:"Vous travaillez comme professeur ?",translation:"هل تعملون معلّمين؟",prompt:"اختر الإجابة المناسبة.",choices:["À l’université.","Oui, je suis professeur de français.","J’étudie à dix heures."],correctIndex:1,feedback:"الإجابة تؤكد المهنة وتحدد المادة."}
-];
-
-const A1_TASTES_READING={
+ {context:"Qu’est-ce que tu étudies ?",translation:"ماذا تدرس؟",prompt:"اختر الإجابة المناسبة.",choices:["J’étudie le français.","Je travaille au magasin.","Je suis à l’hôpital."],correctIndex:0,feedback:"نجيب عن المادة أو التخصص باستعمال étudier."},
+ {context:"Où étudiez-vous ?",translation:"أين تدرسون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je suis professeur.","J’étudie à l’université.","Je parle français."],correctIndex:1,feedback:"نجيب عن مكان الدراسة باستعمال étudier ثم حرف الجر المناسب."},
+ {context:"Quel est ton métier ?",translation:"ما مهنتك؟",prompt:"اختر الإجابة المناسبة.",choices:["Je suis photographe.","J’étudie le matin.","Je vais à l’école."],correctIndex:0,feedback:"نستعمل être ثم اسم المهنة من دون un أو une."},
+ {context:"Où travaille ta sœur ?",translation:"أين تعمل أختك؟",prompt:"اختر الإجابة المناسبة.",choices:["Elle est étudiante.","Elle travaille à la boulangerie.","Elle étudie le français."],correctIndex:1,feedback:"نجيب عن مكان العمل بـ travailler ثم المكان."},
+ {context:"Votre père est médecin ?",translation:"هل والدكم طبيب؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, il travaille à l’hôpital.","Oui, il étudie au collège.","Oui, il est à la bibliothèque."],correctIndex:0,feedback:"نؤكد المهنة ثم نضيف مكان العمل المناسب للطبيب."},
+ {context:"Vous travaillez où ?",translation:"أين تعملون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je suis étudiant.","Je travaille dans un restaurant.","J’étudie les sciences."],correctIndex:1,feedback:"السؤال يطلب مكان العمل؛ لذلك نجيب بـ travailler ثم المكان."}
+];const A1_TASTES_READING={
  title:"Les goûts de Lina et Sami",
  arTitle:"أذواق لينا وسامي",
  text:"Lina aime lire et elle adore la musique. Elle préfère le thé au café parce que le thé est léger. Sami aime le cinéma, mais il n’aime pas les films tristes. Son activité préférée est la natation.",

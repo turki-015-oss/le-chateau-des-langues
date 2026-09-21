@@ -2849,18 +2849,17 @@ const A1_STUDIES_DICTATION=[
 };
 
 const A1_TASTES_LISTENING={
- title:"Goûts et préférences",
- arTitle:"الأذواق والتفضيلات",
- text:"J’aime lire. J’adore voyager. Je préfère le thé. Je n’aime pas courir. Je déteste le bruit.",
+ title:"Les goûts de Karim",
+ arTitle:"أذواق كريم",
+ text:"Karim aime le thé et il adore lire. Il préfère le thé au café parce que le thé est calme et léger. Il aime lire plus que regarder la télé. Il n’aime pas le bruit.",
  questions:[
-  {prompt:"Quelle activité la personne aime-t-elle ?",choices:["Lire","Nager","Cuisiner"],correctIndex:0},
-  {prompt:"Qu’est-ce que la personne adore faire ?",choices:["Attendre","Voyager","Courir"],correctIndex:1},
-  {prompt:"Quelle boisson préfère-t-elle ?",choices:["Le café","L’eau","Le thé"],correctIndex:2},
-  {prompt:"Quelle activité n’aime-t-elle pas ?",choices:["Courir","Lire","Voyager"],correctIndex:0},
-  {prompt:"Qu’est-ce que la personne déteste ?",choices:["Le thé","Le bruit","La musique"],correctIndex:1}
+  {prompt:"Qu’est-ce que Karim adore ?",translation:"ماذا يعشق كريم؟",choices:["Lire","Courir","Voyager"],correctIndex:0},
+  {prompt:"Que préfère Karim ?",translation:"ماذا يفضل كريم؟",choices:["Le café","Le thé","Le jus"],correctIndex:1},
+  {prompt:"Pourquoi préfère-t-il le thé ?",translation:"لماذا يفضل الشاي؟",choices:["Parce qu’il est léger.","Parce qu’il est chaud.","Parce qu’il est cher."],correctIndex:0},
+  {prompt:"Qu’est-ce qu’il aime plus que regarder la télé ?",translation:"ماذا يحب أكثر من مشاهدة التلفاز؟",choices:["Lire","Nager","Chanter"],correctIndex:0},
+  {prompt:"Qu’est-ce que Karim n’aime pas ?",translation:"ما الذي لا يحبه كريم؟",choices:["Le bruit","Le thé","Les livres"],correctIndex:0}
  ]
 };
-
 const A1_TASTES_WRITING_MODEL="J’aime lire et écouter de la musique. Je préfère le thé au café. Je n’aime pas courir parce que c’est fatigant. Mon activité préférée est la natation.";
 const A1_TASTES_WRITING_TRANSLATIONS=[
  {fr:"lire",ar:"القراءة"},{fr:"voyager",ar:"السفر"},{fr:"la musique",ar:"الموسيقى"},{fr:"le cinéma",ar:"السينما"},

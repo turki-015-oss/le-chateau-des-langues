@@ -1,6 +1,8 @@
 import UniversityPage from "../../page";
 
-export default async function UniversityLessonPage({params}:{params:Promise<{level:string;module:string}>}){
+export default async function UniversityLessonPage({params,searchParams}:{params:Promise<{level:string;module:string}>;searchParams:Promise<{phase?:string}>}){
  const {level,module}=await params;
- return <UniversityPage initialLevelId={level} initialModuleId={module} levelPage lessonPage/>;
+ const {phase}=await searchParams;
+ const initialPhaseIndex=phase&&/^\d+$/.test(phase)?Number(phase):undefined;
+ return <UniversityPage initialLevelId={level} initialModuleId={module} initialPhaseIndex={initialPhaseIndex} levelPage lessonPage/>;
 }

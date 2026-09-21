@@ -44,7 +44,7 @@ type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instructio
 type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
-type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
+type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;initialPhaseIndex?:number;levelPage?:boolean;lessonPage?:boolean};
 type SoundLearningExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;frNote:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;frIntro:string;groups:SoundLearningGroup[]};
@@ -7583,10 +7583,13 @@ function playPracticeChoiceFeedback(correct:boolean){
  void audio.play().catch(()=>undefined);
 }
 
-export default function UniversityPage({initialLevelId,initialModuleId,levelPage=false,lessonPage=false}:UniversityPageProps={}){
+export default function UniversityPage({initialLevelId,initialModuleId,initialPhaseIndex,levelPage=false,lessonPage=false}:UniversityPageProps={}){
  const router=useRouter();
  const level=LEVELS.find(item=>item.id.toLocaleLowerCase("fr")===initialLevelId?.toLocaleLowerCase("fr"))??LEVELS[0];
  const requestedModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
+ const levelPhases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
+ const inferredPhaseIndex=Math.max(0,levelPhases.findIndex(phase=>phase.moduleIds.includes(requestedModule.id)));
+ const resolvedPhaseIndex=typeof initialPhaseIndex==="number"&&Number.isInteger(initialPhaseIndex)?Math.max(0,Math.min(levelPhases.length-1,initialPhaseIndex)):inferredPhaseIndex;
  const [moduleId,setModuleId]=useState(requestedModule.id);
  const [lessonStage,setLessonStage]=useState<LessonStage>("learn");
  const [openSectionIndex,setOpenSectionIndex]=useState(0);
@@ -7595,7 +7598,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const [timeGreetingRevealed,setTimeGreetingRevealed]=useState(false);
  const [socialGreetingCardIndex,setSocialGreetingCardIndex]=useState(0);
  const [socialGreetingRevealed,setSocialGreetingRevealed]=useState(false);
- const [openPhaseIndex,setOpenPhaseIndex]=useState(0);
+ const [openPhaseIndex,setOpenPhaseIndex]=useState(resolvedPhaseIndex);
  const [quizAnswers,setQuizAnswers]=useState<Record<number,number>>({});
  const [quizQuestionIndex,setQuizQuestionIndex]=useState(0);
  const [quizFinished,setQuizFinished]=useState(false);
@@ -7728,7 +7731,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  const activeA2SpeakingPrompt=activeA1EnhancedContent?.speakingPrompt??(isA2Expression?"Donnez votre avis sur une nouvelle activité dans votre quartier. Présentez le sujet, expliquez votre position avec une raison et un exemple, réagissez poliment à une opinion différente, puis concluez.":isA2RealLife?"Vous rencontrez un problème pendant un voyage. Donnez les informations de référence, expliquez ce qui s’est passé, précisez votre besoin et demandez une solution.":isA2Connectors?"Racontez une activité récente en reliant clairement les étapes. Expliquez une cause, une conséquence et une difficulté qui n’a pas empêché la réussite.":isA2Politeness?"Votre ami vous demande conseil avant un voyage. Donnez-lui deux conseils, proposez une solution et formulez une demande polie.":isA2Comparison?"Comparez deux logements, transports ou services. Présentez leurs avantages et leurs limites, puis expliquez clairement lequel vous préférez.":isA2Quantity?"Présentez les achats nécessaires pour un repas. Précisez les quantités, dites ce que vous avez déjà et indiquez où vous allez acheter le reste.":isA2Pronouns?"Racontez un échange récent avec une personne. Remplacez les noms déjà mentionnés par des pronoms compléments pour éviter les répétitions.":isA2Future?"Présentez vos projets pour les prochaines semaines. Indiquez ce que vous allez faire, ce qui se passera ensuite et une condition possible.":isA2Imparfait?"Décrivez un souvenir de votre enfance. Présentez le lieu, vos habitudes et un événement précis qui s’est produit.":isA2PasseCompose?"Racontez une journée récente. Dites où vous êtes allé, ce que vous avez fait et ce que vous avez aimé ou moins aimé.":"Présentez votre journée habituelle, vos horaires et une activité que vous ne faites jamais. Expliquez pourquoi.");
  const activeA1SpeakingDuration=activeA1EnhancedContent?.speakingDuration;
  const activeA1SpeakingTips=activeA1EnhancedContent?.speakingTips;
- const phases=COURSE_PHASES[level.id]??[{title:"مسار المستوى",fr:`Programme ${level.id}`,description:level.description,moduleIds:level.modules.map(item=>item.id)}];
+ const phases=levelPhases;
  const ActiveModuleIcon=activeModule.icon;
  const numberPage=NUMBER_PAGES[numberPageIndex];
  const introductionPage=INTRODUCTION_PAGES[introductionPageIndex];
@@ -8264,7 +8267,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
  },[activeModule.id,completedModuleIds,lessonPage,level.id,quizPassed]);
 
  const selectModule=(id:string)=>{
-  router.push(`/university/${level.id.toLocaleLowerCase("fr")}/${id}`);
+  const destinationPhaseIndex=Math.max(0,phases.findIndex(phase=>phase.moduleIds.includes(id)));
+  router.push(`/university/${level.id.toLocaleLowerCase("fr")}/${id}?phase=${destinationPhaseIndex}`);
  };
 
  const resetQuiz=()=>{
@@ -8316,13 +8320,17 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
   setRecordingError("");
  };
 
- const backHref=lessonPage?`/university/${level.id.toLocaleLowerCase("fr")}`:levelPage?"/university":"/kingdom";
+ const lessonSourceHref=`/university/${level.id.toLocaleLowerCase("fr")}?phase=${resolvedPhaseIndex}`;
+ const backHref=lessonPage?lessonSourceHref:levelPage?"/university":"/kingdom";
  const returnToUniversityOrigin=(fallbackHref:string)=>{
   cancelFrenchSpeech();
   if(window.history.length>1)router.back();
   else router.push(fallbackHref);
  };
  const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
+ useEffect(()=>{
+  if(levelPage&&!lessonPage)setOpenPhaseIndex(resolvedPhaseIndex);
+ },[lessonPage,levelPage,resolvedPhaseIndex]);
  const toggleJourneyPhase=(phaseIndex:number)=>{
   const willOpen=openPhaseIndex!==phaseIndex;
   setOpenPhaseIndex(willOpen?phaseIndex:-1);
@@ -8556,7 +8564,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
    <div className="university-resume-card">
     <div className="university-resume-icon"><MapPinned/></div>
     <div><span>تابع من حيث توقفت</span><h2>{resumeModule.ar}</h2><p>{resumeModule.title}</p></div>
-    <Link className="university-resume-visual-link" href={`/university/${level.id.toLocaleLowerCase("fr")}/${resumeModule.id}`}><Play/><span>متابعة الدرس</span></Link>
+    <Link className="university-resume-visual-link" href={`/university/${level.id.toLocaleLowerCase("fr")}/${resumeModule.id}?phase=${Math.max(0,phases.findIndex(phase=>phase.moduleIds.includes(resumeModule.id)))}`}><Play/><span>متابعة الدرس</span></Link>
    </div>
    <div className="university-progress-card">
     <div><span>تقدمك في المستوى</span><strong>{completedModuleIds.length} من {level.modules.length} وحدات</strong></div>
@@ -8589,7 +8597,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
           const Icon=module.icon;
           const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
           const completed=completedModuleIds.includes(module.id);
-          return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}`}>
+          return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}?phase=${phaseIndex}`}>
            <i className={completed?"completed":""}><Icon/>{completed&&<CheckCircle2 className="university-module-check"/>}</i>
            <div><small>Cours {String(moduleIndex+1).padStart(2,"0")}</small><span>{module.title}</span><strong>{module.ar}</strong></div>
            <ChevronLeft/>
@@ -8606,10 +8614,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,levelPage
 
   {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
-    <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`} onClick={event=>{
+    <Link href={lessonSourceHref} onClick={event=>{
      if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
      event.preventDefault();
-     returnToUniversityOrigin(`/university/${level.id.toLocaleLowerCase("fr")}`);
+     cancelFrenchSpeech();
+     router.push(lessonSourceHref);
     }}><ArrowRight/> منهج {level.id}</Link>
     <div><span>الدرس {activeModuleIndex+1} من {level.modules.length}</span><h2>{activeModule.ar}</h2><p>{activeModule.title}</p></div>
     <nav aria-label="مراحل الدرس">

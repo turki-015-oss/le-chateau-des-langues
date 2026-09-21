@@ -8324,7 +8324,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const backHref=lessonPage?lessonSourceHref:levelPage?"/university":"/kingdom";
  const returnToUniversityOrigin=(fallbackHref:string)=>{
   cancelFrenchSpeech();
-  if(window.history.length>1)router.back();
+  if(levelPage)router.push(fallbackHref);
+  else if(window.history.length>1)router.back();
   else router.push(fallbackHref);
  };
  const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
@@ -9516,7 +9517,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
 
     {!(isA1OrbitLesson&&lessonStage==="practice"&&alphabetPracticeOpen)&&<footer className="university-lesson-footer university-lesson-navigation">
      {previousModule?<button onClick={()=>selectModule(previousModule.id)}><ChevronRight/><span><small>الدرس السابق</small><strong>{previousModule.ar}</strong></span></button>:<span/>}
-     <Link href={`/university/${level.id.toLocaleLowerCase("fr")}`}><LibraryBig/><span><small>العودة إلى</small><strong>مسار {level.id}</strong></span></Link>
+     <Link href={lessonSourceHref}><LibraryBig/><span><small>العودة إلى</small><strong>مسار {level.id}</strong></span></Link>
      {nextModule?<button onClick={()=>selectModule(nextModule.id)}><span><small>الدرس التالي</small><strong>{nextModule.ar}</strong></span><ChevronLeft/></button>:<span/>}
     </footer>}
    </article>

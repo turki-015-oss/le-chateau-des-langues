@@ -1794,17 +1794,16 @@ const A1_STUDIES_PRACTICE_ITEMS:Example[]=[
 ];
 const A1_TASTES_PRACTICE_ITEMS:Example[]=[
  {fr:"J’aime écouter de la musique.",ar:"أحب الاستماع إلى الموسيقى."},
- {fr:"Elle adore voyager en train.",ar:"هي تعشق السفر بالقطار."},
- {fr:"Nous aimons le cinéma français.",ar:"نحن نحب السينما الفرنسية."},
- {fr:"Je n’aime pas courir le matin.",ar:"لا أحب الجري صباحًا."},
- {fr:"Ils détestent attendre longtemps.",ar:"هم يكرهون الانتظار طويلًا."},
+ {fr:"Tu adores les livres français.",ar:"أنت تعشق الكتب الفرنسية."},
+ {fr:"Elle n’aime pas le bruit.",ar:"هي لا تحب الضوضاء."},
+ {fr:"Nous détestons attendre longtemps.",ar:"نحن نكره الانتظار طويلًا."},
  {fr:"Je préfère le thé au café.",ar:"أفضل الشاي على القهوة."},
- {fr:"Tu préfères lire ou regarder un film ?",ar:"هل تفضل القراءة أم مشاهدة فيلم؟"},
- {fr:"Mon activité préférée est la natation.",ar:"نشاطي المفضل هو السباحة."},
- {fr:"J’aime ce livre parce qu’il est intéressant.",ar:"أحب هذا الكتاب لأنه ممتع."},
- {fr:"Pourquoi est-ce que vous aimez le français ?",ar:"لماذا تحبون اللغة الفرنسية؟"}
+ {fr:"Il préfère marcher parce que c’est calme.",ar:"هو يفضل المشي لأنه هادئ."},
+ {fr:"Je choisis un film drôle.",ar:"أختار فيلمًا مضحكًا."},
+ {fr:"Vous choisissez le train ou le bus ?",ar:"هل تختارون القطار أم الحافلة؟"},
+ {fr:"J’aime lire plus que regarder la télé.",ar:"أحب القراءة أكثر من مشاهدة التلفاز."},
+ {fr:"Mon activité préférée est la natation.",ar:"نشاطي المفضل هو السباحة."}
 ];
-
 const A1_TASTES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"J’___ la musique.",speech:"Complétez la phrase. J’aime la musique.",instruction:"اختر الفعل المناسب للتعبير عن الإعجاب.",translation:"أحب الموسيقى.",choices:["aime","aimes","aimons"],correctIndex:0,explanation:"مع je نقول j’aime."},
  {prompt:"Elle ___ voyager.",speech:"Complétez la phrase. Elle adore voyager.",instruction:"اختر التصريف الصحيح.",translation:"هي تعشق السفر.",choices:["adores","adorons","adore"],correctIndex:2,explanation:"مع elle نقول elle adore."},

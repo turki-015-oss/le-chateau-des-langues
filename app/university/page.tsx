@@ -2881,7 +2881,7 @@ const A1_TASTES_BUILDERS=[
  {tokens:["lire.","adore","Elle"],answer:["Elle","adore","lire."],ar:"هي تعشق القراءة."},
  {tokens:["café.","au","thé","le","préfère","Je"],answer:["Je","préfère","le","thé","au","café."],ar:"أفضل الشاي على القهوة."},
  {tokens:["film.","un","choisissons","Nous"],answer:["Nous","choisissons","un","film."],ar:"نحن نختار فيلمًا."},
- {tokens:["calme.","est","que","parce","marcher","préfère","Je"],answer:["Je","préfère","marcher","parce","que","c’est","calme."],ar:"أفضل المشي لأنه هادئ."},
+ {tokens:["calme.","c’est","que","parce","marcher","préfère","Je"],answer:["Je","préfère","marcher","parce","que","c’est","calme."],ar:"أفضل المشي لأنه هادئ."},
  {tokens:["la","plus","lire","télé.","que","J’aime","regarder"],answer:["J’aime","lire","plus","que","regarder","la","télé."],ar:"أحب القراءة أكثر من مشاهدة التلفاز."}
 ];
 const A1_TASTES_DIALOGUES=[

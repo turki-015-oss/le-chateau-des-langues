@@ -44,7 +44,7 @@ type QuizQuestion={prompt:string;choices:string[];correctIndex:number;instructio
 type DescriptionPanel="family"|"physical"|"emotions";
 type AdjectivePanel="appearance"|"hairEyes"|"personality";
 type RevisionWorkshopPanel="dictation"|"builder"|"dialogue";
-type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;initialPhaseIndex?:number;levelPage?:boolean;lessonPage?:boolean};
+type UniversityPageProps={initialLevelId?:string;initialModuleId?:string;initialPhaseIndex?:number;initialFocusModuleId?:string;levelPage?:boolean;lessonPage?:boolean};
 type SoundLearningExample={word:string;ar:string;ipa:string;phoneme:string;focus:string;parts:[string,string,string];image:string;rule:string};
 type SoundLearningGroup={fr:string;ar:string;note:string;frNote:string;examples:SoundLearningExample[]};
 type SoundLearningSection={fr:string;ar:string;intro:string;frIntro:string;groups:SoundLearningGroup[]};
@@ -7583,7 +7583,7 @@ function playPracticeChoiceFeedback(correct:boolean){
  void audio.play().catch(()=>undefined);
 }
 
-export default function UniversityPage({initialLevelId,initialModuleId,initialPhaseIndex,levelPage=false,lessonPage=false}:UniversityPageProps={}){
+export default function UniversityPage({initialLevelId,initialModuleId,initialPhaseIndex,initialFocusModuleId,levelPage=false,lessonPage=false}:UniversityPageProps={}){
  const router=useRouter();
  const level=LEVELS.find(item=>item.id.toLocaleLowerCase("fr")===initialLevelId?.toLocaleLowerCase("fr"))??LEVELS[0];
  const requestedModule=level.modules.find(item=>item.id===initialModuleId)??level.modules[0];
@@ -8320,7 +8320,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   setRecordingError("");
  };
 
- const lessonSourceHref=`/university/${level.id.toLocaleLowerCase("fr")}?phase=${resolvedPhaseIndex}`;
+ const lessonSourceHref=`/university/${level.id.toLocaleLowerCase("fr")}?phase=${resolvedPhaseIndex}&focus=${activeModule.id}`;
  const backHref=lessonPage?lessonSourceHref:levelPage?"/university":"/kingdom";
  const returnToUniversityOrigin=(fallbackHref:string)=>{
   cancelFrenchSpeech();
@@ -8330,8 +8330,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  };
  const resumeModule=level.modules.find(item=>item.id===lastModuleId)??level.modules[0];
  useEffect(()=>{
-  if(levelPage&&!lessonPage)setOpenPhaseIndex(resolvedPhaseIndex);
- },[lessonPage,levelPage,resolvedPhaseIndex]);
+  if(!levelPage||lessonPage)return;
+  setOpenPhaseIndex(resolvedPhaseIndex);
+  if(!initialFocusModuleId)return;
+  window.setTimeout(()=>document.getElementById(`university-module-${initialFocusModuleId}`)?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}),120);
+ },[initialFocusModuleId,lessonPage,levelPage,resolvedPhaseIndex]);
  const toggleJourneyPhase=(phaseIndex:number)=>{
   const willOpen=openPhaseIndex!==phaseIndex;
   setOpenPhaseIndex(willOpen?phaseIndex:-1);
@@ -8598,7 +8601,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
           const Icon=module.icon;
           const moduleIndex=level.modules.findIndex(item=>item.id===module.id);
           const completed=completedModuleIds.includes(module.id);
-          return <Link key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}?phase=${phaseIndex}`}>
+          return <Link id={`university-module-${module.id}`} key={module.id} href={`/university/${level.id.toLocaleLowerCase("fr")}/${module.id}?phase=${phaseIndex}`}>
            <i className={completed?"completed":""}><Icon/>{completed&&<CheckCircle2 className="university-module-check"/>}</i>
            <div><small>Cours {String(moduleIndex+1).padStart(2,"0")}</small><span>{module.title}</span><strong>{module.ar}</strong></div>
            <ChevronLeft/>

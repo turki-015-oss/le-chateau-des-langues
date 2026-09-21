@@ -2877,13 +2877,13 @@ const A1_TASTES_DICTATION=[
  {speech:"calme",ar:"هادئ"}
 ];
 const A1_TASTES_BUILDERS=[
- {tokens:["lire.","J’aime","soir","le"],answer:["J’aime","lire","le","soir."],ar:"أحب القراءة مساءً."},
- {tokens:["voyager.","adore","Elle"],answer:["Elle","adore","voyager."],ar:"هي تعشق السفر."},
+ {tokens:["musique.","la","J’aime"],answer:["J’aime","la","musique."],ar:"أحب الموسيقى."},
+ {tokens:["lire.","adore","Elle"],answer:["Elle","adore","lire."],ar:"هي تعشق القراءة."},
  {tokens:["café.","au","thé","le","préfère","Je"],answer:["Je","préfère","le","thé","au","café."],ar:"أفضل الشاي على القهوة."},
- {tokens:["pas","Nous","bruit.","n’aimons","le"],answer:["Nous","n’aimons","pas","le","bruit."],ar:"نحن لا نحب الضوضاء."},
- {tokens:["aimes-tu","Pourquoi","français ?","le"],answer:["Pourquoi","aimes-tu","le","français ?"],ar:"لماذا تحب اللغة الفرنسية؟"}
+ {tokens:["film.","un","choisissons","Nous"],answer:["Nous","choisissons","un","film."],ar:"نحن نختار فيلمًا."},
+ {tokens:["calme.","est","que","parce","marcher","préfère","Je"],answer:["Je","préfère","marcher","parce","que","c’est","calme."],ar:"أفضل المشي لأنه هادئ."},
+ {tokens:["la","plus","lire","télé.","que","J’aime","regarder"],answer:["J’aime","lire","plus","que","regarder","la","télé."],ar:"أحب القراءة أكثر من مشاهدة التلفاز."}
 ];
-
 const A1_TASTES_DIALOGUES=[
  {context:"Qu’est-ce que tu aimes faire ?",translation:"ماذا تحب أن تفعل؟",prompt:"اختر الإجابة المناسبة.",choices:["J’aime écouter de la musique.","Je suis à la maison.","Il est huit heures."],correctIndex:0,feedback:"بعد aimer يمكن ذكر نشاط في صيغة المصدر."},
  {context:"Tu préfères le thé ou le café ?",translation:"هل تفضل الشاي أم القهوة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je déteste voyager.","Je préfère le thé.","La tasse est petite."],correctIndex:1,feedback:"السؤال يقدم خيارين، والإجابة تحدد الخيار المفضل."},

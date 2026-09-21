@@ -6874,7 +6874,10 @@ function A1TastesPreferenceStudio(){
  const verb=A1_TASTES_VERB_TABLE[verbIndex];
  const item=verb.forms[formIndex];
  const spokenForm=item.pronoun.endsWith("’")?`${item.pronoun}${item.form}`:`${item.pronoun} ${item.form}`;
- const speakForm=()=>void speakFrench(spokenForm,{rate:.72});
+ const speakForm=()=>{
+  if(item.pronoun==="il / elle / on")return void speakFrenchSequence([`il ${item.form}`,`elle ${item.form}`,`on ${item.form}`],560,{rate:.72});
+  return void speakFrench(spokenForm,{rate:.72});
+ };
  return <div className="a1-present-er-studio a1-present-spelling-studio">
   <div className="a1-present-er-intro"><div><span>Les goûts</span><strong>الحب والإعجاب وعدم الإعجاب</strong><p>{verb.use}</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
   <div className="a1-present-er-formula"><span dir="ltr">-er</span><i>→</i><strong>فعل للتعبير عن الذوق</strong><b>{verb.ar}</b><small>مع اسم أو فعل في المصدر</small></div>

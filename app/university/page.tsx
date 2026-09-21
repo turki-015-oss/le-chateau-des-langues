@@ -2885,13 +2885,13 @@ const A1_TASTES_BUILDERS=[
  {tokens:["la","plus","lire","télé.","que","J’aime","regarder"],answer:["J’aime","lire","plus","que","regarder","la","télé."],ar:"أحب القراءة أكثر من مشاهدة التلفاز."}
 ];
 const A1_TASTES_DIALOGUES=[
- {context:"Qu’est-ce que tu aimes faire ?",translation:"ماذا تحب أن تفعل؟",prompt:"اختر الإجابة المناسبة.",choices:["J’aime écouter de la musique.","Je suis à la maison.","Il est huit heures."],correctIndex:0,feedback:"بعد aimer يمكن ذكر نشاط في صيغة المصدر."},
- {context:"Tu préfères le thé ou le café ?",translation:"هل تفضل الشاي أم القهوة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je déteste voyager.","Je préfère le thé.","La tasse est petite."],correctIndex:1,feedback:"السؤال يقدم خيارين، والإجابة تحدد الخيار المفضل."},
- {context:"Pourquoi aimes-tu ce film ?",translation:"لماذا تحب هذا الفيلم؟",prompt:"اختر الإجابة المناسبة.",choices:["Au cinéma.","Avec ma sœur.","Parce qu’il est drôle."],correctIndex:2,feedback:"نجيب عن pourquoi بسبب يبدأ بـ parce que."},
- {context:"Vous aimez faire du sport ?",translation:"هل تحبون ممارسة الرياضة؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, j’adore nager.","Je suis une piscine.","Le lundi est demain."],correctIndex:0,feedback:"الإجابة تؤكد الميل وتذكر النشاط."},
- {context:"Quel est votre loisir préféré ?",translation:"ما هوايتكم المفضلة؟",prompt:"اختر الإجابة المناسبة.",choices:["Je n’aime pas le café.","Mon loisir préféré est la lecture.","J’habite près du parc."],correctIndex:1,feedback:"نستعمل loisir préféré لتحديد الهواية المفضلة."}
+ {context:"Qu’est-ce que tu aimes faire ?",translation:"ماذا تحب أن تفعل؟",prompt:"اختر الإجابة المناسبة.",choices:["J’aime lire.","Je suis à la maison.","Il est huit heures."],correctIndex:0,feedback:"بعد aimer يمكن ذكر نشاط في صيغة المصدر."},
+ {context:"Tu adores la musique ?",translation:"هل تعشق الموسيقى؟",prompt:"اختر ردًا طبيعيًا.",choices:["Oui, j’adore la musique.","Je choisis un livre.","Parce que le bruit."],correctIndex:0,feedback:"نجيب بـ oui ثم نكرر الفعل أو نضيف مثالًا."},
+ {context:"Tu préfères le thé ou le café ?",translation:"هل تفضل الشاي أم القهوة؟",prompt:"اختر إجابة التفضيل الصحيحة.",choices:["Je préfère le thé au café.","J’aime le thé parce que.","Je choisis au café."],correctIndex:0,feedback:"مع préférer نقول: Je préfère le thé au café."},
+ {context:"Pourquoi préfères-tu marcher ?",translation:"لماذا تفضل المشي؟",prompt:"اختر السبب المناسب.",choices:["Parce que c’est calme.","Je préfère le café.","Tu aimes lire ?"],correctIndex:0,feedback:"نجيب عن pourquoi بـ parce que ثم جملة."},
+ {context:"Qu’est-ce que tu choisis ?",translation:"ماذا تختار؟",prompt:"اختر جوابًا مناسبًا.",choices:["Je choisis un film.","Je préfère parce que.","Il choisit le bruit."],correctIndex:0,feedback:"نستعمل choisir ثم الشيء الذي نختاره."},
+ {context:"Tu aimes lire ou regarder la télé ?",translation:"هل تحب القراءة أم مشاهدة التلفاز؟",prompt:"اختر مقارنة صحيحة.",choices:["J’aime lire plus que regarder la télé.","Je préfère lire plus que la télé.","J’aime plus lire au thé."],correctIndex:0,feedback:"مع aimer نستعمل plus que للمقارنة في درجة الإعجاب."}
 ];
-
 const A1_DEMONSTRATIVES_READING={
  title:"Au marché du quartier",
  arTitle:"في سوق الحي",

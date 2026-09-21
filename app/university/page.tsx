@@ -2859,12 +2859,11 @@ const A1_TASTES_LISTENING={
   {prompt:"Qu’est-ce que Karim n’aime pas ?",translation:"ما الذي لا يحبه كريم؟",choices:["Le bruit","Le thé","Les livres"],correctIndex:0}
  ]
 };
-const A1_TASTES_WRITING_MODEL="J’aime lire et écouter de la musique. Je préfère le thé au café. Je n’aime pas courir parce que c’est fatigant. Mon activité préférée est la natation.";
+const A1_TASTES_WRITING_MODEL="J’aime lire et j’adore la musique. Je préfère le thé au café parce que c’est calme. Je choisis un livre. J’aime lire plus que regarder la télé.";
 const A1_TASTES_WRITING_TRANSLATIONS=[
- {fr:"lire",ar:"القراءة"},{fr:"voyager",ar:"السفر"},{fr:"la musique",ar:"الموسيقى"},{fr:"le cinéma",ar:"السينما"},
- {fr:"le thé",ar:"الشاي"},{fr:"le café",ar:"القهوة"},{fr:"la natation",ar:"السباحة"},{fr:"courir",ar:"الجري"}
+ {fr:"j’aime",ar:"أحب"},{fr:"j’adore",ar:"أعشق"},{fr:"je préfère",ar:"أفضل"},{fr:"je choisis",ar:"أختار"},
+ {fr:"parce que",ar:"لأن"},{fr:"calme",ar:"هادئ"},{fr:"plus que",ar:"أكثر من"},{fr:"regarder la télé",ar:"مشاهدة التلفاز"}
 ];
-
 const A1_TASTES_DICTATION=[
  {speech:"aimer",ar:"يحب"},
  {speech:"adorer",ar:"يعشق"},

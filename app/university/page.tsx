@@ -2867,13 +2867,15 @@ const A1_TASTES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_TASTES_DICTATION=[
+ {speech:"aimer",ar:"يحب"},
+ {speech:"adorer",ar:"يعشق"},
+ {speech:"préférer",ar:"يفضّل"},
+ {speech:"choisir",ar:"يختار"},
  {speech:"musique",ar:"موسيقى"},
- {speech:"voyager",ar:"يسافر"},
- {speech:"thé",ar:"شاي"},
- {speech:"courir",ar:"يجري"},
- {speech:"bruit",ar:"ضوضاء"}
+ {speech:"livre",ar:"كتاب"},
+ {speech:"bruit",ar:"ضوضاء"},
+ {speech:"calme",ar:"هادئ"}
 ];
-
 const A1_TASTES_BUILDERS=[
  {tokens:["lire.","J’aime","soir","le"],answer:["J’aime","lire","le","soir."],ar:"أحب القراءة مساءً."},
  {tokens:["voyager.","adore","Elle"],answer:["Elle","adore","voyager."],ar:"هي تعشق السفر."},

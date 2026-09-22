@@ -2917,11 +2917,14 @@ const A1_DEMONSTRATIVES_BUILDERS=[
 ];
 
 const A1_DEMONSTRATIVES_DIALOGUES=[
- {context:"Quel gâteau voulez-vous ?",translation:"أي كعكة تريدون؟",prompt:"اختر الإجابة التي تشير إلى كعكة واحدة.",choices:["Je voudrais ce gâteau au chocolat.","Je voudrais ces chocolat.","Je voudrais cet tarte."],correctIndex:0,feedback:"gâteau مذكر مفرد يبدأ بصوت ساكن؛ لذلك نستعمل ce."},
- {context:"Vous parlez d’un homme devant vous.",translation:"أنتم تتحدثون عن رجل أمامكم.",prompt:"اختر العبارة الصحيحة.",choices:["Cette homme est mon voisin.","Cet homme est mon voisin.","Ces homme est mon voisin."],correctIndex:1,feedback:"homme مذكر يبدأ بـ h صامت؛ لذلك نستعمل cet."},
- {context:"Quelle veste essayez-vous ?",translation:"أي سترة تجربون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’essaie ce veste verte.","J’essaie ces veste verte.","J’essaie cette veste verte."],correctIndex:2,feedback:"veste مؤنث مفرد؛ لذلك نستعمل cette."},
- {context:"Quels documents devez-vous signer ?",translation:"أي وثائق يجب أن توقعوا؟",prompt:"اختر الإجابة المناسبة.",choices:["Je dois signer ces documents.","Je dois signer cet documents.","Je dois signer cette documents."],correctIndex:0,feedback:"documents جمع؛ لذلك نستعمل ces."},
- {context:"Vous indiquez un endroit précis.",translation:"أنتم تشيرون إلى مكان محدد.",prompt:"اختر الجملة الطبيعية.",choices:["Cette endroit est tranquille.","Cet endroit est tranquille.","Ce endroit est tranquille."],correctIndex:1,feedback:"endroit مذكر يبدأ بصوت متحرك؛ لذلك نستعمل cet."}
+ {context:"Quel livre prends-tu ?",translation:"أي كتاب تأخذ؟",prompt:"اختر الإجابة المناسبة.",choices:["Je prends ce livre.","Je prends cet livre.","Je prends cette livre."],correctIndex:0,feedback:"livre مذكر مفرد يبدأ بصوت ساكن؛ لذلك نستعمل ce."},
+ {context:"Tu connais l’homme près de la porte ?",translation:"هل تعرف الرجل قرب الباب؟",prompt:"اختر الرد الطبيعي.",choices:["Oui, ce homme est mon voisin.","Oui, cet homme est mon voisin.","Oui, cette homme est mon voisin."],correctIndex:1,feedback:"homme مذكر ويبدأ بـ h صامت؛ لذلك نستعمل cet."},
+ {context:"Quelle rue mène à la gare ?",translation:"أي شارع يؤدي إلى المحطة؟",prompt:"اختر الإجابة المناسبة.",choices:["Cette rue mène à la gare.","Cet rue mène à la gare.","Ces rue mène à la gare."],correctIndex:0,feedback:"rue مؤنث مفرد؛ لذلك نستعمل cette."},
+ {context:"Quels documents sont pour le professeur ?",translation:"أي وثائق للمعلّم؟",prompt:"اختر الإجابة المناسبة.",choices:["Ce documents sont pour le professeur.","Cette documents sont pour le professeur.","Ces documents sont pour le professeur."],correctIndex:2,feedback:"documents جمع؛ لذلك نستعمل ces."},
+ {context:"Quel exercice est facile ?",translation:"أي تمرين سهل؟",prompt:"اختر الإجابة الصحيحة.",choices:["Cet exercice est facile.","Ce exercice est facile.","Cette exercice est facile."],correctIndex:0,feedback:"exercice مذكر مفرد يبدأ بصوت متحرك؛ لذلك نستعمل cet."},
+ {context:"Quelle robe aimes-tu ?",translation:"أي فستان تحب؟",prompt:"اختر إجابة صحيحة.",choices:["J’aime ce robe bleue.","J’aime cette robe bleue.","J’aime ces robe bleue."],correctIndex:1,feedback:"robe مؤنث مفرد؛ لذلك نستعمل cette."},
+ {context:"Quels billets sont pour le concert ?",translation:"أي تذاكر للحفل؟",prompt:"اختر الإجابة المناسبة.",choices:["Ces billets sont pour le concert.","Cet billets sont pour le concert.","Cette billets sont pour le concert."],correctIndex:0,feedback:"billets جمع مذكر؛ لذلك نستعمل ces."},
+ {context:"Tu choisis quel sac ?",translation:"أي حقيبة تختار؟",prompt:"اختر الرد الطبيعي.",choices:["Je choisis cette sac noir.","Je choisis cet sac noir.","Je choisis ce sac noir."],correctIndex:2,feedback:"sac مذكر مفرد يبدأ بصوت ساكن؛ لذلك نستعمل ce."}
 ];
 
 const A1_POSSESSIVES_READING={

@@ -7817,6 +7817,50 @@ function A1PossessivesSonSaSesTable(){
  </div>;
 }
 
+const A1_POSSESSIVES_PLURAL_OWNERS_EXAMPLES=[
+ {group:"notre",article:"notre",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"notre maison",ar:"منزلنا",sentence:"Notre maison est près du parc.",sentenceAr:"منزلنا قريب من الحديقة."},
+ {group:"notre",article:"notre",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"notre école",ar:"مدرستنا",sentence:"Notre école est moderne.",sentenceAr:"مدرستنا حديثة."},
+ {group:"notre",article:"nos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"nos voisins",ar:"جيراننا",sentence:"Nos voisins sont gentils.",sentenceAr:"جيراننا لطفاء."},
+ {group:"notre",article:"nos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"nos amis",ar:"أصدقاؤنا",sentence:"Nos amis arrivent demain.",sentenceAr:"أصدقاؤنا يصلون غدًا."},
+ {group:"notre",article:"nos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"nos livres",ar:"كتبنا",sentence:"Nos livres sont sur la table.",sentenceAr:"كتبنا على الطاولة."},
+ {group:"votre",article:"votre",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"votre passeport",ar:"جواز سفركم",sentence:"Votre passeport est prêt.",sentenceAr:"جواز سفركم جاهز."},
+ {group:"votre",article:"votre",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"votre chambre",ar:"غرفتكم",sentence:"Votre chambre est au deuxième étage.",sentenceAr:"غرفتكم في الطابق الثاني."},
+ {group:"votre",article:"vos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"vos amis",ar:"أصدقاؤكم",sentence:"Vos amis attendent dehors.",sentenceAr:"أصدقاؤكم ينتظرون في الخارج."},
+ {group:"votre",article:"vos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"vos bagages",ar:"أمتعتكم",sentence:"Vos bagages arrivent bientôt.",sentenceAr:"أمتعتكم تصل قريبًا."},
+ {group:"votre",article:"vos",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"vos parents",ar:"والداكم",sentence:"Vos parents parlent français.",sentenceAr:"والداكم يتحدثان الفرنسية."},
+ {group:"leur",article:"leur",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"leur maison",ar:"منزلهم",sentence:"Leur maison est grande.",sentenceAr:"منزلهم كبير."},
+ {group:"leur",article:"leur",kind:"مفرد",rule:"قبل أي اسم مفرد",phrase:"leur fille",ar:"ابنتهم",sentence:"Leur fille est à l’école.",sentenceAr:"ابنتهم في المدرسة."},
+ {group:"leur",article:"leurs",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"leurs livres",ar:"كتبهم",sentence:"Leurs livres sont dans le sac.",sentenceAr:"كتبهم في الحقيبة."},
+ {group:"leur",article:"leurs",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"leurs enfants",ar:"أطفالهم",sentence:"Leurs enfants jouent dans le jardin.",sentenceAr:"أطفالهم يلعبون في الحديقة."},
+ {group:"leur",article:"leurs",kind:"جمع",rule:"قبل كل اسم في صيغة الجمع",phrase:"leurs clés",ar:"مفاتيحهم",sentence:"Leurs clés sont sur le bureau.",sentenceAr:"مفاتيحهم على المكتب."}
+];
+
+function A1PossessivesPluralOwnersTable(){
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_POSSESSIVES_PLURAL_OWNERS_EXAMPLES[exampleIndex];
+ const groupStarts:{[key:string]:number}={notre:0,votre:5,leur:10};
+ const selectGroup=(group:"notre"|"votre"|"leur")=>setExampleIndex(groupStarts[group]);
+ return <div className="a1-demonstratives-table a1-possessives-table" aria-live="polite">
+  <p className="a1-nouns-learning-intro">مع nous وvous وils أو elles نستخدم صيغة للمفرد وصيغة للجمع؛ جنس الاسم لا يغيّر الأداة هنا.</p>
+  <div className="a1-demonstratives-tabs" role="group" aria-label="اختر مجموعة صفات الملكية">
+   <button type="button" className={item.group==="notre"?"active":""} aria-pressed={item.group==="notre"} onClick={()=>selectGroup("notre")}><strong dir="ltr">notre / nos</strong><span>ملكية نحن</span></button>
+   <button type="button" className={item.group==="votre"?"active":""} aria-pressed={item.group==="votre"} onClick={()=>selectGroup("votre")}><strong dir="ltr">votre / vos</strong><span>ملكية أنتم</span></button>
+   <button type="button" className={item.group==="leur"?"active":""} aria-pressed={item.group==="leur"} onClick={()=>selectGroup("leur")}><strong dir="ltr">leur / leurs</strong><span>ملكيتهم</span></button>
+  </div>
+  <div className="a1-demonstratives-rule"><span dir="ltr">{item.article}</span><div><small>{item.kind}</small><strong>{item.rule}</strong></div></div>
+  <div className="a1-demonstratives-grid" key={exampleIndex}>
+   <div className="a1-demonstratives-cell"><small>الأداة + الاسم</small><strong dir="ltr"><mark>{item.article}</mark> {item.phrase.slice(item.article.length+1)}</strong><span>{item.ar}</span></div>
+   <div className="a1-demonstratives-cell a1-demonstratives-sentence"><small>في جملة</small><strong dir="ltr">{item.sentence}</strong><span>{item.sentenceAr}</span></div>
+   <div className="a1-demonstratives-audio"><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.74})} aria-label={`استمع إلى ${item.sentence}`}><Volume2/><span>استمع</span></button><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.56})} aria-label={`استمع ببطء إلى ${item.sentence}`}><Turtle/><span>نطق بطيء</span></button></div>
+  </div>
+  <div className="university-number-pagination a1-demonstratives-pagination" dir="ltr">
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
+   <div><small>أمثلة notre، votre et leur</small><strong>{exampleIndex+1} / {A1_POSSESSIVES_PLURAL_OWNERS_EXAMPLES.length}</strong><em dir="ltr">{item.article}</em></div>
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.min(A1_POSSESSIVES_PLURAL_OWNERS_EXAMPLES.length-1,index+1))} disabled={exampleIndex===A1_POSSESSIVES_PLURAL_OWNERS_EXAMPLES.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
+  </div>
+ </div>;
+}
+
 let practiceCorrectAudio:HTMLAudioElement|null=null;
 let practiceErrorAudio:HTMLAudioElement|null=null;
 
@@ -9433,7 +9477,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Possessives&&index===0?<A1PossessivesMonMaMesTable/>:isA1Possessives&&index===1?<A1PossessivesTonTaTesTable/>:isA1Possessives&&index===2?<A1PossessivesSonSaSesTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Possessives&&index===0?<A1PossessivesMonMaMesTable/>:isA1Possessives&&index===1?<A1PossessivesTonTaTesTable/>:isA1Possessives&&index===2?<A1PossessivesSonSaSesTable/>:isA1Possessives&&index===3?<A1PossessivesPluralOwnersTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

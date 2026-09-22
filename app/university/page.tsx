@@ -1039,16 +1039,12 @@ const A1_MODULES:CourseModule[]=[
     "تستعمل الصيغة نفسها مع h الصامت: cette histoire.",
     "توافق الصفة الاسم المؤنث: cette petite voiture."
    ],[]),
-   section("Ces","الجمع للمذكر والمؤنث","نستعمل ces قبل جميع الأسماء في صيغة الجمع، سواء كانت مذكرة أو مؤنثة. ويظهر الجمع عادة في الأداة والاسم معًا في الكتابة.",[
+   section("Le pluriel : ces","الجمع للمذكر والمؤنث: ces","نستعمل ces قبل جميع الأسماء في صيغة الجمع، سواء كانت مذكرة أو مؤنثة. استخدم الجدول للتنقل بين الأمثلة الثمانية.",[
     "ces + جمع مذكر: ces garçons.",
     "ces + جمع مؤنث: ces filles.",
     "لا نستعمل ce أو cette قبل اسم جمع.",
     "يمكن التمييز بـ -ci و-là: ces billets-ci، ces billets-là."
-   ],[
-    {fr:"Ces billets sont pour le concert.",ar:"هذه التذاكر للحفل.",image:"/cinema-v1/tickets.webp"},
-    {fr:"Ces valises sont très lourdes.",ar:"هذه الحقائب ثقيلة جدًا.",image:"/airport/assets/checked-baggage.svg"},
-    {fr:"Ces animaux vivent dans la savane.",ar:"هذه الحيوانات تعيش في السافانا.",image:"/zoo/animals/giraffe.webp"}
-   ])
+   ],[])
   ]
  },
  {
@@ -7652,6 +7648,36 @@ function A1DemonstrativesFeminineTable(){
  </div>;
 }
 
+const A1_DEMONSTRATIVES_PLURAL_EXAMPLES=[
+ {phrase:"ces livres",ar:"هذه الكتب",kind:"جمع مذكر",sentence:"Ces livres sont intéressants.",sentenceAr:"هذه الكتب ممتعة."},
+ {phrase:"ces chats",ar:"هذه القطط",kind:"جمع مذكر",sentence:"Ces chats sont calmes.",sentenceAr:"هذه القطط هادئة."},
+ {phrase:"ces amis",ar:"هؤلاء الأصدقاء",kind:"جمع مذكر",sentence:"Ces amis parlent français.",sentenceAr:"هؤلاء الأصدقاء يتحدثون الفرنسية."},
+ {phrase:"ces hôtels",ar:"هذه الفنادق",kind:"جمع مذكر",sentence:"Ces hôtels sont modernes.",sentenceAr:"هذه الفنادق حديثة."},
+ {phrase:"ces maisons",ar:"هذه المنازل",kind:"جمع مؤنث",sentence:"Ces maisons sont grandes.",sentenceAr:"هذه المنازل كبيرة."},
+ {phrase:"ces voitures",ar:"هذه السيارات",kind:"جمع مؤنث",sentence:"Ces voitures sont rapides.",sentenceAr:"هذه السيارات سريعة."},
+ {phrase:"ces écoles",ar:"هذه المدارس",kind:"جمع مؤنث",sentence:"Ces écoles sont ouvertes.",sentenceAr:"هذه المدارس مفتوحة."},
+ {phrase:"ces questions",ar:"هذه الأسئلة",kind:"جمع مؤنث",sentence:"Ces questions sont faciles.",sentenceAr:"هذه الأسئلة سهلة."}
+];
+
+function A1DemonstrativesPluralTable(){
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_DEMONSTRATIVES_PLURAL_EXAMPLES[exampleIndex];
+ return <div className="a1-demonstratives-table a1-demonstratives-plural-table" aria-live="polite">
+  <div className="a1-demonstratives-tabs a1-demonstratives-single-tab"><div><strong dir="ltr">ces</strong><span>مع كل اسم في صيغة الجمع</span></div></div>
+  <div className="a1-demonstratives-rule"><span dir="ltr">ces</span><div><small>{item.kind}</small><strong>تُستعمل مع الجمع المذكر والجمع المؤنث.</strong></div></div>
+  <div className="a1-demonstratives-grid" key={exampleIndex}>
+   <div className="a1-demonstratives-cell"><small>الأداة + الاسم</small><strong dir="ltr"><mark>ces</mark> {item.phrase.slice(4)}</strong><span>{item.ar}</span></div>
+   <div className="a1-demonstratives-cell a1-demonstratives-sentence"><small>في جملة</small><strong dir="ltr">{item.sentence}</strong><span>{item.sentenceAr}</span></div>
+   <div className="a1-demonstratives-audio"><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.74})} aria-label={`استمع إلى ${item.sentence}`}><Volume2/><span>استمع</span></button><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.56})} aria-label={`استمع ببطء إلى ${item.sentence}`}><Turtle/><span>نطق بطيء</span></button></div>
+  </div>
+  <div className="university-number-pagination a1-demonstratives-pagination" dir="ltr">
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
+   <div><small>أمثلة الجمع</small><strong>{exampleIndex+1} / {A1_DEMONSTRATIVES_PLURAL_EXAMPLES.length}</strong><em dir="ltr">ces</em></div>
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.min(A1_DEMONSTRATIVES_PLURAL_EXAMPLES.length-1,index+1))} disabled={exampleIndex===A1_DEMONSTRATIVES_PLURAL_EXAMPLES.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
+  </div>
+ </div>;
+}
+
 let practiceCorrectAudio:HTMLAudioElement|null=null;
 let practiceErrorAudio:HTMLAudioElement|null=null;
 
@@ -9268,7 +9294,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

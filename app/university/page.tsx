@@ -2095,16 +2095,18 @@ const A1_FRIENDS_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_STRUCTURES_PRACTICE_ITEMS:Example[]=[
- {fr:"C’est ma carte d’étudiant.",ar:"هذه بطاقتي الجامعية."},
- {fr:"Ce sont les parents de Lina.",ar:"هذان والدا لينا."},
- {fr:"Ce n’est pas mon téléphone.",ar:"هذا ليس هاتفي."},
- {fr:"Ce ne sont pas nos places.",ar:"هذه ليست أماكننا."},
- {fr:"Il y a un arrêt de bus devant l’école.",ar:"توجد محطة حافلات أمام المدرسة."},
- {fr:"Il n’y a pas de toilettes à cet étage.",ar:"لا توجد دورات مياه في هذا الطابق."},
- {fr:"Est-ce qu’il y a une boulangerie près d’ici ?",ar:"هل يوجد مخبز بالقرب من هنا؟"},
- {fr:"Ce restaurant est ouvert aujourd’hui.",ar:"هذا المطعم مفتوح اليوم."},
- {fr:"Cet homme est le directeur de l’hôtel.",ar:"هذا الرجل هو مدير الفندق."},
- {fr:"Ces fleurs sont pour ma mère.",ar:"هذه الزهور لأمي."}
+ {fr:"C’est une petite bibliothèque.",ar:"هذه مكتبة صغيرة."},
+ {fr:"Ce sont mes collègues de travail.",ar:"هؤلاء زملائي في العمل."},
+ {fr:"Ce n’est pas la bonne adresse.",ar:"هذا ليس العنوان الصحيح."},
+ {fr:"Ce ne sont pas vos bagages.",ar:"هذه ليست أمتعتكم."},
+ {fr:"Il y a une banque au coin de la rue.",ar:"يوجد بنك عند زاوية الشارع."},
+ {fr:"Il y a deux chaises dans la salle.",ar:"يوجد كرسيان في الغرفة."},
+ {fr:"Il n’y a pas de train le dimanche.",ar:"لا يوجد قطار يوم الأحد."},
+ {fr:"Est-ce qu’il y a une pharmacie ouverte ?",ar:"هل توجد صيدلية مفتوحة؟"},
+ {fr:"Ce quartier est très animé.",ar:"هذا الحي حيوي جدًا."},
+ {fr:"Cet immeuble est en face de la gare.",ar:"هذا المبنى مقابل المحطة."},
+ {fr:"Cette porte est fermée.",ar:"هذا الباب مغلق."},
+ {fr:"Ces étudiants attendent le professeur.",ar:"هؤلاء الطلاب ينتظرون المعلّم."}
 ];
 
 const A1_STRUCTURES_QUIZ_ITEMS:QuizQuestion[]=[

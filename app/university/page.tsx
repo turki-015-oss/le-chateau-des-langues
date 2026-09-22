@@ -3443,11 +3443,19 @@ const A1_STRUCTURES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_STRUCTURES_DICTATION=[
- {speech:"C’est mon nouveau quartier.",ar:"هذا حيي الجديد."},
- {speech:"Il y a une bibliothèque près d’ici.",ar:"توجد مكتبة بالقرب من هنا."},
- {speech:"Ces maisons sont très anciennes.",ar:"هذه المنازل قديمة جدًا."},
- {speech:"Ce ne sont pas nos valises.",ar:"هذه ليست حقائبنا."},
- {speech:"Il n’y a pas d’ascenseur.",ar:"لا يوجد مصعد."}
+ {speech:"C’est mon voisin.",ar:"هذا جاري."},
+ {speech:"Ce sont mes clés.",ar:"هذه مفاتيحي."},
+ {speech:"Ce n’est pas mon sac.",ar:"هذه ليست حقيبتي."},
+ {speech:"Ce ne sont pas mes lunettes.",ar:"هذه ليست نظارتي."},
+ {speech:"Il y a un parc près d’ici.",ar:"توجد حديقة بالقرب من هنا."},
+ {speech:"Il y a trois livres sur la table.",ar:"توجد ثلاثة كتب على الطاولة."},
+ {speech:"Il n’y a pas de bus après minuit.",ar:"لا توجد حافلة بعد منتصف الليل."},
+ {speech:"Il n’y a pas d’ascenseur dans ce bâtiment.",ar:"لا يوجد مصعد في هذا المبنى."},
+ {speech:"Est-ce qu’il y a un hôtel près de la gare ?",ar:"هل يوجد فندق قرب المحطة؟"},
+ {speech:"Ce café est ouvert.",ar:"هذا المقهى مفتوح."},
+ {speech:"Cet hôtel est près de la gare.",ar:"هذا الفندق قريب من المحطة."},
+ {speech:"Cette rue est calme.",ar:"هذا الشارع هادئ."},
+ {speech:"Ces magasins ferment à vingt heures.",ar:"هذه المتاجر تغلق الساعة الثامنة مساءً."}
 ];
 
 const A1_STRUCTURES_BUILDERS=[

@@ -1837,15 +1837,20 @@ const A1_DEMONSTRATIVES_QUIZ_ITEMS:QuizQuestion[]=[
 
 const A1_POSSESSIVES_PRACTICE_ITEMS:Example[]=[
  {fr:"Mon frère travaille à Marseille.",ar:"أخي يعمل في مرسيليا."},
- {fr:"Ma sœur étudie la médecine.",ar:"أختي تدرس الطب."},
- {fr:"Mes lunettes sont dans la voiture.",ar:"نظارتي في السيارة."},
+ {fr:"Ma sœur étudie le français.",ar:"أختي تدرس الفرنسية."},
+ {fr:"Mes lunettes sont dans mon sac.",ar:"نظارتي في حقيبتي."},
  {fr:"Ton rendez-vous commence à neuf heures.",ar:"موعدك يبدأ الساعة التاسعة."},
- {fr:"Ta veste bleue est très élégante.",ar:"سترتك الزرقاء أنيقة جدًا."},
- {fr:"Tes parents habitent près d’ici.",ar:"والداك يسكنان بالقرب من هنا."},
- {fr:"Son travail finit à dix-sept heures.",ar:"عمله أو عملها ينتهي الساعة الخامسة."},
- {fr:"Sa famille parle trois langues.",ar:"عائلته أو عائلتها تتحدث ثلاث لغات."},
- {fr:"Nos cours ont lieu le mardi.",ar:"دروسنا تقام يوم الثلاثاء."},
- {fr:"Leurs chambres se trouvent au deuxième étage.",ar:"غرفهم تقع في الطابق الثاني."}
+ {fr:"Ta chambre donne sur le jardin.",ar:"غرفتك تطل على الحديقة."},
+ {fr:"Tes billets sont dans la poche.",ar:"تذاكرك في الجيب."},
+ {fr:"Son téléphone ne répond pas.",ar:"هاتفه أو هاتفها لا يجيب."},
+ {fr:"Sa voiture est devant la banque.",ar:"سيارته أو سيارتها أمام البنك."},
+ {fr:"Ses amis arrivent ce soir.",ar:"أصدقاؤه أو أصدقاؤها يصلون هذا المساء."},
+ {fr:"Notre cours commence maintenant.",ar:"درسنا يبدأ الآن."},
+ {fr:"Nos voisins aiment le café.",ar:"جيراننا يحبون القهوة."},
+ {fr:"Votre table est près de la fenêtre.",ar:"طاولتكم قرب النافذة."},
+ {fr:"Vos valises sont prêtes.",ar:"حقائبكم جاهزة."},
+ {fr:"Leur appartement est au troisième étage.",ar:"شقتهم في الطابق الثالث."},
+ {fr:"Leurs enfants jouent au parc.",ar:"أطفالهم يلعبون في الحديقة."}
 ];
 
 const A1_POSSESSIVES_QUIZ_ITEMS:QuizQuestion[]=[

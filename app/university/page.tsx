@@ -2989,11 +2989,21 @@ const A1_POSSESSIVES_DICTATION=[
 ];
 
 const A1_POSSESSIVES_BUILDERS=[
- {tokens:["rouge.","Mon","parapluie","est"],answer:["Mon","parapluie","est","rouge."],ar:"مظلتي حمراء."},
- {tokens:["Ta","près","est","chaise","fenêtre.","de","la"],answer:["Ta","chaise","est","près","de","la","fenêtre."],ar:"كرسيك قريب من النافذة."},
- {tokens:["Ses","au","arrivent","amis","restaurant."],answer:["Ses","amis","arrivent","au","restaurant."],ar:"أصدقاؤه أو أصدقاؤها يصلون إلى المطعم."},
- {tokens:["demain.","commence","Notre","formation"],answer:["Notre","formation","commence","demain."],ar:"دورتنا تبدأ غدًا."},
- {tokens:["dans","jouets","sont","Leurs","salon.","le"],answer:["Leurs","jouets","sont","dans","le","salon."],ar:"ألعابهم في غرفة الجلوس."}
+ {tokens:["noir.","Mon","sac","est"],answer:["Mon","sac","est","noir."],ar:"حقيبتي سوداء."},
+ {tokens:["table.","sur","est","Ma","clé","la"],answer:["Ma","clé","est","sur","la","table."],ar:"مفتاحي على الطاولة."},
+ {tokens:["attendent","Mes","dehors.","amis"],answer:["Mes","amis","attendent","dehors."],ar:"أصدقائي ينتظرون في الخارج."},
+ {tokens:["à","Ton","huit","heures.","ouvre","école"],answer:["Ton","école","ouvre","à","huit","heures."],ar:"مدرستك تفتح الساعة الثامنة."},
+ {tokens:["grande.","chambre","Ta","est"],answer:["Ta","chambre","est","grande."],ar:"غرفتك كبيرة."},
+ {tokens:["sont","Tes","belles.","photos"],answer:["Tes","photos","sont","belles."],ar:"صورك جميلة."},
+ {tokens:["message.","adresse","est","le","dans","Son"],answer:["Son","adresse","est","dans","le","message."],ar:"عنوانه أو عنوانها في الرسالة."},
+ {tokens:["devant","Sa","maison.","est","la","voiture"],answer:["Sa","voiture","est","devant","la","maison."],ar:"سيارته أو سيارتها أمام المنزل."},
+ {tokens:["sont","Ses","sac.","livres","dans","le"],answer:["Ses","livres","sont","dans","le","sac."],ar:"كتبه أو كتبها في الحقيبة."},
+ {tokens:["près","Notre","du","est","maison","parc."],answer:["Notre","maison","est","près","du","parc."],ar:"منزلنا قريب من الحديقة."},
+ {tokens:["gentils.","Nos","sont","voisins"],answer:["Nos","voisins","sont","gentils."],ar:"جيراننا لطفاء."},
+ {tokens:["est","Votre","prêt.","passeport"],answer:["Votre","passeport","est","prêt."],ar:"جواز سفركم جاهز."},
+ {tokens:["bientôt.","arrivent","Vos","bagages"],answer:["Vos","bagages","arrivent","bientôt."],ar:"أمتعتكم تصل قريبًا."},
+ {tokens:["grande.","maison","Leur","est"],answer:["Leur","maison","est","grande."],ar:"منزلهم كبير."},
+ {tokens:["jardin.","jouent","enfants","dans","Leurs","le"],answer:["Leurs","enfants","jouent","dans","le","jardin."],ar:"أطفالهم يلعبون في الحديقة."}
 ];
 
 const A1_POSSESSIVES_DIALOGUES=[

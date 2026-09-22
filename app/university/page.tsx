@@ -2888,10 +2888,10 @@ const A1_DEMONSTRATIVES_LISTENING={
  ]
 };
 
-const A1_DEMONSTRATIVES_WRITING_MODEL="Ce parc est calme. Cet immeuble est moderne. Cette place est grande et ces boutiques sont ouvertes. J’aime beaucoup ce quartier.";
+const A1_DEMONSTRATIVES_WRITING_MODEL="Dans ce quartier, ce café est agréable. Cet hôtel est près du musée. Cette rue est calme et ces magasins sont ouverts.";
 const A1_DEMONSTRATIVES_WRITING_TRANSLATIONS=[
- {fr:"ce parc",ar:"هذه الحديقة"},{fr:"cet immeuble",ar:"هذا المبنى"},{fr:"cette place",ar:"هذه الساحة"},{fr:"ces boutiques",ar:"هذه المتاجر"},
- {fr:"ce quartier",ar:"هذا الحي"},{fr:"cet arrêt",ar:"هذه المحطة"},{fr:"cette pharmacie",ar:"هذه الصيدلية"},{fr:"ces bâtiments",ar:"هذه المباني"}
+ {fr:"dans ce quartier",ar:"في هذا الحي"},{fr:"ce café",ar:"هذا المقهى"},{fr:"cet hôtel",ar:"هذا الفندق"},{fr:"près du musée",ar:"قرب المتحف"},
+ {fr:"cette rue",ar:"هذا الشارع"},{fr:"ces magasins",ar:"هذه المتاجر"},{fr:"est agréable",ar:"لطيف"},{fr:"sont ouverts",ar:"مفتوحة"}
 ];
 
 const A1_DEMONSTRATIVES_DICTATION=[

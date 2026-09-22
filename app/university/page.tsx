@@ -3431,17 +3431,17 @@ const A1_STRUCTURES_LISTENING={
  ]
 };
 
-const A1_STRUCTURES_WRITING_MODEL="C’est mon quartier. Il y a un café et une petite bibliothèque. Cette rue est calme. Ces bâtiments sont modernes, mais il n’y a pas de pharmacie près d’ici.";
+const A1_STRUCTURES_WRITING_MODEL="C’est notre quartier. Il y a un café et deux petites boutiques. Cette rue est calme. Ces bâtiments sont modernes, mais il n’y a pas de banque près d’ici.";
 
 const A1_STRUCTURES_WRITING_TRANSLATIONS=[
- {fr:"c’est mon voisin",ar:"هذا جاري"},
- {fr:"ce sont mes clés",ar:"هذه مفاتيحي"},
- {fr:"il y a un parc",ar:"توجد حديقة"},
- {fr:"il n’y a pas de bus",ar:"لا توجد حافلة"},
- {fr:"ce bâtiment",ar:"هذا المبنى"},
- {fr:"cet appartement",ar:"هذه الشقة"},
- {fr:"cette rue",ar:"هذا الشارع"},
- {fr:"ces magasins",ar:"هذه المتاجر"}
+ {fr:"c’est notre quartier",ar:"هذا حيّنا"},
+ {fr:"il y a un café",ar:"يوجد مقهى"},
+ {fr:"deux petites boutiques",ar:"متجران صغيران"},
+ {fr:"cette rue est calme",ar:"هذا الشارع هادئ"},
+ {fr:"ces bâtiments sont modernes",ar:"هذه المباني حديثة"},
+ {fr:"il n’y a pas de banque",ar:"لا يوجد بنك"},
+ {fr:"près d’ici",ar:"بالقرب من هنا"},
+ {fr:"mais",ar:"لكن"}
 ];
 
 const A1_STRUCTURES_DICTATION=[

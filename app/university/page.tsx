@@ -185,11 +185,18 @@ const A1_CORE_VERBS_LISTENING_CLIPS=[
  {letter:"elles ont",word:"un chat",ar:"لديهن قطة",hiddenSpeech:"Elles ont un chat."}
 ];
 const A1_STRUCTURES_LISTENING_CLIPS=[
- {letter:"c’est",word:"mon voisin",ar:"هذا جاري",hiddenSpeech:"C’est mon voisin"},
- {letter:"ce sont",word:"mes clés",ar:"هذه مفاتيحي",hiddenSpeech:"Ce sont mes clés"},
- {letter:"il y a",word:"un parc",ar:"توجد حديقة",hiddenSpeech:"Il y a un parc"},
- {letter:"ce",word:"bâtiment",ar:"هذا المبنى",hiddenSpeech:"Ce bâtiment"},
- {letter:"cette",word:"rue",ar:"هذا الشارع",hiddenSpeech:"Cette rue"}
+ {letter:"c’est",word:"mon voisin",ar:"هذا جاري",hiddenSpeech:"C’est mon voisin."},
+ {letter:"ce sont",word:"mes clés",ar:"هذه مفاتيحي",hiddenSpeech:"Ce sont mes clés."},
+ {letter:"ce n’est pas",word:"mon sac",ar:"هذه ليست حقيبتي",hiddenSpeech:"Ce n’est pas mon sac."},
+ {letter:"ce ne sont pas",word:"mes lunettes",ar:"هذه ليست نظارتي",hiddenSpeech:"Ce ne sont pas mes lunettes."},
+ {letter:"il y a",word:"un parc",ar:"توجد حديقة",hiddenSpeech:"Il y a un parc."},
+ {letter:"il n’y a pas",word:"de bus",ar:"لا توجد حافلة",hiddenSpeech:"Il n’y a pas de bus."},
+ {letter:"est-ce qu’il y a",word:"un hôtel ?",ar:"هل يوجد فندق؟",hiddenSpeech:"Est-ce qu’il y a un hôtel ?"},
+ {letter:"ce",word:"café",ar:"هذا المقهى",hiddenSpeech:"Ce café est ouvert."},
+ {letter:"cet",word:"hôtel",ar:"هذا الفندق",hiddenSpeech:"Cet hôtel est près de la gare."},
+ {letter:"cette",word:"rue",ar:"هذا الشارع",hiddenSpeech:"Cette rue est calme."},
+ {letter:"ces",word:"magasins",ar:"هذه المتاجر",hiddenSpeech:"Ces magasins ferment à vingt heures."},
+ {letter:"il y a",word:"trois livres",ar:"توجد ثلاثة كتب",hiddenSpeech:"Il y a trois livres sur la table."}
 ];
 const A1_QUESTIONS_LISTENING_CLIPS=[
  {letter:"comment",word:"vous appelez-vous ?",ar:"ما اسمك؟",hiddenSpeech:"Comment vous appelez-vous ?"},
@@ -3403,15 +3410,22 @@ const A1_STRUCTURES_READING={
 };
 
 const A1_STRUCTURES_LISTENING={
- title:"Près de l’université",
- arTitle:"بالقرب من الجامعة",
- text:"C’est mon voisin. Ce sont mes clés. Il y a un parc. Ce bâtiment. Cette rue.",
+ title:"Présenter et situer à l’écoute",
+ arTitle:"استمع إلى التقديم والوجود والإشارة",
+ text:"C’est mon voisin. Ce sont mes clés. Ce n’est pas mon sac. Ce ne sont pas mes lunettes. Il y a un parc. Il n’y a pas de bus. Est-ce qu’il y a un hôtel ? Ce café est ouvert. Cet hôtel est près de la gare. Cette rue est calme. Ces magasins ferment à vingt heures. Il y a trois livres sur la table.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est mon voisin","Ce sont mes voisins","Il y a un voisin"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est ma clé","Ce sont mes clés","Ces clés sont ici"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["C’est un parc","Ce parc","Il y a un parc"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ce bâtiment","Cet appartement","Ces bâtiments"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ces rues","Cette rue","Ce quartier"],correctIndex:1}
+  {prompt:"Quelle phrase entendez-vous ?",speech:"C’est mon voisin.",instruction:"اختر الجملة التي سمعتها.",translation:"هذا جاري.",choices:["C’est mon voisin.","Ce sont mes voisins.","Il y a un voisin."],correctIndex:0,explanationAr:"نستعمل C’est لتقديم شخص واحد.",explanationFr:"C’est présente une personne au singulier."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Ce sont mes clés.",instruction:"اختر الجملة التي سمعتها.",translation:"هذه مفاتيحي.",choices:["C’est ma clé.","Ce sont mes clés.","Ces clés sont ici."],correctIndex:1,explanationAr:"نستعمل Ce sont مع الجمع.",explanationFr:"Ce sont présente plusieurs choses."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Ce n’est pas mon sac.",instruction:"اختر الجملة التي سمعتها.",translation:"هذه ليست حقيبتي.",choices:["Ce n’est pas mon sac.","Ce sont mes sacs.","Il n’y a pas de sac."],correctIndex:0,explanationAr:"Ce n’est pas هو نفي C’est مع المفرد.",explanationFr:"Ce n’est pas est la forme négative au singulier."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Ce ne sont pas mes lunettes.",instruction:"اختر الجملة التي سمعتها.",translation:"هذه ليست نظارتي.",choices:["Ce n’est pas ma lunette.","Ce ne sont pas mes lunettes.","Ces lunettes sont nouvelles."],correctIndex:1,explanationAr:"مع الجمع في النفي نقول Ce ne sont pas.",explanationFr:"Au pluriel négatif, on dit Ce ne sont pas."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Il y a un parc.",instruction:"اختر الجملة التي سمعتها.",translation:"توجد حديقة.",choices:["C’est un parc.","Ce parc est grand.","Il y a un parc."],correctIndex:2,explanationAr:"Il y a تعني يوجد أو توجد.",explanationFr:"Il y a exprime l’existence."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Il n’y a pas de bus.",instruction:"اختر الجملة التي سمعتها.",translation:"لا توجد حافلة.",choices:["Il y a un bus.","Il n’y a pas de bus.","Ce bus est vide."],correctIndex:1,explanationAr:"بعد Il n’y a pas نستخدم de قبل الاسم.",explanationFr:"Après Il n’y a pas, on emploie de."},
+  {prompt:"Quelle question entendez-vous ?",speech:"Est-ce qu’il y a un hôtel ?",instruction:"اختر السؤال الذي سمعته.",translation:"هل يوجد فندق؟",choices:["Est-ce qu’il y a un hôtel ?","Il y a un hôtel.","Ce hôtel est grand."],correctIndex:0,explanationAr:"Est-ce qu’il y a تُستعمل للسؤال عن وجود شيء.",explanationFr:"Est-ce qu’il y a sert à demander l’existence."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Ce café est ouvert.",instruction:"اختر الجملة التي سمعتها.",translation:"هذا المقهى مفتوح.",choices:["Ce café est ouvert.","Cet café est ouvert.","Cette café est ouverte."],correctIndex:0,explanationAr:"café مذكر مفرد ويبدأ بصوت ساكن؛ لذلك نستخدم ce.",explanationFr:"Café est masculin singulier."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Cet hôtel est près de la gare.",instruction:"اختر الجملة التي سمعتها.",translation:"هذا الفندق قريب من المحطة.",choices:["Ce hôtel est près de la gare.","Cet hôtel est près de la gare.","Cette hôtel est près de la gare."],correctIndex:1,explanationAr:"hôtel مذكر ويبدأ بـ h صامت؛ لذلك نستخدم cet.",explanationFr:"Hôtel commence par un h muet."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Cette rue est calme.",instruction:"اختر الجملة التي سمعتها.",translation:"هذا الشارع هادئ.",choices:["Ce rue est calme.","Cette rue est calme.","Ces rue sont calmes."],correctIndex:1,explanationAr:"rue مؤنث مفرد؛ لذلك نستخدم cette.",explanationFr:"Rue est féminin singulier."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Ces magasins ferment à vingt heures.",instruction:"اختر الجملة التي سمعتها.",translation:"هذه المتاجر تغلق الساعة الثامنة مساءً.",choices:["Ce magasins ferment à vingt heures.","Cette magasins ferment à vingt heures.","Ces magasins ferment à vingt heures."],correctIndex:2,explanationAr:"magasins جمع؛ لذلك نستخدم ces.",explanationFr:"Magasins est au pluriel."},
+  {prompt:"Quelle phrase entendez-vous ?",speech:"Il y a trois livres sur la table.",instruction:"اختر الجملة التي سمعتها.",translation:"توجد ثلاثة كتب على الطاولة.",choices:["Il y a trois livres sur la table.","Ce sont trois livres sur la table.","Il n’y a pas de livres sur la table."],correctIndex:0,explanationAr:"Il y a ثابتة مع المفرد والجمع.",explanationFr:"Il y a ne change pas au pluriel."}
  ]
 };
 

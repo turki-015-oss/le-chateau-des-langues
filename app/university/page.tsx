@@ -145,11 +145,21 @@ const A1_DEMONSTRATIVES_LISTENING_CLIPS=[
  {letter:"ces",word:"maisons",ar:"هذه المنازل",hiddenSpeech:"Ces maisons."}
 ];
 const A1_POSSESSIVES_LISTENING_CLIPS=[
- {letter:"mon",word:"cahier",ar:"دفتري",hiddenSpeech:"mon cahier"},
- {letter:"ta",word:"montre",ar:"ساعتك",hiddenSpeech:"ta montre"},
- {letter:"son",word:"adresse",ar:"عنوانه أو عنوانها",hiddenSpeech:"son adresse"},
- {letter:"nos",word:"voisins",ar:"جيراننا",hiddenSpeech:"nos voisins"},
- {letter:"leurs",word:"vélos",ar:"دراجاتهم",hiddenSpeech:"leurs vélos"}
+ {letter:"mon",word:"sac",ar:"حقيبتي",hiddenSpeech:"Mon sac."},
+ {letter:"ma",word:"clé",ar:"مفتاحي",hiddenSpeech:"Ma clé."},
+ {letter:"mes",word:"amis",ar:"أصدقائي",hiddenSpeech:"Mes amis."},
+ {letter:"ton",word:"école",ar:"مدرستك",hiddenSpeech:"Ton école."},
+ {letter:"ta",word:"montre",ar:"ساعتك",hiddenSpeech:"Ta montre."},
+ {letter:"tes",word:"photos",ar:"صورك",hiddenSpeech:"Tes photos."},
+ {letter:"son",word:"adresse",ar:"عنوانه أو عنوانها",hiddenSpeech:"Son adresse."},
+ {letter:"sa",word:"voiture",ar:"سيارته أو سيارتها",hiddenSpeech:"Sa voiture."},
+ {letter:"ses",word:"livres",ar:"كتبه أو كتبها",hiddenSpeech:"Ses livres."},
+ {letter:"notre",word:"maison",ar:"منزلنا",hiddenSpeech:"Notre maison."},
+ {letter:"nos",word:"voisins",ar:"جيراننا",hiddenSpeech:"Nos voisins."},
+ {letter:"votre",word:"passeport",ar:"جواز سفركم",hiddenSpeech:"Votre passeport."},
+ {letter:"vos",word:"bagages",ar:"أمتعتكم",hiddenSpeech:"Vos bagages."},
+ {letter:"leur",word:"maison",ar:"منزلهم",hiddenSpeech:"Leur maison."},
+ {letter:"leurs",word:"enfants",ar:"أطفالهم",hiddenSpeech:"Leurs enfants."}
 ];
 const A1_NOUNS_LISTENING_CLIPS=[
  {letter:"un",word:"bureau",ar:"مكتب",hiddenSpeech:"un bureau"},
@@ -2932,15 +2942,25 @@ const A1_POSSESSIVES_READING={
 };
 
 const A1_POSSESSIVES_LISTENING={
- title:"À qui est-ce ?",
- arTitle:"لمن هذا؟",
- text:"Mon cahier. Ta montre. Son adresse. Nos voisins. Leurs vélos.",
+ title:"Les déterminants possessifs à l’écoute",
+ arTitle:"استمع إلى صفات الملكية",
+ text:"Mon sac. Ma clé. Mes amis. Ton école. Ta montre. Tes photos. Son adresse. Sa voiture. Ses livres. Notre maison. Nos voisins. Votre passeport. Vos bagages. Leur maison. Leurs enfants.",
  questions:[
-  {prompt:"Quel groupe entendez-vous ?",choices:["Mon cahier","Ma cahier","Mes cahier"],correctIndex:0},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Ton montre","Ta montre","Tes montre"],correctIndex:1},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Sa adresse","Ses adresse","Son adresse"],correctIndex:2},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Nos voisins","Notre voisins","Leur voisins"],correctIndex:0},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Leur vélos","Leurs vélos","Ses vélo"],correctIndex:1}
+  {prompt:"Quel groupe entendez-vous ?",speech:"Mon sac.",instruction:"اختر المجموعة التي سمعتها.",translation:"حقيبتي.",choices:["Mon sac","Ma sac","Mes sac"],correctIndex:0,explanationAr:"sac مذكر مفرد؛ لذلك نقول mon sac.",explanationFr:"Sac est masculin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ma clé.",instruction:"اختر المجموعة التي سمعتها.",translation:"مفتاحي.",choices:["Mon clé","Ma clé","Mes clé"],correctIndex:1,explanationAr:"clé مؤنث مفرد ويبدأ بصوت ساكن؛ لذلك نقول ma clé.",explanationFr:"Clé est féminin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Mes amis.",instruction:"اختر المجموعة التي سمعتها.",translation:"أصدقائي.",choices:["Mes amis","Mon amis","Ma amis"],correctIndex:0,explanationAr:"amis جمع؛ لذلك نقول mes amis.",explanationFr:"Amis est au pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ton école.",instruction:"اختر المجموعة التي سمعتها.",translation:"مدرستك.",choices:["Ta école","Ton école","Tes école"],correctIndex:1,explanationAr:"école مؤنث، لكنها تبدأ بصوت متحرك؛ لذلك نقول ton école لتسهيل النطق.",explanationFr:"École est féminin, mais commence par une voyelle : on dit ton école."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ta montre.",instruction:"اختر المجموعة التي سمعتها.",translation:"ساعتك.",choices:["Ton montre","Ta montre","Tes montre"],correctIndex:1,explanationAr:"montre مؤنث مفرد؛ لذلك نقول ta montre.",explanationFr:"Montre est féminin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Tes photos.",instruction:"اختر المجموعة التي سمعتها.",translation:"صورك.",choices:["Ta photos","Tes photos","Ton photos"],correctIndex:1,explanationAr:"photos جمع؛ لذلك نقول tes photos.",explanationFr:"Photos est au pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Son adresse.",instruction:"اختر المجموعة التي سمعتها.",translation:"عنوانه أو عنوانها.",choices:["Sa adresse","Son adresse","Ses adresse"],correctIndex:1,explanationAr:"adresse مؤنث يبدأ بصوت متحرك؛ لذلك نقول son adresse.",explanationFr:"Adresse est féminin et commence par une voyelle."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Sa voiture.",instruction:"اختر المجموعة التي سمعتها.",translation:"سيارته أو سيارتها.",choices:["Son voiture","Sa voiture","Ses voiture"],correctIndex:1,explanationAr:"voiture مؤنث مفرد؛ لذلك نقول sa voiture.",explanationFr:"Voiture est féminin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ses livres.",instruction:"اختر المجموعة التي سمعتها.",translation:"كتبه أو كتبها.",choices:["Son livres","Sa livres","Ses livres"],correctIndex:2,explanationAr:"livres جمع؛ لذلك نقول ses livres.",explanationFr:"Livres est au pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Notre maison.",instruction:"اختر المجموعة التي سمعتها.",translation:"منزلنا.",choices:["Notre maison","Nos maison","Leur maison"],correctIndex:0,explanationAr:"مع nous نستخدم notre قبل الاسم المفرد، للمذكر أو المؤنث.",explanationFr:"Notre s’emploie avec un nom singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Nos voisins.",instruction:"اختر المجموعة التي سمعتها.",translation:"جيراننا.",choices:["Notre voisins","Nos voisins","Leurs voisins"],correctIndex:1,explanationAr:"voisins جمع؛ لذلك نقول nos voisins.",explanationFr:"Nos s’emploie avec un nom pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Votre passeport.",instruction:"اختر المجموعة التي سمعتها.",translation:"جواز سفركم.",choices:["Vos passeport","Votre passeport","Leur passeport"],correctIndex:1,explanationAr:"passeport مفرد؛ لذلك نقول votre passeport.",explanationFr:"Votre s’emploie avec un nom singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Vos bagages.",instruction:"اختر المجموعة التي سمعتها.",translation:"أمتعتكم.",choices:["Votre bagages","Vos bagages","Leurs bagages"],correctIndex:1,explanationAr:"bagages جمع؛ لذلك نقول vos bagages.",explanationFr:"Vos s’emploie avec un nom pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Leur maison.",instruction:"اختر المجموعة التي سمعتها.",translation:"منزلهم.",choices:["Leurs maison","Leur maison","Notre maison"],correctIndex:1,explanationAr:"maison مفرد؛ لذلك نقول leur maison.",explanationFr:"Leur s’emploie avec un nom singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Leurs enfants.",instruction:"اختر المجموعة التي سمعتها.",translation:"أطفالهم.",choices:["Leur enfants","Leurs enfants","Ses enfants"],correctIndex:1,explanationAr:"enfants جمع؛ لذلك نقول leurs enfants.",explanationFr:"Leurs s’emploie avec un nom pluriel."}
  ]
 };
 

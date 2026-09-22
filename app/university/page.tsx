@@ -2971,11 +2971,21 @@ const A1_POSSESSIVES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_POSSESSIVES_DICTATION=[
- {speech:"cahier",ar:"دفتر"},
- {speech:"montre",ar:"ساعة"},
- {speech:"adresse",ar:"عنوان"},
- {speech:"voisins",ar:"جيران"},
- {speech:"vélos",ar:"دراجات"}
+ {speech:"mon sac",ar:"حقيبتي"},
+ {speech:"ma clé",ar:"مفتاحي"},
+ {speech:"mes amis",ar:"أصدقائي"},
+ {speech:"ton école",ar:"مدرستك"},
+ {speech:"ta montre",ar:"ساعتك"},
+ {speech:"tes photos",ar:"صورك"},
+ {speech:"son adresse",ar:"عنوانه أو عنوانها"},
+ {speech:"sa voiture",ar:"سيارته أو سيارتها"},
+ {speech:"ses livres",ar:"كتبه أو كتبها"},
+ {speech:"notre maison",ar:"منزلنا"},
+ {speech:"nos voisins",ar:"جيراننا"},
+ {speech:"votre passeport",ar:"جواز سفركم"},
+ {speech:"vos bagages",ar:"أمتعتكم"},
+ {speech:"leur maison",ar:"منزلهم"},
+ {speech:"leurs enfants",ar:"أطفالهم"}
 ];
 
 const A1_POSSESSIVES_BUILDERS=[

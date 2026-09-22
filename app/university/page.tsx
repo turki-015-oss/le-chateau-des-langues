@@ -135,11 +135,14 @@ const A1_TASTES_LISTENING_CLIPS=[
  {letter:"Je déteste",word:"le bruit",ar:"أكره الضوضاء",hiddenSpeech:"Je déteste le bruit"}
 ];
 const A1_DEMONSTRATIVES_LISTENING_CLIPS=[
- {letter:"ce",word:"café",ar:"هذا المقهى",hiddenSpeech:"ce café"},
- {letter:"cet",word:"ordinateur",ar:"هذا الحاسوب",hiddenSpeech:"cet ordinateur"},
- {letter:"cette",word:"chambre",ar:"هذه الغرفة",hiddenSpeech:"cette chambre"},
- {letter:"ces",word:"clés",ar:"هذه المفاتيح",hiddenSpeech:"ces clés"},
- {letter:"cet",word:"arbre",ar:"هذه الشجرة",hiddenSpeech:"cet arbre"}
+ {letter:"ce",word:"livre",ar:"هذا الكتاب",hiddenSpeech:"Ce livre."},
+ {letter:"ce",word:"chat",ar:"هذا القط",hiddenSpeech:"Ce chat."},
+ {letter:"cet",word:"ami",ar:"هذا الصديق",hiddenSpeech:"Cet ami."},
+ {letter:"cet",word:"hôtel",ar:"هذا الفندق",hiddenSpeech:"Cet hôtel."},
+ {letter:"cette",word:"voiture",ar:"هذه السيارة",hiddenSpeech:"Cette voiture."},
+ {letter:"cette",word:"école",ar:"هذه المدرسة",hiddenSpeech:"Cette école."},
+ {letter:"ces",word:"livres",ar:"هذه الكتب",hiddenSpeech:"Ces livres."},
+ {letter:"ces",word:"maisons",ar:"هذه المنازل",hiddenSpeech:"Ces maisons."}
 ];
 const A1_POSSESSIVES_LISTENING_CLIPS=[
  {letter:"mon",word:"cahier",ar:"دفتري",hiddenSpeech:"mon cahier"},
@@ -2870,15 +2873,18 @@ const A1_DEMONSTRATIVES_READING={
 };
 
 const A1_DEMONSTRATIVES_LISTENING={
- title:"Écouter le bon déterminant",
- arTitle:"استمع إلى صفة الإشارة الصحيحة",
- text:"Ce café. Cet ordinateur. Cette chambre. Ces clés. Cet arbre.",
+ title:"Les déterminants dans les groupes nominaux",
+ arTitle:"صفات الإشارة داخل مجموعات اسمية",
+ text:"Ce livre. Ce chat. Cet ami. Cet hôtel. Cette voiture. Cette école. Ces livres. Ces maisons.",
  questions:[
-  {prompt:"Quel groupe entendez-vous ?",choices:["Ce café","Cet café","Cette café"],correctIndex:0},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Ce ordinateur","Cet ordinateur","Cette ordinateur"],correctIndex:1},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Ce chambre","Cet chambre","Cette chambre"],correctIndex:2},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Ces clés","Cette clés","Ce clés"],correctIndex:0},
-  {prompt:"Quel groupe entendez-vous ?",choices:["Cette arbre","Cet arbre","Ce arbre"],correctIndex:1}
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ce livre.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذا الكتاب.",choices:["Ce livre","Cet livre","Cette livre"],correctIndex:0,explanationAr:"livre مذكر مفرد يبدأ بصوت ساكن؛ لذلك نقول ce livre.",explanationFr:"Livre est masculin singulier et commence par une consonne."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ce chat.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذا القط.",choices:["Cet chat","Ce chat","Ces chat"],correctIndex:1,explanationAr:"chat مذكر مفرد يبدأ بصوت ساكن؛ لذلك نقول ce chat.",explanationFr:"Chat est masculin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Cet ami.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذا الصديق.",choices:["Cet ami","Ce ami","Cette ami"],correctIndex:0,explanationAr:"ami مذكر مفرد يبدأ بصوت متحرك؛ لذلك نقول cet ami.",explanationFr:"Ami est masculin et commence par une voyelle."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Cet hôtel.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذا الفندق.",choices:["Ce hôtel","Cette hôtel","Cet hôtel"],correctIndex:2,explanationAr:"hôtel مذكر ويبدأ بـ h صامت؛ لذلك نقول cet hôtel.",explanationFr:"Hôtel commence par un h muet."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Cette voiture.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذه السيارة.",choices:["Cette voiture","Cet voiture","Ces voiture"],correctIndex:0,explanationAr:"voiture مؤنث مفرد؛ لذلك نقول cette voiture.",explanationFr:"Voiture est féminin singulier."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Cette école.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذه المدرسة.",choices:["Cet école","Cette école","Ce école"],correctIndex:1,explanationAr:"école مؤنث مفرد؛ لذلك نستعمل cette حتى مع بداية صوت متحرك.",explanationFr:"École est féminin, même si le mot commence par une voyelle."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ces livres.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذه الكتب.",choices:["Ce livres","Ces livres","Cette livres"],correctIndex:1,explanationAr:"livres جمع؛ لذلك نقول ces livres.",explanationFr:"Livres est au pluriel."},
+  {prompt:"Quel groupe entendez-vous ?",speech:"Ces maisons.",instruction:"اختر المجموعة التي سمعتها.",translation:"هذه المنازل.",choices:["Ces maisons","Cet maisons","Cette maisons"],correctIndex:0,explanationAr:"maisons جمع مؤنث، وصيغة الجمع للمذكر والمؤنث هي ces.",explanationFr:"Ces s’emploie avec tous les noms au pluriel."}
  ]
 };
 

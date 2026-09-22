@@ -2906,11 +2906,14 @@ const A1_DEMONSTRATIVES_DICTATION=[
 ];
 
 const A1_DEMONSTRATIVES_BUILDERS=[
- {tokens:["journal","Ce","à","appartient","Paul."],answer:["Ce","journal","appartient","à","Paul."],ar:"هذه الصحيفة تخص بول."},
- {tokens:["est","Cet","occupé.","ascenseur"],answer:["Cet","ascenseur","est","occupé."],ar:"هذا المصعد مشغول."},
- {tokens:["arrive","Cette","demain.","lettre"],answer:["Cette","lettre","arrive","demain."],ar:"هذه الرسالة تصل غدًا."},
- {tokens:["très","Ces","chers.","cadeaux","sont"],answer:["Ces","cadeaux","sont","très","chers."],ar:"هذه الهدايا غالية جدًا."},
- {tokens:["préférez-vous ?","robe","Quelle"],answer:["Quelle","robe","préférez-vous ?"],ar:"أي فستان تفضلون؟"}
+ {tokens:["à","ouvre","Ce","heures.","musée","dix"],answer:["Ce","musée","ouvre","à","dix","heures."],ar:"هذا المتحف يفتح الساعة العاشرة."},
+ {tokens:["grand.","pantalon","est","Ce","trop"],answer:["Ce","pantalon","est","trop","grand."],ar:"هذا البنطال كبير جدًا."},
+ {tokens:["facile.","exercice","Cet","est"],answer:["Cet","exercice","est","facile."],ar:"هذا التمرين سهل."},
+ {tokens:["bientôt.","avion","arrive","Cet"],answer:["Cet","avion","arrive","bientôt."],ar:"هذه الطائرة تصل قريبًا."},
+ {tokens:["fermée.","porte","Cette","est"],answer:["Cette","porte","est","fermée."],ar:"هذا الباب مغلق."},
+ {tokens:["bleue.","est","Cette","robe"],answer:["Cette","robe","est","bleue."],ar:"هذا الفستان أزرق."},
+ {tokens:["concert.","pour","Ces","le","sont","billets"],answer:["Ces","billets","sont","pour","le","concert."],ar:"هذه التذاكر للحفل."},
+ {tokens:["hôtel.","Ces","un","cherchent","touristes"],answer:["Ces","touristes","cherchent","un","hôtel."],ar:"هؤلاء السياح يبحثون عن فندق."}
 ];
 
 const A1_DEMONSTRATIVES_DIALOGUES=[

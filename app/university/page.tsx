@@ -1798,16 +1798,16 @@ const A1_TASTES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Elle n’___ pas courir.",speech:"Elle n’aime pas courir.",instruction:"أكمل النفي الصحيح.",translation:"هي لا تحب الجري.",choices:["aime","adore","choisit"],correctIndex:0,explanation:"نحيط aime بـ n’ وpas."}
 ];
 const A1_DEMONSTRATIVES_PRACTICE_ITEMS:Example[]=[
- {fr:"Ce téléphone est à mon frère.",ar:"هذا الهاتف لأخي."},
- {fr:"Cet appartement se trouve au troisième étage.",ar:"هذه الشقة تقع في الطابق الثالث."},
- {fr:"Cette rue mène à la gare.",ar:"هذا الشارع يؤدي إلى المحطة."},
- {fr:"Ces fleurs sentent très bon.",ar:"هذه الزهور رائحتها جميلة جدًا."},
- {fr:"Je voudrais essayer ce pantalon.",ar:"أود تجربة هذا البنطال."},
- {fr:"Regardez cet écran, s’il vous plaît.",ar:"انظروا إلى هذه الشاشة، من فضلكم."},
- {fr:"Cette question est importante.",ar:"هذا السؤال مهم."},
- {fr:"Ces enfants jouent dans le parc.",ar:"هؤلاء الأطفال يلعبون في الحديقة."},
- {fr:"Vous prenez ce bus ou cet autobus ?",ar:"هل تستقلون هذه الحافلة أم هذا الباص؟"},
- {fr:"Ces chaussures-ci sont plus confortables.",ar:"هذه الأحذية هنا أكثر راحة."}
+ {fr:"Ce livre est intéressant.",ar:"هذا الكتاب ممتع."},
+ {fr:"Ce café ferme à dix-huit heures.",ar:"هذا المقهى يغلق الساعة السادسة مساءً."},
+ {fr:"Cet hôtel est près de la gare.",ar:"هذا الفندق قريب من المحطة."},
+ {fr:"Cet exercice est facile.",ar:"هذا التمرين سهل."},
+ {fr:"Cette chaise est libre.",ar:"هذا الكرسي متاح."},
+ {fr:"Cette rue est calme.",ar:"هذا الشارع هادئ."},
+ {fr:"Ces fleurs sont jaunes.",ar:"هذه الزهور صفراء."},
+ {fr:"Ces enfants jouent dehors.",ar:"هؤلاء الأطفال يلعبون في الخارج."},
+ {fr:"Je préfère ce sac noir.",ar:"أفضل هذه الحقيبة السوداء."},
+ {fr:"Regarde ces photos.",ar:"انظر إلى هذه الصور."}
 ];
 
 const A1_DEMONSTRATIVES_QUIZ_ITEMS:QuizQuestion[]=[

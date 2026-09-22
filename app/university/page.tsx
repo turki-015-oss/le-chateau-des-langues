@@ -2969,10 +2969,10 @@ const A1_POSSESSIVES_LISTENING={
  ]
 };
 
-const A1_POSSESSIVES_WRITING_MODEL="Mon appartement est petit. Ma cuisine est lumineuse et mes fenêtres donnent sur le parc. Notre quartier est calme et nos voisins sont gentils.";
+const A1_POSSESSIVES_WRITING_MODEL="Mon appartement est petit, mais ma cuisine est très lumineuse. Mes fenêtres donnent sur le parc. Notre quartier est calme et nos voisins sont très gentils.";
 const A1_POSSESSIVES_WRITING_TRANSLATIONS=[
  {fr:"mon appartement",ar:"شقتي"},{fr:"ma cuisine",ar:"مطبخي"},{fr:"mes fenêtres",ar:"نوافذي"},{fr:"notre quartier",ar:"حينا"},
- {fr:"nos voisins",ar:"جيراننا"},{fr:"votre maison",ar:"منزلكم"},{fr:"leur balcon",ar:"شرفتهم"},{fr:"leurs plantes",ar:"نباتاتهم"}
+ {fr:"nos voisins",ar:"جيراننا"},{fr:"est très lumineuse",ar:"مضيئة جدًا"},{fr:"donnent sur le parc",ar:"تطل على الحديقة"},{fr:"sont très gentils",ar:"لطفاء جدًا"}
 ];
 
 const A1_POSSESSIVES_DICTATION=[

@@ -10,7 +10,7 @@ import {
  GraduationCap,Hand,HandHeart,Headphones,History,House,Languages,Layers3,LibraryBig,Link2,ListChecks,MapPin,MapPinned,
  MessageCircle,MessagesSquare,Mic2,Navigation,NotebookTabs,Orbit,Play,RefreshCw,Repeat2,Replace,Rocket,RotateCcw,
  Scale,School,ScrollText,ShoppingBag,ShoppingBasket,SlidersHorizontal,Speech,Sparkles,Square,Stethoscope,
- Tags,Telescope,Trash2,Trophy,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
+ Tags,Telescope,Trash2,Trophy,Turtle,UserRoundCog,Users,UsersRound,Volume2,WandSparkles
 } from "lucide-react";
 import {cancelFrenchSpeech,speakFrench,speakFrenchSequence,speakFrenchWithPause} from "@/lib/frenchSpeech";
 import GreetingDialogueScene from "./GreetingDialogueScene";
@@ -1027,26 +1027,12 @@ const A1_MODULES:CourseModule[]=[
   id:"demonstratives",title:"Les déterminants démonstratifs",ar:"صفات الإشارة",icon:Hand,
   description:"اختيار ce وcet وcette وces للإشارة إلى شخص أو مكان أو شيء بحسب الجنس والعدد وبداية الاسم.",
   sections:[
-   section("Ce","المذكر المفرد","نستعمل ce قبل الاسم المذكر المفرد الذي يبدأ بصوت ساكن. تأتي صفة الإشارة قبل الاسم مباشرة، ويمكن أن تتبعها صفة تصف الاسم.",[
-    "ce + اسم مذكر مفرد يبدأ بصوت ساكن.",
-    "نقول ce livre وce restaurant وce professeur.",
-    "لا تتغير ce بحسب قرب الشيء أو بعده.",
-    "يمكن إضافة -ci أو -là بعد الاسم للتحديد: ce livre-ci."
-   ],[
-    {fr:"Ce livre est facile à lire.",ar:"هذا الكتاب سهل القراءة.",image:"/castle-hall-icons/library.webp"},
-    {fr:"Ce restaurant ouvre à midi.",ar:"هذا المطعم يفتح عند الظهر.",image:"/restaurant-v1/hero.webp"},
-    {fr:"Ce train part dans cinq minutes.",ar:"هذا القطار يغادر خلال خمس دقائق.",image:"/station-assets/hero.webp"}
-   ]),
-   section("Cet","المذكر قبل صوت متحرك","نستعمل cet قبل الاسم المذكر المفرد الذي يبدأ بصوت متحرك أو بحرف h صامت، لأن نطقه أسهل من ce في هذا الموضع.",[
-    "cet + اسم مذكر يبدأ بصوت متحرك: cet avion.",
-    "نستعمل cet مع h الصامت: cet hôtel.",
-    "يبقى الاسم مذكرًا رغم استعمال cet.",
+   section("Le masculin singulier : ce et cet","المذكر المفرد: ce وcet","تأتي صفة الإشارة قبل الاسم المذكر المفرد. نستعمل ce قبل صوت ساكن، ونستعمل cet قبل صوت متحرك أو h صامت. استخدم الجدول للتنقل بين الأمثلة الثمانية.",[
+    "ce + اسم مذكر مفرد يبدأ بصوت ساكن: ce livre.",
+    "cet + اسم مذكر مفرد يبدأ بصوت متحرك أو h صامت: cet hôtel.",
+    "يبقى الاسم مذكرًا في الحالتين.",
     "قبل h المنطوق نستعمل ce، مثل ce héros."
-   ],[
-    {fr:"Cet hôtel possède un grand jardin.",ar:"هذا الفندق لديه حديقة كبيرة.",image:"/hotel-v1/hero.webp"},
-    {fr:"Cet avion arrive de Marseille.",ar:"هذه الطائرة قادمة من مرسيليا.",image:"/airport/terminal-main.png"},
-    {fr:"Cet enfant dessine un château.",ar:"هذا الطفل يرسم قلعة.",image:"/images/university/a1-sounds/enfant.webp"}
-   ]),
+   ],[]),
    section("Cette","المؤنث المفرد","نستعمل cette قبل كل اسم مؤنث مفرد، سواء بدأ بصوت ساكن أو متحرك. معرفة جنس الاسم هي المفتاح لاختيارها.",[
     "cette + اسم مؤنث مفرد: cette maison.",
     "نقول cette école رغم أن الاسم يبدأ بصوت متحرك.",
@@ -7606,6 +7592,40 @@ const FRIENDS_SITUATIONS_PAGES=[
  }
 ];
 
+const A1_DEMONSTRATIVES_MASCULINE_EXAMPLES=[
+ {article:"ce",kind:"صوت ساكن",rule:"قبل اسم مذكر يبدأ بصوت ساكن",phrase:"ce livre",ar:"هذا الكتاب",sentence:"Ce livre est facile.",sentenceAr:"هذا الكتاب سهل."},
+ {article:"ce",kind:"صوت ساكن",rule:"قبل اسم مذكر يبدأ بصوت ساكن",phrase:"ce chat",ar:"هذا القط",sentence:"Ce chat est noir.",sentenceAr:"هذا القط أسود."},
+ {article:"ce",kind:"صوت ساكن",rule:"قبل اسم مذكر يبدأ بصوت ساكن",phrase:"ce professeur",ar:"هذا المعلّم",sentence:"Ce professeur parle français.",sentenceAr:"هذا المعلّم يتحدث الفرنسية."},
+ {article:"ce",kind:"صوت ساكن",rule:"قبل اسم مذكر يبدأ بصوت ساكن",phrase:"ce sac",ar:"هذه الحقيبة",sentence:"Ce sac est lourd.",sentenceAr:"هذه الحقيبة ثقيلة."},
+ {article:"cet",kind:"صوت متحرك",rule:"قبل اسم مذكر يبدأ بصوت متحرك",phrase:"cet ami",ar:"هذا الصديق",sentence:"Cet ami est gentil.",sentenceAr:"هذا الصديق لطيف."},
+ {article:"cet",kind:"صوت متحرك",rule:"قبل اسم مذكر يبدأ بصوت متحرك",phrase:"cet étudiant",ar:"هذا الطالب",sentence:"Cet étudiant arrive tôt.",sentenceAr:"هذا الطالب يصل مبكرًا."},
+ {article:"cet",kind:"h صامت",rule:"قبل اسم مذكر يبدأ بـ h صامت",phrase:"cet hôtel",ar:"هذا الفندق",sentence:"Cet hôtel est moderne.",sentenceAr:"هذا الفندق حديث."},
+ {article:"cet",kind:"صوت متحرك",rule:"قبل اسم مذكر يبدأ بصوت متحرك",phrase:"cet exercice",ar:"هذا التمرين",sentence:"Cet exercice est facile.",sentenceAr:"هذا التمرين سهل."}
+];
+
+function A1DemonstrativesMasculineTable(){
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_DEMONSTRATIVES_MASCULINE_EXAMPLES[exampleIndex];
+ const selectGroup=(article:"ce"|"cet")=>setExampleIndex(article==="ce"?0:4);
+ return <div className="a1-demonstratives-table" aria-live="polite">
+  <div className="a1-demonstratives-tabs" role="group" aria-label="اختر قاعدة صفة الإشارة">
+   <button type="button" className={item.article==="ce"?"active":""} aria-pressed={item.article==="ce"} onClick={()=>selectGroup("ce")}><strong dir="ltr">ce</strong><span>قبل صوت ساكن</span></button>
+   <button type="button" className={item.article==="cet"?"active":""} aria-pressed={item.article==="cet"} onClick={()=>selectGroup("cet")}><strong dir="ltr">cet</strong><span>قبل صوت متحرك أو h صامت</span></button>
+  </div>
+  <div className="a1-demonstratives-rule"><span dir="ltr">{item.article}</span><div><small>{item.kind}</small><strong>{item.rule}</strong></div></div>
+  <div className="a1-demonstratives-grid" key={exampleIndex}>
+   <div className="a1-demonstratives-cell"><small>الأداة + الاسم</small><strong dir="ltr"><mark>{item.article}</mark> {item.phrase.slice(item.article.length+1)}</strong><span>{item.ar}</span></div>
+   <div className="a1-demonstratives-cell a1-demonstratives-sentence"><small>في جملة</small><strong dir="ltr">{item.sentence}</strong><span>{item.sentenceAr}</span></div>
+   <div className="a1-demonstratives-audio"><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.74})} aria-label={`استمع إلى ${item.sentence}`}><Volume2/><span>استمع</span></button><button type="button" onClick={()=>void speakFrench(item.sentence,{rate:.56})} aria-label={`استمع ببطء إلى ${item.sentence}`}><Turtle/><span>نطق بطيء</span></button></div>
+  </div>
+  <div className="university-number-pagination a1-demonstratives-pagination" dir="ltr">
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
+   <div><small>أمثلة المذكر المفرد</small><strong>{exampleIndex+1} / {A1_DEMONSTRATIVES_MASCULINE_EXAMPLES.length}</strong><em dir="ltr">{item.article}</em></div>
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.min(A1_DEMONSTRATIVES_MASCULINE_EXAMPLES.length-1,index+1))} disabled={exampleIndex===A1_DEMONSTRATIVES_MASCULINE_EXAMPLES.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
+  </div>
+ </div>;
+}
+
 let practiceCorrectAudio:HTMLAudioElement|null=null;
 let practiceErrorAudio:HTMLAudioElement|null=null;
 
@@ -9222,7 +9242,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

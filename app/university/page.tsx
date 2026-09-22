@@ -3459,11 +3459,18 @@ const A1_STRUCTURES_DICTATION=[
 ];
 
 const A1_STRUCTURES_BUILDERS=[
- {tokens:["mon","C’est","professeur."],answer:["C’est","mon","professeur."],ar:"هذا معلمي."},
- {tokens:["une","a","ici.","Il y","pharmacie"],answer:["Il y","a","une","pharmacie","ici."],ar:"توجد صيدلية هنا."},
- {tokens:["sont","Ces","modernes.","bâtiments"],answer:["Ces","bâtiments","sont","modernes."],ar:"هذه المباني حديثة."},
- {tokens:["pas","Ce","notre","n’est","chambre."],answer:["Ce","n’est","pas","notre","chambre."],ar:"هذه ليست غرفتنا."},
- {tokens:["devant","Il y","un","l’école.","arrêt","a"],answer:["Il y","a","un","arrêt","devant","l’école."],ar:"توجد محطة أمام المدرسة."}
+ {tokens:["un","C’est","livre","intéressant."],answer:["C’est","un","livre","intéressant."],ar:"هذا كتاب ممتع."},
+ {tokens:["sont","Ce","mes","voisins."],answer:["Ce","sont","mes","voisins."],ar:"هؤلاء جيراني."},
+ {tokens:["pas","Ce","mon","n’est","sac."],answer:["Ce","n’est","pas","mon","sac."],ar:"هذه ليست حقيبتي."},
+ {tokens:["sont","pas","mes","Ce","ne","lunettes."],answer:["Ce","ne","sont","pas","mes","lunettes."],ar:"هذه ليست نظارتي."},
+ {tokens:["un","a","près","Il y","café","d’ici."],answer:["Il y","a","un","café","près","d’ici."],ar:"يوجد مقهى بالقرب من هنا."},
+ {tokens:["trois","sur","Il y","livres","table.","la","a"],answer:["Il y","a","trois","livres","sur","la","table."],ar:"توجد ثلاثة كتب على الطاولة."},
+ {tokens:["a","pas","Il","n’y","de","bus."],answer:["Il","n’y","a","pas","de","bus."],ar:"لا توجد حافلة."},
+ {tokens:["un","Est-ce qu’il y a","hôtel","ici ?"],answer:["Est-ce qu’il y a","un","hôtel","ici ?"],ar:"هل يوجد فندق هنا؟"},
+ {tokens:["ouvert.","Ce","est","café"],answer:["Ce","café","est","ouvert."],ar:"هذا المقهى مفتوح."},
+ {tokens:["près","hôtel","gare.","Cet","est","de","la"],answer:["Cet","hôtel","est","près","de","la","gare."],ar:"هذا الفندق قريب من المحطة."},
+ {tokens:["calme.","rue","Cette","est"],answer:["Cette","rue","est","calme."],ar:"هذا الشارع هادئ."},
+ {tokens:["à","Ces","heures.","magasins","vingt","ferment"],answer:["Ces","magasins","ferment","à","vingt","heures."],ar:"هذه المتاجر تغلق الساعة الثامنة مساءً."}
 ];
 
 const A1_STRUCTURES_DIALOGUES=[

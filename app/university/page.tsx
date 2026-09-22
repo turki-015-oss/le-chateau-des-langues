@@ -2895,11 +2895,14 @@ const A1_DEMONSTRATIVES_WRITING_TRANSLATIONS=[
 ];
 
 const A1_DEMONSTRATIVES_DICTATION=[
- {speech:"café",ar:"مقهى"},
- {speech:"ordinateur",ar:"حاسوب"},
- {speech:"chambre",ar:"غرفة"},
- {speech:"clés",ar:"مفاتيح"},
- {speech:"arbre",ar:"شجرة"}
+ {speech:"ce",ar:"صفة الإشارة للمذكر المفرد قبل صوت ساكن"},
+ {speech:"cet",ar:"صفة الإشارة للمذكر المفرد قبل صوت متحرك أو h صامت"},
+ {speech:"cette",ar:"صفة الإشارة للمؤنث المفرد"},
+ {speech:"ces",ar:"صفة الإشارة للجمع"},
+ {speech:"musée",ar:"متحف"},
+ {speech:"hôtel",ar:"فندق"},
+ {speech:"voiture",ar:"سيارة"},
+ {speech:"photos",ar:"صور"}
 ];
 
 const A1_DEMONSTRATIVES_BUILDERS=[

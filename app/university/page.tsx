@@ -3474,11 +3474,18 @@ const A1_STRUCTURES_BUILDERS=[
 ];
 
 const A1_STRUCTURES_DIALOGUES=[
+ {context:"Qu’est-ce que c’est ?",translation:"ما هذا؟",prompt:"اختر الرد المناسب للمفرد.",choices:["C’est un ticket de métro.","Ce sont un ticket de métro.","Il y a le ticket."],correctIndex:0,feedback:"لتقديم شيء مفرد نستخدم C’est."},
  {context:"Qui sont-ils ?",translation:"من هؤلاء؟",prompt:"اختر جواب الجمع الصحيح.",choices:["C’est mes voisins.","Ce sont mes voisins.","Il y a mon voisin."],correctIndex:1,feedback:"لتقديم أشخاص أو أشياء في الجمع نستخدم Ce sont."},
+ {context:"Est-ce que c’est ton sac ?",translation:"هل هذه حقيبتك؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, ce n’est pas mon sac.","Non, ce ne sont pas mon sac.","Non, il n’y a pas mon sac."],correctIndex:0,feedback:"لنفي شيء مفرد نقول Ce n’est pas."},
+ {context:"Ces lunettes sont à toi ?",translation:"هل هذه النظارات لك؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, ce n’est pas mes lunettes.","Non, ce ne sont pas mes lunettes.","Non, il n’y a pas mes lunettes."],correctIndex:1,feedback:"لنفي أشياء في الجمع نقول Ce ne sont pas."},
+ {context:"Qu’est-ce qu’il y a près de l’hôtel ?",translation:"ماذا يوجد قرب الفندق؟",prompt:"اختر الرد المناسب.",choices:["Il y a un restaurant.","C’est des restaurants.","Ce sont une gare."],correctIndex:0,feedback:"للتعبير عن وجود شيء نستخدم Il y a."},
  {context:"Est-ce qu’il y a un ascenseur ?",translation:"هل يوجد مصعد؟",prompt:"اختر جواب النفي الصحيح.",choices:["Non, il n’y a pas d’ascenseur.","Non, ce n’est ascenseur.","Non, il y a pas un ascenseur."],correctIndex:0,feedback:"بعد il n’y a pas نستخدم de أو d’ قبل الاسم."},
- {context:"Quelle maison préférez-vous ?",translation:"أي منزل تفضّلون؟",prompt:"اختر الرد الصحيح.",choices:["Ce maison blanche.","Cet maison blanche.","Cette maison blanche."],correctIndex:2,feedback:"maison مؤنث مفرد، لذلك نقول cette maison."},
- {context:"Qu’est-ce que c’est ?",translation:"ما هذا؟",prompt:"اختر الرد المناسب.",choices:["Ce sont un ticket.","C’est un ticket de métro.","Il y a le ticket."],correctIndex:1,feedback:"لتقديم شيء مفرد نستخدم C’est."},
- {context:"Qu’est-ce qu’il y a près de l’hôtel ?",translation:"ماذا يوجد قرب الفندق؟",prompt:"اختر الرد المناسب.",choices:["Il y a un restaurant.","C’est des restaurants.","Ce sont une gare."],correctIndex:0,feedback:"للتعبير عن وجود شيء نستخدم Il y a."}
+ {context:"Vous cherchez un hôtel ?",translation:"هل تبحثون عن فندق؟",prompt:"اختر السؤال الطبيعي.",choices:["Est-ce qu’il y a un hôtel près d’ici ?","Il y a un hôtel près d’ici ?","Ce sont un hôtel près d’ici ?"],correctIndex:0,feedback:"نستعمل Est-ce qu’il y a للسؤال عن وجود شيء."},
+ {context:"Quel café est ouvert ?",translation:"أي مقهى مفتوح؟",prompt:"اختر الإجابة الصحيحة.",choices:["Ce café est ouvert.","Cet café est ouvert.","Cette café est ouverte."],correctIndex:0,feedback:"café مذكر مفرد يبدأ بصوت ساكن؛ لذلك نستخدم ce."},
+ {context:"Quel hôtel est près de la gare ?",translation:"أي فندق قريب من المحطة؟",prompt:"اختر الإجابة الصحيحة.",choices:["Ce hôtel est près de la gare.","Cet hôtel est près de la gare.","Cette hôtel est près de la gare."],correctIndex:1,feedback:"hôtel مذكر ويبدأ بـ h صامت؛ لذلك نستخدم cet."},
+ {context:"Quelle rue mène au musée ?",translation:"أي شارع يؤدي إلى المتحف؟",prompt:"اختر الإجابة الصحيحة.",choices:["Ce rue mène au musée.","Cette rue mène au musée.","Ces rue mènent au musée."],correctIndex:1,feedback:"rue مؤنث مفرد؛ لذلك نستخدم cette."},
+ {context:"Quels magasins ferment à vingt heures ?",translation:"أي متاجر تغلق الساعة الثامنة مساءً؟",prompt:"اختر الإجابة الصحيحة.",choices:["Ce magasins ferment à vingt heures.","Cette magasins ferment à vingt heures.","Ces magasins ferment à vingt heures."],correctIndex:2,feedback:"magasins جمع؛ لذلك نستخدم ces."},
+ {context:"Il y a des livres sur la table ?",translation:"هل توجد كتب على الطاولة؟",prompt:"اختر ردًا طبيعيًا.",choices:["Oui, il y a trois livres sur la table.","Oui, ce sont trois livre sur la table.","Oui, il n’y a pas trois livres."],correctIndex:0,feedback:"Il y a لا تتغير مع الجمع."}
 ];
 
 const A1_QUESTIONS_READING={

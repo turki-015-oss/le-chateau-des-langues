@@ -6357,9 +6357,18 @@ const A2_MODULES:CourseModule[]=[
   section("Qui et que","qui وque","qui يحل محل فاعل في الجملة الثانية، أما que فيحل محل مفعول به مباشر. بعد que يأتي فاعل واضح غالبًا.",["Le livre qui est sur la table…", "Le livre que je lis…"],[{fr:"C’est une personne qui parle trois langues.",ar:"هذا شخص يتحدث ثلاث لغات."},{fr:"Voici le film que nous regardons ce soir.",ar:"هذا هو الفيلم الذي نشاهده هذا المساء."}]),
   section("Où pour le lieu et le temps","où للمكان والزمان","يربط où اسم مكان أو زمن بالجملة التي تليه.",["la ville où j’habite.","le jour où nous sommes arrivés."],[{fr:"Lyon est une ville où il y a beaucoup de musées.",ar:"ليون مدينة فيها متاحف كثيرة."},{fr:"Je me souviens du jour où nous nous sommes rencontrés.",ar:"أتذكر اليوم الذي التقينا فيه."}])
  ]),
- a2Module("cause-consequence","La cause, la conséquence et l’opposition","السبب والنتيجة والمخالفة",Layers3,"ربط الأفكار بعلاقات واضحة."),
- a2Module("narrative-connectors","Les connecteurs du récit","روابط السرد",ScrollText,"ترتيب أحداث القصة وربطها."),
- a2Module("travel-transport","Les voyages et les transports","السفر والمواصلات",Navigation,"التواصل في مواقف السفر والتنقل."),
+ a2Module("cause-consequence","La cause, la conséquence et l’opposition","السبب والنتيجة والمخالفة",Layers3,"ربط الأفكار بعلاقات واضحة.",[
+  section("Exprimer la cause","التعبير عن السبب","استعمل parce que في الجملة الشائعة، وcomme غالبًا في بدايتها، وà cause de مع اسم لسبب له نتيجة سلبية غالبًا.",["Je reste parce que je suis fatigué.","Comme il pleut, nous restons à la maison."],[{fr:"Je prends le bus parce qu’il pleut.",ar:"أستقل الحافلة لأن الجو ممطر."},{fr:"Comme le magasin est fermé, nous reviendrons demain.",ar:"بما أن المتجر مغلق، سنعود غدًا."}]),
+  section("Conséquence et opposition","النتيجة والمخالفة","استعمل donc وalors لنتيجة واضحة، وmais أو pourtant لإظهار مخالفة بين فكرتين.",["Il est tard, donc je rentre.","Il pleut, mais nous sortons."],[{fr:"Le train est annulé, alors nous prenons un taxi.",ar:"القطار ملغى، لذلك نأخذ سيارة أجرة."},{fr:"Il était fatigué, pourtant il a terminé son travail.",ar:"كان متعبًا، ومع ذلك أنهى عمله."}])
+ ]),
+ a2Module("narrative-connectors","Les connecteurs du récit","روابط السرد",ScrollText,"ترتيب أحداث القصة وربطها.",[
+  section("Organiser les étapes","ترتيب المراحل","تجعل روابط السرد الأحداث سهلة المتابعة: d’abord، puis، ensuite، après، enfin.",["ضع رابطًا واحدًا لكل مرحلة مهمة.","لا تكرر puis في كل جملة."],[{fr:"D’abord, nous avons acheté les billets.",ar:"اشترينا التذاكر أولًا."},{fr:"Ensuite, nous avons attendu sur le quai.",ar:"ثم انتظرنا على الرصيف."},{fr:"Enfin, le train est arrivé.",ar:"وأخيرًا وصل القطار."}]),
+  section("Situer un changement","تحديد التحول","استعمل tout à coup أو soudain لحدث مفاجئ، وpendant ce temps لحدث جارٍ في الخلفية.",["Tout à coup, le téléphone a sonné.","Pendant ce temps, les enfants jouaient."],[{fr:"Soudain, la lumière s’est éteinte.",ar:"فجأة انطفأ الضوء."},{fr:"Pendant ce temps, nous préparions le dîner.",ar:"في أثناء ذلك، كنا نعد العشاء."}])
+ ]),
+ a2Module("travel-transport","Les voyages et les transports","السفر والمواصلات",Navigation,"التواصل في مواقف السفر والتنقل.",[
+  section("Préparer un déplacement","الاستعداد للتنقل","تعلّم المفردات الأساسية للحجز والوصول والمغادرة، واسأل عن الوقت والرصيف والبوابة.",["un billet aller-retour، une réservation، un quai، une porte d’embarquement.","partir de، arriver à، changer à."],[{fr:"Je voudrais réserver un billet aller-retour pour Marseille.",ar:"أود حجز تذكرة ذهاب وعودة إلى مرسيليا."},{fr:"De quel quai part le train pour Lyon ?",ar:"من أي رصيف ينطلق القطار إلى ليون؟"}]),
+  section("Réagir à un problème","التصرف عند مشكلة","اشرح التأخير أو الإلغاء أو ضياع الأمتعة بجملة واضحة، ثم اطلب معلومة أو حلًا مهذبًا.",["Mon train a du retard.","Où puis-je trouver… ?"],[{fr:"Mon vol est annulé. Que puis-je faire ?",ar:"رحلتي الجوية ملغاة. ماذا يمكنني أن أفعل؟"},{fr:"J’ai perdu ma valise dans la gare.",ar:"أضعت حقيبتي في المحطة."}])
+ ]),
  a2Module("housing-city","Le logement et la ville","السكن والمدينة",Building2,"التحدث عن السكن والخدمات والمدينة."),
  a2Module("shopping-services","Les achats et les services","التسوق والخدمات",ShoppingBag,"طلب المنتجات والخدمات وحل المواقف الشائعة."),
  a2Module("health","La santé et le corps","الصحة والجسم",Stethoscope,"وصف حالة صحية وطلب المساعدة."),
@@ -8536,7 +8545,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors","travel-transport"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
@@ -8545,8 +8554,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA2Quantity=level.id==="A2"&&["stressed-pronouns","quantity-articles","negation"].includes(activeModule.id);
  const isA2Comparison=level.id==="A2"&&["comparison","superlative","relative-pronouns"].includes(activeModule.id);
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
- const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";
- const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";
+ const isA2Connectors=level.id==="A2"&&["cause-consequence","narrative-connectors"].includes(activeModule.id);
+ const isA2RealLife=level.id==="A2"&&activeModule.id==="travel-transport";
  const isA2Expression=level.id==="A2"&&activeModule.id==="expression";
  const activeA2BatchContent=level.id==="A2"?A2_BATCH_TWO_CONTENT[activeModule.id as keyof typeof A2_BATCH_TWO_CONTENT]:undefined;
  const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife||isA2Expression||Boolean(activeA2BatchContent);

@@ -3573,11 +3573,18 @@ const A1_QUESTIONS_BUILDERS=[
 ];
 
 const A1_QUESTIONS_DIALOGUES=[
- {context:"Où habitez-vous ?",translation:"أين تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite à Djeddah.","Je pars vendredi.","J’apprends le français."],correctIndex:0,feedback:"Où تُستخدم للسؤال عن المكان."},
- {context:"Est-ce que vous comprenez ?",translation:"هل تفهمون؟",prompt:"اختر إجابة واضحة.",choices:["Oui, je comprends.","À Paris.","Parce que lundi."],correctIndex:0,feedback:"السؤال المغلق بـ Est-ce que يُجاب عنه بـ oui أو non مع توضيح قصير."},
- {context:"Quelle formation choisissez-vous ?",translation:"أي دورة تختارون؟",prompt:"اختر الإجابة المناسبة.",choices:["À neuf heures.","Je choisis le cours débutant.","Avec ma sœur."],correctIndex:1,feedback:"السؤال بـ quelle formation يطلب تحديد الدورة."},
- {context:"Pourquoi êtes-vous en retard ?",translation:"لماذا أنتم متأخرون؟",prompt:"اختر الإجابة المناسبة.",choices:["Dans la classe.","À dix heures.","Parce que le bus est en retard."],correctIndex:2,feedback:"السؤال بـ pourquoi يطلب سببًا، ونجيب عادةً بـ parce que."},
- {context:"Combien de billets voulez-vous ?",translation:"كم تذكرة تريدون؟",prompt:"اختر الإجابة المناسبة.",choices:["Deux billets, s’il vous plaît.","À la gare centrale.","Le billet est bleu."],correctIndex:0,feedback:"Combien de يطلب عددًا محددًا."}
+ {context:"Est-ce que tu parles français ?",translation:"هل تتحدث الفرنسية؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, un peu.","À Paris.","Le soir."],correctIndex:0,feedback:"نجيب عن سؤال Est-ce que بـ oui أو non مع إضافة قصيرة."},
+ {context:"Vous avez une réservation ?",translation:"هل لديكم حجز؟",prompt:"اختر الإجابة المناسبة.",choices:["Oui, au nom de Sami.","Dans une heure.","Avec le train."],correctIndex:0,feedback:"السؤال بالنبرة الصاعدة يمكن أن تكون إجابته نعم أو لا مع توضيح."},
+ {context:"Qui est cette personne ?",translation:"من هذا الشخص؟",prompt:"اختر الإجابة المناسبة.",choices:["C’est mon professeur.","Elle est à gauche.","À huit heures."],correctIndex:0,feedback:"Qui تسأل عن شخص؛ لذلك نذكر هوية الشخص."},
+ {context:"Qu’est-ce que tu fais ce soir ?",translation:"ماذا ستفعل هذا المساء؟",prompt:"اختر الإجابة المناسبة.",choices:["Je regarde un film.","Parce que demain.","À la gare."],correctIndex:0,feedback:"Qu’est-ce que تسأل عن فعل أو شيء."},
+ {context:"Où habitez-vous ?",translation:"أين تسكنون؟",prompt:"اختر الإجابة المناسبة.",choices:["J’habite à Lyon.","Je travaille demain.","J’aime le bleu."],correctIndex:0,feedback:"Où تُستخدم للسؤال عن المكان."},
+ {context:"Quand commence le cours ?",translation:"متى يبدأ الدرس؟",prompt:"اختر الإجابة المناسبة.",choices:["Le cours commence à neuf heures.","Dans la salle trois.","Avec Madame Martin."],correctIndex:0,feedback:"Quand تُستخدم للسؤال عن الوقت."},
+ {context:"Comment vous appelez-vous ?",translation:"ما اسمكم؟",prompt:"اختر الإجابة المناسبة.",choices:["Je m’appelle Nour.","Je viens de Nice.","Je parle arabe."],correctIndex:0,feedback:"Comment vous appelez-vous ? صيغة مهذبة للسؤال عن الاسم."},
+ {context:"Pourquoi apprenez-vous le français ?",translation:"لماذا تتعلمون الفرنسية؟",prompt:"اختر الإجابة المناسبة.",choices:["Parce que j’aime voyager.","À l’université.","Deux fois par semaine."],correctIndex:0,feedback:"Pourquoi تسأل عن السبب؛ الجواب الطبيعي يبدأ بـ parce que."},
+ {context:"Combien coûte ce livre ?",translation:"كم سعر هذا الكتاب؟",prompt:"اختر الإجابة المناسبة.",choices:["Il coûte douze euros.","Il est sur la table.","C’est un livre bleu."],correctIndex:0,feedback:"Combien coûte… ? تسأل عن السعر."},
+ {context:"Combien de langues parlez-vous ?",translation:"كم لغة تتحدثون؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle trois langues.","Je parle avec ma sœur.","Je parle demain."],correctIndex:0,feedback:"Combien de تسأل عن العدد قبل اسم الجمع."},
+ {context:"Quel bus va au centre-ville ?",translation:"أي حافلة تذهب إلى وسط المدينة؟",prompt:"اختر الإجابة المناسبة.",choices:["Le bus numéro trois.","À dix minutes.","Parce qu’il est rapide."],correctIndex:0,feedback:"Quel bus يطلب اختيار حافلة مذكّرة مفردة."},
+ {context:"Quelles langues parlez-vous ?",translation:"ما اللغات التي تتحدثونها؟",prompt:"اختر الإجابة المناسبة.",choices:["Je parle arabe et français.","Je parle avec Paul.","Je parle le matin."],correctIndex:0,feedback:"Quelles توافق langues لأنها مؤنث جمع."}
 ];
 
 const A1_PRESENT_READING={

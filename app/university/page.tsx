@@ -6273,9 +6273,18 @@ const A2_MODULES:CourseModule[]=[
   section("Venir de + infinitif","venir de + مصدر","نستعمل venir de في الحاضر ثم المصدر للتعبير عن فعل حدث قبل قليل جدًا.",["Je viens de + infinitif.","Nous venons de + infinitif.","في النفي: ne… pas تحيط بـ venir."],[{fr:"Je viens de finir mon travail.",ar:"لقد أنهيت عملي للتو."},{fr:"Nous venons d’arriver à la gare.",ar:"لقد وصلنا إلى المحطة للتو."},{fr:"Elle ne vient pas de téléphoner.",ar:"هي لم تتصل للتو."}]),
   section("Choisir le temps juste","اختيار الزمن المناسب","استعمل الماضي القريب للحدث الذي وقع الآن أو قبل قليل؛ أما زمن الماضي المركب فيأتي للأحداث المنتهية دون ضرورة قربها الزمني.",["Je viens de manger = انتهيت من الأكل الآن.","J’ai mangé à midi = أكلت عند الظهر."],[{fr:"Attention, le bus vient de partir !",ar:"انتبه، الحافلة غادرت للتو!"},{fr:"J’ai pris le bus ce matin.",ar:"استقللت الحافلة هذا الصباح."}])
  ]),
- a2Module("passe-compose-avoir","Le passé composé avec avoir","الماضي المركب مع avoir",BookOpen,"بناء الماضي المركب مع الفعل المساعد avoir."),
- a2Module("passe-compose-etre","Le passé composé avec être","الماضي المركب مع être",UsersRound,"بناء الماضي المركب مع être واتفاق اسم المفعول."),
- a2Module("reflexive-past","Les verbes pronominaux au passé composé","الأفعال الضميرية في الماضي المركب",RotateCcw,"استخدام الأفعال الضميرية عند الحديث عن الماضي."),
+ a2Module("passe-compose-avoir","Le passé composé avec avoir","الماضي المركب مع avoir",BookOpen,"بناء الماضي المركب مع الفعل المساعد avoir.",[
+  section("La structure avec avoir","بناء الصيغة مع avoir","يتكوّن الماضي المركب من avoir في الحاضر ثم اسم المفعول. تستعمله أغلب الأفعال الفرنسية.",["j’ai, tu as, il/elle a، nous avons، vous avez، ils/elles ont.","بعد avoir نضع participe passé مثل parlé وfini وpris."],[{fr:"J’ai terminé mon travail hier.",ar:"أنهيت عملي أمس."},{fr:"Nous avons visité le musée samedi.",ar:"زرنا المتحف يوم السبت."},{fr:"Elle n’a pas compris la question.",ar:"هي لم تفهم السؤال."}]),
+  section("Les participes passés fréquents","أسماء المفعول الشائعة","للأفعال المنتظمة: -er تصبح -é، و-ir تصبح -i، و-re تصبح -u. احفظ الأشكال الشائعة غير المنتظمة تدريجيًا.",["parler → parlé، finir → fini، vendre → vendu.","faire → fait، prendre → pris، voir → vu."],[{fr:"Ils ont pris le train ce matin.",ar:"استقلوا القطار هذا الصباح."},{fr:"Tu as fait un bon choix.",ar:"لقد اتخذت اختيارًا جيدًا."}])
+ ]),
+ a2Module("passe-compose-etre","Le passé composé avec être","الماضي المركب مع être",UsersRound,"بناء الماضي المركب مع être واتفاق اسم المفعول.",[
+  section("Les verbes avec être","الأفعال التي تستعمل être","تستعمل مجموعة من أفعال الحركة والتغيّر être، مثل aller وvenir وarriver وpartir وentrer وsortir.",["je suis، tu es، il/elle est، nous sommes، vous êtes، ils/elles sont.","يأتي اسم المفعول بعد être."],[{fr:"Je suis arrivé à la gare à midi.",ar:"وصلت إلى المحطة عند الظهر."},{fr:"Nous sommes partis tôt ce matin.",ar:"غادرنا مبكرًا هذا الصباح."},{fr:"Elle est venue avec son amie.",ar:"جاءت مع صديقتها."}]),
+  section("L’accord du participe passé","مطابقة اسم المفعول","مع être يطابق اسم المفعول جنس الفاعل وعدده: -e للمؤنث، -s للجمع، و-es للمؤنث الجمع.",["Il est arrivé / Elle est arrivée.","Ils sont partis / Elles sont parties."],[{fr:"Mes sœurs sont arrivées hier soir.",ar:"وصلت أخواتي مساء أمس."},{fr:"Paul et Adam sont entrés dans le café.",ar:"دخل بول وآدم إلى المقهى."}])
+ ]),
+ a2Module("reflexive-past","Les verbes pronominaux au passé composé","الأفعال الضميرية في الماضي المركب",RotateCcw,"استخدام الأفعال الضميرية عند الحديث عن الماضي.",[
+  section("La forme pronominale","الصيغة الضميرية","تستعمل الأفعال الضميرية être في الماضي المركب: ضمير انعكاسي + être + اسم المفعول.",["je me suis، tu t’es، il/elle s’est.","nous nous sommes، vous vous êtes، ils/elles se sont."],[{fr:"Je me suis levé tôt.",ar:"استيقظت مبكرًا."},{fr:"Elle s’est préparée rapidement.",ar:"هي استعدت بسرعة."},{fr:"Nous nous sommes retrouvés au café.",ar:"التقينا في المقهى."}]),
+  section("Accord et négation","المطابقة والنفي","يتفق اسم المفعول عادة مع الفاعل. وفي النفي تحيط ne… pas بالفعل المساعد être والضمير يبقى قبل الفعل.",["Elle s’est couchée tard.","Elle ne s’est pas couchée tard."],[{fr:"Ils ne se sont pas réveillés à l’heure.",ar:"هم لم يستيقظوا في الوقت المحدد."},{fr:"Mes amies se sont habillées pour la fête.",ar:"ارتدت صديقاتي ملابسهن للحفل."}])
+ ]),
  a2Module("imparfait","L’imparfait","الماضي الناقص",CalendarClock,"وصف العادات والخلفيات في الماضي."),
  a2Module("past-contrast","Passé composé ou imparfait ?","الماضي المركب أم الناقص؟",Scale,"التمييز بين الحدث المنتهي والوصف أو العادة."),
  a2Module("tell-experience","Raconter une expérience","سرد تجربة",ScrollText,"سرد تجربة قصيرة بترتيب واضح."),
@@ -8473,9 +8482,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
- const isA2PasseCompose=level.id==="A2"&&activeModule.id==="passe-compose";
+ const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";

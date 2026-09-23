@@ -6345,9 +6345,18 @@ const A2_MODULES:CourseModule[]=[
   section("Ne… pas, jamais, plus","أشكال النفي الأساسية","تحيط ne بالفعل المصرف وتأتي الكلمة النافية بعده: pas للنفي العام، jamais لعدم الحدوث أبدًا، plus لعدم الاستمرار.",["Je ne comprends pas.","Il ne vient jamais.","Nous ne travaillons plus ici."],[{fr:"Je ne prends pas le bus aujourd’hui.",ar:"لا أستقل الحافلة اليوم."},{fr:"Elle ne téléphone jamais le soir.",ar:"هي لا تتصل أبدًا في المساء."},{fr:"Ils ne vivent plus à Lyon.",ar:"هم لم يعودوا يعيشون في ليون."}]),
   section("Personne, rien et aucun","لا أحد ولا شيء ولا أي","personne تنفي شخصًا، rien تنفي شيئًا، وaucun يطابق الاسم المفرد غالبًا.",["Je ne vois personne.","Nous ne faisons rien.","Il n’a aucune idée."],[{fr:"Je n’ai rien dans mon sac.",ar:"ليس لدي شيء في حقيبتي."},{fr:"Elle ne connaît personne ici.",ar:"هي لا تعرف أحدًا هنا."},{fr:"Nous n’avons aucun problème.",ar:"ليس لدينا أي مشكلة."}])
  ]),
- a2Module("comparison","Le comparatif","المقارنة",Scale,"مقارنة الأشخاص والأشياء والأفعال."),
- a2Module("superlative","Le superlatif","التفضيل الأعلى",Trophy,"التعبير عن الأفضل والأكثر والأقل."),
- a2Module("relative-pronouns","Les pronoms relatifs : qui, que, où","ضمائر الوصل: qui وque وoù",Link2,"ربط جملتين بجملة وصفية قصيرة."),
+ a2Module("comparison","Le comparatif","المقارنة",Scale,"مقارنة الأشخاص والأشياء والأفعال.",[
+  section("Plus, moins et aussi","المزيد والأقل والمساواة","نقارن الصفة أو الظرف بـ plus… que وmoins… que وaussi… que. ونضع que قبل الطرف الثاني.",["plus rapide que، moins cher que، aussi calme que.","مع الاسم: plus de / moins de / autant de + nom."],[{fr:"Le train est plus rapide que le bus.",ar:"القطار أسرع من الحافلة."},{fr:"Cette rue est moins bruyante que l’autre.",ar:"هذا الشارع أقل ضجيجًا من الآخر."},{fr:"Nora est aussi patiente que sa sœur.",ar:"نورة صبورة بقدر أختها."}]),
+  section("Comparer les actions","مقارنة الأفعال","مع الفعل نستعمل plus que أو moins que أو autant que بعد الفعل المصرف.",["Je travaille plus que mon frère.","Elle voyage autant que ses amis."],[{fr:"Je lis plus que je ne regarde la télévision.",ar:"أقرأ أكثر مما أشاهد التلفاز."},{fr:"Ils sortent moins que leurs voisins.",ar:"هم يخرجون أقل من جيرانهم."}])
+ ]),
+ a2Module("superlative","Le superlatif","التفضيل الأعلى",Trophy,"التعبير عن الأفضل والأكثر والأقل.",[
+  section("Le plus et le moins","الأكثر والأقل","نستعمل le/la/les plus أو le/la/les moins مع الصفة، ويتفق التعريف مع الاسم الموصوف.",["le plus grand، la moins chère، les plus utiles.","غالبًا نضيف de + مجموعة عند المقارنة داخل مجموعة."],[{fr:"C’est le restaurant le plus populaire du quartier.",ar:"إنه المطعم الأكثر شعبية في الحي."},{fr:"Elle est la plus jeune de la famille.",ar:"هي الأصغر في العائلة."},{fr:"Ce sont les exercices les moins difficiles.",ar:"هذه أقل التمارين صعوبة."}]),
+  section("Le meilleur et le mieux","الأفضل والأحسن","meilleur صفة تقارن اسمًا، وmieux ظرف يقارن طريقة الفعل.",["un meilleur résultat = نتيجة أفضل.","travailler mieux = العمل بشكل أفضل."],[{fr:"Ce livre est meilleur que l’autre.",ar:"هذا الكتاب أفضل من الآخر."},{fr:"Avec cette méthode, je travaille mieux.",ar:"بهذه الطريقة أعمل بشكل أفضل."}])
+ ]),
+ a2Module("relative-pronouns","Les pronoms relatifs : qui, que, où","ضمائر الوصل: qui وque وoù",Link2,"ربط جملتين بجملة وصفية قصيرة.",[
+  section("Qui et que","qui وque","qui يحل محل فاعل في الجملة الثانية، أما que فيحل محل مفعول به مباشر. بعد que يأتي فاعل واضح غالبًا.",["Le livre qui est sur la table…", "Le livre que je lis…"],[{fr:"C’est une personne qui parle trois langues.",ar:"هذا شخص يتحدث ثلاث لغات."},{fr:"Voici le film que nous regardons ce soir.",ar:"هذا هو الفيلم الذي نشاهده هذا المساء."}]),
+  section("Où pour le lieu et le temps","où للمكان والزمان","يربط où اسم مكان أو زمن بالجملة التي تليه.",["la ville où j’habite.","le jour où nous sommes arrivés."],[{fr:"Lyon est une ville où il y a beaucoup de musées.",ar:"ليون مدينة فيها متاحف كثيرة."},{fr:"Je me souviens du jour où nous nous sommes rencontrés.",ar:"أتذكر اليوم الذي التقينا فيه."}])
+ ]),
  a2Module("cause-consequence","La cause, la conséquence et l’opposition","السبب والنتيجة والمخالفة",Layers3,"ربط الأفكار بعلاقات واضحة."),
  a2Module("narrative-connectors","Les connecteurs du récit","روابط السرد",ScrollText,"ترتيب أحداث القصة وربطها."),
  a2Module("travel-transport","Les voyages et les transports","السفر والمواصلات",Navigation,"التواصل في مواقف السفر والتنقل."),
@@ -8527,14 +8536,14 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA2Future=level.id==="A2"&&["near-future","simple-future","imperative"].includes(activeModule.id);
  const isA2Pronouns=level.id==="A2"&&["direct-object","indirect-object","pronoun-y","pronoun-en"].includes(activeModule.id);
  const isA2Quantity=level.id==="A2"&&["stressed-pronouns","quantity-articles","negation"].includes(activeModule.id);
- const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
+ const isA2Comparison=level.id==="A2"&&["comparison","superlative","relative-pronouns"].includes(activeModule.id);
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
  const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";
  const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";

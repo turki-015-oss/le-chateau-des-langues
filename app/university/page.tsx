@@ -6309,9 +6309,18 @@ const A2_MODULES:CourseModule[]=[
   section("Les trois personnes","الأشخاص الثلاثة للأمر","يستعمل الأمر مع tu وnous وvous، ومن دون ضمير فاعل. نأخذ غالبًا صيغة الحاضر.",["Tu: Regarde ! / Nous: Regardons ! / Vous: Regardez !","في أفعال -er تحذف -s غالبًا مع tu: parle، mange."],[{fr:"Ferme la porte, s’il te plaît.",ar:"أغلق الباب من فضلك."},{fr:"Prenons le bus !",ar:"لنستقل الحافلة!"},{fr:"Attendez ici, s’il vous plaît.",ar:"انتظروا هنا من فضلكم."}]),
   section("L’ordre négatif et les conseils","الأمر المنفي والنصيحة","للنفي نضع ne قبل الفعل وpas بعده. استعمل الأمر للتعليمات والنصيحة والدعوة.",["Ne parle pas trop vite.","N’oubliez pas vos documents."],[{fr:"Ne traverse pas sans regarder.",ar:"لا تعبر دون أن تنظر."},{fr:"Fais attention et prends ton temps.",ar:"انتبه وخذ وقتك."}])
  ]),
- a2Module("obligation-permission","L’obligation, la permission et l’interdiction","الواجب والإذن والمنع",ListChecks,"التعبير عما يجب فعله وما يُسمح أو لا يُسمح به."),
- a2Module("politeness-conditional","Le conditionnel de politesse","الشرطية للّباقة",HandHeart,"صياغة الطلبات والاقتراحات بلطف."),
- a2Module("direct-object","Le complément d’objet direct (COD)","المفعول به المباشر",Tags,"التعرّف على المفعول المباشر واستبداله."),
+ a2Module("obligation-permission","L’obligation, la permission et l’interdiction","الواجب والإذن والمنع",ListChecks,"التعبير عما يجب فعله وما يُسمح أو لا يُسمح به.",[
+  section("Obligation et conseil","الواجب والنصيحة","نستعمل il faut وdevoir للتعبير عما يجب فعله. وتختلف قوة العبارة بحسب الموقف.",["Il faut + infinitif = يجب بشكل عام.","devoir + infinitif = واجب على شخص محدد."],[{fr:"Il faut présenter une pièce d’identité.",ar:"يجب تقديم وثيقة هوية."},{fr:"Tu dois arriver à l’heure.",ar:"يجب أن تصل في الوقت المحدد."},{fr:"Vous ne devez pas fumer ici.",ar:"يجب ألا تدخنوا هنا."}]),
+  section("Permission et interdiction","الإذن والمنع","استعمل pouvoir للسؤال عن الإذن أو منحه، وinterdit de أو ne pas pouvoir للمنع.",["Est-ce que je peux… ? لطلب الإذن.","Vous pouvez… لمنح الإذن.","Il est interdit de… للمنع الرسمي."],[{fr:"Est-ce que je peux entrer ?",ar:"هل يمكنني الدخول؟"},{fr:"Vous pouvez vous asseoir ici.",ar:"يمكنكم الجلوس هنا."},{fr:"Il est interdit de stationner devant l’entrée.",ar:"يُمنع الوقوف أمام المدخل."}])
+ ]),
+ a2Module("politeness-conditional","Le conditionnel de politesse","الشرطية للّباقة",HandHeart,"صياغة الطلبات والاقتراحات بلطف.",[
+  section("Demander poliment","الطلب بلطف","نستعمل je voudrais وpourriez-vous وpourrais-je لتخفيف الطلب وجعله مناسبًا في السياقات الرسمية.",["Je voudrais + اسم أو مصدر.","Pourriez-vous + infinitif ?", "Pourrais-je + infinitif ?"],[{fr:"Je voudrais un billet pour Lyon, s’il vous plaît.",ar:"أود تذكرة إلى ليون من فضلك."},{fr:"Pourriez-vous répéter, s’il vous plaît ?",ar:"هل يمكنكم التكرار من فضلكم؟"},{fr:"Pourrais-je parler au responsable ?",ar:"هل يمكنني التحدث إلى المسؤول؟"}]),
+  section("Proposer avec tact","الاقتراح بلطف","يمكن استعمال on pourrait وvous pourriez لتقديم اقتراح أو نصيحة من دون فرضها.",["On pourrait + infinitif.","Vous pourriez + infinitif."],[{fr:"On pourrait se retrouver après le cours.",ar:"يمكننا أن نلتقي بعد الدرس."},{fr:"Vous pourriez envoyer un message au professeur.",ar:"يمكنكم إرسال رسالة إلى الأستاذ."}])
+ ]),
+ a2Module("direct-object","Le complément d’objet direct (COD)","المفعول به المباشر",Tags,"التعرّف على المفعول المباشر واستبداله.",[
+  section("Repérer le COD","التعرّف على COD","المفعول المباشر يجيب عن السؤال quoi ? أو qui ? بعد الفعل من دون حرف جر.",["Je lis le livre. → Je lis quoi ? le livre.","Je vois Marie. → Je vois qui ? Marie."],[{fr:"Nous regardons ce film.",ar:"نشاهد هذا الفيلم."},{fr:"Il appelle son frère.",ar:"هو يتصل بأخيه."}]),
+  section("Remplacer par le, la, les","استبداله بـ le وla وles","نضع ضمير المفعول المباشر قبل الفعل المصرف، أو قبل الفعل المساعد في الماضي المركب.",["le للمذكر، la للمؤنث، les للجمع.","me وte وnous وvous قد تكون أيضًا مفعولًا مباشرًا."],[{fr:"Je lis le livre. → Je le lis.",ar:"أقرأ الكتاب. ← أقرأه."},{fr:"Elle regarde les photos. → Elle les regarde.",ar:"هي تشاهد الصور. ← تشاهدها."},{fr:"Nous avons vu Marie. → Nous l’avons vue.",ar:"رأينا ماري. ← رأيناها."}])
+ ]),
  a2Module("indirect-object","Le complément d’objet indirect (COI)","المفعول به غير المباشر",Link2,"التعرّف على المفعول غير المباشر واستبداله."),
  a2Module("pronoun-y","Le pronom y","ضمير y",MapPin,"استخدام y للدلالة على مكان أو à + شيء."),
  a2Module("pronoun-en","Le pronom en","ضمير en",ShoppingBasket,"استخدام en للدلالة على de والكمية."),
@@ -8500,15 +8509,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA2Future=level.id==="A2"&&["near-future","simple-future","imperative"].includes(activeModule.id);
- const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
+ const isA2Pronouns=level.id==="A2"&&activeModule.id==="direct-object";
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
- const isA2Politeness=level.id==="A2"&&activeModule.id==="politeness";
+ const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
  const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";
  const isA2RealLife=level.id==="A2"&&activeModule.id==="themes";
  const isA2Expression=level.id==="A2"&&activeModule.id==="expression";

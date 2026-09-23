@@ -8142,6 +8142,36 @@ function A1QuestionWordsTable(){
  </div>;
 }
 
+const A1_QUEL_QUESTION_EXAMPLES=[
+ {word:"Quel",arWord:"أي / ما",kind:"مذكر مفرد",rule:"نستخدم quel قبل اسم مذكر مفرد.",question:"Quel est votre nom ?",questionAr:"ما اسمكم؟",answer:"Mon nom est Karim.",answerAr:"اسمي كريم."},
+ {word:"Quel",arWord:"أي / ما",kind:"مذكر مفرد",rule:"نستخدم quel قبل اسم مذكر مفرد.",question:"Quel bus va au centre-ville ?",questionAr:"أي حافلة تذهب إلى وسط المدينة؟",answer:"Le bus numéro trois.",answerAr:"الحافلة رقم ثلاثة."},
+ {word:"Quelle",arWord:"أي / ما",kind:"مؤنث مفرد",rule:"نستخدم quelle قبل اسم مؤنث مفرد.",question:"Quelle heure est-il ?",questionAr:"كم الساعة؟",answer:"Il est huit heures.",answerAr:"الساعة الثامنة."},
+ {word:"Quelle",arWord:"أي / ما",kind:"مؤنث مفرد",rule:"نستخدم quelle قبل اسم مؤنث مفرد.",question:"Quelle couleur préférez-vous ?",questionAr:"أي لون تفضلون؟",answer:"Je préfère le bleu.",answerAr:"أفضل اللون الأزرق."},
+ {word:"Quels",arWord:"أي / ما",kind:"مذكر جمع",rule:"نستخدم quels قبل اسم مذكر في الجمع.",question:"Quels sports aimez-vous ?",questionAr:"ما الرياضات التي تحبونها؟",answer:"J’aime le football et le tennis.",answerAr:"أحب كرة القدم والتنس."},
+ {word:"Quels",arWord:"أي / ما",kind:"مذكر جمع",rule:"نستخدم quels قبل اسم مذكر في الجمع.",question:"Quels livres lisez-vous ?",questionAr:"ما الكتب التي تقرؤونها؟",answer:"Je lis des livres faciles.",answerAr:"أقرأ كتبًا سهلة."},
+ {word:"Quelles",arWord:"أي / ما",kind:"مؤنث جمع",rule:"نستخدم quelles قبل اسم مؤنث في الجمع.",question:"Quelles langues parlez-vous ?",questionAr:"ما اللغات التي تتحدثونها؟",answer:"Je parle arabe et français.",answerAr:"أتحدث العربية والفرنسية."},
+ {word:"Quelles",arWord:"أي / ما",kind:"مؤنث جمع",rule:"نستخدم quelles قبل اسم مؤنث في الجمع.",question:"Quelles villes aimez-vous ?",questionAr:"ما المدن التي تحبونها؟",answer:"J’aime Nice et Lyon.",answerAr:"أحب نيس وليون."}
+];
+
+function A1QuelQuestionsTable(){
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_QUEL_QUESTION_EXAMPLES[exampleIndex];
+ return <div className="a1-demonstratives-table a1-questions-closed-table a1-question-words-table" aria-live="polite">
+  <p className="a1-nouns-learning-intro">اختر صيغة quel المناسبة للاسم، ثم استمع إلى السؤال وإجابته النموذجية. تظهر بطاقة واحدة فقط لتبقى الصفحة قصيرة.</p>
+  <nav className="a1-question-word-tabs" aria-label="اختر صيغة quel">{["Quel","Quelle","Quels","Quelles"].map(word=>{const index=A1_QUEL_QUESTION_EXAMPLES.findIndex(item=>item.word===word);return <button key={word} type="button" className={item.word===word?"active":""} aria-pressed={item.word===word} onClick={()=>setExampleIndex(index)} dir="ltr">{word}</button>})}</nav>
+  <div className="a1-demonstratives-rule"><span dir="ltr">{item.word}</span><div><small>{item.kind}</small><strong>{item.rule}</strong></div></div>
+  <div className="a1-questions-closed-grid a1-question-words-grid" key={exampleIndex}>
+   <button type="button" className="a1-questions-closed-question" onClick={()=>void speakFrench(item.question,{rate:.74})} aria-label={`استمع إلى السؤال: ${item.question}`}><small>السؤال</small><strong dir="ltr">{item.question}</strong><span>{item.questionAr}</span><Volume2 aria-hidden="true"/></button>
+   <button type="button" className="a1-question-word-answer" onClick={()=>void speakFrench(item.answer,{rate:.74})} aria-label={`استمع إلى الإجابة: ${item.answer}`}><small>إجابة نموذجية</small><strong dir="ltr">{item.answer}</strong><span>{item.answerAr}</span><Volume2 aria-hidden="true"/></button>
+  </div>
+  <div className="university-number-pagination a1-demonstratives-pagination" dir="ltr">
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0} aria-label="المثال السابق"><ChevronLeft/><span>السابق</span></button>
+   <div><small>السؤال عن اختيار أو معلومة</small><strong>{exampleIndex+1} / {A1_QUEL_QUESTION_EXAMPLES.length}</strong><em dir="ltr">{item.word}</em></div>
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.min(A1_QUEL_QUESTION_EXAMPLES.length-1,index+1))} disabled={exampleIndex===A1_QUEL_QUESTION_EXAMPLES.length-1} aria-label="المثال التالي"><span>التالي</span><ChevronRight/></button>
+  </div>
+ </div>;
+}
+
 let practiceCorrectAudio:HTMLAudioElement|null=null;
 let practiceErrorAudio:HTMLAudioElement|null=null;
 
@@ -9911,7 +9941,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
           </div>
          </div>
         </section>})}
-       </div>:isA1Questions&&index===1?<A1QuestionWordsTable/>:<>
+       </div>:isA1Questions&&index===1?<A1QuestionWordsTable/>:isA1Questions&&index===2?<A1QuelQuestionsTable/>:<>
         <p className="university-explanation-text">{item.explanation}</p>
         <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
         <div className="university-example-list">

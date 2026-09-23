@@ -6297,9 +6297,18 @@ const A2_MODULES:CourseModule[]=[
   section("Organiser le récit","تنظيم السرد","ابدأ بالزمان والمكان، ثم قدم الخلفية، وبعدها رتب الأحداث والنتيجة أو الانطباع.",["D’abord، puis، ensuite، enfin تربط الأحداث.","Utilise parce que أو donc لشرح سبب أو نتيجة."],[{fr:"Samedi dernier, je suis allé au musée avec mon frère.",ar:"ذهبت إلى المتحف مع أخي السبت الماضي."},{fr:"D’abord, nous avons visité une exposition, puis nous avons pris un café.",ar:"زرنا معرضًا أولًا، ثم تناولنا قهوة."}]),
   section("Mélanger les deux passés","مزج زمنَي الماضي","اجعل الماضي الناقص للخلفية والمركب للأحداث؛ بذلك تصبح القصة واضحة وطبيعية.",["الخلفية: Il faisait beau, nous étions contents.","الحدث: nous avons commencé, nous sommes rentrés."],[{fr:"Il faisait beau, alors nous avons décidé de marcher.",ar:"كان الطقس جميلًا، لذلك قررنا أن نمشي."},{fr:"La journée était longue, mais nous avons beaucoup aimé la visite.",ar:"كان اليوم طويلًا، لكننا أحببنا الزيارة كثيرًا."}])
  ]),
- a2Module("near-future","Le futur proche","المستقبل القريب",FastForward,"التعبير عن خطط قريبة باستعمال aller + infinitif."),
- a2Module("simple-future","Le futur simple fréquent","المستقبل البسيط الشائع",Telescope,"استخدام صيغ مستقبل بسيطة وشائعة."),
- a2Module("imperative","L’impératif","صيغة الأمر",Hand,"إعطاء التعليمات والنصائح البسيطة."),
+ a2Module("near-future","Le futur proche","المستقبل القريب",FastForward,"التعبير عن خطط قريبة باستعمال aller + infinitif.",[
+  section("Aller + infinitif","aller + مصدر","يتكون المستقبل القريب من aller في الحاضر ثم مصدر الفعل. وهو مناسب لخطة قريبة أو نية واضحة.",["Je vais partir، nous allons visiter، ils vont venir.","يمكن وضع ظرف زمن في البداية أو النهاية."],[{fr:"Je vais appeler le médecin demain.",ar:"سأتصل بالطبيب غدًا."},{fr:"Nous allons visiter nos amis ce week-end.",ar:"سنزور أصدقاءنا في عطلة نهاية الأسبوع."},{fr:"Elle ne va pas travailler samedi.",ar:"هي لن تعمل يوم السبت."}]),
+  section("Projet ou décision proche","خطة أو قرار قريب","استعمل futur proche عندما تكون النية أو الخطة واضحة وقريبة من لحظة الكلام.",["ce soir، demain، ce week-end مؤشرات مفيدة.","ضع ne… pas حول aller في النفي."],[{fr:"Qu’est-ce que tu vas faire ce soir ?",ar:"ماذا ستفعل هذا المساء؟"},{fr:"On va prendre le train à huit heures.",ar:"سنستقل القطار عند الثامنة."}])
+ ]),
+ a2Module("simple-future","Le futur simple fréquent","المستقبل البسيط الشائع",Telescope,"استخدام صيغ مستقبل بسيطة وشائعة.",[
+  section("Former le futur simple","تكوين المستقبل البسيط","نضيف النهايات ai، as، a، ons، ez، ont إلى المصدر غالبًا. وتحتاج بعض الأفعال الشائعة إلى جذر خاص.",["parler → je parlerai، finir → nous finirons.","être → ser-، avoir → aur-، aller → ir-، faire → fer-."],[{fr:"Demain, je terminerai ce projet.",ar:"سأنهي هذا المشروع غدًا."},{fr:"Nous serons à Paris en juin.",ar:"سنكون في باريس في يونيو."},{fr:"Ils feront un voyage cet été.",ar:"سيقومون برحلة هذا الصيف."}]),
+  section("Prévision et projet plus lointain","توقع وخطة أبعد","يصلح المستقبل البسيط للتوقع والوعد والخطة الأقل قربًا أو الأكثر رسمية.",["peut-être، un jour، l’année prochaine مؤشرات مناسبة.","فرّق بين je vais partir قريبًا وje partirai لاحقًا أو كتوقع."],[{fr:"L’année prochaine, elle travaillera à Lyon.",ar:"ستعمل في ليون العام المقبل."},{fr:"Tu verras, tout ira bien.",ar:"سترى، كل شيء سيكون بخير."}])
+ ]),
+ a2Module("imperative","L’impératif","صيغة الأمر",Hand,"إعطاء التعليمات والنصائح البسيطة.",[
+  section("Les trois personnes","الأشخاص الثلاثة للأمر","يستعمل الأمر مع tu وnous وvous، ومن دون ضمير فاعل. نأخذ غالبًا صيغة الحاضر.",["Tu: Regarde ! / Nous: Regardons ! / Vous: Regardez !","في أفعال -er تحذف -s غالبًا مع tu: parle، mange."],[{fr:"Ferme la porte, s’il te plaît.",ar:"أغلق الباب من فضلك."},{fr:"Prenons le bus !",ar:"لنستقل الحافلة!"},{fr:"Attendez ici, s’il vous plaît.",ar:"انتظروا هنا من فضلكم."}]),
+  section("L’ordre négatif et les conseils","الأمر المنفي والنصيحة","للنفي نضع ne قبل الفعل وpas بعده. استعمل الأمر للتعليمات والنصيحة والدعوة.",["Ne parle pas trop vite.","N’oubliez pas vos documents."],[{fr:"Ne traverse pas sans regarder.",ar:"لا تعبر دون أن تنظر."},{fr:"Fais attention et prends ton temps.",ar:"انتبه وخذ وقتك."}])
+ ]),
  a2Module("obligation-permission","L’obligation, la permission et l’interdiction","الواجب والإذن والمنع",ListChecks,"التعبير عما يجب فعله وما يُسمح أو لا يُسمح به."),
  a2Module("politeness-conditional","Le conditionnel de politesse","الشرطية للّباقة",HandHeart,"صياغة الطلبات والاقتراحات بلطف."),
  a2Module("direct-object","Le complément d’objet direct (COD)","المفعول به المباشر",Tags,"التعرّف على المفعول المباشر واستبداله."),
@@ -8491,11 +8500,11 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
- const isA2Future=level.id==="A2"&&activeModule.id==="future";
+ const isA2Future=level.id==="A2"&&["near-future","simple-future","imperative"].includes(activeModule.id);
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";

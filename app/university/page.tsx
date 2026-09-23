@@ -6369,9 +6369,18 @@ const A2_MODULES:CourseModule[]=[
   section("Préparer un déplacement","الاستعداد للتنقل","تعلّم المفردات الأساسية للحجز والوصول والمغادرة، واسأل عن الوقت والرصيف والبوابة.",["un billet aller-retour، une réservation، un quai، une porte d’embarquement.","partir de، arriver à، changer à."],[{fr:"Je voudrais réserver un billet aller-retour pour Marseille.",ar:"أود حجز تذكرة ذهاب وعودة إلى مرسيليا."},{fr:"De quel quai part le train pour Lyon ?",ar:"من أي رصيف ينطلق القطار إلى ليون؟"}]),
   section("Réagir à un problème","التصرف عند مشكلة","اشرح التأخير أو الإلغاء أو ضياع الأمتعة بجملة واضحة، ثم اطلب معلومة أو حلًا مهذبًا.",["Mon train a du retard.","Où puis-je trouver… ?"],[{fr:"Mon vol est annulé. Que puis-je faire ?",ar:"رحلتي الجوية ملغاة. ماذا يمكنني أن أفعل؟"},{fr:"J’ai perdu ma valise dans la gare.",ar:"أضعت حقيبتي في المحطة."}])
  ]),
- a2Module("housing-city","Le logement et la ville","السكن والمدينة",Building2,"التحدث عن السكن والخدمات والمدينة."),
- a2Module("shopping-services","Les achats et les services","التسوق والخدمات",ShoppingBag,"طلب المنتجات والخدمات وحل المواقف الشائعة."),
- a2Module("health","La santé et le corps","الصحة والجسم",Stethoscope,"وصف حالة صحية وطلب المساعدة."),
+ a2Module("housing-city","Le logement et la ville","السكن والمدينة",Building2,"التحدث عن السكن والخدمات والمدينة.",[
+  section("Décrire son logement","وصف السكن","صف نوع السكن والغرف والتجهيزات والموقع باستعمال il y a وc’est وصفات مناسبة.",["un appartement, un immeuble, un quartier, un loyer.","près de، loin de، en face de لتحديد المكان."],[{fr:"J’habite dans un appartement près du centre-ville.",ar:"أسكن في شقة قرب وسط المدينة."},{fr:"Il y a deux chambres et un petit balcon.",ar:"هناك غرفتا نوم وشرفة صغيرة."}]),
+  section("Demander un service","طلب خدمة سكنية","اشرح المشكلة ومكانها ووقت حدوثها، ثم اطلب تدخّلًا أو معلومة بلطف.",["Il y a un problème avec…", "Pourriez-vous envoyer un technicien ?"],[{fr:"Le chauffage ne fonctionne plus depuis ce matin.",ar:"التدفئة لم تعد تعمل منذ هذا الصباح."},{fr:"Pourriez-vous venir vérifier la fuite, s’il vous plaît ?",ar:"هل يمكنكم الحضور لفحص التسرّب من فضلكم؟"}])
+ ]),
+ a2Module("shopping-services","Les achats et les services","التسوق والخدمات",ShoppingBag,"طلب المنتجات والخدمات وحل المواقف الشائعة.",[
+  section("Acheter et demander","الشراء والطلب","اسأل عن المقاس والسعر والكمية، واستعمل je voudrais وcombien coûte…؟ بصورة طبيعية.",["un reçu، une taille، essayer، payer par carte.","Je voudrais… / Est-ce que je peux essayer… ?"],[{fr:"Je voudrais essayer cette veste en taille M.",ar:"أود تجربة هذه السترة بالمقاس M."},{fr:"Combien coûte ce téléphone ?",ar:"كم سعر هذا الهاتف؟"}]),
+  section("Réclamation simple","شكوى بسيطة","اذكر المنتج والمشكلة وما تريده: استبدال أو استرجاع أو إصلاح.",["J’ai acheté… mais…", "Je voudrais l’échanger / être remboursé."],[{fr:"J’ai acheté ce casque hier, mais il ne fonctionne pas.",ar:"اشتريت هذه السماعة أمس، لكنها لا تعمل."},{fr:"Je voudrais l’échanger, s’il vous plaît.",ar:"أود استبدالها من فضلك."}])
+ ]),
+ a2Module("health","La santé et le corps","الصحة والجسم",Stethoscope,"وصف حالة صحية وطلب المساعدة.",[
+  section("Décrire un symptôme","وصف عرض صحي","استعمل avoir mal à + جزء الجسم، وavoir de la fièvre أو être malade لوصف الحالة.",["J’ai mal à la tête / au ventre / à la gorge.","depuis + مدة لتحديد البداية."],[{fr:"J’ai mal à la tête depuis ce matin.",ar:"لدي صداع منذ هذا الصباح."},{fr:"Elle a de la fièvre et elle est très fatiguée.",ar:"لديها حمى وهي متعبة جدًا."}]),
+  section("Chez le médecin ou à la pharmacie","عند الطبيب أو الصيدلية","حدّد الأعراض والمدة، ثم اسأل عن موعد أو دواء أو نصيحة.",["Je voudrais prendre rendez-vous.","Que me conseillez-vous ?"],[{fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},{fr:"Pouvez-vous me conseiller quelque chose pour la toux ?",ar:"هل يمكنكم أن تنصحوني بشيء للسعال؟"}])
+ ]),
  a2Module("study-work","Les études et le travail","الدراسة والعمل",GraduationCap,"التحدث عن الدراسة والخبرة والعمل."),
  a2Module("leisure-opinions","Les loisirs, les invitations et les opinions","الترفيه والدعوات والآراء",Coffee,"التحدث عن الاهتمامات والدعوات وإبداء الرأي."),
  a2Module("messages-forms","Les messages, les courriels et les formulaires","الرسائل والبريد والنماذج",NotebookTabs,"كتابة رسائل ونصوص عملية قصيرة."),
@@ -8545,7 +8554,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors","travel-transport"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors","travel-transport","housing-city","shopping-services","health"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
@@ -8555,7 +8564,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA2Comparison=level.id==="A2"&&["comparison","superlative","relative-pronouns"].includes(activeModule.id);
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
  const isA2Connectors=level.id==="A2"&&["cause-consequence","narrative-connectors"].includes(activeModule.id);
- const isA2RealLife=level.id==="A2"&&activeModule.id==="travel-transport";
+ const isA2RealLife=level.id==="A2"&&["travel-transport","housing-city","shopping-services","health"].includes(activeModule.id);
  const isA2Expression=level.id==="A2"&&activeModule.id==="expression";
  const activeA2BatchContent=level.id==="A2"?A2_BATCH_TWO_CONTENT[activeModule.id as keyof typeof A2_BATCH_TWO_CONTENT]:undefined;
  const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife||isA2Expression||Boolean(activeA2BatchContent);

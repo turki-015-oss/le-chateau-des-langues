@@ -2392,16 +2392,18 @@ const A1_HEALTH_NEEDS_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_QUESTIONS_PRACTICE_ITEMS:Example[]=[
- {fr:"Est-ce que tu habites près d’ici ?",ar:"هل تسكن بالقرب من هنا؟"},
+ {fr:"Est-ce que tu parles français ? — Oui, un peu.",ar:"هل تتحدث الفرنسية؟ — نعم، قليلًا."},
  {fr:"Vous avez une réservation ? — Oui, au nom de Sami.",ar:"هل لديكم حجز؟ — نعم، باسم سامي."},
- {fr:"Elle vient avec nous ? — Non, elle travaille.",ar:"هل ستأتي معنا؟ — لا، إنها تعمل."},
- {fr:"Qui est cette personne ?",ar:"من هذا الشخص؟"},
- {fr:"Où se trouve la station de métro ?",ar:"أين توجد محطة المترو؟"},
- {fr:"Quand commence le prochain cours ?",ar:"متى يبدأ الدرس القادم؟"},
- {fr:"Comment allez-vous à l’université ?",ar:"كيف تذهبون إلى الجامعة؟"},
- {fr:"Combien coûte ce billet ?",ar:"كم سعر هذه التذكرة؟"},
- {fr:"Quel bus va au centre-ville ?",ar:"أي حافلة تذهب إلى وسط المدينة؟"},
- {fr:"Quelle couleur préfères-tu ?",ar:"أي لون تفضل؟"}
+ {fr:"Elle vient avec nous ? — Non, elle ne vient pas.",ar:"هل ستأتي معنا؟ — لا، هي لن تأتي."},
+ {fr:"Qui est votre professeur ? — C’est Monsieur Martin.",ar:"من معلّمكم؟ — إنه الأستاذ مارتان."},
+ {fr:"Qu’est-ce que tu fais ce soir ? — Je regarde un film.",ar:"ماذا ستفعل هذا المساء؟ — سأشاهد فيلمًا."},
+ {fr:"Où habitez-vous ? — J’habite à Lyon.",ar:"أين تسكنون؟ — أسكن في ليون."},
+ {fr:"Quand commence le cours ? — À neuf heures.",ar:"متى يبدأ الدرس؟ — الساعة التاسعة."},
+ {fr:"Comment vous appelez-vous ? — Je m’appelle Nour.",ar:"ما اسمكم؟ — اسمي نور."},
+ {fr:"Pourquoi apprenez-vous le français ? — Parce que j’aime voyager.",ar:"لماذا تتعلمون الفرنسية؟ — لأنني أحب السفر."},
+ {fr:"Combien coûte ce billet ? — Il coûte dix euros.",ar:"كم سعر هذه التذكرة؟ — سعرها عشرة يورو."},
+ {fr:"Quel bus va au centre-ville ? — Le bus numéro trois.",ar:"أي حافلة تذهب إلى وسط المدينة؟ — الحافلة رقم ثلاثة."},
+ {fr:"Quelles langues parlez-vous ? — Je parle arabe et français.",ar:"ما اللغات التي تتحدثونها؟ — أتحدث العربية والفرنسية."}
 ];
 
 const A1_QUESTIONS_QUIZ_ITEMS:QuizQuestion[]=[

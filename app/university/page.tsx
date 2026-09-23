@@ -6321,9 +6321,18 @@ const A2_MODULES:CourseModule[]=[
   section("Repérer le COD","التعرّف على COD","المفعول المباشر يجيب عن السؤال quoi ? أو qui ? بعد الفعل من دون حرف جر.",["Je lis le livre. → Je lis quoi ? le livre.","Je vois Marie. → Je vois qui ? Marie."],[{fr:"Nous regardons ce film.",ar:"نشاهد هذا الفيلم."},{fr:"Il appelle son frère.",ar:"هو يتصل بأخيه."}]),
   section("Remplacer par le, la, les","استبداله بـ le وla وles","نضع ضمير المفعول المباشر قبل الفعل المصرف، أو قبل الفعل المساعد في الماضي المركب.",["le للمذكر، la للمؤنث، les للجمع.","me وte وnous وvous قد تكون أيضًا مفعولًا مباشرًا."],[{fr:"Je lis le livre. → Je le lis.",ar:"أقرأ الكتاب. ← أقرأه."},{fr:"Elle regarde les photos. → Elle les regarde.",ar:"هي تشاهد الصور. ← تشاهدها."},{fr:"Nous avons vu Marie. → Nous l’avons vue.",ar:"رأينا ماري. ← رأيناها."}])
  ]),
- a2Module("indirect-object","Le complément d’objet indirect (COI)","المفعول به غير المباشر",Link2,"التعرّف على المفعول غير المباشر واستبداله."),
- a2Module("pronoun-y","Le pronom y","ضمير y",MapPin,"استخدام y للدلالة على مكان أو à + شيء."),
- a2Module("pronoun-en","Le pronom en","ضمير en",ShoppingBasket,"استخدام en للدلالة على de والكمية."),
+ a2Module("indirect-object","Le complément d’objet indirect (COI)","المفعول به غير المباشر",Link2,"التعرّف على المفعول غير المباشر واستبداله.",[
+  section("Repérer le COI","التعرّف على COI","المفعول غير المباشر يأتي غالبًا بعد à أو de، ويجيب عن à qui ? أو à quoi ? بعد الفعل.",["Je parle à Marie. → à qui ? à Marie.","Nous répondons au professeur. → à qui ? au professeur."],[{fr:"Il téléphone à sa mère.",ar:"هو يتصل بوالدته."},{fr:"Nous écrivons à nos amis.",ar:"نكتب إلى أصدقائنا."}]),
+  section("Lui et leur","استبداله بـ lui وleur","مع الأشخاص بعد à نستعمل lui للمفرد وleur للجمع، ويأتي الضمير قبل الفعل المصرف.",["Je parle à Paul. → Je lui parle.","Je parle à mes voisins. → Je leur parle."],[{fr:"Elle répond à son frère. → Elle lui répond.",ar:"هي تجيب أخاها. ← هي تجيبه."},{fr:"Nous téléphonons à nos parents. → Nous leur téléphonons.",ar:"نتصل بوالدينا. ← نتصل بهم."}])
+ ]),
+ a2Module("pronoun-y","Le pronom y","ضمير y",MapPin,"استخدام y للدلالة على مكان أو à + شيء.",[
+  section("Un lieu ou à + chose","مكان أو à + شيء","يستبدل y مكانًا ذُكر سابقًا، أو اسمًا غير عاقل بعد à. ويأتي قبل الفعل.",["Je vais au marché. → J’y vais.","Je pense à ce problème. → J’y pense."],[{fr:"Nous habitons à Lyon. → Nous y habitons.",ar:"نحن نسكن في ليون. ← نحن نسكن هناك."},{fr:"Tu vas à la banque ? → Oui, j’y vais.",ar:"هل تذهب إلى البنك؟ ← نعم، أذهب إليه."}]),
+  section("La place de y","موضع y في الجملة","يوضع y قبل الفعل المصرف، وقبل الفعل المساعد في الماضي المركب، وقبل المصدر مع النفي بعد الفعل المصرف.",["J’y vais demain.","J’y suis allé hier.","Je n’y vais pas."],[{fr:"Elle y travaille depuis deux ans.",ar:"هي تعمل هناك منذ سنتين."},{fr:"Nous n’y avons pas trouvé le musée.",ar:"لم نجد المتحف هناك."}])
+ ]),
+ a2Module("pronoun-en","Le pronom en","ضمير en",ShoppingBasket,"استخدام en للدلالة على de والكمية.",[
+  section("De + nom et quantité","de + اسم والكمية","يستبدل en اسمًا يسبقه de أو du أو de la أو des، كما يستبدل كمية سبق ذكرها.",["Je parle de ce film. → J’en parle.","J’ai trois livres. → J’en ai trois."],[{fr:"Tu veux du pain ? → Oui, j’en veux.",ar:"هل تريد خبزًا؟ ← نعم، أريد منه."},{fr:"Elle a beaucoup d’amis. → Elle en a beaucoup.",ar:"لديها أصدقاء كثيرون. ← لديها الكثير منهم."}]),
+  section("Garder le nombre","الاحتفاظ بالعدد","عند وجود عدد أو كمية محددة يبقى العدد بعد en، ولا نكرر الاسم.",["Nous avons deux billets. → Nous en avons deux.","Il achète un kilo de pommes. → Il en achète un kilo."],[{fr:"J’ai besoin de ces documents. → J’en ai besoin.",ar:"أحتاج إلى هذه الوثائق. ← أحتاج إليها."},{fr:"Vous prenez combien de cafés ? → J’en prends deux.",ar:"كم قهوة تأخذون؟ ← آخذ اثنتين."}])
+ ]),
  a2Module("stressed-pronouns","Les pronoms toniques","الضمائر المشددة",UserRoundCog,"استخدام moi، toi، lui وغيرها في السياق الصحيح."),
  a2Module("quantity-articles","Les quantités et les articles","الكميات والأدوات",ShoppingBag,"التعبير عن الكمية والأدوات المناسبة."),
  a2Module("negation","Les négations fréquentes","صيغ النفي الشائعة",CircleMinus,"استخدام صيغ النفي الأساسية الشائعة."),
@@ -8509,12 +8518,12 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA2Future=level.id==="A2"&&["near-future","simple-future","imperative"].includes(activeModule.id);
- const isA2Pronouns=level.id==="A2"&&activeModule.id==="direct-object";
+ const isA2Pronouns=level.id==="A2"&&["direct-object","indirect-object","pronoun-y","pronoun-en"].includes(activeModule.id);
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);

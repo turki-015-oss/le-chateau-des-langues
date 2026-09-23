@@ -3543,11 +3543,18 @@ const A1_QUESTIONS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_QUESTIONS_DICTATION=[
- {speech:"Comment vous appelez-vous ?",ar:"ما اسمك؟"},
- {speech:"Où habitez-vous ?",ar:"أين تسكن؟"},
- {speech:"Est-ce que vous parlez français ?",ar:"هل تتحدث الفرنسية؟"},
- {speech:"Pourquoi prenez-vous le métro ?",ar:"لماذا تستقل المترو؟"},
- {speech:"Combien coûte cette chambre ?",ar:"كم سعر هذه الغرفة؟"}
+ {speech:"Est-ce que tu parles français ?",ar:"هل تتحدث الفرنسية؟"},
+ {speech:"Vous avez une réservation ?",ar:"هل لديكم حجز؟"},
+ {speech:"Qui est votre professeur ?",ar:"من معلّمكم؟"},
+ {speech:"Qu’est-ce que tu fais ce soir ?",ar:"ماذا ستفعل هذا المساء؟"},
+ {speech:"Où habitez-vous ?",ar:"أين تسكنون؟"},
+ {speech:"Quand commence le cours ?",ar:"متى يبدأ الدرس؟"},
+ {speech:"Comment vous appelez-vous ?",ar:"ما اسمكم؟"},
+ {speech:"Pourquoi apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
+ {speech:"Combien coûte ce billet ?",ar:"كم سعر هذه التذكرة؟"},
+ {speech:"Combien de langues parlez-vous ?",ar:"كم لغة تتحدثون؟"},
+ {speech:"Quel bus va au centre-ville ?",ar:"أي حافلة تذهب إلى وسط المدينة؟"},
+ {speech:"Quelle couleur préférez-vous ?",ar:"أي لون تفضلون؟"}
 ];
 
 const A1_QUESTIONS_BUILDERS=[

@@ -6381,10 +6381,22 @@ const A2_MODULES:CourseModule[]=[
   section("Décrire un symptôme","وصف عرض صحي","استعمل avoir mal à + جزء الجسم، وavoir de la fièvre أو être malade لوصف الحالة.",["J’ai mal à la tête / au ventre / à la gorge.","depuis + مدة لتحديد البداية."],[{fr:"J’ai mal à la tête depuis ce matin.",ar:"لدي صداع منذ هذا الصباح."},{fr:"Elle a de la fièvre et elle est très fatiguée.",ar:"لديها حمى وهي متعبة جدًا."}]),
   section("Chez le médecin ou à la pharmacie","عند الطبيب أو الصيدلية","حدّد الأعراض والمدة، ثم اسأل عن موعد أو دواء أو نصيحة.",["Je voudrais prendre rendez-vous.","Que me conseillez-vous ?"],[{fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},{fr:"Pouvez-vous me conseiller quelque chose pour la toux ?",ar:"هل يمكنكم أن تنصحوني بشيء للسعال؟"}])
  ]),
- a2Module("study-work","Les études et le travail","الدراسة والعمل",GraduationCap,"التحدث عن الدراسة والخبرة والعمل."),
- a2Module("leisure-opinions","Les loisirs, les invitations et les opinions","الترفيه والدعوات والآراء",Coffee,"التحدث عن الاهتمامات والدعوات وإبداء الرأي."),
- a2Module("messages-forms","Les messages, les courriels et les formulaires","الرسائل والبريد والنماذج",NotebookTabs,"كتابة رسائل ونصوص عملية قصيرة."),
- a2Module("a2-final-revision","Révision finale A2","المراجعة الختامية A2",BadgeCheck,"دمج مهارات A2 في مراجعة وتقييم ختامي.")
+ a2Module("study-work","Les études et le travail","الدراسة والعمل",GraduationCap,"التحدث عن الدراسة والخبرة والعمل.",[
+  section("Présenter son parcours","تقديم الدراسة أو المسار","قدّم ما تدرسه أو عملك الحالي، ثم اذكر المكان والمهارة أو الهدف بعبارات واضحة.",["J’étudie… / Je travaille comme…", "dans une université / dans une entreprise."],[{fr:"J’étudie l’informatique à l’université.",ar:"أدرس المعلوماتية في الجامعة."},{fr:"Je travaille comme assistant dans une petite entreprise.",ar:"أعمل مساعدًا في شركة صغيرة."}]),
+  section("Parler d’expérience et de projet","الحديث عن تجربة وخطة","استخدم الماضي لتجربة منتهية والمستقبل لمشروع قريب؛ أضف مدة أو سببًا عند الحاجة.",["J’ai travaillé… pendant…", "Je vais chercher…"],[{fr:"J’ai fait un stage dans un hôtel pendant deux mois.",ar:"أنجزت تدريبًا في فندق لمدة شهرين."},{fr:"L’année prochaine, je vais chercher un nouvel emploi.",ar:"سأبحث عن عمل جديد العام المقبل."}])
+ ]),
+ a2Module("leisure-opinions","Les loisirs, les invitations et les opinions","الترفيه والدعوات والآراء",Coffee,"التحدث عن الاهتمامات والدعوات وإبداء الرأي.",[
+  section("Inviter et répondre","الدعوة والرد","وجّه الدعوة مع نشاط ووقت، ثم اقبلها أو اعتذر عنها وأضف بديلًا إن لزم.",["Ça te dit de… ?", "Avec plaisir / Désolé, je ne peux pas."],[{fr:"Ça te dit d’aller au concert samedi ?",ar:"ما رأيك أن نذهب إلى الحفل يوم السبت؟"},{fr:"Avec plaisir ! À quelle heure commence-t-il ?",ar:"بكل سرور! في أي ساعة يبدأ؟"}]),
+  section("Donner son avis","إبداء الرأي","ابدأ برأي قصير ثم ادعمه بسبب أو مثال، وعبّر عن الاختلاف باحترام.",["À mon avis… parce que…", "Je comprends, mais je préfère…"],[{fr:"À mon avis, ce film est intéressant parce qu’il est drôle.",ar:"في رأيي، هذا الفيلم ممتع لأنه مضحك."},{fr:"Je comprends ton idée, mais je préfère rester à la maison.",ar:"أتفهم فكرتك، لكني أفضل البقاء في المنزل."}])
+ ]),
+ a2Module("messages-forms","Les messages, les courriels et les formulaires","الرسائل والبريد والنماذج",NotebookTabs,"كتابة رسائل ونصوص عملية قصيرة.",[
+  section("Message pratique","رسالة عملية قصيرة","اجعل الرسالة واضحة: تحية، سبب الرسالة، التفاصيل المهمة، طلب أو تأكيد، ثم خاتمة مناسبة.",["Bonjour… / Merci d’avance. / Cordialement.","اذكر اليوم والوقت والمرجع عند الحاجة."],[{fr:"Bonjour, je vous écris pour confirmer mon rendez-vous de jeudi à dix heures.",ar:"مرحبًا، أكتب إليكم لتأكيد موعدي يوم الخميس الساعة العاشرة."},{fr:"Merci de me répondre par courriel. Cordialement, Sami.",ar:"شكرًا للرد عليّ عبر البريد. مع التحية، سامي."}]),
+  section("Remplir un formulaire","ملء نموذج","ميّز بين prénom وnom، والعنوان والهاتف والبريد، واقرأ التعليمات قبل الإرسال.",["Prénom = الاسم الأول، nom = اسم العائلة.","adresse électronique = البريد الإلكتروني."],[{fr:"Mon nom de famille est Alami et mon prénom est Sami.",ar:"اسم عائلتي العلمي واسمي الأول سامي."},{fr:"Voici mon adresse électronique et mon numéro de téléphone.",ar:"هذا بريدي الإلكتروني ورقم هاتفي."}])
+ ]),
+ a2Module("a2-final-revision","Révision finale A2","المراجعة الختامية A2",BadgeCheck,"دمج مهارات A2 في مراجعة وتقييم ختامي.",[
+  section("Mobiliser les acquis","تجميع المكتسبات","راجع اختيار الزمن المناسب، الضمائر والروابط، ثم اجمعها في موقف واقعي منظم.",["حدّد الزمن قبل الكتابة أو الكلام.","اربط الأفكار بسبب أو نتيجة أو ترتيب.","استبدل التكرار بالضمائر عند الحاجة."],[{fr:"Hier, il pleuvait, alors nous avons pris le bus.",ar:"أمس كانت السماء تمطر، لذلك استقللنا الحافلة."},{fr:"Demain, je vais appeler le service et je leur expliquerai le problème.",ar:"غدًا سأتصل بالخدمة وسأشرح لهم المشكلة."}]),
+  section("Projet final","مهمة ختامية","اكتب أو قدّم موقفًا عمليًا يجمع التعريف بالمشكلة وسردًا قصيرًا ورأيًا أو طلبًا وحلًا مقترحًا.",["استخدم ثلاثة أزمنة أو أكثر عند الحاجة.","أضف رابطين منطقيين على الأقل.","راجع المطابقة والنفي قبل الإنهاء."],[{fr:"J’ai eu un problème pendant mon voyage, mais le personnel m’a aidé rapidement.",ar:"واجهت مشكلة أثناء رحلتي، لكن الموظفين ساعدوني بسرعة."},{fr:"Je voudrais vous remercier et proposer une amélioration.",ar:"أود أن أشكركم وأقترح تحسينًا."}])
+ ])
 ];
 
 const LEVELS:Level[]=[
@@ -8524,7 +8536,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const recordingStreamRef=useRef<MediaStream|null>(null);
  const recordingChunksRef=useRef<Blob[]>([]);
  const activeModule=useMemo(()=>level.modules.find(item=>item.id===moduleId)??level.modules[0],[level,moduleId]);
- const isA2Revision=level.id==="A2"&&activeModule.id==="revision-a1";
+ const isA2Revision=level.id==="A2"&&["revision-a1","a2-final-revision"].includes(activeModule.id);
  const isA2Habits=level.id==="A2"&&activeModule.id==="habits-frequency";
  const isA2PresentProgressive=level.id==="A2"&&activeModule.id==="present-progressive";
  const isA1Alphabet=level.id==="A1"&&activeModule.id==="alphabet";
@@ -8554,7 +8566,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors","travel-transport","housing-city","shopping-services","health"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation","comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors","travel-transport","housing-city","shopping-services","health","study-work","leisure-opinions","messages-forms","a2-final-revision"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
@@ -8565,7 +8577,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
  const isA2Connectors=level.id==="A2"&&["cause-consequence","narrative-connectors"].includes(activeModule.id);
  const isA2RealLife=level.id==="A2"&&["travel-transport","housing-city","shopping-services","health"].includes(activeModule.id);
- const isA2Expression=level.id==="A2"&&activeModule.id==="expression";
+ const isA2Expression=level.id==="A2"&&["study-work","leisure-opinions","messages-forms"].includes(activeModule.id);
  const activeA2BatchContent=level.id==="A2"?A2_BATCH_TWO_CONTENT[activeModule.id as keyof typeof A2_BATCH_TWO_CONTENT]:undefined;
  const isEnhancedA2Lesson=isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors||isA2RealLife||isA2Expression||Boolean(activeA2BatchContent);
  const activeA1EnhancedContent=level.id==="A1"?A1_ENHANCED_CONTENT[activeModule.id as keyof typeof A1_ENHANCED_CONTENT]:activeA2BatchContent;

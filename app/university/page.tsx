@@ -199,11 +199,18 @@ const A1_STRUCTURES_LISTENING_CLIPS=[
  {letter:"il y a",word:"trois livres",ar:"توجد ثلاثة كتب",hiddenSpeech:"Il y a trois livres sur la table."}
 ];
 const A1_QUESTIONS_LISTENING_CLIPS=[
- {letter:"comment",word:"vous appelez-vous ?",ar:"ما اسمك؟",hiddenSpeech:"Comment vous appelez-vous ?"},
- {letter:"où",word:"habitez-vous ?",ar:"أين تسكن؟",hiddenSpeech:"Où habitez-vous ?"},
+ {letter:"est-ce que",word:"tu parles français ?",ar:"هل تتحدث الفرنسية؟",hiddenSpeech:"Est-ce que tu parles français ?"},
+ {letter:"vous avez",word:"une réservation ?",ar:"هل لديكم حجز؟",hiddenSpeech:"Vous avez une réservation ?"},
+ {letter:"qui",word:"est votre professeur ?",ar:"من معلّمكم؟",hiddenSpeech:"Qui est votre professeur ?"},
+ {letter:"qu’est-ce que",word:"tu fais ce soir ?",ar:"ماذا ستفعل هذا المساء؟",hiddenSpeech:"Qu’est-ce que tu fais ce soir ?"},
+ {letter:"où",word:"habitez-vous ?",ar:"أين تسكنون؟",hiddenSpeech:"Où habitez-vous ?"},
  {letter:"quand",word:"commence le cours ?",ar:"متى يبدأ الدرس؟",hiddenSpeech:"Quand commence le cours ?"},
+ {letter:"comment",word:"vous appelez-vous ?",ar:"ما اسمكم؟",hiddenSpeech:"Comment vous appelez-vous ?"},
+ {letter:"pourquoi",word:"apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟",hiddenSpeech:"Pourquoi apprenez-vous le français ?"},
  {letter:"combien",word:"coûte ce billet ?",ar:"كم سعر هذه التذكرة؟",hiddenSpeech:"Combien coûte ce billet ?"},
- {letter:"pourquoi",word:"apprenez-vous le français ?",ar:"لماذا تتعلم الفرنسية؟",hiddenSpeech:"Pourquoi apprenez-vous le français ?"}
+ {letter:"combien de",word:"langues parlez-vous ?",ar:"كم لغة تتحدثون؟",hiddenSpeech:"Combien de langues parlez-vous ?"},
+ {letter:"quel",word:"bus va au centre-ville ?",ar:"أي حافلة تذهب إلى وسط المدينة؟",hiddenSpeech:"Quel bus va au centre-ville ?"},
+ {letter:"quelle",word:"couleur préférez-vous ?",ar:"أي لون تفضلون؟",hiddenSpeech:"Quelle couleur préférez-vous ?"}
 ];
 const A1_PRESENT_LISTENING_CLIPS=[
  {letter:"je parle",word:"français avec mes amis",ar:"أنا أتحدث الفرنسية مع أصدقائي.",hiddenSpeech:"Je parle français avec mes amis."},
@@ -3503,15 +3510,22 @@ const A1_QUESTIONS_READING={
 };
 
 const A1_QUESTIONS_LISTENING={
- title:"Une inscription au club",
- arTitle:"التسجيل في النادي",
- text:"Comment vous appelez-vous ? Où habitez-vous ? Quand commence le cours ? Combien coûte ce billet ? Pourquoi apprenez-vous le français ?",
+ title:"Écouter les questions",
+ arTitle:"الاستماع إلى الأسئلة",
+ text:"Est-ce que tu parles français ? Vous avez une réservation ? Qui est votre professeur ? Qu’est-ce que tu fais ce soir ? Où habitez-vous ? Quand commence le cours ? Comment vous appelez-vous ? Pourquoi apprenez-vous le français ? Combien coûte ce billet ? Combien de langues parlez-vous ? Quel bus va au centre-ville ? Quelle couleur préférez-vous ?",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Comment vous appelez-vous ?","Où travaillez-vous ?","Quel âge avez-vous ?"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["D’où venez-vous ?","Où habitez-vous ?","Quand partez-vous ?"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Comment finit le cours ?","Où commence le cours ?","Quand commence le cours ?"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Combien coûte ce billet ?","Quel bus prenez-vous ?","Comment achetez-vous ce billet ?"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quand apprenez-vous le français ?","Pourquoi apprenez-vous le français ?","Où parlez-vous français ?"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Est-ce que tu parles français ?","Est-ce que tu aimes le français ?","Tu parles avec le professeur ?"],correctIndex:0,explanationAr:"السؤال يبدأ بـ Est-ce que، وهو سؤال جوابه نعم أو لا.",explanationFr:"C’est une question fermée avec « Est-ce que »."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Vous avez une réservation ?","Vous avez un billet ?","Vous avez une question ?"],correctIndex:0,explanationAr:"السؤال بالنبرة الصاعدة: هل لديكم حجز؟",explanationFr:"La question est posée avec l’intonation."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Qui est votre professeur ?","Où est votre professeur ?","Comment est votre professeur ?"],correctIndex:0,explanationAr:"Qui تُستخدم للسؤال عن الشخص.",explanationFr:"« Qui » demande une personne."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Qu’est-ce que tu fais ce soir ?","Qu’est-ce que tu aimes ce soir ?","Qu’est-ce que tu prends ce soir ?"],correctIndex:0,explanationAr:"Qu’est-ce que تُستخدم للسؤال عن الفعل أو الشيء.",explanationFr:"« Qu’est-ce que » demande une action ou une chose."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Où habitez-vous ?","Où travaillez-vous ?","Où étudiez-vous ?"],correctIndex:0,explanationAr:"Où تُستخدم للسؤال عن المكان.",explanationFr:"« Où » demande un lieu."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quand commence le cours ?","Quand finit le cours ?","Comment commence le cours ?"],correctIndex:0,explanationAr:"Quand تُستخدم للسؤال عن الوقت.",explanationFr:"« Quand » demande le moment."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Comment vous appelez-vous ?","Comment allez-vous ?","Comment venez-vous ?"],correctIndex:0,explanationAr:"هذا سؤال مهذب عن الاسم.",explanationFr:"C’est une question polie pour demander le nom."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Pourquoi apprenez-vous le français ?","Quand apprenez-vous le français ?","Où apprenez-vous le français ?"],correctIndex:0,explanationAr:"Pourquoi تسأل عن السبب، ويمكن أن تبدأ الإجابة بـ parce que.",explanationFr:"« Pourquoi » demande une raison."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Combien coûte ce billet ?","Combien de billets avez-vous ?","Quel billet coûte dix euros ?"],correctIndex:0,explanationAr:"Combien هنا تسأل عن السعر.",explanationFr:"« Combien » demande le prix."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Combien de langues parlez-vous ?","Quelles langues parlez-vous ?","Pourquoi parlez-vous français ?"],correctIndex:0,explanationAr:"Combien de تسأل عن العدد قبل اسم الجمع.",explanationFr:"« Combien de » demande une quantité."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quel bus va au centre-ville ?","Quelle rue va au centre-ville ?","Quels bus arrivent au centre-ville ?"],correctIndex:0,explanationAr:"Quel يوافق الاسم المذكر المفرد bus.",explanationFr:"« Quel » s’accorde avec le nom masculin singulier « bus »."},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quelle couleur préférez-vous ?","Quel couleur préférez-vous ?","Quelles couleurs préférez-vous ?"],correctIndex:0,explanationAr:"Quelle توافق الاسم المؤنث المفرد couleur.",explanationFr:"« Quelle » s’accorde avec le nom féminin singulier « couleur »."}
  ]
 };
 

@@ -6333,9 +6333,18 @@ const A2_MODULES:CourseModule[]=[
   section("De + nom et quantité","de + اسم والكمية","يستبدل en اسمًا يسبقه de أو du أو de la أو des، كما يستبدل كمية سبق ذكرها.",["Je parle de ce film. → J’en parle.","J’ai trois livres. → J’en ai trois."],[{fr:"Tu veux du pain ? → Oui, j’en veux.",ar:"هل تريد خبزًا؟ ← نعم، أريد منه."},{fr:"Elle a beaucoup d’amis. → Elle en a beaucoup.",ar:"لديها أصدقاء كثيرون. ← لديها الكثير منهم."}]),
   section("Garder le nombre","الاحتفاظ بالعدد","عند وجود عدد أو كمية محددة يبقى العدد بعد en، ولا نكرر الاسم.",["Nous avons deux billets. → Nous en avons deux.","Il achète un kilo de pommes. → Il en achète un kilo."],[{fr:"J’ai besoin de ces documents. → J’en ai besoin.",ar:"أحتاج إلى هذه الوثائق. ← أحتاج إليها."},{fr:"Vous prenez combien de cafés ? → J’en prends deux.",ar:"كم قهوة تأخذون؟ ← آخذ اثنتين."}])
  ]),
- a2Module("stressed-pronouns","Les pronoms toniques","الضمائر المشددة",UserRoundCog,"استخدام moi، toi، lui وغيرها في السياق الصحيح."),
- a2Module("quantity-articles","Les quantités et les articles","الكميات والأدوات",ShoppingBag,"التعبير عن الكمية والأدوات المناسبة."),
- a2Module("negation","Les négations fréquentes","صيغ النفي الشائعة",CircleMinus,"استخدام صيغ النفي الأساسية الشائعة."),
+ a2Module("stressed-pronouns","Les pronoms toniques","الضمائر المشددة",UserRoundCog,"استخدام moi، toi، lui وغيرها في السياق الصحيح.",[
+  section("Les formes toniques","أشكال الضمائر المشددة","هي: moi، toi، lui، elle، nous، vous، eux، elles. تأتي بعد حرف جر أو للتأكيد أو للمقارنة.",["avec moi، pour toi، chez lui.","Moi, je préfère le thé. للتأكيد."],[{fr:"Tu viens avec nous ?",ar:"هل ستأتي معنا؟"},{fr:"Ce cadeau est pour elle.",ar:"هذه الهدية لها."},{fr:"Lui, il parle très vite.",ar:"هو، يتحدث بسرعة كبيرة."}]),
+  section("Après une préposition","بعد حرف الجر","بعد avec وpour وchez وsans وغيرها نحتاج ضميرًا مشددًا لا ضمير الفاعل.",["avec moi وليس avec je.","chez eux وليس chez ils."],[{fr:"Je vais chez eux ce soir.",ar:"سأذهب إليهم هذا المساء."},{fr:"Elle travaille sans lui aujourd’hui.",ar:"هي تعمل من دونه اليوم."}])
+ ]),
+ a2Module("quantity-articles","Les quantités et les articles","الكميات والأدوات",ShoppingBag,"التعبير عن الكمية والأدوات المناسبة.",[
+  section("Exprimer une quantité","التعبير عن كمية","بعد تعبيرات الكمية نستعمل de: beaucoup de، un kilo de، assez de، trop de، peu de.",["beaucoup de livres، un litre d’eau.","في النفي غالبًا de أو d’ بدل أداة التجزئة."],[{fr:"Nous avons beaucoup de travail aujourd’hui.",ar:"لدينا عمل كثير اليوم."},{fr:"Il faut un kilo de tomates.",ar:"نحتاج إلى كيلو من الطماطم."},{fr:"Je n’ai pas de monnaie.",ar:"ليس لدي نقود."}]),
+  section("Articles et contexte","الأدوات والسياق","استعمل du وde la وde l’ وdes لكمية غير محددة؛ واستعمل le وla وles عند الحديث عن الشيء بشكل عام أو معروف.",["Je bois du café = كمية غير محددة.","J’aime le café = القهوة عمومًا."],[{fr:"Elle achète de la farine et des œufs.",ar:"هي تشتري دقيقًا وبيضًا."},{fr:"Les enfants aiment les fruits.",ar:"الأطفال يحبون الفواكه."}])
+ ]),
+ a2Module("negation","Les négations fréquentes","صيغ النفي الشائعة",CircleMinus,"استخدام صيغ النفي الأساسية الشائعة.",[
+  section("Ne… pas, jamais, plus","أشكال النفي الأساسية","تحيط ne بالفعل المصرف وتأتي الكلمة النافية بعده: pas للنفي العام، jamais لعدم الحدوث أبدًا، plus لعدم الاستمرار.",["Je ne comprends pas.","Il ne vient jamais.","Nous ne travaillons plus ici."],[{fr:"Je ne prends pas le bus aujourd’hui.",ar:"لا أستقل الحافلة اليوم."},{fr:"Elle ne téléphone jamais le soir.",ar:"هي لا تتصل أبدًا في المساء."},{fr:"Ils ne vivent plus à Lyon.",ar:"هم لم يعودوا يعيشون في ليون."}]),
+  section("Personne, rien et aucun","لا أحد ولا شيء ولا أي","personne تنفي شخصًا، rien تنفي شيئًا، وaucun يطابق الاسم المفرد غالبًا.",["Je ne vois personne.","Nous ne faisons rien.","Il n’a aucune idée."],[{fr:"Je n’ai rien dans mon sac.",ar:"ليس لدي شيء في حقيبتي."},{fr:"Elle ne connaît personne ici.",ar:"هي لا تعرف أحدًا هنا."},{fr:"Nous n’avons aucun problème.",ar:"ليس لدينا أي مشكلة."}])
+ ]),
  a2Module("comparison","Le comparatif","المقارنة",Scale,"مقارنة الأشخاص والأشياء والأفعال."),
  a2Module("superlative","Le superlatif","التفضيل الأعلى",Trophy,"التعبير عن الأفضل والأكثر والأقل."),
  a2Module("relative-pronouns","Les pronoms relatifs : qui, que, où","ضمائر الوصل: qui وque وoù",Link2,"ربط جملتين بجملة وصفية قصيرة."),
@@ -8518,13 +8527,13 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience","near-future","simple-future","imperative","obligation-permission","politeness-conditional","direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
  const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA2Future=level.id==="A2"&&["near-future","simple-future","imperative"].includes(activeModule.id);
  const isA2Pronouns=level.id==="A2"&&["direct-object","indirect-object","pronoun-y","pronoun-en"].includes(activeModule.id);
- const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";
+ const isA2Quantity=level.id==="A2"&&["stressed-pronouns","quantity-articles","negation"].includes(activeModule.id);
  const isA2Comparison=level.id==="A2"&&activeModule.id==="comparison";
  const isA2Politeness=level.id==="A2"&&["obligation-permission","politeness-conditional"].includes(activeModule.id);
  const isA2Connectors=level.id==="A2"&&activeModule.id==="connectors";

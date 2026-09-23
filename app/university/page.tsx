@@ -6285,9 +6285,18 @@ const A2_MODULES:CourseModule[]=[
   section("La forme pronominale","الصيغة الضميرية","تستعمل الأفعال الضميرية être في الماضي المركب: ضمير انعكاسي + être + اسم المفعول.",["je me suis، tu t’es، il/elle s’est.","nous nous sommes، vous vous êtes، ils/elles se sont."],[{fr:"Je me suis levé tôt.",ar:"استيقظت مبكرًا."},{fr:"Elle s’est préparée rapidement.",ar:"هي استعدت بسرعة."},{fr:"Nous nous sommes retrouvés au café.",ar:"التقينا في المقهى."}]),
   section("Accord et négation","المطابقة والنفي","يتفق اسم المفعول عادة مع الفاعل. وفي النفي تحيط ne… pas بالفعل المساعد être والضمير يبقى قبل الفعل.",["Elle s’est couchée tard.","Elle ne s’est pas couchée tard."],[{fr:"Ils ne se sont pas réveillés à l’heure.",ar:"هم لم يستيقظوا في الوقت المحدد."},{fr:"Mes amies se sont habillées pour la fête.",ar:"ارتدت صديقاتي ملابسهن للحفل."}])
  ]),
- a2Module("imparfait","L’imparfait","الماضي الناقص",CalendarClock,"وصف العادات والخلفيات في الماضي."),
- a2Module("past-contrast","Passé composé ou imparfait ?","الماضي المركب أم الناقص؟",Scale,"التمييز بين الحدث المنتهي والوصف أو العادة."),
- a2Module("tell-experience","Raconter une expérience","سرد تجربة",ScrollText,"سرد تجربة قصيرة بترتيب واضح."),
+ a2Module("imparfait","L’imparfait","الماضي الناقص",CalendarClock,"وصف العادات والخلفيات في الماضي.",[
+  section("Former l’imparfait","تكوين الماضي الناقص","نأخذ صيغة nous في الحاضر، نحذف -ons، ثم نضيف: ais، ais، ait، ions، iez، aient.",["nous parlons → parl- → je parlais.","nous finissons → finiss- → nous finissions.","être استثناء مهم: j’étais، nous étions."],[{fr:"Quand j’étais enfant, je jouais dans le parc.",ar:"عندما كنت طفلًا، كنت ألعب في الحديقة."},{fr:"Nous regardions souvent des films le dimanche.",ar:"كنا نشاهد أفلامًا غالبًا يوم الأحد."}]),
+  section("Décrire une habitude ou un décor","وصف عادة أو خلفية","نستعمل الماضي الناقص لوصف حالة أو طقس أو عمر أو عادة متكررة في الماضي، لا لحدث واحد منتهٍ.",["Avant, tous les jours، souvent مؤشرات مفيدة.","il faisait، il y avait، j’avais…"],[{fr:"Il faisait beau et les rues étaient calmes.",ar:"كان الطقس جميلًا وكانت الشوارع هادئة."},{fr:"Avant, elle allait à l’école à pied.",ar:"في السابق، كانت تذهب إلى المدرسة مشيًا."}])
+ ]),
+ a2Module("past-contrast","Passé composé ou imparfait ?","الماضي المركب أم الناقص؟",Scale,"التمييز بين الحدث المنتهي والوصف أو العادة.",[
+  section("Le décor et l’événement","الخلفية والحدث","الماضي الناقص يرسم الخلفية أو العادة، والماضي المركب يذكر حدثًا محددًا قطع السياق أو انتهى.",["Imparfait: الحالة، الوصف، العادة.","Passé composé: الحدث المنتهي أو المفاجئ."],[{fr:"Il pleuvait quand le bus est arrivé.",ar:"كانت السماء تمطر عندما وصلت الحافلة."},{fr:"Je lisais quand mon téléphone a sonné.",ar:"كنت أقرأ عندما رن هاتفي."}]),
+  section("Choisir selon le sens","الاختيار بحسب المعنى","اسأل: هل أتحدث عن مشهد مستمر أو تكرار؟ اختر imparfait. هل أذكر واقعة واحدة مكتملة؟ اختر passé composé.",["Tous les jours = غالبًا imparfait.","Soudain، un jour = غالبًا passé composé."],[{fr:"Chaque été, nous passions un mois à la mer.",ar:"كنا نقضي شهرًا على البحر كل صيف."},{fr:"Un jour, nous avons rencontré un pêcheur.",ar:"في أحد الأيام قابلنا صيادًا."}])
+ ]),
+ a2Module("tell-experience","Raconter une expérience","سرد تجربة",ScrollText,"سرد تجربة قصيرة بترتيب واضح.",[
+  section("Organiser le récit","تنظيم السرد","ابدأ بالزمان والمكان، ثم قدم الخلفية، وبعدها رتب الأحداث والنتيجة أو الانطباع.",["D’abord، puis، ensuite، enfin تربط الأحداث.","Utilise parce que أو donc لشرح سبب أو نتيجة."],[{fr:"Samedi dernier, je suis allé au musée avec mon frère.",ar:"ذهبت إلى المتحف مع أخي السبت الماضي."},{fr:"D’abord, nous avons visité une exposition, puis nous avons pris un café.",ar:"زرنا معرضًا أولًا، ثم تناولنا قهوة."}]),
+  section("Mélanger les deux passés","مزج زمنَي الماضي","اجعل الماضي الناقص للخلفية والمركب للأحداث؛ بذلك تصبح القصة واضحة وطبيعية.",["الخلفية: Il faisait beau, nous étions contents.","الحدث: nous avons commencé, nous sommes rentrés."],[{fr:"Il faisait beau, alors nous avons décidé de marcher.",ar:"كان الطقس جميلًا، لذلك قررنا أن نمشي."},{fr:"La journée était longue, mais nous avons beaucoup aimé la visite.",ar:"كان اليوم طويلًا، لكننا أحببنا الزيارة كثيرًا."}])
+ ]),
  a2Module("near-future","Le futur proche","المستقبل القريب",FastForward,"التعبير عن خطط قريبة باستعمال aller + infinitif."),
  a2Module("simple-future","Le futur simple fréquent","المستقبل البسيط الشائع",Telescope,"استخدام صيغ مستقبل بسيطة وشائعة."),
  a2Module("imperative","L’impératif","صيغة الأمر",Hand,"إعطاء التعليمات والنصائح البسيطة."),
@@ -8482,10 +8491,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1DailyLife=level.id==="A1"&&activeModule.id==="daily-life";
  const isA1Situations=level.id==="A1"&&activeModule.id==="situations";
  const isA1MessagesForms=level.id==="A1"&&activeModule.id==="messages-forms";
- const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
+ const isA2OrbitLesson=level.id==="A2"&&["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees","recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA1OrbitLesson=isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2OrbitLesson;
  const isA2PasseCompose=level.id==="A2"&&["passe-compose-avoir","passe-compose-etre","reflexive-past"].includes(activeModule.id);
- const isA2Imparfait=level.id==="A2"&&activeModule.id==="imparfait";
+ const isA2Imparfait=level.id==="A2"&&["imparfait","past-contrast","tell-experience"].includes(activeModule.id);
  const isA2Future=level.id==="A2"&&activeModule.id==="future";
  const isA2Pronouns=level.id==="A2"&&activeModule.id==="pronouns";
  const isA2Quantity=level.id==="A2"&&activeModule.id==="quantity";

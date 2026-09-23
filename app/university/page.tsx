@@ -3531,17 +3531,16 @@ const A1_QUESTIONS_LISTENING={
  ]
 };
 
-const A1_QUESTIONS_WRITING_MODEL="Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Pourquoi apprenez-vous le français ? Est-ce que vous aimez voyager ?";
+const A1_QUESTIONS_WRITING_MODEL="Bonjour ! Comment vous appelez-vous ? Où habitez-vous ? Quelle langue parlez-vous ? Est-ce que vous aimez voyager ? Pourquoi apprenez-vous le français ? Combien de langues parlez-vous ? Quel sport préférez-vous ?";
 
 const A1_QUESTIONS_WRITING_TRANSLATIONS=[
  {fr:"comment vous appelez-vous ?",ar:"ما اسمكم؟"},
  {fr:"où habitez-vous ?",ar:"أين تسكنون؟"},
- {fr:"d’où venez-vous ?",ar:"من أين أتيتم؟"},
- {fr:"quand commence le cours ?",ar:"متى يبدأ الدرس؟"},
- {fr:"combien coûte ce billet ?",ar:"كم سعر هذه التذكرة؟"},
- {fr:"pourquoi apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
  {fr:"quelle langue parlez-vous ?",ar:"ما اللغة التي تتحدثونها؟"},
- {fr:"est-ce que vous aimez voyager ?",ar:"هل تحبون السفر؟"}
+ {fr:"est-ce que vous aimez voyager ?",ar:"هل تحبون السفر؟"},
+ {fr:"pourquoi apprenez-vous le français ?",ar:"لماذا تتعلمون الفرنسية؟"},
+ {fr:"combien de langues parlez-vous ?",ar:"كم لغة تتحدثون؟"},
+ {fr:"quel sport préférez-vous ?",ar:"أي رياضة تفضلون؟"}
 ];
 
 const A1_QUESTIONS_DICTATION=[

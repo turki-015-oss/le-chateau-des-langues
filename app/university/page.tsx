@@ -5369,7 +5369,7 @@ const A2_EXPRESSION_DIALOGUES=[
  {context:"Vous n’avez pas compris la dernière consigne.",prompt:"اختر العبارة التي تحافظ على الحوار.",choices:["Pour conclure, je pars.","Je suis contre la question.","Excusez-moi, pourriez-vous l’expliquer autrement ?"],correctIndex:2,feedback:"طلب إعادة الشرح بطريقة أخرى يصلح سوء الفهم ويتيح استمرار التفاعل."}
 ];
 
-const A2_MODULES:CourseModule[]=[
+const A2_LEGACY_MODULES:CourseModule[]=[
  {
   id:"revision",title:"Consolider le présent",ar:"تثبيت الحاضر والتواصل",icon:RefreshCw,
   description:"ثبّت أساس A2: الحاضر، الأفعال الضميرية، النفي، السؤال، الزمن، وبناء إجابة مترابطة في مواقف الحياة اليومية.",
@@ -6198,6 +6198,53 @@ const B1_MODULES:CourseModule[]=[
  }
 ];
 
+const a2Module=(id:string,title:string,ar:string,icon:LucideIcon,description:string):CourseModule=>({
+ id,title,ar,icon,description,
+ sections:[section("À venir","سيُبنى محتوى هذا الدرس لاحقًا","ثُبّتت بطاقة الدرس ومكانه في المسار. سنضيف الشرح والأنشطة والتقييم في دفعته القادمة.",[],[])]
+});
+
+// La structure complète d’A2 est d’abord mise en place ; le contenu pédagogique
+// détaillé est livré progressivement, module par module.
+const A2_MODULES:CourseModule[]=[
+ a2Module("revision-a1","Révision active de A1","مراجعة نشطة لمستوى A1",RefreshCw,"مراجعة مركزة للمهارات الأساسية قبل الانتقال إلى A2."),
+ a2Module("habits-frequency","Les habitudes et la fréquence","العادات والتكرار",Repeat2,"التحدث عن الروتين والعادات وعدد مرات حدوثها."),
+ a2Module("present-progressive","Le présent progressif","الحاضر الجاري",Activity,"وصف ما يحدث الآن باستعمال être en train de."),
+ a2Module("duration","Exprimer la durée","التعبير عن المدة",Clock3,"التعبير عن البداية والمدة والاستمرار."),
+ a2Module("adverbs-degrees","Les adverbes et les degrés","الظروف ودرجات الشدة",Gauge,"تحديد التكرار والكمية ودرجة الوصف."),
+ a2Module("recent-past","Le passé récent","الماضي القريب",History,"التعبير عما حدث للتو."),
+ a2Module("passe-compose-avoir","Le passé composé avec avoir","الماضي المركب مع avoir",BookOpen,"بناء الماضي المركب مع الفعل المساعد avoir."),
+ a2Module("passe-compose-etre","Le passé composé avec être","الماضي المركب مع être",UsersRound,"بناء الماضي المركب مع être واتفاق اسم المفعول."),
+ a2Module("reflexive-past","Les verbes pronominaux au passé composé","الأفعال الضميرية في الماضي المركب",RotateCcw,"استخدام الأفعال الضميرية عند الحديث عن الماضي."),
+ a2Module("imparfait","L’imparfait","الماضي الناقص",CalendarClock,"وصف العادات والخلفيات في الماضي."),
+ a2Module("past-contrast","Passé composé ou imparfait ?","الماضي المركب أم الناقص؟",Scale,"التمييز بين الحدث المنتهي والوصف أو العادة."),
+ a2Module("tell-experience","Raconter une expérience","سرد تجربة",ScrollText,"سرد تجربة قصيرة بترتيب واضح."),
+ a2Module("near-future","Le futur proche","المستقبل القريب",FastForward,"التعبير عن خطط قريبة باستعمال aller + infinitif."),
+ a2Module("simple-future","Le futur simple fréquent","المستقبل البسيط الشائع",Telescope,"استخدام صيغ مستقبل بسيطة وشائعة."),
+ a2Module("imperative","L’impératif","صيغة الأمر",Hand,"إعطاء التعليمات والنصائح البسيطة."),
+ a2Module("obligation-permission","L’obligation, la permission et l’interdiction","الواجب والإذن والمنع",ListChecks,"التعبير عما يجب فعله وما يُسمح أو لا يُسمح به."),
+ a2Module("politeness-conditional","Le conditionnel de politesse","الشرطية للّباقة",HandHeart,"صياغة الطلبات والاقتراحات بلطف."),
+ a2Module("direct-object","Le complément d’objet direct (COD)","المفعول به المباشر",Tags,"التعرّف على المفعول المباشر واستبداله."),
+ a2Module("indirect-object","Le complément d’objet indirect (COI)","المفعول به غير المباشر",Link2,"التعرّف على المفعول غير المباشر واستبداله."),
+ a2Module("pronoun-y","Le pronom y","ضمير y",MapPin,"استخدام y للدلالة على مكان أو à + شيء."),
+ a2Module("pronoun-en","Le pronom en","ضمير en",ShoppingBasket,"استخدام en للدلالة على de والكمية."),
+ a2Module("stressed-pronouns","Les pronoms toniques","الضمائر المشددة",UserRoundCog,"استخدام moi، toi، lui وغيرها في السياق الصحيح."),
+ a2Module("quantity-articles","Les quantités et les articles","الكميات والأدوات",ShoppingBag,"التعبير عن الكمية والأدوات المناسبة."),
+ a2Module("negation","Les négations fréquentes","صيغ النفي الشائعة",CircleMinus,"استخدام صيغ النفي الأساسية الشائعة."),
+ a2Module("comparison","Le comparatif","المقارنة",Scale,"مقارنة الأشخاص والأشياء والأفعال."),
+ a2Module("superlative","Le superlatif","التفضيل الأعلى",Trophy,"التعبير عن الأفضل والأكثر والأقل."),
+ a2Module("relative-pronouns","Les pronoms relatifs : qui, que, où","ضمائر الوصل: qui وque وoù",Link2,"ربط جملتين بجملة وصفية قصيرة."),
+ a2Module("cause-consequence","La cause, la conséquence et l’opposition","السبب والنتيجة والمخالفة",Layers3,"ربط الأفكار بعلاقات واضحة."),
+ a2Module("narrative-connectors","Les connecteurs du récit","روابط السرد",ScrollText,"ترتيب أحداث القصة وربطها."),
+ a2Module("travel-transport","Les voyages et les transports","السفر والمواصلات",Navigation,"التواصل في مواقف السفر والتنقل."),
+ a2Module("housing-city","Le logement et la ville","السكن والمدينة",Building2,"التحدث عن السكن والخدمات والمدينة."),
+ a2Module("shopping-services","Les achats et les services","التسوق والخدمات",ShoppingBag,"طلب المنتجات والخدمات وحل المواقف الشائعة."),
+ a2Module("health","La santé et le corps","الصحة والجسم",Stethoscope,"وصف حالة صحية وطلب المساعدة."),
+ a2Module("study-work","Les études et le travail","الدراسة والعمل",GraduationCap,"التحدث عن الدراسة والخبرة والعمل."),
+ a2Module("leisure-opinions","Les loisirs, les invitations et les opinions","الترفيه والدعوات والآراء",Coffee,"التحدث عن الاهتمامات والدعوات وإبداء الرأي."),
+ a2Module("messages-forms","Les messages, les courriels et les formulaires","الرسائل والبريد والنماذج",NotebookTabs,"كتابة رسائل ونصوص عملية قصيرة."),
+ a2Module("a2-final-revision","Révision finale A2","المراجعة الختامية A2",BadgeCheck,"دمج مهارات A2 في مراجعة وتقييم ختامي.")
+];
+
 const LEVELS:Level[]=[
  {id:"A1",label:"Débutant",ar:"المستوى المبتدئ",description:"من الأبجدية والنطق إلى التواصل في المواقف اليومية الأساسية.",modules:A1_ORDERED_MODULES},
  {id:"A2",label:"Élémentaire",ar:"المستوى الأساسي المتقدم",description:"بناء سرد أوضح، استخدام الأزمنة، والتعامل باستقلالية أكبر.",modules:A2_MODULES},
@@ -6211,9 +6258,12 @@ const COURSE_PHASES:Record<string,JourneyPhase[]>={
   {title:"التواصل اليومي",fr:"Communiquer au quotidien",description:"العائلة والسكن والروتين والطعام والمدينة والطقس والصحة والمواقف والرسائل.",moduleIds:["description","home-housing","daily-life","food-shopping","city-directions","weather-clothes","health-needs","situations","messages-forms"]}
  ],
   A2:[
-   {title:"تثبيت الأساس",fr:"Consolider les acquis",description:"مراجعة الحاضر ثم الحديث عن الماضي والمستقبل.",moduleIds:["revision","passe-compose","imparfait","future"]},
-   {title:"دقة التعبير",fr:"Préciser son expression",description:"الضمائر والكميات والمقارنة والطلب المهذب.",moduleIds:["pronouns","quantity","comparison","politeness"]},
-   {title:"التواصل المستقل",fr:"Communiquer avec autonomie",description:"ربط الأفكار والتصرف في المواقف والتعبير بثقة.",moduleIds:["connectors","themes","expression"]}
+   {title:"تثبيت الحاضر والانتقال من A1",fr:"Consolider le présent",description:"تثبيت الحاضر والروتين والتدرج نحو التعبير الأدق.",moduleIds:["revision-a1","habits-frequency","present-progressive","duration","adverbs-degrees"]},
+   {title:"الحديث عن الماضي",fr:"Parler du passé",description:"التعبير عن الماضي القريب، الأحداث المنتهية، والخلفية والسرد.",moduleIds:["recent-past","passe-compose-avoir","passe-compose-etre","reflexive-past","imparfait","past-contrast","tell-experience"]},
+   {title:"المستقبل والتعليمات والتفاعل",fr:"Projeter et interagir",description:"الخطط والتعليمات والطلب والتفاعل المهذب.",moduleIds:["near-future","simple-future","imperative","obligation-permission","politeness-conditional"]},
+   {title:"الضمائر والكمية والبنى الأساسية",fr:"Structurer la phrase",description:"الضمائر والكميات والنفي في بنى واضحة.",moduleIds:["direct-object","indirect-object","pronoun-y","pronoun-en","stressed-pronouns","quantity-articles","negation"]},
+   {title:"الوصف والمقارنة وربط الأفكار",fr:"Décrire et relier les idées",description:"المقارنة والوصل وبناء نص قصير مترابط.",moduleIds:["comparison","superlative","relative-pronouns","cause-consequence","narrative-connectors"]},
+   {title:"مواقف الحياة والتعبير العملي",fr:"Agir dans la vie quotidienne",description:"التواصل المستقل في مواقف الحياة والدراسة والعمل.",moduleIds:["travel-transport","housing-city","shopping-services","health","study-work","leisure-opinions","messages-forms","a2-final-revision"]}
   ],
   B1:[
    {title:"إتقان السرد",fr:"Maîtriser le récit",description:"أزمنة الماضي وتنظيم القصة والمستقبل والافتراض.",moduleIds:["past-tenses","narration","future-hypothesis","conditional"]},

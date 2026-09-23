@@ -3558,11 +3558,18 @@ const A1_QUESTIONS_DICTATION=[
 ];
 
 const A1_QUESTIONS_BUILDERS=[
- {tokens:["vous","Comment","appelez-vous","?"],answer:["Comment","vous","appelez-vous","?"],ar:"ما اسمك؟"},
- {tokens:["habitez","Où","vous","?"],answer:["Où","habitez","vous","?"],ar:"أين تسكن؟"},
- {tokens:["français","Est-ce que","parlez","vous","?"],answer:["Est-ce que","vous","parlez","français","?"],ar:"هل تتحدث الفرنسية؟"},
- {tokens:["le","Quand","train","arrive","?"],answer:["Quand","arrive","le","train","?"],ar:"متى يصل القطار؟"},
- {tokens:["coûtent","Combien","pommes","ces","?"],answer:["Combien","coûtent","ces","pommes","?"],ar:"كم سعر هذا التفاح؟"}
+ {tokens:["tu","Est-ce que","parles","français","?"],answer:["Est-ce que","tu","parles","français","?"],ar:"هل تتحدث الفرنسية؟"},
+ {tokens:["une réservation","Vous","avez","?"],answer:["Vous","avez","une réservation","?"],ar:"هل لديكم حجز؟"},
+ {tokens:["votre professeur","Qui","est","?"],answer:["Qui","est","votre professeur","?"],ar:"من معلّمكم؟"},
+ {tokens:["tu","Qu’est-ce que","fais","ce soir","?"],answer:["Qu’est-ce que","tu","fais","ce soir","?"],ar:"ماذا ستفعل هذا المساء؟"},
+ {tokens:["habitez-vous","Où","?"],answer:["Où","habitez-vous","?"],ar:"أين تسكنون؟"},
+ {tokens:["le cours","Quand","commence","?"],answer:["Quand","commence","le cours","?"],ar:"متى يبدأ الدرس؟"},
+ {tokens:["vous","Comment","appelez-vous","?"],answer:["Comment","vous","appelez-vous","?"],ar:"ما اسمكم؟"},
+ {tokens:["le français","Pourquoi","apprenez-vous","?"],answer:["Pourquoi","apprenez-vous","le français","?"],ar:"لماذا تتعلمون الفرنسية؟"},
+ {tokens:["ce billet","Combien","coûte","?"],answer:["Combien","coûte","ce billet","?"],ar:"كم سعر هذه التذكرة؟"},
+ {tokens:["de langues","Combien","parlez-vous","?"],answer:["Combien","de langues","parlez-vous","?"],ar:"كم لغة تتحدثون؟"},
+ {tokens:["va","Quel bus","au centre-ville","?"],answer:["Quel bus","va","au centre-ville","?"],ar:"أي حافلة تذهب إلى وسط المدينة؟"},
+ {tokens:["préférez-vous","Quelle couleur","?"],answer:["Quelle couleur","préférez-vous","?"],ar:"أي لون تفضلون؟"}
 ];
 
 const A1_QUESTIONS_DIALOGUES=[

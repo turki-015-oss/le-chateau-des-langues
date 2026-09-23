@@ -8112,6 +8112,36 @@ function A1QuestionsClosedTable(){
  </div>;
 }
 
+const A1_QUESTION_WORD_EXAMPLES=[
+ {word:"Qui",arWord:"مَن؟",rule:"نسأل بها عن شخص أو أشخاص.",question:"Qui est votre professeur ?",questionAr:"من معلّمكم؟",answer:"C’est Monsieur Martin.",answerAr:"إنه الأستاذ مارتان."},
+ {word:"Qu’est-ce que",arWord:"ماذا؟",rule:"نسأل بها عن شيء أو فعل.",question:"Qu’est-ce que tu fais ce soir ?",questionAr:"ماذا ستفعل هذا المساء؟",answer:"Je regarde un film.",answerAr:"سأشاهد فيلمًا."},
+ {word:"Où",arWord:"أين؟",rule:"نسأل بها عن المكان.",question:"Où habitez-vous ?",questionAr:"أين تسكنون؟",answer:"J’habite à Lyon.",answerAr:"أسكن في ليون."},
+ {word:"Quand",arWord:"متى؟",rule:"نسأل بها عن الوقت أو التاريخ.",question:"Quand commence le cours ?",questionAr:"متى يبدأ الدرس؟",answer:"Le cours commence à neuf heures.",answerAr:"يبدأ الدرس الساعة التاسعة."},
+ {word:"Comment",arWord:"كيف؟",rule:"نسأل بها عن الطريقة أو الاسم.",question:"Comment vous appelez-vous ?",questionAr:"ما اسمكم؟",answer:"Je m’appelle Sami.",answerAr:"اسمي سامي."},
+ {word:"Pourquoi",arWord:"لماذا؟",rule:"نسأل بها عن السبب، وغالبًا نجيب بـ parce que.",question:"Pourquoi apprenez-vous le français ?",questionAr:"لماذا تتعلمون الفرنسية؟",answer:"Parce que j’aime voyager.",answerAr:"لأنني أحب السفر."},
+ {word:"Combien",arWord:"كم؟",rule:"نسأل بها عن العدد أو السعر.",question:"Combien coûte ce billet ?",questionAr:"كم سعر هذه التذكرة؟",answer:"Il coûte dix euros.",answerAr:"سعرها عشرة يورو."},
+ {word:"Combien de",arWord:"كم من؟",rule:"نسأل بها عن عدد الأشياء قبل اسم في الجمع.",question:"Combien de langues parlez-vous ?",questionAr:"كم لغة تتحدثون؟",answer:"Je parle deux langues.",answerAr:"أتحدث لغتين."}
+];
+
+function A1QuestionWordsTable(){
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_QUESTION_WORD_EXAMPLES[exampleIndex];
+ return <div className="a1-demonstratives-table a1-questions-closed-table a1-question-words-table" aria-live="polite">
+  <p className="a1-nouns-learning-intro">اختر أداة الاستفهام، ثم استمع إلى سؤال بسيط وإجابته النموذجية. تظهر بطاقة واحدة فقط لتبقى الصفحة قصيرة.</p>
+  <nav className="a1-question-word-tabs" aria-label="اختر أداة الاستفهام">{A1_QUESTION_WORD_EXAMPLES.map((entry,index)=><button key={entry.word} type="button" className={exampleIndex===index?"active":""} aria-pressed={exampleIndex===index} onClick={()=>setExampleIndex(index)} dir="ltr">{entry.word}</button>)}</nav>
+  <div className="a1-demonstratives-rule"><span dir="ltr">{item.word}</span><div><small>{item.arWord}</small><strong>{item.rule}</strong></div></div>
+  <div className="a1-questions-closed-grid a1-question-words-grid" key={exampleIndex}>
+   <button type="button" className="a1-questions-closed-question" onClick={()=>void speakFrench(item.question,{rate:.74})} aria-label={`استمع إلى السؤال: ${item.question}`}><small>السؤال</small><strong dir="ltr">{item.question}</strong><span>{item.questionAr}</span><Volume2 aria-hidden="true"/></button>
+   <button type="button" className="a1-question-word-answer" onClick={()=>void speakFrench(item.answer,{rate:.74})} aria-label={`استمع إلى الإجابة: ${item.answer}`}><small>إجابة نموذجية</small><strong dir="ltr">{item.answer}</strong><span>{item.answerAr}</span><Volume2 aria-hidden="true"/></button>
+  </div>
+  <div className="university-number-pagination a1-demonstratives-pagination" dir="ltr">
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0} aria-label="الأداة السابقة"><ChevronLeft/><span>السابق</span></button>
+   <div><small>أدوات الاستفهام</small><strong>{exampleIndex+1} / {A1_QUESTION_WORD_EXAMPLES.length}</strong><em dir="ltr">{item.word}</em></div>
+   <button type="button" onClick={()=>setExampleIndex(index=>Math.min(A1_QUESTION_WORD_EXAMPLES.length-1,index+1))} disabled={exampleIndex===A1_QUESTION_WORD_EXAMPLES.length-1} aria-label="الأداة التالية"><span>التالي</span><ChevronRight/></button>
+  </div>
+ </div>;
+}
+
 let practiceCorrectAudio:HTMLAudioElement|null=null;
 let practiceErrorAudio:HTMLAudioElement|null=null;
 
@@ -9881,7 +9911,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
           </div>
          </div>
         </section>})}
-       </div>:<>
+       </div>:isA1Questions&&index===1?<A1QuestionWordsTable/>:<>
         <p className="university-explanation-text">{item.explanation}</p>
         <div className="university-rule-list">{item.points.map(point=><p key={point}><i>✓</i>{point}</p>)}</div>
         <div className="university-example-list">

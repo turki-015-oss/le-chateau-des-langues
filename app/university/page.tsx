@@ -3788,14 +3788,18 @@ const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_NUMBERS_TIME_WRITING_TRANSLATIONS=[
- {fr:"huit heures et quart",ar:"الثامنة والربع"},
- {fr:"neuf heures et demie",ar:"التاسعة والنصف"},
- {fr:"midi moins dix",ar:"الثانية عشرة إلا عشر دقائق"},
- {fr:"le premier avril",ar:"الأول من أبريل"},
- {fr:"jeudi douze octobre",ar:"الخميس الثاني عشر من أكتوبر"},
- {fr:"au mois d’août",ar:"في شهر أغسطس"},
+ {fr:"lundi 8 avril",ar:"الاثنين 8 أبريل"},
+ {fr:"commencer le cours à",ar:"يبدأ الدرس عند"},
+ {fr:"huit heures et demie",ar:"الثامنة والنصف"},
+ {fr:"à midi",ar:"عند الظهر"},
+ {fr:"un rendez-vous à",ar:"موعد عند"},
+ {fr:"quinze heures et quart",ar:"الثالثة والربع بعد الظهر"},
+ {fr:"le soir",ar:"في المساء"},
+ {fr:"prendre le train à",ar:"أستقل القطار عند"},
+ {fr:"dix-neuf heures",ar:"السابعة مساءً"},
+ {fr:"le billet coûte",ar:"سعر التذكرة هو"},
  {fr:"quarante-deux euros",ar:"اثنان وأربعون يورو"},
- {fr:"du lundi au samedi",ar:"من الاثنين إلى السبت"}
+ {fr:"le premier avril",ar:"الأول من أبريل"}
 ];
 
 const A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS=[
@@ -4037,7 +4041,7 @@ const A1_NUMBERS_TIME_LISTENING={
  ]
 };
 
-const A1_NUMBERS_TIME_WRITING_MODEL="Lundi 8 avril, je commence le travail à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros. Le soir, mon cours finit à dix-neuf heures.";
+const A1_NUMBERS_TIME_WRITING_MODEL="Lundi 8 avril, je commence le cours à huit heures et demie. À midi, je déjeune avec mon ami. Mon rendez-vous est à quinze heures et quart. Le soir, je prends le train à dix-neuf heures. Le billet coûte quarante-deux euros.";
 
 const A1_NUMBERS_TIME_DICTATION=[
  {speech:"huit heures",ar:"الساعة الثامنة."},
@@ -4626,7 +4630,7 @@ const A1_ENHANCED_CONTENT={
  },
  "numbers-time":{
   reading:A1_NUMBERS_TIME_READING,listening:A1_NUMBERS_TIME_LISTENING,dictation:A1_NUMBERS_TIME_DICTATION,builders:A1_NUMBERS_TIME_BUILDERS,dialogues:A1_NUMBERS_TIME_DIALOGUES,
-  writingModel:A1_NUMBERS_TIME_WRITING_MODEL,writingTitle:"اكتب برنامج يوم بالمواعيد",writingInstructions:"اكتب من 30 إلى 45 كلمة عن برنامج يوم واحد. اذكر اليوم والتاريخ، وموعدين مختلفين على الأقل، وسعرًا أو رقم هاتف.",writingPlaceholder:"Lundi 8 avril, je…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_NUMBERS_TIME_WRITING_MODEL,writingTitle:"اكتب برنامجًا قصيرًا ليوم واحد",writingInstructions:"اكتب من 25 إلى 40 كلمة عن يوم واحد. اذكر اليوم أو التاريخ، وموعدين مختلفين على الأقل، ثم أضف سعرًا أو رقم هاتف.",writingPlaceholder:"Lundi 8 avril, je…",writingMinimum:25,writingMaximum:40,
   speakingPrompt:"Lundi 8 avril, je commence à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر اليوم والتاريخ أولًا.","انطق كل موعد بوضوح وبسرعة هادئة.","أضف سعرًا أو رقم هاتف في النهاية."],dictationUnit:"sentence"
  },
  "weather-clothes":{

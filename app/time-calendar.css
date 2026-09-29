@@ -4,7 +4,9 @@
 
 /* Keep the time and calendar board legible even when the device requests a dark UI. */
 .a1-time-calendar-studio{isolation:isolate;color-scheme:light;color:#173f72;background:#f7fbff!important}
-.a1-time-calendar-studio .a1-time-calendar-heading h3,.a1-time-calendar-studio .a1-time-calendar-card-head h4{color:#123b68!important}
+.a1-time-calendar-studio .a1-time-calendar-heading{grid-template-columns:58px minmax(0,1fr);padding:16px 18px;border:1px solid #bed4e7;border-radius:18px;background:linear-gradient(135deg,#eef8ff,#fef8e9)}
+.a1-time-calendar-studio .a1-time-calendar-heading h3{margin:0;color:#123b68!important;font-size:24px}
+.a1-time-calendar-studio .a1-time-calendar-card-head h4{color:#123b68!important}
 .a1-time-calendar-studio .a1-time-calendar-heading p,.a1-time-calendar-studio .a1-time-calendar-card>p{color:#405d78!important;font-weight:700}
 .a1-time-calendar-studio .a1-time-calendar-card{background:#fff!important}
 .a1-time-calendar-studio .a1-time-calendar-table article{background:#fff!important;border-color:#c9dae8!important}
@@ -15,3 +17,4 @@
 .a1-time-calendar-studio .university-number-pagination small{color:#7a5a22!important;font-weight:800}
 .a1-time-calendar-studio .university-number-pagination strong{color:#123f70!important}
 .a1-time-calendar-studio .university-number-pagination em{color:#526d86!important;font-weight:700}
+@media(max-width:680px){.a1-time-calendar-studio .a1-time-calendar-heading{grid-template-columns:45px minmax(0,1fr);padding:12px}.a1-time-calendar-studio .a1-time-calendar-heading h3{font-size:20px}}

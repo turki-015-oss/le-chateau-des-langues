@@ -9935,7 +9935,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
     {activeModule.id==="numbers-time"&&<section className="a1-time-calendar-studio">
      <header className="a1-time-calendar-heading">
       <span><CalendarDays/></span>
-      <div><small>Heure et calendrier · tableau intelligent</small><h3>الساعة والتقويم</h3><p>مرّر بين البطاقات لتتعلم الصيغة، المثال، ومعنى الاستعمال من دون صفحة طويلة.</p></div>
+      <div><h3>الساعة والتقويم</h3></div>
      </header>
      <div className="a1-time-calendar-card" key={timeCalendarPage.label}>
       <div className="a1-time-calendar-card-head"><span dir="ltr">{timeCalendarPage.frLabel}</span><h4>{timeCalendarPage.label}</h4></div>

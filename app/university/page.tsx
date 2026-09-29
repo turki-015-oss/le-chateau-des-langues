@@ -6491,6 +6491,66 @@ const NUMBER_PAGES=[
  }))
 }));
 
+const TIME_CALENDAR_PAGES=[
+ {
+  frLabel:"L’heure : demander et répondre",label:"السؤال عن الساعة والإجابة",intro:"السؤال الثابت هو Quelle heure est-il ? وتبدأ الإجابة دائمًا بـ Il est. أمّا مع الموعد فنستخدم à قبل الوقت.",
+  rows:[
+   {tag:"السؤال",fr:"Quelle heure est-il ?",ar:"كم الساعة؟",note:"لا نستخدم Quel heure؛ لأن heure اسم مؤنث."},
+   {tag:"جواب كامل",fr:"Il est huit heures.",ar:"الساعة الثامنة.",note:"Il est + الرقم + heure / heures."},
+   {tag:"موعد",fr:"Le cours commence à huit heures.",ar:"يبدأ الدرس الساعة الثامنة.",note:"نستخدم à مع وقت بدء فعل أو موعد."},
+   {tag:"ساعة واحدة",fr:"Il est une heure.",ar:"الساعة الواحدة.",note:"نقول une heure في الواحدة فقط."}
+  ]
+ },
+ {
+  frLabel:"Les minutes",label:"الساعات والدقائق",intro:"بعد كلمة heures نضيف الدقائق مباشرة. الصيغة الرقمية مفهومة أيضًا، لكن هذه الأمثلة تعطي النطق الطبيعي الواضح للمبتدئ.",
+  rows:[
+   {tag:"00 دقيقة",fr:"Il est neuf heures.",ar:"الساعة التاسعة تمامًا.",note:"لا نذكر zéro minute عند تمام الساعة."},
+   {tag:"10 دقائق",fr:"Il est neuf heures dix.",ar:"الساعة التاسعة وعشر دقائق.",note:"نضيف عدد الدقائق بعد heures."},
+   {tag:"20 دقيقة",fr:"Il est neuf heures vingt.",ar:"الساعة التاسعة وعشرون دقيقة.",note:"التسلسل: الساعة ثم الدقائق."},
+   {tag:"25 دقيقة",fr:"Il est neuf heures vingt-cinq.",ar:"الساعة التاسعة وخمس وعشرون دقيقة.",note:"تُنطق vingt-cinq كوحدة واحدة."}
+  ]
+ },
+ {
+  frLabel:"Les quarts et les moments",label:"الربع والنصف والأوقات الخاصة",intro:"توجد صيغ شائعة تجعل الوقت أقصر: et quart للربع بعد الساعة، et demie للنصف، وmoins… للدقائق قبل الساعة التالية.",
+  rows:[
+   {tag:"والربع",fr:"Il est trois heures et quart.",ar:"الساعة الثالثة والربع.",note:"et quart = 15 دقيقة بعد الساعة."},
+   {tag:"والنصف",fr:"Il est trois heures et demie.",ar:"الساعة الثالثة والنصف.",note:"demie مؤنث لأنها تعود على heure."},
+   {tag:"إلا الربع",fr:"Il est quatre heures moins le quart.",ar:"الساعة الرابعة إلا ربعًا.",note:"نذكر الساعة التالية ثم moins le quart."},
+   {tag:"إلا عشر دقائق",fr:"Il est cinq heures moins dix.",ar:"الساعة الخامسة إلا عشر دقائق.",note:"moins + عدد الدقائق قبل الساعة التالية."},
+   {tag:"منتصف النهار",fr:"Il est midi.",ar:"الساعة الثانية عشرة ظهرًا.",note:"نقول midi بلا heure."},
+   {tag:"منتصف الليل",fr:"Il est minuit.",ar:"الساعة الثانية عشرة ليلًا.",note:"نقول minuit بلا heure."}
+  ]
+ },
+ {
+  frLabel:"Les jours",label:"أيام الأسبوع وأداة التعريف",intro:"تُكتب أسماء الأيام بحرف صغير. نستخدم le مع اليوم عندما نتحدث عن عادة متكررة، ونحذف الأداة عند الحديث عن يوم محدد قريب أو ماضٍ.",
+  rows:[
+   {tag:"أيام الأسبوع",fr:"lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche",ar:"الاثنين، الثلاثاء، الأربعاء، الخميس، الجمعة، السبت، الأحد.",note:"تبدأ من lundi وتنتهي بـ dimanche، وبحرف صغير."},
+   {tag:"عادة",fr:"Je travaille le lundi.",ar:"أعمل كل يوم اثنين.",note:"le + اليوم = عادة أو تكرار أسبوعي."},
+   {tag:"يوم محدد",fr:"Le cours est lundi.",ar:"الدرس يوم الاثنين.",note:"lundi بلا le يدل على يوم الاثنين المحدد."},
+   {tag:"نطاق أيام",fr:"Je travaille du lundi au jeudi.",ar:"أعمل من الاثنين إلى الخميس.",note:"du … au … لتحديد بداية ونهاية المدة."}
+  ]
+ },
+ {
+  frLabel:"Les mois",label:"أشهر السنة وحرف الجر",intro:"تُكتب أشهر السنة بحرف صغير كذلك. نستخدم en قبل الشهر لقول متى يحدث شيء، ولا نضع أداة تعريف قبل اسم الشهر في هذا التركيب.",
+  rows:[
+   {tag:"أشهر السنة",fr:"janvier à décembre",ar:"يناير إلى ديسمبر.",note:"كل أسماء الأشهر تكتب بحرف صغير، وتُنطق من janvier إلى décembre."},
+   {tag:"الشهر",fr:"Je voyage en juillet.",ar:"أسافر في يوليو.",note:"en + الشهر لوقت وقوع الحدث."},
+   {tag:"موعد",fr:"Les vacances sont en août.",ar:"الإجازة في أغسطس.",note:"لا نقول à août في هذا المعنى."},
+   {tag:"مدى زمني",fr:"Le cours est de janvier à mars.",ar:"الدرس من يناير إلى مارس.",note:"de … à … للمدة بين شهرين."}
+  ]
+ },
+ {
+  frLabel:"La date",label:"السؤال عن التاريخ وصياغته",intro:"نسأل عن تاريخ اليوم بـ Quelle est la date aujourd’hui ? وفي الجواب نرتب التاريخ: le + رقم اليوم + اسم الشهر. اليوم الأول وحده يستعمل premier.",
+  rows:[
+   {tag:"السؤال",fr:"Quelle est la date aujourd’hui ?",ar:"ما تاريخ اليوم؟",note:"نستطيع أيضًا أن نقول: On est quel jour ?"},
+   {tag:"جواب",fr:"Aujourd’hui, nous sommes le 15 mars.",ar:"اليوم هو الخامس عشر من مارس.",note:"Nous sommes le + رقم اليوم + الشهر."},
+   {tag:"صيغة أخرى",fr:"Aujourd’hui, c’est le 15 mars.",ar:"اليوم هو الخامس عشر من مارس.",note:"C’est le… صيغة طبيعية وبسيطة أيضًا."},
+   {tag:"اليوم الأول",fr:"Le premier avril",ar:"الأول من أبريل.",note:"فقط اليوم 1 يأخذ premier، وليس un."},
+   {tag:"بعد الأول",fr:"Le 2 avril",ar:"الثاني من أبريل.",note:"من اليوم 2 نستخدم الرقم العادي: le 2, le 3…"}
+  ]
+ }
+] as const;
+
 const INTRODUCTION_PAGES=[
  {
   label:"التحية وبدء الحديث",
@@ -8487,6 +8547,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const [nounPageIndex,setNounPageIndex]=useState(0);
  const [presentPageIndex,setPresentPageIndex]=useState(0);
  const [timeDatePageIndex,setTimeDatePageIndex]=useState(0);
+ const [timeCalendarPageIndex,setTimeCalendarPageIndex]=useState(0);
  const [vowelCardIndex,setVowelCardIndex]=useState<Record<VowelTableKind,number>>({oral:0,nasal:0,rounded:0,unrounded:0,closed:0,mid:0,open:0,semij:0,semiw:0,semiu:0});
  const [soundGroupCardIndex,setSoundGroupCardIndex]=useState<Record<string,number>>({});
  const [descriptionPanel,setDescriptionPanel]=useState<DescriptionPanel>("family");
@@ -8603,6 +8664,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const nounPage=NOUN_ARTICLE_PAGES[nounPageIndex];
  const presentPage=PRESENT_NEGATION_PAGES[presentPageIndex];
  const timeDatePage=TIME_DATE_APPLICATION_PAGES[timeDatePageIndex];
+ const timeCalendarPage=TIME_CALENDAR_PAGES[timeCalendarPageIndex];
  const adjectivePage=ADJECTIVE_DESCRIPTION_PAGES[adjectivePageIndex];
  const dailyPage=DAILY_LIFE_PAGES[dailyPageIndex];
  const friendsPage=FRIENDS_SITUATIONS_PAGES[friendsPageIndex];
@@ -9835,57 +9897,27 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
      <p className="university-number-note">ينطق الزر الرقم الفرنسي فقط. استخدم السهمين للتنقل من الصفر حتى المليون دون اختبار أو قفل.</p>
     </section>}
 
-    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Les jours de la semaine</span><h3>أيام الأسبوع</h3></div>
-      <CalendarDays/>
+    {activeModule.id==="numbers-time"&&<section className="a1-time-calendar-studio">
+     <header className="a1-time-calendar-heading">
+      <span><CalendarDays/></span>
+      <div><small>Heure et calendrier · tableau intelligent</small><h3>الساعة والتقويم</h3><p>مرّر بين البطاقات لتتعلم الصيغة، المثال، ومعنى الاستعمال من دون صفحة طويلة.</p></div>
+     </header>
+     <div className="a1-time-calendar-card" key={timeCalendarPage.label}>
+      <div className="a1-time-calendar-card-head"><span dir="ltr">{timeCalendarPage.frLabel}</span><h4>{timeCalendarPage.label}</h4></div>
+      <p>{timeCalendarPage.intro}</p>
+      <div className="a1-time-calendar-table">
+       {timeCalendarPage.rows.map((row,index)=><article key={row.fr}>
+        <i>{String(index+1).padStart(2,"0")}</i>
+        <div><small>{row.tag}</small><strong dir="ltr">{row.fr}</strong><span>{row.ar}</span><em>{row.note}</em></div>
+        <nav aria-label={`نطق ${row.fr}`}><button type="button" onClick={()=>void speakFrench(row.fr,{rate:.74})} aria-label={`استمع إلى ${row.fr} بالنطق العادي`}><Volume2/><b>عادي</b></button><button type="button" onClick={()=>void speakFrench(row.fr,{rate:.52})} aria-label={`استمع إلى ${row.fr} بالنطق البطيء`}><Gauge/><b>بطيء</b></button></nav>
+       </article>)}
+      </div>
      </div>
-     <p className="university-calendar-intro">تبدأ أيام الأسبوع بيوم الاثنين وتنتهي بيوم الأحد.</p>
-     <div className="university-calendar-grid days" dir="ltr">
-      {DAYS_OF_WEEK.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.7})} aria-label={`استمع إلى ${item.fr}`}><i>{index+1}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><Volume2/></button>)}
+     <div className="university-number-pagination a1-time-calendar-pagination" dir="ltr">
+      <button type="button" onClick={()=>setTimeCalendarPageIndex(index=>Math.max(0,index-1))} disabled={timeCalendarPageIndex===0} aria-label="بطاقة الساعة والتقويم السابقة"><ChevronLeft/><span>السابق</span></button>
+      <div><small>ساعة وتقويم</small><strong>{timeCalendarPage.label}</strong><em>{timeCalendarPageIndex+1} / {TIME_CALENDAR_PAGES.length}</em></div>
+      <button type="button" onClick={()=>setTimeCalendarPageIndex(index=>Math.min(TIME_CALENDAR_PAGES.length-1,index+1))} disabled={timeCalendarPageIndex===TIME_CALENDAR_PAGES.length-1} aria-label="بطاقة الساعة والتقويم التالية"><span>التالي</span><ChevronRight/></button>
      </div>
-    </section>}
-
-    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Les mois de l’année</span><h3>أشهر السنة</h3></div>
-      <CalendarDays/>
-     </div>
-     <p className="university-calendar-intro">الأشهر الاثنا عشر في قائمة مستقلة، وكل شهر له نطق منفصل.</p>
-     <div className="university-calendar-grid months" dir="ltr">
-      {MONTHS_OF_YEAR.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.7})} aria-label={`استمع إلى ${item.fr}`}><i>{String(index+1).padStart(2,"0")}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><Volume2/></button>)}
-     </div>
-    </section>}
-
-    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Le calendrier</span><h3>كلمات التقويم الأساسية</h3></div>
-      <Clock3/>
-     </div>
-     <p className="university-calendar-intro">اليوم والأسبوع والشهر والسنة والإجازة في قائمتها المخصصة قبل الجمل التطبيقية.</p>
-     <div className="university-calendar-grid terms" dir="ltr">
-      {CALENDAR_WORDS.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.72})} aria-label={`استمع إلى ${item.fr}`}><i>{String(index+1).padStart(2,"0")}</i><strong>{item.fr}</strong><span dir="rtl">{item.ar}</span><em dir="rtl">{item.note}</em><Volume2/></button>)}
-     </div>
-    </section>}
-
-    {activeModule.id==="numbers-time"&&<section className="university-introduction-board university-grammar-board">
-     <div className="university-subheading">
-      <div><span>Heure et date en contexte</span><h3>الجمل التطبيقية للوقت والتاريخ</h3></div>
-      <CalendarDays/>
-     </div>
-     <div className="university-phrase-grid">
-      {timeDatePage.items.map((item,index)=><button key={item.fr} onClick={()=>void speakFrench(item.fr,{rate:.74})} aria-label={`استمع إلى: ${item.fr}`}>
-       <i>{String(index+1).padStart(2,"0")}</i>
-       <div><strong dir="ltr">{item.fr}</strong><span>{item.ar}</span><em>{item.note}</em></div>
-       <Volume2/>
-      </button>)}
-     </div>
-     <div className="university-number-pagination university-phrase-pagination" dir="ltr">
-      <button onClick={()=>setTimeDatePageIndex(index=>Math.max(0,index-1))} disabled={timeDatePageIndex===0} aria-label="أمثلة الوقت السابقة"><ChevronLeft/><span>السابق</span></button>
-      <div><small>قسم الجمل التطبيقية</small><strong>{timeDatePage.label}</strong><em>{timeDatePageIndex+1} / {TIME_DATE_APPLICATION_PAGES.length}</em></div>
-      <button onClick={()=>setTimeDatePageIndex(index=>Math.min(TIME_DATE_APPLICATION_PAGES.length-1,index+1))} disabled={timeDatePageIndex===TIME_DATE_APPLICATION_PAGES.length-1} aria-label="أمثلة الوقت التالية"><span>التالي</span><ChevronRight/></button>
-     </div>
-     <p className="university-phrase-note">{timeDatePage.description} جميع الأمثلة مختلفة ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
     {activeModule.id==="description"&&<section className="university-introduction-board university-description-studio">
@@ -10021,7 +10053,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
      <p className="university-phrase-note">{friendsPage.description} جميع الأمثلة اجتماعية مع الأصدقاء ومفتوحة للتدريب دون اختبار.</p>
     </section>}
 
-    {activeModule.id!=="sounds"&&<div className="university-sections">
+    {activeModule.id!=="sounds"&&activeModule.id!=="numbers-time"&&<div className="university-sections">
      {activeModule.sections.map((item,index)=>{const SectionIcon=activeModule.id==="revision"?REVISION_SECTION_ICONS[index]:undefined;const isOpen=openSectionIndex===index;return <section id={`university-lesson-section-${index}`} key={item.title} className={`university-explanation ${isOpen?"open":""}`}>
       <div className="university-explanation-title">
        <button className="university-section-toggle" onClick={()=>toggleLessonSection(index)} aria-expanded={isOpen} aria-controls={`university-lesson-section-body-${index}`}>

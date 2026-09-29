@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./time-calendar.css";
 import FrenchSpeechLoader from "./FrenchSpeechLoader";
 import PortalJourney from "../components/PortalJourney";
 

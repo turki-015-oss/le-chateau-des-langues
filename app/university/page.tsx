@@ -4020,15 +4020,15 @@ const A1_NUMBERS_TIME_READING={
 };
 
 const A1_NUMBERS_TIME_LISTENING={
- title:"Les horaires du samedi",
- arTitle:"مواعيد يوم السبت",
+ title:"L’heure, la date et le prix à l’écoute",
+ arTitle:"استمع إلى الوقت والتاريخ والسعر",
  text:"Huit heures et demie. Midi moins dix. Le premier avril. Jeudi douze octobre. Quarante-deux euros.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Huit heures et demie","Huit heures et quart","Neuf heures et demie"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Midi et dix","Midi moins dix","Minuit moins dix"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le premier mai","Le deux avril","Le premier avril"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Jeudi douze octobre","Mardi douze octobre","Jeudi vingt octobre"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Trente-deux euros","Quarante-deux euros","Quatre-vingt-deux euros"],correctIndex:1}
+  {prompt:"Quelle heure entendez-vous ?",speech:"Huit heures et demie.",instruction:"اختر الوقت الذي سمعته.",translation:"أيّ ساعة تسمع؟",choices:["Huit heures et demie","Huit heures et quart","Neuf heures et demie"],correctIndex:0,explanationAr:"et demie تعني النصف؛ إذن الوقت هو الثامنة والنصف.",explanationFr:"Et demie indique trente minutes après l’heure."},
+  {prompt:"Quelle heure entendez-vous ?",speech:"Midi moins dix.",instruction:"اختر الوقت الذي سمعته.",translation:"أيّ ساعة تسمع؟",choices:["Midi et dix","Midi moins dix","Minuit moins dix"],correctIndex:1,explanationAr:"moins dix تعني قبل الساعة التالية بعشر دقائق؛ midi moins dix هي 11:50.",explanationFr:"Midi moins dix signifie dix minutes avant midi."},
+  {prompt:"Quelle date entendez-vous ?",speech:"Le premier avril.",instruction:"اختر التاريخ الذي سمعته.",translation:"ما التاريخ الذي تسمع؟",choices:["Le premier mai","Le deux avril","Le premier avril"],correctIndex:2,explanationAr:"اليوم الأول من الشهر يُقال le premier، وليس le un.",explanationFr:"Pour le premier jour du mois, on dit le premier."},
+  {prompt:"Quel jour et quelle date entendez-vous ?",speech:"Jeudi douze octobre.",instruction:"اختر اليوم والتاريخ اللذين سمعتهما.",translation:"ما اليوم والتاريخ اللذان تسمعهما؟",choices:["Jeudi douze octobre","Mardi douze octobre","Jeudi vingt octobre"],correctIndex:0,explanationAr:"الجملة تجمع اسم اليوم jeudi مع اليوم 12 والشهر octobre.",explanationFr:"On entend le jour jeudi, puis le 12 octobre."},
+  {prompt:"Quel prix entendez-vous ?",speech:"Quarante-deux euros.",instruction:"اختر السعر الذي سمعته.",translation:"ما السعر الذي تسمع؟",choices:["Trente-deux euros","Quarante-deux euros","Quatre-vingt-deux euros"],correctIndex:1,explanationAr:"quarante تعني أربعين، وdeux تعني اثنين؛ إذن السعر 42 يورو.",explanationFr:"Quarante-deux = 42."}
  ]
 };
 

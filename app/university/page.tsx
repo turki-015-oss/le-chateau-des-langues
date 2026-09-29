@@ -4035,11 +4035,18 @@ const A1_NUMBERS_TIME_LISTENING={
 const A1_NUMBERS_TIME_WRITING_MODEL="Lundi 8 avril, je commence le travail à huit heures trente. Mon rendez-vous est à onze heures. À midi, j’achète un repas à douze euros. Le soir, mon cours finit à dix-neuf heures.";
 
 const A1_NUMBERS_TIME_DICTATION=[
- {speech:"Il est huit heures et demie.",ar:"الساعة الثامنة والنصف."},
- {speech:"Nous sommes le quinze mai.",ar:"اليوم هو الخامس عشر من مايو."},
- {speech:"Le billet coûte vingt et un euros.",ar:"سعر التذكرة واحد وعشرون يورو."},
- {speech:"Le train arrive à midi moins dix.",ar:"يصل القطار قبل الظهر بعشر دقائق."},
- {speech:"Mon rendez-vous est le jeudi douze octobre.",ar:"موعدي يوم الخميس الثاني عشر من أكتوبر."}
+ {speech:"huit heures",ar:"الساعة الثامنة."},
+ {speech:"huit heures et quart",ar:"الساعة الثامنة والربع."},
+ {speech:"neuf heures et demie",ar:"الساعة التاسعة والنصف."},
+ {speech:"midi",ar:"منتصف النهار."},
+ {speech:"minuit",ar:"منتصف الليل."},
+ {speech:"midi moins dix",ar:"قبل الظهر بعشر دقائق."},
+ {speech:"lundi",ar:"يوم الاثنين المحدد."},
+ {speech:"le lundi",ar:"كل يوم اثنين."},
+ {speech:"en juillet",ar:"في يوليو."},
+ {speech:"le premier avril",ar:"الأول من أبريل."},
+ {speech:"le quinze mai",ar:"الخامس عشر من مايو."},
+ {speech:"quarante-deux euros",ar:"اثنان وأربعون يورو."}
 ];
 
 const A1_NUMBERS_TIME_BUILDERS=[
@@ -8684,9 +8691,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present);
- const dictationUnit=isAlphabetLetterDictation?"الحرف":(isA1Greetings||isA1Nouns)&&revisionDictationItem.speech.includes(" ")?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
- const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":(isA1Greetings||isA1Nouns)&&revisionDictationItem.speech.includes(" ")?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1NumbersTime);
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
   ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
   :"";
@@ -10312,7 +10319,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1OrbitLesson?<div className="a1-dictation-audio-actions"><button type="button" onClick={()=>void playOrbitDictation(false)}><Headphones/><span><b>استمع</b><small>نطق طبيعي</small></span></button><button type="button" onClick={()=>void playOrbitDictation(true)}><Gauge/><span><b>بطيء</b><small>نطق تعليمي</small></span></button></div>:<button className="a2-workshop-audio" onClick={()=>void speakFrench(revisionDictationItem.speech,{rate:isEnhancedA1Lesson?.64:.7})}><Volume2/> استمع إلى {dictationUnit}</button>}
        {isTimedOrbitWordDictation&&soundsDictationWordVisible&&<strong className="a1-sounds-dictation-preview" dir="ltr">{revisionDictationItem.speech}</strong>}
        <input dir="ltr" value={revisionDictationText} disabled={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled} onChange={event=>{setRevisionDictationText(event.target.value);setRevisionDictationChecked(false)}} placeholder={isTimedOrbitWordDictation&&!soundsDictationWritingEnabled?"استمع أولًا…":dictationPlaceholder} aria-label={`اكتب ${dictationUnit} الذي سمعته`}/>
-       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()||(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled)}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false)}}>التالي <ChevronLeft/></button>}</div>
+       <div className="a2-workshop-actions"><button onClick={()=>setRevisionDictationChecked(true)} disabled={!revisionDictationText.trim()||(isTimedOrbitWordDictation&&!soundsDictationWritingEnabled)}><CheckCircle2/> تحقق</button>{revisionDictationIndex<activeA2Dictation.length-1&&<button className="secondary" disabled={isA1OrbitLesson&&!revisionDictationCorrect} onClick={()=>{setRevisionDictationIndex(index=>index+1);setRevisionDictationText("");setRevisionDictationChecked(false);setSoundsDictationWordVisible(false);setSoundsDictationWritingEnabled(false)}}>التالي <ChevronLeft/></button>}</div>
        {revisionDictationChecked&&<div className={`a2-workshop-feedback ${revisionDictationCorrect?"correct":"wrong"}`}><strong>{revisionDictationCorrect?"ممتاز، كتبتها بصورة صحيحة.":isA1OrbitLesson?"الكتابة غير صحيحة؛ أعد الاستماع ثم حاول مرة أخرى.":"راجع كتابتك وقارنها بالنموذج."}</strong>{(!isA1OrbitLesson||revisionDictationCorrect)&&<><p dir="ltr">{revisionDictationItem.speech}</p><small>{revisionDictationItem.ar}</small></>}</div>}
       </article>}
       {(!isA1OrbitLesson?revisionWorkshopPanel==="builder":alphabetPracticeStep===2)&&<article className="a2-builder-panel">

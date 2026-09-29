@@ -4050,11 +4050,18 @@ const A1_NUMBERS_TIME_DICTATION=[
 ];
 
 const A1_NUMBERS_TIME_BUILDERS=[
- {tokens:["heures","Il","et","est","demie.","huit"],answer:["Il","est","huit","heures","et","demie."],ar:"الساعة الثامنة والنصف."},
- {tokens:["le","avril.","sommes","Nous","douze"],answer:["Nous","sommes","le","douze","avril."],ar:"اليوم هو الثاني عشر من أبريل."},
- {tokens:["euros.","coûte","livre","vingt","Le"],answer:["Le","livre","coûte","vingt","euros."],ar:"سعر الكتاب عشرون يورو."},
- {tokens:["quinze.","heures","Il","sept","est"],answer:["Il","est","sept","heures","quinze."],ar:"الساعة السابعة وخمس عشرة دقيقة."},
- {tokens:["samedi.","au","ouverte","est","La","bibliothèque","du","lundi"],answer:["La","bibliothèque","est","ouverte","du","lundi","au","samedi."],ar:"المكتبة مفتوحة من الاثنين إلى السبت."}
+ {tokens:["heures.","huit","est","Il"],answer:["Il","est","huit","heures."],ar:"الساعة الثامنة."},
+ {tokens:["quart.","et","heures","est","huit","Il"],answer:["Il","est","huit","heures","et","quart."],ar:"الساعة الثامنة والربع."},
+ {tokens:["demie.","est","heures","neuf","et","Il"],answer:["Il","est","neuf","heures","et","demie."],ar:"الساعة التاسعة والنصف."},
+ {tokens:["le","est","quart.","heures","moins","quatre","Il"],answer:["Il","est","quatre","heures","moins","le","quart."],ar:"الساعة الرابعة إلا ربعًا."},
+ {tokens:["midi.","est","Il"],answer:["Il","est","midi."],ar:"الساعة الثانية عشرة ظهرًا."},
+ {tokens:["minuit.","Il","est"],answer:["Il","est","minuit."],ar:"الساعة الثانية عشرة ليلًا."},
+ {tokens:["à","commence","Le","heures.","cours","huit"],answer:["Le","cours","commence","à","huit","heures."],ar:"يبدأ الدرس الساعة الثامنة."},
+ {tokens:["lundi.","le","travaille","Je"],answer:["Je","travaille","le","lundi."],ar:"أعمل كل يوم اثنين."},
+ {tokens:["juillet.","en","voyage","Je"],answer:["Je","voyage","en","juillet."],ar:"أسافر في يوليو."},
+ {tokens:["premier","Nous","avril.","le","sommes"],answer:["Nous","sommes","le","premier","avril."],ar:"نحن في الأول من أبريل."},
+ {tokens:["mai.","quinze","le","sommes","Aujourd’hui,","nous"],answer:["Aujourd’hui,","nous","sommes","le","quinze","mai."],ar:"اليوم هو الخامس عشر من مايو."},
+ {tokens:["quarante-deux","billet","coûte","Le","euros."],answer:["Le","billet","coûte","quarante-deux","euros."],ar:"سعر التذكرة اثنان وأربعون يورو."}
 ];
 
 const A1_NUMBERS_TIME_DIALOGUES=[

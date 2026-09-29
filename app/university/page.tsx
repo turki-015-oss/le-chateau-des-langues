@@ -4065,11 +4065,18 @@ const A1_NUMBERS_TIME_BUILDERS=[
 ];
 
 const A1_NUMBERS_TIME_DIALOGUES=[
- {context:"Quelle heure est-il ?",translation:"كم الساعة؟",prompt:"اختر الإجابة الصحيحة للساعة 8:30.",choices:["Il est huit heures et demie.","Nous sommes huit heures.","Il a huit et demie."],correctIndex:0,feedback:"لذكر الوقت نبدأ بـ Il est ثم الساعة."},
- {context:"Quelle est la date aujourd’hui ?",translation:"ما تاريخ اليوم؟",prompt:"اختر صيغة الأول من يونيو.",choices:["Nous sommes le premier juin.","Nous sommes le un juin.","Il est premier juin."],correctIndex:0,feedback:"اليوم الأول من الشهر يُقال le premier."},
- {context:"Cela fait trente-deux euros.",translation:"المجموع اثنان وثلاثون يورو.",prompt:"اختر السعر المذكور.",choices:["22 €","32 €","42 €"],correctIndex:1,feedback:"trente-deux تعني اثنين وثلاثين."},
- {context:"À quelle heure commence la réunion ?",translation:"في أي ساعة يبدأ الاجتماع؟",prompt:"اختر الرد الذي يذكر وقتًا.",choices:["Elle commence mardi.","Elle commence à dix heures.","Elle coûte dix euros."],correctIndex:1,feedback:"نستخدم à قبل الساعة."},
- {context:"Quel jour sommes-nous ?",translation:"ما اليوم؟",prompt:"اختر الرد المناسب.",choices:["Nous sommes lundi.","Il est neuf heures.","Nous sommes en été."],correctIndex:0,feedback:"للإجابة عن اليوم نستخدم Nous sommes ثم اسم اليوم."}
+ {context:"Quelle heure est-il ?",translation:"كم الساعة؟",prompt:"اختر الإجابة المناسبة للساعة 8:30.",choices:["Il est huit heures et demie.","Nous sommes huit heures.","Il a huit et demie."],correctIndex:0,feedback:"لذكر الوقت نبدأ بـ Il est، وet demie تعني النصف."},
+ {context:"Le film commence quand ?",translation:"متى يبدأ الفيلم؟",prompt:"اختر ردًا يذكر موعدًا صحيحًا.",choices:["Il commence à neuf heures et quart.","Il commence en neuf heures.","Nous sommes neuf heures et quart."],correctIndex:0,feedback:"مع وقت الموعد نستخدم à: commencer à neuf heures."},
+ {context:"Quelle heure est-il ?",translation:"كم الساعة؟",prompt:"اختر صيغة الساعة 3:45.",choices:["Il est trois heures et quart.","Il est quatre heures moins le quart.","Il est quatre heures et demie."],correctIndex:1,feedback:"3:45 يمكن أن تُقال: quatre heures moins le quart؛ أي الرابعة إلا ربعًا."},
+ {context:"Tu déjeunes à quelle heure ?",translation:"في أي ساعة تتناول الغداء؟",prompt:"اختر إجابة طبيعية.",choices:["Je déjeune à midi.","Je déjeune en midi.","Je suis midi."],correctIndex:0,feedback:"نستخدم à قبل midi عند تحديد وقت الفعل."},
+ {context:"Tu travailles quel jour ?",translation:"في أي يوم تعمل؟",prompt:"اختر جوابًا عن عادة أسبوعية.",choices:["Je travaille le lundi.","Je travaille en lundi.","Je travaille à lundi."],correctIndex:0,feedback:"le lundi يعني كل يوم اثنين، أي عادة متكررة."},
+ {context:"Le cours est quand ?",translation:"متى يكون الدرس؟",prompt:"اختر جوابًا عن يوم محدد.",choices:["Le cours est lundi.","Le cours est le lundi toujours.","Le cours est en lundi."],correctIndex:0,feedback:"نستخدم lundi بلا أداة عندما نقصد يوم الاثنين المحدد."},
+ {context:"Tu voyages quand ?",translation:"متى تسافر؟",prompt:"اختر الإجابة الصحيحة عن شهر.",choices:["Je voyage en juillet.","Je voyage à juillet.","Je voyage le juillet."],correctIndex:0,feedback:"نستخدم en قبل اسم الشهر: en juillet."},
+ {context:"Quelle est la date aujourd’hui ?",translation:"ما تاريخ اليوم؟",prompt:"اختر صيغة الأول من يونيو.",choices:["Nous sommes le premier juin.","Nous sommes le un juin.","Il est premier juin."],correctIndex:0,feedback:"اليوم الأول من الشهر يُقال le premier، وليس le un."},
+ {context:"Quelle est la date aujourd’hui ?",translation:"ما تاريخ اليوم؟",prompt:"اختر ترتيب التاريخ الصحيح.",choices:["Aujourd’hui, nous sommes le 15 mai.","Aujourd’hui, nous sommes mai le 15.","Aujourd’hui, nous sommes en le 15 mai."],correctIndex:0,feedback:"الترتيب هو le + رقم اليوم + اسم الشهر."},
+ {context:"Quel jour sommes-nous ?",translation:"ما اليوم؟",prompt:"اختر الرد المناسب.",choices:["Nous sommes jeudi.","Il est jeudi heures.","Nous sommes en jeudi."],correctIndex:0,feedback:"للإجابة عن اليوم نستخدم Nous sommes ثم اسم اليوم."},
+ {context:"Combien coûte le billet ?",translation:"كم سعر التذكرة؟",prompt:"اختر جواب السعر الذي يساوي 42 يورو.",choices:["Il coûte trente-deux euros.","Il coûte quarante-deux euros.","Il coûte quatre-vingt-deux euros."],correctIndex:1,feedback:"quarante-deux تعني اثنين وأربعين."},
+ {context:"Quel est ton numéro ?",translation:"ما رقم هاتفك؟",prompt:"اختر بداية رقم هاتف فرنسي طبيعية.",choices:["Mon numéro commence par zéro six.","Mon numéro commence par six zéro.","Mon numéro commence en zéro six."],correctIndex:0,feedback:"من الشائع في فرنسا نطق بداية رقم الجوال: zéro six."}
 ];
 
 const A1_WEATHER_CLOTHES_READING={

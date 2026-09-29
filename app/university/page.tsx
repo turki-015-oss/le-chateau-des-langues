@@ -2003,7 +2003,12 @@ const A1_NUMBERS_TIME_PRACTICE_ITEMS:Example[]=[
  {fr:"Nous sommes le premier avril.",ar:"اليوم هو الأول من أبريل."},
  {fr:"Mon rendez-vous est le jeudi douze octobre.",ar:"موعدي يوم الخميس الثاني عشر من أكتوبر."},
  {fr:"Je pars en vacances au mois d’août.",ar:"أسافر في إجازة خلال شهر أغسطس."},
- {fr:"La bibliothèque est ouverte du lundi au samedi.",ar:"المكتبة مفتوحة من الاثنين إلى السبت."}
+ {fr:"La bibliothèque est ouverte du lundi au samedi.",ar:"المكتبة مفتوحة من الاثنين إلى السبت."},
+ {fr:"La réunion finit à seize heures.",ar:"ينتهي الاجتماع الساعة الرابعة بعد الظهر."},
+ {fr:"Il est dix heures moins cinq.",ar:"الساعة العاشرة إلا خمس دقائق."},
+ {fr:"Nous avons cours le mercredi.",ar:"لدينا درس كل يوم أربعاء."},
+ {fr:"Les vacances commencent en décembre.",ar:"تبدأ الإجازة في ديسمبر."},
+ {fr:"Aujourd’hui, c’est le vingt-trois mars.",ar:"اليوم هو الثالث والعشرون من مارس."}
 ];
 
 const A1_NUMBERS_TIME_QUIZ_ITEMS:QuizQuestion[]=[

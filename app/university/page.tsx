@@ -3919,11 +3919,18 @@ const A1_FUTURE_IMPERATIVE_DICTATION=[
 ];
 
 const A1_FUTURE_IMPERATIVE_BUILDERS=[
+ {tokens:["dîner.","préparer","vais","Je","demain","le"],answer:["Je","vais","préparer","le","dîner","demain."],ar:"سأُحضّر العشاء غدًا."},
+ {tokens:["bus.","vas","prendre","Tu","le"],answer:["Tu","vas","prendre","le","bus."],ar:"ستأخذ الحافلة."},
+ {tokens:["ce","va","médecin","soir.","le","Elle","appeler"],answer:["Elle","va","appeler","le","médecin","ce","soir."],ar:"ستتصل بالطبيب هذا المساء."},
  {tokens:["visiter","allons","Nous","château.","le"],answer:["Nous","allons","visiter","le","château."],ar:"سنزور القلعة."},
- {tokens:["pas","vais","Je","sortir.","ne"],answer:["Je","ne","vais","pas","sortir."],ar:"لن أخرج."},
- {tokens:["droite","Tournez","à","!"],answer:["Tournez","à","droite","!"],ar:"انعطفوا يمينًا!"},
- {tokens:["ton","Prépare","sac","!"],answer:["Prépare","ton","sac","!"],ar:"جهّز حقيبتك!"},
- {tokens:["pas","Ne","ici","stationnez","!"],answer:["Ne","stationnez","pas","ici","!"],ar:"لا توقفوا السيارة هنا!"}
+ {tokens:["huit","arriver","allez","Vous","à","heures."],answer:["Vous","allez","arriver","à","huit","heures."],ar:"ستصلون عند الساعة الثامنة."},
+ {tokens:["demain","matin.","Ils","partir","vont"],answer:["Ils","vont","partir","demain","matin."],ar:"سيغادرون غدًا صباحًا."},
+ {tokens:["pas","samedi.","vais","ne","Je","travailler"],answer:["Je","ne","vais","pas","travailler","samedi."],ar:"لن أعمل يوم السبت."},
+ {tokens:["prendre","Nous","n’allons","pas","bus.","le"],answer:["Nous","n’allons","pas","prendre","le","bus."],ar:"لن نأخذ الحافلة."},
+ {tokens:["votre","pas","N’oubliez","billet","!"],answer:["N’oubliez","pas","votre","billet","!"],ar:"لا تنسوا تذكرتكم!"},
+ {tokens:["porte","doucement","Ferme","la","!"],answer:["Ferme","la","porte","doucement","!"],ar:"أغلق الباب برفق!"},
+ {tokens:["ensemble","Allons","marché","au","!"],answer:["Allons","au","marché","ensemble","!"],ar:"لنذهب إلى السوق معًا!"},
+ {tokens:["ici","pas","traversez","Ne","!"],answer:["Ne","traversez","pas","ici","!"],ar:"لا تعبروا من هنا!"}
 ];
 
 const A1_FUTURE_IMPERATIVE_DIALOGUES=[

@@ -4402,10 +4402,17 @@ const A1_ADJECTIVES_BUILDERS=[
 
 const A1_ADJECTIVES_DIALOGUES=[
  {context:"Comment est cette femme ?",translation:"كيف تبدو هذه المرأة؟",prompt:"اختر الصفة المتوافقة لقصر القامة.",choices:["Elle est petit.","Elle est petite.","Elle est petits."],correctIndex:1,feedback:"نضيف e غالبًا إلى الصفة مع المؤنث المفرد."},
- {context:"Comment sont ces garçons ?",translation:"كيف تبدو صفات هؤلاء الأولاد؟",prompt:"اختر المجموعة الصحيحة.",choices:["des garçons intelligent","des garçons intelligents","des garçon intelligentes"],correctIndex:1,feedback:"الصفة مع جمع المذكر تأخذ غالبًا s."},
+ {context:"Comment sont ces garçons ?",translation:"كيف تبدو صفات هؤلاء الأولاد؟",prompt:"اختر الجملة الصحيحة.",choices:["Ils est intelligent.","Ils sont intelligents.","Ils sont intelligentes."],correctIndex:1,feedback:"مع ils نستخدم sont، والصفة مع جمع المذكر هي intelligents."},
  {context:"Comment sont ses cheveux ?",translation:"كيف يبدو شعرها؟",prompt:"اختر التركيب الطبيعي.",choices:["Elle a les cheveux longs.","Elle est les cheveux longs.","Elle a cheveux longue."],correctIndex:0,feedback:"لوصف الشعر نستخدم avoir."},
  {context:"Quel est son caractère ?",translation:"ما صفاته الشخصية؟",prompt:"اختر وصفًا للشخصية.",choices:["Il est calme et patient.","Il a les yeux bleus.","Il est un mètre quatre-vingts."],correctIndex:0,feedback:"calme وpatient صفتان للشخصية."},
- {context:"De quelle couleur sont ses yeux ?",translation:"ما لون عينيها؟",prompt:"اختر الجواب الموافق نحويًا.",choices:["Ses yeux est verte.","Ses yeux sont verts.","Elle a yeux vertes."],correctIndex:1,feedback:"yeux جمع مذكر؛ لذلك نقول sont verts."}
+ {context:"De quelle couleur sont ses yeux ?",translation:"ما لون عينيها؟",prompt:"اختر الجواب الموافق نحويًا.",choices:["Ses yeux est verte.","Ses yeux sont verts.","Elle a yeux vertes."],correctIndex:1,feedback:"yeux جمع مذكر؛ لذلك نقول sont verts."},
+ {context:"Comment est ton frère ?",translation:"كيف يبدو أخوك؟",prompt:"اختر وصفًا مناسبًا للمذكر المفرد.",choices:["Il est grand et sportif.","Il est grande et sportive.","Il sont grand et sportif."],correctIndex:0,feedback:"مع il نستخدم est، والصفة في المذكر: grand et sportif."},
+ {context:"Comment est ta sœur ?",translation:"كيف تبدو أختك؟",prompt:"اختر وصفًا مناسبًا للمؤنث المفرد.",choices:["Elle est sérieux et organisé.","Elle est sérieuse et organisée.","Elle sont sérieuses et organisées."],correctIndex:1,feedback:"مع elle نستخدم est، وتظهر علامة المؤنث e في sérieuse وorganisée."},
+ {context:"Comment sont ces filles ?",translation:"كيف تبدو هؤلاء الفتيات؟",prompt:"اختر الجملة الصحيحة.",choices:["Ces filles sont gentilles.","Ces filles est gentille.","Ces filles sont gentil."],correctIndex:0,feedback:"مع الجمع نستخدم sont، والصفة féminine plural هي gentilles."},
+ {context:"Comment est ce garçon ?",translation:"كيف يبدو هذا الولد؟",prompt:"اختر صفة مناسبة للشخصية.",choices:["Il est sociable.","Il a sociable.","Il est sociables."],correctIndex:0,feedback:"لوصف الشخصية نستخدم être: il est sociable."},
+ {context:"Comment sont ses cheveux ?",translation:"كيف يبدو شعره؟",prompt:"اختر الجواب الصحيح.",choices:["Ses cheveux est courts.","Ses cheveux sont courts.","Il est les cheveux courts."],correctIndex:1,feedback:"cheveux جمع؛ لذلك نقول sont courts."},
+ {context:"Comment est ta mère ?",translation:"كيف تبدو والدتك؟",prompt:"اختر وصفًا بسيطًا وطبيعيًا.",choices:["Elle est gentille et calme.","Elle est gentil et calme.","Elle a gentille et calme."],correctIndex:0,feedback:"مع elle تأخذ gentille علامة المؤنث، ونستخدم être لوصف الشخصية."},
+ {context:"Qui est la personne organisée ?",translation:"من الشخص المنظم؟",prompt:"اختر الجملة الصحيحة.",choices:["C’est un homme organisé.","C’est une femme organisée.","C’est une femme organisé."],correctIndex:1,feedback:"femme مؤنث؛ لذا نقول une femme organisée."}
 ];
 
 const A1_DAILY_LIFE_READING={

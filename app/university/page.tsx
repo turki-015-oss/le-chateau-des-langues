@@ -7484,6 +7484,13 @@ const A1_EMOTIONS_TABLE=[
   {form:"Elle a peur du chien.",example:"Elle a peur du chien.",ar:"هي تخاف من الكلب.",detail:"de + le تصبح du: avoir peur du chien."},
   {form:"Nous avons peur de tomber.",example:"Nous avons peur de tomber.",ar:"نحن نخاف من السقوط.",detail:"قبل الفعل في المصدر نستخدم de: avoir peur de tomber."},
   {form:"Il est fâché.",example:"Il est fâché parce qu’il attend.",ar:"هو غاضب لأنه ينتظر.",detail:"fâché صفة مذكر؛ نستخدم être، ثم parce que لذكر السبب."}
+ ]},
+ {label:"Autres",arLabel:"مشاعر إضافية",rule:"بعض المشاعر صفات مع être، بينما honte تعبير ثابت مع avoir، والملل له الفعل pronominal s’ennuyer.",items:[
+  {form:"Je suis surpris / surprise.",example:"Je suis surprise par cette nouvelle.",ar:"أنا متفاجئة من هذا الخبر.",detail:"مع المتكلمة نقول surprise. ونستخدم par لذكر سبب المفاجأة."},
+  {form:"Elle est inquiète.",example:"Ma mère est inquiète ce soir.",ar:"والدتي قلقة هذا المساء.",detail:"inquiète مؤنث؛ أضفنا e لأن mère مؤنث."},
+  {form:"Je m’ennuie.",example:"Je m’ennuie à la maison.",ar:"أنا أشعر بالملل في المنزل.",detail:"s’ennuyer فعل انعكاسي؛ مع je يصبح je m’ennuie."},
+  {form:"J’ai honte.",example:"J’ai honte de mon erreur.",ar:"أنا أشعر بالحرج من خطئي.",detail:"avoir honte تعبير ثابت، ثم نستخدم de لذكر السبب."},
+  {form:"Il est fier.",example:"Mon père est fier de moi.",ar:"والدي فخور بي.",detail:"fier صفة مذكر، ونستخدم de moi بعد الصفة لذكر الشخص الذي نفخر به."}
  ]}
 ] as const;
 

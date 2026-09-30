@@ -4344,7 +4344,12 @@ const A1_ADJECTIVES_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Elle est grande, ___ sa sœur est petite.",translation:"هي طويلة لكن أختها قصيرة.",speech:"Elle est grande, mais sa sœur est petite.",instruction:"اختر رابط المقابلة.",choices:["et","mais","parce que"],correctIndex:1,explanation:"mais تربط صفتين متقابلتين."},
  {prompt:"Comment est-il ?",translation:"كيف هي صفاته؟",speech:"Comment est-il ?",instruction:"اختر جوابًا يصف الشخصية.",choices:["Il a vingt ans.","Il habite à Paris.","Il est calme et sérieux."],correctIndex:2,explanation:"être + صفات يجيب عن Comment est-il ؟"},
  {prompt:"De quelle couleur sont ses yeux ?",translation:"ما لون عينيه؟",speech:"Ses yeux sont noirs.",instruction:"اختر الإجابة المناسبة.",choices:["Ses yeux sont noirs.","Il est grand.","Ses cheveux sont courts."],correctIndex:0,explanation:"السؤال عن لون العينين يحتاج لونًا للعينين."},
- {prompt:"Elle est sérieuse et organisée.",translation:"هي جادة ومنظّمة.",speech:"Elle est sérieuse et organisée.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي قصيرة ورياضية.","هي جادة ومنظّمة.","هي لطيفة وخجولة."],correctIndex:1,explanation:"sérieuse تعني جادة وorganisée تعني منظّمة."}
+ {prompt:"Elle est sérieuse et organisée.",translation:"هي جادة ومنظّمة.",speech:"Elle est sérieuse et organisée.",instruction:"اختر المعنى العربي الصحيح.",choices:["هي قصيرة ورياضية.","هي جادة ومنظّمة.","هي لطيفة وخجولة."],correctIndex:1,explanation:"sérieuse تعني جادة وorganisée تعني منظّمة."},
+ {prompt:"Nabil a les cheveux ___.",translation:"شعر نبيل بني.",speech:"Nabil a les cheveux bruns.",instruction:"اختر اتفاق اللون الصحيح مع cheveux.",choices:["bruns","brunes","brun"],correctIndex:0,explanation:"cheveux جمع مذكر؛ لذلك لون الشعر هنا bruns."},
+ {prompt:"Le chat est ___.",translation:"القط صغير.",speech:"Le chat est petit.",instruction:"اختر الصفة المناسبة للمذكر المفرد.",choices:["petit","petite","petits"],correctIndex:0,explanation:"chat اسم مذكر مفرد، لذا نقول petit."},
+ {prompt:"La maison est ___.",translation:"المنزل كبير.",speech:"La maison est grande.",instruction:"اختر الصفة المناسبة للمؤنث المفرد.",choices:["grand","grande","grands"],correctIndex:1,explanation:"maison اسم مؤنث مفرد؛ لذلك نقول grande."},
+ {prompt:"Marie est blonde.",translation:"ماري شقراء.",speech:"Marie est blonde.",instruction:"اختر المعنى العربي الصحيح.",choices:["ماري شقراء.","ماري ذات شعر أسود.","ماري قصيرة."],correctIndex:0,explanation:"blonde تعني شقراء في صيغة المؤنث."},
+ {prompt:"Elles sont ___.",translation:"هن متعبات.",speech:"Elles sont fatiguées.",instruction:"اختر اتفاق الصفة الصحيح.",choices:["fatigué","fatigués","fatiguées"],correctIndex:2,explanation:"مع elles نستخدم صيغة الجمع المؤنث: fatiguées."}
 ];
 
 const A1_ADJECTIVES_READING={

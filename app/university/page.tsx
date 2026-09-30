@@ -4371,11 +4371,18 @@ const A1_ADJECTIVES_LISTENING={
 const A1_ADJECTIVES_WRITING_MODEL="Mon frère est grand et sportif. Il a les cheveux courts et il est calme et patient. Ma sœur est petite et sportive. Elle a les cheveux longs et elle est sérieuse, gentille et sociable.";
 
 const A1_ADJECTIVES_DICTATION=[
- {speech:"Il est grand, calme et patient.",ar:"هو طويل وهادئ وصبور."},
- {speech:"Elle est petite, sérieuse et organisée.",ar:"هي قصيرة وجادة ومنظمة."},
- {speech:"Elles ont les cheveux longs et noirs.",ar:"شعرهن طويل وأسود."},
- {speech:"Mon ami est gentil et très sociable.",ar:"صديقي لطيف واجتماعي جدًا."},
- {speech:"Ses yeux sont verts et ses cheveux sont courts.",ar:"عيناه خضراوان وشعره قصير."}
+ {speech:"Il est grand.",ar:"هو طويل."},
+ {speech:"Elle est petite.",ar:"هي قصيرة."},
+ {speech:"Il est sportif.",ar:"هو رياضي."},
+ {speech:"Elle est gentille.",ar:"هي لطيفة."},
+ {speech:"Il est calme.",ar:"هو هادئ."},
+ {speech:"Elle est sérieuse.",ar:"هي جادة."},
+ {speech:"Il a les cheveux courts.",ar:"شعره قصير."},
+ {speech:"Elle a les cheveux longs.",ar:"شعرها طويل."},
+ {speech:"Il a les yeux bleus.",ar:"عيناه زرقاوان."},
+ {speech:"Elle a les yeux verts.",ar:"عيناها خضراوان."},
+ {speech:"Mon ami est sociable.",ar:"صديقي اجتماعي."},
+ {speech:"Ma sœur est organisée.",ar:"أختي منظمة."}
 ];
 
 const A1_ADJECTIVES_BUILDERS=[
@@ -8719,9 +8726,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1NumbersTime);
- const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
- const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1NumbersTime||isA1Adjectives);
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
   ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
   :"";

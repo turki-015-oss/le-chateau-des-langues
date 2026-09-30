@@ -3905,10 +3905,17 @@ const A1_MESSAGES_FORMS_WRITING_TRANSLATIONS=[
 
 const A1_FUTURE_IMPERATIVE_DICTATION=[
  {speech:"Demain, je vais préparer le dîner.",ar:"سأحضّر العشاء غدًا."},
+ {speech:"Tu vas prendre le bus.",ar:"ستستقل الحافلة."},
+ {speech:"Elle va appeler le médecin ce soir.",ar:"ستتصل بالطبيب هذا المساء."},
  {speech:"Nous allons visiter le château.",ar:"سنزور القلعة."},
+ {speech:"Vous allez arriver à huit heures.",ar:"ستصلون الساعة الثامنة."},
+ {speech:"Ils vont partir demain matin.",ar:"سيغادرون غدًا صباحًا."},
+ {speech:"Je ne vais pas travailler samedi.",ar:"لن أعمل يوم السبت."},
+ {speech:"Nous n’allons pas prendre le bus.",ar:"لن نستقل الحافلة."},
  {speech:"N’oubliez pas votre billet !",ar:"لا تنسوا تذكرتكم!"},
  {speech:"Ferme la porte doucement !",ar:"أغلق الباب بهدوء!"},
- {speech:"Ils ne vont pas prendre le train.",ar:"لن يستقلوا القطار."}
+ {speech:"Allons au marché ensemble !",ar:"لنذهب إلى السوق معًا!"},
+ {speech:"Ne traversez pas ici !",ar:"لا تعبروا من هنا!"}
 ];
 
 const A1_FUTURE_IMPERATIVE_BUILDERS=[
@@ -8859,7 +8866,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1NumbersTime||isA1Adjectives);
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1Adjectives);
  const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation

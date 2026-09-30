@@ -1124,39 +1124,12 @@ const A1_MODULES:CourseModule[]=[
   id:"modal-verbs",title:"Pouvoir, vouloir et devoir",ar:"القدرة والرغبة والضرورة",icon:Gauge,
   description:"تصريف ثلاثة أفعال أساسية للتعبير عن الاستطاعة والرغبة والواجب، واستخدام il faut للنصيحة والضرورة العامة.",
   sections:[
-   section("Pouvoir","الاستطاعة والإذن","يأتي pouvoir قبل فعل في المصدر للتعبير عن القدرة أو الإمكانية، ويُستخدم في السؤال لطلب الإذن أو المساعدة.",[
-    "je peux، tu peux، il / elle / on peut.",
-    "nous pouvons، vous pouvez، ils / elles peuvent.",
-    "pouvoir + مصدر: Je peux venir.",
-    "Est-ce que je peux… ? لطلب الإذن."
-   ],[
-    {fr:"Je peux parler un peu français.",ar:"أستطيع التحدث بالفرنسية قليلًا."},
-    {fr:"Est-ce que je peux entrer ?",ar:"هل يمكنني الدخول؟"},
-    {fr:"Nous pouvons vous aider.",ar:"يمكننا مساعدتكم."},
-    {fr:"Elle ne peut pas venir aujourd’hui.",ar:"لا تستطيع الحضور اليوم."}
-   ]),
-   section("Vouloir","الرغبة والطلب","يأتي vouloir قبل اسم أو فعل في المصدر للتعبير عن الرغبة. وعند الطلب من شخص آخر يكون Je voudrais ألطف من Je veux.",[
-    "je veux، tu veux، il / elle / on veut.",
-    "nous voulons، vous voulez، ils / elles veulent.",
-    "vouloir + مصدر: Nous voulons partir.",
-    "Je voudrais… صيغة مهذبة شائعة للطلب."
-   ],[
-    {fr:"Je veux apprendre le français.",ar:"أريد تعلم الفرنسية."},
-    {fr:"Tu veux prendre un café ?",ar:"هل تريد تناول قهوة؟"},
-    {fr:"Ils veulent visiter le musée.",ar:"يريدون زيارة المتحف."},
-    {fr:"Je voudrais un billet pour Lyon, s’il vous plaît.",ar:"أرغب في تذكرة إلى ليون، من فضلك."}
-   ]),
-   section("Devoir et il faut","الواجب والضرورة","نستخدم devoir عندما يرتبط الواجب بشخص محدد، ونستخدم il faut للتعبير عن قاعدة أو ضرورة عامة دون تحديد شخص.",[
-    "je dois، tu dois، il / elle / on doit.",
-    "nous devons، vous devez، ils / elles doivent.",
-    "devoir + مصدر: Vous devez attendre.",
-    "Il faut + مصدر، والنفي Il ne faut pas + مصدر."
-   ],[
-    {fr:"Je dois finir mes devoirs.",ar:"يجب عليّ إنهاء واجباتي."},
-    {fr:"Vous devez présenter votre passeport.",ar:"يجب عليكم إبراز جواز سفركم."},
-    {fr:"Il faut arriver à l’heure.",ar:"يجب الوصول في الموعد."},
-    {fr:"Il ne faut pas fumer ici.",ar:"يُمنع التدخين هنا."}
-   ])
+   section("Les verbes de capacité, de volonté et d’obligation","أفعال القدرة والرغبة والضرورة","اجتمع pouvoir وvouloir وdevoir في جدول واحد. اختر الفعل، ثم انتقل بين بطاقات الضمائر لتسمع التصريف والمثال. يظل الفعل الذي بعد هذه الأفعال في المصدر.",[
+    "pouvoir + مصدر: القدرة أو الإذن.",
+    "vouloir + اسم أو مصدر: الرغبة والطلب.",
+    "devoir + مصدر: واجب على شخص محدد.",
+    "il faut + مصدر: ضرورة أو قاعدة عامة."
+   ],[])
   ]
  },
  {
@@ -7257,6 +7230,29 @@ function A1PresentCommonStudio(){
   <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>ملاحظة نطق مهمة</strong><p>استمع إلى التصريف كاملًا مع الضمير. وفي بطاقات <b dir="ltr">il / elle / on</b> و<b dir="ltr">ils / elles</b> يُنطق كل ضمير منفصلًا مع الفعل.</p></div></div>
  </div>
 }
+const A1_MODAL_VERB_TABLE=[
+ {infinitive:"pouvoir",ar:"يستطيع",use:"القدرة والإذن",note:"يأتي pouvoir قبل فعل في المصدر: Je peux venir. ويُستخدم في السؤال لطلب الإذن: Est-ce que je peux… ?",forms:[
+  {pronoun:"je",form:"peux",example:"Je peux parler français.",ar:"أستطيع التحدث بالفرنسية."},{pronoun:"tu",form:"peux",example:"Tu peux entrer.",ar:"تستطيع الدخول."},{pronoun:"il / elle / on",form:"peut",example:"Elle peut nous aider.",ar:"هي تستطيع مساعدتنا."},{pronoun:"nous",form:"pouvons",example:"Nous pouvons commencer.",ar:"نستطيع البدء."},{pronoun:"vous",form:"pouvez",example:"Vous pouvez attendre ici.",ar:"يمكنكم الانتظار هنا."},{pronoun:"ils / elles",form:"peuvent",example:"Ils peuvent venir ce soir.",ar:"يستطيعون المجيء هذا المساء."}]},
+ {infinitive:"vouloir",ar:"يريد",use:"الرغبة والطلب",note:"يأتي vouloir قبل اسم أو مصدر: Je veux apprendre. وعند الطلب المهذب نستخدم غالبًا Je voudrais.",forms:[
+  {pronoun:"je",form:"veux",example:"Je veux apprendre le français.",ar:"أريد تعلم الفرنسية."},{pronoun:"tu",form:"veux",example:"Tu veux boire un café ?",ar:"هل تريد شرب قهوة؟"},{pronoun:"il / elle / on",form:"veut",example:"Il veut visiter le musée.",ar:"هو يريد زيارة المتحف."},{pronoun:"nous",form:"voulons",example:"Nous voulons partir demain.",ar:"نريد المغادرة غدًا."},{pronoun:"vous",form:"voulez",example:"Vous voulez essayer ?",ar:"هل تريدون التجربة؟"},{pronoun:"ils / elles",form:"veulent",example:"Elles veulent manger.",ar:"هن يردن الأكل."}]},
+ {infinitive:"devoir",ar:"يجب / يتوجب",use:"الواجب الشخصي",note:"نستخدم devoir مع شخص محدد: Je dois travailler. وللقاعدة العامة دون شخص محدد نستعمل il faut + infinitif.",forms:[
+  {pronoun:"je",form:"dois",example:"Je dois finir mes devoirs.",ar:"يجب عليّ إنهاء واجباتي."},{pronoun:"tu",form:"dois",example:"Tu dois arriver à l’heure.",ar:"يجب أن تصل في الموعد."},{pronoun:"il / elle / on",form:"doit",example:"Elle doit appeler le médecin.",ar:"يجب عليها الاتصال بالطبيب."},{pronoun:"nous",form:"devons",example:"Nous devons attendre.",ar:"يجب أن ننتظر."},{pronoun:"vous",form:"devez",example:"Vous devez présenter votre passeport.",ar:"يجب عليكم إبراز جواز سفركم."},{pronoun:"ils / elles",form:"doivent",example:"Ils doivent travailler.",ar:"يجب عليهم العمل."}]}
+] as const;
+
+function A1ModalVerbsStudio(){
+ const [verbIndex,setVerbIndex]=useState(0);
+ const [formIndex,setFormIndex]=useState(0);
+ const verb=A1_MODAL_VERB_TABLE[verbIndex];
+ const item=verb.forms[formIndex];
+ return <div className="a1-present-er-studio a1-modal-verbs-studio">
+  <div className="a1-present-er-intro"><div><span>Les verbes modaux</span><strong>أفعال القدرة والرغبة والضرورة</strong><p>اختر الفعل ثم الضمير، واستمع إلى التصريف داخل جملة كاملة.</p></div><button type="button" onClick={()=>void speakFrench(verb.infinitive,{rate:.72})} aria-label={`استمع إلى ${verb.infinitive}`}><span><small>المصدر</small><strong dir="ltr">{verb.infinitive}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">{verb.infinitive} + infinitif</span><i>→</i><strong>{verb.use}</strong><b>فعل ثانٍ في المصدر</b><small>{verb.ar}</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر فعلًا"><button type="button" className={verbIndex===0?"active":""} aria-pressed={verbIndex===0} onClick={()=>{setVerbIndex(0);setFormIndex(0)}} dir="ltr">pouvoir</button><button type="button" className={verbIndex===1?"active":""} aria-pressed={verbIndex===1} onClick={()=>{setVerbIndex(1);setFormIndex(0)}} dir="ltr">vouloir</button><button type="button" className={verbIndex===2?"active":""} aria-pressed={verbIndex===2} onClick={()=>{setVerbIndex(2);setFormIndex(0)}} dir="ltr">devoir</button></nav>
+  <div className="a1-present-er-table" role="table" aria-label={`تصريف ${verb.infinitive} في المضارع`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الضمير</span><span>الفعل</span><span>التصريف</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(formIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.pronoun}</strong><small>مع {item.pronoun}</small></div><div className="a1-present-er-ending"><strong dir="ltr">{verb.infinitive}</strong><span>المصدر</span></div><button type="button" className="a1-present-er-form" onClick={()=>void playPresentConjugation(item.pronoun,item.form)} aria-label={`استمع إلى ${item.pronoun} ${item.form}`}><small>التصريف مع الضمير</small><strong dir="ltr">{item.pronoun} <mark>{item.form}</mark></strong><Volume2 aria-hidden="true"/></button><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(item.example,{rate:.74})} aria-label={`استمع إلى ${item.example}`}><span dir="ltr">{item.example}</span><small>{item.ar}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination" aria-label="التنقل بين بطاقات الضمائر"><button type="button" onClick={()=>setFormIndex(current=>Math.max(0,current-1))} disabled={formIndex===0} aria-label="الضمير السابق"><ChevronRight aria-hidden="true"/><span>السابق</span></button><b>بطاقة {formIndex+1} من {verb.forms.length}</b><button type="button" onClick={()=>setFormIndex(current=>Math.min(verb.forms.length-1,current+1))} disabled={formIndex===verb.forms.length-1} aria-label="الضمير التالي"><span>التالي</span><ChevronLeft aria-hidden="true"/></button></div>
+  <div className="a1-present-er-sound-note"><Volume2 aria-hidden="true"/><div><strong>قاعدة الاستعمال</strong><p>{verb.note}</p>{verb.infinitive==="devoir"&&<button type="button" onClick={()=>void speakFrench("Il faut arriver à l’heure. Il ne faut pas fumer ici.",{rate:.72})} dir="ltr">Il faut arriver à l’heure. · Il ne faut pas fumer ici.</button>}</div></div>
+ </div>
+}
 const A1_PRESENT_SPELLING_VERBS=[
  {infinitive:"manger",ar:"يأكل",tag:"-ger",rule:"نُبقي حرف e قبل nous حتى يبقى نطق g ناعمًا.",forms:[
   {pronoun:"je",form:"mange",example:"Je mange une pomme.",ar:"أنا آكل تفاحة."},{pronoun:"tu",form:"manges",example:"Tu manges du pain.",ar:"أنت تأكل خبزًا."},{pronoun:"il / elle / on",form:"mange",example:"On mange ici.",ar:"نحن نأكل هنا."},{pronoun:"nous",form:"mangeons",example:"Nous mangeons au restaurant.",ar:"نحن نأكل في المطعم."},{pronoun:"vous",form:"mangez",example:"Vous mangez bien.",ar:"أنتم تأكلون جيدًا."},{pronoun:"ils / elles",form:"mangent",example:"Ils mangent ensemble.",ar:"هم يأكلون معًا."}]},
@@ -10130,7 +10126,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
-       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Questions&&index===0?<A1QuestionsClosedTable/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Possessives&&index===0?<A1PossessivesMonMaMesTable/>:isA1Possessives&&index===1?<A1PossessivesTonTaTesTable/>:isA1Possessives&&index===2?<A1PossessivesSonSaSesTable/>:isA1Possessives&&index===3?<A1PossessivesPluralOwnersTable/>:isA1Structures&&index===0?<A1StructuresPresentationTable/>:isA1Structures&&index===1?<A1StructuresExistenceTable/>:isA1Structures&&index===2?<A1StructuresDemonstrativesTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
+       {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1Questions&&index===0?<A1QuestionsClosedTable/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1ModalVerbs&&index===0?<A1ModalVerbsStudio/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Possessives&&index===0?<A1PossessivesMonMaMesTable/>:isA1Possessives&&index===1?<A1PossessivesTonTaTesTable/>:isA1Possessives&&index===2?<A1PossessivesSonSaSesTable/>:isA1Possessives&&index===3?<A1PossessivesPluralOwnersTable/>:isA1Structures&&index===0?<A1StructuresPresentationTable/>:isA1Structures&&index===1?<A1StructuresExistenceTable/>:isA1Structures&&index===2?<A1StructuresDemonstrativesTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">
          {A1_NOUNS_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch">

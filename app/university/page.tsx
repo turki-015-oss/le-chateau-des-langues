@@ -2276,7 +2276,12 @@ const A1_MODAL_VERBS_PRACTICE_ITEMS:Example[]=[
  {fr:"Vous voulez autre chose ?",ar:"هل ترغبون في شيء آخر؟"},
  {fr:"Je dois prendre ce médicament le matin.",ar:"يجب عليّ تناول هذا الدواء صباحًا."},
  {fr:"Nous devons partir avant huit heures.",ar:"يجب علينا المغادرة قبل الساعة الثامنة."},
- {fr:"Il faut traverser au passage piéton.",ar:"يجب العبور من ممر المشاة."}
+ {fr:"Il faut traverser au passage piéton.",ar:"يجب العبور من ممر المشاة."},
+ {fr:"Vous pouvez entrer maintenant.",ar:"يمكنكم الدخول الآن."},
+ {fr:"Peut-on prendre des photos ici ?",ar:"هل يمكن التقاط الصور هنا؟"},
+ {fr:"Je voudrais un café, s’il vous plaît.",ar:"أرغب في قهوة، من فضلك."},
+ {fr:"Tu dois finir tes devoirs.",ar:"يجب أن تنهي واجباتك."},
+ {fr:"Il ne faut pas parler fort.",ar:"لا يجب التحدث بصوت مرتفع."}
 ];
 
 const A1_MODAL_VERBS_QUIZ_ITEMS:QuizQuestion[]=[

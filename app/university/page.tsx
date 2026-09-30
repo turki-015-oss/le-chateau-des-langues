@@ -2322,7 +2322,12 @@ const A1_FUTURE_IMPERATIVE_PRACTICE_ITEMS:Example[]=[
  {fr:"Écoutez attentivement la question.",ar:"استمعوا إلى السؤال بانتباه."},
  {fr:"Ouvre le livre à la page dix.",ar:"افتح الكتاب على الصفحة العاشرة."},
  {fr:"Prenons une pause de cinq minutes.",ar:"لنأخذ استراحة لمدة خمس دقائق."},
- {fr:"Ne traversez pas quand le feu est rouge.",ar:"لا تعبروا عندما تكون الإشارة حمراء."}
+ {fr:"Ne traversez pas quand le feu est rouge.",ar:"لا تعبروا عندما تكون الإشارة حمراء."},
+ {fr:"Je vais préparer le dîner demain.",ar:"سأحضّر العشاء غدًا."},
+ {fr:"Nous n’allons pas sortir ce soir.",ar:"لن نخرج هذا المساء."},
+ {fr:"Ferme la porte doucement.",ar:"أغلق الباب برفق."},
+ {fr:"N’oubliez pas vos billets.",ar:"لا تنسوا تذاكركم."},
+ {fr:"Allons au marché ensemble !",ar:"لنذهب إلى السوق معًا!"}
 ];
 
 const A1_FUTURE_IMPERATIVE_QUIZ_ITEMS:QuizQuestion[]=[

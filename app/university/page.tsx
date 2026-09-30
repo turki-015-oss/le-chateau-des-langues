@@ -3697,11 +3697,18 @@ const A1_MODAL_VERBS_DICTATION=[
 ];
 
 const A1_MODAL_VERBS_BUILDERS=[
- {tokens:["vous","Je","aider.","peux"],answer:["Je","peux","vous","aider."],ar:"أستطيع مساعدتك."},
- {tokens:["apprendre","voulons","Nous","français.","le"],answer:["Nous","voulons","apprendre","le","français."],ar:"نريد تعلم الفرنسية."},
- {tokens:["attendre.","devez","Vous"],answer:["Vous","devez","attendre."],ar:"يجب عليكم الانتظار."},
- {tokens:["un","voudrais","Je","billet."],answer:["Je","voudrais","un","billet."],ar:"أرغب في تذكرة."},
- {tokens:["pas","ne","Il","fumer","faut","ici."],answer:["Il","ne","faut","pas","fumer","ici."],ar:"يُمنع التدخين هنا."}
+ {tokens:["vous","Je","aider.","peux"],answer:["Je","peux","vous","aider."],ar:"أستطيع مساعدتكم."},
+ {tokens:["entrer.","Tu","peux"],answer:["Tu","peux","entrer."],ar:"يمكنك الدخول."},
+ {tokens:["le","veut","Elle","apprendre","français."],answer:["Elle","veut","apprendre","le","français."],ar:"هي تريد تعلم الفرنسية."},
+ {tokens:["visiter","voulons","Nous","musée.","le"],answer:["Nous","voulons","visiter","le","musée."],ar:"نريد زيارة المتحف."},
+ {tokens:["maintenant.","dois","partir","Je"],answer:["Je","dois","partir","maintenant."],ar:"يجب أن أغادر الآن."},
+ {tokens:["ici.","attendre","devez","Vous"],answer:["Vous","devez","attendre","ici."],ar:"يجب عليكم الانتظار هنا."},
+ {tokens:["à","faut","Il","arriver","l’heure."],answer:["Il","faut","arriver","à","l’heure."],ar:"يجب الوصول في الموعد."},
+ {tokens:["demain.","pas","venir","ne","peut","Elle"],answer:["Elle","ne","peut","pas","venir","demain."],ar:"لا تستطيع الحضور غدًا."},
+ {tokens:["prendre","peut","On","bus.","le"],answer:["On","peut","prendre","le","bus."],ar:"يمكننا ركوب الحافلة."},
+ {tokens:["café","veux","Tu","un","?"],answer:["Tu","veux","un","café","?"],ar:"هل تريد قهوة؟"},
+ {tokens:["une","réserver","devons","Nous","table."],answer:["Nous","devons","réserver","une","table."],ar:"يجب أن نحجز طاولة."},
+ {tokens:["pas","ne","Il","courir.","faut"],answer:["Il","ne","faut","pas","courir."],ar:"لا يجب الجري."}
 ];
 
 const A1_MODAL_VERBS_DIALOGUES=[

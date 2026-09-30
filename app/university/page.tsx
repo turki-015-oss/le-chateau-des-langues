@@ -3673,7 +3673,7 @@ const A1_MODAL_VERBS_LISTENING={
  ]
 };
 
-const A1_MODAL_VERBS_WRITING_MODEL="Je veux apprendre le français. Je peux étudier trente minutes chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement. Le week-end, je veux parler avec un ami.";
+const A1_MODAL_VERBS_WRITING_MODEL="Je veux apprendre le français pour voyager. Je peux étudier trente minutes chaque soir et parler avec un ami le week-end. Je dois écouter des phrases simples tous les jours. Il faut aussi écrire un peu, mais je ne peux pas étudier le matin.";
 
 const A1_MODAL_VERBS_WRITING_TRANSLATIONS=[
  {fr:"je peux vous aider",ar:"أستطيع مساعدتكم"},
@@ -4644,7 +4644,7 @@ const A1_ENHANCED_CONTENT={
  },
  "modal-verbs":{
   reading:A1_MODAL_VERBS_READING,listening:A1_MODAL_VERBS_LISTENING,dictation:A1_MODAL_VERBS_DICTATION,builders:A1_MODAL_VERBS_BUILDERS,dialogues:A1_MODAL_VERBS_DIALOGUES,
-  writingModel:A1_MODAL_VERBS_WRITING_MODEL,writingTitle:"اكتب خطة تعلم قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة عن هدف تريد تحقيقه. استخدم pouvoir وvouloir، ثم عبّر عن واجب شخصي بـ devoir أو ضرورة عامة بـ il faut.",writingPlaceholder:"Je veux… Je peux…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_MODAL_VERBS_WRITING_MODEL,writingTitle:"اكتب خطة تعلم شخصية",writingInstructions:"اكتب من 30 إلى 45 كلمة عن هدف شخصي. استعمل vouloir لما تريده، وpouvoir لما تستطيع فعله، وdevoir أو il faut لما يجب فعله، ثم أضف رابطًا أو جملة منفية.",writingPlaceholder:"Je veux… Je peux… Je dois…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Je veux apprendre le français. Je peux étudier chaque soir. Je dois écouter des phrases simples et il faut pratiquer régulièrement.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["اذكر ما تريد فعله باستعمال vouloir.","وضّح ما تستطيع فعله باستعمال pouvoir.","اختم بواجب أو ضرورة باستعمال devoir أو il faut."],dictationUnit:"sentence"
  },
  "future-imperative":{
@@ -8857,7 +8857,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   {label:"التعبير عن القدرة باستعمال pouvoir",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent)\b/i.test(revisionWritingText)},
   {label:"التعبير عن الرغبة باستعمال vouloir",passed:/\b(?:veux|veut|voulons|voulez|veulent|voudrais)\b/i.test(revisionWritingText)},
   {label:"واجب أو ضرورة باستعمال devoir أو il faut",passed:/\b(?:dois|doit|devons|devez|doivent)\b/i.test(revisionWritingText)||/\bil\s+faut\b/i.test(revisionWritingText)},
-  {label:"فعل في المصدر بعد الفعل المصرف",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent|veux|veut|voulons|voulez|veulent|voudrais|dois|doit|devons|devez|doivent|faut)\s+[a-zà-ÿ]+(?:er|ir|re)\b/i.test(revisionWritingText)}
+  {label:"فعل في المصدر بعد الفعل المصرف",passed:/\b(?:peux|peut|pouvons|pouvez|peuvent|veux|veut|voulons|voulez|veulent|voudrais|dois|doit|devons|devez|doivent|faut)\s+[a-zà-ÿ]+(?:er|ir|re)\b/i.test(revisionWritingText)},
+  {label:"رابط أو جملة منفية",passed:revisionWritingTokens.some(word=>["et","mais","aussi","puis"].includes(word))||/\bn[’']?e?\s*[a-zà-ÿ’']+\s+pas\b/i.test(revisionWritingText)}
  ]:isA1FutureImperative?[
   {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
   {label:"جملتان في المستقبل القريب",passed:(revisionWritingText.match(/\b(?:vais|vas|va|allons|allez|vont)\s+[a-zà-ÿ]+(?:er|ir|re)\b/gi)??[]).length>=2},

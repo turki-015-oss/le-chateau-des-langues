@@ -71,9 +71,21 @@ export const PERSONALITY_ADJECTIVES:VisualVocabularyItem[]=[
 ];
 
 export const ADJECTIVE_PRACTICE_ITEMS=[
- APPEARANCE_ADJECTIVES[0],APPEARANCE_ADJECTIVES[9],APPEARANCE_ADJECTIVES[12],
- HAIR_EYES_ADJECTIVES[2],HAIR_EYES_ADJECTIVES[12],
- PERSONALITY_ADJECTIVES[0],PERSONALITY_ADJECTIVES[3],PERSONALITY_ADJECTIVES[5],PERSONALITY_ADJECTIVES[11],PERSONALITY_ADJECTIVES[29]
+ {fr:"Il est grand et sportif.",ar:"هو طويل ورياضي.",quizAr:"طويل ورياضي",speech:["Il est grand et sportif."]},
+ {fr:"Elle est petite et gentille.",ar:"هي قصيرة ولطيفة.",speech:["Elle est petite et gentille."]},
+ {fr:"Mon frère est calme et patient.",ar:"أخي هادئ وصبور.",speech:["Mon frère est calme et patient."]},
+ {fr:"Ma sœur est sérieuse et organisée.",ar:"أختي جادة ومنظمة.",speech:["Ma sœur est sérieuse et organisée."]},
+ {fr:"Mon ami est très sociable.",ar:"صديقي اجتماعي جدًا.",speech:["Mon ami est très sociable."]},
+ {fr:"Mon père a les cheveux courts.",ar:"والدي شعره قصير.",speech:["Mon père a les cheveux courts."]},
+ {fr:"Ma mère a les cheveux longs.",ar:"والدتي شعرها طويل.",speech:["Ma mère a les cheveux longs."]},
+ {fr:"Il a les yeux bleus.",ar:"عيناه زرقاوان.",speech:["Il a les yeux bleus."]},
+ {fr:"Elle a les yeux verts.",ar:"عيناها خضراوان.",speech:["Elle a les yeux verts."]},
+ {fr:"Ces garçons sont intelligents.",ar:"هؤلاء الأولاد أذكياء.",speech:["Ces garçons sont intelligents."]},
+ {fr:"Ces filles sont gentilles.",ar:"هؤلاء الفتيات لطيفات.",speech:["Ces filles sont gentilles."]},
+ {fr:"Le professeur est strict mais juste.",ar:"المعلم صارم لكنه عادل.",speech:["Le professeur est strict mais juste."]},
+ {fr:"La voisine est calme et polie.",ar:"الجارة هادئة ومهذبة.",speech:["La voisine est calme et polie."]},
+ {fr:"Le bébé est petit et mignon.",ar:"الرضيع صغير ولطيف.",speech:["Le bébé est petit et mignon."]},
+ {fr:"La maison est grande et belle.",ar:"المنزل كبير وجميل.",speech:["La maison est grande et belle."]}
 ];
 
 export const ADJECTIVE_QUIZ_ITEMS=[...ADJECTIVE_PRACTICE_ITEMS];

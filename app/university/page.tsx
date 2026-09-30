@@ -7418,6 +7418,14 @@ const A1_FAMILY_CONTEXT_TABLE=[
  {label:"Décrire",arLabel:"وصف فرد من العائلة",rule:"نستعمل être مع الصفة أو الحالة، ونوافق الصفة مع المؤنث عند الحاجة.",items:[
   {form:"Mon frère est fatigué.",example:"Mon frère est fatigué après l’école.",ar:"أخي متعب بعد المدرسة.",detail:"نستعمل est مع الصفة fatigué لوصف حالة الأخ المذكر."},
   {form:"Ma mère est contente.",example:"Ma mère est contente aujourd’hui.",ar:"والدتي سعيدة اليوم.",detail:"مع mère المؤنث نضيف e إلى الصفة: contente."}
+ ]},
+ {label:"Proches",arLabel:"أفراد العائلة والحالة العائلية",rule:"نستخدم mon وma قبل الاسم المفرد، وmes مع الجمع. وتأتي الصفات مثل marié وcélibataire بعد être.",items:[
+  {form:"Voici mon fils / ma fille.",example:"Voici mon fils et ma fille.",ar:"هذا ابني وهذه ابنتي.",detail:"fils مذكر فنقول mon fils، وfille مؤنث فنقول ma fille."},
+  {form:"C’est mon cousin / ma cousine.",example:"C’est ma cousine. Elle habite à Paris.",ar:"هذه ابنة عمي أو خالي. هي تسكن في باريس.",detail:"cousin مذكر وcousine مؤنث؛ لذلك تتغير صفة الملكية والاسم."},
+  {form:"Voici mon mari / ma femme.",example:"Voici mon mari. Il est professeur.",ar:"هذا زوجي. هو معلّم.",detail:"mari زوج، وfemme زوجة في سياق العائلة؛ ثم نستعمل il للحديث عن الزوج."},
+  {form:"Mes parents ont deux enfants.",example:"Mes parents ont deux enfants.",ar:"والداي لديهما طفلان.",detail:"نستخدم avoir لذكر عدد الأبناء، وenfants اسم جمع."},
+  {form:"Elle est célibataire.",example:"Ma tante est célibataire.",ar:"خالتي أو عمّتي عزباء.",detail:"célibataire صفة لا يتغير شكلها بين المذكر والمؤنث."},
+  {form:"Il est marié / Elle est mariée.",example:"Mon oncle est marié.",ar:"خالي أو عمي متزوج.",detail:"مع المؤنث نضيف e: mariée؛ وتأتي الصفة بعد être."}
  ]}
 ] as const;
 

@@ -227,11 +227,11 @@ const A1_MODAL_VERBS_LISTENING_CLIPS=[
  {letter:"Il faut",word:"attendre.",ar:"يجب الانتظار.",hiddenSpeech:"Il faut attendre."}
 ];
 const A1_FUTURE_IMPERATIVE_LISTENING_CLIPS=[
- {letter:"je vais",word:"partir demain",ar:"سأغادر غدًا",hiddenSpeech:"Je vais partir demain"},
- {letter:"nous allons",word:"visiter Lyon",ar:"سنزور ليون",hiddenSpeech:"Nous allons visiter Lyon"},
- {letter:"prenez",word:"vos billets",ar:"خذوا تذاكركم",hiddenSpeech:"Prenez vos billets"},
- {letter:"ferme",word:"la fenêtre",ar:"أغلق النافذة",hiddenSpeech:"Ferme la fenêtre"},
- {letter:"ne traversez pas",word:"ici",ar:"لا تعبروا من هنا",hiddenSpeech:"Ne traversez pas ici"}
+ {letter:"Je vais",word:"partir demain.",ar:"سأغادر غدًا.",hiddenSpeech:"Je vais partir demain."},
+ {letter:"Nous allons",word:"visiter Lyon.",ar:"سنزور ليون.",hiddenSpeech:"Nous allons visiter Lyon."},
+ {letter:"Prenez",word:"vos billets.",ar:"خذوا تذاكركم.",hiddenSpeech:"Prenez vos billets."},
+ {letter:"Ferme",word:"la fenêtre.",ar:"أغلق النافذة.",hiddenSpeech:"Ferme la fenêtre."},
+ {letter:"Ne traversez pas",word:"ici.",ar:"لا تعبروا من هنا.",hiddenSpeech:"Ne traversez pas ici."}
 ];
 const A1_FOOD_SHOPPING_LISTENING_CLIPS=[
  {letter:"du",word:"pain",ar:"خبز",hiddenSpeech:"du pain"},
@@ -3749,15 +3749,15 @@ const A1_FUTURE_IMPERATIVE_READING={
 };
 
 const A1_FUTURE_IMPERATIVE_LISTENING={
- title:"Avant de sortir",
- arTitle:"قبل الخروج",
+ title:"Le futur proche et l’impératif à l’écoute",
+ arTitle:"استمع إلى المستقبل القريب والأمر",
  text:"Je vais partir demain. Nous allons visiter Lyon. Prenez vos billets. Ferme la fenêtre. Ne traversez pas ici.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je vais partir demain","Je pars aujourd’hui","Il va venir demain"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Vous allez visiter Paris","Nous allons visiter Lyon","Nous visitons le château"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Prenons nos billets","Prenez votre passeport","Prenez vos billets"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ferme la fenêtre","Ouvre la porte","Fermez les fenêtres"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Traversez ici","Ne traversez pas ici","Ne tournez pas à droite"],correctIndex:1}
+  {prompt:"Quand part la personne ?",speech:"Je vais partir demain.",instruction:"اختر الجملة التي سمعتها.",translation:"متى سيغادر الشخص؟",choices:["Je vais partir demain.","Je pars aujourd’hui.","Il va venir demain."],correctIndex:0,explanationAr:"vais partir هو مستقبل قريب: aller مصرّف + partir في المصدر، وdemain يحدد الوقت.",explanationFr:"Je vais partir est au futur proche : aller conjugué + infinitif, avec demain."},
+  {prompt:"Que va faire le groupe ?",speech:"Nous allons visiter Lyon.",instruction:"اختر الجملة التي سمعتها.",translation:"ماذا ستفعل المجموعة؟",choices:["Vous allez visiter Paris.","Nous allons visiter Lyon.","Nous visitons le château."],correctIndex:1,explanationAr:"allons visiter هو مستقبل قريب مع nous، والفعل visiter يبقى في المصدر.",explanationFr:"Avec nous, on dit nous allons + infinitif : visiter."},
+  {prompt:"Quelle instruction entendez-vous ?",speech:"Prenez vos billets.",instruction:"اختر الجملة التي سمعتها.",translation:"ما التعليمات التي تسمعها؟",choices:["Prenons nos billets.","Prenez votre passeport.","Prenez vos billets."],correctIndex:2,explanationAr:"Prenez هي صيغة الأمر مع vous، ولا نكتب ضمير الفاعل في الأمر.",explanationFr:"Prenez est l’impératif avec vous, sans pronom sujet."},
+  {prompt:"Quelle instruction est donnée à une personne ?",speech:"Ferme la fenêtre.",instruction:"اختر الجملة التي سمعتها.",translation:"ما التعليمات الموجهة إلى شخص واحد؟",choices:["Ferme la fenêtre.","Ouvre la porte.","Fermez les fenêtres."],correctIndex:0,explanationAr:"Ferme صيغة أمر مع tu من fermer؛ لا نكتب tu في الجملة.",explanationFr:"Ferme est l’impératif avec tu de fermer, sans écrire tu."},
+  {prompt:"Quelle consigne négative entendez-vous ?",speech:"Ne traversez pas ici.",instruction:"اختر الجملة التي سمعتها.",translation:"ما التعليمات المنفية التي تسمعها؟",choices:["Traversez ici.","Ne traversez pas ici.","Ne tournez pas à droite."],correctIndex:1,explanationAr:"في الأمر المنفي نحيط الفعل بـ ne وpas: ne traversez pas.",explanationFr:"À l’impératif négatif, ne et pas encadrent le verbe : ne traversez pas."}
  ]
 };
 
@@ -9545,10 +9545,10 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
   const clip=activeOrbitListeningClips[clipIndex];
-  if(isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns||isA1CoreVerbs||isA1Present||isA1ModalVerbs){
+  if(isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns||isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative){
    setAlphabetListeningPlaying(true);
    setAlphabetListeningSegment(isA1Sounds?1:0);
-   void speakFrench(isA1Sounds?clip.word:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1Present?A1_PRESENT_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS[clipIndex].hiddenSpeech:A1_NOUNS_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
+   void speakFrench(isA1Sounds?clip.word:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1Present?A1_PRESENT_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS[clipIndex].hiddenSpeech:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS[clipIndex].hiddenSpeech:A1_NOUNS_LISTENING_CLIPS[clipIndex].hiddenSpeech,{
     rate:rate==="slow"?.5:.76,
     onEnd:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)},
     onError:()=>{setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}
@@ -10436,15 +10436,15 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
         <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"} ${isA1Countries?"countries-single":""}`} dir="ltr">
-         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":isA1CoreVerbs||isA1Present||isA1ModalVerbs?"استمع إلى الجملة":"الحرف مخفي"}</small></span>}</strong>
-         {!isA1Countries&&<strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings||isA1Nouns?"العبارة مخفية":isA1CoreVerbs||isA1Present||isA1ModalVerbs?"الجملة مخفية":"الكلمة مخفية"}</small></span>}</strong>}
+         <strong className={alphabetListeningSegment===0?"speaking":""}>{answeredCorrectly?clip.letter:<span><Headphones/><small>{isA1Sounds?"استمع إلى الصوت":isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative?"استمع إلى الجملة":"الحرف مخفي"}</small></span>}</strong>
+         {!isA1Countries&&<strong className={alphabetListeningSegment===1?"speaking":""}>{answeredCorrectly?clip.word:<span><AudioLines/><small>{isA1Greetings||isA1Nouns?"العبارة مخفية":isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative?"الجملة مخفية":"الكلمة مخفية"}</small></span>}</strong>}
         </div>
-        <small>{answeredCorrectly?clip.ar:isA1Countries?"استمع، ثم اختر الإجابة الصحيحة لتظهر الكلمة أو الجملة.":isA1Nouns?"استمع إلى الاسم مع أداته، ثم اختر الإجابة الصحيحة.":isA1CoreVerbs||isA1Present||isA1ModalVerbs?"استمع إلى الجملة، ثم اختر الإجابة الصحيحة.":"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
+        <small>{answeredCorrectly?clip.ar:isA1Countries?"استمع، ثم اختر الإجابة الصحيحة لتظهر الكلمة أو الجملة.":isA1Nouns?"استمع إلى الاسم مع أداته، ثم اختر الإجابة الصحيحة.":isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative?"استمع إلى الجملة، ثم اختر الإجابة الصحيحة.":"استمع إلى الصوت، ثم اختر الإجابة الصحيحة لتظهر الكلمة."}</small>
         <div className={`a1-smart-wave ${alphabetListeningPlaying?"playing":""}`} aria-hidden="true">{Array.from({length:19},(_,index)=><i key={index} style={{"--wave-index":index} as CSSProperties}/>)}</div>
-        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":isA1CoreVerbs||isA1Present||isA1ModalVerbs?"استمع إلى الجملة":"استمع إلى الصوت"}</b><small>{isA1Countries?"الكلمة أو الجملة كاملة":isA1Greetings||isA1Nouns?"العبارة كاملة":isA1CoreVerbs||isA1Present||isA1ModalVerbs?"الجملة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
+        <div className="a1-smart-audio-actions">{answeredCorrectly?<><button type="button" onClick={()=>playAlphabetOrbitClip("slow")}><span><AudioLines/></span><div><b>بطيء</b><small>نطق تعليمي</small></div></button><button type="button" className="primary" onClick={()=>playAlphabetOrbitClip("normal")}><span><Headphones/></span><div><b>استمع</b><small>نطق طبيعي</small></div></button></>:<button type="button" className="primary" onClick={()=>playOrbitHiddenSound()}><span><Headphones/></span><div><b>{isA1Countries?"استمع إلى المقطع":isA1Greetings||isA1Nouns?"استمع إلى العبارة":isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative?"استمع إلى الجملة":"استمع إلى الصوت"}</b><small>{isA1Countries?"الكلمة أو الجملة كاملة":isA1Greetings||isA1Nouns?"العبارة كاملة":isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative?"الجملة كاملة":"الصوت المستهدف فقط"}</small></div></button>}</div>
         <nav aria-label="المقاطع الصوتية">{activeOrbitListeningClips.map((item,index)=><button type="button" key={`${item.letter}-${item.word}-${index}`} className={alphabetListeningQuestionIndex===index?"active":""} onClick={()=>{cancelFrenchSpeech();setAlphabetListeningQuestionIndex(index);setAlphabetListeningClipIndex(index);setAlphabetListeningPlaying(false);setAlphabetListeningSegment(-1)}} aria-label={`الانتقال إلى المقطع ${index+1}`}>{index+1}</button>)}</nav>
        </div>
-       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Nouns?A1_NOUNS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Present?A1_PRESENT_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
+       {answeredCorrectly?<details className="a1-smart-transcript"><summary>إظهار النص</summary><p dir="ltr">{isA1Greetings?A1_GREETINGS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Nouns?A1_NOUNS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1Present?A1_PRESENT_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS[alphabetListeningClipIndex].hiddenSpeech:`${clip.letter} — ${clip.word}`}</p></details>:<div className="a1-smart-transcript-locked"><EyeOff/> إظهار النص بعد الإجابة الصحيحة</div>}
         <article key={alphabetListeningQuestionIndex} className="a1-smart-question">
         <div><span>السؤال {alphabetListeningQuestionIndex+1} من {activeA2Listening.questions.length}</span><b>{Math.round(correctCount/activeA2Listening.questions.length*100)}%</b></div>
         <div className="a1-smart-question-prompt"><strong dir="ltr">{question.prompt}</strong><button type="button" onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:alphabetNaturalSpeechText(question.prompt),{rate:.72})} aria-label="الاستماع إلى السؤال الفرنسي" title="الاستماع إلى السؤال"><Volume2/><span>استمع للسؤال</span></button></div>

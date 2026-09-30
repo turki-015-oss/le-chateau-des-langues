@@ -283,11 +283,11 @@ const A1_HEALTH_NEEDS_LISTENING_CLIPS=[
  {letter:"j’ai besoin",word:"d’aide",ar:"أحتاج إلى مساعدة",hiddenSpeech:"J’ai besoin d’aide"}
 ];
 const A1_ADJECTIVES_LISTENING_CLIPS=[
- {letter:"grand",word:"et mince",ar:"طويل ونحيف",hiddenSpeech:"Grand et mince"},
- {letter:"petite",word:"et sportive",ar:"قصيرة ورياضية",hiddenSpeech:"Petite et sportive"},
- {letter:"les cheveux",word:"courts",ar:"الشعر قصير",hiddenSpeech:"Les cheveux courts"},
- {letter:"calme",word:"et patient",ar:"هادئ وصبور",hiddenSpeech:"Calme et patient"},
- {letter:"sérieuse",word:"et organisée",ar:"جادة ومنظمة",hiddenSpeech:"Sérieuse et organisée"}
+ {letter:"Il est grand",word:"et mince.",ar:"هو طويل ونحيف.",hiddenSpeech:"Il est grand et mince."},
+ {letter:"Elle est petite",word:"et sportive.",ar:"هي قصيرة ورياضية.",hiddenSpeech:"Elle est petite et sportive."},
+ {letter:"Il a les cheveux",word:"courts.",ar:"شعره قصير.",hiddenSpeech:"Il a les cheveux courts."},
+ {letter:"Il est calme",word:"et patient.",ar:"هو هادئ وصبور.",hiddenSpeech:"Il est calme et patient."},
+ {letter:"Elle est sérieuse",word:"et organisée.",ar:"هي جادة ومنظمة.",hiddenSpeech:"Elle est sérieuse et organisée."}
 ];
 const A1_DAILY_LIFE_LISTENING_CLIPS=[
  {letter:"je me lève",word:"à sept heures",ar:"أستيقظ الساعة السابعة",hiddenSpeech:"Je me lève à sept heures"},
@@ -4356,15 +4356,15 @@ const A1_ADJECTIVES_READING={
 };
 
 const A1_ADJECTIVES_LISTENING={
- title:"Deviner la personne",
- arTitle:"تعرّف على الشخص",
- text:"Grand et mince. Petite et sportive. Les cheveux courts. Calme et patient. Sérieuse et organisée.",
+ title:"Décrire une personne à l’écoute",
+ arTitle:"استمع إلى وصف الشخص",
+ text:"Il est grand et mince. Elle est petite et sportive. Il a les cheveux courts. Il est calme et patient. Elle est sérieuse et organisée.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Grand et mince","Petit et sportif","Grand et fort"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Grande et calme","Petite et sportive","Petite et timide"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Les yeux noirs","Les cheveux longs","Les cheveux courts"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Calme et patient","Gentil et sociable","Sérieux et organisé"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Sportive et gentille","Sérieuse et organisée","Grande et intelligente"],correctIndex:1}
+  {prompt:"Comment est-il ?",speech:"Il est grand et mince.",instruction:"اختر الوصف الذي سمعته.",translation:"كيف يبدو هو؟",choices:["Il est grand et mince.","Il est petit et sportif.","Il est grand et fort."],correctIndex:0,explanationAr:"grand تعني طويلًا، وmince تعني نحيفًا؛ والوصفان هنا للمذكر.",explanationFr:"Grand et mince décrivent un homme au masculin singulier."},
+  {prompt:"Comment est-elle ?",speech:"Elle est petite et sportive.",instruction:"اختر الوصف الذي سمعته.",translation:"كيف تبدو هي؟",choices:["Elle est grande et calme.","Elle est petite et sportive.","Elle est petite et timide."],correctIndex:1,explanationAr:"petite وsportive صفتان مؤنثتان لأن الوصف يعود على elle.",explanationFr:"Petite et sportive sont au féminin singulier avec elle."},
+  {prompt:"Comment sont ses cheveux ?",speech:"Il a les cheveux courts.",instruction:"اختر وصف الشعر الذي سمعته.",translation:"كيف يبدو شعره؟",choices:["Il a les yeux noirs.","Il a les cheveux longs.","Il a les cheveux courts."],correctIndex:2,explanationAr:"نستخدم avoir مع الشعر: il a les cheveux courts، أي شعره قصير.",explanationFr:"Pour les cheveux, on utilise avoir : il a les cheveux courts."},
+  {prompt:"Quel est son caractère ?",speech:"Il est calme et patient.",instruction:"اختر صفات الشخصية التي سمعتها.",translation:"ما صفاته الشخصية؟",choices:["Il est calme et patient.","Il est gentil et sociable.","Il est sérieux et organisé."],correctIndex:0,explanationAr:"calme وpatient يصفان الشخصية، وهما بصيغة المذكر مع il.",explanationFr:"Calme et patient décrivent le caractère au masculin."},
+  {prompt:"Comment est-elle ?",speech:"Elle est sérieuse et organisée.",instruction:"اختر الوصف الذي سمعته.",translation:"كيف تبدو هي؟",choices:["Elle est sportive et gentille.","Elle est sérieuse et organisée.","Elle est grande et intelligente."],correctIndex:1,explanationAr:"sérieuse وorganisée صفتان مؤنثتان مفردتان مع elle.",explanationFr:"Sérieuse et organisée sont au féminin singulier avec elle."}
  ]
 };
 

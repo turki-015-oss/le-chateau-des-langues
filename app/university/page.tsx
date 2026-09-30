@@ -3852,14 +3852,18 @@ const A1_HEALTH_NEEDS_WRITING_TRANSLATIONS=[
 ];
 
 const A1_ADJECTIVES_WRITING_TRANSLATIONS=[
- {fr:"grand et mince",ar:"طويل ونحيف"},
- {fr:"petite et sportive",ar:"قصيرة ورياضية"},
- {fr:"les cheveux courts",ar:"الشعر قصير"},
- {fr:"les cheveux longs",ar:"الشعر طويل"},
- {fr:"les yeux noirs",ar:"العينان سوداوان"},
- {fr:"calme et patient",ar:"هادئ وصبور"},
- {fr:"sérieuse et organisée",ar:"جادة ومنظمة"},
- {fr:"gentille et sociable",ar:"لطيفة واجتماعية"}
+ {fr:"un homme grand et sportif",ar:"رجل طويل ورياضي"},
+ {fr:"une femme petite et gentille",ar:"امرأة قصيرة ولطيفة"},
+ {fr:"un garçon calme et patient",ar:"ولد هادئ وصبور"},
+ {fr:"une fille sérieuse et organisée",ar:"فتاة جادة ومنظمة"},
+ {fr:"les cheveux courts et noirs",ar:"شعر قصير وأسود"},
+ {fr:"les cheveux longs et bruns",ar:"شعر طويل وبني"},
+ {fr:"les yeux bleus",ar:"عينان زرقاوان"},
+ {fr:"les yeux verts",ar:"عينان خضراوان"},
+ {fr:"mon ami est très sociable",ar:"صديقي اجتماعي جدًا"},
+ {fr:"ma sœur est intelligente",ar:"أختي ذكية"},
+ {fr:"ces garçons sont gentils",ar:"هؤلاء الأولاد لطفاء"},
+ {fr:"ces filles sont organisées",ar:"هؤلاء الفتيات منظمات"}
 ];
 
 const A1_DAILY_LIFE_WRITING_TRANSLATIONS=[
@@ -8666,7 +8670,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
- const isA1WritingPhrase=isA1Greetings||isA1Nouns||isA1CoreVerbs;
+ const isA1WritingPhrase=isA1Greetings||isA1Nouns||isA1CoreVerbs||(level.id==="A1"&&activeModule.id==="adjectives");
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";

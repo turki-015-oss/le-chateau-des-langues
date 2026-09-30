@@ -3766,17 +3766,21 @@ const A1_FUTURE_IMPERATIVE_LISTENING={
  ]
 };
 
-const A1_FUTURE_IMPERATIVE_WRITING_MODEL="Demain, nous allons visiter Lyon. Nous allons partir tôt et je ne vais pas prendre la voiture. Prenez vos billets, arrivez à huit heures et n’oubliez pas votre passeport !";
+const A1_FUTURE_IMPERATIVE_WRITING_MODEL="Demain, nous allons visiter le musée. Nous allons partir à neuf heures et nous n’allons pas prendre la voiture. Préparez vos sacs, prenez vos billets et arrivez à l’heure. N’oubliez pas votre téléphone et ne traversez pas la rue sans regarder !";
 
 const A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS=[
- {fr:"je vais partir demain",ar:"سأغادر غدًا"},
- {fr:"nous allons visiter Lyon",ar:"سنزور ليون"},
- {fr:"elle ne va pas venir",ar:"لن تأتي"},
+ {fr:"demain, nous allons visiter le musée",ar:"غدًا سنزور المتحف"},
+ {fr:"nous allons partir à neuf heures",ar:"سنغادر عند الساعة التاسعة"},
+ {fr:"je ne vais pas prendre la voiture",ar:"لن آخذ السيارة"},
+ {fr:"elle ne va pas venir ce soir",ar:"لن تأتي هذا المساء"},
+ {fr:"préparez vos sacs",ar:"جهزوا حقائبكم"},
  {fr:"prenez vos billets",ar:"خذوا تذاكركم"},
- {fr:"ouvre le livre",ar:"افتح الكتاب"},
- {fr:"allons au parc",ar:"لنذهب إلى الحديقة"},
- {fr:"ne fermez pas la porte",ar:"لا تغلقوا الباب"},
- {fr:"n’oublie pas tes clés",ar:"لا تنس مفاتيحك"}
+ {fr:"arrivez à l’heure",ar:"صلوا في الوقت المحدد"},
+ {fr:"ferme la porte doucement",ar:"أغلق الباب برفق"},
+ {fr:"allons au marché ensemble",ar:"لنذهب إلى السوق معًا"},
+ {fr:"ne fermez pas la fenêtre",ar:"لا تغلقوا النافذة"},
+ {fr:"n’oublie pas tes clés",ar:"لا تنس مفاتيحك"},
+ {fr:"ne traversez pas sans regarder",ar:"لا تعبروا من دون أن تنظروا"}
 ];
 
 const A1_FOOD_SHOPPING_WRITING_TRANSLATIONS=[

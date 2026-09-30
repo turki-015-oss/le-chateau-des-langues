@@ -7450,6 +7450,13 @@ const A1_PHYSICAL_STATES_TABLE=[
  {label:"Douleur",arLabel:"الألم البسيط",rule:"نستعمل avoir mal à ثم الجزء المؤلم من الجسم.",items:[
   {form:"J’ai mal à la tête.",example:"J’ai mal à la tête ce matin.",ar:"رأسي يؤلمني هذا الصباح.",detail:"tête مؤنث؛ لذلك نقول à la tête بعد avoir mal."},
   {form:"Elle a mal au dos.",example:"Elle a mal au dos après le voyage.",ar:"ظهرها يؤلمها بعد السفر.",detail:"dos مذكر؛ لذلك تصبح à + le = au: avoir mal au dos."}
+ ]},
+ {label:"Quotidien",arLabel:"حالات يومية إضافية",rule:"نستعمل avoir مع sommeil والألم، وêtre مع الصفات، وse sentir للشعور العام.",items:[
+  {form:"J’ai sommeil.",example:"J’ai sommeil après le déjeuner.",ar:"أشعر بالنعاس بعد الغداء.",detail:"النوم أو النعاس يُعبّر عنه بالتركيب الثابت avoir sommeil."},
+  {form:"Je me sens bien / mal.",example:"Je me sens mal ce matin.",ar:"لا أشعر أنني بخير هذا الصباح.",detail:"se sentir فعل انعكاسي يصف الشعور العام؛ مع je نقول je me sens."},
+  {form:"Je suis prêt / prête.",example:"Je suis prête pour le cours.",ar:"أنا مستعدة للدرس.",detail:"prêt صفة؛ مع المؤنث نضيف e: prête."},
+  {form:"Il est pressé.",example:"Il est pressé pour le bus.",ar:"هو مستعجل للحافلة.",detail:"pressé صفة لوصف الاستعجال؛ ويمكن للمؤنث أن نقول pressée."},
+  {form:"J’ai mal au ventre / aux dents.",example:"J’ai mal au ventre et aux dents.",ar:"أشعر بألم في البطن والأسنان.",detail:"نقول au ventre للمذكر، وaux dents لأن à + les تصبح aux."}
  ]}
 ] as const;
 

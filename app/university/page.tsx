@@ -4386,11 +4386,18 @@ const A1_ADJECTIVES_DICTATION=[
 ];
 
 const A1_ADJECTIVES_BUILDERS=[
- {tokens:["et","grand","Il","mince.","est"],answer:["Il","est","grand","et","mince."],ar:"هو طويل ونحيف."},
+ {tokens:["grand.","Il","est"],answer:["Il","est","grand."],ar:"هو طويل."},
+ {tokens:["petite.","est","Elle"],answer:["Elle","est","petite."],ar:"هي قصيرة."},
+ {tokens:["sportif.","Il","est"],answer:["Il","est","sportif."],ar:"هو رياضي."},
+ {tokens:["gentille.","est","Elle"],answer:["Elle","est","gentille."],ar:"هي لطيفة."},
+ {tokens:["patient.","calme","Il","et","est"],answer:["Il","est","calme","et","patient."],ar:"هو هادئ وصبور."},
  {tokens:["organisée.","est","sérieuse","Elle","et"],answer:["Elle","est","sérieuse","et","organisée."],ar:"هي جادة ومنظمة."},
- {tokens:["intelligentes.","filles","sont","Ces"],answer:["Ces","filles","sont","intelligentes."],ar:"هؤلاء الفتيات ذكيات."},
  {tokens:["courts.","cheveux","les","a","Il"],answer:["Il","a","les","cheveux","courts."],ar:"شعره قصير."},
- {tokens:["et","sociable.","gentille","est","Elle"],answer:["Elle","est","gentille","et","sociable."],ar:"هي لطيفة واجتماعية."}
+ {tokens:["longs.","cheveux","les","Elle","a"],answer:["Elle","a","les","cheveux","longs."],ar:"شعرها طويل."},
+ {tokens:["bleus.","yeux","les","a","Il"],answer:["Il","a","les","yeux","bleus."],ar:"عيناه زرقاوان."},
+ {tokens:["verts.","yeux","les","Elle","a"],answer:["Elle","a","les","yeux","verts."],ar:"عيناها خضراوان."},
+ {tokens:["intelligents.","garçons","sont","Ces"],answer:["Ces","garçons","sont","intelligents."],ar:"هؤلاء الأولاد أذكياء."},
+ {tokens:["organisées.","filles","sont","Ces"],answer:["Ces","filles","sont","organisées."],ar:"هؤلاء الفتيات منظمات."}
 ];
 
 const A1_ADJECTIVES_DIALOGUES=[

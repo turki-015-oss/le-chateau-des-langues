@@ -4286,7 +4286,7 @@ const A1_DESCRIPTION_LISTENING={
  ]
 };
 
-const A1_DESCRIPTION_WRITING_MODEL="Dans ma famille, mon père est calme et ma mère est très gentille. Mon frère est content aujourd’hui, mais il est fatigué. Ma sœur a faim et mes grands-parents sont heureux de nous voir.";
+const A1_DESCRIPTION_WRITING_MODEL="Dans ma famille, mon père est calme et ma mère est contente aujourd’hui. Mon frère est fatigué, mais ma sœur est heureuse. Mes grands-parents ont faim. Mon cousin est marié et ma tante est célibataire.";
 
 const A1_DESCRIPTION_DICTATION=[
  {speech:"Voici mon fils et ma fille.",ar:"هذا ابني وهذه ابنتي."},
@@ -4741,7 +4741,7 @@ const A1_ENHANCED_CONTENT={
  },
  description:{
   reading:A1_DESCRIPTION_READING,listening:A1_DESCRIPTION_LISTENING,dictation:A1_DESCRIPTION_DICTATION,builders:A1_DESCRIPTION_BUILDERS,dialogues:A1_DESCRIPTION_DIALOGUES,
-  writingModel:A1_DESCRIPTION_WRITING_MODEL,writingTitle:"صِف أفرادًا من عائلتك وحالاتهم",writingInstructions:"اكتب من 30 إلى 45 كلمة عن ثلاثة أفراد من عائلتك. استخدم صفات ملكية، وحالة جسدية واحدة، وشعورين مختلفين على الأقل.",writingPlaceholder:"Dans ma famille, mon père…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_DESCRIPTION_WRITING_MODEL,writingTitle:"اكتب وصفًا قصيرًا لعائلتك",writingInstructions:"اكتب من 30 إلى 45 كلمة عن ثلاثة أفراد من عائلتك على الأقل. استعمل صفات ملكية، وحالة جسدية واحدة، وشعورين مختلفين، ثم أضف حالة عائلية مثل marié أو célibataire.",writingPlaceholder:"Dans ma famille, mon père…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Dans ma famille, mon père est calme et ma mère est contente. Mon frère est fatigué aujourd’hui, mais ma sœur est heureuse. Mes grands-parents ont faim.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["قدّم كل شخص بصفة ملكية مناسبة.","فرّق بين être مع الصفة وavoir مع التعبير الثابت.","اذكر حالة جسدية وشعورًا بوضوح."],dictationUnit:"sentence"
  },
  "health-needs":{

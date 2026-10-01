@@ -4320,10 +4320,18 @@ const A1_DESCRIPTION_BUILDERS=[
 
 const A1_DESCRIPTION_DIALOGUES=[
  {context:"Qui est-ce ?",translation:"من هذه؟",prompt:"اختر الإجابة الصحيحة عن امرأة من العائلة.",choices:["C’est ma sœur.","C’est mon sœur.","Ce sont ma sœur."],correctIndex:0,feedback:"sœur مؤنث، لذلك نستخدم ma sœur."},
+ {context:"Qui sont ces personnes ?",translation:"من هؤلاء الأشخاص؟",prompt:"اختر صيغة الجمع الصحيحة.",choices:["C’est mes parents.","Ce sont mes parents.","Ils est mes parents."],correctIndex:1,feedback:"نستخدم Ce sont لتقديم أكثر من شخص."},
  {context:"Comment vas-tu ?",translation:"كيف حالك؟",prompt:"اختر جوابًا يصف حالة جسدية.",choices:["Je suis fatigué.","Je suis mon frère.","J’ai le dimanche."],correctIndex:0,feedback:"être + fatigué يصف حالة جسدية."},
- {context:"Qu’est-ce que tu as ?",translation:"ما بك؟",prompt:"اختر جوابًا يعبّر عن الخوف.",choices:["J’ai peur.","Je suis peur.","Je fais peur de moi."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur."},
- {context:"Comment est ta mère aujourd’hui ?",translation:"كيف حال والدتك اليوم؟",prompt:"اختر الرد المناسب.",choices:["Elle est très contente.","Elle a ma mère.","Elle sont contente."],correctIndex:0,feedback:"نستخدم elle est ثم الصفة المؤنثة contente."},
- {context:"Qui sont ces personnes ?",translation:"من هؤلاء الأشخاص؟",prompt:"اختر صيغة الجمع الصحيحة.",choices:["C’est mes parents.","Ce sont mes parents.","Ils est mes parents."],correctIndex:1,feedback:"نستخدم Ce sont لتقديم أكثر من شخص."}
+ {context:"Tu as faim ?",translation:"هل أنت جائع؟",prompt:"اختر إجابة طبيعية.",choices:["Oui, j’ai faim.","Oui, je suis faim.","Oui, j’ai fatigué."],correctIndex:0,feedback:"نقول avoir faim للتعبير عن الجوع."},
+ {context:"Pourquoi tu dors ?",translation:"لماذا تنام؟",prompt:"اختر جوابًا صحيحًا.",choices:["Parce que j’ai sommeil.","Parce que je suis sommeil.","Parce que j’ai le sommeil."],correctIndex:0,feedback:"نقول avoir sommeil للتعبير عن النعاس."},
+ {context:"Comment tu te sens ce matin ?",translation:"كيف تشعر هذا الصباح؟",prompt:"اختر ردًا طبيعيًا.",choices:["Je me sens mal.","Je suis me sens mal.","J’ai sens mal."],correctIndex:0,feedback:"مع se sentir نستخدم الضمير me: Je me sens mal."},
+ {context:"Qu’est-ce qu’elle a ?",translation:"ما الذي تعاني منه؟",prompt:"اختر جوابًا عن ألم في الظهر.",choices:["Elle a mal au dos.","Elle est mal au dos.","Elle a le dos mal."],correctIndex:0,feedback:"نقول avoir mal au dos عند وجود ألم في الظهر."},
+ {context:"Comment est ta sœur aujourd’hui ?",translation:"كيف حال أختك اليوم؟",prompt:"اختر الرد المناسب.",choices:["Elle est très contente.","Elle a ma sœur.","Elle sont contente."],correctIndex:0,feedback:"نستخدم elle est ثم الصفة المؤنثة contente."},
+ {context:"Comment est ton père ?",translation:"كيف حال والدك؟",prompt:"اختر جوابًا يعبّر عن الفخر.",choices:["Il est fier de moi.","Il a fier de moi.","Il est fière de moi."],correctIndex:0,feedback:"نقول être fier de لشخص مذكر، وتصبح fière مع المؤنث."},
+ {context:"Tu as peur du chien ?",translation:"هل تخاف من الكلب؟",prompt:"اختر الجواب الصحيح.",choices:["Oui, j’ai peur du chien.","Oui, je suis peur du chien.","Oui, j’ai peur le chien."],correctIndex:0,feedback:"الخوف يُعبّر عنه بالتركيب الثابت avoir peur de."},
+ {context:"Comment êtes-vous à la maison ?",translation:"كيف تكونون في المنزل؟",prompt:"اختر صيغة الجمع المناسبة.",choices:["Nous sommes calmes.","Nous est calmes.","Nous avons calmes."],correctIndex:0,feedback:"مع nous نستخدم sommes، وcalmes هي صيغة الجمع."},
+ {context:"Ton cousin est marié ?",translation:"هل ابن عمك أو خالك متزوج؟",prompt:"اختر ردًا مناسبًا.",choices:["Oui, il est marié.","Oui, il a marié.","Oui, il est marier."],correctIndex:0,feedback:"نستخدم être + marié لوصف الحالة الزوجية."},
+ {context:"Ta tante est mariée ?",translation:"هل خالتك أو عمتك متزوجة؟",prompt:"اختر ردًا يعبّر عن أنها عزباء.",choices:["Non, elle est célibataire.","Non, elle a célibataire.","Non, elle est célibatair."],correctIndex:0,feedback:"célibataire تُستعمل مع المذكر والمؤنث، ونستخدم être معها."}
 ];
 
 const A1_HEALTH_NEEDS_READING={

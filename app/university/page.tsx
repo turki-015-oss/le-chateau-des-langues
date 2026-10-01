@@ -269,11 +269,11 @@ const A1_HOME_HOUSING_LISTENING_CLIPS=[
  {letter:"sous",word:"la table",ar:"تحت الطاولة",hiddenSpeech:"Sous la table"}
 ];
 const A1_DESCRIPTION_LISTENING_CLIPS=[
- {letter:"mon père",word:"est calme",ar:"والدي هادئ",hiddenSpeech:"Mon père est calme"},
- {letter:"ma sœur",word:"est contente",ar:"أختي سعيدة",hiddenSpeech:"Ma sœur est contente"},
- {letter:"mon frère",word:"est fatigué",ar:"أخي متعب",hiddenSpeech:"Mon frère est fatigué"},
- {letter:"mes parents",word:"ont faim",ar:"والداي جائعان",hiddenSpeech:"Mes parents ont faim"},
- {letter:"ma grand-mère",word:"a froid",ar:"جدتي تشعر بالبرد",hiddenSpeech:"Ma grand-mère a froid"}
+ {letter:"ma sœur",word:"est contente aujourd’hui",ar:"أختي سعيدة اليوم",hiddenSpeech:"Ma sœur est contente aujourd’hui."},
+ {letter:"mes parents",word:"ont deux enfants",ar:"والداي لديهما طفلان",hiddenSpeech:"Mes parents ont deux enfants."},
+ {letter:"j’ai sommeil",word:"après le déjeuner",ar:"أشعر بالنعاس بعد الغداء",hiddenSpeech:"J’ai sommeil après le déjeuner."},
+ {letter:"ma grand-mère",word:"a mal au dos",ar:"جدتي تشعر بألم في ظهرها",hiddenSpeech:"Ma grand-mère a mal au dos."},
+ {letter:"mon cousin",word:"est marié",ar:"ابن عمي أو خالي متزوج",hiddenSpeech:"Mon cousin est marié."}
 ];
 const A1_HEALTH_NEEDS_LISTENING_CLIPS=[
  {letter:"j’ai",word:"de la fièvre",ar:"لدي حمى",hiddenSpeech:"J’ai de la fièvre"},
@@ -4274,15 +4274,15 @@ const A1_DESCRIPTION_READING={
 };
 
 const A1_DESCRIPTION_LISTENING={
- title:"Des nouvelles de la famille",
- arTitle:"أخبار العائلة",
- text:"Mon père est calme. Ma sœur est contente. Mon frère est fatigué. Mes parents ont faim. Ma grand-mère a froid.",
+ title:"La famille, les états et les émotions à l’écoute",
+ arTitle:"استمع إلى العائلة والحالات والمشاعر",
+ text:"Ma sœur est contente aujourd’hui. Mes parents ont deux enfants. J’ai sommeil après le déjeuner. Ma grand-mère a mal au dos. Mon cousin est marié.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon père est calme","Mon père est malade","Mon frère est calme"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ma mère est triste","Ma sœur est contente","Ma tante est fatiguée"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon cousin est heureux","Mon frère a faim","Mon frère est fatigué"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mes parents ont faim","Mes amis ont soif","Mes grands-parents ont froid"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ma grand-mère a peur","Ma grand-mère a froid","Ma mère a chaud"],correctIndex:1}
+  {prompt:"Comment est la sœur aujourd’hui ?",speech:"Ma sœur est contente aujourd’hui.",instruction:"اختر الجملة التي سمعتها.",translation:"كيف حال الأخت اليوم؟",choices:["Ma sœur est triste aujourd’hui.","Ma sœur est contente aujourd’hui.","Ma sœur est fatiguée aujourd’hui."],correctIndex:1,explanationAr:"contente تصف شعور السعادة، وهي مؤنثة لأن الوصف يعود على sœur.",explanationFr:"Contente exprime la joie et s’accorde avec sœur au féminin."},
+  {prompt:"Combien d’enfants ont les parents ?",speech:"Mes parents ont deux enfants.",instruction:"اختر الجملة التي سمعتها.",translation:"كم طفلًا لدى الوالدين؟",choices:["Mes parents ont un enfant.","Mes parents ont deux enfants.","Mes parents ont trois enfants."],correctIndex:1,explanationAr:"نستخدم avoir لذكر عدد الأبناء: ils ont deux enfants.",explanationFr:"On utilise avoir pour indiquer le nombre d’enfants : ils ont deux enfants."},
+  {prompt:"Quelle est la sensation après le déjeuner ?",speech:"J’ai sommeil après le déjeuner.",instruction:"اختر الجملة التي سمعتها.",translation:"ما الحالة بعد الغداء؟",choices:["J’ai faim après le déjeuner.","J’ai sommeil après le déjeuner.","J’ai peur après le déjeuner."],correctIndex:1,explanationAr:"avoir sommeil تعني الشعور بالنعاس، وهو تعبير ثابت مع avoir.",explanationFr:"Avoir sommeil est une expression fixe pour dire qu’on a envie de dormir."},
+  {prompt:"Où a-t-elle mal ?",speech:"Ma grand-mère a mal au dos.",instruction:"اختر الجملة التي سمعتها.",translation:"أين تشعر الجدة بالألم؟",choices:["Ma grand-mère a mal à la tête.","Ma grand-mère a mal au dos.","Ma grand-mère a mal aux dents."],correctIndex:1,explanationAr:"نقول avoir mal au dos لأن dos اسم مذكر، وà + le تصبح au.",explanationFr:"On dit avoir mal au dos : dos est masculin, donc à + le = au."},
+  {prompt:"Quelle est la situation familiale du cousin ?",speech:"Mon cousin est marié.",instruction:"اختر الجملة التي سمعتها.",translation:"ما الحالة العائلية لابن العم أو الخال؟",choices:["Mon cousin est célibataire.","Mon cousin est marié.","Mon cousin est malade."],correctIndex:1,explanationAr:"marié تعني متزوج، وهي صفة تأتي بعد être.",explanationFr:"Marié signifie qu’il a un conjoint et se place après être."}
  ]
 };
 

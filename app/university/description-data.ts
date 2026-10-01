@@ -99,7 +99,19 @@ export const DESCRIPTION_QUIZ_ITEMS=[
 ];
 
 export const DESCRIPTION_PRACTICE_ITEMS=[
- FAMILY_VOCABULARY[0],FAMILY_VOCABULARY[1],FAMILY_VOCABULARY[6],
- PHYSICAL_STATE_VOCABULARY[0],PHYSICAL_STATE_VOCABULARY[2],PHYSICAL_STATE_VOCABULARY[12],PHYSICAL_STATE_VOCABULARY[21],
- EMOTION_VOCABULARY[1],EMOTION_VOCABULARY[7],EMOTION_VOCABULARY[10]
+ {fr:"Voici mon fils et ma fille.",ar:"هذا ابني وهذه ابنتي.",speech:["Voici mon fils et ma fille."]},
+ {fr:"Mes parents ont deux enfants.",ar:"والداي لديهما طفلان.",speech:["Mes parents ont deux enfants."]},
+ {fr:"Mon cousin est marié.",ar:"ابن عمي أو خالي متزوج.",speech:["Mon cousin est marié."]},
+ {fr:"Ma tante est célibataire.",ar:"خالتي أو عمّتي عزباء.",speech:["Ma tante est célibataire."]},
+ {fr:"Mes grands-parents sont âgés.",ar:"جدّي وجدّتي متقدمان في السن.",speech:["Mes grands-parents sont âgés."]},
+ {fr:"Ma famille est grande.",ar:"عائلتي كبيرة.",speech:["Ma famille est grande."]},
+ {fr:"Je suis fatigué aujourd’hui.",ar:"أنا متعب اليوم.",speech:["Je suis fatigué aujourd’hui."]},
+ {fr:"J’ai sommeil après le déjeuner.",ar:"أشعر بالنعاس بعد الغداء.",speech:["J’ai sommeil après le déjeuner."]},
+ {fr:"Je me sens mal ce matin.",ar:"لا أشعر أنني بخير هذا الصباح.",speech:["Je me sens mal ce matin."]},
+ {fr:"Ma grand-mère a mal au dos.",ar:"جدتي تشعر بألم في ظهرها.",speech:["Ma grand-mère a mal au dos."]},
+ {fr:"Ma sœur est contente aujourd’hui.",ar:"أختي سعيدة اليوم.",speech:["Ma sœur est contente aujourd’hui."]},
+ {fr:"Mon père est fier de moi.",ar:"والدي فخور بي.",speech:["Mon père est fier de moi."]},
+ {fr:"J’ai peur du chien.",ar:"أنا أخاف من الكلب.",speech:["J’ai peur du chien."]},
+ {fr:"Nous sommes calmes à la maison.",ar:"نحن هادئون في المنزل.",speech:["Nous sommes calmes à la maison."]},
+ {fr:"Mon frère est de bonne humeur.",ar:"أخي في مزاج جيد.",speech:["Mon frère est de bonne humeur."]}
 ];

@@ -4289,11 +4289,18 @@ const A1_DESCRIPTION_LISTENING={
 const A1_DESCRIPTION_WRITING_MODEL="Dans ma famille, mon père est calme et ma mère est très gentille. Mon frère est content aujourd’hui, mais il est fatigué. Ma sœur a faim et mes grands-parents sont heureux de nous voir.";
 
 const A1_DESCRIPTION_DICTATION=[
- {speech:"Voici ma sœur et mon frère.",ar:"هذه أختي وهذا أخي."},
- {speech:"Je suis fatigué, mais je suis content.",ar:"أنا متعب، لكنني سعيد."},
- {speech:"Mon grand-père a faim et ma grand-mère a soif.",ar:"جدي جائع وجدتي عطشى."},
- {speech:"Mes parents sont fiers de mon frère.",ar:"والداي فخوران بأخي."},
- {speech:"Toute la famille est réunie aujourd’hui.",ar:"العائلة كلها مجتمعة اليوم."}
+ {speech:"Voici mon fils et ma fille.",ar:"هذا ابني وهذه ابنتي."},
+ {speech:"Mes parents ont deux enfants.",ar:"والداي لديهما طفلان."},
+ {speech:"Mon cousin est marié.",ar:"ابن عمي أو خالي متزوج."},
+ {speech:"Ma tante est célibataire.",ar:"خالتي أو عمّتي عزباء."},
+ {speech:"Je suis fatigué aujourd’hui.",ar:"أنا متعب اليوم."},
+ {speech:"J’ai sommeil après le déjeuner.",ar:"أشعر بالنعاس بعد الغداء."},
+ {speech:"Je me sens mal ce matin.",ar:"لا أشعر أنني بخير هذا الصباح."},
+ {speech:"Ma grand-mère a mal au dos.",ar:"جدتي تشعر بألم في ظهرها."},
+ {speech:"Ma sœur est contente aujourd’hui.",ar:"أختي سعيدة اليوم."},
+ {speech:"Mon père est fier de moi.",ar:"والدي فخور بي."},
+ {speech:"J’ai peur du chien.",ar:"أنا أخاف من الكلب."},
+ {speech:"Nous sommes calmes à la maison.",ar:"نحن هادئون في المنزل."}
 ];
 
 const A1_DESCRIPTION_BUILDERS=[
@@ -9014,7 +9021,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1Adjectives);
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1Description||isA1Adjectives);
  const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation

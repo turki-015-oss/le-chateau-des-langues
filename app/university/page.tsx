@@ -4304,11 +4304,18 @@ const A1_DESCRIPTION_DICTATION=[
 ];
 
 const A1_DESCRIPTION_BUILDERS=[
- {tokens:["frère.","mon","Voici"],answer:["Voici","mon","frère."],ar:"هذا أخي."},
- {tokens:["très","mère","contente.","Ma","est"],answer:["Ma","mère","est","très","contente."],ar:"والدتي سعيدة جدًا."},
- {tokens:["faim.","parents","ont","Mes"],answer:["Mes","parents","ont","faim."],ar:"والداي جائعان."},
- {tokens:["fatiguée.","sœur","Ma","est"],answer:["Ma","sœur","est","fatiguée."],ar:"أختي متعبة."},
- {tokens:["grands-parents.","mes","Voici"],answer:["Voici","mes","grands-parents."],ar:"هذان جدّي وجدتي."}
+ {tokens:["et","fille.","Voici","mon","fils","ma"],answer:["Voici","mon","fils","et","ma","fille."],ar:"هذا ابني وهذه ابنتي."},
+ {tokens:["enfants.","Mes","deux","ont","parents"],answer:["Mes","parents","ont","deux","enfants."],ar:"والداي لديهما طفلان."},
+ {tokens:["marié.","est","cousin","Mon"],answer:["Mon","cousin","est","marié."],ar:"ابن عمي أو خالي متزوج."},
+ {tokens:["célibataire.","Ma","tante","est"],answer:["Ma","tante","est","célibataire."],ar:"خالتي أو عمّتي عزباء."},
+ {tokens:["aujourd’hui.","fatigué","Je","suis"],answer:["Je","suis","fatigué","aujourd’hui."],ar:"أنا متعب اليوم."},
+ {tokens:["le","J’ai","après","sommeil","déjeuner."],answer:["J’ai","sommeil","après","le","déjeuner."],ar:"أشعر بالنعاس بعد الغداء."},
+ {tokens:["ce","mal","me","sens","Je","matin."],answer:["Je","me","sens","mal","ce","matin."],ar:"لا أشعر أنني بخير هذا الصباح."},
+ {tokens:["au","a","Ma","grand-mère","mal","dos."],answer:["Ma","grand-mère","a","mal","au","dos."],ar:"جدتي تشعر بألم في ظهرها."},
+ {tokens:["aujourd’hui.","sœur","est","Ma","contente"],answer:["Ma","sœur","est","contente","aujourd’hui."],ar:"أختي سعيدة اليوم."},
+ {tokens:["de","père","fier","moi.","est","Mon"],answer:["Mon","père","est","fier","de","moi."],ar:"والدي فخور بي."},
+ {tokens:["chien.","peur","J’ai","du"],answer:["J’ai","peur","du","chien."],ar:"أنا أخاف من الكلب."},
+ {tokens:["la","sommes","maison.","calmes","Nous","à"],answer:["Nous","sommes","calmes","à","la","maison."],ar:"نحن هادئون في المنزل."}
 ];
 
 const A1_DESCRIPTION_DIALOGUES=[

@@ -4016,10 +4016,17 @@ const A1_FOOD_SHOPPING_DICTATION=[
 
 const A1_FOOD_SHOPPING_BUILDERS=[
  {tokens:["pain.","du","J’achète"],answer:["J’achète","du","pain."],ar:"أشتري خبزًا."},
+ {tokens:["soupe.","prépare","de la","Elle"],answer:["Elle","prépare","de la","soupe."],ar:"هي تحضّر حساءً."},
+ {tokens:["l’eau.","achetons","Nous","de"],answer:["Nous","achetons","de","l’eau."],ar:"نحن نشتري ماءً."},
+ {tokens:["tomates.","prennent","des","Ils"],answer:["Ils","prennent","des","tomates."],ar:"هم يأخذون طماطم."},
  {tokens:["pommes,","kilo","voudrais","de","Je","un","s’il vous plaît."],answer:["Je","voudrais","un","kilo","de","pommes,","s’il vous plaît."],ar:"أرغب في كيلوغرام من التفاح، من فضلك."},
+ {tokens:["bouteille","faut","d’eau.","une","Il"],answer:["Il","faut","une","bouteille","d’eau."],ar:"نحتاج إلى زجاجة ماء."},
  {tokens:["pas","café.","ne","de","prends","Je"],answer:["Je","ne","prends","pas","de","café."],ar:"لا أتناول القهوة."},
- {tokens:["coûtent","Combien","oranges","?","ces"],answer:["Combien","coûtent","ces","oranges","?"],ar:"كم سعر هذه البرتقالات؟"},
- {tokens:["carte.","par","payons","Nous"],answer:["Nous","payons","par","carte."],ar:"ندفع بالبطاقة."}
+ {tokens:["sucre.","pas","Elle","veut","de","ne"],answer:["Elle","ne","veut","pas","de","sucre."],ar:"هي لا تريد سكرًا."},
+ {tokens:["cette","?","coûte","Combien","baguette"],answer:["Combien","coûte","cette","baguette","?"],ar:"كم سعر خبز الباغيت هذا؟"},
+ {tokens:["euros.","trois","coûtent","oranges","Ces"],answer:["Ces","oranges","coûtent","trois","euros."],ar:"سعر هذه البرتقالات ثلاثة يوروهات."},
+ {tokens:["carte.","par","payons","Nous"],answer:["Nous","payons","par","carte."],ar:"ندفع بالبطاقة."},
+ {tokens:["merci.","Voilà,"],answer:["Voilà,","merci."],ar:"تفضل، شكرًا."}
 ];
 
 const A1_FOOD_SHOPPING_DIALOGUES=[

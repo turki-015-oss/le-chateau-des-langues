@@ -4000,11 +4000,18 @@ const A1_FOOD_SHOPPING_LISTENING={
 const A1_FOOD_SHOPPING_WRITING_MODEL="Pour le dîner, je voudrais du pain, de la soupe et des tomates. Il me faut aussi une bouteille d’eau et un kilo de pommes. Je ne prends pas de viande. Je vais payer par carte.";
 
 const A1_FOOD_SHOPPING_DICTATION=[
- {speech:"Je voudrais un kilo de pommes.",ar:"أرغب في كيلوغرام من التفاح."},
- {speech:"Nous achetons du pain et des tomates.",ar:"نشتري خبزًا وطماطم."},
- {speech:"Je ne prends pas de sucre.",ar:"لا أتناول السكر."},
- {speech:"Elle prépare de la salade fraîche.",ar:"تحضّر سلطة طازجة."},
- {speech:"Cette bouteille d’huile coûte six euros.",ar:"سعر زجاجة الزيت هذه ستة يوروهات."}
+ {speech:"du pain",ar:"خبز."},
+ {speech:"de la soupe",ar:"حساء."},
+ {speech:"de l’eau",ar:"ماء."},
+ {speech:"des tomates",ar:"طماطم."},
+ {speech:"un kilo de pommes",ar:"كيلوغرام من التفاح."},
+ {speech:"une bouteille d’eau",ar:"زجاجة ماء."},
+ {speech:"Je voudrais du fromage, s’il vous plaît.",ar:"أرغب في جبن، من فضلك."},
+ {speech:"Je ne prends pas de café.",ar:"لا أتناول القهوة."},
+ {speech:"Combien coûte cette baguette ?",ar:"كم سعر خبز الباغيت هذا؟"},
+ {speech:"C’est combien ?",ar:"كم السعر؟"},
+ {speech:"Je paie par carte.",ar:"أدفع بالبطاقة."},
+ {speech:"Voilà, merci.",ar:"تفضل، شكرًا."}
 ];
 
 const A1_FOOD_SHOPPING_BUILDERS=[
@@ -9389,9 +9396,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife);
- const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
- const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1NumbersTime||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife);
+ const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
+ const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation
   ?(()=>{const item=ALPHABET.find(value=>value[0]===revisionDictationItem.speech.toLocaleUpperCase("fr"));return LETTER_SPEECH_OVERRIDES[revisionDictationItem.speech]??item?.[1]??revisionDictationItem.speech.toLocaleLowerCase("fr")})()
   :"";

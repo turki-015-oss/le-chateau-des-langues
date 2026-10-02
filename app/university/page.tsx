@@ -4549,7 +4549,7 @@ const A1_DAILY_LIFE_LISTENING={
  ]
 };
 
-const A1_DAILY_LIFE_WRITING_MODEL="En général, je me lève à sept heures. D’abord, je me prépare et je prends mon petit-déjeuner. Ensuite, je vais au travail. Je déjeune souvent à midi. Le soir, je me repose, puis je lis. Je ne me couche jamais tard.";
+const A1_DAILY_LIFE_WRITING_MODEL="En général, je me réveille à six heures trente et je me lève à sept heures. D’abord, je me douche et je m’habille. Ensuite, je prends souvent le bus. Après le travail, je fais parfois du sport. Enfin, je ne me couche jamais tard.";
 
 const A1_DAILY_LIFE_DICTATION=[
  {speech:"Je me réveille à six heures.",ar:"أستيقظ الساعة السادسة."},
@@ -4816,8 +4816,8 @@ const A1_ENHANCED_CONTENT={
  },
  "daily-life":{
   reading:A1_DAILY_LIFE_READING,listening:A1_DAILY_LIFE_LISTENING,dictation:A1_DAILY_LIFE_DICTATION,builders:A1_DAILY_LIFE_BUILDERS,dialogues:A1_DAILY_LIFE_DIALOGUES,
-  writingModel:A1_DAILY_LIFE_WRITING_MODEL,writingTitle:"رتّب أحداث يومك المعتاد",writingInstructions:"اكتب من 35 إلى 50 كلمة عن يومك. استخدم ثلاثة أفعال ضميرية، وظرفَي تكرار، وثلاثة روابط زمنية، وجملة منفية واحدة.",writingPlaceholder:"En général, je me lève…",writingMinimum:35,writingMaximum:50,
-  speakingPrompt:"En général, je me lève à sept heures. D’abord, je me prépare. Ensuite, je vais au travail. Le soir, je me repose, puis je lis. Je ne me couche jamais tard.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["استخدم الضمير المنعكس المناسب قبل الفعل.","أضف ظروفًا توضّح تكرار النشاط.","رتّب يومك بروابط زمنية واضحة."],dictationUnit:"sentence"
+  writingModel:A1_DAILY_LIFE_WRITING_MODEL,writingTitle:"اكتب روتينك اليومي",writingInstructions:"اكتب من 35 إلى 50 كلمة عن يومك المعتاد. استخدم ثلاثة أفعال ضميرية، وظرفَي تكرار مختلفين، وثلاثة روابط زمنية، وجملة منفية واحدة.",writingPlaceholder:"En général, je me réveille…",writingMinimum:35,writingMaximum:50,
+  speakingPrompt:"En général, je me réveille à six heures trente et je me lève à sept heures. D’abord, je me douche. Ensuite, je prends souvent le bus. Enfin, je ne me couche jamais tard.",speakingDuration:"تحدث لمدة 35 إلى 50 ثانية",speakingTips:["استخدم الضمير الانعكاسي المناسب قبل كل فعل ضميري.","أضف ظروفًا مختلفة لتوضيح تكرار النشاط.","رتّب يومك بروابط زمنية واضحة ثم اختم بجملة منفية."],dictationUnit:"sentence"
  },
  situations:{
   reading:A1_SITUATIONS_READING,listening:A1_SITUATIONS_LISTENING,dictation:A1_SITUATIONS_DICTATION,builders:A1_SITUATIONS_BUILDERS,dialogues:A1_SITUATIONS_DIALOGUES,

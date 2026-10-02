@@ -2231,16 +2231,21 @@ const A1_WEATHER_CLOTHES_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_HOME_HOUSING_PRACTICE_ITEMS:Example[]=[
- {fr:"Je vis dans une petite maison avec un jardin.",ar:"أعيش في منزل صغير له حديقة."},
+ {fr:"J’habite dans un appartement calme.",ar:"أسكن في شقة هادئة."},
+ {fr:"Nous vivons dans une petite maison.",ar:"نحن نعيش في منزل صغير."},
+ {fr:"Lina habite dans un studio à Lyon.",ar:"لينا تسكن في استوديو في ليون."},
  {fr:"Mon appartement se trouve au troisième étage.",ar:"تقع شقتي في الطابق الثالث."},
  {fr:"Il y a deux chambres et une salle de bains.",ar:"توجد غرفتا نوم وحمام واحد."},
+ {fr:"La cuisine est à côté du salon.",ar:"المطبخ بجوار غرفة الجلوس."},
  {fr:"Nous mangeons dans la cuisine.",ar:"نتناول الطعام في المطبخ."},
- {fr:"La télévision est devant le canapé.",ar:"يقع التلفاز أمام الأريكة."},
  {fr:"La lampe est à côté du lit.",ar:"يقع المصباح بجوار السرير."},
  {fr:"Mes vêtements sont dans l’armoire.",ar:"ملابسي داخل الخزانة."},
  {fr:"Le chat dort sous la chaise.",ar:"تنام القطة تحت الكرسي."},
+ {fr:"Le jardin est derrière la maison.",ar:"الحديقة خلف المنزل."},
+ {fr:"La table est entre les deux chaises.",ar:"الطاولة بين الكرسيين."},
  {fr:"Ma chambre est claire et confortable.",ar:"غرفة نومي مضيئة ومريحة."},
- {fr:"Chez moi, le salon donne sur le jardin.",ar:"في منزلي، تطل غرفة الجلوس على الحديقة."}
+ {fr:"Ma pièce préférée est le salon.",ar:"غرفتي المفضلة هي غرفة الجلوس."},
+ {fr:"Chez moi, il y a un balcon.",ar:"في منزلي، توجد شرفة."}
 ];
 
 const A1_HOME_HOUSING_QUIZ_ITEMS:QuizQuestion[]=[

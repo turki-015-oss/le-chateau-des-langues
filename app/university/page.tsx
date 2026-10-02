@@ -2014,15 +2014,20 @@ const A1_NUMBERS_TIME_QUIZ_ITEMS:QuizQuestion[]=[
 
 const A1_DAILY_LIFE_PRACTICE_ITEMS:Example[]=[
  {fr:"Je me réveille à six heures et demie.",ar:"أستيقظ الساعة السادسة والنصف."},
+ {fr:"Je me lève à sept heures.",ar:"أنهض الساعة السابعة."},
+ {fr:"Je me douche le matin.",ar:"أستحم في الصباح."},
  {fr:"Après la douche, je m’habille rapidement.",ar:"بعد الاستحمام، أرتدي ملابسي بسرعة."},
+ {fr:"Nous nous préparons pour l’école.",ar:"نستعد للمدرسة."},
  {fr:"Mon frère prend son petit-déjeuner dans la cuisine.",ar:"يتناول أخي فطوره في المطبخ."},
- {fr:"Nous partons au travail à huit heures.",ar:"نغادر إلى العمل الساعة الثامنة."},
- {fr:"Elle déjeune souvent avec ses collègues.",ar:"غالبًا ما تتناول الغداء مع زملائها."},
- {fr:"Je fais les courses après le travail.",ar:"أتسوق بعد العمل."},
+ {fr:"Elle va souvent à la bibliothèque.",ar:"هي تذهب غالبًا إلى المكتبة."},
+ {fr:"Je fais parfois du sport le soir.",ar:"أمارس الرياضة أحيانًا في المساء."},
+ {fr:"Je ne regarde jamais la télévision le matin.",ar:"لا أشاهد التلفاز صباحًا أبدًا."},
+ {fr:"Après le travail, je fais les courses.",ar:"بعد العمل أتسوق."},
  {fr:"Les enfants font leurs devoirs avant le dîner.",ar:"ينجز الأطفال واجباتهم قبل العشاء."},
- {fr:"Le soir, nous nous reposons dans le salon.",ar:"في المساء، نستريح في غرفة الجلوس."},
- {fr:"Il ne se couche jamais après minuit.",ar:"لا يخلد إلى النوم بعد منتصف الليل أبدًا."},
- {fr:"Enfin, je prépare mes affaires pour demain.",ar:"وأخيرًا، أجهّز أغراضي للغد."}
+ {fr:"D’abord, je prends mon petit-déjeuner.",ar:"أولًا، أتناول فطوري."},
+ {fr:"Puis, je prends le bus pour aller au travail.",ar:"ثم أستقل الحافلة للذهاب إلى العمل."},
+ {fr:"Enfin, nous nous reposons dans le salon.",ar:"أخيرًا، نستريح في غرفة الجلوس."},
+ {fr:"Je me couche à dix heures.",ar:"أخلد إلى النوم الساعة العاشرة."}
 ];
 
 const A1_DAILY_LIFE_QUIZ_ITEMS:QuizQuestion[]=[

@@ -4200,15 +4200,15 @@ const A1_HOME_HOUSING_READING={
 };
 
 const A1_HOME_HOUSING_LISTENING={
- title:"Un studio à louer",
- arTitle:"استوديو للإيجار",
- text:"Un appartement calme. Deux chambres. Un petit balcon. À côté de la fenêtre. Sous la table.",
+ title:"Le logement et les pièces à l’écoute",
+ arTitle:"استمع إلى السكن والغرف",
+ text:"J’habite dans un appartement à Nantes. Il y a deux chambres et un balcon. Le canapé est devant la fenêtre. La lampe est à côté de la bibliothèque. Nous habitons au troisième étage.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un appartement calme","Une maison moderne","Un studio lumineux"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Trois pièces","Deux chambres","Une cuisine"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un grand jardin","Une petite porte","Un petit balcon"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["À côté de la fenêtre","Devant la porte","Derrière le canapé"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Sur le lit","Sous la table","Dans l’armoire"],correctIndex:1}
+  {prompt:"Où habite la personne ?",speech:"J’habite dans un appartement à Nantes.",instruction:"اختر الجملة التي سمعتها.",translation:"أين ونوع السكن؟",choices:["J’habite dans une maison à Nantes.","J’habite dans un appartement à Nantes.","J’habite dans un studio à Lyon."],correctIndex:1,explanationAr:"نسمع appartement لنوع السكن وà Nantes للمدينة.",explanationFr:"On entend appartement pour le logement et à Nantes pour la ville."},
+  {prompt:"Qu’est-ce qu’il y a dans le logement ?",speech:"Il y a deux chambres et un balcon.",instruction:"اختر الجملة التي سمعتها.",translation:"ماذا يوجد في المسكن؟",choices:["Il y a deux chambres et un balcon.","Il y a une chambre et un jardin.","Il y a deux salons et une cuisine."],correctIndex:0,explanationAr:"Il y a تعني يوجد أو توجد، وتذكر هنا غرفتي نوم وشرفة.",explanationFr:"Il y a présente deux chambres et un balcon."},
+  {prompt:"Où est le canapé ?",speech:"Le canapé est devant la fenêtre.",instruction:"اختر مكان الأريكة الصحيح.",translation:"أين توجد الأريكة؟",choices:["Le canapé est derrière la fenêtre.","Le canapé est devant la fenêtre.","Le canapé est sous la fenêtre."],correctIndex:1,explanationAr:"devant تعني أمام؛ إذن الأريكة أمام النافذة.",explanationFr:"Devant indique que le canapé est placé face à la fenêtre."},
+  {prompt:"Où est la lampe ?",speech:"La lampe est à côté de la bibliothèque.",instruction:"اختر مكان المصباح الصحيح.",translation:"أين يوجد المصباح؟",choices:["La lampe est à côté de la bibliothèque.","La lampe est dans la bibliothèque.","La lampe est devant la porte."],correctIndex:0,explanationAr:"à côté de تعني بجوار، لذلك المصباح بجوار خزانة الكتب.",explanationFr:"À côté de indique la proximité de la bibliothèque."},
+  {prompt:"À quel étage habitent-ils ?",speech:"Nous habitons au troisième étage.",instruction:"اختر الطابق الذي سمعته.",translation:"في أي طابق يسكنون؟",choices:["Au deuxième étage.","Au troisième étage.","Au rez-de-chaussée."],correctIndex:1,explanationAr:"au troisième étage تعني في الطابق الثالث.",explanationFr:"Au troisième étage indique le niveau trois de l’immeuble."}
  ]
 };
 

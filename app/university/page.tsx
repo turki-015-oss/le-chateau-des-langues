@@ -4217,7 +4217,7 @@ const A1_HOME_HOUSING_LISTENING={
  ]
 };
 
-const A1_HOME_HOUSING_WRITING_MODEL="J’habite dans un appartement au 15, rue Victor-Hugo. Il y a un salon, une chambre et une cuisine. Dans le salon, le canapé est devant la fenêtre et la table est à côté de la porte.";
+const A1_HOME_HOUSING_WRITING_MODEL="J’habite dans un appartement calme à Nantes, au troisième étage. Il y a un salon, deux chambres, une cuisine et un balcon. Dans le salon, le canapé est devant la fenêtre. Dans ma chambre, la lampe est à côté du lit et j’aime beaucoup mon logement.";
 
 const A1_HOME_HOUSING_DICTATION=[
  {speech:"J’habite dans un appartement calme.",ar:"أسكن في شقة هادئة."},
@@ -4770,7 +4770,7 @@ const A1_ENHANCED_CONTENT={
  },
  "home-housing":{
   reading:A1_HOME_HOUSING_READING,listening:A1_HOME_HOUSING_LISTENING,dictation:A1_HOME_HOUSING_DICTATION,builders:A1_HOME_HOUSING_BUILDERS,dialogues:A1_HOME_HOUSING_DIALOGUES,
-  writingModel:A1_HOME_HOUSING_WRITING_MODEL,writingTitle:"صِف مسكنك وموقع الأثاث",writingInstructions:"اكتب من 30 إلى 45 كلمة عن مسكن حقيقي أو متخيّل. اذكر نوع المسكن والعنوان، وغرفتين أو أكثر، وقطعتَي أثاث مع تحديد موقعهما.",writingPlaceholder:"J’habite dans…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_HOME_HOUSING_WRITING_MODEL,writingTitle:"اكتب وصفًا قصيرًا لمسكنك",writingInstructions:"اكتب من 30 إلى 45 كلمة عن مسكن حقيقي أو متخيّل. اذكر نوع المسكن والمدينة أو الطابق، وثلاث غرف أو مساحات، وقطعتَي أثاث مع تحديد موقع كل منهما، ثم أضف ما تحبه فيه.",writingPlaceholder:"J’habite dans…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"J’habite dans un appartement à Nantes. Il y a un salon, une chambre et une cuisine. Le canapé est devant la fenêtre et la table est à côté de la porte.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بنوع المسكن والمدينة.","اذكر الغرف باستعمال Il y a.","حدّد موقع قطعتين من الأثاث."],dictationUnit:"sentence"
  },
  description:{

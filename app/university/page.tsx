@@ -290,11 +290,11 @@ const A1_ADJECTIVES_LISTENING_CLIPS=[
  {letter:"Elle est sérieuse",word:"et organisée.",ar:"هي جادة ومنظمة.",hiddenSpeech:"Elle est sérieuse et organisée."}
 ];
 const A1_DAILY_LIFE_LISTENING_CLIPS=[
- {letter:"je me lève",word:"à sept heures",ar:"أستيقظ الساعة السابعة",hiddenSpeech:"Je me lève à sept heures"},
- {letter:"je prends",word:"mon petit-déjeuner",ar:"أتناول فطوري",hiddenSpeech:"Je prends mon petit-déjeuner"},
- {letter:"je vais",word:"au travail",ar:"أذهب إلى العمل",hiddenSpeech:"Je vais au travail"},
- {letter:"je fais",word:"les courses",ar:"أتسوق",hiddenSpeech:"Je fais les courses"},
- {letter:"je me couche",word:"à onze heures",ar:"أنام الساعة الحادية عشرة",hiddenSpeech:"Je me couche à onze heures"}
+ {letter:"je me réveille",word:"à six heures",ar:"أستيقظ الساعة السادسة",hiddenSpeech:"Je me réveille à six heures"},
+ {letter:"nous nous préparons",word:"pour l’école",ar:"نستعد للمدرسة",hiddenSpeech:"Nous nous préparons pour l’école"},
+ {letter:"je fais souvent",word:"du sport",ar:"أمارس الرياضة غالبًا",hiddenSpeech:"Je fais souvent du sport"},
+ {letter:"je ne regarde jamais",word:"la télévision",ar:"لا أشاهد التلفاز أبدًا",hiddenSpeech:"Je ne regarde jamais la télévision"},
+ {letter:"après le travail",word:"je fais les courses",ar:"بعد العمل أتسوق",hiddenSpeech:"Après le travail, je fais les courses"}
 ];
 const A1_SITUATIONS_LISTENING_CLIPS=[
  {letter:"ça te dit",word:"d’aller au cinéma",ar:"ما رأيك أن نذهب إلى السينما؟",hiddenSpeech:"Ça te dit d’aller au cinéma ?"},
@@ -4532,15 +4532,15 @@ const A1_DAILY_LIFE_READING={
 };
 
 const A1_DAILY_LIFE_LISTENING={
- title:"Une matinée à la maison",
- arTitle:"صباح في المنزل",
- text:"Je me lève à sept heures. Je prends mon petit-déjeuner. Je vais au travail. Je fais les courses. Je me couche à onze heures.",
+ title:"Les habitudes et la journée à l’écoute",
+ arTitle:"استمع إلى العادات وأحداث اليوم",
+ text:"Je me réveille à six heures. Nous nous préparons pour l’école. Je fais souvent du sport. Je ne regarde jamais la télévision le matin. Après le travail, je fais les courses.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je me lève à sept heures","Je pars à six heures","Je me couche à huit heures"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je prépare le dîner","Je prends mon petit-déjeuner","Je déjeune au restaurant"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je rentre chez moi","Je vais à l’école","Je vais au travail"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je fais les courses","Je fais du sport","Je fais mes devoirs"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je me repose le soir","Je me couche à onze heures","Je me réveille à midi"],correctIndex:1}
+  {prompt:"Qu’entendez-vous ?",speech:"Je me réveille à six heures.",instruction:"اختر الجملة التي سمعتها.",translation:"ماذا تسمع؟",choices:["Je me réveille à six heures.","Je me couche à six heures.","Je me lève à midi."],correctIndex:0,explanationAr:"المسموع هو je me réveille: فعل ضميري، وme يطابق je. الوقت هو السادسة.",explanationFr:"On entend le verbe pronominal se réveiller avec je me, à six heures."},
+  {prompt:"Qui se prépare pour l’école ?",speech:"Nous nous préparons pour l’école.",instruction:"اختر الفاعل الذي سمعته.",translation:"من يستعد للمدرسة؟",choices:["Je","Nous","Ils"],correctIndex:1,explanationAr:"المسموع nous nous préparons؛ الضمير الأول هو الفاعل، والثاني ضمير انعكاسي.",explanationFr:"Nous nous préparons : le premier nous est le sujet et le second est le pronom réfléchi."},
+  {prompt:"À quelle fréquence fait-il du sport ?",speech:"Je fais souvent du sport.",instruction:"اختر ظرف التكرار الذي سمعته.",translation:"كم مرة يمارس الرياضة؟",choices:["Toujours","Souvent","Jamais"],correctIndex:1,explanationAr:"souvent تعني غالبًا، وتأتي بعد الفعل المصرف fais.",explanationFr:"Souvent exprime une habitude fréquente et se place après fais."},
+  {prompt:"Que ne regarde-t-il jamais ?",speech:"Je ne regarde jamais la télévision le matin.",instruction:"اختر الشيء الذي لا يشاهده أبدًا.",translation:"ما الذي لا يشاهده أبدًا؟",choices:["La télévision","Un film au cinéma","Le journal"],correctIndex:0,explanationAr:"في النفي المطلق نحيط الفعل بـ ne وjamais: ne regarde jamais la télévision.",explanationFr:"Ne et jamais encadrent regarde pour exprimer une habitude qui n’existe pas."},
+  {prompt:"Que fait-il après le travail ?",speech:"Après le travail, je fais les courses.",instruction:"اختر النشاط الذي يأتي بعد العمل.",translation:"ماذا يفعل بعد العمل؟",choices:["Il fait les courses.","Il se couche.","Il prend le bus."],correctIndex:0,explanationAr:"Après le travail تعني بعد العمل، وfaire les courses هو التسوق لشراء حاجات المنزل.",explanationFr:"Après le travail indique le moment ; faire les courses signifie acheter les choses nécessaires."}
  ]
 };
 

@@ -234,11 +234,11 @@ const A1_FUTURE_IMPERATIVE_LISTENING_CLIPS=[
  {letter:"Ne traversez pas",word:"ici.",ar:"لا تعبروا من هنا.",hiddenSpeech:"Ne traversez pas ici."}
 ];
 const A1_FOOD_SHOPPING_LISTENING_CLIPS=[
- {letter:"du",word:"pain",ar:"خبز",hiddenSpeech:"du pain"},
- {letter:"de la",word:"soupe",ar:"حساء",hiddenSpeech:"de la soupe"},
- {letter:"des",word:"tomates",ar:"طماطم",hiddenSpeech:"des tomates"},
- {letter:"un kilo de",word:"pommes",ar:"كيلوغرام من التفاح",hiddenSpeech:"un kilo de pommes"},
- {letter:"je voudrais",word:"un café",ar:"أرغب في قهوة",hiddenSpeech:"Je voudrais un café"}
+ {letter:"je voudrais",word:"un kilo de pommes",ar:"أرغب في كيلوغرام من التفاح",hiddenSpeech:"Je voudrais un kilo de pommes"},
+ {letter:"nous achetons",word:"de l’eau",ar:"نشتري ماءً",hiddenSpeech:"Nous achetons de l’eau"},
+ {letter:"je ne prends pas",word:"de café",ar:"لا أتناول القهوة",hiddenSpeech:"Je ne prends pas de café"},
+ {letter:"combien coûte",word:"cette baguette",ar:"كم سعر خبز الباغيت هذا؟",hiddenSpeech:"Combien coûte cette baguette ?"},
+ {letter:"je paie",word:"par carte",ar:"أدفع بالبطاقة",hiddenSpeech:"Je paie par carte"}
 ];
 const A1_CITY_DIRECTIONS_LISTENING_CLIPS=[
  {letter:"allez",word:"tout droit",ar:"اذهب مباشرة",hiddenSpeech:"Allez tout droit"},
@@ -3985,15 +3985,15 @@ const A1_FOOD_SHOPPING_READING={
 };
 
 const A1_FOOD_SHOPPING_LISTENING={
- title:"À la boulangerie",
- arTitle:"في المخبز",
- text:"Du pain. De la soupe. Des tomates. Un kilo de pommes. Je voudrais un café.",
+ title:"Acheter, demander et payer à l’écoute",
+ arTitle:"استمع إلى الشراء والطلب والدفع",
+ text:"Je voudrais un kilo de pommes. Nous achetons de l’eau. Je ne prends pas de café. Combien coûte cette baguette ? Je paie par carte.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Du pain","Du lait","Du riz"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["De la salade","De la soupe","De la viande"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Des pommes","Des fraises","Des tomates"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un kilo de pommes","Un litre de lait","Une tranche de fromage"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je paie par carte","Je voudrais un café","Je prends du thé"],correctIndex:1}
+  {prompt:"Que veut-il acheter ?",speech:"Je voudrais un kilo de pommes.",instruction:"اختر الكمية والمنتج اللذين سمعتهما.",translation:"ماذا يريد أن يشتري؟",choices:["Un kilo de pommes","Une bouteille d’eau","Un verre de lait"],correctIndex:0,explanationAr:"المسموع هو un kilo de pommes؛ بعد مقدار un kilo نستخدم de قبل اسم المنتج.",explanationFr:"Après un kilo, on utilise de : un kilo de pommes."},
+  {prompt:"Qu’est-ce qu’ils achètent ?",speech:"Nous achetons de l’eau.",instruction:"اختر المنتج الذي سمعته.",translation:"ماذا يشترون؟",choices:["De l’eau","Du pain","Des tomates"],correctIndex:0,explanationAr:"eau تبدأ بصوت متحرك، لذلك نستخدم de l’ وليس de la أو du.",explanationFr:"Eau commence par une voyelle : on dit de l’eau."},
+  {prompt:"Que ne prend pas le client ?",speech:"Je ne prends pas de café.",instruction:"اختر الشيء الذي لا يتناوله العميل.",translation:"ما الذي لا يتناوله العميل؟",choices:["Du café","De la soupe","De l’eau"],correctIndex:0,explanationAr:"في النفي نقول ne prends pas de café؛ تتحول du إلى de بعد ne…pas.",explanationFr:"Après la négation, du café devient de café."},
+  {prompt:"Que demande le client ?",speech:"Combien coûte cette baguette ?",instruction:"اختر السؤال الذي سمعته.",translation:"ماذا يسأل العميل؟",choices:["Le prix de la baguette","La quantité de pommes","L’heure de fermeture"],correctIndex:0,explanationAr:"Combien coûte…؟ هي صيغة السؤال عن سعر شيء مفرد.",explanationFr:"Combien coûte… ? sert à demander le prix d’un produit."},
+  {prompt:"Comment paie-t-il ?",speech:"Je paie par carte.",instruction:"اختر وسيلة الدفع التي سمعتها.",translation:"كيف يدفع؟",choices:["Par carte","En espèces","Par chèque"],correctIndex:0,explanationAr:"par carte تعني الدفع بالبطاقة البنكية.",explanationFr:"Payer par carte signifie payer avec une carte bancaire."}
  ]
 };
 

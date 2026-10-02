@@ -4231,11 +4231,18 @@ const A1_HOME_HOUSING_DICTATION=[
 ];
 
 const A1_HOME_HOUSING_BUILDERS=[
- {tokens:["une","dans","maison.","J’habite"],answer:["J’habite","dans","une","maison."],ar:"أسكن في منزل."},
- {tokens:["petit","a","balcon.","un","Il y"],answer:["Il y","a","un","petit","balcon."],ar:"توجد شرفة صغيرة."},
- {tokens:["sous","chaise","La","table.","la","est"],answer:["La","chaise","est","sous","la","table."],ar:"الكرسي تحت الطاولة."},
- {tokens:["fenêtre.","devant","canapé","Le","la","est"],answer:["Le","canapé","est","devant","la","fenêtre."],ar:"الأريكة أمام النافذة."},
- {tokens:["chambres.","deux","a","Il y"],answer:["Il y","a","deux","chambres."],ar:"توجد غرفتا نوم."}
+ {tokens:["calme.","appartement","un","dans","J’habite"],answer:["J’habite","dans","un","appartement","calme."],ar:"أسكن في شقة هادئة."},
+ {tokens:["une","petite","vivons","dans","Nous","maison."],answer:["Nous","vivons","dans","une","petite","maison."],ar:"نحن نعيش في منزل صغير."},
+ {tokens:["un","chambres","y","balcon.","Il","deux","a","et"],answer:["Il y","a","deux","chambres","et","un","balcon."],ar:"توجد غرفتا نوم وشرفة."},
+ {tokens:["salon.","à","La","cuisine","côté","du","est"],answer:["La","cuisine","est","à","côté","du","salon."],ar:"المطبخ بجوار غرفة الجلوس."},
+ {tokens:["fenêtre.","table","La","est","à","côté","la","de"],answer:["La","table","est","à","côté","de","la","fenêtre."],ar:"الطاولة بجوار النافذة."},
+ {tokens:["bibliothèque.","devant","canapé","est","Le","la"],answer:["Le","canapé","est","devant","la","bibliothèque."],ar:"الأريكة أمام خزانة الكتب."},
+ {tokens:["près","lit.","est","La","du","lampe"],answer:["La","lampe","est","près","du","lit."],ar:"المصباح قريب من السرير."},
+ {tokens:["le","sont","Les","sous","chaussures","lit."],answer:["Les","chaussures","sont","sous","le","lit."],ar:"الأحذية تحت السرير."},
+ {tokens:["dans","vêtements","sont","l’armoire.","Les"],answer:["Les","vêtements","sont","dans","l’armoire."],ar:"الملابس داخل الخزانة."},
+ {tokens:["maison.","derrière","jardin","est","Le","la"],answer:["Le","jardin","est","derrière","la","maison."],ar:"الحديقة خلف المنزل."},
+ {tokens:["troisième","habitons","Nous","au","étage."],answer:["Nous","habitons","au","troisième","étage."],ar:"نسكن في الطابق الثالث."},
+ {tokens:["salon.","est","préférée","pièce","le","Ma"],answer:["Ma","pièce","préférée","est","le","salon."],ar:"غرفتي المفضلة هي غرفة الجلوس."}
 ];
 
 const A1_HOME_HOUSING_DIALOGUES=[

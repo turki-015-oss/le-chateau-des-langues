@@ -4562,11 +4562,18 @@ const A1_DAILY_LIFE_DICTATION=[
 ];
 
 const A1_DAILY_LIFE_BUILDERS=[
- {tokens:["sept","Je","à","lève","heures.","me"],answer:["Je","me","lève","à","sept","heures."],ar:"أستيقظ الساعة السابعة."},
- {tokens:["souvent","Nous","sport.","du","faisons"],answer:["Nous","faisons","souvent","du","sport."],ar:"نمارس الرياضة غالبًا."},
- {tokens:["jamais","ne","tard.","couche","Elle","se"],answer:["Elle","ne","se","couche","jamais","tard."],ar:"هي لا تنام متأخرة أبدًا."},
- {tokens:["travail","au","métro.","en","vais","Je"],answer:["Je","vais","au","travail","en","métro."],ar:"أذهب إلى العمل بالمترو."},
- {tokens:["puis","D’abord,","déjeune.","travaille,","je","je"],answer:["D’abord,","je","travaille,","puis","je","déjeune."],ar:"أعمل أولًا، ثم أتناول الغداء."}
+ {tokens:["six","Je","à","réveille","heures.","me"],answer:["Je","me","réveille","à","six","heures."],ar:"أستيقظ الساعة السادسة."},
+ {tokens:["sept","Je","à","lève","heures.","me"],answer:["Je","me","lève","à","sept","heures."],ar:"أنهض الساعة السابعة."},
+ {tokens:["matin.","me","le","Je","douche"],answer:["Je","me","douche","le","matin."],ar:"أستحم في الصباح."},
+ {tokens:["rapidement.","m’habille","Je"],answer:["Je","m’habille","rapidement."],ar:"أرتدي ملابسي بسرعة."},
+ {tokens:["pour","Nous","l’école.","préparons","nous"],answer:["Nous","nous","préparons","pour","l’école."],ar:"نستعد للمدرسة."},
+ {tokens:["souvent","Je","sport.","du","fais"],answer:["Je","fais","souvent","du","sport."],ar:"أمارس الرياضة غالبًا."},
+ {tokens:["parfois","le","Je","soir.","lis"],answer:["Je","lis","parfois","le","soir."],ar:"أقرأ أحيانًا في المساء."},
+ {tokens:["jamais","ne","matin.","regarde","la","Je","télévision","le"],answer:["Je","ne","regarde","jamais","la","télévision","le","matin."],ar:"لا أشاهد التلفاز صباحًا أبدًا."},
+ {tokens:["les","Après","je","courses.","fais","le","travail,"],answer:["Après","le","travail,","je","fais","les","courses."],ar:"بعد العمل أتسوق."},
+ {tokens:["mon","D’abord,","petit-déjeuner.","prends","je"],answer:["D’abord,","je","prends","mon","petit-déjeuner."],ar:"أولًا، أتناول فطوري."},
+ {tokens:["le","Puis,","prends","bus.","je"],answer:["Puis,","je","prends","le","bus."],ar:"ثم أستقل الحافلة."},
+ {tokens:["dix","Enfin,","couche","à","heures.","je","me"],answer:["Enfin,","je","me","couche","à","dix","heures."],ar:"أخيرًا، أخلد إلى النوم الساعة العاشرة."}
 ];
 
 const A1_DAILY_LIFE_DIALOGUES=[

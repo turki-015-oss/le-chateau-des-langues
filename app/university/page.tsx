@@ -2137,7 +2137,12 @@ const A1_FOOD_SHOPPING_PRACTICE_ITEMS:Example[]=[
  {fr:"Je voudrais une tasse de thé, s’il vous plaît.",ar:"أرغب في كوب من الشاي، من فضلك."},
  {fr:"Vous avez du pain complet ?",ar:"هل لديكم خبز كامل الحبوب؟"},
  {fr:"Combien coûtent ces oranges ?",ar:"كم سعر هذه البرتقالات؟"},
- {fr:"Je vais payer en espèces.",ar:"سأدفع نقدًا."}
+ {fr:"Je vais payer en espèces.",ar:"سأدفع نقدًا."},
+ {fr:"Pour le dîner, je prépare du riz et du poulet.",ar:"للعشاء، أُحضّر أرزًا ودجاجًا."},
+ {fr:"Nous prenons une bouteille d’eau pour le repas.",ar:"نأخذ زجاجة ماء للوجبة."},
+ {fr:"Le kilo de pommes coûte trois euros.",ar:"سعر كيلو التفاح ثلاثة يوروهات."},
+ {fr:"Je ne prends pas de sucre dans mon café.",ar:"لا أتناول السكر في قهوتي."},
+ {fr:"La caisse est au fond du magasin.",ar:"يقع صندوق المحاسبة في آخر المتجر."}
 ];
 
 const A1_FOOD_SHOPPING_QUIZ_ITEMS:QuizQuestion[]=[

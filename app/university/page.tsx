@@ -4216,10 +4216,18 @@ const A1_HOME_HOUSING_WRITING_MODEL="J’habite dans un appartement au 15, rue V
 
 const A1_HOME_HOUSING_DICTATION=[
  {speech:"J’habite dans un appartement calme.",ar:"أسكن في شقة هادئة."},
+ {speech:"Nous vivons dans une petite maison.",ar:"نحن نعيش في منزل صغير."},
  {speech:"Il y a deux chambres et un balcon.",ar:"توجد غرفتا نوم وشرفة."},
+ {speech:"La cuisine est à côté du salon.",ar:"المطبخ بجوار غرفة الجلوس."},
  {speech:"La table est à côté de la fenêtre.",ar:"الطاولة بجوار النافذة."},
  {speech:"Le canapé est devant la bibliothèque.",ar:"الأريكة أمام خزانة الكتب."},
- {speech:"Nous habitons au troisième étage.",ar:"نسكن في الطابق الثالث."}
+ {speech:"La lampe est près du lit.",ar:"المصباح قريب من السرير."},
+ {speech:"Les chaussures sont sous le lit.",ar:"الأحذية تحت السرير."},
+ {speech:"Les vêtements sont dans l’armoire.",ar:"الملابس داخل الخزانة."},
+ {speech:"Le jardin est derrière la maison.",ar:"الحديقة خلف المنزل."},
+ {speech:"Nous habitons au troisième étage.",ar:"نسكن في الطابق الثالث."},
+ {speech:"Ma pièce préférée est le salon.",ar:"غرفتي المفضلة هي غرفة الجلوس."},
+ {speech:"Chez moi, il y a un salon calme.",ar:"في منزلي، توجد غرفة جلوس هادئة."}
 ];
 
 const A1_HOME_HOUSING_BUILDERS=[
@@ -9163,7 +9171,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1Description||isA1Adjectives);
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1NumbersTime||isA1HomeHousing||isA1Description||isA1Adjectives);
  const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation

@@ -3809,9 +3809,13 @@ const A1_FOOD_SHOPPING_WRITING_TRANSLATIONS=[
  {fr:"de l’eau",ar:"ماء"},
  {fr:"des tomates",ar:"طماطم"},
  {fr:"un kilo de pommes",ar:"كيلوغرام من التفاح"},
- {fr:"une bouteille d’huile",ar:"زجاجة زيت"},
- {fr:"je voudrais un café",ar:"أرغب في قهوة"},
- {fr:"je paie par carte",ar:"أدفع بالبطاقة"}
+ {fr:"une bouteille d’eau",ar:"زجاجة ماء"},
+ {fr:"je voudrais…, s’il vous plaît",ar:"أرغب في…، من فضلك"},
+ {fr:"il me faut aussi…",ar:"أحتاج أيضًا إلى…"},
+ {fr:"je ne prends pas de café",ar:"لا أتناول القهوة"},
+ {fr:"combien coûte la baguette ?",ar:"كم سعر خبز الباغيت؟"},
+ {fr:"je vais payer par carte",ar:"سأدفع بالبطاقة"},
+ {fr:"voilà, merci",ar:"تفضل، شكرًا"}
 ];
 
 const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
@@ -4002,7 +4006,7 @@ const A1_FOOD_SHOPPING_LISTENING={
  ]
 };
 
-const A1_FOOD_SHOPPING_WRITING_MODEL="Pour le dîner, je voudrais du pain, de la soupe et des tomates. Il me faut aussi une bouteille d’eau et un kilo de pommes. Je ne prends pas de viande. Je vais payer par carte.";
+const A1_FOOD_SHOPPING_WRITING_MODEL="Bonjour, je voudrais du pain, de la soupe et des tomates, s’il vous plaît. Il me faut aussi une bouteille d’eau et un kilo de pommes. Je ne prends pas de café. Combien coûte la baguette ? Je vais payer par carte.";
 
 const A1_FOOD_SHOPPING_DICTATION=[
  {speech:"du pain",ar:"خبز."},
@@ -4802,7 +4806,7 @@ const A1_ENHANCED_CONTENT={
  },
  "food-shopping":{
   reading:A1_FOOD_SHOPPING_READING,listening:A1_FOOD_SHOPPING_LISTENING,dictation:A1_FOOD_SHOPPING_DICTATION,builders:A1_FOOD_SHOPPING_BUILDERS,dialogues:A1_FOOD_SHOPPING_DIALOGUES,
-  writingModel:A1_FOOD_SHOPPING_WRITING_MODEL,writingTitle:"اكتب قائمة مشتريات وطلبًا قصيرًا",writingInstructions:"اكتب من 30 إلى 45 كلمة لشراء طعام. استخدم أداتَي تجزئة مختلفتين، وتعبير كمية، وطلبًا مهذبًا، وجملة منفية.",writingPlaceholder:"Pour le dîner, je voudrais…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_FOOD_SHOPPING_WRITING_MODEL,writingTitle:"اكتب قائمة مشتريات وطلبًا قصيرًا",writingInstructions:"اكتب من 30 إلى 45 كلمة لشراء طعام. استخدم أداتَي تجزئة مختلفتين، وتعبير كمية، وطلبًا مهذبًا، وجملة منفية.",writingPlaceholder:"Bonjour, je voudrais…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Bonjour, je voudrais du pain, de la soupe et un kilo de pommes, s’il vous plaît. Je ne prends pas de viande. Combien ça coûte ?",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بطلب مهذب باستعمال Je voudrais.","اذكر المنتجات وكمياتها بوضوح.","اختم بالسؤال عن السعر أو طريقة الدفع."],dictationUnit:"sentence"
  },
  "city-directions":{

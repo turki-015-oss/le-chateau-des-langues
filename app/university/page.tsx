@@ -1250,17 +1250,7 @@ const A1_MODULES:CourseModule[]=[
   description:"فهم نشرة جوية بسيطة، تسمية الفصول، واختيار الملابس المناسبة باستخدام عبارات يومية واضحة.",
   sections:[
    section("Parler de la météo","وصف حالة الطقس","",[],[]),
-   section("Les quatre saisons","الفصول الأربعة","أسماء الفصول مذكرة في الفرنسية. نقول au printemps، لكننا نستخدم en مع été وautomne وhiver.",[
-    "au printemps: في فصل الربيع.",
-    "en été: في فصل الصيف.",
-    "en automne: في فصل الخريف.",
-    "en hiver: في فصل الشتاء."
-   ],[
-    {fr:"Au printemps, les jardins sont fleuris.",ar:"في الربيع تكون الحدائق مزهرة."},
-    {fr:"En été, les journées sont longues.",ar:"في الصيف تكون الأيام طويلة."},
-    {fr:"En automne, il y a souvent du vent.",ar:"في الخريف تهب الرياح كثيرًا."},
-    {fr:"En hiver, il neige dans les montagnes.",ar:"في الشتاء تتساقط الثلوج في الجبال."}
-   ]),
+   section("Les quatre saisons","الفصول الأربعة","",[],[]),
    section("Choisir ses vêtements","اختيار الملابس","نستخدم porter لوصف الملابس التي يرتديها الشخص، ونستخدم mettre عندما يرتدي قطعة أو يضعها استعدادًا للخروج.",[
     "porter un pantalon / une robe: ارتداء بنطال / فستان.",
     "mettre un manteau: ارتداء معطف.",
@@ -7478,6 +7468,29 @@ function A1WeatherMeteoStudio(){
  </div>
 }
 
+const A1_WEATHER_SEASONS_TABLE=[
+ {expression:"au printemps",ar:"في فصل الربيع",kind:"الربيع",rule:"نستخدم au مع printemps لأنه اسم مذكر: à + le printemps تصبح au printemps.",examples:[{fr:"Au printemps, les jardins sont fleuris.",ar:"في الربيع تكون الحدائق مزهرة.",detail:"Au printemps تأتي في بداية الجملة لتحديد زمن ازدهار الحدائق."},{fr:"Au printemps, il fait souvent doux.",ar:"في الربيع يكون الجو معتدلًا غالبًا.",detail:"doux تصف طقسًا لطيفًا معتدلًا، وsouvent تعني غالبًا."}]},
+ {expression:"en été",ar:"في فصل الصيف",kind:"الصيف",rule:"نستخدم en مع été، من دون أداة تعريف قبل اسم الفصل.",examples:[{fr:"En été, il fait chaud.",ar:"في الصيف يكون الجو حارًا.",detail:"En été تحدد الفصل، وil fait chaud تصف الحرارة."},{fr:"En été, nous allons à la plage.",ar:"في الصيف نذهب إلى الشاطئ.",detail:"بعد en été تأتي الجملة العادية: الفاعل ثم الفعل."}]},
+ {expression:"en automne",ar:"في فصل الخريف",kind:"الخريف",rule:"نستخدم en مع automne للتعبير عن وقوع حدث أو طقس في فصل الخريف.",examples:[{fr:"En automne, les feuilles tombent.",ar:"في الخريف تتساقط الأوراق.",detail:"les feuilles هي فاعل جمع، ولذلك يأتي الفعل tombent بصيغة الجمع."},{fr:"En automne, il y a souvent du vent.",ar:"في الخريف توجد رياح غالبًا.",detail:"Il y a du vent تعبير ثابت لوصف الرياح."}]},
+ {expression:"en hiver",ar:"في فصل الشتاء",kind:"الشتاء",rule:"نستخدم en مع hiver للتعبير عن فصل الشتاء أو ما يحدث خلاله.",examples:[{fr:"En hiver, il neige en montagne.",ar:"في الشتاء تتساقط الثلوج في الجبال.",detail:"il neige يصف الثلج، وen montagne يحدد المكان."},{fr:"En hiver, je porte un manteau chaud.",ar:"في الشتاء أرتدي معطفًا دافئًا.",detail:"الفصل يوضح سبب اختيار المعطف الدافئ."}]}
+] as const;
+
+function A1WeatherSeasonsStudio(){
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_WEATHER_SEASONS_TABLE[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-seasons-studio">
+  <style>{`.a1-weather-seasons-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span>Les quatre saisons</span><strong>الفصول الأربعة</strong><p>أسماء الفصول مذكرة في الفرنسية. نقول <b dir="ltr">au printemps</b>، لكننا نستخدم <b dir="ltr">en</b> مع <b dir="ltr">été</b> و<b dir="ltr">automne</b> و<b dir="ltr">hiver</b>.</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>صيغة الفصل</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">au printemps</span><i>•</i><strong dir="ltr">en été / automne / hiver</strong><b>الفصل ثم وصف الطقس أو النشاط</b><small>اختر الفصل لتعرف حرف الجر الصحيح.</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر فصلًا من فصول السنة">{A1_WEATHER_SEASONS_TABLE.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>الفصل</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>في السنة</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+ </div>
+}
+
 const A1_CITY_DIRECTIONS_DESTINATION_TABLE=[
  {expression:"au",ar:"إلى الـ",kind:"مكان مذكر مفرد",rule:"نستخدم au مع مكان مذكر مفرد؛ وهو اختصار à + le.",examples:[{fr:"Je vais au marché.",ar:"أذهب إلى السوق.",detail:"marché مذكر: le marché، لذلك نقول au marché."},{fr:"Nous allons au musée.",ar:"نذهب إلى المتحف.",detail:"musée مذكر مفرد؛ à + le musée تصبح au musée."}]},
  {expression:"à la",ar:"إلى الـ",kind:"مكان مؤنث مفرد",rule:"نستخدم à la مع مكان مؤنث مفرد، ولا يحدث دمج بين الكلمتين.",examples:[{fr:"Elle va à la banque.",ar:"هي تذهب إلى البنك.",detail:"banque مؤنث: la banque، لذلك تبقى à la كما هي."},{fr:"Je vais à la gare.",ar:"أذهب إلى المحطة.",detail:"gare مؤنث مفرد؛ نقول à la gare من دون دمج."}]},
@@ -10892,6 +10905,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
        {isA1WeatherClothes&&index===0&&<A1WeatherMeteoStudio/>}
+       {isA1WeatherClothes&&index===1&&<A1WeatherSeasonsStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

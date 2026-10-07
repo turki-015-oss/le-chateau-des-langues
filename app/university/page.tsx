@@ -4065,10 +4065,17 @@ const A1_CITY_DIRECTIONS_DICTATION=[
 
 const A1_CITY_DIRECTIONS_BUILDERS=[
  {tokens:["à","vais","gare.","la","Je"],answer:["Je","vais","à","la","gare."],ar:"أذهب إلى محطة القطار."},
- {tokens:["tout","feu.","Allez","droit","jusqu’au"],answer:["Allez","tout","droit","jusqu’au","feu."],ar:"اذهبوا مباشرة حتى إشارة المرور."},
- {tokens:["parc.","du","face","musée","en","Le","est"],answer:["Le","musée","est","en","face","du","parc."],ar:"يقع المتحف مقابل الحديقة."},
- {tokens:["la","Traversez","mairie.","devant","place","la"],answer:["Traversez","la","place","devant","la","mairie."],ar:"اعبروا الساحة أمام مبنى البلدية."},
- {tokens:["banque.","la","côté","de","à","est","L’arrêt"],answer:["L’arrêt","est","à","côté","de","la","banque."],ar:"تقع المحطة بجوار البنك."}
+ {tokens:["au","allons","musée.","Nous"],answer:["Nous","allons","au","musée."],ar:"نذهب إلى المتحف."},
+ {tokens:["l’hôtel.","à","Elle","va"],answer:["Elle","va","à","l’hôtel."],ar:"هي تذهب إلى الفندق."},
+ {tokens:["aux","vont","Ils","magasins."],answer:["Ils","vont","aux","magasins."],ar:"هم يذهبون إلى المتاجر."},
+ {tokens:["viens","parc.","du","Je"],answer:["Je","viens","du","parc."],ar:"آتي من الحديقة."},
+ {tokens:["la","venons","Nous","banque.","de"],answer:["Nous","venons","de","la","banque."],ar:"نأتي من البنك."},
+ {tokens:["l’école.","vient","de","Il"],answer:["Il","vient","de","l’école."],ar:"هو يأتي من المدرسة."},
+ {tokens:["des","viennent","urgences.","Elles"],answer:["Elles","viennent","des","urgences."],ar:"هنّ يأتين من قسم الطوارئ."},
+ {tokens:["tout","Allez","droit."],answer:["Allez","tout","droit."],ar:"اذهبوا مباشرة."},
+ {tokens:["à","Tournez","gauche."],answer:["Tournez","à","gauche."],ar:"انعطفوا يسارًا."},
+ {tokens:["la","Traversez","place."],answer:["Traversez","la","place."],ar:"اعبروا الساحة."},
+ {tokens:["parc.","du","face","gare","en","La","est"],answer:["La","gare","est","en","face","du","parc."],ar:"تقع محطة القطار مقابل الحديقة."}
 ];
 
 const A1_CITY_DIRECTIONS_DIALOGUES=[

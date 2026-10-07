@@ -2145,15 +2145,20 @@ const A1_FOOD_SHOPPING_QUIZ_ITEMS:QuizQuestion[]=[
 
 const A1_CITY_DIRECTIONS_PRACTICE_ITEMS:Example[]=[
  {fr:"Je vais à la poste à pied.",ar:"أذهب إلى مكتب البريد مشيًا."},
- {fr:"Nous prenons le train à la gare centrale.",ar:"نستقل القطار من المحطة المركزية."},
- {fr:"Elle revient du supermarché en voiture.",ar:"تعود من السوبرماركت بالسيارة."},
- {fr:"Le métro arrive de l’aéroport.",ar:"يصل المترو من المطار."},
+ {fr:"Nous allons au musée en bus.",ar:"نذهب إلى المتحف بالحافلة."},
+ {fr:"Elle va à l’hôpital en taxi.",ar:"هي تذهب إلى المستشفى بسيارة أجرة."},
+ {fr:"Ils vont aux magasins après le travail.",ar:"هم يذهبون إلى المتاجر بعد العمل."},
+ {fr:"Je viens du parc.",ar:"آتي من الحديقة."},
+ {fr:"Nous revenons de la banque.",ar:"نعود من البنك."},
+ {fr:"Le bus arrive de l’aéroport.",ar:"تصل الحافلة من المطار."},
  {fr:"Excusez-moi, pour aller à l’hôpital ?",ar:"عذرًا، كيف أصل إلى المستشفى؟"},
  {fr:"Continuez tout droit pendant deux minutes.",ar:"تابع السير مباشرة لمدة دقيقتين."},
  {fr:"Prenez la première rue à droite.",ar:"اسلك أول شارع على اليمين."},
  {fr:"Traversez la place devant la mairie.",ar:"اعبر الساحة أمام مبنى البلدية."},
  {fr:"La boulangerie est entre la banque et le café.",ar:"يقع المخبز بين البنك والمقهى."},
- {fr:"L’arrêt de bus est à côté de l’école.",ar:"تقع محطة الحافلات بجوار المدرسة."}
+ {fr:"L’arrêt de bus est à côté de l’école.",ar:"تقع محطة الحافلات بجوار المدرسة."},
+ {fr:"Le musée est en face du parc.",ar:"يقع المتحف مقابل الحديقة."},
+ {fr:"La mairie est juste après la place.",ar:"يقع مبنى البلدية مباشرة بعد الساحة."}
 ];
 
 const A1_CITY_DIRECTIONS_QUIZ_ITEMS:QuizQuestion[]=[

@@ -3799,14 +3799,21 @@ const A1_FOOD_SHOPPING_WRITING_TRANSLATIONS=[
 ];
 
 const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
- {fr:"allez tout droit",ar:"اذهب مباشرة"},
- {fr:"tournez à gauche",ar:"انعطف يسارًا"},
- {fr:"prenez la première rue",ar:"اسلك أول شارع"},
+ {fr:"je pars de l’hôtel",ar:"أنطلق من الفندق"},
+ {fr:"je vais à la gare",ar:"أذهب إلى محطة القطار"},
+ {fr:"nous allons au musée",ar:"نذهب إلى المتحف"},
+ {fr:"elle va à l’hôpital",ar:"هي تذهب إلى المستشفى"},
+ {fr:"ils vont aux magasins",ar:"هم يذهبون إلى المتاجر"},
+ {fr:"excusez-moi, pour aller à la gare ?",ar:"عذرًا، كيف أصل إلى محطة القطار؟"},
+ {fr:"allez tout droit jusqu’au feu",ar:"اذهب مباشرة حتى إشارة المرور"},
+ {fr:"puis tournez à gauche",ar:"ثم انعطف يسارًا"},
+ {fr:"prenez la première rue à droite",ar:"اسلك أول شارع على اليمين"},
  {fr:"traversez la place",ar:"اعبر الساحة"},
- {fr:"en face du parc",ar:"مقابل الحديقة"},
+ {fr:"la gare est en face du parc",ar:"تقع المحطة مقابل الحديقة"},
  {fr:"à côté de la banque",ar:"بجوار البنك"},
  {fr:"entre le café et la poste",ar:"بين المقهى ومكتب البريد"},
- {fr:"où se trouve la gare",ar:"أين تقع محطة القطار؟"}
+ {fr:"la mairie est juste après la place",ar:"يقع مبنى البلدية مباشرة بعد الساحة"},
+ {fr:"où se trouve la gare ?",ar:"أين تقع محطة القطار؟"}
 ];
 
 const A1_NUMBERS_TIME_WRITING_TRANSLATIONS=[

@@ -1249,17 +1249,7 @@ const A1_MODULES:CourseModule[]=[
   id:"weather-clothes",title:"La météo, les saisons et les vêtements",ar:"الطقس والفصول والملابس",icon:CloudSun,
   description:"فهم نشرة جوية بسيطة، تسمية الفصول، واختيار الملابس المناسبة باستخدام عبارات يومية واضحة.",
   sections:[
-   section("Parler de la météo","وصف حالة الطقس","نستخدم Quel temps fait-il ؟ للسؤال عن الطقس، ثم نجيب بتراكيب ثابتة مع il fait وil y a، أو بأفعال مثل pleuvoir وneiger.",[
-    "Il fait beau / mauvais: الطقس جميل / سيئ.",
-    "Il fait chaud / froid: الجو حار / بارد.",
-    "Il pleut / Il neige: تمطر / تثلج.",
-    "Il y a du vent / des nuages: توجد رياح / غيوم."
-   ],[
-    {fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟"},
-    {fr:"Il fait beau et il y a du soleil.",ar:"الطقس جميل ومشمس."},
-    {fr:"Il pleut depuis ce matin.",ar:"تمطر منذ هذا الصباح."},
-    {fr:"Il fait dix-huit degrés à Lyon.",ar:"درجة الحرارة ثماني عشرة درجة في ليون."}
-   ]),
+   section("Parler de la météo","وصف حالة الطقس","",[],[]),
    section("Les quatre saisons","الفصول الأربعة","أسماء الفصول مذكرة في الفرنسية. نقول au printemps، لكننا نستخدم en مع été وautomne وhiver.",[
     "au printemps: في فصل الربيع.",
     "en été: في فصل الصيف.",
@@ -7464,6 +7454,30 @@ function A1DailyLifeDayOrderStudio(){
  </div>
 }
 
+const A1_WEATHER_METEO_TABLE=[
+ {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
+ {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
+ {expression:"Il y a + nom",ar:"يوجد + اسم",kind:"ظواهر في الجو",rule:"نستخدم il y a مع أشياء نلاحظها في الجو مثل du vent وdes nuages وdu soleil.",examples:[{fr:"Il y a du vent près de la mer.",ar:"توجد رياح قرب البحر.",detail:"vent اسم مذكر غير معدود؛ لذلك نقول du vent."},{fr:"Il y a des nuages dans le ciel.",ar:"توجد غيوم في السماء.",detail:"nuages جمع معدود؛ لذلك نستخدم des nuages."}]},
+ {expression:"Il pleut / Il neige",ar:"تمطر / تثلج",kind:"المطر والثلج",rule:"نستخدم il pleut للمطر وil neige لتساقط الثلج؛ لا نضيف اسم فاعل بعدهما.",examples:[{fr:"Il pleut depuis ce matin.",ar:"تمطر منذ هذا الصباح.",detail:"depuis يبيّن أن المطر بدأ في الصباح وما زال مستمرًا."},{fr:"Il neige en montagne.",ar:"تتساقط الثلوج في الجبال.",detail:"en montagne يحدد المكان الذي تتساقط فيه الثلوج."}]},
+ {expression:"Il fait … degrés",ar:"درجة الحرارة",kind:"ذكر الحرارة",rule:"نستخدم il fait ثم العدد وdegrés لذكر درجة الحرارة، ويمكن أيضًا قول La température est de… degrés.",examples:[{fr:"Il fait dix-huit degrés à Lyon.",ar:"درجة الحرارة ثماني عشرة درجة في ليون.",detail:"بعد il fait نذكر العدد ثم degrés، وبعدها المدينة إن أردنا."},{fr:"La température est de vingt-cinq degrés.",ar:"درجة الحرارة خمس وعشرون درجة.",detail:"هذه صيغة أخرى واضحة لذكر الحرارة باستعمال La température est de."}]}
+] as const;
+
+function A1WeatherMeteoStudio(){
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_WEATHER_METEO_TABLE[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-meteo-studio">
+  <style>{`.a1-weather-meteo-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span>Parler de la météo</span><strong>وصف حالة الطقس</strong><p>ابدأ بالسؤال <b dir="ltr">Quel temps fait-il ?</b>، ثم اختر الصيغة المناسبة: <b dir="ltr">il fait</b> مع الصفة، و<b dir="ltr">il y a</b> مع الظاهرة، و<b dir="ltr">il pleut / il neige</b> للمطر والثلج.</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">Quel temps fait-il ?</span><i>→</i><strong dir="ltr">il fait / il y a / il pleut</strong><b>اسأل ثم صف الطقس</b><small>اختر نوع الوصف لتعرف الصيغة الصحيحة.</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر صيغة لوصف الطقس">{A1_WEATHER_METEO_TABLE.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستعمل لـ</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>في وصف الطقس</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+ </div>
+}
+
 const A1_CITY_DIRECTIONS_DESTINATION_TABLE=[
  {expression:"au",ar:"إلى الـ",kind:"مكان مذكر مفرد",rule:"نستخدم au مع مكان مذكر مفرد؛ وهو اختصار à + le.",examples:[{fr:"Je vais au marché.",ar:"أذهب إلى السوق.",detail:"marché مذكر: le marché، لذلك نقول au marché."},{fr:"Nous allons au musée.",ar:"نذهب إلى المتحف.",detail:"musée مذكر مفرد؛ à + le musée تصبح au musée."}]},
  {expression:"à la",ar:"إلى الـ",kind:"مكان مؤنث مفرد",rule:"نستخدم à la مع مكان مؤنث مفرد، ولا يحدث دمج بين الكلمتين.",examples:[{fr:"Elle va à la banque.",ar:"هي تذهب إلى البنك.",detail:"banque مؤنث: la banque، لذلك تبقى à la كما هي."},{fr:"Je vais à la gare.",ar:"أذهب إلى المحطة.",detail:"gare مؤنث مفرد؛ نقول à la gare من دون دمج."}]},
@@ -10877,6 +10891,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       </div>
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
+       {isA1WeatherClothes&&index===0&&<A1WeatherMeteoStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

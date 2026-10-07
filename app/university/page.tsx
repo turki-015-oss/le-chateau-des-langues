@@ -9464,7 +9464,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1NumbersTime||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife);
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife);
  const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation

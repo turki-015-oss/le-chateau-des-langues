@@ -1215,17 +1215,7 @@ const A1_MODULES:CourseModule[]=[
   description:"تحديد الوجهة والموقع، السؤال عن الطريق، وفهم تعليمات الاتجاه الأساسية داخل المدينة.",
   sections:[
    section("À, au, à la et aux","الذهاب إلى مكان","",[],[]),
-   section("De, du, de la et des","القدوم من مكان","نستخدم de للتعبير عن نقطة الانطلاق أو المصدر. تندمج de مع le فتصبح du، ومع les فتصبح des، بينما تبقى de la وde l’ دون دمج.",[
-    "de + le = du: Je viens du marché.",
-    "de + la = de la: Elle sort de la gare.",
-    "de + l’ = de l’: Nous revenons de l’aéroport.",
-    "de + les = des: Ils arrivent des magasins."
-   ],[
-    {fr:"Le bus part du centre-ville.",ar:"تنطلق الحافلة من وسط المدينة."},
-    {fr:"Je sors de la bibliothèque.",ar:"أخرج من المكتبة."},
-    {fr:"Le taxi arrive de l’aéroport.",ar:"تصل سيارة الأجرة من المطار."},
-    {fr:"Nous revenons des urgences.",ar:"نعود من قسم الطوارئ."}
-   ]),
+   section("De, du, de la et des","القدوم من مكان","",[],[]),
    section("Demander et indiquer le chemin","السؤال عن الطريق وإعطاء الاتجاه","ابدأ بسؤال مهذب عن المكان، ثم استخدم أفعالًا واضحة مثل aller وtourner وtraverser وprendre لإعطاء الطريق خطوة خطوة.",[
     "Où se trouve… ? أين يوجد…؟",
     "Pour aller à… ? كيف أصل إلى…؟",
@@ -7476,6 +7466,29 @@ function A1CityDirectionsDestinationStudio(){
  </div>
 }
 
+const A1_CITY_DIRECTIONS_ORIGIN_TABLE=[
+ {expression:"du",ar:"من الـ",kind:"مكان مذكر مفرد",rule:"نستخدم du مع مكان مذكر مفرد؛ وهو اختصار de + le.",examples:[{fr:"Je viens du marché.",ar:"آتي من السوق.",detail:"marché مذكر: le marché، لذلك de + le تصبح du marché."},{fr:"Le bus part du centre-ville.",ar:"تنطلق الحافلة من وسط المدينة.",detail:"centre-ville مذكر مفرد؛ نقول du centre-ville."}]},
+ {expression:"de la",ar:"من الـ",kind:"مكان مؤنث مفرد",rule:"نستخدم de la مع مكان مؤنث مفرد، ولا يحدث دمج بين الكلمتين.",examples:[{fr:"Elle sort de la gare.",ar:"هي تخرج من المحطة.",detail:"gare مؤنث: la gare، لذلك تبقى de la كما هي."},{fr:"Je reviens de la bibliothèque.",ar:"أعود من المكتبة.",detail:"bibliothèque مؤنث مفرد؛ نقول de la bibliothèque."}]},
+ {expression:"de l’",ar:"من الـ",kind:"قبل صوت متحرك أو h صامتة",rule:"نستخدم de l’ قبل مكان مفرد يبدأ بصوت متحرك أو h صامتة، سواء كان مذكرًا أو مؤنثًا.",examples:[{fr:"Nous revenons de l’aéroport.",ar:"نعود من المطار.",detail:"aéroport يبدأ بصوت متحرك؛ لذلك نكتب de l’aéroport."},{fr:"Il sort de l’hôtel.",ar:"هو يخرج من الفندق.",detail:"h في hôtel صامتة؛ لذلك نستخدم de l’hôtel."}]},
+ {expression:"des",ar:"من الـ",kind:"مكان في الجمع",rule:"نستخدم des مع مكان جمع؛ وهو اختصار de + les.",examples:[{fr:"Ils reviennent des magasins.",ar:"هم يعودون من المتاجر.",detail:"magasins جمع: les magasins، لذلك de + les تصبح des."},{fr:"Nous revenons des urgences.",ar:"نعود من قسم الطوارئ.",detail:"urgences اسم جمع؛ نستخدم des حتى لو بدأ الاسم بصوت متحرك."}]}
+] as const;
+
+function A1CityDirectionsOriginStudio(){
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_CITY_DIRECTIONS_ORIGIN_TABLE[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio">
+  <style>{`.a1-city-destination-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span>Venir / partir + de + lieu</span><strong>القدوم من مكان</strong><p>نستخدم <b dir="ltr">de</b> للتعبير عن نقطة الانطلاق أو المصدر. تندمج مع <b dir="ltr">le</b> فتصبح <b dir="ltr">du</b> للمذكر، ومع <b dir="ltr">les</b> فتصبح <b dir="ltr">des</b> للجمع. وتبقى <b dir="ltr">de la</b> مع المؤنث، بينما تصبح <b dir="ltr">de l’</b> قبل اسم مفرد يبدأ بصوت متحرك أو <b dir="ltr">h</b> صامتة.</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">venir / partir</span><i>+</i><strong dir="ltr">de + lieu</strong><b>القدوم من مكان</b><small>اختر نوع المكان لتعرف الصيغة الصحيحة.</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر صيغة القدوم من مكان">{A1_CITY_DIRECTIONS_ORIGIN_TABLE.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تستعمل مع</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>نوع المكان</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+ </div>
+}
+
 const A1_FOOD_SHOPPING_PARTITIVES=[
  {expression:"du",ar:"من الـ / بعض الـ",kind:"مفرد مذكر غير معدود",rule:"نستخدم du قبل اسم مذكر مفرد يدل على كمية غير محددة: du pain, du fromage.",examples:[{fr:"Je mange du pain au petit-déjeuner.",ar:"أتناول الخبز في الإفطار.",detail:"pain اسم مذكر غير معدود، لذلك نستخدم du قبل الاسم."},{fr:"Il achète du fromage au marché.",ar:"هو يشتري الجبن من السوق.",detail:"fromage مذكر مفرد غير معدود؛ du يعبّر عن كمية غير محددة منه."}]},
  {expression:"de la",ar:"من الـ / بعض الـ",kind:"مفرد مؤنث غير معدود",rule:"نستخدم de la قبل اسم مؤنث مفرد يدل على كمية غير محددة: de la soupe, de la salade.",examples:[{fr:"Elle prépare de la soupe pour le dîner.",ar:"هي تحضّر حساءً للعشاء.",detail:"soupe اسم مؤنث مفرد، لذلك نستخدم de la."},{fr:"Nous achetons de la salade.",ar:"نشتري سلطةً.",detail:"salade مؤنث مفرد غير معدود هنا، ولهذا تأتي معه de la."}]},
@@ -10820,6 +10833,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       <div className={`university-explanation-body-shell ${isOpen?"open":""}`} aria-hidden={!isOpen} inert={!isOpen}>
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
+       {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1Countries&&index===0?<CountryFlagExplorer/>:isA1Countries&&index===1?<NationalityFlagExplorer/>:isA1Countries&&index===2?<LanguageCards/>:isA1DailyLife&&index===0?<A1DailyLifePronominalStudio/>:isA1DailyLife&&index===1?<A1DailyLifeHabitsActivitiesStudio/>:isA1DailyLife&&index===2?<A1DailyLifeDayOrderStudio/>:isA1FoodShopping&&index===0?<A1FoodShoppingPartitivesStudio/>:isA1FoodShopping&&index===1?<A1FoodShoppingNegationQuantitiesStudio/>:isA1FoodShopping&&index===2?<A1FoodShoppingOrderPayStudio/>:isA1Questions&&index===0?<A1QuestionsClosedTable/>:isA1Present&&index===0?<A1PresentSimpleBranches intro={item.explanation}/>:isA1Present&&index===1?<A1PresentNegationBranches intro={item.explanation}/>:isA1ModalVerbs&&index===0?<A1ModalVerbsStudio/>:isA1FutureImperative&&index===0?<A1FutureProcheStudio/>:isA1FutureImperative&&index===1?<A1FutureTimeNegationStudio/>:isA1FutureImperative&&index===2?<A1ImperativeStudio/>:isA1HomeHousing&&index===0?<A1HomeHousingTypesStudio/>:isA1HomeHousing&&index===1?<A1HomeHousingFurnitureStudio/>:isA1HomeHousing&&index===2?<A1HomeHousingDescriptionStudio/>:isA1Description&&index===0?<A1FamilyContextStudio/>:isA1Description&&index===1?<A1PhysicalStatesStudio/>:isA1Description&&index===2?<A1EmotionsStudio/>:isA1CoreVerbs&&index<2?<A1GrammarCarousel groups={index===0?A1_SUBJECT_PRONOUN_GROUPS:A1_CORE_VERB_GROUPS} intro={item.explanation} isVerb={index===1}/>:isA1Tastes&&index===0?<A1TastesPreferenceStudio/>:isA1Tastes&&index===1?<><A1TastesPreferenceChoiceStudio/><A1TastesChoiceStudio/></>:isA1Tastes&&index===2?<A1TastesReasonStudio/>:isA1Demonstratives&&index===0?<A1DemonstrativesMasculineTable/>:isA1Demonstratives&&index===1?<A1DemonstrativesFeminineTable/>:isA1Demonstratives&&index===2?<A1DemonstrativesPluralTable/>:isA1Possessives&&index===0?<A1PossessivesMonMaMesTable/>:isA1Possessives&&index===1?<A1PossessivesTonTaTesTable/>:isA1Possessives&&index===2?<A1PossessivesSonSaSesTable/>:isA1Possessives&&index===3?<A1PossessivesPluralOwnersTable/>:isA1Structures&&index===0?<A1StructuresPresentationTable/>:isA1Structures&&index===1?<A1StructuresExistenceTable/>:isA1Structures&&index===2?<A1StructuresDemonstrativesTable/>:isA1Studies?<div className="a1-nouns-learning a1-studies-learning"><p className="a1-nouns-learning-intro">{item.explanation}</p><div className="a1-nouns-branches">{A1_STUDIES_LEARNING_GROUPS[index].branches.map((branch,branchIndex)=><details key={branch.fr} className="a1-nouns-branch"><summary><span className="a1-nouns-branch-number">{String(branchIndex+1).padStart(2,"0")}</span><span className="a1-nouns-branch-title"><strong dir="ltr">{branch.fr}</strong><b>{branch.ar}</b></span><ChevronDown/></summary><div className="a1-nouns-branch-content"><p>{branch.note}</p>{index===0&&branchIndex===0?<A1StudyPlacesCarousel/>:index===0&&branchIndex===1?<A1StudySubjectsCarousel/>:index===0&&branchIndex===2?<A1StudyVerbsCarousel/>:index===1&&branchIndex===0?<A1StudyProfessionsCarousel/>:index===1&&branchIndex===1?<A1ProfessionGenderCarousel/>:index===1&&branchIndex===2?<A1WorkplacesCarousel/>:index===2&&branchIndex===0?<A1StudyQuestionCarousel mode="informal"/>:index===2&&branchIndex===1?<A1StudyQuestionCarousel mode="formal"/>:index===3&&branchIndex===0?<A1StudyPresentationCarousel/>:index===3&&branchIndex===1?<A1StudyPresentationCarousel kind="profession"/>:index===3&&branchIndex===2?<A1StudyPresentationCarousel kind="place"/>:branch.examples.length>0&&<div className="a1-nouns-example-grid">{branch.examples.map(example=><button key={example.fr} type="button" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><strong dir="ltr">{example.fr}</strong><span>{example.ar}</span><Volume2 aria-hidden="true"/></button>)}</div>}</div></details>)}</div></div>:isA1Nouns?<div className="a1-nouns-learning">
         <p className="a1-nouns-learning-intro">{item.explanation}</p>
         <div className="a1-nouns-branches">

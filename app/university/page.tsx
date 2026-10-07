@@ -1251,17 +1251,7 @@ const A1_MODULES:CourseModule[]=[
   sections:[
    section("Parler de la météo","وصف حالة الطقس","",[],[]),
    section("Les quatre saisons","الفصول الأربعة","",[],[]),
-   section("Choisir ses vêtements","اختيار الملابس","نستخدم porter لوصف الملابس التي يرتديها الشخص، ونستخدم mettre عندما يرتدي قطعة أو يضعها استعدادًا للخروج.",[
-    "porter un pantalon / une robe: ارتداء بنطال / فستان.",
-    "mettre un manteau: ارتداء معطف.",
-    "prendre un parapluie: أخذ مظلة.",
-    "اتفاق اللون: un pull noir، une veste noire."
-   ],[
-    {fr:"Je porte un pantalon bleu et une chemise blanche.",ar:"أرتدي بنطالًا أزرق وقميصًا أبيض."},
-    {fr:"Mets ton manteau, il fait froid.",ar:"ارتدِ معطفك، فالجو بارد."},
-    {fr:"Elle prend son parapluie parce qu’il pleut.",ar:"تأخذ مظلتها لأن الجو ممطر."},
-    {fr:"Ces chaussures sont confortables pour marcher.",ar:"هذه الأحذية مريحة للمشي."}
-   ])
+   section("Choisir ses vêtements","اختيار الملابس","",[],[])
   ]
  },
  {
@@ -7491,6 +7481,51 @@ function A1WeatherSeasonsStudio(){
  </div>
 }
 
+const A1_WEATHER_CLOTHES_TABLE=[
+ {title:"مفردات الملابس",fr:"Le vocabulaire des vêtements",intro:"اختر قطعة الملابس لتتعرف إلى أداتها وجنسها واستعمالها في جمل يومية.",formula:"porter / mettre + vêtement",entries:[
+  {expression:"un manteau",ar:"معطف",kind:"مذكر مفرد",rule:"نستخدم un manteau للمعطف، وهو مناسب خصوصًا للبرد أو الشتاء.",examples:[{fr:"Je porte un manteau en hiver.",ar:"أرتدي معطفًا في الشتاء.",detail:"en hiver يوضح متى نرتدي المعطف."},{fr:"Ce manteau est long.",ar:"هذا المعطف طويل.",detail:"manteau مذكر، لذلك نستخدم ce."}]},
+  {expression:"une veste",ar:"سترة",kind:"مؤنث مفرد",rule:"نستخدم une veste للسترة؛ ويمكن وصف لونها أو خفتها حسب الجو.",examples:[{fr:"Elle met une veste noire.",ar:"هي ترتدي سترة سوداء.",detail:"veste مؤنث، لذا noir تصبح noire."},{fr:"La veste est légère.",ar:"السترة خفيفة.",detail:"légère توافق veste المؤنثة."}]},
+  {expression:"un pull",ar:"كنزة",kind:"مذكر مفرد",rule:"نستخدم un pull للكنزة أو السترة الصوفية الخفيفة.",examples:[{fr:"Il porte un pull bleu.",ar:"هو يرتدي كنزة زرقاء.",detail:"pull مذكر، لذلك يبقى bleu بصيغة المذكر."},{fr:"Ce pull est chaud.",ar:"هذه الكنزة دافئة.",detail:"ce يسبق الاسم المذكر pull."}]},
+  {expression:"une chemise",ar:"قميص",kind:"مؤنث مفرد",rule:"نستخدم une chemise للقميص، ونصف لونه بصفة مؤنثة عند الحاجة.",examples:[{fr:"Je cherche une chemise blanche.",ar:"أبحث عن قميص أبيض.",detail:"blanche توافق chemise المؤنثة."},{fr:"La chemise est propre.",ar:"القميص نظيف.",detail:"propre لا يتغير في المذكر والمؤنث هنا."}]},
+  {expression:"un pantalon",ar:"بنطال",kind:"مذكر مفرد",rule:"نستخدم un pantalon للبنطال، ونستطيع وصف لونه أو مقاسه.",examples:[{fr:"Il met un pantalon noir.",ar:"هو يرتدي بنطالًا أسود.",detail:"pantalon مذكر؛ لذلك نقول noir."},{fr:"Le pantalon est confortable.",ar:"البنطال مريح.",detail:"confortable تصف البنطال في المفرد."}]},
+  {expression:"une robe",ar:"فستان",kind:"مؤنث مفرد",rule:"نستخدم une robe للفستان، وهو اسم مؤنث.",examples:[{fr:"Elle porte une robe rouge.",ar:"هي ترتدي فستانًا أحمر.",detail:"rouge لا يتغير في المؤنث المفرد."},{fr:"La robe est jolie.",ar:"الفستان جميل.",detail:"jolie توافق robe المؤنثة."}]},
+  {expression:"des chaussures",ar:"أحذية",kind:"جمع مؤنث",rule:"نستخدم des chaussures للأحذية؛ وتأتي الصفات بعدها بصيغة الجمع المؤنث.",examples:[{fr:"Je mets des chaussures blanches.",ar:"أرتدي أحذية بيضاء.",detail:"blanches توافق chaussures: مؤنث جمع."},{fr:"Les chaussures sont confortables.",ar:"الأحذية مريحة.",detail:"الفعل sont لأن chaussures جمع."}]},
+  {expression:"une écharpe",ar:"وشاح",kind:"مؤنث مفرد",rule:"نستخدم une écharpe للوشاح الذي نرتديه في الجو البارد.",examples:[{fr:"En hiver, je porte une écharpe.",ar:"في الشتاء أرتدي وشاحًا.",detail:"الفصل يوضح سبب ارتداء الوشاح."},{fr:"L’écharpe est chaude.",ar:"الوشاح دافئ.",detail:"L’ تأتي قبل écharpe لأنها تبدأ بصوت متحرك."}]}
+ ]},
+ {title:"السؤال عن المقاس والحجم",fr:"La taille et la pointure",intro:"استخدم هذه الصيغ عند شراء الملابس أو الأحذية: اسأل عن المقاس، ثم اذكر الرقم أو صف القطعة بأنها كبيرة أو صغيرة.",formula:"Quelle taille ? → Je fais du…",entries:[
+  {expression:"Quelle taille faites-vous ?",ar:"ما مقاس ملابسك؟",kind:"السؤال عن مقاس الملابس",rule:"صيغة مهذبة باستعمال vous للسؤال عن مقاس الملابس بشكل عام.",examples:[{fr:"Quelle taille faites-vous ?",ar:"ما مقاس ملابسك؟",detail:"نستخدم faites-vous مع vous في السؤال المهذب."},{fr:"Je fais du quarante.",ar:"مقاسي أربعون.",detail:"نقول faire du ثم رقم المقاس."}]},
+  {expression:"Quelle pointure faites-vous ?",ar:"ما مقاس حذائك؟",kind:"السؤال عن مقاس الحذاء",rule:"pointure تعني مقاس الحذاء، وتأتي معها صيغة faire du + رقم.",examples:[{fr:"Quelle pointure faites-vous ?",ar:"ما مقاس حذائك؟",detail:"pointure تخص الحذاء لا الملابس."},{fr:"Je fais du quarante-deux.",ar:"مقاس حذائي اثنان وأربعون.",detail:"نجيب بالصيغة نفسها: Je fais du + الرقم."}]},
+  {expression:"en taille M",ar:"بمقاس M",kind:"طلب مقاس محدد",rule:"نستخدم en taille ثم الحرف أو الرقم عند طلب القطعة بمقاس محدد.",examples:[{fr:"Vous avez ce pull en taille M ?",ar:"هل لديكم هذه الكنزة بمقاس M؟",detail:"ce pull مذكر، وen taille M تحدد المقاس المطلوب."},{fr:"Je cherche une veste en taille S.",ar:"أبحث عن سترة بمقاس S.",detail:"une veste مؤنث، لكن صيغة en taille لا تتغير."}]},
+  {expression:"trop grand / trop petit",ar:"كبير جدًا / صغير جدًا",kind:"وصف حجم القطعة",rule:"نستخدم trop grand مع الاسم المذكر وtrop grande مع الاسم المؤنث؛ ونطبق القاعدة نفسها على petit.",examples:[{fr:"Ce pantalon est trop grand.",ar:"هذا البنطال كبير جدًا.",detail:"pantalon مذكر، لذلك نقول grand."},{fr:"Cette veste est trop petite.",ar:"هذه السترة صغيرة جدًا.",detail:"veste مؤنث، لذلك petite تنتهي بـ e."}]}
+ ]},
+ {title:"صفات الإشارة للملابس",fr:"Les démonstratifs pour les vêtements",intro:"نستخدم صفات الإشارة قبل قطعة الملابس: ce للمذكر، cet قبل صوت متحرك، cette للمؤنث، وces للجمع.",formula:"ce / cet / cette / ces + vêtement",entries:[
+  {expression:"ce",ar:"هذا / ذلك",kind:"مذكر قبل حرف ساكن",rule:"نستخدم ce قبل اسم مذكر مفرد يبدأ بحرف ساكن مثل manteau أو pull.",examples:[{fr:"Ce manteau est chaud.",ar:"هذا المعطف دافئ.",detail:"manteau مذكر ويبدأ بحرف ساكن، لذا نستخدم ce."},{fr:"Ce pull est bleu.",ar:"هذه الكنزة زرقاء.",detail:"pull مذكر مفرد، وbleu توافقه."}]},
+  {expression:"cet",ar:"هذا / ذلك",kind:"مذكر قبل صوت متحرك",rule:"نستخدم cet قبل اسم مذكر مفرد يبدأ بصوت متحرك أو h صامتة.",examples:[{fr:"Cet imperméable est léger.",ar:"هذا المعطف المقاوم للمطر خفيف.",detail:"imperméable يبدأ بصوت متحرك، لذا نستخدم cet."},{fr:"Cet habit est propre.",ar:"هذا الثوب نظيف.",detail:"h في habit صامتة، ولذلك نستخدم cet."}]},
+  {expression:"cette",ar:"هذه / تلك",kind:"مؤنث مفرد",rule:"نستخدم cette قبل اسم مؤنث مفرد مثل veste أو robe أو chemise.",examples:[{fr:"Cette veste est noire.",ar:"هذه السترة سوداء.",detail:"veste مؤنث؛ لذا نستخدم cette وnoire."},{fr:"Cette robe est jolie.",ar:"هذا الفستان جميل.",detail:"robe مؤنث، وتأتي الصفة jolie في المؤنث."}]},
+  {expression:"ces",ar:"هؤلاء / هذه",kind:"جمع",rule:"نستخدم ces قبل الاسم الجمع للمذكر والمؤنث، مثل chaussures أو gants.",examples:[{fr:"Ces chaussures sont confortables.",ar:"هذه الأحذية مريحة.",detail:"chaussures جمع، لذا نستخدم ces وsont."},{fr:"Ces gants sont chauds.",ar:"هذه القفازات دافئة.",detail:"gants جمع مذكر، وchauds تأتي في الجمع."}]}
+ ]}
+] as const;
+
+function A1WeatherClothesStudio(){
+ const [groupIndex,setGroupIndex]=useState(0);
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const group=A1_WEATHER_CLOTHES_TABLE[groupIndex];
+ const item=group.entries[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)};
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-clothes-studio">
+  <style>{`.a1-weather-clothes-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر قسم الملابس">{A1_WEATHER_CLOTHES_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر العنصر لتقرأ القاعدة والمثال.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر عنصرًا من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>النوع</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+ </div>
+}
+
 const A1_CITY_DIRECTIONS_DESTINATION_TABLE=[
  {expression:"au",ar:"إلى الـ",kind:"مكان مذكر مفرد",rule:"نستخدم au مع مكان مذكر مفرد؛ وهو اختصار à + le.",examples:[{fr:"Je vais au marché.",ar:"أذهب إلى السوق.",detail:"marché مذكر: le marché، لذلك نقول au marché."},{fr:"Nous allons au musée.",ar:"نذهب إلى المتحف.",detail:"musée مذكر مفرد؛ à + le musée تصبح au musée."}]},
  {expression:"à la",ar:"إلى الـ",kind:"مكان مؤنث مفرد",rule:"نستخدم à la مع مكان مؤنث مفرد، ولا يحدث دمج بين الكلمتين.",examples:[{fr:"Elle va à la banque.",ar:"هي تذهب إلى البنك.",detail:"banque مؤنث: la banque، لذلك تبقى à la كما هي."},{fr:"Je vais à la gare.",ar:"أذهب إلى المحطة.",detail:"gare مؤنث مفرد؛ نقول à la gare من دون دمج."}]},
@@ -10906,6 +10941,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       <div id={`university-lesson-section-body-${index}`} className="university-explanation-body">
        {isA1WeatherClothes&&index===0&&<A1WeatherMeteoStudio/>}
        {isA1WeatherClothes&&index===1&&<A1WeatherSeasonsStudio/>}
+       {isA1WeatherClothes&&index===2&&<A1WeatherClothesStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

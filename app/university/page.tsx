@@ -4041,15 +4041,15 @@ const A1_CITY_DIRECTIONS_READING={
 };
 
 const A1_CITY_DIRECTIONS_LISTENING={
- title:"Pour aller à la pharmacie",
- arTitle:"للوصول إلى الصيدلية",
+ title:"Les directions en ville à l’écoute",
+ arTitle:"استمع إلى اتجاهات المدينة",
  text:"Allez tout droit. Tournez à gauche. Traversez la place. En face du parc. À côté de la banque.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Allez tout droit","Tournez à droite","Traversez le pont"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Prenez le métro","Tournez à gauche","Allez jusqu’au feu"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Traversez la rue","Continuez tout droit","Traversez la place"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["En face du parc","Derrière le musée","Entre les magasins"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Près de la gare","À côté de la banque","Au fond de la rue"],correctIndex:1}
+  {prompt:"Quelle instruction entendez-vous ?",speech:"Allez tout droit.",instruction:"اختر التعليمة التي سمعتها.",translation:"ما التعليمة التي تسمعها؟",choices:["Allez tout droit","Tournez à droite","Traversez le pont"],correctIndex:0,explanationAr:"Allez tout droit تعني: اذهب مباشرةً إلى الأمام.",explanationFr:"Allez tout droit indique de continuer sans tourner."},
+  {prompt:"Quelle direction entendez-vous ?",speech:"Tournez à gauche.",instruction:"اختر الاتجاه الذي سمعته.",translation:"ما الاتجاه الذي تسمعه؟",choices:["Tournez à droite","Tournez à gauche","Allez jusqu’au feu"],correctIndex:1,explanationAr:"à gauche تعني إلى اليسار؛ لذلك التعليمة هي الانعطاف يسارًا.",explanationFr:"À gauche indique la direction vers la gauche."},
+  {prompt:"Que faut-il traverser ?",speech:"Traversez la place.",instruction:"اختر المكان الذي سمعته.",translation:"ما المكان الذي يجب عبوره؟",choices:["Traversez la rue","Traversez le pont","Traversez la place"],correctIndex:2,explanationAr:"la place تعني الساحة؛ والجملة تطلب عبورها.",explanationFr:"La place est le lieu à traverser."},
+  {prompt:"Où est le lieu ?",speech:"En face du parc.",instruction:"اختر موضع المكان الذي سمعته.",translation:"أين يقع المكان؟",choices:["Derrière le musée","En face du parc","Entre les magasins"],correctIndex:1,explanationAr:"en face du parc تعني مقابل الحديقة.",explanationFr:"En face du parc situe un lieu de l’autre côté du parc."},
+  {prompt:"À côté de quel lieu ?",speech:"À côté de la banque.",instruction:"اختر المكان المرجعي الذي سمعته.",translation:"بجوار أي مكان؟",choices:["Près de la gare","À côté de la banque","Au fond de la rue"],correctIndex:1,explanationAr:"à côté de la banque تعني بجوار البنك.",explanationFr:"À côté de la banque indique un lieu voisin de la banque."}
  ]
 };
 

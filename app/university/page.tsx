@@ -7506,6 +7506,20 @@ const A1_WEATHER_CLOTHES_TABLE=[
  ]}
 ] as const;
 
+const A1_CLOTHING_SHOP_DIALOGUE=[
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"Bonjour, je cherche une veste pour l’hiver.",ar:"مرحبًا، أبحث عن سترة للشتاء.",segments:[["Bonjour, je cherche ",false],["une veste",true],[" pour l’hiver.",false]]},
+ {speaker:"Le vendeur",speakerAr:"البائع",role:"seller",fr:"Bonjour. Regardez cette veste noire. Elle est chaude.",ar:"مرحبًا. انظر إلى هذه السترة السوداء. إنها دافئة.",segments:[["Bonjour. Regardez ",false],["cette veste noire",true],[". Elle est chaude.",false]]},
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"Elle est jolie. Vous avez cette veste en taille M ?",ar:"إنها جميلة. هل لديكم هذه السترة بمقاس M؟",segments:[["Elle est jolie. Vous avez ",false],["cette veste",true],[" en ",false],["taille M",true],[" ?",false]]},
+ {speaker:"Le vendeur",speakerAr:"البائع",role:"seller",fr:"Oui. Quelle taille faites-vous ?",ar:"نعم. ما مقاس ملابسك؟",segments:[["Oui. ",false],["Quelle taille faites-vous ?",true]]},
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"Je fais du quarante.",ar:"مقاسي أربعون.",segments:[["Je fais du ",false],["quarante",true],[".",false]]},
+ {speaker:"Le vendeur",speakerAr:"البائع",role:"seller",fr:"Très bien. Voici cette veste en taille M. Essayez-la.",ar:"حسنًا. تفضل هذه السترة بمقاس M. جرّبها.",segments:[["Très bien. Voici ",false],["cette veste en taille M",true],[". Essayez-la.",false]]},
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"Merci. Elle est un peu trop grande. Vous avez la taille S ?",ar:"شكرًا. إنها كبيرة قليلًا جدًا. هل لديكم مقاس S؟",segments:[["Merci. Elle est un peu ",false],["trop grande",true],[". Vous avez la ",false],["taille S",true],[" ?",false]]},
+ {speaker:"Le vendeur",speakerAr:"البائع",role:"seller",fr:"Oui, bien sûr. Voilà cette veste en taille S.",ar:"نعم، بالتأكيد. تفضل هذه السترة بمقاس S.",segments:[["Oui, bien sûr. Voilà ",false],["cette veste en taille S",true],[".",false]]},
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"C’est parfait. Je prends cette veste. Combien coûte-t-elle ?",ar:"إنها مناسبة تمامًا. سأخذ هذه السترة. كم سعرها؟",segments:[["C’est parfait. Je prends ",false],["cette veste",true],[". ",false],["Combien coûte-t-elle ?",true]]},
+ {speaker:"Le vendeur",speakerAr:"البائع",role:"seller",fr:"Elle coûte quarante euros.",ar:"سعرها أربعون يورو.",segments:[["Elle coûte ",false],["quarante euros",true],[".",false]]},
+ {speaker:"Le client",speakerAr:"العميل",role:"client",fr:"Merci beaucoup. Au revoir !",ar:"شكرًا جزيلًا. إلى اللقاء!",segments:[["Merci beaucoup. Au revoir !",false]]}
+] as const;
+
 function A1WeatherClothesStudio(){
  const [groupIndex,setGroupIndex]=useState(0);
  const [itemIndex,setItemIndex]=useState(0);
@@ -7523,6 +7537,11 @@ function A1WeatherClothesStudio(){
   <nav className="a1-present-er-tabs" aria-label={`اختر عنصرًا من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
   <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>النوع</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
   <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-clothing-dialogue" aria-label="حوار في محل الملابس">
+   <header><div><span>Dialogue au magasin de vêtements</span><h4>حوار في محل الملابس</h4><p><b dir="ltr">Le vendeur</b> — البائع · <b dir="ltr">Le client</b> — العميل</p></div><button type="button" onClick={()=>void speakFrenchSequence(A1_CLOTHING_SHOP_DIALOGUE.map(line=>line.fr),780,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع للحوار</b><small>نطق طبيعي متتابع</small></span></button></header>
+   <div className="a1-clothing-dialogue-lines">{A1_CLOTHING_SHOP_DIALOGUE.map((line,index)=><article key={`${line.speaker}-${index}`} className={line.role}><div className="a1-clothing-dialogue-speaker"><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{line.speaker}</strong><small>{line.speakerAr}</small></span></div><div className="a1-clothing-dialogue-copy"><p dir="ltr">{line.segments.map(([segment,important],segmentIndex)=><span key={`${segment}-${segmentIndex}`} className={important?"important":undefined}>{segment}</span>)}</p><small>{line.ar}</small></div><div className="a1-clothing-dialogue-audio"><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.74})} aria-label={`استمع إلى ${line.fr} بنطق طبيعي`}><Volume2/><span>عادي</span></button><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.55})} aria-label={`استمع إلى ${line.fr} بنطق بطيء`}><Gauge/><span>بطيء</span></button></div></article>)}</div>
+   <footer><Sparkles aria-hidden="true"/><span>الكلمات الملوّنة هي مفاتيح الحوار: قطعة الملابس، صفة الإشارة، المقاس، الحجم والسعر.</span></footer>
+  </section>
  </div>
 }
 

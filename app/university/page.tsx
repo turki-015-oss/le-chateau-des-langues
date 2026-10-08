@@ -3860,14 +3860,18 @@ const A1_DESCRIPTION_WRITING_TRANSLATIONS=[
 ];
 
 const A1_HEALTH_NEEDS_WRITING_TRANSLATIONS=[
+ {fr:"bonjour",ar:"مرحبًا"},
  {fr:"j’ai de la fièvre",ar:"لدي حمى"},
- {fr:"j’ai mal à la tête",ar:"أشعر بألم في الرأس"},
  {fr:"j’ai de la toux",ar:"لدي سعال"},
+ {fr:"j’ai mal à la gorge",ar:"أشعر بألم في الحلق"},
  {fr:"je suis très fatigué",ar:"أنا متعب جدًا"},
- {fr:"depuis deux jours",ar:"منذ يومين"},
- {fr:"prendre rendez-vous",ar:"حجز موعد"},
- {fr:"un médicament",ar:"دواء"},
- {fr:"j’ai besoin d’aide",ar:"أحتاج إلى مساعدة"}
+ {fr:"depuis hier",ar:"منذ أمس"},
+ {fr:"je voudrais prendre rendez-vous",ar:"أود حجز موعد"},
+ {fr:"avec un médecin",ar:"مع طبيب"},
+ {fr:"une pharmacie ouverte",ar:"صيدلية مفتوحة"},
+ {fr:"j’ai besoin d’aide",ar:"أحتاج إلى مساعدة"},
+ {fr:"s’il vous plaît",ar:"من فضلكم"},
+ {fr:"merci",ar:"شكرًا"}
 ];
 
 const A1_ADJECTIVES_WRITING_TRANSLATIONS=[
@@ -4438,7 +4442,7 @@ const A1_HEALTH_NEEDS_LISTENING={
  ]
 };
 
-const A1_HEALTH_NEEDS_WRITING_MODEL="Bonjour, je voudrais prendre rendez-vous avec un médecin. J’ai de la fièvre et mal à la tête depuis hier. Je suis très fatigué. Est-ce que vous avez une place demain matin, s’il vous plaît ?";
+const A1_HEALTH_NEEDS_WRITING_MODEL="Bonjour, je voudrais prendre rendez-vous avec un médecin. J’ai de la fièvre et mal à la gorge depuis hier. Je suis très fatigué et je cherche une pharmacie ouverte. Est-ce que vous avez une place demain matin, s’il vous plaît ? Merci.";
 
 const A1_HEALTH_NEEDS_DICTATION=[
  {speech:"J’ai de la fièvre.",ar:"لدي حمى."},
@@ -4867,7 +4871,7 @@ const A1_ENHANCED_CONTENT={
  },
  "health-needs":{
   reading:A1_HEALTH_NEEDS_READING,listening:A1_HEALTH_NEEDS_LISTENING,dictation:A1_HEALTH_NEEDS_DICTATION,builders:A1_HEALTH_NEEDS_BUILDERS,dialogues:A1_HEALTH_NEEDS_DIALOGUES,
-  writingModel:A1_HEALTH_NEEDS_WRITING_MODEL,writingTitle:"اكتب رسالة قصيرة لحجز موعد",writingInstructions:"اكتب من 30 إلى 45 كلمة إلى عيادة أو صيدلية. اذكر عرضًا صحيًا وموضع ألم والمدة، ثم اطلب موعدًا أو مساعدة بأدب.",writingPlaceholder:"Bonjour, je voudrais…",writingMinimum:30,writingMaximum:45,
+  writingModel:A1_HEALTH_NEEDS_WRITING_MODEL,writingTitle:"اكتب رسالة صحية قصيرة",writingInstructions:"اكتب من 30 إلى 45 كلمة إلى عيادة أو صيدلية. ابدأ بتحية، ثم اذكر عرضًا وموضع ألم ومدته، واطلب موعدًا أو مساعدة بأدب، واختم بالشكر.",writingPlaceholder:"Bonjour, je voudrais…",writingMinimum:30,writingMaximum:45,
   speakingPrompt:"Bonjour, je suis malade. J’ai de la fièvre et mal à la tête depuis hier. Je voudrais prendre rendez-vous avec un médecin, s’il vous plaît.",speakingDuration:"تحدث لمدة 30 إلى 45 ثانية",speakingTips:["ابدأ بالحالة أو العرض الرئيسي.","حدّد موضع الألم والمدة.","اختم بطلب موعد أو مساعدة بوضوح."],dictationUnit:"sentence"
  },
  adjectives:{
@@ -9887,6 +9891,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   {label:"شعوران مختلفان على الأقل",passed:[/\bcontent(?:e)?\b/i,/\bheureu(?:x|se)\b/i,/\btriste\b/i,/\bcalme\b/i,/\b(?:fier|fière)\b/i,/\bpeur\b/i,/\bsurpris(?:e)?\b/i].filter(pattern=>pattern.test(revisionWritingText)).length>=2}
  ]:isA1HealthNeeds?[
   {label:"من 30 إلى 45 كلمة",passed:revisionWordCount>=30&&revisionWordCount<=45},
+  {label:"البدء بتحية",passed:/\b(?:bonjour|bonsoir)\b/i.test(revisionWritingText)},
   {label:"ذكر عرض صحي",passed:/\b(?:fièvre|toux|rhume|allergie|malade|fatigué|fatiguée)\b/i.test(revisionWritingText)},
   {label:"تحديد موضع الألم",passed:/\bmal\s+(?:à\s+la|à\s+l[’']|au|aux)\s+[a-zà-ÿ]+/i.test(revisionWritingText)},
   {label:"ذكر مدة العرض",passed:/\bdepuis\s+(?:hier|ce\s+matin|\d+|un|une|deux|trois|quatre|cinq)\b/i.test(revisionWritingText)},

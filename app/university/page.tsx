@@ -2334,16 +2334,21 @@ const A1_FUTURE_IMPERATIVE_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_HEALTH_NEEDS_PRACTICE_ITEMS:Example[]=[
- {fr:"Je ne me sens pas bien ce matin.",ar:"لا أشعر أنني بخير هذا الصباح."},
- {fr:"Il a un rhume et il tousse beaucoup.",ar:"لديه زكام ويسعل كثيرًا."},
- {fr:"Nous avons mal au dos.",ar:"نشعر بألم في الظهر."},
- {fr:"Elle a mal à l’oreille droite.",ar:"تشعر بألم في أذنها اليمنى."},
+ {fr:"J’ai de la fièvre.",ar:"لدي حمى."},
+ {fr:"J’ai de la toux.",ar:"لدي سعال."},
+ {fr:"J’ai un rhume.",ar:"لدي زكام."},
+ {fr:"Je suis malade et très fatigué.",ar:"أنا مريض ومتعب جدًا."},
+ {fr:"J’ai mal à la tête.",ar:"أشعر بألم في الرأس."},
+ {fr:"J’ai mal à la gorge depuis hier.",ar:"أشعر بألم في الحلق منذ أمس."},
+ {fr:"J’ai mal au ventre.",ar:"أشعر بألم في البطن."},
+ {fr:"J’ai mal aux dents.",ar:"أشعر بألم في الأسنان."},
+ {fr:"Je suis allergique aux noix.",ar:"لدي حساسية تجاه المكسرات."},
  {fr:"Est-ce que vous avez de la fièvre ?",ar:"هل لديكم حمى؟"},
- {fr:"Le médecin est disponible à quinze heures.",ar:"الطبيب متاح الساعة الثالثة عصرًا."},
- {fr:"J’ai une ordonnance pour ce médicament.",ar:"لدي وصفة طبية لهذا الدواء."},
- {fr:"Prenez ce sirop trois fois par jour.",ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."},
- {fr:"Mon ami ne peut pas marcher.",ar:"لا يستطيع صديقي المشي."},
- {fr:"Je suis allergique aux noix.",ar:"لدي حساسية تجاه المكسرات."}
+ {fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
+ {fr:"Je cherche une pharmacie ouverte.",ar:"أبحث عن صيدلية مفتوحة."},
+ {fr:"Prenez ce médicament après le repas.",ar:"تناولوا هذا الدواء بعد الوجبة."},
+ {fr:"Excusez-moi, j’ai besoin d’aide.",ar:"عذرًا، أحتاج إلى مساعدة."},
+ {fr:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."}
 ];
 
 const A1_HEALTH_NEEDS_QUIZ_ITEMS:QuizQuestion[]=[

@@ -4451,11 +4451,18 @@ const A1_HEALTH_NEEDS_DICTATION=[
 ];
 
 const A1_HEALTH_NEEDS_BUILDERS=[
+ {tokens:["fièvre.","de","J’ai","la"],answer:["J’ai","de","la","fièvre."],ar:"لدي حمى."},
  {tokens:["tête.","la","à","mal","J’ai"],answer:["J’ai","mal","à","la","tête."],ar:"أشعر بألم في الرأس."},
- {tokens:["deux","toux","la","jours.","depuis","J’ai","de"],answer:["J’ai","de","la","toux","depuis","deux","jours."],ar:"لدي سعال منذ يومين."},
+ {tokens:["aux","mal","J’ai","dents."],answer:["J’ai","mal","aux","dents."],ar:"أشعر بألم في الأسنان."},
+ {tokens:["malade.","Je","suis"],answer:["Je","suis","malade."],ar:"أنا مريض/مريضة."},
+ {tokens:["gorge","J’ai","hier.","depuis","la","mal","à"],answer:["J’ai","mal","à","la","gorge","depuis","hier."],ar:"أشعر بألم في الحلق منذ أمس."},
+ {tokens:["médecin.","avec","rendez-vous","voudrais","prendre","un","Je"],answer:["Je","voudrais","prendre","rendez-vous","avec","un","médecin."],ar:"أود حجز موعد مع طبيب."},
+ {tokens:["mal","Depuis","avez-vous","?","quand"],answer:["Depuis","quand","avez-vous","mal","?"],ar:"منذ متى تشعرون بالألم؟"},
+ {tokens:["ouverte.","pharmacie","cherche","une","Je"],answer:["Je","cherche","une","pharmacie","ouverte."],ar:"أبحث عن صيدلية مفتوحة."},
+ {tokens:["repas.","Prenez","après","médicament","ce","le"],answer:["Prenez","ce","médicament","après","le","repas."],ar:"تناولوا هذا الدواء بعد الوجبة."},
+ {tokens:["l’eau.","Buvez","de"],answer:["Buvez","de","l’eau."],ar:"اشربوا ماءً."},
  {tokens:["besoin","J’ai","d’aide."],answer:["J’ai","besoin","d’aide."],ar:"أحتاج إلى مساعدة."},
- {tokens:["rendez-vous.","prendre","voudrais","Je"],answer:["Je","voudrais","prendre","rendez-vous."],ar:"أود حجز موعد."},
- {tokens:["jour.","fois","ce","Prenez","trois","sirop","par"],answer:["Prenez","ce","sirop","trois","fois","par","jour."],ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."}
+ {tokens:["s’il","Appelez","ambulance,","plaît.","une","vous"],answer:["Appelez","une","ambulance,","s’il","vous","plaît."],ar:"اتصلوا بسيارة إسعاف، من فضلكم."}
 ];
 
 const A1_HEALTH_NEEDS_DIALOGUES=[

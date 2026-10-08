@@ -7486,6 +7486,57 @@ function A1HealthSymptomsStudio(){
  </div>
 }
 
+const A1_HEALTH_CLINIC_TABLE=[
+ {title:"عند الطبيب",fr:"Chez le médecin",intro:"ابدأ بوصف ما تشعر به، ثم حدّد موضع الألم أو مدته. كلما كانت الجملة قصيرة وواضحة كانت مفيدة للطبيب.",formula:"J’ai… / Je suis… + depuis…",entries:[
+  {expression:"J’ai… / Je suis…",ar:"لدي… / أنا…",kind:"بدء وصف الحالة",rule:"نستخدم J’ai مع العرض أو الألم، ونستخدم Je suis مع الحالة العامة مثل malade أو fatigué.",examples:[{fr:"J’ai mal à la gorge.",ar:"لدي ألم في الحلق.",detail:"نذكر موضع الألم بعد avoir mal à."},{fr:"Je suis malade et fatigué.",ar:"أنا مريض ومتعب.",detail:"malade وfatigué يصفان الحالة العامة."}]},
+  {expression:"Depuis quand ?",ar:"منذ متى؟",kind:"السؤال عن المدة",rule:"يستعمل الطبيب هذه العبارة القصيرة ليسأل عن بداية العرض. نجيب عادة بـ depuis ثم زمن أو يوم.",examples:[{fr:"Depuis quand avez-vous mal ?",ar:"منذ متى تشعرون بالألم؟",detail:"مع vous نستخدم avez-vous في السؤال الرسمي."},{fr:"J’ai mal à la tête depuis hier.",ar:"لدي صداع منذ أمس.",detail:"depuis hier تحدد بداية الألم."}]},
+  {expression:"Je voudrais prendre rendez-vous.",ar:"أود حجز موعد.",kind:"طلب موعد بأدب",rule:"نستخدم je voudrais لطلب الموعد بصيغة مهذبة، ثم يمكن أن نضيف avec un médecin.",examples:[{fr:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب.",detail:"avec un médecin يحدد الشخص المطلوب."},{fr:"Je voudrais un rendez-vous aujourd’hui.",ar:"أود موعدًا اليوم.",detail:"نضيف اليوم عند الحاجة إلى تحديد الموعد."}]}
+ ]},
+ {title:"في الصيدلية",fr:"À la pharmacie",intro:"في الصيدلية اذكر ما تبحث عنه أو ما تشعر به بوضوح، ثم اطلب نصيحة بسيطة بأدب.",formula:"Je cherche… / Je voudrais…",entries:[
+  {expression:"Je cherche…",ar:"أبحث عن…",kind:"طلب منتج أو مكان",rule:"نستخدم je cherche عندما نبحث عن دواء بسيط أو عن صيدلية مفتوحة.",examples:[{fr:"Je cherche une pharmacie ouverte.",ar:"أبحث عن صيدلية مفتوحة.",detail:"une pharmacie اسم مؤنث مفرد."},{fr:"Je cherche un médicament pour la toux.",ar:"أبحث عن دواء للسعال.",detail:"pour la toux يوضح العرض الذي نبحث له عن دواء."}]},
+  {expression:"Je voudrais…",ar:"أود…",kind:"طلب مهذب",rule:"نستخدم je voudrais لطلب شيء بأدب داخل الصيدلية، من دون إعطاء تشخيص طبي.",examples:[{fr:"Je voudrais quelque chose pour la fièvre.",ar:"أود شيئًا للحمى.",detail:"quelque chose تعني شيئًا؛ pour la fièvre تحدد الغرض."},{fr:"Je voudrais un médicament pour le rhume.",ar:"أود دواءً للزكام.",detail:"rhume اسم مذكر؛ لذلك نقول le rhume."}]},
+  {expression:"Que conseillez-vous ?",ar:"بماذا تنصحون؟",kind:"طلب نصيحة",rule:"نستخدم هذه الصيغة الرسمية لطلب نصيحة من الصيدلي، بعد شرح العرض بإيجاز.",examples:[{fr:"J’ai mal au ventre. Que conseillez-vous ?",ar:"لدي ألم في البطن. بماذا تنصحون؟",detail:"نذكر العرض أولًا ثم نطلب النصيحة."},{fr:"Que conseillez-vous pour la toux ?",ar:"بماذا تنصحون للسعال؟",detail:"pour + العرض يوضح سبب السؤال."}]}
+ ]},
+ {title:"فهم التعليمات",fr:"Comprendre les consignes",intro:"استمع للتعليمات البسيطة في العيادة أو الصيدلية. غالبًا تكون بصيغة الأمر المهذبة مع vous.",formula:"Prenez / Buvez / Reposez-vous",entries:[
+  {expression:"Prenez…",ar:"تناولوا / خذوا…",kind:"تعليمة دواء",rule:"نستخدم prenez لإعطاء تعليمات عامة عن تناول شيء، ثم ننتبه دائمًا إلى تعليمات الطبيب أو الصيدلي الفعلية.",examples:[{fr:"Prenez ce médicament après le repas.",ar:"تناولوا هذا الدواء بعد الوجبة.",detail:"après le repas تحدد وقت الاستعمال."},{fr:"Prenez un comprimé le soir.",ar:"تناولوا قرصًا مساءً.",detail:"le soir يحدد وقتًا بسيطًا من اليوم."}]},
+  {expression:"Buvez…",ar:"اشربوا…",kind:"تعليمة بسيطة",rule:"نستخدم buvez من الفعل boire في التعليمات العامة المتعلقة بالعناية بالنفس.",examples:[{fr:"Buvez de l’eau.",ar:"اشربوا ماءً.",detail:"de l’eau تأتي قبل اسم يبدأ بصوت متحرك."},{fr:"Buvez de l’eau et reposez-vous.",ar:"اشربوا ماءً واستريحوا.",detail:"تربط et بين تعليمين بسيطين."}]},
+  {expression:"Reposez-vous.",ar:"استريحوا.",kind:"نصيحة عامة",rule:"هذه صيغة أمر مهذبة من se reposer. الضمير vous يأتي بعد الفعل مع شرطة.",examples:[{fr:"Reposez-vous aujourd’hui.",ar:"استريحوا اليوم.",detail:"aujourd’hui يحدد زمن النصيحة."},{fr:"Reposez-vous et appelez un médecin si nécessaire.",ar:"استريحوا واتصلوا بطبيب عند الضرورة.",detail:"si nécessaire تعني عند الضرورة."}]}
+ ]}
+] as const;
+
+const A1_HEALTH_CLINIC_DIALOGUE=[
+ {speaker:"Le patient",speakerAr:"المريض",role:"client",fr:"Bonjour, je voudrais prendre rendez-vous avec un médecin.",ar:"مرحبًا، أود حجز موعد مع طبيب.",segments:[["Bonjour, ",false],["je voudrais prendre rendez-vous",true],[" avec un médecin.",false]] as const},
+ {speaker:"La secrétaire",speakerAr:"موظفة الاستقبال",role:"seller",fr:"Bien sûr. Qu’est-ce que vous avez ?",ar:"بالتأكيد. ما المشكلة الصحية التي لديكم؟",segments:[["Bien sûr. ",false],["Qu’est-ce que vous avez ?",true]] as const},
+ {speaker:"Le patient",speakerAr:"المريض",role:"client",fr:"J’ai mal à la gorge et je suis fatigué.",ar:"لدي ألم في الحلق وأنا متعب.",segments:[["J’ai mal à la gorge",true],[" et je suis fatigué.",true]] as const},
+ {speaker:"La secrétaire",speakerAr:"موظفة الاستقبال",role:"seller",fr:"Depuis quand avez-vous mal ?",ar:"منذ متى تشعرون بالألم؟",segments:[["Depuis quand",true],[" avez-vous mal ?",false]] as const},
+ {speaker:"Le patient",speakerAr:"المريض",role:"client",fr:"Depuis hier. Est-ce que le médecin est disponible aujourd’hui ?",ar:"منذ أمس. هل الطبيب متاح اليوم؟",segments:[["Depuis hier.",true],[" Est-ce que le médecin est disponible aujourd’hui ?",false]] as const}
+] as const;
+
+function A1HealthClinicStudio(){
+ const [groupIndex,setGroupIndex]=useState(0);
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const group=A1_HEALTH_CLINIC_TABLE[groupIndex];
+ const item=group.entries[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)};
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-clothes-studio a1-health-clinic-studio">
+  <style>{`.a1-health-clinic-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر موقفًا صحيًا">{A1_HEALTH_CLINIC_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر العبارة لتقرأ القاعدة والمثال.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر عبارة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستعمل لـ</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-clothing-dialogue" aria-label="حوار في العيادة">
+   <header><div><span>Dialogue chez le médecin</span><h4>حوار في العيادة</h4><p><b dir="ltr">Le patient</b> — المريض · <b dir="ltr">La secrétaire</b> — موظفة الاستقبال</p></div><button type="button" onClick={()=>void speakFrenchSequence(A1_HEALTH_CLINIC_DIALOGUE.map(line=>line.fr),780,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع للحوار</b><small>نطق طبيعي متتابع</small></span></button></header>
+   <div className="a1-clothing-dialogue-lines">{A1_HEALTH_CLINIC_DIALOGUE.map((line,index)=><article key={`${line.speaker}-${index}`} className={line.role}><div className="a1-clothing-dialogue-speaker"><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{line.speaker}</strong><small>{line.speakerAr}</small></span></div><div className="a1-clothing-dialogue-copy"><p dir="ltr">{line.segments.map(([segment,important],segmentIndex)=><span key={`${segment}-${segmentIndex}`} className={important?"important":undefined}>{segment}</span>)}</p><small>{line.ar}</small></div><div className="a1-clothing-dialogue-audio"><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.74})} aria-label={`استمع إلى ${line.fr} بنطق طبيعي`}><Volume2/><span>عادي</span></button><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.55})} aria-label={`استمع إلى ${line.fr} بنطق بطيء`}><Gauge/><span>بطيء</span></button></div></article>)}</div>
+   <footer><Sparkles aria-hidden="true"/><span>الكلمات الملوّنة هي مفاتيح الموقف: الأعراض، مدة الألم، والطلب المهذب للموعد.</span></footer>
+  </section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11014,6 +11065,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1WeatherClothes&&index===1&&<A1WeatherSeasonsStudio/>}
        {isA1WeatherClothes&&index===2&&<A1WeatherClothesStudio/>}
        {isA1HealthNeeds&&index===0&&<A1HealthSymptomsStudio/>}
+       {isA1HealthNeeds&&index===1&&<A1HealthClinicStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

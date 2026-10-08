@@ -4192,7 +4192,14 @@ const A1_WEATHER_CLOTHES_BUILDERS=[
  {tokens:["hiver,","neige.","En","il"],answer:["En","hiver,","il","neige."],ar:"تتساقط الثلوج في الشتاء."},
  {tokens:["veste","porte","bleue.","une","Elle"],answer:["Elle","porte","une","veste","bleue."],ar:"ترتدي سترة زرقاء."},
  {tokens:["degrés.","douze","température","La","est","de"],answer:["La","température","est","de","douze","degrés."],ar:"درجة الحرارة اثنتا عشرة درجة."},
- {tokens:["ton","pas","N’oublie","parapluie","!"],answer:["N’oublie","pas","ton","parapluie","!"],ar:"لا تنسَ مظلتك!"}
+ {tokens:["ton","pas","N’oublie","parapluie","!"],answer:["N’oublie","pas","ton","parapluie","!"],ar:"لا تنسَ مظلتك!"},
+ {tokens:["a","automne,","du","En","vent.","il","y"],answer:["En","automne,","il","y","a","du","vent."],ar:"تهب الرياح في الخريف."},
+ {tokens:["parce","fait","prends","froid.","qu’il","Je","mon","manteau","il"],answer:["Je","prends","mon","manteau","parce","qu’il","fait","froid."],ar:"آخذ معطفي لأن الجو بارد."},
+ {tokens:["sont","chaussures","noires.","Les"],answer:["Les","chaussures","sont","noires."],ar:"الأحذية سوداء."},
+ {tokens:["écharpe","est","Cette","chaude."],answer:["Cette","écharpe","est","chaude."],ar:"هذا الوشاح دافئ."},
+ {tokens:["douce.","printemps,","température","Au","est","la"],answer:["Au","printemps,","la","température","est","douce."],ar:"تكون درجة الحرارة معتدلة في الربيع."},
+ {tokens:["matin.","neuf","fait","degrés","Il","ce"],answer:["Il","fait","neuf","degrés","ce","matin."],ar:"درجة الحرارة تسع درجات هذا الصباح."},
+ {tokens:["il","quand","bottes","neige.","portons","Nous","des"],answer:["Nous","portons","des","bottes","quand","il","neige."],ar:"نرتدي أحذية طويلة عندما تثلج."}
 ];
 
 const A1_WEATHER_CLOTHES_DIALOGUES=[

@@ -7463,6 +7463,29 @@ function A1DailyLifeDayOrderStudio(){
  </div>
 }
 
+const A1_HEALTH_SYMPTOMS_TABLE=[
+ {expression:"avoir + nom",ar:"لدي + عرض",kind:"أعراض تُسمّى بأسماء",rule:"نستخدم avoir مع أسماء الأعراض الأساسية في A1: avoir de la fièvre (لدي حمى)، avoir de la toux (لدي سعال)، avoir un rhume (لدي زكام).",examples:[{fr:"J’ai de la fièvre et de la toux.",ar:"لدي حمى وسعال.",detail:"مع fièvre وtoux نستعمل de la لأنهما اسمان مؤنثان."},{fr:"J’ai un rhume.",ar:"لدي زكام.",detail:"rhume اسم مذكر مفرد؛ لذلك نقول un rhume."}]},
+ {expression:"avoir mal à + partie du corps",ar:"أشعر بألم في + عضو",kind:"تحديد موضع الألم",rule:"نستخدم à la مع tête وgorge، وau مع ventre وdos، وaux مع dents وyeux: avoir mal à la tête / à la gorge / au ventre / au dos / aux dents / aux yeux.",examples:[{fr:"J’ai mal à la tête et à la gorge.",ar:"أشعر بألم في الرأس والحلق.",detail:"tête وgorge مؤنثان مفردان، لذا نستعمل à la."},{fr:"J’ai mal au ventre et au dos.",ar:"أشعر بألم في البطن والظهر.",detail:"ventre وdos مذكران مفردان؛ à + le تصبح au."}]},
+ {expression:"être + adjectif / état",ar:"أكون + حالة",kind:"الحالة الصحية العامة",rule:"نستخدم être لوصف الحالة: être malade (مريض)، être fatigué / fatiguée (متعب/ة)، être allergique à + شيء (لديه حساسية تجاه شيء). تطابق fatigué مع جنس الشخص.",examples:[{fr:"Je suis malade et très fatigué.",ar:"أنا مريض ومتعب جدًا.",detail:"malade لا يتغير هنا، أما fatigué يصف المتحدث المذكر."},{fr:"Je suis allergique à ce médicament.",ar:"لدي حساسية تجاه هذا الدواء.",detail:"بعد allergique نستخدم à ثم الشيء الذي يسبب الحساسية."}]},
+ {expression:"avoir + besoin / sensation",ar:"لدي + حاجة أو إحساس",kind:"حاجات وإحساسات أساسية",rule:"نستخدم avoir مع faim وsoif وfroid وchaud وsommeil: avoir faim (جائع)، avoir soif (عطشان)، avoir froid / chaud (أشعر بالبرد/الحر)، avoir sommeil (نعسان).",examples:[{fr:"J’ai froid et j’ai soif.",ar:"أشعر بالبرد والعطش.",detail:"لا نقول je suis froid للتعبير عن إحساسك؛ الصيغة الطبيعية هي j’ai froid."},{fr:"Après le sport, j’ai faim et sommeil.",ar:"بعد الرياضة أشعر بالجوع والنعاس.",detail:"faim وsommeil يأتيان مباشرة بعد avoir من دون أداة."}]}
+] as const;
+
+function A1HealthSymptomsStudio(){
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const item=A1_HEALTH_SYMPTOMS_TABLE[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-meteo-studio a1-health-symptoms-studio">
+  <style>{`.a1-health-symptoms-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span>Dire ce qu’on a</span><strong>وصف الأعراض والحالة</strong><p>للمبتدئ قاعدة واضحة: استخدم <b dir="ltr">avoir</b> مع الأعراض والحاجات، واستخدم <b dir="ltr">être</b> مع الحالة الصحية العامة أو الحساسية. اختر الصيغة لتتعرف إلى استعمالها بدقة.</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <div className="a1-present-er-formula"><span dir="ltr">avoir + symptôme / besoin</span><i>•</i><strong dir="ltr">être + état / adjectif</strong><b>اختر الفعل بحسب نوع الوصف</b><small>تعلّم العرض أو الحالة كوحدة كاملة مع فعلها.</small></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر صيغة لوصف الأعراض والحالة">{A1_HEALTH_SYMPTOMS_TABLE.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستعمل لـ</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>في وصف الصحة</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -10990,6 +11013,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1WeatherClothes&&index===0&&<A1WeatherMeteoStudio/>}
        {isA1WeatherClothes&&index===1&&<A1WeatherSeasonsStudio/>}
        {isA1WeatherClothes&&index===2&&<A1WeatherClothesStudio/>}
+       {isA1HealthNeeds&&index===0&&<A1HealthSymptomsStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

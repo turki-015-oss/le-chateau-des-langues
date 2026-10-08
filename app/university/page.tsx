@@ -2157,14 +2157,19 @@ const A1_CITY_DIRECTIONS_QUIZ_ITEMS:QuizQuestion[]=[
 const A1_WEATHER_CLOTHES_PRACTICE_ITEMS:Example[]=[
  {fr:"Ce matin, le ciel est gris et il fait froid.",ar:"هذا الصباح السماء غائمة والجو بارد."},
  {fr:"Il y a beaucoup de vent près de la mer.",ar:"تهب رياح قوية بالقرب من البحر."},
- {fr:"Demain, il va pleuvoir dans le nord.",ar:"ستمطر غدًا في الشمال."},
+ {fr:"Aujourd’hui, il pleut dans le nord.",ar:"تمطر اليوم في الشمال."},
  {fr:"La température est de vingt-cinq degrés.",ar:"درجة الحرارة خمس وعشرون درجة."},
  {fr:"Au printemps, je me promène dans les parcs.",ar:"في الربيع أتنزه في الحدائق."},
  {fr:"En été, nous allons souvent à la plage.",ar:"في الصيف نذهب كثيرًا إلى الشاطئ."},
  {fr:"En automne, les feuilles changent de couleur.",ar:"في الخريف يتغير لون أوراق الأشجار."},
  {fr:"En hiver, je porte un manteau chaud.",ar:"في الشتاء أرتدي معطفًا دافئًا."},
  {fr:"Il fait chaud, mets un tee-shirt léger.",ar:"الجو حار، ارتدِ قميصًا خفيفًا."},
- {fr:"N’oublie pas ton parapluie aujourd’hui.",ar:"لا تنسَ مظلتك اليوم."}
+ {fr:"N’oublie pas ton parapluie aujourd’hui.",ar:"لا تنسَ مظلتك اليوم."},
+ {fr:"Le ciel est bleu et il y a du soleil.",ar:"السماء زرقاء والجو مشمس."},
+ {fr:"Il neige dans les montagnes en hiver.",ar:"تتساقط الثلوج في الجبال في الشتاء."},
+ {fr:"Au printemps, la température est douce.",ar:"في الربيع تكون درجة الحرارة معتدلة."},
+ {fr:"Je porte une veste imperméable parce qu’il pleut.",ar:"أرتدي سترة مقاومة للمطر لأن الجو ممطر."},
+ {fr:"En hiver, nous mettons une écharpe et des gants.",ar:"في الشتاء نرتدي وشاحًا وقفازات."}
 ];
 
 const A1_WEATHER_CLOTHES_QUIZ_ITEMS:QuizQuestion[]=[

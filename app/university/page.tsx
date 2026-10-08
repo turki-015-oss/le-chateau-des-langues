@@ -7537,6 +7537,57 @@ function A1HealthClinicStudio(){
  </div>
 }
 
+const A1_HEALTH_HELP_TABLE=[
+ {title:"طلب المساعدة",fr:"Demander de l’aide",intro:"عند الحاجة ابدأ بعبارة قصيرة وواضحة، ثم اذكر ما تحتاج إليه أو من يحتاج إلى المساعدة.",formula:"J’ai besoin d’aide / Aidez-moi",entries:[
+  {expression:"J’ai besoin d’aide.",ar:"أحتاج إلى مساعدة.",kind:"طلب مباشر",rule:"نستخدم هذه العبارة البسيطة لطلب المساعدة فورًا. ويمكن إضافة s’il vous plaît لتكون أكثر لطفًا.",examples:[{fr:"Excusez-moi, j’ai besoin d’aide.",ar:"عذرًا، أحتاج إلى مساعدة.",detail:"Excusez-moi بداية مهذبة قبل الطلب."},{fr:"J’ai besoin d’aide, s’il vous plaît.",ar:"أحتاج إلى مساعدة، من فضلكم.",detail:"s’il vous plaît تجعل الطلب أكثر أدبًا."}]},
+  {expression:"Aidez-moi, s’il vous plaît.",ar:"ساعدوني، من فضلكم.",kind:"طلب عاجل",rule:"نستخدم Aidez-moi لطلب المساعدة مباشرة من شخص أو أكثر بطريقة مهذبة.",examples:[{fr:"Aidez-moi, s’il vous plaît !",ar:"ساعدوني، من فضلكم!",detail:"علامة التعجب تناسب الحاجة العاجلة."},{fr:"Aidez mon fils, s’il vous plaît.",ar:"ساعدوا ابني، من فضلكم.",detail:"نستبدل moi باسم الشخص الذي يحتاج إلى المساعدة."}]},
+  {expression:"Appelez…",ar:"اتصلوا بـ…",kind:"طلب اتصال",rule:"نستخدم صيغة الأمر avec vous لطلب الاتصال بطبيب أو بالإسعاف في موقف طارئ.",examples:[{fr:"Appelez un médecin, s’il vous plaît.",ar:"اتصلوا بطبيب، من فضلكم.",detail:"un médecin تعني طبيبًا غير محدد."},{fr:"Appelez une ambulance !",ar:"اتصلوا بسيارة إسعاف!",detail:"une ambulance مؤنث؛ نستخدمها في الطوارئ."}]}
+ ]},
+ {title:"مكان المساعدة",fr:"Trouver le bon lieu",intro:"اسأل عن المكان المناسب بوضوح: قسم الطوارئ، الطبيب، أو الصيدلية. صيغة Où…؟ مفيدة جدًا في المواقف اليومية.",formula:"Où sont… ? / Où se trouve… ?",entries:[
+  {expression:"Où sont les urgences ?",ar:"أين قسم الطوارئ؟",kind:"السؤال عن الطوارئ",rule:"نستخدم Où sont مع urgences لأنها كلمة جمع في الفرنسية، حتى عندما نقصد قسمًا واحدًا.",examples:[{fr:"Excusez-moi, où sont les urgences ?",ar:"عذرًا، أين قسم الطوارئ؟",detail:"نبدأ بالاعتذار لطلب المساعدة بأدب."},{fr:"Les urgences sont au rez-de-chaussée.",ar:"قسم الطوارئ في الطابق الأرضي.",detail:"au rez-de-chaussée يحدد المكان داخل المبنى."}]},
+  {expression:"Où se trouve… ?",ar:"أين يوجد / تقع…؟",kind:"السؤال عن موقع",rule:"نستخدم Où se trouve مع اسم مفرد مثل la pharmacie أو le médecin للسؤال عن موقعه.",examples:[{fr:"Où se trouve la pharmacie ?",ar:"أين تقع الصيدلية؟",detail:"pharmacie اسم مؤنث مفرد."},{fr:"Où se trouve le médecin ?",ar:"أين يوجد الطبيب؟",detail:"médecin اسم مذكر مفرد."}]},
+  {expression:"Je cherche…",ar:"أبحث عن…",kind:"طلب توجيه",rule:"نستخدم je cherche عندما نبحث عن مكان أو شخص يمكن أن يساعدنا.",examples:[{fr:"Je cherche un médecin.",ar:"أبحث عن طبيب.",detail:"نستخدم un مع اسم مذكر مفرد غير محدد."},{fr:"Je cherche la pharmacie.",ar:"أبحث عن الصيدلية.",detail:"نستخدم la عندما نتحدث عن صيدلية معروفة أو محددة."}]}
+ ]},
+ {title:"معلومة مهمة",fr:"Donner une information importante",intro:"اذكر الحساسية أو الشخص الذي يحتاج إلى المساعدة بجملة قصيرة؛ هذه المعلومات تساعد الآخرين على فهم الموقف بسرعة.",formula:"Je suis allergique à… / C’est mon…",entries:[
+  {expression:"Je suis allergique à…",ar:"لدي حساسية تجاه…",kind:"ذكر الحساسية",rule:"نستخدم être allergique à ثم الدواء أو الشيء الذي يسبب الحساسية.",examples:[{fr:"Je suis allergique à ce médicament.",ar:"لدي حساسية تجاه هذا الدواء.",detail:"ce médicament يعني هذا الدواء."},{fr:"Mon fils est allergique aux noix.",ar:"ابني لديه حساسية من المكسرات.",detail:"aux = à + les قبل اسم الجمع noix."}]},
+  {expression:"C’est mon…",ar:"إنه/إنها … الخاص بي",kind:"تحديد الشخص",rule:"نستخدم c’est ثم صفة الملكية والاسم لنوضح من يحتاج إلى المساعدة.",examples:[{fr:"C’est mon père. Il est malade.",ar:"هذا والدي. هو مريض.",detail:"نذكر الشخص ثم نصف حالته بجملة قصيرة."},{fr:"C’est ma sœur. Elle a mal au ventre.",ar:"هذه أختي. لديها ألم في البطن.",detail:"مع sœur المؤنث نستخدم ma وelle."}]},
+  {expression:"Il / Elle ne se sent pas bien.",ar:"هو/هي لا يشعر بأنه بخير.",kind:"وصف عام",rule:"نستخدم se sentir مع ne…pas لوصف شعور عام بعدم الارتياح عندما لا نعرف العرض بدقة.",examples:[{fr:"Mon frère ne se sent pas bien.",ar:"أخي لا يشعر بأنه بخير.",detail:"ne…pas تحيط بالفعل se sent."},{fr:"Elle ne se sent pas bien depuis ce matin.",ar:"هي لا تشعر بأنها بخير منذ هذا الصباح.",detail:"depuis ce matin يحدد بداية الحالة."}]}
+ ]}
+] as const;
+
+const A1_HEALTH_HELP_DIALOGUE=[
+ {speaker:"Le passant",speakerAr:"المارّ",role:"client",fr:"Excusez-moi, vous avez besoin d’aide ?",ar:"عذرًا، هل تحتاجون إلى مساعدة؟",segments:[["Excusez-moi, ",false],["vous avez besoin d’aide ?",true]] as const},
+ {speaker:"Le patient",speakerAr:"المريض",role:"seller",fr:"Oui, s’il vous plaît. Je ne me sens pas bien.",ar:"نعم، من فضلكم. لا أشعر بأنني بخير.",segments:[["Oui, s’il vous plaît.",false],[" Je ne me sens pas bien.",true]] as const},
+ {speaker:"Le passant",speakerAr:"المارّ",role:"client",fr:"Où avez-vous mal ?",ar:"أين تشعرون بالألم؟",segments:[["Où ",false],["avez-vous mal ?",true]] as const},
+ {speaker:"Le patient",speakerAr:"المريض",role:"seller",fr:"J’ai mal au ventre et je suis allergique à ce médicament.",ar:"لدي ألم في البطن ولدي حساسية من هذا الدواء.",segments:[["J’ai mal au ventre",true],[" et je suis allergique à ce médicament.",true]] as const},
+ {speaker:"Le passant",speakerAr:"المارّ",role:"client",fr:"D’accord. J’appelle une ambulance.",ar:"حسنًا. سأتصل بسيارة إسعاف.",segments:[["D’accord. ",false],["J’appelle une ambulance.",true]] as const}
+] as const;
+
+function A1HealthHelpStudio(){
+ const [groupIndex,setGroupIndex]=useState(0);
+ const [itemIndex,setItemIndex]=useState(0);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const group=A1_HEALTH_HELP_TABLE[groupIndex];
+ const item=group.entries[itemIndex];
+ const example=item.examples[exampleIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)};
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-clothes-studio a1-health-help-studio">
+  <style>{`.a1-health-help-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر موقف طلب المساعدة">{A1_HEALTH_HELP_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر العبارة لتقرأ القاعدة والمثال.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر عبارة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستعمل لـ</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-clothing-dialogue" aria-label="حوار طلب المساعدة">
+   <header><div><span>Dialogue pour demander de l’aide</span><h4>حوار طلب المساعدة</h4><p><b dir="ltr">Le passant</b> — المارّ · <b dir="ltr">Le patient</b> — المريض</p></div><button type="button" onClick={()=>void speakFrenchSequence(A1_HEALTH_HELP_DIALOGUE.map(line=>line.fr),780,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع للحوار</b><small>نطق طبيعي متتابع</small></span></button></header>
+   <div className="a1-clothing-dialogue-lines">{A1_HEALTH_HELP_DIALOGUE.map((line,index)=><article key={`${line.speaker}-${index}`} className={line.role}><div className="a1-clothing-dialogue-speaker"><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{line.speaker}</strong><small>{line.speakerAr}</small></span></div><div className="a1-clothing-dialogue-copy"><p dir="ltr">{line.segments.map(([segment,important],segmentIndex)=><span key={`${segment}-${segmentIndex}`} className={important?"important":undefined}>{segment}</span>)}</p><small>{line.ar}</small></div><div className="a1-clothing-dialogue-audio"><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.74})} aria-label={`استمع إلى ${line.fr} بنطق طبيعي`}><Volume2/><span>عادي</span></button><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.55})} aria-label={`استمع إلى ${line.fr} بنطق بطيء`}><Gauge/><span>بطيء</span></button></div></article>)}</div>
+   <footer><Sparkles aria-hidden="true"/><span>الكلمات الملوّنة تساعدك على طلب المساعدة، تحديد مكان الألم، وذكر الحساسية بوضوح.</span></footer>
+  </section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11066,6 +11117,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1WeatherClothes&&index===2&&<A1WeatherClothesStudio/>}
        {isA1HealthNeeds&&index===0&&<A1HealthSymptomsStudio/>}
        {isA1HealthNeeds&&index===1&&<A1HealthClinicStudio/>}
+       {isA1HealthNeeds&&index===2&&<A1HealthHelpStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

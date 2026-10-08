@@ -4466,11 +4466,18 @@ const A1_HEALTH_NEEDS_BUILDERS=[
 ];
 
 const A1_HEALTH_NEEDS_DIALOGUES=[
- {context:"Qu’est-ce que vous avez ?",translation:"ما المشكلة التي تعاني منها؟",prompt:"اختر الإجابة الواضحة.",choices:["J’ai de la fièvre et mal à la gorge.","Je suis la fièvre.","J’ai depuis médecin."],correctIndex:0,feedback:"نذكر العرض بـ avoir، ونحدد الألم بـ avoir mal à."},
- {context:"Où avez-vous mal ?",translation:"أين تشعر بالألم؟",prompt:"اختر الجملة الصحيحة للأسنان.",choices:["J’ai mal à les dents.","J’ai mal aux dents.","J’ai mal au dents."],correctIndex:1,feedback:"à + les تصبح aux."},
+ {context:"Qu’est-ce que vous avez ?",translation:"ما المشكلة التي تعاني منها؟",prompt:"اختر إجابة واضحة عن الحمى.",choices:["J’ai de la fièvre.","Je suis la fièvre.","J’ai depuis médecin."],correctIndex:0,feedback:"نستخدم avoir مع fièvre: J’ai de la fièvre."},
+ {context:"Vous toussez ?",translation:"هل تسعلون؟",prompt:"اختر الإجابة الصحيحة.",choices:["Oui, j’ai de la toux.","Oui, je suis la toux.","Oui, j’ai à la toux."],correctIndex:0,feedback:"التعبير الصحيح هو avoir de la toux."},
+ {context:"Où avez-vous mal ?",translation:"أين تشعر بالألم؟",prompt:"اختر الجملة الصحيحة للحلق.",choices:["J’ai mal au gorge.","J’ai mal à la gorge.","J’ai mal aux gorge."],correctIndex:1,feedback:"gorge مؤنث مفرد؛ لذلك نقول à la gorge."},
+ {context:"Où avez-vous mal ?",translation:"أين تشعر بالألم؟",prompt:"اختر الجملة الصحيحة للأسنان.",choices:["J’ai mal à les dents.","J’ai mal aux dents.","J’ai mal au dents."],correctIndex:1,feedback:"à + les تصبح aux؛ لذلك نقول aux dents."},
+ {context:"Comment vous sentez-vous ?",translation:"كيف تشعرون؟",prompt:"اختر وصف الحالة الصحيحة.",choices:["Je suis malade et fatigué.","J’ai malade et fatigué.","Je suis de la fatigue."],correctIndex:0,feedback:"نستخدم être مع malade وfatigué لوصف الحالة."},
+ {context:"Depuis quand avez-vous mal à la tête ?",translation:"منذ متى تشعرون بألم في الرأس؟",prompt:"اختر الرد المناسب.",choices:["Depuis hier.","À la pharmacie.","Avec un médecin."],correctIndex:0,feedback:"Depuis يحدد بداية الحالة ومدتها."},
+ {context:"Avez-vous des allergies ?",translation:"هل لديكم أي حساسية؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis allergique aux noix.","Oui, je prends demain.","Oui, j’ai mal à quinze heures."],correctIndex:0,feedback:"être allergique à هو التعبير الصحيح عن الحساسية."},
  {context:"Quand souhaitez-vous voir le médecin ?",translation:"متى ترغب في مقابلة الطبيب؟",prompt:"اختر الطلب المهذب.",choices:["Je voudrais prendre rendez-vous demain.","Je prends médecin maintenant.","Je veux rendez-vous prend."],correctIndex:0,feedback:"Je voudrais prendre rendez-vous صيغة مهذبة وطبيعية."},
- {context:"Depuis quand avez-vous de la toux ?",translation:"منذ متى لديك سعال؟",prompt:"اختر الرد المناسب.",choices:["À la pharmacie.","Depuis deux jours.","Avec un médecin."],correctIndex:1,feedback:"Depuis يحدد بداية الحالة ومدتها."},
- {context:"Avez-vous des allergies ?",translation:"هل لديك أي حساسية؟",prompt:"اختر الرد المناسب.",choices:["Oui, je suis allergique aux noix.","Oui, je prends demain.","Oui, j’ai mal à quinze heures."],correctIndex:0,feedback:"être allergique à هو التعبير الصحيح عن الحساسية."}
+ {context:"Qu’est-ce que vous cherchez ?",translation:"عمّا تبحثون؟",prompt:"اختر جوابًا مناسبًا في المدينة.",choices:["Je cherche une pharmacie ouverte.","Je cherche de la fièvre.","Je cherche malade."],correctIndex:0,feedback:"نستخدم je cherche ثم الاسم: une pharmacie ouverte."},
+ {context:"Que dit le pharmacien ?",translation:"ماذا يقول الصيدلي؟",prompt:"اختر التعليمة الصحيحة بعد الوجبة.",choices:["Prenez ce médicament après le repas.","Prenez ce médicament en le repas.","Vous prenez après médicament."],correctIndex:0,feedback:"نقول après le repas لتحديد وقت التعليمات."},
+ {context:"Vous avez besoin d’aide ?",translation:"هل تحتاجون إلى مساعدة؟",prompt:"اختر طلبًا مباشرًا ومهذبًا.",choices:["Oui, j’ai besoin d’aide, s’il vous plaît.","Oui, je suis besoin d’aide.","Oui, j’ai aide besoin."],correctIndex:0,feedback:"التعبير الثابت هو avoir besoin de: j’ai besoin d’aide."},
+ {context:"Où sont les urgences ?",translation:"أين قسم الطوارئ؟",prompt:"اختر الجواب الطبيعي.",choices:["Les urgences sont au rez-de-chaussée.","Les urgences est au rez-de-chaussée.","Les urgences sont à médecin."],correctIndex:0,feedback:"urgences جمع؛ لذلك نقول sont، وau rez-de-chaussée تعني في الطابق الأرضي."}
 ];
 
 const A1_ADJECTIVES_QUIZ_ITEMS:QuizQuestion[]=[

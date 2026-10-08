@@ -276,11 +276,11 @@ const A1_DESCRIPTION_LISTENING_CLIPS=[
  {letter:"mon cousin",word:"est marié",ar:"ابن عمي أو خالي متزوج",hiddenSpeech:"Mon cousin est marié."}
 ];
 const A1_HEALTH_NEEDS_LISTENING_CLIPS=[
- {letter:"j’ai",word:"de la fièvre",ar:"لدي حمى",hiddenSpeech:"J’ai de la fièvre"},
- {letter:"j’ai mal",word:"à la tête",ar:"أشعر بألم في الرأس",hiddenSpeech:"J’ai mal à la tête"},
- {letter:"j’ai",word:"de la toux",ar:"لدي سعال",hiddenSpeech:"J’ai de la toux"},
- {letter:"prendre",word:"rendez-vous",ar:"حجز موعد",hiddenSpeech:"Prendre rendez-vous"},
- {letter:"j’ai besoin",word:"d’aide",ar:"أحتاج إلى مساعدة",hiddenSpeech:"J’ai besoin d’aide"}
+ {letter:"j’ai",word:"de la fièvre",ar:"لدي حمى",hiddenSpeech:"J’ai de la fièvre."},
+ {letter:"j’ai mal",word:"à la tête depuis hier",ar:"لدي ألم في الرأس منذ أمس",hiddenSpeech:"J’ai mal à la tête depuis hier."},
+ {letter:"je voudrais",word:"prendre rendez-vous avec un médecin",ar:"أود حجز موعد مع طبيب",hiddenSpeech:"Je voudrais prendre rendez-vous avec un médecin."},
+ {letter:"je cherche",word:"une pharmacie ouverte",ar:"أبحث عن صيدلية مفتوحة",hiddenSpeech:"Je cherche une pharmacie ouverte."},
+ {letter:"appelez",word:"une ambulance, s’il vous plaît",ar:"اتصلوا بسيارة إسعاف، من فضلكم",hiddenSpeech:"Appelez une ambulance, s’il vous plaît."}
 ];
 const A1_ADJECTIVES_LISTENING_CLIPS=[
  {letter:"Il est grand",word:"et mince.",ar:"هو طويل ونحيف.",hiddenSpeech:"Il est grand et mince."},
@@ -4421,15 +4421,15 @@ const A1_HEALTH_NEEDS_READING={
 };
 
 const A1_HEALTH_NEEDS_LISTENING={
- title:"À la pharmacie",
- arTitle:"في الصيدلية",
- text:"J’ai de la fièvre. J’ai mal à la tête. J’ai de la toux. Prendre rendez-vous. J’ai besoin d’aide.",
+ title:"Les besoins de santé à l’écoute",
+ arTitle:"استمع إلى احتياجات صحية بسيطة",
+ text:"J’ai de la fièvre. J’ai mal à la tête depuis hier. Je voudrais prendre rendez-vous avec un médecin. Je cherche une pharmacie ouverte. Appelez une ambulance, s’il vous plaît.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai de la fièvre","J’ai un rendez-vous","J’ai froid"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai mal au dos","J’ai mal à la tête","J’ai mal aux dents"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai un rhume","Je suis fatigué","J’ai de la toux"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Prendre rendez-vous","Prendre un sirop","Voir le pharmacien"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’ai besoin d’un médecin","J’ai besoin d’aide","J’ai besoin de repos"],correctIndex:1}
+  {prompt:"Qu’est-ce que la personne a ?",speech:"J’ai de la fièvre.",instruction:"اختر العرض الذي سمعته.",translation:"ما العرض الذي لدى الشخص؟",choices:["J’ai de la fièvre.","J’ai froid.","J’ai un rendez-vous."],correctIndex:0,explanationAr:"de la fièvre تعني الحمى، ونستخدم avoir معها.",explanationFr:"On dit avoir de la fièvre."},
+  {prompt:"Où la personne a-t-elle mal ?",speech:"J’ai mal à la tête depuis hier.",instruction:"اختر موضع الألم الذي سمعته.",translation:"أين يشعر الشخص بالألم؟",choices:["À la gorge","À la tête","Aux dents"],correctIndex:1,explanationAr:"à la tête تعني في الرأس، وdepuis hier تعني منذ أمس.",explanationFr:"Avoir mal à la tête indique la douleur à la tête."},
+  {prompt:"Que veut faire la personne ?",speech:"Je voudrais prendre rendez-vous avec un médecin.",instruction:"اختر الطلب الذي سمعته.",translation:"ماذا يريد الشخص أن يفعل؟",choices:["Prendre rendez-vous avec un médecin","Chercher une pharmacie","Appeler une ambulance"],correctIndex:0,explanationAr:"Je voudrais prendre rendez-vous صيغة مهذبة لطلب موعد.",explanationFr:"Je voudrais prendre rendez-vous est une demande polie."},
+  {prompt:"Qu’est-ce que la personne cherche ?",speech:"Je cherche une pharmacie ouverte.",instruction:"اختر المكان الذي سمعته.",translation:"عن ماذا يبحث الشخص؟",choices:["Un médecin disponible","Une pharmacie ouverte","Le service des urgences"],correctIndex:1,explanationAr:"une pharmacie ouverte تعني صيدلية مفتوحة.",explanationFr:"La personne cherche une pharmacie ouverte."},
+  {prompt:"Que demande la personne ?",speech:"Appelez une ambulance, s’il vous plaît.",instruction:"اختر الطلب الذي سمعته.",translation:"ماذا يطلب الشخص؟",choices:["Appeler une ambulance","Prendre un médicament","Boire de l’eau"],correctIndex:0,explanationAr:"Appelez une ambulance طلب مباشر للاتصال بسيارة إسعاف.",explanationFr:"Appelez une ambulance demande d’appeler les secours."}
  ]
 };
 
@@ -11347,9 +11347,9 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {activeA2Listening.questions.map((question,index)=>{
         const selected=revisionListeningAnswers[index];
         return <article key={question.prompt}>
-         <div><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong>{"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}</div><button onClick={()=>void speakFrench(question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
+         <div><i>{index+1}</i><div><strong dir="ltr">{question.prompt}</strong>{"translation" in question&&typeof question.translation==="string"&&<p className="university-question-translation">{question.translation}</p>}{"instruction" in question&&typeof question.instruction==="string"&&<p className="university-question-translation">{question.instruction}</p>}</div><button onClick={()=>void speakFrench("speech" in question&&typeof question.speech==="string"?question.speech:question.prompt,{rate:.74})} aria-label={`استمع إلى سؤال الاستماع ${index+1}`}><Volume2/></button></div>
          <div className="a2-listening-choices" dir="ltr">{question.choices.map((choice,choiceIndex)=><button key={choice} className={selected===choiceIndex?(choiceIndex===question.correctIndex?"correct":"wrong"):""} onClick={event=>selectPracticeChoice(event.currentTarget,choiceIndex===question.correctIndex,()=>setRevisionListeningAnswers(current=>({...current,[index]:choiceIndex})))}><span>{String.fromCharCode(65+choiceIndex)}</span>{choice}</button>)}</div>
-         {typeof selected==="number"&&<small className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?"إجابة صحيحة":"حاول مرة أخرى واستمع إلى المقطع"}</small>}
+         {typeof selected==="number"&&<small className={selected===question.correctIndex?"correct":"wrong"}>{selected===question.correctIndex?("explanationAr" in question&&typeof question.explanationAr==="string"?question.explanationAr:"إجابة صحيحة"):"حاول مرة أخرى واستمع إلى المقطع"}</small>}
         </article>;
        })}
       </div>

@@ -3816,9 +3816,14 @@ const A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS=[
  {fr:"il fait chaud",ar:"الجو حار"},
  {fr:"il y a du vent",ar:"الجو عاصف"},
  {fr:"il pleut",ar:"إنها تمطر"},
+ {fr:"il neige",ar:"إنها تثلج"},
+ {fr:"le ciel est gris",ar:"السماء غائمة"},
+ {fr:"la température est de",ar:"درجة الحرارة هي"},
+ {fr:"vingt-cinq degrés",ar:"خمس وعشرون درجة"},
  {fr:"un manteau chaud",ar:"معطف دافئ"},
  {fr:"une veste imperméable",ar:"سترة مقاومة للمطر"},
  {fr:"des chaussures noires",ar:"أحذية سوداء"},
+ {fr:"une écharpe et des gants",ar:"وشاح وقفازات"},
  {fr:"prends ton parapluie",ar:"خذ مظلتك"}
 ];
 

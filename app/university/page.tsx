@@ -255,11 +255,11 @@ const A1_NUMBERS_TIME_LISTENING_CLIPS=[
  {letter:"quarante-deux",word:"euros",ar:"اثنان وأربعون يورو",hiddenSpeech:"Quarante-deux euros"}
 ];
 const A1_WEATHER_CLOTHES_LISTENING_CLIPS=[
- {letter:"il fait",word:"froid",ar:"الجو بارد",hiddenSpeech:"Il fait froid"},
- {letter:"il y a",word:"du vent",ar:"الجو عاصف",hiddenSpeech:"Il y a du vent"},
- {letter:"il",word:"pleut",ar:"إنها تمطر",hiddenSpeech:"Il pleut"},
- {letter:"un manteau",word:"chaud",ar:"معطف دافئ",hiddenSpeech:"Un manteau chaud"},
- {letter:"prends",word:"ton parapluie",ar:"خذ مظلتك",hiddenSpeech:"Prends ton parapluie"}
+ {letter:"il fait",word:"froid",ar:"الجو بارد",hiddenSpeech:"Il fait froid."},
+ {letter:"il y a",word:"du vent",ar:"الجو عاصف",hiddenSpeech:"Il y a du vent."},
+ {letter:"il",word:"pleut",ar:"إنها تمطر",hiddenSpeech:"Il pleut aujourd’hui."},
+ {letter:"un manteau",word:"chaud",ar:"معطف دافئ",hiddenSpeech:"Je porte un manteau chaud."},
+ {letter:"prends",word:"ton parapluie",ar:"خذ مظلتك",hiddenSpeech:"Prends ton parapluie."}
 ];
 const A1_HOME_HOUSING_LISTENING_CLIPS=[
  {letter:"un appartement",word:"calme",ar:"شقة هادئة",hiddenSpeech:"Un appartement calme"},
@@ -4165,15 +4165,15 @@ const A1_WEATHER_CLOTHES_READING={
 };
 
 const A1_WEATHER_CLOTHES_LISTENING={
- title:"La météo de demain",
- arTitle:"طقس الغد",
- text:"Il fait froid. Il y a du vent. Il pleut. Un manteau chaud. Prends ton parapluie.",
+ title:"La météo et les vêtements à l’écoute",
+ arTitle:"استمع إلى الطقس والملابس",
+ text:"Il fait froid. Il y a du vent. Il pleut aujourd’hui. Je porte un manteau chaud. Prends ton parapluie.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il fait froid","Il fait chaud","Il fait beau"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il y a du soleil","Il y a du vent","Il y a du brouillard"],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Il neige","Il fait frais","Il pleut"],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Un manteau chaud","Une chemise blanche","Des chaussures noires"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mets ton pull","Prends ton parapluie","Porte tes bottes"],correctIndex:1}
+  {prompt:"Quel temps entendez-vous ?",speech:"Il fait froid.",instruction:"استمع ثم اختر حالة الطقس التي سمعتها.",translation:"ما حالة الطقس التي تسمعها؟",choices:["Il fait froid.","Il fait chaud.","Il fait beau."],correctIndex:0,explanationAr:"تعبير il fait froid يعني أن الجو بارد.",explanationFr:"Il fait froid décrit une température basse."},
+  {prompt:"Qu’entendez-vous dans la météo ?",speech:"Il y a du vent.",instruction:"استمع ثم اختر ما تسمعه في النشرة.",translation:"ماذا تسمع في النشرة الجوية؟",choices:["Il y a du vent.","Il y a du soleil.","Il y a de la neige."],correctIndex:0,explanationAr:"نقول il y a du vent للتعبير عن وجود الرياح.",explanationFr:"Il y a du vent indique que le temps est venteux."},
+  {prompt:"Quel temps entendez-vous aujourd’hui ?",speech:"Il pleut aujourd’hui.",instruction:"استمع ثم اختر الجملة المطابقة.",translation:"كيف هو الطقس اليوم الذي تسمعه؟",choices:["Il pleut aujourd’hui.","Il neige aujourd’hui.","Il fait chaud aujourd’hui."],correctIndex:0,explanationAr:"الفعل pleut من pleuvoir ويعني: تمطر.",explanationFr:"Il pleut signifie que la pluie tombe."},
+  {prompt:"Quel vêtement entendez-vous ?",speech:"Je porte un manteau chaud.",instruction:"استمع ثم اختر قطعة الملابس التي سمعتها.",translation:"ما قطعة الملابس التي تسمعها؟",choices:["Je porte un manteau chaud.","Je porte un maillot de bain.","Je porte des sandales."],correctIndex:0,explanationAr:"manteau هو المعطف، وchaud تصفه بأنه دافئ.",explanationFr:"Un manteau chaud est adapté au froid."},
+  {prompt:"Quel conseil entendez-vous ?",speech:"Prends ton parapluie.",instruction:"استمع ثم اختر النصيحة المناسبة للمطر.",translation:"ما النصيحة التي تسمعها؟",choices:["Prends ton parapluie.","Prends ton vélo.","Prends ton livre."],correctIndex:0,explanationAr:"Prends صيغة أمر مع tu، وparapluie هي المظلة.",explanationFr:"Prends ton parapluie est un conseil pour la pluie."}
  ]
 };
 

@@ -4436,11 +4436,18 @@ const A1_HEALTH_NEEDS_LISTENING={
 const A1_HEALTH_NEEDS_WRITING_MODEL="Bonjour, je voudrais prendre rendez-vous avec un médecin. J’ai de la fièvre et mal à la tête depuis hier. Je suis très fatigué. Est-ce que vous avez une place demain matin, s’il vous plaît ?";
 
 const A1_HEALTH_NEEDS_DICTATION=[
- {speech:"J’ai mal à la tête depuis hier.",ar:"أشعر بألم في الرأس منذ أمس."},
+ {speech:"J’ai de la fièvre.",ar:"لدي حمى."},
+ {speech:"J’ai de la toux.",ar:"لدي سعال."},
+ {speech:"J’ai un rhume.",ar:"لدي زكام."},
+ {speech:"J’ai mal à la tête.",ar:"أشعر بألم في الرأس."},
+ {speech:"J’ai mal au ventre.",ar:"أشعر بألم في البطن."},
+ {speech:"J’ai mal aux dents.",ar:"أشعر بألم في الأسنان."},
+ {speech:"Je suis malade.",ar:"أنا مريض/مريضة."},
+ {speech:"Je suis très fatigué.",ar:"أنا متعب جدًا."},
+ {speech:"J’ai mal à la gorge depuis hier.",ar:"أشعر بألم في الحلق منذ أمس."},
  {speech:"Je voudrais prendre rendez-vous avec un médecin.",ar:"أود حجز موعد مع طبيب."},
- {speech:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."},
- {speech:"Prenez ce sirop trois fois par jour.",ar:"تناولوا هذا الشراب ثلاث مرات يوميًا."},
- {speech:"Je suis allergique aux noix.",ar:"لدي حساسية تجاه المكسرات."}
+ {speech:"Je cherche une pharmacie ouverte.",ar:"أبحث عن صيدلية مفتوحة."},
+ {speech:"Appelez une ambulance, s’il vous plaît.",ar:"اتصلوا بسيارة إسعاف، من فضلكم."}
 ];
 
 const A1_HEALTH_NEEDS_BUILDERS=[

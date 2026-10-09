@@ -297,11 +297,11 @@ const A1_DAILY_LIFE_LISTENING_CLIPS=[
  {letter:"après le travail",word:"je fais les courses",ar:"بعد العمل أتسوق",hiddenSpeech:"Après le travail, je fais les courses"}
 ];
 const A1_SITUATIONS_LISTENING_CLIPS=[
- {letter:"ça te dit",word:"d’aller au cinéma",ar:"ما رأيك أن نذهب إلى السينما؟",hiddenSpeech:"Ça te dit d’aller au cinéma ?"},
- {letter:"avec plaisir",word:"à quelle heure",ar:"بكل سرور، في أي ساعة؟",hiddenSpeech:"Avec plaisir ! À quelle heure ?"},
- {letter:"désolé",word:"je ne peux pas",ar:"آسف، لا أستطيع",hiddenSpeech:"Désolé, je ne peux pas"},
- {letter:"on se retrouve",word:"devant le café",ar:"نلتقي أمام المقهى",hiddenSpeech:"On se retrouve devant le café"},
- {letter:"je suis d’accord",word:"avec toi",ar:"أنا موافق معك",hiddenSpeech:"Je suis d’accord avec toi"}
+ {letter:"ça te dit de prendre",word:"un café après les cours",ar:"ما رأيك أن نشرب قهوة بعد الدروس؟",hiddenSpeech:"Ça te dit de prendre un café après les cours ?"},
+ {letter:"oui, avec plaisir",word:"c’est une bonne idée",ar:"نعم، بكل سرور، إنها فكرة جيدة",hiddenSpeech:"Oui, avec plaisir ! C’est une bonne idée."},
+ {letter:"désolé, je ne peux pas",word:"venir samedi",ar:"آسف، لا أستطيع الحضور يوم السبت",hiddenSpeech:"Désolé, je ne peux pas venir samedi."},
+ {letter:"on se retrouve",word:"devant le cinéma à cinq heures",ar:"نلتقي أمام السينما الساعة الخامسة",hiddenSpeech:"On se retrouve devant le cinéma à cinq heures."},
+ {letter:"ce n’est pas grave",word:"on a le temps",ar:"لا بأس، لدينا وقت",hiddenSpeech:"Ce n’est pas grave, on a le temps."}
 ];
 const A1_MESSAGES_FORMS_LISTENING_CLIPS=[
  {letter:"quel est",word:"votre nom de famille",ar:"ما اسم عائلتكم؟",hiddenSpeech:"Quel est votre nom de famille ?"},
@@ -4676,13 +4676,13 @@ const A1_SITUATIONS_READING={
 const A1_SITUATIONS_LISTENING={
  title:"Inviter, répondre et organiser",
  arTitle:"الدعوة والرد وتنظيم اللقاء",
- text:"Ça te dit d’aller au cinéma ? Avec plaisir ! À quelle heure ? Désolé, je ne peux pas. On se retrouve devant le café. Je suis d’accord avec toi.",
+ text:"Ça te dit de prendre un café après les cours ? Oui, avec plaisir ! C’est une bonne idée. Désolé, je ne peux pas venir samedi. On se retrouve devant le cinéma à cinq heures. Ce n’est pas grave, on a le temps.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Ça te dit d’aller au cinéma ?","Tu vas seul au cinéma.","Le cinéma est fermé."],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je ne sais pas.","Avec plaisir ! À quelle heure ?","À demain matin."],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je peux venir.","Je suis déjà là.","Désolé, je ne peux pas."],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["On se retrouve devant le café.","Le café est derrière la gare.","Je travaille au café."],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Je ne comprends pas.","Je suis d’accord avec toi.","Tu n’es pas d’accord."],correctIndex:1}
+  {prompt:"Quelle invitation entendez-vous ?",speech:"Ça te dit de prendre un café après les cours ?",instruction:"اختر الدعوة التي سمعتها.",translation:"ما الدعوة التي تسمعها؟",choices:["Ça te dit de prendre un café après les cours ?","Tu veux travailler après les cours ?","On prend le train après les cours."],correctIndex:0,explanationAr:"Ça te dit de… صيغة ودية لاقتراح نشاط؛ هنا الاقتراح هو شرب قهوة بعد الدروس.",explanationFr:"« Ça te dit de… ? » sert à proposer une activité : ici, prendre un café après les cours."},
+  {prompt:"Quelle réponse positive entendez-vous ?",speech:"Oui, avec plaisir ! C’est une bonne idée.",instruction:"اختر رد القبول الذي سمعته.",translation:"ما رد القبول الذي تسمعه؟",choices:["Oui, avec plaisir ! C’est une bonne idée.","Désolé, je ne peux pas venir.","Je ne comprends pas l’idée."],correctIndex:0,explanationAr:"avec plaisir وbonne idée تعبيران واضحان لقبول الاقتراح بحماس.",explanationFr:"« Avec plaisir » et « bonne idée » expriment une acceptation enthousiaste."},
+  {prompt:"Quand la personne ne peut-elle pas venir ?",speech:"Désolé, je ne peux pas venir samedi.",instruction:"اختر وقت الاعتذار الذي سمعته.",translation:"متى لا يستطيع الشخص الحضور؟",choices:["Il ne peut pas venir samedi.","Il ne peut pas venir demain matin.","Il ne peut pas venir au cinéma."],correctIndex:0,explanationAr:"العبارة تحدد السبت: je ne peux pas venir samedi.",explanationFr:"La personne dit qu’elle ne peut pas venir samedi."},
+  {prompt:"Où et quand se retrouvent-ils ?",speech:"On se retrouve devant le cinéma à cinq heures.",instruction:"اختر المكان والوقت اللذين سمعتهما.",translation:"أين ومتى سيلتقيان؟",choices:["Devant le cinéma à cinq heures.","Dans le café à quatre heures.","Devant la gare à six heures."],correctIndex:0,explanationAr:"devant le cinéma هو المكان، وà cinq heures هو الوقت.",explanationFr:"Le lieu est devant le cinéma et l’heure est cinq heures."},
+  {prompt:"Comment réagit l’ami ?",speech:"Ce n’est pas grave, on a le temps.",instruction:"اختر رد الفعل الذي سمعته.",translation:"كيف يرد الصديق؟",choices:["Il dit que ce n’est pas grave.","Il dit qu’il est très pressé.","Il dit qu’il ne veut pas attendre."],correctIndex:0,explanationAr:"Ce n’est pas grave تعني «لا بأس»، وon a le temps تعني أن الوقت ما زال كافيًا.",explanationFr:"« Ce n’est pas grave » rassure l’ami ; « on a le temps » indique qu’il reste assez de temps."}
  ]
 };
 

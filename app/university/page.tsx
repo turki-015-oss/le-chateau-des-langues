@@ -4705,10 +4705,17 @@ const A1_SITUATIONS_DICTATION=[
 
 const A1_SITUATIONS_BUILDERS=[
  {tokens:["samedi","sortir","Tu","veux","?"],answer:["Tu","veux","sortir","samedi","?"],ar:"هل تريد الخروج يوم السبت؟"},
- {tokens:["venir","peux","ne","Je","pas","soir.","ce"],answer:["Je","ne","peux","pas","venir","ce","soir."],ar:"لا أستطيع الحضور هذا المساء."},
- {tokens:["retrouve","heures.","On","quatre","à","se"],answer:["On","se","retrouve","à","quatre","heures."],ar:"نلتقي الساعة الرابعة."},
- {tokens:["heure","plaisir","À","!","Avec","quelle","?"],answer:["Avec","plaisir","!","À","quelle","heure","?"],ar:"بكل سرور! في أي ساعة؟"},
- {tokens:["toi.","suis","avec","Je","d’accord"],answer:["Je","suis","d’accord","avec","toi."],ar:"أنا موافق معك."}
+ {tokens:["de","au","dit","Ça","cinéma","d’aller","te","?"],answer:["Ça","te","dit","d’aller","au","cinéma","?"],ar:"ما رأيك أن نذهب إلى السينما؟"},
+ {tokens:["plaisir","Oui,","!","avec"],answer:["Oui,","avec","plaisir","!"],ar:"نعم، بكل سرور!"},
+ {tokens:["idée","C’est","bonne","une","!"],answer:["C’est","une","bonne","idée","!"],ar:"إنها فكرة جيدة!"},
+ {tokens:["heure","quelle","?","À"],answer:["À","quelle","heure","?"],ar:"في أي ساعة؟"},
+ {tokens:["cinéma","retrouve","devant","le","On","se","."],answer:["On","se","retrouve","devant","le","cinéma","."],ar:"نلتقي أمام السينما."},
+ {tokens:["heures.","cinq","se","retrouve","On","à"],answer:["On","se","retrouve","à","cinq","heures."],ar:"نلتقي الساعة الخامسة."},
+ {tokens:["pas","Désolé,","venir","peux","je","soir.","ne","ce"],answer:["Désolé,","je","ne","peux","pas","venir","ce","soir."],ar:"آسف، لا أستطيع الحضور هذا المساء."},
+ {tokens:["déjà","dimanche","prise","suis","matin.","Je"],answer:["Je","suis","déjà","prise","dimanche","matin."],ar:"لدي ارتباط مسبق صباح الأحد."},
+ {tokens:["demain","peut","plutôt","voir","On","se","?"],answer:["On","peut","plutôt","se","voir","demain","?"],ar:"هل يمكن أن نلتقي غدًا بدلًا من ذلك؟"},
+ {tokens:["grave,","pas","a","temps.","Ce","n’est","on","le"],answer:["Ce","n’est","pas","grave,","on","a","le","temps."],ar:"لا بأس، لدينا وقت."},
+ {tokens:["suis","avec","d’accord","toi.","Je"],answer:["Je","suis","d’accord","avec","toi."],ar:"أنا أتفق معك."}
 ];
 
 const A1_SITUATIONS_DIALOGUES=[

@@ -1995,15 +1995,20 @@ const A1_DAILY_LIFE_QUIZ_ITEMS:QuizQuestion[]=[
 
 const A1_FRIENDS_PRACTICE_ITEMS:Example[]=[
  {fr:"Ça te dit d’aller au cinéma vendredi ?",ar:"ما رأيك أن نذهب إلى السينما يوم الجمعة؟"},
- {fr:"Avec plaisir ! À quelle heure commence le film ?",ar:"بكل سرور! في أي ساعة يبدأ الفيلم؟"},
- {fr:"On se retrouve devant le cinéma à sept heures.",ar:"نلتقي أمام السينما الساعة السابعة."},
- {fr:"Je suis désolé, je ne suis pas libre ce soir.",ar:"أنا آسف، لست متفرغًا هذا المساء."},
- {fr:"Ce n’est pas grave. Et demain, tu peux ?",ar:"لا بأس. وهل تستطيع غدًا؟"},
- {fr:"Je préfère prendre un café en terrasse.",ar:"أفضّل أن نتناول قهوة في الجلسة الخارجية."},
- {fr:"À mon avis, ce jeu est très amusant.",ar:"في رأيي، هذه اللعبة ممتعة جدًا."},
- {fr:"Je ne suis pas tout à fait d’accord avec toi.",ar:"لا أتفق معك تمامًا."},
- {fr:"Excuse-moi pour mon retard. Il y a beaucoup de circulation.",ar:"اعذرني على التأخير؛ فالازدحام شديد."},
- {fr:"Merci pour cette belle soirée, à bientôt !",ar:"شكرًا على هذه الأمسية الجميلة، أراك قريبًا!"}
+ {fr:"Tu es libre samedi après-midi ?",ar:"هل أنت متفرغ بعد ظهر السبت؟"},
+ {fr:"Tu veux venir au restaurant avec nous ?",ar:"هل تريد المجيء إلى المطعم معنا؟"},
+ {fr:"Oui, avec plaisir !",ar:"نعم، بكل سرور!"},
+ {fr:"C’est une bonne idée.",ar:"إنها فكرة جيدة."},
+ {fr:"À quelle heure se retrouve-t-on ?",ar:"في أي ساعة سنلتقي؟"},
+ {fr:"On se retrouve devant le cinéma à cinq heures.",ar:"نلتقي أمام السينما الساعة الخامسة."},
+ {fr:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء."},
+ {fr:"Je suis déjà prise dimanche matin.",ar:"لدي ارتباط مسبق صباح الأحد."},
+ {fr:"On peut plutôt se voir demain ?",ar:"هل يمكن أن نلتقي غدًا بدلًا من ذلك؟"},
+ {fr:"Ce n’est pas grave, on a le temps.",ar:"لا بأس، لدينا وقت."},
+ {fr:"Je suis d’accord avec toi.",ar:"أنا أتفق معك."},
+ {fr:"Pas vraiment, je préfère ce café.",ar:"ليس تمامًا، أنا أفضل هذا المقهى."},
+ {fr:"À mon avis, ce film est très drôle.",ar:"في رأيي، هذا الفيلم مضحك جدًا."},
+ {fr:"On fait quoi après le film ?",ar:"ماذا نفعل بعد الفيلم؟"}
 ];
 
 const A1_FRIENDS_QUIZ_ITEMS:QuizQuestion[]=[

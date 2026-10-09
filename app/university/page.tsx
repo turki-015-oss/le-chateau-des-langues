@@ -7833,6 +7833,46 @@ function A1MessagesFormStudio(){
  </div>
 }
 
+const A1_MESSAGES_SHORT_MESSAGE_TABLE=[
+ {title:"بداية الرسالة",fr:"Commencer le message",intro:"اختر التحية بحسب الشخص الذي تراسله: Salut للصديق، وBonjour مع Madame أو Monsieur في الرسالة الرسمية. ضع اسم الشخص عند الحاجة.",formula:"Salut + prénom / Bonjour Madame, Monsieur",entries:[
+  {expression:"Salut + prénom,",ar:"تحية ودية",kind:"صديق أو شخص تعرفه",rule:"نستخدم Salut مع الاسم الأول في رسالة غير رسمية بين الأصدقاء أو الأشخاص المتقاربين.",examples:[{fr:"Salut Lina,",ar:"مرحبًا لينا،",detail:"نضع فاصلة بعد التحية والاسم قبل بدء الرسالة."},{fr:"Salut Adam, comment ça va ?",ar:"مرحبًا آدم، كيف حالك؟",detail:"هذه بداية ودية مناسبة لرسالة قصيرة."}]},
+  {expression:"Bonjour Madame / Monsieur,",ar:"تحية رسمية",kind:"شخص لا تعرفه أو جهة رسمية",rule:"نستخدم Bonjour Madame أو Bonjour Monsieur في بداية رسالة رسمية بسيطة، ثم نضع فاصلة.",examples:[{fr:"Bonjour Madame,",ar:"مرحبًا سيدتي،",detail:"صيغة مهذبة عند عدم معرفة الاسم."},{fr:"Bonjour Monsieur Martin,",ar:"مرحبًا السيد مارتان،",detail:"يمكن إضافة اسم العائلة بعد Monsieur."}]},
+  {expression:"Bonjour,",ar:"تحية عامة",kind:"رسالة محايدة",rule:"نستخدم Bonjour وحدها عندما نحتاج بداية مهذبة ومحايدة من دون اسم الشخص.",examples:[{fr:"Bonjour, je vous écris pour confirmer mon rendez-vous.",ar:"مرحبًا، أكتب إليكم لتأكيد موعدي.",detail:"تصلح في رسالة إلى مكتب أو خدمة."},{fr:"Bonjour, merci pour votre message.",ar:"مرحبًا، شكرًا على رسالتكم.",detail:"بداية بسيطة لرد مهذب."}]}
+ ]},
+ {title:"سبب الرسالة",fr:"Donner la raison",intro:"بعد التحية اذكر سبب الرسالة مباشرةً. اجعل جملتك قصيرة وحدد المعلومة المهمة: الموعد أو المكان أو التأخر.",formula:"Je vous écris pour… / Je confirme… / Je suis…",entries:[
+  {expression:"Je vous écris pour…",ar:"أكتب إليكم من أجل…",kind:"ذكر السبب رسميًا",rule:"تعبير رسمي بسيط؛ بعد pour نستخدم مصدر الفعل أو اسم الهدف من الرسالة.",examples:[{fr:"Je vous écris pour confirmer mon rendez-vous.",ar:"أكتب إليكم لتأكيد موعدي.",detail:"بعد pour نستخدم confirmer في المصدر."},{fr:"Je vous écris pour demander une information.",ar:"أكتب إليكم لطلب معلومة.",detail:"demander يبقى في المصدر بعد pour."}]},
+  {expression:"Je confirme…",ar:"أؤكد…",kind:"تأكيد موعد أو معلومة",rule:"استخدم Je confirme عندما تريد تثبيت موعد أو حجز أو معلومة سبق الاتفاق عليها.",examples:[{fr:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة.",detail:"نحدد اليوم ثم الساعة بوضوح."},{fr:"Je confirme ma présence demain.",ar:"أؤكد حضوري غدًا.",detail:"ma présence تعني حضوري."}]},
+  {expression:"Je suis…",ar:"أنا… / أنا في…",kind:"ذكر الوضع أو المكان",rule:"استخدم Je suis لتخبر الشخص بمكانك أو وضعك الآن في رسالة قصيرة.",examples:[{fr:"Je suis devant la bibliothèque.",ar:"أنا أمام المكتبة.",detail:"devant تعني أمام وتحدد المكان."},{fr:"Je suis désolé, je vais arriver en retard.",ar:"أنا آسف، سأصل متأخرًا.",detail:"نبدأ بالاعتذار ثم نذكر سبب التأخر أو وضعه."}]}
+ ]},
+ {title:"إنهاء الرسالة",fr:"Terminer le message",intro:"اختم الرسالة بعبارة تناسب درجتها: ودية مع الصديق، أو رسمية مع جهة أو شخص لا تعرفه جيدًا، ثم اكتب اسمك.",formula:"Merci / À bientôt / Cordialement + signature",entries:[
+  {expression:"Merci + complément",ar:"شكرًا + توضيح",kind:"شكر مهذب",rule:"نستخدم Merci ثم pour لذكر الشيء الذي نشكر الشخص عليه، ويمكن أن تأتي وحدها أيضًا.",examples:[{fr:"Merci pour votre message.",ar:"شكرًا على رسالتكم.",detail:"votre تجعل العبارة مهذبة ورسمية."},{fr:"Merci pour votre aide.",ar:"شكرًا لمساعدتك.",detail:"aide تعني المساعدة."}]},
+  {expression:"À bientôt,",ar:"إلى لقاء قريب",kind:"ختام ودي",rule:"نستخدم À bientôt في رسالة ودية عندما نتوقع التواصل أو اللقاء قريبًا.",examples:[{fr:"À bientôt, Sami.",ar:"إلى لقاء قريب، سامي.",detail:"نكتب الاسم بعد عبارة الوداع."},{fr:"À tout de suite, Nora.",ar:"أراك بعد قليل، نورة.",detail:"À tout de suite تُستعمل عندما يكون اللقاء قريبًا جدًا."}]},
+  {expression:"Cordialement,",ar:"مع التحية",kind:"ختام رسمي",rule:"نستخدم Cordialement في نهاية الرسائل الرسمية البسيطة، ثم نكتب الاسم في السطر التالي أو بعد الفاصلة.",examples:[{fr:"Cordialement, Sami Alami.",ar:"مع التحية، سامي العلمي.",detail:"خاتمة رسمية مناسبة لموعد أو استفسار."},{fr:"Merci. Cordialement, Nora.",ar:"شكرًا. مع التحية، نورة.",detail:"يمكن أن تسبق Cordialement جملة شكر قصيرة."}]}
+ ]}
+] as const;
+
+const A1_MESSAGES_SHORT_MESSAGE_MODELS=[
+ {label:"رسالة رسمية",fr:"Message formel",ar:"رسالة لتأكيد موعد",lines:["Bonjour Madame,","Je vous écris pour confirmer mon rendez-vous de demain à dix heures.","Merci.","Cordialement, Sami."],speech:"Bonjour Madame. Je vous écris pour confirmer mon rendez-vous de demain à dix heures. Merci. Cordialement, Sami."},
+ {label:"رسالة ودية",fr:"Message amical",ar:"رسالة لصديقة",lines:["Salut Lina,","Je suis devant la bibliothèque.","À bientôt, Nora."],speech:"Salut Lina. Je suis devant la bibliothèque. À bientôt, Nora."},
+ {label:"رسالة اعتذار",fr:"Message d’excuse",ar:"إبلاغ عن تأخر",lines:["Bonjour,","Je suis désolé, je vais arriver dix minutes en retard.","À tout de suite, Adam."],speech:"Bonjour. Je suis désolé, je vais arriver dix minutes en retard. À tout de suite, Adam."}
+] as const;
+
+function A1MessagesShortMessageStudio(){
+ const [groupIndex,setGroupIndex]=useState(0); const [itemIndex,setItemIndex]=useState(0); const [exampleIndex,setExampleIndex]=useState(0); const [modelIndex,setModelIndex]=useState(0);
+ const group=A1_MESSAGES_SHORT_MESSAGE_TABLE[groupIndex]; const item=group.entries[itemIndex]; const example=item.examples[exampleIndex]; const model=A1_MESSAGES_SHORT_MESSAGE_MODELS[modelIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)}; const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-messages-form-studio a1-messages-message-studio">
+  <style>{`.a1-messages-message-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر مرحلة كتابة الرسالة">{A1_MESSAGES_SHORT_MESSAGE_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر صيغة لتقرأ قاعدتها ثم استمع إلى مثال طبيعي.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر صيغة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`شرح ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستخدم لـ</span><span>طريقة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-messages-message-model" aria-label="نموذج رسالة قصيرة"><header><div><span dir="ltr">{model.fr}</span><h4>{model.label}</h4><p>{model.ar}</p></div><button type="button" onClick={()=>void speakFrench(model.speech,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع إلى الرسالة</b><small>نطق متتابع وطبيعي</small></span></button></header><nav>{A1_MESSAGES_SHORT_MESSAGE_MODELS.map((entry,index)=><button key={entry.fr} type="button" className={index===modelIndex?"active":""} onClick={()=>setModelIndex(index)}>{entry.label}</button>)}</nav><div className="a1-messages-message-model-lines">{model.lines.map((line,index)=><button key={`${line}-${index}`} type="button" onClick={()=>void speakFrench(line,{rate:.74})}><i>{String(index+1).padStart(2,"0")}</i><span dir="ltr">{line}</span><Volume2 aria-hidden="true"/></button>)}</div></section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11368,6 +11408,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1Situations&&index===1&&<A1SituationsReplyStudio/>}
        {isA1Situations&&index===2&&<A1SituationsReactStudio/>}
        {isA1MessagesForms&&index===0&&<A1MessagesFormStudio/>}
+       {isA1MessagesForms&&index===1&&<A1MessagesShortMessageStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

@@ -7618,6 +7618,53 @@ function A1HealthHelpStudio(){
  </div>
 }
 
+const A1_SITUATIONS_INVITE_TABLE=[
+ {title:"دعوة صديق",fr:"Inviter un ami",intro:"استخدم صيغة ودية قصيرة لدعوة صديق إلى نشاط، ثم اذكر النشاط أو الوقت بوضوح.",formula:"Tu veux… ? / Ça te dit de… ?",entries:[
+  {expression:"Tu veux + infinitif ?",ar:"هل تريد أن…؟",kind:"دعوة مباشرة",rule:"نستخدم Tu veux ثم فعلًا في المصدر لدعوة صديق بصيغة غير رسمية.",examples:[{fr:"Tu veux sortir avec nous samedi ?",ar:"هل تريد الخروج معنا يوم السبت؟",detail:"بعد tu veux نستخدم sortir في المصدر."},{fr:"Tu veux regarder un film ce soir ?",ar:"هل تريد مشاهدة فيلم هذا المساء؟",detail:"regarder يبقى في المصدر بعد veux."}]},
+  {expression:"Ça te dit de + infinitif ?",ar:"ما رأيك أن…؟",kind:"اقتراح ودي",rule:"تعبير Ça te dit de شائع بين الأصدقاء لاقتراح نشاط بطريقة لطيفة.",examples:[{fr:"Ça te dit d’aller au cinéma ?",ar:"ما رأيك أن نذهب إلى السينما؟",detail:"de تصبح d’ قبل aller لأنه يبدأ بحرف متحرك."},{fr:"Ça te dit de prendre un café ?",ar:"ما رأيك أن نشرب قهوة؟",detail:"نستخدم de ثم المصدر prendre."}]},
+  {expression:"Tu es libre… ?",ar:"هل أنت متفرغ…؟",kind:"السؤال عن التفرغ",rule:"نستخدم être libre للسؤال إن كان الصديق متاحًا في وقت محدد.",examples:[{fr:"Tu es libre demain après-midi ?",ar:"هل أنت متفرغ غدًا بعد الظهر؟",detail:"demain après-midi يحدد وقت اللقاء."},{fr:"Tu es libre samedi ?",ar:"هل أنت متفرغ يوم السبت؟",detail:"يمكن تحديد اليوم مباشرة بعد libre."}]}
+ ]},
+ {title:"تنظيم اللقاء",fr:"Organiser le rendez-vous",intro:"بعد قبول الدعوة اتفقا على اليوم والساعة والمكان. استخدم عبارات قصيرة وواضحة لتأكيد الموعد.",formula:"On se retrouve à… / À quelle heure… ?",entries:[
+  {expression:"On se retrouve à…",ar:"نلتقي عند…",kind:"تحديد الموعد",rule:"نستخدم on se retrouve à ثم الساعة أو المكان للاتفاق على اللقاء.",examples:[{fr:"On se retrouve à quatre heures.",ar:"نلتقي الساعة الرابعة.",detail:"نستخدم à قبل الساعة."},{fr:"On se retrouve devant le cinéma.",ar:"نلتقي أمام السينما.",detail:"devant يحدد مكان اللقاء."}]},
+  {expression:"À quelle heure… ?",ar:"في أي ساعة…؟",kind:"السؤال عن الوقت",rule:"نستخدم À quelle heure للسؤال عن وقت اللقاء أو بداية النشاط.",examples:[{fr:"À quelle heure est-ce qu’on se retrouve ?",ar:"في أي ساعة نلتقي؟",detail:"on se retrouve تعني نلتقي."},{fr:"À quelle heure commence le film ?",ar:"في أي ساعة يبدأ الفيلم؟",detail:"نستخدم commence مع film المفرد."}]},
+  {expression:"Ça te convient ?",ar:"هل يناسبك؟",kind:"تأكيد الموعد",rule:"نستخدم ça te convient للتأكد من أن الوقت أو الاقتراح مناسب للصديق.",examples:[{fr:"Cinq heures, ça te convient ?",ar:"هل الساعة الخامسة تناسبك؟",detail:"نذكر الوقت ثم نسأل عن مناسبته."},{fr:"Dimanche matin, ça te convient ?",ar:"هل صباح الأحد يناسبك؟",detail:"يمكن أن نستخدمها مع يوم ووقت."}]}
+ ]},
+ {title:"الرد على الدعوة",fr:"Répondre à l’invitation",intro:"اقبل بوضوح، أو اعتذر بلطف مع اقتراح بديل. هكذا يبقى الحوار طبيعيًا وودّيًا.",formula:"Avec plaisir ! / Désolé… / On peut plutôt…",entries:[
+  {expression:"Avec plaisir !",ar:"بكل سرور!",kind:"قبول مهذب",rule:"نستخدم Avec plaisir لقبول دعوة بحماس وبأسلوب ودي.",examples:[{fr:"Oui, avec plaisir !",ar:"نعم، بكل سرور!",detail:"Oui تؤكد القبول، وavec plaisir تضيف حماسًا."},{fr:"Avec plaisir, c’est une bonne idée !",ar:"بكل سرور، إنها فكرة جيدة!",detail:"bonne idée تعني فكرة جيدة."}]},
+  {expression:"Désolé, je ne peux pas…",ar:"آسف، لا أستطيع…",kind:"اعتذار لطيف",rule:"نستخدم Désolé ثم je ne peux pas للاعتذار عن عدم القدرة على الحضور.",examples:[{fr:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء.",detail:"venir يعني الحضور أو المجيء."},{fr:"Désolé, je ne suis pas libre samedi.",ar:"آسف، لست متفرغًا يوم السبت.",detail:"ne suis pas libre تعني غير متفرغ."}]},
+  {expression:"On peut plutôt… ?",ar:"هل يمكن بدلًا من ذلك أن…؟",kind:"اقتراح بديل",rule:"نستخدم plutôt عند اقتراح وقت أو نشاط بديل بعد الاعتذار.",examples:[{fr:"On peut plutôt se voir dimanche ?",ar:"هل يمكن أن نلتقي الأحد بدلًا من ذلك؟",detail:"plutôt تعني بدلًا من ذلك."},{fr:"On peut plutôt prendre un café demain ?",ar:"هل يمكن بدلًا من ذلك أن نشرب قهوة غدًا؟",detail:"نقترح هنا وقتًا بديلًا: demain."}]}
+ ]}
+] as const;
+
+const A1_SITUATIONS_INVITE_DIALOGUE=[
+ {speaker:"Adam",speakerAr:"آدم",role:"client",fr:"Salut Sami ! Ça te dit d’aller au cinéma samedi ?",ar:"مرحبًا سامي! ما رأيك أن نذهب إلى السينما يوم السبت؟",segments:[["Salut Sami ! ",false],["Ça te dit d’aller au cinéma",true],[" samedi ?",false]] as const},
+ {speaker:"Sami",speakerAr:"سامي",role:"seller",fr:"Oui, avec plaisir ! À quelle heure ?",ar:"نعم، بكل سرور! في أي ساعة؟",segments:[["Oui, avec plaisir !",true],[" À quelle heure ?",true]] as const},
+ {speaker:"Adam",speakerAr:"آدم",role:"client",fr:"On se retrouve devant le cinéma à quatre heures.",ar:"نلتقي أمام السينما الساعة الرابعة.",segments:[["On se retrouve",true],[" devant le cinéma ",false],["à quatre heures.",true]] as const},
+ {speaker:"Sami",speakerAr:"سامي",role:"seller",fr:"Désolé, je ne suis pas libre à quatre heures.",ar:"آسف، لست متفرغًا الساعة الرابعة.",segments:[["Désolé, ",true],["je ne suis pas libre",true],[" à quatre heures.",false]] as const},
+ {speaker:"Adam",speakerAr:"آدم",role:"client",fr:"D’accord. On peut plutôt se voir à cinq heures ?",ar:"حسنًا. هل يمكن أن نلتقي الساعة الخامسة بدلًا من ذلك؟",segments:[["On peut plutôt",true],[" se voir à cinq heures ?",true]] as const},
+ {speaker:"Sami",speakerAr:"سامي",role:"seller",fr:"Parfait, à cinq heures !",ar:"ممتاز، الساعة الخامسة!",segments:[["Parfait, ",false],["à cinq heures !",true]] as const}
+] as const;
+
+function A1SituationsInviteStudio(){
+ const [groupIndex,setGroupIndex]=useState(0); const [itemIndex,setItemIndex]=useState(0); const [exampleIndex,setExampleIndex]=useState(0);
+ const group=A1_SITUATIONS_INVITE_TABLE[groupIndex]; const item=group.entries[itemIndex]; const example=item.examples[exampleIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)}; const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-city-destination-studio a1-weather-clothes-studio a1-situations-invite-studio">
+  <style>{`.a1-situations-invite-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الصيغة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر مرحلة تنظيم اللقاء">{A1_SITUATIONS_INVITE_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر العبارة لتقرأ القاعدة والمثال.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر عبارة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`استعمال ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الصيغة</span><span>تُستعمل لـ</span><span>قاعدة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>القاعدة</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-clothing-dialogue" aria-label="حوار تنظيم لقاء">
+   <header><div><span>Dialogue entre amis</span><h4>حوار بين الأصدقاء</h4><p><b dir="ltr">Adam</b> — آدم · <b dir="ltr">Sami</b> — سامي</p></div><button type="button" onClick={()=>void speakFrenchSequence(A1_SITUATIONS_INVITE_DIALOGUE.map(line=>line.fr),780,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع للحوار</b><small>نطق طبيعي متتابع</small></span></button></header>
+   <div className="a1-clothing-dialogue-lines">{A1_SITUATIONS_INVITE_DIALOGUE.map((line,index)=><article key={`${line.speaker}-${index}`} className={line.role}><div className="a1-clothing-dialogue-speaker"><i>{String(index+1).padStart(2,"0")}</i><span><strong dir="ltr">{line.speaker}</strong><small>{line.speakerAr}</small></span></div><div className="a1-clothing-dialogue-copy"><p dir="ltr">{line.segments.map(([segment,important],segmentIndex)=><span key={`${segment}-${segmentIndex}`} className={important?"important":undefined}>{segment}</span>)}</p><small>{line.ar}</small></div><div className="a1-clothing-dialogue-audio"><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.74})} aria-label={`استمع إلى ${line.fr} بنطق طبيعي`}><Volume2/><span>عادي</span></button><button type="button" onClick={()=>void speakFrench(line.fr,{rate:.55})} aria-label={`استمع إلى ${line.fr} بنطق بطيء`}><Gauge/><span>بطيء</span></button></div></article>)}</div>
+   <footer><Sparkles aria-hidden="true"/><span>الكلمات الملوّنة تساعدك على الدعوة، الاتفاق على الوقت، والاعتذار مع اقتراح بديل.</span></footer>
+  </section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11149,6 +11196,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1HealthNeeds&&index===0&&<A1HealthSymptomsStudio/>}
        {isA1HealthNeeds&&index===1&&<A1HealthClinicStudio/>}
        {isA1HealthNeeds&&index===2&&<A1HealthHelpStudio/>}
+       {isA1Situations&&index===0&&<A1SituationsInviteStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

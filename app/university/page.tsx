@@ -7781,6 +7781,58 @@ function A1SituationsReactStudio(){
  </div>
 }
 
+const A1_MESSAGES_FORM_TABLE=[
+ {title:"الهوية الشخصية",fr:"Identité",intro:"ابدأ بالبيانات التي تعرّف بصاحب النموذج. اكتب الاسم الأول واسم العائلة في خانتين منفصلتين، ثم اكتب تاريخ الميلاد كما تطلبه الخانة.",formula:"Prénom · Nom de famille · Date de naissance",entries:[
+  {expression:"Prénom",ar:"الاسم الأول",kind:"بيان شخصي",rule:"اكتب الاسم الذي ينادى به الشخص فقط؛ لا تضع اسم العائلة في هذه الخانة.",examples:[{fr:"Prénom : Nora",ar:"الاسم الأول: نورة.",detail:"Nora هو الاسم الأول فقط."},{fr:"Mon prénom est Nora.",ar:"اسمي الأول نورة.",detail:"نستخدم mon prénom عند ذكر الاسم في جملة كاملة."}]},
+  {expression:"Nom de famille",ar:"اسم العائلة",kind:"بيان عائلي",rule:"اكتب لقب العائلة في هذه الخانة، وهو مختلف عن prénom.",examples:[{fr:"Nom de famille : Alami",ar:"اسم العائلة: العلمي.",detail:"Alami هو لقب العائلة في النموذج."},{fr:"Mon nom de famille est Alami.",ar:"اسم عائلتي هو العلمي.",detail:"لا نخلط بين nom de famille وprénom."}]},
+  {expression:"Date de naissance",ar:"تاريخ الميلاد",kind:"تاريخ شخصي",rule:"في الفرنسية نذكر اليوم ثم الشهر ثم السنة، ويمكن كتابة الشهر بالحروف لتكون القراءة أوضح.",examples:[{fr:"Date de naissance : le 15 mars 2000",ar:"تاريخ الميلاد: 15 مارس 2000.",detail:"يأتي اليوم قبل الشهر في صياغة التاريخ الفرنسية."},{fr:"Je suis né(e) le 15 mars 2000.",ar:"وُلدت في 15 مارس 2000.",detail:"تُستعمل né للمذكر وnée للمؤنث عند قولها في جملة."}]}
+ ]},
+ {title:"العنوان والمكان",fr:"Adresse et ville",intro:"اكتب تفاصيل مكان السكن بترتيب واضح: الرقم واسم الشارع، ثم الرمز البريدي والمدينة. كل خانة لها وظيفة مستقلة.",formula:"Adresse · Code postal · Ville",entries:[
+  {expression:"Adresse",ar:"العنوان",kind:"مكان السكن",rule:"اكتب رقم المبنى أولًا ثم اسم الشارع؛ ويمكن إضافة rue أو avenue بحسب العنوان.",examples:[{fr:"Adresse : 20, rue Victor-Hugo",ar:"العنوان: 20، شارع فيكتور هوغو.",detail:"نضع رقم المبنى قبل اسم الشارع."},{fr:"J’habite au 20, rue Victor-Hugo.",ar:"أسكن في 20 شارع فيكتور هوغو.",detail:"au هنا اختصار à le قبل رقم العنوان."}]},
+  {expression:"Code postal",ar:"الرمز البريدي",kind:"تحديد المنطقة",rule:"اكتب رمز المنطقة في خانته الرقمية وحده، ثم اكتب المدينة في الخانة التالية.",examples:[{fr:"Code postal : 69002",ar:"الرمز البريدي: 69002.",detail:"الرمز لا يحتاج إلى علامة ترقيم في النموذج."},{fr:"Le code postal est 69002.",ar:"الرمز البريدي هو 69002.",detail:"نستخدم le code postal في جملة كاملة."}]},
+  {expression:"Ville",ar:"المدينة",kind:"اسم المدينة",rule:"اكتب اسم المدينة فقط دون حرف الجر à؛ الحرف يُستعمل عندما نضع المدينة في جملة.",examples:[{fr:"Ville : Lyon",ar:"المدينة: ليون.",detail:"اسم المدينة وحده يكفي في الخانة."},{fr:"J’habite à Lyon.",ar:"أسكن في ليون.",detail:"نستخدم à قبل اسم المدينة في الجملة."}]}
+ ]},
+ {title:"التواصل والمعلومة",fr:"Contact et information",intro:"أكمل في النهاية وسيلة الاتصال والمعلومة المطلوبة مثل الجنسية. راجع الرموز والبريد الإلكتروني قبل إرسال النموذج.",formula:"Nationalité · Téléphone · Adresse électronique",entries:[
+  {expression:"Nationalité",ar:"الجنسية",kind:"معلومة شخصية",rule:"اكتب صيغة الجنسية التي تناسب الشخص؛ قد تنتهي بصيغة مختلفة للمذكر أو للمؤنث.",examples:[{fr:"Nationalité : saoudienne",ar:"الجنسية: سعودية.",detail:"saoudienne هي صيغة المؤنث هنا."},{fr:"Je suis saoudienne.",ar:"أنا سعودية.",detail:"نستخدم Je suis مع الجنسية في جملة كاملة."}]},
+  {expression:"Numéro de téléphone",ar:"رقم الهاتف",kind:"وسيلة اتصال",rule:"اكتب الرقم في مجموعات سهلة القراءة، واتبع الصيغة التي يطلبها النموذج عند وجودها.",examples:[{fr:"Numéro de téléphone : 06 24 18 50 72",ar:"رقم الهاتف: 06 24 18 50 72.",detail:"تقسيم الأرقام إلى مجموعات يجعلها أوضح."},{fr:"Mon numéro est le 06 24 18 50 72.",ar:"رقمي هو 06 24 18 50 72.",detail:"يمكن قول mon numéro في حديث بسيط."}]},
+  {expression:"Adresse électronique",ar:"البريد الإلكتروني",kind:"اتصال رقمي",rule:"اكتب العنوان كما هو تمامًا، مع علامة @ وامتداد الموقع، من دون مسافات.",examples:[{fr:"Adresse électronique : nora@example.com",ar:"البريد الإلكتروني: nora@example.com.",detail:"يبقى البريد الإلكتروني بلا مسافات."},{fr:"Mon adresse électronique est nora@example.com.",ar:"عنوان بريدي الإلكتروني هو nora@example.com.",detail:"صيغة كاملة لتقديم البريد الإلكتروني."}]}
+ ]}
+] as const;
+
+const A1_MESSAGES_FORM_PREVIEW=[
+ {label:"Prénom",ar:"الاسم الأول",value:"Nora",group:0,item:0},
+ {label:"Nom de famille",ar:"اسم العائلة",value:"Alami",group:0,item:1},
+ {label:"Date de naissance",ar:"تاريخ الميلاد",value:"15 mars 2000",group:0,item:2},
+ {label:"Adresse",ar:"العنوان",value:"20, rue Victor-Hugo",group:1,item:0},
+ {label:"Code postal",ar:"الرمز البريدي",value:"69002",group:1,item:1},
+ {label:"Ville",ar:"المدينة",value:"Lyon",group:1,item:2},
+ {label:"Nationalité",ar:"الجنسية",value:"saoudienne",group:2,item:0},
+ {label:"Numéro de téléphone",ar:"رقم الهاتف",value:"06 24 18 50 72",group:2,item:1},
+ {label:"Adresse électronique",ar:"البريد الإلكتروني",value:"nora@example.com",group:2,item:2}
+] as const;
+
+function A1MessagesFormStudio(){
+ const [groupIndex,setGroupIndex]=useState(0); const [itemIndex,setItemIndex]=useState(0); const [exampleIndex,setExampleIndex]=useState(0);
+ const group=A1_MESSAGES_FORM_TABLE[groupIndex]; const item=group.entries[itemIndex]; const example=item.examples[exampleIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)};
+ const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ const selectPreview=(nextGroup:number,nextItem:number)=>{setGroupIndex(nextGroup);setItemIndex(nextItem);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-messages-form-studio">
+  <style>{`.a1-messages-form-studio + .university-explanation-text{display:none}`}</style>
+  <section className="a1-messages-form-visual" aria-label="نموذج تسجيل مكتمل للتدريب">
+   <img src="/images/university/a1-messages-forms/form-registration-studio.webp" alt="خلفية نموذج تسجيل احترافي"/>
+   <div className="a1-messages-form-preview"><header><span dir="ltr">Formulaire d’inscription</span><strong>نموذج تسجيل مكتمل</strong><small>اضغط على الخانة لتتعرف إلى طريقة تعبئتها</small></header><div>{A1_MESSAGES_FORM_PREVIEW.map(field=><button key={field.label} type="button" onClick={()=>selectPreview(field.group,field.item)} className={field.group===groupIndex&&field.item===itemIndex?"active":undefined}><small dir="ltr">{field.label}</small><b>{field.ar}</b><strong dir="ltr">{field.value}</strong></button>)}</div></div>
+  </section>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>الخانة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر جزء النموذج">{A1_MESSAGES_FORM_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>ابدأ باسم الخانة، ثم ضع المعلومة المطلوبة فيها فقط.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر خانة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`شرح خانة ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الخانة</span><span>ما تكتب فيها</span><span>طريقة التعبئة</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>الشرح</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-messages-form-reading"><div><span dir="ltr">Lire le formulaire</span><h4>اقرأ النموذج كجمل مفيدة</h4><p>بعد تعبئة الخانات يمكنك تقديم بياناتك بجمل قصيرة واضحة.</p></div><button type="button" onClick={()=>void speakFrenchSequence(["Je m’appelle Nora Alami.","J’habite à Lyon.","Je suis saoudienne."],780,{rate:.72})}><Play aria-hidden="true"/><span><b>استمع إلى النموذج</b><small>نطق متتابع وطبيعي</small></span></button></section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11315,6 +11367,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1Situations&&index===0&&<A1SituationsInviteStudio/>}
        {isA1Situations&&index===1&&<A1SituationsReplyStudio/>}
        {isA1Situations&&index===2&&<A1SituationsReactStudio/>}
+       {isA1MessagesForms&&index===0&&<A1MessagesFormStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

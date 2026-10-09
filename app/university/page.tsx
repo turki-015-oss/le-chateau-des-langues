@@ -7873,6 +7873,44 @@ function A1MessagesShortMessageStudio(){
  </div>
 }
 
+const A1_MESSAGES_PRACTICAL_INFO_TABLE=[
+ {title:"الدخول والاتجاهات",fr:"Accès et direction",intro:"تظهر هذه الكلمات على أبواب المباني واللوحات. اقرأها كتعليمات سريعة لمعرفة المكان الذي تدخل منه أو تخرج إليه.",formula:"Entrée / Sortie / Accès",entries:[
+  {expression:"Entrée",ar:"مدخل / دخول",kind:"مكان الدخول",rule:"نرى Entrée على الباب أو اللوحة التي تقود إلى داخل المكان؛ وهي اسم مؤنث.",examples:[{fr:"L’entrée est à gauche.",ar:"المدخل على اليسار.",detail:"à gauche تحدد جهة المدخل."},{fr:"L’entrée du musée est ici.",ar:"مدخل المتحف هنا.",detail:"du musée تعني للمتحف أو الخاصة بالمتحف."}]},
+  {expression:"Sortie",ar:"مخرج / خروج",kind:"مكان الخروج",rule:"نرى Sortie على الباب أو اللوحة التي تقود إلى خارج المكان، وتظهر كثيرًا في المحطات والمباني.",examples:[{fr:"La sortie est à droite.",ar:"المخرج على اليمين.",detail:"à droite تحدد جهة الخروج."},{fr:"La sortie est par là.",ar:"المخرج من هناك.",detail:"par là تعني من ذلك الاتجاه."}]},
+  {expression:"Accès",ar:"وصول / مدخل مخصص",kind:"طريقة الوصول",rule:"تُستخدم Accès في اللوحات لتحديد طريقة أو مكان الوصول، مثل accès réservé أو accès interdit.",examples:[{fr:"Accès réservé au personnel.",ar:"الوصول مخصص للموظفين.",detail:"réservé au personnel يعني مخصص للموظفين."},{fr:"L’accès est fermé aujourd’hui.",ar:"المدخل مغلق اليوم.",detail:"نستخدم est fermé لبيان أن الوصول غير متاح."}]}
+ ]},
+ {title:"الأوقات والتوفر",fr:"Horaires et disponibilité",intro:"ابحث عن كلمة horaires لمعرفة أوقات العمل، ثم انتبه إلى ouvert وfermé وgratuit وcomplet لأنها تخبرك بما هو متاح الآن.",formula:"Horaires · Ouvert / Fermé · Gratuit / Complet",entries:[
+  {expression:"Horaires",ar:"أوقات العمل",kind:"ساعات المكان",rule:"نستخدم horaires للسؤال عن وقت فتح المكان وإغلاقه أو لقراءة جدول الأوقات.",examples:[{fr:"Quels sont les horaires de la bibliothèque ?",ar:"ما أوقات عمل المكتبة؟",detail:"de la bibliothèque يحدد المكان الذي نسأل عن أوقاته."},{fr:"Les horaires sont de neuf heures à dix-huit heures.",ar:"الأوقات من التاسعة إلى السادسة مساءً.",detail:"de… à… تحدد بداية المدة ونهايتها."}]},
+  {expression:"Ouvert / Fermé",ar:"مفتوح / مغلق",kind:"حالة المكان",rule:"نستخدم ouvert عندما يكون المكان متاحًا، وfermé عندما لا يستقبل الزوار؛ تتغير الصفة بحسب الاسم عند الحاجة.",examples:[{fr:"Le musée est fermé le lundi.",ar:"المتحف مغلق يوم الاثنين.",detail:"fermé يصف musée وهو اسم مذكر."},{fr:"La bibliothèque est ouverte aujourd’hui.",ar:"المكتبة مفتوحة اليوم.",detail:"ouverte فيها e لأنها تصف bibliothèque المؤنثة."}]},
+  {expression:"Gratuit / Complet",ar:"مجاني / مكتمل العدد",kind:"السعر أو التوفر",rule:"gratuit يعني بلا مقابل، أما complet فيعني أن كل الأماكن أو التذاكر قد حُجزت.",examples:[{fr:"L’entrée est gratuite pour les enfants.",ar:"الدخول مجاني للأطفال.",detail:"gratuite مؤنثة لأنها تصف entrée."},{fr:"Le cours est complet.",ar:"الدورة مكتملة العدد.",detail:"complet يعني لا توجد أماكن متاحة."}]}
+ ]},
+ {title:"التعليمات والمشكلات",fr:"Consignes et problèmes",intro:"اقرأ التعليمات القصيرة على اللوحات؛ فهي تخبرك بما هو ممنوع أو بما لا يعمل في المكان. احفظ الفعل بعد interdit de في المصدر.",formula:"Interdit de + infinitif / En panne",entries:[
+  {expression:"Interdit de + infinitif",ar:"ممنوع + فعل",kind:"تعليمات المنع",rule:"بعد interdit de نضع الفعل في المصدر لنقول ما لا يُسمح بفعله في المكان.",examples:[{fr:"Il est interdit de fumer.",ar:"يُمنع التدخين.",detail:"fumer يبقى في المصدر بعد de."},{fr:"Interdit de manger dans la salle.",ar:"ممنوع الأكل في القاعة.",detail:"manger مصدر، وdans la salle تحدد المكان."}]},
+  {expression:"En panne",ar:"معطّل",kind:"عطل مؤقت",rule:"نستخدم être en panne عندما يكون جهاز أو خدمة لا يعمل مؤقتًا، مثل المصعد أو آلة البيع.",examples:[{fr:"L’ascenseur est en panne.",ar:"المصعد معطّل.",detail:"en panne تعبير ثابت للعطل المؤقت."},{fr:"La machine est en panne aujourd’hui.",ar:"الآلة معطلة اليوم.",detail:"نضيف aujourd’hui لتحديد وقت العطل."}]},
+  {expression:"Attention",ar:"انتبه",kind:"تنبيه قصير",rule:"تظهر Attention في بداية التحذير أو التنبيه؛ بعدها نقرأ المعلومة المهمة على اللوحة.",examples:[{fr:"Attention, le sol est mouillé.",ar:"انتبه، الأرض مبللة.",detail:"le sol هو الأرضية، وmouillé يصفها."},{fr:"Attention, la porte est fermée.",ar:"انتبه، الباب مغلق.",detail:"توضح اللوحة أن الباب غير متاح الآن."}]}
+ ]}
+] as const;
+
+const A1_MESSAGES_PRACTICAL_SIGNS=[
+ {fr:"ENTRÉE",ar:"ادخل من هنا",kind:"اتجاه"},{fr:"OUVERT",ar:"المكان متاح الآن",kind:"حالة"},{fr:"INTERDIT DE FUMER",ar:"تعليمات منع",kind:"تنبيه"}
+] as const;
+
+function A1MessagesPracticalInfoStudio(){
+ const [groupIndex,setGroupIndex]=useState(0); const [itemIndex,setItemIndex]=useState(0); const [exampleIndex,setExampleIndex]=useState(0); const [signIndex,setSignIndex]=useState(0);
+ const group=A1_MESSAGES_PRACTICAL_INFO_TABLE[groupIndex]; const item=group.entries[itemIndex]; const example=item.examples[exampleIndex]; const sign=A1_MESSAGES_PRACTICAL_SIGNS[signIndex];
+ const selectGroup=(index:number)=>{setGroupIndex(index);setItemIndex(0);setExampleIndex(0)}; const selectItem=(index:number)=>{setItemIndex(index);setExampleIndex(0)};
+ return <div className="a1-present-er-studio a1-present-spelling-studio a1-messages-form-studio a1-messages-info-studio">
+  <style>{`.a1-messages-info-studio + .university-explanation-text{display:none}`}</style>
+  <div className="a1-present-er-intro"><div><span dir="ltr">{group.fr}</span><strong>{group.title}</strong><p>{group.intro}</p></div><button type="button" onClick={()=>void speakFrench(item.expression,{rate:.72})} aria-label={`استمع إلى ${item.expression}`}><span><small>العبارة المختارة</small><strong dir="ltr">{item.expression}</strong></span><Volume2 aria-hidden="true"/></button></div>
+  <nav className="a1-present-er-tabs" aria-label="اختر نوع المعلومة العملية">{A1_MESSAGES_PRACTICAL_INFO_TABLE.map((entry,index)=><button key={entry.title} type="button" className={index===groupIndex?"active":""} aria-pressed={index===groupIndex} onClick={()=>selectGroup(index)}>{entry.title}</button>)}</nav>
+  <div className="a1-present-er-formula"><span dir="ltr">{group.formula}</span><b>{group.title}</b><small>اختر العبارة لتقرأ معناها وطريقة استعمالها في موقف يومي.</small></div>
+  <nav className="a1-present-er-tabs" aria-label={`اختر عبارة من ${group.title}`}>{group.entries.map((entry,index)=><button key={entry.expression} type="button" className={index===itemIndex?"active":""} aria-pressed={index===itemIndex} onClick={()=>selectItem(index)} dir="ltr">{entry.expression}</button>)}</nav>
+  <div className="a1-present-er-table" role="table" aria-label={`شرح ${item.expression}`}><div className="a1-present-er-table-head" role="row"><span aria-hidden="true"></span><span>الكلمة</span><span>ماذا تعني؟</span><span>طريقة الاستعمال</span><span>المثال والنطق</span></div><article className="a1-present-er-row" role="row"><i>{String(itemIndex+1).padStart(2,"0")}</i><div className="a1-present-er-pronoun"><strong dir="ltr">{item.expression}</strong><small>{item.ar}</small></div><div className="a1-present-er-ending"><strong>{item.kind}</strong><span>{group.title}</span></div><div className="a1-present-er-form"><small>الشرح</small><strong>{item.rule}</strong></div><button type="button" className="a1-present-er-example" onClick={()=>void speakFrench(example.fr,{rate:.74})} aria-label={`استمع إلى ${example.fr}`}><span dir="ltr">{example.fr}</span><small>{example.ar} — {example.detail}</small><Volume2 aria-hidden="true"/></button></article></div>
+  <div className="a1-present-er-pagination"><button type="button" onClick={()=>setExampleIndex(index=>Math.max(0,index-1))} disabled={exampleIndex===0}><ChevronRight/><span>السابق</span></button><b>مثال {exampleIndex+1} من {item.examples.length}</b><button type="button" onClick={()=>setExampleIndex(index=>Math.min(item.examples.length-1,index+1))} disabled={exampleIndex===item.examples.length-1}><span>التالي</span><ChevronLeft/></button></div>
+  <section className="a1-messages-sign-card" aria-label="قراءة لوحة عملية"><header><div><span>Lire une information</span><h4>اقرأ لوحة قصيرة</h4><p>اختر لوحة ثم اضغط عليها للاستماع إلى نطقها.</p></div><button type="button" onClick={()=>void speakFrench(sign.fr,{rate:.72})}><Volume2/><span><b>استمع إلى اللوحة</b><small>نطق واضح</small></span></button></header><nav>{A1_MESSAGES_PRACTICAL_SIGNS.map((entry,index)=><button key={entry.fr} type="button" className={index===signIndex?"active":""} onClick={()=>setSignIndex(index)}>{entry.kind}</button>)}</nav><button className="a1-messages-sign-display" type="button" onClick={()=>void speakFrench(sign.fr,{rate:.72})}><strong dir="ltr">{sign.fr}</strong><span>{sign.ar}</span><Volume2 aria-hidden="true"/></button></section>
+ </div>
+}
+
 const A1_WEATHER_METEO_TABLE=[
  {expression:"Quel temps fait-il ?",ar:"كيف حال الطقس؟",kind:"السؤال عن الطقس",rule:"نستخدم هذه الصيغة الثابتة للسؤال عن حالة الطقس في مكان أو يوم محدد.",examples:[{fr:"Quel temps fait-il aujourd’hui ?",ar:"كيف حال الطقس اليوم؟",detail:"aujourd’hui يحدد زمن السؤال، وتبقى صيغة Quel temps fait-il ثابتة."},{fr:"Quel temps fait-il à Lyon ?",ar:"كيف حال الطقس في ليون؟",detail:"نضيف à ثم اسم المدينة لتحديد المكان الذي نسأل عن طقسه."}]},
  {expression:"Il fait + adjectif",ar:"الجو + صفة",kind:"حرارة أو حالة عامة",rule:"نستخدم il fait مع صفات مثل beau وmauvais وchaud وfroid لوصف الجو أو الحرارة.",examples:[{fr:"Il fait beau aujourd’hui.",ar:"الجو جميل اليوم.",detail:"il fait beau تعبير ثابت للطقس الجميل والمشرق."},{fr:"Il fait froid ce matin.",ar:"الجو بارد هذا الصباح.",detail:"نستخدم il fait froid للتعبير عن برودة الجو، ثم نضيف الوقت."}]},
@@ -11409,6 +11447,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        {isA1Situations&&index===2&&<A1SituationsReactStudio/>}
        {isA1MessagesForms&&index===0&&<A1MessagesFormStudio/>}
        {isA1MessagesForms&&index===1&&<A1MessagesShortMessageStudio/>}
+       {isA1MessagesForms&&index===2&&<A1MessagesPracticalInfoStudio/>}
        {isA1CityDirections&&index===0&&<A1CityDirectionsDestinationStudio/>}
        {isA1CityDirections&&index===1&&<A1CityDirectionsOriginStudio/>}
        {isA1CityDirections&&index===2&&<A1CityDirectionsRouteStudio/>}

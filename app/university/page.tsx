@@ -3907,13 +3907,18 @@ const A1_DAILY_LIFE_WRITING_TRANSLATIONS=[
 
 const A1_SITUATIONS_WRITING_TRANSLATIONS=[
  {fr:"ça te dit d’aller au cinéma",ar:"ما رأيك أن نذهب إلى السينما؟"},
- {fr:"avec plaisir",ar:"بكل سرور"},
+ {fr:"tu es libre samedi",ar:"هل أنت متفرغ يوم السبت؟"},
+ {fr:"oui avec plaisir",ar:"نعم، بكل سرور"},
+ {fr:"c’est une bonne idée",ar:"إنها فكرة جيدة"},
  {fr:"à quelle heure",ar:"في أي ساعة؟"},
- {fr:"désolé je ne peux pas",ar:"آسف، لا أستطيع"},
- {fr:"et dimanche",ar:"وماذا عن الأحد؟"},
- {fr:"on se retrouve devant le café",ar:"نلتقي أمام المقهى"},
- {fr:"je suis d’accord avec toi",ar:"أنا موافق معك"},
- {fr:"à bientôt",ar:"أراك قريبًا"}
+ {fr:"on se retrouve devant le cinéma",ar:"نلتقي أمام السينما"},
+ {fr:"à cinq heures",ar:"الساعة الخامسة"},
+ {fr:"désolé je ne peux pas venir ce soir",ar:"آسف، لا أستطيع الحضور هذا المساء"},
+ {fr:"je suis déjà prise dimanche matin",ar:"لدي ارتباط مسبق صباح الأحد"},
+ {fr:"on peut plutôt se voir demain",ar:"يمكن أن نلتقي غدًا بدلًا من ذلك"},
+ {fr:"ce n’est pas grave",ar:"لا بأس"},
+ {fr:"je suis d’accord avec toi",ar:"أنا أتفق معك"},
+ {fr:"on fait quoi après le film",ar:"ماذا نفعل بعد الفيلم؟"}
 ];
 
 const A1_MESSAGES_FORMS_WRITING_TRANSLATIONS=[

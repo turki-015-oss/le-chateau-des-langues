@@ -4689,11 +4689,18 @@ const A1_SITUATIONS_LISTENING={
 const A1_SITUATIONS_WRITING_MODEL="Salut Sami ! Ça te dit de prendre un café samedi à quatre heures ? — Désolé, je ne peux pas samedi parce que je travaille. On peut plutôt se voir dimanche ? — Avec plaisir ! On se retrouve devant le café à cinq heures.";
 
 const A1_SITUATIONS_DICTATION=[
- {speech:"Tu veux sortir avec nous samedi ?",ar:"هل تريد الخروج معنا يوم السبت؟"},
+ {speech:"Ça te dit ?",ar:"ما رأيك؟"},
+ {speech:"Avec plaisir !",ar:"بكل سرور!"},
+ {speech:"Bonne idée !",ar:"فكرة جيدة!"},
+ {speech:"À quelle heure ?",ar:"في أي ساعة؟"},
+ {speech:"Tu es libre samedi ?",ar:"هل أنت متفرغ يوم السبت؟"},
+ {speech:"On se retrouve devant le cinéma.",ar:"نلتقي أمام السينما."},
+ {speech:"On se retrouve à cinq heures.",ar:"نلتقي الساعة الخامسة."},
  {speech:"Désolé, je ne peux pas venir ce soir.",ar:"آسف، لا أستطيع الحضور هذا المساء."},
- {speech:"On se retrouve devant le café à cinq heures.",ar:"نلتقي أمام المقهى الساعة الخامسة."},
- {speech:"Avec plaisir ! À quelle heure ?",ar:"بكل سرور! في أي ساعة؟"},
- {speech:"Je suis d’accord avec toi.",ar:"أنا موافق معك."}
+ {speech:"Je suis déjà prise dimanche matin.",ar:"لدي ارتباط مسبق صباح الأحد."},
+ {speech:"On peut plutôt se voir demain ?",ar:"هل يمكن أن نلتقي غدًا بدلًا من ذلك؟"},
+ {speech:"Ce n’est pas grave, on a le temps.",ar:"لا بأس، لدينا وقت."},
+ {speech:"Je suis d’accord avec toi.",ar:"أنا أتفق معك."}
 ];
 
 const A1_SITUATIONS_BUILDERS=[

@@ -4786,10 +4786,17 @@ const A1_MESSAGES_FORMS_DICTATION=[
 ];
 
 const A1_MESSAGES_FORMS_BUILDERS=[
+ {tokens:["Nora.","est","prénom","Mon"],answer:["Mon","prénom","est","Nora."],ar:"اسمي الأول نورة."},
  {tokens:["famille","Mon","Alami.","nom","est","de"],answer:["Mon","nom","de","famille","est","Alami."],ar:"اسم عائلتي العلمي."},
- {tokens:["rendez-vous","Je","demain.","confirme","notre","de"],answer:["Je","confirme","notre","rendez-vous","de","demain."],ar:"أؤكد موعدنا غدًا."},
- {tokens:["lundi.","musée","fermé","Le","est","le"],answer:["Le","musée","est","fermé","le","lundi."],ar:"المتحف مغلق يوم الاثنين."},
+ {tokens:["naissance","Ma","est","mars","de","date","le","quinze","deux","mille."],answer:["Ma","date","de","naissance","est","le","quinze","mars","deux","mille."],ar:"تاريخ ميلادي هو الخامس عشر من مارس عام 2000."},
+ {tokens:["au","Lyon.","Victor-Hugo,","vingt,","J’habite","rue","à"],answer:["J’habite","au","vingt,","rue","Victor-Hugo,","à","Lyon."],ar:"أسكن في 20 شارع فيكتور هوغو في ليون."},
  {tokens:["téléphone.","mon","Voici","de","numéro"],answer:["Voici","mon","numéro","de","téléphone."],ar:"هذا رقم هاتفي."},
+ {tokens:["électronique","Mon","est","nora@example.com.","adresse"],answer:["Mon","adresse","électronique","est","nora@example.com."],ar:"عنوان بريدي الإلكتروني هو nora@example.com."},
+ {tokens:["Madame,","Bonjour","vous","écris","je","pour","confirmer","mon","rendez-vous."],answer:["Bonjour","Madame,","je","vous","écris","pour","confirmer","mon","rendez-vous."],ar:"مرحبًا سيدتي، أكتب إليكم لتأكيد موعدي."},
+ {tokens:["rendez-vous","Je","demain","confirme","notre","à","dix","heures."],answer:["Je","confirme","notre","rendez-vous","demain","à","dix","heures."],ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
+ {tokens:["votre","Merci","pour","message."],answer:["Merci","pour","votre","message."],ar:"شكرًا على رسالتكم."},
+ {tokens:["Sami","Cordialement,","Alami."],answer:["Cordialement,","Sami","Alami."],ar:"مع التحية، سامي العلمي."},
+ {tokens:["mardi","bibliothèque","ouverte","samedi.","La","au","du","est"],answer:["La","bibliothèque","est","ouverte","du","mardi","au","samedi."],ar:"المكتبة مفتوحة من الثلاثاء إلى السبت."},
  {tokens:["panne.","est","L’ascenseur","en"],answer:["L’ascenseur","est","en","panne."],ar:"المصعد معطّل."}
 ];
 

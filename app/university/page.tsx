@@ -4771,10 +4771,17 @@ const A1_MESSAGES_FORMS_LISTENING={
 const A1_MESSAGES_FORMS_WRITING_MODEL="Bonjour Madame, je vous écris pour confirmer mon rendez-vous du mardi 12 mai à dix heures. Je vais arriver au cabinet à neuf heures cinquante. Pouvez-vous me répondre par courriel pour confirmer l’adresse, s’il vous plaît ? Merci. Cordialement, Sami Alami.";
 
 const A1_MESSAGES_FORMS_DICTATION=[
+ {speech:"Mon prénom est Nora.",ar:"اسمي الأول نورة."},
  {speech:"Mon nom de famille est Alami.",ar:"اسم عائلتي العلمي."},
- {speech:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
- {speech:"La bibliothèque est fermée le lundi.",ar:"المكتبة مغلقة يوم الاثنين."},
+ {speech:"Ma date de naissance est le quinze mars deux mille.",ar:"تاريخ ميلادي هو الخامس عشر من مارس عام 2000."},
+ {speech:"J’habite au vingt, rue Victor-Hugo, à Lyon.",ar:"أسكن في 20 شارع فيكتور هوغو في ليون."},
+ {speech:"Mon code postal est le soixante-neuf mille deux.",ar:"رمزي البريدي هو 69002."},
  {speech:"Voici mon numéro de téléphone.",ar:"هذا رقم هاتفي."},
+ {speech:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
+ {speech:"Merci pour votre message.",ar:"شكرًا على رسالتكم."},
+ {speech:"Cordialement, Sami Alami.",ar:"مع التحية، سامي العلمي."},
+ {speech:"La bibliothèque est ouverte du mardi au samedi.",ar:"المكتبة مفتوحة من الثلاثاء إلى السبت."},
+ {speech:"L’entrée est à gauche.",ar:"المدخل على اليسار."},
  {speech:"L’ascenseur est en panne.",ar:"المصعد معطّل."}
 ];
 

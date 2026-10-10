@@ -2423,16 +2423,21 @@ const A1_QUESTIONS_QUIZ_ITEMS:QuizQuestion[]=[
 ];
 
 const A1_MESSAGES_FORMS_PRACTICE_ITEMS:Example[]=[
- {fr:"Écrivez votre nom et votre prénom ici.",ar:"اكتبوا اسم العائلة والاسم الأول هنا."},
- {fr:"Quel est votre numéro de téléphone ?",ar:"ما رقم هاتفكم؟"},
+ {fr:"Mon prénom est Nora.",ar:"اسمي الأول نورة."},
+ {fr:"Mon nom de famille est Alami.",ar:"اسم عائلتي العلمي."},
+ {fr:"Ma date de naissance est le quinze mars deux mille.",ar:"تاريخ ميلادي هو الخامس عشر من مارس عام 2000."},
  {fr:"Ma nationalité est saoudienne.",ar:"جنسيتي سعودية."},
+ {fr:"J’habite au vingt, rue Victor-Hugo, à Lyon.",ar:"أسكن في 20 شارع فيكتور هوغو في ليون."},
  {fr:"Le code postal est six neuf zéro zéro deux.",ar:"الرمز البريدي هو 69002."},
- {fr:"Bonjour, je voudrais déplacer mon rendez-vous.",ar:"مرحبًا، أود تغيير موعدي."},
- {fr:"Je suis disponible vendredi après-midi.",ar:"أنا متاح بعد ظهر الجمعة."},
- {fr:"À bientôt et bonne journée !",ar:"إلى لقاء قريب ويوم سعيد!"},
- {fr:"La gare ouvre à cinq heures trente.",ar:"تفتح المحطة الساعة الخامسة والنصف."},
- {fr:"Le train de Marseille est complet.",ar:"قطار مرسيليا مكتمل العدد."},
- {fr:"Il est interdit de manger dans cette salle.",ar:"يُمنع تناول الطعام في هذه القاعة."}
+ {fr:"Voici mon numéro de téléphone.",ar:"هذا رقم هاتفي."},
+ {fr:"Bonjour Madame, je vous écris pour confirmer mon rendez-vous.",ar:"مرحبًا سيدتي، أكتب إليكم لتأكيد موعدي."},
+ {fr:"Je confirme notre rendez-vous de demain à dix heures.",ar:"أؤكد موعدنا غدًا الساعة العاشرة."},
+ {fr:"Je suis désolé, je vais arriver dix minutes en retard.",ar:"أنا آسف، سأصل متأخرًا عشر دقائق."},
+ {fr:"Merci pour votre message.",ar:"شكرًا على رسالتكم."},
+ {fr:"Cordialement, Sami Alami.",ar:"مع التحية، سامي العلمي."},
+ {fr:"La bibliothèque est ouverte du mardi au samedi.",ar:"المكتبة مفتوحة من الثلاثاء إلى السبت."},
+ {fr:"L’entrée est à gauche.",ar:"المدخل على اليسار."},
+ {fr:"L’ascenseur est en panne.",ar:"المصعد معطّل."}
 ];
 
 const A1_MESSAGES_FORMS_QUIZ_ITEMS:QuizQuestion[]=[

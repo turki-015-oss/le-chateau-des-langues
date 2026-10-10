@@ -3929,12 +3929,19 @@ const A1_SITUATIONS_WRITING_TRANSLATIONS=[
 const A1_MESSAGES_FORMS_WRITING_TRANSLATIONS=[
  {fr:"mon prénom est Nora",ar:"اسمي الأول نورة"},
  {fr:"mon nom de famille est Alami",ar:"اسم عائلتي العلمي"},
+ {fr:"ma date de naissance est le quinze mars deux mille",ar:"تاريخ ميلادي هو الخامس عشر من مارس عام 2000"},
+ {fr:"ma nationalité est saoudienne",ar:"جنسيتي سعودية"},
+ {fr:"j’habite au vingt rue Victor-Hugo à Lyon",ar:"أسكن في 20 شارع فيكتور هوغو في ليون"},
+ {fr:"le code postal est six neuf zéro zéro deux",ar:"الرمز البريدي هو 69002"},
  {fr:"voici mon numéro de téléphone",ar:"هذا رقم هاتفي"},
- {fr:"mon adresse électronique est",ar:"عنوان بريدي الإلكتروني هو"},
- {fr:"je confirme mon rendez-vous",ar:"أؤكد موعدي"},
- {fr:"je vais arriver en retard",ar:"سأصل متأخرًا"},
- {fr:"le musée est fermé le lundi",ar:"المتحف مغلق يوم الاثنين"},
- {fr:"cordialement",ar:"مع خالص التحية"}
+ {fr:"mon adresse électronique",ar:"بريدي الإلكتروني"},
+ {fr:"bonjour Madame",ar:"مرحبًا سيدتي"},
+ {fr:"je vous écris pour confirmer mon rendez-vous",ar:"أكتب إليكم لتأكيد موعدي"},
+ {fr:"je confirme notre rendez-vous de demain à dix heures",ar:"أؤكد موعدنا غدًا الساعة العاشرة"},
+ {fr:"je vais arriver dix minutes en retard",ar:"سأصل متأخرًا عشر دقائق"},
+ {fr:"merci pour votre message",ar:"شكرًا على رسالتكم"},
+ {fr:"cordialement Sami Alami",ar:"مع التحية، سامي العلمي"},
+ {fr:"l’ascenseur est en panne",ar:"المصعد معطّل"}
 ];
 
 const A1_FUTURE_IMPERATIVE_DICTATION=[

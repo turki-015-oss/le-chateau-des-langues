@@ -5038,9 +5038,18 @@ const A2_REVISION_LISTENING={
 const A2_REVISION_WRITING_MODEL="En général, je me lève à six heures et demie. D’abord, je prends mon petit-déjeuner, puis je me prépare pour aller au travail. Je pars à sept heures et je prends souvent le bus. Je ne travaille jamais le vendredi. Après le travail, je fais mes courses ou je retrouve un ami. Enfin, je rentre chez moi parce que j’aime passer une soirée calme avec ma famille.";
 
 const A2_REVISION_DICTATION=[
- {speech:"Je me réveille à sept heures pendant la semaine.",ar:"أستيقظ الساعة السابعة خلال أيام الأسبوع."},
- {speech:"Nous ne prenons jamais le métro le dimanche.",ar:"لا نستقل المترو يوم الأحد أبدًا."},
- {speech:"D’abord, elle finit son travail, puis elle rentre chez elle.",ar:"أولًا، تنهي عملها، ثم تعود إلى منزلها."}
+ {speech:"Je me lève tôt.",ar:"أستيقظ مبكرًا."},
+ {speech:"Il est sept heures.",ar:"الساعة السابعة."},
+ {speech:"Je travaille le lundi.",ar:"أعمل يوم الاثنين."},
+ {speech:"Nous voyageons en juillet.",ar:"نسافر في يوليو."},
+ {speech:"Il fait beau aujourd’hui.",ar:"الطقس جميل اليوم."},
+ {speech:"Je ne prends pas le bus.",ar:"لا أستقل الحافلة."},
+ {speech:"Où habites-tu ?",ar:"أين تسكن؟"},
+ {speech:"J’habite près de la gare.",ar:"أسكن قرب المحطة."},
+ {speech:"D’abord, je déjeune.",ar:"أولًا، أتناول الغداء."},
+ {speech:"Puis, je travaille.",ar:"ثم أعمل."},
+ {speech:"Cette maison est grande.",ar:"هذا المنزل كبير."},
+ {speech:"Mes amis arrivent demain.",ar:"سيصل أصدقائي غدًا."}
 ];
 
 const A2_REVISION_BUILDERS=[
@@ -10200,7 +10209,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const soundPatternCount=["ou","on","oi","in"].filter(sound=>revisionWritingText.toLocaleLowerCase("fr").includes(sound)).length;
  const isA1WordDictation=activeA1EnhancedContent?.dictationUnit==="word";
  const isAlphabetLetterDictation=isA1Alphabet&&(revisionDictationItem as {kind?:string}).kind==="letter";
- const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife);
+ const isTimedOrbitWordDictation=isA1OrbitLesson&&!isA1Alphabet&&(isA1WordDictation||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1Adjectives||isA1DailyLife||(isA2OrbitLesson&&activeModule.id==="revision-a1"));
  const dictationUnit=isAlphabetLetterDictation?"الحرف":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"العبارة":isA1WordDictation?"الكلمة":"الجملة";
  const dictationPlaceholder=isAlphabetLetterDictation?"Écrivez la lettre ici…":((isA1Greetings||isA1Nouns||isA1FoodShopping||isA1NumbersTime||isA1Adjectives)&&revisionDictationItem.speech.includes(" "))?"Écrivez l’expression ici…":isA1WordDictation?"Écrivez le mot ici…":"Écrivez la phrase ici…";
  const alphabetDictationPronunciation=isAlphabetLetterDictation

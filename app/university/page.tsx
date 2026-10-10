@@ -254,6 +254,13 @@ const A1_NUMBERS_TIME_LISTENING_CLIPS=[
  {letter:"jeudi",word:"douze octobre",ar:"الخميس الثاني عشر من أكتوبر",hiddenSpeech:"Jeudi douze octobre"},
  {letter:"quarante-deux",word:"euros",ar:"اثنان وأربعون يورو",hiddenSpeech:"Quarante-deux euros"}
 ];
+const A2_REVISION_LISTENING_CLIPS=[
+ {letter:"je me lève",word:"à sept heures",ar:"أستيقظ الساعة السابعة",hiddenSpeech:"Je me lève à sept heures."},
+ {letter:"je ne prends",word:"pas le bus aujourd’hui",ar:"لا أستقل الحافلة اليوم",hiddenSpeech:"Je ne prends pas le bus aujourd’hui."},
+ {letter:"à quelle heure",word:"est-ce que tu commences ?",ar:"في أي ساعة تبدأ؟",hiddenSpeech:"À quelle heure est-ce que tu commences ?"},
+ {letter:"je vais au marché",word:"parce que c’est calme",ar:"أذهب إلى السوق لأنه هادئ",hiddenSpeech:"Je vais au marché parce que c’est calme."},
+ {letter:"d’abord, je prépare",word:"le repas, puis je me repose",ar:"أولًا أجهز الوجبة، ثم أرتاح",hiddenSpeech:"D’abord, je prépare le repas, puis je me repose."}
+];
 const A1_WEATHER_CLOTHES_LISTENING_CLIPS=[
  {letter:"il fait",word:"froid",ar:"الجو بارد",hiddenSpeech:"Il fait froid."},
  {letter:"il y a",word:"du vent",ar:"الجو عاصف",hiddenSpeech:"Il y a du vent."},
@@ -5020,10 +5027,11 @@ const A2_REVISION_LISTENING={
  arTitle:"صباح منظّم",
  text:"Bonjour, je m’appelle Lucas. J’habite à Nantes depuis trois ans et je travaille dans un hôtel près de la gare. En semaine, je me réveille à six heures et demie. Je prends toujours un café, mais je ne mange jamais à la maison. Je pars à sept heures et je vais au travail à vélo parce que c’est rapide. Le lundi, je commence plus tard, donc je fais mes courses avant de partir.",
  questions:[
-  {prompt:"Depuis combien de temps Lucas habite-t-il à Nantes ?",choices:["Depuis trois ans","Depuis six mois","Depuis sept ans"],correctIndex:0},
-  {prompt:"Où travaille Lucas ?",choices:["Dans une librairie","Dans un hôtel","Dans une gare"],correctIndex:1},
-  {prompt:"Que ne fait-il jamais à la maison ?",choices:["Il ne boit jamais de café.","Il ne fait jamais ses courses.","Il ne mange jamais."],correctIndex:2},
-  {prompt:"Pourquoi va-t-il au travail à vélo ?",choices:["Parce que c’est rapide.","Parce qu’il commence tard.","Parce qu’il habite à la gare."],correctIndex:0}
+  {prompt:"À quelle heure est-ce que la personne se lève ?",choices:["À sept heures.","À huit heures.","À six heures."],correctIndex:0},
+  {prompt:"Que ne prend-elle pas aujourd’hui ?",choices:["Le bus.","Le train.","Le métro."],correctIndex:0},
+  {prompt:"Que demande la personne ?",choices:["L’heure de début.","Le prix du billet.","Le nom de la rue."],correctIndex:0},
+  {prompt:"Pourquoi va-t-elle au marché ?",choices:["Parce que c’est calme.","Parce que c’est fermé.","Parce que c’est loin."],correctIndex:0},
+  {prompt:"Que fait-elle après avoir préparé le repas ?",choices:["Elle se repose.","Elle part au travail.","Elle prend le bus."],correctIndex:0}
  ]
 };
 
@@ -10878,7 +10886,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  };
  const activeOrbitListeningClips=isA1Sounds?A1_SOUNDS_LISTENING_CLIPS:isA1Greetings?A1_GREETINGS_LISTENING_CLIPS:isA1Countries?A1_COUNTRIES_LISTENING_CLIPS:isA1Studies?A1_STUDIES_LISTENING_CLIPS:isA1Tastes?A1_TASTES_LISTENING_CLIPS:isA1Demonstratives?A1_DEMONSTRATIVES_LISTENING_CLIPS:isA1Possessives?A1_POSSESSIVES_LISTENING_CLIPS:isA1Nouns?A1_NOUNS_LISTENING_CLIPS:isA1CoreVerbs?A1_CORE_VERBS_LISTENING_CLIPS:isA1Structures?A1_STRUCTURES_LISTENING_CLIPS:isA1Questions?A1_QUESTIONS_LISTENING_CLIPS:isA1Present?A1_PRESENT_LISTENING_CLIPS:isA1ModalVerbs?A1_MODAL_VERBS_LISTENING_CLIPS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_LISTENING_CLIPS:isA1FoodShopping?A1_FOOD_SHOPPING_LISTENING_CLIPS:isA1CityDirections?A1_CITY_DIRECTIONS_LISTENING_CLIPS:isA1NumbersTime?A1_NUMBERS_TIME_LISTENING_CLIPS:isA1WeatherClothes?A1_WEATHER_CLOTHES_LISTENING_CLIPS:isA1HomeHousing?A1_HOME_HOUSING_LISTENING_CLIPS:isA1Description?A1_DESCRIPTION_LISTENING_CLIPS:isA1HealthNeeds?A1_HEALTH_NEEDS_LISTENING_CLIPS:isA1Adjectives?A1_ADJECTIVES_LISTENING_CLIPS:isA1DailyLife?A1_DAILY_LIFE_LISTENING_CLIPS:isA1Situations?A1_SITUATIONS_LISTENING_CLIPS:isA1MessagesForms?A1_MESSAGES_FORMS_LISTENING_CLIPS:ALPHABET_LISTENING_CLIPS;
  const playAlphabetOrbitClip=(rate:"slow"|"normal",clipIndex=alphabetListeningClipIndex)=>{
-  const clip=activeOrbitListeningClips[clipIndex];
+  const clip=(isA2OrbitLesson&&activeModule.id==="revision-a1"?A2_REVISION_LISTENING_CLIPS:activeOrbitListeningClips)[clipIndex];
   if(isA1Sounds||isA1Greetings||isA1Countries||isA1Nouns||isA1CoreVerbs||isA1Present||isA1ModalVerbs||isA1FutureImperative){
    setAlphabetListeningPlaying(true);
    setAlphabetListeningSegment(isA1Sounds?1:0);
@@ -10891,7 +10899,8 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   }
   const alphabetItem=isA1Alphabet?ALPHABET.find(item=>item[0]===clip.letter):undefined;
   const letterSpeech=LETTER_SPEECH_OVERRIDES[clip.letter]??alphabetItem?.[1]??clip.letter.toLocaleLowerCase("fr");
-  const speechSegments=[letterSpeech,clip.word];
+  const fullSpeech="hiddenSpeech" in clip&&typeof clip.hiddenSpeech==="string"?clip.hiddenSpeech:`${clip.letter} ${clip.word}`;
+  const speechSegments=isA2OrbitLesson&&activeModule.id==="revision-a1"?[fullSpeech]:[letterSpeech,clip.word];
   setAlphabetListeningPlaying(true);
   setAlphabetListeningSegment(0);
   void speakFrenchSequence(speechSegments,rate==="slow"?720:420,{
@@ -10901,7 +10910,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
    },setAlphabetListeningSegment);
  };
  const playOrbitHiddenSound=(clipIndex=alphabetListeningClipIndex)=>{
-  const clip=activeOrbitListeningClips[clipIndex];
+  const clip=(isA2OrbitLesson&&activeModule.id==="revision-a1"?A2_REVISION_LISTENING_CLIPS:activeOrbitListeningClips)[clipIndex];
   const hiddenSpeech="hiddenSpeech" in clip&&typeof clip.hiddenSpeech==="string"?clip.hiddenSpeech:(LETTER_SPEECH_OVERRIDES[clip.letter]??clip.letter.toLocaleLowerCase("fr"));
   setAlphabetListeningPlaying(true);
   setAlphabetListeningSegment(0);
@@ -11781,7 +11790,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
        <button type="button" className={`a1-orbit-core ${alphabetPracticeOpen?"open":""}`} onClick={()=>selectAlphabetPracticeStep(alphabetPracticeStep)}><Orbit/><b>تدرّب</b><small>{ALPHABET_PRACTICE_STEPS[alphabetPracticeStep]}</small></button>
        {ALPHABET_PRACTICE_STEPS.map((step,index)=>{const StepIcon=ALPHABET_PRACTICE_ICONS[index];const angle=index*60-90;const locked=index>alphabetHighestPracticeStep;const completed=index<alphabetHighestPracticeStep&&index!==alphabetPracticeStep;return <div key={step} className="a1-orbit-node-position" style={{"--orbit-angle":`${angle}deg`,"--orbit-angle-inverse":`${-angle}deg`} as CSSProperties}><button type="button" className={`a1-orbit-node ${alphabetPracticeStep===index?"active":""} ${completed?"completed":""} ${locked?"locked":""}`} onClick={()=>selectAlphabetPracticeStep(index)} disabled={locked} aria-current={alphabetPracticeStep===index?"step":undefined} aria-label={`${step}${locked?" — لم تُفتح بعد":""}`}><span>{completed?<CheckCircle2/>:<StepIcon/>}</span><b>{step}</b><small>{locked?"مغلقة":alphabetPracticeStep===index?"ابدأ الآن":"مكتملة"}</small></button></div>})}
       </div>
-      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=activeOrbitListeningClips[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds||isA1Greetings||isA1Countries?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
+      {alphabetPracticeOpen&&alphabetPracticeStep===0&&(()=>{const clip=(isA2OrbitLesson&&activeModule.id==="revision-a1"?A2_REVISION_LISTENING_CLIPS:activeOrbitListeningClips)[alphabetListeningClipIndex];const question=activeA2Listening.questions[alphabetListeningQuestionIndex];const selected=revisionListeningAnswers[alphabetListeningQuestionIndex];const answeredCorrectly=selected===question.correctIndex;const correctCount=activeA2Listening.questions.reduce((total,item,index)=>total+(revisionListeningAnswers[index]===item.correctIndex?1:0),0);return <section className={`a1-orbit-listening-overlay ${isA1Sounds||isA1Greetings||isA1Countries?"sounds-listening":""}`} aria-label="تدريب الاستماع الذكي">
        <header><div className="a1-listening-title"><i><Headphones/></i><div><span>{isA1Sounds?"Écoute phonétique":"Écoute intelligente"}</span><h3>استمع</h3></div></div><button type="button" onClick={closeAlphabetPractice} aria-label="العودة إلى خريطة التدريب"><ChevronRight/></button></header>
        <div className="a1-smart-audio-card">
         <div className={`a1-smart-audio-segments ${answeredCorrectly?"revealed":"concealed"} ${isA1Countries?"countries-single":""}`} dir="ltr">

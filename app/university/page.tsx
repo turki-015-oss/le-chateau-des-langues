@@ -304,10 +304,10 @@ const A1_SITUATIONS_LISTENING_CLIPS=[
  {letter:"ce n’est pas grave",word:"on a le temps",ar:"لا بأس، لدينا وقت",hiddenSpeech:"Ce n’est pas grave, on a le temps."}
 ];
 const A1_MESSAGES_FORMS_LISTENING_CLIPS=[
- {letter:"quel est",word:"votre nom de famille",ar:"ما اسم عائلتكم؟",hiddenSpeech:"Quel est votre nom de famille ?"},
- {letter:"mon adresse électronique",word:"est nora@example.com",ar:"عنوان بريدي الإلكتروني هو nora@example.com",hiddenSpeech:"Mon adresse électronique est nora@example.com"},
- {letter:"je confirme",word:"mon rendez-vous de demain",ar:"أؤكد موعدي غدًا",hiddenSpeech:"Je confirme mon rendez-vous de demain à dix heures"},
- {letter:"le musée",word:"est fermé le lundi",ar:"المتحف مغلق يوم الاثنين",hiddenSpeech:"Le musée est fermé le lundi"},
+ {letter:"bonjour madame, je vous écris",word:"pour confirmer mon rendez-vous",ar:"مرحبًا سيدتي، أكتب إليكم لتأكيد موعدي",hiddenSpeech:"Bonjour Madame, je vous écris pour confirmer mon rendez-vous de demain à dix heures."},
+ {letter:"mon nom de famille",word:"est Alami",ar:"اسم عائلتي هو العلمي",hiddenSpeech:"Mon nom de famille est Alami."},
+ {letter:"mon adresse électronique",word:"est nora@example.com",ar:"عنوان بريدي الإلكتروني هو nora@example.com",hiddenSpeech:"Mon adresse électronique est nora arobase example point com."},
+ {letter:"la bibliothèque est ouverte",word:"du mardi au samedi",ar:"المكتبة مفتوحة من الثلاثاء إلى السبت",hiddenSpeech:"La bibliothèque est ouverte du mardi au samedi."},
  {letter:"l’ascenseur",word:"est en panne",ar:"المصعد معطّل",hiddenSpeech:"L’ascenseur est en panne"}
 ];
 
@@ -4758,12 +4758,12 @@ const A1_MESSAGES_FORMS_READING={
 const A1_MESSAGES_FORMS_LISTENING={
  title:"Informations et messages pratiques",
  arTitle:"معلومات ورسائل عملية",
- text:"Quel est votre nom de famille ? Mon adresse électronique est nora@example.com. Je confirme mon rendez-vous de demain à dix heures. Le musée est fermé le lundi. L’ascenseur est en panne.",
+ text:"Bonjour Madame, je vous écris pour confirmer mon rendez-vous de demain à dix heures. Mon nom de famille est Alami. Mon adresse électronique est nora arobase example point com. La bibliothèque est ouverte du mardi au samedi. Attention, l’ascenseur est en panne.",
  questions:[
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Quel est votre nom de famille ?","Quelle est votre adresse ?","Quel est votre prénom ?"],correctIndex:0},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon numéro de téléphone est ici.","Mon adresse électronique est nora@example.com.","Mon adresse est à Lyon."],correctIndex:1},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["J’annule mon rendez-vous.","Je déplace mon rendez-vous.","Je confirme mon rendez-vous de demain à dix heures."],correctIndex:2},
-  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Le musée est fermé le lundi.","Le musée ouvre le lundi.","Le musée est gratuit le lundi."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Bonjour Madame, je vous écris pour confirmer mon rendez-vous de demain à dix heures.","Bonjour Madame, je veux annuler mon rendez-vous de demain.","Salut Madame, je suis devant la bibliothèque."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon prénom est Alami.","Mon nom de famille est Alami.","Mon adresse est à Alami."],correctIndex:1},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["Mon adresse électronique est nora@example.com.","Mon numéro de téléphone est ici.","Mon adresse est à Lyon."],correctIndex:0},
+  {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["La bibliothèque est fermée le samedi.","La bibliothèque est ouverte du mardi au samedi.","La bibliothèque est gratuite le mardi."],correctIndex:1},
   {prompt:"Qu’entendez-vous ?",translation:"ماذا تسمع؟",choices:["L’ascenseur est ouvert.","L’ascenseur est en panne.","L’ascenseur est au premier étage."],correctIndex:1}
  ]
 };

@@ -3841,6 +3841,21 @@ const A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS=[
  {fr:"où se trouve la gare ?",ar:"أين تقع محطة القطار؟"}
 ];
 
+const A2_REVISION_START_WRITING_TRANSLATIONS=[
+ {fr:"se lever tôt",ar:"الاستيقاظ مبكرًا"},
+ {fr:"à sept heures",ar:"الساعة السابعة"},
+ {fr:"prendre le petit-déjeuner",ar:"تناول الفطور"},
+ {fr:"aller au travail",ar:"الذهاب إلى العمل"},
+ {fr:"près de la gare",ar:"قرب المحطة"},
+ {fr:"tous les jours",ar:"كل يوم"},
+ {fr:"le lundi",ar:"كل يوم اثنين"},
+ {fr:"ne pas travailler",ar:"عدم العمل"},
+ {fr:"parce que",ar:"لأنّ"},
+ {fr:"d’abord",ar:"أولًا"},
+ {fr:"puis",ar:"ثمّ"},
+ {fr:"mes amis",ar:"أصدقائي"}
+];
+
 const A1_NUMBERS_TIME_WRITING_TRANSLATIONS=[
  {fr:"lundi 8 avril",ar:"الاثنين 8 أبريل"},
  {fr:"commencer le cours à",ar:"يبدأ الدرس عند"},
@@ -10183,7 +10198,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const isA1Possessives=level.id==="A1"&&activeModule.id==="possessives";
  const isA1Nouns=level.id==="A1"&&activeModule.id==="nouns";
  const isA1CoreVerbs=level.id==="A1"&&activeModule.id==="core-verbs";
- const isA1WritingPhrase=isA1Greetings||isA1Nouns||isA1CoreVerbs||(level.id==="A1"&&activeModule.id==="adjectives");
+ const isA1WritingPhrase=isA1Greetings||isA1Nouns||isA1CoreVerbs||(level.id==="A1"&&activeModule.id==="adjectives")||(level.id==="A2"&&activeModule.id==="revision-a1");
  const isA1Structures=level.id==="A1"&&activeModule.id==="structures";
  const isA1Questions=level.id==="A1"&&activeModule.id==="questions";
  const isA1Present=level.id==="A1"&&activeModule.id==="present";
@@ -10249,7 +10264,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
  const revisionDialogueComplete=activeA2Dialogues.every((dialogue,index)=>revisionDialogueAnswers[index]===dialogue.correctIndex);
  const orbitStepIncomplete=(alphabetPracticeStep===1&&(revisionDictationIndex<activeA2Dictation.length-1||!revisionDictationCorrect))||(alphabetPracticeStep===2&&(revisionBuilderIndex<activeA2Builders.length-1||!revisionBuilderCorrect))||(alphabetPracticeStep===3&&!revisionDialogueComplete);
  const revisionWritingWords=revisionWritingText.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿŒœ]+)*/g)??[];
- const orbitWritingTranslations=isA2OrbitLesson?activeA2Dictation.map(item=>({fr:item.speech,ar:item.ar})):isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:isA1Situations?A1_SITUATIONS_WRITING_TRANSLATIONS:isA1MessagesForms?A1_MESSAGES_FORMS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
+ const orbitWritingTranslations=(level.id==="A2"&&activeModule.id==="revision-a1")?A2_REVISION_START_WRITING_TRANSLATIONS:isA2OrbitLesson?activeA2Dictation.map(item=>({fr:item.speech,ar:item.ar})):isA1Sounds?A1_SOUNDS_WRITING_TRANSLATIONS:isA1Greetings?A1_GREETINGS_WRITING_TRANSLATIONS:isA1Countries?A1_COUNTRIES_WRITING_TRANSLATIONS:isA1Studies?A1_STUDIES_WRITING_TRANSLATIONS:isA1Tastes?A1_TASTES_WRITING_TRANSLATIONS:isA1Demonstratives?A1_DEMONSTRATIVES_WRITING_TRANSLATIONS:isA1Possessives?A1_POSSESSIVES_WRITING_TRANSLATIONS:isA1Nouns?A1_NOUNS_WRITING_TRANSLATIONS:isA1CoreVerbs?A1_CORE_VERBS_WRITING_TRANSLATIONS:isA1Structures?A1_STRUCTURES_WRITING_TRANSLATIONS:isA1Questions?A1_QUESTIONS_WRITING_TRANSLATIONS:isA1Present?A1_PRESENT_WRITING_TRANSLATIONS:isA1ModalVerbs?A1_MODAL_VERBS_WRITING_TRANSLATIONS:isA1FutureImperative?A1_FUTURE_IMPERATIVE_WRITING_TRANSLATIONS:isA1FoodShopping?A1_FOOD_SHOPPING_WRITING_TRANSLATIONS:isA1CityDirections?A1_CITY_DIRECTIONS_WRITING_TRANSLATIONS:isA1NumbersTime?A1_NUMBERS_TIME_WRITING_TRANSLATIONS:isA1WeatherClothes?A1_WEATHER_CLOTHES_WRITING_TRANSLATIONS:isA1Description?A1_DESCRIPTION_WRITING_TRANSLATIONS:isA1HealthNeeds?A1_HEALTH_NEEDS_WRITING_TRANSLATIONS:isA1Adjectives?A1_ADJECTIVES_WRITING_TRANSLATIONS:isA1DailyLife?A1_DAILY_LIFE_WRITING_TRANSLATIONS:isA1Situations?A1_SITUATIONS_WRITING_TRANSLATIONS:isA1MessagesForms?A1_MESSAGES_FORMS_WRITING_TRANSLATIONS:A1_ALPHABET_WRITING_TRANSLATIONS;
  const alphabetWritingItem=orbitWritingTranslations[alphabetWritingIndex];
  const revisionWordCount=revisionWritingWords.length;
  const revisionWritingTokens=(revisionWritingText.toLocaleLowerCase("fr").match(/\p{L}+/gu)??[]) as string[];
@@ -11951,7 +11966,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
       <div className="a1-smart-writing-progress"><div><span>{isA1Greetings?"العنصر":isA1WritingPhrase?"العبارة":"الكلمة"} {alphabetWritingIndex+1} من {orbitWritingTranslations.length}</span><strong>{Math.round((alphabetWritingIndex+1)/orbitWritingTranslations.length*100)}%</strong></div><i><b style={{width:`${(alphabetWritingIndex+1)/orbitWritingTranslations.length*100}%`}}/></i></div>
       <div className="a1-smart-writing-prompt"><small>{isA1Greetings?"Écrivez le mot ou l’expression":isA1WritingPhrase?"Écrivez le groupe de mots":"Écrivez le mot"}</small><h4>{alphabetWritingItem.ar}</h4><button type="button" onClick={()=>void speakFrench(alphabetWritingItem.fr,{rate:.62})} aria-label={`استمع إلى ${isA1WritingPhrase?"العبارة":"كلمة"} ${alphabetWritingItem.fr}`}><Volume2/></button></div>
       <form onSubmit={event=>{event.preventDefault();setAlphabetWritingState(normalizeExerciseText(alphabetWritingInput)===normalizeExerciseText(alphabetWritingItem.fr)?"correct":"wrong")}}>
-       <label htmlFor="alphabet-smart-writing">{isA1Greetings?"اكتب الكلمة أو العبارة بالفرنسية":isA1Nouns?"اكتب العبارة بالفرنسية مع أداتها":isA1CoreVerbs?"اكتب العبارة بالفرنسية":"اكتب الكلمة بالفرنسية"}</label>
+       <label htmlFor="alphabet-smart-writing">{isA1Greetings?"اكتب الكلمة أو العبارة بالفرنسية":isA1Nouns?"اكتب العبارة بالفرنسية مع أداتها":isA1WritingPhrase?"اكتب العبارة بالفرنسية":"اكتب الكلمة بالفرنسية"}</label>
        <input id="alphabet-smart-writing" dir="ltr" lang="fr" autoComplete="off" autoCorrect="off" spellCheck={false} value={alphabetWritingInput} className={alphabetWritingState} onChange={event=>{setAlphabetWritingInput(event.target.value);setAlphabetWritingState("idle")}} placeholder="Écrivez ici…" autoFocus/>
        <button type="submit" disabled={!alphabetWritingInput.trim()}><CheckCircle2/> تحقق</button>
       </form>

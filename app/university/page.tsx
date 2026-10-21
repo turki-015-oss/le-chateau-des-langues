@@ -2470,6 +2470,24 @@ const A1_MESSAGES_FORMS_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Bonjour Madame, je confirme notre rendez-vous de demain à dix heures.",translation:"مرحبًا سيدتي، أؤكد موعدنا غدًا الساعة العاشرة.",speech:"Bonjour Madame, je confirme notre rendez-vous de demain à dix heures.",instruction:"اختر نوع الرسالة.",choices:["رسالة دعوة إلى السينما","رسالة وصف منزل","رسالة تأكيد موعد"],correctIndex:2,explanation:"je confirme notre rendez-vous تدل بوضوح على تأكيد الموعد."}
 ];
 
+const A2_REVISION_START_USEFUL_SENTENCES:Example[]=[
+ {fr:"Je m’appelle Adam et j’habite à Lyon.",ar:"اسمي آدم وأسكن في ليون."},
+ {fr:"Je suis étudiant et j’apprends le français.",ar:"أنا طالب وأتعلم الفرنسية."},
+ {fr:"Je me lève à sept heures chaque matin.",ar:"أستيقظ الساعة السابعة كل صباح."},
+ {fr:"Nous prenons le petit-déjeuner en famille.",ar:"نتناول الفطور مع العائلة."},
+ {fr:"Elle travaille dans une école près de la gare.",ar:"تعمل في مدرسة قرب المحطة."},
+ {fr:"Je ne prends pas le bus aujourd’hui.",ar:"لا أستقل الحافلة اليوم."},
+ {fr:"Il ne travaille jamais le dimanche.",ar:"لا يعمل يوم الأحد أبدًا."},
+ {fr:"À quelle heure est-ce que tu commences ?",ar:"في أي ساعة تبدأ؟"},
+ {fr:"Où est-ce que vous habitez ?",ar:"أين تسكنون؟"},
+ {fr:"J’habite à Nantes depuis deux ans.",ar:"أسكن في نانت منذ عامين."},
+ {fr:"Je marche parce que le marché est près de chez moi.",ar:"أمشي لأن السوق قريب من منزلي."},
+ {fr:"D’abord, je prépare le repas, puis je mets la table.",ar:"أولًا، أُحضّر الطعام، ثم أرتب المائدة."},
+ {fr:"J’aime le thé, mais je préfère le café.",ar:"أحب الشاي، لكنني أفضل القهوة."},
+ {fr:"Ce livre est intéressant et ces exercices sont utiles.",ar:"هذا الكتاب ممتع وهذه التمارين مفيدة."},
+ {fr:"On se retrouve devant la gare à huit heures ?",ar:"هل نلتقي أمام المحطة الساعة الثامنة؟"}
+];
+
 const A2_REVISION_PRACTICE_ITEMS:Example[]=[
  {fr:"Tous les jours, je me réveille à six heures et demie.",ar:"أستيقظ كل يوم في السادسة والنصف."},
  {fr:"Nous mettons nos manteaux avant de sortir.",ar:"نرتدي معاطفنا قبل الخروج."},
@@ -10537,6 +10555,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
   if(level.id==="A1"&&activeModule.id==="messages-forms")return A1_MESSAGES_FORMS_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
+ if(level.id==="A2"&&activeModule.id==="revision-a1")return A2_REVISION_START_USEFUL_SENTENCES.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));
  if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_PRACTICE_ITEMS.map(item=>({...item,speech:[item.fr]}));

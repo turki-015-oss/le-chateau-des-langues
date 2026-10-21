@@ -11210,7 +11210,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
    </div>
   </section>}
 
-  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
+  {lessonPage&&<section className={`university-course university-course-focused ${isA1Alphabet||isA1Sounds||isA1Greetings||isA1Countries||isA1Studies||isA1Tastes||isA1Demonstratives||isA1Possessives||isA1Nouns||isA1CoreVerbs||isA1Structures||isA1Questions||isA1Present||isA1ModalVerbs||isA1FutureImperative||isA1FoodShopping||isA1CityDirections||isA1NumbersTime||isA1WeatherClothes||isA1HomeHousing||isA1Description||isA1HealthNeeds||isA1Adjectives||isA1DailyLife||isA1Situations||isA1MessagesForms||isA2Habits||isA2Revision||isA2PasseCompose||isA2Imparfait||isA2Future||isA2Pronouns||isA2Quantity||isA2Comparison||isA2Politeness||isA2Connectors?"university-course-revision":""}`} id="university-course">
    <aside className="university-lesson-guide">
     <Link href={lessonSourceHref} onClick={event=>{
      if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;

@@ -2501,6 +2501,29 @@ const A2_REVISION_PRACTICE_ITEMS:Example[]=[
  {fr:"À mon avis, ce quartier est pratique parce qu’il est bien desservi.",ar:"في رأيي، هذا الحي عملي لأن وسائل النقل تصل إليه جيدًا."}
 ];
 
+const A2_REVISION_START_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"J’___ à Lyon.",translation:"أسكن في ليون.",speech:"J’habite à Lyon.",instruction:"اختر تصريف habiter الصحيح.",choices:["habite","habites","habitent"],correctIndex:0,explanation:"مع je نقول j’habite بعد حذف e قبل حرف العلة."},
+ {prompt:"Nous ___ le bus à huit heures.",translation:"نستقل الحافلة الساعة الثامنة.",speech:"Nous prenons le bus à huit heures.",instruction:"اختر تصريف prendre مع nous.",choices:["prenez","prenons","prennent"],correctIndex:1,explanation:"تصريف prendre مع nous هو prenons."},
+ {prompt:"Elle ___ à sept heures.",translation:"تستيقظ الساعة السابعة.",speech:"Elle se lève à sept heures.",instruction:"أكمل الفعل الضميري.",choices:["me lève","te lèves","se lève"],correctIndex:2,explanation:"نستخدم se مع elle: elle se lève."},
+ {prompt:"Il ___ étudiant.",translation:"هو طالب.",speech:"Il est étudiant.",instruction:"اختر تصريف être الصحيح.",choices:["est","ai","sommes"],correctIndex:0,explanation:"تصريف être مع il هو est."},
+ {prompt:"J’___ un frère.",translation:"لدي أخ.",speech:"J’ai un frère.",instruction:"اختر تصريف avoir الصحيح.",choices:["est","ai","a"],correctIndex:1,explanation:"تصريف avoir مع je هو ai، ونكتب j’ai."},
+ {prompt:"Je ___ prends ___ le bus.",translation:"لا أستقل الحافلة.",speech:"Je ne prends pas le bus.",instruction:"أكمل النفي الصحيح.",choices:["pas / ne","n’ / jamais","ne / pas"],correctIndex:2,explanation:"في النفي المكتوب تحيط ne وpas بالفعل: je ne prends pas."},
+ {prompt:"Je n’aime pas le café.",translation:"لا أحب القهوة.",speech:"Je n’aime pas le café.",instruction:"لماذا كُتبت n’ بدل ne؟",choices:["لأن الفعل يبدأ بحرف علة.","لأن café اسم جمع.","لأن الفعل في الماضي."],correctIndex:0,explanation:"تُختصر ne إلى n’ قبل حرف علة أو h صامتة."},
+ {prompt:"Il ne travaille jamais le dimanche.",translation:"لا يعمل يوم الأحد أبدًا.",speech:"Il ne travaille jamais le dimanche.",instruction:"ما معنى jamais هنا؟",choices:["غالبًا","أبدًا في سياق النفي","دائمًا"],correctIndex:1,explanation:"ne…jamais تنفي حدوث الفعل بمعنى «لا… أبدًا»."},
+ {prompt:"___ habites-tu ? — À Nantes.",translation:"أين تسكن؟ — في نانت.",speech:"Où habites-tu ? À Nantes.",instruction:"اختر أداة السؤال المناسبة.",choices:["Quand","Pourquoi","Où"],correctIndex:2,explanation:"نسأل عن المكان باستخدام où."},
+ {prompt:"___ est-ce que tu commences ? — À huit heures.",translation:"في أي ساعة تبدأ؟ — الساعة الثامنة.",speech:"À quelle heure est-ce que tu commences ? À huit heures.",instruction:"اختر السؤال المناسب عن الوقت.",choices:["À quelle heure","Pourquoi","Où"],correctIndex:0,explanation:"À quelle heure تُستخدم للسؤال عن الساعة."},
+ {prompt:"Pourquoi tu marches ? — ___ c’est près.",translation:"لماذا تمشي؟ — لأن المكان قريب.",speech:"Pourquoi tu marches ? Parce que c’est près.",instruction:"اختر رابط السبب.",choices:["Puis","Parce que","Mais"],correctIndex:1,explanation:"parce que يقدّم سببًا للإجابة عن pourquoi."},
+ {prompt:"D’abord, je déjeune, ___ je travaille.",translation:"أولًا أتناول الغداء، ثم أعمل.",speech:"D’abord, je déjeune, puis je travaille.",instruction:"اختر الرابط الذي يرتّب الحدث التالي.",choices:["parce que","mais","puis"],correctIndex:2,explanation:"puis تعني «ثم» وتقدّم الحدث التالي."},
+ {prompt:"J’habite à Nantes ___ deux ans.",translation:"أسكن في نانت منذ عامين.",speech:"J’habite à Nantes depuis deux ans.",instruction:"اختر ما يدل على مدة بدأت وما زالت مستمرة.",choices:["depuis","demain","après"],correctIndex:0,explanation:"depuis تعبّر هنا عن مدة بدأت في الماضي وما زالت مستمرة."},
+ {prompt:"Je travaille ___ lundi.",translation:"أعمل كل يوم اثنين.",speech:"Je travaille le lundi.",instruction:"اختر أداة التعبير عن عادة أسبوعية.",choices:["en","le","à"],correctIndex:1,explanation:"le lundi تعني كل يوم اثنين."},
+ {prompt:"Il est huit heures et demie.",translation:"الساعة الثامنة والنصف.",speech:"Il est huit heures et demie.",instruction:"اختر الوقت الرقمي الصحيح.",choices:["8 h 15","9 h 30","8 h 30"],correctIndex:2,explanation:"et demie تعني نصف ساعة بعد الساعة الثامنة."},
+ {prompt:"___ maison est grande.",translation:"هذا المنزل كبير.",speech:"Cette maison est grande.",instruction:"اختر صفة الإشارة المناسبة للاسم المؤنث المفرد.",choices:["Cette","Ce","Ces"],correctIndex:0,explanation:"maison اسم مؤنث مفرد؛ نستخدم cette."},
+ {prompt:"Je retrouve ___ amis.",translation:"ألتقي أصدقائي.",speech:"Je retrouve mes amis.",instruction:"اختر صفة الملكية المناسبة للجمع.",choices:["mon","mes","ma"],correctIndex:1,explanation:"mes تُستخدم مع الاسم الجمع للدلالة على ملكيتي."},
+ {prompt:"Nous allons ___ marché.",translation:"نذهب إلى السوق.",speech:"Nous allons au marché.",instruction:"اختر الصيغة المناسبة قبل le marché.",choices:["à le","à la","au"],correctIndex:2,explanation:"تندمج à وle في au: au marché."},
+ {prompt:"Tu aimes le café ?",translation:"هل تحب القهوة؟",speech:"Tu aimes le café ?",instruction:"اختر ردًا طبيعيًا ومناسبًا.",choices:["Oui, j’aime le café.","Oui, j’ai le café aime.","Oui, je suis aimer."],correctIndex:0,explanation:"j’aime le café جملة طبيعية للتعبير عن الإعجاب."},
+ {prompt:"On se retrouve à huit heures devant la gare ?",translation:"هل نلتقي الساعة الثامنة أمام المحطة؟",speech:"On se retrouve à huit heures devant la gare ?",instruction:"اختر ردًا يؤكد الموافقة والموعد.",choices:["Je ne suis pas huit heures.","Oui, à huit heures devant la gare.","Parce que demain est une gare."],correctIndex:1,explanation:"الرد يؤكد الموافقة والوقت والمكان."}
+];
+
 const A2_REVISION_QUIZ_ITEMS:QuizQuestion[]=[
  {prompt:"Nous ___ le bus à huit heures.",speech:"Choisissez la bonne forme du verbe prendre.",instruction:"اختر التصريف الصحيح للفعل prendre.",choices:["prenons","prenez","prennent"],correctIndex:0,explanation:"مع الضمير nous يُصرّف prendre هكذا: nous prenons."},
  {prompt:"Elle ___ à sept heures chaque matin.",speech:"Choisissez le bon pronom et la bonne forme du verbe se lever.",instruction:"أكمل بالفعل الضميري الصحيح.",choices:["me lève","se lève","te lèves"],correctIndex:1,explanation:"الضمير الانعكاسي الموافق لـ elle هو se: elle se lève."},
@@ -10612,6 +10635,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   if(level.id==="A1"&&activeModule.id==="health-needs")return A1_HEALTH_NEEDS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="messages-forms")return A1_MESSAGES_FORMS_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="revision-a1")return A2_REVISION_START_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

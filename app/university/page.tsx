@@ -5028,6 +5028,19 @@ const A1_ENHANCED_CONTENT={
  }
 } as const;
 
+const A2_PRESENT_PROGRESSIVE_QUIZ_ITEMS:QuizQuestion[]=[
+ {prompt:"Je ___ en train de préparer le dîner.",speech:"Je suis en train de préparer le dîner.",translation:"أنا أُحضّر العشاء الآن.",instruction:"اختر تصريف être الصحيح مع je.",choices:["suis","es","sommes"],correctIndex:0,explanation:"مع je نقول je suis en train de + infinitif."},
+ {prompt:"Nous sommes en train ___ le train.",speech:"Nous sommes en train d’attendre le train.",translation:"نحن ننتظر القطار الآن.",instruction:"أكمل الصيغة الصحيحة قبل المصدر.",choices:["d’attendre","attendons","de attend"],correctIndex:0,explanation:"قبل المصدر الذي يبدأ بحرف متحرك نكتب de على صورة d’: en train d’attendre."},
+ {prompt:"Elle ___ pas en train de dormir.",speech:"Elle n’est pas en train de dormir.",translation:"هي ليست نائمة الآن.",instruction:"اختر النفي الصحيح مع être.",choices:["n’est","ne est","pas est"],correctIndex:0,explanation:"في النفي تحيط ne… pas بالفعل être: elle n’est pas…"},
+ {prompt:"Les enfants ___ en train de jouer dans le jardin.",speech:"Les enfants sont en train de jouer dans le jardin.",translation:"الأطفال يلعبون في الحديقة الآن.",instruction:"اختر تصريف être المناسب للجمع.",choices:["sont","êtes","avons"],correctIndex:0,explanation:"مع les enfants نستخدم ils/elles sont."},
+ {prompt:"Quelle phrase parle d’une action en cours maintenant ?",speech:"Je suis en train de lire un livre.",translation:"أي جملة تتحدث عن فعل يحدث الآن؟",instruction:"اختر الجملة التي تؤكد أن الفعل جارٍ الآن.",choices:["Je suis en train de lire un livre.","Je lis le soir.","Je lirai demain."],correctIndex:0,explanation:"être en train de + infinitif تؤكد أن الفعل يحدث في هذه اللحظة."},
+ {prompt:"D’habitude, Samir travaille le soir, mais maintenant il ___ le dîner.",speech:"D’habitude, Samir travaille le soir, mais maintenant il est en train de préparer le dîner.",translation:"عادةً يعمل سمير مساءً، لكنه الآن يُحضّر العشاء.",instruction:"اختر الصيغة التي تميّز الآن عن العادة.",choices:["est en train de préparer","prépare toujours","a préparé"],correctIndex:0,explanation:"now/maintenant يناسبه الحاضر الجاري: est en train de préparer."},
+ {prompt:"Vous êtes en train de chercher la gare ?",speech:"Vous êtes en train de chercher la gare ?",translation:"هل تبحثون عن المحطة الآن؟",instruction:"اختر الجواب القصير الصحيح.",choices:["Oui, nous sommes en train de la chercher.","Oui, nous cherchons hier.","Oui, nous sommes chercher."],correctIndex:0,explanation:"يمكن الرد بـ nous sommes en train de…، ويأتي الضمير la قبل المصدر chercher."},
+ {prompt:"Ils ne sont pas en train de travailler : ils ___ .",speech:"Ils ne sont pas en train de travailler : ils sont en train de déjeuner.",translation:"هم لا يعملون الآن؛ بل يتناولون الغداء.",instruction:"أكمل بالفعل الجاري المناسب.",choices:["sont en train de déjeuner","déjeunent demain","ont déjeuné maintenant"],correctIndex:0,explanation:"بعد ils نستخدم sont en train de ثم المصدر déjeuner."},
+ {prompt:"Remettez les mots dans l’ordre : en / suis / train / je / de / cuisiner.",speech:"Je suis en train de cuisiner.",translation:"أنا أطبخ الآن.",instruction:"اختر الترتيب السليم.",choices:["Je suis en train de cuisiner.","Je en train suis de cuisiner.","Je suis de cuisiner en train."],correctIndex:0,explanation:"الترتيب الثابت: sujet + être + en train de + infinitif."},
+ {prompt:"Quelle question est naturelle pour demander ce qui se passe maintenant ?",speech:"Qu’est-ce que tu es en train de faire ?",translation:"ما السؤال الطبيعي عما تفعله الآن؟",instruction:"اختر السؤال الصحيح.",choices:["Qu’est-ce que tu es en train de faire ?","Qu’est-ce que tu en train fais ?","Que tu es faire maintenant ?"],correctIndex:0,explanation:"في السؤال نستطيع القول: Qu’est-ce que tu es en train de faire ?"}
+];
+
 const A2_BATCH_TWO_CONTENT={
  "habits-frequency":{
   reading:{title:"Les habitudes de Samir",arTitle:"عادات سمير",text:"Samir travaille dans un hôtel. En général, il commence à huit heures. Il prend toujours un café avant le travail et il déjeune souvent avec ses collègues. Le mercredi, il va parfois à la piscine après le travail. Il ne sort jamais tard quand il travaille le lendemain.",translation:"يعمل سمير في فندق. يبدأ عادةً في الثامنة. يتناول دائمًا قهوة قبل العمل ويتغدى غالبًا مع زملائه. يذهب أحيانًا إلى المسبح بعد العمل يوم الأربعاء. ولا يخرج متأخرًا أبدًا عندما يعمل في اليوم التالي.",questions:[{question:"À quelle heure Samir commence-t-il en général ?",answer:"Il commence à huit heures.",ar:"يبدأ في الثامنة."},{question:"Que fait-il parfois le mercredi ?",answer:"Il va parfois à la piscine après le travail.",ar:"يذهب أحيانًا إلى المسبح بعد العمل."},{question:"Pourquoi ne sort-il jamais tard ?",answer:"Parce qu’il travaille le lendemain.",ar:"لأنه يعمل في اليوم التالي."}]},
@@ -10701,6 +10714,7 @@ export default function UniversityPage({initialLevelId,initialModuleId,initialPh
   if(level.id==="A1"&&activeModule.id==="questions")return A1_QUESTIONS_QUIZ_ITEMS;
   if(level.id==="A1"&&activeModule.id==="messages-forms")return A1_MESSAGES_FORMS_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision-a1")return A2_REVISION_START_QUIZ_ITEMS;
+  if(level.id==="A2"&&activeModule.id==="present-progressive")return A2_PRESENT_PROGRESSIVE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="revision")return A2_REVISION_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="passe-compose")return A2_PASSE_COMPOSE_QUIZ_ITEMS;
   if(level.id==="A2"&&activeModule.id==="imparfait")return A2_IMPARFAIT_QUIZ_ITEMS;

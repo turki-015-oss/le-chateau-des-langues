@@ -7687,6 +7687,7 @@ const A2_PRESENT_PROGRESSIVE_TABLES=[
   {tag:"التركيب",fr:"Je suis en train de préparer le dîner.",ar:"أنا أُحضّر العشاء الآن.",note:"Je + suis ثم en train de + préparer؛ يأتي الفعل الأخير في المصدر."},
   {tag:"مع حرف متحرك",fr:"Nous sommes en train d’attendre le train.",ar:"نحن ننتظر القطار الآن.",note:"قبل مصدر يبدأ بحرف متحرك مثل attendre، تتحول de إلى d’."},
   {tag:"مع الجمع",fr:"Les enfants sont en train de jouer dans le jardin.",ar:"الأطفال يلعبون في الحديقة الآن.",note:"مع ils / elles نستخدم sont، ثم تبقى بقية الصيغة نفسها."},
+  {tag:"النفي",fr:"Il n’est pas en train de travailler.",ar:"هو لا يعمل الآن.",note:"في النفي تحيط ne… pas بالفعل être؛ وتتحول ne إلى n’ قبل est لأنه يبدأ بحرف متحرك."},
   {tag:"سؤال",fr:"Qu’est-ce que tu es en train de faire ?",ar:"ماذا تفعل الآن؟",note:"سؤال طبيعي لطلب وصف الفعل الجاري في هذه اللحظة."}
  ]},
  {fr:"Présent simple ou progressif ?",ar:"العادة أم الفعل الجاري؟",intro:"الحاضر البسيط يصف عادة أو حقيقة عامة؛ أما être en train de فيصف فعلًا نراه أو يحدث الآن.",rows:[
